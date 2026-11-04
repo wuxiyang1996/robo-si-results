@@ -7687,5 +7687,386 @@
    "shared_archive": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/f35de6f630ab31f3b43931546bab767aa0069e0b/releases/cooking-sc-pc-acceptance-20261104-v1"
   },
   "evidence_url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/f35de6f630ab31f3b43931546bab767aa0069e0b/releases/cooking-sc-pc-acceptance-20261104-v1"
+ },
+ {
+  "family": "GEAR",
+  "name": {
+   "zh": "齿轮装配",
+   "en": "Gear assembly"
+  },
+  "summary": {
+   "zh": "从按图装配、故障诊断与返工，到拨转工具与手型相性：3 个独立任务设计、7 项已签收记录。历史三指参考身体 3 项与正式 Dex3 / Inspire 身体 4 项分列，均包含完整装配／修复、真实齿面传动、工具归位和最终释放。",
+   "en": "Three task designs cover illustrated assembly, fault diagnosis and rework, and compatibility between drive tools and hands. Seven records are signed off: 3 historical three-finger references and 4 formal Dex3/Inspire body configurations, shown separately. Each includes complete assembly/repair, real tooth-contact transmission, tool parking and final release."
+  },
+  "acceptance": {
+   "zh": "作者于 2026-11-04 确认 GEAR 7/7 验收通过：历史参考 3/3、正式身体 4/4。GEAR-03.G/F 的共同世界、非手身体、共同控制器及固定骨盆位置均匹配。单种子特权专家参考；多种子可靠性与独立第二人复现另列。",
+   "en": "The author accepted GEAR 7/7 on 2026-11-04: 3/3 historical references and 4/4 formal-body configurations. GEAR-03.G/F matches the world, non-hand body, common controller and fixed-pelvis position. These are single-seed privileged expert references; multi-seed reliability and independent second-person reproduction remain separate."
+  },
+  "accepted_at": "2026-11-04",
+  "axes": {
+   "zh": "原始装配、倒置中齿轮诊断与修复、物理工具候选；历史三指参考身体与正式 Dex3 / Inspire；GEAR-03 的同世界 G/F 手型配对。",
+   "en": "Original assembly, diagnosis/repair of an inverted middle gear, physical tool candidates; historical three-finger reference versus formal Dex3/Inspire bodies; matched-world G/F hand comparison on GEAR-03."
+  },
+  "embodiments": [
+   {
+    "code": "G-reference",
+    "zh": "历史固定骨盆 G1 三指 MJCF 参考身体",
+    "en": "Historical fixed-pelvis G1 MJCF with three-finger hands"
+   },
+   {
+    "code": "G",
+    "zh": "官方 G1 Dex3 三指手，固定骨盆",
+    "en": "Official G1 with Dex3 three-finger hands, fixed pelvis"
+   },
+   {
+    "code": "F",
+    "zh": "官方 G1 Inspire 五指手，固定骨盆",
+    "en": "Official G1 with Inspire five-finger hands, fixed pelvis"
+   }
+  ],
+  "cases": [
+   {
+    "id": "GEAR-01.reference",
+    "task_id": "GEAR-01",
+    "title": {
+     "zh": "原版按图装配与验转 · 历史参考 / 三指",
+     "en": "Illustrated assembly and drive test · Historical reference / three-finger"
+    },
+    "conditions": {
+     "zh": "从正常初态连续执行，seed 0，原 360 s 时限；0.74 m 桌面，固定骨盆。",
+     "en": "Continuous execution from the normal initial state, seed 0, original 360 s budget, 0.74 m table and fixed pelvis."
+    },
+    "design": {
+     "zh": "按底座、大／中／小齿轮、顶盖的原顺序装配；获取实体拨转工具，通过真实齿面接触完成传动验转，工具归位并最终释放稳定 2 秒。",
+     "en": "Install the base, large/medium/small gears and cover in the original order. Acquire the physical turning tool, test transmission through real tooth contact, park the tool and finish with 2 s of stable release."
+    },
+    "tools": [
+     {
+      "zh": "原实体拨转工具",
+      "en": "Original physical turning tool"
+     }
+    ],
+    "embodiment": {
+     "code": "G-reference",
+     "zh": "历史固定骨盆 G1 三指 MJCF 参考身体",
+     "en": "Historical fixed-pelvis G1 MJCF with three-finger hands"
+    },
+    "result": {
+     "zh": "成功：a09 在 222.292 s 完成全部 7 个原阶段；88,917 个逐物理步记录，独立评分差异 0，验收阻断项为空。",
+     "en": "Success: a09 completed all 7 original stages in 222.292 s; 88,917 physics-step records, zero independent scorer mismatches and no acceptance blockers."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "video": "media/GEAR/GEAR-01.reference.mp4",
+    "full_video": "media/GEAR/GEAR-01.reference-1x.mp4",
+    "evidence_backed_up": true,
+    "evidence_group": "history",
+    "attempt": "a09",
+    "elapsed_seconds": 222.2924999998341,
+    "physics_samples": 88917,
+    "outcome_sha256": "3a1db790059469d8c813d1448d477fcfa84daca75b5b0af6212960d0cdc1ac56",
+    "accepted_at": "2026-11-04"
+   },
+   {
+    "id": "GEAR-02.reference",
+    "task_id": "GEAR-02",
+    "title": {
+     "zh": "故障诊断、拆装修复与重新验转 · 历史参考 / 三指",
+     "en": "Diagnose, repair and retest · Historical reference / three-finger"
+    },
+    "conditions": {
+     "zh": "从正常初态连续执行，seed 0，原 360 s 时限；0.74 m 桌面，固定骨盆。GEAR-02 使用 inverted-middle-gear-v2 和 original_grace_v1 的 0.3 s 失支撑宽限。",
+     "en": "Continuous execution from the normal initial state, seed 0, original 360 s budget, 0.74 m table and fixed pelvis. GEAR-02 uses inverted-middle-gear-v2 and the original_grace_v1 0.3 s support-loss grace."
+    },
+    "design": {
+     "zh": "从已部分装配、但中齿轮倒置的 v2 初态开始，诊断并提离故障件、翻转及重新落座，恢复传动、安装顶盖、真实验转并最终释放。",
+     "en": "Start from the v2 partial assembly with an inverted middle gear. Diagnose and extract it, flip and reseat it, restore transmission, fit the cover, test the physical gear train and release."
+    },
+    "tools": [
+     {
+      "zh": "原实体拨转工具",
+      "en": "Original physical turning tool"
+     }
+    ],
+    "embodiment": {
+     "code": "G-reference",
+     "zh": "历史固定骨盆 G1 三指 MJCF 参考身体",
+     "en": "Historical fixed-pelvis G1 MJCF with three-finger hands"
+    },
+    "result": {
+     "zh": "成功：a82 在 282.807 s 完成全部 7 个原阶段；113,123 个逐物理步记录，独立评分差异 0，验收阻断项为空。",
+     "en": "Success: a82 completed all 7 original stages in 282.807 s; 113,123 physics-step records, zero independent scorer mismatches and no acceptance blockers."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "video": "media/GEAR/GEAR-02.reference.mp4",
+    "full_video": "media/GEAR/GEAR-02.reference-1x.mp4",
+    "evidence_backed_up": true,
+    "evidence_group": "history",
+    "attempt": "a82",
+    "elapsed_seconds": 282.80749999977905,
+    "physics_samples": 113123,
+    "outcome_sha256": "12b12c760032f1ed6bc47fac515bd02497568d68fc26faa65ed012948a3c7dc8",
+    "accepted_at": "2026-11-04"
+   },
+   {
+    "id": "GEAR-03.reference",
+    "task_id": "GEAR-03",
+    "title": {
+     "zh": "拨转工具与手型相性 · 历史参考 / 三指",
+     "en": "Drive-tool and hand compatibility · Historical reference / three-finger"
+    },
+    "conditions": {
+     "zh": "从正常初态连续执行，seed 0，原 360 s 时限；0.74 m 桌面，固定骨盆。",
+     "en": "Continuous execution from the normal initial state, seed 0, original 360 s budget, 0.74 m table and fixed pelvis."
+    },
+    "design": {
+     "zh": "同一场景提供原拨转工具、细杆和宽杆，完成装配、工具夹持、齿面接触验转及工具归位。正式 G/F 仅改变手和对应映射，共享世界、非手身体、共同控制器和固定骨盆位置；两项见证均使用原拨转工具。",
+     "en": "The same scene offers the original turning tool, a thin bar and a wide bar. Complete assembly, tool acquisition, tooth-contact driving and tool parking. The formal G/F pair shares the world, non-hand body, common controller and fixed pelvis; only the hand and its mapping differ. Both witnesses use the original turning tool."
+    },
+    "tools": [
+     {
+      "zh": "原实体拨转工具",
+      "en": "Original physical turning tool"
+     },
+     {
+      "zh": "细杆：0.19 × 0.012 × 0.012 m，0.10 kg",
+      "en": "Thin bar: 0.19 × 0.012 × 0.012 m, 0.10 kg"
+     },
+     {
+      "zh": "宽杆：0.21 × 0.052 × 0.025 m，0.22 kg",
+      "en": "Wide bar: 0.21 × 0.052 × 0.025 m, 0.22 kg"
+     }
+    ],
+    "embodiment": {
+     "code": "G-reference",
+     "zh": "历史固定骨盆 G1 三指 MJCF 参考身体",
+     "en": "Historical fixed-pelvis G1 MJCF with three-finger hands"
+    },
+    "result": {
+     "zh": "成功：a12 在 289.532 s 完成全部 7 个原阶段；115,813 个逐物理步记录，独立评分差异 0，验收阻断项为空。",
+     "en": "Success: a12 completed all 7 original stages in 289.532 s; 115,813 physics-step records, zero independent scorer mismatches and no acceptance blockers."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "video": "media/GEAR/GEAR-03.reference.mp4",
+    "full_video": "media/GEAR/GEAR-03.reference-1x.mp4",
+    "evidence_backed_up": true,
+    "evidence_group": "history",
+    "attempt": "a12",
+    "elapsed_seconds": 289.53249999977294,
+    "physics_samples": 115813,
+    "outcome_sha256": "47e5f74235e6992894dff91d03e03fc5a7a432016b488866c20a5858612d73d1",
+    "accepted_at": "2026-11-04"
+   },
+   {
+    "id": "GEAR-01.G",
+    "task_id": "GEAR-01",
+    "title": {
+     "zh": "原版按图装配与验转 · 正式身体 / G",
+     "en": "Illustrated assembly and drive test · Formal body / G"
+    },
+    "conditions": {
+     "zh": "从正常初态连续执行，seed 0，原 360 s 时限；0.74 m 桌面，固定骨盆。",
+     "en": "Continuous execution from the normal initial state, seed 0, original 360 s budget, 0.74 m table and fixed pelvis."
+    },
+    "design": {
+     "zh": "按底座、大／中／小齿轮、顶盖的原顺序装配；获取实体拨转工具，通过真实齿面接触完成传动验转，工具归位并最终释放稳定 2 秒。",
+     "en": "Install the base, large/medium/small gears and cover in the original order. Acquire the physical turning tool, test transmission through real tooth contact, park the tool and finish with 2 s of stable release."
+    },
+    "tools": [
+     {
+      "zh": "原实体拨转工具",
+      "en": "Original physical turning tool"
+     }
+    ],
+    "embodiment": {
+     "code": "G",
+     "zh": "官方 G1 Dex3 三指手，固定骨盆",
+     "en": "Official G1 with Dex3 three-finger hands, fixed pelvis"
+    },
+    "result": {
+     "zh": "成功：a08 在 214.665 s 完成全部 7 个原阶段；85,866 个逐物理步记录，独立评分差异 0，验收阻断项为空。",
+     "en": "Success: a08 completed all 7 original stages in 214.665 s; 85,866 physics-step records, zero independent scorer mismatches and no acceptance blockers."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "video": "media/GEAR/GEAR-01.G.mp4",
+    "full_video": "media/GEAR/GEAR-01.G-1x.mp4",
+    "evidence_backed_up": true,
+    "evidence_group": "formal",
+    "attempt": "a08",
+    "elapsed_seconds": 214.66499999984103,
+    "physics_samples": 85866,
+    "outcome_sha256": "73e39cf09d117a56be2da1212d9097ec6f1064890e3b09721d772d21e6a07e7e",
+    "accepted_at": "2026-11-04"
+   },
+   {
+    "id": "GEAR-02.G",
+    "task_id": "GEAR-02",
+    "title": {
+     "zh": "故障诊断、拆装修复与重新验转 · 正式身体 / G",
+     "en": "Diagnose, repair and retest · Formal body / G"
+    },
+    "conditions": {
+     "zh": "从正常初态连续执行，seed 0，原 360 s 时限；0.74 m 桌面，固定骨盆。GEAR-02 使用 inverted-middle-gear-v2 和 original_grace_v1 的 0.3 s 失支撑宽限。",
+     "en": "Continuous execution from the normal initial state, seed 0, original 360 s budget, 0.74 m table and fixed pelvis. GEAR-02 uses inverted-middle-gear-v2 and the original_grace_v1 0.3 s support-loss grace."
+    },
+    "design": {
+     "zh": "从已部分装配、但中齿轮倒置的 v2 初态开始，诊断并提离故障件、翻转及重新落座，恢复传动、安装顶盖、真实验转并最终释放。",
+     "en": "Start from the v2 partial assembly with an inverted middle gear. Diagnose and extract it, flip and reseat it, restore transmission, fit the cover, test the physical gear train and release."
+    },
+    "tools": [
+     {
+      "zh": "原实体拨转工具",
+      "en": "Original physical turning tool"
+     }
+    ],
+    "embodiment": {
+     "code": "G",
+     "zh": "官方 G1 Dex3 三指手，固定骨盆",
+     "en": "Official G1 with Dex3 three-finger hands, fixed pelvis"
+    },
+    "result": {
+     "zh": "成功：a40 在 206.005 s 完成全部 7 个原阶段；82,402 个逐物理步记录，独立评分差异 0，验收阻断项为空。",
+     "en": "Success: a40 completed all 7 original stages in 206.005 s; 82,402 physics-step records, zero independent scorer mismatches and no acceptance blockers."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "video": "media/GEAR/GEAR-02.G.mp4",
+    "full_video": "media/GEAR/GEAR-02.G-1x.mp4",
+    "evidence_backed_up": true,
+    "evidence_group": "formal",
+    "attempt": "a40",
+    "elapsed_seconds": 206.0049999998489,
+    "physics_samples": 82402,
+    "outcome_sha256": "c3af6636a54fa2a4505d185665920c37f97117c59c73e9476e15d38f7a536b90",
+    "accepted_at": "2026-11-04"
+   },
+   {
+    "id": "GEAR-03.G",
+    "task_id": "GEAR-03",
+    "title": {
+     "zh": "拨转工具与手型相性 · 正式身体 / G",
+     "en": "Drive-tool and hand compatibility · Formal body / G"
+    },
+    "conditions": {
+     "zh": "从正常初态连续执行，seed 0，原 360 s 时限；0.74 m 桌面，固定骨盆。",
+     "en": "Continuous execution from the normal initial state, seed 0, original 360 s budget, 0.74 m table and fixed pelvis."
+    },
+    "design": {
+     "zh": "同一场景提供原拨转工具、细杆和宽杆，完成装配、工具夹持、齿面接触验转及工具归位。正式 G/F 仅改变手和对应映射，共享世界、非手身体、共同控制器和固定骨盆位置；两项见证均使用原拨转工具。",
+     "en": "The same scene offers the original turning tool, a thin bar and a wide bar. Complete assembly, tool acquisition, tooth-contact driving and tool parking. The formal G/F pair shares the world, non-hand body, common controller and fixed pelvis; only the hand and its mapping differ. Both witnesses use the original turning tool."
+    },
+    "tools": [
+     {
+      "zh": "原实体拨转工具",
+      "en": "Original physical turning tool"
+     },
+     {
+      "zh": "细杆：0.19 × 0.012 × 0.012 m，0.10 kg",
+      "en": "Thin bar: 0.19 × 0.012 × 0.012 m, 0.10 kg"
+     },
+     {
+      "zh": "宽杆：0.21 × 0.052 × 0.025 m，0.22 kg",
+      "en": "Wide bar: 0.21 × 0.052 × 0.025 m, 0.22 kg"
+     }
+    ],
+    "embodiment": {
+     "code": "G",
+     "zh": "官方 G1 Dex3 三指手，固定骨盆",
+     "en": "Official G1 with Dex3 three-finger hands, fixed pelvis"
+    },
+    "result": {
+     "zh": "成功：a08 在 217.367 s 完成全部 7 个原阶段；86,947 个逐物理步记录，独立评分差异 0，验收阻断项为空。",
+     "en": "Success: a08 completed all 7 original stages in 217.367 s; 86,947 physics-step records, zero independent scorer mismatches and no acceptance blockers."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "video": "media/GEAR/GEAR-03.G.mp4",
+    "full_video": "media/GEAR/GEAR-03.G-1x.mp4",
+    "evidence_backed_up": true,
+    "evidence_group": "formal",
+    "attempt": "a08",
+    "elapsed_seconds": 217.36749999983857,
+    "physics_samples": 86947,
+    "outcome_sha256": "bccff223f39b006fe8add008ef0817fecfeef010c3faeb72a2501b4a1dde7433",
+    "accepted_at": "2026-11-04"
+   },
+   {
+    "id": "GEAR-03.F",
+    "task_id": "GEAR-03",
+    "title": {
+     "zh": "拨转工具与手型相性 · 正式身体 / F",
+     "en": "Drive-tool and hand compatibility · Formal body / F"
+    },
+    "conditions": {
+     "zh": "从正常初态连续执行，seed 0，原 360 s 时限；0.74 m 桌面，固定骨盆。",
+     "en": "Continuous execution from the normal initial state, seed 0, original 360 s budget, 0.74 m table and fixed pelvis."
+    },
+    "design": {
+     "zh": "同一场景提供原拨转工具、细杆和宽杆，完成装配、工具夹持、齿面接触验转及工具归位。正式 G/F 仅改变手和对应映射，共享世界、非手身体、共同控制器和固定骨盆位置；两项见证均使用原拨转工具。",
+     "en": "The same scene offers the original turning tool, a thin bar and a wide bar. Complete assembly, tool acquisition, tooth-contact driving and tool parking. The formal G/F pair shares the world, non-hand body, common controller and fixed pelvis; only the hand and its mapping differ. Both witnesses use the original turning tool."
+    },
+    "tools": [
+     {
+      "zh": "原实体拨转工具",
+      "en": "Original physical turning tool"
+     },
+     {
+      "zh": "细杆：0.19 × 0.012 × 0.012 m，0.10 kg",
+      "en": "Thin bar: 0.19 × 0.012 × 0.012 m, 0.10 kg"
+     },
+     {
+      "zh": "宽杆：0.21 × 0.052 × 0.025 m，0.22 kg",
+      "en": "Wide bar: 0.21 × 0.052 × 0.025 m, 0.22 kg"
+     }
+    ],
+    "embodiment": {
+     "code": "F",
+     "zh": "官方 G1 Inspire 五指手，固定骨盆",
+     "en": "Official G1 with Inspire five-finger hands, fixed pelvis"
+    },
+    "result": {
+     "zh": "成功：a35 在 357.257 s 完成全部 7 个原阶段；142,903 个逐物理步记录，独立评分差异 0，验收阻断项为空。",
+     "en": "Success: a35 completed all 7 original stages in 357.257 s; 142,903 physics-step records, zero independent scorer mismatches and no acceptance blockers."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "video": "media/GEAR/GEAR-03.F.mp4",
+    "full_video": "media/GEAR/GEAR-03.F-1x.mp4",
+    "evidence_backed_up": true,
+    "evidence_group": "formal",
+    "attempt": "a35",
+    "elapsed_seconds": 357.25749999971134,
+    "physics_samples": 142903,
+    "outcome_sha256": "66484c2ca054365b70d72c28e57a7a8fa2150193a5ac30c656de200cecbc5ef5",
+    "accepted_at": "2026-11-04"
+   }
+  ],
+  "independent_tasks": 3,
+  "historical_configurations": 3,
+  "formal_configurations": 4,
+  "backup": {
+   "storage": "private Hugging Face dataset",
+   "verified_at": "2026-11-04",
+   "configs_backed": 7,
+   "configs_total": 7,
+   "files": 25428,
+   "gib": 14.394,
+   "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/b0e3cf6777f87d295713fc593c0d73702bfee582/archives/workspace-20261104/gear-accepted",
+   "data_revision": "36b4524b695a8e2a6b2f8c43a48d9f5a10ebd340",
+   "includes_development_history": true
+  },
+  "paired_comparison": {
+   "video": "media/GEAR/GEAR-03-GF-comparison.mp4",
+   "full_video": "media/GEAR/GEAR-03-GF-comparison-1x.mp4",
+   "poster": "media/GEAR/GEAR-03-GF-comparison.jpg",
+   "speed": 8,
+   "frames": 1787,
+   "duration_seconds": 44.68,
+   "sha256": "cc4a00e1971033c77f30fa838644ef8e8c43076ba77abd565eb1828f02257b1a",
+   "full_video_sha256": "e36145746a93e0e42d8c20e96c61b42028fc9fb3dd0644872c72acfee0bc5900"
+  }
  }
 ]

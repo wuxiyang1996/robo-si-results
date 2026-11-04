@@ -135,3 +135,12 @@ footer p { margin: 4px 0; }
   dl.attrs { grid-template-columns: 1fr; gap: 2px; }
   dl.attrs dd { margin-bottom: 7px; }
 }
+
+/* GEAR keeps historical and formal-body evidence in separate columns. */
+.gear-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.gear-column { min-width: 0; scroll-margin-top: 70px; }
+.gear-groups .case { grid-template-columns: 1fr; }
+.gear-groups .case video { aspect-ratio: 64 / 45; }
+.gear-pair { position: relative; background: #0e0e10; border-radius: 10px; overflow: hidden; }
+.gear-pair video { width: 100%; display: block; aspect-ratio: 1280 / 522; }
+@media (max-width: 900px) { .gear-groups { grid-template-columns: 1fr; } }

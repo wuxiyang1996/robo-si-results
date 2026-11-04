@@ -32,3 +32,7 @@ Scope notes:
 The site is static HTML (`index.html`, one page per family). `data/accepted-tasks.json` holds the same task data
 in machine-readable form. Source code, simulators and full evidence live in the private robo-si repository and
 dataset.
+
+GEAR was accepted on 2026-11-04: 7 records across 3 independent task designs, with 3 historical references
+and 4 formal-body configurations shown separately. The GEAR page includes 8x previews, full 1x downloads,
+a matched-world G/F comparison, the author acceptance record, and a private full-evidence archive link.
