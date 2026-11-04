@@ -4,7 +4,7 @@ Website: https://wuxiyang1996.github.io/robo-si-results/
 
 This repository hosts the public results site of **robo-si**, a robotics benchmark for self-modeling, tool
 discovery, loaded locomotion and multi-robot cooperation. The site lists the tasks and task families that the
-author has accepted, as of the acceptance snapshot of 2026-11-04: 26 families and 237 configurations,
+author has accepted, as of the acceptance snapshot of 2026-11-04: 27 families and 244 configurations,
 with 225 public configuration videos and evidence backed up for 236 of them (the F2 archive record is pending verification). For every accepted configuration it gives:
 
 - an available reference video, with its speed shown in the badge (earlier short clips may use 4x, 2x or 1x),
@@ -46,3 +46,5 @@ H4 was accepted on 2026-11-04 within its existing reference-delivery scope: 9 br
 F5/F6/F7 were accepted on 2026-11-04: 6 transport/installation, 6 routing/reel and 5 fastening/recovery configurations (17 total). Eight have this-round declared revisions; all retain their specific scope. The 17 public videos use a common camera direction and 8x physical-time speed at 1280x720/24 fps. Full raw records, source, models, presentation provenance and development history are privately backed up with a pinned restore index.
 
 F2 (garment tidying and packing) was added on 2026-11-04 with 1 of 6 declared configurations accepted: F2-01-L1, one continuous native dual-Stretch 3 run with a free 2D towel and a passive flip board (29,751 physics steps, 9 low-level actions, zero action-replay error, matching static negative control). The other five configurations are not accepted and are listed on the F2 page with their measured status at the 2026-11-04 15:39 pause. The public clip is an 8x kinematic re-render with the F5/F6/F7 camera contract; new F2 runs use the task_outcome_v1 precision profile while the accepted L1 record keeps the legacy profile.
+
+M1 was author-accepted on 2026-11-04: seven independently reviewed frozen configurations (four complete deliveries and three certified safe exits). B03 remains paused incomplete; B04/B05 are deferred. Six same-run original recordings are shown at 8x and offered at 1x; I01 has no original recording. Remote M1 backup verification passed. No full eight-configuration completion or capability-boundary certification is claimed.

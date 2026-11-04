@@ -1,0 +1,344 @@
+{
+  "schema": "m1-body-configuration-evidence-index/1",
+  "updated_at": "2026-11-04T14:27:16.877062-05:00",
+  "source_ledger": {
+    "path": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/campaign-ledger-snapshot-0cdb15d35240.json",
+    "sha256": "0cdb15d3524083c71ded496db43b62cfdfe3f82758d2390e1a7ba9efbc3a0d45",
+    "updated_at": "2026-11-04T14:14:19.585397-05:00",
+    "counts": {
+      "submitted_attempts": 374,
+      "standalone_diagnostic_runs": 33,
+      "attempts_with_physics": 361,
+      "attempts_with_sealed_physics": 340,
+      "diagnostic_runs": 18,
+      "certified_infeasible_cases": 2,
+      "correct_abstention_attempts": 12,
+      "public_sensor_safe_exit_attempts": 15,
+      "container_complete_delivery_attempts": 3,
+      "new_full_successes": 8
+    }
+  },
+  "sources": {
+    "infra/planning/m1-extension/case-catalog.json": "5ac439048bbaee7a1c1242b3ef98693a834f865291c004dbfe86728b47935696",
+    "multi_robot/g1_mobile_gripper_retrieval/extensions/body_matrix.py": "aef1425dec5410d4781d6bf18c03fb380fa3dd99f4becc317dd1bc42dae6fae8",
+    "multi_robot/g1_mobile_gripper_retrieval/extensions/embodiment_preflight.py": "d5ee07a4519e187b1850531b865fd1d001e8a24fe4732fab8f4d10a98f0f3414",
+    "infra/planning/m1-extension/scope-v2.json": "a7e5975d0d3dc263d0aa4d3dda8ad286aa55b2e7e08985b6dea486faa0acb3c1"
+  },
+  "implementation_scope": {
+    "id": "m1-eight-configurations-20261104",
+    "path": "infra/planning/m1-extension/scope-v2.json",
+    "sha256": "a7e5975d0d3dc263d0aa4d3dda8ad286aa55b2e7e08985b6dea486faa0acb3c1",
+    "target_configuration_count": 8,
+    "case_type_count": 7,
+    "deferred_configuration_count": 17,
+    "historical_full_catalog": {
+      "path": "archive/scope-20261103/case-catalog-25-configurations.json",
+      "sha256": "30ee13fcd3f55822e9fc0a58829c3c854a639b655a52ce63f77eb9fb4222516b",
+      "configuration_count": 25
+    },
+    "scope_change_creates_no_new_success": true
+  },
+  "counts": {
+    "registered_configurations": 8,
+    "current_scope_ready": 7,
+    "remaining_configurations": 1,
+    "raw_files_verified": 200
+  },
+  "new_physics_episodes": 0,
+  "newly_completed_configurations": 0,
+  "scope": "Explicit active catalog configurations; no body/rule/level/seed Cartesian expansion. Existing reviewed scopes only.",
+  "configurations": [
+    {
+      "configuration_id": "M1C-ORIG:original_G1_Dex3_X5",
+      "case_id": "M1C-ORIG",
+      "embodiment": "original_G1_Dex3_X5",
+      "current_scope_ready": true,
+      "formal_admission": false,
+      "human_acceptance": "not_inferred",
+      "evidence": [
+        {
+          "case_id": "M1C-ORIG",
+          "embodiment": "original_G1_Dex3_X5",
+          "kind": "complete_delivery",
+          "attempt_id": "extensions-20261031/orig-container-full-001",
+          "review": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/orig-container-full-001/measured-evidence.json",
+          "review_sha256": "c0fdb1dcca2ba3c8d67342f922ae9febb787b3394c3d884465ffad93bdff62fa",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/orig-container-full-001/run/runtime/run/trusted/episode_00",
+          "scene_sha256": "788b94355fcc9b2eba6c9b579c011b6d21ecbbe3b58fd97f366b151f2b496014",
+          "seed": 3,
+          "layer": 1,
+          "rule": "N",
+          "numerical_solver_profile": {
+            "name": "baseline",
+            "outer_dt_s": 0.005,
+            "substeps": 1,
+            "integration_dt_s": 0.005,
+            "constraint_timeconst_s": 0.01,
+            "logging_pose_dt_s": 0.005,
+            "control_dt_s": 0.02
+          },
+          "body_asset_sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078",
+          "raw_integrity": {
+            "passed": true,
+            "checked_files": 42,
+            "errors": []
+          },
+          "evidence_interpretation": "Existing trusted review; integrity rechecked, scorer and physics not rerun"
+        }
+      ],
+      "pending": []
+    },
+    {
+      "configuration_id": "M1C-B01:A",
+      "case_id": "M1C-B01",
+      "embodiment": "A",
+      "current_scope_ready": true,
+      "formal_admission": false,
+      "human_acceptance": "not_inferred",
+      "evidence": [
+        {
+          "case_id": "M1C-B01",
+          "embodiment": "A",
+          "kind": "complete_delivery",
+          "attempt_id": "extensions-20261103-v2/b01-supported-push-full-007",
+          "review": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/b01-supported-push-full-007/measured-evidence-001.json",
+          "review_sha256": "51c707d331eedec053939bd6de2f0cefc4a438dffc6a577feba2bf932d08872c",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/b01-supported-push-full-007/run/runtime/run/trusted/episode_00",
+          "scene_sha256": "88262aa3db9cc6837e4a43c4570c0eb400c942fc150f4baefa8580bd81afc461",
+          "seed": 3,
+          "layer": 1,
+          "rule": "N",
+          "numerical_solver_profile": {
+            "name": "baseline",
+            "outer_dt_s": 0.005,
+            "substeps": 1,
+            "integration_dt_s": 0.005,
+            "constraint_timeconst_s": 0.01,
+            "logging_pose_dt_s": 0.005,
+            "control_dt_s": 0.02
+          },
+          "body_asset_sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078",
+          "raw_integrity": {
+            "passed": true,
+            "checked_files": 33,
+            "errors": []
+          },
+          "evidence_interpretation": "Existing trusted review; integrity rechecked, scorer and physics not rerun"
+        }
+      ],
+      "pending": []
+    },
+    {
+      "configuration_id": "M1C-B02:A",
+      "case_id": "M1C-B02",
+      "embodiment": "A",
+      "current_scope_ready": true,
+      "formal_admission": false,
+      "human_acceptance": "not_inferred",
+      "evidence": [
+        {
+          "case_id": "M1C-B02",
+          "embodiment": "A",
+          "kind": "complete_delivery",
+          "attempt_id": "extensions-20261031/b02-container-full-001",
+          "review": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/b02-container-full-001/measured-evidence.json",
+          "review_sha256": "5d89c668e62adb90dec38a33ad7392051bfed37c9c6046e6db5ad54fc3bb21be",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/b02-container-full-001/run/runtime/run/trusted/episode_00",
+          "scene_sha256": "0fb83872191f5e2a9f8abc7c588a6a4adfca0622c4dd01b571365779f0833db6",
+          "seed": 3,
+          "layer": 1,
+          "rule": "N",
+          "numerical_solver_profile": {
+            "name": "baseline",
+            "outer_dt_s": 0.005,
+            "substeps": 1,
+            "integration_dt_s": 0.005,
+            "constraint_timeconst_s": 0.01,
+            "logging_pose_dt_s": 0.005,
+            "control_dt_s": 0.02
+          },
+          "body_asset_sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078",
+          "raw_integrity": {
+            "passed": true,
+            "checked_files": 44,
+            "errors": []
+          },
+          "evidence_interpretation": "Existing trusted review; integrity rechecked, scorer and physics not rerun"
+        }
+      ],
+      "pending": []
+    },
+    {
+      "configuration_id": "M1C-B03:A",
+      "case_id": "M1C-B03",
+      "embodiment": "A",
+      "current_scope_ready": false,
+      "formal_admission": false,
+      "human_acceptance": "not_inferred",
+      "evidence": [],
+      "pending": [
+        "new_same_body_complete_delivery_or_certificate_and_bound_exit_required"
+      ]
+    },
+    {
+      "configuration_id": "M1C-B06:A",
+      "case_id": "M1C-B06",
+      "embodiment": "A",
+      "current_scope_ready": true,
+      "formal_admission": false,
+      "human_acceptance": "not_inferred",
+      "evidence": [
+        {
+          "case_id": "M1C-B06",
+          "embodiment": "A",
+          "kind": "complete_delivery",
+          "attempt_id": "extensions-20261031/b06-container-full-001",
+          "review": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/b06-container-full-001/measured-evidence.json",
+          "review_sha256": "23fa85e7625a7c979c6f55afb27ad80c668e21ac71533b6b680544ddb78afe07",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/b06-container-full-001/run/runtime/run/trusted/episode_00",
+          "scene_sha256": "6e83c264f46a90630642066fe1fe2ddc7d855f8046ac30971e75f160028f3917",
+          "seed": 3,
+          "layer": 1,
+          "rule": "N",
+          "numerical_solver_profile": {
+            "name": "baseline",
+            "outer_dt_s": 0.005,
+            "substeps": 1,
+            "integration_dt_s": 0.005,
+            "constraint_timeconst_s": 0.01,
+            "logging_pose_dt_s": 0.005,
+            "control_dt_s": 0.02
+          },
+          "body_asset_sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078",
+          "raw_integrity": {
+            "passed": true,
+            "checked_files": 42,
+            "errors": []
+          },
+          "evidence_interpretation": "Existing trusted review; integrity rechecked, scorer and physics not rerun"
+        }
+      ],
+      "pending": []
+    },
+    {
+      "configuration_id": "M1C-I01:A",
+      "case_id": "M1C-I01",
+      "embodiment": "A",
+      "current_scope_ready": true,
+      "formal_admission": false,
+      "human_acceptance": "not_inferred",
+      "evidence": [
+        {
+          "case_id": "M1C-I01",
+          "embodiment": "A",
+          "kind": "certified_safe_exit",
+          "certificate": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/i01-certified-cage-exit-001.json",
+          "certificate_sha256": "5014254712101ea2535fb8f6c1626882404565ba731d214e5018b230d90e32e5",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/i01-cage-q-exit-001/run/runtime/run/trusted/episode_00",
+          "scene_sha256": "f8aa68c6b14e916f9988c987d4d26aad4018b7a2d30d3f9b6a2f4136c7d476ff",
+          "scope_sha256": "f8aa68c6b14e916f9988c987d4d26aad4018b7a2d30d3f9b6a2f4136c7d476ff",
+          "seed": 3,
+          "layer": 1,
+          "rule": "N",
+          "numerical_solver_profile": {
+            "name": "rigid-contact-8-cage",
+            "outer_dt_s": 0.005,
+            "substeps": 8,
+            "integration_dt_s": 0.000625,
+            "constraint_timeconst_s": null,
+            "logging_pose_dt_s": 0.005,
+            "control_dt_s": 0.02
+          },
+          "body_asset_sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078",
+          "raw_integrity": {
+            "passed": true,
+            "checked_files": 15,
+            "errors": []
+          },
+          "evidence_interpretation": "Existing certificate and bound exit; rigid-contact scope retained"
+        }
+      ],
+      "pending": []
+    },
+    {
+      "configuration_id": "M1C-I02:A",
+      "case_id": "M1C-I02",
+      "embodiment": "A",
+      "current_scope_ready": true,
+      "formal_admission": false,
+      "human_acceptance": "not_inferred",
+      "evidence": [
+        {
+          "case_id": "M1C-I02",
+          "embodiment": "A",
+          "kind": "certified_safe_exit",
+          "certificate": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/i02-certified-container-public-decision-001.json",
+          "certificate_sha256": "d8a61b1ed7aab75567ade89714bae75b268f60abbf48917897d12fbc5611886c",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/i02-container-public-decision-001/run/runtime/run/trusted/episode_00",
+          "scene_sha256": "98e82afbd6ae30bff4e456c33639221e7a8ff906449cafc9089c3ad9c7972d2c",
+          "scope_sha256": "98e82afbd6ae30bff4e456c33639221e7a8ff906449cafc9089c3ad9c7972d2c",
+          "seed": 3,
+          "layer": 1,
+          "rule": "N",
+          "numerical_solver_profile": {
+            "name": "rigid-contact-8",
+            "outer_dt_s": 0.005,
+            "substeps": 8,
+            "integration_dt_s": 0.000625,
+            "constraint_timeconst_s": null,
+            "logging_pose_dt_s": 0.005,
+            "control_dt_s": 0.02
+          },
+          "body_asset_sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078",
+          "raw_integrity": {
+            "passed": true,
+            "checked_files": 12,
+            "errors": []
+          },
+          "evidence_interpretation": "Existing certificate and bound exit; rigid-contact scope retained"
+        }
+      ],
+      "pending": []
+    },
+    {
+      "configuration_id": "M1C-I02:B",
+      "case_id": "M1C-I02",
+      "embodiment": "B",
+      "current_scope_ready": true,
+      "formal_admission": false,
+      "human_acceptance": "not_inferred",
+      "evidence": [
+        {
+          "case_id": "M1C-I02",
+          "embodiment": "B",
+          "kind": "certified_safe_exit",
+          "certificate": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103/i02-B-full-exit-002/i02-certified-B-exit-001.json",
+          "certificate_sha256": "d7be58c17efb37ebf0d008aa7bd461b31b230113d85374388d997aaa74546e1f",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103/i02-B-full-exit-002/run/runtime/run/trusted/episode_00",
+          "scene_sha256": "e3b75cce363e63a6f8097dccfb89f597a49fa888e837510db67d182aeb506644",
+          "scope_sha256": "e3b75cce363e63a6f8097dccfb89f597a49fa888e837510db67d182aeb506644",
+          "seed": 3,
+          "layer": 1,
+          "rule": "N",
+          "numerical_solver_profile": {
+            "name": "rigid-contact-8",
+            "outer_dt_s": 0.005,
+            "substeps": 8,
+            "integration_dt_s": 0.000625,
+            "constraint_timeconst_s": null,
+            "logging_pose_dt_s": 0.005,
+            "control_dt_s": 0.02
+          },
+          "body_asset_sha256": "e2b2d6bfe58f6b8d57b9f28df9ad9e5e5d0ea728f562e925b8b1482a902b6ff3",
+          "raw_integrity": {
+            "passed": true,
+            "checked_files": 12,
+            "errors": []
+          },
+          "evidence_interpretation": "B53/41 identity, new collision controls and bound continuous full-body Q exit independently recomputed"
+        }
+      ],
+      "pending": []
+    }
+  ]
+}
