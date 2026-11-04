@@ -38,3 +38,5 @@ and 4 formal-body configurations shown separately. The GEAR page includes 8x pre
 a matched-world G/F comparison, the author acceptance record, and a private full-evidence archive link.
 
 ASM / JNG was signed off on 2026-11-04: 4 ASM and 15 JNG successes. ASM-04.S and JNG-06.B remain incomplete diagnostics and are excluded from accepted counts. Videos are unified-angle measured-state presentation renders at 8x, with original recordings linked separately; this does not change the physical results. Full evidence, sources and models are privately backed up with a pinned recovery index.
+
+M4 contains six accepted preconnected towing references using ground-supported cargo.
