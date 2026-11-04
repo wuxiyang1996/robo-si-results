@@ -6447,6 +6447,391 @@
     }
   },
   {
+    "family": "F2",
+    "name": {
+      "zh": "衣物整理与收纳",
+      "en": "Garment tidying and packing"
+    },
+    "summary": {
+      "zh": "原生双 Stretch 3 与自由二维布料完成毛巾折叠与分类放置；衣堆分拣、折叠与清单装箱共六项声明配置，当前仅 F2-01-L1 签收。",
+      "en": "Two native Stretch 3 robots and free 2D cloth fold and sort a towel; pile sorting, folding and checklist packing make six declared configurations, of which only F2-01-L1 is accepted."
+    },
+    "acceptance": {
+      "zh": "作者于 2026-11-04 签收 F2-01-L1（1/6）：单次特权专家参考运行、仅限仿真，不构成安全性或重复性声明。其余 5 项（F2-01-L2、F2-01-L3、F2-02-L1、F2-02-L2、F2-02-L3）未验收，无验收证据；新运行按 task_outcome_v1 精度口径审核，已签收的 L1 记录保留旧口径 legacy_precision_v1。",
+      "en": "On 2026-11-04 the author accepted F2-01-L1 (1/6): a single privileged expert reference run in simulation only, not a safety or repeatability claim. The other five configurations (F2-01-L2, F2-01-L3, F2-02-L1, F2-02-L2, F2-02-L3) are not accepted and have no acceptance evidence; new runs are judged under the task_outcome_v1 precision profile while the accepted L1 record keeps the legacy_precision_v1 profile."
+    },
+    "accepted_at": "2026-11-04",
+    "axes": {
+      "zh": "衣物种类与初始状态（单条毛巾、随机重叠衣堆、已折或未折衣物）；清单与干扰物；折叠方式、分类或装箱布局；错层、缠连、滑脱与空间不足的恢复。",
+      "en": "Garment set and initial state (one towel, a seeded overlapping pile, folded or unfolded items); checklist and distractors; folding pattern, sorting or packing layout; recovery from wrong layers, tangles, slips and insufficient space."
+    },
+    "embodiments": [
+      {
+        "code": "S",
+        "zh": "2 × 原生 Stretch 3（固定基座、原生电机限幅）",
+        "en": "2 × native Stretch 3 (fixed bases, native motor limits)"
+      }
+    ],
+    "cases": [
+      {
+        "id": "F2-01-L1",
+        "title": {
+          "zh": "毛巾折叠与分类放置",
+          "en": "Towel folding and category placement"
+        },
+        "conditions": {
+          "zh": "原生双 Stretch 3、自由二维毛巾（63 顶点 flex）与无执行器的被动翻板；单次特权专家连续运行，仅限仿真；按旧口径 legacy_precision_v1 审核。",
+          "en": "Two native Stretch 3 robots, a free 2D towel (63-vertex flex) and an unactuated passive flip board; one continuous privileged expert run, simulation only, judged under the legacy_precision_v1 profile."
+        },
+        "design": {
+          "zh": "识别并抓取毛巾，用被动翻板对折，放入分类区域并完全释放，末态保持静止。",
+          "en": "Identify and grasp the towel, fold it in half with the passive board, place it in the category area and release it completely to a quiet final state."
+        },
+        "tools": [
+          {
+            "zh": "被动翻板（仅由夹爪接触驱动）",
+            "en": "Passive flip board (driven only by gripper contact)"
+          }
+        ],
+        "embodiment": {
+          "code": "S",
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "已验收通过。29,751 个物理步、9 条低层动作；独立动作重放的 qpos／顶点／接触误差均为 0；折叠模板 rms 0.24 mm；末态静止 2.59 s；匹配静止对照（2,200 步，无人操作时翻板不折叠）通过。",
+          "en": "Accepted. 29,751 physics steps, 9 low-level actions; independent action-only replay with zero qpos/vertex/contact error; fold template rms 0.24 mm; final quiet 2.59 s; matching static negative control passed (2,200 steps, the unattended board does not fold)."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F2/F2-01-L1.mp4",
+        "poster": "media/F2/F2-01-L1.jpg",
+        "speed": 8,
+        "source_duration": 29.751000000013377,
+        "elapsed_seconds": 29.751000000013377,
+        "video_duration": 3.7916666666666665,
+        "physics_steps": 29751,
+        "low_actions": 9,
+        "replay_max_error": 0.0,
+        "static_negative": true,
+        "acceptance_profile": "legacy_precision_v1",
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": false,
+        "source_manifest_sha256": "346905c92c41de55b98dc56e483c2f87b1494fd9e59ea4689256f3436ac08ff7",
+        "review_sha256": "3bb21ce266d5dab73138c4e1fb6e681778b6adccb6ed40fb2373454f1db9ef1f",
+        "video_sha256": "25a69f9a0b450a266cf7dc1d8ed1f04f487eaaa36cc5584c43ef8681976d307c",
+        "scope_gaps": []
+      }
+    ],
+    "pending_cases": [
+      {
+        "id": "F2-01-L2",
+        "level": 2,
+        "seed": 1102,
+        "title": {
+          "zh": "衣堆识别、展开与折叠",
+          "en": "Identify, unfold and fold from a pile"
+        },
+        "design": {
+          "zh": "从随机衣物堆识别、展开和折叠服装。",
+          "en": "Identify, unfold and fold garments from a randomized pile."
+        },
+        "garments": [
+          "towel",
+          "shirt",
+          "pants"
+        ],
+        "checklist": [
+          "shirt"
+        ],
+        "required_skills": [
+          "identify_in_pile",
+          "separate_layer",
+          "unfold",
+          "fold_shirt",
+          "category_place",
+          "release"
+        ],
+        "embodiment": {
+          "code": "S",
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "status": "not_accepted_in_progress",
+        "result": {
+          "zh": "暴露图显示初始衣堆中裤子覆盖整件衬衫，左手没有仅含衬衫的夹点；路线已改为先暂存裤子、双手捏袖（v2）。连续候选 pile2-full-l2-50 于 15:13 启动，执行 400 个物理步后由作者于 15:39 暂停。衬衫翻折子技能在单件衬衫诊断场景首次完成原生整折（模板 rms 12.5 mm、最大 34.7 mm、高度 50.6 mm；折层间距 62.3 mm 超出 55 mm 搬运上限），不属于衣堆证据。无完整物理证据，未验收。",
+          "en": "The exposure map shows the pants covering the whole shirt in the seeded pile, with no shirt-only pinch site for the left hand; the route was changed to stage the pants first and pinch both sleeves (v2). The continuous candidate pile2-full-l2-50 was launched at 15:13 and paused by the author at 15:39 after 400 physics steps. The shirt flip-fold sub-skill completed its first native full fold in a single-shirt diagnostic scene (template rms 12.5 mm, max 34.7 mm, height 50.6 mm; layer separation 62.3 mm exceeds the 55 mm carry limit); this is not pile evidence. No complete physical evidence; not accepted."
+        },
+        "status_short": {
+          "zh": "暴露图：裤子覆盖整件衬衫；裤子暂存路线的连续候选启动后由作者暂停（400 步）；衬衫翻折子技能仅在单件衬衫诊断场景完成；无完整物理证据",
+          "en": "Exposure map: pants cover the whole shirt; the pants-staging continuous candidate was launched and paused by the author (400 steps); the shirt flip-fold sub-skill is complete only in a single-shirt diagnostic scene; no complete physical evidence"
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": null,
+        "poster": null,
+        "accepted": false,
+        "accepted_at": null,
+        "goal_met": false
+      },
+      {
+        "id": "F2-01-L3",
+        "level": 3,
+        "seed": 1103,
+        "title": {
+          "zh": "混合衣物连续整理与恢复",
+          "en": "Continuous mixed-laundry sorting with recovery"
+        },
+        "design": {
+          "zh": "连续整理混合衣物，处理缠绕、错误抓层与滑脱。",
+          "en": "Process mixed laundry continuously, recovering from entanglement, wrong-layer grasps and slips."
+        },
+        "garments": [
+          "towel",
+          "shirt",
+          "pants",
+          "sock"
+        ],
+        "checklist": [
+          "towel",
+          "shirt",
+          "pants",
+          "sock"
+        ],
+        "required_skills": [
+          "continuous_multi_item_sorting",
+          "detect_wrong_layer",
+          "release_wrong_layer",
+          "regrasp",
+          "detect_tangle",
+          "untangle",
+          "detect_slip",
+          "recover_slip",
+          "unfold",
+          "shape_specific_folds",
+          "category_place",
+          "release"
+        ],
+        "embodiment": {
+          "code": "S",
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "status": "not_accepted_in_progress",
+        "result": {
+          "zh": "场景已初始化（seed 1103，2,000 步准备，初始谓词 seeded_sorting_initial 成立）；组合控制器仅为骨架，骨架运行在双手接近阶段执行 400 步后暂停。错层、缠连、滑脱恢复及裤子／袜子折叠均无物理原语。无物理证据，未验收。",
+          "en": "The scene initialises (seed 1103, 2,000 preparation steps, initial predicate seeded_sorting_initial holds); the composed controller is a skeleton only, and its run was paused after 400 steps during the bimanual approach. Wrong-layer, tangle and slip recovery and the pants/sock folds have no physical primitive. No physics evidence; not accepted."
+        },
+        "status_short": {
+          "zh": "场景初始化、初始谓词成立（seed 1103）；控制器仅为骨架（400 步后暂停）；无物理证据",
+          "en": "Scene initialises and the initial predicate holds (seed 1103); skeleton controller only (paused after 400 steps); no physics evidence"
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": null,
+        "poster": null,
+        "accepted": false,
+        "accepted_at": null,
+        "goal_met": false
+      },
+      {
+        "id": "F2-02-L1",
+        "level": 1,
+        "seed": 1201,
+        "title": {
+          "zh": "已折衣物按清单装箱",
+          "en": "Pack already folded garments by checklist"
+        },
+        "design": {
+          "zh": "将已折好的衣物装箱。",
+          "en": "Pack already folded garments."
+        },
+        "garments": [
+          "towel",
+          "shirt",
+          "sock"
+        ],
+        "checklist": [
+          "towel",
+          "shirt"
+        ],
+        "required_skills": [
+          "read_checklist",
+          "select_identity",
+          "grasp_folded_layers",
+          "pack_without_unfolding",
+          "release"
+        ],
+        "embodiment": {
+          "code": "S",
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "status": "not_accepted_in_progress",
+        "result": {
+          "zh": "托盘抬升失败诊断为停靠挡块楔卡（托盘偏转 0.0166 rad 卡在角挡之间），已移除停靠；毛巾站按构造不可达（左升降达 70 N 上限、短 140 mm），已迁移为单层布局。完整候选 pack-full-level-64 从原始初态执行 12,300 步，在衬衫抓取处失败（lost_material_support，锚点位移 40.02 mm，容差 40 mm；机理为原生 V 形夹口在硬折层上的抖动棘轮）。改配置候选 pack2-full-66 于 15:30 启动，700 步后由作者暂停；其静止对照 pack2-negative-67 通过。未验收。",
+          "en": "The tray-lift failure was diagnosed as a dock-stop wedge (tray yawed 0.0166 rad between the corner stops) and the dock was removed; the towel station, unreachable by construction (left lift at the 70 N cap, 140 mm short), was relocated to a single-level layout. The full candidate pack-full-level-64 ran 12,300 steps from the original initial state and failed at shirt capture (lost_material_support, anchor motion 40.02 mm against a 40 mm tolerance; mechanism: chatter ratchet of the native V-jaw on the stiff fold). The re-configured candidate pack2-full-66 was launched at 15:30 and paused by the author after 700 steps; its static negative pack2-negative-67 passed. Not accepted."
+        },
+        "status_short": {
+          "zh": "托盘停靠楔卡已诊断并移除、不可达毛巾站已迁移；完整候选在衬衫抓取失败（lost_material_support，40.02 mm > 40 mm）；改配置候选启动后暂停（700 步）",
+          "en": "Tray-dock wedge diagnosed and removed, unreachable towel station relocated; the full candidate failed at shirt capture (lost_material_support, 40.02 mm vs 40 mm); the re-configured candidate was paused (700 steps)"
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": null,
+        "poster": null,
+        "accepted": false,
+        "accepted_at": null,
+        "goal_met": false
+      },
+      {
+        "id": "F2-02-L2",
+        "level": 2,
+        "seed": 1202,
+        "title": {
+          "zh": "折叠方式与装箱顺序选择",
+          "en": "Choose folding patterns and packing order"
+        },
+        "design": {
+          "zh": "选择折叠方式和装箱顺序。",
+          "en": "Choose folding patterns and packing order."
+        },
+        "garments": [
+          "towel",
+          "shirt",
+          "pants",
+          "sock"
+        ],
+        "checklist": [
+          "towel",
+          "shirt",
+          "pants"
+        ],
+        "required_skills": [
+          "choose_fold",
+          "choose_packing_order",
+          "fold",
+          "place_layout",
+          "check_lid_clearance",
+          "release"
+        ],
+        "embodiment": {
+          "code": "S",
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "status": "not_accepted_in_progress",
+        "result": {
+          "zh": "场景已初始化（seed 1202，1,200 步准备，初始谓词 unfolded_packing_initial 成立）；装箱箱体从默认基座不可达：最低无碰撞垫高位于箱底上方 0.13–0.17 m，高于 0.071 m 的盖板净空，桌面平铺衣物也无法在布面高度捏取。控制器仅为骨架（400 步后暂停）。无物理证据，未验收。",
+          "en": "The scene initialises (seed 1202, 1,200 preparation steps, initial predicate unfolded_packing_initial holds); the packing case is unreachable from the default bases: the lowest collision-free pad height is 0.13–0.17 m above the case floor, above the 0.071 m lid clearance, and flat garments on the table cannot be pinched at cloth level. The controller is a skeleton only (paused after 400 steps). No physics evidence; not accepted."
+        },
+        "status_short": {
+          "zh": "场景初始化、初始谓词成立（seed 1202）；箱体从默认基座不可达；控制器仅为骨架（400 步后暂停）；无物理证据",
+          "en": "Scene initialises and the initial predicate holds (seed 1202); case unreachable from the default bases; skeleton controller only (paused after 400 steps); no physics evidence"
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": null,
+        "poster": null,
+        "accepted": false,
+        "accepted_at": null,
+        "goal_met": false
+      },
+      {
+        "id": "F2-02-L3",
+        "level": 3,
+        "seed": 1203,
+        "title": {
+          "zh": "衣堆整套装箱与重折",
+          "en": "Pack a full set from a pile with refolding"
+        },
+        "design": {
+          "zh": "从衣物堆完成整套装箱，空间不足时重新折叠和布局。",
+          "en": "Pack a full set from a pile, refolding and rearranging when space is insufficient."
+        },
+        "garments": [
+          "towel",
+          "shirt",
+          "pants",
+          "sock"
+        ],
+        "checklist": [
+          "towel",
+          "shirt",
+          "pants",
+          "sock"
+        ],
+        "required_skills": [
+          "identify_in_pile",
+          "unfold",
+          "fold",
+          "pack",
+          "detect_layout_overflow",
+          "retrieve_item",
+          "refold_more_compactly",
+          "repack",
+          "check_checklist",
+          "check_lid_clearance",
+          "release"
+        ],
+        "embodiment": {
+          "code": "S",
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "status": "not_accepted_in_progress",
+        "result": {
+          "zh": "场景已初始化（seed 1203，2,000 步准备，初始谓词 seeded_packing_initial 成立）；同一箱体不可达问题适用；骨架运行未启动（工作进程预算）。无物理证据，未验收。",
+          "en": "The scene initialises (seed 1203, 2,000 preparation steps, initial predicate seeded_packing_initial holds); the same case-reachability limit applies; the skeleton run was not launched (worker budget). No physics evidence; not accepted."
+        },
+        "status_short": {
+          "zh": "场景初始化、初始谓词成立（seed 1203）；同一箱体不可达问题适用；骨架未启动；无物理证据",
+          "en": "Scene initialises and the initial predicate holds (seed 1203); the same case-reachability limit applies; skeleton not launched; no physics evidence"
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": null,
+        "poster": null,
+        "accepted": false,
+        "accepted_at": null,
+        "goal_met": false
+      }
+    ],
+    "acceptance_profiles": {
+      "new_runs": "task_outcome_v1",
+      "accepted_record": "legacy_precision_v1"
+    },
+    "paused": {
+      "at": "2026-11-04T15:39 local",
+      "by": "author instruction",
+      "note": "all F2 physics runs stopped; evidence archived to HF archives/workspace-20261104/f2-family (see workspace-audit-20261104-f2)"
+    },
+    "backup": {
+      "status": "pending",
+      "configs_backed": 0,
+      "configs_total": 1,
+      "note": "Archive record to be added by the coordinator after verification."
+    }
+  },
+  {
     "family": "F5",
     "name": {
       "zh": "半柔性大物体搬运与安装",

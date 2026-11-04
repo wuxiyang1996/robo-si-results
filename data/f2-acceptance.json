@@ -1,0 +1,319 @@
+{
+  "schema": "f2-public-acceptance/1",
+  "accepted_at": "2026-11-04",
+  "author_reference_delivery_accepted": true,
+  "counts": {
+    "F2": 1
+  },
+  "declared_total": 6,
+  "accepted_total": 1,
+  "pending_total": 5,
+  "accepted_ids": [
+    "F2-01-L1"
+  ],
+  "pending_ids": [
+    "F2-01-L2",
+    "F2-01-L3",
+    "F2-02-L1",
+    "F2-02-L2",
+    "F2-02-L3"
+  ],
+  "human_review": "F2-01-L1 signed off by the author on 2026-11-04 (user instruction to Claude coordinator); the other five configurations have no acceptance evidence and remain pending",
+  "accepted": [
+    {
+      "id": "F2-01-L1",
+      "task": "F2-01",
+      "level": 1,
+      "seed": 1101,
+      "embodiment": "stretch3_native",
+      "material": "free_2d_cloth",
+      "garments": [
+        "towel"
+      ],
+      "checklist": [
+        "towel"
+      ],
+      "required_skills": [
+        "identify",
+        "grasp",
+        "fold",
+        "category_place",
+        "release"
+      ],
+      "reference_run": "runs/native-board-d35-standalone-expert",
+      "independent_review": "runs/native-board-d35-independent-review/full-acceptance.json",
+      "review_sha256": "3bb21ce266d5dab73138c4e1fb6e681778b6adccb6ed40fb2373454f1db9ef1f",
+      "source_manifest_sha256": "346905c92c41de55b98dc56e483c2f87b1494fd9e59ea4689256f3436ac08ff7",
+      "source_scene_sha256": "cdc07339c6af7b58d9ffef912c15c255f7a1f6640b61df3bce362fd6951cb53e",
+      "source_model_mjb_sha256": "1db9e26a12bf0e33f9708f4eec0aaa47c33859ab189501f9c85c94bc49f0ab77",
+      "execution_status": "candidate_complete",
+      "physics_steps": 29751,
+      "simulation_seconds": 29.751000000013377,
+      "timestep_s": 0.001,
+      "low_actions": 9,
+      "continuous": true,
+      "reset_count": 0,
+      "replay_max_errors": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "vertices": 0.0,
+        "actuator_force": 0.0,
+        "qfrc_actuator": 0.0,
+        "contacts": 0.0
+      },
+      "final_quiet_seconds": 2.5929999999998254,
+      "fold_template_rms_m": 0.0002400569091310482,
+      "fold_template_max_m": 0.00032051596294315805,
+      "static_negative": {
+        "reference": "/fs/gamma-projects/vlm-robot/robo-si/f2_family/runs/native-board-d16-static-negative-r2",
+        "manifest_sha256": "35f208d713592cb6c69e3d202c3f74be262a9a9fc9238ef150ad91eb29daa63f",
+        "physics_steps": 2200,
+        "status": "negative_control",
+        "result": "the unattended passive board does not fold the towel"
+      },
+      "acceptance_profile": "legacy_precision_v1",
+      "human_signoff": "accepted_by_author_2026-11-04",
+      "additional_verified_references": [
+        {
+          "reference": "runs/native-board-d34-measured-quiet",
+          "review": "runs/native-board-d34-independent-review/full-acceptance.json",
+          "review_sha256": "25d1e58495499dcfd106a7ea85aca7126234a326a63456f87733fb145a789250"
+        }
+      ],
+      "scope_gaps": []
+    }
+  ],
+  "pending": [
+    {
+      "id": "F2-01-L2",
+      "task": "F2-01",
+      "level": 2,
+      "seed": 1102,
+      "status": "not_accepted_in_progress",
+      "accepted": false,
+      "accepted_at": null,
+      "reference": null,
+      "status_text": {
+        "zh": "暴露图：裤子覆盖整件衬衫；裤子暂存路线的连续候选启动后由作者暂停（400 步）；衬衫翻折子技能仅在单件衬衫诊断场景完成；无完整物理证据",
+        "en": "Exposure map: pants cover the whole shirt; the pants-staging continuous candidate was launched and paused by the author (400 steps); the shirt flip-fold sub-skill is complete only in a single-shirt diagnostic scene; no complete physical evidence"
+      },
+      "detail": {
+        "zh": "暴露图显示初始衣堆中裤子覆盖整件衬衫，左手没有仅含衬衫的夹点；路线已改为先暂存裤子、双手捏袖（v2）。连续候选 pile2-full-l2-50 于 15:13 启动，执行 400 个物理步后由作者于 15:39 暂停。衬衫翻折子技能在单件衬衫诊断场景首次完成原生整折（模板 rms 12.5 mm、最大 34.7 mm、高度 50.6 mm；折层间距 62.3 mm 超出 55 mm 搬运上限），不属于衣堆证据。无完整物理证据，未验收。",
+        "en": "The exposure map shows the pants covering the whole shirt in the seeded pile, with no shirt-only pinch site for the left hand; the route was changed to stage the pants first and pinch both sleeves (v2). The continuous candidate pile2-full-l2-50 was launched at 15:13 and paused by the author at 15:39 after 400 physics steps. The shirt flip-fold sub-skill completed its first native full fold in a single-shirt diagnostic scene (template rms 12.5 mm, max 34.7 mm, height 50.6 mm; layer separation 62.3 mm exceeds the 55 mm carry limit); this is not pile evidence. No complete physical evidence; not accepted."
+      },
+      "required_skills": [
+        "identify_in_pile",
+        "separate_layer",
+        "unfold",
+        "fold_shirt",
+        "category_place",
+        "release"
+      ],
+      "garments": [
+        "towel",
+        "shirt",
+        "pants"
+      ],
+      "checklist": [
+        "shirt"
+      ]
+    },
+    {
+      "id": "F2-01-L3",
+      "task": "F2-01",
+      "level": 3,
+      "seed": 1103,
+      "status": "not_accepted_in_progress",
+      "accepted": false,
+      "accepted_at": null,
+      "reference": null,
+      "status_text": {
+        "zh": "场景初始化、初始谓词成立（seed 1103）；控制器仅为骨架（400 步后暂停）；无物理证据",
+        "en": "Scene initialises and the initial predicate holds (seed 1103); skeleton controller only (paused after 400 steps); no physics evidence"
+      },
+      "detail": {
+        "zh": "场景已初始化（seed 1103，2,000 步准备，初始谓词 seeded_sorting_initial 成立）；组合控制器仅为骨架，骨架运行在双手接近阶段执行 400 步后暂停。错层、缠连、滑脱恢复及裤子／袜子折叠均无物理原语。无物理证据，未验收。",
+        "en": "The scene initialises (seed 1103, 2,000 preparation steps, initial predicate seeded_sorting_initial holds); the composed controller is a skeleton only, and its run was paused after 400 steps during the bimanual approach. Wrong-layer, tangle and slip recovery and the pants/sock folds have no physical primitive. No physics evidence; not accepted."
+      },
+      "required_skills": [
+        "continuous_multi_item_sorting",
+        "detect_wrong_layer",
+        "release_wrong_layer",
+        "regrasp",
+        "detect_tangle",
+        "untangle",
+        "detect_slip",
+        "recover_slip",
+        "unfold",
+        "shape_specific_folds",
+        "category_place",
+        "release"
+      ],
+      "garments": [
+        "towel",
+        "shirt",
+        "pants",
+        "sock"
+      ],
+      "checklist": [
+        "towel",
+        "shirt",
+        "pants",
+        "sock"
+      ]
+    },
+    {
+      "id": "F2-02-L1",
+      "task": "F2-02",
+      "level": 1,
+      "seed": 1201,
+      "status": "not_accepted_in_progress",
+      "accepted": false,
+      "accepted_at": null,
+      "reference": null,
+      "status_text": {
+        "zh": "托盘停靠楔卡已诊断并移除、不可达毛巾站已迁移；完整候选在衬衫抓取失败（lost_material_support，40.02 mm > 40 mm）；改配置候选启动后暂停（700 步）",
+        "en": "Tray-dock wedge diagnosed and removed, unreachable towel station relocated; the full candidate failed at shirt capture (lost_material_support, 40.02 mm vs 40 mm); the re-configured candidate was paused (700 steps)"
+      },
+      "detail": {
+        "zh": "托盘抬升失败诊断为停靠挡块楔卡（托盘偏转 0.0166 rad 卡在角挡之间），已移除停靠；毛巾站按构造不可达（左升降达 70 N 上限、短 140 mm），已迁移为单层布局。完整候选 pack-full-level-64 从原始初态执行 12,300 步，在衬衫抓取处失败（lost_material_support，锚点位移 40.02 mm，容差 40 mm；机理为原生 V 形夹口在硬折层上的抖动棘轮）。改配置候选 pack2-full-66 于 15:30 启动，700 步后由作者暂停；其静止对照 pack2-negative-67 通过。未验收。",
+        "en": "The tray-lift failure was diagnosed as a dock-stop wedge (tray yawed 0.0166 rad between the corner stops) and the dock was removed; the towel station, unreachable by construction (left lift at the 70 N cap, 140 mm short), was relocated to a single-level layout. The full candidate pack-full-level-64 ran 12,300 steps from the original initial state and failed at shirt capture (lost_material_support, anchor motion 40.02 mm against a 40 mm tolerance; mechanism: chatter ratchet of the native V-jaw on the stiff fold). The re-configured candidate pack2-full-66 was launched at 15:30 and paused by the author after 700 steps; its static negative pack2-negative-67 passed. Not accepted."
+      },
+      "required_skills": [
+        "read_checklist",
+        "select_identity",
+        "grasp_folded_layers",
+        "pack_without_unfolding",
+        "release"
+      ],
+      "garments": [
+        "towel",
+        "shirt",
+        "sock"
+      ],
+      "checklist": [
+        "towel",
+        "shirt"
+      ]
+    },
+    {
+      "id": "F2-02-L2",
+      "task": "F2-02",
+      "level": 2,
+      "seed": 1202,
+      "status": "not_accepted_in_progress",
+      "accepted": false,
+      "accepted_at": null,
+      "reference": null,
+      "status_text": {
+        "zh": "场景初始化、初始谓词成立（seed 1202）；箱体从默认基座不可达；控制器仅为骨架（400 步后暂停）；无物理证据",
+        "en": "Scene initialises and the initial predicate holds (seed 1202); case unreachable from the default bases; skeleton controller only (paused after 400 steps); no physics evidence"
+      },
+      "detail": {
+        "zh": "场景已初始化（seed 1202，1,200 步准备，初始谓词 unfolded_packing_initial 成立）；装箱箱体从默认基座不可达：最低无碰撞垫高位于箱底上方 0.13–0.17 m，高于 0.071 m 的盖板净空，桌面平铺衣物也无法在布面高度捏取。控制器仅为骨架（400 步后暂停）。无物理证据，未验收。",
+        "en": "The scene initialises (seed 1202, 1,200 preparation steps, initial predicate unfolded_packing_initial holds); the packing case is unreachable from the default bases: the lowest collision-free pad height is 0.13–0.17 m above the case floor, above the 0.071 m lid clearance, and flat garments on the table cannot be pinched at cloth level. The controller is a skeleton only (paused after 400 steps). No physics evidence; not accepted."
+      },
+      "required_skills": [
+        "choose_fold",
+        "choose_packing_order",
+        "fold",
+        "place_layout",
+        "check_lid_clearance",
+        "release"
+      ],
+      "garments": [
+        "towel",
+        "shirt",
+        "pants",
+        "sock"
+      ],
+      "checklist": [
+        "towel",
+        "shirt",
+        "pants"
+      ]
+    },
+    {
+      "id": "F2-02-L3",
+      "task": "F2-02",
+      "level": 3,
+      "seed": 1203,
+      "status": "not_accepted_in_progress",
+      "accepted": false,
+      "accepted_at": null,
+      "reference": null,
+      "status_text": {
+        "zh": "场景初始化、初始谓词成立（seed 1203）；同一箱体不可达问题适用；骨架未启动；无物理证据",
+        "en": "Scene initialises and the initial predicate holds (seed 1203); the same case-reachability limit applies; skeleton not launched; no physics evidence"
+      },
+      "detail": {
+        "zh": "场景已初始化（seed 1203，2,000 步准备，初始谓词 seeded_packing_initial 成立）；同一箱体不可达问题适用；骨架运行未启动（工作进程预算）。无物理证据，未验收。",
+        "en": "The scene initialises (seed 1203, 2,000 preparation steps, initial predicate seeded_packing_initial holds); the same case-reachability limit applies; the skeleton run was not launched (worker budget). No physics evidence; not accepted."
+      },
+      "required_skills": [
+        "identify_in_pile",
+        "unfold",
+        "fold",
+        "pack",
+        "detect_layout_overflow",
+        "retrieve_item",
+        "refold_more_compactly",
+        "repack",
+        "check_checklist",
+        "check_lid_clearance",
+        "release"
+      ],
+      "garments": [
+        "towel",
+        "shirt",
+        "pants",
+        "sock"
+      ],
+      "checklist": [
+        "towel",
+        "shirt",
+        "pants",
+        "sock"
+      ]
+    }
+  ],
+  "acceptance_profiles": {
+    "new_runs": {
+      "name": "task_outcome_v1",
+      "quiet_displacement": 0.01,
+      "fold_rms": 0.025,
+      "fold_max": 0.05,
+      "fold_height": 0.07,
+      "carry_layer_separation": 0.055,
+      "unfold_max": 0.04,
+      "tool_relative_drift": 0.06,
+      "waypoint_tolerance": 0.025
+    },
+    "accepted_record": "legacy_precision_v1",
+    "note": "New F2 runs use the task_outcome_v1 precision profile; the accepted F2-01-L1 record keeps the legacy_precision_v1 profile and is not rewritten."
+  },
+  "paused": {
+    "at": "2026-11-04T15:39 local",
+    "by": "author instruction",
+    "note": "all F2 physics runs stopped; evidence archived to HF archives/workspace-20261104/f2-family (see workspace-audit-20261104-f2)"
+  },
+  "render": {
+    "speed": 8,
+    "fps": 24,
+    "width": 1280,
+    "height": 720,
+    "azimuth": 135,
+    "elevation": -40,
+    "vertical_fov": 45,
+    "renderer": "F5-F7 render_archived_review.py (kinematic re-render of sealed qpos, mj_fwdPosition only, no physics steps)",
+    "renderer_source_sha256": "39b32f9571fa94311b40ce9c276b301d7238eda6b89a009f99aef8941428e1d0",
+    "mujoco_version": "3.3.7",
+    "samples": "nearest 1 ms tick to i*8/24 s from the sealed per-action trajectory chunks; 121 chunk hashes verified against trajectory_index.json and manifest.json",
+    "framing": "Distance fits the complete archived motion envelope and remains fixed within the clip."
+  },
+  "backup": {
+    "status": "pending",
+    "note": "The private archive record for this family is added by the coordinator once the archive is verified; no backup status is claimed here."
+  },
+  "scope": "Accepted reference delivery for F2-01-L1 only; the other five declared configurations remain unaccepted and are listed with their measured status."
+}

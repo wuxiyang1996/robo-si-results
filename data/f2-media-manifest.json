@@ -1,0 +1,116 @@
+{
+  "schema": "f2-public-media/1",
+  "clips": [
+    {
+      "id": "F2-01-L1",
+      "family": "F2",
+      "video": "media/F2/F2-01-L1.mp4",
+      "poster": "media/F2/F2-01-L1.jpg",
+      "video_sha256": "25a69f9a0b450a266cf7dc1d8ed1f04f487eaaa36cc5584c43ef8681976d307c",
+      "poster_sha256": "c242cb12937c2d1f6fa851ecd6fa7fc449b64dbf4bf57c00536aaa8163571af8",
+      "source_run": "/fs/gamma-projects/vlm-robot/robo-si/f2_family/runs/native-board-d35-standalone-expert",
+      "source_manifest_sha256": "346905c92c41de55b98dc56e483c2f87b1494fd9e59ea4689256f3436ac08ff7",
+      "source_scene_sha256": "cdc07339c6af7b58d9ffef912c15c255f7a1f6640b61df3bce362fd6951cb53e",
+      "source_model_mjb_sha256": "1db9e26a12bf0e33f9708f4eec0aaa47c33859ab189501f9c85c94bc49f0ab77",
+      "source_execution_status": "candidate_complete",
+      "source_physics_ticks": 29751,
+      "source_duration": 29.751000000013377,
+      "encoded_duration": 3.7916666666666665,
+      "rendered_frames": 91,
+      "physical_playback_speed": 8,
+      "encoded_fps": 24,
+      "player_playback_rate": 1,
+      "camera": {
+        "lookat": [
+          0.5989382018383843,
+          0.10141268608384277,
+          0.6946411648503492
+        ],
+        "distance": 2.7352638494557513,
+        "azimuth": 135.0,
+        "elevation": -40.0,
+        "fovy": 45.0,
+        "width": 1280,
+        "height": 720,
+        "fixed_for_entire_clip": true,
+        "margin_fraction": 0.08,
+        "framing_world_min": [
+          0.05425107252581928,
+          -0.49562223313448855,
+          -0.021877597549153527
+        ],
+        "framing_world_max": [
+          1.1436253311509494,
+          0.6984476053021741,
+          1.4111599272498518
+        ],
+        "framing_method": "All archived poses: support of every finite sourcegeom localAABB in the fourfrustum planes; not globalbox empty corners",
+        "camera_eye_world": [
+          2.0805628299713135,
+          -1.3802119493484497,
+          2.4528348445892334
+        ],
+        "camera_forward_world": [
+          -0.5416752099990845,
+          0.5416752099990845,
+          -0.6427876353263855
+        ],
+        "camera_up_world": [
+          -0.45451948046684265,
+          0.45451948046684265,
+          0.7660444378852844
+        ]
+      },
+      "sampling": {
+        "method": "Nearest native 1 ms tick to i*8/24 s, ties earlier; unique initial/final ticks included; no interpolation.",
+        "source": "low_trajectories chunk files listed in trajectory_index.json",
+        "chunks": 121,
+        "chunk_hashes_verified": 121,
+        "samples": 91,
+        "nq": 231,
+        "samples_sha256": "7fb51e255661bb624271d9363609a8b5f1b67fdd2513b314c5c20e025a661500"
+      },
+      "rendering": {
+        "mode": "Offline archived qpos in separateMjModel/MjData",
+        "physics_steps": 0,
+        "task_World_instantiated": false,
+        "update": "mj_fwdPosition only",
+        "all_source_geom_groups_visible": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "source_geometry_hidden": false,
+        "source_geometry_modified": false,
+        "mujoco_version": "3.3.7",
+        "resolution": [
+          1280,
+          720
+        ]
+      },
+      "renderer": {
+        "script": "sites/f5-f7-acceptance-20261104-8x/scripts/render_archived_review.py",
+        "source_sha256": "39b32f9571fa94311b40ce9c276b301d7238eda6b89a009f99aef8941428e1d0",
+        "note": "Same F5-F7 renderer and camera contract; the only difference from F5-F7 is the MuJoCo version (3.3.7, the version the run itself used) and that qpos samples come from per-action chunk files rather than a single trajectory stream."
+      },
+      "same_run_original_video": {
+        "path": "runs/native-board-d35-standalone-expert/video.mp4",
+        "sha256": "e5a18f0d64e96b199fce236149fd56291cf4f337918cfa71ee96bfe5ce52a6df",
+        "fps": 10,
+        "frames": 298,
+        "published": false,
+        "note": "Original same-run recording retained in the evidence archive; not the clip shown on the site."
+      },
+      "task_execution_credit": false
+    }
+  ],
+  "negative_control": {
+    "reference": "/fs/gamma-projects/vlm-robot/robo-si/f2_family/runs/native-board-d16-static-negative-r2",
+    "manifest_sha256": "35f208d713592cb6c69e3d202c3f74be262a9a9fc9238ef150ad91eb29daa63f",
+    "physics_steps": 2200,
+    "published_video": false
+  }
+}
