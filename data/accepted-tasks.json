@@ -1691,6 +1691,1013 @@
     }
   },
   {
+    "family": "H4",
+    "name": {
+      "zh": "搭板过缺口与不可行判断",
+      "en": "Bridge construction and infeasibility judgment"
+    },
+    "summary": {
+      "zh": "搭桥、过桥取箱并返回交付是原始 H4 的核心。扩展包含 G1、A3、Stretch 3、Galaxea R1 的 17 项有效配置：9 项实际搭桥取物、1 项直接跨 0.30 m 缺口取物、7 项在预设固定桥场景中判断几何或机构阻断并明确拒答。",
+      "en": "The original H4 builds a bridge, crosses to retrieve a box and returns to deliver. The extension has 17 active configurations across G1, A3, Stretch 3 and Galaxea R1: 9 construct bridges, 1 crosses a 0.30 m gap directly, and 7 explicitly refuse geometric or mechanism obstructions in scenes with preinstalled fixed bridges."
+    },
+    "acceptance": {
+      "zh": "作者于 2026-11-04 确认当前参考交付范围验收通过：17/17；其中 9 项实际搭桥、1 项直接跨越、7 项明确拒答。7 组新版正反配对满足原定 240 秒。5 项旧参考解超时，沿用既定简化交付；不等于全部通过原始严格标准。正式准入、第二人复现、传感器驱动 agent 评测及稳健成功率不在本次签收范围。",
+      "en": "The author accepted the current reference-delivery scope on 2026-11-04: 17/17, comprising 9 actual bridge-construction tasks, 1 direct crossing and 7 explicit refusals. All 7 new refusal/feasible pairs meet the original 240 seconds. Five historical references exceed that budget under the existing simplified deliverable; this is not full original-standard compliance. Formal admission, independent reproduction, sensor-only agent evaluation and robust success rates are outside this acceptance."
+    },
+    "accepted_at": "2026-11-04",
+    "axes": {
+      "zh": "身体尺寸与接触能力；桥板宽度、质量与支撑；板端台阶与楔块；推板接触位置；负载抓持方式；直接跨越；目标锁定、封闭开口与狭廊阻断。",
+      "en": "Body dimensions and contact capability; board width, mass and supports; board-end steps and wedges; pushing contact; payload grasp; direct crossing; fixed targets, closed apertures and narrow corridors."
+    },
+    "embodiments": [
+      {
+        "code": "G",
+        "zh": "Unitree G1＋Dex3",
+        "en": "Unitree G1 + Dex3"
+      },
+      {
+        "code": "A",
+        "zh": "A3 Ultra T3.0",
+        "en": "A3 Ultra T3.0"
+      },
+      {
+        "code": "S",
+        "zh": "Stretch 3 SE3",
+        "en": "Stretch 3 SE3"
+      },
+      {
+        "code": "W",
+        "zh": "Galaxea R1 v2.1",
+        "en": "Galaxea R1 v2.1"
+      }
+    ],
+    "cases": [
+      {
+        "id": "H4-ORIG.L1.G",
+        "title": {
+          "zh": "G1 原版：搭桥取箱",
+          "en": "G1 original: build a bridge and retrieve"
+        },
+        "conditions": {
+          "zh": "冻结 v4.2 场景，1.10 m 缺口；保留原始起点、目标和交付区。",
+          "en": "Frozen v4.2 scene, a 1.10 m gap; original start, target and goal retained."
+        },
+        "design": {
+          "zh": "将斜靠长板推过竖直并放倒搭桥，过桥取带把手箱，返回并释放于 D，稳定至少 2 秒。",
+          "en": "Push the propped long plank past vertical to form a bridge, cross, retrieve the handled box, return and release in D, stable for at least 2 seconds."
+        },
+        "tools": [
+          {
+            "zh": "斜撑长桥板与支架",
+            "en": "Propped long bridge plank and supports"
+          }
+        ],
+        "embodiment": {
+          "code": "G",
+          "zh": "Unitree G1＋Dex3",
+          "en": "Unitree G1 + Dex3"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "完整参考交付 126.66 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。",
+          "en": "Complete reference delivery in 126.66 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "bridge_construction_and_retrieval",
+        "elapsed_seconds": 126.66,
+        "within_original_240s": true,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-ORIG.L1.G.mp4",
+        "full_video": "media/H4/H4-ORIG.L1.G-1x.mp4",
+        "poster": "media/H4/H4-ORIG.L1.G.jpg",
+        "speed": 8,
+        "source_duration": 126.6,
+        "original_video_sha256": "e05a9cd3c93bed4d5ba3e9ca402bd487f25af85beb636442b24a7366562cb3eb",
+        "video_sha256": "8874b609d7d820ea16ba7b0703aa9d7a6ed9d81cb0b2a0c576fb95e370e6b0cb",
+        "poster_sha256": "6d927d37ae773dedf19e31865b8d2abca0631bf84bf2e66c09099b852f7ae295",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-ORIG.L2.G",
+        "title": {
+          "zh": "G1 原版第二层：重板干扰",
+          "en": "G1 original layer 2: heavy-board decoy"
+        },
+        "conditions": {
+          "zh": "冻结 v4.2 场景，1.10 m 缺口；保留原始起点、目标和交付区。",
+          "en": "Frozen v4.2 scene, a 1.10 m gap; original start, target and goal retained."
+        },
+        "design": {
+          "zh": "将斜靠长板推过竖直并放倒搭桥，过桥取带把手箱，返回并释放于 D，稳定至少 2 秒。",
+          "en": "Push the propped long plank past vertical to form a bridge, cross, retrieve the handled box, return and release in D, stable for at least 2 seconds."
+        },
+        "tools": [
+          {
+            "zh": "斜撑长桥板与支架",
+            "en": "Propped long bridge plank and supports"
+          },
+          {
+            "zh": "重板干扰（参考解未移动）",
+            "en": "Heavy-board decoy (untouched by the reference)"
+          }
+        ],
+        "embodiment": {
+          "code": "G",
+          "zh": "Unitree G1＋Dex3",
+          "en": "Unitree G1 + Dex3"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "完整参考交付 127.30 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。",
+          "en": "Complete reference delivery in 127.30 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "bridge_construction_and_retrieval",
+        "elapsed_seconds": 127.3,
+        "within_original_240s": true,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-ORIG.L2.G.mp4",
+        "full_video": "media/H4/H4-ORIG.L2.G-1x.mp4",
+        "poster": "media/H4/H4-ORIG.L2.G.jpg",
+        "speed": 8,
+        "source_duration": 127.2,
+        "original_video_sha256": "2b35714a7df705e5794cbb445411cc5da81147ba6ca6ebddf6d8e91b5d88a4f1",
+        "video_sha256": "5ee371823ea3c5a8d85f891c1543a93d14390b8897328a0167c67773c15b3054",
+        "poster_sha256": "85343ec5a7e6ee9d39b199682bfe29c33c75f4b67497ebda83aa89841770df08",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-ORIG.L3.G",
+        "title": {
+          "zh": "G1 原版第三层：多物体干扰",
+          "en": "G1 original layer 3: multiple decoys"
+        },
+        "conditions": {
+          "zh": "冻结 v4.2 场景，1.10 m 缺口；保留原始起点、目标和交付区。",
+          "en": "Frozen v4.2 scene, a 1.10 m gap; original start, target and goal retained."
+        },
+        "design": {
+          "zh": "将斜靠长板推过竖直并放倒搭桥，过桥取带把手箱，返回并释放于 D，稳定至少 2 秒。",
+          "en": "Push the propped long plank past vertical to form a bridge, cross, retrieve the handled box, return and release in D, stable for at least 2 seconds."
+        },
+        "tools": [
+          {
+            "zh": "斜撑长桥板与支架",
+            "en": "Propped long bridge plank and supports"
+          },
+          {
+            "zh": "重板、短板与箱体干扰（参考解未移动）",
+            "en": "Heavy board, short plank and crate decoys (untouched by the reference)"
+          }
+        ],
+        "embodiment": {
+          "code": "G",
+          "zh": "Unitree G1＋Dex3",
+          "en": "Unitree G1 + Dex3"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "完整参考交付 124.48 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。",
+          "en": "Complete reference delivery in 124.48 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "bridge_construction_and_retrieval",
+        "elapsed_seconds": 124.48,
+        "within_original_240s": true,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-ORIG.L3.G.mp4",
+        "full_video": "media/H4/H4-ORIG.L3.G-1x.mp4",
+        "poster": "media/H4/H4-ORIG.L3.G.jpg",
+        "speed": 8,
+        "source_duration": 124.4,
+        "original_video_sha256": "3b0d75e01576b2f8bfe6375eaa9f1811948b762901791a5accc582f65f1ac326",
+        "video_sha256": "e102510bc2d994bdcb6aabfc3d18ea3b4e619bfb6a3ba25594cdd88d1e34f992",
+        "poster_sha256": "023f1c35ef4af19ebbd97e9878dc0907209b87636a26472712db4544efad579b",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-B01.W",
+        "title": {
+          "zh": "R1 选择宽板搭桥",
+          "en": "R1 chooses a wide bridge board"
+        },
+        "conditions": {
+          "zh": "斜撑宽板 1.90×1.00×0.04 m、8 kg；窄板不适合轮距。",
+          "en": "Propped wide board: 1.90 x 1.00 x 0.04 m, 8 kg; the narrow plank does not fit the wheel track."
+        },
+        "design": {
+          "zh": "推倒宽板搭桥，驶过取箱并倒车返回；在离地 0.15 m 处释放，箱子落定于 D。",
+          "en": "Topple the wide board, drive across, retrieve and reverse across; release 0.15 m above the floor and let the box settle in D."
+        },
+        "tools": [
+          {
+            "zh": "桥板及本配置的支撑／楔块",
+            "en": "Bridge board and the configuration-specific supports/wedges"
+          }
+        ],
+        "embodiment": {
+          "code": "W",
+          "zh": "Galaxea R1 v2.1",
+          "en": "Galaxea R1 v2.1"
+        },
+        "platforms": [
+          "Galaxea R1"
+        ],
+        "result": {
+          "zh": "完整参考交付 273.76 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。 超过原始 240 秒，仅按既定简化交付验收。",
+          "en": "Complete reference delivery in 273.76 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write. Exceeds the original 240 seconds; accepted only under the existing simplified deliverable."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "bridge_construction_and_retrieval",
+        "elapsed_seconds": 273.76,
+        "within_original_240s": false,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-B01.W.mp4",
+        "full_video": "media/H4/H4-B01.W-1x.mp4",
+        "poster": "media/H4/H4-B01.W.jpg",
+        "speed": 8,
+        "source_duration": 273.8,
+        "original_video_sha256": "a96073497f7437a1da56c473c454ca89b35174a2be0988ac57f6b8d51a7d1d04",
+        "video_sha256": "3572de1ddf25486c5d9a723422b948915181622595fbbabc84694beaed5956a7",
+        "poster_sha256": "c25be28137c63dfa3c1d0469dce14b33b5b30ae07be7aeab6ccd409afa8af23f",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-B02.S",
+        "title": {
+          "zh": "Stretch 搭桥并放置板端楔块",
+          "en": "Stretch builds a bridge and places end wedges"
+        },
+        "conditions": {
+          "zh": "原始斜撑板起点；楔块摩擦 0.4，脚轮采用滑动球近似。",
+          "en": "Start with the original propped plank; wedge friction 0.4 and a sliding-sphere caster approximation."
+        },
+        "design": {
+          "zh": "推倒桥板、放置两端楔块、过桥取物、返回并释放；末批 4 次中 2 次完成，保留短落点失败。",
+          "en": "Topple the plank, place both end wedges, cross, retrieve, return and release. Two of four final runs completed; short-landing failures are retained."
+        },
+        "tools": [
+          {
+            "zh": "桥板及本配置的支撑／楔块",
+            "en": "Bridge board and the configuration-specific supports/wedges"
+          }
+        ],
+        "embodiment": {
+          "code": "S",
+          "zh": "Stretch 3 SE3",
+          "en": "Stretch 3 SE3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "完整参考交付 616.50 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。 超过原始 240 秒，仅按既定简化交付验收。",
+          "en": "Complete reference delivery in 616.50 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write. Exceeds the original 240 seconds; accepted only under the existing simplified deliverable."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "bridge_construction_and_retrieval",
+        "elapsed_seconds": 616.5,
+        "within_original_240s": false,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-B02.S.mp4",
+        "full_video": "media/H4/H4-B02.S-1x.mp4",
+        "poster": "media/H4/H4-B02.S.jpg",
+        "speed": 8,
+        "source_duration": 616.6,
+        "original_video_sha256": "f1a9554f96ed73f0142dcfe0915666fe2f08301d54ce4b99f90be54de8b81fad",
+        "video_sha256": "692c67f61c8657187260c6d34115cd6e29ea3b8f255e4ac52dd3bb4803af4998",
+        "poster_sha256": "4438854d5d8b0e0afe6794047a122abe24f88e7fd51f1f2fc21e3aab42bbb2c3",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-B03.W",
+        "title": {
+          "zh": "R1 排除重板，选择可用宽板",
+          "en": "R1 rejects the heavy board and uses the wide board"
+        },
+        "conditions": {
+          "zh": "明确改设计：45 kg 平放重板为不可用候选，另有 B01 宽板。",
+          "en": "Declared redesign: a flat 45 kg heavy board is an unusable candidate; the B01 wide board is available."
+        },
+        "design": {
+          "zh": "排除所测控制器推不动且过窄的重板，推倒宽板搭桥取物。结论限于已测条件。",
+          "en": "Reject the heavy board, immovable under the tested controller and too narrow, then topple the wide board and retrieve. The claim is limited to the tested conditions."
+        },
+        "tools": [
+          {
+            "zh": "桥板及本配置的支撑／楔块",
+            "en": "Bridge board and the configuration-specific supports/wedges"
+          }
+        ],
+        "embodiment": {
+          "code": "W",
+          "zh": "Galaxea R1 v2.1",
+          "en": "Galaxea R1 v2.1"
+        },
+        "platforms": [
+          "Galaxea R1"
+        ],
+        "result": {
+          "zh": "完整参考交付 262.60 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。 超过原始 240 秒，仅按既定简化交付验收。",
+          "en": "Complete reference delivery in 262.60 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write. Exceeds the original 240 seconds; accepted only under the existing simplified deliverable."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "bridge_construction_and_retrieval",
+        "elapsed_seconds": 262.6,
+        "within_original_240s": false,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-B03.W.mp4",
+        "full_video": "media/H4/H4-B03.W-1x.mp4",
+        "poster": "media/H4/H4-B03.W.jpg",
+        "speed": 8,
+        "source_duration": 262.6,
+        "original_video_sha256": "8f0a149aabf3092528e787abbecf8e5cdc56de69796effc397fc07ce232a60c9",
+        "video_sha256": "139bde67c3747902110b384306c44d5834b576550c59aac587153c261b025dab",
+        "poster_sha256": "09e8dff8c5c366ae86abed7e3b8cf4ece30b973ed160738a19c59371aa749b7c",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-B04.G",
+        "title": {
+          "zh": "G1 改变推板接触高度",
+          "en": "G1 changes the board-pushing contact height"
+        },
+        "conditions": {
+          "zh": "明确改设计：12 kg 桥板与两个 12 kg 自由支架。",
+          "en": "Declared redesign: a 12 kg plank and two 12 kg free supports."
+        },
+        "design": {
+          "zh": "使用 1.12 m 高接触推板，搭桥、过桥取箱并返回；低位超时是控制器对照，不是全局不可行证明。",
+          "en": "Push at 1.12 m, build, cross, retrieve and return. Low-contact timeouts are controller comparisons, not universal infeasibility proofs."
+        },
+        "tools": [
+          {
+            "zh": "桥板及本配置的支撑／楔块",
+            "en": "Bridge board and the configuration-specific supports/wedges"
+          }
+        ],
+        "embodiment": {
+          "code": "G",
+          "zh": "Unitree G1＋Dex3",
+          "en": "Unitree G1 + Dex3"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "完整参考交付 160.44 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。",
+          "en": "Complete reference delivery in 160.44 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "bridge_construction_and_retrieval",
+        "elapsed_seconds": 160.44,
+        "within_original_240s": true,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-B04.G.mp4",
+        "full_video": "media/H4/H4-B04.G-1x.mp4",
+        "poster": "media/H4/H4-B04.G.jpg",
+        "speed": 8,
+        "source_duration": 160.4,
+        "original_video_sha256": "83750a275d97c7cf665463e7421c407f411e68f03482356150663262e9780237",
+        "video_sha256": "f57093dad6883ea33dd8a3fbc676302de4c97bd5ded4e795a760d86614b57ca5",
+        "poster_sha256": "58cbffd681803bace969402f48d284d368d3b94519799ff060ed1f6a2f8c9d5d",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-B04.A",
+        "title": {
+          "zh": "A3 推倒桥板并完整往返",
+          "en": "A3 topples the bridge board and completes the round trip"
+        },
+        "conditions": {
+          "zh": "明确改设计：85°、45 kg 自由桥板，0.35 m 固定支撑，2 cm 挡边。",
+          "en": "Declared redesign: an 85-degree, 45 kg free plank, 0.35 m fixed supports and a 2 cm lip."
+        },
+        "design": {
+          "zh": "从原起点推倒桥板，空载过桥、取物、负载返回并释放。高低接触都能推倒板，站稳差异属于控制器稳定性。",
+          "en": "From the original start, topple the board, cross empty, retrieve, return loaded and release. Both contact heights topple it; the difference concerns controller stability."
+        },
+        "tools": [
+          {
+            "zh": "桥板及本配置的支撑／楔块",
+            "en": "Bridge board and the configuration-specific supports/wedges"
+          }
+        ],
+        "embodiment": {
+          "code": "A",
+          "zh": "A3 Ultra T3.0",
+          "en": "A3 Ultra T3.0"
+        },
+        "platforms": [
+          "A3"
+        ],
+        "result": {
+          "zh": "完整参考交付 1007.82 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。 超过原始 240 秒，仅按既定简化交付验收。",
+          "en": "Complete reference delivery in 1007.82 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write. Exceeds the original 240 seconds; accepted only under the existing simplified deliverable."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "bridge_construction_and_retrieval",
+        "elapsed_seconds": 1007.82,
+        "within_original_240s": false,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-B04.A.mp4",
+        "full_video": "media/H4/H4-B04.A-1x.mp4",
+        "poster": "media/H4/H4-B04.A.jpg",
+        "speed": 8,
+        "source_duration": 1008.0,
+        "original_video_sha256": "34f3d9827d8a648a41d4f39a830331a1c227531d001b13cab2e9f0b8e326ca6d",
+        "video_sha256": "85254acdb9d8b862ce65e1a5dc340758ef11d215b45e1cca64fcb83cf1c31d37",
+        "poster_sha256": "a5a03f8647dac280207dc23db9b94c0ccc50c74181512632960413ba46054476",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-B05.G",
+        "title": {
+          "zh": "G1 选择居中把手搬运长箱",
+          "en": "G1 uses the centred handle to carry a long box"
+        },
+        "conditions": {
+          "zh": "同一 2 kg 长箱，偏置与居中把手可选。",
+          "en": "The same 2 kg long box with offset and centred handle choices."
+        },
+        "design": {
+          "zh": "搭桥过桥，使用居中把手取箱返回，降低释放后后退 0.20 m，消除足部支撑。",
+          "en": "Build and cross, retrieve via the centred handle, return, lower and release, then retreat 0.20 m to remove foot support."
+        },
+        "tools": [
+          {
+            "zh": "桥板及本配置的支撑／楔块",
+            "en": "Bridge board and the configuration-specific supports/wedges"
+          }
+        ],
+        "embodiment": {
+          "code": "G",
+          "zh": "Unitree G1＋Dex3",
+          "en": "Unitree G1 + Dex3"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "完整参考交付 124.78 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。",
+          "en": "Complete reference delivery in 124.78 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "bridge_construction_and_retrieval",
+        "elapsed_seconds": 124.78,
+        "within_original_240s": true,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-B05.G.mp4",
+        "full_video": "media/H4/H4-B05.G-1x.mp4",
+        "poster": "media/H4/H4-B05.G.jpg",
+        "speed": 8,
+        "source_duration": 124.6,
+        "original_video_sha256": "a6f6b9b0e095dd2092622277cfe4455e3488b7bc1ce0026ca7deca1d5a077133",
+        "video_sha256": "81ab1cfbf03e8ae583f38afca83cdf5f58525f97ef85343bef5db2853a2e5ecd",
+        "poster_sha256": "2dc650b67fe608503d71afd026653d42605f516bfde3df4234568f1e66b40968",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-B06.A",
+        "title": {
+          "zh": "A3 直接跨越窄缺口",
+          "en": "A3 steps directly across a narrow gap"
+        },
+        "conditions": {
+          "zh": "缺口 0.30 m；运行前专家预算 700 s。",
+          "en": "A 0.30 m gap and a predeclared 700 s expert profile."
+        },
+        "design": {
+          "zh": "无需搭桥：空手直接跨越，取下 1 kg 箱，负载跨回，释放于 D 并保持。",
+          "en": "No bridge construction: step across empty-handed, retrieve the 1 kg box, step back loaded, release in D and hold."
+        },
+        "tools": [],
+        "embodiment": {
+          "code": "A",
+          "zh": "A3 Ultra T3.0",
+          "en": "A3 Ultra T3.0"
+        },
+        "platforms": [
+          "A3"
+        ],
+        "result": {
+          "zh": "完整参考交付 555.02 s；目标已释放且稳定，记录无倒地、瞬移、焊接或运行中状态写入。 超过原始 240 秒，仅按既定简化交付验收。",
+          "en": "Complete reference delivery in 555.02 s; target released and stable; recorded flags show no fall, teleport, weld or runtime state write. Exceeds the original 240 seconds; accepted only under the existing simplified deliverable."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "category": "direct_gap_crossing",
+        "elapsed_seconds": 555.02,
+        "within_original_240s": false,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "video": "media/H4/H4-B06.A.mp4",
+        "full_video": "media/H4/H4-B06.A-1x.mp4",
+        "poster": "media/H4/H4-B06.A.jpg",
+        "speed": 8,
+        "source_duration": 555.2,
+        "original_video_sha256": "ba6b2abc0d9e685fed847dbf1ae978c3d843a7395d6eba1ababd4a2607b027ed",
+        "video_sha256": "e868fadb2af28f4ad0b0d724869a8c569fa1c6f015002823ff17064620827cff",
+        "poster_sha256": "f240aa730e68ad8a4eb0e43b25c6c9bac503f441e7e3b41d790b118678e1528a",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-B06.G",
+        "title": {
+          "zh": "G1：目标锁定时明确拒答",
+          "en": "G1: explicit refusal when the target is fixed"
+        },
+        "conditions": {
+          "zh": "目标固定且无合法解锁；可行对照仅解除目标固定。桥已预设。",
+          "en": "Target fixed with no legal release; the feasible control only removes that fixation. The bridge is preinstalled."
+        },
+        "design": {
+          "zh": "判断目标无法交付，在接触前明确拒绝，空手于 Q 保持至少 3 秒；对照解锁后完成原目标交付。",
+          "en": "Determine that delivery is impossible, explicitly refuse before contact and hold empty-handed in Q for at least 3 seconds; deliver the original target in the unlocked control."
+        },
+        "tools": [
+          {
+            "zh": "预设固定宽桥（本组无搭桥动作）",
+            "en": "Preinstalled fixed wide bridge (no construction in this group)"
+          }
+        ],
+        "embodiment": {
+          "code": "G",
+          "zh": "Unitree G1＋Dex3",
+          "en": "Unitree G1 + Dex3"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "拒答与正例配对通过；拒答 5.00 s，正例交付 57.48 s，均在原定 240 秒内。",
+          "en": "Refusal/feasible pair passes: refusal 5.00 s, feasible delivery 57.48 s, both within the original 240 seconds."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为为接触前明确拒答并空手安全保持。",
+          "en": "Correct behaviour is explicit refusal before contact and a safe empty-handed hold."
+        },
+        "category": "explicit_refusal_with_fixed_bridge_control",
+        "within_original_240s": true,
+        "elapsed_seconds": 5.0,
+        "positive_seconds": 57.480000000000004,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "feasible_control": {
+          "video": "media/H4/H4-B06.G-feasible-control.mp4",
+          "full_video": "media/H4/H4-B06.G-feasible-control-1x.mp4",
+          "poster": "media/H4/H4-B06.G-feasible-control.jpg",
+          "speed": 8,
+          "source_duration": 57.4,
+          "original_video_sha256": "041c5368cd442264d282c33f4b0ef3ca24db02bbb8d3b765e608bb7e88af2349",
+          "video_sha256": "5bfe61d201b31756af162079adc14c4b2d829f7e5c4414648fb66f544dda4e8f",
+          "poster_sha256": "aaabab311108bb0f3c17583ff0626c1d0d18a6470e4504cc63a038379e527c19",
+          "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+        },
+        "video": "media/H4/H4-B06.G.mp4",
+        "full_video": "media/H4/H4-B06.G-1x.mp4",
+        "poster": "media/H4/H4-B06.G.jpg",
+        "speed": 2,
+        "source_duration": 5.0,
+        "original_video_sha256": "c1499fff4533fbbbe9fd289154e2087790bb0e8b7fdb583d0199703d8eb59801",
+        "video_sha256": "200aeadf634c0b26747bc6e2d498e0ab55176d9d590d5f64edcf2a341b40f662",
+        "poster_sha256": "b68692c5a48aa1adbdd6967c0cf9f8622c3a4a6cb929387525bd722c410839c7",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-I01.A",
+        "title": {
+          "zh": "A3 Ultra T3.0：目标无法通过开口",
+          "en": "A3 Ultra T3.0: target cannot pass the aperture"
+        },
+        "conditions": {
+          "zh": "封闭刚性围室唯一开口 0.10 m；目标刚性核心 0.30×0.18×0.18 m；对照仅将开口改为 0.40 m。桥已预设。",
+          "en": "Closed rigid chamber with a unique 0.10 m aperture; target rigid core 0.30 x 0.18 x 0.18 m; control changes only the aperture to 0.40 m. The bridge is preinstalled."
+        },
+        "design": {
+          "zh": "依据刚性几何阻断证书，在执行接触前明确拒答并空手于 Q 保持；同身体对照从原起点取出原目标并交付。",
+          "en": "Use the rigid-geometry obstruction certificate, explicitly refuse before task contact and hold empty-handed in Q; the same-body control retrieves and delivers the original target from the original start."
+        },
+        "tools": [
+          {
+            "zh": "预设固定宽桥（本组无搭桥动作）",
+            "en": "Preinstalled fixed wide bridge (no construction in this group)"
+          }
+        ],
+        "embodiment": {
+          "code": "A",
+          "zh": "A3 Ultra T3.0",
+          "en": "A3 Ultra T3.0"
+        },
+        "platforms": [
+          "A3"
+        ],
+        "result": {
+          "zh": "拒答与正例配对通过；拒答 10.00 s，正例交付 231.00 s，均在原定 240 秒内。 A3 投送接触转换敏感；是可行实例，不代表稳健成功率。",
+          "en": "Refusal/feasible pair passes: refusal 10.00 s, feasible delivery 231.00 s, both within the original 240 seconds. A3 delivery is contact-sensitive: a feasibility instance, not a robust success-rate claim."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为为接触前明确拒答并空手安全保持。",
+          "en": "Correct behaviour is explicit refusal before contact and a safe empty-handed hold."
+        },
+        "category": "explicit_refusal_with_fixed_bridge_control",
+        "within_original_240s": true,
+        "elapsed_seconds": 10.0,
+        "positive_seconds": 231.0,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "feasible_control": {
+          "video": "media/H4/H4-I01.A-feasible-control.mp4",
+          "full_video": "media/H4/H4-I01.A-feasible-control-1x.mp4",
+          "poster": "media/H4/H4-I01.A-feasible-control.jpg",
+          "speed": 8,
+          "source_duration": 231.0,
+          "original_video_sha256": "0826dc32645e9cd068a510cd38fcae72c7407e097b5cdacf9b99b937d371a07e",
+          "video_sha256": "56c15eb65308f27b8f8db6a9da05938aae942634cc4b9af44031c1f892b971a9",
+          "poster_sha256": "fbde797ff1bf4058e8569e29ff9b30dc961b75d69ccd7fa395770e85a58f5eb7",
+          "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+        },
+        "video": "media/H4/H4-I01.A.mp4",
+        "full_video": "media/H4/H4-I01.A-1x.mp4",
+        "poster": "media/H4/H4-I01.A.jpg",
+        "speed": 4,
+        "source_duration": 10.0,
+        "original_video_sha256": "d2d1edd42a991aa4d9061d863626cc31144cb163570830b4f2d39cfdd78e37e4",
+        "video_sha256": "a430c08f98ee9bf850bdaf82009140c66bea6eb1a9c830588b7029137d28c97b",
+        "poster_sha256": "f880c3eb4bd45bbd054ec5b065178c6636b876c448e1d34b109c276b3a4782c2",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-I01.G",
+        "title": {
+          "zh": "Unitree G1＋Dex3：目标无法通过开口",
+          "en": "Unitree G1 + Dex3: target cannot pass the aperture"
+        },
+        "conditions": {
+          "zh": "封闭刚性围室唯一开口 0.10 m；目标刚性核心 0.30×0.18×0.18 m；对照仅将开口改为 0.40 m。桥已预设。",
+          "en": "Closed rigid chamber with a unique 0.10 m aperture; target rigid core 0.30 x 0.18 x 0.18 m; control changes only the aperture to 0.40 m. The bridge is preinstalled."
+        },
+        "design": {
+          "zh": "依据刚性几何阻断证书，在执行接触前明确拒答并空手于 Q 保持；同身体对照从原起点取出原目标并交付。",
+          "en": "Use the rigid-geometry obstruction certificate, explicitly refuse before task contact and hold empty-handed in Q; the same-body control retrieves and delivers the original target from the original start."
+        },
+        "tools": [
+          {
+            "zh": "预设固定宽桥（本组无搭桥动作）",
+            "en": "Preinstalled fixed wide bridge (no construction in this group)"
+          }
+        ],
+        "embodiment": {
+          "code": "G",
+          "zh": "Unitree G1＋Dex3",
+          "en": "Unitree G1 + Dex3"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "拒答与正例配对通过；拒答 5.00 s，正例交付 58.06 s，均在原定 240 秒内。",
+          "en": "Refusal/feasible pair passes: refusal 5.00 s, feasible delivery 58.06 s, both within the original 240 seconds."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为为接触前明确拒答并空手安全保持。",
+          "en": "Correct behaviour is explicit refusal before contact and a safe empty-handed hold."
+        },
+        "category": "explicit_refusal_with_fixed_bridge_control",
+        "within_original_240s": true,
+        "elapsed_seconds": 5.0,
+        "positive_seconds": 58.06,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "feasible_control": {
+          "video": "media/H4/H4-I01.G-feasible-control.mp4",
+          "full_video": "media/H4/H4-I01.G-feasible-control-1x.mp4",
+          "poster": "media/H4/H4-I01.G-feasible-control.jpg",
+          "speed": 8,
+          "source_duration": 58.0,
+          "original_video_sha256": "7ad86f1595abb7979cbee7cf04fc3520b9b8e2891f1f701772e77d8d452e85f5",
+          "video_sha256": "03be64acf69ff12b35e615443590805ad96e83aefc9072dfc9cd42566c6efd4e",
+          "poster_sha256": "13004abe8a2783090eaecd4a6b95975a86b8872ed09854fb193b6fc5ed2bc0ee",
+          "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+        },
+        "video": "media/H4/H4-I01.G.mp4",
+        "full_video": "media/H4/H4-I01.G-1x.mp4",
+        "poster": "media/H4/H4-I01.G.jpg",
+        "speed": 2,
+        "source_duration": 5.0,
+        "original_video_sha256": "a7c3f0e291f061162bc6fd5154900f84a0ad8996cb6eae21e0f672cc6e430996",
+        "video_sha256": "95e9b6743582fe8e90c06d02e2c7ad332abcc3855e9fe0cef4ca62b49afb2831",
+        "poster_sha256": "fdb4aa4f02767de168dfa12766293d5726f2b9ac9a8b4536679ce03920270fc3",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-I01.S",
+        "title": {
+          "zh": "Stretch 3 SE3：目标无法通过开口",
+          "en": "Stretch 3 SE3: target cannot pass the aperture"
+        },
+        "conditions": {
+          "zh": "封闭刚性围室唯一开口 0.10 m；目标刚性核心 0.30×0.18×0.18 m；对照仅将开口改为 0.40 m。桥已预设。",
+          "en": "Closed rigid chamber with a unique 0.10 m aperture; target rigid core 0.30 x 0.18 x 0.18 m; control changes only the aperture to 0.40 m. The bridge is preinstalled."
+        },
+        "design": {
+          "zh": "依据刚性几何阻断证书，在执行接触前明确拒答并空手于 Q 保持；同身体对照从原起点取出原目标并交付。",
+          "en": "Use the rigid-geometry obstruction certificate, explicitly refuse before task contact and hold empty-handed in Q; the same-body control retrieves and delivers the original target from the original start."
+        },
+        "tools": [
+          {
+            "zh": "预设固定宽桥（本组无搭桥动作）",
+            "en": "Preinstalled fixed wide bridge (no construction in this group)"
+          }
+        ],
+        "embodiment": {
+          "code": "S",
+          "zh": "Stretch 3 SE3",
+          "en": "Stretch 3 SE3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "拒答与正例配对通过；拒答 5.00 s，正例交付 121.36 s，均在原定 240 秒内。",
+          "en": "Refusal/feasible pair passes: refusal 5.00 s, feasible delivery 121.36 s, both within the original 240 seconds."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为为接触前明确拒答并空手安全保持。",
+          "en": "Correct behaviour is explicit refusal before contact and a safe empty-handed hold."
+        },
+        "category": "explicit_refusal_with_fixed_bridge_control",
+        "within_original_240s": true,
+        "elapsed_seconds": 5.0,
+        "positive_seconds": 121.36,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "feasible_control": {
+          "video": "media/H4/H4-I01.S-feasible-control.mp4",
+          "full_video": "media/H4/H4-I01.S-feasible-control-1x.mp4",
+          "poster": "media/H4/H4-I01.S-feasible-control.jpg",
+          "speed": 8,
+          "source_duration": 121.4,
+          "original_video_sha256": "1b0b82d11146a3e09587d97ac9c47974dd7eacefd02da68dd5bd633812633923",
+          "video_sha256": "df11632177816f05b2e678d54ab93246df8fd932c1da0e957a227a8d42cbdeeb",
+          "poster_sha256": "c7f433dd817b5a61c31038a3482b47353dac3323b5cea96a4075181f4788d1d0",
+          "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+        },
+        "video": "media/H4/H4-I01.S.mp4",
+        "full_video": "media/H4/H4-I01.S-1x.mp4",
+        "poster": "media/H4/H4-I01.S.jpg",
+        "speed": 2,
+        "source_duration": 5.2,
+        "original_video_sha256": "21deff839c95b1c20e835064b2a2511e508c4abc0cf51440d7c60c726336106b",
+        "video_sha256": "fef1313cb66483b0dd3d7adb2dd67c8df23836a54c3094830fb27f26dc560c77",
+        "poster_sha256": "41f779d274c2389d286fdc03e7ffe7f51e54a8d260628beda07fde1ae02779ba",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-I01.W",
+        "title": {
+          "zh": "Galaxea R1 v2.1：目标无法通过开口",
+          "en": "Galaxea R1 v2.1: target cannot pass the aperture"
+        },
+        "conditions": {
+          "zh": "封闭刚性围室唯一开口 0.10 m；目标刚性核心 0.30×0.18×0.18 m；对照仅将开口改为 0.40 m。桥已预设。",
+          "en": "Closed rigid chamber with a unique 0.10 m aperture; target rigid core 0.30 x 0.18 x 0.18 m; control changes only the aperture to 0.40 m. The bridge is preinstalled."
+        },
+        "design": {
+          "zh": "依据刚性几何阻断证书，在执行接触前明确拒答并空手于 Q 保持；同身体对照从原起点取出原目标并交付。",
+          "en": "Use the rigid-geometry obstruction certificate, explicitly refuse before task contact and hold empty-handed in Q; the same-body control retrieves and delivers the original target from the original start."
+        },
+        "tools": [
+          {
+            "zh": "预设固定宽桥（本组无搭桥动作）",
+            "en": "Preinstalled fixed wide bridge (no construction in this group)"
+          }
+        ],
+        "embodiment": {
+          "code": "W",
+          "zh": "Galaxea R1 v2.1",
+          "en": "Galaxea R1 v2.1"
+        },
+        "platforms": [
+          "Galaxea R1"
+        ],
+        "result": {
+          "zh": "拒答与正例配对通过；拒答 5.00 s，正例交付 129.74 s，均在原定 240 秒内。",
+          "en": "Refusal/feasible pair passes: refusal 5.00 s, feasible delivery 129.74 s, both within the original 240 seconds."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为为接触前明确拒答并空手安全保持。",
+          "en": "Correct behaviour is explicit refusal before contact and a safe empty-handed hold."
+        },
+        "category": "explicit_refusal_with_fixed_bridge_control",
+        "within_original_240s": true,
+        "elapsed_seconds": 5.0,
+        "positive_seconds": 129.74,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "feasible_control": {
+          "video": "media/H4/H4-I01.W-feasible-control.mp4",
+          "full_video": "media/H4/H4-I01.W-feasible-control-1x.mp4",
+          "poster": "media/H4/H4-I01.W-feasible-control.jpg",
+          "speed": 8,
+          "source_duration": 129.8,
+          "original_video_sha256": "eff3a39a89c0b4fa763138e5cfd04072fcecfbc59a862258a77db7384b919515",
+          "video_sha256": "a3508443845037e4df397d9a94b2a5e6a902b013a2d76ef6edd04977df3e8dac",
+          "poster_sha256": "321aff10707798e3cb4efd86348a5e3d8315b5092402968bef519659cbe68c4f",
+          "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+        },
+        "video": "media/H4/H4-I01.W.mp4",
+        "full_video": "media/H4/H4-I01.W-1x.mp4",
+        "poster": "media/H4/H4-I01.W.jpg",
+        "speed": 2,
+        "source_duration": 5.0,
+        "original_video_sha256": "ed59c6e9fcea43953beb446b7e91240c152af841e7a34356d94c1378e41a38eb",
+        "video_sha256": "aace836895538c60caf0e2e32631038a7eeaac27dc09ef3e50497ce4a8f41196",
+        "poster_sha256": "74821ed1082d8f7a41331c1701206a5d5d648c9e4d64afb22a9c479d799f3b07",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-I02.S",
+        "title": {
+          "zh": "Stretch 3 SE3：底盘无法通过狭廊",
+          "en": "Stretch 3 SE3: base cannot pass the corridor"
+        },
+        "conditions": {
+          "zh": "封闭全高狭廊宽 0.20 m，小于约束姿态下底盘宽度下界；对照仅加宽至 1.20 m。桥已预设。",
+          "en": "Closed full-height 0.20 m corridor, below the base-width lower bound under the allowed posture; control only widens it to 1.20 m. The bridge is preinstalled."
+        },
+        "design": {
+          "zh": "通过底盘几何及伸手距离排除替代路线，接触前明确拒答，空手于 Q 保持；加宽对照完成取物交付。",
+          "en": "Exclude alternatives using base geometry and reach bounds, explicitly refuse before contact and hold empty-handed in Q; the widened control completes retrieval and delivery."
+        },
+        "tools": [
+          {
+            "zh": "预设固定宽桥（本组无搭桥动作）",
+            "en": "Preinstalled fixed wide bridge (no construction in this group)"
+          }
+        ],
+        "embodiment": {
+          "code": "S",
+          "zh": "Stretch 3 SE3",
+          "en": "Stretch 3 SE3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "拒答与正例配对通过；拒答 5.00 s，正例交付 137.44 s，均在原定 240 秒内。",
+          "en": "Refusal/feasible pair passes: refusal 5.00 s, feasible delivery 137.44 s, both within the original 240 seconds."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为为接触前明确拒答并空手安全保持。",
+          "en": "Correct behaviour is explicit refusal before contact and a safe empty-handed hold."
+        },
+        "category": "explicit_refusal_with_fixed_bridge_control",
+        "within_original_240s": true,
+        "elapsed_seconds": 5.0,
+        "positive_seconds": 137.44,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "feasible_control": {
+          "video": "media/H4/H4-I02.S-feasible-control.mp4",
+          "full_video": "media/H4/H4-I02.S-feasible-control-1x.mp4",
+          "poster": "media/H4/H4-I02.S-feasible-control.jpg",
+          "speed": 8,
+          "source_duration": 137.6,
+          "original_video_sha256": "a1ccb061d68ad83d94dc12f2040330614dae4246225830b8644baa4e04031619",
+          "video_sha256": "9a1d064185ae43028d6d0afeaf87eb6df6fbde1640f198aaa32d96d85c30ee3b",
+          "poster_sha256": "57e5460ff16818c62b20f982b5fa7378277460c1fd00643f3e2d589aa9c08431",
+          "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+        },
+        "video": "media/H4/H4-I02.S.mp4",
+        "full_video": "media/H4/H4-I02.S-1x.mp4",
+        "poster": "media/H4/H4-I02.S.jpg",
+        "speed": 2,
+        "source_duration": 5.2,
+        "original_video_sha256": "2f434bd9febca0a180cbb98212c4f8a12e0ded8f401c91258f665585a2ba645e",
+        "video_sha256": "77d23cb36c2d288b649babd0e335692c1c9fa81ffd1d9aa3c8d3e5ad34b6e17a",
+        "poster_sha256": "d8bf7a29af53e12f1bc62b19932804ca66f81fc6ddff75e90c3394280f080a84",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      },
+      {
+        "id": "H4-I02.W",
+        "title": {
+          "zh": "Galaxea R1 v2.1：底盘无法通过狭廊",
+          "en": "Galaxea R1 v2.1: base cannot pass the corridor"
+        },
+        "conditions": {
+          "zh": "封闭全高狭廊宽 0.20 m，小于约束姿态下底盘宽度下界；对照仅加宽至 1.20 m。桥已预设。",
+          "en": "Closed full-height 0.20 m corridor, below the base-width lower bound under the allowed posture; control only widens it to 1.20 m. The bridge is preinstalled."
+        },
+        "design": {
+          "zh": "通过底盘几何及伸手距离排除替代路线，接触前明确拒答，空手于 Q 保持；加宽对照完成取物交付。",
+          "en": "Exclude alternatives using base geometry and reach bounds, explicitly refuse before contact and hold empty-handed in Q; the widened control completes retrieval and delivery."
+        },
+        "tools": [
+          {
+            "zh": "预设固定宽桥（本组无搭桥动作）",
+            "en": "Preinstalled fixed wide bridge (no construction in this group)"
+          }
+        ],
+        "embodiment": {
+          "code": "W",
+          "zh": "Galaxea R1 v2.1",
+          "en": "Galaxea R1 v2.1"
+        },
+        "platforms": [
+          "Galaxea R1"
+        ],
+        "result": {
+          "zh": "拒答与正例配对通过；拒答 5.00 s，正例交付 150.48 s，均在原定 240 秒内。",
+          "en": "Refusal/feasible pair passes: refusal 5.00 s, feasible delivery 150.48 s, both within the original 240 seconds."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为为接触前明确拒答并空手安全保持。",
+          "en": "Correct behaviour is explicit refusal before contact and a safe empty-handed hold."
+        },
+        "category": "explicit_refusal_with_fixed_bridge_control",
+        "within_original_240s": true,
+        "elapsed_seconds": 5.0,
+        "positive_seconds": 150.48,
+        "evidence_backed_up": true,
+        "accepted_at": "2026-11-04",
+        "feasible_control": {
+          "video": "media/H4/H4-I02.W-feasible-control.mp4",
+          "full_video": "media/H4/H4-I02.W-feasible-control-1x.mp4",
+          "poster": "media/H4/H4-I02.W-feasible-control.jpg",
+          "speed": 8,
+          "source_duration": 150.6,
+          "original_video_sha256": "24faede98dcbfa2f7a79e2b82391419d36d4fefd096c0c68ea18ee7986cf0ea0",
+          "video_sha256": "57642e4407376f4b528bcf53f513560c7b76356ce9a92d4aee88dccb7640a8b1",
+          "poster_sha256": "b5981d1f0e4b7c03c2dc4de47de005791fe7c1e49f3b88a4fa06246353ea8769",
+          "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+        },
+        "video": "media/H4/H4-I02.W.mp4",
+        "full_video": "media/H4/H4-I02.W-1x.mp4",
+        "poster": "media/H4/H4-I02.W.jpg",
+        "speed": 2,
+        "source_duration": 5.0,
+        "original_video_sha256": "05a298278a191df2389230c0240b307d4f8dec52b1aff897c70b9ae7f590a267",
+        "video_sha256": "1acfa30204fc8e8665eb699dd77c506f6058c2513e07168b9666131ba361cabc",
+        "poster_sha256": "7aa84d0bf33c86a009e7abfb33642b728812f74de993c684a72b14614bac80d5",
+        "derivation": "Playback-speed change and labelled badge only; no crop or scene rerender."
+      }
+    ],
+    "counts": {
+      "bridge_construction": 9,
+      "direct_crossing": 1,
+      "explicit_refusal": 7,
+      "active": 17,
+      "withdrawn": 1
+    },
+    "withdrawn": {
+      "zh": "H4-B02.W 已撤回：所测 R1 可不使用楔块通过 4 cm 板端台阶；不计入 17 项。",
+      "en": "H4-B02.W withdrawn: the tested R1 crosses the 4 cm plank end without wedges; excluded from the 17."
+    },
+    "backup": {
+      "storage": "private Hugging Face dataset",
+      "status": "verified",
+      "configs_backed": 17,
+      "configs_total": 17,
+      "files": 44786,
+      "gib": 17.807,
+      "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/f11a65cda3fc7238f10d2112c867f31629d6523b/archives/workspace-20261104/h4-accepted",
+      "data_revision": "652bc650588b0fa89366198e20c498a8c16ecc40",
+      "metadata_revision": "f11a65cda3fc7238f10d2112c867f31629d6523b"
+    }
+  },
+  {
     "family": "H5",
     "name": {
       "zh": "杠杆辅助重物运输（H5-X 跨身体扩展）",

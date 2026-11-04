@@ -4,8 +4,8 @@ Website: https://wuxiyang1996.github.io/robo-si-results/
 
 This repository hosts the public results site of **robo-si**, a robotics benchmark for self-modeling, tool
 discovery, loaded locomotion and multi-robot cooperation. The site lists the tasks and task families that the
-author has accepted, as of the acceptance snapshot of 2026-11-04: 21 families and 202 configurations,
-with 190 public configuration videos and evidence backed up for all 202. For every accepted configuration it gives:
+author has accepted, as of the acceptance snapshot of 2026-11-04: 22 families and 219 configurations,
+with 207 public configuration videos and evidence backed up for all 219. For every accepted configuration it gives:
 
 - an available reference video, with its speed shown in the badge (earlier short clips may use 4x, 2x or 1x),
 - conditions, task design, tools and embodiment,
@@ -40,3 +40,5 @@ a matched-world G/F comparison, the author acceptance record, and a private full
 ASM / JNG was signed off on 2026-11-04: 4 ASM and 15 JNG successes. ASM-04.S and JNG-06.B remain incomplete diagnostics and are excluded from accepted counts. Videos are unified-angle measured-state presentation renders at 8x, with original recordings linked separately; this does not change the physical results. Full evidence, sources and models are privately backed up with a pinned recovery index.
 
 M4 contains six accepted preconnected towing references using ground-supported cargo.
+
+H4 was accepted on 2026-11-04 within its existing reference-delivery scope: 9 bridge constructions, 1 direct crossing and 7 explicit-refusal cases (17 total). Seven same-body feasible controls are shown separately and are not extra tasks. All seven new pairs meet 240 seconds; five historical retrieval references retain declared budget exceptions. Original recordings, source, models and development failures are privately archived with a pinned recovery index.
