@@ -4,7 +4,7 @@ Website: https://wuxiyang1996.github.io/robo-si-results/
 
 This repository hosts the public results site of **robo-si**, a robotics benchmark for self-modeling, tool
 discovery, loaded locomotion and multi-robot cooperation. The site lists the tasks and task families that the
-author has accepted, as of the acceptance snapshot of 2026-11-04: 27 families and 244 configurations,
+author has accepted, as of the acceptance snapshot of 2026-11-04: 28 families and 247 configurations,
 with 225 public configuration videos and evidence backed up for 244 of 244 configurations (F2 archive verified 2026-11-04). For every accepted configuration it gives:
 
 - an available reference video, with its speed shown in the badge (earlier short clips may use 4x, 2x or 1x),
@@ -48,3 +48,5 @@ F5/F6/F7 were accepted on 2026-11-04: 6 transport/installation, 6 routing/reel a
 F2 (garment tidying and packing) was added on 2026-11-04 with 1 of 6 declared configurations accepted: F2-01-L1, one continuous native dual-Stretch 3 run with a free 2D towel and a passive flip board (29,751 physics steps, 9 low-level actions, zero action-replay error, matching static negative control). The other five configurations are not accepted and are listed on the F2 page with their measured status at the 2026-11-04 15:39 pause. The public clip is an 8x kinematic re-render with the F5/F6/F7 camera contract; new F2 runs use the task_outcome_v1 precision profile while the accepted L1 record keeps the legacy profile.
 
 M1 was author-accepted on 2026-11-04: seven independently reviewed frozen configurations (four complete deliveries and three certified safe exits). B03 remains paused incomplete; B04/B05 are deferred. Six same-run original recordings are shown at 8x and offered at 1x; I01 has no original recording. Remote M1 backup verification passed. No full eight-configuration completion or capability-boundary certification is claimed.
+
+MTC update 2026-11-04: 3 author-accepted scopes; L1/L2 have complete independently verified experts, while L3 reconfiguration and second retrieval remain incomplete and development is paused. All working evidence is backed up at https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/e00a254d78fe1d6c422e9cc03cde92128aa2a452/releases/mtc-pause-backup-20261104-v1. The 3 public MTC videos include one explicitly labelled partial run.
