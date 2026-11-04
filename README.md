@@ -5,7 +5,7 @@ Website: https://wuxiyang1996.github.io/robo-si-results/
 This repository hosts the public results site of **robo-si**, a robotics benchmark for self-modeling, tool
 discovery, loaded locomotion and multi-robot cooperation. The site lists the tasks and task families that the
 author has accepted, as of the acceptance snapshot of 2026-11-04: 27 families and 244 configurations,
-with 225 public configuration videos and evidence backed up for 236 of them (the F2 archive record is pending verification). For every accepted configuration it gives:
+with 225 public configuration videos and evidence backed up for 244 of 244 configurations (F2 archive verified 2026-11-04). For every accepted configuration it gives:
 
 - an available reference video, with its speed shown in the badge (earlier short clips may use 4x, 2x or 1x),
 - conditions, task design, tools and embodiment,
