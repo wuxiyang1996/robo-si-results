@@ -5,7 +5,7 @@ Website: https://wuxiyang1996.github.io/robo-si-results/
 This repository hosts the public results site of **robo-si**, a robotics benchmark for self-modeling, tool
 discovery, loaded locomotion and multi-robot cooperation. The site lists the tasks and task families that the
 author has accepted, as of the acceptance snapshot of 2026-11-04: 30 families and 251 configurations,
-with 237 public configuration videos and evidence backed up for 247 of 251 (archive verification pending: F3, F4). For every accepted configuration it gives:
+with 237 public configuration videos and evidence backed up for 251 of 251. For every accepted configuration it gives:
 
 - an available reference video, with its speed shown in the badge (earlier short clips may use 4x, 2x or 1x),
 - conditions, task design, tools and embodiment,
@@ -52,3 +52,5 @@ M1 was author-accepted on 2026-11-04: seven independently reviewed frozen config
 MTC update 2026-11-04: 3 author-accepted scopes; L1/L2 have complete independently verified experts, while L3 reconfiguration and second retrieval remain incomplete and development is paused. All working evidence is backed up at https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/e00a254d78fe1d6c422e9cc03cde92128aa2a452/releases/mtc-pause-backup-20261104-v1. The 3 public MTC videos include one explicitly labelled partial run.
 
 F3/F4: the author accepted four paused research-delivery representatives on 2026-11-04. This is author-designated acceptance, separate from measured original-task success. Only F4-01-L1 has the full original goal independently verified: three fresh expert runs and one independent action replay. Strict numeric reproduction failed; the complete 100 s no-op physics audit was interrupted and remains pending. The jacket, apron and irregular-cover original goals remain incomplete. Historical incomplete videos and the measured R30 contact window are explicitly labelled. Fixed-pelvis evidence does not establish free walking or other difficulty levels.
+
+F3/F4 complete private backup: [d14fbba2e56ea53e23c27f74cb913e5296c9d957](https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/d14fbba2e56ea53e23c27f74cb913e5296c9d957/archives/workspace-20261104/f34-user-accepted). All declared remote files were verified by size and SHA-256; restore testing and local cleanup completed. The complete backup covers 84,697 original paths (686.068 GiB logical size; 431.182 GiB across 270 archive volumes). Actual remote download and restore covered nine files across ten evidence categories. Cleanup then removed 626 backed-up local files with zero skips, releasing an estimated 645.380 GiB of allocated space. Source code, receipts and restore indexes are retained.
