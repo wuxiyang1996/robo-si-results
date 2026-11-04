@@ -4,8 +4,8 @@ Website: https://wuxiyang1996.github.io/robo-si-results/
 
 This repository hosts the public results site of **robo-si**, a robotics benchmark for self-modeling, tool
 discovery, loaded locomotion and multi-robot cooperation. The site lists the tasks and task families that the
-author has accepted, as of the acceptance snapshot of 2026-11-04: 28 families and 247 configurations,
-with 225 public configuration videos and evidence backed up for 244 of 244 configurations (F2 archive verified 2026-11-04). For every accepted configuration it gives:
+author has accepted, as of the acceptance snapshot of 2026-11-04: 30 families and 251 configurations,
+with 237 public configuration videos and evidence backed up for 247 of 251 (archive verification pending: F3, F4). For every accepted configuration it gives:
 
 - an available reference video, with its speed shown in the badge (earlier short clips may use 4x, 2x or 1x),
 - conditions, task design, tools and embodiment,
@@ -17,7 +17,7 @@ Scope notes:
 - "Accepted" means the author signed off the reference-delivery scope. It is not formal benchmark admission and
   not independent second-person reproduction.
 - Videos show privileged-state reference experts in physics simulation (Genesis / MuJoCo).
-  They show feasibility, or that exiting is correct. They are not results of a learned agent.
+  Their labels distinguish complete feasibility, correct exits and incomplete research snapshots. They are not results of a learned agent.
 - The SC/PC release adds 10 cooking successes and 2 correct-exit controls. Its 12 videos and compilation
   use a common camera at 960×720, 24 fps and 8x speed. These are presentation renders of recorded measured
   trajectories; original same-run videos and independent physical replays are retained in the evidence archive.
@@ -50,3 +50,5 @@ F2 (garment tidying and packing) was added on 2026-11-04 with 1 of 6 declared co
 M1 was author-accepted on 2026-11-04: seven independently reviewed frozen configurations (four complete deliveries and three certified safe exits). B03 remains paused incomplete; B04/B05 are deferred. Six same-run original recordings are shown at 8x and offered at 1x; I01 has no original recording. Remote M1 backup verification passed. No full eight-configuration completion or capability-boundary certification is claimed.
 
 MTC update 2026-11-04: 3 author-accepted scopes; L1/L2 have complete independently verified experts, while L3 reconfiguration and second retrieval remain incomplete and development is paused. All working evidence is backed up at https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/e00a254d78fe1d6c422e9cc03cde92128aa2a452/releases/mtc-pause-backup-20261104-v1. The 3 public MTC videos include one explicitly labelled partial run.
+
+F3/F4: the author accepted four paused research-delivery representatives on 2026-11-04. This is author-designated acceptance, separate from measured original-task success. Only F4-01-L1 has the full original goal independently verified: three fresh expert runs and one independent action replay. Strict numeric reproduction failed; the complete 100 s no-op physics audit was interrupted and remains pending. The jacket, apron and irregular-cover original goals remain incomplete. Historical incomplete videos and the measured R30 contact window are explicitly labelled. Fixed-pelvis evidence does not establish free walking or other difficulty levels.
