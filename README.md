@@ -4,8 +4,8 @@ Website: https://wuxiyang1996.github.io/robo-si-results/
 
 This repository hosts the public results site of **robo-si**, a robotics benchmark for self-modeling, tool
 discovery, loaded locomotion and multi-robot cooperation. The site lists the tasks and task families that the
-author has accepted, as of the acceptance snapshot of 2026-11-04: 17 families and 170 configurations,
-with 158 public videos and evidence backed up for all 170. For every accepted configuration it gives:
+author has accepted, as of the acceptance snapshot of 2026-11-04: 21 families and 202 configurations,
+with 190 public configuration videos and evidence backed up for all 202. For every accepted configuration it gives:
 
 - an available reference video, with its speed shown in the badge (earlier short clips may use 4x, 2x or 1x),
 - conditions, task design, tools and embodiment,
@@ -36,3 +36,5 @@ dataset.
 GEAR was accepted on 2026-11-04: 7 records across 3 independent task designs, with 3 historical references
 and 4 formal-body configurations shown separately. The GEAR page includes 8x previews, full 1x downloads,
 a matched-world G/F comparison, the author acceptance record, and a private full-evidence archive link.
+
+ASM / JNG was signed off on 2026-11-04: 4 ASM and 15 JNG successes. ASM-04.S and JNG-06.B remain incomplete diagnostics and are excluded from accepted counts. Videos are unified-angle measured-state presentation renders at 8x, with original recordings linked separately; this does not change the physical results. Full evidence, sources and models are privately backed up with a pinned recovery index.
