@@ -14,6 +14,12 @@
     var b = e.target.closest('[data-set-lang]');
     if (b) setLang(b.getAttribute('data-set-lang'));
   });
+  document.addEventListener('change', function (e) {
+    var id = e.target.getAttribute('data-cooking-speed');
+    if (!id) return;
+    var video = document.getElementById(id);
+    if (video) video.playbackRate = Number(e.target.value);
+  });
 
   // Play muted videos while they are on screen.
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

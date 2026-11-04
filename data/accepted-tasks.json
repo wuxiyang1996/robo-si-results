@@ -7063,5 +7063,629 @@
    "files": 17045,
    "gib": 11.12
   }
+ },
+ {
+  "family": "SC",
+  "name": {
+   "zh": "单机器人烹饪",
+   "en": "Single-robot cooking"
+  },
+  "summary": {
+   "zh": "本批 6 项全部验收通过：5 个烹饪成功任务与 1 个正确退出对照。每项提供统一视角八倍速视频，完整专家解、high/low plan、实测轨迹、连续 transition 和物理回放均已备份。",
+   "en": "All six cases in this batch are accepted: five cooking successes and one correct-exit control. Each has a common-view 8x video; the complete expert, high/low plans, measured trajectories, continuous transitions and physical replay are backed up."
+  },
+  "acceptance": {
+   "zh": "作者已签收这 6 项显式修订的完整参考交付；更多身体、工具与场景组合仍需逐项验收。",
+   "en": "The author accepted the complete reference delivery of these six explicit revisions; further body, tool and scene combinations require separate acceptance."
+  },
+  "accepted_at": "2026-11-04",
+  "axes": {
+   "zh": "带料工具、深锅取出、重锅承托、受限工作区、正确退出",
+   "en": "Loaded utensils, deep-pot withdrawal, heavy-pan support, constrained workspace and correct exit"
+  },
+  "embodiments": [
+   {
+    "zh": "Unitree G1＋Dex3",
+    "en": "Unitree G1 + Dex3"
+   }
+  ],
+  "cases": [
+   {
+    "id": "SC-01",
+    "title": {
+     "zh": "单机完整烹饪",
+     "en": "Single-robot cooking"
+    },
+    "conditions": {
+     "zh": "从装有两份原始生料的碗开始；锅内完成熟化、关火、释放与稳定。",
+     "en": "Start with two raw portions in a bowl; finish cooked, stove off, released and stable in the pan."
+    },
+    "design": {
+     "zh": "实际装料并通过实体开关完成加热与关火。",
+     "en": "Physically load the food and operate the stove switch to heat and turn off."
+    },
+    "tools": [
+     {
+      "zh": "原始生料碗",
+      "en": "Raw-food bowl"
+     },
+     {
+      "zh": "烹饪锅与实体炉具",
+      "en": "Cooking pan and physical stove"
+     }
+    ],
+    "embodiment": {
+     "zh": "Unitree G1，自由基座，Dex3 三指手",
+     "en": "Unitree G1, free base, Dex3 three-finger hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 113.28 秒。5 high / 42 low; 22,657 个实测观测，41 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 113.28 s of physical time. 5 high / 42 low; 22,657 measured observations and 41 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k0-one-batch-v8",
+    "video": "media/cooking/SC-01-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 113.28,
+    "high_steps": 5,
+    "low_steps": 42,
+    "observations": 22657,
+    "transitions": 41,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "SC-02",
+    "title": {
+     "zh": "深锅带料工具取出",
+     "en": "Loaded utensil withdrawal from a deep pot"
+    },
+    "conditions": {
+     "zh": "一份生料预装在工作头位于深锅内的抬高柄勺中，另一份位于冷锅内。",
+     "en": "One raw portion starts in a raised-handle ladle inside the deep source pot; the other starts in a cold pan."
+    },
+    "design": {
+     "zh": "提起带料工作头越过深锅口，真实倒料，承托归还厨具，再熟化两份食材并关火。此版本不证明从散装食材中动态舀取。",
+     "en": "Lift the loaded head clear of the deep rim, pour the original food, return the utensil to its support, cook both portions and turn off. This revision does not demonstrate scooping loose food."
+    },
+    "tools": [
+     {
+      "zh": "抬高柄深锅勺",
+      "en": "Raised-handle ladle"
+     },
+     {
+      "zh": "深锅与工具架",
+      "en": "Deep source pot and utensil rest"
+     }
+    ],
+    "embodiment": {
+     "zh": "Unitree G1，自由基座，Dex3 三指手",
+     "en": "Unitree G1, free base, Dex3 three-finger hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 187.28 秒。7 high / 51 low; 37,457 个实测观测，50 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 187.28 s of physical time. 7 high / 51 low; 37,457 measured observations and 50 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k0-deep-withdrawal-clearance-v39",
+    "video": "media/cooking/SC-02-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 187.28,
+    "high_steps": 7,
+    "low_steps": 51,
+    "observations": 37457,
+    "transitions": 50,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "SC-03",
+    "title": {
+     "zh": "厨具搬运与倒料",
+     "en": "Utensil transport and pouring"
+    },
+    "conditions": {
+     "zh": "从预装一份原始生料的宽柄勺开始；另一份生料位于冷锅内。",
+     "en": "Start with one raw portion preloaded in a wide-handle spoon and another in a cold pan."
+    },
+    "design": {
+     "zh": "实际搬运并倒入原始食材，承托放回并释放勺子，完成两份熟化与关火。",
+     "en": "Physically transport and pour the original food, return and release the spoon on its support, cook both portions and turn off."
+    },
+    "tools": [
+     {
+      "zh": "宽柄勺",
+      "en": "Wide-handle spoon"
+     },
+     {
+      "zh": "实体工具架",
+      "en": "Physical utensil rest"
+     }
+    ],
+    "embodiment": {
+     "zh": "Unitree G1，自由基座，Dex3 三指手",
+     "en": "Unitree G1, free base, Dex3 three-finger hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 175.96 秒。7 high / 49 low; 35,193 个实测观测，48 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 175.96 s of physical time. 7 high / 49 low; 35,193 measured observations and 48 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k0-spoon-cook-v18",
+    "video": "media/cooking/SC-03-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 175.96,
+    "high_steps": 7,
+    "low_steps": 49,
+    "observations": 35193,
+    "transitions": 48,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "SC-04",
+    "title": {
+     "zh": "重锅承托与分装",
+     "en": "Supported heavy-pan cooking and portioning"
+    },
+    "conditions": {
+     "zh": "2.5 千克重锅持续受支撑，从冷态与两份原始食材开始。",
+     "en": "A 2.5 kg pan remains supported; start cold with two original portions."
+    },
+    "design": {
+     "zh": "实际加热两份食材，关火冷却后只提起带料勺，将一份分装到受支撑接收盘，另一份保留锅内；最后归还并释放工具。",
+     "en": "Cook both portions, turn off and cool, then lift only the loaded spoon to serve one portion onto a supported receiver while the other stays in the pan; return and release the tool."
+    },
+    "tools": [
+     {
+      "zh": "带出料唇的勺",
+      "en": "Spoon with pouring lip"
+     },
+     {
+      "zh": "重锅与接收盘",
+      "en": "Heavy pan and supported receiver"
+     }
+    ],
+    "embodiment": {
+     "zh": "Unitree G1，自由基座，Dex3 三指手",
+     "en": "Unitree G1, free base, Dex3 three-finger hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 150.84 秒。8 high / 40 low; 30,169 个实测观测，39 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 150.84 s of physical time. 8 high / 40 low; 30,169 measured observations and 39 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k0-heavy-pour-lip-v38",
+    "video": "media/cooking/SC-04-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 150.84,
+    "high_steps": 8,
+    "low_steps": 40,
+    "observations": 30169,
+    "transitions": 39,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "SC-05",
+    "title": {
+     "zh": "受限厨房烹饪",
+     "en": "Cooking in a constrained kitchen"
+    },
+    "conditions": {
+     "zh": "在显式受限厨房内从两份原始生料开始。",
+     "en": "Start with two original raw portions in the explicitly constrained kitchen."
+    },
+    "design": {
+     "zh": "完成实际装料、实体开关加热、关火与稳定释放；展示中的围挡透明化以便观察，原始几何保留。",
+     "en": "Complete physical loading, switch-operated cooking, turn-off and stable release. Barriers are transparent only in the presentation render; original geometry is retained."
+    },
+    "tools": [
+     {
+      "zh": "生料碗与烹饪锅",
+      "en": "Raw-food bowl and cooking pan"
+     },
+     {
+      "zh": "受限厨房围挡",
+      "en": "Kitchen barriers"
+     }
+    ],
+    "embodiment": {
+     "zh": "Unitree G1，自由基座，Dex3 三指手",
+     "en": "Unitree G1, free base, Dex3 three-finger hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 113.28 秒。5 high / 42 low; 22,657 个实测观测，41 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 113.28 s of physical time. 5 high / 42 low; 22,657 measured observations and 41 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k0-restricted-one-batch-v9",
+    "video": "media/cooking/SC-05-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 113.28,
+    "high_steps": 5,
+    "low_steps": 42,
+    "observations": 22657,
+    "transitions": 41,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "SC-I01",
+    "title": {
+     "zh": "单机正确退出",
+     "en": "Single-robot correct exit"
+    },
+    "conditions": {
+     "zh": "存在独立核证的不可完成约束，目标为正确退出。",
+     "en": "Independently certified infeasibility makes correct exit the target outcome."
+    },
+    "design": {
+     "zh": "评估合法路线并绑定不可完成证书，执行实测空手稳定退出；此项不计为烹饪完成。",
+     "en": "Assess legal routes, bind the infeasibility certificate and execute the measured empty-handed stable exit; this is not cooking completion."
+    },
+    "tools": [
+     {
+      "zh": "场景厨具（退出时无需使用）",
+      "en": "Scene utensils (unused for exit)"
+     }
+    ],
+    "embodiment": {
+     "zh": "Unitree G1，自由基座，Dex3 三指手",
+     "en": "Unitree G1, free base, Dex3 three-finger hands"
+    },
+    "result": {
+     "zh": "正确退出通过；实际时间 9 秒。3 high / 3 low; 9,001 个实测观测，2 条连续 transition；物理回放数值差异为 0。",
+     "en": "Correct exit accepted; 9 s of physical time. 3 high / 3 low; 9,001 measured observations and 2 continuous transitions; zero numerical difference in the physical replay."
+    },
+    "refusal": true,
+    "refusal_note": {
+     "zh": "正确退出，不计为烹饪完成",
+     "en": "Correct exit, not cooking completion"
+    },
+    "revision": "cooking-closed-control-candidates-v2-resting-tongs-clear-roots",
+    "video": "media/cooking/SC-I01-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 9.0,
+    "high_steps": 3,
+    "low_steps": 3,
+    "observations": 9001,
+    "transitions": 2,
+    "evidence_backed_up": true
+   }
+  ],
+  "backup": {
+   "storage": "private Hugging Face dataset",
+   "verified_at": "2026-11-04",
+   "configs_backed": 6,
+   "configs_total": 6,
+   "files": 276,
+   "gib": 8.66,
+   "size_basis": "uncompressed referenced evidence",
+   "shared_archive": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/f35de6f630ab31f3b43931546bab767aa0069e0b/releases/cooking-sc-pc-acceptance-20261104-v1"
+  },
+  "evidence_url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/f35de6f630ab31f3b43931546bab767aa0069e0b/releases/cooking-sc-pc-acceptance-20261104-v1"
+ },
+ {
+  "family": "PC",
+  "name": {
+   "zh": "双机器人协作烹饪",
+   "en": "Two-robot cooperative cooking"
+  },
+  "summary": {
+   "zh": "本批 6 项全部验收通过：5 个烹饪成功任务与 1 个正确退出对照。每项提供统一视角八倍速视频，完整专家解、high/low plan、实测轨迹、连续 transition 和物理回放均已备份。",
+   "en": "All six cases in this batch are accepted: five cooking successes and one correct-exit control. Each has a common-view 8x video; the complete expert, high/low plans, measured trajectories, continuous transitions and physical replay are backed up."
+  },
+  "acceptance": {
+   "zh": "作者已签收这 6 项显式修订的完整参考交付；更多身体、工具与场景组合仍需逐项验收。",
+   "en": "The author accepted the complete reference delivery of these six explicit revisions; further body, tool and scene combinations require separate acceptance."
+  },
+  "accepted_at": "2026-11-04",
+  "axes": {
+   "zh": "接续操作、承托交接、双单合批、异构手型、固定承载与正确退出",
+   "en": "Relay operation, supported handoff, batched orders, heterogeneous hands, fixed load and correct exit"
+  },
+  "embodiments": [
+   {
+    "zh": "双 Unitree G1＋Dex3",
+    "en": "Two Unitree G1 + Dex3 robots"
+   },
+   {
+    "zh": "G1＋Dex3 与 G1＋原生 Inspire 手",
+    "en": "G1 + Dex3 and G1 + native Inspire hands"
+   },
+   {
+    "zh": "Unitree G1 与 Stretch 3（退出对照）",
+    "en": "Unitree G1 and Stretch 3 (exit control)"
+   }
+  ],
+  "cases": [
+   {
+    "id": "PC-01",
+    "title": {
+     "zh": "双机接续烹饪",
+     "en": "Two-robot cooking relay"
+    },
+    "conditions": {
+     "zh": "两台自由基座 G1 在同一厨房处理一批两份原始食材。",
+     "en": "Two free-base G1 robots share one kitchen and a batch of two raw portions."
+    },
+    "design": {
+     "zh": "供方装料并真实退让，另一台机器人接续加热和关火，双机脱手稳定。",
+     "en": "The supplier loads and physically yields; the other robot continues cooking and turns off the stove, ending with both robots released and stable."
+    },
+    "tools": [
+     {
+      "zh": "共享生料碗",
+      "en": "Shared raw-food bowl"
+     },
+     {
+      "zh": "烹饪锅与实体炉具",
+      "en": "Cooking pan and physical stove"
+     }
+    ],
+    "embodiment": {
+     "zh": "双 Unitree G1，自由基座，Dex3 三指手",
+     "en": "Two Unitree G1 robots, free bases, Dex3 hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 153.26 秒。6 high / 41 low; 30,653 个实测观测，40 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 153.26 s of physical time. 6 high / 41 low; 30,653 measured observations and 40 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k2-supported-rim-one-batch-v15",
+    "video": "media/cooking/PC-01-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 153.26,
+    "high_steps": 6,
+    "low_steps": 41,
+    "observations": 30653,
+    "transitions": 40,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "PC-02",
+    "title": {
+     "zh": "带料碗承托交接",
+     "en": "Supported handoff of a loaded bowl"
+    },
+    "conditions": {
+     "zh": "双机在分区厨房中交接同一个装有原始食材的实物碗。",
+     "en": "Two robots hand off the same physical bowl of original food in a partitioned kitchen."
+    },
+    "design": {
+     "zh": "供方放下并退出，接收方夹持同一个带料碗、倒料、加热与关火，完成两份食材。",
+     "en": "The supplier sets down and retreats; the receiver grasps that same loaded bowl, pours, cooks both portions and turns off the stove."
+    },
+    "tools": [
+     {
+      "zh": "同一带料碗",
+      "en": "Same loaded bowl"
+     },
+     {
+      "zh": "交接支撑面",
+      "en": "Handoff support surface"
+     }
+    ],
+    "embodiment": {
+     "zh": "双 Unitree G1，自由基座，Dex3 三指手",
+     "en": "Two Unitree G1 robots, free bases, Dex3 hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 177.78 秒。7 high / 45 low; 35,557 个实测观测，44 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 177.78 s of physical time. 7 high / 45 low; 35,557 measured observations and 44 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k2-loaded-bowl-handoff-v20",
+    "video": "media/cooking/PC-02-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 177.78,
+    "high_steps": 7,
+    "low_steps": 45,
+    "observations": 35557,
+    "transitions": 44,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "PC-03",
+    "title": {
+     "zh": "双订单合批调度",
+     "en": "Two-order batch scheduling"
+    },
+    "conditions": {
+     "zh": "两单各含一份原始食材，分别于 0 秒、90 秒释放，截止时间为 180 秒、200 秒。",
+     "en": "Two orders each contain one raw portion, released at 0 and 90 seconds with deadlines at 180 and 200 seconds."
+    },
+    "design": {
+     "zh": "允许共同备料，两单释放后共用同一实物碗批量加热；核对逐单身份、熟度与时间窗。验收范围为两单合批。",
+     "en": "Shared preparation is allowed; after both orders are released, use the same physical bowl for batch cooking, checking each order’s identity, doneness and time window. The accepted scope is two-order batching."
+    },
+    "tools": [
+     {
+      "zh": "共享实物碗",
+      "en": "Shared physical bowl"
+     },
+     {
+      "zh": "共同炉具",
+      "en": "Shared stove"
+     }
+    ],
+    "embodiment": {
+     "zh": "双 Unitree G1，自由基座，Dex3 三指手",
+     "en": "Two Unitree G1 robots, free bases, Dex3 hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 153.26 秒。6 high / 41 low; 30,653 个实测观测，40 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 153.26 s of physical time. 6 high / 41 low; 30,653 measured observations and 40 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k2-batched-shared-orders-v33",
+    "video": "media/cooking/PC-03-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 153.26,
+    "high_steps": 6,
+    "low_steps": 41,
+    "observations": 30653,
+    "transitions": 40,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "PC-04",
+    "title": {
+     "zh": "异构手型分工",
+     "en": "Heterogeneous-hand role allocation"
+    },
+    "conditions": {
+     "zh": "G1＋Dex3 与装有原生 Inspire 手的 G1 在同一厨房分工。",
+     "en": "A G1 with Dex3 hands and a G1 with native Inspire hands share kitchen roles."
+    },
+    "design": {
+     "zh": "Dex3 供方实际装料并退让，Inspire 机器人以真实掌部接触操作炉具，完成烹饪与关火；不推定 Inspire 已完成碗抓握。",
+     "en": "The Dex3 supplier loads and yields; the Inspire robot uses physical palm contact to operate the stove, cook and turn off. This does not claim bowl grasping by Inspire."
+    },
+    "tools": [
+     {
+      "zh": "共享碗与锅",
+      "en": "Shared bowl and pan"
+     },
+     {
+      "zh": "实体炉具开关",
+      "en": "Physical stove switch"
+     }
+    ],
+    "embodiment": {
+     "zh": "双 Unitree G1：Dex3 与原生 Inspire 手分工",
+     "en": "Two Unitree G1 robots: Dex3 and native Inspire hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 192.66 秒。8 high / 40 low; 38,533 个实测观测，39 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 192.66 s of physical time. 8 high / 40 low; 38,533 measured observations and 39 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k2-native-inspire-utensil-roles-v31",
+    "video": "media/cooking/PC-04-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 192.66,
+    "high_steps": 8,
+    "low_steps": 40,
+    "observations": 38533,
+    "transitions": 39,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "PC-05",
+    "title": {
+     "zh": "固定负载承接",
+     "en": "Fixed-load receiving capability"
+    },
+    "conditions": {
+     "zh": "同一 100 克载具承载两份各 20 克食材，总负载为 140 克。",
+     "en": "The same 100 g carrier holds two 20 g portions, for a total load of 140 g."
+    },
+    "design": {
+     "zh": "供方释放后，接收方右手承受带料载具并离开支撑面，再卸料、释放、烹饪和关火；仅证明该固定负载的能力衔接。",
+     "en": "After supplier release, the receiver supports the loaded carrier in its right hand clear of the surface, then unloads, releases, cooks and turns off. This validates the specified fixed-load handoff."
+    },
+    "tools": [
+     {
+      "zh": "140 克带料载具",
+      "en": "140 g loaded carrier"
+     },
+     {
+      "zh": "承接支撑面与烹饪锅",
+      "en": "Receiving support and cooking pan"
+     }
+    ],
+    "embodiment": {
+     "zh": "双 Unitree G1，自由基座，Dex3 三指手",
+     "en": "Two Unitree G1 robots, free bases, Dex3 hands"
+    },
+    "result": {
+     "zh": "烹饪成功；实际时间 177.78 秒。7 high / 45 low; 35,557 个实测观测，44 条连续 transition；物理回放数值差异为 0。按该显式修订验收，不覆盖原始六份装盘等未声明要求。",
+     "en": "Cooking success; 177.78 s of physical time. 7 high / 45 low; 35,557 measured observations and 44 continuous transitions; zero numerical difference in the physical replay. Acceptance applies to this explicit revision, without extending it to unclaimed original six-portion plated delivery."
+    },
+    "refusal": false,
+    "refusal_note": null,
+    "revision": "k2-fixed-load-receiving-capacity-v32",
+    "video": "media/cooking/PC-05-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 177.78,
+    "high_steps": 7,
+    "low_steps": 45,
+    "observations": 35557,
+    "transitions": 44,
+    "evidence_backed_up": true
+   },
+   {
+    "id": "PC-I01",
+    "title": {
+     "zh": "团队正确退出",
+     "en": "Team correct exit"
+    },
+    "conditions": {
+     "zh": "G1 与 Stretch 3 团队面对独立核证的不可完成约束。",
+     "en": "A G1 and Stretch 3 team face independently certified infeasibility."
+    },
+    "design": {
+     "zh": "依据不可完成证书执行团队空手稳定退出。房间外墙、顶棚和隔墙仅在展示中透明化。",
+     "en": "Use the infeasibility certificate to execute the team’s empty-handed stable exit. Room walls, roof and partition are transparent only in the presentation render."
+    },
+    "tools": [
+     {
+      "zh": "场景厨具（退出时无需使用）",
+      "en": "Scene utensils (unused for exit)"
+     }
+    ],
+    "embodiment": {
+     "zh": "Unitree G1＋Dex3 与 Stretch 3 团队",
+     "en": "Unitree G1 + Dex3 and Stretch 3 team"
+    },
+    "result": {
+     "zh": "正确退出通过；实际时间 9 秒。3 high / 3 low; 9,001 个实测观测，2 条连续 transition；物理回放数值差异为 0。",
+     "en": "Correct exit accepted; 9 s of physical time. 3 high / 3 low; 9,001 measured observations and 2 continuous transitions; zero numerical difference in the physical replay."
+    },
+    "refusal": true,
+    "refusal_note": {
+     "zh": "正确退出，不计为烹饪完成",
+     "en": "Correct exit, not cooking completion"
+    },
+    "revision": "cooking-closed-control-candidates-v2-resting-tongs-clear-roots",
+    "video": "media/cooking/PC-I01-8x.mp4",
+    "video_speed": 8,
+    "video_method": "measured-trajectory presentation render",
+    "physical_time_s": 9.0,
+    "high_steps": 3,
+    "low_steps": 3,
+    "observations": 9001,
+    "transitions": 2,
+    "evidence_backed_up": true
+   }
+  ],
+  "backup": {
+   "storage": "private Hugging Face dataset",
+   "verified_at": "2026-11-04",
+   "configs_backed": 6,
+   "configs_total": 6,
+   "files": 264,
+   "gib": 19.342,
+   "size_basis": "uncompressed referenced evidence",
+   "shared_archive": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/f35de6f630ab31f3b43931546bab767aa0069e0b/releases/cooking-sc-pc-acceptance-20261104-v1"
+  },
+  "evidence_url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/f35de6f630ab31f3b43931546bab767aa0069e0b/releases/cooking-sc-pc-acceptance-20261104-v1"
  }
 ]
