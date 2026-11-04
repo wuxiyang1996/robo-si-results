@@ -6447,6 +6447,948 @@
     }
   },
   {
+    "family": "F5",
+    "name": {
+      "zh": "半柔性大物体搬运与安装",
+      "en": "Semi-flexible transport and installation"
+    },
+    "summary": {
+      "zh": "双 Stretch 3 配合完成门道与 L 形通道搬运、受限安装及卡边恢复，按六项声明配置验收。",
+      "en": "Two Stretch 3 robots cooperate on doorway and L-shaped corridor transport, constrained installation and edge-jam recovery in six declared configurations."
+    },
+    "acceptance": {
+      "zh": "作者于 2026-11-04 确认当前 6 项声明配置验收通过。任务修订及其适用范围随各项保留。",
+      "en": "The author accepted the current 6 declared configurations on 2026-11-04. Each task retains its declared revisions and scope."
+    },
+    "accepted_at": "2026-11-04",
+    "axes": {
+      "zh": "身体、工具、几何布局、材料状态与恢复策略。",
+      "en": "Body, tools, scene geometry, material state and recovery strategy."
+    },
+    "embodiments": [
+      {
+        "zh": "按各项冻结的原生机器人配置",
+        "en": "Native robot configuration frozen per case"
+      }
+    ],
+    "cases": [
+      {
+        "id": "F5-01-L1",
+        "title": {
+          "zh": "基础门道搬运",
+          "en": "Panel transport through a doorway"
+        },
+        "conditions": {
+          "zh": "采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "design": {
+          "zh": "通过既定门道，完成半柔性面板搬运、放下和真实工具撤离。",
+          "en": "Carry a compliant panel through the declared doorway, set it down and withdraw the tools."
+        },
+        "tools": [
+          {
+            "zh": "实体承托夹具",
+            "en": "Physical carrying cradles"
+          }
+        ],
+        "embodiment": {
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "已验收通过。采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Accepted. Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F5/F5-01-L1.mp4",
+        "poster": "media/F5/F5-01-L1.jpg",
+        "speed": 8,
+        "source_duration": 98.09399999995279,
+        "elapsed_seconds": 98.09399999995279,
+        "video_duration": 12.333333333333334,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": false,
+        "source_manifest_sha256": "7ac5c953ed6111edb08bdb89012cdc0a2c5a9e4ae605f21786ac8d82da40c661",
+        "video_sha256": "bf7d8083d40f16c6899d7651b41f25ab1e414f16411807e8595f068fd2bed734",
+        "scope_gaps": []
+      },
+      {
+        "id": "F5-01-L2",
+        "title": {
+          "zh": "受限门道交付",
+          "en": "Delivery through a constrained doorway"
+        },
+        "conditions": {
+          "zh": "声明为面板交付配置。工具仍由真实手指持握在面板之外；独立工具落放和存放不计信用。",
+          "en": "Panel-delivery configuration. Real fingers retain both tools away from the delivered panel; independent tool placement and storage are outside this result."
+        },
+        "design": {
+          "zh": "两台轮式机器人配合穿过 1.80m 门道，交付面板并保持独立承托。",
+          "en": "Two wheeled robots carry the panel through a 1.80 m doorway and deliver it to independent support."
+        },
+        "tools": [
+          {
+            "zh": "实体承托夹具",
+            "en": "Physical carrying cradles"
+          }
+        ],
+        "embodiment": {
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "已验收通过。声明为面板交付配置。工具仍由真实手指持握在面板之外；独立工具落放和存放不计信用。",
+          "en": "Accepted. Panel-delivery configuration. Real fingers retain both tools away from the delivered panel; independent tool placement and storage are outside this result."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F5/F5-01-L2.mp4",
+        "poster": "media/F5/F5-01-L2.jpg",
+        "speed": 8,
+        "source_duration": 324.25600000000003,
+        "elapsed_seconds": 324.25600000000003,
+        "video_duration": 40.583333333333336,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": true,
+        "source_manifest_sha256": "31db17e403236d4103e2ce3b49f283ec7d3ff3b02620a7aebff3a24f72d4109a",
+        "video_sha256": "871d44eb9d74b0aa15720afd87bf4591d45660d30d2387514606b1e8850b0ea9",
+        "scope_gaps": [
+          "Original G1 walking-pair and precision-dock profiles remain separate",
+          "Review covers the explicitly declared passage geometry and synthetic material/contact model only",
+          "Tool putdown and storage are excluded from this delivery profile and receive no credit; the two tools remain held",
+          "Native tools remain held; independent putdown/storage not claimed"
+        ]
+      },
+      {
+        "id": "F5-01-L3",
+        "title": {
+          "zh": "L 形通道交付",
+          "en": "Delivery through an L-shaped corridor"
+        },
+        "conditions": {
+          "zh": "声明采用 2.00m L 形通道和转向区域。交付后两工具仍真实持握；独立工具存放不计信用。",
+          "en": "Declared 2.00 m L-shaped corridor and turn area. Both tools remain physically held after delivery; independent tool storage is outside this result."
+        },
+        "design": {
+          "zh": "在两段 2.00m L 形通道内转向运输，完成面板独立交付和稳定停留。",
+          "en": "Turn through two 2.00 m-wide corridor legs, deliver the panel to independent support and hold it stable."
+        },
+        "tools": [
+          {
+            "zh": "实体承托夹具",
+            "en": "Physical carrying cradles"
+          }
+        ],
+        "embodiment": {
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "已验收通过。声明采用 2.00m L 形通道和转向区域。交付后两工具仍真实持握；独立工具存放不计信用。",
+          "en": "Accepted. Declared 2.00 m L-shaped corridor and turn area. Both tools remain physically held after delivery; independent tool storage is outside this result."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F5/F5-01-L3.mp4",
+        "poster": "media/F5/F5-01-L3.jpg",
+        "speed": 8,
+        "source_duration": 353.084,
+        "elapsed_seconds": 353.084,
+        "video_duration": 44.208333333333336,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": true,
+        "source_manifest_sha256": "e41dabeb9a13e0abc3b9cff52d15266bedb4e5517f299e816111bf93011261ae",
+        "video_sha256": "789be51cb3470afce523a3288a68bdf56ac8a2b387cc722fbdadba068dd2452b",
+        "scope_gaps": [
+          "Original G1 walking-pair and precision-dock profiles remain separate",
+          "Review covers the explicitly declared passage geometry and synthetic material/contact model only",
+          "Tool putdown and storage are excluded from this delivery profile and receive no credit; the two tools remain held",
+          "Native tools remain held; independent putdown/storage not claimed",
+          "Original1.80m L-corridor full task remains partial; this scope uses2.00m legs and existing explicit turning bay"
+        ]
+      },
+      {
+        "id": "F5-02-L1",
+        "title": {
+          "zh": "定向放入安装框",
+          "en": "Oriented insertion into a frame"
+        },
+        "conditions": {
+          "zh": "采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "design": {
+          "zh": "将面板按目标方向放入安装框，完成工具撤离与稳定放置。",
+          "en": "Place the panel into the installation frame in the required orientation, withdraw the tools and leave it stable."
+        },
+        "tools": [
+          {
+            "zh": "实体承托夹具与安装框",
+            "en": "Physical carrying cradles and installation frame"
+          }
+        ],
+        "embodiment": {
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "已验收通过。采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Accepted. Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F5/F5-02-L1.mp4",
+        "poster": "media/F5/F5-02-L1.jpg",
+        "speed": 8,
+        "source_duration": 96.7979999999558,
+        "elapsed_seconds": 96.7979999999558,
+        "video_duration": 12.166666666666666,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": false,
+        "source_manifest_sha256": "2290876addb41356163ce260080e480c1e6e618dc35c4d5e7a053c25fa3cf43a",
+        "video_sha256": "9bc6f9aedebe73d81244c6f61633ab65c2478edfc398b869ef3c60d16de6f464",
+        "scope_gaps": []
+      },
+      {
+        "id": "F5-02-L2",
+        "title": {
+          "zh": "窄框分步安装",
+          "en": "Staged installation through a narrow opening"
+        },
+        "conditions": {
+          "zh": "侧向受限安装实例，保留完整卸载、工具归还和退出；未覆盖旧纵向尺寸不足的开口。",
+          "en": "Constrained lateral installation, with unloading, tool storage and withdrawal. The older 2.10 m longitudinal opening, too short for the 2.25 m panel, is outside this configuration."
+        },
+        "design": {
+          "zh": "通过受限侧向开口分步安装面板，完成卸载、工具存放及撤离。",
+          "en": "Install through a constrained side opening in stages, unload the panel, store the tools and withdraw."
+        },
+        "tools": [
+          {
+            "zh": "实体承托夹具与安装框",
+            "en": "Physical carrying cradles and installation frame"
+          }
+        ],
+        "embodiment": {
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "已验收通过。侧向受限安装实例，保留完整卸载、工具归还和退出；未覆盖旧纵向尺寸不足的开口。",
+          "en": "Accepted. Constrained lateral installation, with unloading, tool storage and withdrawal. The older 2.10 m longitudinal opening, too short for the 2.25 m panel, is outside this configuration."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F5/F5-02-L2.mp4",
+        "poster": "media/F5/F5-02-L2.jpg",
+        "speed": 8,
+        "source_duration": 102.60599999994227,
+        "elapsed_seconds": 102.60599999994227,
+        "video_duration": 12.875,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": true,
+        "source_manifest_sha256": "56af22d2eb5bce457112729adf4971c37a3ee006ecdf9fe4b4a8669b3dae8c79",
+        "video_sha256": "36cfb216930fec77c8152c8303a9f68fc7823f299d4d2cd49cf67b1e5571c498",
+        "scope_gaps": [
+          "Original 2.10 m longitudinal opening for the 2.25 m panel is not covered by the revised lateral frame"
+        ]
+      },
+      {
+        "id": "F5-02-L3",
+        "title": {
+          "zh": "卡边诊断与恢复",
+          "en": "Edge-jam diagnosis and recovery"
+        },
+        "conditions": {
+          "zh": "选择真实卡边恢复实例，保留工具存放和撤离；折叠、回弹故障及旧纵向窄框另行保留缺口。",
+          "en": "Real edge-jam recovery with tool storage and withdrawal. Folding/rebound faults and the older undersized 2.10 m longitudinal frame remain outside this configuration."
+        },
+        "design": {
+          "zh": "识别真实卡边，卸载、抬起脱离并调整位置，完成安装与工具存放。",
+          "en": "Detect a real edge jam, unload and lift clear, reposition, finish installation and store the tools."
+        },
+        "tools": [
+          {
+            "zh": "实体承托夹具与安装框",
+            "en": "Physical carrying cradles and installation frame"
+          }
+        ],
+        "embodiment": {
+          "zh": "2 × 原生 Stretch 3",
+          "en": "2 × native Stretch 3"
+        },
+        "platforms": [
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "已验收通过。选择真实卡边恢复实例，保留工具存放和撤离；折叠、回弹故障及旧纵向窄框另行保留缺口。",
+          "en": "Accepted. Real edge-jam recovery with tool storage and withdrawal. Folding/rebound faults and the older undersized 2.10 m longitudinal frame remain outside this configuration."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F5/F5-02-L3.mp4",
+        "poster": "media/F5/F5-02-L3.jpg",
+        "speed": 8,
+        "source_duration": 115.418,
+        "elapsed_seconds": 115.418,
+        "video_duration": 14.5,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": true,
+        "source_manifest_sha256": "60a9c7ddcce0c266f2cb98cbbab215c863bf8341b35c934ab646b03718f9a238",
+        "video_sha256": "7a668208a60954b35101198ec0f146bab2c84ba000b42489539c8d2d32e86d6e",
+        "scope_gaps": [
+          "Original undersized2.10m longitudinal frame is not covered",
+          "Fold and rebound faults remain separate; this selected profile covers a caught edge"
+        ]
+      }
+    ],
+    "backup": {
+      "storage": "private Hugging Face dataset",
+      "status": "verified",
+      "files": 32019,
+      "gib": 318.761,
+      "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/d1f937109c4082a8d223e0d8a433296353987486/archives/workspace-20261104/f5-f7-accepted",
+      "data_revision": "403f9efc3046914f67eae23287aeb6c802cf624f",
+      "metadata_revision": "d1f937109c4082a8d223e0d8a433296353987486",
+      "shared_archive": true,
+      "configs_backed": 6,
+      "configs_total": 6
+    }
+  },
+  {
+    "family": "F6",
+    "name": {
+      "zh": "线缆布设、卷盘与恢复",
+      "en": "Cable routing, reels and recovery"
+    },
+    "summary": {
+      "zh": "选择路径与工具，完成布线、插接固定、卷盘余量管理及真实卡阻恢复。五项为固定 G1，一项为固定 G1 与轮驱 Stretch 协作。",
+      "en": "Choose routes and tools for routing, coupling, fastening, reel slack management and physical jam recovery. Five configurations use a fixed G1; one combines a fixed G1 with a wheeled Stretch."
+    },
+    "acceptance": {
+      "zh": "作者于 2026-11-04 确认当前 6 项声明配置验收通过。任务修订及其适用范围随各项保留。",
+      "en": "The author accepted the current 6 declared configurations on 2026-11-04. Each task retains its declared revisions and scope."
+    },
+    "accepted_at": "2026-11-04",
+    "axes": {
+      "zh": "身体、工具、几何布局、材料状态与恢复策略。",
+      "en": "Body, tools, scene geometry, material state and recovery strategy."
+    },
+    "embodiments": [
+      {
+        "zh": "按各项冻结的原生机器人配置",
+        "en": "Native robot configuration frozen per case"
+      }
+    ],
+    "cases": [
+      {
+        "id": "F6-01-L1",
+        "title": {
+          "zh": "穿过导向框并固定",
+          "en": "Guide routing and hose fastening"
+        },
+        "conditions": {
+          "zh": "采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "design": {
+          "zh": "将短软管穿过导向环，完成真实快接保持与拉测、单夹固定、工具归还和手部撤离。",
+          "en": "Route a short hose through the guide, test coupling retention, fasten one clip, return the tool and withdraw the hands."
+        },
+        "tools": [
+          {
+            "zh": "软管、导向框、固定夹与快接",
+            "en": "Hose, guides, fixing clips and coupling"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Accepted. Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F6/F6-01-L1.mp4",
+        "poster": "media/F6/F6-01-L1.jpg",
+        "speed": 8,
+        "source_duration": 91.83999999996736,
+        "elapsed_seconds": 91.83999999996736,
+        "video_duration": 11.541666666666666,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": false,
+        "source_manifest_sha256": "5199ff5c80209f902f707cb52fe6add683e842cc85942c908be2564cc7ecd4e4",
+        "video_sha256": "a90339b9a472ff5e86b59f89fb3e3d8abf5bdd3b96b2910c4388c2991647fad1",
+        "scope_gaps": []
+      },
+      {
+        "id": "F6-01-L2",
+        "title": {
+          "zh": "受限布线路径规划",
+          "en": "Constrained routing and tool selection"
+        },
+        "conditions": {
+          "zh": "采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "design": {
+          "zh": "按可达长度选择软管和工具，确定双导向环穿引顺序，完成插接、双夹固定与工具独立落放。",
+          "en": "Choose a hose and tool with adequate reach, plan the order through two guides, connect, fasten both clips and put the tool down independently."
+        },
+        "tools": [
+          {
+            "zh": "软管、导向框、固定夹与快接",
+            "en": "Hose, guides, fixing clips and coupling"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Accepted. Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F6/F6-01-L2.mp4",
+        "poster": "media/F6/F6-01-L2.jpg",
+        "speed": 8,
+        "source_duration": 136.23999999992242,
+        "elapsed_seconds": 136.23999999992242,
+        "video_duration": 17.083333333333332,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": false,
+        "source_manifest_sha256": "85acb1204c0b9d42666be331e4875f6cdddd3ee955b58b8caf4a11ccec2af295",
+        "video_sha256": "6a59b97ee33693910ac2459b4143a5c6d0ea6853c8bf361aabb6de7243f39a19",
+        "scope_gaps": []
+      },
+      {
+        "id": "F6-01-L3",
+        "title": {
+          "zh": "错误固定点解卡恢复",
+          "en": "Wrong-fixing jam recovery"
+        },
+        "conditions": {
+          "zh": "单台固定骨盆 G1 的错误局部固定恢复。预先调整固定点与同侧托盘；声明有限接触律，保留原生限幅与完整工具归还。",
+          "en": "One pelvis-fixed G1 recovers a wrong local fixing. Fixing and same-side tray locations are declared in advance, with the disclosed contact law, native actuator limits and full tool return."
+        },
+        "design": {
+          "zh": "实测错误夹持卡阻，真实解夹并退线至少4厘米，再穿过两个正确闭框、插接拉测、双夹固定并归还工具。",
+          "en": "Measure the jam, release the wrong clip and retract at least 4 cm, reroute through two closed guides, pull-test the coupling, fasten both clips and return the tool."
+        },
+        "tools": [
+          {
+            "zh": "软管、导向框、固定夹与快接",
+            "en": "Hose, guides, fixing clips and coupling"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。单台固定骨盆 G1 的错误局部固定恢复。预先调整固定点与同侧托盘；声明有限接触律，保留原生限幅与完整工具归还。",
+          "en": "Accepted. One pelvis-fixed G1 recovers a wrong local fixing. Fixing and same-side tray locations are declared in advance, with the disclosed contact law, native actuator limits and full tool return."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F6/F6-01-L3.mp4",
+        "poster": "media/F6/F6-01-L3.jpg",
+        "speed": 8,
+        "source_duration": 120.03999999990164,
+        "elapsed_seconds": 120.03999999990164,
+        "video_duration": 15.083333333333334,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": true,
+        "source_manifest_sha256": "ee110fea6eee3c8dde3e9c0cd6a055c2e0a930dc2de2b5e873094735a8a112e6",
+        "video_sha256": "185745f4219621206502f58b2f3db93ad9dc5faddd3f269fe8b52e4d423611af",
+        "scope_gaps": [
+          "Wrong-local-fixing jam-only recovery; wrong-frame, regrasp and tangle-repair variants remain excluded and failed historical packets remain unchanged.",
+          "Two original native contact surfaces explicitly use condim4/friction[1,.005,.0001]; geometry, inertia, joint/effort limits and masks retain the original body.",
+          "Final clips and downstream same-sized independent tray were positioned before tick zero; the original unsuitable clip/tray coordinates are not covered.",
+          "Bounded native waypoint proposals are author-side privileged policy inputs, not simulator states. A copied-world physical qualification precedes all actual native commands.",
+          "All diagnostic checkpoints and short tails have zero original-task credit. Only the new complete tick-zero packet is eligible.",
+          "The new same-scene direct control demonstrates a legal alternative. It deliberately omits the full task and remains held; no necessity, impossibility or complete safe-release claim.",
+          "Three actual deterministic executions of one initial case are not multi-seed or hardware robustness.",
+          "Final release independently covers the union of every task and tool body, even when a held tool has already left the cable."
+        ]
+      },
+      {
+        "id": "F6-02-L1",
+        "title": {
+          "zh": "卷盘放线与部署",
+          "en": "Reel payout and deployment"
+        },
+        "conditions": {
+          "zh": "采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "design": {
+          "zh": "从实体卷盘牵引线缆过环，完成快接保持、公开接触制动、停盘与手部释放。",
+          "en": "Pull cable from the physical reel through a guide, retain the coupling, brake by contact, stop the reel and release the hands."
+        },
+        "tools": [
+          {
+            "zh": "线缆、实体卷盘、导向框、快接与制动器",
+            "en": "Cable, physical reel, guides, coupling and brake"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Accepted. Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F6/F6-02-L1.mp4",
+        "poster": "media/F6/F6-02-L1.jpg",
+        "speed": 8,
+        "source_duration": 43.040000000006636,
+        "elapsed_seconds": 43.040000000006636,
+        "video_duration": 5.458333333333333,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": false,
+        "source_manifest_sha256": "cb191eec3a0a0757b2bf073ecff7da6e462ac12872f23b6f6b6a7d0e3a4061ae",
+        "video_sha256": "95a770abdb283951ca66953fbfa0284e60b2960e2abf015b0974fa90f6998e7b",
+        "scope_gaps": []
+      },
+      {
+        "id": "F6-02-L2",
+        "title": {
+          "zh": "卷盘余量与路径管理",
+          "en": "Reel slack and route management"
+        },
+        "conditions": {
+          "zh": "采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "design": {
+          "zh": "选择双导向路径，以实测线缆载荷和余量闭环管理放线与接触制动，完成插接、停盘和释放。",
+          "en": "Choose a two-guide route, manage measured load and slack with closed-loop payout and contact braking, connect, stop and release."
+        },
+        "tools": [
+          {
+            "zh": "线缆、实体卷盘、导向框、快接与制动器",
+            "en": "Cable, physical reel, guides, coupling and brake"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。采用既有已核验配置；原始门道、工具、材料和身体的具体适用范围以归档证据为准。",
+          "en": "Accepted. Acceptance covers the selected archived configuration, including its specific scene, tools, material and robot body; see the frozen evidence scope."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F6/F6-02-L2.mp4",
+        "poster": "media/F6/F6-02-L2.jpg",
+        "speed": 8,
+        "source_duration": 49.08000000001402,
+        "elapsed_seconds": 49.08000000001402,
+        "video_duration": 6.208333333333333,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": false,
+        "source_manifest_sha256": "4623f05714e7bc4442eb148f1cd66ed3d8e2d7782d4d2feb6af2e4a947a3f627",
+        "video_sha256": "3dc5a6aa84a91852ef4b8e3c28ddeb4bad8c2719f12faeb6ebedceae4c7693fd",
+        "scope_gaps": []
+      },
+      {
+        "id": "F6-02-L3",
+        "title": {
+          "zh": "异构双机解卡与部署",
+          "en": "Heterogeneous reel-jam recovery"
+        },
+        "conditions": {
+          "zh": "固定 G1 管理卷盘，轮驱 Stretch 携带端头；1.4×1.7m 闭合框。声明功能配合与余量范围，保留真实双卡爪、拉测及完全释放。",
+          "en": "A fixed G1 manages the reel and a wheeled Stretch carries the end through 1.4 x 1.7 m closed frames. Acceptance covers declared coupling and slack conditions, both real jaws, pull testing and complete release."
+        },
+        "design": {
+          "zh": "固定G1实测卡阻并按压解锁；轮驱Stretch带接头和线缆穿过两个闭门架，完成插接拉测、制动与双机释放。",
+          "en": "A fixed-base G1 measures the jam and releases the lock; a wheeled Stretch routes the connector and cable through two closed frames, pull-tests the coupling, brakes and releases."
+        },
+        "tools": [
+          {
+            "zh": "线缆、实体卷盘、导向框、快接与制动器",
+            "en": "Cable, physical reel, guides, coupling and brake"
+          }
+        ],
+        "embodiment": {
+          "zh": "固定 G1 + 轮驱 Stretch 3",
+          "en": "Fixed G1 + wheeled Stretch 3"
+        },
+        "platforms": [
+          "Unitree G1",
+          "Stretch 3"
+        ],
+        "result": {
+          "zh": "已验收通过。固定 G1 管理卷盘，轮驱 Stretch 携带端头；1.4×1.7m 闭合框。声明功能配合与余量范围，保留真实双卡爪、拉测及完全释放。",
+          "en": "Accepted. A fixed G1 manages the reel and a wheeled Stretch carries the end through 1.4 x 1.7 m closed frames. Acceptance covers declared coupling and slack conditions, both real jaws, pull testing and complete release."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F6/F6-02-L3.mp4",
+        "poster": "media/F6/F6-02-L3.jpg",
+        "speed": 8,
+        "source_duration": 62.784000000030765,
+        "elapsed_seconds": 62.784000000030765,
+        "video_duration": 7.916666666666667,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": true,
+        "source_manifest_sha256": "4801b46bba9c74b3afd9d728ea937f2055e3969120bf0b2508cc2d8abf95b521",
+        "video_sha256": "fb4527e4556d99617ac140374eba1ec9b2c56617c38a7cf8727352417f511bba",
+        "scope_gaps": [
+          "Approved jam-only heterogeneous two-robot configuration: fixed G1 reel manager and wheel-driven free-base Stretch endpoint carrier; no claim of two mobile robots.",
+          "Two actual1.4x1.7m closed floor gantries; no original30cm narrow-guide success claim. Real wheel/caster contact on flush bottom beams is floor support only.",
+          "Functional captured seating requires original strict actual two-nose shoulder capture+floor+real>=0.25s native loaded pull, finaldepth>=28mm/axis<=15deg/XY<=2.5mm. Old31mm/0.15rad precise final pose is not covered.",
+          "Declared operational slack<=150mm for1.610m artificial line; old80mm threshold not claimed. Actual terminal cable boundary load<3N and actual brake/route/bend/native limits still required.",
+          "v7 actual2.011mm gripper-slide overshoot is preserved as failure. v8 genuinely uses30mm opening target inside the unchanged[-20,40]mm actual range; original1um range tolerance retained.",
+          "No tangle-repair/role-handover variant, randomized seeds, hardware calibration or robustness claim.",
+          "Counterexample is an archivedv7 no-unlock short physical control on exactly identical physical model/initial13arrays+contacts; not a newv8 counter execution. Its deliberately held endpoint is unfinished release, while other raw physical bounds pass.",
+          "Producer Stretch self-contact omission is covered by the separate complete raw native audit; no producer-only acceptance."
+        ]
+      }
+    ],
+    "backup": {
+      "storage": "private Hugging Face dataset",
+      "status": "verified",
+      "files": 32019,
+      "gib": 318.761,
+      "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/d1f937109c4082a8d223e0d8a433296353987486/archives/workspace-20261104/f5-f7-accepted",
+      "data_revision": "403f9efc3046914f67eae23287aeb6c802cf624f",
+      "metadata_revision": "d1f937109c4082a8d223e0d8a433296353987486",
+      "shared_archive": true,
+      "configs_backed": 6,
+      "configs_total": 6
+    }
+  },
+  {
+    "family": "F7",
+    "name": {
+      "zh": "弹性绑固、诊断与恢复",
+      "en": "Elastic fastening, diagnosis and recovery"
+    },
+    "summary": {
+      "zh": "固定 G1/Dex3 完成货物弹性约束、绑带选择、松弛诊断、再张紧及同挂点重绑；当前交付五项。",
+      "en": "A fixed G1/Dex3 performs elastic cargo restraint, strap selection, slack diagnosis, retensioning and same-anchor rebinding across the five delivered configurations."
+    },
+    "acceptance": {
+      "zh": "作者于 2026-11-04 确认当前 5 项声明配置验收通过。任务修订及其适用范围随各项保留。",
+      "en": "The author accepted the current 5 declared configurations on 2026-11-04. Each task retains its declared revisions and scope."
+    },
+    "accepted_at": "2026-11-04",
+    "axes": {
+      "zh": "身体、工具、几何布局、材料状态与恢复策略。",
+      "en": "Body, tools, scene geometry, material state and recovery strategy."
+    },
+    "embodiments": [
+      {
+        "zh": "按各项冻结的原生机器人配置",
+        "en": "Native robot configuration frozen per case"
+      }
+    ],
+    "cases": [
+      {
+        "id": "F7-01-L1",
+        "title": {
+          "zh": "单件货物弹性绑固",
+          "en": "Elastic fastening of one cargo item"
+        },
+        "conditions": {
+          "zh": "选定固定骨盆G1/Dex3、单货物和数值接触/离散弹性材料配置；不代表硬件校准或所有机器人形态。",
+          "en": "Selected pelvis-fixed G1/Dex3, one cargo item and the declared numerical contact/discrete elastic material. This does not extend to untested body configurations or hardware calibration."
+        },
+        "design": {
+          "zh": "抓取并铺设单条弹性绑带，挂入可见锚点、张紧并退手，接受托盘扰动测试。",
+          "en": "Pick up and lay one elastic strap, engage the visible anchors, tension, withdraw and pass the pallet perturbation test."
+        },
+        "tools": [
+          {
+            "zh": "弹性绑带、实体挂点与张紧器",
+            "en": "Elastic strap, physical fittings and tensioner"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。选定固定骨盆G1/Dex3、单货物和数值接触/离散弹性材料配置；不代表硬件校准或所有机器人形态。",
+          "en": "Accepted. Selected pelvis-fixed G1/Dex3, one cargo item and the declared numerical contact/discrete elastic material. This does not extend to untested body configurations or hardware calibration."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F7/F7-01-L1.mp4",
+        "poster": "media/F7/F7-01-L1.jpg",
+        "speed": 8,
+        "source_duration": 80.49999999999379,
+        "elapsed_seconds": 80.49999999999379,
+        "video_duration": 10.125,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": false,
+        "source_manifest_sha256": "da1c7d14917a91a6da1e7927f07abb44b9e8c701f18bd939756ec85efef9fba4",
+        "video_sha256": "51cb666d5b2279c293c05daf4b0cb7abb040255d74ab58e8df4ab5acd10ef9a5",
+        "scope_gaps": []
+      },
+      {
+        "id": "F7-01-L2",
+        "title": {
+          "zh": "绑带与路径选择",
+          "en": "Strap and route selection"
+        },
+        "conditions": {
+          "zh": "选定seed3场景：两条独立带/两处扣件，根据几何与柔顺性作选择；其他随机布局与机器人形态另行验证。",
+          "en": "The selected seed-3 scene offers two independent straps and two fittings for geometry/compliance-based selection. Other random layouts and bodies require their own evidence."
+        },
+        "design": {
+          "zh": "依据可见锚点位置与材料柔顺性选择合适绑带和路径，完成抓取、固定、退手与测试。",
+          "en": "Choose a suitable strap and route from anchor geometry and material compliance, then grasp, fasten, withdraw and test."
+        },
+        "tools": [
+          {
+            "zh": "弹性绑带、实体挂点与张紧器",
+            "en": "Elastic strap, physical fittings and tensioner"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。选定seed3场景：两条独立带/两处扣件，根据几何与柔顺性作选择；其他随机布局与机器人形态另行验证。",
+          "en": "Accepted. The selected seed-3 scene offers two independent straps and two fittings for geometry/compliance-based selection. Other random layouts and bodies require their own evidence."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F7/F7-01-L2.mp4",
+        "poster": "media/F7/F7-01-L2.jpg",
+        "speed": 8,
+        "source_duration": 84.23999999998507,
+        "elapsed_seconds": 84.23999999998507,
+        "video_duration": 10.583333333333334,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": false,
+        "source_manifest_sha256": "2f1db4450f19d18ce95da4a6e8fef7b9e42e8e608cc2a03b80d698693d98145e",
+        "video_sha256": "5aee433fe698f779d7c62addd195fb267127c00011a453e8d26ab63f0378f46f",
+        "scope_gaps": []
+      },
+      {
+        "id": "F7-01-L3",
+        "title": {
+          "zh": "两件独立货物约束",
+          "en": "Restraint of two independent cargo items"
+        },
+        "conditions": {
+          "zh": "一条既有低预载绑带与两件独立货物。初始获取和从零安装绑带不计信用；不覆盖双机器人、多绑带和随机排列。",
+          "en": "One existing low-preload strap and two independent cargo items. Initial acquisition and installation from scratch are outside this result, as are two-robot, multiple-strap and random-layout settings."
+        },
+        "design": {
+          "zh": "对两件独立货物共用的既有松绑带先作运动诊断，再纠正张力、双手退出并重新测试。",
+          "en": "Diagnose the existing slack strap shared by two independent cargo items, correct tension, withdraw both hands and retest."
+        },
+        "tools": [
+          {
+            "zh": "弹性绑带、实体挂点与张紧器",
+            "en": "Elastic strap, physical fittings and tensioner"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。一条既有低预载绑带与两件独立货物。初始获取和从零安装绑带不计信用；不覆盖双机器人、多绑带和随机排列。",
+          "en": "Accepted. One existing low-preload strap and two independent cargo items. Initial acquisition and installation from scratch are outside this result, as are two-robot, multiple-strap and random-layout settings."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F7/F7-01-L3.mp4",
+        "poster": "media/F7/F7-01-L3.jpg",
+        "speed": 8,
+        "source_duration": 45.12000000000918,
+        "elapsed_seconds": 45.12000000000918,
+        "video_duration": 5.708333333333333,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": true,
+        "source_manifest_sha256": "ad0401ffad5a0715c91c96b45dbd189bc26cedd1dbe2d960c945ac5a86b9525e",
+        "video_sha256": "eb4f699769fbd0b57d854cc3308e8bbda649c3d4e5451cf483d3817754bb982c",
+        "scope_gaps": [
+          "This revised profile begins with a real installed low-preload restraint; off-cargo initial strap acquisition and installation over multiple cargo items remain unverified",
+          "One bimanual fixed-pelvis G1 and one deterministic two-item arrangement; two robots, multiple straps and randomized robustness remain separate"
+        ]
+      },
+      {
+        "id": "F7-02-L1",
+        "title": {
+          "zh": "松带诊断与再张紧",
+          "en": "Slack diagnosis and retensioning"
+        },
+        "conditions": {
+          "zh": "既有低预载绑带的实际张紧恢复配置；不提供错误锚点重布或有害扭转纠正信用。",
+          "en": "Actual retensioning of an existing low-preload strap; wrong-anchor rerouting and harmful-twist correction are outside this result."
+        },
+        "design": {
+          "zh": "识别现有绑带的明显松弛，操作真实张紧器恢复预载，退手后复检。",
+          "en": "Identify slack in an existing strap, use the physical tensioner to restore preload, withdraw and retest."
+        },
+        "tools": [
+          {
+            "zh": "弹性绑带、实体挂点与张紧器",
+            "en": "Elastic strap, physical fittings and tensioner"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。既有低预载绑带的实际张紧恢复配置；不提供错误锚点重布或有害扭转纠正信用。",
+          "en": "Accepted. Actual retensioning of an existing low-preload strap; wrong-anchor rerouting and harmful-twist correction are outside this result."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F7/F7-02-L1.mp4",
+        "poster": "media/F7/F7-02-L1.jpg",
+        "speed": 8,
+        "source_duration": 49.98000000001512,
+        "elapsed_seconds": 49.98000000001512,
+        "video_duration": 6.291666666666667,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": false,
+        "source_manifest_sha256": "b86bb9d5f9fa2fd50b5789d702c339b088f6c33bc3a28d093fba2d97cf7a4f43",
+        "video_sha256": "5fae531326a57a6bb3bc7c52251fc41ee047d277f9e8da2e60478cc3a03b936b",
+        "scope_gaps": []
+      },
+      {
+        "id": "F7-02-L3",
+        "title": {
+          "zh": "承托解钩与同挂点重绑",
+          "en": "Supported unhooking and same-anchor rebinding"
+        },
+        "conditions": {
+          "zh": "选择既有约束上的承托解钩与同挂点重绑技能。未要求解钩是修复初始松弛的唯一必要策略。",
+          "en": "Supported unhooking and rebinding at the same fitting on an existing restraint. Unhooking is not established as the only necessary way to repair the initial slack."
+        },
+        "design": {
+          "zh": "保持货物支撑，卸载并退出U形挂钩，在同一实体扣件重绑、恢复张力、退手并复检。",
+          "en": "Support the cargo, unload and disengage the U-hook, rebind at the same physical fitting, restore tension, withdraw and retest."
+        },
+        "tools": [
+          {
+            "zh": "弹性绑带、实体挂点与张紧器",
+            "en": "Elastic strap, physical fittings and tensioner"
+          }
+        ],
+        "embodiment": {
+          "zh": "原生 G1 / Dex3 · 固定基座",
+          "en": "Native G1 / Dex3, fixed base"
+        },
+        "platforms": [
+          "Unitree G1"
+        ],
+        "result": {
+          "zh": "已验收通过。选择既有约束上的承托解钩与同挂点重绑技能。未要求解钩是修复初始松弛的唯一必要策略。",
+          "en": "Accepted. Supported unhooking and rebinding at the same fitting on an existing restraint. Unhooking is not established as the only necessary way to repair the initial slack."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/F7/F7-02-L3.mp4",
+        "poster": "media/F7/F7-02-L3.jpg",
+        "speed": 8,
+        "source_duration": 107.55999999993072,
+        "elapsed_seconds": 107.55999999993072,
+        "video_duration": 13.5,
+        "accepted_at": "2026-11-04",
+        "evidence_backed_up": true,
+        "revised_configuration": true,
+        "source_manifest_sha256": "1238ff1fe3e59de41672002044d874d38b9c24f4b4de2912de30aa21f6e6d3df",
+        "video_sha256": "0a74853c8ee990b4c9815755b9c143e488d7a98f9f09b24669fc1137cd815a89",
+        "scope_gaps": [
+          "未建立不同锚点、重新走带或更换绑带的必要故障条件；保留相同挂点的实际技能验证范围。"
+        ]
+      }
+    ],
+    "backup": {
+      "storage": "private Hugging Face dataset",
+      "status": "verified",
+      "files": 32019,
+      "gib": 318.761,
+      "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/d1f937109c4082a8d223e0d8a433296353987486/archives/workspace-20261104/f5-f7-accepted",
+      "data_revision": "403f9efc3046914f67eae23287aeb6c802cf624f",
+      "metadata_revision": "d1f937109c4082a8d223e0d8a433296353987486",
+      "shared_archive": true,
+      "configs_backed": 5,
+      "configs_total": 5
+    }
+  },
+  {
     "family": "FT",
     "name": {
       "zh": "易碎烧瓶搬运：按身体选工具与能力自建模",
