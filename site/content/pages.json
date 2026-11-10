@@ -1,0 +1,152 @@
+{
+  "research": {
+    "title_zh": "研究问题",
+    "title_en": "Research questions",
+    "lead_zh": "机器人能否通过写代码和做物理实验，发现工具的用途、判断自身能力，完成需要多步操作的任务？",
+    "lead_en": "Can a robot use code and physical experiments to discover tools, assess its own capabilities, and complete tasks that require several steps?",
+    "sections": [
+      {
+        "id": "physical-tasks",
+        "title_zh": "围绕物理难点组织任务",
+        "title_en": "Tasks organized around physical challenges",
+        "body_zh": "任务按取物与可达性、负载与搬运、精细操作与装配、柔性材料、多步规划与流程、动态响应与时机六类组织。难点来自工具选择、操作前置条件、接触与支撑、时序和失败恢复，而不只是抵达一个位置。\n\n任务给出目标和约束，不规定唯一动作路线。每个配置保留自己的身体、场景、预算和验收范围；简化场景与局部目标会明确说明。",
+        "body_en": "The tasks are grouped into access and retrieval, loads and transport, fine manipulation and assembly, deformable materials, multistep planning and procedures, and dynamic response and timing. Their challenges involve tool choice, prerequisites, contact and support, timing, and recovery.\n\nTasks specify goals and constraints without prescribing a single action sequence. Each configuration retains its body, scene, budget, and acceptance scope. Simplified scenes and partial goals are identified explicitly.",
+        "links": [{"label_zh": "浏览六类任务", "label_en": "Explore the six categories", "url": "/robo-si-results/tasks/"}]
+      },
+      {
+        "id": "body-and-tools",
+        "title_zh": "把身体能力纳入问题",
+        "title_en": "Make bodily capability part of the problem",
+        "body_zh": "同一个目标，可能需要不同身体选择不同的工具和方法。任务考察可达范围、抓持方式、力矩、负载和移动能力如何影响计划，以及机器人能否用有限试验修正判断。\n\n部分任务的合法结果是安全退出。正确退出需要任务规定的证据；一次失败或一个策略没有找到解，不能证明任务在物理上不可行。",
+        "body_en": "The same goal may require different tools and methods for different bodies. Tasks examine how reach, grasp, torque, payload, and mobility affect a plan, and whether limited experiments can improve those judgments.\n\nSome tasks have a valid safe-exit outcome. A correct exit requires the evidence specified by the task; one failed attempt or an unsuccessful policy does not establish physical impossibility."
+      },
+      {
+        "id": "execution-and-evidence",
+        "title_zh": "用执行记录检验程序",
+        "title_en": "Evaluate programs through execution evidence",
+        "body_zh": "执行接口将 agent 与可信环境和评分器分开。评分依据任务规定的状态、接触、支撑关系与保持时长，并分别报告阶段进度、最终成功和运行有效性。视频帮助观察过程，不能替代物理记录。\n\n当前展示包含 246 条独立参考录像，覆盖 247 个公开配置。这些记录保留历史执行、特权专家和普通接口运行的区别，不是某个新 agent 的成功率。接口探针、历史重评分和新的完整策略运行也应分别报告。",
+        "body_en": "The execution interface separates the agent from the trusted environment and scorer. Evaluation uses the specified state, contact, support, and hold-time evidence, reporting progress, final success, and run validity separately. Video helps readers inspect behavior; it does not replace physical records.\n\nThe gallery contains 246 unique reference recordings covering 247 public configurations. Historical runs, privileged experts, and ordinary-interface runs remain distinct. These records are not a new agent's success rate. Interface probes, historical regrading, and fresh complete policy runs must also be reported separately.",
+        "links": [{"label_zh": "运行与评分说明", "label_en": "Execution and scoring guide", "url": "/robo-si-results/guide.html"}]
+      },
+      {
+        "id": "rq1",
+        "title_zh": "RQ1：写程序能带来什么？",
+        "title_en": "RQ1: What does programming add?",
+        "body_zh": "在推理模型、底层控制器、观察、任务和预算匹配的条件下，比较固定技能接口与可编程接口。直接 VLA 系统作为系统级参照；可复用程序在开发阶段结束后冻结，再评估新任务。\n\n同时比较成功、恢复能力和计算与交互成本。若性能提升来自更强的控制器或更多试验预算，就不能单独归因于写代码；复用已知路线也不等于迁移能力。",
+        "body_en": "Compare fixed-skill and programmable interfaces while matching the reasoning model, low-level controller, observations, tasks, and budgets. Direct VLA systems provide a system-level reference. Reusable programs are frozen after development before evaluation on new tasks.\n\nMeasure success, recovery, and computation and interaction costs. Gains from a stronger controller or additional trials cannot be attributed to programming alone. Replaying a known route is not evidence of transfer."
+      },
+      {
+        "id": "rq2",
+        "title_zh": "RQ2：机器人能否通过试验发现工具的用途？",
+        "title_en": "RQ2: Can experiments reveal how a tool can be used?",
+        "body_zh": "要求 agent 在试验前记录假设、预测与置信度，再根据反馈更新判断。比较只观察、同预算随机试验、有信息目的的试验，以及移除反馈的条件。\n\n通过移除工具、替换工具属性或改变可达条件，检验策略是否使用了对应的物理关系。文字解释或一次成功都不足以单独证明物理推理。",
+        "body_en": "Ask the agent to record hypotheses, predictions, and confidence before a probe, then update them from feedback. Compare observation alone, random probes with the same budget, informative probes, and conditions without feedback.\n\nRemove tools, change their properties, or intervene on reachability to test whether behavior depends on the relevant physical relationships. A verbal explanation or a single success is insufficient evidence of physical reasoning."
+      },
+      {
+        "id": "rq3",
+        "title_zh": "RQ3：能力自建模能否迁移到新的身体条件？",
+        "title_en": "RQ3: Can capability self-modeling transfer to a changed body?",
+        "body_zh": "保持世界和目标不变，改变可达范围、夹爪、力矩或移动能力；同时设置只改变世界的对照。比较无记忆、同容量一般记忆、显式能力记忆，以及已知完整能力信息的上界。\n\n能力记录应包含适用条件、证据和失败边界，而不只是机器人名称。上述比较是待检验的研究设计；当前参考视频不构成这些比较已经取得结果的证据。",
+        "body_en": "Hold the world and goal fixed while changing reach, gripper, torque, or mobility, with world-only changes as controls. Compare no memory, general memory of equal capacity, explicit capability memory, and an upper bound with complete capability information.\n\nCapability records should include conditions, evidence, and failure boundaries rather than just robot names. These comparisons are research designs to be tested; the reference videos do not establish their outcomes."
+      }
+    ]
+  },
+  "guide": {
+    "title_zh": "运行一个任务",
+    "title_en": "Run a task",
+    "lead_zh": "视频可以直接浏览。下载执行包、恢复环境和测试自己的 agent，需要相应的 GitHub 仓库与 Hugging Face 数据集访问权限。",
+    "lead_en": "The videos are public. Downloading the execution package, restoring the environment, and testing your own agent require access to the corresponding GitHub repository and Hugging Face dataset.",
+    "sections": [
+      {
+        "id": "download",
+        "title_zh": "1. 下载并校验",
+        "title_en": "1. Download and verify",
+        "body_zh": "从安装手册开始，按固定版本清单下载代码、运行时、环境、镜像和证据分卷。分卷需要完整保留，并通过清单校验；只下载视频不能运行任务。\n\n先检查访问权限和清单列出的磁盘需求。手册中的下载与校验步骤完成后，再开始恢复。",
+        "body_en": "Start with the installation manual and its pinned manifest for code, runtime, environments, images, and evidence volumes. Keep all required volumes and verify them against the manifest. Downloading videos alone does not make tasks executable.\n\nCheck access and the disk requirements in the manifest before restoring the package.",
+        "links": [
+          {"label_zh": "完整安装与 agent 测试手册（需权限）", "label_en": "Installation and agent testing manual (access required)", "url": "https://github.com/wuxiyang1996/robo-si/blob/main/doc/hf-246/README-zh.md"},
+          {"label_zh": "固定版本运行包（需权限）", "label_en": "Pinned runtime package (access required)", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/9dbaa30876fe4b2140af61dcb836d4d9ad32d646/releases/benchmark-246-runtime-and-evidence-20261109-v1"}
+        ]
+      },
+      {
+        "id": "environment",
+        "title_zh": "2. 恢复并检查环境",
+        "title_en": "2. Restore and check the environment",
+        "body_zh": "已验证的环境以 Windows x86_64、NVIDIA GPU、WSL2 和 Docker Linux 引擎为基础。先预览恢复路径，再按手册恢复仓库、运行时、Python 环境和容器镜像，执行各项环境检查。\n\n不同任务族存在专用依赖：例如 F2 的冻结场景需要对应 MuJoCo 版本，F4 使用 WSL 原生 IPC 环境。不要用一个通用环境替换这些依赖；当前记录也不代表任意 Linux、macOS 或 ARM 主机已经验证。",
+        "body_en": "The verified setup uses Windows x86_64, an NVIDIA GPU, WSL2, and a Docker Linux engine. Preview restoration paths, then restore the repository, runtime, Python environments, and container images and run the manual's checks.\n\nSome families have specific dependencies: F2's frozen scenes require the matching MuJoCo version, while F4 uses a native IPC environment in WSL. A generic environment is not a substitute. The existing checks do not establish support for arbitrary Linux, macOS, or ARM hosts.",
+        "links": [{"label_zh": "安装与验证环境", "label_en": "Environment installation and checks", "url": "https://github.com/wuxiyang1996/robo-si/blob/main/doc/hf-246/README-zh.md#安装与验证环境"}]
+      },
+      {
+        "id": "first-run",
+        "title_zh": "3. 先跑一个短探针",
+        "title_en": "3. Start with a short probe",
+        "body_zh": "按手册运行 F1-01-L1-rigid 示例：读取图像和关节状态，再执行一个有界物理步。为每次运行使用新的名称，检查输出是否包含真实物理执行和独立评分结果。\n\n这个探针用于检查接口，预期是有效运行、非 VOID、得分 0 且未完成任务。dry-run 只检查配置，不执行物理仿真，也不证明完整策略能成功。",
+        "body_en": "Run the manual's F1-01-L1-rigid example: read an image and joint state, then execute one bounded physical step. Use a new run name each time and check that the output records new physics and independent scoring.\n\nThis interface probe is expected to be valid and non-VOID, with score 0 and task success false. A dry run only checks configuration; it neither executes physics nor demonstrates a successful complete policy.",
+        "links": [
+          {"label_zh": "运行第一个 agent 测试", "label_en": "Run the first agent test", "url": "https://github.com/wuxiyang1996/robo-si/blob/main/doc/hf-246/README-zh.md#运行第一个-agent-测试"},
+          {"label_zh": "F1 探针代码", "label_en": "F1 probe source", "url": "https://github.com/wuxiyang1996/robo-si/blob/main/doc/hf-246/examples/f1_probe/agent.py"}
+        ]
+      },
+      {
+        "id": "your-agent",
+        "title_zh": "4. 接入自己的策略",
+        "title_en": "4. Connect your own policy",
+        "body_zh": "将策略和依赖整理为独立提交，通过对应任务族的公开 SDK 获取信息、观察、发送动作并结束回合。H1/H2、装配、多机器人和 SK 等接口并不完全相同，先确认目标任务的契约。\n\n现有固定策略容器不开放外网，不能在运行时调用云端模型或临时安装依赖。需要在线写代码或外部模型调用的实验，应另行声明协议与预算，不能把它当作同一评测条件。",
+        "body_en": "Package the policy and its dependencies as a separate submission. Use the task family's public SDK to get information, observe, send actions, and finish the episode. H1/H2, assembly, multi-robot tasks, and SK do not share an identical interface; check the target contract first.\n\nThe existing fixed-policy container has no external network access, so it cannot call cloud models or install dependencies during a run. Experiments requiring online coding or external model calls need a separately declared protocol and budget.",
+        "links": [{"label_zh": "提交自己的策略", "label_en": "Submit your own policy", "url": "https://github.com/wuxiyang1996/robo-si/blob/main/doc/hf-246/README-zh.md#提交自己的策略"}]
+      },
+      {
+        "id": "score",
+        "title_zh": "5. 读取结果，再扩展测试",
+        "title_en": "5. Inspect results before expanding the test",
+        "body_zh": "从 evaluation.json 检查运行是否结束、是否执行新物理、评分器是否完成，再分别读取运行有效性、阶段分、最终成功和原生评分结果。进程退出码为 0 不等于任务成功。\n\n分阶段评分按冻结规则处理依赖、阈值和保持时长：里程碑保留已达进度，持续条件看当前值，回合分取同一时刻加权进度的峰值。正确退出任务保留原目标。扩大测试前，核对每项配置的预算、接口与验证范围。",
+        "body_en": "In evaluation.json, check completion, new physical execution, and scoring, then inspect validity, stage score, final success, and native scoring separately. A process exit code of 0 does not mean task success.\n\nStaged scoring follows frozen dependencies, thresholds, and hold times. Milestones retain achieved progress; continuing conditions use current values; the episode score is the peak weighted progress at a single time. Safe-exit tasks retain their original goals. Check each configuration's budget, interface, and verification scope before scaling up.",
+        "links": [{"label_zh": "结果判读与常见问题", "label_en": "Results and troubleshooting", "url": "https://github.com/wuxiyang1996/robo-si/blob/main/doc/hf-246/README-zh.md#读取结果与判定是否通过"}]
+      }
+    ]
+  },
+  "archive": {
+    "title_zh": "资料存档",
+    "title_en": "Archive",
+    "lead_zh": "研究沿革、原始记录和下载材料集中保留在这里。当前任务入口与研究说明使用主站页面，历史资料保留其原有日期和验证范围。",
+    "lead_en": "Research history, original records, and download materials are collected here. Use the main site for current task navigation and research questions; historical material retains its original date and verification scope.",
+    "sections": [
+      {
+        "id": "research-history",
+        "title_zh": "研究沿革",
+        "title_en": "Research history",
+        "body_zh": "旧提案保留了问题形成过程、实验对照和当时的任务进度。它们是有日期的研究快照，其中的计数和待办事项不应替代当前任务目录。",
+        "body_en": "Earlier proposals preserve the development of the research questions, experimental controls, and task progress at the time. They are dated snapshots; their counts and open items should not replace the current task catalog.",
+        "links": [
+          {"label_zh": "当前研究问题", "label_en": "Current research questions", "url": "/robo-si-results/research.html"},
+          {"label_zh": "原始研究提案源码", "label_en": "Original research proposal source", "url": "https://github.com/wuxiyang1996/robo-si-results/blob/b395aee4e0254f1264b5b5c5479f09d5052e991e/doc/self-modeling-benchmark-v6-zh.html"},
+          {"label_zh": "历史执行与评分文档", "label_en": "Historical execution and scoring documents", "url": "https://github.com/wuxiyang1996/robo-si-results/tree/b395aee4e0254f1264b5b5c5479f09d5052e991e/infra"}
+        ]
+      },
+      {
+        "id": "reference-records",
+        "title_zh": "参考记录与来源",
+        "title_en": "Reference records and provenance",
+        "body_zh": "原始条件、执行结果和验收范围与视频来源清单一并保留。清单记录视频地址、速度、校验值和版本来源；展示素材的修改不等于新的物理执行。历史记录、特权专家和普通接口运行仍需分别理解。\n\n未完成或暂停的目标不会因为资料仍在仓库中，就成为已完成录像的一部分。",
+        "body_en": "Original conditions, execution results, and acceptance scope are retained alongside video provenance. The manifest records URLs, speed, checksums, and version origins. Presentation changes do not constitute new physical runs. Historical records, privileged experts, and ordinary-interface runs remain distinct.\n\nIncomplete or paused goals do not become completed recordings merely because their materials remain in the repository.",
+        "links": [
+          {"label_zh": "历史验收页源码", "label_en": "Historical acceptance page source", "url": "https://github.com/wuxiyang1996/robo-si-results/blob/b395aee4e0254f1264b5b5c5479f09d5052e991e/archive-accepted-20261104.html"},
+          {"label_zh": "视频来源清单", "label_en": "Video provenance manifest", "url": "https://github.com/wuxiyang1996/robo-si-results/blob/b395aee4e0254f1264b5b5c5479f09d5052e991e/data/video-gallery.json"},
+          {"label_zh": "完整历史源码与证据", "label_en": "Complete historical source and evidence", "url": "https://github.com/wuxiyang1996/robo-si-results/tree/b395aee4e0254f1264b5b5c5479f09d5052e991e"}
+        ]
+      },
+      {
+        "id": "runtime-materials",
+        "title_zh": "下载与复现材料",
+        "title_en": "Download and reproduction materials",
+        "body_zh": "Hugging Face 分卷包含代码、资产、运行时、环境、镜像、证据和校验清单，下载需要权限。请按手册选择固定版本并完整校验；视频包与可执行环境承担不同用途。",
+        "body_en": "The Hugging Face volumes include code, assets, runtime, environments, images, evidence, and checksum manifests. Access is required. Follow the manual to select and verify a pinned release; video packages and executable environments serve different purposes.",
+        "links": [
+          {"label_zh": "安装与使用说明", "label_en": "Installation and usage", "url": "/robo-si-results/guide.html"},
+          {"label_zh": "运行包与证据（需权限）", "label_en": "Runtime and evidence (access required)", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/9dbaa30876fe4b2140af61dcb836d4d9ad32d646/releases/benchmark-246-runtime-and-evidence-20261109-v1"},
+          {"label_zh": "历史视频与沙盒检查包（需权限）", "label_en": "Historical videos and sandbox checks (access required)", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/de48c0394a22e969429caced0e94e49431685bc0/releases/benchmark-videos-staged-sandboxes-20261108-checkpoint-v1"}
+        ]
+      }
+    ]
+  }
+}

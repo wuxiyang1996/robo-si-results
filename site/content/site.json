@@ -1,0 +1,169 @@
+{
+  "name": "Embodied Terminal-Bench",
+  "short_name": "robo-si",
+  "base_url": "https://wuxiyang1996.github.io/robo-si-results/",
+  "base_path": "/robo-si-results/",
+  "archive_commit": "b395aee4e0254f1264b5b5c5479f09d5052e991e",
+  "research_question_zh": "机器人能否自己找到办法？",
+  "research_question_en": "Can a robot find its own way?",
+  "intro_zh": "给机器人一个目标，让它通过写代码和做物理实验，发现手边物体的用途，判断自身的能力，再把多步操作连成一个可行的方案。",
+  "intro_en": "Give a robot a goal. Can it write code, test ideas in a physical world, discover what objects can do, and choose a plan that fits its own capabilities?",
+  "keywords_zh": [
+    "具身智能",
+    "机器人基准",
+    "编程智能体",
+    "自我建模",
+    "物理工具使用",
+    "跨身体",
+    "多机器人协作",
+    "物理仿真",
+    "分阶段评分"
+  ],
+  "keywords_en": [
+    "embodied intelligence",
+    "robotics benchmark",
+    "coding agents",
+    "self-modeling",
+    "physical tool use",
+    "cross-embodiment",
+    "multi-robot collaboration",
+    "physics simulation",
+    "stage-based evaluation"
+  ],
+  "tag_labels": {
+    "信息协作":"Information sharing", "动态响应":"Dynamic response", "受限空间":"Confined space",
+    "多机器人":"Multiple robots", "安全退出":"Safe exit", "工具使用":"Tool use", "接触控制":"Contact control",
+    "搬运":"Transport", "柔性物体":"Deformable objects", "流程执行":"Procedures", "空间规划":"Spatial planning",
+    "能力边界":"Capability limits", "装配":"Assembly", "跨身体":"Cross-embodiment"
+  },
+  "contributions": [
+    {
+      "title_zh": "需要探索的物理任务",
+      "title_en": "Physical problems to explore",
+      "body_zh": "目标明确，工具的用途和操作顺序留给机器人判断。从取物到协作，考察它怎样试出可行的办法。",
+      "body_en": "The goal is clear; tool roles and action order are left open. Tasks ask robots to work out a feasible approach, from retrieval to collaboration."
+    },
+    {
+      "title_zh": "会改变解法的身体差异",
+      "title_en": "Bodies that change the solution",
+      "body_zh": "手臂够多远、能搬多重、能否爬台阶，都会改变选择。我们用不同身体和不可行场景检验这些判断。",
+      "body_en": "Reach, payload and mobility change the available options. Different bodies and infeasible cases make those decisions part of the task."
+    },
+    {
+      "title_zh": "可执行、可复核的评测",
+      "title_en": "Execution that can be checked",
+      "body_zh": "agent 与环境、评分器分开。用物理记录评估阶段进度和最终结果，参考录像与原始证据可供核对。",
+      "body_en": "The agent is separated from the environment and evaluator. Physical records establish progress and outcomes, with reference videos and evidence to inspect."
+    }
+  ],
+  "categories": [
+    {
+      "id": "access",
+      "number": "01",
+      "title_zh": "取物与通路搭建",
+      "title_en": "Access & retrieval",
+      "description_zh": "够不到、过不去时，怎样利用周围的东西？",
+      "description_en": "When a target is out of reach or across a gap, what can make a route possible?",
+      "families": [
+        "H1",
+        "H4",
+        "M1",
+        "M3",
+        "FRG",
+        "SLR"
+      ],
+      "demo": "H4-ORIG.L1.G",
+      "demo_zh": "把板搭成桥，再通过缺口",
+      "demo_en": "Place a bridge and cross the gap"
+    },
+    {
+      "id": "transport",
+      "number": "02",
+      "title_zh": "搬运与运输",
+      "title_en": "Moving loads",
+      "description_zh": "搬不动的物体，能否借助工具或伙伴移走？",
+      "description_en": "Can tools or partners help move a load that one robot cannot carry?",
+      "families": [
+        "H2",
+        "H5",
+        "H6",
+        "M2",
+        "M4",
+        "F5"
+      ],
+      "demo": "H5S-01",
+      "demo_zh": "借助杠杆移动重物",
+      "demo_en": "Use a lever to move a heavy load"
+    },
+    {
+      "id": "contact",
+      "number": "03",
+      "title_zh": "精细操作与装配",
+      "title_en": "Contact & assembly",
+      "description_zh": "在接触、支撑和稳定之间，把动作做准确。",
+      "description_en": "Coordinate contact, support and stability to make a precise manipulation work.",
+      "families": [
+        "ASM",
+        "GEAR",
+        "JNG",
+        "DF",
+        "DR",
+        "FT"
+      ],
+      "demo": "JNG-01",
+      "demo_zh": "从木塔中取出一块，再重新搭放",
+      "demo_en": "Extract a block and restack it"
+    },
+    {
+      "id": "deformable",
+      "number": "04",
+      "title_zh": "柔性物体操作",
+      "title_en": "Deformable objects",
+      "description_zh": "布料、线缆和弹性件会变形，动作也要随之调整。",
+      "description_en": "Cloth, cables and elastic parts change shape. The plan has to adapt with them.",
+      "families": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F6",
+        "F7"
+      ],
+      "demo": "F6-01-L3",
+      "demo_zh": "处理线缆卡滞，调整固定位置",
+      "demo_en": "Free a jammed cable and adjust its attachment"
+    },
+    {
+      "id": "planning",
+      "number": "05",
+      "title_zh": "多步规划与流程执行",
+      "title_en": "Planning over many steps",
+      "description_zh": "先做什么、谁来做，以及出错后怎么接着做。",
+      "description_en": "Decide what comes first, who does it, and how to continue after a setback.",
+      "families": [
+        "SK",
+        "Hanoi",
+        "MTC",
+        "SC",
+        "PC"
+      ],
+      "demo": "PC-01",
+      "demo_zh": "两台机器人分工准备一餐",
+      "demo_en": "Two robots prepare a meal together"
+    },
+    {
+      "id": "dynamic",
+      "number": "06",
+      "title_zh": "动态响应与时机判断",
+      "title_en": "Timing & response",
+      "description_zh": "面对不断变化的来球，选对动作，也选对时机。",
+      "description_en": "Read a moving ball, choose the stroke, and time the response.",
+      "families": [
+        "TT"
+      ],
+      "demo": "TT-R-G-U",
+      "demo_zh": "G1 与 UR10e 机械臂对打",
+      "demo_en": "G1 rallies with a UR10e arm"
+    }
+  ]
+}

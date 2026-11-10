@@ -23,24 +23,16 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/configure-pages@v5
-      - name: Verify gallery manifest
+      - name: Build the research site and historical links
         run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          root = Path('.')
-          catalog = json.loads((root / 'data/video-gallery.json').read_text())
-          assert len(catalog['records']) == 246
-          assert len({r['record_id'] for r in catalog['records']}) == 246
-          assert all(r['speed'] == 8 for r in catalog['records'])
-          assert len(list((root / 'infra/categories').glob('*.html'))) == 6
-          assert len(list((root / 'infra/families').glob('*.html'))) == 30
-          assert json.loads((root / 'data/gallery-validation.json').read_text())['passed']
-          PY
+          python3 tools/build_site.py
+          python3 tools/check_site.py --root dist
+          node --check site/assets/site.js
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -52,7 +44,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy the complete site and evidence archive
+      - name: Deploy the research site
         id: deployment
         uses: actions/deploy-pages@v5
         with:
