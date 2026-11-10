@@ -186,6 +186,156 @@
     window.addEventListener('popstate',()=>{readFilters();filter(false);revealHashTarget()});
     filter(false);
   }
+  // Research explorers are optional: their full content stays visible without JS.
+  document.querySelectorAll('[data-track-explorer]').forEach(explorer=>{
+    const tabs=[...explorer.querySelectorAll('[data-track-tab]')];
+    const panels=[...explorer.querySelectorAll('[data-track-panel]')];
+    const paired=tabs.map(tab=>panels.find(panel=>panel.id===tab.getAttribute('aria-controls')));
+    const tablist=explorer.querySelector('[data-track-tablist]')||tabs[0]?.parentElement;
+    if(tabs.length<2||paired.some(panel=>!panel)||!tablist||panels.some(panel=>tablist.contains(panel)))return;
+    tablist.setAttribute('role','tablist');
+    const verticalTabs=window.matchMedia('(max-width: 760px)');
+    const updateTabOrientation=()=>tablist.setAttribute('aria-orientation',verticalTabs.matches?'vertical':'horizontal');
+    updateTabOrientation();verticalTabs.addEventListener('change',updateTabOrientation);
+    if(!tablist.hasAttribute('aria-label')&&!tablist.hasAttribute('aria-labelledby')){
+      tablist.dataset.labelZh='评测设置';tablist.dataset.labelEn='Evaluation tracks';
+      tablist.setAttribute('aria-label',text(tablist.dataset.labelZh,tablist.dataset.labelEn));
+    }
+    tabs.forEach((tab,index)=>{
+      tab.setAttribute('role','tab');
+      const panel=paired[index];panel.setAttribute('role','tabpanel');
+      panel.setAttribute('aria-labelledby',tab.id);panel.tabIndex=0;
+    });
+    function select(index,focus=false){
+      tabs.forEach((tab,i)=>{
+        const active=i===index;tab.setAttribute('aria-selected',String(active));
+        tab.tabIndex=active?0:-1;tab.classList.toggle('is-active',active);paired[i].hidden=!active;
+      });
+      if(focus)tabs[index].focus();
+    }
+    tabs.forEach((tab,index)=>{
+      tab.addEventListener('click',()=>select(index));
+      tab.addEventListener('keydown',event=>{
+        let next=index;
+        if(event.key==='ArrowRight'||(verticalTabs.matches&&event.key==='ArrowDown'))next=(index+1)%tabs.length;
+        else if(event.key==='ArrowLeft'||(verticalTabs.matches&&event.key==='ArrowUp'))next=(index+tabs.length-1)%tabs.length;
+        else if(event.key==='Home')next=0;
+        else if(event.key==='End')next=tabs.length-1;
+        else return;
+        event.preventDefault();select(next,true);
+      });
+    });
+    explorer.classList.add('is-enhanced');
+    select(Math.max(0,tabs.findIndex(tab=>tab.getAttribute('aria-selected')==='true')));
+  });
+
+  document.querySelectorAll('[data-sandbox-explorer]').forEach((explorer,explorerIndex)=>{
+    const parts=[...explorer.querySelectorAll('[data-sandbox-part]')];
+    const panels=[...explorer.querySelectorAll('[data-sandbox-panel]')];
+    const panelByPart=new Map(panels.map(panel=>[panel.dataset.sandboxPanel,panel]));
+    if(!parts.length||parts.some(part=>!panelByPart.has(part.dataset.sandboxPart)))return;
+    const steps=[...explorer.querySelectorAll('[data-sandbox-walkthrough] [data-sandbox-step]')]
+      .sort((a,b)=>Number(a.dataset.sandboxStep)-Number(b.dataset.sandboxStep));
+    const previous=explorer.querySelector('[data-sandbox-prev]'),next=explorer.querySelector('[data-sandbox-next]');
+    const count=explorer.querySelector('[data-sandbox-step-count]');
+    let currentStep=-1;
+    parts.forEach(part=>{
+      const component=part.dataset.sandboxPart,panel=panelByPart.get(component);
+      if(!part.id)part.id=`sandbox-explorer-${explorerIndex+1}-${component}`;
+      panel.setAttribute('role','region');panel.setAttribute('aria-labelledby',part.id);
+      panel.tabIndex=0;
+    });
+    steps.forEach(step=>{
+      const panel=panelByPart.get(step.dataset.component);
+      if(panel?.id)step.setAttribute('aria-controls',panel.id);
+    });
+    if(count){count.setAttribute('role','status');count.setAttribute('aria-live','polite');count.setAttribute('aria-atomic','true')}
+    function select(component,stepIndex){
+      if(!panelByPart.has(component))return;
+      currentStep=stepIndex===undefined?steps.findIndex(step=>step.dataset.component===component):stepIndex;
+      explorer.dataset.activePart=component;
+      parts.forEach(part=>{
+        const active=part.dataset.sandboxPart===component;
+        part.classList.toggle('is-active',active);part.setAttribute('aria-pressed',String(active));
+      });
+      panels.forEach(panel=>{panel.hidden=panel.dataset.sandboxPanel!==component});
+      steps.forEach((step,index)=>{
+        const active=index===currentStep;step.classList.toggle('is-active',active);
+        if(active)step.setAttribute('aria-current','step');else step.removeAttribute('aria-current');
+        step.setAttribute('aria-expanded',String(active));
+        const copy=step.parentElement.querySelector('.walkthrough-copy');
+        if(copy)copy.hidden=!active;
+      });
+      if(previous)previous.disabled=currentStep<=0;
+      if(next)next.disabled=currentStep<0||currentStep>=steps.length-1;
+      if(count){
+        const position=currentStep<0?'—':String(currentStep+1);
+        count.dataset.zh=position+' / '+steps.length;count.dataset.en=count.dataset.zh;
+        count.textContent=text(count.dataset.zh,count.dataset.en);
+        count.dataset.labelZh=currentStep<0?'未选择步骤':`第 ${position} 步，共 ${steps.length} 步`;
+        count.dataset.labelEn=currentStep<0?'No step selected':`Step ${position} of ${steps.length}`;
+        count.setAttribute('aria-label',text(count.dataset.labelZh,count.dataset.labelEn));
+      }
+    }
+    parts.forEach(part=>part.addEventListener('click',()=>{
+      const component=part.dataset.sandboxPart;select(component);
+      if(window.matchMedia('(max-width: 760px)').matches){
+        panelByPart.get(component).scrollIntoView({
+          block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'
+        });
+      }
+    }));
+    steps.forEach((step,index)=>step.addEventListener('click',()=>select(step.dataset.component,index)));
+    previous?.addEventListener('click',()=>{
+      if(currentStep>0){
+        const index=currentStep-1;select(steps[index].dataset.component,index);
+        if(previous.disabled&&document.activeElement===previous)steps[index].focus({preventScroll:true});
+      }
+    });
+    next?.addEventListener('click',()=>{
+      if(currentStep>=0&&currentStep<steps.length-1){
+        const index=currentStep+1;select(steps[index].dataset.component,index);
+        if(next.disabled&&document.activeElement===next)steps[index].focus({preventScroll:true});
+      }
+    });
+    explorer.classList.add('is-enhanced');
+    select(steps[0]?.dataset.component||parts[0].dataset.sandboxPart);
+  });
+
+  const researchSections=[...document.querySelectorAll('.research-toc a[href^="#"]')].map(link=>{
+    let id='';try{id=decodeURIComponent(link.getAttribute('href').slice(1))}catch{}
+    return {link,section:document.getElementById(id)};
+  }).filter(item=>item.section);
+  if(researchSections.length){
+    let scheduled=false;
+    function updateResearchLocation(){
+      scheduled=false;
+      const nav=document.querySelector('.site-nav');
+      const navCutoff=(nav&&getComputedStyle(nav).position==='sticky'?nav.getBoundingClientRect().bottom:0)+35;
+      const scrollPadding=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)||0;
+      let current=researchSections[0],currentTop=null,hashID='';
+      try{hashID=decodeURIComponent(location.hash.slice(1))}catch{}
+      researchSections.forEach(item=>{
+        const margin=parseFloat(getComputedStyle(item.section).scrollMarginTop)||0;
+        // Anchor positioning uses both the scroller's padding and the target's margin.
+        const cutoff=Math.max(navCutoff,scrollPadding+margin+3);
+        const top=item.section.getBoundingClientRect().top;
+        if(top<=cutoff){
+          if(currentTop===null||Math.abs(top-currentTop)>1){current=item;currentTop=top}
+          else if(item.section.id===hashID)current=item;
+        }
+      });
+      if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-3)current=researchSections.at(-1);
+      researchSections.forEach(item=>{
+        if(item===current)item.link.setAttribute('aria-current','location');else item.link.removeAttribute('aria-current');
+      });
+    }
+    function scheduleResearchLocation(){if(!scheduled){scheduled=true;requestAnimationFrame(updateResearchLocation)}}
+    window.addEventListener('scroll',scheduleResearchLocation,{passive:true});
+    window.addEventListener('resize',scheduleResearchLocation,{passive:true});
+    window.addEventListener('hashchange',scheduleResearchLocation);
+    updateResearchLocation();
+  }
   window.addEventListener('hashchange',revealHashTarget);
   revealHashTarget();
 })();

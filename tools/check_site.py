@@ -18,10 +18,13 @@ class Document(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.ids=[];self.links=[];self.videos=[];self.figures=[];self.cards=[];self.images=[];self.headings=[];self.text=[];self.meta={};self.timelines=[];self.canonical=None;self.ignored=0
         self.family_tiles=[];self.family_filters=[];self.family_galleries=[];self.paused_families=[];self.current_family_tile=None;self.current_task_card=None;self.details=[]
+        self.research_controls=[];self.research_panels=[]
         self.feed(path.read_text(encoding='utf-8'))
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
         if a.get('id'):self.ids.append(a['id'])
+        if tag=='button' and any(k in a for k in ('data-track-tab','data-sandbox-part','data-sandbox-step')):self.research_controls.append(a)
+        if any(k in a for k in ('data-track-panel','data-sandbox-panel')):self.research_panels.append(a)
         if tag in ('a','link') and a.get('href'):self.links.append(a['href'])
         if tag in ('img','script') and a.get('src'):self.links.append(a['src'])
         if tag=='video':self.videos.append(a)
@@ -229,6 +232,27 @@ def main():
                 elif kind in ('note','paragraph'):
                     require(bool(block.get('text_zh')) and bool(block.get('text_en')),f'{name}: missing bilingual block text')
     require('download' in docs['guide.html'].ids,'The usage guide must retain its download anchor.')
+    research=docs['research.html']
+    require(all(s['id'] in research.ids for s in page_sources['research']['sections']),'Research redesign lost an existing section anchor.')
+    explorer=json.loads((REPO/'site/content/research_interactive.json').read_text(encoding='utf-8'))
+    require([t['id'] for t in explorer['tracks']]==['A','B','C'],'Research must explain all three evaluation tracks.')
+    component_ids=['task','agent','executor','physics','sensors','record','scorer']
+    require([c['id'] for c in explorer['components']]==component_ids,'Sandbox must explain all seven logical components.')
+    require([s['component'] for s in explorer['steps']]==component_ids,'Sandbox walkthrough does not cover the full execution loop and scoring.')
+    require(len(research.research_panels)==10,'Research is missing track or sandbox detail panels.')
+    for control in research.research_controls:
+        require(control.get('type')=='button','Research interaction must use a native button.')
+        if 'data-sandbox-step' not in control:
+            require(control.get('aria-controls') in research.ids,'Research button points to a missing detail panel.')
+    for panel in research.research_panels:
+        require('hidden' not in panel,'Research explanations must remain readable without JavaScript.')
+        require(panel.get('aria-labelledby') in research.ids,'Research detail panel has no accessible label.')
+    for component in explorer['components']:
+        for field in ('label','summary','role','input','output','boundary','example'):
+            for language in ('zh','en'):
+                require(bool(component.get(field+'_'+language)),f'Sandbox {component["id"]} lacks {field} in {language}.')
+    for track in explorer['tracks']:
+        require(bool(track['paragraphs_zh']) and len(track['paragraphs_zh'])==len(track['paragraphs_en']),f'Track {track["id"]} has inconsistent bilingual explanations.')
     routes=json.loads((root/'data/legacy-routes.json').read_text(encoding='utf-8'))
     require(build.get('archived_html')==0,'Archived HTML content must not be published.')
     require(build.get('legacy_redirects')==len(routes),'Legacy redirect count does not match its manifest.')

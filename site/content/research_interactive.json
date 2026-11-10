@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "tracks": [
+    {
+      "id": "A",
+      "label_zh": "回合内求解",
+      "label_en": "Solve within an episode",
+      "summary_zh": "给定一个新任务，在预算内写代码、做试验，找到可执行的办法。",
+      "summary_en": "Write code and run experiments within a budget to solve a new task.",
+      "fields": [
+        {
+          "label_zh": "允许改变",
+          "label_en": "What can change",
+          "text_zh": "求解程序和试验方案；模型权重保持不变。",
+          "text_en": "The solving program and experiments; model weights stay unchanged."
+        },
+        {
+          "label_zh": "固定条件",
+          "label_en": "What stays fixed",
+          "text_zh": "执行器、任务工具与预算；每个测试实例清空跨任务记忆。",
+          "text_en": "The executor, task tools and budget; cross-task memory is cleared for each test instance."
+        },
+        {
+          "label_zh": "如何评测",
+          "label_en": "How it is evaluated",
+          "text_zh": "开发结束后，在新的密封回合中运行交付程序并评分。",
+          "text_en": "After development, run and score the submitted program in fresh sealed episodes."
+        }
+      ],
+      "paragraphs_zh": [
+        "这条路线关注一次任务中如何从观察走向程序，再根据物理反馈修改方法。试验与调试都计入预先声明的预算。",
+        "零训练指评测期间保持权重不变。各路线同时记录预训练控制器成本和代码记忆的变化。"
+      ],
+      "paragraphs_en": [
+        "This track follows the path from observation to a program, then uses physical feedback to revise the method. Experiments and debugging use the declared budget.",
+        "Zero training means keeping weights unchanged during evaluation. All tracks also record pretrained-controller costs and changes to code memory."
+      ]
+    },
+    {
+      "id": "B",
+      "label_zh": "冻结后复用",
+      "label_en": "Freeze and reuse",
+      "summary_zh": "在开发任务中积累方法，冻结后观察它们如何适应新的任务。",
+      "summary_en": "Develop reusable methods, freeze them, and test how they handle new tasks.",
+      "fields": [
+        {
+          "label_zh": "开发内容",
+          "label_en": "What is developed",
+          "text_zh": "感知封装、技能、参数估计和调度代码。",
+          "text_en": "Perception wrappers, skills, parameter estimates and scheduling code."
+        },
+        {
+          "label_zh": "冻结时点",
+          "label_en": "When it is frozen",
+          "text_zh": "隐藏测试开始之前。",
+          "text_en": "Before hidden testing begins."
+        },
+        {
+          "label_zh": "成本记录",
+          "label_en": "Cost accounting",
+          "text_zh": "分别报告开发和测试成本，以及指定任务数量下的平均摊销成本。",
+          "text_en": "Report development and test costs separately, plus amortized cost for a stated number of tasks."
+        }
+      ],
+      "paragraphs_zh": [
+        "这条路线考察一次求解能留下什么：把有效方法整理成可复用程序，再放到新的起点、物体或任务条件中测试。",
+        "零训练指评测期间保持权重不变。各路线同时记录预训练控制器成本和代码记忆的变化。"
+      ],
+      "paragraphs_en": [
+        "This track asks what one solved task can leave behind. Turn effective methods into reusable programs, then test them with new starts, objects or task conditions.",
+        "Zero training means keeping weights unchanged during evaluation. All tracks also record pretrained-controller costs and changes to code memory."
+      ]
+    },
+    {
+      "id": "C",
+      "label_zh": "轻训练",
+      "label_en": "Light training",
+      "summary_zh": "允许小规模参数更新，在相同总预算下衡量训练带来的变化。",
+      "summary_en": "Allow limited parameter updates and measure their effect under the same total budget.",
+      "fields": [
+        {
+          "label_zh": "训练内容",
+          "label_en": "What is trained",
+          "text_zh": "预先声明的 adapter、校准器或技能模块。",
+          "text_en": "Adapters, calibrators or skill modules declared in advance."
+        },
+        {
+          "label_zh": "资源记录",
+          "label_en": "Resources recorded",
+          "text_zh": "参数量、数据量、更新步数和 GPU 时间。",
+          "text_en": "Parameter count, data volume, update steps and GPU time."
+        },
+        {
+          "label_zh": "实验对照",
+          "label_en": "Experimental control",
+          "text_zh": "在相同总预算下与零更新条件比较，结果单列。",
+          "text_en": "Compare with a no-update condition under the same total budget and report results separately."
+        }
+      ],
+      "paragraphs_zh": [
+        "这条路线把训练开销与求解开销一同计入实验，观察少量更新能否改善后续执行。",
+        "各路线同时记录预训练控制器成本和代码记忆的变化。零更新对照在评测期间保持模型权重不变。"
+      ],
+      "paragraphs_en": [
+        "This track accounts for training and solving costs together, testing whether a small amount of updating improves later execution.",
+        "All tracks also record pretrained-controller costs and changes to code memory. The no-update control keeps model weights unchanged during evaluation."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "task",
+      "label_zh": "任务配置",
+      "label_en": "Task configuration",
+      "summary_zh": "先确定这一回合要做什么，以及使用什么身体和条件。",
+      "summary_en": "Define the goal, body and conditions for the episode.",
+      "role_zh": "在运行前固定场景、身体、传感器、预算和评分规则，并向 agent 提供目标与公开约束。",
+      "role_en": "Fix the scene, body, sensors, budget and scoring rules before the run, and give the agent the goal and public constraints.",
+      "input_zh": "任务定义、选定配置和回合初态。",
+      "input_en": "The task definition, selected configuration and episode initial state.",
+      "output_zh": "环境加载的固定配置，以及 agent 可读取的任务信息。",
+      "output_en": "A fixed configuration for the environment and task information available to the agent.",
+      "boundary_zh": "环境管理初态与隐藏参数；目标说明把工具用途和动作路线留给 agent 判断。",
+      "boundary_en": "The environment manages initial states and hidden parameters; the agent works out tool uses and action routes.",
+      "example_zh": "例如，目标在高处，场景里有一块尚未就位的斜板。目标是把物体送到交付区，具体方法由 agent 决定。",
+      "example_en": "For example, a target sits high above the floor and a sloped board is out of place. The goal is delivery to the target area; the agent chooses the method."
+    },
+    {
+      "id": "agent",
+      "label_zh": "Agent 程序",
+      "label_en": "Agent program",
+      "summary_zh": "读取观测，编排动作，根据反馈调整计划。",
+      "summary_en": "Read observations, arrange actions and revise the plan from feedback.",
+      "role_zh": "在隔离的执行空间运行提交的代码，通过任务接口观察与行动。开发时可以试验和修改程序，正式运行使用冻结的提交。",
+      "role_en": "Run submitted code in an isolated execution space, observing and acting through the task interface. Development allows experiments and revisions; evaluation uses the frozen submission.",
+      "input_zh": "任务目标、公开身体规格、预算和允许的传感器观测。",
+      "input_en": "The task goal, public body specifications, budget and permitted sensor observations.",
+      "output_zh": "关节指令或指令序列，也可以声明不可行并结束回合。",
+      "output_en": "Joint commands or command sequences, with interfaces to declare infeasibility and end the episode.",
+      "boundary_zh": "当前评测容器关闭外网，依赖预先准备；程序通过接口连接环境，评分器与世界真值留在环境侧。",
+      "boundary_en": "The evaluation container has external networking disabled and uses prepared dependencies. Code connects through the task interface; the grader and world ground truth remain on the environment side.",
+      "example_zh": "程序读取画面与身体状态，先检查斜板和目标的位置关系，再决定如何接近并调整斜板。",
+      "example_en": "The program reads images and body state, examines the relation between the board and target, then chooses how to approach and move the board."
+    },
+    {
+      "id": "executor",
+      "label_zh": "指令与执行器",
+      "label_en": "Commands and executor",
+      "summary_zh": "把程序发出的动作交给固定的执行接口。",
+      "summary_en": "Pass the program's actions through the fixed execution interface.",
+      "role_zh": "按任务规定的关节顺序、动作形式和限制接收指令，由冻结的执行器驱动机器人。",
+      "role_en": "Receive commands in the task's joint order, action format and limits, and drive the robot through the frozen executor.",
+      "input_zh": "Agent 生成的关节指令或指令序列。",
+      "input_en": "Joint commands or command sequences generated by the agent.",
+      "output_zh": "送往物理环境的机器人控制输入。",
+      "output_en": "Robot control inputs sent to the physical environment.",
+      "boundary_zh": "Agent 可以组织动作，执行器配置和身体上限按任务固定。规划器与技能接口使用同样的传感器信息。",
+      "boundary_en": "The agent organizes actions while the executor configuration and body limits stay fixed for the task. Planners and skill interfaces use the same sensor information.",
+      "example_zh": "程序发送接近斜板、建立接触和移动身体的指令，机器人按该配置的关节和动作限制执行。",
+      "example_en": "The program sends commands to approach the board, make contact and move the body within the configuration's joint and action limits."
+    },
+    {
+      "id": "physics",
+      "label_zh": "物理环境",
+      "label_en": "Physical environment",
+      "summary_zh": "计算动作真正造成的运动、接触与支撑变化。",
+      "summary_en": "Compute the motion, contacts and support changes caused by actions.",
+      "role_zh": "在可信环境中推进仿真，让机器人、工具和目标按场景物理共同演化。",
+      "role_en": "Advance the simulation in the trusted environment, evolving the robot, tools and target under the scene's physics.",
+      "input_zh": "固定场景、当前物理状态和执行器控制输入。",
+      "input_en": "The fixed scene, current physical state and executor control inputs.",
+      "output_zh": "更新后的运动、接触、支撑和物体状态。",
+      "output_en": "Updated motion, contacts, support and object states.",
+      "boundary_zh": "物理参数和初态由环境管理，动作通过控制接口产生效果。重置只在开发模式开放。",
+      "boundary_en": "The environment manages physical parameters and initial states; actions take effect through the control interface. Reset is available in development mode only.",
+      "example_zh": "斜板能否移动、是否形成稳定支撑，以及机器人能否沿它接近目标，都由实际物理状态决定。",
+      "example_en": "The physical state determines whether the board moves, forms stable support and lets the robot approach the target."
+    },
+    {
+      "id": "sensors",
+      "label_zh": "传感器观测",
+      "label_en": "Sensor observations",
+      "summary_zh": "把身体能够感知的信息返回给 agent。",
+      "summary_en": "Return the information available through the robot's sensors.",
+      "role_zh": "按任务配置提供相机、深度、LiDAR、IMU、关节读数，以及声明开放的接触或力觉。",
+      "role_en": "Provide the task's cameras, depth, LiDAR, IMU and joint readings, plus contact or force sensing where declared.",
+      "input_zh": "当前物理状态和已配置的传感器。",
+      "input_en": "The current physical state and configured sensors.",
+      "output_zh": "Agent 可读取的观测，用于下一轮判断与行动。",
+      "output_en": "Observations the agent can use for its next decision and action.",
+      "boundary_zh": "观测按声明的传感器生成；物体真值位姿、隐藏物性、分割标签和工具用途保留在环境侧。",
+      "boundary_en": "Observations come from declared sensors; ground-truth object poses, hidden properties, segmentation labels and tool uses stay on the environment side.",
+      "example_zh": "新画面和身体读数帮助程序判断斜板是否移动、姿态是否稳定，再决定继续操作还是调整方案。",
+      "example_en": "New images and body readings help the program judge whether the board moved and the body stayed stable, then decide whether to continue or adjust."
+    },
+    {
+      "id": "record",
+      "label_zh": "执行记录",
+      "label_en": "Execution record",
+      "summary_zh": "记录整个回合发生的事情，为评分提供依据。",
+      "summary_en": "Record what happened throughout the episode for scoring.",
+      "role_zh": "由环境记录物体身份、状态、接触、支撑和持续时间，并保留运行完整性信息。",
+      "role_en": "Record object identity, state, contact, support and duration on the environment side, together with run-integrity information.",
+      "input_zh": "物理执行中的状态变化、事件和时间。",
+      "input_en": "State changes, events and timing from physical execution.",
+      "output_zh": "供独立评分使用的物理日志与运行记录。",
+      "output_en": "Physical logs and run records for independent scoring.",
+      "boundary_zh": "评分读取环境生成的记录；agent 的文字说明用于描述过程，不能替代物理状态。",
+      "boundary_en": "Scoring reads environment-generated records; the agent's written account describes its process but does not replace physical state.",
+      "example_zh": "日志记录目标何时进入交付区、是否释放，以及目标和机器人保持稳定的时间。",
+      "example_en": "The log records when the target enters the delivery area, whether it is released, and how long the target and robot remain stable."
+    },
+    {
+      "id": "scorer",
+      "label_zh": "独立评分",
+      "label_en": "Independent scoring",
+      "summary_zh": "回合结束后，按冻结规则计算进度和最终结果。",
+      "summary_en": "After the episode, calculate progress and the final result using frozen rules.",
+      "role_zh": "独立读取物理记录，检查阶段依赖、阈值、保持时长和权重，并判断最终目标与运行有效性。",
+      "role_en": "Independently read physical records, evaluate stage dependencies, thresholds, hold times and weights, and determine the final goal and run validity.",
+      "input_zh": "运行前冻结的评分规则和本回合的环境记录。",
+      "input_en": "Scoring rules frozen before the run and environment records from the episode.",
+      "output_zh": "运行有效性、阶段分、最终成功与原生成功等结果字段。",
+      "output_en": "Result fields including run validity, stage score, final success and native success.",
+      "boundary_zh": "评分与 agent 隔离，回合内不向它开放隐藏评分。进度取同一时刻的加权峰值；完整性报警记为 VOID。",
+      "boundary_en": "Scoring is isolated from the agent and hidden scores remain private during the episode. Progress uses the peak weighted value at one instant; integrity alarms produce VOID.",
+      "example_zh": "评分器按任务要求检查目标是否送达、释放并稳定，分别报告阶段进度和最终成功。",
+      "example_en": "The grader checks delivery, release and stability against the task requirements, reporting stage progress and final success separately."
+    }
+  ],
+  "steps": [
+    {
+      "component": "task",
+      "title_zh": "确定任务与条件",
+      "title_en": "Set the task and conditions",
+      "text_zh": "用一个借助斜板取高处物体的示意场景，看看沙盒怎样工作。环境先固定身体、场景、传感器、预算和评分规则，再把目标与公开约束交给 agent。",
+      "text_en": "Use an illustrative scene with a high target and a sloped board to follow the sandbox. The environment first fixes the body, scene, sensors, budget and scoring rules, then gives the agent its goal and public constraints."
+    },
+    {
+      "component": "agent",
+      "title_zh": "程序决定下一步",
+      "title_en": "The program chooses an action",
+      "text_zh": "Agent 从公开规格和传感器观测出发，决定怎样观察斜板、建立接触，并逐步安排取物过程。它通过代码发出动作。",
+      "text_en": "Starting from public specifications and sensor observations, the agent decides how to inspect the board, make contact and arrange retrieval. Its code issues the actions."
+    },
+    {
+      "component": "executor",
+      "title_zh": "指令进入执行接口",
+      "title_en": "Commands enter the executor",
+      "text_zh": "关节指令或指令序列按任务规定的形式送入冻结执行器，成为机器人的控制输入。程序需要遵守当前身体的动作限制。",
+      "text_en": "Joint commands or command sequences enter the frozen executor in the task's required format and become robot control inputs. The program works within the current body's action limits."
+    },
+    {
+      "component": "physics",
+      "title_zh": "物理决定实际效果",
+      "title_en": "Physics determines the effect",
+      "text_zh": "环境推进仿真，计算斜板移动、接触、支撑与身体平衡。是否形成可用的路线，要看动作实际造成的状态。",
+      "text_en": "The environment advances the simulation, calculating board motion, contact, support and body balance. Whether a route becomes usable depends on the state the actions actually produce."
+    },
+    {
+      "component": "sensors",
+      "title_zh": "观测回到程序",
+      "title_en": "Observations return to the program",
+      "text_zh": "声明的传感器返回新观测，agent 据此修正判断。接下来重复“决策 → 指令 → 物理 → 观测”，直到结束回合。",
+      "text_en": "Declared sensors return new observations and the agent updates its judgment. Decision → command → physics → observation repeats until the episode ends."
+    },
+    {
+      "component": "record",
+      "title_zh": "整理全过程记录",
+      "title_en": "Finalize the episode record",
+      "text_zh": "环境在整个循环中持续记下物理状态与事件。回合结束后，这些日志提供目标位置、释放、接触和稳定时长等评分依据。",
+      "text_en": "The environment records physical states and events throughout the loop. After the episode, these logs supply the target location, release, contact and stability durations used for scoring."
+    },
+    {
+      "component": "scorer",
+      "title_zh": "独立计算结果",
+      "title_en": "Calculate the result independently",
+      "text_zh": "评分器读取记录，按运行前固定的规则计算阶段分和最终成功。结果同时保留运行有效性，读者可以分开查看完成了多少、是否完成全部目标。",
+      "text_en": "The grader reads the records and applies the rules fixed before the run to calculate stage score and final success. It also reports run validity, so readers can inspect progress and completion separately."
+    }
+  ]
+}

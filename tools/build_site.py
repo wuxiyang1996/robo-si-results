@@ -13,6 +13,7 @@ import json
 import shutil
 import subprocess
 import re
+from research_page import render_research
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'site'
@@ -240,6 +241,11 @@ def document_block(block):
 def documents():
     for name,p in PAGES.items():
         if name not in ('research','guide'):continue
+        if name=='research':
+            interactive=json.loads((SOURCE/'content/research_interactive.json').read_text(encoding='utf-8'))
+            body=breadcrumbs([('',p['title_zh'],p['title_en'])])+render_research(p,interactive,tr,link,external,CONFIG['categories'])
+            page(name+'.html',p['title_zh'],p['title_en'],p['lead_zh'],body,active=name)
+            continue
         body=breadcrumbs([('',p['title_zh'],p['title_en'])])+'<section class="page-hero"><div class="wrap"><p class="eyebrow">'+{'research':'RESEARCH','guide':'GET STARTED'}[name]+'</p>'+tr(p['title_zh'],p['title_en'],'h1')+tr(p['lead_zh'],p['lead_en'],'p','class="lead"')+'</div></section>'
         toc=''.join(link('#'+s['id'],s['title_zh'],s['title_en'],'') for s in p['sections'])
         # Fragment links in this page are local to the document, not the homepage.

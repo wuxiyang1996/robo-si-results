@@ -8,17 +8,21 @@ GitHub Pages at <https://wuxiyang1996.github.io/robo-si-results/> is the main de
 | --- | --- |
 | `site/content/site.json` | Branding, six categories, family membership, category sharing posters, and shared bilingual keywords |
 | `site/content/pages.json` | Current research and usage guide |
+| `site/content/research_interactive.json` | Three evaluation tracks, seven sandbox components and their walkthrough, in both languages |
 | `site/content/tasks_*.json` | Bilingual task goals, scene constraints, and demonstrated scope |
 | `site/content/task_facets.json` | Four tag vocabularies, per-record assignments and difficulty evidence notes |
 | `site/assets/site.css` | Styling |
 | `site/assets/site.js` | Browser behavior |
 | `tools/build_site.py` | Current-page generation and legacy redirects |
+| `tools/research_page.py` | Research page composition and interactive component markup |
 | `tools/check_site.py` | Static validation |
 | `data/video-gallery.json` | Video provenance receipt: preserve its accepted source data |
 
 Only `research` and `guide` in `pages.json` are rendered. Each page has `title_zh`, `title_en`, `lead_zh`, `lead_en`, and `sections`. A section has `id`, bilingual `title_*` and `body_*`, and optional `links` with `label_zh`, `label_en`, and `url`. Bodies are plain text, not HTML; separate paragraphs with `\n\n`.
 
 Sections can also contain `blocks`. Supported block types are `code` (`language`, literal `text`), `table` (`columns_zh`, `columns_en`, `rows_zh`, `rows_en`), `list` (`items_zh`, `items_en`), and `note` or `paragraph` (`text_zh`, `text_en`). Keep bilingual arrays the same length and every table row the same width. Code is HTML-escaped when rendered and copied as literal text; do not insert HTML into command examples.
+
+The research page has a dedicated editorial layout. Keep its existing section anchors, including `tracks`, `agent-interface` and `rq1`–`rq3`. The interactive track descriptions live in `research_interactive.json`; update them alongside the protocol prose in `pages.json`. The sandbox diagram explains logical responsibilities and data flow, not a one-container-per-component deployment. Its ramp example illustrates the interface without claiming a new physical run. All explanations are present in the HTML; JavaScript adds tabs, component selection and the manual walkthrough. Test track arrow keys, all seven components, Previous/Next boundaries and language switching on desktop and a narrow viewport. Do not place translated attributes on a parent containing controls: language switching replaces translated elements' text content.
 
 Task cards display `goal_zh`/`goal_en`, matching `conditions_zh`/`conditions_en` arrays, and any `scope_zh`/`scope_en` directly below the video. Describe what must happen, the scene and physical constraints, and what the recording actually demonstrates. Preserve configuration-specific simplifications, correct-exit criteria, and acceptance limits. `description_*` remains search metadata. Do not reintroduce expandable old-record panels, render version labels, or links to former task pages. A recorded reference success is not a learned agent's score, and an interface probe is not a full successful policy run.
 
