@@ -1,4 +1,4 @@
-﻿# Embodied Terminal-Bench · robo-si
+# Embodied Terminal-Bench · robo-si
 
 Public site: https://wuxiyang1996.github.io/robo-si-results/
 
@@ -23,6 +23,6 @@ The homepage presents one demo per category. Category pages present one represen
 
 Videos are Nyx presentation renders of recorded physical executions. They retain each task's accepted scope, including correct exits. They are not learned-agent benchmark scores. Display asset updates do not establish a new physical run, new task success or a different collision model. Historical references, privileged experts and ordinary-interface runs remain separately identified.
 
-This is a static GitHub Pages project site, published from main at the repository root with .nojekyll. Paths use the /robo-si-results/ project prefix. Public video binaries are versioned in the robo-si-review-assets releases; the 2026-11-09 H1 fine-grained revision preserves the prior video hashes in the manifest.
+This is a static GitHub Pages project site, published from main by the Pages workflow with a 30-minute deployment sync allowance. Paths use the /robo-si-results/ project prefix. Public video binaries are versioned in the robo-si-review-assets releases; the 2026-11-09 H1 fine-grained revision preserves the prior video hashes in the manifest.
 
 The importer tools/import_gallery.py preserves evidence JSON bytes. tools/apply_h1_media.py applies verified render receipts. tools/check_gallery.py verifies the 246 records, six categories, thirty families, links and original evidence. Browser visual QA is separately reported and must not be inferred from static checks.

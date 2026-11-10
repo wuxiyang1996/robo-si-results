@@ -1,0 +1,61 @@
+name: Publish reviewed gallery
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/configure-pages@v5
+      - name: Verify gallery manifest
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('.')
+          catalog = json.loads((root / 'data/video-gallery.json').read_text())
+          assert len(catalog['records']) == 246
+          assert len({r['record_id'] for r in catalog['records']}) == 246
+          assert all(r['speed'] == 8 for r in catalog['records'])
+          assert len(list((root / 'infra/categories').glob('*.html'))) == 6
+          assert len(list((root / 'infra/families').glob('*.html'))) == 30
+          assert json.loads((root / 'data/gallery-validation.json').read_text())['passed']
+          PY
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+          include-hidden-files: true
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the complete site and evidence archive
+        id: deployment
+        uses: actions/deploy-pages@v5
+        with:
+          # The complete evidence tree exceeded the default 10-minute sync wait.
+          timeout: 1800000
