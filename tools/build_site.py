@@ -98,20 +98,28 @@ def cta():
 
 def home():
     contributions=''.join(f'<article class="contribution"><span class="number">0{i}</span><div>{tr(x["title_zh"],x["title_en"],"h2")}{tr(x["body_zh"],x["body_en"],"p")}</div></article>' for i,x in enumerate(CONFIG['contributions'],1))
-    cards=[]
-    for c in CONFIG['categories']:
-        count=sum(COUNTS[f] for f in c['families'])
-        family_count=sum(COUNTS[f]>0 for f in c['families'])
-        cards.append(f'''<article class="category-card" data-category="{c['id']}">{player(c['demo'])}<div class="card-topline"><h3>{link(category_url(c['id']),c['title_zh'],c['title_en'],'')}</h3><span class="card-number">{c['number']}</span></div>{tr(c['description_zh'],c['description_en'],'p','class="card-description"')}<div class="card-footer"><span>{tr(f'{family_count} 个任务族 · {count} 段录像',f'{family_count} families · {count} recordings')}</span>{link(category_url(c['id']),'查看任务','Explore tasks')}</div>{tr(c['demo_zh'],c['demo_en'],'p','class="demo-caption"')}</article>''')
     body=f'''<section class="hero"><div class="wrap"><p class="eyebrow">CODE · EXPERIMENT · PHYSICAL ACTION</p>{tr(CONFIG['research_question_zh'],CONFIG['research_question_en'],'h1')}{tr(CONFIG['intro_zh'],CONFIG['intro_en'],'p','class="lead"')}<div class="hero-actions">{link('#categories','观看任务演示','Explore the tasks','button')}{link('research.html','阅读研究问题','Read the research')}</div></div></section>
-    <div class="wrap"><div class="contributions">{contributions}</div></div><section class="section" id="categories"><div class="wrap"><div class="section-head"><div><p class="eyebrow">THE TASK GALLERY</p>{tr('六种物理难题','Six kinds of physical challenge','h2')}{tr('从一段演示进入，看看机器人要解决什么。','Start with a demonstration, then explore the problem behind it.','p')}</div>{link('tasks/','浏览全部任务','Browse all tasks')}</div><div class="gallery">{''.join(cards)}</div>{gallery_note()}</div></section>{cta()}'''
+    <div class="wrap"><div class="contributions">{contributions}</div></div><section class="section" id="categories"><div class="wrap"><div class="section-head"><div><p class="eyebrow">THE TASK GALLERY</p>{tr('任务图集','Task gallery','h2')}{tr('选一个类别，点击小图查看这个任务族的全部视频。','Choose a category, then open a thumbnail to explore the family’s videos.','p')}</div>{link('tasks/search.html','查找具体任务','Find a specific task')}</div>{family_gallery()}{gallery_note()}</div></section>{cta()}'''
     page('index.html',CONFIG['research_question_zh'],CONFIG['research_question_en'],CONFIG['intro_zh'],body,active='home')
 
 def family_card(fid):
     f=FAMILIES[fid]
     rid=CATALOG['family_representatives'].get(fid)
     if not rid or rid not in RECORDS: return ''
-    return f'''<article class="family-card">{player(rid)}<div class="card-topline"><h2>{link(family_url(fid),f['title_zh'],f['title_en'],'')}</h2><span class="family-code">{fid}</span></div>{tr(f['intro_zh'],f['intro_en'],'p','class="card-description"')}<div class="card-footer">{robots(f['robots'])}{link(family_url(fid),f'查看 {COUNTS[fid]} 个任务',f'View {COUNTS[fid]} tasks')}</div></article>'''
+    r=RECORDS[rid];c=BY_CATEGORY[fid]
+    return f'''<a class="family-tile" data-local data-family-card="{fid}" data-family-category="{c['id']}" data-preview-record="{e(rid)}" href="{local(family_url(fid))}"><div class="family-thumbnail"><img src="{e(r['poster_url'])}" alt="" loading="lazy" decoding="async" width="960" height="540"><span class="thumbnail-action" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M4 2L18 10 4 18Z"/></svg></span><span class="speed">8×</span></div><div class="family-tile-body"><div class="family-tile-meta"><span class="family-code">{fid}</span>{tr(f'{COUNTS[fid]} 段视频',f'{COUNTS[fid]} video'+('s' if COUNTS[fid]!=1 else ''))}</div>{tr(f['title_zh'],f['title_en'],'h3')}<div class="family-tile-bottom">{robots(f['robots'])}<span class="family-arrow" aria-hidden="true">↗</span></div></div></a>'''
+
+def family_gallery():
+    buttons=[];captions=[];paused=[]
+    for c in CONFIG['categories']:
+        count=sum(COUNTS[f]>0 for f in c['families'])
+        buttons.append(f'<button class="gallery-tag" id="{c["id"]}" type="button" data-family-filter="{c["id"]}" aria-pressed="false" aria-controls="family-grid">'+tr(c['title_zh'],c['title_en'])+f'<span class="tag-count" aria-hidden="true">{count}</span></button>')
+        captions.append(f'<p data-category-caption="{c["id"]}" hidden>'+tr(c['description_zh'],c['description_en'])+'</p>')
+        for fid in c['families']:
+            if not COUNTS[fid]:
+                paused.append(f'<p class="paused-note" data-paused-family="{fid}" data-family-category="{c["id"]}">'+link(family_url(fid),FAMILIES[fid]['title_zh'],FAMILIES[fid]['title_en'],'')+' — '+tr('研究暂停，暂无完整参考录像。','Research paused; no complete reference recording.')+'</p>')
+    buttons.append('<button class="gallery-tag" type="button" data-family-filter="all" aria-pressed="true" aria-controls="family-grid">'+tr('全部','All')+'<span class="tag-count" aria-hidden="true">29</span></button>')
+    return '<div class="family-browser" data-family-gallery data-default-category="access"><div class="gallery-tags" role="group" aria-label="任务类别 / Task categories">'+''.join(buttons)+'</div><div class="gallery-context">'+''.join(captions)+'<p data-category-caption="all">'+tr('从取物、搬运到装配和协作，浏览所有任务族。','Explore all families, from retrieval and transport to assembly and collaboration.')+'</p><span class="family-result-count" data-family-count role="status" aria-live="polite">'+tr('29 个任务族','29 families')+'</span></div><div class="family-grid" id="family-grid">'+''.join(family_card(f) for c in CONFIG['categories'] for f in c['families'] if COUNTS[f])+ '</div>'+''.join(paused)+'</div>'
 
 def task_card(r):
     rid=r['record_id']; t=TASKS[rid]
@@ -144,7 +152,7 @@ def categories():
             fid=c['families'][0];f=FAMILIES[fid]
             content=tr(f['intro_zh'],f['intro_en'],'p','class="card-description"')+tasks_grid([r for r in RECORDS.values() if r['family']==fid])
         else:
-            content='<div class="gallery">'+''.join(family_card(f) for f in c['families'] if COUNTS[f])+'</div>'
+            content='<div class="family-grid">'+''.join(family_card(f) for f in c['families'] if COUNTS[f])+'</div>'
             paused=[f for f in c['families'] if not COUNTS[f]]
             if paused:
                 content+='<p class="paused-note">'+tr('另有任务设计尚无完整参考录像：','Task designs without a complete reference recording: ')+' · '.join(link(family_url(f),FAMILIES[f]['title_zh'],FAMILIES[f]['title_en'],'') for f in paused)+'</p>'
@@ -160,12 +168,8 @@ def families():
         page(family_url(fid),f['title_zh'],f['title_en'],f['intro_zh'],body,keywords=[fid,*f['robots'],*f['tags']])
 
 def directory():
-    cards=[]
-    for c in CONFIG['categories']:
-        rows=''.join('<li>'+link(family_url(f),FAMILIES[f]['title_zh'],FAMILIES[f]['title_en'],'')+'</li>' for f in c['families'] if COUNTS[f])
-        cards.append(f'<section class="directory-item" id="{c["id"]}"><p class="eyebrow">{c["number"]}</p><h2>{link(category_url(c["id"]),c["title_zh"],c["title_en"],"")}</h2><ul>{rows}</ul></section>')
     form=f'<form class="toolbar" action="{local("tasks/search.html")}" method="get"><div class="search-field"><label for="global-search">{tr("查找任务","Search")}</label><input id="global-search" type="search" name="q" placeholder="任务、机器人或关键词" data-placeholder-zh="任务、机器人或关键词" data-placeholder-en="Task, robot or keyword"></div><input type="hidden" name="lang" value="zh"><button class="button" type="submit">{tr("搜索全部任务","Search all tasks")}</button></form>'
-    body=breadcrumbs([('','任务图集','Tasks')])+'<section class="page-hero"><div class="wrap"><p class="eyebrow">TASK GALLERY</p>'+tr('从你关心的问题开始','Find the problem you care about','h1')+tr('按物理难点浏览六类任务，也可以直接搜索机器人、工具或任务名称。','Browse six categories of physical challenge, or search for a robot, tool or task.','p','class="lead"')+'</div></section><section class="section" style="padding-top:0"><div class="wrap">'+form+'<div class="directory-grid">'+''.join(cards)+'</div>'+gallery_note()+'</div></section>'
+    body=breadcrumbs([('','任务图集','Tasks')])+'<section class="page-hero"><div class="wrap"><p class="eyebrow">TASK GALLERY</p>'+tr('从你关心的问题开始','Find the problem you care about','h1')+tr('选一个类别，点击小图查看这个任务族的全部视频。','Choose a category, then open a thumbnail to explore the family’s videos.','p','class="lead"')+'</div></section><section class="section" style="padding-top:0"><div class="wrap">'+family_gallery()+form+gallery_note()+'</div></section>'
     page('tasks/index.html','任务图集','Task gallery','按物理难点、机器人和工具浏览任务设计与参考录像。',body)
     body=breadcrumbs([('tasks/','任务图集','Tasks'),('','查找任务','Search')])+'<section class="page-hero"><div class="wrap">'+tr('查找任务','Find a task','h1')+tr('输入任务名称、机器人或关键词，进一步按任务特点筛选。','Search by task, robot or keyword, then narrow by task features.','p','class="lead"')+'</div></section><section class="section search-page" style="padding-top:0"><div class="wrap">'+tasks_grid(list(RECORDS.values()))+gallery_note()+'</div></section>'
     page('tasks/search.html','查找任务','Find a task','搜索所有任务的目标、机器人、工具与任务特点。',body)

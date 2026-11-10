@@ -6,7 +6,7 @@ GitHub Pages at <https://wuxiyang1996.github.io/robo-si-results/> is the main de
 
 | File | Edit here for |
 | --- | --- |
-| `site/content/site.json` | Branding, six categories, family membership, representative demos, and shared bilingual keywords |
+| `site/content/site.json` | Branding, six categories, family membership, category sharing posters, and shared bilingual keywords |
 | `site/content/pages.json` | Research, usage guide, and archive text |
 | `site/content/tasks_*.json` | Chinese and English task descriptions |
 | `site/assets/site.css` | Styling |
@@ -18,6 +18,10 @@ GitHub Pages at <https://wuxiyang1996.github.io/robo-si-results/> is the main de
 `pages.json` contains `research`, `guide`, and `archive`. Each page has `title_zh`, `title_en`, `lead_zh`, `lead_en`, and `sections`. A section has `id`, bilingual `title_*` and `body_*`, and optional `links` with `label_zh`, `label_en`, and `url`. Bodies are plain text, not HTML; separate paragraphs with `\n\n`.
 
 Task copy should explain the goal, physical difficulty, and relevant actions in natural language. Keep configuration-specific simplifications, correct-exit criteria, and acceptance limits. Do not turn historical status notes or render version labels into the task description. A recorded reference success is not a learned agent's score, and an interface probe is not a full successful policy run.
+
+The homepage and `tasks/` share a compact task-family gallery. Six category buttons and an “All” button filter 29 linked thumbnails; clicking a thumbnail opens that family's complete video gallery. The default category is access and retrieval. Thumbnail images come from `family_representatives` in the original media manifest, including `TT-R-G-U` for the arm-versus-humanoid example. Category pages use the same family cards; the single-family dynamic category directly shows its tasks. F3 remains a separate paused-design link with no invented recording. Keep the research question and three contributions above the homepage gallery.
+
+Category controls use native buttons with `aria-pressed`; family thumbnails are ordinary links, not play buttons. Preserve category selection when reloading or changing language, and keep all family links usable without JavaScript. Individual task pages retain their video players, search, and task filters. Do not preload the full video catalog on the entry pages.
 
 ## Routes and local checks
 
@@ -36,7 +40,7 @@ python tools/check_site.py --root dist
 python tools/preview_site.py --port 8765
 ```
 
-Preview <http://127.0.0.1:8765/robo-si-results/>. Check both languages, navigation, mobile layout, representative demos, and at least one complete family gallery. Static validation cannot establish that videos visually match their physical records or that a robot policy succeeds. Report browser and visual checks separately.
+Preview <http://127.0.0.1:8765/robo-si-results/>. Check both languages, category selection, thumbnail navigation, mobile layout, keyboard focus, and playback in at least one complete family gallery. Confirm that the “All” view includes 29 families and that F3 is described separately. Static validation checks family coverage, direct links, representative poster URLs, and preservation of all 246 task players; it cannot establish that videos visually match their physical records or that a robot policy succeeds. Report browser and visual checks separately.
 
 `dist/` is generated and ignored. Do not edit it as the source of truth. The workflow uploads this generated site rather than the entire evidence repository.
 

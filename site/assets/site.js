@@ -17,6 +17,30 @@
   }
   toggle?.addEventListener('click',()=>{lang=lang==='en'?'zh':'en';const u=new URL(location.href);lang==='en'?u.searchParams.set('lang','en'):u.searchParams.delete('lang');history.replaceState(null,'',u);translate()});
   translate();
+  document.querySelectorAll('[data-family-gallery]').forEach(gallery=>{
+    const buttons=[...gallery.querySelectorAll('[data-family-filter]')];
+    const tiles=[...gallery.querySelectorAll('[data-family-card]')];
+    const allowed=new Set(buttons.map(b=>b.dataset.familyFilter));
+    const count=gallery.querySelector('[data-family-count]');
+    function selectCategory(value,write=false){
+      const chosen=allowed.has(value)?value:gallery.dataset.defaultCategory;
+      let total=0;
+      tiles.forEach(tile=>{tile.hidden=chosen!=='all'&&tile.dataset.familyCategory!==chosen;if(!tile.hidden)total++});
+      buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.familyFilter===chosen)));
+      gallery.querySelectorAll('[data-category-caption]').forEach(el=>{el.hidden=el.dataset.categoryCaption!==chosen});
+      gallery.querySelectorAll('[data-paused-family]').forEach(el=>{el.hidden=chosen!=='all'&&el.dataset.familyCategory!==chosen});
+      count.dataset.zh=total+' 个任务族';count.dataset.en=total+(total===1?' family':' families');count.textContent=text(count.dataset.zh,count.dataset.en);
+      if(write){const u=new URL(location.href);u.searchParams.set('category',chosen);history.replaceState(null,'',u)}
+    }
+    buttons.forEach(button=>button.addEventListener('click',()=>selectCategory(button.dataset.familyFilter,true)));
+    function fromURL(){
+      let hash='';try{hash=decodeURIComponent(location.hash.slice(1))}catch{}
+      selectCategory(new URLSearchParams(location.search).get('category')||(allowed.has(hash)?hash:gallery.dataset.defaultCategory));
+    }
+    window.addEventListener('popstate',fromURL);
+    window.addEventListener('hashchange',fromURL);
+    fromURL();
+  });
   function pauseOthers(active){document.querySelectorAll('video').forEach(v=>{if(v!==active)v.pause()})}
   const playback=new WeakMap();
   function loadingStatus(player){
