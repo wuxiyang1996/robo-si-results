@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 776, in main
+    self.move('slide_goal',{'right':(disk+[-.14,0,.002],R)},seconds=15)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 487, in execute
+    if any(k in n for k in ['shoulder','elbow','wrist','waist','joint_arm','joint_lift']):self.qref[self.m.jnt_qposadr[j]]=solution[self.m.jnt_qposadr[j]]
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 600, in finish_dex3_bridge
+    stable=stable+.02 if 'left' in self.open_hands and load<.05 else 0.
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 605, in finish_dex3_bridge_after_transfer
+    def finish_dex3_bridge_after_transfer(self):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 382, in move
+    solution,err=self.solve(current,seed=self.qref)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 360, in step
+    self.command();mujoco.mj_step(self.m,self.d);self.records.append((self.d.time,self.d.qpos.copy(),self.d.qvel.copy(),self.d.ctrl.copy(),self.qref.copy(),self.phase));row=self.assess()
+                                                                                                                                                                             ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 180, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

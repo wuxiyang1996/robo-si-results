@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><meta content="A saved complete expert and independent replay are available. Current-source alignment and portable release materials remain unfinished." name="description"/><title>Reference-conditioned gear assembly · robo-si</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>html{scroll-padding-top:100px}.hero{padding:64px 0}.hero .tags{justify-content:center}.jump,.evidence-links{display:flex;flex-wrap:wrap;gap:12px 24px}.evidence-links{padding-left:20px}.status-facts{display:grid;grid-template-columns:180px minmax(0,1fr);gap:12px 24px}.status-facts dt{font-weight:650}.status-facts dd{margin:0}section{padding:38px 0}p,dd,a{overflow-wrap:anywhere}.small{font-size:14px;color:var(--ink3)}@media(max-width:600px){.status-facts{grid-template-columns:1fr;gap:6px}.status-facts dd{margin-bottom:12px}.hero{padding:38px 0}.nav .wrap{flex-wrap:wrap}.nav nav{order:3;width:100%}}</style><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">Skip to content</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/task-gear-assembly-zh.html">中文</a></div></header><main id="main"><div class="hero"><div class="wrap"><p class="eyebrow">TASK STATUS · 2026-10-27</p><h1>Reference-conditioned gear assembly</h1><p class="lead">A saved complete expert and independent replay are available. Current-source alignment and portable release materials remain unfinished.</p><div class="tags"><span class="pill warn">In development · Complete recorded witness</span><span class="pill">Formal admission pending</span></div><p class="jump"><a href="#task">Task</a><a href="#evidence">Reports</a><a href="#limits">Scope</a><a href="#release">Release status</a></p></div></div><section id="task"><div class="wrap"><h2>Task and interface</h2><p>Following seven illustrated steps, G1 locates the base, assembles the large, medium and small gears and cover, uses a turning tool to verify transmission, then places the tool down and releases the stable structure. Transmission must arise from real tooth contact.</p><p>The saved profile uses a fixed-pelvis G1, two Dex3 hands and 43 joint-angle targets with Genesis CPU float64 physics. The expert reads privileged poses and contacts. Visual policies, free-standing execution and arbitrary layouts are outside this evidence.</p></div></section><section id="evidence"><div class="wrap"><h2>Preserved evidence</h2><dl class="status-facts"><dt>Saved profile</dt><dd>expert_v6 · seed 0 · anticlockwise</dd><dt>Complete execution</dt><dd>Seven stages, 216.9975 seconds, score 1</dd><dt>Independent replay</dt><dd>10,850 joint commands; task success reproduced with reported zero joint, time and final-object errors</dd><dt>Original policy audit</dt><dd>Fresh default reset; no recorded object-state writes or external-force calls</dd></dl><ul class="evidence-links"><li><a href="/robo-si-results/infra/task-status-evidence/gear-assembly/expert-v6-report.json">Complete expert report</a></li><li><a href="/robo-si-results/infra/task-status-evidence/gear-assembly/expert-v6-replay-report.json">Independent action replay</a></li><li><a href="/robo-si-results/infra/task-status-evidence/gear-assembly/task-status.json">Current status, provenance and SHA-256</a></li></ul><p class="small">The replay report sets robot_expert_verified=false because action replay alone does not audit the original policy. Its replay_verified, recorded_task_success and replayed_task_success are all true. The original execution report separately records the policy audit.</p></div></section><section id="limits"><div class="wrap"><h2>Evidence scope</h2><p>The results belong to the saved expert_v6 recording. Current run.py, replay.py, policy_example.py and assets.py have different hashes, so these results do not establish reproduction with the current workspace. task.toml still contains superseded fields; this page uses original execution/replay reports and a current file-hash comparison.</p></div></section><section id="release"><div class="wrap"><h2>Release and acceptance</h2><p>This publication provides status and measurement reports. A complete portable reproduction package, release acceptance and independent second-person reproduction have not been verified in this review. Formal benchmark admission is false. One saved success is not a multi-seed success rate.</p></div></section><!-- assembly-family:start -->
+<section id="detail-family"><div class="wrap"><h2>GEAR family: 3 tasks</h2>
+<p>10 independent tasks: Assembly 4, Gear Assembly 3, Reference Assembly 3; three originals and seven new tasks. Embodiment and difficulty are evaluation configurations, not extra tasks. Five-finger evaluation starts with Gear tool compatibility. New designs remain unverified; this update runs no simulation.</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Group</th>
+<th>Embodiment</th>
+<th>Task</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GEAR-01</td>
+<td>Original</td>
+<td>G1 + Dex3</td>
+<td>Original illustrated assembly and drive test</td>
+<td>Saved v6 witness; current-source revalidation pending</td>
+</tr>
+<tr>
+<td>GEAR-02</td>
+<td>Reasoning</td>
+<td>G1 + Dex3</td>
+<td>Diagnose, repair and retest</td>
+<td>Attempted; full witness pending</td>
+</tr>
+<tr>
+<td>GEAR-03</td>
+<td>Compatibility</td>
+<td>G1 + Dex3 / G1 + Inspire five-finger hand</td>
+<td>Grasp, guide and drive-tool compatibility</td>
+<td>Attempted; full witness pending</td>
+</tr>
+</tbody>
+</table></div>
+<p>Priority compatibility pair: G/F. The former combined task is its D3 configuration, not another task. New body configurations need independent validation.</p>
+<p><a href="/robo-si-results/infra/task-assembly-family-en.html">Full design, difficulty and criteria</a> · <a href="/robo-si-results/infra/planning/assembly-family/task-design.json">JSON</a></p></div></section>
+<!-- assembly-family:end --><!-- assembly-execution:start --><section id="assembly-execution"><h2>Assembly tasks · execution and evidence</h2><p>Ten independent tasks have candidate experts and one recording pipeline. Actual attempts are shown with separate task and physics verdicts. One failed route does not prove infeasibility.</p><p><a href="task-assembly-evidence-en.html#GEAR-01">View experts, plans, trajectories, physics checks and videos</a></p></section><!-- assembly-execution:end -->
+</main><footer class="wrap"><p><a href="/robo-si-results/infra/contribute-en.html#gear-assembly">Back to all tasks</a></p></footer></body></html>

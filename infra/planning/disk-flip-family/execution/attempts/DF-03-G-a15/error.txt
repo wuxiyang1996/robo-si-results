@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 805, in main
+    self.move('release',{'right':(self.hand_pose('right')[0]+[-.08,0,.07],self.hand_pose('right')[1])},seconds=12)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 492, in execute
+    for i in range(3000):
+     ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 364, in step
+    else:self.regulate_pinch()
+                               
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 181, in assess
+    local=max(bybody.values(),default=0)
+                         ^^^^^^^^^^^^^^^^
+RuntimeError: local_damage_proxy

@@ -1,0 +1,76 @@
+{
+  "setting": "DF-04-S",
+  "task_success": false,
+  "status": "failed_attempt",
+  "failure": "grasp_pose_not_reached:{'right': 0.20630496640410617}",
+  "simulated_seconds": 17.999999999999982,
+  "wall_seconds": 111.20985999703407,
+  "physics_hz": 400,
+  "trace_hz": 50,
+  "video_fps": 10,
+  "physics_records": 7200,
+  "video_frames": 182,
+  "peaks": {
+    "speed": 0.024525,
+    "angular": 0.01981137813565392,
+    "robot": 0.0,
+    "table": 1.4544212837636428,
+    "local": 0.0,
+    "self_contact": 0.0,
+    "robot_table": 0.0
+  },
+  "seen_lift": false,
+  "seen_flip": false,
+  "independent_verification": "pending",
+  "binding": {
+    "body": "S",
+    "simulation_engine": "MuJoCo",
+    "base": "fixed during episode",
+    "adaptations": [
+      "fixed base at declared placement",
+      "original tendon, finger mimic equality and collision exclusions",
+      "original position actuators; explicit effort caps applied at runtime",
+      "MuJoCo 3.14 compatibility: visual mesh shellinertia moved to mesh inertia=shell"
+    ],
+    "source": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch_mujoco/stretch_mujoco/models/stretch.xml",
+    "source_sha256": "e68303cd05f3fabbe5be4a6c873d076b146b320b40cc56ff2ba32306f6359290",
+    "effort_caps": {
+      "left_wheel_vel": 4.0,
+      "right_wheel_vel": 4.0,
+      "lift": 70.0,
+      "arm": 56.0,
+      "wrist_yaw": 1.9,
+      "wrist_pitch": 10.6,
+      "wrist_roll": 4.1,
+      "gripper": 80.0,
+      "head_pan": 1.5,
+      "head_tilt": 1.9
+    },
+    "degenerate_mesh_shell_inertia": [
+      "link_lift_1"
+    ],
+    "object_profile": "P1",
+    "geometry": "convex sector decomposition; gaps retained",
+    "physics_dt": 0.0025,
+    "object_mass": 0.12,
+    "object_com": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mujoco": "3.14.0"
+  },
+  "policy_state_writes": 0,
+  "object_attachment": false,
+  "source_hashes": {
+    "run.py": "91a85e44230a518c7bdd56005fe2e60345f5223ca25f216e6655fe51b856c901",
+    "model.py": "fe5a7c32208cac20f42b6b2fe5c4bd7aedb57764d3aa7b3d32f8566c7c3f0d6c",
+    "plan.json": "f0cfe45978b74af252d4c4f1c132aca8538ca4764463e46bf4fc3af75dcc2993",
+    "scene.xml": "794e3287fa5f06096bd4f0af4e85f6649313b45174b015ebb0f14eb7c4ebcf4e"
+  },
+  "limitations": [
+    "Privileged development expert; no public-agent score",
+    "MuJoCo extension protocol; original Genesis evidence is separate",
+    "No comparison success inferred from a failed or single-body attempt"
+  ]
+}

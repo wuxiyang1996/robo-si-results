@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>双臂桌面协同转盘 · robo-si</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>.table-wrap{overflow-x:auto}video{width:100%;background:#111}.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}button{cursor:pointer;padding:6px 12px}.flow{padding:20px;background:var(--panel)}td{vertical-align:top}code{overflow-wrap:anywhere}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">跳到正文</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-disk-rotation-en.html">English</a></div></header><aside class="document-notice"><div class="wrap">本页保留历史任务设计与验收说明。视频统一移至最终交付的 Nyx 8× 任务页；<a href="/robo-si-results/infra/archive-task-disk-rotation-zh.html">历史原页存档</a></div></aside><main id="main"><div class="hero"><div class="wrap"><p class="eyebrow">NATIVE GPU REFERENCE · 0.1.0</p><h1>双臂桌面协同转盘</h1><!-- dr-release-supplement:start --><aside style="padding:14px 18px;margin:18px 0;border-left:4px solid #2861a0;background:#eef5ff"><strong>0.2.0-rc1</strong> · 新增隔离接口、42 项预设扰动／消融和 3 项单列复核。主 benchmark 准入仍待人工审核与独立评测。 <a href="/robo-si-results/infra/task-disk-rotation-release-zh.html">发布补充与下载</a></aside><!-- dr-release-supplement:end --><p class="lead">两台完整 Panda 机械臂，通过侧面摩擦接触，将自由圆盘转到目标方向，并在撤手后保持稳定。</p><p>0.1.0 原生 GPU 正式参考：两个明确配置，每配置三个全新进程重复；每配置另有一次独立动作回放。特权专家、相同配置重复与感知 agent 成绩分开。已发布限定范围参考包；用户已批准本次声明范围内的参考交付。</p><div class="cards"><div class="card"><h3>6/6</h3><p>连续完整执行</p></div><div class="card"><h3>2/2</h3><p>独立动作回放</p></div><div class="card"><h3>HL → LL → trajectory</h3><p>三层映射逐段核对通过</p></div></div><p class="links"><a href="#task">规则与评分</a> · <a href="#evidence">录像与轨迹</a> · <a href="#mapping">分层映射</a> · <a href="#ablations">对照结果</a> · <a href="#release">复现与发布</a></p></div></div><!-- disk-rotation-family:start -->
+<section id="detail-family"><div class="wrap"><h2>圆盘操作任务族 · 9 个主任务</h2>
+<p>9 个主任务均通过确定配置模拟验收：每项含两次正常初态执行、独立动作回放、分层计划、连续轨迹、物理审核和同次运行视频。DR-I01 仍不计入正式任务；未验证的身体、工具和泛化结论保持 unknown。</p>
+<p><a href="/robo-si-results/infra/task-disk-rotation-family-zh.html">完整清单 / Full list</a> · <a href="/robo-si-results/infra/planning/disk-rotation-family/README.md">Markdown</a> · <a href="/robo-si-results/infra/planning/disk-rotation-family/task-design.json">JSON</a></p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>分组</th>
+<th>难度</th>
+<th>任务</th>
+<th>场景与考察</th>
+<th>优先身体</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-01-zh.html">DR-01</a></td>
+<td>原始</td>
+<td>L1</td>
+<td>均质圆盘旋转</td>
+<td>保留 0.1.0：均质圆盘、±30°，完成接触建立、旋转和稳定释放。</td>
+<td>Dual Panda</td>
+<td>已通过确定配置模拟验收</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-02-zh.html">DR-02</a></td>
+<td>接触推理</td>
+<td>L2</td>
+<td>分区材质接触选择</td>
+<td>侧面存在不同摩擦区域；通过观察或试探选择有效接触位置。初始有效区／低效区为配对配置，允许持续滑动到有效区。</td>
+<td>Dual Panda</td>
+<td>已通过确定配置模拟验收</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-03-zh.html">DR-03</a></td>
+<td>接触推理</td>
+<td>L2</td>
+<td>旋转阻力与圆心漂移权衡</td>
+<td>独立改变侧面和桌面摩擦；区分打滑、旋转阻力和中心漂移，调整接触力与运动方式。先用均质侧面隔离这一问题。</td>
+<td>Dual Panda</td>
+<td>已通过确定配置模拟验收</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-04-zh.html">DR-04</a></td>
+<td>接触推理</td>
+<td>L3</td>
+<td>受限接近区域下的连续旋转</td>
+<td>桌面固定障碍限制末端沿圆周连续运动，但保留候选接触区域；规划撤离、绕行、重新接触与后续旋转。换点必要性待验证。</td>
+<td>Dual Panda</td>
+<td>已通过确定配置模拟验收</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-05-zh.html">DR-05</a></td>
+<td>身体–场景相性</td>
+<td>L3</td>
+<td>单臂与双臂的接触分工</td>
+<td>同一圆盘与世界，比较单臂分段推动和双臂协同操作；考察有效力矩与圆心约束，不预设单臂不可解。</td>
+<td>Single Panda / Dual Panda</td>
+<td>已通过确定配置模拟验收</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-06-zh.html">DR-06</a></td>
+<td>身体–场景相性</td>
+<td>L3</td>
+<td>移动改变接近方向</td>
+<td>部分区域超出初始操作范围；移动机器人可绕桌建立工作位，固定臂检查其他合法路线。不同身体须分别核验可达性。</td>
+<td>Stretch 3 / Single Panda</td>
+<td>已通过确定配置模拟验收</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-07-zh.html">DR-07</a></td>
+<td>身体–接触相性</td>
+<td>L3</td>
+<td>推动与夹持方式选择</td>
+<td>共同可达区域内比较末端接触方式；允许侧推、侧面捏持等，圆盘始终保持桌面支撑。同一 G1 身体和基座条件，只换手及控制映射。</td>
+<td>G1 + Dex3 / G1 + Inspire five-finger hand</td>
+<td>已通过确定配置模拟验收</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-08-zh.html">DR-08</a></td>
+<td>身体–工具相性</td>
+<td>L3</td>
+<td>可选接触附件选择</td>
+<td>提供高摩擦垫、带柄接触块等；检查获取、稳定持用、切向力传递与撤出。原末端足够时可直接完成，附件必须真实改变接触物理。</td>
+<td>G1 + Dex3 / G1 + Inspire five-finger hand / Stretch 3</td>
+<td>已通过确定配置模拟验收</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-09-zh.html">DR-09</a></td>
+<td>协作</td>
+<td>L3</td>
+<td>异构机器人协作旋转</td>
+<td>固定臂和移动操作机器人自主分配约束漂移、推动与重新定位的职责；结束时双方撤离。允许合法单机解，协作收益待验证。</td>
+<td>Panda + Stretch 3</td>
+<td>已通过确定配置模拟验收</td>
+</tr>
+<tr>
+<td>DR-I01</td>
+<td>条件性对照</td>
+<td>—</td>
+<td>当前身体与现场附件均无法完成</td>
+<td>需排除全部合法路线，并配一个仅改变关键能力或附件的可解孪生。安全撤离、圆盘稳定后报告无法完成；证据不足保持 unknown。</td>
+<td>待绑定</td>
+<td>设计待验证</td>
+</tr>
+</tbody>
+</table></div></div></section>
+<!-- disk-rotation-family:end -->
+<section id="task"><div class="wrap"><h2>任务与评分</h2><div class="table-wrap"><table><thead><tr><th>检查量</th><th>冻结规则</th></tr></thead><tbody><tr><td>机器人 / 执行接口</td><td>两台固定基座七自由度 Panda；14 维关节角目标，50 Hz</td></tr><tr><td>物理后端</td><td>Genesis 1.4.3 · GPU · float64 · 400 Hz</td></tr><tr><td>盘体</td><td>直径 200 mm、厚 20 mm、质量 200 g；128 边凸棱柱</td></tr><tr><td>全过程圆心 / 最终圆心</td><td>30 mm / 10 mm</td></tr><tr><td>最终角度 / 释放静置</td><td>3° / 2 s</td></tr><tr><td>盘体速度上限</td><td>0.12 m/s / 0.65 rad/s</td></tr><tr><td>接触力 / 倾斜</td><td>20 N / 5°</td></tr><tr><td>最终速度上限</td><td>0.01 m/s / 0.05 rad/s</td></tr><tr><td>时间预算</td><td>120 s</td></tr></tbody></table></div><p>主成绩为 100 × 完整有效成功。过程进度单列：80% 阈值归一化的最佳角度进度，加 20% 释放静置进度；二者不混成总分。状态、接触、支撑与非预期机器人碰撞按物理子步检查。仅机器人关节施力，盘体无焊接或位姿控制。</p><p><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/instruction.zh.md">公开指令</a> · <a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/dual_arm_disk_rotation/task.toml">任务清单</a> · <a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/dual_arm_disk_rotation/task_spec.py">独立评分器</a></p></div></section><section id="evidence"><div class="wrap"><h2>连续执行与独立回放</h2><div class="table-wrap"><table><thead><tr><th>配置</th><th>初始 → 目标</th><th>重复</th><th>完成时间</th><th>角度误差</th><th>圆心误差</th></tr></thead><tbody><tr><td>nominal_ccw</td><td>0° → 30°</td><td>3/3</td><td>43.48 s</td><td>0.979°</td><td>0.0074 mm</td></tr><tr><td>wrap_cw</td><td>−170° → 160° (−30°)</td><td>3/3</td><td>43.56 s</td><td>0.972°</td><td>0.0114 mm</td></tr></tbody></table></div><div class="videos"><article class="card"><h3>nominal_ccw</h3><p class="current-video-link" id="video-nominal_ccw"><a href="/robo-si-results/infra/families/DR.html">查看最终交付的 Nyx 8× 录像 →</a></p><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/multi_robot--dual_arm_disk_rotation--validation--release-0.1.0-rc1--nominal_ccw--repeat-1--overhead.mp4">俯视录像</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/release-0.1.0-rc1/nominal_ccw/repeat-1/summary.json">实测结果</a> · <a href="https://github.com/wuxiyang1996/robo-si/releases/tag/dual-arm-disk-rotation-0.1.0">命令与状态</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/release-0.1.0-rc1/nominal_ccw/repeat-1/verification.json">独立审计</a></p></article><article class="card"><h3>wrap_cw</h3><p class="current-video-link" id="video-wrap_cw"><a href="/robo-si-results/infra/families/DR.html">查看最终交付的 Nyx 8× 录像 →</a></p><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/multi_robot--dual_arm_disk_rotation--validation--release-0.1.0-rc1--wrap_cw--repeat-1--overhead.mp4">俯视录像</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/release-0.1.0-rc1/wrap_cw/repeat-1/summary.json">实测结果</a> · <a href="https://github.com/wuxiyang1996/robo-si/releases/tag/dual-arm-disk-rotation-0.1.0">命令与状态</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/release-0.1.0-rc1/wrap_cw/repeat-1/verification.json">独立审计</a></p></article></div><p>录像为 10 fps；原始物理证据为 400 Hz。上表展示每配置第一次运行，各次重复及回放的完整结果保存在就绪报告中；这些重复不代表独立随机场景。</p><p><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/trajectory-review.png">误差与接触力曲线</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/trajectory-review.pdf">导出 PDF</a></p></div></section><section id="mapping"><div class="wrap"><h2>高层 → 低层 → 实测轨迹</h2><p>高层根据实测接触与盘体状态选择当前模式；低层使用接触力导纳、局部 IK、关节 PD 与模型重力/科氏力前馈。实际力矩始终受原模型上限约束。这是已实现的反馈专家，不将原草案中的 MPC 写成已实现能力。</p><p class="flow">稳定 → 接近 → 建立双侧接触 → 局部推转 → 卸力、撤离、换点并循环 → 精调释放 → 静置验收</p><p>每个按钮定位到同一次完整录像中的动作段。时间和命令切片来自实测记录；视频仅供观察，精确边界状态与物理检查以原始轨迹为准。</p><h3>nominal_ccw</h3><p><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/release-0.1.0-rc1/nominal_ccw/repeat-1/high_level_plan.json">高层计划、技能合同与实测关键状态</a></p><div class="table-wrap"><table><thead><tr><th>ID</th><th>高层</th><th>低层动作</th><th>时间</th><th>命令区间</th><th></th></tr></thead><tbody><tr><td>L001</td><td>H0</td><td>稳定与选模式</td><td>0.00–1.00 s</td><td>[0, 50)</td><td><button data-start="0.000" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L002</td><td>H1</td><td>接近</td><td>1.00–5.00 s</td><td>[50, 250)</td><td><button data-start="0.900" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L003</td><td>H2</td><td>建立接触</td><td>5.00–6.58 s</td><td>[250, 329)</td><td><button data-start="4.900" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L004</td><td>H3</td><td>协同推转</td><td>6.58–10.88 s</td><td>[329, 544)</td><td><button data-start="6.480" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L005</td><td>H4</td><td>减速卸力并撤离</td><td>10.88–16.28 s</td><td>[544, 814)</td><td><button data-start="10.780" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L006</td><td>H4</td><td>换点返回</td><td>16.28–17.62 s</td><td>[814, 881)</td><td><button data-start="16.180" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L007</td><td>H1</td><td>接近</td><td>17.62–21.62 s</td><td>[881, 1081)</td><td><button data-start="17.520" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L008</td><td>H2</td><td>建立接触</td><td>21.62–23.20 s</td><td>[1081, 1160)</td><td><button data-start="21.520" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L009</td><td>H3</td><td>协同推转</td><td>23.20–27.50 s</td><td>[1160, 1375)</td><td><button data-start="23.100" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L010</td><td>H4</td><td>减速卸力并撤离</td><td>27.50–32.90 s</td><td>[1375, 1645)</td><td><button data-start="27.400" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L011</td><td>H4</td><td>换点返回</td><td>32.90–34.24 s</td><td>[1645, 1712)</td><td><button data-start="32.800" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L012</td><td>H1</td><td>接近</td><td>34.24–38.24 s</td><td>[1712, 1912)</td><td><button data-start="34.140" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L013</td><td>H2</td><td>建立接触</td><td>38.24–39.82 s</td><td>[1912, 1991)</td><td><button data-start="38.140" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L014</td><td>H3</td><td>协同推转</td><td>39.82–41.44 s</td><td>[1991, 2072)</td><td><button data-start="39.720" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L015</td><td>H5</td><td>精调后释放</td><td>41.44–42.90 s</td><td>[2072, 2145)</td><td><button data-start="41.340" data-video="video-nominal_ccw" type="button">播放</button></td></tr><tr><td>L016</td><td>H5</td><td>撤手静置</td><td>42.90–43.48 s</td><td>[2145, 2174)</td><td><button data-start="42.800" data-video="video-nominal_ccw" type="button">播放</button></td></tr></tbody></table></div><h3>wrap_cw</h3><p><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/release-0.1.0-rc1/wrap_cw/repeat-1/high_level_plan.json">高层计划、技能合同与实测关键状态</a></p><div class="table-wrap"><table><thead><tr><th>ID</th><th>高层</th><th>低层动作</th><th>时间</th><th>命令区间</th><th></th></tr></thead><tbody><tr><td>L001</td><td>H0</td><td>稳定与选模式</td><td>0.00–1.00 s</td><td>[0, 50)</td><td><button data-start="0.000" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L002</td><td>H1</td><td>接近</td><td>1.00–5.00 s</td><td>[50, 250)</td><td><button data-start="0.900" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L003</td><td>H2</td><td>建立接触</td><td>5.00–6.58 s</td><td>[250, 329)</td><td><button data-start="4.900" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L004</td><td>H3</td><td>协同推转</td><td>6.58–10.88 s</td><td>[329, 544)</td><td><button data-start="6.480" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L005</td><td>H4</td><td>减速卸力并撤离</td><td>10.88–16.30 s</td><td>[544, 815)</td><td><button data-start="10.780" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L006</td><td>H4</td><td>换点返回</td><td>16.30–17.64 s</td><td>[815, 882)</td><td><button data-start="16.200" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L007</td><td>H1</td><td>接近</td><td>17.64–21.64 s</td><td>[882, 1082)</td><td><button data-start="17.540" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L008</td><td>H2</td><td>建立接触</td><td>21.64–23.24 s</td><td>[1082, 1162)</td><td><button data-start="21.540" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L009</td><td>H3</td><td>协同推转</td><td>23.24–27.54 s</td><td>[1162, 1377)</td><td><button data-start="23.140" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L010</td><td>H4</td><td>减速卸力并撤离</td><td>27.54–32.96 s</td><td>[1377, 1648)</td><td><button data-start="27.440" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L011</td><td>H4</td><td>换点返回</td><td>32.96–34.30 s</td><td>[1648, 1715)</td><td><button data-start="32.860" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L012</td><td>H1</td><td>接近</td><td>34.30–38.30 s</td><td>[1715, 1915)</td><td><button data-start="34.200" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L013</td><td>H2</td><td>建立接触</td><td>38.30–39.90 s</td><td>[1915, 1995)</td><td><button data-start="38.200" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L014</td><td>H3</td><td>协同推转</td><td>39.90–41.52 s</td><td>[1995, 2076)</td><td><button data-start="39.800" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L015</td><td>H5</td><td>精调后释放</td><td>41.52–42.98 s</td><td>[2076, 2149)</td><td><button data-start="41.420" data-video="video-wrap_cw" type="button">播放</button></td></tr><tr><td>L016</td><td>H5</td><td>撤手静置</td><td>42.98–43.56 s</td><td>[2149, 2178)</td><td><button data-start="42.880" data-video="video-wrap_cw" type="button">播放</button></td></tr></tbody></table></div><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/dual_arm_disk_rotation/solution/controller.py">生成控制器</a> · <a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/dual_arm_disk_rotation/solution/verify.py">三层映射核对器</a></p></div></section><section id="ablations"><div class="wrap"><h2>消融与结论边界</h2><div class="table-wrap"><table><thead><tr><th>对照</th><th>成功</th><th>时间</th><th>结果原因</th><th>记录</th></tr></thead><tbody><tr><td>noop</td><td>False</td><td>120.00 s</td><td>timeout</td><td><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/ablations/noop/summary.json">JSON</a></td></tr><tr><td>single_arm</td><td>False</td><td>24.60 s</td><td>rotation_progress_timeout</td><td><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/ablations/single_arm/summary.json">JSON</a></td></tr><tr><td>fixed_contacts</td><td>True</td><td>18.52 s</td><td>完整成功</td><td><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/ablations/fixed_contacts/summary.json">JSON</a></td></tr><tr><td>no_center_feedback</td><td>True</td><td>43.50 s</td><td>完整成功</td><td><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/ablations/no_center_feedback/summary.json">JSON</a></td></tr></tbody></table></div><p><strong>固定接触点对照已成功，因此当前配置不证明必须换点。</strong> 单臂对照失败只说明当前策略未完成，不是所有单臂方案不可解的证明。两个确定配置下的无中心反馈对照也不能推导对随机扰动不需要反馈。全部对照按相同 120 s 上限运行；控制器主动停止和物理违规分开记录。</p><p><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/attempts.json">完整尝试与失败账本</a></p></div></section><section id="release"><div class="wrap"><h2>复现、发布材料与验收状态</h2><p>发布范围是这两个具体配置的原生参考解、生成代码及可核对轨迹。全部六次完整执行与两次回放通过物理和映射审计。Panda 模型保留上游简化惯量，未声明硬件迁移能力。随机区间、任意技能拼接、通用 MPC、双臂/换点不可替代性均不在本次证明范围。</p><p><strong>用户已批准当前参考材料，0.1.0 正式发布。</strong></p><p>批准覆盖本次两个配置及所声明的证据范围。第二人独立复现、敌对代码隔离沙箱与随机域泛化仍未验证；这些技术状态不会因批准自动变为通过。</p><p><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/release-approval.json">用户批准记录</a></p><p><a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/RELEASE.md">安装、生成与回放命令</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/release-readiness.json">发布就绪报告</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/DATA_CARD.md">数据卡</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/ASSET_NOTICE.md">资产与许可证</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/native-api-smoke.json">原生接口检查</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/integrity-audit.json">完整性审计</a> · <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/validation/human-review.json">人工批准记录</a></p><p>离线包与 SHA-256 见交付回执。包内保留完整轨迹、两路视频、源码和资产快照、重复、消融与开发失败记录；作者特权材料不应挂载到感知 agent 容器。 <a href="/robo-si-results/multi_robot/dual_arm_disk_rotation/delivery.json">交付回执</a></p><p><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/dual-arm-disk-rotation-0.1.0">GitHub 正式发布与完整参考包下载（需仓库权限）</a></p><p>SHA-256: <code>8154ced134038e7e58862ec0bbeef35abc06535529aee8ef7dc1cdd2fa0dca61</code></p><p>离线包保持校验过的原始字节，包内“未发布”字段是打包时的历史快照；当前远端状态以此页与发布回执为准。</p></div></section></main><script>document.querySelectorAll("button[data-video]").forEach(b=>b.addEventListener("click",()=>{const v=document.getElementById(b.dataset.video);v.currentTime=Number(b.dataset.start);v.scrollIntoView({block:"center"});v.play().catch(()=>{});}));</script><footer style="padding:24px;font-size:14px">链接分享版；完整参考包需 GitHub 仓库访问权限。</footer></body></html>

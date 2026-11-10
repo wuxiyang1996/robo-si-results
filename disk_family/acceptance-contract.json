@@ -1,0 +1,29 @@
+{
+  "schema": "dr-simulation-acceptance/1",
+  "scope": "Nine primary exact-configuration simulation tasks. Privileged reference controllers; no hardware or cross-domain generalization claim.",
+  "tasks": ["DR-01", "DR-02", "DR-03", "DR-04", "DR-05", "DR-06", "DR-07", "DR-08", "DR-09"],
+  "required_per_task": {
+    "complete_normal_executions_same_frozen_source": 2,
+    "independent_actuator_input_replays": 1,
+    "replay_max_absolute_state_error": 0.00001,
+    "continuous_physics_hz": 400,
+    "high_low_trajectory_correspondence": true,
+    "source_and_generated_asset_sha256": true,
+    "same_run_video_and_frame_times": true,
+    "no_object_state_or_external_force_injection": true
+  },
+  "unchanged_physical_limits": {
+    "heading_error_degrees": 3,
+    "maximum_center_displacement_m": 0.03,
+    "final_center_displacement_m": 0.01,
+    "released_stable_seconds": 2,
+    "time_limit_seconds": 120,
+    "contact_force_N": 20,
+    "tilt_degrees": 5,
+    "linear_speed_m_per_s": 0.12,
+    "angular_speed_rad_per_s": 0.65
+  },
+  "required_delivery": ["frozen executable source and assets", "pre-execution plan", "400 Hz raw states", "actuator input trace", "contact trace", "independent audit", "video frame-to-simulation-time mapping", "failure inventory", "task-page links and reproducible commands"],
+  "research_claims": "A passing task reference does not establish tool necessity, hand superiority, collaboration necessity, or all-route infeasibility. Such claims require separate matched controls.",
+  "conditional_control": "DR-I01 is not admitted without an all-route certificate and a feasible twin; it remains explicitly outside the nine-task release."
+}

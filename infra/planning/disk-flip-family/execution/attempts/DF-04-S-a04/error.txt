@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 229, in main
+    summary={'setting':self.args.setting,'task_success':bool(self.success and not error),'status':'full_witness_candidate' if self.success and not error else 'failed_attempt','failure':error,'simulated_seconds':float(self.d.time),'wall_seconds':time.monotonic()-self.start,'physics_hz':400,'trace_hz':50,'video_fps':10,'physics_records':len(self.records),'video_frames':self.frames,'peaks':self.peaks,'seen_lift':self.seen_lift,'seen_flip':self.seen_flip,'independent_verification':'pending','binding':self.binding,'policy_state_writes':0,'object_attachment':False,'source_hashes':{n:hashlib.sha256((self.out/n).read_bytes()).hexdigest() for n in ['run.py','model.py','plan.json','scene.xml']},'limitations':['Privileged development expert; no public-agent score','MuJoCo extension protocol; original Genesis evidence is separate','No comparison success inferred from a failed or single-body attempt']}
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 196, in execute
+    goals={'right':(disk+[-.085,0,0],R)}
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 184, in move
+    elif target is not None:self.qref=q0+u*(target-q0)
+                                   ^^^^^^^^^^^^^^^^^^^^
+RuntimeError: grasp_pose_not_reached:{'right': 0.20630496640410617}

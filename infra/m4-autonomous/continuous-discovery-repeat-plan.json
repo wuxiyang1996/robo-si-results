@@ -1,0 +1,47 @@
+{
+  "schema": "m4-continuous-repeat-plan/1",
+  "status": "complete_three_of_three_verified",
+  "reference": "v3j-continuous-budget-a46",
+  "reference_result": true,
+  "additional_repeats": 2,
+  "scene_seed": 0,
+  "tool_catalog_seed": 101,
+  "jitter_m": 0,
+  "precision": "64",
+  "substeps": 8,
+  "ground_friction": 0.3,
+  "noslip_iterations": 0,
+  "time_limit_s": 120,
+  "scope": "Same-scene same-start component reproducibility. Every result retained; no substitution for broader seeds or full delivery.",
+  "formal_admission": false,
+  "additional_attempts": [
+    {
+      "name": "v3j-tools-repeat-a50",
+      "seed": 0,
+      "jitter_m": 0
+    },
+    {
+      "name": "v3j-tools-repeat-a51",
+      "seed": 0,
+      "jitter_m": 0
+    }
+  ],
+  "condition": "Run only after the predeclared a47-a49 corridor cohort terminates; single physical job at a time.",
+  "frozen_source": "v3j-continuous-budget-a46",
+  "execution_arguments": [
+    "--replay-source",
+    "v3j-continuous-budget-a46",
+    "--precision",
+    "64",
+    "--substeps",
+    "8",
+    "--seconds",
+    "120",
+    "--mode",
+    "cycle",
+    "--continuous-discovery",
+    "--probe-tool-seed",
+    "101"
+  ],
+  "note": "Omit a redundant ground-friction patch: frozen a46 already declares the tool scene floor 0.3. Each run is a fresh continuous scene; no reset within its tool sequence."
+}

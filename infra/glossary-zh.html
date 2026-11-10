@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench（robo-si）的术语表、常见问题，以及与 Terminal-Bench（Harbor）和 EmbodiedSWE 的对照。" name="description"/>
+<title>术语与参考</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/glossary-en.html">English</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">任务基础设施 · 术语与参考</p>
+<h1>反复出现的<span class="nm">术语</span>、<br/>常见问题和参考来源。</h1>
+<p class="lead">术语和问答都只给一句话的解释，再链接到讲清楚它的那一节。</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>目录</h3>
+<ol class="toc">
+<li><a href="#glossary">01 术语表</a></li>
+<li><a href="#faq">02 问答</a></li>
+<li><a href="#refs">03 参考了什么</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="glossary"><div class="wrap">
+<p class="kicker">01 · 术语表</p>
+<h2>几页里反复出现的词</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:7.5em">术语</th><th>含义</th><th>详见</th></tr></thead>
+<tbody>
+<tr><td>参考专家解（oracle）</td><td>现有的专家解：可以读仿真真值、用 IK/FK 规划，从随机初始状态出发、只通过动作接口驱动机器人；用来证明问题可解、验证评分器；不是 Terminal-Bench 意义上的 oracle</td><td><a href="/robo-si-results/infra/acceptance-zh.html#expert">任务验收第 01 节</a></td></tr>
+<tr><td>官方轨迹</td><td><code>solution/</code>、<code>verified/</code> 里的官方脚本：开局摆位置、每步读真值；只作特权参考轨迹和子目标的起点</td><td><a href="/robo-si-results/infra/acceptance-zh.html#official">任务验收第 02 节</a></td></tr>
+<tr><td>L1 / L2 / L3</td><td>GR00T WBC / 目标点轨迹规划 / 中间点加 IK/FK 暴力求解；都在 agent 一侧，只用自身传感器</td><td><a href="/robo-si-results/infra/sandbox-zh.html#iso">隔离沙箱第 03 节</a></td></tr>
+<tr><td>技能接口</td><td>agent 可以选用的技能：任务提供的，或 agent 自己产生并登记的（推荐）</td><td><a href="/robo-si-results/infra/sandbox-zh.html#iso">隔离沙箱第 03 节</a></td></tr>
+<tr><td>难度层</td><td>第 1 层只有必要工具；第 2 层加入换个身体才能用的工具；第 3 层加入干扰项</td><td><a href="/robo-si-results/infra/task-design-zh.html#layers">任务设计第 05 节</a></td></tr>
+<tr><td>子任务 / 阶段</td><td>用状态描述完成条件的子任务；每个子任务对应一个计分阶段</td><td><a href="/robo-si-results/infra/task-design-zh.html#subtasks">任务设计第 06 节</a></td></tr>
+<tr><td>判据</td><td>从可信侧状态日志判断阶段完成程度的规则</td><td><a href="/robo-si-results/infra/verifier-zh.html#predicates">评分与验证第 03 节</a></td></tr>
+<tr><td>过程分 / 成功</td><td>阶段连续取值加权后的进度峰值 / 任务是否完成（0 / 1）</td><td><a href="/robo-si-results/infra/verifier-zh.html#rules">评分与验证第 04 节</a></td></tr>
+<tr><td>VOID</td><td>完整性检查不通过，整次运行判无效，记 0</td><td><a href="/robo-si-results/infra/verifier-zh.html#acceptance">评分与验证第 05 节</a></td></tr>
+<tr><td>标记回合</td><td>触发了不明确的告警、按保守规则自动处理并记下的回合，汇总给任务维护者</td><td><a href="/robo-si-results/infra/verifier-zh.html#acceptance">评分与验证第 05 节</a></td></tr>
+<tr><td>人工检查（任务）</td><td>任务验收和改版时，人看录像回答三个问题：没有 reward hack、任务确实完成、没有明显违反物理规律或限制</td><td><a href="/robo-si-results/infra/acceptance-zh.html#humancheck">任务验收第 05 节</a></td></tr>
+<tr><td>开发 / 评测 / 评分模式</td><td>可以有限次 reset 的单回合开发 / 一个交互回合 / 交付程序在 N 个密封新回合上重跑</td><td><a href="/robo-si-results/infra/sandbox-zh.html#arch">隔离沙箱第 02 节</a></td></tr>
+<tr><td>密封回合</td><td>由私有种子抽出、在 agent 连上之前就建好并封存的回合</td><td><a href="/robo-si-results/infra/sandbox-zh.html#env">隔离沙箱第 04 节</a></td></tr>
+<tr><td>能力披露档位</td><td>explicit / partial / latent：告诉 agent 多少自身能力信息；不算难度层</td><td><a href="/robo-si-results/infra/task-design-zh.html#layers">任务设计第 05 节</a></td></tr>
+<tr><td>可信侧 / 环境一侧</td><td>仿真、传感器、记录器、监视器、评分器所在的边界，agent 碰不到</td><td><a href="/robo-si-results/infra/sandbox-zh.html#arch">隔离沙箱第 02 节</a></td></tr>
+<tr><td>交付快照</td><td>在预算点给 agent 工作目录拍的快照，各自评分</td><td><a href="/robo-si-results/infra/protocol-zh.html#snapshots">评测规程第 02 节</a></td></tr>
+<tr><td>重复评测 / 评分重跑</td><td>每个 agent 在每个任务上跑 3 次独立评测；每个交付在同一批密封回合上评分 3 次取平均，差别超过容差的回合标记为不可复现</td><td><a href="/robo-si-results/infra/protocol-zh.html#stats">评测规程第 04 节</a></td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="faq"><div class="wrap">
+<p class="kicker">02 · 问答</p>
+<h2>常见问题</h2>
+<details><summary>参考专家解可以读真值、暴力求解吗？</summary><p>可以。它只用来证明可解和验证评分器，不给 agent 用。 <a href="/robo-si-results/infra/acceptance-zh.html#expert">详见</a></p></details>
+<details><summary>agent 能调用哪些工具和技能？</summary><p>任务卡允许的 L1–L3、VLA、IK/FK 和指定的技能，输入只能是自己的传感器结果；也可以自己写。 <a href="/robo-si-results/infra/sandbox-zh.html#iso">详见</a></p></details>
+<details><summary>“4 小时以上”怎么判断？</summary><p>靠难度试跑：标准 agent 配置在沙箱里不限时地解，按层记录耗时和卡住的阶段。 <a href="/robo-si-results/infra/contribute-zh.html#process">详见</a></p></details>
+<details><summary>评测 agent 时要人工看录像吗？</summary><p>不用，评测全自动；人工只在任务验收时检查任务和评分器。 <a href="/robo-si-results/infra/acceptance-zh.html#humancheck">详见</a></p></details>
+<details><summary>评测为什么要重复 3 次？</summary><p>agent 有随机性，GPU 上的物理也不逐位重复：每个 agent 跑 3 次评测，每个交付评分 3 次取平均。 <a href="/robo-si-results/infra/protocol-zh.html#stats">详见</a></p></details>
+<details><summary>agent 用了我没想到的办法，怎么算？</summary><p>按它实际达到的状态自动给分，跳过的阶段不补发；暴露出漏洞或捷径就改版、自动重评。 <a href="/robo-si-results/infra/task-design-zh.html#corner">详见</a></p></details>
+<details><summary>第 2 层和第 3 层有什么区别？</summary><p>第 2 层的物体换一种身体就能用，考自我建模；第 3 层是干扰项，考做实验、排除选项。 <a href="/robo-si-results/infra/task-design-zh.html#layers">详见</a></p></details>
+<details><summary>子任务场景为什么不给被评测的 agent？</summary><p>子任务的起始状态本身就暴露了路线。 <a href="/robo-si-results/infra/task-design-zh.html#subtasks">详见</a></p></details>
+<details><summary>只做 Genesis 可以吗？</summary><p>可以，Isaac Lab 对齐是推荐项。 <a href="/robo-si-results/infra/task-design-zh.html#sim">详见</a></p></details>
+<details><summary>我要用 Go1，可沙箱还没有 Go1 的传感器？</summary><p>把补上 Go1 传感器仿真作为任务的一部分。 <a href="/robo-si-results/infra/sandbox-zh.html#realism">详见</a></p></details>
+<details><summary>oracle 做不出全链路怎么办？</summary><p>若声明范围没有代表性完整见证，不能以筛查或分段成功替代完整验收；可先提交规划和局部证据。某个随机实例在预算内没找到完整解则记未确定，不因此把整个任务或该实例判为不可解。<a href="/robo-si-results/infra/acceptance-zh.html#screening">详见</a></p></details>
+</div></section>
+<section class="tinted" id="refs"><div class="wrap">
+<p class="kicker">03 · 参考了什么</p>
+<h2>Terminal-Bench（Harbor）和 EmbodiedSWE</h2>
+<p>下表对比两者和我们的做法。Terminal-Bench 一栏以本地的 Harbor 格式任务（<code>Benchmark/tasks/g1_support_augmented_retrieval</code>）为准，EmbodiedSWE 一栏以本地仓库 <code>EmbodiedSWE/eval</code> 和 <code>robobench</code> 为准。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>环节</th><th>Terminal-Bench / Harbor</th><th>EmbodiedSWE</th><th>我们</th></tr></thead>
+<tbody>
+<tr><td>agent 在哪里</td><td>任务的环境容器里；agent 阶段可以断网（<code>network_mode = "no-network"</code>）</td><td>Docker 容器，非 root 用户 <code>agent</code>，只有 <code>/workspace</code> 可写；隔离网络时只经 squid 白名单出网</td><td>Linux 容器：uid 1000、根文件系统只读、丢弃全部 capabilities、no-new-privileges、限制进程数、内存和 CPU；内部网络，唯一出口是通往环境的 RPC 端口（可选 squid 白名单通 LLM API）</td></tr>
+<tr><td>agent 能看到什么</td><td>指令和环境镜像；测试不在镜像里</td><td>只读挂载的 <code>/bench</code> 和 <code>/task</code>；评分器“永远不在 agent 能看到的目录树里”，构建时还会扫描泄露</td><td>只有机器人传感器读数、指令、机器人模型和 SDK；仿真、评分、日志都在另一边</td></tr>
+<tr><td>环境怎么防改</td><td>—（终端任务，不涉及物理世界）</td><td>包装器让 <code>reset</code>、<code>set_states</code> 抛异常，构建时冻结控制模式；其他属性仍委托给原始环境</td><td>agent 根本拿不到环境对象，只有 8 个 RPC 方法；没有任何改世界的方法</td></tr>
+<tr><td>交付物</td><td>指定的产物目录（如 <code>/app/methods</code>）</td><td>提交到 <code>/submissions</code> 的 <code>solve.py</code></td><td>只调用 SDK 的控制程序（工作目录）</td></tr>
+<tr><td>评分器在哪里</td><td>单独的 verifier 镜像（<code>environment_mode = "separate"</code>），测试目录权限 700，断网</td><td>事后另起一个容器，评分器只读挂载，不带凭据</td><td>环境一侧：和仿真、记录器、监视器在同一个可信边界里</td></tr>
+<tr><td>评分时交付程序在哪里跑</td><td>在 verifier 容器的文件系统里，每个回合一个子进程（nobody 用户、rlimits、seccomp 禁网络和 ptrace）；仿真在父进程里</td><td>被导入评分器的同一个 Python 进程，通过包装后的环境运行</td><td>每个回合一个全新的 agent 容器和工作目录副本，只经 RPC 和环境通信；永远不进环境一侧</td></tr>
+<tr><td>密封测试集</td><td>密封回合文件，先核对 sha256，再在运行提交代码之前删除</td><td>按 <code>--seed</code> 和环境数重新随机；默认种子是 0</td><td>可信侧私下抽取的种子，按任务类型分层；开发和评测还没有分成不同的种子集合</td></tr>
+<tr><td>分数</td><td><code>reward.json</code>，出错强制为 0（fail-closed），先删除旧的奖励文件</td><td>rubric：阶段分 <code>once</code> / <code>live</code> / <code>final</code>，进度峰值为分，<code>success</code> 单独给；部分任务加 VLM 终判</td><td>沿用 EmbodiedSWE 的 rubric 思路：阶段连续取值、进度峰值、成功单独给；全自动</td></tr>
+<tr><td>评分器怎么证明有效</td><td>oracle 解应拿到预期分数（本地任务为 0.6），空操作应得 0；逃逸测试（读答案、改评分、搜磁盘、联网）全部 0 分</td><td>—</td><td>参考专家解和官方轨迹判成功、与人工标注一致；空操作、反例、漏洞运行得 0 或无效</td></tr>
+<tr><td>防作弊</td><td>测试不可见、密封集、逃逸测试（读答案、改评分、搜磁盘、联网等全部 0 分）</td><td>靠访问控制加规则；仓库里没有监视器或对话审计</td><td>逃逸探针、违规即无效、世界参数哈希、瞬移检查；监视器和防编造见<a href="/robo-si-results/infra/verifier-zh.html">评分与验证</a>页</td></tr>
+<tr><td>锚点</td><td>oracle 解应拿到预期分数（本地任务为 0.6），空操作应得 0（<code>--agent oracle</code> / <code>nop</code>），既证明可解，也证明评分有效；另有一个读真值的特权规划器，只用来标可行性和参考时间，从不发给 agent</td><td>—</td><td>参考专家解和官方轨迹给上锚点并验证评分器，空操作得 0</td></tr>
+</tbody>
+</table></div>
+<div class="two" style="margin-top:14px">
+<div class="card"><h3>借鉴的做法</h3><ul class="check">
+<li>Terminal-Bench：评分器与 agent 分开、测试不可见、密封的留出回合、出错即判 0、用 oracle 和空操作同时证明可解和评分有效、逃逸测试。</li>
+<li>EmbodiedSWE：rubric 评分器（<code>once</code> / <code>live</code>、进度峰值、成功单独给）；评分器永远不进 agent 的目录树；把交付程序放到新回合上重跑；内部网络加白名单代理；agent 不是 root。</li></ul></div>
+<div class="card"><h3>刻意避开的问题</h3><ul class="check cross">
+<li>EmbodiedSWE 把交付的 <code>solve.py</code> 导入评分器进程，包装器只拦了 <code>reset</code> 和 <code>set_states</code>，原始环境仍可访问。本沙箱的交付程序和环境、评分器不共用进程，也不共用容器。</li>
+<li>EmbodiedSWE 的对话记录写在 agent 可写的工作目录里。本沙箱由启动器在容器外记录 agent 的输出。</li>
+<li>EmbodiedSWE 评分默认用种子 0，可能和开发时的初始状态相同。本沙箱的评分种子由可信侧私下抽取。</li>
+<li>EmbodiedSWE 的说明里写着“不作弊靠提示词，而不是访问控制”。本沙箱全部靠访问控制。</li>
+<li>Harbor 的提交代码在 verifier 的文件系统上运行，要靠删除密封文件、nobody 用户和 seccomp 防护。本沙箱的交付程序根本不进环境一侧。</li></ul></div>
+</div>
+</div></section>
+<div class="wrap"><details><summary>随机实例必须都有完整轨迹吗？</summary><p>不需要。任务级有少量代表完整见证，技能级验证适用条件，实例级在预算内筛查，执行时滚动生成局部轨迹。筛查通过、未确定、检查不通过与完整成功证据分开记录。<a href="/robo-si-results/infra/acceptance-zh.html#screening">验收标准</a></p></details></div>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · 术语与参考 · 2026-10-26 · <a href="/robo-si-results/infra/glossary-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/infra/contribute-zh.html">首页</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body>
+</html>

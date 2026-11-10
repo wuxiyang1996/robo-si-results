@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 478, in main
+    if self.events and 'end_s' not in self.events[-1]:self.events[-1].update(end_s=float(self.d.time),record_end=len(self.records),interrupted=True)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 356, in execute
+    if self.tuning.get('align_grasp',False):self.align_grasp(goals)
+                                                   ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 392, in edge_regrasp
+    travel+=.002*.02
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 304, in move
+    if goals:
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 286, in step
+    else:self.regulate_pinch()
+                               
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 156, in assess
+    local=max(bybody.values(),default=0)
+                         ^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

@@ -1,0 +1,90 @@
+{
+ "schema": "transport-standalone-physical-probe/1",
+ "task_id": "H5",
+ "target_stage": "transported",
+ "checkpoint": {
+  "source": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\redesign\\release-v3-transport36-layer1-seed23-20261023-1",
+  "manifest_sha256": "ec1ea1ed09a5dcdd5e4c759766bb949a28edea7b99137d23d7c69bedde47f840",
+  "time_s": 105.4,
+  "target_stage": "transported",
+  "task_id": "H5"
+ },
+ "source_command_tape": {
+  "schema": "trusted-command-tape/1",
+  "control_hz": 50,
+  "commands": 7549,
+  "sha256": "734102de9bb09ebee24dc41a1d3c04782bf01df0709e4cc1af3e95024a629218"
+ },
+ "backend": "cpu",
+ "passed": true,
+ "main_task_admission_evidence": false,
+ "controller": "feedback",
+ "controller_provenance": {
+  "controller": "original high-level command trace with live Agile leg feedback",
+  "trace_sha256": "7a78a31423ec7ccb032e5033a85bf994fbe04baef1ac632074fe84c82ce0dc16",
+  "last_command_index": 5269,
+  "controller_source_sha256": "b02b397b1c5a01786b19d227fceceb1f8e0a189ab9d6bb99da826075527ea50a",
+  "physics_writes": false
+ },
+ "human_review": null,
+ "error": null,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "success": false,
+  "score": 0.0,
+  "scope": "standalone_training_subtask",
+  "checkpoint": {
+   "source": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\redesign\\release-v3-transport36-layer1-seed23-20261023-1",
+   "manifest_sha256": "ec1ea1ed09a5dcdd5e4c759766bb949a28edea7b99137d23d7c69bedde47f840",
+   "time_s": 105.4,
+   "target_stage": "transported",
+   "task_id": "H5"
+  },
+  "standalone_passed": true,
+  "target_stage": "transported",
+  "target_time_after_checkpoint_s": 36.66,
+  "stage_timeline": {
+   "tool_engaged": 6.52,
+   "cargo_raised": 31.9,
+   "cargo_supported": 92.38,
+   "transported": 142.06,
+   "delivered": null
+  },
+  "alarms": [],
+  "monitor_metrics": {
+   "monitor_version": "h5-monitors/1",
+   "not_applicable": {
+    "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+   },
+   "max_reported_speed": 0.329,
+   "max_object_speed": 0.306,
+   "max_step_speed": 0.618,
+   "max_floor_penetration": 0.0013,
+   "max_out_of_bounds_m": -1.1575,
+   "max_energy_excess_J": 0.053,
+   "max_reversal_rate_hand_hz": 1.0,
+   "max_arm_shake": 0.382,
+   "max_saturation_s": 0.14,
+   "max_limit_push_s": 0.0,
+   "max_progress_spike": 0.0,
+   "initial_body_offset_m": 0.0,
+   "initial_body_turn_deg": 0.0,
+   "initial_robot_offset_m": 0.0,
+   "max_robot_cargo_share": 0.0,
+   "max_applied_torque_ratio": 1.0
+  },
+  "prefix_samples": 5271,
+  "continuation_samples": 1851,
+  "main_task_admission_evidence": false
+ },
+ "stopping_rule": "current scoring predicates for the requested standalone stage",
+ "stopped_at_stage": {
+  "stage": "transported",
+  "stage_time_s": 142.06,
+  "stop_time_after_checkpoint_s": 37.0
+ },
+ "runner_source_sha256": "13eaf43ecf453322f12f207ee865974ba3ad39d19811a1c479b2a3ee7559b5eb"
+}

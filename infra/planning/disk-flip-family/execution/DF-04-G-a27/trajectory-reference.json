@@ -1,0 +1,40 @@
+{
+  "controller_tuning": {
+    "prepush": true,
+    "deep_load_n": 2.5,
+    "dex3_soft_total_n": 14,
+    "left_thumb_yaw": 0.714,
+    "right_thumb_yaw": 0.342,
+    "dex3_close_s": 50,
+    "align_grasp": true,
+    "wrench_control": true,
+    "disk_collision_shape": "mesh128",
+    "turn_feedback": true,
+    "wrist_clearance": true,
+    "bridge_place": true,
+    "active_contact_fallback": true,
+    "lift_back": true,
+    "tangent_admittance": true,
+    "force_target_slew": true,
+    "bridge_push_speed": 0.004,
+    "bridge_transport_feedback": true,
+    "bridge_edge_x": 0.19,
+    "physics_dt": 0.0005,
+    "reference_prefix_file": "DF-04-G-a25-prefix.npz",
+    "prefix_completion": "dex3_index_bridge"
+  },
+  "format": "held-reference-replay/1",
+  "physics_hz": 2000,
+  "control_hz": 50,
+  "body": "G",
+  "physics_steps": 1076000,
+  "full_array_sha256": {
+    "qpos": "eac8407a13bf2a3aac3c7815ee7bb082900473f8b973a4a0da0d75fc26d5f6a2",
+    "qvel": "506725c51b78939b7b972bbff12da2d17f3832c4f0b1bf2c49b28a3508a1e505",
+    "ctrl": "4bf1c01bbcfadac33694bc338ba5337c66a71eefa79b39aceb0be3c32af51e3b"
+  },
+  "source_trajectory_npz_sha256": "2c1db2ae9cd9015c56854e0ec25301b5c3358258148846db3cecda4b72914efb",
+  "replay": "python compact_evidence.py --replay PATH_TO_RUN",
+  "requirements": "MuJoCo 3.14.0, NumPy, same official meshes, scene.xml and initial_state.json. Remap external mesh paths when needed.",
+  "storage": "References stored once per control interval; partial final interval retained. Object states shown at control endpoints; full physics-step states/controls are deterministically reconstructed and checked by array SHA-256."
+}

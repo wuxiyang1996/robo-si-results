@@ -1,0 +1,322 @@
+{
+  "schema": "h3-tool-integration-summary/1",
+  "runs": [
+    {
+      "run": "tool-placement-8066146",
+      "purpose": "L2：从关门开始的真实开门、布置工具与交付集成",
+      "outcome": "95.86 s 路点静止门槛超时；G1 持门成立，尚未推箱。到点制动已修正，重新冻结试验。"
+    },
+    {
+      "run": "tool-placement-8066147",
+      "purpose": "L3：负载变化后执行真实轮驱恢复",
+      "outcome": "27.015 s 检测失效；2130 个真实接触采样，轴向推动 18.28 cm，但横向偏移扩大，恢复未通过。"
+    },
+    {
+      "run": "tool-placement-8066148",
+      "purpose": "L3：相同场景与故障、不执行恢复",
+      "outcome": "同样在 27.015 s 检测失效；支撑、门角及净空未恢复。"
+    },
+    {
+      "run": "tool-placement-8066540",
+      "purpose": "L2：到点制动后的完整场景复测",
+      "outcome": "已通过旧停滞点；136.52 s 在 B 区远端路点发生 31.6 cm 位置误差而超时。转入分段低速导航预检。"
+    },
+    {
+      "run": "tool-placement-8066541",
+      "purpose": "L3：横向恢复，跨节点主动组",
+      "outcome": "故障前滑移门槛未通过，初始支撑未建立；未允许恢复动作，不构成有效恢复对照。"
+    },
+    {
+      "run": "tool-placement-8066542",
+      "purpose": "L3：横向待命、不执行恢复",
+      "outcome": "初始支撑通过，50.015 s 检测失效；未恢复。"
+    },
+    {
+      "run": "tool-recovery-active-8066723",
+      "purpose": "L3：同 GPU 横向主动恢复",
+      "outcome": "恢复动作真实执行，门重新打开到 1.26 rad；箱体越过目标，连续支撑未通过。计入机器人后的末段净空仅约 0.465 m。"
+    },
+    {
+      "run": "tool-recovery-control-8066723",
+      "purpose": "L3：同 GPU 不恢复对照",
+      "outcome": "前 10004 个物理采样与主动组一致，故障后支撑及净空未恢复。"
+    },
+    {
+      "run": "tool-placement-8066948",
+      "purpose": "L2：B 区低速导航预检",
+      "outcome": "20.06 s 的静止验证失败：最后 100 个物理采样中一帧速度为 0.030286 m/s，超过 0.03 门槛。已修复按 50 Hz 漏检的问题，改为检查全部 200 Hz 采样。"
+    },
+    {
+      "run": "tool-recovery-active-8066949",
+      "purpose": "L3：同 GPU 目标位置制动恢复",
+      "outcome": "真实接触与恢复动作已执行，但 3.36 cm 漂移与间歇接触未满足连续支撑；末段计入机器人后的最小净空为 0.345 m，不能放行。"
+    },
+    {
+      "run": "tool-recovery-control-8066949",
+      "purpose": "L3：同 GPU 不恢复对照",
+      "outcome": "初始支撑通过，50.015 s 检测失效；未恢复。"
+    },
+    {
+      "run": "tool-placement-8067135",
+      "purpose": "L2：按全部物理采样验证停车的导航复测",
+      "outcome": "60.92 s 三个路点全部通过；独立审计 12184 个物理采样，无评分违规。仅 B 区导航，非完整交付。"
+    },
+    {
+      "run": "tool-recovery-active-8067136",
+      "purpose": "L3：动作后固定姿态再验证",
+      "outcome": "初始支撑通过，50.015 s 检测失效；真实恢复将门打开到约 1.13 rad，但未达到 1.18 rad 的刹车触发点，未进入稳定验证，局部恢复失败。"
+    },
+    {
+      "run": "tool-recovery-control-8067136",
+      "purpose": "L3：同 GPU 不恢复对照",
+      "outcome": "初始支撑通过，故障后未恢复。两组虽同 GPU／同源码，故障前轨迹已存在差异，不能宣称完全相同前史的因果对照。"
+    },
+    {
+      "run": "tool-recovery-active-8067255",
+      "purpose": "L3：提前制动并验证新支撑姿态",
+      "outcome": "50.015 s 检测失效，57.28 s 停止驱动，60.26 s 达到连续 2 s 原生支撑；独立审计通过局部恢复。但助手占道，末段净空仅 0.379 m，不能交付。"
+    },
+    {
+      "run": "tool-recovery-control-8067255",
+      "purpose": "L3：同 GPU 不恢复对照",
+      "outcome": "前 10004 个物理采样与主动组完全一致，50.025 s 才分歧；不恢复组未通过支撑门槛。完整故障后交付仍未执行。"
+    },
+    {
+      "run": "tool-placement-8067221",
+      "purpose": "L2：通过局部导航后的连续场景复测",
+      "outcome": "191.38 s 导航失败。107.32 s 意外碰箱，随后箱体移入通道；原局部预检起点过晚，漏掉这段绕行。现扩大预检并加入意外接触／移位即停保护。"
+    },
+    {
+      "run": "tool-recovery-repeat1-8067386",
+      "purpose": "L3：预先固定的重复 1/3",
+      "outcome": "61.06 s 完成局部实际恢复，独立审计通过；助手占道，不能放行原包裹搬运。"
+    },
+    {
+      "run": "tool-recovery-repeat2-8067386",
+      "purpose": "L3：预先固定的重复 2/3",
+      "outcome": "60.26 s 完成局部实际恢复，独立审计通过；助手占道，不能放行原包裹搬运。"
+    },
+    {
+      "run": "tool-recovery-repeat3-8067386",
+      "purpose": "L3：预先固定的重复 3/3",
+      "outcome": "61.06 s 完成局部实际恢复，独立审计通过；助手占道，不能放行原包裹搬运。"
+    },
+    {
+      "run": "tool-placement-8067694",
+      "purpose": "L2：覆盖早期绕行、转身通过窄缝的完整接近预检",
+      "outcome": "150.16 s 八个路点全部通过；30032 个物理采样独立复核，意外接触／移位／倾斜保护无触发。箱体保持原位；仅接近技能，完整开门到交付仍待重跑。"
+    },
+    {
+      "run": "tool-placement-8069810",
+      "purpose": "L3：局部恢复后沿箱体侧移腾出通道",
+      "outcome": "74.94 s 局部恢复成立；侧移 1.66 s 后门角降至 1.04997 rad，触发停止，通道仍约 0.376 m。独立审计确认腾出通道失败；后续反馈、重新布置与直接扶门试验分别列出。"
+    },
+    {
+      "run": "tool-placement-8070047",
+      "purpose": "L3：门角反馈下侧移助手",
+      "outcome": "61.06 s 局部恢复成立；6.48 s 后箱体移位超过 6 cm 操作范围而停止。门角仍为 1.1296 rad，最终净空 0.434 m，不满足 0.65 m；转入重新布置工具的独立试验。"
+    },
+    {
+      "run": "tool-placement-8069737",
+      "purpose": "L2：新路线的连续场景验证",
+      "outcome": "30 分钟调度时限截断。可恢复 43909 个原生采样至 219.545 s，六个路点完成，原箱体未移动；完整路线未完成且视频未封装。相同冻结源码延长调度时限的 8070058 已完成并保留失败结论。"
+    },
+    {
+      "run": "tool-placement-8070170",
+      "purpose": "L3：先向西重新布置工具，再向下释放通道",
+      "outcome": "未能将箱体向西推到目标；105.145 s 出现助手直接扶门接触，但控制器继续向西，135.48 s 与 G1 产生 1.537 N 非计划接触，失败。最终宽度超过 0.65 m 也不能抵消碰撞。"
+    },
+    {
+      "run": "tool-placement-8070058",
+      "purpose": "L2：同冻结源码延长调度时限，验证连续开门与工具交付",
+      "outcome": "268.54 s 停止。250.28 s 完成接近并开始推箱；箱体向西移动 29.43 cm 后，横向偏移 4.015 cm 超过 4 cm 走廊。53708 个物理采样独立评分一致；未开始原包裹搬运。"
+    },
+    {
+      "run": "tool-placement-8070325",
+      "purpose": "L3：依据实测门接触切换到直接扶门，停车并验证净空",
+      "outcome": "138.5 s 局部通过。119.78 s 实测接触触发切换，130.68 s 冻结停车参考姿态，最终连续支撑 2.01 s，助手全身净空最小 0.7033 m。独立审计无原生物理违规；这是单次局部试运行，仍缺故障后原包裹交付。"
+    },
+    {
+      "run": "tool-placement-8070818",
+      "purpose": "L3：预先固定的新支撑切换重复，排除原试运行",
+      "outcome": "123.92 s 局部通过；停车验证 2.015 s，助手全身净空至少 0.6976 m，独立审计无原生物理违规。未执行包裹交付。"
+    },
+    {
+      "run": "tool-placement-8070819",
+      "purpose": "L3：预先固定的新支撑切换重复，排除原试运行",
+      "outcome": "138.50 s 局部通过；停车验证 2.010 s，助手全身净空至少 0.7033 m，独立审计无原生物理违规。未执行包裹交付。"
+    },
+    {
+      "run": "tool-placement-8070820",
+      "purpose": "L3：预先固定的新支撑切换重复，排除原试运行",
+      "outcome": "126.04 s 局部通过；停车验证 2.000 s，助手全身净空至少 0.6925 m，独立审计无原生物理违规。未执行包裹交付。"
+    },
+    {
+      "run": "tool-placement-8070868",
+      "purpose": "L2：加入底座对齐与箱体朝向反馈的长距离推箱诊断",
+      "outcome": "21.44 s 失败；向目标移动 28.99 cm，箱体向北偏移 4.004 cm 超过原 4 cm 限制。872 次反馈决策与实际轮驱命令已独立核验；后续改为跟随当前接触面并校正路径朝向。"
+    },
+    {
+      "run": "tool-placement-8071093",
+      "purpose": "L2：跟随当前接触面、按路径偏差控制箱体朝向",
+      "outcome": "73.74 s 局部通过：推箱 1.440 m，最大横向偏移 9.74 mm；后退、撤去持门夹具后连续独立支撑 3 s。2908 次反馈决策及轮驱命令独立核验通过。"
+    },
+    {
+      "run": "tool-placement-8070887",
+      "purpose": "L3：局部恢复与直接扶门切换后，续接原包裹交付",
+      "outcome": "211.48 s 完成原包裹取件、穿门、放桌与稳定释放；604 个门区物理采样全部通过支撑／净空门槛。仍有初始局部夹具，不能计关门起始完整 L3。原始助手阶段标签在取件初段滞后，另附依据实际命令解释的阶段映射。"
+    },
+    {
+      "run": "tool-placement-8071289",
+      "purpose": "L3 关门起始负载故障链首次集成",
+      "outcome": "90.22 s 在空载接近途中触发 0.15 rad 倾斜保护；未到预声明 430 s 故障。无完整交付；失败轨迹和视频保留。"
+    },
+    {
+      "run": "tool-placement-8071194",
+      "purpose": "L2 关门起始、v8 反馈推箱与原包裹交付首次连续集成",
+      "outcome": "长距离推箱完成、原重箱已承载门负载；315.66 s 松手时实测右食指到门面 4.709 mm，低于 5 mm 几何保护而停止。未取包裹；全部原生轨迹、命令、源码、视频及失败原因保留。"
+    },
+    {
+      "run": "tool-placement-8071840",
+      "purpose": "L3 无夹具关门起始的负载故障恢复链；实测倾斜停车 v2",
+      "outcome": "完成开门、真实推箱、松手、撤辅助验证、双机待机；430 s 真实负载故障后，430.02 s 启动恢复，450.86 s 完成主动恢复 2 s 门槛。但直接扶门切换在 450.90 s 因门角 1.049896 < 1.05 rad 停止；尚未取件。"
+    },
+    {
+      "run": "tool-placement-8072172",
+      "purpose": "L2 单候选工具：提前腕部避让后，关门起始连续交付",
+      "outcome": "413.92 s 原生完整交付并独立复算通过；2885 条推箱反馈与轮驱逐条吻合，撤辅助 600 个采样/3 s，581 个携货门区采样通过；无物理违规。仅已知单候选，未完成自主多工具发现。"
+    }
+  ],
+  "cohorts": [
+    "tool-integration-v1-cohort.json",
+    "tool-integration-v2-cohort.json",
+    "tool-recovery-same-gpu-cohort.json",
+    "tool-integration-v3-cohort.json",
+    "tool-integration-v4-cohort.json",
+    "tool-delivery-v4-cohort.json",
+    "tool-integration-v5-cohort.json",
+    "tool-recovery-v5-repeat-cohort.json",
+    "tool-route-v6-cohort.json",
+    "tool-delivery-v6-cohort.json",
+    "tool-handoff-v1-cohort.json",
+    "tool-handoff-v2-cohort.json",
+    "tool-delivery-v6-timeout-retry-cohort.json",
+    "tool-reposition-v3-cohort.json",
+    "tool-support-switch-v4-cohort.json",
+    "tool-support-switch-v4-repeat-cohort.json",
+    "tool-push-feedback-v7-cohort.json",
+    "tool-recovery-delivery-v1-cohort.json",
+    "tool-push-feedback-v8-cohort.json",
+    "tool-delivery-feedback-v8-cohort.json",
+    "tool-full-load-fault-v1-cohort.json",
+    "tool-full-load-fault-v2-cohort.json",
+    "tool-delivery-release-v2-cohort.json",
+    "tool-full-load-fault-v3-cohort.json",
+    "tool-delivery-release-v2-repeat-cohort.json"
+  ],
+  "pending_jobs": [
+    "8072428",
+    "8072609",
+    "8072610",
+    "8072611"
+  ],
+  "full_l2_l3_solution": false,
+  "formal_admission": false,
+  "pair_reports": [
+    "tool-recovery-pair-v1.json",
+    "tool-recovery-same-gpu-v2-pair.json",
+    "tool-recovery-same-gpu-v3-pair.json",
+    "tool-recovery-same-gpu-v4-pair.json",
+    "tool-recovery-same-gpu-v5-pair.json"
+  ],
+  "local_recovery_witness": {
+    "run": "tool-recovery-active-8067255",
+    "dwell_s": 2.0,
+    "helper_clearance_m": 0.3794965147972107,
+    "complete_delivery": false,
+    "matched_negative_control": "tool-recovery-control-8067255",
+    "identical_prefault_physics_samples": 10004,
+    "independent_repeated_cohort_passed": true,
+    "repeat_cohort": "tool-recovery-v5-repeat-cohort.json",
+    "repeat_passes": 3,
+    "repeat_attempts": 3
+  },
+  "pending_experiments": [
+    "Closed-door load-fault v3 with recovery angle reserve (8072428)",
+    "Three fixed repeats of the exact successful L2 pilot runtime (8072609/8072610/8072611)"
+  ],
+  "guarded_route_witness": {
+    "run": "tool-placement-8067694",
+    "seconds": 150.16,
+    "waypoints_passed": 8,
+    "physics_samples": 30032,
+    "full_delivery": false
+  },
+  "next_required_work": [
+    "Complete three preregistered exact-source repeats of the 413.92 s closed-door single-candidate delivery",
+    "Verify recovery angle reserve and complete closed-door fault recovery through final original-parcel delivery",
+    "Autonomous multi-tool choice with pre-action predictions and observation-based role updates",
+    "Robot-capability faults, paired no-fault/no-update controls, isolated closed-loop execution and independent review"
+  ],
+  "support_switch_witness": {
+    "run": "tool-placement-8070325",
+    "seconds": 138.5,
+    "dwell_s": 2.009999999999991,
+    "helper_clearance_m": 0.7033311426639557,
+    "support_mode": "direct robot-to-door contact",
+    "pilot_attempts": 1,
+    "local_passes": 1,
+    "complete_delivery": false,
+    "initial_fixture": true,
+    "repeat_cohort": "tool-support-switch-v4-repeat-cohort.json",
+    "repeat_attempts": 3,
+    "repeat_passes": 3,
+    "repeat_min_clearance_m": 0.6925479434430599
+  },
+  "long_push_witness": {
+    "run": "tool-placement-8071093",
+    "seconds": 73.74,
+    "push_distance_m": 1.4397892951965332,
+    "max_lateral_drift_m": 0.00974223017692566,
+    "unassisted_dwell_s": 3.0,
+    "initial_fixture": true,
+    "full_delivery": false
+  },
+  "recovery_delivery_witness": {
+    "run": "tool-placement-8070887",
+    "seconds": 211.48,
+    "delivery_success": true,
+    "initial_fixture": true,
+    "door_interval_samples": 604,
+    "full_l3_solution": false
+  },
+  "closed_door_recovery_witness": {
+    "run": "tool-placement-8071840",
+    "fault_s": 430.0,
+    "loss_detected_s": 430.015,
+    "recovery_end_s": 450.86,
+    "initial_fixture": false,
+    "local_recovery_success": true,
+    "physical_restoring_distance_m": 0.1009020524,
+    "handoff_success": false,
+    "delivery_success": false,
+    "formal_admission": false
+  },
+  "full_tool_delivery_witness": {
+    "run": "tool-placement-8072172",
+    "seconds": 413.92,
+    "initial_fixture": false,
+    "independent_score_success": true,
+    "door_interval_samples": 581,
+    "feedback_decisions": 2885,
+    "unassisted_dwell_s": 3.0,
+    "push_distance_m": 1.4348554611206055,
+    "maximum_lateral_drift_m": 0.008401304483413696,
+    "complete_l2_discovery": false,
+    "repeat_cohort": "tool-delivery-release-v2-repeat-cohort.json",
+    "formal_admission": false,
+    "repeat_attempts": 3,
+    "repeat_completed": 0,
+    "repeat_passes": 0
+  }
+}

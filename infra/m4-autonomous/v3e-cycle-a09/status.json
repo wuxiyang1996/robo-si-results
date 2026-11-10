@@ -1,0 +1,86 @@
+{
+  "status": "finished",
+  "passed": false,
+  "mode": "cycle",
+  "error": "RuntimeError: physical monitor failed: ['target_supported', 'finite_state'][]",
+  "phase": "separate",
+  "sim_time_s": 37.6400000000008,
+  "steps": 7528,
+  "frames": 376,
+  "source_unchanged": true,
+  "proof_dwell_s": {
+    "go2_a": 0.5049999999998995,
+    "go2_b": 0.6349999999998737
+  },
+  "events": [
+    {
+      "time_s": 15.86000000000108,
+      "robot": "go2_a",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.001590398163113571,
+        -0.0002569336564390845,
+        -0.0015065773724278753
+      ]
+    },
+    {
+      "time_s": 15.86000000000108,
+      "robot": "go2_b",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.0016105657763878511,
+        0.0002445016409635681,
+        -0.0014189001104119026
+      ]
+    },
+    {
+      "time_s": 18.37500000000063,
+      "event": "BEGIN_EXTRACTION"
+    },
+    {
+      "time_s": 29.82999999999835,
+      "event": "EXTRACTED_LOADED_RETENTION_PROVED"
+    }
+  ],
+  "failures": {
+    "target_supported": {
+      "first_time": 37.64,
+      "count": 1,
+      "detail": {
+        "pen_dynamic": 0.00046265125274658203,
+        "pen_rope": 9.807916649151593e-05,
+        "impulse": 0.0,
+        "support": NaN,
+        "robot_cargo": 0.0,
+        "slide": 0.0,
+        "drift": 8.734081938843201e-05,
+        "tension": {
+          "rope_centre": 0.3917120058758883,
+          "rope_left": 1.4752197137568146,
+          "rope_right": 1.1130479010716954
+        },
+        "heights": {
+          "go2_a": 0.32952427864074707,
+          "go2_b": 0.3302246332168579
+        },
+        "tilts": {
+          "go2_a": 3.8407763605502003,
+          "go2_b": 2.6580218599640144
+        },
+        "calls": [],
+        "steps": 1,
+        "gap": 0.005000000000002558
+      }
+    },
+    "finite_state": {
+      "first_time": 37.64,
+      "count": 1,
+      "detail": {
+        "reason": "nonfinite native contact or robot state"
+      }
+    }
+  },
+  "wall_time_s": 165.30892300605774,
+  "scope": "Privileged physical coupling/extraction/release subtask; no full corridor, tool discovery or admission credit",
+  "formal_admission": false
+}

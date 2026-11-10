@@ -1,0 +1,3704 @@
+{
+  "schema": "ordered-action-mapping/1",
+  "task": "M3",
+  "selected_witness": "fullstart-474",
+  "generated_by": [
+    {
+      "path": "infra/planning/hierarchical-evaluation/build_action_mappings.py",
+      "sha256": "09ff4513817b52c8db8b46a07ba29a0e5f32ea6c88f148cf41d0169705827842"
+    },
+    {
+      "path": "infra/planning/hierarchical-evaluation/action_expansions.py",
+      "sha256": "1e88a0ef8b99d555bcef66edd58e3d18bf4a5ab2260fe5f8b17cbb7aa77bdb8c"
+    }
+  ],
+  "scope": {
+    "zh": "固定 hooks-v0.1；箱体支撑取物；CPU 特权参考",
+    "en": "Fixed hooks-v0.1; box-supported picking; privileged CPU reference"
+  },
+  "plan": {
+    "path": "infra/planning/tasks/M3.json",
+    "sha256": "48e957d97423cba880b836118b612366436baac5aa53040d503845e96dcda64a"
+  },
+  "full_success_record": {
+    "path": "infra/m3-release/evidence/fullstart-474-verdict.json",
+    "sha256": "cc471581941a972f639887f5116be0fdaec331a90873ecd2ef398be1c9fb7130"
+  },
+  "source_files": [
+    {
+      "id": "s0",
+      "path": "C:/Users/wuxiy/rsi_releases/m3_functional_release_20261025/runs/fullstart-474/diagnostic.json",
+      "sha256": "420993a4a9300772ab44f91b393c02cbe9d034aa0cefd30d558e0d96cc5e75f8"
+    }
+  ],
+  "generation_provenance_status": "existing_provenance_not_replaced; full identity audit still pending",
+  "interpretation": {
+    "actions": "Ordered decomposition reviewed against available controller/event descriptions; not a newly executable planner.",
+    "event_matching": "Locates review candidates only; it does not prove the stated contact/guard nor exact micro-action interval.",
+    "timing": "Observed sample spans remain in their named clock. Point events are not expanded into invented intervals. No scoring milestone is used as an action boundary.",
+    "loops": "Hanoi repeats K01-K04 for each committed legal move; footfall and gait actions repeat. Numerical order is within a skill, not a universal serial schedule.",
+    "branches": "H3 heavy_prop only; asynchronous A/B operations may overlap.",
+    "portable_evidence": "Small excerpts below are portable; original absolute paths are provenance references, not deployment entrypoints. Raw full records still require the reference packages."
+  },
+  "skills": [
+    {
+      "skill": "M3.K01",
+      "high_level_steps": [
+        "P1"
+      ],
+      "entry_conditions": [
+        "hooks-v0.1；X5 在地面，原 65 mm 球在容器内"
+      ],
+      "exit_conditions": [
+        "承托姿态可行且双侧真实接触成立"
+      ],
+      "actions": [
+        {
+          "id": "M3.K01.A01",
+          "order": 1,
+          "action_zh": "G1 在小机器人两侧对齐站位",
+          "required_support_contact_zh": "X5→地面；G1 足→地面",
+          "check_observable_zh": "实际机体姿态、足载荷",
+          "event_selector": "prefix_approach",
+          "evidence_ids": [],
+          "mapping_status": "needs_action_label_or_source_mapping",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K01.A02",
+          "order": 2,
+          "action_zh": "双手从结构承托部位下方接近",
+          "required_support_contact_zh": "X5→地面；手逐步接触 hooks",
+          "check_observable_zh": "手与结构间隙、碰撞",
+          "event_selector": "prefix_underbar",
+          "evidence_ids": [],
+          "mapping_status": "needs_action_label_or_source_mapping",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K01.A03",
+          "order": 3,
+          "action_zh": "建立双侧承托并预加载",
+          "required_support_contact_zh": "地面/双手共同承重",
+          "check_observable_zh": "左右手力、X5 姿态",
+          "event_selector": "prefix_preload",
+          "evidence_ids": [],
+          "mapping_status": "needs_action_label_or_source_mapping",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M3.K02",
+      "high_level_steps": [
+        "P2"
+      ],
+      "entry_conditions": [
+        "双手承托有效且低箱可承接"
+      ],
+      "exit_conditions": [
+        "X5 由箱面稳定支撑且机械臂可操作"
+      ],
+      "actions": [
+        {
+          "id": "M3.K02.A01",
+          "order": 1,
+          "action_zh": "保持承托并整身抬升",
+          "required_support_contact_zh": "地面→G1 双手",
+          "check_observable_zh": "载荷、倾角与足支撑",
+          "event_selector": "prefix_lift",
+          "evidence_ids": [],
+          "mapping_status": "needs_action_label_or_source_mapping",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K02.A02",
+          "order": 2,
+          "action_zh": "向低箱面移动小机器人",
+          "required_support_contact_zh": "G1 双手承托 X5",
+          "check_observable_zh": "箱面净空与重心",
+          "event_selector": "prefix_transfer",
+          "evidence_ids": [],
+          "mapping_status": "needs_action_label_or_source_mapping",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K02.A03",
+          "order": 3,
+          "action_zh": "下降到箱面并确认支撑",
+          "required_support_contact_zh": "双手→box_low",
+          "check_observable_zh": "箱面载荷、X5 稳定",
+          "event_selector": "prefix_supported",
+          "evidence_ids": [],
+          "mapping_status": "needs_action_label_or_source_mapping",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M3.K03",
+      "high_level_steps": [
+        "P3"
+      ],
+      "entry_conditions": [
+        "X5 在箱面稳定，目标可见可达"
+      ],
+      "exit_conditions": [
+        "物体离开容器和货架并持续受控"
+      ],
+      "actions": [
+        {
+          "id": "M3.K03.A01",
+          "order": 1,
+          "action_zh": "X5 在箱面支撑下向柜中物体伸臂",
+          "required_support_contact_zh": "X5→箱面；球→盒内",
+          "check_observable_zh": "臂可达性与柜口间隙",
+          "event_selector": "prefix_reach",
+          "evidence_ids": [],
+          "mapping_status": "needs_action_label_or_source_mapping",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K03.A02",
+          "order": 2,
+          "action_zh": "闭合双指并建立球体夹持",
+          "required_support_contact_zh": "盒内→X5 双指",
+          "check_observable_zh": "内部夹持力、物体脱离原支撑",
+          "event_selector": "prefix_grasp",
+          "evidence_ids": [],
+          "mapping_status": "needs_action_label_or_source_mapping",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K03.A03",
+          "order": 3,
+          "action_zh": "持球退出柜口并收拢",
+          "required_support_contact_zh": "球→双指；X5→箱面",
+          "check_observable_zh": "柜口净空、持续夹持",
+          "event_selector": "prefix_retract",
+          "evidence_ids": [],
+          "mapping_status": "needs_action_label_or_source_mapping",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M3.K04",
+      "high_level_steps": [
+        "P4"
+      ],
+      "entry_conditions": [
+        "物体已夹持，X5 箱面支撑稳定"
+      ],
+      "exit_conditions": [
+        "返回承托入口可达，箱面支撑保持"
+      ],
+      "actions": [
+        {
+          "id": "M3.K04.A01",
+          "order": 1,
+          "action_zh": "箱面承重后 G1 缓慢撤手",
+          "required_support_contact_zh": "X5→箱面；球→双指",
+          "check_observable_zh": "箱面支撑、球保持",
+          "event_selector": "withdraw",
+          "evidence_ids": [
+            "e0000"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K04.A02",
+          "order": 2,
+          "action_zh": "G1 空载靠近并按实测姿态对齐",
+          "required_support_contact_zh": "X5→箱面；G1 足→地面",
+          "check_observable_zh": "机体间隙、双足载荷",
+          "event_selector": "approach",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K04.A03",
+          "order": 3,
+          "action_zh": "保持箱面支撑准备重新插手",
+          "required_support_contact_zh": "箱面独立承重",
+          "check_observable_zh": "X5 姿态与抓持稳定",
+          "event_selector": "approach",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M3.K05",
+      "high_level_steps": [
+        "P5"
+      ],
+      "entry_conditions": [
+        "X5 已对准，物体持续持有"
+      ],
+      "exit_conditions": [
+        "X5 离箱且负载受控"
+      ],
+      "actions": [
+        {
+          "id": "M3.K05.A01",
+          "order": 1,
+          "action_zh": "双手按实际结构位置插到承托杆下",
+          "required_support_contact_zh": "箱面承重；球→双指",
+          "check_observable_zh": "手部间隙与足支撑",
+          "event_selector": "underbar",
+          "evidence_ids": [
+            "e0002"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K05.A02",
+          "order": 2,
+          "action_zh": "双侧预加载并调整重心",
+          "required_support_contact_zh": "箱面/双手共同承重",
+          "check_observable_zh": "左右手力、加载份额",
+          "event_selector": "preload",
+          "evidence_ids": [
+            "e0004"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K05.A03",
+          "order": 3,
+          "action_zh": "整身抬离箱面并短时保持",
+          "required_support_contact_zh": "箱面→双手",
+          "check_observable_zh": "离箱间隙、载荷、功能性姿态",
+          "event_selector": "lift",
+          "evidence_ids": [
+            "e0006"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M3.K06",
+      "high_level_steps": [
+        "P6"
+      ],
+      "entry_conditions": [
+        "X5 与物体均受控，地面落点可用"
+      ],
+      "exit_conditions": [
+        "实测地面承重达到当前控制器交接条件"
+      ],
+      "actions": [
+        {
+          "id": "M3.K06.A01",
+          "order": 1,
+          "action_zh": "调整承托姿态后向地面侧摆移",
+          "required_support_contact_zh": "G1 双手承托；球→双指",
+          "check_observable_zh": "双足载荷、重心与球保持",
+          "event_selector": "adjust|swing",
+          "evidence_ids": [
+            "e0008",
+            "e0009"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K06.A02",
+          "order": 2,
+          "action_zh": "连续下放并监视地面接触",
+          "required_support_contact_zh": "双手→双手/地面",
+          "check_observable_zh": "倾角、触地力、实际碰撞深度",
+          "event_selector": "lower",
+          "evidence_ids": [
+            "e0010"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K06.A03",
+          "order": 3,
+          "action_zh": "达到持续地面承托后停止下降",
+          "required_support_contact_zh": "地面逐步承重",
+          "check_observable_zh": "连续触地样本与低速度",
+          "event_selector": "floor_hold",
+          "evidence_ids": [
+            "e0011"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M3.K07",
+      "high_level_steps": [
+        "P7"
+      ],
+      "entry_conditions": [
+        "地面支撑成立，X5 持物稳定"
+      ],
+      "exit_conditions": [
+        "X5 可独立行驶且仍持有物体"
+      ],
+      "actions": [
+        {
+          "id": "M3.K07.A01",
+          "order": 1,
+          "action_zh": "在地面承重时逐步卸载双手",
+          "required_support_contact_zh": "X5→地面；球→双指",
+          "check_observable_zh": "地面支撑份额、手力",
+          "event_selector": "floor_hold",
+          "evidence_ids": [
+            "e0011"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K07.A02",
+          "order": 2,
+          "action_zh": "规划并执行双手退出",
+          "required_support_contact_zh": "地面独立承重",
+          "check_observable_zh": "手结构净空、X5 稳定",
+          "event_selector": "release_hands",
+          "evidence_ids": [
+            "e0012"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K07.A03",
+          "order": 3,
+          "action_zh": "撤手后保持并确认独立地面支撑",
+          "required_support_contact_zh": "X5→地面",
+          "check_observable_zh": "无 G1 代撑、球仍夹持",
+          "event_selector": "release_hold",
+          "evidence_ids": [
+            "e0013"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M3.K08",
+      "high_level_steps": [
+        "P8"
+      ],
+      "entry_conditions": [
+        "X5 在地面独立稳定且路线可行"
+      ],
+      "exit_conditions": [
+        "物体在目标内受支撑、双机释放且稳定 2 s"
+      ],
+      "actions": [
+        {
+          "id": "M3.K08.A01",
+          "order": 1,
+          "action_zh": "X5 持球移动到目标托盘",
+          "required_support_contact_zh": "轮→地面；球→双指",
+          "check_observable_zh": "轨迹避碰与持物状态",
+          "event_selector": "delivery",
+          "evidence_ids": [
+            "e0014"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K08.A02",
+          "order": 2,
+          "action_zh": "下降球体到托盘并张指",
+          "required_support_contact_zh": "双指→托盘",
+          "check_observable_zh": "托盘支撑、手指接触",
+          "event_selector": "delivery",
+          "evidence_ids": [
+            "e0014"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M3.K08.A03",
+          "order": 3,
+          "action_zh": "撤臂并等待最终交付驻留",
+          "required_support_contact_zh": "球→托盘",
+          "check_observable_zh": "无机器人接触、稳定驻留",
+          "event_selector": "delivery",
+          "evidence_ids": [
+            "e0014"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    }
+  ],
+  "event_evidence": [
+    {
+      "id": "e0000",
+      "source": "s0",
+      "pointer_first": "/return_log/stages/withdraw/actual_samples/0",
+      "pointer_last": "/return_log/stages/withdraw/actual_samples/2329",
+      "stream": "/return_log/stages/withdraw/actual_samples",
+      "label": "withdraw",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        222.04,
+        268.62
+      ],
+      "rows": 2330,
+      "first": {
+        "t": 222.04,
+        "pos": [
+          0.0558,
+          1.3016,
+          0.3198
+        ],
+        "tilt_deg": 0.86,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.33,
+        "body_support_N": 63.33,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.64,
+        "box_support_N": 63.32897615432739,
+        "robot_contact_peak_N": 0.0,
+        "G1_only_COM_margin_m": 0.057936170877545656
+      },
+      "last": {
+        "t": 268.62,
+        "pos": [
+          0.0551,
+          1.3007,
+          0.3198
+        ],
+        "tilt_deg": 0.87,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.26,
+        "body_support_N": 63.26,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "box_support_N": 63.25896453857422,
+        "robot_contact_peak_N": 0.0,
+        "G1_only_COM_margin_m": 0.054792092995788244
+      }
+    },
+    {
+      "id": "e0001",
+      "source": "s0",
+      "pointer_first": "/return_log/stages/approach/actual_samples/0",
+      "pointer_last": "/return_log/stages/approach/actual_samples/942",
+      "stream": "/return_log/stages/approach/actual_samples",
+      "label": "approach",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        268.66,
+        287.5
+      ],
+      "rows": 943,
+      "first": {
+        "t": 268.66,
+        "pos": [
+          0.0551,
+          1.3007,
+          0.3198
+        ],
+        "tilt_deg": 0.87,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.26,
+        "body_support_N": 63.26,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "box_support_N": 63.25673294067383,
+        "robot_contact_peak_N": 0.0,
+        "G1_only_COM_margin_m": 0.05481630111356195,
+        "foot_error_m": 1.1601012374939042e-05,
+        "distances": {
+          "legs": 0.024790949415091995,
+          "torso_frame": 0.15225028755854744
+        }
+      },
+      "last": {
+        "t": 287.5,
+        "pos": [
+          0.055,
+          1.3007,
+          0.3198
+        ],
+        "tilt_deg": 0.87,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.26,
+        "body_support_N": 63.26,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "box_support_N": 63.25631237030029,
+        "robot_contact_peak_N": 0.0,
+        "G1_only_COM_margin_m": 0.05311519640983531,
+        "foot_error_m": 0.0003593560940647459,
+        "distances": {
+          "legs": 0.0049824628817400525,
+          "torso_frame": 0.011867835246279958
+        }
+      }
+    },
+    {
+      "id": "e0002",
+      "source": "s0",
+      "pointer_first": "/return_log/stages/underbar/actual_samples/0",
+      "pointer_last": "/return_log/stages/underbar/actual_samples/1572",
+      "stream": "/return_log/stages/underbar/actual_samples",
+      "label": "underbar",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        287.54,
+        318.98
+      ],
+      "rows": 1573,
+      "first": {
+        "t": 287.54,
+        "pos": [
+          0.055,
+          1.3007,
+          0.3198
+        ],
+        "tilt_deg": 0.87,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.27,
+        "body_support_N": 63.27,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "tau_ratio": 0.38283496856689453,
+        "self_distance_m": -0.0001851929659567016,
+        "unloaded_palm_position_limit_m": 0.015,
+        "static_support_estimate": {
+          "foot_vertical_forces_N": [
+            17.834204429486054,
+            21.77802115689976,
+            52.68644901447644,
+            57.41902908737277,
+            27.274182888911774,
+            30.664028198975217,
+            62.84185908190077,
+            66.90967345397691
+          ],
+          "residual": 3.410605131648481e-13
+        },
+        "box_support_N": 63.26552104949951,
+        "robot_contact_peak_N": 0.0,
+        "foot_error_m": 1.2656658779413804e-05,
+        "COM_margin_m": 0.05308953271083572,
+        "palm_errors": {
+          "left": [
+            2.0731147644947638e-05,
+            1.7222466383411625e-05
+          ],
+          "right": [
+            1.9467297306737262e-05,
+            1.8494232136188137e-05
+          ]
+        },
+        "distances": {
+          "arms_frame": 0.1,
+          "legs_mobile": 0.004981387867455732,
+          "torso_frame": 0.011860037572089135,
+          "torso_fragile": 0.09375245816268235,
+          "arms_fragile": 0.1,
+          "scene": 0.042326073612082515
+        }
+      },
+      "last": {
+        "t": 318.98,
+        "pos": [
+          0.0548,
+          1.3007,
+          0.3198
+        ],
+        "tilt_deg": 0.87,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.28,
+        "body_support_N": 63.28,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "tau_ratio": 0.3760225296020508,
+        "self_distance_m": -0.00017686900868050701,
+        "unloaded_palm_position_limit_m": 0.008,
+        "static_support_estimate": {
+          "foot_vertical_forces_N": [
+            35.06128345953104,
+            37.96401523292817,
+            31.228850246688957,
+            34.71212837476553,
+            49.63820933954962,
+            52.592433161152,
+            46.33272945573093,
+            49.87779804165379
+          ],
+          "residual": 5.684341886080802e-14
+        },
+        "box_support_N": 63.28358745574951,
+        "robot_contact_peak_N": 0.0,
+        "foot_error_m": 0.00020022589365512652,
+        "COM_margin_m": 0.0847645676982216,
+        "palm_errors": {
+          "left": [
+            0.0006052357461782898,
+            0.0007039674359131237
+          ],
+          "right": [
+            0.000558088992371532,
+            0.0007042539848052626
+          ]
+        },
+        "distances": {
+          "arms_frame": 0.00025487807456050593,
+          "legs_mobile": 0.05084251886278017,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.05596934916091779
+        }
+      }
+    },
+    {
+      "id": "e0003",
+      "source": "s0",
+      "pointer_first": "/return_log/stages/preload/actual_samples/0",
+      "pointer_last": "/return_log/stages/preload/actual_samples/424",
+      "stream": "/return_log/stages/preload/actual_samples",
+      "label": "recenter",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        319.02,
+        327.5
+      ],
+      "rows": 425,
+      "first": {
+        "t": 319.02,
+        "pos": [
+          0.0548,
+          1.3007,
+          0.3198
+        ],
+        "tilt_deg": 0.87,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.26,
+        "body_support_N": 63.26,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "recenter",
+        "upward_target_m": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "vertical_hand_force_N": [
+          0.0,
+          0.0
+        ],
+        "force_vectors_N": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 1.1423841579275322e-05,
+        "loaded_COM_margin_m": 0.03535794519840929,
+        "tau_ratio": 0.3760274505615234,
+        "palm_errors": {
+          "left": [
+            9.467567447472148e-06,
+            1.3295377441435984e-05
+          ],
+          "right": [
+            1.5881340470586704e-05,
+            1.4589557003687125e-05
+          ]
+        },
+        "distances": {
+          "arms_frame": 0.00025449369788629975,
+          "legs_mobile": 0.0508422338935734,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.055969525183111386
+        },
+        "self_distance_m": -0.00017686900998115508
+      },
+      "last": {
+        "t": 327.5,
+        "pos": [
+          0.0548,
+          1.3007,
+          0.3198
+        ],
+        "tilt_deg": 0.87,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.28,
+        "body_support_N": 63.28,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "recenter",
+        "upward_target_m": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "vertical_hand_force_N": [
+          0.0,
+          0.0
+        ],
+        "force_vectors_N": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 1.4286667590782033e-05,
+        "loaded_COM_margin_m": 0.033186620708590686,
+        "tau_ratio": 0.3804391098022461,
+        "palm_errors": {
+          "left": [
+            4.728518191150898e-05,
+            4.4213703629989884e-05
+          ],
+          "right": [
+            5.420795418942893e-05,
+            4.4719074505818646e-05
+          ]
+        },
+        "distances": {
+          "arms_frame": 0.0001655130141459635,
+          "legs_mobile": 0.05083144525464307,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.055967853373679884
+        },
+        "self_distance_m": -0.00017687130065269176
+      }
+    },
+    {
+      "id": "e0004",
+      "source": "s0",
+      "pointer_first": "/return_log/stages/preload/actual_samples/425",
+      "pointer_last": "/return_log/stages/preload/actual_samples/703",
+      "stream": "/return_log/stages/preload/actual_samples",
+      "label": "partial_preload",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        327.52,
+        333.08
+      ],
+      "rows": 279,
+      "first": {
+        "t": 327.52,
+        "pos": [
+          0.0548,
+          1.3007,
+          0.3198
+        ],
+        "tilt_deg": 0.87,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.28,
+        "body_support_N": 63.28,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "partial_preload",
+        "upward_target_m": {
+          "left": 2e-05,
+          "right": 2e-05
+        },
+        "vertical_hand_force_N": [
+          0.0,
+          0.0
+        ],
+        "force_vectors_N": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 1.4321068629782307e-05,
+        "loaded_COM_margin_m": 0.03318657781079526,
+        "tau_ratio": 0.38044483184814454,
+        "palm_errors": {
+          "left": [
+            1.9987241842365287e-05,
+            1.383595854665403e-07
+          ],
+          "right": [
+            2.0036015491674762e-05,
+            1.5413209998388836e-07
+          ]
+        },
+        "distances": {
+          "arms_frame": 0.0001656494012664948,
+          "legs_mobile": 0.050831487417577655,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.055967887305284854
+        },
+        "self_distance_m": -0.0001768713002275183
+      },
+      "last": {
+        "t": 333.08,
+        "pos": [
+          0.0547,
+          1.301,
+          0.3198
+        ],
+        "tilt_deg": 0.83,
+        "hand_N": [
+          5.61,
+          5.53
+        ],
+        "support_N": 52.29,
+        "body_support_N": 52.29,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "partial_preload",
+        "upward_target_m": {
+          "left": 0.004980000000000011,
+          "right": 0.0042800000000000095
+        },
+        "vertical_hand_force_N": [
+          5.502104759216309,
+          5.52500057220459
+        ],
+        "force_vectors_N": [
+          [
+            -0.16081500053405762,
+            1.0907518863677979,
+            5.502104759216309
+          ],
+          [
+            0.025393009185791016,
+            -0.06729833781719208,
+            5.52500057220459
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.00010831657214056565,
+        "loaded_COM_margin_m": 0.033140395864772465,
+        "tau_ratio": 0.3976020431518555,
+        "palm_errors": {
+          "left": [
+            0.0025123203415787004,
+            0.007688520079938907
+          ],
+          "right": [
+            0.0030006657127968,
+            0.009047348395553224
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0008091991601995288,
+          "legs_mobile": 0.05098781490453452,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.056071785652115964
+        },
+        "self_distance_m": -0.00017692552798601513
+      }
+    },
+    {
+      "id": "e0005",
+      "source": "s0",
+      "pointer_first": "/return_log/stages/lift/actual_samples/0",
+      "pointer_last": "/return_log/stages/lift/actual_samples/99",
+      "stream": "/return_log/stages/lift/actual_samples",
+      "label": "adjust",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        333.12,
+        335.1
+      ],
+      "rows": 100,
+      "first": {
+        "t": 333.12,
+        "pos": [
+          0.0547,
+          1.301,
+          0.3198
+        ],
+        "tilt_deg": 0.83,
+        "hand_N": [
+          5.62,
+          5.57
+        ],
+        "support_N": 52.17,
+        "body_support_N": 52.17,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "adjust",
+        "frame_xy_error_m": 1.6650938381839042e-06,
+        "base_xy_error_m": 1.943991441647511e-05,
+        "rise_m": 8.940696716308594e-07,
+        "vertical_hand_force_N": [
+          5.575407028198242,
+          5.55933141708374
+        ],
+        "force_vectors_N": [
+          [
+            0.0052394866943359375,
+            0.6690050363540649,
+            5.575407028198242
+          ],
+          [
+            0.021514177322387695,
+            0.29262223839759827,
+            5.55933141708374
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 1.0963084531474263e-05,
+        "loaded_COM_margin_m": 0.033033102974874495,
+        "tau_ratio": 0.39764373779296874,
+        "palm_errors": {
+          "left": [
+            8.525634702468972e-06,
+            7.794250986624455e-05
+          ],
+          "right": [
+            5.105443756099464e-06,
+            3.2253852320806304e-05
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0008105884993961727,
+          "legs_mobile": 0.05101399529071153,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.056294917212657676
+        },
+        "actual_contact_penetration_m": 0.0004548081196844578,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0004548081196844578,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_wrist_yaw_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9766417145729065,
+              "depth_m": 0.0004548081196844578,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9999793171882629,
+              "depth_m": 0.0004528117715381086,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017691865627121042,
+        "load_fraction": 0.17335016456886454,
+        "load_blend": 0.0,
+        "wheel_feedback": true,
+        "servo_offset_max": 0.019880056381225586,
+        "debug_reserve_warnings": {
+          "palm_over4mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      },
+      "last": {
+        "t": 335.1,
+        "pos": [
+          0.0545,
+          1.3011,
+          0.3198
+        ],
+        "tilt_deg": 0.85,
+        "hand_N": [
+          2.85,
+          2.36
+        ],
+        "support_N": 58.66,
+        "body_support_N": 58.66,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "adjust",
+        "frame_xy_error_m": 0.000327709166264376,
+        "base_xy_error_m": 0.0002774440228883873,
+        "rise_m": -1.0520219802856445e-05,
+        "vertical_hand_force_N": [
+          2.2760515362024307,
+          2.3587907552719116
+        ],
+        "force_vectors_N": [
+          [
+            -0.49935123324394226,
+            0.6798312067985535,
+            2.2760515362024307
+          ],
+          [
+            0.08911100029945374,
+            -0.0687539093196392,
+            2.3587907552719116
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.00012006952428457485,
+        "loaded_COM_margin_m": 0.03515826854124393,
+        "tau_ratio": 0.39045177459716796,
+        "palm_errors": {
+          "left": [
+            0.0006164219163840345,
+            0.0015046324474984616
+          ],
+          "right": [
+            0.000800344646250458,
+            0.0010270656396191634
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0005295526747470037,
+          "legs_mobile": 0.052721991453265754,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.056407351443448224
+        },
+        "actual_contact_penetration_m": 0.000242912326939404,
+        "contact_depth_audit": {
+          "intended_max_m": 0.000242912326939404,
+          "other_max_m": 4.4693617383018136e-05,
+          "contacts": [
+            {
+              "hand": "left_wrist_yaw_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9767472147941589,
+              "depth_m": 0.000242912326939404,
+              "intended_support": true
+            },
+            {
+              "hand": "left_wrist_yaw_link",
+              "bar_geom": 173,
+              "upward_normal": 0.002799474634230137,
+              "depth_m": 4.4693617383018136e-05,
+              "intended_support": false
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.999963641166687,
+              "depth_m": 0.0001798950688680634,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9998899698257446,
+              "depth_m": 6.902329914737493e-05,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017688006795208713,
+        "load_fraction": 0.07408896062034576,
+        "load_blend": 0.0,
+        "wheel_feedback": true,
+        "servo_offset_max": 0.017439829973025914,
+        "debug_reserve_warnings": {
+          "palm_over4mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      }
+    },
+    {
+      "id": "e0006",
+      "source": "s0",
+      "pointer_first": "/return_log/stages/lift/actual_samples/100",
+      "pointer_last": "/return_log/stages/lift/actual_samples/699",
+      "stream": "/return_log/stages/lift/actual_samples",
+      "label": "lift",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        335.12,
+        347.1
+      ],
+      "rows": 600,
+      "first": {
+        "t": 335.12,
+        "pos": [
+          0.0545,
+          1.3011,
+          0.3198
+        ],
+        "tilt_deg": 0.85,
+        "hand_N": [
+          2.82,
+          2.32
+        ],
+        "support_N": 58.75,
+        "body_support_N": 58.75,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "lift",
+        "frame_xy_error_m": 0.0003287786718263013,
+        "base_xy_error_m": 0.00027936746374027853,
+        "rise_m": -1.0609626770019531e-05,
+        "vertical_hand_force_N": [
+          2.2472850680351257,
+          2.314473807811737
+        ],
+        "force_vectors_N": [
+          [
+            -0.5000175535678864,
+            0.6773977652192116,
+            2.2472850680351257
+          ],
+          [
+            0.11136031150817871,
+            -0.058740679174661636,
+            2.314473807811737
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.00012101062592900055,
+        "loaded_COM_margin_m": 0.03515841439186207,
+        "tau_ratio": 0.39027393341064454,
+        "palm_errors": {
+          "left": [
+            0.0006163869188081077,
+            0.0014958616995811
+          ],
+          "right": [
+            0.0007977778057287152,
+            0.0010251358708439691
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0005275666154263181,
+          "legs_mobile": 0.052721987372538456,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.05640808784392704
+        },
+        "actual_contact_penetration_m": 0.00024028855841606855,
+        "contact_depth_audit": {
+          "intended_max_m": 0.00024028855841606855,
+          "other_max_m": 4.522979725152254e-05,
+          "contacts": [
+            {
+              "hand": "left_wrist_yaw_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9767459034919739,
+              "depth_m": 0.00024028855841606855,
+              "intended_support": true
+            },
+            {
+              "hand": "left_wrist_yaw_link",
+              "bar_geom": 173,
+              "upward_normal": 0.00280135334469378,
+              "depth_m": 4.522979725152254e-05,
+              "intended_support": false
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.999963641166687,
+              "depth_m": 0.0001778293662937358,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9998897314071655,
+              "depth_m": 6.689701694995165e-05,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017688236056216102,
+        "load_fraction": 0.07282448668469588,
+        "load_blend": 0.0,
+        "wheel_feedback": true,
+        "servo_offset_max": 0.017415985042400852,
+        "debug_reserve_warnings": {
+          "palm_over4mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      },
+      "last": {
+        "t": 347.1,
+        "pos": [
+          0.0619,
+          1.3098,
+          0.3363
+        ],
+        "tilt_deg": 1.49,
+        "hand_N": [
+          28.68,
+          34.5
+        ],
+        "support_N": 0.0,
+        "body_support_N": 0.0,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.64,
+        "phase": "lift",
+        "frame_xy_error_m": 0.014655422522163336,
+        "base_xy_error_m": 0.011410491869906322,
+        "rise_m": 0.016489923000335693,
+        "vertical_hand_force_N": [
+          28.67981243133545,
+          34.5030517578125
+        ],
+        "force_vectors_N": [
+          [
+            -0.19793224334716797,
+            -0.017337191849946976,
+            28.67981243133545
+          ],
+          [
+            -0.15332984924316406,
+            0.08274472504854202,
+            34.5030517578125
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.0004468113014945404,
+        "loaded_COM_margin_m": 0.032933149451406685,
+        "tau_ratio": 0.8625725746154785,
+        "palm_errors": {
+          "left": [
+            0.000852501428375811,
+            0.0021022204813556295
+          ],
+          "right": [
+            0.0019297476478625445,
+            0.0035495038464419815
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0020077577790253817,
+          "legs_mobile": 0.06386229074572139,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.056715954696697886
+        },
+        "actual_contact_penetration_m": 0.0019239679677411914,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0019239679677411914,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.99969482421875,
+              "depth_m": 0.0019239679677411914,
+              "intended_support": true
+            },
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996999502182007,
+              "depth_m": 0.001833574497140944,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9996723532676697,
+              "depth_m": 0.0016778138233348727,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.0001769402963240585,
+        "load_fraction": 1.0,
+        "load_blend": 1.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.041881659612309254,
+        "debug_reserve_warnings": {
+          "palm_over4mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      }
+    },
+    {
+      "id": "e0007",
+      "source": "s0",
+      "pointer_first": "/return_log/stages/lift/actual_samples/700",
+      "pointer_last": "/return_log/stages/lift/actual_samples/849",
+      "stream": "/return_log/stages/lift/actual_samples",
+      "label": "hold",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        347.12,
+        350.1
+      ],
+      "rows": 150,
+      "first": {
+        "t": 347.12,
+        "pos": [
+          0.0621,
+          1.3098,
+          0.3364
+        ],
+        "tilt_deg": 1.5,
+        "hand_N": [
+          23.32,
+          34.8
+        ],
+        "support_N": 0.0,
+        "body_support_N": 0.0,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.64,
+        "phase": "hold",
+        "frame_xy_error_m": 0.014689190420910474,
+        "base_xy_error_m": 0.011553195085354477,
+        "rise_m": 0.016536802053451538,
+        "vertical_hand_force_N": [
+          23.314678192138672,
+          34.79034423828125
+        ],
+        "force_vectors_N": [
+          [
+            0.06120586395263672,
+            -0.13959622383117676,
+            23.314678192138672
+          ],
+          [
+            0.9810848236083984,
+            0.13891693949699402,
+            34.79034423828125
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.0004443042478620966,
+        "loaded_COM_margin_m": 0.032900760037930854,
+        "tau_ratio": 0.8882964134216309,
+        "palm_errors": {
+          "left": [
+            0.0009105712152602934,
+            0.0014187181274177183
+          ],
+          "right": [
+            0.0018746754325836186,
+            0.0032123037974985343
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.002010860474088327,
+          "legs_mobile": 0.06382885017278596,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.056713912197383205
+        },
+        "actual_contact_penetration_m": 0.0018427035538479686,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0018427035538479686,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996889233589172,
+              "depth_m": 0.0018427035538479686,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9996672868728638,
+              "depth_m": 0.0016689494950696826,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.0001769913986835167,
+        "load_fraction": 1.0,
+        "load_blend": 1.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.04192852437534147,
+        "debug_reserve_warnings": {
+          "palm_over4mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      },
+      "last": {
+        "t": 350.1,
+        "pos": [
+          0.0601,
+          1.3106,
+          0.3358
+        ],
+        "tilt_deg": 1.69,
+        "hand_N": [
+          33.9,
+          34.25
+        ],
+        "support_N": 0.0,
+        "body_support_N": 0.0,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "hold",
+        "frame_xy_error_m": 0.017009617062809793,
+        "base_xy_error_m": 0.010979353856371133,
+        "rise_m": 0.01600748300552368,
+        "vertical_hand_force_N": [
+          33.89033126831055,
+          34.2453727722168
+        ],
+        "force_vectors_N": [
+          [
+            -0.572662353515625,
+            -0.03983231633901596,
+            33.89033126831055
+          ],
+          [
+            -0.6258087158203125,
+            -0.1750546544790268,
+            34.2453727722168
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.0004489870445938218,
+        "loaded_COM_margin_m": 0.033139323545224086,
+        "tau_ratio": 0.8560004234313965,
+        "palm_errors": {
+          "left": [
+            0.0008800175031550339,
+            0.004014963090627537
+          ],
+          "right": [
+            0.001531770917623327,
+            0.0031621744146740397
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0023664919828382722,
+          "legs_mobile": 0.06481347669568971,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.05672064110458209
+        },
+        "actual_contact_penetration_m": 0.0025638758670538664,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0025638758670538664,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996023774147034,
+              "depth_m": 0.0025638758670538664,
+              "intended_support": true
+            },
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9995887279510498,
+              "depth_m": 0.0025185367558151484,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9995692372322083,
+              "depth_m": 0.0016773638781160116,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017702540668134965,
+        "load_fraction": 1.0,
+        "load_blend": 1.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.04198796828854913,
+        "debug_reserve_warnings": {
+          "palm_over4mm": false,
+          "frame_over15mm": true,
+          "depth_over2mm": true,
+          "depth_over3mm": false
+        }
+      }
+    },
+    {
+      "id": "e0008",
+      "source": "s0",
+      "pointer_first": "/return_log/transport_delivery/actual_samples/0",
+      "pointer_last": "/return_log/transport_delivery/actual_samples/49",
+      "stream": "/return_log/transport_delivery/actual_samples",
+      "label": "adjust",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        350.12,
+        351.1
+      ],
+      "rows": 50,
+      "first": {
+        "t": 350.12,
+        "pos": [
+          0.0599,
+          1.3105,
+          0.3361
+        ],
+        "tilt_deg": 1.67,
+        "hand_N": [
+          32.98,
+          34.15
+        ],
+        "support_N": 0.0,
+        "body_support_N": 0.0,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.64,
+        "phase": "adjust",
+        "floor_support_N": 0.0,
+        "reference_x5_pos": [
+          0.060064817794130324,
+          1.310550193438208,
+          0.3358324715854553
+        ],
+        "frame_xy_error_m": 9.992582299988874e-05,
+        "base_xy_error_m": 0.00022149777390250298,
+        "rise_m": 0.00030308961868286133,
+        "vertical_hand_force_N": [
+          32.982059478759766,
+          34.148834228515625
+        ],
+        "force_vectors_N": [
+          [
+            -0.3579883575439453,
+            0.05970374867320061,
+            32.982059478759766
+          ],
+          [
+            -0.6396160125732422,
+            -0.06482702493667603,
+            34.148834228515625
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 3.16430780492319e-05,
+        "actual_foot_force_N": [
+          [
+            -0.23577117919921875,
+            -0.8760166168212891,
+            130.42098999023438
+          ],
+          [
+            0.18065595626831055,
+            -0.11923444271087646,
+            270.26171875
+          ]
+        ],
+        "loaded_COM_margin_m": 0.03299303108769225,
+        "tau_ratio": 0.850438117980957,
+        "palm_errors": {
+          "left": [
+            0.0007420420138144203,
+            0.00324710016545905
+          ],
+          "right": [
+            0.0014178018627151693,
+            0.0025023475790481218
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0022084323177098833,
+          "legs_mobile": 0.06474538093799366,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.05737894421357848
+        },
+        "actual_contact_penetration_m": 0.0023587634786963463,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0023587634786963463,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996111392974854,
+              "depth_m": 0.0023587634786963463,
+              "intended_support": true
+            },
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996157288551331,
+              "depth_m": 0.0022697169333696365,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9995867013931274,
+              "depth_m": 0.001665167510509491,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.0001770451886877741,
+        "load_fraction": 1.0401920397246769,
+        "load_blend": 1.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.04209057797551042,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": false,
+          "foot_anchor_over5mm": false,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": true,
+          "depth_over3mm": false
+        }
+      },
+      "last": {
+        "t": 351.1,
+        "pos": [
+          0.057,
+          1.3097,
+          0.3372
+        ],
+        "tilt_deg": 1.55,
+        "hand_N": [
+          28.92,
+          34.71
+        ],
+        "support_N": 0.0,
+        "body_support_N": 0.0,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.64,
+        "phase": "adjust",
+        "floor_support_N": 0.0,
+        "reference_x5_pos": [
+          0.059669092297554016,
+          1.3102999925613403,
+          0.33730337023735046
+        ],
+        "frame_xy_error_m": 0.0014216366632029318,
+        "base_xy_error_m": 0.002771335577087365,
+        "rise_m": 0.0014066994190216064,
+        "vertical_hand_force_N": [
+          28.91697406768799,
+          34.704769134521484
+        ],
+        "force_vectors_N": [
+          [
+            -0.5049738883972168,
+            0.0004963669925928116,
+            28.91697406768799
+          ],
+          [
+            0.7574367523193359,
+            0.12715157866477966,
+            34.704769134521484
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 2.1440794327223325e-05,
+        "actual_foot_force_N": [
+          [
+            0.20399904251098633,
+            0.9326176643371582,
+            133.6290740966797
+          ],
+          [
+            -0.04982614517211914,
+            -0.09089159965515137,
+            267.6856689453125
+          ]
+        ],
+        "loaded_COM_margin_m": 0.0354358823416181,
+        "tau_ratio": 0.8693944931030273,
+        "palm_errors": {
+          "left": [
+            0.000256858193319936,
+            0.0004614330475248812
+          ],
+          "right": [
+            0.00043918781492830367,
+            0.0012031703885766302
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.001984461656059196,
+          "legs_mobile": 0.06350745220908392,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.05737531242706812
+        },
+        "actual_contact_penetration_m": 0.0016674584476277232,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0016674584476277232,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996737241744995,
+              "depth_m": 0.001548761036247015,
+              "intended_support": true
+            },
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996606111526489,
+              "depth_m": 0.0015026411274448037,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9996680617332458,
+              "depth_m": 0.0016674584476277232,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.0001769510396234977,
+        "load_fraction": 1.0,
+        "load_blend": 1.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.04218439032693813,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": false,
+          "foot_anchor_over5mm": false,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      }
+    },
+    {
+      "id": "e0009",
+      "source": "s0",
+      "pointer_first": "/return_log/transport_delivery/actual_samples/50",
+      "pointer_last": "/return_log/transport_delivery/actual_samples/649",
+      "stream": "/return_log/transport_delivery/actual_samples",
+      "label": "swing",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        351.12,
+        363.1
+      ],
+      "rows": 600,
+      "first": {
+        "t": 351.12,
+        "pos": [
+          0.057,
+          1.3097,
+          0.3373
+        ],
+        "tilt_deg": 1.56,
+        "hand_N": [
+          28.97,
+          34.74
+        ],
+        "support_N": 0.0,
+        "body_support_N": 0.0,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "swing",
+        "floor_support_N": 0.0,
+        "reference_x5_pos": [
+          0.059669121774466385,
+          1.3102999846188415,
+          0.33730337023735046
+        ],
+        "frame_xy_error_m": 0.0014287292337093538,
+        "base_xy_error_m": 0.002759062060420646,
+        "rise_m": 0.001433044672012329,
+        "vertical_hand_force_N": [
+          28.96131134033203,
+          34.73414611816406
+        ],
+        "force_vectors_N": [
+          [
+            -0.47447872161865234,
+            0.02272888459265232,
+            28.96131134033203
+          ],
+          [
+            0.7385349273681641,
+            0.11264485120773315,
+            34.73414611816406
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 2.3515551310424383e-05,
+        "actual_foot_force_N": [
+          [
+            0.1437973976135254,
+            1.0659589767456055,
+            133.07749938964844
+          ],
+          [
+            -0.24204301834106445,
+            -0.07610106468200684,
+            268.30224609375
+          ]
+        ],
+        "loaded_COM_margin_m": 0.03545924309208359,
+        "tau_ratio": 0.8705353736877441,
+        "palm_errors": {
+          "left": [
+            0.00030716954219891265,
+            0.0004923630232782679
+          ],
+          "right": [
+            0.0004255594955061187,
+            0.0011004202277277227
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0019873153396978405,
+          "legs_mobile": 0.06353645368813512,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.057377531263020705
+        },
+        "actual_contact_penetration_m": 0.0016708598705008626,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0016708598705008626,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996728301048279,
+              "depth_m": 0.0015522838803008199,
+              "intended_support": true
+            },
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996594190597534,
+              "depth_m": 0.001506066182628274,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9996678233146667,
+              "depth_m": 0.0016708598705008626,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017696522365071748,
+        "load_fraction": 1.0,
+        "load_blend": 1.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.042243309693384495,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": false,
+          "foot_anchor_over5mm": false,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      },
+      "last": {
+        "t": 363.1,
+        "pos": [
+          0.4499,
+          0.8522,
+          0.3359
+        ],
+        "tilt_deg": 1.49,
+        "hand_N": [
+          31.0,
+          32.38
+        ],
+        "support_N": 0.0,
+        "body_support_N": 0.0,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "swing",
+        "floor_support_N": 0.0,
+        "reference_x5_pos": [
+          0.4558500954007113,
+          0.839794456816554,
+          0.33730337023735046
+        ],
+        "frame_xy_error_m": 0.01257219276743106,
+        "base_xy_error_m": 0.013798891769986334,
+        "rise_m": 6.368756294250488e-05,
+        "vertical_hand_force_N": [
+          31.00031280517578,
+          32.368475914001465
+        ],
+        "force_vectors_N": [
+          [
+            0.25856590270996094,
+            0.07509993761777878,
+            31.00031280517578
+          ],
+          [
+            0.6104140281677246,
+            -0.34367869794368744,
+            32.368475914001465
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.0007461633428708092,
+        "actual_foot_force_N": [
+          [
+            0.32152605056762695,
+            -1.8244471549987793,
+            49.85003662109375
+          ],
+          [
+            1.4240617752075195,
+            2.262118339538574,
+            350.6401062011719
+          ]
+        ],
+        "loaded_COM_margin_m": 0.033876543415203964,
+        "tau_ratio": 0.9302568435668945,
+        "palm_errors": {
+          "left": [
+            0.00450139788904118,
+            0.007710625583228848
+          ],
+          "right": [
+            0.004984955940984316,
+            0.007224031865472982
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0016480686507713992,
+          "legs_mobile": 0.1,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.056850622940685054
+        },
+        "actual_contact_penetration_m": 0.0016442174091935158,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0016442174091935158,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996644258499146,
+              "depth_m": 0.0016442174091935158,
+              "intended_support": true
+            },
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.999668300151825,
+              "depth_m": 0.001600983552634716,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9996557831764221,
+              "depth_m": 0.0008826963603496552,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9996612071990967,
+              "depth_m": 0.0007827931549400091,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017676197748835355,
+        "load_fraction": 1.0,
+        "load_blend": 1.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.042133852088486155,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": true,
+          "foot_anchor_over5mm": false,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      }
+    },
+    {
+      "id": "e0010",
+      "source": "s0",
+      "pointer_first": "/return_log/transport_delivery/actual_samples/650",
+      "pointer_last": "/return_log/transport_delivery/actual_samples/1177",
+      "stream": "/return_log/transport_delivery/actual_samples",
+      "label": "lower",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        363.12,
+        373.66
+      ],
+      "rows": 528,
+      "first": {
+        "t": 363.12,
+        "pos": [
+          0.45,
+          0.8516,
+          0.3357
+        ],
+        "tilt_deg": 1.49,
+        "hand_N": [
+          31.4,
+          32.15
+        ],
+        "support_N": 0.0,
+        "body_support_N": 0.0,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "lower",
+        "floor_support_N": 0.0,
+        "reference_x5_pos": [
+          0.4558500954007113,
+          0.839794456816554,
+          0.33730336138481964
+        ],
+        "frame_xy_error_m": 0.011963572625235867,
+        "base_xy_error_m": 0.01316066080733407,
+        "rise_m": -0.00011932849884033203,
+        "vertical_hand_force_N": [
+          31.398277282714844,
+          32.148837089538574
+        ],
+        "force_vectors_N": [
+          [
+            0.22854852676391602,
+            0.250203937292099,
+            31.398277282714844
+          ],
+          [
+            0.52301025390625,
+            -0.17469839751720428,
+            32.148837089538574
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.0007587835378839418,
+        "actual_foot_force_N": [
+          [
+            0.24492692947387695,
+            -2.1662285327911377,
+            48.330997467041016
+          ],
+          [
+            0.9967014789581299,
+            3.6542553901672363,
+            352.8724365234375
+          ]
+        ],
+        "loaded_COM_margin_m": 0.03345967750231105,
+        "tau_ratio": 0.9341084480285644,
+        "palm_errors": {
+          "left": [
+            0.005133854031660905,
+            0.008342141268348889
+          ],
+          "right": [
+            0.005585988168455967,
+            0.007882062551431071
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0016668020341583187,
+          "legs_mobile": 0.1,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.05684199001700519
+        },
+        "actual_contact_penetration_m": 0.0016618708614259958,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0016618708614259958,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9996623992919922,
+              "depth_m": 0.0016618708614259958,
+              "intended_support": true
+            },
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.999667227268219,
+              "depth_m": 0.0016181174432858825,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9996548295021057,
+              "depth_m": 0.0008783573284745216,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9996609091758728,
+              "depth_m": 0.0007811279501765966,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017688341748243563,
+        "load_fraction": 1.0,
+        "load_blend": 1.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.04216923119417985,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": true,
+          "foot_anchor_over5mm": false,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      },
+      "last": {
+        "t": 373.66,
+        "pos": [
+          0.4578,
+          0.8483,
+          0.1468
+        ],
+        "tilt_deg": 2.27,
+        "hand_N": [
+          5.04,
+          11.36
+        ],
+        "support_N": 53.18,
+        "body_support_N": 53.18,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.64,
+        "phase": "lower",
+        "floor_support_N": 53.177154541015625,
+        "reference_x5_pos": [
+          0.4558500954007113,
+          0.839794456816554,
+          0.14835463090849305
+        ],
+        "frame_xy_error_m": 0.02509167795842056,
+        "base_xy_error_m": 0.008717255950078148,
+        "rise_m": -0.18907982110977173,
+        "vertical_hand_force_N": [
+          4.017669677734375,
+          7.301922798156738
+        ],
+        "force_vectors_N": [
+          [
+            1.0559502840042114,
+            2.8599395751953125,
+            4.017669677734375
+          ],
+          [
+            -1.180079698562622,
+            8.615942001342773,
+            7.301922798156738
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.00234472166324384,
+        "actual_foot_force_N": [
+          [
+            2.807166337966919,
+            -7.709047317504883,
+            77.55393981933594
+          ],
+          [
+            -1.73500394821167,
+            18.489662170410156,
+            273.06585693359375
+          ]
+        ],
+        "loaded_COM_margin_m": 0.03429725377995486,
+        "tau_ratio": 0.4928367233276367,
+        "palm_errors": {
+          "left": [
+            0.007938557523853237,
+            0.018751142319417706
+          ],
+          "right": [
+            0.01187781501738597,
+            0.018346615531188794
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0006272096090729806,
+          "legs_mobile": 0.1,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.016765874315255138
+        },
+        "actual_contact_penetration_m": 0.0006320765241980553,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0006320765241980553,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.967801570892334,
+              "depth_m": 0.0006320765241980553,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9992615580558777,
+              "depth_m": 0.0002983550075441599,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.999207079410553,
+              "depth_m": 0.00036474294029176235,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017670596274107104,
+        "load_fraction": 0.16845032806822102,
+        "load_blend": 0.16845032806822102,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.02015538503289102,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": true,
+          "foot_anchor_over5mm": false,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": true,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      }
+    },
+    {
+      "id": "e0011",
+      "source": "s0",
+      "pointer_first": "/return_log/transport_delivery/actual_samples/1178",
+      "pointer_last": "/return_log/transport_delivery/actual_samples/1192",
+      "stream": "/return_log/transport_delivery/actual_samples",
+      "label": "floor_hold",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        373.68,
+        373.96
+      ],
+      "rows": 15,
+      "first": {
+        "t": 373.68,
+        "pos": [
+          0.4578,
+          0.8483,
+          0.1466
+        ],
+        "tilt_deg": 2.23,
+        "hand_N": [
+          4.97,
+          11.45
+        ],
+        "support_N": 53.47,
+        "body_support_N": 53.47,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.64,
+        "phase": "floor_hold",
+        "floor_support_N": 53.46763610839844,
+        "reference_x5_pos": [
+          0.457833856344223,
+          0.8482829928398132,
+          0.14675253629684448
+        ],
+        "frame_xy_error_m": 0.00046607399676792163,
+        "base_xy_error_m": 5.693582962647204e-05,
+        "rise_m": -0.18922129273414612,
+        "vertical_hand_force_N": [
+          3.8209428787231445,
+          7.29472017288208
+        ],
+        "force_vectors_N": [
+          [
+            1.1460907459259033,
+            2.9592103958129883,
+            3.8209428787231445
+          ],
+          [
+            -1.3362035751342773,
+            8.718336582183838,
+            7.29472017288208
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.002381246847826268,
+        "actual_foot_force_N": [
+          [
+            2.8438143730163574,
+            -8.455161094665527,
+            77.44319915771484
+          ],
+          [
+            -2.0175490379333496,
+            18.290016174316406,
+            272.0657958984375
+          ]
+        ],
+        "loaded_COM_margin_m": 0.034277323380679826,
+        "tau_ratio": 0.5024738693237305,
+        "palm_errors": {
+          "left": [
+            0.008173072009824377,
+            0.01923544540989054
+          ],
+          "right": [
+            0.01215349713768207,
+            0.018658180853670627
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0006101700201905461,
+          "legs_mobile": 0.1,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.0167932979437337
+        },
+        "actual_contact_penetration_m": 0.0006116470322012901,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0006116470322012901,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9680203795433044,
+              "depth_m": 0.0006116470322012901,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9992882013320923,
+              "depth_m": 0.00029078079387545586,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9992371201515198,
+              "depth_m": 0.0003516450524330139,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017676777170385054,
+        "load_fraction": 0.15944095127671531,
+        "load_blend": 0.15944095127671531,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.01980575968687663,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": true,
+          "foot_anchor_over5mm": false,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      },
+      "last": {
+        "t": 373.96,
+        "pos": [
+          0.4576,
+          0.8484,
+          0.145
+        ],
+        "tilt_deg": 1.7,
+        "hand_N": [
+          3.9,
+          12.61
+        ],
+        "support_N": 52.42,
+        "body_support_N": 52.42,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.64,
+        "phase": "floor_hold",
+        "floor_support_N": 52.42000198364258,
+        "reference_x5_pos": [
+          0.457833856344223,
+          0.8482829928398132,
+          0.14675253629684448
+        ],
+        "frame_xy_error_m": 0.005802359816449639,
+        "base_xy_error_m": 0.00026320463596268503,
+        "rise_m": -0.19087301194667816,
+        "vertical_hand_force_N": [
+          2.670095205307007,
+          9.374967575073242
+        ],
+        "force_vectors_N": [
+          [
+            1.3548109531402588,
+            2.4928548336029053,
+            2.670095205307007
+          ],
+          [
+            -1.300227165222168,
+            8.32516622543335,
+            9.374967575073242
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.0029646859800690857,
+        "actual_foot_force_N": [
+          [
+            2.5706472396850586,
+            -10.35171127319336,
+            75.749755859375
+          ],
+          [
+            -3.0373377799987793,
+            22.31460189819336,
+            273.7923278808594
+          ]
+        ],
+        "loaded_COM_margin_m": 0.0336374839980712,
+        "tau_ratio": 0.5216147994995117,
+        "palm_errors": {
+          "left": [
+            0.01070451878887063,
+            0.021667907348823765
+          ],
+          "right": [
+            0.015308998340460674,
+            0.021684442700449905
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.0006556526330081146,
+          "legs_mobile": 0.1,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.017445481320495088
+        },
+        "actual_contact_penetration_m": 0.000512540340423584,
+        "contact_depth_audit": {
+          "intended_max_m": 0.000512540340423584,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9693660736083984,
+              "depth_m": 0.000512540340423584,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9995478391647339,
+              "depth_m": 0.0004108436405658722,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9995548725128174,
+              "depth_m": 0.0004043984808959067,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017715448814287845,
+        "load_fraction": 0.1670277948906148,
+        "load_blend": 0.1670277948906148,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.017931612710279193,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": true,
+          "foot_anchor_over5mm": false,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      }
+    },
+    {
+      "id": "e0012",
+      "source": "s0",
+      "pointer_first": "/return_log/transport_delivery/actual_samples/1193",
+      "pointer_last": "/return_log/transport_delivery/actual_samples/1492",
+      "stream": "/return_log/transport_delivery/actual_samples",
+      "label": "release_hands",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        373.98,
+        379.96
+      ],
+      "rows": 300,
+      "first": {
+        "t": 373.98,
+        "pos": [
+          0.4576,
+          0.8484,
+          0.1449
+        ],
+        "tilt_deg": 1.68,
+        "hand_N": [
+          3.87,
+          12.76
+        ],
+        "support_N": 52.1,
+        "body_support_N": 52.1,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.64,
+        "phase": "release_hands",
+        "floor_support_N": 52.10316848754883,
+        "reference_x5_pos": [
+          0.45759209990501404,
+          0.8483870625495911,
+          0.14495934545993805
+        ],
+        "frame_xy_error_m": 0.0002261281404359155,
+        "base_xy_error_m": 3.934669601246356e-05,
+        "rise_m": -0.19094958901405334,
+        "vertical_hand_force_N": [
+          2.689034938812256,
+          9.643401622772217
+        ],
+        "force_vectors_N": [
+          [
+            1.3748366832733154,
+            2.423982620239258,
+            2.689034938812256
+          ],
+          [
+            -1.29361891746521,
+            8.248169422149658,
+            9.643401622772217
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.0030057355746999645,
+        "actual_foot_force_N": [
+          [
+            2.5876336097717285,
+            -10.245304107666016,
+            75.54764556884766
+          ],
+          [
+            -3.019021987915039,
+            21.9591007232666,
+            274.2660217285156
+          ]
+        ],
+        "loaded_COM_margin_m": 0.03361251480697669,
+        "tau_ratio": 0.5231295013427735,
+        "palm_errors": {
+          "left": [
+            0.010766533645846198,
+            0.02175671054272985
+          ],
+          "right": [
+            0.015420325069023766,
+            0.021874738946087206
+          ]
+        },
+        "distances": {
+          "arms_frame": -0.000665666536869893,
+          "legs_mobile": 0.1,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.01746610926618216
+        },
+        "actual_contact_penetration_m": 0.0005136700347065926,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0005136700347065926,
+          "other_max_m": 0.0,
+          "contacts": [
+            {
+              "hand": "left_hand_index_0_link",
+              "bar_geom": 171,
+              "upward_normal": 0.9693916440010071,
+              "depth_m": 0.0005136700347065926,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.999556839466095,
+              "depth_m": 0.0004204818978905678,
+              "intended_support": true
+            },
+            {
+              "hand": "right_wrist_yaw_link",
+              "bar_geom": 175,
+              "upward_normal": 0.9995632171630859,
+              "depth_m": 0.0004096924385521561,
+              "intended_support": true
+            }
+          ]
+        },
+        "self_distance_m": -0.00017716815409971726,
+        "load_fraction": 0.17145345366538955,
+        "load_blend": 0.17145345366538955,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.017958014259266582,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": true,
+          "foot_anchor_over5mm": false,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": false,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      },
+      "last": {
+        "t": 379.96,
+        "pos": [
+          0.4594,
+          0.8507,
+          0.1399
+        ],
+        "tilt_deg": 0.78,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.27,
+        "body_support_N": 63.27,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "release_hands",
+        "floor_support_N": 63.26979064941406,
+        "reference_x5_pos": [
+          0.45759209990501404,
+          0.8483870625495911,
+          0.14495934545993805
+        ],
+        "frame_xy_error_m": 0.01978171377564564,
+        "base_xy_error_m": 0.0029068656674935884,
+        "rise_m": -0.19590206444263458,
+        "vertical_hand_force_N": [
+          0.0,
+          0.0
+        ],
+        "force_vectors_N": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.005279637023363934,
+        "actual_foot_force_N": [
+          [
+            0.003558635711669922,
+            -0.03608536720275879,
+            146.7321319580078
+          ],
+          [
+            -0.00870656967163086,
+            0.14283037185668945,
+            190.6892852783203
+          ]
+        ],
+        "loaded_COM_margin_m": 0.06028815124334641,
+        "tau_ratio": 0.39233200073242186,
+        "palm_errors": {
+          "left": [
+            0.011059288578202812,
+            0.04305005132155857
+          ],
+          "right": [
+            0.02089661960800653,
+            0.03727899542631055
+          ]
+        },
+        "distances": {
+          "arms_frame": 0.029210267695993476,
+          "legs_mobile": 0.1,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.01945160510924589
+        },
+        "actual_contact_penetration_m": 0.0,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0,
+          "other_max_m": 0.0,
+          "contacts": []
+        },
+        "self_distance_m": -0.0002513475949885713,
+        "load_fraction": 0.0,
+        "load_blend": 0.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.015087158316735846,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": true,
+          "foot_anchor_over5mm": true,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": true,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      }
+    },
+    {
+      "id": "e0013",
+      "source": "s0",
+      "pointer_first": "/return_log/transport_delivery/actual_samples/1493",
+      "pointer_last": "/return_log/transport_delivery/actual_samples/1542",
+      "stream": "/return_log/transport_delivery/actual_samples",
+      "label": "release_hold",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        379.98,
+        380.96
+      ],
+      "rows": 50,
+      "first": {
+        "t": 379.98,
+        "pos": [
+          0.4594,
+          0.8507,
+          0.1399
+        ],
+        "tilt_deg": 0.78,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.27,
+        "body_support_N": 63.27,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "release_hold",
+        "floor_support_N": 63.270079612731934,
+        "reference_x5_pos": [
+          0.45759209990501404,
+          0.8483870625495911,
+          0.14495934545993805
+        ],
+        "frame_xy_error_m": 0.019782585698661922,
+        "base_xy_error_m": 0.0029060896163554096,
+        "rise_m": -0.19590206444263458,
+        "vertical_hand_force_N": [
+          0.0,
+          0.0
+        ],
+        "force_vectors_N": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.005279739817202929,
+        "actual_foot_force_N": [
+          [
+            0.0036851167678833008,
+            -0.06150662899017334,
+            146.64691162109375
+          ],
+          [
+            -0.04569864273071289,
+            0.09631061553955078,
+            190.76220703125
+          ]
+        ],
+        "loaded_COM_margin_m": 0.06029814106480069,
+        "tau_ratio": 0.392116584777832,
+        "palm_errors": {
+          "left": [
+            0.01104154582320092,
+            0.04301295426506666
+          ],
+          "right": [
+            0.020877505562889656,
+            0.03726622072179894
+          ]
+        },
+        "distances": {
+          "arms_frame": 0.029192888281229654,
+          "legs_mobile": 0.1,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.01944785287882226
+        },
+        "actual_contact_penetration_m": 0.0,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0,
+          "other_max_m": 0.0,
+          "contacts": []
+        },
+        "self_distance_m": -0.00025124304596634006,
+        "load_fraction": 0.0,
+        "load_blend": 0.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.015087240739799895,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": true,
+          "foot_anchor_over5mm": true,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": true,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      },
+      "last": {
+        "t": 380.96,
+        "pos": [
+          0.4593,
+          0.8507,
+          0.1399
+        ],
+        "tilt_deg": 0.78,
+        "hand_N": [
+          0.0,
+          0.0
+        ],
+        "support_N": 63.27,
+        "body_support_N": 63.27,
+        "carried_ball_external_support_N": 0.0,
+        "internal_ball_grip_N": 52.65,
+        "phase": "release_hold",
+        "floor_support_N": 63.27010250091553,
+        "reference_x5_pos": [
+          0.45759209990501404,
+          0.8483870625495911,
+          0.14495934545993805
+        ],
+        "frame_xy_error_m": 0.019825277003776644,
+        "base_xy_error_m": 0.0028682186124906637,
+        "rise_m": -0.1959020346403122,
+        "vertical_hand_force_N": [
+          0.0,
+          0.0
+        ],
+        "force_vectors_N": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "foot_error_m": 0.005279210863413145,
+        "actual_foot_force_N": [
+          [
+            0.009279012680053711,
+            -0.026311516761779785,
+            146.75070190429688
+          ],
+          [
+            -0.015574455261230469,
+            -0.025304794311523438,
+            190.6497802734375
+          ]
+        ],
+        "loaded_COM_margin_m": 0.060312324673409634,
+        "tau_ratio": 0.39180999755859375,
+        "palm_errors": {
+          "left": [
+            0.010914073251814604,
+            0.04284525524011337
+          ],
+          "right": [
+            0.020843659404587093,
+            0.03723435595046947
+          ]
+        },
+        "distances": {
+          "arms_frame": 0.029107184138593263,
+          "legs_mobile": 0.1,
+          "torso_frame": 0.1,
+          "torso_fragile": 0.1,
+          "arms_fragile": 0.1,
+          "scene": 0.019441309272764523
+        },
+        "actual_contact_penetration_m": 0.0,
+        "contact_depth_audit": {
+          "intended_max_m": 0.0,
+          "other_max_m": 0.0,
+          "contacts": []
+        },
+        "self_distance_m": -0.0002510720498296072,
+        "load_fraction": 0.0,
+        "load_blend": 0.0,
+        "wheel_feedback": false,
+        "servo_offset_max": 0.015087924648826604,
+        "servo_offset_rad": {
+          "omitted_array_length": 29
+        },
+        "servo_offset_limit_rad": {
+          "omitted_array_length": 29
+        },
+        "old_stance_offset_warning": false,
+        "debug_reserve_warnings": {
+          "palm_over4mm": true,
+          "foot_anchor_over5mm": true,
+          "grounded_palm_over25mm": false,
+          "frame_over15mm": true,
+          "depth_over2mm": false,
+          "depth_over3mm": false
+        }
+      }
+    },
+    {
+      "id": "e0014",
+      "source": "s0",
+      "pointer_first": "/return_log/transport_delivery/delivery",
+      "pointer_last": "/return_log/transport_delivery/delivery",
+      "stream": "/return_log/transport_delivery/delivery",
+      "label": "delivery",
+      "clock": "summary; subphase_clock_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": null,
+      "rows": 1,
+      "first": {
+        "released": {
+          "ball": [
+            1.555,
+            -1.397,
+            0.04
+          ],
+          "goal": [
+            1.55,
+            -1.4,
+            0.048
+          ]
+        },
+        "goal_settle_samples": {
+          "omitted_array_length": 21
+        },
+        "observed_delivery_settled": true
+      },
+      "last": {
+        "released": {
+          "ball": [
+            1.555,
+            -1.397,
+            0.04
+          ],
+          "goal": [
+            1.55,
+            -1.4,
+            0.048
+          ]
+        },
+        "goal_settle_samples": {
+          "omitted_array_length": 21
+        },
+        "observed_delivery_settled": true
+      }
+    }
+  ],
+  "source_clock_checks": [
+    {
+      "source": "s0",
+      "pointer": "/return_log/stages/withdraw/actual_samples",
+      "timed_rows": 2330,
+      "clock": "episode",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/return_log/stages/approach/actual_samples",
+      "timed_rows": 943,
+      "clock": "episode",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/return_log/stages/underbar/actual_samples",
+      "timed_rows": 1573,
+      "clock": "episode",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/return_log/stages/preload/actual_samples",
+      "timed_rows": 704,
+      "clock": "episode",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/return_log/stages/lift/actual_samples",
+      "timed_rows": 850,
+      "clock": "episode",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/return_log/transport_delivery/actual_samples",
+      "timed_rows": 1543,
+      "clock": "episode",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/return_log/transport_delivery/delivery",
+      "timed_rows": 0,
+      "clock": "summary; subphase_clock_unresolved",
+      "nondecreasing": true
+    }
+  ],
+  "physical_observations": {
+    "interpretation": "Descriptive checks recomputed from recorded samples. These are not a new simulation, formal acceptance or a full-rate independent contact audit.",
+    "source": {
+      "path": "C:/Users/wuxiy/rsi_releases/m3_functional_release_20261025/runs/fullstart-474/diagnostic.json",
+      "sha256": "420993a4a9300772ab44f91b393c02cbe9d034aa0cefd30d558e0d96cc5e75f8"
+    },
+    "physical_state_resets": 0,
+    "stages": [
+      {
+        "stage": "withdraw",
+        "clock": {
+          "rows": 2330,
+          "start_s": 222.04,
+          "end_s": 268.62,
+          "strictly_increasing": true,
+          "sample_gap_s": {
+            "min": 0.01999999999998181,
+            "max": 0.020000000000038654
+          }
+        },
+        "retained_ball_grip_N": {
+          "min": 52.64,
+          "max": 52.65
+        },
+        "external_ball_support_N": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "hand_force_N": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "body_support_N": {
+          "min": 63.25,
+          "max": 63.33
+        },
+        "recorded_tau_ratio": null,
+        "actual_contact_penetration_m": null
+      },
+      {
+        "stage": "approach",
+        "clock": {
+          "rows": 943,
+          "start_s": 268.66,
+          "end_s": 287.5,
+          "strictly_increasing": true,
+          "sample_gap_s": {
+            "min": 0.01999999999998181,
+            "max": 0.020000000000038654
+          }
+        },
+        "retained_ball_grip_N": {
+          "min": 52.65,
+          "max": 52.65
+        },
+        "external_ball_support_N": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "hand_force_N": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "body_support_N": {
+          "min": 63.25,
+          "max": 63.29
+        },
+        "recorded_tau_ratio": null,
+        "actual_contact_penetration_m": null
+      },
+      {
+        "stage": "underbar",
+        "clock": {
+          "rows": 1573,
+          "start_s": 287.54,
+          "end_s": 318.98,
+          "strictly_increasing": true,
+          "sample_gap_s": {
+            "min": 0.01999999999998181,
+            "max": 0.020000000000038654
+          }
+        },
+        "retained_ball_grip_N": {
+          "min": 52.65,
+          "max": 52.65
+        },
+        "external_ball_support_N": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "hand_force_N": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "body_support_N": {
+          "min": 63.24,
+          "max": 63.29
+        },
+        "recorded_tau_ratio": {
+          "min": 0.259620304107666,
+          "max": 0.4814502716064453
+        },
+        "actual_contact_penetration_m": null
+      },
+      {
+        "stage": "preload",
+        "clock": {
+          "rows": 704,
+          "start_s": 319.02,
+          "end_s": 333.08,
+          "strictly_increasing": true,
+          "sample_gap_s": {
+            "min": 0.01999999999998181,
+            "max": 0.020000000000038654
+          }
+        },
+        "retained_ball_grip_N": {
+          "min": 52.65,
+          "max": 52.65
+        },
+        "external_ball_support_N": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "hand_force_N": {
+          "min": 0.0,
+          "max": 6.28
+        },
+        "body_support_N": {
+          "min": 52.24,
+          "max": 63.29
+        },
+        "recorded_tau_ratio": {
+          "min": 0.37594722747802733,
+          "max": 0.403563346862793
+        },
+        "actual_contact_penetration_m": null
+      },
+      {
+        "stage": "lift",
+        "clock": {
+          "rows": 850,
+          "start_s": 333.12,
+          "end_s": 350.1,
+          "strictly_increasing": true,
+          "sample_gap_s": {
+            "min": 0.01999999999998181,
+            "max": 0.020000000000038654
+          }
+        },
+        "retained_ball_grip_N": {
+          "min": 52.64,
+          "max": 52.66
+        },
+        "external_ball_support_N": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "hand_force_N": {
+          "min": 1.48,
+          "max": 44.94
+        },
+        "body_support_N": {
+          "min": 0.0,
+          "max": 60.09
+        },
+        "recorded_tau_ratio": {
+          "min": 0.3859275436401367,
+          "max": 0.954536247253418
+        },
+        "actual_contact_penetration_m": {
+          "min": 0.0001842858036980033,
+          "max": 0.0030750632286071777
+        }
+      },
+      {
+        "stage": "transport_delivery",
+        "clock": {
+          "rows": 1543,
+          "start_s": 350.12,
+          "end_s": 380.96,
+          "strictly_increasing": true,
+          "sample_gap_s": {
+            "min": 0.01999999999998181,
+            "max": 0.020000000000038654
+          }
+        },
+        "retained_ball_grip_N": {
+          "min": 52.64,
+          "max": 52.67
+        },
+        "external_ball_support_N": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "hand_force_N": {
+          "min": 0.0,
+          "max": 43.36
+        },
+        "body_support_N": {
+          "min": 0.0,
+          "max": 63.29
+        },
+        "recorded_tau_ratio": {
+          "min": 0.37458702087402346,
+          "max": 1.0
+        },
+        "actual_contact_penetration_m": {
+          "min": 0.0,
+          "max": 0.003704562783241272
+        }
+      }
+    ],
+    "measured_floor_transition": {
+      "t": 373.66,
+      "planned_phase_fraction": 0.985681100799999,
+      "floor_support_N": 53.177154541015625,
+      "consecutive_steps": 5
+    },
+    "prefix_limit": "No new fine-action labels or contact audit for replayed 0–222 s; later samples do not prove earlier steps."
+  },
+  "review": {
+    "task": "M3",
+    "skills": 8,
+    "ordered_actions": 24,
+    "event_groups": 15,
+    "source_files": 1,
+    "action_mapping_counts": {
+      "needs_action_label_or_source_mapping": 9,
+      "episode_event_candidates": 12,
+      "local_clock_or_summary_candidates": 3
+    },
+    "joint_mapping_review": "pending_physical_constraints_and_provenance_review",
+    "remaining_zh": "前 222 s 为原始 LowCmd 回放，缺细动作标签；后段已提取连续样本。保留探索性接触深度及实际力矩仅控制采样频率审计限制。"
+  },
+  "design_gate_complete": false,
+  "physics_runs": 0,
+  "legacy_scores_changed": false,
+  "h1_status_changed": false
+}

@@ -1,0 +1,559 @@
+{
+  "schema": "h1-c28-planning/1",
+  "status": "draft_continuous_path_unqualified",
+  "physics_started": false,
+  "tests": {
+    "tests": 7,
+    "passed": true,
+    "changed_sources": [
+      "humanoid/g1_support_retrieval/oracle/stool_chain.py",
+      "humanoid/g1_support_retrieval/sandbox/reference/layer1_candidate/source_manifest.json",
+      "humanoid/g1_support_retrieval/solution/carry_box/plan_carry.py"
+    ],
+    "scope": "CPU planning checks only; no physical qualification, no physics or scoring edits"
+  },
+  "screens": [
+    {
+      "evidence": "path_screen_0.08_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.60-0.44_extendTrue_pelvisNone_rate0.60_hinge0.0.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.08,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.6,
+          0.44
+        ],
+        "extend_during_second": true,
+        "pelvis_pitch_min": null,
+        "joint_rate": 0.6,
+        "hinge_start": 0.0
+      },
+      "last": {
+        "time_s": 20.800000000000004,
+        "target_height": 0.6,
+        "okay": false,
+        "error": "reach constraints {\"feet\": 0.001478895266395139, \"palms\": 0.006179159972073864, \"com\": 0.002622692953966306, \"loaded_waist_Nm\": [-6.668305868978851, -8.600946392331078, -32.263975307048966], \"loaded_waist_effort_ratio\": 0.6452795061409793}",
+        "clearances": [
+          {
+            "pair": [
+              "left_knee_link",
+              "world"
+            ],
+            "gap": 0.029680061494519388,
+            "margin": 0.03
+          },
+          {
+            "pair": [
+              "right_knee_link",
+              "world"
+            ],
+            "gap": 0.029477446510702842,
+            "margin": 0.03
+          }
+        ],
+        "pelvis_rotation": [
+          0.16872922218662062,
+          0.5756681882853889,
+          0.3194773103703785
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.08_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.60-0.44_extendTrue_pelvisNone_rate0.60_hinge0.0_compact0.0.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.08,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.6,
+          0.44
+        ],
+        "extend_during_second": true,
+        "pelvis_pitch_min": null,
+        "joint_rate": 0.6,
+        "hinge_start": 0.0,
+        "compact_offset": 0.0
+      },
+      "last": {
+        "time_s": 22.400000000000002,
+        "target_height": 0.6,
+        "okay": false,
+        "error": "loaded_waist_effort_guard: {\"feet\": 2.4168843141367565e-05, \"palms\": 0.0019815457559942133, \"com\": 0.0002938263995614902, \"loaded_waist_Nm\": [5.4064881473852235, 14.860315865316545, -45.51382615139505], \"loaded_waist_effort_ratio\": 0.9102765230279011}",
+        "clearances": [],
+        "pelvis_rotation": [
+          -0.029545664736357242,
+          1.0893546535883374,
+          0.0021496829475551905
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.29
+      },
+      "last": {
+        "time_s": 21.000000000000004,
+        "target_height": 0.4624470045073965,
+        "okay": false,
+        "error": "reach constraints {\"feet\": 0.0030279889393197775, \"palms\": 0.005974859720962039, \"com\": 0.0027864990799075662, \"loaded_waist_Nm\": [-6.4662326789059605, 11.789070886931839, -44.287230915385315], \"loaded_waist_effort_ratio\": 0.8857446183077063}"
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true
+      },
+      "last": {
+        "time_s": 22.300000000000004,
+        "target_height": 0.5344796239382172,
+        "okay": false,
+        "error": "reach constraints {\"feet\": 0.0030255295218106614, \"palms\": 0.004968410242207258, \"com\": 0.0020640625747537053, \"loaded_waist_Nm\": [-0.8707451540884723, -1.4558820085729078, -33.04639160747789], \"loaded_waist_effort_ratio\": 0.6609278321495577}"
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue_waist-0.19.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19
+      },
+      "last": {
+        "time_s": 22.1,
+        "target_height": 0.5380182900469026,
+        "okay": false,
+        "error": "reach constraints {\"feet\": 0.002597888242781277, \"palms\": 0.006321105237138635, \"com\": 0.0029694396086040876, \"loaded_waist_Nm\": [-2.9899924790058687, -3.2182799750223507, -26.831159032036105], \"loaded_waist_effort_ratio\": 0.5366231806407221}"
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.44-0.38_extendTrue_pelvisNone_rate0.60_hinge0.0_compact0.0.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.44,
+          0.38
+        ],
+        "extend_during_second": true,
+        "pelvis_pitch_min": null,
+        "joint_rate": 0.6,
+        "hinge_start": 0.0,
+        "compact_offset": 0.0
+      },
+      "last": {
+        "time_s": 29.700000000000003,
+        "target_height": 0.44660739721103804,
+        "okay": false,
+        "error": "loaded_waist_effort_guard: {\"feet\": 0.00015182748206886114, \"palms\": 0.003313217875184403, \"com\": 0.0006219969962010653, \"loaded_waist_Nm\": [2.64140120530572, 14.505129650654542, -45.5012772460839], \"loaded_waist_effort_ratio\": 0.9100255449216781}",
+        "clearances": [
+          {
+            "pair": [
+              "left_hip_yaw_link",
+              "torso_link"
+            ],
+            "gap": 0.004839483824025178,
+            "margin": 0.005
+          },
+          {
+            "pair": [
+              "left_knee_link",
+              "world"
+            ],
+            "gap": 0.034035996303568836,
+            "margin": 0.03
+          },
+          {
+            "pair": [
+              "right_hip_yaw_link",
+              "torso_link"
+            ],
+            "gap": 0.004820620998445821,
+            "margin": 0.005
+          },
+          {
+            "pair": [
+              "right_knee_link",
+              "world"
+            ],
+            "gap": 0.03210232867389349,
+            "margin": 0.03
+          }
+        ],
+        "pelvis_rotation": [
+          0.006354361510223724,
+          1.1893854220982827,
+          0.007561808156213195
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.52-0.44_extendTrue_pelvisNone_rate0.60_hinge0.0_compact0.0.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.52,
+          0.44
+        ],
+        "extend_during_second": true,
+        "pelvis_pitch_min": null,
+        "joint_rate": 0.6,
+        "hinge_start": 0.0,
+        "compact_offset": 0.0
+      },
+      "last": {
+        "time_s": 36.5,
+        "target_height": 0.5016806706046515,
+        "okay": false,
+        "error": "loaded_waist_effort_guard: {\"feet\": 0.0003318860771142935, \"palms\": 0.005334952689032943, \"com\": 0.0008972512151406676, \"loaded_waist_Nm\": [6.402951849065872, 19.772834467490426, -45.516804646149936], \"loaded_waist_effort_ratio\": 0.9103360929229987}",
+        "clearances": [
+          {
+            "pair": [
+              "left_hip_yaw_link",
+              "torso_link"
+            ],
+            "gap": 0.004686212859638517,
+            "margin": 0.005
+          },
+          {
+            "pair": [
+              "right_hip_yaw_link",
+              "torso_link"
+            ],
+            "gap": 0.004668049736065954,
+            "margin": 0.005
+          }
+        ],
+        "pelvis_rotation": [
+          0.13802951263660707,
+          1.3989126259460485,
+          0.1070020343873827
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.60-0.44.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.6,
+          0.44
+        ]
+      },
+      "last": {
+        "time_s": 21.6,
+        "target_height": 0.6,
+        "okay": false,
+        "error": "reach constraints {\"feet\": 0.001594304143113355, \"palms\": 0.006528997234455478, \"com\": 0.002860307494014075, \"loaded_waist_Nm\": [-3.728746722467943, -4.577140178539782, -27.494187887185674], \"loaded_waist_effort_ratio\": 0.5498837577437135}",
+        "clearances": [
+          {
+            "pair": [
+              "left_knee_link",
+              "world"
+            ],
+            "gap": 0.029610770591580297,
+            "margin": 0.03
+          },
+          {
+            "pair": [
+              "right_knee_link",
+              "world"
+            ],
+            "gap": 0.029527778101780543,
+            "margin": 0.03
+          }
+        ],
+        "pelvis_rotation": [
+          0.051267652665097474,
+          0.4655348755328892,
+          0.12428880410709589
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.60-0.44_extendTrue.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.6,
+          0.44
+        ],
+        "extend_during_second": true
+      },
+      "last": {
+        "time_s": 21.200000000000003,
+        "target_height": 0.6,
+        "okay": false,
+        "error": "reach constraints {\"feet\": 0.0018359101297479425, \"palms\": 0.006424579143406059, \"com\": 0.002927632915577545, \"loaded_waist_Nm\": [-3.4610649000142186, -3.987742806488426, -29.30342302368689], \"loaded_waist_effort_ratio\": 0.5860684604737378}",
+        "clearances": [
+          {
+            "pair": [
+              "left_knee_link",
+              "world"
+            ],
+            "gap": 0.029585740635873523,
+            "margin": 0.03
+          },
+          {
+            "pair": [
+              "right_knee_link",
+              "world"
+            ],
+            "gap": 0.029461534933995975,
+            "margin": 0.03
+          }
+        ],
+        "pelvis_rotation": [
+          0.046602946789365635,
+          0.4977196114776974,
+          0.11287548492375324
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.60-0.44_extendTrue_pelvis1.05.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.6,
+          0.44
+        ],
+        "extend_during_second": true,
+        "pelvis_pitch_min": 1.05
+      },
+      "last": {
+        "time_s": 8.3,
+        "target_height": 0.6755092068363765,
+        "okay": false,
+        "error": "reach constraints {\"feet\": 6.911247166674606e-05, \"palms\": 0.006781075643180016, \"com\": 0.0015469689924475377, \"loaded_waist_Nm\": [-0.27626227332406417, -0.6836833296069793, -29.539981850644104], \"loaded_waist_effort_ratio\": 0.5907996370128821}",
+        "clearances": [],
+        "pelvis_rotation": [
+          0.00012363919219979892,
+          0.46890414964227833,
+          -0.0002568376665494716
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.60-0.44_extendTrue_pelvis1.05_rate0.60.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.6,
+          0.44
+        ],
+        "extend_during_second": true,
+        "pelvis_pitch_min": 1.05,
+        "joint_rate": 0.6
+      },
+      "last": {
+        "time_s": 9.6,
+        "target_height": 0.6515612911376953,
+        "okay": false,
+        "error": "reach constraints {\"feet\": 0.0001440743609195864, \"palms\": 0.006302382703292892, \"com\": 0.0012567665693375084, \"loaded_waist_Nm\": [-2.797230359057841, 7.532318960441658, -30.804959678286593], \"loaded_waist_effort_ratio\": 0.6160991935657318}",
+        "clearances": [],
+        "pelvis_rotation": [
+          -0.26052106790583845,
+          0.6761135163724159,
+          0.147684380878726
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.60-0.44_extendTrue_pelvis1.05_rate0.60_hinge10.0.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.6,
+          0.44
+        ],
+        "extend_during_second": true,
+        "pelvis_pitch_min": 1.05,
+        "joint_rate": 0.6,
+        "hinge_start": 10.0
+      },
+      "last": {
+        "time_s": 13.5,
+        "target_height": 0.6048346944727662,
+        "okay": false,
+        "error": "reach constraints {\"feet\": 0.00015328234977497748, \"palms\": 0.00630274878816577, \"com\": 0.0012139706437684376, \"loaded_waist_Nm\": [0.7756378168727073, 3.7348001614198947, -30.891392360984362], \"loaded_waist_effort_ratio\": 0.6178278472196872}",
+        "clearances": [
+          {
+            "pair": [
+              "left_knee_link",
+              "world"
+            ],
+            "gap": 0.032134559501895726,
+            "margin": 0.03
+          }
+        ],
+        "pelvis_rotation": [
+          -0.08191119361359504,
+          0.6199501814927952,
+          0.06856088038914233
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.90_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.60-0.44_extendTrue_pelvisNone_rate0.60_hinge0.0_compact0.0.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.9,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.6,
+          0.44
+        ],
+        "extend_during_second": true,
+        "pelvis_pitch_min": null,
+        "joint_rate": 0.6,
+        "hinge_start": 0.0,
+        "compact_offset": 0.0
+      },
+      "last": {
+        "time_s": 28.900000000000002,
+        "target_height": 0.6,
+        "okay": false,
+        "error": "loaded_waist_effort_guard: {\"feet\": 5.100383484070077e-05, \"palms\": 0.004967548610947825, \"com\": 0.0006130549489996293, \"loaded_waist_Nm\": [8.484741623627382, 19.135721460282284, -45.51214128194003], \"loaded_waist_effort_ratio\": 0.9102428256388007}",
+        "clearances": [],
+        "pelvis_rotation": [
+          0.09988484420960311,
+          1.3997155493657059,
+          0.059721338761732974
+        ]
+      }
+    },
+    {
+      "evidence": "path_screen_0.10_0.94_0.10_mid0.30_reverseTrue_waist-0.19_root0.60-0.52-0.44_extendTrue_pelvisNone_rate0.60_hinge0.0_compact0.0.json",
+      "passed": false,
+      "settings": {
+        "shift": 0.1,
+        "reserve": 0.94,
+        "dt": 0.1,
+        "mid_height": 0.3,
+        "reverse_lift": true,
+        "waist_target": -0.19,
+        "root_goals": [
+          0.6,
+          0.52,
+          0.44
+        ],
+        "extend_during_second": true,
+        "pelvis_pitch_min": null,
+        "joint_rate": 0.6,
+        "hinge_start": 0.0,
+        "compact_offset": 0.0
+      },
+      "last": {
+        "time_s": 36.800000000000004,
+        "target_height": 0.4978514222002995,
+        "okay": false,
+        "error": "loaded_waist_effort_guard: {\"feet\": 0.00017701639533984818, \"palms\": 0.0031060165840980274, \"com\": 0.0005736064972489264, \"loaded_waist_Nm\": [0.8992700320790367, 13.481479143170025, -47.522665149878144], \"loaded_waist_effort_ratio\": 0.9504533029975629}",
+        "clearances": [
+          {
+            "pair": [
+              "left_hip_yaw_link",
+              "torso_link"
+            ],
+            "gap": 0.0048014299438026925,
+            "margin": 0.005
+          },
+          {
+            "pair": [
+              "right_hip_yaw_link",
+              "torso_link"
+            ],
+            "gap": 0.00475336934297404,
+            "margin": 0.005
+          }
+        ],
+        "pelvis_rotation": [
+          0.01184721560319641,
+          1.4000444722630383,
+          0.03721031025038249
+        ]
+      }
+    }
+  ],
+  "pending_screen": null,
+  "pending_session": null,
+  "source_note": "C28 source still has earlier reverse draft (.58/.40/.38 root goals, .076m late extension, .003rad joint steps). CPU variants are separate exploratory trajectories; see latest screen settings. Reconcile source only after a winning screen, validate/seal, then queue physics.",
+  "scope": "Static and kinematic development only. No setdown, full-chain or release qualification.",
+  "updated_at": "2026-10-24T09:59:44.736876+00:00",
+  "next_investigation": "All nominal screens completed and failed. Latest .94 reserve reaches36.8s, 47.523Nm; no C28 physical run. C29 tests physical floor relocation instead."
+}

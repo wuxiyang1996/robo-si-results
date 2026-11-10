@@ -1,0 +1,22 @@
+{
+  "schema": "m4-agent-root-hardening/1",
+  "finding": "Private sandbox root was writable although host files and code were inaccessible.",
+  "correction": "Remount sandbox root read-only; writable /workspace and /tmp remain separate. Limit process count to 32 after namespace setup.",
+  "tests_passed": 8,
+  "elapsed_s": 0.927,
+  "tests": "m4_family.autonomous.test_agent_process m4_family.autonomous.test_agent_evidence",
+  "source_sha256": {
+    "agent_process.py": "5ae733616977db34b5a7e7b4f7903e5f77e5e871d92b7d4840daab69bd0cfef0",
+    "agent_evidence.py": "955ce617c63a50b59d250edb8d1d9207edd926c07c7c294b6eea9a9eacf369dd",
+    "test_agent_process.py": "0a17bdde0916ef43647ba4580dc88d7f297b79a1d0f29bc65e33953349920468",
+    "test_agent_evidence.py": "2886a19bc2fdc71546f587c3fe39f4d18647a4e04408630aea5e4f1ba0590c8e"
+  },
+  "remaining": [
+    "aggregate scratch quota",
+    "separate grading resource cgroup",
+    "final public sensor contract",
+    "positive isolated physical policy",
+    "general sealed grading"
+  ],
+  "formal_admission": false
+}

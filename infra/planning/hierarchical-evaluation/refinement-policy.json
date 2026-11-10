@@ -1,0 +1,40 @@
+{
+  "schema": "representation-refinement-policy/1",
+  "status": "author_design_feasibility_requirement",
+  "claim": "A high-level plan can be refined into a low-level action plan and a physically valid trajectory in a declared configuration.",
+  "quantification": "existential_case_witness_not_universal_random_state_guarantee",
+  "representations": {
+    "high_level": "Subgoals and dependencies, e.g. get onto the box and reach the shelf.",
+    "low_level": "Ordered motion/contact primitives and constraints: transfer weight, lift the first foot, establish support, lift the second foot, stabilize.",
+    "trajectory": "Time-indexed actual states and controls bound to scene, assets, physics, controller and evaluator."
+  },
+  "mapping_checks": {
+    "HL_LL": {"requires": ["subgoal_ids", "ordered_low_level_actions", "preconditions_and_effects", "support_contact_constraints", "refinement_evidence"], "meaning": "The demonstrated low-level sequence realizes the high-level goal in the declared case; text alone is insufficient."},
+    "LL_TRAJ": {"requires": ["action_ids", "actual_trajectory_segments", "generation_provenance", "physical_constraint_checks", "measured_start_and_end_states"], "meaning": "The demonstrated trajectory realizes the low-level actions and satisfies applicable physical constraints."},
+    "HL_TRAJ": {"mode": "composition_plus_independent_goal_check", "requires": ["compatible_case_and_version_identity", "subgoal_to_segment_map", "independent_goal_predicates"], "meaning": "Compose the first two mappings and check achieved goals; no third planner or unique inverse is required."}
+  },
+  "minimum_design_feasibility_gate": {
+    "all_mapping_checks_evidenced": true,
+    "successful_continuous_end_to_end_trajectories": 1,
+    "scope": "One explicitly declared configuration for the claimed task design, not all variants or random instances.",
+    "trajectory_generation_provenance_required": true,
+    "existing_complete_witness_reuse_allowed": true,
+    "reuse_requirements": ["matching_configuration_and_versions", "generation_provenance", "checked_HL_LL_TRAJ_mappings", "valid_full_execution_and_integrity_verdict"],
+    "checkpoint_splicing_as_end_to_end_evidence_allowed": false,
+    "new_full_run_required_for_documentation_only_refinement": false,
+    "changed_controller_requires_its_own_scoped_evidence": true,
+    "all_random_instances_solved_required": false,
+    "continuous_skill_envelope_required": false,
+    "arbitrary_pairwise_skill_composability_required": false,
+    "general_rolling_planner_required": false,
+    "three_repeats_required_for_this_design_gate": false
+  },
+  "evaluation_separation": {
+    "design_report": ["HL_LL_check", "LL_TRAJ_check", "HL_TRAJ_check", "end_to_end_witness_count", "scope"],
+    "random_robustness_and_skill_envelopes": "Separate extensions, not prerequisites for this existential gate.",
+    "formal_review_and_reproduction": "Separate from the minimum design feasibility gate.",
+    "agent_execution_scores": "Unchanged; planning/screening awards no execution credit.",
+    "unmatched_random_instance": "unknown; retain all prescribed draws and four-state results",
+    "automatic_admission_upgrade": false
+  }
+}

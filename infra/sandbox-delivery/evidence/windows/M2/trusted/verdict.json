@@ -1,0 +1,150 @@
+{
+ "task": "M2",
+ "mode": "dev",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.0,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.0,
+ "score_std": 0.0,
+ "by_layer": {
+  "None": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.0,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 0
+ },
+ "flags": [],
+ "privileged_reference": false,
+ "result_kind": "agent run",
+ "requests": {
+  "observe": 1,
+  "command": 2,
+  "reference": 0,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "7 entries"
+ },
+ "verifier": "infra-verifier/1 + m2-verifier/2-g2-e2",
+ "verifier_sha256": "a68a34dca79a432db57e145b5406bd4cb9682680721051ac846f1b9014a6b925",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": null,
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + m2-verifier/2-g2-e2",
+  "verifier_sha256": "a68a34dca79a432db57e145b5406bd4cb9682680721051ac846f1b9014a6b925",
+  "scene": [],
+  "simulator": [],
+  "image": "g1m2-agent:e1d960a60ffde783",
+  "image_id": "sha256:b5bcb573ca8742e40a328ccb711a3795cdfc233d431e530e4664de32d24d33e7",
+  "bundle": "e1d960a60ffde7834c600cc961628e3ff4773d0e76684326663cc5f8cd1f6941",
+  "scenario_sha256": "624dfb363ecd8e8837a13a9482ed0a1cde131eada77d655767231418053f1147",
+  "delivery_sha256": "155a65b9c192733ddc06c2943f7aab61f3efb36af85d59dd24a37ec7d758443a",
+  "source_manifest_sha256": "2dbe8df0e837e68bf18041e5ae0c208d51dba2d5d5c3b8d6125788783e6d9135",
+  "launch_scope_source_frozen": true
+ },
+ "per_episode": [
+  {
+   "task_version": "1.0",
+   "scorer_version": "2.0-g2-e2",
+   "regrasp_rule": "m2-g2/1",
+   "active_carry_ready": false,
+   "temporary_placement_events": [],
+   "score": 0.0,
+   "success": false,
+   "void": false,
+   "reasons": [],
+   "flags": [],
+   "stage_best": {
+    "grasp": 0.0,
+    "lift": 0.0,
+    "turn": 0.0,
+    "transport": 0.0,
+    "lower": 0.0,
+    "place": 0.0
+   },
+   "stage_final": {
+    "grasp": 0.0,
+    "lift": 0.0,
+    "turn": 0.0,
+    "transport": 0.0,
+    "lower": 0.0,
+    "place": 0.0
+   },
+   "stage_times": {},
+   "samples": 9,
+   "seconds": 0.04,
+   "metrics": {
+    "wall_force_N": 0.0,
+    "nonhand_force_N": 0.0,
+    "carry_tilt_deg": 0.0
+   },
+   "evidence": "environment_record",
+   "alarms": [],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": []
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "m2-monitors/1",
+    "not_applicable": {
+     "predicates": "M2 stages are latched milestones without a per-step progress series",
+     "commands": "the record has no joint position / velocity / effort series"
+    },
+    "max_reported_speed": 0.003,
+    "max_object_speed": 0.004,
+    "max_step_speed": 0.004,
+    "max_floor_penetration": 0.0001,
+    "max_energy_excess_J": 0.0,
+    "g1_a.max_reversal_rate_hand_hz": 0.0,
+    "g1_a.max_saturation_s": 0.0,
+    "g1_a.max_limit_push_s": 0.0,
+    "g1_a.max_step_speed": 0.109,
+    "g1_b.max_reversal_rate_hand_hz": 0.0,
+    "g1_b.max_saturation_s": 0.0,
+    "g1_b.max_limit_push_s": 0.0,
+    "g1_b.max_step_speed": 0.109
+   },
+   "monitor_version": "m2-monitors/1",
+   "monitor_flags": [],
+   "ending_rule": "m2-e2/1",
+   "ending_classification": "finished",
+   "record_kind": "rpc_development",
+   "admission_eligible": false,
+   "scorer_sha256": "e1240c09503f9ecf880c0c873d277e498f3083ceb1f8759319268aa17ea9343f",
+   "contract_limitations": [],
+   "record_format": "infra-chunked",
+   "provenance": "operator-owned directory; manifest is not a signature",
+   "manifest_sha256": "86e3f40f75b137f2989ffca401b910ea5a2ebf9b315160798c6a065ced91d6e4",
+   "episode": "episode_00",
+   "void_reasons": [],
+   "episode_index": 0,
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 1,
+    "commands": 2,
+    "reference": 0
+   }
+  }
+ ],
+ "admission_eligible": false
+}

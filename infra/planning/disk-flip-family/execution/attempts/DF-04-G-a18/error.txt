@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 703, in main
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 457, in execute
+    self.events[-1].update(end_s=float(self.d.time),record_end=len(self.records))
+                                                                       ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 555, in finish_dex3_bridge
+    forces={s:sum((np.array(c['force_on_disk_world']) for c in self.contacts()[-1] if c['body'].startswith(s+'_hand_')),start=np.zeros(3)) for s in hands}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 544, in apply_goals
+    solution,_=self.solve(goals,seed=self.qref)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 351, in step
+    self.command();mujoco.mj_step(self.m,self.d);self.records.append((self.d.time,self.d.qpos.copy(),self.d.qvel.copy(),self.d.ctrl.copy(),self.qref.copy(),self.phase));row=self.assess()
+                                                                                                                                                                             ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 176, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

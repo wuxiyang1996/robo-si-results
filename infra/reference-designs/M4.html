@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>M4 · 双四足协同拖运 · 参考设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main.wrap{padding-block:40px;overflow-wrap:anywhere}h2{margin-top:44px}h3{margin-top:30px}pre{overflow:auto;background:var(--panel);padding:18px;border-radius:10px}th,td{min-width:100px}h1{font-size:clamp(28px,5vw,44px)}</style><meta content="M4 · 双四足协同拖运 · 参考设计 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><main class="wrap"><nav><a href="/robo-si-results/infra/reference-designs-zh.html">14 项参考解设计</a> · <a href="/robo-si-results/infra/reference-designs/M4.md">Markdown 源文档</a> · <a href="/robo-si-results/infra/task-m4-zh.html">任务页面</a></nav><h1 id="m4">M4 · 双四足协同拖运：参考解设计</h1>
+<p>已有声明范围内的参考执行见证；本文补齐统一设计说明。本次新增物理运行：0。</p>
+<h2 id="_1">设计思路</h2>
+<p>两台四足通过预连接装置协同拖运，协调方向和牵引力以避免载物偏转。参考只覆盖预连接版本；新连接器自主对接、搬运、释放链不包含在成功声明内。</p>
+<h2 id="_2">选定参考与范围</h2>
+<p>见证：<strong>base-v1</strong>。范围：固定 base / hard 预连接拖运，CPU 特权参考。</p>
+<p>预连接参考已完成并发布：历史 6/6、新目录复现 2/2 成功；当前重评 28/28 符合预期，扰动 base 4/6、hard 10/12。自主对接、装载与解绑定释放未完成。</p>
+<p><a href="/robo-si-results/infra/m4-current-evidence.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/M4.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p>
+<h2 id="_3">高层计划与关键状态</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>检查并建立张力</td>
+<td>M4.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>直线拖运</td>
+<td>M4.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>协同转角</td>
+<td>M4.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>目标停稳</td>
+<td>M4.K04</td>
+<td>S3 → S4</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>base/hard 发布的预连接且预装载初态</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>双侧受力进入可拖运状态</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>货台完成规定直线段</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>双机/货台/绳扫掠均通过转角</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>载荷在目标内满足原稳定驻留</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_4">低层动作、接触支撑与轨迹对应</h2>
+<p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h3 id="m4k01">M4.K01 · 两机低速移位、调节间距</h3>
+<p>入口：base/hard 发布的预连接且预装载初态。出口：双侧受力进入可拖运状态。</p>
+<p>局部检查：连接拓扑与初始绳长匹配；脚接触、张力和倾覆限制。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M4.K01.A01</td>
+<td>预连接状态下站稳并检查连接几何</td>
+<td>足→地面；绳已连接；载荷→货台</td>
+<td>连接点、绳长、支撑</td>
+<td>e0000: episode [0.0, 0.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K01.A02</td>
+<td>低速前移消除绳松弛</td>
+<td>足地牵引→绳→货台</td>
+<td>张力、脚端滑移</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K01.A03</td>
+<td>调整双机间距形成牵引队形</td>
+<td>双机足→地面；货台承重</td>
+<td>横向间距与各绳张力</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m4k02">M4.K02 · 协调步态、速度与张力</h3>
+<p>入口：两侧受力稳定且前方通道可行。出口：货台完成规定直线段。</p>
+<p>局部检查：可实现牵引力、滑移、张力不均与载荷保持。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M4.K02.A01</td>
+<td>交替步态沿直道牵引</td>
+<td>足地牵引→绳→货台</td>
+<td>足滑移、张力及货物支撑</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K02.A02</td>
+<td>按队形进度差修正双机速度</td>
+<td>绳保持物理连接</td>
+<td>前后差与牵引张力</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K02.A03</td>
+<td>保持货台平稳接近转角</td>
+<td>载荷→货台</td>
+<td>货物速度、支撑比例</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m4k03">M4.K03 · 内外侧速度调整及队形修正</h3>
+<p>入口：货台到转角入口，双机可调整间距。出口：双机/货台/绳扫掠均通过转角。</p>
+<p>局部检查：整体包络、脚端滑移和角部绳路径；Linux base 已用公开 v_arc=0.10。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M4.K03.A01</td>
+<td>按转角路径调整内外侧速度</td>
+<td>脚地牵引→绳→货台</td>
+<td>角速度、净空与张力</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K03.A02</td>
+<td>容许瞬时松绳并调整队形</td>
+<td>绳连接保持；货台承重</td>
+<td>松弛长度、足滑移与货台姿态</td>
+<td>e0002: episode [15.0, 15.0] s; e0003: episode [16.0, 16.0] s; e0004: episode [17.0, 17.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K03.A03</td>
+<td>完成转角后继续向目标牵引</td>
+<td>脚地牵引→绳→货台</td>
+<td>货台转向及目标包含</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m4k04">M4.K04 · 同步减速并稳定货台</h3>
+<p>入口：组合体已进入目标区。出口：载荷在目标内满足原稳定驻留。</p>
+<p>局部检查：旧 released_settled 指稳定驻留，不代表绳已机械脱开。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M4.K04.A01</td>
+<td>货台进入目标后停止前进</td>
+<td>货台承重；绳仍连接</td>
+<td>目标包含、速度</td>
+<td>e0002: episode [15.0, 15.0] s; e0003: episode [16.0, 16.0] s; e0004: episode [17.0, 17.0] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K04.A02</td>
+<td>两机小幅后退释放绳张力</td>
+<td>货台→地面；连接保持</td>
+<td>绳张力与货台漂移</td>
+<td>e0002: episode [15.0, 15.0] s; e0003: episode [16.0, 16.0] s; e0004: episode [17.0, 17.0] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K04.A03</td>
+<td>保持静止并确认驻留</td>
+<td>预连接保留；货台独立支撑</td>
+<td>低张力、货物稳定</td>
+<td>e0006: episode [32.28, 32.28] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_5">尚需核对</h2>
+<p>仅预连接 base；tow 内直行/转角与足步待按路径分段。15–17 s 松绳事件保留；不要求两绳始终张紧，不加入自主对接或解绳。</p>
+<p>补张紧、张力分配、滑移、转角整体扫掠和目标停稳的技能条件与交接。自主对接、装载和解绑另立任务；v2 停止记录保留。 人工录像／阶段签审、第二人复现和代表性覆盖验收。</p>
+<h2 id="_6">复现与生成入口</h2>
+<ul>
+<li><a href="/robo-si-results/multi_robot/dual_quadruped_cooperative_transport/README.md">multi_robot/dual_quadruped_cooperative_transport/README.md</a></li>
+<li><a href="/robo-si-results/multi_robot/dual_quadruped_cooperative_transport/solution/README.md">multi_robot/dual_quadruped_cooperative_transport/solution/README.md</a></li>
+</ul>
+<p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/77a690ac1d35b3f25c92b66dca48f93d8d407327/releases/m4-preconnected-20261024-v2/m4-preconnected-reference-20261024.zip">完整参考包</a>。使用包内冻结配置、依赖说明与生成／回放入口；审阅包不替代完整包。</p>
+<p>历史源码说明只提供设计上下文；若与冻结见证冲突，以见证的配置、控制器身份和发布清单为准。设计动作表不等同于已绑定的通用控制器。</p>
+<h2 id="_7">验收与执行边界</h2>
+<p>本文件说明已有参考的设计与证据，不修改旧评分。任务级要求至少一个声明配置内的连续端到端生成见证；高层计划→低层动作、低层动作→轨迹、高层目标→实测终态分别核对。这里的“两两转换”是表示之间的对应，不是任意随机状态下技能可无条件拼接。</p>
+<p>随机实例保留四种结果：有完整成功证据、通过可行性筛查、未确定、检查不通过；筛查通过不写成已证明可解。只在需要执行时生成当前局部轨迹；通用滚动规划和全随机域鲁棒性另列，不是本参考文档的完成前提。</p>
+<p>若接触、支撑或守卫条件不满足，不推进下一动作；保留已有安全支撑并记录失败，仅在已知安全状态下重新观察与局部规划。不得凭事件名推断接触合格，不得将不同检查点的成功片段拼接成连续成功。</p>
+<h2 id="_8">来源与版本</h2>
+<p>来源内容哈希见 <a href="/robo-si-results/infra/reference-designs/catalog.json">catalog.json</a>，对应生成器为 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tools/build_reference_designs.py">build_reference_designs.py</a>。本次只整理设计与证据，不将待审事件关联计作验收通过。</p></main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

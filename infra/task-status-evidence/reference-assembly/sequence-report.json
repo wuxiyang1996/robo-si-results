@@ -1,0 +1,5488 @@
+{
+  "purpose": "sequential_mechanical_diagnostic",
+  "robot_expert_verified": false,
+  "initialization_uses_setters": true,
+  "no_previously_placed_part_repositioning": true,
+  "limitations": "New parts are diagnostically initialized at goals; neither collision-free transfer paths nor robot manipulation are verified.",
+  "catalog_fingerprint": "ebae5f4f3801b49dfb65dbe4946241b86881ccb179fcc70e4f12b167bea5d607",
+  "sources": {
+    "sequence_check.py": "c56565a055a5d69bbd458689897c0d5bd72ff928b6c36cc3afb96f904b54eef9",
+    "assets.py": "f0aa78e9d6eb5388a22fd3e3256f08bc427d0c1f30762e8e84fc82b759bb9b49",
+    "task_spec.py": "f29375777d58fac84ecf164ca15c5332b7bd9728b3d8caee78abeebb1a651263"
+  },
+  "recipes": {
+    "bottom_up": {
+      "recipe": "bottom_up",
+      "initial_supply_positions": {
+        "left_frame": [
+          0.7,
+          -0.75,
+          0.865
+        ],
+        "right_frame": [
+          1.15,
+          -0.75,
+          0.865
+        ],
+        "lower_crossbar": [
+          0.7,
+          -0.25,
+          0.7441291083333333
+        ],
+        "middle_crossbar": [
+          1.15,
+          -0.25,
+          0.7441291083333333
+        ],
+        "upper_crossbar": [
+          0.7,
+          0.25,
+          0.7441291083333333
+        ],
+        "bottom_shelf": [
+          1.15,
+          0.25,
+          0.744
+        ],
+        "middle_shelf": [
+          0.7,
+          0.75,
+          0.744
+        ],
+        "top_shelf": [
+          1.15,
+          0.75,
+          0.744
+        ]
+      },
+      "stages": [
+        {
+          "index": 0,
+          "added_part": "left_frame",
+          "requested_wait_seconds": 3.0,
+          "elapsed_seconds": 2.9999999999999583,
+          "physics_elapsed_seconds": 3.0,
+          "evaluator": {
+            "stage": 1,
+            "stage_name": "right_frame",
+            "completed": [
+              "left_frame"
+            ],
+            "assignments": {
+              "left_frame": "left_frame"
+            },
+            "score": 0,
+            "progress": 0.1111111111111111,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 2.9999999999999583,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": false,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -5.561133220588488e-10,
+                  0.16190142929553986,
+                  0.8649685382843018
+                ],
+                "quat": [
+                  1.0,
+                  0.0003935217100661248,
+                  2.849396066317844e-12,
+                  -2.690447864495127e-11
+                ],
+                "linear_velocity": [
+                  -2.719697800301901e-10,
+                  -5.44126578461146e-07,
+                  3.8088883229647763e-06
+                ],
+                "angular_velocity": [
+                  4.3540194383240305e-06,
+                  -3.5531411146649816e-09,
+                  -7.752928299353812e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.3543999791145325
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 2.3544000881910323
+              },
+              "max_displacement_m": 0.00024526357655038395
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 1,
+          "added_part": "right_frame",
+          "requested_wait_seconds": 3.0,
+          "elapsed_seconds": 5.999999999999894,
+          "physics_elapsed_seconds": 6.0,
+          "evaluator": {
+            "stage": 2,
+            "stage_name": "lower_crossbar",
+            "completed": [
+              "left_frame",
+              "right_frame"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame"
+            },
+            "score": 0,
+            "progress": 0.2222222222222222,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 5.999999999999894,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.4865931818874856e-09,
+                  0.16190142929553986,
+                  0.8649685382843018
+                ],
+                "quat": [
+                  1.0,
+                  0.0003935217100661248,
+                  2.849396066317844e-12,
+                  -2.690447864495127e-11
+                ],
+                "linear_velocity": [
+                  -2.788382302831849e-10,
+                  -5.451587412608205e-07,
+                  3.808835799645749e-06
+                ],
+                "angular_velocity": [
+                  4.361858827905962e-06,
+                  -2.4158335332202796e-09,
+                  3.0355992719499625e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.354400098323822
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 2.354400109052658
+              },
+              "max_displacement_m": 0.00010351732357393035
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  5.543772663152424e-10,
+                  -0.16190177202224731,
+                  0.8649685382843018
+                ],
+                "quat": [
+                  1.0,
+                  -0.0003923286567442119,
+                  -5.398948649260049e-12,
+                  -3.904208206728654e-11
+                ],
+                "linear_velocity": [
+                  2.5613611231989353e-10,
+                  5.624080472443893e-07,
+                  5.111995960760396e-06
+                ],
+                "angular_velocity": [
+                  -4.495881057664519e-06,
+                  5.276020245692514e-11,
+                  5.331163510646775e-09
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.3543999791145325
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 2.3544001352787016
+              },
+              "max_displacement_m": 0.00024526357655038395
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 2,
+          "added_part": "lower_crossbar",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 6.999999999999873,
+          "physics_elapsed_seconds": 7.0,
+          "evaluator": {
+            "stage": 3,
+            "stage_name": "bottom_shelf",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "lower_crossbar"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "lower_crossbar": "lower_crossbar"
+            },
+            "score": 0,
+            "progress": 0.3333333333333333,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 6.999999999999873,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "lower_crossbar": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "bottom_shelf": {
+                "object": "bottom_shelf",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.4929465441682055e-09,
+                  0.1616763025522232,
+                  0.8649570345878601
+                ],
+                "quat": [
+                  0.9999991655349731,
+                  0.0013459149049594998,
+                  -4.938232982254487e-13,
+                  -3.325912462104341e-11
+                ],
+                "linear_velocity": [
+                  -3.1913346965062317e-10,
+                  -6.356339872581884e-05,
+                  -4.0375148273597006e-06
+                ],
+                "angular_velocity": [
+                  0.0005081691197119653,
+                  -2.893590478336705e-09,
+                  5.141625458726651e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.7716535925865173,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 2.771479411125183,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0003381562974119513
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  5.559340210403718e-10,
+                  -0.1616770476102829,
+                  0.8649571537971497
+                ],
+                "quat": [
+                  0.9999991655349731,
+                  -0.0013427917147055268,
+                  -2.7908597741849173e-12,
+                  -4.719880736248072e-11
+                ],
+                "linear_velocity": [
+                  -2.7621163689595107e-10,
+                  -0.00012603713548742235,
+                  -5.453489393403288e-08
+                ],
+                "angular_velocity": [
+                  0.001003416022285819,
+                  -2.491753248179407e-09,
+                  -2.3411125815719913e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.7724280655384064,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 2.7711720857024194,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.00033126899238025394
+            },
+            "lower_crossbar": {
+              "condition": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  5.317326440268388e-13,
+                  3.2844113206920156e-07,
+                  0.7739422917366028
+                ],
+                "quat": [
+                  1.0,
+                  -2.106728970829863e-06,
+                  8.410122424862276e-12,
+                  5.992883056124554e-13
+                ],
+                "linear_velocity": [
+                  -7.791038647564363e-11,
+                  -2.330543429707177e-05,
+                  -8.54179379530251e-05
+                ],
+                "angular_velocity": [
+                  4.1169754695147276e-05,
+                  -2.3762010137318157e-09,
+                  6.306483807394514e-11
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 0.41725553199648857,
+                  "right_frame": 0.4181181862950325
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 0.41708066280931233,
+                "right_frame": 0.41677480459213256
+              },
+              "max_displacement_m": 0.00024529912012738464
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 3,
+          "added_part": "bottom_shelf",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 7.999999999999852,
+          "physics_elapsed_seconds": 8.0,
+          "evaluator": {
+            "stage": 4,
+            "stage_name": "middle_crossbar",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "lower_crossbar",
+              "bottom_shelf"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "lower_crossbar": "lower_crossbar",
+              "bottom_shelf": "bottom_shelf"
+            },
+            "score": 0,
+            "progress": 0.4444444444444444,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 7.999999999999852,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "lower_crossbar": 0.0,
+              "bottom_shelf": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "bottom_shelf": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "middle_crossbar",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  3.725666442022657e-09,
+                  0.16127459704875946,
+                  0.864936113357544
+                ],
+                "quat": [
+                  0.9999953508377075,
+                  0.0030604805797338486,
+                  6.482284931053073e-09,
+                  4.0768668441160116e-08
+                ],
+                "linear_velocity": [
+                  9.069236028835803e-08,
+                  -4.027822797070257e-06,
+                  -4.431936758919619e-06
+                ],
+                "angular_velocity": [
+                  7.235677185235545e-05,
+                  8.368401154257299e-07,
+                  5.551982340534778e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 3.4088504314422607,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 3.4089447194337845,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0007282603549466221
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.0238088155034575e-09,
+                  -0.161275714635849,
+                  0.8649362921714783
+                ],
+                "quat": [
+                  0.9999954104423523,
+                  -0.003056161804124713,
+                  8.161130438111286e-09,
+                  2.5348439791628152e-08
+                ],
+                "linear_velocity": [
+                  7.70413976169948e-07,
+                  4.9178561312146485e-06,
+                  -4.994561550120125e-06
+                ],
+                "angular_velocity": [
+                  -7.937171176308766e-05,
+                  6.861982910777442e-06,
+                  8.291311814900837e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 3.4088731706142426,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 3.409015983045101,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0007271313944049685
+            },
+            "lower_crossbar": {
+              "condition": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  8.790445704676131e-09,
+                  3.0962982577875664e-07,
+                  0.7738824486732483
+                ],
+                "quat": [
+                  1.0,
+                  -1.359345276341628e-07,
+                  -7.740010232737404e-08,
+                  -8.32140116813207e-08
+                ],
+                "linear_velocity": [
+                  5.2670017680611636e-08,
+                  1.3846154445218417e-07,
+                  -2.5835524866124615e-06
+                ],
+                "angular_velocity": [
+                  -7.397673471132293e-06,
+                  3.6632129649660783e-06,
+                  2.4433583689642546e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.054446503520012,
+                  "right_frame": 1.0544706359505653,
+                  "bottom_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0545542808808386,
+                "right_frame": 1.0546253836899995,
+                "bottom_shelf": 0.0
+              },
+              "max_displacement_m": 0.0001256133753365143
+            },
+            "bottom_shelf": {
+              "condition": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  4.236233053234173e-08,
+                  9.621511765089963e-08,
+                  0.7819859385490417
+                ],
+                "quat": [
+                  1.0,
+                  -2.60644327454429e-07,
+                  2.256400421174476e-06,
+                  -5.3804342314833775e-08
+                ],
+                "linear_velocity": [
+                  -1.040779238792311e-06,
+                  1.5051834623136529e-07,
+                  2.2232492483453825e-05
+                ],
+                "angular_velocity": [
+                  5.632398824673146e-06,
+                  -0.00027173833223059773,
+                  2.2756388773359504e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "lower_crossbar": 1.2750789523124695
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "lower_crossbar": 1.27530777618289
+              },
+              "max_displacement_m": 0.00024528758041375553
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 4,
+          "added_part": "middle_crossbar",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 9.000000000000007,
+          "physics_elapsed_seconds": 9.0,
+          "evaluator": {
+            "stage": 5,
+            "stage_name": "middle_shelf",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "lower_crossbar",
+              "bottom_shelf",
+              "middle_crossbar"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "lower_crossbar": "lower_crossbar",
+              "bottom_shelf": "bottom_shelf",
+              "middle_crossbar": "middle_crossbar"
+            },
+            "score": 0,
+            "progress": 0.5555555555555556,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 9.000000000000007,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "lower_crossbar": 0.0,
+              "bottom_shelf": 0.0,
+              "middle_crossbar": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "bottom_shelf": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_shelf": {
+                "object": "middle_shelf",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  1.0700484942560706e-09,
+                  0.16130377352237701,
+                  0.8649317026138306
+                ],
+                "quat": [
+                  0.9999955892562866,
+                  0.002983157057315111,
+                  -1.7648862371544283e-09,
+                  3.538129078606289e-08
+                ],
+                "linear_velocity": [
+                  -1.07468373755637e-07,
+                  -1.727044400468003e-05,
+                  -5.102785053168191e-06
+                ],
+                "angular_velocity": [
+                  0.00022763165179640055,
+                  -9.124815392169694e-07,
+                  8.42847782678291e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 3.825831711292267,
+                  "middle_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 3.825894493162632,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0007017357391983233
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -2.0969213032628886e-09,
+                  -0.16130587458610535,
+                  0.8649318218231201
+                ],
+                "quat": [
+                  0.9999955892562866,
+                  -0.0029744356870651245,
+                  3.593947361935079e-10,
+                  1.878920130593542e-08
+                ],
+                "linear_velocity": [
+                  8.431766929106743e-08,
+                  1.713099300104659e-05,
+                  -3.3226501727767754e-06
+                ],
+                "angular_velocity": [
+                  -0.00022659455134999007,
+                  7.710202680755174e-07,
+                  7.84301690259781e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 3.8259416818618774,
+                  "middle_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 3.8258274653553963,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0007005323567698596
+            },
+            "lower_crossbar": {
+              "condition": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  7.545073898995724e-09,
+                  1.901888140309893e-07,
+                  0.773898184299469
+                ],
+                "quat": [
+                  1.0,
+                  -2.022096396103734e-06,
+                  -4.653860230519058e-08,
+                  7.023958747964798e-09
+                ],
+                "linear_velocity": [
+                  -1.4472330889248042e-08,
+                  -5.321129492585897e-07,
+                  -1.6776668417151086e-05
+                ],
+                "angular_velocity": [
+                  9.137356391875073e-05,
+                  -3.098560341641132e-07,
+                  8.905781356816078e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0545094013214111,
+                  "right_frame": 1.0545996129512787,
+                  "bottom_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0545611450076102,
+                "right_frame": 1.05449252307415,
+                "bottom_shelf": 0.0
+              },
+              "max_displacement_m": 0.00012161984483344038
+            },
+            "bottom_shelf": {
+              "condition": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  3.8203694430194446e-08,
+                  2.4446556778912054e-08,
+                  0.7820017337799072
+                ],
+                "quat": [
+                  1.0,
+                  -3.291417669970542e-06,
+                  1.9916260498575866e-06,
+                  -4.532137509727363e-08
+                ],
+                "linear_velocity": [
+                  -9.887364740279736e-07,
+                  -1.905175622596289e-06,
+                  2.392925580352312e-06
+                ],
+                "angular_velocity": [
+                  0.00024717499036341906,
+                  -0.0002449574531055987,
+                  8.664094508503695e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "lower_crossbar": 1.275230050086975
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "lower_crossbar": 1.2752547194063664
+              },
+              "max_displacement_m": 0.0001472379689313861
+            },
+            "middle_crossbar": {
+              "condition": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -5.906993783000303e-10,
+                  1.5952785759054677e-07,
+                  0.8633180260658264
+                ],
+                "quat": [
+                  1.0,
+                  -5.617997658191598e-07,
+                  -1.35744656404313e-07,
+                  6.820497588932994e-08
+                ],
+                "linear_velocity": [
+                  -2.918519825811927e-08,
+                  -1.3953713562386838e-07,
+                  -4.289195658202516e-06
+                ],
+                "angular_velocity": [
+                  1.1021093087038025e-05,
+                  -4.502707270148676e-06,
+                  4.758353213674127e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 0.4169531315565109,
+                  "right_frame": 0.4169518053531647
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 0.4169587177783251,
+                "right_frame": 0.416958796903491
+              },
+              "max_displacement_m": 0.00034056695313587935
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 5,
+          "added_part": "middle_shelf",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 10.000000000000163,
+          "physics_elapsed_seconds": 10.0,
+          "evaluator": {
+            "stage": 6,
+            "stage_name": "upper_crossbar",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "lower_crossbar",
+              "bottom_shelf",
+              "middle_crossbar",
+              "middle_shelf"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "lower_crossbar": "lower_crossbar",
+              "bottom_shelf": "bottom_shelf",
+              "middle_crossbar": "middle_crossbar",
+              "middle_shelf": "middle_shelf"
+            },
+            "score": 0,
+            "progress": 0.6666666666666666,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 10.000000000000163,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "lower_crossbar": 0.0,
+              "bottom_shelf": 0.0,
+              "middle_crossbar": 0.0,
+              "middle_shelf": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "bottom_shelf": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_shelf": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "upper_crossbar",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  2.8388516426502974e-08,
+                  0.16128632426261902,
+                  0.8649224638938904
+                ],
+                "quat": [
+                  0.9999949932098389,
+                  0.003170689335092902,
+                  7.964614923139379e-08,
+                  2.3387903524962894e-07
+                ],
+                "linear_velocity": [
+                  -4.5288439309842943e-07,
+                  -4.378398728022148e-07,
+                  -4.462169272301253e-06
+                ],
+                "angular_velocity": [
+                  0.00022571255976799875,
+                  -2.9311488560779253e-06,
+                  -4.151363555138232e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 4.463437736034393,
+                  "middle_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 4.463546638488769,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0007279526148726694
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -3.078197963191087e-08,
+                  -0.16128885746002197,
+                  0.8649225831031799
+                ],
+                "quat": [
+                  0.9999949932098389,
+                  -0.0031604906544089317,
+                  -7.859550521516212e-08,
+                  -6.400595253808206e-08
+                ],
+                "linear_velocity": [
+                  4.030395359677641e-07,
+                  -2.60187960066105e-07,
+                  -4.114996954740491e-06
+                ],
+                "angular_velocity": [
+                  -0.00022030611580703408,
+                  2.753012267930899e-06,
+                  1.0518363069422776e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 4.463412821292877,
+                  "middle_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 4.463558144569397,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0007175326724784231
+            },
+            "lower_crossbar": {
+              "condition": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  8.214101399062201e-09,
+                  6.011880060441399e-08,
+                  0.7738879323005676
+                ],
+                "quat": [
+                  1.0,
+                  -4.6243042106652865e-07,
+                  -1.1840789682082686e-07,
+                  -9.293269442878227e-08
+                ],
+                "linear_velocity": [
+                  -3.837187989574886e-08,
+                  -1.6633003951938008e-07,
+                  -4.12167037211475e-06
+                ],
+                "angular_velocity": [
+                  6.6784537011699285e-06,
+                  -4.7561337623847066e-07,
+                  4.791774017576245e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0544210374355316,
+                  "right_frame": 1.0544330179691315,
+                  "bottom_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.054528088569641,
+                "right_frame": 1.0545219488441944,
+                "bottom_shelf": 0.0
+              },
+              "max_displacement_m": 0.00012012938311443398
+            },
+            "bottom_shelf": {
+              "condition": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  4.382192386742645e-08,
+                  -1.4234322520678688e-07,
+                  0.7819912433624268
+                ],
+                "quat": [
+                  1.0,
+                  -3.08740226273585e-07,
+                  2.8855502023361623e-06,
+                  -1.61690500988243e-08
+                ],
+                "linear_velocity": [
+                  -1.459219902244513e-06,
+                  -1.5737711578367453e-07,
+                  3.199848288204521e-05
+                ],
+                "angular_velocity": [
+                  -1.0301853762939572e-05,
+                  -0.00035453413147479296,
+                  4.741310704048374e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "lower_crossbar": 1.2750855386257172
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "lower_crossbar": 1.2753174962103366
+              },
+              "max_displacement_m": 0.00014795330555968735
+            },
+            "middle_crossbar": {
+              "condition": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.5620324589349366e-08,
+                  5.183790563023649e-06,
+                  0.8632878661155701
+                ],
+                "quat": [
+                  1.0,
+                  2.501356846096314e-07,
+                  -4.973553018317034e-07,
+                  -6.580040690096212e-08
+                ],
+                "linear_velocity": [
+                  -2.4681195753828433e-08,
+                  2.012252622307642e-07,
+                  -5.006123956263764e-06
+                ],
+                "angular_velocity": [
+                  -1.6296222383971326e-05,
+                  2.376625889155548e-05,
+                  3.7091965623403667e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0536207110671967,
+                  "right_frame": 1.0551482516530086,
+                  "middle_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.052861065073721,
+                "right_frame": 1.0550374441943313,
+                "middle_shelf": 0.0
+              },
+              "max_displacement_m": 0.00011841407145420607
+            },
+            "middle_shelf": {
+              "condition": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -4.032631295558531e-08,
+                  5.002827492717188e-06,
+                  0.8713915348052979
+                ],
+                "quat": [
+                  1.0,
+                  6.619771397708973e-07,
+                  -1.421119122824166e-06,
+                  -1.4423139305108634e-07
+                ],
+                "linear_velocity": [
+                  5.427781388789299e-07,
+                  5.317464228937752e-07,
+                  5.803803105663974e-06
+                ],
+                "angular_velocity": [
+                  -6.662298983428627e-05,
+                  0.00011830987932626158,
+                  3.684421926664072e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "middle_crossbar": 1.2752321362495422
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "middle_crossbar": 1.2752677182853223
+              },
+              "max_displacement_m": 0.00024524690475469235
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 6,
+          "added_part": "upper_crossbar",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 11.00000000000032,
+          "physics_elapsed_seconds": 11.0,
+          "evaluator": {
+            "stage": 7,
+            "stage_name": "top_shelf",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "lower_crossbar",
+              "bottom_shelf",
+              "middle_crossbar",
+              "middle_shelf",
+              "upper_crossbar"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "lower_crossbar": "lower_crossbar",
+              "bottom_shelf": "bottom_shelf",
+              "middle_crossbar": "middle_crossbar",
+              "middle_shelf": "middle_shelf",
+              "upper_crossbar": "upper_crossbar"
+            },
+            "score": 0,
+            "progress": 0.7777777777777778,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 11.00000000000032,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "lower_crossbar": 0.0,
+              "bottom_shelf": 0.0,
+              "middle_crossbar": 0.0,
+              "middle_shelf": 0.0,
+              "upper_crossbar": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "bottom_shelf": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_shelf": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "top_shelf": {
+                "object": "top_shelf",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  1.1332906169059243e-08,
+                  0.1616416871547699,
+                  0.8649288415908813
+                ],
+                "quat": [
+                  0.9999985694885254,
+                  0.0017015503253787756,
+                  -5.8557430016037415e-09,
+                  5.211290954321157e-08
+                ],
+                "linear_velocity": [
+                  -1.261799464913338e-08,
+                  1.4424739674723241e-05,
+                  -4.732780780614121e-06
+                ],
+                "angular_velocity": [
+                  0.00014249299420043826,
+                  -4.0973628046003796e-08,
+                  1.8035987636721984e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 4.880427360534668,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 4.880434673428535,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0006751285749733214
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -7.101851995372499e-09,
+                  -0.16164234280586243,
+                  0.8649289011955261
+                ],
+                "quat": [
+                  0.9999986290931702,
+                  -0.001698889653198421,
+                  -1.5159044020052193e-09,
+                  5.3967749380490204e-08
+                ],
+                "linear_velocity": [
+                  2.2629265572504664e-08,
+                  -1.602667362021748e-05,
+                  -4.869830263487529e-06
+                ],
+                "angular_velocity": [
+                  -0.0001296898553846404,
+                  9.52169543211312e-08,
+                  -5.311295012688788e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 4.880493640899658,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 4.880499590039253,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0006724206232759944
+            },
+            "lower_crossbar": {
+              "condition": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  6.086854131837072e-09,
+                  8.533626214557444e-07,
+                  0.7739039063453674
+                ],
+                "quat": [
+                  1.0,
+                  -4.683499810198555e-07,
+                  -1.5773207451275084e-07,
+                  -8.235172543891167e-08
+                ],
+                "linear_velocity": [
+                  4.082401527938373e-09,
+                  -2.737417332809855e-07,
+                  -4.710754183179233e-06
+                ],
+                "angular_velocity": [
+                  1.6687150491634384e-05,
+                  4.961733424124759e-08,
+                  2.042781055422438e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0544969215989113,
+                  "right_frame": 1.0545248985290527,
+                  "bottom_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.054500872977078,
+                "right_frame": 1.0545268499106168,
+                "bottom_shelf": 0.0
+              },
+              "max_displacement_m": 0.00011869886300757314
+            },
+            "bottom_shelf": {
+              "condition": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  3.5472712767159464e-08,
+                  6.266107561714307e-07,
+                  0.7820078134536743
+                ],
+                "quat": [
+                  1.0,
+                  -2.0969028469153272e-07,
+                  -1.1200108218645255e-07,
+                  4.819197263472574e-10
+                ],
+                "linear_velocity": [
+                  4.1659621530243385e-08,
+                  -3.0663633765470877e-07,
+                  -5.1306024033692665e-06
+                ],
+                "angular_velocity": [
+                  -7.908111001597717e-06,
+                  9.78390653472161e-06,
+                  2.054530234829599e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "lower_crossbar": 1.2752968072891235
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "lower_crossbar": 1.275299566090107
+              },
+              "max_displacement_m": 0.00014437700742983946
+            },
+            "middle_crossbar": {
+              "condition": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.019479967112602e-07,
+                  5.867891559319105e-06,
+                  0.8633019924163818
+                ],
+                "quat": [
+                  1.0,
+                  -2.6105195161107986e-07,
+                  -1.3062056325452431e-07,
+                  -5.83932795450437e-08
+                ],
+                "linear_velocity": [
+                  7.312378258461649e-09,
+                  -8.060828804445919e-07,
+                  -5.167926701687975e-06
+                ],
+                "angular_velocity": [
+                  8.264593816420529e-06,
+                  2.8389109729687334e-08,
+                  5.044881845606142e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0545201413333416,
+                  "right_frame": 1.0545553117990494,
+                  "middle_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0545148373395206,
+                "right_frame": 1.0545516058802604,
+                "middle_shelf": 0.0
+              },
+              "max_displacement_m": 0.0002904243895191753
+            },
+            "middle_shelf": {
+              "condition": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.2592917641995882e-07,
+                  5.672099632647587e-06,
+                  0.8714057207107544
+                ],
+                "quat": [
+                  1.0,
+                  -4.430230049479178e-08,
+                  -2.7634726507130836e-07,
+                  -1.1603211191868468e-07
+                ],
+                "linear_velocity": [
+                  1.3837311030329147e-07,
+                  -7.721951646999514e-07,
+                  2.895953457482392e-06
+                ],
+                "angular_velocity": [
+                  -1.5837033060961403e-05,
+                  3.277149880887009e-05,
+                  4.989884772044206e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "middle_crossbar": 1.2752969563007355
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "middle_crossbar": 1.2752861732244491
+              },
+              "max_displacement_m": 0.0003097787973477157
+            },
+            "upper_crossbar": {
+              "condition": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.6153839155208516e-08,
+                  5.889632575417636e-06,
+                  0.9699840545654297
+                ],
+                "quat": [
+                  1.0,
+                  -3.941149770980701e-07,
+                  1.725422720255665e-07,
+                  5.643991229931089e-08
+                ],
+                "linear_velocity": [
+                  8.314488653127228e-09,
+                  -1.3836853440807317e-06,
+                  -4.8487922867934685e-06
+                ],
+                "angular_velocity": [
+                  1.072444320016075e-05,
+                  1.134058624785439e-08,
+                  3.6645923273681547e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 0.4175114541503717,
+                  "right_frame": 0.41643465541346814
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 0.4175139745546403,
+                "right_frame": 0.4160923764756444
+              },
+              "max_displacement_m": 0.00011292357619727626
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 7,
+          "added_part": "top_shelf",
+          "requested_wait_seconds": 3.5,
+          "elapsed_seconds": 13.515000000000713,
+          "physics_elapsed_seconds": 14.5,
+          "evaluator": {
+            "stage": 8,
+            "stage_name": "final_release",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "lower_crossbar",
+              "bottom_shelf",
+              "middle_crossbar",
+              "middle_shelf",
+              "upper_crossbar",
+              "top_shelf"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "lower_crossbar": "lower_crossbar",
+              "bottom_shelf": "bottom_shelf",
+              "middle_crossbar": "middle_crossbar",
+              "middle_shelf": "middle_shelf",
+              "upper_crossbar": "upper_crossbar",
+              "top_shelf": "top_shelf"
+            },
+            "score": 1,
+            "progress": 1.0,
+            "success": true,
+            "failed": false,
+            "terminated": true,
+            "terminal": true,
+            "reason": "assembled_and_released",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 13.515000000000713,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 1.9999999999999793,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "lower_crossbar": 0.0,
+              "bottom_shelf": 0.0,
+              "middle_crossbar": 0.0,
+              "middle_shelf": 0.0,
+              "upper_crossbar": 0.0,
+              "top_shelf": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "bottom_shelf": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_shelf": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "top_shelf": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  1.4200841391698305e-08,
+                  0.16170944273471832,
+                  0.8649188280105591
+                ],
+                "quat": [
+                  0.9999979734420776,
+                  0.002013211138546467,
+                  1.5150780630079907e-09,
+                  6.281174336209006e-08
+                ],
+                "linear_velocity": [
+                  3.028068817911844e-08,
+                  1.9082408471149392e-05,
+                  -5.737247192882933e-06
+                ],
+                "angular_velocity": [
+                  0.00016448917449451983,
+                  9.369260567382298e-08,
+                  3.857208241697663e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 5.518044471740723,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 5.5180611276626585,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0003652927695007551
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -7.893686593263283e-09,
+                  -0.16170990467071533,
+                  0.8649188876152039
+                ],
+                "quat": [
+                  0.9999980330467224,
+                  -0.002011338947340846,
+                  -6.597862256541021e-10,
+                  6.234108695934992e-08
+                ],
+                "linear_velocity": [
+                  -2.9613504537451263e-08,
+                  -1.8999591702595353e-05,
+                  -5.746825991082005e-06
+                ],
+                "angular_velocity": [
+                  -0.00016520824283361435,
+                  -8.801484341347532e-08,
+                  3.85548190706686e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 5.518179178237915,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 5.5181892716884615,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.00036463133536589627
+            },
+            "lower_crossbar": {
+              "condition": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  6.422928411353723e-09,
+                  7.054227353364695e-07,
+                  0.7738907933235168
+                ],
+                "quat": [
+                  1.0,
+                  -3.093027203249221e-07,
+                  -1.226337076332129e-07,
+                  -8.214979629883601e-08
+                ],
+                "linear_velocity": [
+                  1.2730491660839505e-10,
+                  -4.0552105673441474e-08,
+                  -5.436024821392493e-06
+                ],
+                "angular_velocity": [
+                  9.348531420982908e-06,
+                  1.9629903036388896e-08,
+                  -2.8338789093140804e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.054472167044878,
+                  "right_frame": 1.0544925704598427,
+                  "bottom_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.054475647136569,
+                "right_frame": 1.0544965111464262,
+                "bottom_shelf": 0.0
+              },
+              "max_displacement_m": 0.00011727047977763175
+            },
+            "bottom_shelf": {
+              "condition": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  2.9825176994791036e-08,
+                  3.695788848290249e-07,
+                  0.7819947004318237
+                ],
+                "quat": [
+                  1.0,
+                  -1.4672855286335107e-07,
+                  -1.638499469436283e-07,
+                  2.9561302739011808e-08
+                ],
+                "linear_velocity": [
+                  5.8486584464390035e-08,
+                  -5.2634682390362286e-08,
+                  -5.855303697899217e-06
+                ],
+                "angular_velocity": [
+                  -6.11749464951572e-06,
+                  1.499058271292597e-05,
+                  -2.770209839297877e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "lower_crossbar": 1.2752958238124847
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "lower_crossbar": 1.275299544632435
+              },
+              "max_displacement_m": 0.00014270863920896372
+            },
+            "middle_crossbar": {
+              "condition": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.0064109545737665e-07,
+                  5.84651797908009e-06,
+                  0.8632888793945312
+                ],
+                "quat": [
+                  1.0,
+                  -2.2251261100336706e-07,
+                  -1.350799152533e-07,
+                  -5.6705875550733253e-08
+                ],
+                "linear_velocity": [
+                  2.5260898928181064e-10,
+                  2.3246009561717074e-09,
+                  -5.205485649639741e-06
+                ],
+                "angular_velocity": [
+                  6.934162229299545e-06,
+                  -1.2086503353714306e-08,
+                  -6.825734999438282e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.05449996329844,
+                  "right_frame": 1.0545405428856611,
+                  "middle_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0545040882565082,
+                "right_frame": 1.0545442684553563,
+                "middle_shelf": 0.0
+              },
+              "max_displacement_m": 0.00011743306852891071
+            },
+            "middle_shelf": {
+              "condition": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  2.9134210599579546e-09,
+                  5.637471076624934e-06,
+                  0.8713927865028381
+                ],
+                "quat": [
+                  1.0,
+                  -8.38374276668219e-08,
+                  -1.69102776226282e-07,
+                  -1.14117334248931e-07
+                ],
+                "linear_velocity": [
+                  5.951781290036706e-08,
+                  -3.016580762960075e-09,
+                  -5.624611276289215e-06
+                ],
+                "angular_velocity": [
+                  -6.175516318762675e-06,
+                  1.5294635886675678e-05,
+                  -6.516774675446868e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "middle_crossbar": 1.2752960324287415
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "middle_crossbar": 1.2752998998761178
+              },
+              "max_displacement_m": 0.00014260012893488932
+            },
+            "upper_crossbar": {
+              "condition": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -6.8669536723575675e-09,
+                  6.080298589949962e-06,
+                  0.9699555039405823
+                ],
+                "quat": [
+                  1.0,
+                  -3.2325485221917916e-07,
+                  7.401121138173039e-08,
+                  5.82833266093985e-08
+                ],
+                "linear_velocity": [
+                  6.127627849572548e-10,
+                  -3.191651387624006e-08,
+                  -6.012264293531189e-06
+                ],
+                "angular_velocity": [
+                  1.0579855370451696e-05,
+                  -1.7867591850517783e-09,
+                  -5.591483613898163e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0550601028226083,
+                  "right_frame": 1.054057259185356,
+                  "top_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0551712981156742,
+                "right_frame": 1.0541497892655025,
+                "top_shelf": 0.0
+              },
+              "max_displacement_m": 0.00011748683535365092
+            },
+            "top_shelf": {
+              "condition": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  1.8850842309348081e-07,
+                  8.959111852391288e-08,
+                  0.9780594110488892
+                ],
+                "quat": [
+                  1.0,
+                  -2.0198901040657802e-07,
+                  -1.4994554931035964e-07,
+                  3.2497695201527677e-08
+                ],
+                "linear_velocity": [
+                  5.788883683521817e-08,
+                  -7.504188204165985e-08,
+                  -3.6042174542672e-06
+                ],
+                "angular_velocity": [
+                  -9.087741545954486e-07,
+                  1.4750135051144753e-05,
+                  -5.393951028054289e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "upper_crossbar": 1.27529639005661
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 1.2753005370497703
+              },
+              "max_displacement_m": 0.00024528902537024333
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        }
+      ],
+      "pose_writes": [
+        {
+          "object": "left_frame",
+          "stage": 0,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            0.1620000497636133,
+            0.865
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "right_frame",
+          "stage": 1,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            -0.1620000497636133,
+            0.865
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "lower_crossbar",
+          "stage": 2,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            0.0,
+            0.7740080616666667
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "bottom_shelf",
+          "stage": 3,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            0.0,
+            0.0,
+            0.7821371699999999
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "middle_crossbar",
+          "stage": 4,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            0.0,
+            0.8634061666666667
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "middle_shelf",
+          "stage": 5,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            0.0,
+            0.0,
+            0.871535275
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "upper_crossbar",
+          "stage": 6,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            0.0,
+            0.9700728333333333
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "top_shelf",
+          "stage": 7,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            0.0,
+            0.0,
+            0.9782019416666666
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        }
+      ],
+      "robot_present": false,
+      "robot_expert_verified": false,
+      "dynamic_welds": false,
+      "final_evaluator": {
+        "stage": 8,
+        "stage_name": "final_release",
+        "completed": [
+          "left_frame",
+          "right_frame",
+          "lower_crossbar",
+          "bottom_shelf",
+          "middle_crossbar",
+          "middle_shelf",
+          "upper_crossbar",
+          "top_shelf"
+        ],
+        "assignments": {
+          "left_frame": "left_frame",
+          "right_frame": "right_frame",
+          "lower_crossbar": "lower_crossbar",
+          "bottom_shelf": "bottom_shelf",
+          "middle_crossbar": "middle_crossbar",
+          "middle_shelf": "middle_shelf",
+          "upper_crossbar": "upper_crossbar",
+          "top_shelf": "top_shelf"
+        },
+        "score": 1,
+        "progress": 1.0,
+        "success": true,
+        "failed": false,
+        "terminated": true,
+        "terminal": true,
+        "reason": "assembled_and_released",
+        "failure_reason": null,
+        "failure_detail": null,
+        "elapsed_seconds": 13.515000000000713,
+        "current_stable_seconds": 0.0,
+        "final_hold_seconds": 1.9999999999999793,
+        "support_lost_seconds": {
+          "left_frame": 0.0,
+          "right_frame": 0.0,
+          "lower_crossbar": 0.0,
+          "bottom_shelf": 0.0,
+          "middle_crossbar": 0.0,
+          "middle_shelf": 0.0,
+          "upper_crossbar": 0.0,
+          "top_shelf": 0.0
+        },
+        "conditions": {
+          "left_frame": {
+            "object": "left_frame",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "right_frame": {
+            "object": "right_frame",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "lower_crossbar": {
+            "object": "lower_crossbar",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "bottom_shelf": {
+            "object": "bottom_shelf",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "middle_crossbar": {
+            "object": "middle_crossbar",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "middle_shelf": {
+            "object": "middle_shelf",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "upper_crossbar": {
+            "object": "upper_crossbar",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "top_shelf": {
+            "object": "top_shelf",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          }
+        }
+      },
+      "empty_frame_release_passed": true,
+      "all_stages_passed": true,
+      "evaluator_score_1": true,
+      "checks_passed": true
+    },
+    "top_down": {
+      "recipe": "top_down",
+      "initial_supply_positions": {
+        "left_frame": [
+          0.7,
+          -0.75,
+          0.865
+        ],
+        "right_frame": [
+          1.15,
+          -0.75,
+          0.865
+        ],
+        "lower_crossbar": [
+          0.7,
+          -0.25,
+          0.7441291083333333
+        ],
+        "middle_crossbar": [
+          1.15,
+          -0.25,
+          0.7441291083333333
+        ],
+        "upper_crossbar": [
+          0.7,
+          0.25,
+          0.7441291083333333
+        ],
+        "bottom_shelf": [
+          1.15,
+          0.25,
+          0.744
+        ],
+        "middle_shelf": [
+          0.7,
+          0.75,
+          0.744
+        ],
+        "top_shelf": [
+          1.15,
+          0.75,
+          0.744
+        ]
+      },
+      "stages": [
+        {
+          "index": 0,
+          "added_part": "left_frame",
+          "requested_wait_seconds": 3.0,
+          "elapsed_seconds": 2.9999999999999583,
+          "physics_elapsed_seconds": 3.0,
+          "evaluator": {
+            "stage": 1,
+            "stage_name": "right_frame",
+            "completed": [
+              "left_frame"
+            ],
+            "assignments": {
+              "left_frame": "left_frame"
+            },
+            "score": 0,
+            "progress": 0.1111111111111111,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 2.9999999999999583,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": false,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -5.561133220588488e-10,
+                  0.16190142929553986,
+                  0.8649685382843018
+                ],
+                "quat": [
+                  1.0,
+                  0.0003935217100661248,
+                  2.849396066317844e-12,
+                  -2.690447864495127e-11
+                ],
+                "linear_velocity": [
+                  -2.719697800301901e-10,
+                  -5.44126578461146e-07,
+                  3.8088883229647763e-06
+                ],
+                "angular_velocity": [
+                  4.3540194383240305e-06,
+                  -3.5531411146649816e-09,
+                  -7.752928299353812e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.3543999791145325
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 2.3544000881910323
+              },
+              "max_displacement_m": 0.00024526357655038395
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 1,
+          "added_part": "right_frame",
+          "requested_wait_seconds": 3.0,
+          "elapsed_seconds": 5.999999999999894,
+          "physics_elapsed_seconds": 6.0,
+          "evaluator": {
+            "stage": 2,
+            "stage_name": "upper_crossbar",
+            "completed": [
+              "left_frame",
+              "right_frame"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame"
+            },
+            "score": 0,
+            "progress": 0.2222222222222222,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 5.999999999999894,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "lower_crossbar",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.4865931818874856e-09,
+                  0.16190142929553986,
+                  0.8649685382843018
+                ],
+                "quat": [
+                  1.0,
+                  0.0003935217100661248,
+                  2.849396066317844e-12,
+                  -2.690447864495127e-11
+                ],
+                "linear_velocity": [
+                  -2.788382302831849e-10,
+                  -5.451587412608205e-07,
+                  3.808835799645749e-06
+                ],
+                "angular_velocity": [
+                  4.361858827905962e-06,
+                  -2.4158335332202796e-09,
+                  3.0355992719499625e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.354400098323822
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 2.354400109052658
+              },
+              "max_displacement_m": 0.00010351732357393035
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  5.543772663152424e-10,
+                  -0.16190177202224731,
+                  0.8649685382843018
+                ],
+                "quat": [
+                  1.0,
+                  -0.0003923286567442119,
+                  -5.398948649260049e-12,
+                  -3.904208206728654e-11
+                ],
+                "linear_velocity": [
+                  2.5613611231989353e-10,
+                  5.624080472443893e-07,
+                  5.111995960760396e-06
+                ],
+                "angular_velocity": [
+                  -4.495881057664519e-06,
+                  5.276020245692514e-11,
+                  5.331163510646775e-09
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.3543999791145325
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "table": 2.3544001352787016
+              },
+              "max_displacement_m": 0.00024526357655038395
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 2,
+          "added_part": "upper_crossbar",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 6.999999999999873,
+          "physics_elapsed_seconds": 7.0,
+          "evaluator": {
+            "stage": 3,
+            "stage_name": "top_shelf",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "upper_crossbar"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "upper_crossbar": "upper_crossbar"
+            },
+            "score": 0,
+            "progress": 0.3333333333333333,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 6.999999999999873,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "upper_crossbar": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "top_shelf": {
+                "object": "bottom_shelf",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.4857816088564846e-09,
+                  0.16188591718673706,
+                  0.8649630546569824
+                ],
+                "quat": [
+                  0.9999998807907104,
+                  0.000502358830999583,
+                  -3.596322458582213e-12,
+                  -5.842641648268199e-11
+                ],
+                "linear_velocity": [
+                  -1.899139179251108e-10,
+                  -4.982653626939282e-05,
+                  -7.48151478546788e-06
+                ],
+                "angular_velocity": [
+                  0.0004901123465970159,
+                  -2.1188903964741712e-09,
+                  6.906278882112815e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.7729116082191467,
+                  "upper_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 2.7712783205509184
+              },
+              "max_displacement_m": 0.00011996334222295577
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  5.567677985318653e-10,
+                  -0.1618843376636505,
+                  0.8649629950523376
+                ],
+                "quat": [
+                  0.9999998807907104,
+                  -0.0005086669116280973,
+                  2.6316227842715367e-12,
+                  -5.886335169291712e-11
+                ],
+                "linear_velocity": [
+                  2.4701293788176315e-10,
+                  -1.976383282453753e-05,
+                  -4.095692020200659e-06
+                ],
+                "angular_velocity": [
+                  7.888571417424828e-05,
+                  2.1829804630613125e-09,
+                  8.806639861802523e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 2.7723079919815063,
+                  "upper_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 2.771403595805168
+              },
+              "max_displacement_m": 0.00012170840947898659
+            },
+            "upper_crossbar": {
+              "condition": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.2212231226271797e-11,
+                  1.7456058003517683e-06,
+                  0.9700198769569397
+                ],
+                "quat": [
+                  1.0,
+                  -1.8770197129924782e-06,
+                  1.5375532444461548e-11,
+                  -1.7589311951393682e-11
+                ],
+                "linear_velocity": [
+                  5.041039807807124e-11,
+                  -5.881882680114359e-05,
+                  9.36929282033816e-05
+                ],
+                "angular_velocity": [
+                  -0.0009616271709091961,
+                  7.361555115492635e-11,
+                  2.269956222988867e-09
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 0.41854044049978256,
+                  "right_frame": 0.4179135151207447
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 0.4168906777352095,
+                "right_frame": 0.4170153259113431
+              },
+              "max_displacement_m": 0.0002453005650837614
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 3,
+          "added_part": "top_shelf",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 7.999999999999852,
+          "physics_elapsed_seconds": 8.0,
+          "evaluator": {
+            "stage": 4,
+            "stage_name": "middle_crossbar",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "upper_crossbar",
+              "top_shelf"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "upper_crossbar": "upper_crossbar",
+              "top_shelf": "top_shelf"
+            },
+            "score": 0,
+            "progress": 0.4444444444444444,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 7.999999999999852,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "upper_crossbar": 0.0,
+              "top_shelf": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "top_shelf": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "lower_crossbar",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -3.62601042525057e-08,
+                  0.16184456646442413,
+                  0.8649532198905945
+                ],
+                "quat": [
+                  0.9999997615814209,
+                  0.0007886530365794897,
+                  -1.5270931896793627e-07,
+                  3.386183777820406e-08
+                ],
+                "linear_velocity": [
+                  7.696105512877693e-07,
+                  -2.956706339318771e-05,
+                  -3.3360079214617144e-06
+                ],
+                "angular_velocity": [
+                  0.0004694816598203033,
+                  6.804058557463577e-06,
+                  -1.662017211856437e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 3.4090147018432617,
+                  "upper_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 3.409007961153984
+              },
+              "max_displacement_m": 0.0001623682120291148
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  3.54037794636497e-08,
+                  -0.16184101998806,
+                  0.8649531602859497
+                ],
+                "quat": [
+                  0.9999997615814209,
+                  -0.0008032854530028999,
+                  1.5169771927503461e-07,
+                  3.418978877789414e-08
+                ],
+                "linear_velocity": [
+                  -7.647643656127912e-07,
+                  5.00711212225724e-05,
+                  -3.953608029405586e-06
+                ],
+                "angular_velocity": [
+                  -0.0006310222670435905,
+                  -6.76530362397898e-06,
+                  -1.6765524151196587e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 3.4088963866233826,
+                  "upper_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 3.4089994937181474
+              },
+              "max_displacement_m": 0.00016578428628271982
+            },
+            "upper_crossbar": {
+              "condition": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  3.405800530487113e-09,
+                  3.516058541208622e-06,
+                  0.9699846506118774
+                ],
+                "quat": [
+                  1.0,
+                  1.5228926031340961e-06,
+                  4.4170764113005134e-07,
+                  1.7228326498752722e-07
+                ],
+                "linear_velocity": [
+                  -8.021368103072746e-08,
+                  1.8964026821777225e-05,
+                  -1.6809488442959264e-05
+                ],
+                "angular_velocity": [
+                  -5.973875886411406e-05,
+                  -2.0516441509244032e-05,
+                  -7.4217728069925215e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0546563416719437,
+                  "right_frame": 1.054542526602745,
+                  "top_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0546543410420417,
+                "right_frame": 1.054645688533783,
+                "top_shelf": 0.0
+              },
+              "max_displacement_m": 8.825279056563304e-05
+            },
+            "top_shelf": {
+              "condition": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  1.746968436577845e-08,
+                  2.0471181869652355e-06,
+                  0.97808837890625
+                ],
+                "quat": [
+                  1.0,
+                  1.7382277519573108e-06,
+                  9.618858598514635e-09,
+                  1.8224339726202743e-07
+                ],
+                "linear_velocity": [
+                  -1.0304763264912253e-07,
+                  1.9913823052775115e-05,
+                  -8.949959919846151e-06
+                ],
+                "angular_velocity": [
+                  -8.615785191068426e-05,
+                  1.482539482822176e-05,
+                  -7.458207619492896e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "upper_crossbar": 1.275213211774826
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 1.2753339947760105
+              },
+              "max_displacement_m": 0.00024528902537024333
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 4,
+          "added_part": "middle_crossbar",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 9.000000000000007,
+          "physics_elapsed_seconds": 9.0,
+          "evaluator": {
+            "stage": 5,
+            "stage_name": "middle_shelf",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "upper_crossbar",
+              "top_shelf",
+              "middle_crossbar"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "upper_crossbar": "upper_crossbar",
+              "top_shelf": "top_shelf",
+              "middle_crossbar": "middle_crossbar"
+            },
+            "score": 0,
+            "progress": 0.5555555555555556,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 9.000000000000007,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "upper_crossbar": 0.0,
+              "top_shelf": 0.0,
+              "middle_crossbar": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "top_shelf": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_shelf": {
+                "object": "bottom_shelf",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -4.7881334452881674e-09,
+                  0.16183029115200043,
+                  0.8649468421936035
+                ],
+                "quat": [
+                  0.9999995231628418,
+                  0.0009959187591448426,
+                  -1.8264019185920688e-09,
+                  -2.7188491458218778e-08
+                ],
+                "linear_velocity": [
+                  5.058967134097259e-10,
+                  -1.0524820027058013e-05,
+                  -5.93492131883977e-06
+                ],
+                "angular_velocity": [
+                  0.00036884122528135777,
+                  4.978059298110793e-09,
+                  -8.630247072538566e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 3.8258362412452698,
+                  "upper_crossbar": 0.0,
+                  "middle_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 3.825861736536026,
+                "middle_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0001778868702870969
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  3.2920197678976137e-09,
+                  -0.16183142364025116,
+                  0.8649469017982483
+                ],
+                "quat": [
+                  0.9999995231628418,
+                  -0.0009914672700688243,
+                  5.298158578526113e-10,
+                  -2.6748789849762034e-08
+                ],
+                "linear_velocity": [
+                  9.254440963557542e-11,
+                  1.1294849173282273e-05,
+                  -5.755658094130922e-06
+                ],
+                "angular_velocity": [
+                  -0.0003748925810214132,
+                  1.5639378680987193e-10,
+                  -6.450824874271177e-10
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 3.8259423971176147,
+                  "upper_crossbar": 0.0,
+                  "middle_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 3.825936505794525,
+                "middle_crossbar": 0.0
+              },
+              "max_displacement_m": 0.00017678854182396071
+            },
+            "upper_crossbar": {
+              "condition": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  9.270615386469672e-10,
+                  -7.820458449714351e-07,
+                  0.969992995262146
+                ],
+                "quat": [
+                  1.0,
+                  -2.751241936493898e-07,
+                  9.4738666689409e-08,
+                  5.4085656842062235e-08
+                ],
+                "linear_velocity": [
+                  5.226423738236008e-10,
+                  6.626588060498761e-07,
+                  -5.057170255895471e-06
+                ],
+                "angular_velocity": [
+                  5.647080797643866e-06,
+                  -9.502902464930685e-09,
+                  -2.1940704808542932e-09
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0546001717448235,
+                  "right_frame": 1.0546543449163437,
+                  "top_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0546067851781844,
+                "right_frame": 1.054657729715109,
+                "top_shelf": 0.0
+              },
+              "max_displacement_m": 8.831544022009236e-05
+            },
+            "top_shelf": {
+              "condition": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  3.382932334261568e-08,
+                  -2.2138606254884508e-06,
+                  0.9780969023704529
+                ],
+                "quat": [
+                  1.0,
+                  -3.197865794390964e-07,
+                  1.8604812623834732e-07,
+                  3.862322373038296e-08
+                ],
+                "linear_velocity": [
+                  -6.638299510086654e-08,
+                  6.165041668282356e-07,
+                  -5.589560714724939e-06
+                ],
+                "angular_velocity": [
+                  9.933673936757259e-06,
+                  -1.7211421436513774e-05,
+                  -2.56099208506555e-09
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "upper_crossbar": 1.2752582430839539
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 1.2752973964810372
+              },
+              "max_displacement_m": 0.00011364229525317657
+            },
+            "middle_crossbar": {
+              "condition": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  1.0055078991655364e-09,
+                  -2.462588554408285e-06,
+                  0.8633366823196411
+                ],
+                "quat": [
+                  1.0,
+                  -3.9013968944345834e-07,
+                  9.125145083999087e-08,
+                  -2.300833834567584e-08
+                ],
+                "linear_velocity": [
+                  2.454173531063475e-10,
+                  3.182166778969986e-07,
+                  -5.514482381840935e-06
+                ],
+                "angular_velocity": [
+                  1.0689954251574818e-05,
+                  -1.0784093618099178e-08,
+                  -1.058345189264287e-09
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 0.4169174653943628,
+                  "right_frame": 0.4169521185103804
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 0.41692008026177063,
+                "right_frame": 0.4169527909439057
+              },
+              "max_displacement_m": 0.00024525844446821043
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 5,
+          "added_part": "middle_shelf",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 10.000000000000163,
+          "physics_elapsed_seconds": 10.0,
+          "evaluator": {
+            "stage": 6,
+            "stage_name": "lower_crossbar",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "upper_crossbar",
+              "top_shelf",
+              "middle_crossbar",
+              "middle_shelf"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "upper_crossbar": "upper_crossbar",
+              "top_shelf": "top_shelf",
+              "middle_crossbar": "middle_crossbar",
+              "middle_shelf": "middle_shelf"
+            },
+            "score": 0,
+            "progress": 0.6666666666666666,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 10.000000000000163,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "upper_crossbar": 0.0,
+              "top_shelf": 0.0,
+              "middle_crossbar": 0.0,
+              "middle_shelf": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "top_shelf": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_shelf": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -4.83142725826724e-09,
+                  0.1618129462003708,
+                  0.8649369478225708
+                ],
+                "quat": [
+                  0.9999991655349731,
+                  0.0012874811654910445,
+                  -5.029009209067681e-09,
+                  -2.085422323716557e-08
+                ],
+                "linear_velocity": [
+                  -4.424660744462017e-07,
+                  -1.109648474084679e-05,
+                  -5.121170943311881e-06
+                ],
+                "angular_velocity": [
+                  0.0005135646788403392,
+                  -3.3551859814906493e-06,
+                  -3.332856124416139e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 4.465052843093872,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 4.463536534309387,
+                "middle_crossbar": 0.0
+              },
+              "max_displacement_m": 0.00019744194204865848
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  2.2272248489940694e-09,
+                  -0.16181494295597076,
+                  0.8649370074272156
+                ],
+                "quat": [
+                  0.9999991655349731,
+                  -0.0012795120710507035,
+                  -2.0676500511740414e-09,
+                  -2.1831080943002235e-08
+                ],
+                "linear_velocity": [
+                  -4.3990991116515943e-07,
+                  2.0328179743955843e-05,
+                  -5.6506119108235e-06
+                ],
+                "angular_velocity": [
+                  -0.0005881063407287002,
+                  -3.3289645671175094e-06,
+                  4.3427242246707465e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 4.466771185398102,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 4.463609372973442,
+                "middle_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0001955315689768987
+            },
+            "upper_crossbar": {
+              "condition": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.2016876382858754e-10,
+                  -1.556996153340151e-06,
+                  0.9699803590774536
+                ],
+                "quat": [
+                  1.0,
+                  -3.899202738466556e-08,
+                  1.5629161964625382e-07,
+                  -3.494114153568262e-08
+                ],
+                "linear_velocity": [
+                  -7.49310061110009e-07,
+                  8.409889233007561e-06,
+                  -6.535474312840961e-06
+                ],
+                "angular_velocity": [
+                  -8.649240044178441e-06,
+                  -3.394030954950722e-06,
+                  1.3781557228753627e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0545854046940804,
+                  "right_frame": 1.0546527802944183,
+                  "top_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0546647665649653,
+                "right_frame": 1.0547674413025379,
+                "top_shelf": 0.0
+              },
+              "max_displacement_m": 9.248736258285648e-05
+            },
+            "top_shelf": {
+              "condition": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  7.210293517800892e-08,
+                  -2.9879226985940477e-06,
+                  0.9780840873718262
+                ],
+                "quat": [
+                  1.0,
+                  -1.4049024343876226e-07,
+                  1.1006815157088568e-06,
+                  4.62771332365719e-08
+                ],
+                "linear_velocity": [
+                  -1.1843266065625357e-06,
+                  8.458293450530618e-06,
+                  7.151131740101846e-06
+                ],
+                "angular_velocity": [
+                  1.2085479283996392e-06,
+                  -0.00013807286450173706,
+                  1.3645263585715384e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "upper_crossbar": 1.2751834988594055
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 1.2753481249511243
+              },
+              "max_displacement_m": 0.00011921258737900051
+            },
+            "middle_crossbar": {
+              "condition": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.0388605531375106e-08,
+                  -2.873123321478488e-06,
+                  0.8633137345314026
+                ],
+                "quat": [
+                  1.0,
+                  -1.258932513792388e-07,
+                  1.650250851525925e-07,
+                  -5.959561235613364e-07
+                ],
+                "linear_velocity": [
+                  -6.070861786611204e-07,
+                  4.3190689211769495e-06,
+                  -8.897032785171177e-06
+                ],
+                "angular_velocity": [
+                  -2.996610419359058e-06,
+                  -8.683515261509456e-06,
+                  7.071573993044922e-09
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.05626230686903,
+                  "right_frame": 1.0579397529363632,
+                  "middle_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0546164456009866,
+                "right_frame": 1.0545760114118456,
+                "middle_shelf": 0.0
+              },
+              "max_displacement_m": 9.247677857184508e-05
+            },
+            "middle_shelf": {
+              "condition": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -8.052155919813231e-08,
+                  -4.1229469616155257e-07,
+                  0.8714169263839722
+                ],
+                "quat": [
+                  1.0,
+                  1.7835260450738133e-06,
+                  -3.780831775657134e-06,
+                  -4.9673804625172124e-08
+                ],
+                "linear_velocity": [
+                  8.840884220262524e-07,
+                  5.137313564773649e-06,
+                  4.1112638427875936e-05
+                ],
+                "angular_velocity": [
+                  -0.00031443306943401694,
+                  0.0005991495563648641,
+                  5.927989654708199e-09
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "middle_crossbar": 1.280371367931366
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "middle_crossbar": 1.2753027112782
+              },
+              "max_displacement_m": 0.00024524690475469235
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 6,
+          "added_part": "lower_crossbar",
+          "requested_wait_seconds": 1.0,
+          "elapsed_seconds": 11.00000000000032,
+          "physics_elapsed_seconds": 11.0,
+          "evaluator": {
+            "stage": 7,
+            "stage_name": "bottom_shelf",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "upper_crossbar",
+              "top_shelf",
+              "middle_crossbar",
+              "middle_shelf",
+              "lower_crossbar"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "upper_crossbar": "upper_crossbar",
+              "top_shelf": "top_shelf",
+              "middle_crossbar": "middle_crossbar",
+              "middle_shelf": "middle_shelf",
+              "lower_crossbar": "lower_crossbar"
+            },
+            "score": 0,
+            "progress": 0.7777777777777778,
+            "success": false,
+            "failed": false,
+            "terminated": false,
+            "terminal": false,
+            "reason": "in_progress",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 11.00000000000032,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 0.0,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "upper_crossbar": 0.0,
+              "top_shelf": 0.0,
+              "middle_crossbar": 0.0,
+              "middle_shelf": 0.0,
+              "lower_crossbar": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "top_shelf": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_shelf": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "bottom_shelf": {
+                "object": "bottom_shelf",
+                "pose": false,
+                "supported": false,
+                "slow": true,
+                "released": true,
+                "structural_valid": false,
+                "seated": false,
+                "stable_released": false
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -3.933976255865446e-09,
+                  0.1617921143770218,
+                  0.8649297952651978
+                ],
+                "quat": [
+                  0.9999988079071045,
+                  0.001580574200488627,
+                  -1.5430148270212385e-09,
+                  -2.052875025526646e-08
+                ],
+                "linear_velocity": [
+                  -1.228741997039151e-09,
+                  -1.944177711266093e-05,
+                  -6.72916348776198e-06
+                ],
+                "angular_velocity": [
+                  0.0005555498064495623,
+                  -1.2672589200235507e-08,
+                  1.1150431689088691e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 4.880424320697784,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 4.880404295325279,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.00021946714970830076
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  1.1524042831112524e-09,
+                  -0.1617942899465561,
+                  0.8649299144744873
+                ],
+                "quat": [
+                  0.9999988079071045,
+                  -0.0015726560959592462,
+                  -4.996978386628825e-09,
+                  -1.8648171007384917e-08
+                ],
+                "linear_velocity": [
+                  4.9055786099927445e-09,
+                  1.8986378563567996e-05,
+                  -6.545049473061226e-06
+                ],
+                "angular_velocity": [
+                  -0.0005518801044672728,
+                  4.599736058708004e-08,
+                  1.1600065796812942e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 4.8805683851242065,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 4.88054357111454,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.00021736854234946152
+            },
+            "upper_crossbar": {
+              "condition": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.3276739707634988e-09,
+                  -1.554924892843701e-06,
+                  0.9699704051017761
+                ],
+                "quat": [
+                  1.0,
+                  -3.248955522394681e-07,
+                  1.4047417096207937e-07,
+                  -2.3307998731070256e-07
+                ],
+                "linear_velocity": [
+                  3.366878775779014e-09,
+                  -4.3265214344501146e-07,
+                  -4.6625450522697065e-06
+                ],
+                "angular_velocity": [
+                  1.6556487025809474e-06,
+                  -1.1833711788256096e-09,
+                  3.219474464799532e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0546718202531338,
+                  "right_frame": 1.0547604635357857,
+                  "top_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0546779484674333,
+                "right_frame": 1.0547668236494063,
+                "top_shelf": 0.0
+              },
+              "max_displacement_m": 0.00010244003325414464
+            },
+            "top_shelf": {
+              "condition": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  8.426259512361867e-08,
+                  -2.9682294098165585e-06,
+                  0.978074312210083
+                ],
+                "quat": [
+                  1.0,
+                  -1.9842900655930862e-07,
+                  -1.6070924857558566e-07,
+                  1.7412403963135148e-08
+                ],
+                "linear_velocity": [
+                  6.550533271365566e-08,
+                  -3.9208100588439265e-07,
+                  -5.196664915274596e-06
+                ],
+                "angular_velocity": [
+                  -1.0274737178406212e-05,
+                  1.6027661331463605e-05,
+                  3.1941887357334053e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "upper_crossbar": 1.2752568125724792
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 1.275296710729599
+              },
+              "max_displacement_m": 0.0001276639952133919
+            },
+            "middle_crossbar": {
+              "condition": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  6.370342475747748e-09,
+                  -2.8442500479286537e-06,
+                  0.8633037209510803
+                ],
+                "quat": [
+                  1.0,
+                  -1.0900838276484137e-07,
+                  -1.3243712260191387e-07,
+                  -7.895531553003821e-07
+                ],
+                "linear_velocity": [
+                  1.7332502100231295e-09,
+                  -1.8695624248721288e-07,
+                  -6.056858183001168e-06
+                ],
+                "angular_velocity": [
+                  -9.303520528192166e-06,
+                  2.3693331741014845e-08,
+                  1.641123859030813e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0546176172792912,
+                  "right_frame": 1.0546645931899548,
+                  "middle_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.054582694619894,
+                "right_frame": 1.0546320328861476,
+                "middle_shelf": 0.0
+              },
+              "max_displacement_m": 0.00010248519132499455
+            },
+            "middle_shelf": {
+              "condition": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.9048790989018016e-08,
+                  -3.415198648326623e-07,
+                  0.8714076280593872
+                ],
+                "quat": [
+                  1.0,
+                  -2.233613685120872e-07,
+                  2.4095051287531533e-08,
+                  -8.50209431746407e-08
+                ],
+                "linear_velocity": [
+                  -9.224992325584935e-09,
+                  -1.5236919637118262e-07,
+                  -3.5694220059667714e-06
+                ],
+                "angular_velocity": [
+                  1.5946523035381688e-06,
+                  -2.771022991510108e-06,
+                  1.6160349503024918e-08
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "middle_crossbar": 1.27537202835083
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "middle_crossbar": 1.2753005746006965
+              },
+              "max_displacement_m": 0.00012764739890218723
+            },
+            "lower_crossbar": {
+              "condition": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  4.064976355522276e-09,
+                  -5.66677087476819e-08,
+                  0.7739189863204956
+                ],
+                "quat": [
+                  1.0,
+                  -5.959213353889936e-07,
+                  -1.5073452175329294e-07,
+                  -1.1937257227145892e-07
+                ],
+                "linear_velocity": [
+                  5.32209221137947e-10,
+                  -1.4629524969222985e-07,
+                  -5.499060534930322e-06
+                ],
+                "angular_velocity": [
+                  1.7758737158146687e-05,
+                  7.079360386796907e-08,
+                  3.197652587161315e-09
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 0.41688133031129837,
+                  "right_frame": 0.4168877676129341
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 0.41689231418073175,
+                "right_frame": 0.41689278207719327
+              },
+              "max_displacement_m": 0.00024529912012738464
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        },
+        {
+          "index": 7,
+          "added_part": "bottom_shelf",
+          "requested_wait_seconds": 3.5,
+          "elapsed_seconds": 13.515000000000713,
+          "physics_elapsed_seconds": 14.5,
+          "evaluator": {
+            "stage": 8,
+            "stage_name": "final_release",
+            "completed": [
+              "left_frame",
+              "right_frame",
+              "upper_crossbar",
+              "top_shelf",
+              "middle_crossbar",
+              "middle_shelf",
+              "lower_crossbar",
+              "bottom_shelf"
+            ],
+            "assignments": {
+              "left_frame": "left_frame",
+              "right_frame": "right_frame",
+              "upper_crossbar": "upper_crossbar",
+              "top_shelf": "top_shelf",
+              "middle_crossbar": "middle_crossbar",
+              "middle_shelf": "middle_shelf",
+              "lower_crossbar": "lower_crossbar",
+              "bottom_shelf": "bottom_shelf"
+            },
+            "score": 1,
+            "progress": 1.0,
+            "success": true,
+            "failed": false,
+            "terminated": true,
+            "terminal": true,
+            "reason": "assembled_and_released",
+            "failure_reason": null,
+            "failure_detail": null,
+            "elapsed_seconds": 13.515000000000713,
+            "current_stable_seconds": 0.0,
+            "final_hold_seconds": 1.9999999999999793,
+            "support_lost_seconds": {
+              "left_frame": 0.0,
+              "right_frame": 0.0,
+              "upper_crossbar": 0.0,
+              "top_shelf": 0.0,
+              "middle_crossbar": 0.0,
+              "middle_shelf": 0.0,
+              "lower_crossbar": 0.0,
+              "bottom_shelf": 0.0
+            },
+            "conditions": {
+              "left_frame": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "right_frame": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "upper_crossbar": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "top_shelf": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_crossbar": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "middle_shelf": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "lower_crossbar": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "bottom_shelf": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              }
+            }
+          },
+          "placed_parts": {
+            "left_frame": {
+              "condition": {
+                "object": "left_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -7.270754309729455e-08,
+                  0.16177503764629364,
+                  0.8649164438247681
+                ],
+                "quat": [
+                  0.9999973773956299,
+                  0.00230831908993423,
+                  -7.133509427603713e-08,
+                  -6.432255759136751e-07
+                ],
+                "linear_velocity": [
+                  -1.7203657876052603e-07,
+                  -1.7585492969374172e-05,
+                  -3.039747753064148e-06
+                ],
+                "angular_velocity": [
+                  0.0004725455946754664,
+                  -1.4284473763837013e-06,
+                  4.4023518057656474e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 5.515655994415283,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 5.518017246127129,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.00027579056589671066
+            },
+            "right_frame": {
+              "condition": {
+                "object": "right_frame",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  3.0935598971382205e-08,
+                  -0.1617749035358429,
+                  0.8649164438247681
+                ],
+                "quat": [
+                  0.9999973773956299,
+                  -0.00230962922796607,
+                  3.413338944824318e-08,
+                  -6.319588408132404e-08
+                ],
+                "linear_velocity": [
+                  -1.32888044390711e-06,
+                  -5.186409907764755e-05,
+                  3.3724975878612895e-07
+                ],
+                "angular_velocity": [
+                  0.00010592916078167036,
+                  -1.0812143045768607e-05,
+                  -4.6134077820170205e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "table": 5.512273371219635,
+                  "middle_crossbar": 0.0,
+                  "upper_crossbar": 0.0,
+                  "lower_crossbar": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 0.0,
+                "table": 5.518119603395462,
+                "middle_crossbar": 0.0,
+                "lower_crossbar": 0.0
+              },
+              "max_displacement_m": 0.0002644238354934259
+            },
+            "upper_crossbar": {
+              "condition": {
+                "object": "upper_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.959555895325593e-08,
+                  6.5949989220825955e-06,
+                  0.9699504971504211
+                ],
+                "quat": [
+                  1.0,
+                  9.419445063940657e-07,
+                  8.137161557897343e-07,
+                  -1.2088763412521075e-07
+                ],
+                "linear_velocity": [
+                  -1.586911366757704e-06,
+                  -6.289314478635788e-05,
+                  -7.913266017567366e-06
+                ],
+                "angular_velocity": [
+                  -6.637771730311215e-05,
+                  -5.9359830629546195e-05,
+                  -7.4242402661184315e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0451471187188872,
+                  "right_frame": 1.050639632900129,
+                  "top_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0527412101312439,
+                "right_frame": 1.0536578111980635,
+                "top_shelf": 0.0
+              },
+              "max_displacement_m": 0.00012260731048450085
+            },
+            "top_shelf": {
+              "condition": {
+                "object": "top_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  2.851533054126776e-07,
+                  5.263184903014917e-06,
+                  0.9780519008636475
+                ],
+                "quat": [
+                  1.0,
+                  1.2435361895768438e-06,
+                  1.5828436517040245e-05,
+                  2.510380454623373e-07
+                ],
+                "linear_velocity": [
+                  9.73113037616713e-06,
+                  -6.026496703270823e-05,
+                  -0.0002909155155066401
+                ],
+                "angular_velocity": [
+                  7.264228042913601e-05,
+                  0.0031958380714058876,
+                  -7.4877807492157444e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "upper_crossbar": 1.2659642398357391
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "upper_crossbar": 1.2752460062503814
+              },
+              "max_displacement_m": 0.00015022177725680777
+            },
+            "middle_crossbar": {
+              "condition": {
+                "object": "middle_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -6.979892219760586e-09,
+                  -2.108801481881528e-06,
+                  0.8632835149765015
+                ],
+                "quat": [
+                  1.0,
+                  8.33237123742947e-08,
+                  -4.1869265032801195e-07,
+                  -7.816086622369767e-07
+                ],
+                "linear_velocity": [
+                  -6.163791113067418e-07,
+                  -3.248829671065323e-05,
+                  -1.9571232314774534e-06
+                ],
+                "angular_velocity": [
+                  -2.814911749737803e-05,
+                  6.411736649170052e-06,
+                  -2.7584144390857546e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.0545451790094376,
+                  "right_frame": 1.0545993950217962,
+                  "middle_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0544263696530833,
+                "right_frame": 1.054596015913412,
+                "middle_shelf": 0.0
+              },
+              "max_displacement_m": 0.00012266981777436914
+            },
+            "middle_shelf": {
+              "condition": {
+                "object": "middle_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.0511167403137733e-07,
+                  4.284371755147731e-07,
+                  0.8713873028755188
+                ],
+                "quat": [
+                  1.0,
+                  -3.3091703244281234e-07,
+                  4.730689511234232e-07,
+                  1.0486787971331069e-07
+                ],
+                "linear_velocity": [
+                  -8.171637091436423e-07,
+                  -3.114909850410186e-05,
+                  3.2122347874974366e-06
+                ],
+                "angular_velocity": [
+                  2.2620768504566513e-05,
+                  -9.378699178341776e-05,
+                  -2.7632725050352747e-06
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "middle_crossbar": 1.2753599286079407
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "middle_crossbar": 1.275316963046789
+              },
+              "max_displacement_m": 0.00015042054117491105
+            },
+            "lower_crossbar": {
+              "condition": {
+                "object": "lower_crossbar",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -2.8520782180407878e-08,
+                  8.675623917042685e-07,
+                  0.7738866806030273
+                ],
+                "quat": [
+                  1.0,
+                  -4.2610281525412574e-06,
+                  1.27910666947173e-07,
+                  3.3978967195480436e-08
+                ],
+                "linear_velocity": [
+                  -1.447007207389106e-07,
+                  2.2935212200536625e-06,
+                  -7.636170630576089e-05
+                ],
+                "angular_velocity": [
+                  0.00046424841275438666,
+                  -1.014207646221621e-05,
+                  -3.0727477451364393e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "left_frame": 1.056517282500863,
+                  "right_frame": 1.0530006885528564,
+                  "bottom_shelf": 0.0
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "left_frame": 1.0546525882260176,
+                "right_frame": 1.0543648844840936,
+                "bottom_shelf": 0.0
+              },
+              "max_displacement_m": 0.00012251434340316295
+            },
+            "bottom_shelf": {
+              "condition": {
+                "object": "bottom_shelf",
+                "pose": true,
+                "supported": true,
+                "slow": true,
+                "released": true,
+                "structural_valid": true,
+                "seated": true,
+                "stable_released": true
+              },
+              "state": {
+                "position": [
+                  -1.462891248138476e-07,
+                  9.302822832069069e-07,
+                  0.7819905877113342
+                ],
+                "quat": [
+                  1.0,
+                  -4.083944077137858e-06,
+                  -2.509213459234161e-07,
+                  1.0187093124613966e-07
+                ],
+                "linear_velocity": [
+                  -6.568203048118448e-08,
+                  -1.0542244126554579e-06,
+                  -7.715942047070712e-05
+                ],
+                "angular_velocity": [
+                  0.0004430642002262175,
+                  1.880677700683009e-05,
+                  -3.2314022746504634e-07
+                ],
+                "robot_contact_force": 0.0,
+                "support_forces": {
+                  "lower_crossbar": 1.275583028793335
+                }
+              },
+              "mean_last_half_second_support_n": {
+                "lower_crossbar": 1.2752895157039166
+              },
+              "max_displacement_m": 0.00024528758041375553
+            }
+          },
+          "future_parts_at_goal": [],
+          "passed": true
+        }
+      ],
+      "pose_writes": [
+        {
+          "object": "left_frame",
+          "stage": 0,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            0.1620000497636133,
+            0.865
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "right_frame",
+          "stage": 1,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            -0.1620000497636133,
+            0.865
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "upper_crossbar",
+          "stage": 2,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            0.0,
+            0.9700728333333333
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "top_shelf",
+          "stage": 3,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            0.0,
+            0.0,
+            0.9782019416666666
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "middle_crossbar",
+          "stage": 4,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            0.0,
+            0.8634061666666667
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "middle_shelf",
+          "stage": 5,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            0.0,
+            0.0,
+            0.871535275
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "lower_crossbar",
+          "stage": 6,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            6.938893903907228e-18,
+            0.0,
+            0.7740080616666667
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        },
+        {
+          "object": "bottom_shelf",
+          "stage": 7,
+          "position_writes": 1,
+          "orientation_writes": 1,
+          "position": [
+            0.0,
+            0.0,
+            0.7821371699999999
+          ],
+          "purpose": "initialize_new_stage_part_only"
+        }
+      ],
+      "robot_present": false,
+      "robot_expert_verified": false,
+      "dynamic_welds": false,
+      "final_evaluator": {
+        "stage": 8,
+        "stage_name": "final_release",
+        "completed": [
+          "left_frame",
+          "right_frame",
+          "upper_crossbar",
+          "top_shelf",
+          "middle_crossbar",
+          "middle_shelf",
+          "lower_crossbar",
+          "bottom_shelf"
+        ],
+        "assignments": {
+          "left_frame": "left_frame",
+          "right_frame": "right_frame",
+          "upper_crossbar": "upper_crossbar",
+          "top_shelf": "top_shelf",
+          "middle_crossbar": "middle_crossbar",
+          "middle_shelf": "middle_shelf",
+          "lower_crossbar": "lower_crossbar",
+          "bottom_shelf": "bottom_shelf"
+        },
+        "score": 1,
+        "progress": 1.0,
+        "success": true,
+        "failed": false,
+        "terminated": true,
+        "terminal": true,
+        "reason": "assembled_and_released",
+        "failure_reason": null,
+        "failure_detail": null,
+        "elapsed_seconds": 13.515000000000713,
+        "current_stable_seconds": 0.0,
+        "final_hold_seconds": 1.9999999999999793,
+        "support_lost_seconds": {
+          "left_frame": 0.0,
+          "right_frame": 0.0,
+          "upper_crossbar": 0.0,
+          "top_shelf": 0.0,
+          "middle_crossbar": 0.0,
+          "middle_shelf": 0.0,
+          "lower_crossbar": 0.0,
+          "bottom_shelf": 0.0
+        },
+        "conditions": {
+          "left_frame": {
+            "object": "left_frame",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "right_frame": {
+            "object": "right_frame",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "upper_crossbar": {
+            "object": "upper_crossbar",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "top_shelf": {
+            "object": "top_shelf",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "middle_crossbar": {
+            "object": "middle_crossbar",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "middle_shelf": {
+            "object": "middle_shelf",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "lower_crossbar": {
+            "object": "lower_crossbar",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          },
+          "bottom_shelf": {
+            "object": "bottom_shelf",
+            "pose": true,
+            "supported": true,
+            "slow": true,
+            "released": true,
+            "structural_valid": true,
+            "seated": true,
+            "stable_released": true
+          }
+        }
+      },
+      "empty_frame_release_passed": true,
+      "all_stages_passed": true,
+      "evaluator_score_1": true,
+      "checks_passed": true
+    }
+  },
+  "checks_passed": true
+}

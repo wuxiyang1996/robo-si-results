@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="H2 第一层任务收尾报告：5/5 全程、20/20 子任务、14/15 重复、11/11 集成检查及完整证据。" name="description"/><title>H2 小车辅助重物搬运 · 第一层报告</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><link href="/robo-si-results/infra/h2-release/report.css" rel="stylesheet"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><a class="skip-link" href="#main">跳到正文</a><header class="nav"><div class="wrap"><a class="brand" href="#top">Embodied Terminal-Bench</a><nav aria-label="页面章节"><a data-site-completion-nav="true" href="/robo-si-results/infra/status-zh.html#completion">完成情况</a><a href="#desc">任务与范围</a><a href="#videos">完整参考解与覆盖</a><a href="#scoring">评分标准</a><a href="#gates">集成验证与收尾状态</a></nav><a class="lang" href="/robo-si-results/infra/task-h2-en.html">English</a></div></header><main id="main"><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">本页展示一段代表录像：corner0 · 87.58 s。其他成功、失败与分段录像保留在原发布包；本次筛选不改变原证据或评分。</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">查看完整任务说明：场景、动作、评分、证据与复现</a></p><!-- task-detail-jump:end --><section data-layered-task="H2" id="layered-status"><div class="wrap"><h2>当前交付范围与证据</h2><p>第一层，20 kg，transport-layout-v2</p><p>第一层工程收尾已完成：主批次 5/5、独立子任务 20/20、全部重复 14/15，集成检查 11/11；保留一次失败。参考资料已发布。</p><p>补装载对准的独立条件、转弯接触余量及第二通道交接检查。 人工录像／阶段签审、工具必要性审阅和第二人复现。</p><p><a href="#task-details">完整动作、轨迹与验收边界</a></p></div></section><div class="wrap" id="website-completion-status" style="padding-top:18px"><div class="card"><p><span class="pill ok">已完成（声明范围）</span> · <a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">已发布</a></p><p><strong>H2 · 第一层，20 kg，transport-layout-v2</strong> — 第一层工程收尾已完成：主批次 5/5、独立子任务 20/20、全部重复 14/15，集成检查 11/11；保留一次失败。参考资料已发布。</p><p class="small">正式准入待完成。补装载对准的独立条件、转弯接触余量及第二通道交接检查。 人工录像／阶段签审、工具必要性审阅和第二人复现。 <a href="/robo-si-results/infra/status-zh.html#completion">全站完成情况</a></p></div></div><div class="hero" id="top"><div class="wrap"><p class="eyebrow">robo-si · H2 · 第一层参考任务报告</p><h1>把重货箱装上小车，<br/><span class="nm">穿过通道并稳定交付。</span></h1><p class="lead">20 kg 货箱，G1 + Dex3，180 秒物理预算。完整参考解、独立子任务和当前入口集成验证已形成可核对的证据；本轮第一层工程收尾已完成。</p><div class="status-line"><span class="stamp complete">第一层 · 已完成</span><span class="stamp">已发布 · 第一层参考资料</span><span class="report-note">2026-10-24</span></div><div class="cards"><div class="card"><h3>5 / 5</h3><p>主要全程样本</p></div><div class="card"><h3>20 / 20</h3><p>独立子任务</p></div><div class="card"><h3>14 / 15</h3><p>全部全程重复</p></div><div class="card"><h3>11 / 11</h3><p>当前集成检查</p></div></div><div class="actions"><a class="primary" href="#videos">查看完整录像</a><a href="#repeats">查看保留失败</a><a href="#gates">查看验收证据</a></div><div class="card" id="toc" style="margin-top:24px"><h3>目录</h3><ol class="toc"><li><a href="#desc">01 任务与范围</a></li><li><a href="#videos">02 完整参考解与覆盖</a></li><li><a href="#subtasks">03 独立子任务</a></li><li><a href="#scoring">04 评分标准</a></li><li><a href="#expert">05 专家解与复现</a></li><li><a href="#repeats">06 重复运行与失败案例</a></li><li><a href="#shortcuts">07 捷径与工具必要性</a></li><li><a href="#gates">08 集成验证与收尾状态</a></li></ol></div></div></div><section class="tinted" id="desc"><div class="wrap"><p class="kicker">01 · H2</p><h2>任务与范围</h2><h3>面向 agent 的任务目标</h3><div class="instructions">把重货箱运到两排货架之后的绿色目标区域，并让它在小车上保持直立、静止至少 2 秒。可以使用房间里的物体；动作必须通过机器人关节命令执行。</div><p><a href="/robo-si-results/infra/h2-release/evidence/71bd8da502b262-instruction.md">查看原始英文指令</a></p><div class="table-wrap"><table><thead><tr><th>项目</th><th>本轮配置</th></tr></thead><tbody><tr><td>Robot</td><td>Unitree G1 + Dex3</td></tr><tr><td>货箱</td><td>20 kg · 0.70 × 0.70 × 0.90 m</td></tr><tr><td>时间预算</td><td>180 s</td></tr><tr><td>范围</td><td>第一层；transport-layout-v2；R9 与额外难度层延期</td></tr><tr><td>样本</td><td>seed23 / seed47 / seed71 / corner0 / corner511</td></tr><tr><td>控制与观测</td><td>参考专家可读真值；所有动作仍遵守原关节、力矩、碰撞与可信评分约束</td></tr></tbody></table></div><h3>场景范围（仅设计者与评审）</h3><p>三个内部种子和两个边界样本覆盖了本轮指定范围。机器人初始 x/y/yaw、货箱 x、目标 x/y、小车 x、装载通道 y 与北侧导向 x 共九个采样维度；两个边界不代表穷尽 512 种边界组合。物理参数与评分阈值没有为通过测试而放宽。</p></div></section><section id="videos"><div class="wrap"><p class="kicker">02 · H2</p><h2>完整参考解与覆盖</h2><p>五个主要样本全部完成。下列录像保留原记录；近景版本只改变回放相机，不重跑物理，也不增加成功次数。</p><div class="table-wrap"><table><thead><tr><th>Case</th><th>交付时刻</th><th>Score</th><th>装载到小车</th><th>通过第一通道</th><th>通过第二通道</th><th>稳定交付</th></tr></thead><tbody><tr><td>corner0</td><td>87.58 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>corner511</td><td>83.38 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>seed23</td><td>81.78 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>seed47</td><td>84.02 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>seed71</td><td>74.94 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr></tbody></table></div><div class="vgrid"><figure class="vcard"><video aria-label="corner0 · 完整任务" controls="" playsinline="" poster="/robo-si-results/media/74868a66d43b04dcf31d.jpg" preload="none" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/media--3167fc5f695756a38547.mp4"></video><figcaption><div class="vrow"><strong>corner0 · 完整任务</strong><span class="pill ok">通过</span></div><div class="vsub">87.58 s · 真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/94bd6033965124-record.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/085eea9af2ba97-report.json">相机重绘来源</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">兼容播放版</a></div><details><summary>展开自动阶段时间</summary><ul class="timeline"><li>推动货箱: 7.88 s</li><li>装载到小车: 16.32 s</li><li>通过第一通道: 22.60 s</li><li>通过第二通道: 76.58 s</li><li>稳定交付: 87.58 s</li></ul></details></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>corner511 · 完整任务</strong><span class="pill ok">通过</span></div><div class="vsub">83.38 s · 真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/13381931eca5e4-record.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/0e472ff57ff929-report.json">相机重绘来源</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">兼容播放版</a></div><details><summary>展开自动阶段时间</summary><ul class="timeline"><li>推动货箱: 7.08 s</li><li>装载到小车: 14.84 s</li><li>通过第一通道: 21.20 s</li><li>通过第二通道: 72.34 s</li><li>稳定交付: 83.38 s</li></ul></details></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed23 · 完整任务</strong><span class="pill ok">通过</span></div><div class="vsub">81.78 s · 真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/6550b8a18459fe-record.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/e87891338b0135-report.json">相机重绘来源</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">兼容播放版</a></div><details><summary>展开自动阶段时间</summary><ul class="timeline"><li>推动货箱: 8.48 s</li><li>装载到小车: 17.52 s</li><li>通过第一通道: 23.98 s</li><li>通过第二通道: 72.54 s</li><li>稳定交付: 81.78 s</li></ul></details></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed47 · 完整任务</strong><span class="pill ok">通过</span></div><div class="vsub">84.02 s · 真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/addde0e99e51cb-record.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/814d2256b37af4-report.json">相机重绘来源</a></div><details><summary>展开自动阶段时间</summary><ul class="timeline"><li>推动货箱: 8.34 s</li><li>装载到小车: 19.10 s</li><li>通过第一通道: 26.36 s</li><li>通过第二通道: 74.44 s</li><li>稳定交付: 84.02 s</li></ul></details></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed71 · 完整任务</strong><span class="pill ok">通过</span></div><div class="vsub">74.94 s · 真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/b022c8694b3d78-record.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/2397cfe8ab1288-report.json">相机重绘来源</a></div><details><summary>展开自动阶段时间</summary><ul class="timeline"><li>推动货箱: 8.14 s</li><li>装载到小车: 15.56 s</li><li>通过第一通道: 21.76 s</li><li>通过第二通道: 65.60 s</li><li>稳定交付: 74.94 s</li></ul></details></figcaption></figure></div></div></section><section class="tinted" id="subtasks"><div class="wrap"><p class="kicker">03 · H2</p><h2>独立子任务</h2><p>20 项从封存的求解器检查点独立启动，随后实际执行关节命令并重新达到目标。它们不是完整录像切片，也不计作额外的全程成功。</p><div class="subtasks"><details open=""><summary>corner0 · 4/4 通过</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>corner0 · 装载到小车</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/4c53bc13d8eb71-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/2315daefdb00b6-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>corner0 · 通过第一通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/99e0eb7db20a1c-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/a2f3d6ae554ced-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>corner0 · 通过第二通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/97e220067aa54c-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/e88f651e48deea-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>corner0 · 稳定交付</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/488d6393da836b-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/7053b43607651b-report.json">相机重绘来源</a></div></figcaption></figure></div></details><details><summary>corner511 · 4/4 通过</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>corner511 · 装载到小车</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/ccb8e375f40e84-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/4bca979f5e3697-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>corner511 · 通过第一通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/b44087ddd1b406-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/5193ba09a94d11-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>corner511 · 通过第二通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/6145bc61aa9b75-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/729927db4baa82-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>corner511 · 稳定交付</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/1983954b450a3c-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/132614ee779456-report.json">相机重绘来源</a></div></figcaption></figure></div></details><details><summary>seed23 · 4/4 通过</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed23 · 装载到小车</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/f5b56e4d51ee8b-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/59496149f9e242-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed23 · 通过第一通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/f6d61456e40b59-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/626ffe24e5afe0-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed23 · 通过第二通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/4e819b7a39d65f-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/69f42c75fce41b-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed23 · 稳定交付</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/dc5d914c000106-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/8c60cf8ef79d66-report.json">相机重绘来源</a></div></figcaption></figure></div></details><details><summary>seed47 · 4/4 通过</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed47 · 装载到小车</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/428e7c29a9eec9-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/b74ba8e5ae8c96-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed47 · 通过第一通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/02d9aacc8af036-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/ef7a1058796218-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed47 · 通过第二通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/dad8226db38842-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/0942d1c0e0f142-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed47 · 稳定交付</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/1e5a15225922da-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/dbc36fc4ae73cb-report.json">相机重绘来源</a></div></figcaption></figure></div></details><details><summary>seed71 · 4/4 通过</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed71 · 装载到小车</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/e163a89df49d5e-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/5ea3981a6ea47f-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed71 · 通过第一通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/493a75f5d17073-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/04882f8ff95e12-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed71 · 通过第二通道</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/593fa41fb46341-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/722d02c3b1012a-report.json">相机重绘来源</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed71 · 稳定交付</strong><span class="pill ok">通过</span></div><div class="vsub">真实物理记录 · 基于原状态的近景重绘</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/31efaa6344c5ce-subtask.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a> · <a href="/robo-si-results/infra/h2-release/evidence/4d5a944e1d0bd1-report.json">相机重绘来源</a></div></figcaption></figure></div></details></div></div></section><section id="scoring"><div class="wrap"><p class="kicker">04 · H2</p><h2>评分标准</h2><div class="table-wrap"><table><thead><tr><th>阶段</th><th>权重</th><th>核心判据</th></tr></thead><tbody><tr><td>推动货箱<br/><code>crate_pushed</code></td><td>5%</td><td>机器人接触推动货箱至少 5 cm；接触力 ≥5 N，持续 ≥0.5 s。</td></tr><tr><td>装载到小车<br/><code>cargo_loaded</code></td><td>25%</td><td>货箱满足小车上的几何与承载条件，持续骑载 0.5 s。</td></tr><tr><td>通过第一通道<br/><code>through_passage_1</code></td><td>15%</td><td>载货小车上的货箱整体越过第一排货架远端，保持 0.5 s。</td></tr><tr><td>通过第二通道<br/><code>through_passage_2</code></td><td>20%</td><td>沿指定几何路线越过第二排货架，保持在小车上 0.5 s。</td></tr><tr><td>稳定交付<br/><code>delivered</code></td><td>35%</td><td>货箱在目标内、直立、静止且在小车上，连续保持 2 s。</td></tr></tbody></table></div><p>过程分数与二值成功分别报告。满分交付需要完整阶段链、任务核心成功以及未失败；物理异常、篡改或监视器报警由 verifier 另行处理。空动作得 0 分；逃逸探针应被判 VOID。 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/h2-release/evidence/a506f28490e67e-scoring.py">完整评分实现</a></p></div></section><section class="tinted" id="expert"><div class="wrap"><p class="kicker">05 · H2</p><h2>专家解与复现</h2><p>参考路线为：接近并建立手部接触 → 推箱装载 → 穿过第一通道 → 绕行换侧、完成转弯与第二通道 → 目标内稳定交付。控制器保持装载导轨段的居中约束，并防止绕行避货指令把双脚带回路沿。</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/h2-release/evidence/ac42a07f5174ee-run_grasp_push.py">参考控制器</a> · <a href="/robo-si-results/infra/h2-release/evidence/c483b835106b8e-reproduction-plan.json">冻结复现计划</a> · <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/h2-release/evidence/89d8e71444f2a4-reproduce.py">原始复现脚本（配合完整包目录）</a></p><div class="wide-note">作者机器在新目录中的复现为 5/5；这不等于第二人独立复现。原始物理证据包、当前集成源码和本报告各自保留来源。 <a href="/robo-si-results/infra/h2-release/evidence/76f80373838f59-reproduction.json">JSON</a></div><h3>当前正式入口：显式选择第一层</h3><pre class="codeblock">python -m infra.sandbox.pipeline humanoid/g1_cart_assisted_transport --tier all
+
+python -m humanoid.g1_cart_assisted_transport.sandbox.trusted.record_reference --out &lt;fresh-output-directory&gt; --randomize --seed 23 --layer 1 --scene default --effort-limits hardware --distribution transport-layout-v2</pre><p>从仓库根目录运行，并沿用共享机器的仿真队列。复现完整物理解与接口／容器检查属于不同的验证。</p><h3>已封存离线包</h3><p>约 1.24 GB，1,894 个文件，CRC 与逐文件 SHA-256 校验通过。位置与校验值：</p><pre class="codeblock">C:\Users\wuxiy\rsi_releases\h2_closeout_20261024\h2-layer1-closeout-20261024.zip</pre><p class="hash">SHA-256: ba266038efda823eb5e841d2b3a39d8ae35160633e3caf498ee8d6f7e7b6c953</p><p><a href="/robo-si-results/infra/h2-release/evidence/ca40961e39eb73-summary.json">收尾报告及离线包元数据</a></p></div></section><section id="repeats"><div class="wrap"><p class="kicker">06 · H2</p><h2>重复运行与失败案例</h2><p>每个布局重新启动三次完整物理运行，总计 14/15 成功。这不是三个独立 agent 会话。</p><div class="table-wrap"><table><thead><tr><th>Case</th><th>1</th><th>2</th><th>3</th><th>成功交付时刻范围</th></tr></thead><tbody><tr><td>corner0</td><td><span class="pill ok">通过</span></td><td><span class="pill ok">通过</span></td><td><span class="pill ok">通过</span></td><td>85.44–91.54 s</td></tr><tr><td>corner511</td><td><span class="pill ok">通过</span></td><td><span class="pill ok">通过</span></td><td><span class="pill ok">通过</span></td><td>77.40–92.04 s</td></tr><tr><td>seed23</td><td><span class="pill ok">通过</span></td><td><span class="pill no">失败</span></td><td><span class="pill ok">通过</span></td><td>81.78–83.04 s</td></tr><tr><td>seed47</td><td><span class="pill ok">通过</span></td><td><span class="pill ok">通过</span></td><td><span class="pill ok">通过</span></td><td>84.02–89.50 s</td></tr><tr><td>seed71</td><td><span class="pill ok">通过</span></td><td><span class="pill ok">通过</span></td><td><span class="pill ok">通过</span></td><td>74.94–89.32 s</td></tr></tbody></table></div><h3>保留失败：seed23 · 第 2 次重复</h3><div class="failure-layout"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><strong>seed23 · repeat 2 · 完整任务</strong><span class="pill no">失败（保留）</span></div><div class="vsub">49.60 s · 真实物理记录</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/7f71d318ef70a2-record.json">原始报告</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">原始录像</a></div><details><summary>展开自动阶段时间</summary><ul class="timeline"><li>推动货箱: 8.40 s</li><li>装载到小车: 16.26 s</li><li>通过第一通道: 23.20 s</li><li>通过第二通道: 未达到</li><li>稳定交付: 未达到</li></ul></details></figcaption></figure><div><p>49.60 s 时触发“货箱推行停滞”保护，过程分数 0.4758。装载和第一通道已完成；第二通道与交付未达到。</p><p>自动诊断将其归为向北推行阶段的控制器停滞；任务核心未报告物理失败，监视器没有报警。这个结果仍是失败，不从分母中删除。</p><p><a href="/robo-si-results/infra/h2-release/evidence/2e893267812eb5-h2-seed23-repeat2-failure-analysis.json">失败诊断</a> · <a href="/robo-si-results/infra/h2-release/evidence/9621d1c75d0c53-campaign-audit.json">全部重复与阶段时间</a></p><div class="wide-note">“第一层任务已完成”指本轮工程交付范围完成，不表示每次重复都成功。</div></div></div></div></section><section class="tinted" id="shortcuts"><div class="wrap"><p class="kicker">07 · H2</p><h2>捷径与工具必要性</h2><p>保留 14 项直接推行、工具移除及局部抓握／牵引记录。其中 4 项与 seed23 的正式布局逐项匹配并完成检查；观察到的尝试均未实际交付。</p><div class="wide-note">有限策略失败不能证明不存在其他解法。拖拽检查只有 0.24 s 真实手部接触，后退命令之后没有接触样本；它没有验证持续拖运。工具必要性的人工分类仍未签署。</div><div class="table-wrap"><table><thead><tr><th>记录</th><th>分布</th><th>实际交付</th><th>停止原因</th></tr></thead><tbody><tr><td><a href="/robo-si-results/infra/h2-release/evidence/916e764ac0e6f8-probe.json">direct-budget180-height60-20261024-1</a></td><td>transport-pose-v1</td><td>未交付</td><td>RuntimeError('cargo stuck while pushing')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/23a3bc8cbf87f5-probe.json">direct-continuous180-height60-20261024-1</a></td><td>transport-pose-v1</td><td>未交付</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/f35ee2c0942350-probe.json">direct-crouch-height60-20261024-1</a></td><td>transport-pose-v1</td><td>未交付</td><td>RuntimeError('push leg timeout')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/48290a4702fea2-probe.json">layout2-direct180-20261024-1</a></td><td>transport-layout-v2</td><td>未交付</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/4cd9033f161ff2-probe.json">layout2-drag180-20261024-1</a></td><td>transport-layout-v2</td><td>未交付</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/08c5eab815a683-probe.json">layout2-no-cart-20261024-1</a></td><td>transport-layout-v2</td><td>未交付</td><td>task_failed</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/f7a76498e01526-probe.json">layout2-no-rails-20261024-1</a></td><td>transport-layout-v2</td><td>未交付</td><td>RuntimeError('push leg timeout')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/f0fc3626851b9a-probe.json">layout2-no-rails-continuous180-20261024-2</a></td><td>transport-layout-v2</td><td>未交付</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/b392d05015f504-probe.json">local-drag180-20261024-1</a></td><td>transport-pose-v1</td><td>未交付</td><td>task_failed</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/753107395ef7aa-probe.json">local-drag180-20261024-2</a></td><td>transport-pose-v1</td><td>未交付</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/9737b1f8c7ef27-probe.json">no-both-height60-20261024-1</a></td><td>transport-pose-v1</td><td>未交付</td><td>RuntimeError('push leg timeout')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/515b542d3862a6-probe.json">no-cart-height60-20261024-1</a></td><td>transport-pose-v1</td><td>未交付</td><td>RuntimeError('cargo stuck while pushing')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/1511015bbe64ef-probe.json">no-cart-height64-20261024-1</a></td><td>transport-pose-v1</td><td>未交付</td><td>RuntimeError('cargo stuck while pushing')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/30ef81f4503b91-probe.json">no-rails-height60-20261024-1</a></td><td>transport-pose-v1</td><td>未交付</td><td>RuntimeError('push leg timeout')</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/h2-release/evidence/2b6d00487b7e42-readiness.json">原始范围审计（早于本轮集成）</a></p></div></section><section id="gates"><div class="wrap"><p class="kicker">08 · H2</p><h2>集成验证与收尾状态</h2><p>当前入口在 2026-10-24 新跑的流水线为 11/11：123 项单元测试、44 项逃逸探针、开发与容器传感器接口、两个独立评分回合及各自的记录校验。</p><div class="table-wrap"><table><thead><tr><th>检查</th><th>类别</th><th>结果</th><th>墙钟耗时</th></tr></thead><tbody><tr><td>sandbox_tests</td><td>cpu</td><td><span class="pill ok">通过</span></td><td>91.6 s</td></tr><tr><td>task_tests</td><td>cpu</td><td><span class="pill ok">通过</span></td><td>5.3 s</td></tr><tr><td>admission_record</td><td>cpu</td><td><span class="pill ok">通过</span></td><td>1.5 s</td></tr><tr><td>dev_hello</td><td>gpu</td><td><span class="pill ok">通过</span></td><td>93.2 s</td></tr><tr><td>dev_hello_completed</td><td>gpu</td><td><span class="pill ok">通过</span></td><td>2.9 s</td></tr><tr><td>escape_probes</td><td>container</td><td><span class="pill ok">通过</span></td><td>62.1 s</td></tr><tr><td>escape_probes_completed</td><td>container</td><td><span class="pill ok">通过</span></td><td>2.9 s</td></tr><tr><td>eval_hello</td><td>container</td><td><span class="pill ok">通过</span></td><td>66.2 s</td></tr><tr><td>eval_hello_completed</td><td>container</td><td><span class="pill ok">通过</span></td><td>2.8 s</td></tr><tr><td>grade_noop</td><td>container</td><td><span class="pill ok">通过</span></td><td>64.3 s</td></tr><tr><td>grade_noop_completed</td><td>container</td><td><span class="pill ok">通过</span></td><td>2.7 s</td></tr></tbody></table></div><p>空动作的预期分数为 0，逃逸探针的预期结果为 VOID；启动器的非零返回码不单独代表失败。独立完成检查还要求 agent 正常退出、worker 正常结束、记录链有效且无内部错误。 <a href="/robo-si-results/infra/h2-release/evidence/006db60405fec8-20261024-093441-closeout-all.json">完整流水线记录</a></p><h3>收尾与后续事项</h3><div class="table-wrap"><table><thead><tr><th>项目</th><th>状态</th><th>说明</th></tr></thead><tbody><tr><td>第一层工程收尾</td><td>已完成</td><td>正式入口同步；完整流水线与离线包校验通过</td></tr><tr><td>源码与资源一致性</td><td>通过</td><td>43 个参考源码文件对齐；144 个依赖／资源哈希一致</td></tr><tr><td>覆盖与重复</td><td>5/5 · 20/20 · 14/15</td><td>指定第一层样本；保留失败，未穷尽所有边界</td></tr><tr><td>人工阶段、录像及捷径签审</td><td>后续事项</td><td>未自动填写签名</td></tr><tr><td>第二人复现</td><td>后续事项</td><td>作者机器的 5/5 单独报告</td></tr><tr><td>R9 / 额外难度层</td><td>本轮延期</td><td>不计为通过，不阻塞本轮范围</td></tr><tr><td>远程发布</td><td>参考资料已发布</td><td><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">GitHub Release</a> · 完整证据包与离线审阅包</td></tr><tr><td>正式准入</td><td><code>admitted=false</code></td><td>与工程完成状态分别记录</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/h2-release/evidence/4770448bf64f27-review_record.json">原始未签名人工验收表</a> · <a href="/robo-si-results/infra/h2-release/evidence-manifest.json">页面证据与 SHA-256 清单</a></p><p class="report-note">本报告沿用已发布 H4、H5 与桌面任务的章节和视觉规范。本次按作者指示发布参考资料，没有新增物理成功记录或更改原始评分。封存证据中的未发布状态为历史快照；本次发布不代表人工签审或正式准入。</p></div></section><section id="publication"><div class="wrap"><h2>发布与复现资料</h2><p>下载并解压审阅包后打开 index.html，可离线查看中英文报告、录像和失败分析。完整包另含未经改写的收尾源码与物理证据压缩包；运行环境和复现命令见其中 README.txt。</p><p>作者机器复现 5/5 不等于独立第二人复现。全部重复 14/15；seed 23 第二次重复失败保留。工具必要性探测未见交付，但不构成穷尽性证明。</p><p><a class="btn primary" href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">GitHub Release · H2</a> · <a href="/robo-si-results/infra/h2-release/author-authorization.json">发布范围与授权</a></p></div></section><section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>已有参考执行见证；设计、动作、支撑、轨迹对应及复现来源见文档。</p><p><a href="/robo-si-results/infra/reference-designs/H2.html">参考解与设计文档</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>完整任务说明与证据</h2><p class="detail-nav"><a href="#detail-scope">任务范围与场景</a> · <a href="#detail-interfaces">观测、动作与接口</a> · <a href="#detail-planning">高层目标与低层动作</a> · <a href="#detail-trajectory">轨迹与关键状态对应</a> · <a href="#detail-scoring">评分与成功判据</a> · <a href="#detail-evidence">代表证据与审阅</a> · <a href="#detail-sandbox">沙盒验证</a> · <a href="#detail-reproduce">下载与复现</a> · <a href="#detail-limits">验收边界与剩余工作</a></p><article id="detail-scope"><h3>任务范围与场景</h3><p>第一层，20 kg，transport-layout-v2</p><p>第一层工程收尾已完成：主批次 5/5、独立子任务 20/20、全部重复 14/15，集成检查 11/11；保留一次失败。参考资料已发布。</p><p>用小车承担重物载荷，在狭窄通道前后改变推行位置。低层控制同时保持货物支撑、车体方向和机器人站位；通道可通过不等于载货组合体可通过。</p></article><article id="detail-interfaces"><h3>观测、动作与接口</h3><p>参考控制器的特权状态与公开代理权限分开；以本任务 SDK 和指令为准。</p><p><a href="/robo-si-results/humanoid/g1_cart_assisted_transport/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_cart_assisted_transport/sandbox/agent_sdk">Agent SDK</a></p></article><article id="detail-planning"><h3>高层目标与低层动作</h3><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>对准装载入口</td>
+<td>H2.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>装载货箱</td>
+<td>H2.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>通过第一通道</td>
+<td>H2.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>转向并通过第二通道</td>
+<td>H2.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>停放交付</td>
+<td>H2.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>20 kg 发布配置的箱、轨道和车存在</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>推力方向与装载轨道对齐</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>货箱稳定在车上</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>机器人、车和货箱完全通过第一通道</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>组合体完全通过第二通道</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>货箱在目标内受车支撑、释放稳定</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>轨迹与关键状态对应</h3><details><summary>动作顺序、接触与轨迹事件</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>H2.K01 · 站位与货箱接触面选择</h5>
+<p>入口：20 kg 发布配置的箱、轨道和车存在。出口：推力方向与装载轨道对齐。</p>
+<p>局部检查：机器人可达推点、脚不跨入危险轨缘、可实现推力。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K01.A01</td>
+<td>站稳并绕到装载推点</td>
+<td>双足→地面；箱→原支撑</td>
+<td>机器人与货箱距离</td>
+<td>e0001: episode [1.0199992656707764, 1.0199992656707764] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K01.A02</td>
+<td>面对把手接近</td>
+<td>足→地面；箱仍受支撑</td>
+<td>推向、站位和间隙</td>
+<td>e0002: episode [5.480077743530273, 5.480077743530273] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K01.A03</td>
+<td>将双拳接触把手</td>
+<td>手→箱把手</td>
+<td>接触距离与受力</td>
+<td>e0003: episode [7.120115280151367, 7.120115280151367] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H2.K02 · 接触推送和车体对准</h5>
+<p>入口：箱体对准轨道，车具备承接位置。出口：货箱稳定在车上。</p>
+<p>局部检查：轨道到车面的高度连续、货箱重心与车体支撑有效。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K02.A01</td>
+<td>沿装载方向建立推力</td>
+<td>手→箱；原支撑承重</td>
+<td>箱位移、姿态与接触</td>
+<td>e0002: episode [5.480077743530273, 5.480077743530273] s; e0003: episode [7.120115280151367, 7.120115280151367] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K02.A02</td>
+<td>持续推动箱体进入车面</td>
+<td>原支撑→车面</td>
+<td>箱与车相对位置、支撑力</td>
+<td>e0004: episode [16.22028160095215, 16.22028160095215] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K02.A03</td>
+<td>保持接触并转入第一通道</td>
+<td>车面持续承重</td>
+<td>装载完成后的控制连续性</td>
+<td>e0005: episode [16.22028160095215, 16.22028160095215] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H2.K03 · 短段推车与转向</h5>
+<p>入口：货箱受车支撑、推点可保持。出口：机器人、车和货箱完全通过第一通道。</p>
+<p>局部检查：组合扫掠体与通道边界、轮接触、箱体滑移。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K03.A01</td>
+<td>保持推点沿第一通道推进</td>
+<td>箱→车面→轮地</td>
+<td>货箱高度及通道间隙</td>
+<td>e0005: episode [16.22028160095215, 16.22028160095215] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K03.A02</td>
+<td>监视车箱相对姿态并修正推向</td>
+<td>手推箱；轮地滚动</td>
+<td>偏航、车箱位姿</td>
+<td>e0006: episode [27.078458786010742, 27.078458786010742] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K03.A03</td>
+<td>结束该直段、准备换侧站位</td>
+<td>车面独立承重</td>
+<td>停车和换侧净空</td>
+<td>e0007: episode [27.078458786010742, 27.078458786010742] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H2.K04 · 重选站位、分段转弯和修正</h5>
+<p>入口：组合体通过第一通道且仍稳定。出口：组合体完全通过第二通道。</p>
+<p>局部检查：转角配置空间及轨尾足部净空；路线连通不只看中心线。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K04.A01</td>
+<td>退出推点并绕到侧面</td>
+<td>车面承重；足→地面</td>
+<td>绕行路径及避碰</td>
+<td>e0007: episode [27.078458786010742, 27.078458786010742] s; e0011: episode [49.6814079284668, 49.6814079284668] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K04.A02</td>
+<td>重新对准把手后沿中间通道推动</td>
+<td>手→把手；车面承重</td>
+<td>推点距离、箱姿态</td>
+<td>e0008: episode [39.19916915893555, 39.19916915893555] s; e0009: episode [40.59946823120117, 40.59946823120117] s; e0010: episode [49.6814079284668, 49.6814079284668] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K04.A03</td>
+<td>再次换侧、对准第二通道并推进</td>
+<td>车面承重、轮地滚动</td>
+<td>转向后路径与箱体稳定</td>
+<td>e0007: episode [27.078458786010742, 27.078458786010742] s; e0011: episode [49.6814079284668, 49.6814079284668] s; e0014: episode [84.07343292236328, 84.07343292236328] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H2.K05 · 减速、对准、停止接触</h5>
+<p>入口：车载货物已进入目标附近。出口：货箱在目标内受车支撑、释放稳定。</p>
+<p>局部检查：按原判定检查完整边界和驻留；不额外要求卸货。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K05.A01</td>
+<td>推进至目标区并减速</td>
+<td>手推箱；车面承重</td>
+<td>目标包含、箱速度</td>
+<td>e0014: episode [84.07343292236328, 84.07343292236328] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K05.A02</td>
+<td>后退并侧移退出接触</td>
+<td>车面独立承重</td>
+<td>机器人与货箱分离</td>
+<td>e0015: episode [84.07343292236328, 84.07343292236328] s; e0016: episode [84.6930923461914, 84.6930923461914] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K05.A03</td>
+<td>在释放状态保持并确认交付</td>
+<td>车面→车轮→地面</td>
+<td>目标内驻留与稳定</td>
+<td>e0015: episode [84.07343292236328, 84.07343292236328] s; e0024: episode [84.07343292236328, 87.55152130126953] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>评分与成功判据</h3><p>保留本页原任务评分及冻结参考 verdict；分层计划、技能展开和事件对应不产生额外任务分数。合同中的拟议评分不是当前评分实现。完整运行的分数不能赋给筛查或沙盒短测。</p><p>本参考的最终关键状态：货箱在目标内受车支撑、释放稳定</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_cart_assisted_transport/task_spec.py">原任务判据源码 / Original task criteria</a></p></article><article id="detail-evidence"><h3>代表证据与审阅</h3><p>见证：<strong>corner0</strong>。范围：第一层，20 kg，transport-layout-v2。</p>
+<p>第一层工程收尾已完成：主批次 5/5、独立子任务 20/20、全部重复 14/15，集成检查 11/11；保留一次失败。参考资料已发布。</p>
+<p><a href="/robo-si-results/infra/planning/skill-evidence/sources/94bd6033965124d6599e443b0f02c2f5cd2fd7ff6cffeb92147cb255b69dfdc2.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/H2.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>沙盒验证</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>这些检查验证启动、传感器与动作接口；不计完整任务成功。同机 WSL 不是独立第二台机器复现。</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/H2/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>下载与复现</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/51a01f83404dc4afae5e21d4f528ff5dc4b03af1/releases/H2/layer1-20261024/h2-layer1-20261024.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: 9ee0816cc9e495e15cfc1c1735509db0ed66755b9bff7fcc0ee0012af9b9b6ed</p><p>下载需私有仓库权限。参考包保留历史配置与运行入口；当前沙盒工作区补齐运行资产。先按沙盒 README 安装环境并执行短测，再用参考包的冻结入口复现；不能把新接口短测当作完整专家回放。</p><p>先检查本任务入口（不运行物理），再按链接中的环境与代理交付说明启动。历史 README 中的原机器路径须替换为本机路径；本页沙盒验证表是当前检查状态。</p><pre><code>python -m infra.sandbox.inventory check --task H2
+python -m humanoid.g1_cart_assisted_transport.sandbox.launch --help</code></pre><p><a href="/robo-si-results/humanoid/g1_cart_assisted_transport/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>验收边界与剩余工作</h3><p>补装载对准的独立条件、转弯接触余量及第二通道交接检查。 人工录像／阶段签审、工具必要性审阅和第二人复现。</p><p>动作已定位到同一全程事件；还需将接触、装载支撑与换侧站位约束逐段对照物理记录。</p><p>随机实例分别记录：有完整成功证据、通过可行性筛查、未确定、检查不通过。只要求声明范围内的代表完整见证与表示间对应；不要求逐个随机实例生成完整解。正式准入、人工签审和独立机器验证不由页面完成状态推定。本次新增物理执行：0。</p><p><a href="/robo-si-results/infra/reference-designs/H2.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main><footer><div class="wrap">robo-si · H2 · 2026-10-24 · 第一层工程完成；正式准入另计 · <a href="/robo-si-results/infra/task-h2-en.html">English</a></div></footer><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

@@ -1,0 +1,66 @@
+{
+  "schema": "hanoi-attempt-audit/1",
+  "task_id": "Hanoi-02",
+  "scope": "record continuity and declared constraints; not independent physical replay",
+  "audit_passed": true,
+  "task_success": false,
+  "independent_replay": false,
+  "checks": {
+    "action_count": true,
+    "continuous_commands": true,
+    "finite_trajectory": true,
+    "target_limits": true,
+    "recorded_targets_match": true,
+    "phase_mapping": true,
+    "physics_steps_and_torque_caps": true,
+    "no_runtime_state_write_attempts": true,
+    "source_unchanged": true,
+    "video_exists": true
+  },
+  "artifacts": {
+    "high_low_plan.json": {
+      "bytes": 7401,
+      "sha256": "d99d7f315bfd392b5709bbb3d3c7bfdb8e6dd69ed9ff638d3a61168e12c457c6"
+    },
+    "executed-plan.json": {
+      "bytes": 1515,
+      "sha256": "ec096528f241ee6e1948d445332545e9150e231c2f362d81f761e0c605f2da0e"
+    },
+    "trajectory.npz": {
+      "bytes": 436915,
+      "sha256": "2cf7c8d51ec793a53f3fcfda4f143e57d01e99e8602673b82be330f5c20e2ec9"
+    },
+    "physics.jsonl.gz": {
+      "bytes": 27099372,
+      "sha256": "d002e685934b206feed413ff94e1a82ab08ba0599c5ef59141db55be5e963849"
+    },
+    "actions.jsonl.gz": {
+      "bytes": 92259,
+      "sha256": "e4304d32348df1a2c038a150099a8a30cfdd2d6e79da2c2988d84acb218c7a69"
+    },
+    "video.mp4": {
+      "bytes": 123849,
+      "sha256": "dfa0e0fb947b60ce4c112a48037e077ff44ff349b6f38b2ba20a960577464d8e"
+    },
+    "result.json": {
+      "bytes": 2679,
+      "sha256": "f950399292961fd4c449197bff71d15db115a72d3c0d1c55be28d59ef09a173b"
+    },
+    "source-hashes.json": {
+      "bytes": 766,
+      "sha256": "8e30f15fb19ce3dc730dfd851e6e4798f9ca265f9e1f68d84be9941511438031"
+    },
+    "source-check.json": {
+      "bytes": 1628,
+      "sha256": "981afeb328c2c13aaa6b6ac170ddc0944f7b26883e1258e1da4126989f35bca3"
+    },
+    "environment.json": {
+      "bytes": 320,
+      "sha256": "6296bf61a2d6f38a8224f11638296a0338c8800f6be4a6965c1cb32fcd04a172"
+    },
+    "limits.json": {
+      "bytes": 2477,
+      "sha256": "63b272f8e0436424b4cc49f57482d516c64fcbbee65052da9c8c531628c0d9fd"
+    }
+  }
+}

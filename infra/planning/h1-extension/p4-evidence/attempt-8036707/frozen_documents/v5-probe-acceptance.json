@@ -1,0 +1,18 @@
+{
+  "schema": "h1-p4-v5-probe-acceptance/1",
+  "frozen_before_launch": true,
+  "scope": "single fresh-episode diagnostic; never full task feasibility",
+  "conditions": [
+    "plan_completed from fresh original start, no reset/checkpoint",
+    "all-physics actual joint position overshoot <=.001rad and speed/effort ratios<=1.001",
+    "original five safety rules complete and passed with unchanged thresholds",
+    "all settle_release and final Hold states raw-released, target ground-supported, at least one measured foot floor force>1N",
+    "settle endpoint independently shows >=1s continuous original target/root velocity bounds; actual age<=8s",
+    "entire final Hold satisfies the original stable Hold predicate, with >=6s duration",
+    "actual elbow references<=2.0rad; mirrored index/middle references>=.06rad inward during terminal phases",
+    "post-freeze command_trace joint_position_target remains the captured reference; leg_position_target feedback may vary and every actual physics command remains recorded",
+    "complete state/command/physics coverage and frozen identity"
+  ],
+  "task_goal_required": false,
+  "reason": "The original D remains unchanged and one stroke intentionally need not reach it. Full original-start three-cycle execution is mandatory."
+}

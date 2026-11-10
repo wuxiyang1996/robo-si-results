@@ -1,0 +1,32 @@
+{
+  "schema": "h3-extension-cohort/1",
+  "declared_utc": "2026-10-29T21:42:22.879249+00:00",
+  "runtime": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h3-author-runtimes/cf294a9807cd2cd678a918dacd95fdbf92e4879ca4f2e8cd505414c9dd782cae",
+  "source_identity": "cf294a9807cd2cd678a918dacd95fdbf92e4879ca4f2e8cd505414c9dd782cae",
+  "source_files": 553,
+  "cases": [
+    {
+      "experiment": "tool_delivery",
+      "case": "crate_nominal",
+      "job_id": "8066540"
+    },
+    {
+      "experiment": "tool_placement",
+      "case": "crate_load_fault_lateral",
+      "job_id": "8066541"
+    },
+    {
+      "experiment": "tool_placement",
+      "case": "crate_load_fault_lateral_no_recovery",
+      "job_id": "8066542"
+    }
+  ],
+  "purpose": "Full tool-delivery integration with arrival braking; paired lateral motor recovery/control",
+  "predecessor": "tool-integration-v1-cohort.json",
+  "changes": [
+    "Brake within unchanged waypoint position/yaw tolerance to satisfy unchanged quiet velocity dwell",
+    "Stand north of crate with measured 5 cm air gap before load fault, then counter lateral slip",
+    "Record applied hinge torque at every physics step"
+  ],
+  "formal_admission": false
+}

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 732, in main
+    try:attempt.execute()
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 386, in execute
+    if self.tuning.get('prepush',False):self.prepush_disk()
+                                        ^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 505, in prepush_disk
+    self.step()
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 352, in step
+    self.command();mujoco.mj_step(self.m,self.d);self.records.append((self.d.time,self.d.qpos.copy(),self.d.qvel.copy(),self.d.ctrl.copy(),self.qref.copy(),self.phase));row=self.assess()
+                                                                                                                                                                             ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 178, in assess
+    if rt>20:raise RuntimeError('robot_table_collision')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: robot_table_collision

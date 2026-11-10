@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="机器人桌面任务的真实录像、物理验证、评分规则与人工验收材料" name="description"/><title>G1 桌面汉诺塔 · 任务验收</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><link href="/robo-si-results/infra/tabletop-review.css" rel="stylesheet"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">跳到正文</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-hanoi-en.html">English</a></div></header><main id="main"><!-- hanoi-implementation:start --><section id="hanoi-implementation"><div class="wrap"><h2>实现与物理尝试</h2><p>10 个 task；已完成物理尝试 10/10，完整专家成功 0/10。已执行步骤按日志映射，未执行计划不计为完成。</p><p><a href="/robo-si-results/archive-hanoi-20261104.html">已验收配置与参考录像（历史结果页）</a></p></div></section><!-- hanoi-implementation:end --><!-- hanoi-task-design:start -->
+<section id="hanoi-task-design"><div class="wrap"><h2>Hanoi 新设计：10 个独立 task</h2><p><strong>设计待验证（2026-10-28）。下表不是新增物理成功记录，也不改变原有三／四／五盘直接操作的发布或验收状态。</strong></p><p>三种末端：Dex3、平行夹爪、五指灵巧手。8 项聚焦跨身体工具相性、能力边界与 self-modeling；另 2 项保留四／五盘 reasoning。每行独立配置与报告，随机种子作为该 task 的实例。</p><p>所有 task 提供相同的 T1 侧夹工具 + T2 底部托具，由 agent 选择。E2/E3 的具体末端资产与参数待标定；五指手须体现真实的工具相性差异。公开／隐藏／边界是能力条件，不替代项目 R9 工具三层。</p><div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task ID</th>
+<th>Embodiment</th>
+<th>难度／能力条件</th>
+<th>场景</th>
+<th>具体任务与主要考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hanoi-01</td>
+<td>E1：G1 + Dex3</td>
+<td>能力公开</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>提供当前有效夹持与力矩能力信息，选择工具、握点及单双手方式完成任务。测已知身体条件下的工具相性。</td>
+</tr>
+<tr>
+<td>Hanoi-02</td>
+<td>E2：G1 + 平行夹爪</td>
+<td>能力公开</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 01 使用相同盘、杆和工具，只换末端及对应能力信息。测跨身体后是否正确调整工具或操作路线。</td>
+</tr>
+<tr>
+<td>Hanoi-03</td>
+<td>E1：G1 + Dex3</td>
+<td>能力隐藏</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 01 物理实例配对，隐藏选定的有效能力参数；有限探测后预测并完成操作。测自身能力估计。</td>
+</tr>
+<tr>
+<td>Hanoi-04</td>
+<td>E2：G1 + 平行夹爪</td>
+<td>能力隐藏</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 02 配对，采用相同探测与预测协议。测平行夹爪下的 self-modeling 与工具选择。</td>
+</tr>
+<tr>
+<td>Hanoi-05</td>
+<td>E1：G1 + Dex3</td>
+<td>能力隐藏、夹持边界</td>
+<td>三盘、有效夹持能力下降；T1 + T2</td>
+<td>标定至原侧夹路线失效、承托路线仍可执行。通过探测发现边界并调整方案；不公开“夹持下降”标签。</td>
+</tr>
+<tr>
+<td>Hanoi-06</td>
+<td>E2：G1 + 平行夹爪</td>
+<td>能力隐藏、力矩边界</td>
+<td>三盘、腕部力矩余量下降；T1 + T2</td>
+<td>标定至原工具／握点组合失效，但轻工具、短力臂或双手分担中至少一条路线仍可执行。测边界判断与策略调整。</td>
+</tr>
+<tr>
+<td>Hanoi-07</td>
+<td>E1：G1 + Dex3</td>
+<td>能力公开、长序列</td>
+<td>四盘、操作余量充足；T1 + T2</td>
+<td>自主完成合法规划、状态跟踪及物理执行。经典最少 15 次移动；与 01 对照序列长度影响。</td>
+</tr>
+<tr>
+<td>Hanoi-08</td>
+<td>E1：G1 + Dex3</td>
+<td>能力公开、更长序列</td>
+<td>五盘、操作余量充足；T1 + T2</td>
+<td>测更深的递归依赖、持续规划和执行后状态更新。经典最少 31 次移动；与 01、07 对照。</td>
+</tr>
+<tr>
+<td>Hanoi-09</td>
+<td>E3：G1 + 五指灵巧手</td>
+<td>能力公开</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 01、02 配对，检验五指手带来的握持、驱动和工具路线差异。</td>
+</tr>
+<tr>
+<td>Hanoi-10</td>
+<td>E3：G1 + 五指灵巧手</td>
+<td>能力隐藏</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 09 物理实例配对；有限探测有效握持与驱动能力，再预测和执行任务。</td>
+</tr>
+</tbody>
+</table></div><p>配对：01/02/09 比较身体；01↔03、02↔04、09↔10 比较能力披露；03↔05、04↔06 比较能力边界；01↔07↔08 比较序列长度。07/08 另报告提供合法符号计划的诊断对照。</p><p><a href="/robo-si-results/infra/hanoi-design-zh.html">完整设计、探测协议、指标与验收要求</a> · <a href="/robo-si-results/humanoid/g1_tabletop_hanoi/CROSS_EMBODIMENT_DESIGN.md">设计文档</a></p></div></section>
+<!-- hanoi-task-design:end --><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">本页展示一段代表录像：3/nominal。其他成功、失败与分段录像保留在原发布包；本次筛选不改变原证据或评分。</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">查看完整任务说明：场景、动作、评分、证据与复现</a></p><!-- task-detail-jump:end --><section data-layered-task="Hanoi" id="layered-status"><div class="wrap"><h2>当前交付范围与证据</h2><p>独立顺序操作任务，三／四／五盘</p><p>58/58 场景、19/19 发布快照检查；三／四／五盘范围已完成并发布。</p><p>补抓盘、过杆、落盘的几何／接触余量及提交状态衔接；符号合法性不能代替物理检查。 原四项人工验收关口与独立第二人复现。</p><p><a href="#task-details">完整动作、轨迹与验收边界</a></p></div></section><div class="wrap" id="website-completion-status" style="padding-top:18px"><div class="card"><p><span class="pill ok">已完成（声明范围）</span> · 已发布</p><p><strong>Hanoi · 独立顺序操作任务，三／四／五盘</strong> — 58/58 场景、19/19 发布快照检查；三／四／五盘范围已完成并发布。</p><p class="small">正式准入待完成。补抓盘、过杆、落盘的几何／接触余量及提交状态衔接；符号合法性不能代替物理检查。 原补建撑并撤手稳定的独立短探针，以及支撑→套筒→盖帽的交接余量。 原四项人工验收关口与独立第二人复现。 <a href="/robo-si-results/infra/status-zh.html#completion">全站完成情况</a></p></div></div><div class="wrap"><div class="notice"><b>2026-10-23 发布资料</b> · <a href="https://github.com/wuxiyang1996/robo-si/releases/tag/tabletop-20261023">GitHub Release 与完整离线包</a> · <a href="/robo-si-results/infra/tabletop-release/README.md">下载与复现说明</a><p>录像随离线包提供；克隆仓库后请解压发布包或运行下载脚本。两个冻结源码快照分别位于 snapshots/hanoi 与 snapshots/assembly。人工签审与第二人复现尚未完成，正式准入状态保持未通过。</p></div></div><div class="hero"><div class="wrap"><p class="eyebrow">任务验收 · HANOI · v0.3</p><h1>G1 桌面汉诺塔<br/><span class="nm">三、四、五盘，完整保留</span></h1><p class="lead">用真实抓取和释放，将整叠圆盘搬到目标杆。三个盘数难度共同发布为独立顺序操作任务。</p><div class="notice"><b>用户已授权发布本页任务。</b> 自动验证已完成；人工签审与第二人复现仍待补齐。原始验收记录及 <code>admitted=false</code> 状态如实保留。</div><div class="cards"><div class="card"><h3>58 / 58</h3><p>固定输入物理覆盖</p></div><div class="card"><h3>19 / 19</h3><p>最终源码全量检查</p></div><div class="card"><h3>11 / 15</h3><p>自动证据完成；4 项待人工</p></div><div class="card"><h3>31,004</h3><p>50 Hz 训练控制步</p></div></div><ol class="toc review-toc"><li><a href="#desc">01 任务描述</a></li><li><a href="#videos">02 视频</a></li><li><a href="#scoring">03 评分标准</a></li><li><a href="#expert">04 专家解</a></li><li><a href="#shortcuts">05 已知捷径</a></li><li><a href="#gates">06 验收状态</a></li></ol></div></div><section class="tinted" id="desc"><div class="wrap"><p class="kicker">01 · 任务描述</p><h2>目标、场景与接口</h2><h3>给 agent 的指令（原文）</h3><div class="card instruction"><p>桌上有三根杆，圆盘按大盘在下、小盘在上的顺序叠在其中一根杆上。把整叠圆盘移到底座为绿色的目标杆上，仍按大盘在下、小盘在上的顺序叠好；第三根杆可用于中转。默认有 3 个圆盘，任务也支持 4 或 5 盘。</p><p>每个回合的场景都可能不同：起始杆和目标杆、三根杆的位置、杆高、圆盘的大小和颜色、圆盘的质量和摩擦都会变化，须通过机器人自身的传感器观察。圆盘的颜色与大小没有固定对应关系。</p><p>每次只能选择某根杆最上面的一个盘。用手抓住它，向上提到整个盘都越过杆顶，再搬到另一根杆上方，对准盘孔后放下。空杆可以接收任何盘；已有盘的杆只能接收比顶盘更小的盘。</p><p>圆盘放好后，机器人所有部位都要离开它，让它在底座或正下方的圆盘上稳定保持 0.5 秒，才算完成这次移动。前一次移动完成后才能开始下一盘。允许合法的额外移动；提起后放回原杆不增加移动次数。</p><p>最后，所有圆盘都必须位于目标杆，正确叠放、受到支撑，并完全脱离机器人接触，再连续稳定保持 2 秒。默认总时间限制为：3、4 盘 180 秒，5 盘 420 秒。移动非顶盘、同时移动多盘、大盘压小盘、横穿杆或掉落都会导致失败。</p><p>G1 的骨盆固定在支架上，使用双臂与手操作桌面物体，通过 43 维关节动作接口控制。应通过真实接触完成抓取和放置，不得直接改写物体位置、把盘绑定到机器人、伪造接触或修改评分状态。</p><p>手臂力矩上限可能为标称值的 85%–100%，本回合的实际限值由控制接口公布；初始手臂姿态可能有小幅变化，应读取关节传感器。</p><p>只有完整任务成功才得 1 分，否则为 0 分。最少 7、15、31 步分别对应 3、4、5 盘的符号解；这些步数不提供机器人动作轨迹。
+
+</p></div><h3>场景与接口（供评审）</h3><p>固定骨盆 Unitree G1，Dex3 双手，43 个绝对关节目标。控制频率 50 Hz，物理频率 200 Hz，固定增益 PD 与真实力矩上限。评测 agent 使用机器人传感器；参考专家读取开发真值，二者成绩不混用。</p><div class="table-wrap"><table><thead><tr><th>难度</th><th>最少合法移动</th><th>时限</th><th>范围覆盖</th></tr></thead><tbody><tr><td>3 盘</td><td>7</td><td>180 秒</td><td>23 个固定输入</td></tr><tr><td>4 盘</td><td>15</td><td>180 秒</td><td>20 个固定输入</td></tr><tr><td>5 盘</td><td>31</td><td>420 秒</td><td>15 个固定输入</td></tr></tbody></table></div><p>起始与目标杆、杆位置与高度、盘尺寸、颜色、初始 yaw、质量和摩擦随场景变化。盘数难度属于顺序操作任务，不声明完整工具三层 benchmark 资格。</p><p class="muted">有限场景覆盖不等于认证全部连续组合。全部物理参数与精确随机范围见 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/task.toml">任务规格</a>及下方源码。</p></div></section><section id="videos"><div class="wrap"><p class="kicker">02 · 视频</p><h2>完整录像与物理证据</h2><p>每个固定输入都提供完整 5 Hz 记录状态视频。它们用于查看封存测量；独立物理回放、重复运行和子目标录像另列在补充证据中。先独立观察并标注时刻，再展开自动时间线核对。</p><div class="filters"><label>难度 <select id="level-filter"><option value="all">全部</option><option value="3">3 盘</option></select></label><label>搜索场景 <input id="case-search" placeholder="输入场景或种子" type="search"/></label><span id="visible-count" role="status"></span></div><div class="vgrid" id="video-grid"></div><div class="review-panel"><h3>本浏览器的验收笔记</h3><p>每张视频卡可填写笔记。内容只保存在本浏览器，不同步到服务器，也不自动改变任务准入状态。</p><button id="export-notes" type="button">下载我的复核笔记 JSON</button> <a download="" href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/review_swept_thumb_v2/manual_review_template.json">下载完整空白签审模板</a><p id="notes-status" role="status"></p></div><details class="supplement"><summary>独立回放、三次重跑、子目标和质量复核材料</summary><p>原始严格后缀结果全部保留。子目标统一允许在原回合时限内，额外保持最后关节目标最多 1 秒；不声称恢复求解器全部内部状态。</p><ul><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks3_quality.json">acceptance/release_20261022/dataset_release_20261023_v2/disks3_quality.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks4_quality.json">acceptance/release_20261022/dataset_release_20261023_v2/disks4_quality.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/dataset_release_20261023_v2/disks5_move8_review_clip.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks5_quality.json">acceptance/release_20261022/dataset_release_20261023_v2/disks5_quality.json</a></li><li><a href="/robo-si-results/media/ff549298c2cc5c925cb9.png">acceptance/release_20261022/dataset_release_20261023_v2/disks5_review_clip_contact_sheet.png</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/review_clip.json">acceptance/release_20261022/dataset_release_20261023_v2/review_clip.json</a></li><li><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/review_clip.log">acceptance/release_20261022/dataset_release_20261023_v2/review_clip.log</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_descend_to_rim/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_descend_to_rim.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_descend_to_rim.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_legal_transfer/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_legal_transfer.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_legal_transfer.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_place_on_target/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_place_on_target.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_place_on_target.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_physics/report.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_physics/report.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat1/qualification.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat1/qualification.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat1/video_replay/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat2/qualification.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat2/qualification.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat2/video_replay/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repetition_spread.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repetition_spread.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_sandbox/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_sandbox/replay.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_sandbox/replay.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_subgoal1.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_subgoal1.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_subgoal7.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_subgoal7.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_descend_to_rim/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_descend_to_rim.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_descend_to_rim.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_legal_transfer/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_legal_transfer.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_legal_transfer.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_place_on_target/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_place_on_target.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_place_on_target.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_physics/report.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_physics/report.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat1/qualification.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat1/qualification.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat1/video_replay/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat2/qualification.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat2/qualification.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat2/video_replay/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repetition_spread.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repetition_spread.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_sandbox/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_sandbox/replay.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_sandbox/replay.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_subgoal1.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_subgoal1.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_subgoal15.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_subgoal15.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_descend_to_rim/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_descend_to_rim.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_descend_to_rim.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_legal_transfer/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_legal_transfer.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_legal_transfer.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_place_on_target/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_place_on_target.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_place_on_target.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_physics/report.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_physics/report.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat1/qualification.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat1/qualification.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat1/video_replay/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat2/qualification.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat2/qualification.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat2/video_replay/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repetition_spread.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repetition_spread.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_sandbox/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_sandbox/replay.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_sandbox/replay.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_subgoal1.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_subgoal1.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_subgoal31.json">acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_subgoal31.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/summary.json">acceptance/release_20261022/followups_swept_thumb_release_v5/summary.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/shortcuts/larger_on_smaller/shortcut.json">acceptance/release_20261022/shortcuts/larger_on_smaller/shortcut.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/shortcuts/larger_on_smaller/video_replay/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/shortcuts/wrong_goal/shortcut.json">acceptance/release_20261022/shortcuts/wrong_goal/shortcut.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/shortcuts/wrong_goal/video_replay/motion.mp4</a> <span class="pill">视频</span></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal1/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal1.json">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal1.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal7/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal7.json">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal7.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal1/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal1.json">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal1.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal15/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal15.json">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal15.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal1/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal1.json">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal1.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal31/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal31.json">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal31.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/summary.json">acceptance/release_20261022/subgoals_settle_swept_thumb_v2/summary.json</a></li></ul></details><div class="notice quality"><h3>五盘数据有一项待人工质量复核</h3><p>第 8 次放置在约 94.12 秒出现约 20 ms 的双手接触中断样本，之后重新接触，并于 95.675 秒合法放稳。相关阶段最大采样倾角约 0.568 rad。任务评分与独立回放已通过，这项质量观察仍需人工查看，未被清除。</p><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/tabletop-20261023">其他录像见完整发布包</a></p><p><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks3_quality.json">无标记的质量报告</a> · <a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks4_quality.json">无标记的质量报告</a> · <a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks5_quality.json">有标记的质量报告</a> · </p></div></div></section><section class="tinted" id="scoring"><div class="wrap"><p class="kicker">03 · 评分标准</p><h2>成功必须在物理世界中成立</h2><p><strong>仅完整物理成功得 1 分，否则为 0 分。</strong> 阶段进度用于诊断，不是最终分数。任务评分、独立终态检查和监视器必须一致通过。</p><ol class="check"><li>取顶盘：手接触后，整个盘越过源杆顶。</li><li>合法移动：一次只搬一个盘，大盘不得压小盘。</li><li>放置：正确底座或下方圆盘承托，机器人全部释放，稳定 0.5 秒。</li><li>完成：全部盘在目标杆，正确支撑并完全释放，连续稳定 2 秒。</li></ol><h3>验收时具体看什么</h3><ul class="check"><li>物体依靠真实接触运动；没有瞬移、绑定、吸附、伪造接触或改写评分。</li><li>阶段顺序与释放稳定条件确实发生；最终状态达到指令要求。</li><li>没有明显穿透、异常能量、抖动取巧或依靠机器人持续扶持的假成功。</li></ul><p>全量检查包含正例、零分 no-op、真实特权瞬移反例、38 项容器逃逸探针和完整性检查。</p></div></section><section id="expert"><div class="wrap"><p class="kicker">04 · 专家解</p><h2>从初始状态执行，并独立回放</h2><p>参考控制器从生成器初始状态出发，通过同一关节动作与物理接口完成任务。每个难度的名义输入都有三次新鲜执行，以及独立物理和沙箱命令回放。</p><div class="table-wrap"><table><thead><tr><th>轨迹</th><th>控制步</th><th>仿真时长</th></tr></thead><tbody><tr><td>3 盘</td><td>4,226</td><td>84.510 秒</td></tr><tr><td>4 盘</td><td>8,714</td><td>174.265 秒</td></tr><tr><td>5 盘</td><td>18,064</td><td>361.265 秒</td></tr></tbody></table></div><p>训练数据是特权开发观测，采样 50 Hz，不含 RGB。<code>CenteredController</code> 使用冻结配置。</p><div class="resource-links"><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/solution/datasets/expert_3to5_release_20261023/manifest.json">数据集清单</a><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/automatic_audit_swept_thumb_v2.json">自动审计</a><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/pipeline/20261023-111451-all.json">最终全量检查</a><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/sweep_swept_thumb_release_v2/inputs.json">固定输入与源码哈希</a><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/review_swept_thumb_v2/automatic_materials.json">全部复核材料索引</a><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/README.md">复现说明</a></div><h3>与证据绑定的实现</h3><ul><li><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/task_spec.py">task_spec.py</a></li><li><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/randomization.py">randomization.py</a></li><li><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/sandbox/trusted/scoring.py">sandbox/trusted/scoring.py</a></li><li><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/sandbox/trusted/verifier.py">sandbox/trusted/verifier.py</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/sandbox/pipeline.json">sandbox/pipeline.json</a></li></ul><p>逐场景重现命令可在视频卡的“复现命令”中查看。请在对应候选代码根目录执行，并将输出占位符替换为新的目录。</p></div></section><section class="tinted" id="shortcuts"><div class="wrap"><p class="kicker">05 · 已知捷径</p><h2>真实尝试与拒绝证据</h2><p>以下是实际达到目标条件的物理反例。拒绝结果可以复核；有限反例不证明全部策略都不可能。签名的人工捷径审查仍未完成。</p><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/tabletop-20261023">其他录像见完整发布包</a></p><figcaption><b>大盘压小盘</b><p>条件实际发生；评分拒绝。</p><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/shortcuts/larger_on_smaller/shortcut.json">查看物理反例记录</a></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/tabletop-20261023">其他录像见完整发布包</a></p><figcaption><b>合法移动到错误目标杆</b><p>条件实际发生；评分拒绝。</p><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/shortcuts/wrong_goal/shortcut.json">查看物理反例记录</a></figcaption></figure></div></div></section><section id="gates"><div class="wrap"><p class="kicker">06 · 验收状态</p><h2>自动完成，人工待签审</h2><p>技术证据已完成；人工验收尚未签署。下表区分自动结果与待人工项目，不代填任何姓名、日期或验收结论。</p><div class="table-wrap"><table><thead><tr><th>验收关口</th><th>状态</th><th>说明</th></tr></thead><tbody><tr><td>参考专家解</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>官方轨迹与子目标</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>随机范围覆盖</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>三次重跑波动</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>评分器有效性</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>监视器校准</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>人工阶段标注</td><td><span class="pill warn">待人工</span></td><td>逐段录像独立标注阶段时刻，再与自动时间线核对。</td></tr><tr><td>捷径审查</td><td><span class="pill warn">待人工</span></td><td>检查物理反例是否真正达到声称的条件，以及公开约束是否存在遗漏。</td></tr><tr><td>人工录像签审</td><td><span class="pill warn">待人工</span></td><td>签名确认：没有绕过评分规则、任务确实完成、没有物理违规。</td></tr><tr><td>第二人独立复现</td><td><span class="pill warn">待人工</span></td><td>由第二人使用指定代码、输入和种子独立运行，保存结果与署名。</td></tr><tr><td>容器隔离</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>密封评分模式</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>静态与回归检查</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>场景随机化</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>全量检查流水线</td><td><span class="pill ok">自动通过</span></td><td>最终源码全量检查 19/19。 原准入记录的 partial 标签保留；后续最终检查已补齐自动证据，未替代人工验收。</td></tr></tbody></table></div><div class="notice"><b>两任务均已获用户发布授权。</b> 2026-10-23 用户确认“两个都允许发布”，此前的发布暂缓决定已被替代。人工录像、阶段标注、捷径签审和第二人复现的记录仍待补齐。</div><p><a href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/admission.json">原始准入记录</a> · <a download="" href="/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/review_swept_thumb_v2/manual_review_template.json">空白人工验收模板</a> · <a href="/robo-si-results/infra/tabletop-release/publication-scope.json">当前发布范围</a></p></div></section><script id="task-data" type="application/json">{"id": "hanoi", "title": "Hanoi · 三／四／五盘", "version": "0.3", "scope": "standalone", "layers": [3, 4, 5], "coverage": {"total": 58, "completed": 58, "passed": 58}, "pipeline_steps": 19, "control_steps": 31004, "dataset_episodes": [{"layer": 3, "steps": 4226, "seconds": 84.51}, {"layer": 4, "steps": 8714, "seconds": 174.26500000000001}, {"layer": 5, "steps": 18064, "seconds": 361.265}], "runs": [{"id": "3/nominal", "level": 3, "video": "/robo-si-results/media/507802d9df4eafd9e66b.mp4", "report": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/sweep_swept_thumb_release_v2/disks3/nominal/run/qualification.json", "scene": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/sweep_swept_thumb_release_v2/disks3/nominal/scene.json", "duration": 84.51, "stages": {"disk_lifted_clear": 9.1, "first_move": 15.22, "tower_progress": 82.52, "goal_hold": 84.51}, "kind": "coverage", "command": ["python", "-X", "utf8", "-m", "humanoid.g1_tabletop.sandbox.qualification", "hanoi", "--scene", "humanoid\\g1_tabletop_hanoi\\acceptance\\release_20261022\\sweep_swept_thumb_release_v2\\disks3\\nominal\\scene.json", "--out", "<new-reviewer-output-directory>", "--video", "--disks", "3", "--controller-config", "humanoid\\g1_tabletop_hanoi\\acceptance\\release_20261022\\sweep_swept_thumb_release_v2\\controller_config.json"]}], "supplements": [{"label": "acceptance/release_20261022/dataset_release_20261023_v2/disks3_quality.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks3_quality.json", "video": false}, {"label": "acceptance/release_20261022/dataset_release_20261023_v2/disks4_quality.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks4_quality.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/dataset_release_20261023_v2/disks5_quality.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks5_quality.json", "video": false}, {"label": "acceptance/release_20261022/dataset_release_20261023_v2/disks5_review_clip_contact_sheet.png", "url": "/robo-si-results/media/ff549298c2cc5c925cb9.png", "video": false}, {"label": "acceptance/release_20261022/dataset_release_20261023_v2/review_clip.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/review_clip.json", "video": false}, {"label": "acceptance/release_20261022/dataset_release_20261023_v2/review_clip.log", "url": "tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/review_clip.log", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_descend_to_rim.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_descend_to_rim.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_legal_transfer.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_legal_transfer.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_place_on_target.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_contact_place_on_target.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_physics/report.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_physics/report.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat1/qualification.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat1/qualification.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat2/qualification.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repeat2/qualification.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repetition_spread.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repetition_spread.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_sandbox/replay.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_sandbox/replay.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_subgoal1.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_subgoal1.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_subgoal7.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_subgoal7.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_descend_to_rim.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_descend_to_rim.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_legal_transfer.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_legal_transfer.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_place_on_target.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_contact_place_on_target.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_physics/report.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_physics/report.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat1/qualification.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat1/qualification.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat2/qualification.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repeat2/qualification.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repetition_spread.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repetition_spread.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_sandbox/replay.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_sandbox/replay.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_subgoal1.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_subgoal1.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_subgoal15.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_subgoal15.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_descend_to_rim.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_descend_to_rim.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_legal_transfer.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_legal_transfer.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_place_on_target.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_contact_place_on_target.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_physics/report.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_physics/report.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat1/qualification.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat1/qualification.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat2/qualification.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repeat2/qualification.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repetition_spread.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repetition_spread.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_sandbox/replay.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_sandbox/replay.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_subgoal1.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_subgoal1.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_subgoal31.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_subgoal31.json", "video": false}, {"label": "acceptance/release_20261022/followups_swept_thumb_release_v5/summary.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/followups_swept_thumb_release_v5/summary.json", "video": false}, {"label": "acceptance/release_20261022/shortcuts/larger_on_smaller/shortcut.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/shortcuts/larger_on_smaller/shortcut.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/shortcuts/wrong_goal/shortcut.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/shortcuts/wrong_goal/shortcut.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal1.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal1.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal7.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks3_subgoal7.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal1.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal1.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal15.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks4_subgoal15.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal1.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal1.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal31.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/disks5_subgoal31.json", "video": false}, {"label": "acceptance/release_20261022/subgoals_settle_swept_thumb_v2/summary.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/subgoals_settle_swept_thumb_v2/summary.json", "video": false}], "shortcuts": [{"case": "larger_on_smaller", "observed": true, "rejected": true, "report": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/shortcuts/larger_on_smaller/shortcut.json", "videos": ["https://huggingface.co/datasets/IntelligenceLab/robo-si"]}, {"case": "wrong_goal", "observed": true, "rejected": true, "report": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/shortcuts/wrong_goal/shortcut.json", "videos": ["https://huggingface.co/datasets/IntelligenceLab/robo-si"]}], "quality": [{"flags": [], "report": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks3_quality.json"}, {"flags": [], "report": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks4_quality.json"}, {"flags": ["move_8: sampled hand-contact gap before commanded release", "move_8: sampled left hand-force gap before commanded release", "move_8: sampled right hand-force gap before commanded release"], "report": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/dataset_release_20261023_v2/disks5_quality.json"}], "gates": [{"key": "reference_expert", "name": "参考专家解", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "official_trajectories", "name": "官方轨迹与子目标", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "coverage", "name": "随机范围覆盖", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "reference_rerun_spread", "name": "三次重跑波动", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "verifier_validity", "name": "评分器有效性", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "monitors_calibrated", "name": "监视器校准", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "predicate_labels", "name": "人工阶段标注", "passed": false, "recorded_status": "pending", "note": "逐段录像独立标注阶段时刻，再与自动时间线核对。"}, {"key": "shortcut_audit", "name": "捷径审查", "passed": false, "recorded_status": "partial", "note": "检查物理反例是否真正达到声称的条件，以及公开约束是否存在遗漏。"}, {"key": "video_review", "name": "人工录像签审", "passed": false, "recorded_status": "pending", "note": "签名确认：没有绕过评分规则、任务确实完成、没有物理违规。"}, {"key": "independent_reproduction", "name": "第二人独立复现", "passed": false, "recorded_status": "partial", "note": "由第二人使用指定代码、输入和种子独立运行，保存结果与署名。"}, {"key": "sandbox_isolation", "name": "容器隔离", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "grading_mode", "name": "密封评分模式", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "static_checks", "name": "静态与回归检查", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "randomisation", "name": "场景随机化", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "automatic_pipeline", "name": "全量检查流水线", "passed": true, "recorded_status": "partial", "note": "最终源码全量检查 19/19。 原准入记录的 partial 标签保留；后续最终检查已补齐自动证据，未替代人工验收。"}], "links": {"pipeline": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/pipeline/20261023-111451-all.json", "audit": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/automatic_audit_swept_thumb_v2.json", "dataset": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/solution/datasets/expert_3to5_release_20261023/manifest.json", "spec": "tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/task.toml", "admission": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/admission.json", "instruction": "tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/instruction.zh.md", "manual": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/review_swept_thumb_v2/manual_review_template.json", "materials": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/review_swept_thumb_v2/automatic_materials.json", "readme": "tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/README.md", "controller": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/sweep_swept_thumb_release_v2/controller_config.json", "inputs": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/acceptance/release_20261022/sweep_swept_thumb_release_v2/inputs.json"}, "sources": [{"label": "task_spec.py", "url": "tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/task_spec.py"}, {"label": "randomization.py", "url": "tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/randomization.py"}, {"label": "sandbox/trusted/scoring.py", "url": "tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/sandbox/trusted/scoring.py"}, {"label": "sandbox/trusted/verifier.py", "url": "tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/sandbox/trusted/verifier.py"}, {"label": "sandbox/pipeline.json", "url": "/robo-si-results/infra/tabletop-release/evidence/hanoi/humanoid/g1_tabletop_hanoi/sandbox/pipeline.json"}], "instruction": "# G1 在桌面搭汉诺塔\n\n桌上有三根杆，圆盘按大盘在下、小盘在上的顺序叠在其中一根杆上。把整叠圆盘移到底座为绿色的目标杆上，仍按大盘在下、小盘在上的顺序叠好；第三根杆可用于中转。默认有 3 个圆盘，任务也支持 4 或 5 盘。\n\n每个回合的场景都可能不同：起始杆和目标杆、三根杆的位置、杆高、圆盘的大小和颜色、圆盘的质量和摩擦都会变化，须通过机器人自身的传感器观察。圆盘的颜色与大小没有固定对应关系。\n\n每次只能选择某根杆最上面的一个盘。用手抓住它，向上提到整个盘都越过杆顶，再搬到另一根杆上方，对准盘孔后放下。空杆可以接收任何盘；已有盘的杆只能接收比顶盘更小的盘。\n\n圆盘放好后，机器人所有部位都要离开它，让它在底座或正下方的圆盘上稳定保持 0.5 秒，才算完成这次移动。前一次移动完成后才能开始下一盘。允许合法的额外移动；提起后放回原杆不增加移动次数。\n\n最后，所有圆盘都必须位于目标杆，正确叠放、受到支撑，并完全脱离机器人接触，再连续稳定保持 2 秒。默认总时间限制为：3、4 盘 180 秒，5 盘 420 秒。移动非顶盘、同时移动多盘、大盘压小盘、横穿杆或掉落都会导致失败。\n\nG1 的骨盆固定在支架上，使用双臂与手操作桌面物体，通过 43 维关节动作接口控制。应通过真实接触完成抓取和放置，不得直接改写物体位置、把盘绑定到机器人、伪造接触或修改评分状态。\n\n手臂力矩上限可能为标称值的 85%–100%，本回合的实际限值由控制接口公布；初始手臂姿态可能有小幅变化，应读取关节传感器。\n\n只有完整任务成功才得 1 分，否则为 0 分。最少 7、15、31 步分别对应 3、4、5 盘的符号解；这些步数不提供机器人动作轨迹。\n", "source_digest": {"task": "d7a18c236db291236cdf2b1a64ebe5c306f5d6cb5539b6b7a0a9c3266c83597b", "task_files": 182, "infra": "d9c884cef480a8331db616d9113536f41197baebae794cf79d84d78d3ed40f56", "infra_files": 37}, "admitted": false, "human_acceptance": false, "release_authorized": true, "workspace": "C:\\Users\\wuxiy\\rsi_releases\\tabletop_release_candidate_20261023", "manual_notes_browser_only": true, "video_scope": "one representative; all original cases remain in the full reference release"}</script><section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>已有参考执行见证；设计、动作、支撑、轨迹对应及复现来源见文档。</p><p><a href="/robo-si-results/infra/reference-designs/Hanoi.html">参考解与设计文档</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>完整任务说明与证据</h2><p class="detail-nav"><a href="#detail-scope">任务范围与场景</a> · <a href="#detail-interfaces">观测、动作与接口</a> · <a href="#detail-planning">高层目标与低层动作</a> · <a href="#detail-trajectory">轨迹与关键状态对应</a> · <a href="#detail-scoring">评分与成功判据</a> · <a href="#detail-evidence">代表证据与审阅</a> · <a href="#detail-sandbox">沙盒验证</a> · <a href="#detail-reproduce">下载与复现</a> · <a href="#detail-limits">验收边界与剩余工作</a></p><article id="detail-scope"><h3>任务范围与场景</h3><p>独立顺序操作任务，三／四／五盘</p><p>58/58 场景、19/19 发布快照检查；三／四／五盘范围已完成并发布。</p><p>把合法汉诺塔离散移动展开为接近、抓取、抬升、转移、下放和松手。每次提交移动前核对堆叠合法性与真实落放；循环复用技能，不能把动作清单只执行一遍。</p></article><article id="detail-interfaces"><h3>观测、动作与接口</h3><p>参考控制器的特权状态与公开代理权限分开；以本任务 SDK 和指令为准。</p><p><a href="/robo-si-results/humanoid/g1_tabletop_hanoi/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_tabletop_hanoi/sandbox/agent_sdk">Agent SDK</a></p></article><article id="detail-planning"><h3>高层目标与低层动作</h3><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>选择合法顶盘</td>
+<td>Hanoi.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>抓取并脱杆</td>
+<td>Hanoi.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>转移至目标杆</td>
+<td>Hanoi.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>落盘释放并提交</td>
+<td>Hanoi.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>最终确认</td>
+<td>Hanoi.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>原始合法初态或上一放置已稳定提交，采用三/四/五盘范围</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>选中一个顶盘及合法目标杆</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>整盘最低点清过源杆顶部</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>孔轴在合法目标杆上方可插入</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>正确支撑、全部机器人接触释放并稳定 0.5 s</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>所有盘在目标杆且全部释放稳定 2 s</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>轨迹与关键状态对应</h3><details><summary>动作顺序、接触与轨迹事件</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>Hanoi.K01 · 根据当前已提交栈状态选择下一步</h5>
+<p>入口：原始合法初态或上一放置已稳定提交，采用三/四/五盘范围。出口：选中一个顶盘及合法目标杆。</p>
+<p>局部检查：顶盘唯一，目标为空或顶盘更大；可用递归策略，不展开完整关节轨迹。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hanoi.K01.A01</td>
+<td>读取已提交的三杆栈状态</td>
+<td>所有盘→底座/下盘</td>
+<td>提交状态与物理支撑一致</td>
+<td>e0005: episode [4.66, 4.66] s; e0020: episode [16.26, 16.26] s; e0035: episode [27.14, 27.14] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K01.A02</td>
+<td>只选择源杆最上层盘</td>
+<td>源盘→下盘/底座</td>
+<td>顶盘身份及杆位置</td>
+<td>e0005: episode [4.66, 4.66] s; e0020: episode [16.26, 16.26] s; e0035: episode [27.14, 27.14] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K01.A03</td>
+<td>确认目标杆空或顶盘更大</td>
+<td>目标盘保持原支撑</td>
+<td>合法移动规则；随后重复此选择</td>
+<td>e0005: episode [4.66, 4.66] s; e0020: episode [16.26, 16.26] s; e0035: episode [27.14, 27.14] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>Hanoi.K02 · 手指接触、竖直提盘</h5>
+<p>入口：合法顶盘可达，其他盘仍支撑。出口：整盘最低点清过源杆顶部。</p>
+<p>局部检查：孔杆净空、手指接触、整盘扫掠，不能只看盘中心高度。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hanoi.K02.A01</td>
+<td>到源杆顶盘上方并下降到盘沿</td>
+<td>盘→源支撑</td>
+<td>手指间隙与盘沿位置</td>
+<td>e0005: episode [4.66, 4.66] s; e0006: episode [5.86, 5.86] s; e0020: episode [16.26, 16.26] s; 另 11 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K02.A02</td>
+<td>夹持并等待接触稳定</td>
+<td>源支撑→手指共同承重</td>
+<td>手盘接触与滑移</td>
+<td>e0007: episode [7.26, 7.26] s; e0008: episode [7.66, 7.66] s; e0022: episode [18.86, 18.86] s; 另 11 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K02.A03</td>
+<td>竖直提盘直到越过源杆</td>
+<td>手持盘</td>
+<td>盘孔与杆顶净空</td>
+<td>e0009: episode [8.06, 8.06] s; e0024: episode [19.66, 19.66] s; e0039: episode [30.54, 30.54] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>Hanoi.K03 · 保持持盘，短段移到杆上方</h5>
+<p>入口：整盘已脱源杆且稳定持有。出口：孔轴在合法目标杆上方可插入。</p>
+<p>局部检查：盘/杆/手/邻盘碰撞检查，当前栈状态未改变。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hanoi.K03.A01</td>
+<td>持盘越过桌面障碍向目标杆移动</td>
+<td>手指持盘</td>
+<td>盘高于杆、无碰撞</td>
+<td>e0010: episode [9.56, 9.56] s; e0025: episode [21.16, 21.16] s; e0040: episode [32.04, 32.04] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K03.A02</td>
+<td>停止横移并稳定姿态</td>
+<td>手指持盘</td>
+<td>速度与持物偏移</td>
+<td>e0011: episode [11.78, 11.78] s; e0026: episode [22.66, 22.66] s; e0041: episode [33.54, 33.54] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K03.A03</td>
+<td>将盘孔对准目标杆并短暂停稳</td>
+<td>手指持盘</td>
+<td>孔杆轴线偏差</td>
+<td>e0012: episode [12.18, 12.18] s; e0013: episode [12.68, 12.68] s; e0027: episode [23.06, 23.06] s; 另 15 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>Hanoi.K04 · 沿杆下放、建立支撑、撤手</h5>
+<p>入口：目标杆合法且对准。出口：正确支撑、全部机器人接触释放并稳定 0.5 s。</p>
+<p>局部检查：物理完成后才更新符号栈；未完成不能提前提交。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hanoi.K04.A01</td>
+<td>沿目标杆下放盘体</td>
+<td>手持盘→目标支撑</td>
+<td>孔杆间隙、合法支撑</td>
+<td>e0014: episode [12.84, 12.84] s; e0015: episode [14.24, 14.24] s; e0029: episode [23.72, 23.72] s; 另 11 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K04.A02</td>
+<td>张指释放、留出净空并撤手</td>
+<td>盘→底座/更大盘</td>
+<td>手力消失、支撑持续</td>
+<td>e0016: episode [14.44, 14.44] s; e0017: episode [15.14, 15.14] s; e0018: episode [15.44, 15.44] s; 另 18 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K04.A03</td>
+<td>检查放置驻留并提交本步</td>
+<td>目标支撑独立承重</td>
+<td>实际栈状态与提交移动一致</td>
+<td>e0019: episode [16.240000000000002, 16.240000000000002] s; e0034: episode [27.12, 27.12] s; e0049: episode [38.0, 38.0] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>Hanoi.K05 · 最后一步提交后保持释放并检查驻留</h5>
+<p>入口：当前移动已物理提交，所有盘已在目标杆；否则回到选盘。出口：所有盘在目标杆且全部释放稳定 2 s。</p>
+<p>局部检查：逐步规则检查与最终支撑；不将符号有解当作物理有解。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hanoi.K05.A01</td>
+<td>最后一盘释放后保持手部退出</td>
+<td>全部盘→目标杆底座/下盘</td>
+<td>手盘无接触</td>
+<td>e0112: episode [83.48, 83.48] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K05.A02</td>
+<td>核对完整合法塔并维持驻留</td>
+<td>塔独立承重</td>
+<td>移动数、栈顺序、最终驻留</td>
+<td>e0113: episode [84.28, 84.28] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Hanoi.K05.A03</td>
+<td>读取最终成功与物理状态</td>
+<td>完整支撑链保持</td>
+<td>环境成功与物理记录一致</td>
+<td>e0114: episode [84.3, 84.3] s; e0115: untimed_final_state None s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>评分与成功判据</h3><p>保留本页原任务评分及冻结参考 verdict；分层计划、技能展开和事件对应不产生额外任务分数。合同中的拟议评分不是当前评分实现。完整运行的分数不能赋给筛查或沙盒短测。</p><p>本参考的最终关键状态：所有盘在目标杆且全部释放稳定 2 s</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_tabletop_hanoi/task_spec.py">原任务判据源码 / Original task criteria</a></p></article><article id="detail-evidence"><h3>代表证据与审阅</h3><p>见证：<strong>3/corner_far_forward</strong>。范围：独立顺序操作任务，三／四／五盘。</p>
+<p>58/58 场景、19/19 发布快照检查；三／四／五盘范围已完成并发布。</p>
+<p><a href="/robo-si-results/infra/planning/skill-evidence/sources/d420f3f1489194ad5d59b40bbd1db699f5a2a0cc66fe660f77878f544aebda3d.json">完整见证原始记录</a>；<a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/planning/hierarchical-evaluation/action-mappings/Hanoi.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>沙盒验证</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>这些检查验证启动、传感器与动作接口；不计完整任务成功。同机 WSL 不是独立第二台机器复现。</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/Hanoi/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>下载与复现</h3><p><a href="https://github.com/wuxiyang1996/robo-si/releases/download/tabletop-20261023/tabletop-20261023.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: a51f77d30d09898dbc08cffcacdee06e9ac807179cbbb4d487003c5db0c6e154</p><p>下载需私有仓库权限。参考包保留历史配置与运行入口；当前沙盒工作区补齐运行资产。先按沙盒 README 安装环境并执行短测，再用参考包的冻结入口复现；不能把新接口短测当作完整专家回放。</p><p>先检查本任务入口（不运行物理），再按链接中的环境与代理交付说明启动。历史 README 中的原机器路径须替换为本机路径；本页沙盒验证表是当前检查状态。</p><pre><code>python -m infra.sandbox.inventory check --task Hanoi
+python -m humanoid.g1_tabletop_hanoi.sandbox.launch --help</code></pre><p><a href="/robo-si-results/humanoid/g1_tabletop_hanoi/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>验收边界与剩余工作</h3><p>补抓盘、过杆、落盘的几何／接触余量及提交状态衔接；符号合法性不能代替物理检查。 原四项人工验收关口与独立第二人复现。</p><p>七次合法移动循环已展开；顶盘选择为离散决策，不能当作独立连续运动。逐步支撑及提交栈状态仍待联合核对。</p><p>随机实例分别记录：有完整成功证据、通过可行性筛查、未确定、检查不通过。只要求声明范围内的代表完整见证与表示间对应；不要求逐个随机实例生成完整解。正式准入、人工签审和独立机器验证不由页面完成状态推定。本次新增物理执行：0。</p><p><a href="/robo-si-results/infra/reference-designs/Hanoi.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main><footer><div class="wrap">robo-si · 任务验收 · 2026-10-23 · 网页发布与任务准入分别记录</div></footer><script defer="" src="/robo-si-results/infra/tabletop-review.js"></script><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

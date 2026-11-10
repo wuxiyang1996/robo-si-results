@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Sokoban · 双 G1 未知地图推箱清路 · 参考设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main.wrap{padding-block:40px;overflow-wrap:anywhere}h2{margin-top:44px}h3{margin-top:30px}pre{overflow:auto;background:var(--panel);padding:18px;border-radius:10px}th,td{min-width:100px}h1{font-size:clamp(28px,5vw,44px)}</style><meta content="Sokoban · 双 G1 未知地图推箱清路 · 参考设计 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><main class="wrap"><nav><a href="/robo-si-results/infra/reference-designs-zh.html">14 项参考解设计</a> · <a href="/robo-si-results/infra/reference-designs/Sokoban.md">Markdown 源文档</a> · <a href="/robo-si-results/infra/task-sokoban-zh.html">任务页面</a></nav><h1 id="sokoban-g1">Sokoban · 双 G1 未知地图推箱清路：参考解设计</h1><p id="current-sokoban-design">当前任务设计：<a href="../task-sokoban-design-zh.html">从局部观察到全局建图</a>。全局建图、通信对照与可选自主工具构建；下文保留历史参考执行与证据范围。</p>
+<p>已有声明范围内的参考执行见证；本文补齐统一设计说明。本次新增物理运行：0。</p>
+<h2 id="_1">设计思路</h2>
+<p>两台机器人从自身图像与本体感知建立局部地图，通过显式消息协调离散走动与推箱操作，再展开为转向、步行、接近、推行及扫描轨迹。完整开发地图见证不能替代未见地图或仅推不抓的完整接触认证。</p>
+<h2 id="_2">选定参考与范围</h2>
+<p>四箱开发地图；自身 RGB、本体感知与显式消息；单次完整实验见证。</p>
+<p>Gamma 8011370：279.18 s、24 个高层操作、76 个低层段；两机到各自目标并保持 3 s。独立采样审阅及完整公共输入回放通过；task_success=null。</p>
+<h2 id="sokoban-8011370">配置／见证 sokoban-8011370</h2>
+<p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/sokoban-release/mapping.json">完整分层映射与生成来源（GitHub 源文件，需仓库权限）</a>。下面的轨迹段来自同一连续记录；准备与上下文段也保留。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>机器人</th>
+<th>动作</th>
+<th>低层段</th>
+<th>实测后置条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>action_1</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_7"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.1273854821920395, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_2</td>
+<td>g1_b</td>
+<td>walk</td>
+<td>["segment_10"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.09729092121124272, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_3</td>
+<td>g1_b</td>
+<td>walk</td>
+<td>["segment_13"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.12796814441680882, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_4</td>
+<td>g1_b</td>
+<td>walk</td>
+<td>["segment_15"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.13690230846405005, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_5</td>
+<td>g1_b</td>
+<td>walk</td>
+<td>["segment_17"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.12639222145080542, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_6</td>
+<td>g1_a</td>
+<td>push</td>
+<td>["segment_19", "segment_20", "segment_21", "segment_22", "segment_23", "segment_24", "segment_25"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.10844402313232449, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule", "crate": "crate_d", "crate_target_cell_reached": true, "crate_cell_center_error_linf_m": 0.12481286525726332, "displacement_m": [1.0248128175735474, -0.012602751253751335]}</td>
+</tr>
+<tr>
+<td>action_7</td>
+<td>g1_a</td>
+<td>push</td>
+<td>["segment_26", "segment_27", "segment_28", "segment_29", "segment_30", "segment_31", "segment_32"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.12386236190795896, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule", "crate": "crate_a", "crate_target_cell_reached": true, "crate_cell_center_error_linf_m": 0.1249409437179565, "displacement_m": [0.04608607292175293, 1.0249409675598145]}</td>
+</tr>
+<tr>
+<td>action_8</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_33"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.07554844617843615, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_9</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_34"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.021340680122375444, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_10</td>
+<td>g1_b</td>
+<td>push</td>
+<td>["segment_36", "segment_37", "segment_38", "segment_39", "segment_40", "segment_41", "segment_42"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.1307489424943924, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule", "crate": "crate_c", "crate_target_cell_reached": true, "crate_cell_center_error_linf_m": 0.20348474979400644, "displacement_m": [-1.103484749722887, 0.0862802267074585]}</td>
+</tr>
+<tr>
+<td>action_11</td>
+<td>g1_b</td>
+<td>push</td>
+<td>["segment_44", "segment_45", "segment_46", "segment_47", "segment_48", "segment_49", "segment_50"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.2160142421722413, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule", "crate": "crate_c", "crate_target_cell_reached": true, "crate_cell_center_error_linf_m": 0.26437087059021014, "displacement_m": [-0.9608861207962036, -0.10270291566848755]}</td>
+</tr>
+<tr>
+<td>action_12</td>
+<td>g1_b</td>
+<td>push</td>
+<td>["segment_52", "segment_53", "segment_54", "segment_55", "segment_56", "segment_57", "segment_58"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.2154469013214113, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule", "crate": "crate_c", "crate_target_cell_reached": true, "crate_cell_center_error_linf_m": 0.12499837875366193, "displacement_m": [-0.7606275081634521, 0.07241791486740112]}</td>
+</tr>
+<tr>
+<td>action_13</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_60"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.13441703319549558, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_14</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_61"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.12838828563690186, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_15</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_62"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.12018259763717642, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_16</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_63"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.13259273767471313, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_17</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_64"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.11106102466583234, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_18</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_65"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.09153242111206072, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_19</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_66"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.13726797103881838, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_20</td>
+<td>g1_a</td>
+<td>walk</td>
+<td>["segment_67"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.12455766201019314, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_21</td>
+<td>g1_b</td>
+<td>walk</td>
+<td>["segment_69"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.10868376493453924, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_22</td>
+<td>g1_b</td>
+<td>walk</td>
+<td>["segment_71"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.13589591979980487, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_23</td>
+<td>g1_b</td>
+<td>walk</td>
+<td>["segment_73"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.1290633916854852, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+<tr>
+<td>action_24</td>
+<td>g1_b</td>
+<td>walk</td>
+<td>["segment_75"]</td>
+<td>{"robot_target_cell_reached": true, "robot_cell_center_error_linf_m": 0.13528292179107604, "interpretation": "Nominal cell occupancy, not exact center tracking or an extra task scoring rule"}</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>低层段</th>
+<th>机器人／高层</th>
+<th>动作</th>
+<th>约束</th>
+<th>轨迹时间 s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>segment_1</td>
+<td>g1_a / episode_context</td>
+<td>Stabilize before the initial camera scan.</td>
+<td>Initial 2 s before scanning; zero yaw command.</td>
+<td>[0.0, 2.0]</td>
+</tr>
+<tr>
+<td>segment_2</td>
+<td>g1_b / episode_context</td>
+<td>Stabilize before the initial camera scan.</td>
+<td>Initial 2 s before scanning; zero yaw command.</td>
+<td>[0.0, 2.0]</td>
+</tr>
+<tr>
+<td>segment_3</td>
+<td>g1_a / episode_context</td>
+<td>Turn and reconstruct local visible cells from own RGB and proprioception.</td>
+<td>Own unwrapped yaw completes a turn; 30 s scan timeout.</td>
+<td>[2.0, 9.86]</td>
+</tr>
+<tr>
+<td>segment_4</td>
+<td>g1_b / episode_context</td>
+<td>Turn and reconstruct local visible cells from own RGB and proprioception.</td>
+<td>Own unwrapped yaw completes a turn; 30 s scan timeout.</td>
+<td>[2.0, 10.58]</td>
+</tr>
+<tr>
+<td>segment_5</td>
+<td>g1_a / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[9.86, 10.6]</td>
+</tr>
+<tr>
+<td>segment_6</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[10.58, 24.0]</td>
+</tr>
+<tr>
+<td>segment_7</td>
+<td>g1_a / action_1</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[10.6, 16.82]</td>
+</tr>
+<tr>
+<td>segment_8</td>
+<td>g1_a / episode_context</td>
+<td>Turn and reconstruct local visible cells from own RGB and proprioception.</td>
+<td>Own unwrapped yaw completes a turn; 30 s scan timeout.</td>
+<td>[16.82, 23.98]</td>
+</tr>
+<tr>
+<td>segment_9</td>
+<td>g1_a / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[23.98, 58.92]</td>
+</tr>
+<tr>
+<td>segment_10</td>
+<td>g1_b / action_2</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[24.0, 30.900000000000002]</td>
+</tr>
+<tr>
+<td>segment_11</td>
+<td>g1_b / episode_context</td>
+<td>Turn and reconstruct local visible cells from own RGB and proprioception.</td>
+<td>Own unwrapped yaw completes a turn; 30 s scan timeout.</td>
+<td>[30.900000000000002, 38.86]</td>
+</tr>
+<tr>
+<td>segment_12</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[38.86, 38.9]</td>
+</tr>
+<tr>
+<td>segment_13</td>
+<td>g1_b / action_3</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[38.9, 45.86]</td>
+</tr>
+<tr>
+<td>segment_14</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[45.86, 45.9]</td>
+</tr>
+<tr>
+<td>segment_15</td>
+<td>g1_b / action_4</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[45.9, 52.26]</td>
+</tr>
+<tr>
+<td>segment_16</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[52.26, 52.300000000000004]</td>
+</tr>
+<tr>
+<td>segment_17</td>
+<td>g1_b / action_5</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[52.300000000000004, 58.9]</td>
+</tr>
+<tr>
+<td>segment_18</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[58.9, 125.18]</td>
+</tr>
+<tr>
+<td>segment_19</td>
+<td>g1_a / action_6</td>
+<td>Approach the visually tracked crate and align the pushing direction.</td>
+<td>Target 0.95 m behind the visually tracked crate; &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[58.92, 61.04]</td>
+</tr>
+<tr>
+<td>segment_20</td>
+<td>g1_a / action_6</td>
+<td>Deploy the pushing posture, lower commanded height smoothly, and anchor to the stationary crate.</td>
+<td>3 s blend; height command ramps 0.72 to 0.65 m; visual anchor corrections restricted to &lt;0.25 m.</td>
+<td>[61.04, 64.04]</td>
+</tr>
+<tr>
+<td>segment_21</td>
+<td>g1_a / action_6</td>
+<td>Advance with visual crate tracking, lateral correction and heading feedback.</td>
+<td>Forward command 0.18 m/s, lateral correction capped at 0.08 m/s; stop at estimated remaining distance &lt;0.06 m; stale tracking &gt;1 s stops translation.</td>
+<td>[64.04, 75.42]</td>
+</tr>
+<tr>
+<td>segment_22</td>
+<td>g1_a / action_6</td>
+<td>Retreat until own odometry or fresh RGB plus own FK indicates release clearance.</td>
+<td>Backward command 0.30 m/s; release after &gt;0.20 m estimated retreat OR fresh RGB (&lt;0.3 s) and own-FK clearance &gt;0.08 m.</td>
+<td>[75.42, 76.02]</td>
+</tr>
+<tr>
+<td>segment_23</td>
+<td>g1_a / action_6</td>
+<td>Hold the crouched posture for one second after retreat.</td>
+<td>1 s at zero commanded velocity and 0.65 m height command.</td>
+<td>[76.02, 77.04]</td>
+</tr>
+<tr>
+<td>segment_24</td>
+<td>g1_a / action_6</td>
+<td>Retract the arms while smoothly restoring the standing height command.</td>
+<td>3 s blend; height command ramps 0.65 to 0.72 m.</td>
+<td>[77.04, 80.06]</td>
+</tr>
+<tr>
+<td>segment_25</td>
+<td>g1_a / action_6</td>
+<td>Move to the post-push robot subgoal and complete the operation.</td>
+<td>Post-push robot subgoal: &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[80.06, 85.84]</td>
+</tr>
+<tr>
+<td>segment_26</td>
+<td>g1_a / action_7</td>
+<td>Approach the visually tracked crate and align the pushing direction.</td>
+<td>Target 0.95 m behind the visually tracked crate; &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[85.84, 87.86]</td>
+</tr>
+<tr>
+<td>segment_27</td>
+<td>g1_a / action_7</td>
+<td>Deploy the pushing posture, lower commanded height smoothly, and anchor to the stationary crate.</td>
+<td>3 s blend; height command ramps 0.72 to 0.65 m; visual anchor corrections restricted to &lt;0.25 m.</td>
+<td>[87.86, 90.88]</td>
+</tr>
+<tr>
+<td>segment_28</td>
+<td>g1_a / action_7</td>
+<td>Advance with visual crate tracking, lateral correction and heading feedback.</td>
+<td>Forward command 0.18 m/s, lateral correction capped at 0.08 m/s; stop at estimated remaining distance &lt;0.06 m; stale tracking &gt;1 s stops translation.</td>
+<td>[90.88, 102.62]</td>
+</tr>
+<tr>
+<td>segment_29</td>
+<td>g1_a / action_7</td>
+<td>Retreat until own odometry or fresh RGB plus own FK indicates release clearance.</td>
+<td>Backward command 0.30 m/s; release after &gt;0.20 m estimated retreat OR fresh RGB (&lt;0.3 s) and own-FK clearance &gt;0.08 m.</td>
+<td>[102.62, 103.12]</td>
+</tr>
+<tr>
+<td>segment_30</td>
+<td>g1_a / action_7</td>
+<td>Hold the crouched posture for one second after retreat.</td>
+<td>1 s at zero commanded velocity and 0.65 m height command.</td>
+<td>[103.12, 104.14]</td>
+</tr>
+<tr>
+<td>segment_31</td>
+<td>g1_a / action_7</td>
+<td>Retract the arms while smoothly restoring the standing height command.</td>
+<td>3 s blend; height command ramps 0.65 to 0.72 m.</td>
+<td>[104.14, 107.16]</td>
+</tr>
+<tr>
+<td>segment_32</td>
+<td>g1_a / action_7</td>
+<td>Move to the post-push robot subgoal and complete the operation.</td>
+<td>Post-push robot subgoal: &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[107.16, 110.9]</td>
+</tr>
+<tr>
+<td>segment_33</td>
+<td>g1_a / action_8</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[110.9, 117.38]</td>
+</tr>
+<tr>
+<td>segment_34</td>
+<td>g1_a / action_9</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[117.38, 125.16]</td>
+</tr>
+<tr>
+<td>segment_35</td>
+<td>g1_a / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[125.16, 194.8]</td>
+</tr>
+<tr>
+<td>segment_36</td>
+<td>g1_b / action_10</td>
+<td>Approach the visually tracked crate and align the pushing direction.</td>
+<td>Target 0.95 m behind the visually tracked crate; &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[125.18, 128.84]</td>
+</tr>
+<tr>
+<td>segment_37</td>
+<td>g1_b / action_10</td>
+<td>Deploy the pushing posture, lower commanded height smoothly, and anchor to the stationary crate.</td>
+<td>3 s blend; height command ramps 0.72 to 0.65 m; visual anchor corrections restricted to &lt;0.25 m.</td>
+<td>[128.84, 131.84]</td>
+</tr>
+<tr>
+<td>segment_38</td>
+<td>g1_b / action_10</td>
+<td>Advance with visual crate tracking, lateral correction and heading feedback.</td>
+<td>Forward command 0.18 m/s, lateral correction capped at 0.08 m/s; stop at estimated remaining distance &lt;0.06 m; stale tracking &gt;1 s stops translation.</td>
+<td>[131.84, 141.92000000000002]</td>
+</tr>
+<tr>
+<td>segment_39</td>
+<td>g1_b / action_10</td>
+<td>Retreat until own odometry or fresh RGB plus own FK indicates release clearance.</td>
+<td>Backward command 0.30 m/s; release after &gt;0.20 m estimated retreat OR fresh RGB (&lt;0.3 s) and own-FK clearance &gt;0.08 m.</td>
+<td>[141.92000000000002, 142.56]</td>
+</tr>
+<tr>
+<td>segment_40</td>
+<td>g1_b / action_10</td>
+<td>Hold the crouched posture for one second after retreat.</td>
+<td>1 s at zero commanded velocity and 0.65 m height command.</td>
+<td>[142.56, 143.56]</td>
+</tr>
+<tr>
+<td>segment_41</td>
+<td>g1_b / action_10</td>
+<td>Retract the arms while smoothly restoring the standing height command.</td>
+<td>3 s blend; height command ramps 0.65 to 0.72 m.</td>
+<td>[143.56, 146.56]</td>
+</tr>
+<tr>
+<td>segment_42</td>
+<td>g1_b / action_10</td>
+<td>Move to the post-push robot subgoal and complete the operation.</td>
+<td>Post-push robot subgoal: &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[146.56, 150.9]</td>
+</tr>
+<tr>
+<td>segment_43</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[150.9, 150.96]</td>
+</tr>
+<tr>
+<td>segment_44</td>
+<td>g1_b / action_11</td>
+<td>Approach the visually tracked crate and align the pushing direction.</td>
+<td>Target 0.95 m behind the visually tracked crate; &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[150.96, 151.34]</td>
+</tr>
+<tr>
+<td>segment_45</td>
+<td>g1_b / action_11</td>
+<td>Deploy the pushing posture, lower commanded height smoothly, and anchor to the stationary crate.</td>
+<td>3 s blend; height command ramps 0.72 to 0.65 m; visual anchor corrections restricted to &lt;0.25 m.</td>
+<td>[151.34, 154.34]</td>
+</tr>
+<tr>
+<td>segment_46</td>
+<td>g1_b / action_11</td>
+<td>Advance with visual crate tracking, lateral correction and heading feedback.</td>
+<td>Forward command 0.18 m/s, lateral correction capped at 0.08 m/s; stop at estimated remaining distance &lt;0.06 m; stale tracking &gt;1 s stops translation.</td>
+<td>[154.34, 159.82]</td>
+</tr>
+<tr>
+<td>segment_47</td>
+<td>g1_b / action_11</td>
+<td>Retreat until own odometry or fresh RGB plus own FK indicates release clearance.</td>
+<td>Backward command 0.30 m/s; release after &gt;0.20 m estimated retreat OR fresh RGB (&lt;0.3 s) and own-FK clearance &gt;0.08 m.</td>
+<td>[159.82, 161.0]</td>
+</tr>
+<tr>
+<td>segment_48</td>
+<td>g1_b / action_11</td>
+<td>Hold the crouched posture for one second after retreat.</td>
+<td>1 s at zero commanded velocity and 0.65 m height command.</td>
+<td>[161.0, 162.0]</td>
+</tr>
+<tr>
+<td>segment_49</td>
+<td>g1_b / action_11</td>
+<td>Retract the arms while smoothly restoring the standing height command.</td>
+<td>3 s blend; height command ramps 0.65 to 0.72 m.</td>
+<td>[162.0, 165.0]</td>
+</tr>
+<tr>
+<td>segment_50</td>
+<td>g1_b / action_11</td>
+<td>Move to the post-push robot subgoal and complete the operation.</td>
+<td>Post-push robot subgoal: &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[165.0, 169.6]</td>
+</tr>
+<tr>
+<td>segment_51</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[169.6, 169.66]</td>
+</tr>
+<tr>
+<td>segment_52</td>
+<td>g1_b / action_12</td>
+<td>Approach the visually tracked crate and align the pushing direction.</td>
+<td>Target 0.95 m behind the visually tracked crate; &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[169.66, 169.70000000000002]</td>
+</tr>
+<tr>
+<td>segment_53</td>
+<td>g1_b / action_12</td>
+<td>Deploy the pushing posture, lower commanded height smoothly, and anchor to the stationary crate.</td>
+<td>3 s blend; height command ramps 0.72 to 0.65 m; visual anchor corrections restricted to &lt;0.25 m.</td>
+<td>[169.70000000000002, 172.70000000000002]</td>
+</tr>
+<tr>
+<td>segment_54</td>
+<td>g1_b / action_12</td>
+<td>Advance with visual crate tracking, lateral correction and heading feedback.</td>
+<td>Forward command 0.18 m/s, lateral correction capped at 0.08 m/s; stop at estimated remaining distance &lt;0.06 m; stale tracking &gt;1 s stops translation.</td>
+<td>[172.70000000000002, 186.62]</td>
+</tr>
+<tr>
+<td>segment_55</td>
+<td>g1_b / action_12</td>
+<td>Retreat until own odometry or fresh RGB plus own FK indicates release clearance.</td>
+<td>Backward command 0.30 m/s; release after &gt;0.20 m estimated retreat OR fresh RGB (&lt;0.3 s) and own-FK clearance &gt;0.08 m.</td>
+<td>[186.62, 187.12]</td>
+</tr>
+<tr>
+<td>segment_56</td>
+<td>g1_b / action_12</td>
+<td>Hold the crouched posture for one second after retreat.</td>
+<td>1 s at zero commanded velocity and 0.65 m height command.</td>
+<td>[187.12, 188.12]</td>
+</tr>
+<tr>
+<td>segment_57</td>
+<td>g1_b / action_12</td>
+<td>Retract the arms while smoothly restoring the standing height command.</td>
+<td>3 s blend; height command ramps 0.65 to 0.72 m.</td>
+<td>[188.12, 191.12]</td>
+</tr>
+<tr>
+<td>segment_58</td>
+<td>g1_b / action_12</td>
+<td>Move to the post-push robot subgoal and complete the operation.</td>
+<td>Post-push robot subgoal: &lt;0.13 m position and &lt;0.16 rad heading error.</td>
+<td>[191.12, 194.76]</td>
+</tr>
+<tr>
+<td>segment_59</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[194.76, 248.26000000000002]</td>
+</tr>
+<tr>
+<td>segment_60</td>
+<td>g1_a / action_13</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[194.8, 206.42000000000002]</td>
+</tr>
+<tr>
+<td>segment_61</td>
+<td>g1_a / action_14</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[206.42000000000002, 213.14000000000001]</td>
+</tr>
+<tr>
+<td>segment_62</td>
+<td>g1_a / action_15</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[213.14000000000001, 218.18]</td>
+</tr>
+<tr>
+<td>segment_63</td>
+<td>g1_a / action_16</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[218.18, 224.92000000000002]</td>
+</tr>
+<tr>
+<td>segment_64</td>
+<td>g1_a / action_17</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[224.92000000000002, 231.62]</td>
+</tr>
+<tr>
+<td>segment_65</td>
+<td>g1_a / action_18</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[231.62, 237.38]</td>
+</tr>
+<tr>
+<td>segment_66</td>
+<td>g1_a / action_19</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[237.38, 244.02]</td>
+</tr>
+<tr>
+<td>segment_67</td>
+<td>g1_a / action_20</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[244.02, 248.22]</td>
+</tr>
+<tr>
+<td>segment_68</td>
+<td>g1_a / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[248.22, 279.18]</td>
+</tr>
+<tr>
+<td>segment_69</td>
+<td>g1_b / action_21</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[248.26000000000002, 255.68]</td>
+</tr>
+<tr>
+<td>segment_70</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[255.68, 255.74]</td>
+</tr>
+<tr>
+<td>segment_71</td>
+<td>g1_b / action_22</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[255.74, 260.86]</td>
+</tr>
+<tr>
+<td>segment_72</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[260.86, 260.92]</td>
+</tr>
+<tr>
+<td>segment_73</td>
+<td>g1_b / action_23</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[260.92, 267.62]</td>
+</tr>
+<tr>
+<td>segment_74</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[267.62, 267.68]</td>
+</tr>
+<tr>
+<td>segment_75</td>
+<td>g1_b / action_24</td>
+<td>Track the selected walking subgoal and heading with the leg controller.</td>
+<td>Normally &lt;0.13 m and &lt;0.16 rad; settled-walk handoff permits &lt;0.18 m after 15 s at estimated speed &lt;0.02 m/s.</td>
+<td>[267.68, 274.58]</td>
+</tr>
+<tr>
+<td>segment_76</td>
+<td>g1_b / episode_context</td>
+<td>Hold position, exchange explicit messages, or stabilize in the observed own goal.</td>
+<td>Position/heading hold; at the observed own goal, zero velocity with own-IMU hip trim.</td>
+<td>[274.58, 279.18]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="_3">已记录检查</h3>
+<pre><code class="language-json">{
+  "high_to_low": true,
+  "low_to_trajectory": true,
+  "high_to_trajectory": true,
+  "end_to_end": true,
+  "complete_per_robot_command_coverage": true,
+  "controls": 13959,
+  "robot_command_samples": 27918,
+  "both_goal_dwell_s": 3.000000000000002
+}
+</code></pre>
+<h2 id="_4">尚需核对</h2>
+<p>完整接触/仅推不抓有效性认证、未见地图验证、协作收益对照和人工验收；仍为实验候选。</p>
+<p><code>task_success = null</code>：已有完成开发地图操作目标的连续实验见证，但正式任务成功判定及完整接触有效性尚未认证。公开输入重放不计作第二次物理执行。</p>
+<h2 id="_5">复现与生成入口</h2>
+<ul>
+<li><a href="/robo-si-results/multi_robot/g1_sokoban/README.txt">multi_robot/g1_sokoban/README.txt</a></li>
+<li><a href="/robo-si-results/multi_robot/g1_sokoban/HIERARCHICAL_WITNESS.txt">multi_robot/g1_sokoban/HIERARCHICAL_WITNESS.txt</a></li>
+</ul>
+<p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/6179f8994220b6c6c6e9f0deec8e087f19e517ee/releases/g1-sokoban-hidden-map-0.1.0-rc2/g1-sokoban-hidden-map-0.1.0-rc2.zip">完整参考包</a>。使用包内冻结配置、依赖说明与生成／回放入口；审阅包不替代完整包。</p>
+<p>历史源码说明只提供设计上下文；若与冻结见证冲突，以见证的配置、控制器身份和发布清单为准。设计动作表不等同于已绑定的通用控制器。</p>
+<h2 id="_6">验收与执行边界</h2>
+<p>本文件说明已有参考的设计与证据，不修改旧评分。任务级要求至少一个声明配置内的连续端到端生成见证；高层计划→低层动作、低层动作→轨迹、高层目标→实测终态分别核对。这里的“两两转换”是表示之间的对应，不是任意随机状态下技能可无条件拼接。</p>
+<p>随机实例保留四种结果：有完整成功证据、通过可行性筛查、未确定、检查不通过；筛查通过不写成已证明可解。只在需要执行时生成当前局部轨迹；通用滚动规划和全随机域鲁棒性另列，不是本参考文档的完成前提。</p>
+<p>若接触、支撑或守卫条件不满足，不推进下一动作；保留已有安全支撑并记录失败，仅在已知安全状态下重新观察与局部规划。不得凭事件名推断接触合格，不得将不同检查点的成功片段拼接成连续成功。</p>
+<h2 id="_7">来源与版本</h2>
+<p>来源内容哈希见 <a href="/robo-si-results/infra/reference-designs/catalog.json">catalog.json</a>，对应生成器为 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tools/build_reference_designs.py">build_reference_designs.py</a>。本次只整理设计与证据，不将待审事件关联计作验收通过。</p></main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

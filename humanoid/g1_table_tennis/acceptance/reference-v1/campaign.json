@@ -1,0 +1,95 @@
+{
+  "schema": "g1-table-tennis-reference-campaign/1",
+  "scope": "four_exact_configurations",
+  "reference_attempts": 12,
+  "reference_successes": 12,
+  "reference_design_witnesses": 12,
+  "stage_scoring_version": "stage-scoring/1",
+  "stage_score_mean": 100.0,
+  "stage_score_std": 0.0,
+  "success_rate": 1.0,
+  "all_prescribed_runs_retained": true,
+  "controls": [
+    {
+      "id": "zero-torque-nominal",
+      "case": "nominal",
+      "baseline": "zero_torque",
+      "cohort": "balance_negative",
+      "stage_score": 0.0,
+      "success": false,
+      "error": null,
+      "audit": {
+        "schema": "robo-si-table-tennis-audit/1",
+        "artifact_integrity": true,
+        "independent_regrade": true,
+        "continuous_start_to_finish": true,
+        "mapping_checks": {
+          "HL_LL": null,
+          "LL_TRAJ": null,
+          "HL_TRAJ": null
+        },
+        "design_witness": false,
+        "success": false,
+        "requires_fresh_torque_replay_for_physics_reproduction": true
+      },
+      "wall_seconds": 5.946546074002981
+    },
+    {
+      "id": "hold-nominal",
+      "case": "nominal",
+      "baseline": "hold",
+      "cohort": "control",
+      "stage_score": 25.0,
+      "success": false,
+      "error": null,
+      "audit": {
+        "schema": "robo-si-table-tennis-audit/1",
+        "artifact_integrity": true,
+        "independent_regrade": true,
+        "continuous_start_to_finish": true,
+        "mapping_checks": {
+          "HL_LL": null,
+          "LL_TRAJ": null,
+          "HL_TRAJ": null
+        },
+        "design_witness": false,
+        "success": false,
+        "requires_fresh_torque_replay_for_physics_reproduction": true
+      },
+      "wall_seconds": 9.728191199013963
+    },
+    {
+      "id": "wide-unreachable",
+      "case": "wide_unreachable",
+      "baseline": "expert",
+      "cohort": "screening_negative",
+      "stage_score": 0.0,
+      "success": false,
+      "error": "ValueError: incoming_bounce_outside_own_half",
+      "audit": {
+        "schema": "robo-si-table-tennis-audit/1",
+        "artifact_integrity": true,
+        "independent_regrade": true,
+        "continuous_start_to_finish": false,
+        "mapping_checks": {
+          "HL_LL": null,
+          "LL_TRAJ": null,
+          "HL_TRAJ": null
+        },
+        "design_witness": false,
+        "success": false,
+        "requires_fresh_torque_replay_for_physics_reproduction": true
+      },
+      "wall_seconds": 1.7066378809977323
+    }
+  ],
+  "replay_passes": 4,
+  "replay_attempts": 4,
+  "physics_checks_pass": true,
+  "integrity_negative_checks_pass": true,
+  "formal_admission": false,
+  "human_review": "pending",
+  "independent_person_reproduction": "pending",
+  "publication": "not_published",
+  "scoped_reference_release_ready": true
+}

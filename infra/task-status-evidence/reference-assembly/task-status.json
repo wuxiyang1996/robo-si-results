@@ -1,0 +1,55 @@
+{
+  "schema": "robo-si-task-status/1",
+  "as_of": "2026-10-27",
+  "task_id": "g1_reference_assembly",
+  "state": "implemented_prototype_without_complete_robot_expert",
+  "page_scope": "Status and preserved mechanical/idle-interface reports; not a full task reference release",
+  "formal_admission": false,
+  "human_review": "not_recorded",
+  "evidence": [
+    {
+      "file": "mechanism-report.json",
+      "source_repository_path": "humanoid/g1_reference_assembly/validation/mechanism_final/report.json",
+      "sha256": "6cf434ab842eee7f9a0c0d952072048da660a78a6fb7d613530c6b072f24efbe",
+      "bytes": 21504
+    },
+    {
+      "file": "sequence-report.json",
+      "source_repository_path": "humanoid/g1_reference_assembly/validation/sequence_final_v2/report.json",
+      "sha256": "0bed7871c69337541ec20aecea1f02283b53fdde87a5e3117da1c87f9f04574f",
+      "bytes": 187654
+    },
+    {
+      "file": "idle-interface-report.json",
+      "source_repository_path": "humanoid/g1_reference_assembly/validation/policy_interface_final/report.json",
+      "sha256": "c6acc4f866c49e6a030bdb1f49379f72f8e51255b12f386d2010c98b7e130424",
+      "bytes": 10997
+    },
+    {
+      "file": "idle-replay-report.json",
+      "source_repository_path": "humanoid/g1_reference_assembly/validation/policy_interface_replay/replay_report.json",
+      "sha256": "f71e8fc6169ace5588e4b56d42767fbc6db3a5f589bdb6f69797351ac2432755",
+      "bytes": 2417
+    }
+  ],
+  "mechanism_checks_passed": true,
+  "mechanism_initialized_at_goal": true,
+  "sequence_checks_passed": true,
+  "sequence_uses_initialization_setters": true,
+  "workflow_steps": {
+    "bottom_up": 8,
+    "top_down": 8
+  },
+  "idle_record_seconds": 2.9999999999999583,
+  "idle_recorded_steps": 150,
+  "idle_replay_verified": true,
+  "idle_task_success": false,
+  "full_robot_expert_verified": false,
+  "portable_release_verified": false,
+  "limitations": [
+    "Mechanical diagnostics initialize each arrangement; they do not contain robot assembly motions.",
+    "The 150-command independent replay only holds the initial posture; both original and replay task success are false.",
+    "No complete eight-part robot assembly, visual policy, multi-seed success or free-base execution is verified.",
+    "Full raw traces, runtime sources and model assets are outside this compact status evidence directory."
+  ]
+}

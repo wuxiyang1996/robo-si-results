@@ -1,0 +1,101 @@
+{
+  "updated_at": "2026-10-25T05:49:41.582070+00:00",
+  "diagnostic_passed": true,
+  "checks": {
+    "integrity": true,
+    "complete_safety": true,
+    "no_safety_events": true,
+    "no_runtime_writes": true,
+    "source_unchanged": true,
+    "recording_valid": true,
+    "expert_completed": true,
+    "target_delivered": true,
+    "zero_joint_overshoot": true,
+    "explicitly_diagnostic": true
+  },
+  "task_success": false,
+  "diagnostic_only": true,
+  "end_to_end_from_initial_state": false,
+  "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_353\\runs\\on-stool-goal-01",
+  "physics_steps": 34996,
+  "physical_duration_s": 174.98,
+  "start_time_s": 803.3799999995593,
+  "expert_status": "success",
+  "integrity": {
+    "ok": true,
+    "void": false,
+    "reasons": [],
+    "excluded_frames": 0,
+    "safety_coverage": {
+      "complete": true,
+      "has_gaps": false,
+      "invalid_frames": 0
+    },
+    "max_joint_limit_overshoot": 0.0,
+    "max_effort_ratio": 1.0,
+    "max_speed_ratio": 0.48916029930114746,
+    "physics_samples": 34996,
+    "joint_count": 43,
+    "physics_dt": 0.005
+  },
+  "safety_events": [],
+  "rule5": {
+    "status": "evaluated",
+    "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0
+  },
+  "delivered_goal": {
+    "walk": {
+      "ok": true,
+      "reason": "",
+      "metrics": {
+        "seconds": 8.9,
+        "pos_error": 0.018,
+        "yaw_error": 0.001
+      }
+    },
+    "held_at_goal": true,
+    "release": {
+      "ok": true,
+      "reason": ""
+    },
+    "settled": {
+      "ok": true,
+      "stable_seconds": 0.5,
+      "box": [
+        0.648344099521637,
+        1.1997168064117432,
+        0.08999571949243546
+      ],
+      "bottom": -4.4613062731430064e-06,
+      "tilt": 89.99994948324246,
+      "speed": 6.249324997043004e-06,
+      "angular_speed": 6.917452265042812e-05,
+      "hand_force_N": 0.0,
+      "goal_center": [
+        0.6000000238418579,
+        1.2000000476837158
+      ],
+      "goal_size": [
+        0.6,
+        0.6
+      ]
+    },
+    "task": {
+      "success": true,
+      "fallen": false,
+      "declared": false,
+      "declared_correct": false,
+      "lifted": true
+    }
+  },
+  "harness_warning": "Runner returned exit 1 because its post-run status predicate allowed done/stopped_after_goal but omitted the actual successful status success. Raw run, verdict and exit record are preserved; this independent audit checks success, physical delivery and all safety/integrity evidence directly.",
+  "scope": "174.98 new physical seconds after exact on-stool checkpoint restoration; confirms the reused retrieval/descent/reacquisition/delivery tail only, not a fresh complete task.",
+  "evidence": {
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_353\\runs\\on-stool-goal-01\\expert\\result.json": "f89133500a37ace12abcbd23009c2d8201e5397b5e966f530465698c54de7cb8",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_353\\runs\\on-stool-goal-01\\diagnostic_recording\\verdict.json": "90713c59e9c8bafa24d7091e54149af8514423868595e94324cada4fcf8b32c3",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_353\\runs\\on-stool-goal-01\\diagnostic_recording\\recording.json": "bbd1ee43188b06af7157a3d058c6c19a3432048234320a132a074552eca14064",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_353\\tail_diagnostic.log.result.json": "355292727e18bae7134c4c84ed2c0943ffd13728a4e03e862a2faf09bcf7aeac"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "disk-flip-isolated-recorded-policy/1",
+  "created_at": "2026-10-29T06:40:17.189450+00:00",
+  "source": "/nfshomes/wuxiyang/df-live-output/qualification/cohort-v2/repeat-01",
+  "source_trajectory_sha256": "8b75392f035e51ccd9056486d3a9800b847c18aaa0889d84cdc0b56e85eeed4b",
+  "adapter_sha256": "e9e5ae559c1869917edff0e86854db8a26f22ad67bbbd16b924fb48759dea104",
+  "policy_input_sha256": "e9dec944f26f6b8a9a65ba5bb3a029588ffeb0f95d0ebb28f79ba9a6edb533f3",
+  "transport_sha256": "b6ac55a78f2076acad26f241c1135cd3339583bc3680fc966f0667779ac366a1",
+  "negative_cases": [
+    {
+      "case": "object_pose",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "model_edit",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "stage_write",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "nonfinite",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "slew",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "partial",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "wrong_type",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    }
+  ],
+  "negative_cases_passed": true,
+  "commands_from_child": 23809,
+  "expected_commands": 23809,
+  "separate_process": true,
+  "shared_simulator_memory": false,
+  "transport": "strict JSON joint references over anonymous pipes",
+  "full_task_success": true,
+  "native_independent_replay_verified": true,
+  "passed": true,
+  "error": null,
+  "scope": "Fresh full execution of a frozen recorded open-loop expert policy. The child emits references; the trusted parent owns physics/scoring and rejects malformed or out-of-range actions. This is not a closed-loop expert in isolation, an OS sandbox, human review, or second-person reproduction."
+}

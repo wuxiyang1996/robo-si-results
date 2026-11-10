@@ -1,0 +1,36 @@
+{
+  "controller_tuning": {
+    "sg3_load_n": 4.0,
+    "deep_sg3_load_n": 8.0,
+    "sg3_grasp_x": -0.075,
+    "edge_regrasp": true,
+    "align_grasp": true,
+    "disk_collision_shape": "mesh128",
+    "sg3_insert_z_compensation": 0.008,
+    "regrasp_release_s": 24,
+    "sg3_align_compensated": true,
+    "sg3_setdown_x": 0.363,
+    "sg3_force_release": true,
+    "physics_dt": 0.0005,
+    "sg3_horizontal_withdraw": true,
+    "sg3_pad_clearance_push": true,
+    "require_sg3_grasp": true,
+    "sg3_push_stop_x": 0.46,
+    "sg3_push_horizontal_withdraw": true,
+    "reference_prefix_file": "sg3-expert-prefix-v1.npz"
+  },
+  "format": "held-reference-replay/1",
+  "physics_hz": 2000,
+  "control_hz": 50,
+  "body": "S",
+  "physics_steps": 1090000,
+  "full_array_sha256": {
+    "qpos": "52b9158e1ee38a1fe56746ade0253a209342ae9523404e07d0fa6dc5c9d8d0a4",
+    "qvel": "dc0402fed5db0c336f1f02d46e55b6ea155f0cef90d1b54b3dddec19fcf67336",
+    "ctrl": "d17bae33bfd014e3f1a0a11af9004b12ce3eea66d1e44c5d23684929b9dca2c0"
+  },
+  "source_trajectory_npz_sha256": "7021137dc384f7a3cac98c1b49ff471d70295137f65b8df01073b862f8930d85",
+  "replay": "python compact_evidence.py --replay PATH_TO_RUN",
+  "requirements": "MuJoCo 3.14.0, NumPy, same official meshes, scene.xml and initial_state.json. Remap external mesh paths when needed.",
+  "storage": "References stored once per control interval; partial final interval retained. Object states shown at control endpoints; full physics-step states/controls are deterministically reconstructed and checked by array SHA-256."
+}

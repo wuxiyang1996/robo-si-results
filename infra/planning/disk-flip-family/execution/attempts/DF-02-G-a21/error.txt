@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 686, in main
+    self.trace.close();self.render('final.png');self.writer.close();self.renderer.close()
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 445, in execute
+    self.turn_height_offset=np.clip(getattr(self,'turn_height_offset',0.)+.02*np.clip(.5*(centre[2]+.01-self.d.xpos[self.obj][2]),-.001,.003),0.,.06)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 344, in step
+    self.qref[qi]=self.last_ref[qi]+np.clip(self.qref[qi]-self.last_ref[qi],-rate*.02,rate*.02)
+                                                                                                
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 173, in assess
+    for k,val in [('speed',speed),('angular',ang),('robot',robot),('table',table),('local',local),('self_contact',selfc),('robot_table',rt)]:self.peaks[k]=max(self.peaks[k],val)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

@@ -1,0 +1,162 @@
+{
+  "case": "wrong_goal",
+  "task": "hanoi",
+  "verdict": {
+    "episode": "episode_00",
+    "void": false,
+    "void_reasons": [],
+    "flags": [],
+    "score": 0.0,
+    "success": false,
+    "end_reason": "closed",
+    "samples": 4328,
+    "sim_time_s": 86.54,
+    "source": "reference_recorder",
+    "observations": null,
+    "simulator": {
+      "genesis-world": "1.4.3",
+      "torch": "2.11.0+cu128",
+      "numpy": "2.5.3"
+    },
+    "episode_spec": null,
+    "layer": 3,
+    "process_score": 0.2,
+    "final_progress": 0.2,
+    "peak_time_s": 14.76,
+    "stage_best": {
+      "disk_lifted_clear": 1.0,
+      "first_move": 1.0,
+      "tower_progress": 0.0,
+      "goal_hold": 0.0
+    },
+    "stage_timeline": {
+      "disk_lifted_clear": 9.3,
+      "first_move": 14.76,
+      "tower_progress": null,
+      "goal_hold": null
+    },
+    "completed_at_end": false,
+    "move_count": 7,
+    "minimum_moves": 7,
+    "num_disks": 3,
+    "moves_left": 7,
+    "evaluation": {
+      "replay": {
+        "success": false,
+        "failed": false,
+        "reason": "",
+        "elapsed": 86.53999999999378,
+        "latched_row": null
+      },
+      "live": {
+        "success": false,
+        "failed": false,
+        "reason": "",
+        "elapsed": 86.53999999999378,
+        "latched_row": null,
+        "recorded": true
+      },
+      "replay_matches_live": true,
+      "mismatch": null,
+      "moves": [
+        {
+          "disk": "disk_2",
+          "source": "A",
+          "target": "B",
+          "t": 14.76
+        },
+        {
+          "disk": "disk_1",
+          "source": "A",
+          "target": "C",
+          "t": 25.805
+        },
+        {
+          "disk": "disk_2",
+          "source": "B",
+          "target": "C",
+          "t": 36.895
+        },
+        {
+          "disk": "disk_0",
+          "source": "A",
+          "target": "B",
+          "t": 47.995
+        },
+        {
+          "disk": "disk_2",
+          "source": "C",
+          "target": "A",
+          "t": 59.04
+        },
+        {
+          "disk": "disk_1",
+          "source": "C",
+          "target": "B",
+          "t": 71.48
+        },
+        {
+          "disk": "disk_2",
+          "source": "A",
+          "target": "B",
+          "t": 82.55
+        }
+      ],
+      "move_count": 7,
+      "minimum_moves": 7
+    },
+    "final_state": {
+      "disk_0": {
+        "xy_error_m": 0.24982,
+        "z_error_m": 3e-05,
+        "tilt_rad": 0.0,
+        "ok": false
+      },
+      "disk_1": {
+        "xy_error_m": 0.2493,
+        "z_error_m": 7e-05,
+        "tilt_rad": 0.0001,
+        "ok": false
+      },
+      "disk_2": {
+        "xy_error_m": 0.24977,
+        "z_error_m": 8e-05,
+        "tilt_rad": 0.0001,
+        "ok": false
+      }
+    },
+    "alarms": [],
+    "alarms_by_question": {
+      "1_no_reward_hacking": [],
+      "2_task_really_completed": [],
+      "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+      "monitor_version": "g1-tabletop-hanoi-monitors/1",
+      "not_applicable": {
+        "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+        "fall": "the pelvis is bolted to a stand",
+        "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+      },
+      "max_reported_speed": 0.739,
+      "max_object_speed": 0.74,
+      "max_step_speed": 0.74,
+      "max_support_penetration": 0.0006,
+      "max_energy_excess_J": 0.0,
+      "max_reversal_rate_hand_hz": 0.0,
+      "max_arm_shake": 0.156,
+      "max_saturation_s": 0.0,
+      "max_limit_push_s": 0.0,
+      "max_progress_spike": 0.0
+    },
+    "verifier": "g1-tabletop-hanoi-verifier/1 (g1-tabletop-hanoi-monitors/1)"
+  },
+  "expected_score": 0.0,
+  "rejected": true,
+  "intended_condition_observed": true,
+  "rejection_reason": "",
+  "physical_attempt_only": true,
+  "human_review": null,
+  "limitation": "A failed oracle attempt is not an impossibility proof; inspect the motion and rejection witness."
+}

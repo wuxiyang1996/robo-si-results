@@ -1,0 +1,206 @@
+{
+ "scene_meta": {
+  "version": "H4-v4.2",
+  "seed": 202,
+  "episode": 0,
+  "layer": 2,
+  "randomize": true,
+  "params": {
+   "robot_x": -0.59611,
+   "robot_y": 0.05528,
+   "robot_yaw": 0.15788,
+   "plank_theta_deg": 44.37498,
+   "plank_base_x": 0.36202,
+   "plank_lane_y": -1.00479,
+   "plank_mass": 5.0254,
+   "target_x": 3.62551,
+   "target_y": -1.31726,
+   "target_mass": 1.1658,
+   "target_friction": 0.56308,
+   "target_yaw": 0.04452,
+   "heavy_board_x": -1.71634,
+   "heavy_board_y": 1.61745,
+   "short_plank_x": -1.23854,
+   "short_plank_y": 0.95887,
+   "crate_x": 2.86099,
+   "crate_y": 1.27899
+  }
+ },
+ "scene_sha256": "9be620a1e8340eaaab76364a727b5b1110a3db2529ba8bfb73538fe5fd2d894c",
+ "oracle_argv": [
+  "--scene",
+  "humanoid\\g1_ramp_bridge_construction\\sandbox\\runs\\reference\\v42-L2-s202\\scene.json",
+  "--out",
+  "humanoid\\g1_ramp_bridge_construction\\sandbox\\runs\\reference\\v42-L2-s202\\oracle",
+  "--stage",
+  "build",
+  "retrieve",
+  "--leg-torque",
+  "--crouch-height",
+  "0.60",
+  "--crouch-pitch",
+  "0.40",
+  "--pick-standoff",
+  "0.40",
+  "--grip-force",
+  "22",
+  "--max-seconds",
+  "240"
+ ],
+ "oracle": {
+  "stages": [
+   [
+    "build",
+    true,
+    ""
+   ],
+   [
+    "retrieve",
+    true,
+    ""
+   ]
+  ],
+  "task_evaluation": {
+   "goal_reached": true,
+   "dwell_seconds": 9.479999999991378,
+   "retrieval_route_observed": true,
+   "candidate_success": true,
+   "violations": [],
+   "benchmark_admitted": false,
+   "validation_status": "Requires contact, load, construction and controller validation"
+  },
+  "sim_seconds": 127.0
+ },
+ "privileged_writes_after_start": [],
+ "gain_writes": [
+  {
+   "t": 14.44,
+   "method": "set_dofs_kp",
+   "max": 300.0,
+   "over_bounds": []
+  },
+  {
+   "t": 14.44,
+   "method": "set_dofs_kv",
+   "max": 8.0,
+   "over_bounds": []
+  },
+  {
+   "t": 27.1,
+   "method": "set_dofs_kp",
+   "max": 3000.0,
+   "over_bounds": []
+  },
+  {
+   "t": 27.1,
+   "method": "set_dofs_kv",
+   "max": 10.0,
+   "over_bounds": []
+  },
+  {
+   "t": 31.42,
+   "method": "set_dofs_kp",
+   "max": 3000.0,
+   "over_bounds": []
+  },
+  {
+   "t": 31.42,
+   "method": "set_dofs_kv",
+   "max": 10.0,
+   "over_bounds": []
+  },
+  {
+   "t": 51.04,
+   "method": "set_dofs_kp",
+   "max": 500.0,
+   "over_bounds": []
+  },
+  {
+   "t": 51.04,
+   "method": "set_dofs_kv",
+   "max": 6.0,
+   "over_bounds": []
+  },
+  {
+   "t": 123.0,
+   "method": "set_dofs_kp",
+   "max": 3000.0,
+   "over_bounds": []
+  },
+  {
+   "t": 123.0,
+   "method": "set_dofs_kv",
+   "max": 10.0,
+   "over_bounds": []
+  }
+ ],
+ "error": null,
+ "wall_s": 354.6,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "score": 1.0,
+  "success": true,
+  "layer": 2,
+  "end_reason": "finished",
+  "samples": 6351,
+  "sim_time_s": 126.99999999995698,
+  "source": "reference_recorder",
+  "observations": null,
+  "final_progress": 1.0,
+  "peak_time_s": 119.5,
+  "stage_best": {
+   "plank_engaged": 1.0,
+   "bridge_built": 1.0,
+   "crossed": 1.0,
+   "target_reached": 1.0,
+   "target_lifted": 1.0,
+   "returned_holding": 1.0,
+   "delivered": 1.0
+  },
+  "stage_timeline": {
+   "plank_engaged": 19.52,
+   "bridge_built": 29.22,
+   "crossed": 46.72,
+   "target_reached": 63.06,
+   "target_lifted": 64.62,
+   "returned_holding": 100.54,
+   "delivered": 119.5
+  },
+  "delivered_at_end": true,
+  "route_observed": true,
+  "fallen": false,
+  "plank_theta_max_deg": 180.0,
+  "evaluation": {
+   "goal_reached": true,
+   "dwell_seconds": 9.479999999991378,
+   "retrieval_route_observed": true,
+   "candidate_success": true,
+   "violations": []
+  },
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "max_reported_speed": 3.459,
+   "max_object_speed": 3.296,
+   "max_step_speed": 3.389,
+   "max_floor_penetration": 0.0088,
+   "max_wall_penetration": 0.0,
+   "max_box_penetration": 0.0088,
+   "max_energy_excess_J": 0.136,
+   "max_reversal_rate_hand_hz": 3.0,
+   "max_arm_shake": 0.957,
+   "max_saturation_s": 0.5,
+   "max_limit_push_s": 0.02,
+   "max_progress_spike": 0.0
+  },
+  "verifier": "h4-verifier/2 (h4-monitors/2)"
+ }
+}

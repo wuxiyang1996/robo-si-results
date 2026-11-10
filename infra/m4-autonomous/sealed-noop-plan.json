@@ -1,0 +1,28 @@
+{
+  "schema": "m4-sealed-action-calibration/1",
+  "attempt": "v3j-sealed-noop-a53",
+  "status": "declared_before_launch",
+  "time_limit_s": 8,
+  "mode": "standstill",
+  "precision": "64",
+  "substeps": 8,
+  "ground_friction": 0.8,
+  "scope": "Full submitted-program process isolation and physical action binding with a short no-op negative. Proprioception-only calibration; not the final sensor suite or general sealed grading.",
+  "expected": {
+    "cycle_success": false,
+    "task_score": 0,
+    "agent_run_void": false,
+    "physical_checks_passed": true
+  },
+  "requirements": [
+    "new read-only sealed delivery",
+    "fresh empty workspace",
+    "persistent private process",
+    "all velocity/pin requests originate in the delivered program",
+    "hash-chain exchange bound to executed controls",
+    "dense physical monitors",
+    "original run retained if the expected clean no-op fails"
+  ],
+  "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+  "formal_admission": false
+}

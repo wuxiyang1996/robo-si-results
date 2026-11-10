@@ -1,0 +1,181 @@
+{
+ "task": "g1_tabletop_assembly",
+ "mode": "eval",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.0,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.0,
+ "score_std": 0.0,
+ "by_layer": {
+  "nominal": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.0,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 0
+ },
+ "flags": [],
+ "privileged_reference": false,
+ "result_kind": "agent run",
+ "requests": {
+  "observe": 2,
+  "command": 1,
+  "reference": 0,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "7 entries"
+ },
+ "verifier": "infra-verifier/1 + g1-tabletop-assembly-verifier/1 (g1-tabletop-assembly-monitors/1)",
+ "verifier_sha256": "081f31c49894545c193b4edc005bfcffe6f4d0d4ec5f04c975bd701aac417a6f",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": "0.1",
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + g1-tabletop-assembly-verifier/1 (g1-tabletop-assembly-monitors/1)",
+  "verifier_sha256": "081f31c49894545c193b4edc005bfcffe6f4d0d4ec5f04c975bd701aac417a6f",
+  "scene": [],
+  "simulator": [
+   "{\"genesis-world\": \"1.4.3\", \"numpy\": \"2.5.3\", \"torch\": \"2.11.0+cu128\"}"
+  ],
+  "image": "g1assembly-agent:b86483966e9377a8",
+  "image_id": "sha256:6508ff53161983d182a340bb2c198a5f607d8f973988c60d58c9a9bc9e55f469",
+  "bundle": "b86483966e9377a8feee2a9ddad26a9164de8f2e504989a64548d2c02231e776",
+  "scenario_sha256": "b6589b3e27c95e2c8ad688e6370661a28aab5bf5d8b237441e736d52cb729583",
+  "delivery_sha256": "7734d6d04452af89197f64501c707a7150d5507dec294ccc3dccf6a1650a9ef8",
+  "source_manifest_sha256": "5fb57bae457a6d29dee1aab8800e2ee8013840b96cb6c467ff071830f28976b2",
+  "launch_scope_source_frozen": true
+ },
+ "per_episode": [
+  {
+   "episode": "episode_00",
+   "void": false,
+   "void_reasons": [],
+   "flags": [],
+   "score": 0.0,
+   "success": false,
+   "end_reason": "finished",
+   "samples": 101,
+   "sim_time_s": 2.0,
+   "source": "sandbox_worker",
+   "observations": 2,
+   "simulator": {
+    "genesis-world": "1.4.3",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.3"
+   },
+   "episode_spec": {
+    "sim_time_limit_s": 10.0,
+    "variant": "nominal"
+   },
+   "layer": "nominal",
+   "process_score": 0.0,
+   "final_progress": 0.0,
+   "peak_time_s": 0.0,
+   "stage_best": {
+    "brace_supported": 0.0,
+    "sleeve_seated": 0.0,
+    "cap_seated": 0.0,
+    "assembled_released": 0.0
+   },
+   "stage_timeline": {
+    "brace_supported": null,
+    "sleeve_seated": null,
+    "cap_seated": null,
+    "assembled_released": null
+   },
+   "completed_at_end": false,
+   "evaluator_stage": 0,
+   "evaluator_stage_times": {
+    "support_fixture": null,
+    "insert_sleeve": null,
+    "complete": null
+   },
+   "evaluation": {
+    "replay": {
+     "success": false,
+     "failed": false,
+     "reason": "in_progress",
+     "elapsed": 1.9999999999999793,
+     "latched_row": null
+    },
+    "live": {
+     "success": false,
+     "failed": false,
+     "reason": "in_progress",
+     "elapsed": 1.9999999999999793,
+     "latched_row": null,
+     "recorded": true
+    },
+    "replay_matches_live": true,
+    "mismatch": null,
+    "stage_times": {
+     "support_fixture": null,
+     "insert_sleeve": null,
+     "complete": null
+    },
+    "conditions": {
+     "brace_supported": false,
+     "sleeve_seated": false,
+     "cap_seated": false
+    }
+   },
+   "final_state": {
+    "fixture": false,
+    "brace": false,
+    "sleeve": false,
+    "cap": false
+   },
+   "alarms": [],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": []
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "g1-tabletop-assembly-monitors/1",
+    "not_applicable": {
+     "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+     "fall": "the pelvis is bolted to a stand",
+     "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+    },
+    "max_reported_speed": 0.196,
+    "max_object_speed": 0.123,
+    "max_step_speed": 0.123,
+    "max_support_penetration": 0.0005,
+    "max_energy_excess_J": 0.001,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.045,
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0
+   },
+   "verifier": "g1-tabletop-assembly-verifier/1 (g1-tabletop-assembly-monitors/1)",
+   "episode_index": 0,
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 2,
+    "commands": 1,
+    "reference": 0
+   }
+  }
+ ],
+ "admission_eligible": false
+}

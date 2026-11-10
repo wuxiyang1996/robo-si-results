@@ -1,0 +1,161 @@
+{
+ "task": "M2",
+ "mode": "dev",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.3,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.3,
+ "score_std": 0.0,
+ "by_layer": {
+  "None": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.3,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 0
+ },
+ "flags": [],
+ "privileged_reference": false,
+ "result_kind": "agent run",
+ "requests": {
+  "observe": 89,
+  "command": 88,
+  "reference": 0,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "181 entries"
+ },
+ "verifier": "infra-verifier/1 + m2-verifier/2-g2-e2",
+ "verifier_sha256": "a68a34dca79a432db57e145b5406bd4cb9682680721051ac846f1b9014a6b925",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": null,
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + m2-verifier/2-g2-e2",
+  "verifier_sha256": "a68a34dca79a432db57e145b5406bd4cb9682680721051ac846f1b9014a6b925",
+  "scene": [],
+  "simulator": [],
+  "image": "g1m2-agent:562b0b05ea7ba78b",
+  "image_id": "sha256:62dd861a482bccb7d4aba43887f09c5f1588724af6bf13a35ff3e054207d42df",
+  "bundle": "562b0b05ea7ba78bef41ecf7369940f370c19ab2a7901647e1b012527015f75d",
+  "scenario_sha256": "5eff2685e20a9ca1804761165ee87d2e02a9e1bff8a62a6174e89d0827400380",
+  "delivery_sha256": "2f5254f11d2eee549add41769d2af677d673de1f58f8513813a6cfd0d3e77ef8",
+  "source_manifest_sha256": "b147ca34d2e1d724f2c5431e1ac730dc0970c94ab28b4dc4f61555648c88938f",
+  "launch_scope_source_frozen": true
+ },
+ "per_episode": [
+  {
+   "task_version": "1.0",
+   "scorer_version": "2.0-g2-e2",
+   "regrasp_rule": "m2-g2/1",
+   "active_carry_ready": true,
+   "temporary_placement_events": [],
+   "score": 0.30000000000000004,
+   "success": false,
+   "void": false,
+   "reasons": [],
+   "flags": [
+    {
+     "time": 43.24500000000367,
+     "reason": "airborne_regrasp_motion",
+     "action": "terminate_progress"
+    }
+   ],
+   "stage_best": {
+    "grasp": 1.0,
+    "lift": 1.0,
+    "turn": 0.0,
+    "transport": 0.0,
+    "lower": 0.0,
+    "place": 0.0
+   },
+   "stage_final": {
+    "grasp": 1.0,
+    "lift": 1.0,
+    "turn": 0.0,
+    "transport": 0.0,
+    "lower": 0.0,
+    "place": 0.0
+   },
+   "stage_times": {
+    "grasp": 18.595000000000585,
+    "lift": 33.01499999999844
+   },
+   "samples": 35057,
+   "seconds": 175.2799999999131,
+   "metrics": {
+    "wall_force_N": 5521.79736328125,
+    "nonhand_force_N": 999.3556823730469,
+    "carry_tilt_deg": 7.070638943586885
+   },
+   "evidence": "environment_record",
+   "alarms": [],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": []
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "m2-monitors/1",
+    "not_applicable": {
+     "predicates": "M2 stages are latched milestones without a per-step progress series",
+     "commands": "the record has no joint position / velocity / effort series"
+    },
+    "max_reported_speed": 2.56,
+    "max_object_speed": 2.467,
+    "max_step_speed": 2.475,
+    "max_floor_penetration": 0.0076,
+    "max_energy_excess_J": 0.415,
+    "g1_a.max_reversal_rate_hand_hz": 0.0,
+    "g1_a.max_arm_shake": 0.167,
+    "g1_a.max_saturation_s": 0.0,
+    "g1_a.max_limit_push_s": 0.0,
+    "g1_a.max_step_speed": 2.969,
+    "g1_b.max_reversal_rate_hand_hz": 0.0,
+    "g1_b.max_arm_shake": 0.21,
+    "g1_b.max_saturation_s": 0.0,
+    "g1_b.max_limit_push_s": 0.0,
+    "g1_b.max_step_speed": 2.671
+   },
+   "monitor_version": "m2-monitors/1",
+   "monitor_flags": [],
+   "ending_rule": "m2-e2/1",
+   "ending_classification": "finished",
+   "record_kind": "rpc_development",
+   "admission_eligible": false,
+   "scorer_sha256": "e1240c09503f9ecf880c0c873d277e498f3083ceb1f8759319268aa17ea9343f",
+   "contract_limitations": [],
+   "record_format": "infra-chunked",
+   "provenance": "operator-owned directory; manifest is not a signature",
+   "manifest_sha256": "b13f4a412858a3e43ff7e7485844e794e85c4ce131fa1bf8061354a5590a93f4",
+   "episode": "episode_00",
+   "void_reasons": [],
+   "episode_index": 0,
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 89,
+    "commands": 88,
+    "reference": 0
+   }
+  }
+ ],
+ "admission_eligible": false
+}

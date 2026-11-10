@@ -1,0 +1,17 @@
+{
+  "schema": "h1-p4-expert-plan/1",
+  "task_id": "H1S-07.P4",
+  "profile": "g1_dex3_ground_push_v1",
+  "method": "privileged measured-state finite expert with online whole-body IK, footfall planning and bounded joint actuation",
+  "initial_state": "fresh simulation, target at (2.30,0,0.09); no checkpoint or replay",
+  "high_level": [
+    {"id":"H1_observe_and_establish_push_posture","goal":"identify frozen target and delivery region; approach rear face without body collision","low_level":["build collision-aware crouched whole-body IK reference","execute joint position reference under actuator caps","establish two-foot ground support"]},
+    {"id":"H2_ground_supported_transport","goal":"move the ground-supported 5 kg target towards D without lifting","low_level":["touch rear face with both hands","push 0.12 m at bounded per-hand force","withdraw hands"],"repetitions":3,"entry":"target upright and supported; robot stable; reachable rear contact","exit":"target displaced, no hard violation; contacts permit withdrawal"},
+    {"id":"H3_reposition_for_next_contact","goal":"maintain reachable manipulation posture as target advances","low_level":["raise pelvis and shift center of mass","plan and execute left swing/landing","plan and execute right swing/landing","restore hands to rear face"],"repetitions":3,"entry":"hands released, valid support state","exit":"both feet supported, next hand contact reachable"},
+    {"id":"H4_release_and_stabilize_delivery","goal":"whole target in D, released and stable for at least 3 seconds; robot stable","low_level":["retreat hands","lift and retract hands without collision","recenter over measured feet","stand up","hold for 4 seconds"],"entry":"last push completed without violation","exit":"measured target and robot terminal predicate, evaluated independently"}
+  ],
+  "execution_order": ["H1", "H2/H3 repeated 3 times", "H4"],
+  "trajectory_generation": "approach_plan.npz is generated before physics; per-step IK and contact-QP references are generated from measured state while executing, recorded in command_trace.json; measured full qpos in joint_trace.npz; actual phase intervals in plan_mapping.json",
+  "success_policy": "Final physical goal and public constraints only. Following this phase sequence is not a hidden benchmark requirement.",
+  "failure_policy": "Preserve source, exception, video and all available traces. A failed expert does not certify task infeasibility."
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench（robo-si）的任务验收：参考专家解、官方轨迹与子目标场景、人工可行性验证、评分器有效性、对任务的人工检查和自动检查流水线。" name="description"/>
+<title>任务验收</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/acceptance-en.html">English</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">任务基础设施 · 任务验收</p>
+<h1>任务入库之前，<br/>先证明它<span class="nm">可解</span>、评分器靠得住。</h1>
+<p class="lead">这一页讲任务怎么验收：参考专家解、官方轨迹与子目标场景、人工可行性验证、评分器有效性、对任务的人工检查和自动检查流水线。评测 agent 时全自动，人工检查只在这一页出现。</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>目录</h3>
+<ol class="toc">
+<li><a href="#expert">01 参考专家解</a></li>
+<li><a href="#official">02 官方轨迹与子目标场景</a></li>
+<li><a href="#feasibility">03 代表性验证与人工审阅</a></li>
+<li><a href="#validity">04 评分器有效性</a></li>
+<li><a href="#humancheck">05 人工检查任务</a></li>
+<li><a href="#ci">06 自动检查流水线</a></li>
+</ol></div>
+</div></div><section id="sandbox-delivery"><div class="wrap"><h2>14 项沙盒交付与实测</h2><p>14/14 具备统一启动入口、SDK、隔离运行、可信记录与校验入口；单元检查 14/14，Windows 容器观测／控制短运行 14/14。新增双 G1 H3、DiskFlip 和 Sokoban 在同机 WSL2 Ubuntu 22.04 上另做短运行 3/3；新增越权检查 5/5。</p><p>短运行预期 0 分，验证接口和执行链，不计作完整任务成功。现有完整参考见证另行保留；新接口的完整专家重放、第二台物理机复现和正式准入不从本次检查推断。Sokoban 的完整仅推不抓有效性仍未认证，task_success=null。</p><p><a href="/robo-si-results/infra/sandbox/DELIVERY-14.md">部署与使用</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">逐项验证账本</a> · <a href="/robo-si-results/infra/sandbox-delivery/reference-packages.json">14 项完整参考包</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">完整沙盒工作区下载</a></p></div></section>
+<section id="screening"><div class="wrap"><p data-refinement-readiness-link="true"><a href="/robo-si-results/infra/status-zh.html#refinement-readiness">12 项当前还差多少：已选完整见证、待补低层动作与轨迹映射</a></p>
+<div class="callout" id="refinement-gate"><p><strong>设计可行性验收：检查高层→低层、低层→轨迹、高层→轨迹的映射，至少保留一条声明配置的连续端到端生成成功见证。</strong>第三项可组合前两项并独立检查目标，不要求另写规划器。已有完整见证可复用；新增控制器需有自身证据。通用滚动规划、连续技能区间和任意随机起点衔接不作为此最低门槛。重复性、随机鲁棒性、人工签审和第二人复现单列，既有评分和准入状态不自动改变。<a href="/robo-si-results/infra/planning/hierarchical-evaluation/refinement-policy.json">机器可读要求</a></p></div>
+<p class="kicker">分层证据与实例状态 · 2026-10-26</p>
+<h2>完整见证、筛查结果和任务准入分别记录</h2>
+<div class="table-wrap"><table><thead><tr><th>实例状态</th><th>代码</th><th>验收含义</th></tr></thead><tbody>
+<tr><td>有完整成功证据</td><td><code>witnessed_full</code></td><td>匹配场景、资产、物理、控制器与评分版本的完整连续运行已成功；不是整个实例族证明。</td></tr>
+<tr><td>通过可行性筛查</td><td><code>screen_pass</code></td><td>预声明的必要检查通过、必需证据齐全；未验证完整执行，不能记为成功或赋参考满分。</td></tr>
+<tr><td>未确定</td><td><code>unknown</code></td><td>缺少检查器／证据、适用范围未标定、搜索未找到解或预算用尽。不是成功，也不是物理不可解。</td></tr>
+<tr><td>检查不通过</td><td><code>rejected</code></td><td>某项必要条件有明确失败证据，记录原因与范围。单条路线失败只能拒绝该路线；拒绝整个实例需与路线无关的必要条件反例。</td></tr>
+</tbody></table></div>
+<h3>验收提交物</h3>
+<ul class="check">
+<li>任务级：预声明代表场景、选择理由、完整运行与失败记录、版本和哈希；不要求逐个随机实例的完整解。</li>
+<li>技能级：进入／退出与接触合同、已验证配置及适用条件、关键短片段证据；未测试范围留空。</li>
+<li>实例级：高层计划、技能选择与约束、关键状态、检查清单和四类结果；段间同时检查位置、速度、支撑、抓持、剩余预算与不确定性。</li>
+<li>预算：筛查墙钟、候选数、短仿真数量及步数事先声明；耗尽即停止并记未确定，不自动升级为完整仿真。任务执行时限另行保留。</li>
+<li>代表性全程、技能探测、静态筛查分别统计。正式准入仍需评分器正反例、物理／接口完整性、适用的人工签审及独立复现，不能用筛查结果代替。</li>
+</ul>
+<p>采用<a href="/robo-si-results/infra/planning/instance-template.json">实例记录模板</a>和<a href="/robo-si-results/infra/planning/acceptance-policy.json">版本化验收政策</a>。现有 15 项任务准入 gate 的状态枚举不变；以上四类是实例证据状态，不与 gate 的 passed／partial／pending／failed 混用。</p>
+<p>此前发布的成功、失败、录像与签审状态原样保留；新原则不追溯补签或自动提升 admitted。已有明确约定的有限代表验收批次继续保留，变更范围需另行记录。</p>
+</div></section>
+<section class="tinted" id="expert"><div class="wrap">
+<p class="kicker">01 · 参考专家解</p>
+<h2>证明问题可解，并验证评分器</h2>
+<ul class="check">
+<li>用现有的专家解即可：读仿真真值（物体位姿、接触力），用 IK/FK 等方法规划；从生成器抽出的随机初始状态出发，只通过动作接口驱动机器人，物理设定和力矩上限与 agent 相同；不瞬移、不改物性、不把物体绑在手上。不要求它和 agent 用同一套工具。</li>
+<li><strong>用途一：证明问题可解。</strong>所记录配置可以怎样完成，不外推整个随机实例族；顺带给出过程分的上锚点和参考完成时间。Harbor 任务里也有类似的角色：一个读真值的特权规划器，只用来标可行性和参考时间，从不发给 agent。</li>
+<li><strong>用途二：验证评分器有效。</strong>参考专家解的运行由沙箱同样的记录器记下，交给同一个 verifier 判分：必须判为成功，各阶段的完成时刻要和人工在录像上标注的一致，监视器不能误报。再加上空操作得 0、反例和漏洞运行得 0 或判无效，评分器才算从正反两面验证过（见<a href="#validity">第 04 节</a>）。这和 Terminal-Bench 一样：oracle 要拿到预期分数，空操作要得 0。</li>
+<li>代表性验收运行录像由人工审阅，第二个人复现选定代表方案；纯静态筛查不要求录像（见<a href="#feasibility">第 03 节</a>）。</li>
+</ul>
+<h3>参考专家解（oracle）的条件</h3>
+<div class="two">
+<div class="card"><h3>可以</h3><ul class="check">
+<li>读仿真真值：物体位姿、接触、物性。</li>
+<li>用 IK/FK 暴力求出中间点（关键帧），再插值成轨迹。</li>
+<li>用力矩控制或 WBC 跟踪。</li>
+<li>手工挑选、调整关键帧。</li>
+<li>用现有的专家解即可，不要求和 agent 用同一套工具。</li></ul></div>
+<div class="card"><h3>不可以</h3><ul class="check cross">
+<li>从手工摆好的状态出发：必须从生成器抽出的初始状态（或子任务起始状态）出发。</li>
+<li>换物理设定、放宽力矩上限。</li>
+<li>瞬移、改物性、把物体绑在手上。</li>
+<li>跳过某一段，用摆位置代替。</li>
+<li>绕过动作接口，直接写关节或物体的状态。</li></ul></div>
+</div>
+<h3>参考解能证明什么</h3>
+<div class="two">
+<div class="card"><h3>能证明</h3><ul class="check">
+<li>同样的物理设定、力矩上限和动作接口下，所记录的具体初始状态可以完成；不能据此保证全部随机实例。</li>
+<li>过程分的上锚点和参考完成时间。</li>
+<li>评分器有效：参考解判成功，空操作和漏洞判 0。</li></ul></div>
+<div class="card"><h3>不能证明</h3><ul class="check cross">
+<li>只凭 agent 的传感器也做得到。</li>
+<li>所有 agent 都在某一步失败时，是这一步太难还是只靠传感器做不到。</li></ul></div>
+</div>
+<p style="margin-top:12px">所以参考解不是 Terminal-Bench 意义上的 oracle：那里的 oracle 走和 agent 相同的接口、只用 agent 能拿到的信息，并且要拿满分。</p>
+</div></section>
+<section id="official"><div class="wrap">
+<p class="kicker">02 · 官方轨迹与子目标场景</p>
+<h2>保留已有代表轨迹，按需切出诊断子目标</h2>
+<h3>官方轨迹</h3>
+<ul class="check">
+<li><code>solution/</code>、<code>verified/</code> 里的官方脚本原样保留。它们开局用 <code>set_pos</code> 一类方法摆位置，以 200 Hz 子步直接调用仿真，每一步读真值，所以只作特权参考轨迹：证明单个技能做得到，并提供子目标的起点。</li>
+<li>录制时官方脚本当黑盒运行；录制器从外面挂钩，记录构造参数、脚本改过的常量、物理开关、首个物理步之后的特权写入（应为零），以及全部刚体的质量和摩擦、和沙箱同格式的特权状态日志、10 Hz 全身快照、官方脚本自己的阶段时间线。</li>
+<li>verifier 用和评测 agent 同一套判据，标出官方轨迹在什么时刻达到哪一步。</li>
+</ul>
+<h3>切成子目标</h3>
+<ul class="check">
+<li>从官方轨迹的录制（以后也包括参考专家解的录制）里，恢复世界参数和某一时刻的全身快照，作为子目标场景的起点（H1 已验证：恢复结果与录制完全一致）。</li>
+<li>起点之后，agent 和完整任务一样，只有传感器和关节指令；参考解读真值、摆位置的设定，agent 一样也用不上。</li>
+<li>子目标场景只用于训练、诊断和分析，单独报告，不混进主评测；主评测始终从任务的初始状态出发（子目标的起点本身就暴露了路线）。</li>
+<li>限制：任务环境之外另加的实体（如 H1 的凳子方案）目前不能从检查点重建，暂不支持。</li>
+</ul>
+</div></section>
+<section class="tinted" id="feasibility"><div class="wrap">
+<p class="kicker">03 · 代表性验证与人工审阅</p>
+<h2>验证代表方案与技能边界，不逐个随机求完整解</h2>
+<p class="covers">对应 R2。正式准入按声明范围审核；没有对应完整见证时，不能仅凭静态规划或分段成功宣称完整任务可解。</p>
+<ol class="steps">
+<li><strong>冻结计划与代表样本。</strong>声明层／变体、路线、关键技能、样本选择理由、筛查预算及有限完整验证清单。覆盖边界、内部和高风险接触切换，但不要求对层×样本×子任务笛卡尔积逐项完整执行。<span class="out">产出：分层计划与预声明覆盖表。</span></li>
+<li><strong>执行少量完整参考。</strong>在声明配置下从原始起点、通过动作接口连续运行；物理、力矩和评分条件与任务一致。声称跨后端完成时，各后端分别留证。<span class="out">产出：代表性全程记录、种子、哈希、判决与验收录像。</span></li>
+<li><strong>验证技能条件。</strong>检查关键可达姿态、碰撞、载荷、支撑及进出条件；必要时仅做困难动作短仿真。独立快照起点只能支持局部结论；组合执行还需验证实际交接状态。<span class="out">产出：技能证据、适用条件、未确定范围。</span></li>
+<li><strong>记录随机筛查。</strong>按预声明检查和预算输出四类状态，保留全部抽样、拒绝、失败和超时，不用完整解作为每个实例的前置材料。<span class="out">产出：实例筛查账本。</span></li>
+<li><strong>人工核对代表证据。</strong>审阅预声明全程及关键接触／反例片段，回答第 05 节三个问题，并核对阶段时间线。无录像运行可单列物理证据，不能冒充录像签审；纯静态筛查不要求录像。<span class="out">产出：带签名审阅和阶段对照。</span></li>
+<li><strong>验证评分器与捷径判据。</strong>完整正例、阶段正例、空操作、反例及漏洞用同一 verifier 检查；筛查通过不作为完整正例。搜索捷径失败只证明已检查范围，不自动证明所有其他路线不可能。<span class="out">产出：正反例与捷径证据。</span></li>
+<li><strong>重复与独立复现。</strong>对预先选定的代表种子至少重复 3 次，报告波动；第二人复现所声明的代表方案，不要求复现每个随机筛查样本。<span class="out">产出：重复记录和独立复现记录。</span></li>
+<li><strong>按证据等级验收。</strong>分别统计完整运行、技能探测与实例筛查，失败原因和开销全部保留。未确定和检查不通过不能计入成功。<span class="out">产出：范围明确的验收报告。</span></li>
+</ol>
+<p>代表样本数量及选择理由按风险和声明范围事先确定，不统一要求每层至少 5 个完整种子。已约定的有限验收批次不自动取消。不能根据结果换掉失败 seed；结果不足时收窄声明或补充针对性证据。</p>
+</div></section>
+<section id="validity"><div class="wrap">
+<p class="kicker">04 · 评分器有效性</p>
+<h2>正例必须判对，负例必须判 0</h2>
+<p>评分器本身要先验证，否则分数没有意义。做法和 Terminal-Bench 一样：已知能做成的运行必须拿到预期的分，什么都没做或在作弊的运行必须得 0。正例来自参考专家解：用现有的专家解即可，读真值规划；它的主要用途是证明问题可解，另一个用途就是在这里验证评分器（见<a href="#expert">第 01 节</a>）。这些正例和负例的录像，在任务验收时还要人工检查（<a href="#humancheck">第 05 节</a>）。</p>
+<ul class="check">
+<li>正例：参考专家解和官方轨迹的运行必须判为成功（或达到预期的阶段），阶段时间线与人工标注一致，监视器不误报。</li>
+<li>负例：空操作得 0；每个阶段的反例不得分；逃逸探针和漏洞运行判 VOID 或 0。</li>
+<li>两组都通过，评分器才能用于评测；判据、阈值或权重改动后要重跑。</li>
+</ul>
+</div></section>
+<section class="tinted" id="humancheck"><div class="wrap">
+<p class="kicker">05 · 人工检查任务</p>
+<h2>任务验收和改版时，人看录像回答三个问题</h2>
+<p>任务验收及相关改版时，按预声明清单审阅代表全程、关键技能及正反例录像。静态筛查不要求录像；无录像物理记录单列，不能补记录像签审。所选录像逐段回答三个问题：</p>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:9em">人工检查</th><th>看什么</th><th>对应的自动检查</th><th>不通过怎么办</th></tr></thead>
+<tbody>
+<tr><td><strong>1 没有 reward hack</strong></td><td>参考解和试跑的分数是不是靠真实的动作拿到的；反例和漏洞测试是不是都被判 0 或无效；试跑里有没有钻空子拿到的分</td><td>接口和世界完整性监视、判据异常监视、反例集、rollout 来源核对</td><td>修判据、补反例、加监视器，再检查一遍；修好之前任务不能入库</td></tr>
+<tr><td><strong>2 任务确实完成了</strong></td><td>参考专家解是否真的达成目标、满足约定；verifier 给出的阶段时刻和录像对不对得上（人工标注对照）</td><td>阶段判据（接触证据、物体身份、保持时长、静止条件）和成功判定</td><td>改判据或阈值；参考解做不到，任务标为“未就绪”</td></tr>
+<tr><td><strong>3 没有明显违反物理规律或限制</strong></td><td>仿真里有没有穿模、弹飞、悬浮、能量来路不明；参考解有没有超出关节和力矩限制、违反公开约束</td><td>物理异常监视、指令模式监视、瞬移检查、世界参数哈希</td><td>修仿真设置、素材（碰撞体）或监视器阈值；违规的那段参考解不算证明了可解</td></tr>
+</tbody>
+</table></div>
+<h3>流程</h3>
+<ol class="steps">
+<li><strong>跑一遍。</strong>参考专家解、空操作、反例、漏洞测试和难度试跑，全部交给 verifier 自动判分。<span class="out">产出：verdict.json 和录像。</span></li>
+<li><strong>人看录像。</strong>对每段录像回答三个问题，写明理由，标出时间点；重点看告警的位置。<span class="out">产出：任务检查记录。</span></li>
+<li><strong>修 verifier。</strong>人工和自动判断不一致的地方，相应修改判据、阈值、反例集或监视器，再重跑<a href="#validity">第 04 节</a>的有效性检查。<span class="out">产出：修订记录。</span></li>
+<li><strong>冻结。</strong>三个问题都通过后，冻结评分器和自动处理规则；之后评测 agent 只用自动评分。<span class="out">产出：冻结的评分器版本。</span></li>
+</ol>
+<p style="margin-top:12px">每个任务都要提供一份人工检查清单，供任务验收时使用：针对这三个问题，写明本任务里具体看什么（目标怎样才算达到、有哪些公开约束、哪些做法算违规），以及每个阶段在录像上怎么认（任务卡字段，见<a href="/robo-si-results/infra/task-design-zh.html#card">任务设计第 11 节</a>）。</p>
+</div></section>
+<section id="ci"><div class="wrap">
+<p class="kicker">06 · 自动检查流水线</p>
+<h2>每次改动都自动检查，人只看有变化的部分</h2>
+<p>对任务的人工检查只在验收和改版时做；平时每次改动都由流水线自动检查，人只看有变化的部分。</p>
+<ul class="check">
+<li>静态检查：bundle 里没有可信侧内容；机器可读的任务规格格式正确（<a href="/robo-si-results/infra/task-design-zh.html#card">任务设计第 11 节</a>）。</li>
+<li>空操作得 0；受改动影响的预选代表参考达到预期结果，阶段时间线与人工标注一致；筛查通过不作为完整正例。</li>
+<li>每个阶段的反例全部不得分；漏洞测试判为无效；逃逸探针全部被拒。</li>
+<li>需要物理回归时，对预声明代表种子重跑 3 次，结果在复现容差内（<a href="/robo-si-results/infra/protocol-zh.html#versions">评测规程第 06 节</a>）。</li>
+<li>评分模式按原规程在 N 个密封回合执行；作者侧筛查不要求先为这些回合生成完整参考解。</li>
+</ul>
+</div></section>
+<section id="layered-rollout"><div class="wrap"><h2>本次状态落实：除 H1 外的 11 项任务</h2><p>任务级保留少量完整成功见证；技能级验进入／退出条件、距离、载荷、支撑位置与姿态；实例级只做预算内的可达、碰撞、支撑和衔接检查，困难片段可短仿真；执行级按观测滚动生成局部轨迹。交付高层计划、技能选择与约束、关键状态和检查结果，完整轨迹仅为代表性验证的附加证据。</p><p>有完整成功证据／通过可行性筛查／未确定／检查不通过必须分开。检查器缺失或预算耗尽记未确定；检查不通过需必要条件反例与原因。自生成场景可按已验证技能范围采样；基准采样及所有结果完整保留。既有人工签审、第二人复现与评分器检查继续单列，不要求第二人逐个复现随机实例。</p><p><a href="/robo-si-results/infra/status-zh.html#layered-progress">逐任务状态与剩余检查</a> · <a href="/robo-si-results/infra/planning/layered-status.json">JSON</a></p></div></section>
+<section id="inventory-additions"><div class="wrap"><h2>14 项任务统一目录 · 新增两项</h2><p>原 12 项仍是 62 个技能／193 个动作候选，映射核对待完成。新增两项使用各自已有的实测分段证据，不能与 193 个动作混算，也不代表正式准入。</p><div class="table-wrap"><table><thead><tr><th>任务</th><th>已有证据</th><th>保留限制</th></tr></thead><tbody><tr data-task="DiskFlip"><td><a href="/robo-si-results/infra/task-disk-flip-zh.html">G1 桌面轻柔翻盘</a></td><td>6/6 全程（每配置 3 次）与 2/2 独立动作回放通过；两条见证分别有 26/27 个低层轨迹段及三层映射。</td><td>人工录像签审、第二人复现、更多配置与完整自碰撞/环境接触审阅；无通用随机域或移动全身能力声明。</td></tr><tr data-task="Sokoban"><td><a href="/robo-si-results/infra/task-sokoban-zh.html">双 G1 未知地图推箱清路</a></td><td>Gamma 8011370：279.18 s、24 个高层操作、76 个低层段；两机到各自目标并保持 3 s。独立采样审阅及完整公共输入回放通过；task_success=null。</td><td>完整接触/仅推不抓有效性认证、未见地图验证、协作收益对照和人工验收；仍为实验候选。</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/planning/INVENTORY.md">14 项规划与证据总览</a> · <a href="/robo-si-results/infra/planning/catalog.json">JSON</a></p></div></section>
+<section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>14 项均有声明范围内的参考执行见证，现有 14 份统一参考设计文档。项目参考交付完成 14 项、进行中 0 项；远端资料覆盖 14 项，正式准入 0 项。沙盒运行验收单列。Sokoban 为实验见证，task_success 仍为 null。</p><p><a href="/robo-si-results/infra/reference-designs-zh.html">参考解与设计文档</a></p></div></section>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · 任务验收 · 2026-10-26 · <a href="/robo-si-results/infra/acceptance-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/infra/contribute-zh.html">首页</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body>
+</html>

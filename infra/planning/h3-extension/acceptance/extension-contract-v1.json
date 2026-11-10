@@ -1,0 +1,65 @@
+{
+  "schema": "h3-l2-l3-contract/1",
+  "status": "implementation_in_progress",
+  "formal_admission": false,
+  "parcel": {
+    "size_m": [
+      0.2,
+      0.18,
+      0.16
+    ],
+    "mass_kg": 0.4,
+    "unchanged": true
+  },
+  "roles": "G1 carries original parcel; Stretch supports or places tools",
+  "l2": {
+    "required": [
+      "uncertain tool prediction before action",
+      "candidate discovery without effective-tool labels",
+      "robot-driven placement and withdrawal of assistance",
+      "continuous native support and carrier clearance",
+      "original parcel delivery and released-table dwell"
+    ],
+    "current_screen": {
+      "initialized_tools": true,
+      "robot_placement": false,
+      "delivery": false,
+      "paired_conditions": [
+        [
+          "wedge_nominal",
+          "wedge_slippery"
+        ],
+        [
+          "crate_nominal",
+          "crate_light"
+        ]
+      ],
+      "baseline": "light_decoy",
+      "counterfactual_claim_requires_measured_different_outcomes": true
+    }
+  },
+  "l3": {
+    "required": [
+      "predeclared trusted fault",
+      "observation-based capability update",
+      "real actuator-driven recovery or role reassignment",
+      "continuous safe passage and final delivery"
+    ],
+    "first_fault": "closing spring stiffness x4 at 5.0 seconds in tool fixture",
+    "first_fault_scope": "environment-load diagnostic, not robot capability loss or completed physical recovery",
+    "unsafe_transit_failure_is_sticky": true,
+    "robot_capability_fault": "pending"
+  },
+  "evidence": {
+    "all_attempts_retained": true,
+    "expert_source_frozen": true,
+    "physics_hz": 200,
+    "control_hz": 50,
+    "video": "native views; fixture initialization visibly labelled"
+  },
+  "full_task_budget": "not frozen until physical feasibility is measured",
+  "future_configs": {
+    "H3-04": "Original parcel requires validated assisted transport; direct pinch grasp failed",
+    "H3-06": "Go2/Z1 installation and load dynamics must be validated before L3 trial"
+  }
+}

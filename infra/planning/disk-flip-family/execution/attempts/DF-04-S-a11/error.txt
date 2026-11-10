@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 382, in main
+    try:attempt.execute()
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 312, in execute
+    if self.body=='S' and self.tuning.get('supported_turn',False):return self.execute_sg3_supported()
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 346, in execute_sg3_supported
+    self.rotate_grasp('lift','y',np.pi/2,pivot,65)
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 341, in rotate_grasp
+    self.step()
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 242, in step
+    self.command();mujoco.mj_step(self.m,self.d);self.records.append((self.d.time,self.d.qpos.copy(),self.d.qvel.copy(),self.d.ctrl.copy(),self.qref.copy(),self.phase));row=self.assess()
+                                                                                                                                                                             ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 150, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: table_contact_load

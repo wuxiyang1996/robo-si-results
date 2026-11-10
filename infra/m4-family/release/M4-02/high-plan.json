@@ -1,0 +1,78 @@
+{
+  "schema": "m4-family-plan/1",
+  "task_id": "M4-02",
+  "mechanism": "Ground-supported towing; independent of M2 hand-supported carrying.",
+  "observation_track": "privileged reference: robot/object poses and rope tensions",
+  "transitions": "Require measured guards; no state resets or automatic attachment changes.",
+  "stages": [
+    {
+      "id": "P1",
+      "goal": "Establish stable support and initial tension",
+      "low": [
+        "balance",
+        "bounded forward gait"
+      ],
+      "guard": "no stability or integrity failure"
+    },
+    {
+      "id": "P2",
+      "goal": "Tow through straight segment",
+      "low": [
+        "track anchor waypoints",
+        "allocate tensile load"
+      ],
+      "guard": "platform reaches corner approach"
+    },
+    {
+      "id": "P3",
+      "goal": "Rotate and pass L corner",
+      "low": [
+        "track per-anchor path",
+        "separate robot targets",
+        "bound rope loads"
+      ],
+      "guard": "platform yaw and position enter exit leg"
+    },
+    {
+      "id": "P4",
+      "goal": "Deliver cargo fully into goal",
+      "low": [
+        "follow exit leg",
+        "synchronize progress"
+      ],
+      "guard": "full 3D cargo containment"
+    },
+    {
+      "id": "P5",
+      "goal": "Slack ropes and settle",
+      "low": [
+        "step toward anchors",
+        "hold reached robot poses"
+      ],
+      "guard": "continuous final dwell >= 2 s, all physical checks pass"
+    }
+  ],
+  "limits": {
+    "max_severe_collision_impulse_ns": 25.0,
+    "robot_minimum_base_height_m": {
+      "g1": 0.48,
+      "go2": 0.14
+    },
+    "maximum_robot_tilt_degrees": 45.0,
+    "target_angular_speed_max": 0.15,
+    "maximum_sample_gap_seconds": 0.05,
+    "required_evidence": [
+      "continuous_execution",
+      "no_state_edits",
+      "no_contact_bypass",
+      "robot_stability",
+      "actuator_limits",
+      "no_severe_collision",
+      "target_supported",
+      "connection_integrity",
+      "rope_slack_tension_and_contact",
+      "traction_and_slip"
+    ]
+  },
+  "feasibility": "Geometric screening is not a dynamics witness; every attempted rollout is retained."
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "m2-historical-cpu-recheck/1",
+  "scope": "Existing fixed lightweight historical verifier/logic checks; not bounded action compliance or complete task admission",
+  "checks": {
+    "scorer_calibration": {
+      "passed": 22,
+      "total": 22,
+      "failed": [],
+      "physical": [
+        {
+          "run": "floor-record-v7",
+          "score": 0.85,
+          "success": false
+        },
+        {
+          "run": "floor-record-v8",
+          "score": 0.9969999999998663,
+          "success": false
+        },
+        {
+          "run": "floor-record-v9",
+          "score": 0.9969999999998663,
+          "success": false
+        },
+        {
+          "run": "floor-full-cpu-v16",
+          "score": 0.7,
+          "success": false
+        },
+        {
+          "run": "floor-full-cpu-v21",
+          "score": 0.7,
+          "success": false
+        },
+        {
+          "run": "floor-full-cpu-v22",
+          "score": 0.5539999999999509,
+          "success": false
+        }
+      ]
+    },
+    "historical_verifier_validity": {
+      "positive": {
+        "total": 7,
+        "passed": 7
+      },
+      "negative": {
+        "total": 5,
+        "passed": 5
+      },
+      "exploit": {
+        "total": 2,
+        "passed": 2
+      },
+      "shortcut": {
+        "total": 10,
+        "passed": 10
+      }
+    }
+  },
+  "all_historical_expectations_matched": true,
+  "rows_count": 24,
+  "raw_output": "historical_validity.log",
+  "reproduction_script": "reproduce_historical_checks.py",
+  "original_invocation": "Equivalent calibrate.run with dump suppressed and validity.judge_reference/judge_launcher_run/judge_shortcut calls executed via Python stdin; stdout archived here. Launcher rejudgments written only to a new audit directory then relocated beside this report.",
+  "historical_records_modified": false,
+  "simulation_started": false,
+  "limitations": [
+    "Legacy kd60 expert scores do not establish current public-command compliance; current bounded 09/10/11 and RPC09d are reviewed separately.",
+    "Synthetic G2 one-hand recovery succeeds; moving set-down remains failure by current rule. Passing these expectations does not prove physical alternate-strategy feasibility.",
+    "Forbidden-request VOID outcomes establish request isolation, not shared monitor sensitivity.",
+    "This report does not promote full task admission, R9, random ranges, original 9 kg, human review or independent reproduction."
+  ]
+}

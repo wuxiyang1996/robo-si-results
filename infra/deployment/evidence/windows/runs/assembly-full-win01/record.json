@@ -1,0 +1,117 @@
+{
+ "how": "live",
+ "wall_s": 67.3,
+ "run": {
+  "expert_result": {
+   "output": "C:\\Users\\wuxiy\\rsi_releases\\deployment_validation_20261025\\runs\\assembly-full-win01\\expert",
+   "full_task_success": true,
+   "error": null,
+   "replay_verified": false
+  }
+ },
+ "comparison": {
+  "source": "C:\\Users\\wuxiy\\rsi_releases\\deployment_validation_20261025\\packages\\tabletop-20261023\\snapshots\\assembly\\humanoid\\g1_tabletop_assembly\\solution\\recordings\\expert_001",
+  "source_success": true,
+  "source_control_steps": 5784,
+  "source_duration_s": 115.67,
+  "verdict_success": true,
+  "success_matches": true,
+  "stage_times_sandbox": {
+   "1": 55.68,
+   "2": 86.74,
+   "3": 115.685
+  },
+  "stage_times_source": {
+   "1": 55.68,
+   "2": 86.72,
+   "3": 115.67
+  },
+  "stage_times_match": false,
+  "duration_matches": false,
+  "source_replay_verified": true,
+  "rows_compared": 5784,
+  "rows_sandbox": 5785,
+  "rows_recording": 5784,
+  "max_object_position_diff_m": 0.0576055645942688,
+  "max_time_diff_s": 0.010000000000005116,
+  "final_position_diff_m": 0.05299520492553711
+ },
+ "verdict": {
+  "score": 1.0,
+  "success": true,
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "process_score": 1.0,
+  "stage_timeline": {
+   "brace_supported": 55.68,
+   "sleeve_seated": 86.74,
+   "cap_seated": 114.2,
+   "assembled_released": 115.685
+  },
+  "stage_best": {
+   "brace_supported": 1.0,
+   "sleeve_seated": 1.0,
+   "cap_seated": 1.0,
+   "assembled_released": 1.0
+  },
+  "end_reason": "task_ended",
+  "sim_time_s": 115.685,
+  "evaluation": {
+   "replay": {
+    "success": true,
+    "failed": false,
+    "reason": "assembled_and_released",
+    "elapsed": 115.68499999996727,
+    "latched_row": 5785
+   },
+   "live": {
+    "success": true,
+    "failed": false,
+    "reason": "assembled_and_released",
+    "elapsed": 115.68499999996727,
+    "latched_row": 5785,
+    "recorded": true
+   },
+   "replay_matches_live": true,
+   "mismatch": null,
+   "stage_times": {
+    "support_fixture": 55.68,
+    "insert_sleeve": 86.74,
+    "complete": 115.685
+   },
+   "conditions": {
+    "brace_supported": true,
+    "sleeve_seated": true,
+    "cap_seated": true
+   }
+  },
+  "final_state": {
+   "fixture": true,
+   "sleeve": true,
+   "cap": true,
+   "brace": true,
+   "support_chain": true
+  },
+  "monitor_metrics": {
+   "monitor_version": "g1-tabletop-assembly-monitors/1",
+   "not_applicable": {
+    "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+    "fall": "the pelvis is bolted to a stand",
+    "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+   },
+   "max_reported_speed": 0.95,
+   "max_object_speed": 0.916,
+   "max_step_speed": 0.957,
+   "max_support_penetration": 0.0042,
+   "max_energy_excess_J": 0.001,
+   "max_reversal_rate_hand_hz": 1.0,
+   "max_arm_shake": 0.096,
+   "max_saturation_s": 0.0,
+   "max_limit_push_s": 0.0,
+   "max_progress_spike": 0.0
+  },
+  "error": null
+ },
+ "accepted": false
+}

@@ -1,0 +1,1135 @@
+{
+  "schema": "m2-layer1-rpc09d-audit/1",
+  "created_utc": "2026-10-24T13:34:18.892549+00:00",
+  "scope": "Existing fixed0.25kg ordinary SDK container open-loop command replay; no new simulation, sensor-feedback solution, human review or independent physical reproduction claimed.",
+  "pass": true,
+  "checks": {
+    "current_regrade_success": true,
+    "no_current_alarms_or_flags": true,
+    "episode_manifests_valid": true,
+    "request_chain_valid": true,
+    "all_command_payload_digests_match": true,
+    "no_rpc_clipping_or_rejection": true,
+    "delivery_hashes_match": true,
+    "delivery_commands_match_capture": true,
+    "recorded_states_exact": true,
+    "solver_snapshots_exact": true,
+    "world_parameters_exact": true,
+    "all_control_frames_executed": true,
+    "applied_gain_and_effort_bounds": true,
+    "source_core_equal_to_capture": true,
+    "frozen_snapshot_still_matches": true,
+    "external_solver_sources_still_match": true,
+    "launch_source_manifest_matches": true,
+    "launch_source_manifest_hash_matches": true,
+    "launch_scope_frozen": true,
+    "recording_parameters_unchanged": true,
+    "no_state_writes": true,
+    "normal_process_exit_within_budget": true,
+    "original_verdicts_preserved": true
+  },
+  "capture_path": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_g1_long_object_transport\\sandbox\\runs\\bounded-reference-09",
+  "replay_path": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\m2-r09d\\multi_robot\\dual_g1_long_object_transport\\sandbox\\runs\\bounded-rpc-replay-09d",
+  "current_verdict": {
+    "score": 1.0,
+    "success": true,
+    "void": false,
+    "flags": [],
+    "privileged_reference": false,
+    "admission_eligible": false,
+    "request_log_chain": {
+      "status": "ok",
+      "detail": "181 entries"
+    }
+  },
+  "comparison": {
+    "task": "M2",
+    "scope": "Recorded fixed-scene open-loop command-interface replay; not sensor-feedback solvability, randomisation, human review or independent reproduction.",
+    "capture": "sandbox/runs/bounded-reference-09",
+    "capture_metadata": {
+      "kind": "privileged bounded reference capture; not RPC execution",
+      "frames": 8764,
+      "physics_steps": 35056,
+      "control_dt": 0.02,
+      "physics_dt": 0.005,
+      "robots": [
+        "g1_a",
+        "g1_b"
+      ],
+      "arrival_offset_y": 0.06,
+      "capture_tool_sha256": "efcf3b1646922a388bba05360fab112af8cdd9b0922fa2bd97bb407fb1ab4578",
+      "rpc_initialization": true,
+      "video_requested": true,
+      "suppressed_identical_setter_calls": {
+        "set_dofs_armature": 4,
+        "set_dofs_position": 2,
+        "set_pos": 2,
+        "set_dofs_force_range": 2,
+        "set_friction": 40
+      },
+      "denied_calls": [],
+      "rule_source": "sandbox/AUTHOR_RULES_2026-10-23.md; author-authorized G2/E2",
+      "scorer_version": "2.0-g2-e2",
+      "ending_rule": "m2-e2/1",
+      "source_snapshot": "capture_source.py",
+      "native_gain_values_clipped": {
+        "g1_a.kd": 10250,
+        "g1_b.kd": 10250
+      },
+      "command_values_clipped": {
+        "g1_a.q": 8000
+      },
+      "commands_sha256": "7fe6f1a0c2c684206085294cc11384bf2a30732135673d930d85f301b4053f58",
+      "adapter_sha256": "a40533a64becae98fa81ce4f869463c59a8e3e61a7363477b6d2d171e55d4eb1",
+      "expert_sha256": "53ffc19066656ec4738d052f2067fcfa7d7cb558a92aa3d9235d61678b2e48ed",
+      "score": 1.0,
+      "success": true,
+      "void": false,
+      "limitation": "Fixed-scene open-loop replay is a command-interface check, not sensor-only closed-loop solvability."
+    },
+    "replays": [
+      {
+        "run": "sandbox/runs/bounded-rpc-replay-09d",
+        "verdict": {
+          "score": 1.0,
+          "success": true,
+          "void": false,
+          "error": null,
+          "admission_eligible": false
+        },
+        "episode_verdict": {
+          "score": 1.0,
+          "success": true,
+          "void": false,
+          "flags": [],
+          "alarms": [],
+          "stage_times": {
+            "grasp": 18.595000000000585,
+            "lift": 33.01499999999844,
+            "turn": 120.25499999996312,
+            "transport": 154.84499999993167,
+            "lower": 173.14999999991502,
+            "place": 175.1699999999132
+          },
+          "stage_best": {
+            "grasp": 1.0,
+            "lift": 1.0,
+            "turn": 1.0,
+            "transport": 1.0,
+            "lower": 1.0,
+            "place": 1.0
+          }
+        },
+        "execution": {
+          "mode": "dev",
+          "isolation": "container",
+          "reference": false,
+          "reference_bundle": null,
+          "runs": [
+            {
+              "episode": 0,
+              "exit_code": 0,
+              "timed_out": false,
+              "wall_s": 208.62
+            }
+          ],
+          "wall_s": 239.77,
+          "worker_exit_code": 0,
+          "launch_scope_source_frozen": true,
+          "delivery_sha256": "2f5254f11d2eee549add41769d2af677d673de1f58f8513813a6cfd0d3e77ef8",
+          "delivery_manifest": {
+            "commands.npz": "7fe6f1a0c2c684206085294cc11384bf2a30732135673d930d85f301b4053f58",
+            "replay_reference.py": "8b16940dbfc6eff6530879e1b9183c9d4b6df17d7887db5fa320ea1611cb2007"
+          },
+          "source_manifest_sha256": "59a911971f0de18b0e782ad1f596259a05158b43b30561d2ea99693c77460629",
+          "bundle": "e1d960a60ffde7834c600cc961628e3ff4773d0e76684326663cc5f8cd1f6941",
+          "image_id": "sha256:b5bcb573ca8742e40a328ccb711a3795cdfc233d431e530e4664de32d24d33e7"
+        },
+        "request_counts": {
+          "info": 1,
+          "observe": 89,
+          "command_sequence": 88,
+          "finish": 1
+        },
+        "connections": 1,
+        "rejected_requests": [],
+        "clipped_requests": [],
+        "samples": 35057,
+        "final_time_s": 175.2799999999131,
+        "final_cargo_pos": [
+          0.00197066692635417,
+          2.856055736541748,
+          0.11997267603874207
+        ],
+        "source_differences_from_capture": [],
+        "source_differences_from_current_files": [],
+        "state_fields": {
+          "cargo_ang": {
+            "capture_shape": [
+              35057,
+              3
+            ],
+            "replay_shape": [
+              35057,
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "cargo_pos": {
+            "capture_shape": [
+              35057,
+              3
+            ],
+            "replay_shape": [
+              35057,
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "cargo_quat": {
+            "capture_shape": [
+              35057,
+              4
+            ],
+            "replay_shape": [
+              35057,
+              4
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "cargo_vel": {
+            "capture_shape": [
+              35057,
+              3
+            ],
+            "replay_shape": [
+              35057,
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "contact_hands": {
+            "capture_shape": [
+              35057,
+              2,
+              2
+            ],
+            "replay_shape": [
+              35057,
+              2,
+              2
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "contact_normal": {
+            "capture_shape": [
+              35057,
+              2,
+              2
+            ],
+            "replay_shape": [
+              35057,
+              2,
+              2
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "contact_other_force": {
+            "capture_shape": [
+              35057,
+              2
+            ],
+            "replay_shape": [
+              35057,
+              2
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "contact_vertical_load": {
+            "capture_shape": [
+              35057,
+              2
+            ],
+            "replay_shape": [
+              35057,
+              2
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "ground_support_N": {
+            "capture_shape": [
+              35057
+            ],
+            "replay_shape": [
+              35057
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_ang": {
+            "capture_shape": [
+              35057,
+              2,
+              3
+            ],
+            "replay_shape": [
+              35057,
+              2,
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_pos": {
+            "capture_shape": [
+              35057,
+              2,
+              3
+            ],
+            "replay_shape": [
+              35057,
+              2,
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_q": {
+            "capture_shape": [
+              35057,
+              2,
+              43
+            ],
+            "replay_shape": [
+              35057,
+              2,
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_qd": {
+            "capture_shape": [
+              35057,
+              2,
+              43
+            ],
+            "replay_shape": [
+              35057,
+              2,
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_quat": {
+            "capture_shape": [
+              35057,
+              2,
+              4
+            ],
+            "replay_shape": [
+              35057,
+              2,
+              4
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_tau": {
+            "capture_shape": [
+              35057,
+              2,
+              43
+            ],
+            "replay_shape": [
+              35057,
+              2,
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_vel": {
+            "capture_shape": [
+              35057,
+              2,
+              3
+            ],
+            "replay_shape": [
+              35057,
+              2,
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "t": {
+            "capture_shape": [
+              35057
+            ],
+            "replay_shape": [
+              35057
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "wall_contact_force": {
+            "capture_shape": [
+              35057
+            ],
+            "replay_shape": [
+              35057
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          }
+        },
+        "solver_snapshots": {
+          "qpos": {
+            "capture_shape": [
+              1753,
+              107
+            ],
+            "replay_shape": [
+              1753,
+              107
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "qvel": {
+            "capture_shape": [
+              1753,
+              104
+            ],
+            "replay_shape": [
+              1753,
+              104
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "t": {
+            "capture_shape": [
+              1753
+            ],
+            "replay_shape": [
+              1753
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          }
+        },
+        "world_parameters": {
+          "geoms_friction_ratio": {
+            "capture_shape": [
+              108
+            ],
+            "replay_shape": [
+              108
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "links_mass": {
+            "capture_shape": [
+              96
+            ],
+            "replay_shape": [
+              96
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "motor_armature.g1_a": {
+            "capture_shape": [
+              43
+            ],
+            "replay_shape": [
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "motor_armature.g1_b": {
+            "capture_shape": [
+              43
+            ],
+            "replay_shape": [
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "motor_force_range.g1_a": {
+            "capture_shape": [
+              2,
+              43
+            ],
+            "replay_shape": [
+              2,
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "motor_force_range.g1_b": {
+            "capture_shape": [
+              2,
+              43
+            ],
+            "replay_shape": [
+              2,
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          }
+        },
+        "file_sha256": {
+          "run.json": "4d371795288917bec66079775211738919b0f19bebc6c1c19f5b0d99259ef594",
+          "verdict.json": "453016d20827a8327a5e7163bf9156b9240dc0929f1533a153eeb10a4ea67722",
+          "requests.jsonl": "08695b7664e354d470d35d18822e575ccaa5fc870bcb98186dff2370ad682392",
+          "source_manifest.json": "59a911971f0de18b0e782ad1f596259a05158b43b30561d2ea99693c77460629"
+        },
+        "all_recorded_state_fields_exact": true,
+        "all_solver_snapshots_exact": true,
+        "all_world_parameters_exact": true,
+        "request_payload_evidence": {
+          "expected_blocks": 88,
+          "actual_blocks": 88,
+          "all_digests_match": true,
+          "method": "infra.sandbox.server.digest on the exact list-valued cmds and record=False; block size100; immutable trusted request chain checked separately",
+          "request_chain": [
+            "ok",
+            "181 entries"
+          ]
+        },
+        "control_steps": 8764,
+        "server_final_status": {
+          "time_s": 175.28,
+          "steps": 8764,
+          "over": true,
+          "reason": "finished",
+          "sim_time_left_s": 124.72,
+          "observations_left": 19911,
+          "resets_left": 0,
+          "episode": 0
+        },
+        "delivery_commands_match_capture": true,
+        "initial_state_fields": {
+          "cargo_ang": {
+            "capture_shape": [
+              3
+            ],
+            "replay_shape": [
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "cargo_pos": {
+            "capture_shape": [
+              3
+            ],
+            "replay_shape": [
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "cargo_quat": {
+            "capture_shape": [
+              4
+            ],
+            "replay_shape": [
+              4
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "cargo_vel": {
+            "capture_shape": [
+              3
+            ],
+            "replay_shape": [
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "contact_hands": {
+            "capture_shape": [
+              2,
+              2
+            ],
+            "replay_shape": [
+              2,
+              2
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "contact_normal": {
+            "capture_shape": [
+              2,
+              2
+            ],
+            "replay_shape": [
+              2,
+              2
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "contact_other_force": {
+            "capture_shape": [
+              2
+            ],
+            "replay_shape": [
+              2
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "contact_vertical_load": {
+            "capture_shape": [
+              2
+            ],
+            "replay_shape": [
+              2
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "ground_support_N": {
+            "capture_shape": [],
+            "replay_shape": [],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_ang": {
+            "capture_shape": [
+              2,
+              3
+            ],
+            "replay_shape": [
+              2,
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_pos": {
+            "capture_shape": [
+              2,
+              3
+            ],
+            "replay_shape": [
+              2,
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_q": {
+            "capture_shape": [
+              2,
+              43
+            ],
+            "replay_shape": [
+              2,
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_qd": {
+            "capture_shape": [
+              2,
+              43
+            ],
+            "replay_shape": [
+              2,
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_quat": {
+            "capture_shape": [
+              2,
+              4
+            ],
+            "replay_shape": [
+              2,
+              4
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_tau": {
+            "capture_shape": [
+              2,
+              43
+            ],
+            "replay_shape": [
+              2,
+              43
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "robot_vel": {
+            "capture_shape": [
+              2,
+              3
+            ],
+            "replay_shape": [
+              2,
+              3
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "t": {
+            "capture_shape": [],
+            "replay_shape": [],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "wall_contact_force": {
+            "capture_shape": [],
+            "replay_shape": [],
+            "exact": true,
+            "max_abs_difference": 0.0
+          }
+        },
+        "initial_solver_snapshots": {
+          "qpos": {
+            "capture_shape": [
+              107
+            ],
+            "replay_shape": [
+              107
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "qvel": {
+            "capture_shape": [
+              104
+            ],
+            "replay_shape": [
+              104
+            ],
+            "exact": true,
+            "max_abs_difference": 0.0
+          },
+          "t": {
+            "capture_shape": [],
+            "replay_shape": [],
+            "exact": true,
+            "max_abs_difference": 0.0
+          }
+        },
+        "capture_final_cargo_pos": [
+          0.00197066692635417,
+          2.856055736541748,
+          0.11997267603874207
+        ],
+        "first_state_difference_time_s": {},
+        "divergence_samples": [
+          {
+            "sample": 0,
+            "time_s": 0.0,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 1,
+            "time_s": 0.005,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 4,
+            "time_s": 0.02,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 20,
+            "time_s": 0.10000000000000002,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 200,
+            "time_s": 1.0000000000000007,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 2000,
+            "time_s": 10.000000000000163,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 7600,
+            "time_s": 38.00000000000099,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 7772,
+            "time_s": 38.86000000000143,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 8000,
+            "time_s": 40.00000000000201,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 8600,
+            "time_s": 43.000000000003546,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 9000,
+            "time_s": 45.00000000000457,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 24000,
+            "time_s": 119.99999999996335,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          },
+          {
+            "sample": 34800,
+            "time_s": 173.99999999991425,
+            "max_abs_difference": {
+              "robot_pos": 0.0,
+              "robot_q": 0.0,
+              "robot_qd": 0.0,
+              "robot_tau": 0.0,
+              "cargo_pos": 0.0
+            }
+          }
+        ]
+      }
+    ],
+    "capture_audit": {
+      "verdict": {
+        "score": 1.0,
+        "success": true,
+        "void": false,
+        "flags": [],
+        "alarms": [],
+        "stage_times": {
+          "grasp": 18.595000000000585,
+          "lift": 33.01499999999844,
+          "turn": 120.25499999996312,
+          "transport": 154.84499999993167,
+          "lower": 173.14999999991502,
+          "place": 175.1699999999132
+        },
+        "admission_eligible": false
+      },
+      "recording_status": "completed",
+      "state_writes": [],
+      "parameter_check_count": 71,
+      "all_parameter_checks_unchanged": true,
+      "initial_final_parameters_match": true,
+      "adapter_events": {
+        "rpc_initialization": true,
+        "physics_steps": 35056,
+        "suppressed_identical_setter_calls": {
+          "set_dofs_armature": 4,
+          "set_dofs_position": 2,
+          "set_pos": 2,
+          "set_dofs_force_range": 2,
+          "set_friction": 40
+        },
+        "denied_calls": []
+      },
+      "file_sha256": {
+        "meta.json": "6b36efa98097f68ea85400918219ce644537ded1b3351a070006b2bcd38ec74d",
+        "recording.json": "ae4f1a4f497cb0915817020431dd3aaa16d37389dadbff03ba7c159f886128b6",
+        "verdict.json": "b9a3335f38d4014069abc5671b6fb3dde9457fbc0ef6cf866f912774d90c04d1",
+        "files.json": "e5b217de9f10e6d58d8d06d94cd20b4fb77bf4abbc39f5f44aa9078574c0f42e"
+      },
+      "robots": {
+        "g1_a": {
+          "command_shapes": {
+            "mode": [
+              8764,
+              43
+            ],
+            "q": [
+              8764,
+              43
+            ],
+            "dq": [
+              8764,
+              43
+            ],
+            "kp": [
+              8764,
+              43
+            ],
+            "kd": [
+              8764,
+              43
+            ],
+            "tau": [
+              8764,
+              43
+            ]
+          },
+          "commands_all_finite": true,
+          "modes_valid": true,
+          "kp_out_of_bounds_values": 0,
+          "kd_out_of_bounds_values": 0,
+          "feedforward_out_of_bounds_values": 0,
+          "recorded_control_force_max_excess_Nm": 0.0,
+          "note": "Source-specific capture audit; command q/dq and all other public bounds also checked by actual replay clipping evidence. Native gains clipped before application; raw requested clipping counts are not applied gain violations."
+        },
+        "g1_b": {
+          "command_shapes": {
+            "mode": [
+              8764,
+              43
+            ],
+            "q": [
+              8764,
+              43
+            ],
+            "dq": [
+              8764,
+              43
+            ],
+            "kp": [
+              8764,
+              43
+            ],
+            "kd": [
+              8764,
+              43
+            ],
+            "tau": [
+              8764,
+              43
+            ]
+          },
+          "commands_all_finite": true,
+          "modes_valid": true,
+          "kp_out_of_bounds_values": 0,
+          "kd_out_of_bounds_values": 0,
+          "feedforward_out_of_bounds_values": 0,
+          "recorded_control_force_max_excess_Nm": 0.0,
+          "note": "Source-specific capture audit; command q/dq and all other public bounds also checked by actual replay clipping evidence. Native gains clipped before application; raw requested clipping counts are not applied gain violations."
+        }
+      }
+    },
+    "path_substitution": {
+      "capture": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_g1_long_object_transport\\sandbox\\runs\\bounded-reference-09",
+      "replay_root": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\m2-r09d",
+      "current_source_root": "D:\\rsi_vla\\robo-si"
+    }
+  },
+  "frozen_source_snapshot_check": {
+    "count": 211,
+    "missing": [],
+    "changed": [],
+    "all_match": true
+  },
+  "current_live_source_snapshot_comparison": {
+    "count": 211,
+    "missing": [],
+    "changed": [
+      "infra/sandbox/transport_feedback.py",
+      "infra/sandbox/transport_subtasks.py"
+    ],
+    "all_match": false
+  },
+  "current_live_recorded_runtime_source_differences": [],
+  "solver_source_check": {
+    "count": 3,
+    "missing": [],
+    "changed": [],
+    "all_match": true
+  },
+  "launch_source_check": {
+    "count": 67,
+    "missing": [],
+    "changed": [],
+    "all_match": true
+  },
+  "delivery_hashes": {
+    "commands.npz": {
+      "expected": "7fe6f1a0c2c684206085294cc11384bf2a30732135673d930d85f301b4053f58",
+      "actual": "7fe6f1a0c2c684206085294cc11384bf2a30732135673d930d85f301b4053f58"
+    },
+    "replay_reference.py": {
+      "expected": "8b16940dbfc6eff6530879e1b9183c9d4b6df17d7887db5fa320ea1611cb2007",
+      "actual": "8b16940dbfc6eff6530879e1b9183c9d4b6df17d7887db5fa320ea1611cb2007"
+    }
+  },
+  "source_manifest_end": {
+    "launch_scope_source_frozen": true,
+    "changed": {}
+  },
+  "original_verdict_sha256": {
+    "D:\\rsi_vla\\robo-si\\multi_robot\\dual_g1_long_object_transport\\sandbox\\runs\\bounded-reference-09\\trusted\\verdict.json": "b9a3335f38d4014069abc5671b6fb3dde9457fbc0ef6cf866f912774d90c04d1",
+    "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\m2-r09d\\multi_robot\\dual_g1_long_object_transport\\sandbox\\runs\\bounded-rpc-replay-09d\\trusted\\verdict.json": "453016d20827a8327a5e7163bf9156b9240dc0929f1533a153eeb10a4ea67722",
+    "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\m2-r09d\\multi_robot\\dual_g1_long_object_transport\\sandbox\\runs\\bounded-rpc-replay-09d\\trusted\\episode_00\\verdict.json": "70446b59c5df18e7c0a1971e0c466d6ccf088e8720bda957669010e9b55953ae"
+  },
+  "historical_failures": {
+    "09b": "Container could not read replay_reference.py from the deep bind-mounted path; zero commands executed. Subsequent deep-path import probe also failed, while byte-identical short-path files imported successfully. The precise Docker/Windows root cause is not isolated.",
+    "09c": "Short D-volume path passed imports and ran through 8400 confirmed control frames/168s, then Errno28 ENOSPC prevented final sealing. Partial failed record was preserved; it is not a success.",
+    "09d": "Same211 frozen sources and delivery moved to short C-volume path, completed successfully; original transfer to D was deferred for capacity."
+  },
+  "preserved_runtime_evidence": {
+    "bounded-replay-09b.log": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\bounded-replay-09b.log",
+      "sha256": "97d0f9f80998612912790af8fe199af36dbe0f18b78a535066890c202f551413",
+      "bytes": 720
+    },
+    "bounded-replay-09c.log": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\bounded-replay-09c.log",
+      "sha256": "43e938d47dd2e5b4d1109c02a7f73a3401e498aeca3078f94b8d54881eb40d74",
+      "bytes": 1912
+    },
+    "bounded-replay-09d.log": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\bounded-replay-09d.log",
+      "sha256": "e31aff976c57fc5522843cd0a3953f8968b6040f853ad5bf9e2c6707ba0017a9",
+      "bytes": 568
+    },
+    "replay09b_frozen_execution.json": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\replay09b_frozen_execution.json",
+      "sha256": "6bc6a69bc840246e5a6ca663a8a9dcbd2cb691217b2acc168cf65a9e07b46487",
+      "bytes": 13912
+    },
+    "replay09c_frozen_execution.json": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\replay09c_frozen_execution.json",
+      "sha256": "4a1e2069313907992c74a16104d808986b5446e58df0845f578d196ce2ad58db",
+      "bytes": 1292
+    },
+    "replay09d_frozen_execution.json": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\replay09d_frozen_execution.json",
+      "sha256": "52a321f61c94b8efe5e8fd7d3021c4e168aa2bb737d61942ff231c002052d5e7",
+      "bytes": 1484
+    },
+    "replay09c_enospc_preservation.json": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\replay09c_enospc_preservation.json",
+      "sha256": "28dcfca16392536961455d0546897be9da934e8a324d72cb312df1fcd81ea492",
+      "bytes": 15446
+    },
+    "frozen09c/preflight.json": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\frozen09c\\preflight.json",
+      "sha256": "843fa3750dd6d36f82ab3dd8ec50e0c5b2175b520de09a39130ccc9c87811fca",
+      "bytes": 3434
+    },
+    "frozen09d/preflight.json": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\frozen09d\\preflight.json",
+      "sha256": "1b648716fcf71989da0d28861ad5d38266dc7679cddba8fcdf0134b3ef08e3bb",
+      "bytes": 2014
+    },
+    "frozen09d/snapshot.json": {
+      "source": "C:\\Users\\wuxiy\\AppData\\Local\\Temp\\claude\\d--rsi-vla\\75294435-d33f-4bbf-a731-cb77064ab4ab\\scratchpad\\m2\\frozen09d\\snapshot.json",
+      "sha256": "b1e8c2310a3d54438fa1d374ac89a0e413b8e4910be0aaf3103bcc7b80ad94fc",
+      "bytes": 30431
+    }
+  },
+  "future_run_guidance": [
+    "Use a new short C-volume workspace and new run names; do not rerun wrappers whose output paths already exist.",
+    "Before simulation, validate Docker read-only bind-mount imports, delivery SHA256 and commands.npz shapes using the actual image and workspace.",
+    "Check free space on workspace, output/archive volumes and Docker storage; reserve enough for complete recordings and sealing before launching.",
+    "Copy every frozen snapshot source and the eight public-bundle-only dependencies, then verify every SHA256 before and after execution; avoid running from concurrently edited shared sources.",
+    "Use the existing shared gpu_queue.py with its default one-slot setting for this task, and never stop unrelated workers."
+  ],
+  "implementation": {
+    "script_sha256": "432977258c9008f920bb0c9b2237443908a9ce7f7536f1bd6185491a417e18c8",
+    "comparison_script_sha256": "90b9b40a1252d6d78f5503baf2bf62d8d09598343c301ec921e0bccc332b8f3c",
+    "comparison_runtime_changes": "Only TASK/replay data root and capture data path substitutions; current live verifier imports.",
+    "writes": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_g1_long_object_transport\\acceptance\\layer1-20261024\\rpc09d",
+    "simulation_launched": false
+  }
+}

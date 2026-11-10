@@ -1,0 +1,839 @@
+{
+  "schema": "oracle-assessment/1",
+  "instance": {
+    "task_id": "g1_tabletop_disk_flip",
+    "task_version": "0.1",
+    "seed": 0,
+    "sample_id": "disk-0",
+    "robot": "G1_Dex3_fixed_pelvis",
+    "physics_profile": "tabletop_genesis_400hz_float64",
+    "config": {
+      "table_height": 0.86,
+      "table_center": [
+        0.7,
+        0.0
+      ],
+      "table_size": [
+        0.7,
+        1.15,
+        0.05
+      ],
+      "disk_radius": 0.1,
+      "disk_height": 0.012,
+      "disk_mass": 0.12,
+      "start_xy": [
+        0.5,
+        0.0
+      ],
+      "goal_xy": [
+        0.5,
+        0.0
+      ],
+      "goal_tolerance": 0.045,
+      "overhang_min": 0.055,
+      "overhang_max": 0.095,
+      "control_dt": 0.02,
+      "physics_dt": 0.0025,
+      "friction_model": "elliptic",
+      "collision_detector": "gjk",
+      "disk_collision_shape": "mesh",
+      "post_flip_handoff": "gentle_placement",
+      "max_episode_seconds": 600.0,
+      "edge_hold_seconds": 0.25,
+      "grasp_hold_seconds": 0.3,
+      "flip_hold_seconds": 0.3,
+      "final_hold_seconds": 2.0,
+      "contact_loss_grace_seconds": 0.1,
+      "joint_target_speed_max": 0.5,
+      "arm_stiffness_scale": 0.4,
+      "linear_speed_max": 0.12,
+      "angular_speed_max": 0.65,
+      "robot_force_max_n": 18.0,
+      "table_force_max_n": 8.0,
+      "release_linear_speed": 0.015,
+      "release_angular_speed": 0.08,
+      "contact_min_n": 0.05,
+      "height_tolerance": 0.004,
+      "clearance": 0.02,
+      "flat_tolerance_degrees": 8.0,
+      "object_names": [
+        "disk"
+      ]
+    }
+  },
+  "instance_sha256": "09315fecdb6307b32c3722276a7be471f8a5de91853ab498d1bfad3de19aba27",
+  "status": "undetermined",
+  "screening_status": "undetermined",
+  "evidence_conflict": false,
+  "success_scope": null,
+  "high_level_plan": [
+    {
+      "id": "slide",
+      "skill": "gentle_slide_to_edge",
+      "requires": {
+        "upright_on_table": true
+      },
+      "provides": {
+        "edge_supported": true
+      },
+      "parameters": {
+        "disk_mass_kg": 0.12,
+        "disk_radius_m": 0.1,
+        "disk_height_m": 0.012,
+        "table_height_m": 0.86,
+        "target_disk_position_m": [
+          0.363,
+          0.0,
+          0.866
+        ],
+        "horizontal_reach_m": 0.363,
+        "support_edge_x_m": 0.35,
+        "table_size_m": [
+          0.7,
+          1.15,
+          0.05
+        ],
+        "required_support": "table",
+        "required_face": "orange_up",
+        "contact_mode": "skill_defined",
+        "arm_stiffness_scale": 0.4,
+        "friction_model": "elliptic",
+        "collision_detector": "gjk",
+        "disk_collision_shape": "mesh",
+        "post_flip_handoff": "gentle_placement",
+        "robot": "G1_Dex3_fixed_pelvis",
+        "physics_profile": "tabletop_genesis_400hz_float64",
+        "task_version": "0.1",
+        "task_config": {
+          "table_height": 0.86,
+          "table_center": [
+            0.7,
+            0.0
+          ],
+          "table_size": [
+            0.7,
+            1.15,
+            0.05
+          ],
+          "disk_radius": 0.1,
+          "disk_height": 0.012,
+          "disk_mass": 0.12,
+          "start_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_tolerance": 0.045,
+          "overhang_min": 0.055,
+          "overhang_max": 0.095,
+          "control_dt": 0.02,
+          "physics_dt": 0.0025,
+          "friction_model": "elliptic",
+          "collision_detector": "gjk",
+          "disk_collision_shape": "mesh",
+          "post_flip_handoff": "gentle_placement",
+          "max_episode_seconds": 600.0,
+          "edge_hold_seconds": 0.25,
+          "grasp_hold_seconds": 0.3,
+          "flip_hold_seconds": 0.3,
+          "final_hold_seconds": 2.0,
+          "contact_loss_grace_seconds": 0.1,
+          "joint_target_speed_max": 0.5,
+          "arm_stiffness_scale": 0.4,
+          "linear_speed_max": 0.12,
+          "angular_speed_max": 0.65,
+          "robot_force_max_n": 18.0,
+          "table_force_max_n": 8.0,
+          "release_linear_speed": 0.015,
+          "release_angular_speed": 0.08,
+          "contact_min_n": 0.05,
+          "height_tolerance": 0.004,
+          "clearance": 0.02,
+          "flat_tolerance_degrees": 8.0,
+          "object_names": [
+            "disk"
+          ]
+        },
+        "physics_seed": 0
+      },
+      "constraints": {
+        "disk_linear_speed_max_m_s": 0.12,
+        "disk_angular_speed_max_rad_s": 0.65,
+        "robot_contact_force_max_n": 18.0,
+        "table_contact_force_max_n": 8.0,
+        "joint_target_speed_max_rad_s": 0.5
+      },
+      "key_state": "edge",
+      "subgoals": [
+        "edge"
+      ]
+    },
+    {
+      "id": "clamp",
+      "skill": "two_independent_edge_pinches",
+      "requires": {
+        "edge_supported": true
+      },
+      "provides": {
+        "bimanual_clamp": true
+      },
+      "parameters": {
+        "disk_mass_kg": 0.12,
+        "disk_radius_m": 0.1,
+        "disk_height_m": 0.012,
+        "table_height_m": 0.86,
+        "target_disk_position_m": [
+          0.363,
+          0.0,
+          0.866
+        ],
+        "horizontal_reach_m": 0.363,
+        "support_edge_x_m": 0.35,
+        "table_size_m": [
+          0.7,
+          1.15,
+          0.05
+        ],
+        "required_support": "table_and_both_hands",
+        "required_face": "orange_up",
+        "contact_mode": "two_independent_face_pinches",
+        "arm_stiffness_scale": 0.4,
+        "friction_model": "elliptic",
+        "collision_detector": "gjk",
+        "disk_collision_shape": "mesh",
+        "post_flip_handoff": "gentle_placement",
+        "robot": "G1_Dex3_fixed_pelvis",
+        "physics_profile": "tabletop_genesis_400hz_float64",
+        "task_version": "0.1",
+        "task_config": {
+          "table_height": 0.86,
+          "table_center": [
+            0.7,
+            0.0
+          ],
+          "table_size": [
+            0.7,
+            1.15,
+            0.05
+          ],
+          "disk_radius": 0.1,
+          "disk_height": 0.012,
+          "disk_mass": 0.12,
+          "start_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_tolerance": 0.045,
+          "overhang_min": 0.055,
+          "overhang_max": 0.095,
+          "control_dt": 0.02,
+          "physics_dt": 0.0025,
+          "friction_model": "elliptic",
+          "collision_detector": "gjk",
+          "disk_collision_shape": "mesh",
+          "post_flip_handoff": "gentle_placement",
+          "max_episode_seconds": 600.0,
+          "edge_hold_seconds": 0.25,
+          "grasp_hold_seconds": 0.3,
+          "flip_hold_seconds": 0.3,
+          "final_hold_seconds": 2.0,
+          "contact_loss_grace_seconds": 0.1,
+          "joint_target_speed_max": 0.5,
+          "arm_stiffness_scale": 0.4,
+          "linear_speed_max": 0.12,
+          "angular_speed_max": 0.65,
+          "robot_force_max_n": 18.0,
+          "table_force_max_n": 8.0,
+          "release_linear_speed": 0.015,
+          "release_angular_speed": 0.08,
+          "contact_min_n": 0.05,
+          "height_tolerance": 0.004,
+          "clearance": 0.02,
+          "flat_tolerance_degrees": 8.0,
+          "object_names": [
+            "disk"
+          ]
+        },
+        "physics_seed": 0
+      },
+      "constraints": {
+        "disk_linear_speed_max_m_s": 0.12,
+        "disk_angular_speed_max_rad_s": 0.65,
+        "robot_contact_force_max_n": 18.0,
+        "table_contact_force_max_n": 8.0,
+        "joint_target_speed_max_rad_s": 0.5
+      },
+      "key_state": "clamped",
+      "subgoals": [
+        "clamped"
+      ]
+    },
+    {
+      "id": "lift",
+      "skill": "bimanual_lift_clear",
+      "requires": {
+        "bimanual_clamp": true
+      },
+      "provides": {
+        "clear_of_table": true
+      },
+      "parameters": {
+        "disk_mass_kg": 0.12,
+        "disk_radius_m": 0.1,
+        "disk_height_m": 0.012,
+        "table_height_m": 0.86,
+        "target_disk_position_m": [
+          0.31999999999999995,
+          0.0,
+          1.0
+        ],
+        "horizontal_reach_m": 0.31999999999999995,
+        "support_edge_x_m": 0.35,
+        "table_size_m": [
+          0.7,
+          1.15,
+          0.05
+        ],
+        "required_support": "both_hands",
+        "required_face": "orange_up",
+        "contact_mode": "skill_defined",
+        "arm_stiffness_scale": 0.4,
+        "friction_model": "elliptic",
+        "collision_detector": "gjk",
+        "disk_collision_shape": "mesh",
+        "post_flip_handoff": "gentle_placement",
+        "robot": "G1_Dex3_fixed_pelvis",
+        "physics_profile": "tabletop_genesis_400hz_float64",
+        "task_version": "0.1",
+        "task_config": {
+          "table_height": 0.86,
+          "table_center": [
+            0.7,
+            0.0
+          ],
+          "table_size": [
+            0.7,
+            1.15,
+            0.05
+          ],
+          "disk_radius": 0.1,
+          "disk_height": 0.012,
+          "disk_mass": 0.12,
+          "start_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_tolerance": 0.045,
+          "overhang_min": 0.055,
+          "overhang_max": 0.095,
+          "control_dt": 0.02,
+          "physics_dt": 0.0025,
+          "friction_model": "elliptic",
+          "collision_detector": "gjk",
+          "disk_collision_shape": "mesh",
+          "post_flip_handoff": "gentle_placement",
+          "max_episode_seconds": 600.0,
+          "edge_hold_seconds": 0.25,
+          "grasp_hold_seconds": 0.3,
+          "flip_hold_seconds": 0.3,
+          "final_hold_seconds": 2.0,
+          "contact_loss_grace_seconds": 0.1,
+          "joint_target_speed_max": 0.5,
+          "arm_stiffness_scale": 0.4,
+          "linear_speed_max": 0.12,
+          "angular_speed_max": 0.65,
+          "robot_force_max_n": 18.0,
+          "table_force_max_n": 8.0,
+          "release_linear_speed": 0.015,
+          "release_angular_speed": 0.08,
+          "contact_min_n": 0.05,
+          "height_tolerance": 0.004,
+          "clearance": 0.02,
+          "flat_tolerance_degrees": 8.0,
+          "object_names": [
+            "disk"
+          ]
+        },
+        "physics_seed": 0
+      },
+      "constraints": {
+        "disk_linear_speed_max_m_s": 0.12,
+        "disk_angular_speed_max_rad_s": 0.65,
+        "robot_contact_force_max_n": 18.0,
+        "table_contact_force_max_n": 8.0,
+        "joint_target_speed_max_rad_s": 0.5
+      },
+      "key_state": "lifted",
+      "subgoals": [
+        "lifted"
+      ]
+    },
+    {
+      "id": "turn",
+      "skill": "bimanual_half_turn",
+      "requires": {
+        "bimanual_clamp": true,
+        "clear_of_table": true
+      },
+      "provides": {
+        "inverted": true
+      },
+      "parameters": {
+        "disk_mass_kg": 0.12,
+        "disk_radius_m": 0.1,
+        "disk_height_m": 0.012,
+        "table_height_m": 0.86,
+        "target_disk_position_m": [
+          0.31999999999999995,
+          0.0,
+          1.0
+        ],
+        "horizontal_reach_m": 0.31999999999999995,
+        "support_edge_x_m": 0.35,
+        "table_size_m": [
+          0.7,
+          1.15,
+          0.05
+        ],
+        "required_support": "both_hands",
+        "required_face": "blue_up",
+        "contact_mode": "skill_defined",
+        "arm_stiffness_scale": 0.4,
+        "friction_model": "elliptic",
+        "collision_detector": "gjk",
+        "disk_collision_shape": "mesh",
+        "post_flip_handoff": "gentle_placement",
+        "robot": "G1_Dex3_fixed_pelvis",
+        "physics_profile": "tabletop_genesis_400hz_float64",
+        "task_version": "0.1",
+        "task_config": {
+          "table_height": 0.86,
+          "table_center": [
+            0.7,
+            0.0
+          ],
+          "table_size": [
+            0.7,
+            1.15,
+            0.05
+          ],
+          "disk_radius": 0.1,
+          "disk_height": 0.012,
+          "disk_mass": 0.12,
+          "start_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_tolerance": 0.045,
+          "overhang_min": 0.055,
+          "overhang_max": 0.095,
+          "control_dt": 0.02,
+          "physics_dt": 0.0025,
+          "friction_model": "elliptic",
+          "collision_detector": "gjk",
+          "disk_collision_shape": "mesh",
+          "post_flip_handoff": "gentle_placement",
+          "max_episode_seconds": 600.0,
+          "edge_hold_seconds": 0.25,
+          "grasp_hold_seconds": 0.3,
+          "flip_hold_seconds": 0.3,
+          "final_hold_seconds": 2.0,
+          "contact_loss_grace_seconds": 0.1,
+          "joint_target_speed_max": 0.5,
+          "arm_stiffness_scale": 0.4,
+          "linear_speed_max": 0.12,
+          "angular_speed_max": 0.65,
+          "robot_force_max_n": 18.0,
+          "table_force_max_n": 8.0,
+          "release_linear_speed": 0.015,
+          "release_angular_speed": 0.08,
+          "contact_min_n": 0.05,
+          "height_tolerance": 0.004,
+          "clearance": 0.02,
+          "flat_tolerance_degrees": 8.0,
+          "object_names": [
+            "disk"
+          ]
+        },
+        "physics_seed": 0
+      },
+      "constraints": {
+        "disk_linear_speed_max_m_s": 0.12,
+        "disk_angular_speed_max_rad_s": 0.65,
+        "robot_contact_force_max_n": 18.0,
+        "table_contact_force_max_n": 8.0,
+        "joint_target_speed_max_rad_s": 0.5
+      },
+      "key_state": "inverted",
+      "subgoals": [
+        "inverted"
+      ]
+    },
+    {
+      "id": "place",
+      "skill": "edge_setdown_withdraw_slide_release",
+      "requires": {
+        "bimanual_clamp": true,
+        "inverted": true
+      },
+      "provides": {
+        "inverted_released_in_goal": true
+      },
+      "parameters": {
+        "disk_mass_kg": 0.12,
+        "disk_radius_m": 0.1,
+        "disk_height_m": 0.012,
+        "table_height_m": 0.86,
+        "target_disk_position_m": [
+          0.5,
+          0.0,
+          0.866
+        ],
+        "horizontal_reach_m": 0.5,
+        "support_edge_x_m": 0.35,
+        "table_size_m": [
+          0.7,
+          1.15,
+          0.05
+        ],
+        "required_support": "table",
+        "required_face": "blue_up",
+        "contact_mode": "skill_defined",
+        "arm_stiffness_scale": 0.4,
+        "friction_model": "elliptic",
+        "collision_detector": "gjk",
+        "disk_collision_shape": "mesh",
+        "post_flip_handoff": "gentle_placement",
+        "robot": "G1_Dex3_fixed_pelvis",
+        "physics_profile": "tabletop_genesis_400hz_float64",
+        "task_version": "0.1",
+        "task_config": {
+          "table_height": 0.86,
+          "table_center": [
+            0.7,
+            0.0
+          ],
+          "table_size": [
+            0.7,
+            1.15,
+            0.05
+          ],
+          "disk_radius": 0.1,
+          "disk_height": 0.012,
+          "disk_mass": 0.12,
+          "start_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_xy": [
+            0.5,
+            0.0
+          ],
+          "goal_tolerance": 0.045,
+          "overhang_min": 0.055,
+          "overhang_max": 0.095,
+          "control_dt": 0.02,
+          "physics_dt": 0.0025,
+          "friction_model": "elliptic",
+          "collision_detector": "gjk",
+          "disk_collision_shape": "mesh",
+          "post_flip_handoff": "gentle_placement",
+          "max_episode_seconds": 600.0,
+          "edge_hold_seconds": 0.25,
+          "grasp_hold_seconds": 0.3,
+          "flip_hold_seconds": 0.3,
+          "final_hold_seconds": 2.0,
+          "contact_loss_grace_seconds": 0.1,
+          "joint_target_speed_max": 0.5,
+          "arm_stiffness_scale": 0.4,
+          "linear_speed_max": 0.12,
+          "angular_speed_max": 0.65,
+          "robot_force_max_n": 18.0,
+          "table_force_max_n": 8.0,
+          "release_linear_speed": 0.015,
+          "release_angular_speed": 0.08,
+          "contact_min_n": 0.05,
+          "height_tolerance": 0.004,
+          "clearance": 0.02,
+          "flat_tolerance_degrees": 8.0,
+          "object_names": [
+            "disk"
+          ]
+        },
+        "physics_seed": 0
+      },
+      "constraints": {
+        "disk_linear_speed_max_m_s": 0.12,
+        "disk_angular_speed_max_rad_s": 0.65,
+        "robot_contact_force_max_n": 18.0,
+        "table_contact_force_max_n": 8.0,
+        "joint_target_speed_max_rad_s": 0.5,
+        "placement_handoff": "gentle_placement"
+      },
+      "key_state": "released",
+      "subgoals": [
+        "outside_bridge",
+        "table_transfer",
+        "released"
+      ]
+    }
+  ],
+  "key_states": {
+    "edge": {
+      "disk_center": [
+        0.363,
+        0.0,
+        0.866
+      ],
+      "face": "orange_up",
+      "support": "table",
+      "overhang_m": [
+        0.055,
+        0.095
+      ]
+    },
+    "clamped": {
+      "disk_center": [
+        0.363,
+        0.0,
+        0.866
+      ],
+      "support": "table_and_both_hands",
+      "contact_mode": "two_independent_face_pinches",
+      "stable_s": 0.3
+    },
+    "lifted": {
+      "disk_center": [
+        0.31999999999999995,
+        0.0,
+        1.0
+      ],
+      "support": "both_hands",
+      "face": "orange_up"
+    },
+    "inverted": {
+      "disk_center": [
+        0.31999999999999995,
+        0.0,
+        1.0
+      ],
+      "support": "both_hands",
+      "face": "blue_up"
+    },
+    "outside_bridge": {
+      "disk_center": [
+        0.22999999999999998,
+        0.0,
+        0.869
+      ],
+      "face": "blue_up",
+      "support": "right_hand_outside_table_edge"
+    },
+    "table_transfer": {
+      "disk_center": [
+        0.375,
+        0.0,
+        0.866
+      ],
+      "face": "blue_up",
+      "support": "table_and_lower_finger_pads"
+    },
+    "released": {
+      "disk_center": [
+        0.5,
+        0.0,
+        0.866
+      ],
+      "face": "blue_up",
+      "support": "table",
+      "whole_disk_on_table": true,
+      "no_robot_contact": true,
+      "stable_s": 2.0
+    }
+  },
+  "checks": [
+    {
+      "name": "edge_support",
+      "category": "support",
+      "outcome": "pass",
+      "reason": "disk centre remains inside the near support edge",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "static_weight",
+      "category": "support",
+      "outcome": "pass",
+      "reason": "resting weight 1.1772 N must fit table-force limit 8.0 N",
+      "scope": "instance",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "lift_force",
+      "category": "support",
+      "outcome": "pass",
+      "reason": "lifting weight 1.1772 N must fit robot-contact limit 18.0 N",
+      "scope": "instance",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "disk_turn_clearance",
+      "category": "collision",
+      "outcome": "pass",
+      "reason": "nominal disk swept volume clears tabletop; whole-robot collision remains unchecked",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "bimanual_reachability",
+      "category": "reachability",
+      "outcome": "unknown",
+      "reason": "joint-limit and orientation-constrained IK for both hands is not validated",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "robot_swept_collision",
+      "category": "collision",
+      "outcome": "unknown",
+      "reason": "whole-robot paths and underhand entry/withdrawal require collision checks",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "grasp_wrench_support",
+      "category": "support",
+      "outcome": "unknown",
+      "reason": "measured contact lever arms, per-finger preload and frictional support are unvalidated; the runtime normal-wrench model alone is not a friction-closure certificate",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "physical_handoffs",
+      "category": "skill_chain",
+      "outcome": "unknown",
+      "reason": "slide-to-clamp and flipped-edge-to-release transitions need bounded contact probes",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "skill_0_gentle_slide_to_edge",
+      "category": "skill_chain",
+      "outcome": "unknown",
+      "reason": "outside_evidenced_domain_or_missing_evidence",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "skill_1_two_independent_edge_pinches",
+      "category": "skill_chain",
+      "outcome": "unknown",
+      "reason": "outside_evidenced_domain_or_missing_evidence",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "skill_2_bimanual_lift_clear",
+      "category": "skill_chain",
+      "outcome": "unknown",
+      "reason": "outside_evidenced_domain_or_missing_evidence",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "skill_3_bimanual_half_turn",
+      "category": "skill_chain",
+      "outcome": "unknown",
+      "reason": "outside_evidenced_domain_or_missing_evidence",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    },
+    {
+      "name": "skill_4_edge_setdown_withdraw_slide_release",
+      "category": "skill_chain",
+      "outcome": "unknown",
+      "reason": "outside_evidenced_domain_or_missing_evidence",
+      "scope": "candidate",
+      "evidence": [],
+      "constraints": null
+    }
+  ],
+  "budget": {
+    "max_checks": 32,
+    "max_seconds": 1.0,
+    "used_checks": 13,
+    "elapsed_seconds": 0.0003219679929316044,
+    "exhausted": false
+  },
+  "execution_evidence": null,
+  "global_solvability_proven": false,
+  "formal_admission": false,
+  "limitations": [
+    "Screening covers only recorded conditions; it is not a complete solution.",
+    "Candidate failure, missing skill evidence and budget exhaustion do not prove impossibility.",
+    "Nominal key states are constraints, not commanded object poses",
+    "No disk manipulation skill has a validated applicability envelope"
+  ],
+  "skill_catalog": {
+    "gentle_slide_to_edge": {
+      "domains": [],
+      "validation": "unvalidated"
+    },
+    "two_independent_edge_pinches": {
+      "domains": [],
+      "validation": "unvalidated"
+    },
+    "bimanual_lift_clear": {
+      "domains": [],
+      "validation": "unvalidated"
+    },
+    "bimanual_half_turn": {
+      "domains": [],
+      "validation": "unvalidated"
+    },
+    "edge_setdown_withdraw_slide_release": {
+      "domains": [],
+      "validation": "unvalidated"
+    }
+  },
+  "constraints": {
+    "disk_linear_speed_max_m_s": 0.12,
+    "disk_angular_speed_max_rad_s": 0.65,
+    "robot_contact_force_max_n": 18.0,
+    "table_contact_force_max_n": 8.0,
+    "joint_target_speed_max_rad_s": 0.5
+  },
+  "execution_contract": {
+    "mode": "rolling_local_planning",
+    "horizon_control_steps": 1,
+    "precomputed_full_trajectory_required": false
+  },
+  "trajectory": null
+}

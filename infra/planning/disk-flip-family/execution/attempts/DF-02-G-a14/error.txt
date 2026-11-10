@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 424, in main
+    summary={'setting':self.args.setting,'task_success':bool(self.success and not error),'status':'full_witness_candidate' if self.success and not error else 'failed_attempt','failure':error,'simulated_seconds':float(self.d.time),'wall_seconds':time.monotonic()-self.start,'physics_hz':400,'trace_hz':50,'video_fps':10,'physics_records':len(self.records),'video_frames':self.frames,'peaks':self.peaks,'seen_lift':self.seen_lift,'seen_flip':self.seen_flip,'independent_verification':'pending','binding':self.binding,'policy_state_writes':0,'object_attachment':False,'source_hashes':{n:hashlib.sha256((self.out/n).read_bytes()).hexdigest() for n in ['run.py','model.py','plan.json','scene.xml']},'limitations':['Privileged development expert; no public-agent score','MuJoCo extension protocol; original Genesis evidence is separate','No comparison success inferred from a failed or single-body attempt']}
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 314, in execute
+    self.pressure_control=True;self.move('close',seconds=22)
+                                                  ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 339, in edge_regrasp
+    if not self.success:raise RuntimeError('terminal_goal_not_established')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 262, in move
+    solution,err=self.solve(current,seed=self.qref)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 244, in step
+    qi=self.m.jnt_qposadr[j];rate=.05 if self.m.jnt_type[j]==mujoco.mjtJoint.mjJNT_SLIDE else .5
+                                                                                                 
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 152, in assess
+    speed=float(np.linalg.norm(v[3:]));ang=float(np.linalg.norm(v[:3]));robot,table,local,rt,selfc,pairs=self.contacts()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

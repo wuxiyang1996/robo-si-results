@@ -1,0 +1,48 @@
+{
+  "schema": "sokoban-push-only-review/1",
+  "checks": {
+    "complete_substep_and_command_coverage": true,
+    "open_index_middle_commands": true,
+    "no_loaded_far_side_contact": true,
+    "no_force_driven_motion_toward_robot": true,
+    "contact_direction_defined": true
+  },
+  "operational_checks_passed": true,
+  "thresholds": {
+    "active_contact_N": 1.0,
+    "far_side_margin_m": 0.02,
+    "reverse_force_N": 1.0,
+    "motion_noise_m_per_substep": 1e-06
+  },
+  "flag_counts": {},
+  "flagged_samples": [],
+  "reverse_contact_impulse_Ns": 0.6288694512007837,
+  "nonhand_contact_samples_by_link": {
+    "g1_a/crate_a/left_wrist_pitch_link": 14,
+    "g1_a/crate_a/right_wrist_pitch_link": 17,
+    "g1_a/crate_a/right_ankle_roll_link": 4,
+    "g1_a/crate_a/left_knee_link": 20,
+    "g1_b/crate_b/left_wrist_pitch_link": 2,
+    "g1_a/crate_c/left_wrist_pitch_link": 43,
+    "g1_a/crate_c/right_wrist_pitch_link": 27,
+    "g1_b/crate_c/right_wrist_pitch_link": 103,
+    "g1_b/crate_c/left_wrist_pitch_link": 68,
+    "g1_b/crate_c/right_ankle_roll_link": 5
+  },
+  "max_index_middle_command_rad": 0.0,
+  "substeps": 173816,
+  "controls": 21727,
+  "sha256": {
+    "trace.jsonl": "b16df179f161fba66b2cccda7662ccd3d5efd479acb404e1bcea357ab84aae62",
+    "physics-substeps.jsonl": "3d5da71f2dd65ffeea56d1509b40d0f614a517b61251f7ba5ac4b325e4e1ecfd",
+    "physics-metadata.json": "8cf360e28995a7b32c9ab4f6d744a8c903b896a1c4f370dd023a753eb5d2e604"
+  },
+  "scope": "Conservative operational checks plus existing opposed-face/support/actuator audit. Human review still required.",
+  "limitations": [
+    "Subthreshold contact and force-closure modes are not universally excluded by these tests.",
+    "Non-hand contacts are classified by link; applicable clips need human review.",
+    "This result does not certify isolation, runtime integrity or formal admission."
+  ],
+  "formal_admission": false,
+  "task_success": null
+}

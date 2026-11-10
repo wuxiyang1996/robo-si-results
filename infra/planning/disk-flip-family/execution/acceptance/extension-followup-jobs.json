@@ -1,0 +1,90 @@
+{
+  "created_at": "2026-10-29T07:46:22.779115+00:00",
+  "setting": "DF-04-S",
+  "baseline": "DF-04-S-a26",
+  "jobs": [
+    {
+      "job": 8056900,
+      "purpose": "Freeze verified a26 and launch three new repetitions; unsuccessful baseline rejects freeze",
+      "dependency": "afterany:8056898",
+      "status": "failed_baseline_guard_or_missing_bundle"
+    },
+    {
+      "job": 8056901,
+      "purpose": "Require complete verified baseline, then compact replay, portable bundle and isolated recorded-policy run",
+      "dependency": "afterany:8056898",
+      "status": "failed_baseline_guard_or_missing_bundle"
+    },
+    {
+      "job": 8056907,
+      "purpose": "Fresh portable closed-loop execution and independent replay, requires generated bundle",
+      "dependency": "afterany:8056901",
+      "status": "failed_baseline_guard_or_missing_bundle"
+    },
+    {
+      "job": 8056918,
+      "purpose": "Collect bound supplemental gate results and update local status ledger",
+      "dependency": "afterany:8056900:8056901:8056907",
+      "status": "completed_status_only"
+    }
+  ],
+  "scope": "Historical dependency campaign: unsuccessful baseline prevented qualification and supplemental execution.",
+  "previous_campaign": {
+    "baseline": "DF-04-S-a25",
+    "jobs": [
+      {
+        "job": 8056733,
+        "purpose": "Freeze successful baseline and submit three fresh qualification repetitions",
+        "dependency": "afterok:8056279",
+        "status": "cancelled"
+      },
+      {
+        "job": 8056822,
+        "purpose": "Exact held-reference replay, portable expert package, complete isolated recorded-policy execution",
+        "dependency": "afterok:8056279",
+        "status": "cancelled"
+      },
+      {
+        "job": 8056826,
+        "purpose": "Fresh portable closed-loop execution and independent scorer replay",
+        "dependency": "afterok:8056822",
+        "status": "cancelled"
+      }
+    ],
+    "cancelled_reason": "Baseline a25 failed disk_linear_speed at final withdrawal; no qualification started."
+  },
+  "checked_at": "2026-10-29T20:37:00.541649+00:00",
+  "baseline_result": {
+    "task_success": false,
+    "failure": "disk_angular_speed",
+    "time_s": 393.1929999941582,
+    "qualification_started": false
+  },
+  "current_development": [
+    {
+      "run": "DF-04-S-a27",
+      "job": 8064663,
+      "scope": "Fresh online expert, restored prefix behavior, horizontal withdrawal"
+    },
+    {
+      "run": "DF-04-S-a28",
+      "job": 8064776,
+      "scope": "Fresh fixed nominal reference prefix with online horizontal withdrawal; not a generalizing policy"
+    }
+  ],
+  "next_campaign": {
+    "job": 8065175,
+    "dependency": "afterany:8064776",
+    "preferred_baselines": [
+      "DF-04-S-a27",
+      "DF-04-S-a28"
+    ],
+    "gate": "Require task_success, independent replay_matches and source_hashes_match before freezing",
+    "status": "pending",
+    "source": "df_family/launch_extension_campaign.py",
+    "reason": "Start guarded qualification once the fixed-prefix baseline finishes verification; the online baseline remains independent and is preferred only if already verified.",
+    "parallel_checks": "Three fresh repetitions; after evidence packaging, isolated execution and portable execution in parallel",
+    "compact_job": 8066184,
+    "evidence_dependency": "afterany:8066184"
+  }
+}

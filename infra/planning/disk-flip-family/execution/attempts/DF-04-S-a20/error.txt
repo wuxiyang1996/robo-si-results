@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 684, in main
+    self.move('slide_goal',{'right':(disk+[-.14,0,.002],R)},seconds=15)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 445, in execute
+    if self.d.xpos[self.obj][2]<.99:raise RuntimeError('lift_without_object')
+                                                                       ^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 616, in finish_sg3_edge
+    if self.contacts()[0]>12:tip[0]-=.003*.02
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 362, in move
+    if goals:
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 344, in step
+    for n,j in self.joints.items():
+                                    
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 173, in assess
+    for k,val in [('speed',speed),('angular',ang),('robot',robot),('table',table),('local',local),('self_contact',selfc),('robot_table',rt)]:self.peaks[k]=max(self.peaks[k],val)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

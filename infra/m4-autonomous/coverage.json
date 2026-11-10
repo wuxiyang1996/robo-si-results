@@ -1,0 +1,115 @@
+{
+  "schema": "m4-autonomous-coverage/1",
+  "main_variants": [
+    {
+      "task": "M4-01",
+      "state": "unknown",
+      "autonomous_full_witness": null,
+      "autonomous_corridor_references": [
+        "v3j-rope-heading-a47",
+        "v3j-corridor-repeat-a48",
+        "v3j-corridor-repeat-a49"
+      ],
+      "integrated_discovery_and_delivery": "unknown",
+      "state_note": "The combined declared scope is still unknown; corridor with autonomous connection/release has separate verified references."
+    },
+    {
+      "task": "M4-02",
+      "state": "unknown",
+      "autonomous_full_witness": null
+    },
+    {
+      "task": "M4-03",
+      "state": "unknown",
+      "autonomous_full_witness": null
+    },
+    {
+      "task": "M4-04",
+      "state": "unknown",
+      "autonomous_full_witness": null
+    },
+    {
+      "task": "M4-05",
+      "state": "unknown",
+      "autonomous_full_witness": null
+    },
+    {
+      "task": "M4-06",
+      "state": "unknown",
+      "autonomous_full_witness": null
+    }
+  ],
+  "mechanism_cases": [
+    "nominal unlatched capture/extraction/release",
+    "hold-open noncapture",
+    "no-op noncapture",
+    "loaded opening denied",
+    "misaligned eye closure negative",
+    "small-aperture incompatible eye",
+    "seeded initial XY representative repeats"
+  ],
+  "tool_layers": [
+    {
+      "layer": 1,
+      "role": "necessary tool",
+      "state": "unknown"
+    },
+    {
+      "layer": 2,
+      "role": "tool useful after capability/interface change",
+      "state": "unknown"
+    },
+    {
+      "layer": 3,
+      "role": "distractor",
+      "state": "unknown"
+    }
+  ],
+  "full_scope_success_requires": [
+    "actual unlatched start",
+    "physical coupling",
+    "measured useful tool choice",
+    "cargo ground-supported through corridor",
+    "unload and real physical separation",
+    "released cargo dwell",
+    "all dense checks",
+    "unchanged source and physics"
+  ],
+  "screen_states": [
+    "witnessed_full",
+    "screen_pass",
+    "unknown",
+    "rejected"
+  ],
+  "failed_strategy_proves_instance_impossible": false,
+  "same_seed_representative_repeats": 3,
+  "component_witnesses": [
+    {
+      "attempt": "v3j-continuous-budget-a46",
+      "embodiment": "single Go2 component",
+      "scope": "same-scene measured tool rejection/selection/use/release",
+      "integrated_corridor": false
+    },
+    {
+      "attempt": "v3j-integrated-delivery-a52",
+      "embodiment": "single Go2 mechanism trial",
+      "scope": "same-scene rejection, measured selection, connection, original L-corridor delivery and release",
+      "integrated_corridor": true,
+      "main_variant_credit": false
+    },
+    {
+      "attempt": "v3j-integrated-repeat-a54",
+      "embodiment": "single Go2 mechanism trial",
+      "scope": "frozen same-start integrated discovery-to-delivery repeat",
+      "integrated_corridor": true,
+      "main_variant_credit": false
+    },
+    {
+      "attempt": "v3j-integrated-repeat-a55",
+      "embodiment": "single Go2 mechanism trial",
+      "scope": "frozen same-start integrated discovery-to-delivery repeat",
+      "integrated_corridor": true,
+      "main_variant_credit": false
+    }
+  ]
+}

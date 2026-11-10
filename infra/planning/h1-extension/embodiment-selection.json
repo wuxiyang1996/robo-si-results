@@ -1,0 +1,65 @@
+{
+  "schema": "h1-user-selected-embodiments/1",
+  "updated_utc": "2026-10-27T22:04:17.466647+00:00",
+  "authority": "User response selecting official G1 Dex3/Inspire and Stretch 3; no historical run profile is rewritten.",
+  "selections": {
+    "g1_mainline": {
+      "body": "G1 29DoF rev1.0",
+      "hand": "Unitree Dex3-1",
+      "source": "https://github.com/unitreerobotics/unitree_ros",
+      "commit": "7919cba47a3f68888f3b084945b0ffbf3bb3763a",
+      "model": "robots/g1_description/g1_29dof_with_hand_rev_1_0.urdf",
+      "active_hand_dof_per_hand": 7,
+      "status": "selected official matched-pair candidate; legacy H1 dynamics results remain separate"
+    },
+    "g1_five_finger_comparison": {
+      "body": "G1 29DoF rev1.0",
+      "hand": "Inspire DFQ model candidate",
+      "source": "https://github.com/unitreerobotics/unitree_ros",
+      "commit": "7919cba47a3f68888f3b084945b0ffbf3bb3763a",
+      "model": "robots/g1_description/g1_29dof_rev_1_0_with_inspire_hand_DFQ.urdf",
+      "status": "passive asset probe only; 12 mimic joints require separate Genesis coupling verification",
+      "alternative": "BrainCo remains an unintegrated alternative; do not mix hand models in one evidence cohort"
+    },
+    "stretch": {
+      "body": "Stretch 3",
+      "hand": "standard compliant gripper, eoa_wrist_dw3_tool_sg3",
+      "hardware_guide": "https://docs-arch.hello-robot.com/0.3/hardware/hardware_guide_stretch_3/",
+      "urdf_repository": "https://github.com/hello-robot/stretch_urdf",
+      "urdf_commit": "c8c6e27e1f87db126118049f22611399253cbe2b",
+      "model": "stretch_urdf/SE3/stretch_description_SE3_eoa_wrist_dw3_tool_sg3.urdf",
+      "simulation_repository": "https://github.com/hello-robot/stretch_mujoco",
+      "simulation_commit": "c78d6a1cd79bb5ead1b679610299563c1a91124a",
+      "calibration": "Official uncalibrated description, not a robot-specific calibrated URDF",
+      "historical_stretch4_probe": "8035305_1 retained as separate exploration; excluded from Stretch 3 validation"
+    },
+    "a3": {
+      "body": "Agibot A3 T3.0 candidate",
+      "model_repository": "https://github.com/AgibotTech/A3-A3U-robot-model",
+      "model_commit": "589f508ff357447c610a3f3004419035ddc8f153",
+      "controller_reference": "https://github.com/AgibotTech/sonic_for_a3",
+      "controller_commit": "c9df753d31ef63c930b825b1b6767cabd37c1549",
+      "status": "Official static assets and separate controller reference exist; passive Genesis load/step only, no task controller integration"
+    }
+  },
+  "official_simulation_and_teleoperation_sources": [
+    "https://github.com/unitreerobotics/unitree_sim_isaaclab",
+    "https://github.com/unitreerobotics/xr_teleoperate",
+    "https://www.unitree.com/g1/"
+  ],
+  "matched_body_audit": {
+    "path": "g1-matched-body-audit.json",
+    "sha256": "393e6aff7e4a80250fed528e7d41cf8d42056df19a45002257f2679a25c7afb6",
+    "common_movable_joints_identical": 29,
+    "common_links_identical": 37,
+    "common_fixed_joints_identical": 7
+  },
+  "comparison_requirements": [
+    "Freeze identical body, world, object asset, friction settings, seed, sensing, goal, safety and budget across hand variants.",
+    "Declare variant-specific hand joints, mimic coupling, command units, force/torque limits and observation channels before physics.",
+    "Validate per-hand collision geometry, self-contact filters, mimic drive, grasp/release and contact force recording in Genesis.",
+    "Record high-level tool/grasp choice, low-level commands, measured trajectory and all failed attempts independently.",
+    "Keep privileged expert feasibility separate from sensor-only agent evaluation and formal admission."
+  ],
+  "physics_task_success_inferred_from_sources": false
+}

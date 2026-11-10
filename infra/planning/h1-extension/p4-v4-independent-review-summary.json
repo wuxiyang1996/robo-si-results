@@ -1,0 +1,121 @@
+{
+  "schema": "h1-p4-v4-independent-summary/1",
+  "job_id": "8036294",
+  "diagnostic_only": true,
+  "diagnostic_accepted": false,
+  "task_success": false,
+  "new_full_witnesses": 0,
+  "formal_admission": false,
+  "simulated_seconds": 125.84,
+  "physics_samples": 25168,
+  "termination": "Predeclared 1710s wall guard; original1800s includes90s flush reserve. StandUp incomplete.",
+  "source_assets_identity": {
+    "predicate": "source_and_asset_identity",
+    "passed": true,
+    "metrics": {
+      "mismatched": [],
+      "asset_pre_post_equal": true
+    }
+  },
+  "original_five_safety_rules": {
+    "predicate": "original_five_safety_rules",
+    "passed": true,
+    "metrics": {
+      "events": [],
+      "status": "passed"
+    }
+  },
+  "position_tolerance_rad": 0.001,
+  "maximum_position_overshoot_rad": 0.0027652788162231268,
+  "violating_joint": "waist_pitch_joint",
+  "observed_clean_support_failure_times_s": [
+    104.16,
+    104.18
+  ],
+  "terminal_contact_caveat": "125.84s zero-contact terminal sample follows asynchronous stop and incomplete command coverage; not claimed as a separate clean fall episode.",
+  "macro_all_effects_measured": false,
+  "original_leaf_counts": {
+    "passed": 15,
+    "failed": 6,
+    "unknown": 1
+  },
+  "passing_reference_repairs": [
+    "Actual elbow references <=2.0rad across recorded interval",
+    "Actual mirrored index/middle references >=.06rad through recorded terminal-opening interval"
+  ],
+  "failed_checks": [
+    {
+      "predicate": "controller_finished_original_start_plan",
+      "passed": false,
+      "metrics": {}
+    },
+    {
+      "predicate": "all_physics_actuator_constraints",
+      "passed": false,
+      "metrics": {
+        "samples": 25168,
+        "max_position_overshoot_rad": 0.0027652788162231268,
+        "position_tolerance_rad": 0.001,
+        "max_speed_ratio": 0.09026568000381058,
+        "max_effort_ratio": 1.0
+      }
+    },
+    {
+      "predicate": "clear_and_stand_sampled_foot_support",
+      "passed": false,
+      "metrics": {
+        "samples_checked": 1163,
+        "failed_indices": [
+          5208,
+          5209,
+          6292
+        ],
+        "failed_times_s": [
+          104.16,
+          104.18,
+          125.84
+        ],
+        "criterion": "at least one measured floor foot force >1 N each control state"
+      }
+    },
+    {
+      "predicate": "complete_exact_physics_command_coverage",
+      "passed": false,
+      "metrics": {}
+    },
+    {
+      "predicate": "no_other_native_integrity_failures",
+      "passed": false,
+      "metrics": {
+        "expected_diagnostic_or_unreached_D_errors": [
+          "diagnostic_or_partial_start_never_full_witness",
+          "final_released_stable_dwell_too_short",
+          "diagnostic_or_partial_start_never_full_witness"
+        ],
+        "unexpected_errors": [
+          "actuator_max_position_overshoot",
+          "exact_physics_command_coverage_mismatch"
+        ]
+      }
+    }
+  ],
+  "source_report_paths": [
+    "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/outcome.json",
+    "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/original_safety_independent.json",
+    "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/diagnostic_acceptance.json",
+    "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/independent_measured_failure_detail.json"
+  ],
+  "source_report_hashes": {
+    "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/outcome.json": "dc004628508edd3ce86cd8e5c93d21766c6e6ed33f2ba3a964e0a76f1deda106",
+    "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/original_safety_independent.json": "a737de24bc6bc311c01eee43408c915beebf324eac07d709b48d1c4abe2569b1",
+    "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/diagnostic_acceptance.json": "f03837c972472efe92ab74b71f35d20b16af302251543eca15bdd796759a193e",
+    "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/independent_measured_failure_detail.json": "e5bd46ab18fb5c192b457a8f5b2f8e789c91b56d72ca96855a045a04f805a023"
+  },
+  "next_route": "New independently frozen v5 final crouch-hold route; never reinterprets this failed standing-route run.",
+  "interrupted_command_coverage": {
+    "actual_audited_physics_steps": 25168,
+    "recorded_exact_command_rows": 25169,
+    "extra_terminal_command_time_s": 125.84,
+    "interpretation": "One terminal command has no matching audited physical step after interruption. Preserve it; no cropping or concatenation to assert complete replay."
+  }
+}

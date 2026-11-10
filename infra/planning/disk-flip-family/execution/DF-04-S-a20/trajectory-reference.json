@@ -1,0 +1,26 @@
+{
+  "controller_tuning": {
+    "sg3_load_n": 4.0,
+    "deep_sg3_load_n": 8.0,
+    "sg3_grasp_x": -0.075,
+    "edge_regrasp": true,
+    "align_grasp": true,
+    "disk_collision_shape": "mesh128",
+    "sg3_insert_z_compensation": 0.008,
+    "regrasp_release_s": 24
+  },
+  "format": "held-reference-replay/1",
+  "physics_hz": 400,
+  "control_hz": 50,
+  "body": "S",
+  "physics_steps": 146259,
+  "full_array_sha256": {
+    "qpos": "af33bb317afbec10863ce6dc892c124c4daa37886798c37b2f0ab1bcc7d21e26",
+    "qvel": "f9d4a46e7720d2099dc268fb0d67a71f9ddc8dc37c99870c628fa69b07d80adc",
+    "ctrl": "67eeb14a393bb025dbcfef7a065c573dff99f4ce7dfb4e414826ae122d7160c6"
+  },
+  "source_trajectory_npz_sha256": "6ee63fe8ad629040ecb8ff29721e5518472e9f3895ccaf18f84f6b60d0fe9e0f",
+  "replay": "python compact_evidence.py --replay PATH_TO_RUN",
+  "requirements": "MuJoCo 3.14.0, NumPy, same official meshes, scene.xml and initial_state.json. Remap external mesh paths when needed.",
+  "storage": "References stored once per control interval; partial final interval retained. Object states shown at control endpoints; full 400 Hz states/controls are deterministically reconstructed and checked by array SHA-256."
+}

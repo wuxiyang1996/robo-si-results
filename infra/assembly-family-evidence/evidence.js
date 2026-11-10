@@ -1,0 +1,5 @@
+'use strict';
+document.querySelector('#family').addEventListener('change',event=>{document.querySelectorAll('article[data-family]').forEach(article=>{article.hidden=event.target.value!=='all'&&article.dataset.family!==event.target.value;});});
+document.querySelectorAll('.segment').forEach(select=>select.addEventListener('change',()=>{const video=select.closest('article').querySelector('video');const seek=()=>{video.currentTime=Math.min(Number(select.value),Number.isFinite(video.duration)?video.duration:Infinity);};if(video.readyState===0){video.addEventListener('loadedmetadata',seek,{once:true});video.load();}else seek();}));
+
+document.querySelectorAll('.segment[data-timeline]').forEach(async select=>{try{const response=await fetch(select.dataset.timeline);if(!response.ok)throw new Error();const data=await response.json();for(const row of data.segments){const item={time:row[0],high_level:row[2],phase:row[3]};const option=document.createElement('option');option.value=String(item.time||0);option.textContent=(item.time||0).toFixed(1)+'s · '+item.high_level+' / '+item.phase;select.append(option);}}catch{select.disabled=true;}});

@@ -1,0 +1,16 @@
+{
+  "format": "held-reference-replay/1",
+  "physics_hz": 400,
+  "control_hz": 50,
+  "body": "G",
+  "physics_steps": 38625,
+  "full_array_sha256": {
+    "qpos": "723c221134fe95ccdd76191741b740121b13d5071bb7671779714393f950cf15",
+    "qvel": "3a4b04c76de835c3b82788c9deae01d930477dee6ff6b6739509595676a40a88",
+    "ctrl": "54d08eb35e4c4f4832dcfea0b76f768a88040e15c7bfabb9895647df6ea9e592"
+  },
+  "source_trajectory_npz_sha256": "72a47816ea787455e3a7efd5e30975dc98547a71ea44419926aadc3037fe44af",
+  "replay": "python compact_evidence.py --replay PATH_TO_RUN",
+  "requirements": "MuJoCo 3.14.0, NumPy, same official meshes, scene.xml and initial_state.json. Remap external mesh paths when needed.",
+  "storage": "References stored once per control interval; partial final interval retained. Object states shown at control endpoints; full 400 Hz states/controls are deterministically reconstructed and checked by array SHA-256."
+}

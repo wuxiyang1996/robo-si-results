@@ -1,0 +1,2488 @@
+{
+  "schema": "current-retrieval-task-registry/1",
+  "date": "2026-10-27",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "new_simulation_runs": 0,
+  "counting": "H1 independent registrations, M1 operations and controls, and M3 conditional cases are different units; do not sum as validated tasks",
+  "H1": {
+    "unit": "independent_selected_task",
+    "count": 22,
+    "count_breakdown": {
+      "retained_tasks": 9,
+      "promoted_subscene_tasks": 11,
+      "existing_split_total": 20,
+      "new_operation_tasks": 2,
+      "active_total": 22
+    },
+    "tasks": [
+      {
+        "selection_id": "original",
+        "user_label": "1",
+        "name_zh": "原版",
+        "related_task_ids": [
+          "H1"
+        ],
+        "track": "frozen_reference",
+        "scene": "Original G1 + Dex3 retrieval; retain old scoring and physics",
+        "configurations": [],
+        "evidence_status": "historical_frozen_scope_only",
+        "validated_new_scene": false,
+        "task_id": "H1S-01",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "Frozen G1/Dex3 baseline",
+        "registration_origin": "retained_from_selected_12",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "five_finger_g1",
+        "user_label": "2",
+        "name_zh": "G1 五指灵巧手",
+        "related_task_ids": [
+          "H1E-06"
+        ],
+        "track": "hand_comparison",
+        "scene": "Handleless broad-box handling; five-finger advantage is a hypothesis",
+        "configurations": [
+          "g1_dex3",
+          "g1_inspire"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-02",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "G1 five-finger handling",
+        "registration_origin": "retained_from_selected_12",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "wheels_ramp",
+        "user_label": "3",
+        "name_zh": "轮式＋斜坡",
+        "related_task_ids": [
+          "H1E-03"
+        ],
+        "track": "ramp_access",
+        "scene": "Carry or push an initially unpositioned movable ramp to the designated placement region, align and stably support it at the platform, then ascend, retrieve, return loaded and deliver.",
+        "configurations": [
+          "wheeled_model_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-03",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "ramp_placement": {
+          "initially_outside_placement_region": true,
+          "ramp_type": "assembled movable ramp",
+          "allowed_methods": [
+            "carry",
+            "push"
+          ],
+          "panel_construction_required": false,
+          "prepositioned_only_counts_as_complete_task": false,
+          "functional_checks": [
+            "designated placement region",
+            "alignment and endpoint support or overlap",
+            "slope and width",
+            "traction and stability after release",
+            "loaded return"
+          ],
+          "numeric_tolerances": null,
+          "required_for_selected_ramp_route": true,
+          "alternative_legal_complete_route_accepted": true
+        },
+        "name_en": "Wheels and movable ramp",
+        "registration_origin": "retained_from_selected_12",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false,
+        "candidate_subtask_chain": [
+          "relocate ramp by carrying or pushing",
+          "align and establish stable ramp support",
+          "ascend",
+          "retrieve",
+          "loaded return",
+          "deliver"
+        ]
+      },
+      {
+        "selection_id": "a3",
+        "user_label": "5",
+        "name_zh": "A3",
+        "related_task_ids": [
+          "H1"
+        ],
+        "track": "body_comparison",
+        "scene": "Independent A3 matched-world high retrieval task; scores separately recorded",
+        "configurations": [
+          "agibot_a3"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-04",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "A3 retrieval",
+        "registration_origin": "retained_from_selected_12",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "two_tiers_vs_one",
+        "user_label": "6",
+        "name_zh": "G1 两层阶梯，A3 一层",
+        "related_task_ids": [
+          "H1E-02",
+          "H1E-14"
+        ],
+        "track": "body_comparison",
+        "scene": "Same world; certify G1 requires two tiers and A3 one, including return",
+        "configurations": [
+          "g1_dex3",
+          "agibot_a3"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-05",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "G1 two tiers / A3 one tier",
+        "registration_origin": "retained_from_selected_12",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "infeasible",
+        "user_label": "7",
+        "name_zh": "完成不了的 case",
+        "related_task_ids": [
+          "H1E-I01",
+          "H1E-I02"
+        ],
+        "track": "feasibility_decision",
+        "scene": "All-route obstruction with matched feasible control; physical Q exit",
+        "configurations": [],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-06",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "Infeasibility and physical exit",
+        "registration_origin": "retained_from_selected_12",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-07.P1",
+        "user_label": "8",
+        "name_zh": "推箱清路后取物",
+        "related_task_ids": [
+          "H1E-01",
+          "H1E-03",
+          "H1E-08"
+        ],
+        "track": "pushing_variants",
+        "scene": "Push an obstruction to a legal parking area, then complete elevated retrieval and delivery. Alternative legal complete routes remain accepted.",
+        "configurations": [
+          "g1_dex3",
+          "agibot_a3",
+          "wheeled_model_pending",
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-07.P1",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "Push clear and retrieve",
+        "parent_group_id": "H1S-07",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "P1",
+        "goal_scope": "retrieval_or_declared_delivery",
+        "outcome": "correct target wholly at declared D, released and independently stable; robot stable",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-07.P2",
+        "user_label": "8",
+        "name_zh": "推箱到位作平台",
+        "related_task_ids": [
+          "H1E-01",
+          "H1E-03",
+          "H1E-08"
+        ],
+        "track": "pushing_variants",
+        "scene": "Position a usable support by controlled pushing, establish stability, access the target and return; a wheeled route additionally needs validated ramp access.",
+        "configurations": [
+          "g1_dex3",
+          "agibot_a3",
+          "wheeled_model_pending",
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-07.P2",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "Push a support into place",
+        "parent_group_id": "H1S-07",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "P2",
+        "goal_scope": "retrieval_or_declared_delivery",
+        "outcome": "correct target wholly at declared D, released and independently stable; robot stable",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-07.P3",
+        "user_label": "8",
+        "name_zh": "转角或换侧推箱",
+        "related_task_ids": [
+          "H1E-01",
+          "H1E-03",
+          "H1E-08"
+        ],
+        "track": "pushing_variants",
+        "scene": "Move the box through a turn or change contact sides while maintaining collision clearance and access; complete the declared retrieval/delivery goal.",
+        "configurations": [
+          "g1_dex3",
+          "agibot_a3",
+          "wheeled_model_pending",
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-07.P3",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "Turn or change pushing side",
+        "parent_group_id": "H1S-07",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "P3",
+        "goal_scope": "retrieval_or_declared_delivery",
+        "outcome": "correct target wholly at declared D, released and independently stable; robot stable",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-07.P4",
+        "user_label": "8",
+        "name_zh": "抬不起但能推到目标区",
+        "related_task_ids": [
+          "H1E-01",
+          "H1E-03",
+          "H1E-08"
+        ],
+        "track": "pushing_variants",
+        "scene": "Deliver a target to ground D by controlled pushing despite insufficient lifting capability; this is auxiliary ground transport, not high-cabinet retrieval.",
+        "configurations": [
+          "g1_dex3",
+          "agibot_a3",
+          "wheeled_model_pending",
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-07.P4",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "Push a target that cannot be lifted",
+        "parent_group_id": "H1S-07",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "P4",
+        "goal_scope": "auxiliary_ground_transport",
+        "outcome": "correct target wholly at declared D, released and independently stable; robot stable",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false,
+        "development_binding": {
+          "profile": "../../../humanoid/g1_support_retrieval/extension/p4-development.json",
+          "configuration": "existing_g1_29dof_dex3",
+          "target_mass_kg": 5.0,
+          "lifted_payload_public_limit_kg": 2.0,
+          "ground_supported_push_allowed": true,
+          "interpretation": "This development profile excludes lifting under a public rule; it does not certify physical inability to lift 5 kg. Other legal contact routes remain accepted.",
+          "reference_start": "original_start",
+          "physical_evidence": "execution-progress.json",
+          "formal_admission": false
+        }
+      },
+      {
+        "selection_id": "stretch_handle",
+        "user_label": "9",
+        "name_zh": "Stretch＋有把手箱",
+        "related_task_ids": [
+          "H1E-06",
+          "H1E-10"
+        ],
+        "track": "grasp_affordance",
+        "scene": "Specify support-box versus target-box role; validate handle, wrist and eccentric load",
+        "configurations": [
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-08",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "Stretch handled box",
+        "registration_origin": "retained_from_selected_12",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "stretch_abstention",
+        "user_label": "10",
+        "name_zh": "Stretch 拒答 case",
+        "related_task_ids": [
+          "H1E-I01",
+          "H1E-I03",
+          "H1E-I04"
+        ],
+        "track": "feasibility_decision",
+        "scene": "No handle is not an impossibility certificate; audit all legal alternatives",
+        "configurations": [
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-09",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "Stretch infeasibility and exit",
+        "registration_origin": "retained_from_selected_12",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-10.A",
+        "user_label": "H1E-10",
+        "name_zh": "G1 多箱选择与布置",
+        "related_task_ids": [
+          "H1E-10"
+        ],
+        "track": "candidate_selection",
+        "scene": "multiple heights and top areas; distinguish accessible, useful and movable",
+        "configurations": [
+          "g1_dex3"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-10.A",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "protocol": "single_robot_support_selection",
+        "cooperation_required": false,
+        "required_checks": [
+          "multiple tall and short candidates",
+          "ability to carry or push selected box",
+          "access onto support when route requires it",
+          "useful reach from support",
+          "top area and capacity",
+          "placement and return clearance",
+          "correct target delivery and stable return"
+        ],
+        "accept_legal_box_combinations": true,
+        "require_intended_box_id": false,
+        "tool_layer": null,
+        "unknown_candidate_is_infeasible": false,
+        "prepositioned_only_counts_as_autonomous_placement": false,
+        "name_en": "G1 support selection",
+        "parent_group_id": "H1S-10",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "H1S-10.A",
+        "comparison": "base_scene",
+        "scene_parameters": null,
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-10.B",
+        "user_label": "H1E-10",
+        "name_zh": "A3 多箱选择与布置",
+        "related_task_ids": [
+          "H1E-10"
+        ],
+        "track": "candidate_selection",
+        "scene": "same world as A; separately tagged A3-specific layouts",
+        "configurations": [
+          "agibot_a3"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-10.B",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "protocol": "single_robot_support_selection",
+        "cooperation_required": false,
+        "required_checks": [
+          "multiple tall and short candidates",
+          "ability to carry or push selected box",
+          "access onto support when route requires it",
+          "useful reach from support",
+          "top area and capacity",
+          "placement and return clearance",
+          "correct target delivery and stable return"
+        ],
+        "accept_legal_box_combinations": true,
+        "require_intended_box_id": false,
+        "tool_layer": null,
+        "unknown_candidate_is_infeasible": false,
+        "prepositioned_only_counts_as_autonomous_placement": false,
+        "name_en": "A3 support selection",
+        "parent_group_id": "H1S-10",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "H1S-10.B",
+        "comparison": "matched_world_or_separately_tagged_body_specific_scene",
+        "scene_parameters": null,
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-10.C",
+        "user_label": "H1E-10",
+        "name_zh": "轮式平台与坡道选择",
+        "related_task_ids": [
+          "H1E-10"
+        ],
+        "track": "candidate_selection",
+        "scene": "choose box platform compatible with movable ramp and loaded return",
+        "configurations": [
+          "wheeled_model_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-10.C",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "protocol": "single_robot_support_selection",
+        "cooperation_required": false,
+        "required_checks": [
+          "multiple tall and short candidates",
+          "ability to carry or push selected box",
+          "access onto support when route requires it",
+          "useful reach from support",
+          "top area and capacity",
+          "placement and return clearance",
+          "correct target delivery and stable return"
+        ],
+        "accept_legal_box_combinations": true,
+        "require_intended_box_id": false,
+        "tool_layer": null,
+        "unknown_candidate_is_infeasible": false,
+        "prepositioned_only_counts_as_autonomous_placement": false,
+        "name_en": "Wheeled platform and ramp choice",
+        "parent_group_id": "H1S-10",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "H1S-10.C",
+        "comparison": "body_specific_scene",
+        "scene_parameters": null,
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-10.D",
+        "user_label": "H1E-10",
+        "name_zh": "Stretch 工作／中转箱选择",
+        "related_task_ids": [
+          "H1E-10"
+        ],
+        "track": "candidate_selection",
+        "scene": "choose handled boxes as transfer/work surfaces; ascent only with validated ramp",
+        "configurations": [
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-10.D",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "protocol": "single_robot_support_selection",
+        "cooperation_required": false,
+        "required_checks": [
+          "multiple tall and short candidates",
+          "ability to carry or push selected box",
+          "access onto support when route requires it",
+          "useful reach from support",
+          "top area and capacity",
+          "placement and return clearance",
+          "correct target delivery and stable return"
+        ],
+        "accept_legal_box_combinations": true,
+        "require_intended_box_id": false,
+        "tool_layer": null,
+        "unknown_candidate_is_infeasible": false,
+        "prepositioned_only_counts_as_autonomous_placement": false,
+        "name_en": "Stretch work/transfer surface choice",
+        "parent_group_id": "H1S-10",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "H1S-10.D",
+        "comparison": "body_specific_scene",
+        "scene_parameters": null,
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-11.A",
+        "user_label": "H1E-12",
+        "name_zh": "直接可取场景",
+        "related_task_ids": [
+          "H1E-12"
+        ],
+        "track": "goal_completion",
+        "scene": "directly feasible easy control",
+        "configurations": [
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-11.A",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "tool_operability": {
+          "status": "unknown",
+          "tool_functionality_separate_from_body_usability": true,
+          "at_least_one_complete_compatible_route_required_for_feasible_scene": true,
+          "all_candidates_must_work_for_current_body": false,
+          "required_chain": [
+            "approach and grasp handle",
+            "physical actuation or engagement",
+            "controlled extraction",
+            "loaded withdrawal and stable transport",
+            "placement and release"
+          ],
+          "tools": [
+            {
+              "id": "passive_hook",
+              "mechanism": "physical engagement with compatible ring or edge",
+              "direct_binding_allowed": false
+            },
+            {
+              "id": "manual_retrieval_gripper",
+              "mechanism": "robot operates handle/control through physical transmission to remote jaws",
+              "hidden_remote_jaw_command_allowed": false
+            },
+            {
+              "id": "tray",
+              "mechanism": "real support and controlled loaded orientation",
+              "target_attachment_allowed": false
+            }
+          ],
+          "checks": [
+            "closure and interference",
+            "required fingers and hands",
+            "operating force and stroke",
+            "wrist and body load",
+            "swept clearance",
+            "independent support after release",
+            "single-arm transfer resources"
+          ],
+          "electric_tool_policy": "Separate declared protocol with real actuator, model, power/communication and public control interface; never silently motorize passive tools",
+          "numeric_parameters": null,
+          "evidence_per_tool_and_body": true,
+          "holding_tool_alone_is_sufficient": false,
+          "static_ik_alone_is_sufficient": false,
+          "privileged_direct_jaw_control_is_sufficient": false,
+          "validation_order": [
+            "passive hook with compatible target",
+            "manual gripper after mechanism and robot-operation validation",
+            "tray where a real transfer requires it"
+          ],
+          "new_simulation_runs": 0
+        },
+        "name_en": "Directly reachable retrieval",
+        "parent_group_id": "H1S-11",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "H1S-11.A",
+        "tool_enabled_completion": {
+          "status": "unknown",
+          "priority_body": "Stretch, exact version pending",
+          "primary_candidate": "supported deep-cabinet box with hook ring and grasp handle",
+          "single_arm_chain": [
+            "acquire hook",
+            "engage ring",
+            "pull along support to reachable region",
+            "stabilize and disengage",
+            "park hook",
+            "grasp handle",
+            "transport and release at delivery"
+          ],
+          "scenes": [
+            {
+              "id": "H1S-11.A",
+              "intent": "directly feasible easy control",
+              "status": "unknown"
+            }
+          ],
+          "matched_B_only_changed_factor": "tool availability",
+          "same_world_body_comparison": "optional; body-specific tool need not assumed",
+          "tool_free_all_legal_routes_audited": false,
+          "tool_assisted_complete_witness": null,
+          "repeat_results": null,
+          "infeasibility_from_search_failure_allowed": false,
+          "artificial_disabling_of_legal_actions_allowed": false,
+          "legal_tool_free_success": "accept and remove tool-enables-completion label",
+          "difficulty": "A/B/C feasibility controls are not infra L1/L2/L3",
+          "progression": [
+            "one usable passive hook",
+            "multiple lengths and interface candidates",
+            "validated mechanism operation"
+          ],
+          "new_simulation_runs": 0,
+          "independent_registration": true
+        },
+        "outcome": "complete legal target retrieval and delivery; tool use is not a hidden required action",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-11.B",
+        "user_label": "H1E-12",
+        "name_zh": "工具扩展取物能力",
+        "related_task_ids": [
+          "H1E-12"
+        ],
+        "track": "goal_completion",
+        "scene": "tool-free infeasible, tool-assisted feasible",
+        "configurations": [
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-11.B",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "tool_operability": {
+          "status": "unknown",
+          "tool_functionality_separate_from_body_usability": true,
+          "at_least_one_complete_compatible_route_required_for_feasible_scene": true,
+          "all_candidates_must_work_for_current_body": false,
+          "required_chain": [
+            "approach and grasp handle",
+            "physical actuation or engagement",
+            "controlled extraction",
+            "loaded withdrawal and stable transport",
+            "placement and release"
+          ],
+          "tools": [
+            {
+              "id": "passive_hook",
+              "mechanism": "physical engagement with compatible ring or edge",
+              "direct_binding_allowed": false
+            },
+            {
+              "id": "manual_retrieval_gripper",
+              "mechanism": "robot operates handle/control through physical transmission to remote jaws",
+              "hidden_remote_jaw_command_allowed": false
+            },
+            {
+              "id": "tray",
+              "mechanism": "real support and controlled loaded orientation",
+              "target_attachment_allowed": false
+            }
+          ],
+          "checks": [
+            "closure and interference",
+            "required fingers and hands",
+            "operating force and stroke",
+            "wrist and body load",
+            "swept clearance",
+            "independent support after release",
+            "single-arm transfer resources"
+          ],
+          "electric_tool_policy": "Separate declared protocol with real actuator, model, power/communication and public control interface; never silently motorize passive tools",
+          "numeric_parameters": null,
+          "evidence_per_tool_and_body": true,
+          "holding_tool_alone_is_sufficient": false,
+          "static_ik_alone_is_sufficient": false,
+          "privileged_direct_jaw_control_is_sufficient": false,
+          "validation_order": [
+            "passive hook with compatible target",
+            "manual gripper after mechanism and robot-operation validation",
+            "tray where a real transfer requires it"
+          ],
+          "new_simulation_runs": 0
+        },
+        "name_en": "Tool-enabled complete retrieval",
+        "parent_group_id": "H1S-11",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "H1S-11.B",
+        "tool_enabled_completion": {
+          "status": "unknown",
+          "priority_body": "Stretch, exact version pending",
+          "primary_candidate": "supported deep-cabinet box with hook ring and grasp handle",
+          "single_arm_chain": [
+            "acquire hook",
+            "engage ring",
+            "pull along support to reachable region",
+            "stabilize and disengage",
+            "park hook",
+            "grasp handle",
+            "transport and release at delivery"
+          ],
+          "scenes": [
+            {
+              "id": "H1S-11.B",
+              "intent": "tool-free infeasible, tool-assisted feasible",
+              "status": "unknown"
+            }
+          ],
+          "matched_B_only_changed_factor": "tool availability",
+          "same_world_body_comparison": "optional; body-specific tool need not assumed",
+          "tool_free_all_legal_routes_audited": false,
+          "tool_assisted_complete_witness": null,
+          "repeat_results": null,
+          "infeasibility_from_search_failure_allowed": false,
+          "artificial_disabling_of_legal_actions_allowed": false,
+          "legal_tool_free_success": "accept and remove tool-enables-completion label",
+          "difficulty": "A/B/C feasibility controls are not infra L1/L2/L3",
+          "progression": [
+            "one usable passive hook",
+            "multiple lengths and interface candidates",
+            "validated mechanism operation"
+          ],
+          "new_simulation_runs": 0,
+          "independent_registration": true
+        },
+        "outcome": "complete legal target retrieval and delivery; tool use is not a hidden required action",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "H1S-11.C",
+        "user_label": "H1E-12",
+        "name_zh": "工具也无法完成并退出",
+        "related_task_ids": [
+          "H1E-12"
+        ],
+        "track": "feasibility_decision",
+        "scene": "all routes including available tools infeasible; empty-handed Q exit",
+        "configurations": [
+          "stretch_version_pending"
+        ],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-11.C",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "tool_operability": {
+          "status": "unknown",
+          "tool_functionality_separate_from_body_usability": true,
+          "at_least_one_complete_compatible_route_required_for_feasible_scene": true,
+          "all_candidates_must_work_for_current_body": false,
+          "required_chain": [
+            "approach and grasp handle",
+            "physical actuation or engagement",
+            "controlled extraction",
+            "loaded withdrawal and stable transport",
+            "placement and release"
+          ],
+          "tools": [
+            {
+              "id": "passive_hook",
+              "mechanism": "physical engagement with compatible ring or edge",
+              "direct_binding_allowed": false
+            },
+            {
+              "id": "manual_retrieval_gripper",
+              "mechanism": "robot operates handle/control through physical transmission to remote jaws",
+              "hidden_remote_jaw_command_allowed": false
+            },
+            {
+              "id": "tray",
+              "mechanism": "real support and controlled loaded orientation",
+              "target_attachment_allowed": false
+            }
+          ],
+          "checks": [
+            "closure and interference",
+            "required fingers and hands",
+            "operating force and stroke",
+            "wrist and body load",
+            "swept clearance",
+            "independent support after release",
+            "single-arm transfer resources"
+          ],
+          "electric_tool_policy": "Separate declared protocol with real actuator, model, power/communication and public control interface; never silently motorize passive tools",
+          "numeric_parameters": null,
+          "evidence_per_tool_and_body": true,
+          "holding_tool_alone_is_sufficient": false,
+          "static_ik_alone_is_sufficient": false,
+          "privileged_direct_jaw_control_is_sufficient": false,
+          "validation_order": [
+            "passive hook with compatible target",
+            "manual gripper after mechanism and robot-operation validation",
+            "tray where a real transfer requires it"
+          ],
+          "new_simulation_runs": 0
+        },
+        "name_en": "No feasible route including tools; exit",
+        "parent_group_id": "H1S-11",
+        "registration_origin": "promoted_existing_subscene",
+        "source_scene_id": "H1S-11.C",
+        "tool_enabled_completion": {
+          "status": "unknown",
+          "priority_body": "Stretch, exact version pending",
+          "primary_candidate": "supported deep-cabinet box with hook ring and grasp handle",
+          "single_arm_chain": [
+            "acquire hook",
+            "engage ring",
+            "pull along support to reachable region",
+            "stabilize and disengage",
+            "park hook",
+            "grasp handle",
+            "transport and release at delivery"
+          ],
+          "scenes": [
+            {
+              "id": "H1S-11.C",
+              "intent": "all routes including available tools infeasible; empty-handed Q exit",
+              "status": "unknown"
+            }
+          ],
+          "matched_B_only_changed_factor": "tool availability",
+          "same_world_body_comparison": "optional; body-specific tool need not assumed",
+          "tool_free_all_legal_routes_audited": false,
+          "tool_assisted_complete_witness": null,
+          "repeat_results": null,
+          "infeasibility_from_search_failure_allowed": false,
+          "artificial_disabling_of_legal_actions_allowed": false,
+          "legal_tool_free_success": "accept and remove tool-enables-completion label",
+          "difficulty": "A/B/C feasibility controls are not infra L1/L2/L3",
+          "progression": [
+            "one usable passive hook",
+            "multiple lengths and interface candidates",
+            "validated mechanism operation"
+          ],
+          "new_simulation_runs": 0,
+          "independent_registration": true
+        },
+        "outcome": "physical Q exit with valid initial infeasibility certificate",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "selection_id": "same_color",
+        "user_label": "H1E-04",
+        "name_zh": "同色干扰",
+        "related_task_ids": [
+          "H1E-04"
+        ],
+        "track": "same_color_identification",
+        "scene": "Independent target identification and retrieval task; reuse assets but retain separate episodes and scores",
+        "configurations": [],
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "task_id": "H1S-12",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "name_en": "Same-color identification",
+        "registration_origin": "retained_from_selected_12",
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "task_id": "H1S-13",
+        "selection_id": "autonomous_transfer_return",
+        "name_zh": "自主中转与安全返回",
+        "name_en": "Autonomous transfer and safe return",
+        "track": "return_strategy",
+        "scene": "Retrieve a light target from a working platform; choose a complete safe return strategy. A transfer surface is available, but the agent is not instructed to use it. Direct loaded return, intermediate placement and other legal solutions are accepted.",
+        "configurations": [
+          "g1_dex3"
+        ],
+        "candidate_subtask_chain": [
+          "inspect outbound and loaded return constraints",
+          "retrieve",
+          "choose direct return or independent intermediate support",
+          "return and recover target as needed",
+          "deliver and stabilize"
+        ],
+        "necessary_checks": [
+          "working platform supports actual robot plus payload",
+          "all transfer placements remain reachable from the return state",
+          "loaded return collision, stability and moment limits",
+          "target and carried tools screened against current 2 kg interpretation",
+          "do not fabricate necessity using a finely tuned whole-body load threshold"
+        ],
+        "mechanism_label": "transfer_required only after alternative loaded-return routes are excluded by evidence",
+        "user_label": "newly_approved",
+        "registration_origin": "new_operation_task",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "scene_parameters": null,
+        "budgets": null,
+        "reference_witnesses": [],
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      },
+      {
+        "task_id": "H1S-14",
+        "selection_id": "confined_workstation_body_adaptation",
+        "name_zh": "窄工作区身体适配",
+        "name_en": "Body adaptation in a narrow workstation",
+        "track": "workspace_adaptation",
+        "scene": "A narrow cabinet approach or turning area constrains robot, tool and carried-target swept volume. Choose stance, orientation, support placement or another legal route to retrieve and deliver. Compare matched worlds across bodies without assuming a larger body must fail.",
+        "configurations": [
+          "g1_dex3",
+          "agibot_a3"
+        ],
+        "candidate_subtask_chain": [
+          "observe approach and turning clearance",
+          "select stance or support arrangement",
+          "retrieve under actual body/target clearance",
+          "withdraw and deliver"
+        ],
+        "necessary_checks": [
+          "whole-body, tool and target swept volume",
+          "same-world comparisons kept separate from body-specific layouts",
+          "no implicit crouch/crawl requirement",
+          "observable geometric bottlenecks",
+          "all routes audited before infeasible label"
+        ],
+        "mechanism_label": "body-specific constraint must be evidenced; no brand/size-based feasibility labels",
+        "user_label": "newly_approved",
+        "registration_origin": "new_operation_task",
+        "independent_task": true,
+        "separate_scene_scoring_and_acceptance": true,
+        "evidence_status": "unknown",
+        "validated_new_scene": false,
+        "scene_parameters": null,
+        "budgets": null,
+        "reference_witnesses": [],
+        "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+        "candidate_actions_are_hidden_success_constraints": false
+      }
+    ],
+    "execution_progress": {
+      "path": "h1-extension/execution-progress.json",
+      "sha256": "6b969c633997017c4d646746063d15c73489068d3b76c86617dab99a678e0ae5",
+      "physics_attempt_count": 11,
+      "validated_complete_task_count": 0,
+      "validated_task_ids": [],
+      "formal_admission": false
+    }
+  },
+  "M1": {
+    "unit": "independent_case",
+    "count": 9,
+    "operation_case_count": 7,
+    "control_count": 2,
+    "tasks": [
+      {
+        "id": "M1C-ORIG",
+        "parent_id": "M1-original",
+        "scene_profile": "ORIG",
+        "world_profile": "m1_published_original",
+        "capability_profile": "original_frozen_reference",
+        "name_zh": "原始 M1：搬箱、取块与低柜交付",
+        "name_en": "Original M1: crate lowering, target retrieval and cabinet delivery",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "witnessed_original_scope",
+        "registration_status": "original_task_included_with_scoped_evidence",
+        "implementation_priority": "existing_reference",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [
+          {
+            "path": "../../m1-current-evidence.json",
+            "sha256": "31f1aeb71dcdf25500c5c837efd31969434067a4ee4865aaefc1403e40501a51",
+            "scope": "v0.3 first layer CPU privileged reference",
+            "historical_successes": 13
+          }
+        ],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Original frozen G1 + Dex3 and X5 asset/controller configuration; see published evidence",
+        "candidate_embodiments": [
+          "original_G1_Dex3_X5"
+        ],
+        "public_rule_versions": [
+          "original_published_rules"
+        ],
+        "same_world_rule_pairing": false,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null,
+        "is_original_task": true,
+        "original_scoring_unchanged": true,
+        "extension_rules_apply": false,
+        "new_2kg_compatibility_claimed": false,
+        "formal_admission": false
+      },
+      {
+        "id": "M1C-B01",
+        "parent_id": "M1E-01",
+        "scene_profile": "B01",
+        "world_profile": "m1_b01",
+        "capability_profile": "crate_lift_insufficient_push_candidate",
+        "name_zh": "抬不动货箱，但能推移建立取物位",
+        "name_en": "Crate cannot be lifted, but can be repositioned by pushing",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "later_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "A",
+          "B",
+          "C"
+        ],
+        "public_rule_versions": [
+          "N",
+          "Y"
+        ],
+        "same_world_rule_pairing": true,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null
+      },
+      {
+        "id": "M1C-B02",
+        "parent_id": "M1E-03",
+        "scene_profile": "B02",
+        "world_profile": "m1_b02",
+        "capability_profile": "held_crate_manipulation_blocked",
+        "name_zh": "持箱时无法安全取块，需建立独立支撑",
+        "name_en": "Held crate blocks safe picking; independent support needed",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "initial_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "A",
+          "B",
+          "C"
+        ],
+        "public_rule_versions": [
+          "N",
+          "Y"
+        ],
+        "same_world_rule_pairing": true,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null
+      },
+      {
+        "id": "M1C-B03",
+        "parent_id": "M1E-05",
+        "scene_profile": "B03",
+        "world_profile": "m1_b03",
+        "capability_profile": "direct_reach_insufficient_tool_candidate",
+        "name_zh": "手直接够不到，但可操作工具取块",
+        "name_en": "Direct grasp falls short; an operable tool extends retrieval",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "initial_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "A",
+          "B",
+          "C"
+        ],
+        "public_rule_versions": [
+          "N",
+          "Y"
+        ],
+        "same_world_rule_pairing": true,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null
+      },
+      {
+        "id": "M1C-B04",
+        "parent_id": "M1E-08",
+        "scene_profile": "B04",
+        "world_profile": "m1_b04",
+        "capability_profile": "self_tool_interface_blocked_partner_candidate",
+        "name_zh": "自己无法操作可用工具，伙伴可以",
+        "name_en": "Useful tool is inoperable by self but operable by partner",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "later_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "A",
+          "B",
+          "C"
+        ],
+        "public_rule_versions": [
+          "N",
+          "Y"
+        ],
+        "same_world_rule_pairing": true,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null
+      },
+      {
+        "id": "M1C-B05",
+        "parent_id": "M1E-06",
+        "scene_profile": "B05",
+        "world_profile": "m1_b05",
+        "capability_profile": "delivery_hand_clearance_blocked_tool_candidate",
+        "name_zh": "末端进不了低柜，但工具能完成交付",
+        "name_en": "Hand cannot enter the cabinet; a tool may deliver",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "later_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "A",
+          "B",
+          "C"
+        ],
+        "public_rule_versions": [
+          "N",
+          "Y"
+        ],
+        "same_world_rule_pairing": true,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null
+      },
+      {
+        "id": "M1C-B06",
+        "parent_id": "M1E-06",
+        "scene_profile": "B06",
+        "world_profile": "m1_b06",
+        "capability_profile": "self_delivery_chain_blocked_partner_candidate",
+        "name_zh": "自己的工具无法完成撤出，需改变交付者",
+        "name_en": "Own tool cannot complete withdrawal; change deliverer",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "later_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "A",
+          "B",
+          "C"
+        ],
+        "public_rule_versions": [
+          "N",
+          "Y"
+        ],
+        "same_world_rule_pairing": true,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null
+      }
+    ],
+    "infeasibility_controls": [
+      {
+        "id": "M1C-I01",
+        "parent_id": "M1E-I01",
+        "scene_profile": "I01",
+        "world_profile": "m1_i01",
+        "capability_profile": "all_retrieval_routes_blocked",
+        "name_zh": "所有身体与工具都无法完成取物",
+        "name_en": "No body or available tool completes retrieval",
+        "kind": "infeasibility_control",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "initial_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "A",
+          "B",
+          "C"
+        ],
+        "public_rule_versions": [
+          "N",
+          "Y"
+        ],
+        "same_world_rule_pairing": true,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": "M1C-B03"
+      },
+      {
+        "id": "M1C-I02",
+        "parent_id": "M1E-I03",
+        "scene_profile": "I02",
+        "world_profile": "m1_i02",
+        "capability_profile": "target_aperture_blocked",
+        "name_zh": "目标本体无法通过低柜入口",
+        "name_en": "Target itself cannot pass the cabinet entrance",
+        "kind": "infeasibility_control",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "later_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "A",
+          "B",
+          "C"
+        ],
+        "public_rule_versions": [
+          "N",
+          "Y"
+        ],
+        "same_world_rule_pairing": true,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": "M1C-B05"
+      }
+    ],
+    "case_catalog": {
+      "schema": "capability-boundary-case-catalog/2",
+      "family": "M1",
+      "date": "2026-10-27",
+      "author_only": true,
+      "agent_bundle_allowed": false,
+      "new_simulation_runs": 0,
+      "registration_not_validation": true,
+      "parent_groups_counted": false,
+      "embodiments": [
+        {
+          "id": "A",
+          "name_zh": "G1＋Dex3＋X5",
+          "name_en": "G1 + Dex3 + X5",
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "feasibility": "unknown"
+        },
+        {
+          "id": "B",
+          "name_zh": "G1＋五指手＋同一 X5",
+          "name_en": "G1 + five-finger hand + same X5",
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "feasibility": "unknown"
+        },
+        {
+          "id": "C",
+          "name_zh": "轮式双臂＋低位操作机器人",
+          "name_en": "Wheeled dual-arm + low-level manipulator",
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "feasibility": "unknown"
+        }
+      ],
+      "rules": {
+        "N": "free route, help allowed",
+        "Y": "public designated-manipulator transfer and final delivery",
+        "open": "any legal complete route"
+      },
+      "deferred": [
+        "M1E-04",
+        "M1E-I02",
+        "M1E-I04",
+        "body D"
+      ],
+      "no_mass_rescaling_or_silent_asset_substitution": true,
+      "load_screen": "Provisional 2 kg total external carried load; actual scope, moments and dynamics unverified. Platform capacity includes real supported body mass.",
+      "count": 9,
+      "operation_case_count": 7,
+      "control_case_count": 2,
+      "scenes": [
+        {
+          "id": "ORIG",
+          "parent_id": "M1-original",
+          "name_zh": "原始 M1：搬箱、取块与低柜交付",
+          "name_en": "Original M1: crate lowering, target retrieval and cabinet delivery",
+          "scene_zh": "原 G1＋Dex3 将货箱搬到交接台，X5 取出目标块，送入低柜深处并由柜体先承托后释放。沿用原 v0.3 / V4 配置、评分与预算；已有 13 条完整成功、8 个物理种子及严格重复 3/3，不计为新增仿真。",
+          "scene_en": "Original G1 + Dex3 lowers the crate to the transfer stand; X5 retrieves the block and places it deep in the low cabinet with support before release. Retain original v0.3 / V4 configuration, scorer and budget: 13 complete successes, eight physical seeds and 3/3 strict repeats; no new simulation.",
+          "capability_profile": "original_frozen_reference",
+          "tools_zh": "货箱、原交接台、G1＋X5",
+          "tools_en": "Crate, original transfer stand, G1 + X5",
+          "world_profile": "m1_published_original"
+        },
+        {
+          "id": "B01",
+          "parent_id": "M1E-01",
+          "name_zh": "抬不动货箱，但能推移建立取物位",
+          "name_en": "Crate cannot be lifted, but can be repositioned by pushing",
+          "scene_zh": "当前抓持／携带条件不支持抬箱，且原位置不便取块；可通过受控推移与环境支撑建立取物位置，再完成低柜交付。",
+          "scene_en": "Current grasp/carry limits block crate lifting and its initial position obstructs picking; controlled pushing and environmental support may establish retrieval access before cabinet delivery.",
+          "capability_profile": "crate_lift_insufficient_push_candidate",
+          "tools_zh": "货箱、承托面",
+          "tools_en": "Crate and support surfaces",
+          "world_profile": "m1_b01"
+        },
+        {
+          "id": "B02",
+          "parent_id": "M1E-03",
+          "name_zh": "持箱时无法安全取块，需建立独立支撑",
+          "name_en": "Held crate blocks safe picking; independent support needed",
+          "scene_zh": "同时提供顶面、承载与可搬性不同的支撑物；判断哪种支撑能让货箱释放后仍稳定，并完成取块和低柜交付。",
+          "scene_en": "Provide supports with different top areas, capacities and handling geometry; determine which can independently support the released crate through retrieval and cabinet delivery.",
+          "capability_profile": "held_crate_manipulation_blocked",
+          "tools_zh": "支架、箱体、工作台",
+          "tools_en": "Stands, boxes and work surfaces",
+          "world_profile": "m1_b02"
+        },
+        {
+          "id": "B03",
+          "parent_id": "M1E-05",
+          "name_zh": "手直接够不到，但可操作工具取块",
+          "name_en": "Direct grasp falls short; an operable tool extends retrieval",
+          "scene_zh": "固定货箱中的目标超出直接可达范围；钩、长夹具、直杆与短工具并存，需判断可握持、能作用且可撤出的工具；必须继续完成低柜交付。",
+          "scene_en": "Target in a fixed crate is beyond direct grasp; hooks, extended grippers, rods and short tools coexist. Check grasp, useful force and withdrawal, then complete cabinet delivery.",
+          "capability_profile": "direct_reach_insufficient_tool_candidate",
+          "tools_zh": "钩、长夹具、直杆、短工具",
+          "tools_en": "Hook, extended gripper, rod, short tool",
+          "world_profile": "m1_b03"
+        },
+        {
+          "id": "B04",
+          "parent_id": "M1E-08",
+          "name_zh": "自己无法操作可用工具，伙伴可以",
+          "name_en": "Useful tool is inoperable by self but operable by partner",
+          "scene_zh": "保持目标和工具的工作端条件，当前手受握柄、驱动方式或腕矩限制；另一身体候选可操作该工具。自主改变操作者或使用其他合法工具完成交付，不强制先失败。",
+          "scene_en": "Keep target and tool working-end conditions; current hand is limited by handle, actuation or wrist moment, while a partner may operate the tool. Change operator or use another legal tool to deliver; no forced initial failure.",
+          "capability_profile": "self_tool_interface_blocked_partner_candidate",
+          "tools_zh": "身体适配不同的工具及伙伴",
+          "tools_en": "Tools with different body compatibility and a partner",
+          "world_profile": "m1_b04"
+        },
+        {
+          "id": "B05",
+          "parent_id": "M1E-06",
+          "name_zh": "末端进不了低柜，但工具能完成交付",
+          "name_en": "Hand cannot enter the cabinet; a tool may deliver",
+          "scene_zh": "目标本体可通过柜口，但当前手的包络或可达域不适合深入；选择推杆或托板，保证目标沿途受支撑且最终能撤去工具。",
+          "scene_en": "Target fits the cabinet entrance but current hand envelope/reach prevents deep placement; choose a pusher or carrier with continuous support and complete tool withdrawal.",
+          "capability_profile": "delivery_hand_clearance_blocked_tool_candidate",
+          "tools_zh": "窄推杆、薄／厚托板",
+          "tools_en": "Narrow pusher, thin/thick carriers",
+          "world_profile": "m1_b05"
+        },
+        {
+          "id": "B06",
+          "parent_id": "M1E-06",
+          "name_zh": "自己的工具无法完成撤出，需改变交付者",
+          "name_en": "Own tool cannot complete withdrawal; change deliverer",
+          "scene_zh": "目标可进入，但当前身体与工具的组合无法完成承重转移和撤出；低位或较小末端的伙伴为候选替代。不能把伸进柜内、工具仍承重当成功。",
+          "scene_en": "Target can enter, but the current body/tool combination cannot complete support transfer and withdrawal; a lower or smaller-hand partner is a candidate alternative. Insertion with retained tool support is not success.",
+          "capability_profile": "self_delivery_chain_blocked_partner_candidate",
+          "tools_zh": "交接面、低位操作者与候选交付工具",
+          "tools_en": "Transfer surface, low-level operator and delivery tools",
+          "world_profile": "m1_b06"
+        },
+        {
+          "id": "I01",
+          "parent_id": "M1E-I01",
+          "name_zh": "所有身体与工具都无法完成取物",
+          "name_en": "No body or available tool completes retrieval",
+          "scene_zh": "必须排除所有身体姿态、移箱、其他接近方向、合法工具组合与协作路线；有全路线证书后才判正确退出。",
+          "scene_en": "Exclude all body poses, crate movement, alternative approaches, tool combinations and cooperation; only an all-route certificate establishes correct abstention.",
+          "capability_profile": "all_retrieval_routes_blocked",
+          "tools_zh": "全部现场工具与参与者",
+          "tools_en": "All available tools and participants",
+          "world_profile": "m1_i01"
+        },
+        {
+          "id": "I02",
+          "parent_id": "M1E-I03",
+          "name_zh": "目标本体无法通过低柜入口",
+          "name_en": "Target itself cannot pass the cabinet entrance",
+          "scene_zh": "瓶颈来自完整刚性目标和唯一入口，不是手太宽；排除其他入口、拆解和变形后验证实体退出。",
+          "scene_en": "The intact rigid target and sole entrance form the bottleneck, not hand width; exclude alternative openings, disassembly and deformation, then verify physical exit.",
+          "capability_profile": "target_aperture_blocked",
+          "tools_zh": "全部交付工具与参与者",
+          "tools_en": "All delivery tools and participants",
+          "world_profile": "m1_i02"
+        }
+      ],
+      "cases": [
+        {
+          "id": "M1C-ORIG",
+          "parent_id": "M1-original",
+          "scene_profile": "ORIG",
+          "world_profile": "m1_published_original",
+          "capability_profile": "original_frozen_reference",
+          "name_zh": "原始 M1：搬箱、取块与低柜交付",
+          "name_en": "Original M1: crate lowering, target retrieval and cabinet delivery",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "witnessed_original_scope",
+          "registration_status": "original_task_included_with_scoped_evidence",
+          "implementation_priority": "existing_reference",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [
+            {
+              "path": "../../m1-current-evidence.json",
+              "sha256": "31f1aeb71dcdf25500c5c837efd31969434067a4ee4865aaefc1403e40501a51",
+              "scope": "v0.3 first layer CPU privileged reference",
+              "historical_successes": 13
+            }
+          ],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Original frozen G1 + Dex3 and X5 asset/controller configuration; see published evidence",
+          "candidate_embodiments": [
+            "original_G1_Dex3_X5"
+          ],
+          "public_rule_versions": [
+            "original_published_rules"
+          ],
+          "same_world_rule_pairing": false,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null,
+          "is_original_task": true,
+          "original_scoring_unchanged": true,
+          "extension_rules_apply": false,
+          "new_2kg_compatibility_claimed": false,
+          "formal_admission": false
+        },
+        {
+          "id": "M1C-B01",
+          "parent_id": "M1E-01",
+          "scene_profile": "B01",
+          "world_profile": "m1_b01",
+          "capability_profile": "crate_lift_insufficient_push_candidate",
+          "name_zh": "抬不动货箱，但能推移建立取物位",
+          "name_en": "Crate cannot be lifted, but can be repositioned by pushing",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "later_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "A",
+            "B",
+            "C"
+          ],
+          "public_rule_versions": [
+            "N",
+            "Y"
+          ],
+          "same_world_rule_pairing": true,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null
+        },
+        {
+          "id": "M1C-B02",
+          "parent_id": "M1E-03",
+          "scene_profile": "B02",
+          "world_profile": "m1_b02",
+          "capability_profile": "held_crate_manipulation_blocked",
+          "name_zh": "持箱时无法安全取块，需建立独立支撑",
+          "name_en": "Held crate blocks safe picking; independent support needed",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "initial_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "A",
+            "B",
+            "C"
+          ],
+          "public_rule_versions": [
+            "N",
+            "Y"
+          ],
+          "same_world_rule_pairing": true,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null
+        },
+        {
+          "id": "M1C-B03",
+          "parent_id": "M1E-05",
+          "scene_profile": "B03",
+          "world_profile": "m1_b03",
+          "capability_profile": "direct_reach_insufficient_tool_candidate",
+          "name_zh": "手直接够不到，但可操作工具取块",
+          "name_en": "Direct grasp falls short; an operable tool extends retrieval",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "initial_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "A",
+            "B",
+            "C"
+          ],
+          "public_rule_versions": [
+            "N",
+            "Y"
+          ],
+          "same_world_rule_pairing": true,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null
+        },
+        {
+          "id": "M1C-B04",
+          "parent_id": "M1E-08",
+          "scene_profile": "B04",
+          "world_profile": "m1_b04",
+          "capability_profile": "self_tool_interface_blocked_partner_candidate",
+          "name_zh": "自己无法操作可用工具，伙伴可以",
+          "name_en": "Useful tool is inoperable by self but operable by partner",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "later_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "A",
+            "B",
+            "C"
+          ],
+          "public_rule_versions": [
+            "N",
+            "Y"
+          ],
+          "same_world_rule_pairing": true,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null
+        },
+        {
+          "id": "M1C-B05",
+          "parent_id": "M1E-06",
+          "scene_profile": "B05",
+          "world_profile": "m1_b05",
+          "capability_profile": "delivery_hand_clearance_blocked_tool_candidate",
+          "name_zh": "末端进不了低柜，但工具能完成交付",
+          "name_en": "Hand cannot enter the cabinet; a tool may deliver",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "later_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "A",
+            "B",
+            "C"
+          ],
+          "public_rule_versions": [
+            "N",
+            "Y"
+          ],
+          "same_world_rule_pairing": true,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null
+        },
+        {
+          "id": "M1C-B06",
+          "parent_id": "M1E-06",
+          "scene_profile": "B06",
+          "world_profile": "m1_b06",
+          "capability_profile": "self_delivery_chain_blocked_partner_candidate",
+          "name_zh": "自己的工具无法完成撤出，需改变交付者",
+          "name_en": "Own tool cannot complete withdrawal; change deliverer",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "later_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "A",
+            "B",
+            "C"
+          ],
+          "public_rule_versions": [
+            "N",
+            "Y"
+          ],
+          "same_world_rule_pairing": true,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null
+        },
+        {
+          "id": "M1C-I01",
+          "parent_id": "M1E-I01",
+          "scene_profile": "I01",
+          "world_profile": "m1_i01",
+          "capability_profile": "all_retrieval_routes_blocked",
+          "name_zh": "所有身体与工具都无法完成取物",
+          "name_en": "No body or available tool completes retrieval",
+          "kind": "infeasibility_control",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "initial_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "A",
+            "B",
+            "C"
+          ],
+          "public_rule_versions": [
+            "N",
+            "Y"
+          ],
+          "same_world_rule_pairing": true,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": "M1C-B03"
+        },
+        {
+          "id": "M1C-I02",
+          "parent_id": "M1E-I03",
+          "scene_profile": "I02",
+          "world_profile": "m1_i02",
+          "capability_profile": "target_aperture_blocked",
+          "name_zh": "目标本体无法通过低柜入口",
+          "name_en": "Target itself cannot pass the cabinet entrance",
+          "kind": "infeasibility_control",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "later_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "A",
+            "B",
+            "C"
+          ],
+          "public_rule_versions": [
+            "N",
+            "Y"
+          ],
+          "same_world_rule_pairing": true,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": "M1C-B05"
+        }
+      ],
+      "case_definition": "Observable capability bottleneck and tool/partner operation that can change complete-task feasibility; not a Cartesian product of robot names and rules",
+      "embodiment_policy": "Register a new case only for a materially different capability boundary/tool interaction. Freeze the actual embodiment per execution configuration; no generic body-swap calibration.",
+      "tool_policy": "Multiple candidates and mismatch recovery are physical scene configurations; verify grasp, actuation, useful effect, transfer and complete return/delivery. Do not require a particular tool or an initial failure.",
+      "expanded_draft_superseded": true,
+      "body_rule_products_counted": false,
+      "original_case_count": 1,
+      "extension_case_count": 8,
+      "extension_operation_case_count": 6,
+      "original_evidence_scope": "Existing original configuration and scoring only; no transfer to extension cases or new 2 kg claim"
+    },
+    "original_case_count": 1,
+    "historically_witnessed_original_count": 1,
+    "validated_extension_count": 0
+  },
+  "M3": {
+    "unit": "independent_case",
+    "count": 6,
+    "operation_case_count": 5,
+    "control_count": 1,
+    "tasks": [
+      {
+        "id": "M3C-ORIG",
+        "parent_id": "M3-original",
+        "scene_profile": "ORIG",
+        "world_profile": "m3_published_original",
+        "capability_profile": "original_frozen_reference",
+        "name_zh": "原始 M3：抬升 X5、支撑取物与下放交付",
+        "name_en": "Original M3: lift X5, supported retrieval, lowering and delivery",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "witnessed_original_scope",
+        "registration_status": "original_task_included_with_scoped_evidence",
+        "implementation_priority": "existing_reference",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [
+          {
+            "path": "../../m3-current-evidence.json",
+            "sha256": "5c3788fab22e9c4a7639e274548dad469fc5dc7233f82c4dfa90e900df95c587",
+            "scope": "Fixed hooks-v0.1 calibrated scene; box-supported shelf retrieval; privileged CPU reference; original 65 mm ball and 420 s budget",
+            "historical_successes": 2
+          }
+        ],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Original frozen G1 + Dex3 and X5 asset/controller configuration; see published evidence",
+        "candidate_embodiments": [
+          "original_G1_Dex3_X5"
+        ],
+        "public_rule_versions": [
+          "original_published_rules"
+        ],
+        "same_world_rule_pairing": false,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null,
+        "status": "published_original_reference",
+        "partner_asset": "original_frozen_X5",
+        "partner_2kg_compatibility": "unknown",
+        "is_original_task": true,
+        "original_scoring_unchanged": true,
+        "extension_rules_apply": false,
+        "new_2kg_compatibility_claimed": false,
+        "formal_admission": false
+      },
+      {
+        "id": "M3C-B01",
+        "parent_id": "M3E-01",
+        "scene_profile": "B01",
+        "world_profile": "m3_b01",
+        "capability_profile": "lift_candidate_suspended_manipulation_not_assumed",
+        "name_zh": "能抬升，但操作阶段需独立平台承重",
+        "name_en": "Lift candidate, but manipulation requires independent platform support",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "later_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "G",
+          "H",
+          "W"
+        ],
+        "public_rule_versions": [
+          "open"
+        ],
+        "same_world_rule_pairing": false,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null,
+        "status": "conditional_pending_asset_and_capability_audit",
+        "partner_asset": "X5_candidate_not_certified",
+        "partner_2kg_compatibility": "unknown"
+      },
+      {
+        "id": "M3C-B02",
+        "parent_id": "M3E-02",
+        "scene_profile": "B02",
+        "world_profile": "m3_b02",
+        "capability_profile": "support_geometry_or_capacity_mismatch",
+        "name_zh": "已有支撑不适配，需选择并建立工作台",
+        "name_en": "Existing supports are unsuitable; select and establish a workstation",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "initial_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "G",
+          "H",
+          "W"
+        ],
+        "public_rule_versions": [
+          "open"
+        ],
+        "same_world_rule_pairing": false,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null,
+        "status": "conditional_pending_asset_and_capability_audit",
+        "partner_asset": "X5_candidate_not_certified",
+        "partner_2kg_compatibility": "unknown"
+      },
+      {
+        "id": "M3C-B03",
+        "parent_id": "M3E-03",
+        "scene_profile": "B03",
+        "world_profile": "m3_b03",
+        "capability_profile": "lift_insufficient_ramp_candidate",
+        "name_zh": "不能安全抬升，坡道为可行候选",
+        "name_en": "Lifting is unsafe; a ramp is a candidate alternative",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "initial_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "G",
+          "H",
+          "W"
+        ],
+        "public_rule_versions": [
+          "open"
+        ],
+        "same_world_rule_pairing": false,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null,
+        "status": "conditional_pending_asset_and_capability_audit",
+        "partner_asset": "X5_candidate_not_certified",
+        "partner_2kg_compatibility": "unknown"
+      },
+      {
+        "id": "M3C-B04",
+        "parent_id": "M3E-03",
+        "scene_profile": "B04",
+        "world_profile": "m3_b04",
+        "capability_profile": "ramp_mobility_blocked_lift_candidate",
+        "name_zh": "伙伴不能走坡道，抬升为可行候选",
+        "name_en": "Partner cannot use ramp; lifting is a candidate alternative",
+        "kind": "operation_case",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "later_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "G",
+          "H",
+          "W"
+        ],
+        "public_rule_versions": [
+          "open"
+        ],
+        "same_world_rule_pairing": false,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": null,
+        "status": "conditional_pending_asset_and_capability_audit",
+        "partner_asset": "X5_candidate_not_certified",
+        "partner_2kg_compatibility": "unknown"
+      }
+    ],
+    "infeasibility_controls": [
+      {
+        "id": "M3C-I01",
+        "parent_id": "M3E-I01",
+        "scene_profile": "I01",
+        "world_profile": "m3_i01",
+        "capability_profile": "all_partner_workspace_routes_blocked",
+        "name_zh": "抬升与所有替代路线均不可行",
+        "name_en": "Lifting and every alternative route are infeasible",
+        "kind": "infeasibility_control",
+        "independent_case": true,
+        "feasibility": "unknown",
+        "registration_status": "boundary_defined_asset_binding_pending",
+        "implementation_priority": "initial_candidate",
+        "scene_parameters": null,
+        "capability_parameters": null,
+        "asset_manifest": null,
+        "controller_manifest": null,
+        "reference_witnesses": [],
+        "certificate": null,
+        "accept_all_legal_complete_solutions": true,
+        "requires_initial_failure": false,
+        "agent_visible": false,
+        "seed_is_instance_not_new_case": true,
+        "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+        "candidate_embodiments": [
+          "G",
+          "H",
+          "W"
+        ],
+        "public_rule_versions": [
+          "open"
+        ],
+        "same_world_rule_pairing": false,
+        "rule_results_reported_separately": true,
+        "paired_feasible_case": "M3C-B03",
+        "status": "conditional_pending_asset_and_capability_audit",
+        "partner_asset": "X5_candidate_not_certified",
+        "partner_2kg_compatibility": "unknown"
+      }
+    ],
+    "case_catalog": {
+      "schema": "capability-boundary-case-catalog/2",
+      "family": "M3",
+      "date": "2026-10-27",
+      "author_only": true,
+      "agent_bundle_allowed": false,
+      "new_simulation_runs": 0,
+      "registration_not_validation": true,
+      "parent_groups_counted": false,
+      "embodiments": [
+        {
+          "id": "G",
+          "name_zh": "G1＋X5",
+          "name_en": "G1 + X5",
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "feasibility": "unknown"
+        },
+        {
+          "id": "H",
+          "name_zh": "另一双臂人形＋同一 X5",
+          "name_en": "Other dual-arm humanoid + same X5",
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "feasibility": "unknown"
+        },
+        {
+          "id": "W",
+          "name_zh": "轮式双臂＋同一 X5",
+          "name_en": "Wheeled dual-arm + same X5",
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "feasibility": "unknown"
+        }
+      ],
+      "rules": {
+        "N": "free route, help allowed",
+        "Y": "public designated-manipulator transfer and final delivery",
+        "open": "any legal complete route"
+      },
+      "deferred": [
+        "humanoid carrying",
+        "return-posture standalone case"
+      ],
+      "no_mass_rescaling_or_silent_asset_substitution": true,
+      "load_screen": "Provisional 2 kg total external carried load; actual scope, moments and dynamics unverified. Platform capacity includes real supported body mass.",
+      "count": 6,
+      "operation_case_count": 5,
+      "control_case_count": 1,
+      "scenes": [
+        {
+          "id": "ORIG",
+          "parent_id": "M3-original",
+          "name_zh": "原始 M3：抬升 X5、支撑取物与下放交付",
+          "name_en": "Original M3: lift X5, supported retrieval, lowering and delivery",
+          "scene_zh": "原 G1 抬升 X5，利用箱体独立支撑完成柜上容器内 65 mm 球的取物，再下放并交付地面托盘。沿用 hooks-v0.1、原评分与 420 秒预算；正常起点 2/2、各 411.16 秒，同参数重复。此见证不证明满足新 2 kg 条件。",
+          "scene_en": "Original G1 lifts X5 for box-supported retrieval of the 65 mm ball, then lowers X5 for ground-tray delivery. Preserve hooks-v0.1, original scorer and 420-second budget: 2/2 normal-start successes, 411.16 seconds each, same-parameter repeats. This does not establish the new 2 kg compatibility.",
+          "capability_profile": "original_frozen_reference",
+          "tools_zh": "原支撑箱、承托接口、G1＋X5",
+          "tools_en": "Original support box, carrying interfaces, G1 + X5",
+          "world_profile": "m3_published_original"
+        },
+        {
+          "id": "B01",
+          "parent_id": "M3E-01",
+          "name_zh": "能抬升，但操作阶段需独立平台承重",
+          "name_en": "Lift candidate, but manipulation requires independent platform support",
+          "scene_zh": "平台预置；承托者的完整抬升与下放能力待验证，持续悬空操作不作为假定能力。伙伴在平台独立受支撑后取物，最终下放、解除承托并交付。",
+          "scene_en": "Prepared platform; complete lifting/lowering capability remains unverified and suspended manipulation is not assumed. Retrieve with independent platform support, then lower, release support and deliver.",
+          "capability_profile": "lift_candidate_suspended_manipulation_not_assumed",
+          "tools_zh": "预置平台与伙伴承托接口",
+          "tools_en": "Prepared platform and partner support interfaces",
+          "world_profile": "m3_b01"
+        },
+        {
+          "id": "B02",
+          "parent_id": "M3E-02",
+          "name_zh": "已有支撑不适配，需选择并建立工作台",
+          "name_en": "Existing supports are unsuitable; select and establish a workstation",
+          "scene_zh": "提供高度、顶面和承载不同的候选支撑，判断伙伴能否站稳、伸臂操作和安全返回；自主布置合适工作台后完成取物交付。",
+          "scene_en": "Provide candidate supports varying in height, footprint and rating; assess partner support, extended-arm operation and safe return; establish a suitable workstation and complete retrieval/delivery.",
+          "capability_profile": "support_geometry_or_capacity_mismatch",
+          "tools_zh": "多个支撑物",
+          "tools_en": "Multiple support objects",
+          "world_profile": "m3_b02"
+        },
+        {
+          "id": "B03",
+          "parent_id": "M3E-03",
+          "name_zh": "不能安全抬升，坡道为可行候选",
+          "name_en": "Lifting is unsafe; a ramp is a candidate alternative",
+          "scene_zh": "保持柜子、工具与伙伴，承托能力不足；判断伙伴底盘、牵引和坡道几何是否允许上台及带载返回。不能因抬不动就退出。",
+          "scene_en": "Keep cabinet, tools and partner; carrying capability is insufficient. Assess partner mobility, traction and ramp geometry for ascent and loaded return. Rejected lifting alone does not justify abstention.",
+          "capability_profile": "lift_insufficient_ramp_candidate",
+          "tools_zh": "坡道、平台、伙伴驱动能力",
+          "tools_en": "Ramp, platform and partner mobility",
+          "world_profile": "m3_b03"
+        },
+        {
+          "id": "B04",
+          "parent_id": "M3E-03",
+          "name_zh": "伙伴不能走坡道，抬升为可行候选",
+          "name_en": "Partner cannot use ramp; lifting is a candidate alternative",
+          "scene_zh": "保持 B03 的场景结构；伙伴的底盘或驱动能力不支持坡道，改为检查承托者能否完成抬升、平台取物与下放。抬升候选仍须通过 2 kg 与动态能力审核。",
+          "scene_en": "Retain B03 scene structure; partner chassis or drive capability prevents ramp use. Assess carrier lift, supported retrieval and lowering; lifting still requires the 2 kg and dynamic capability audit.",
+          "capability_profile": "ramp_mobility_blocked_lift_candidate",
+          "tools_zh": "承托接口、平台、坡道",
+          "tools_en": "Carrying interfaces, platform and ramp",
+          "world_profile": "m3_b04"
+        },
+        {
+          "id": "I01",
+          "parent_id": "M3E-I01",
+          "name_zh": "抬升与所有替代路线均不可行",
+          "name_en": "Lifting and every alternative route are infeasible",
+          "scene_zh": "承托不适配且直接取物、坡道、其他支撑、工具与组合路线全部排除；全员安全独立安置后进入 Q。",
+          "scene_en": "Carrying is unsuitable and direct retrieval, ramps, other supports, tools and combined routes are excluded; safely settle all participants independently before Q exit.",
+          "capability_profile": "all_partner_workspace_routes_blocked",
+          "tools_zh": "全部现场工具与参与者",
+          "tools_en": "All available tools and participants",
+          "world_profile": "m3_i01"
+        }
+      ],
+      "cases": [
+        {
+          "id": "M3C-ORIG",
+          "parent_id": "M3-original",
+          "scene_profile": "ORIG",
+          "world_profile": "m3_published_original",
+          "capability_profile": "original_frozen_reference",
+          "name_zh": "原始 M3：抬升 X5、支撑取物与下放交付",
+          "name_en": "Original M3: lift X5, supported retrieval, lowering and delivery",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "witnessed_original_scope",
+          "registration_status": "original_task_included_with_scoped_evidence",
+          "implementation_priority": "existing_reference",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [
+            {
+              "path": "../../m3-current-evidence.json",
+              "sha256": "5c3788fab22e9c4a7639e274548dad469fc5dc7233f82c4dfa90e900df95c587",
+              "scope": "Fixed hooks-v0.1 calibrated scene; box-supported shelf retrieval; privileged CPU reference; original 65 mm ball and 420 s budget",
+              "historical_successes": 2
+            }
+          ],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Original frozen G1 + Dex3 and X5 asset/controller configuration; see published evidence",
+          "candidate_embodiments": [
+            "original_G1_Dex3_X5"
+          ],
+          "public_rule_versions": [
+            "original_published_rules"
+          ],
+          "same_world_rule_pairing": false,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null,
+          "status": "published_original_reference",
+          "partner_asset": "original_frozen_X5",
+          "partner_2kg_compatibility": "unknown",
+          "is_original_task": true,
+          "original_scoring_unchanged": true,
+          "extension_rules_apply": false,
+          "new_2kg_compatibility_claimed": false,
+          "formal_admission": false
+        },
+        {
+          "id": "M3C-B01",
+          "parent_id": "M3E-01",
+          "scene_profile": "B01",
+          "world_profile": "m3_b01",
+          "capability_profile": "lift_candidate_suspended_manipulation_not_assumed",
+          "name_zh": "能抬升，但操作阶段需独立平台承重",
+          "name_en": "Lift candidate, but manipulation requires independent platform support",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "later_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "G",
+            "H",
+            "W"
+          ],
+          "public_rule_versions": [
+            "open"
+          ],
+          "same_world_rule_pairing": false,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null,
+          "status": "conditional_pending_asset_and_capability_audit",
+          "partner_asset": "X5_candidate_not_certified",
+          "partner_2kg_compatibility": "unknown"
+        },
+        {
+          "id": "M3C-B02",
+          "parent_id": "M3E-02",
+          "scene_profile": "B02",
+          "world_profile": "m3_b02",
+          "capability_profile": "support_geometry_or_capacity_mismatch",
+          "name_zh": "已有支撑不适配，需选择并建立工作台",
+          "name_en": "Existing supports are unsuitable; select and establish a workstation",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "initial_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "G",
+            "H",
+            "W"
+          ],
+          "public_rule_versions": [
+            "open"
+          ],
+          "same_world_rule_pairing": false,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null,
+          "status": "conditional_pending_asset_and_capability_audit",
+          "partner_asset": "X5_candidate_not_certified",
+          "partner_2kg_compatibility": "unknown"
+        },
+        {
+          "id": "M3C-B03",
+          "parent_id": "M3E-03",
+          "scene_profile": "B03",
+          "world_profile": "m3_b03",
+          "capability_profile": "lift_insufficient_ramp_candidate",
+          "name_zh": "不能安全抬升，坡道为可行候选",
+          "name_en": "Lifting is unsafe; a ramp is a candidate alternative",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "initial_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "G",
+            "H",
+            "W"
+          ],
+          "public_rule_versions": [
+            "open"
+          ],
+          "same_world_rule_pairing": false,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null,
+          "status": "conditional_pending_asset_and_capability_audit",
+          "partner_asset": "X5_candidate_not_certified",
+          "partner_2kg_compatibility": "unknown"
+        },
+        {
+          "id": "M3C-B04",
+          "parent_id": "M3E-03",
+          "scene_profile": "B04",
+          "world_profile": "m3_b04",
+          "capability_profile": "ramp_mobility_blocked_lift_candidate",
+          "name_zh": "伙伴不能走坡道，抬升为可行候选",
+          "name_en": "Partner cannot use ramp; lifting is a candidate alternative",
+          "kind": "operation_case",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "later_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "G",
+            "H",
+            "W"
+          ],
+          "public_rule_versions": [
+            "open"
+          ],
+          "same_world_rule_pairing": false,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": null,
+          "status": "conditional_pending_asset_and_capability_audit",
+          "partner_asset": "X5_candidate_not_certified",
+          "partner_2kg_compatibility": "unknown"
+        },
+        {
+          "id": "M3C-I01",
+          "parent_id": "M3E-I01",
+          "scene_profile": "I01",
+          "world_profile": "m3_i01",
+          "capability_profile": "all_partner_workspace_routes_blocked",
+          "name_zh": "抬升与所有替代路线均不可行",
+          "name_en": "Lifting and every alternative route are infeasible",
+          "kind": "infeasibility_control",
+          "independent_case": true,
+          "feasibility": "unknown",
+          "registration_status": "boundary_defined_asset_binding_pending",
+          "implementation_priority": "initial_candidate",
+          "scene_parameters": null,
+          "capability_parameters": null,
+          "asset_manifest": null,
+          "controller_manifest": null,
+          "reference_witnesses": [],
+          "certificate": null,
+          "accept_all_legal_complete_solutions": true,
+          "requires_initial_failure": false,
+          "agent_visible": false,
+          "seed_is_instance_not_new_case": true,
+          "embodiment_binding": "Select and freeze a measured profile exhibiting this boundary; do not infer capability from a model name",
+          "candidate_embodiments": [
+            "G",
+            "H",
+            "W"
+          ],
+          "public_rule_versions": [
+            "open"
+          ],
+          "same_world_rule_pairing": false,
+          "rule_results_reported_separately": true,
+          "paired_feasible_case": "M3C-B03",
+          "status": "conditional_pending_asset_and_capability_audit",
+          "partner_asset": "X5_candidate_not_certified",
+          "partner_2kg_compatibility": "unknown"
+        }
+      ],
+      "case_definition": "Observable capability bottleneck and tool/partner operation that can change complete-task feasibility; not a Cartesian product of robot names and rules",
+      "embodiment_policy": "Register a new case only for a materially different capability boundary/tool interaction. Freeze the actual embodiment per execution configuration; no generic body-swap calibration.",
+      "tool_policy": "Multiple candidates and mismatch recovery are physical scene configurations; verify grasp, actuation, useful effect, transfer and complete return/delivery. Do not require a particular tool or an initial failure.",
+      "expanded_draft_superseded": true,
+      "body_rule_products_counted": false,
+      "original_case_count": 1,
+      "extension_case_count": 5,
+      "extension_operation_case_count": 4,
+      "original_evidence_scope": "Existing original configuration and scoring only; no transfer to extension cases or new 2 kg claim"
+    },
+    "original_case_count": 1,
+    "historically_witnessed_original_count": 1,
+    "validated_extension_count": 0
+  },
+  "source_sha256": {
+    "h1-extension/selected-scope.json": "3107c05742578dd1b526cce0bca6c5e15d0ae2d6cb10a0f5af3220a7b2046d98",
+    "h1-extension/task-design.json": "bf656a756ad0c533a7df36df0cb0cd78a9a9e81e61f128e627dc0c8ed1c4144e",
+    "m1-extension/task-design.json": "19387317301e29b5543c5bcef3a29969457abeca4496022b8a1bf48c9e822815",
+    "m3-extension/task-design.json": "57754db2ae83f2720af03c37d3c80498d44545eb24bc745010f1a150a902057b",
+    "task-families.json": "a6c2bd11264ebc2408fae653659cde27dfb8a88cf6bed533cab75ebb8205787a",
+    "m1-extension/case-catalog.json": "18be9e04e26c41637f7c7e8c62cf5cac3318c967a0363f900047f3e56aba1e23",
+    "m3-extension/case-catalog.json": "8573d1b3ccee8cbd121721a373f7fa8c1320b39a160d92c64e60869fa67e774e"
+  },
+  "new_simulation_runs_scope": "Historical registration snapshot; live H1 runs are in H1.execution_progress"
+}

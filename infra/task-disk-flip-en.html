@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>G1 gentle tabletop disk flip · robo-si</title><meta content="Gentle edge sliding, bimanual inversion and released placement: complete execution and hierarchical trajectory evidence. " name="description"/><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>video{width:100%;background:#111;border-radius:8px}.disk-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}.table-wrap{overflow-x:auto}code{overflow-wrap:anywhere}.disk-links a{display:inline-block;margin:4px 12px 4px 0}</style><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body><a class="skip-link" href="#main">Skip to content</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/task-disk-flip-zh.html">中文</a></div></header><aside class="document-notice"><div class="wrap">Historical task design and acceptance notes are retained. Videos are consolidated in the final Nyx 8× galleries; <a href="/robo-si-results/infra/archive-task-disk-flip-en.html">archived original page</a></div></aside>
+<main id="main"><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">One representative video is shown. Additional successes, failures and segment videos remain in the original release; this display selection does not change evidence or scores.</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">Full task details: scene, actions, scoring, evidence and reproduction</a></p><!-- task-detail-jump:end --><!-- disk-flip-family-jump:start -->
+<p class="wrap"><a href="#disk-flip-family">New family: 4 variants · 6 settings and object design</a></p><p class="wrap"><a href="#disk-flip-implementation">Expert implementation: plans · trajectories · physics · video</a></p>
+<!-- disk-flip-family-jump:end -->
+<div class="hero"><div class="wrap"><p class="eyebrow">REFERENCE · 0.1.0-rc1 · HIERARCHICAL ADDENDUM</p><h1>G1 gentle tabletop disk flip</h1><p class="lead">Gently slide the disk to the edge, grasp with both hands, flip it, then place it fully on the table and release it. </p><p>Additional reference task, excluded from the original 12-task completion denominator. Fixed pelvis; two declared configurations only; formal admission remains false.</p><div class="cards"><div class="card"><h3>6 / 6</h3><p>Fresh complete successes; three per configuration</p></div><div class="card"><h3>2 / 2</h3><p>Independent action replays passed</p></div><div class="card"><h3>26 / 27</h3><p>Low-level segments in the two complete witnesses</p></div><div class="card"><h3>61</h3><p>Task, oracle and mapping tests passed</p></div></div><p class="disk-links"><a href="#task">Task and limits</a><a href="#videos">Recordings</a><a href="#mapping">Plan to trajectory</a><a href="#download">Download and acceptance</a></p></div></div>
+<!-- disk-flip-implementation:start -->
+<section id="disk-flip-implementation"><div class="wrap"><h2>Disk Flip: expert implementation and per-setting execution evidence</h2>
+<p>2026-10-29 · 4 variants · 3 embodiments · 6 settings</p>
+<p><strong>Candidate experts and execution records exist for all six settings; 5/6 currently has a complete successful witness.</strong> This round includes 140 physics executions, 3 setup failures, 2 independent original replays and four static support probes. Failed attempts do not prove infeasibility.</p>
+<p>The revised original execution a03 spans 478.26 s, 23,913 controls, five high-level goals and 26 low-level segments. Its independent action replay passed. Historical 6/6 executions and 2/2 replays remain separate; formal admission remains false.</p>
+<p>Inspire import correction: <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/inspire-mimic-import-check.json">audit</a>. Retain the 12 official mimic linkages and remove 12 duplicates added by the adapter. Inertials, geometry, joint limits and actuators are unchanged. Historical failed F attempts retain their original models; the corrected importer requires fresh execution and replay.</p>
+<h2>Formal acceptance progress</h2>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/plan-v1.json">Frozen acceptance plan</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/status.json">Exported status</a></p>
+<p>Development attempts are separate from qualification. Each setting needs a complete witness, a frozen controller, three fresh uninterrupted repetitions and independent replay. Failed repetitions cannot be replaced. Counterexamples, illegal-action checks, portable assets, process isolation, video review and second-person reproduction are also required. DF-01-G cohort-v1 passed three closed-loop runs but failed replay (1.99 s final stability and endpoint mismatch); it remains failed. Revised expert a03 pushes farther inside the unchanged goal region and passed a complete run and replay; cohort-v2 passed all three fresh runs and its independent replay. Extension cohort status is reported below; no human signoff is claimed. <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/integration-convergence-audit.json">Integration-step diagnostics</a> found a Stretch release failure at 400 Hz but successful unloading with smaller steps. Fresh 2,000 Hz development executions are running; checkpoint diagnostics are not full witnesses, and archived 400 Hz failures remain failures. Seven rejection/atomicity probes passed for each G/F/S action interface; separate-process G/F/S probes also reject seven illegal action classes atomically, and physical no-ops cannot satisfy the goal. These are boundary probes, not complete isolated task executions or an OS security sandbox. Inspire palm decomposition removes false convex-hull socket contacts while preserving official inertials.</p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-01-G/cohort-v1/status.json">Original cohort-v1</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-01-G/cohort-v2/status.json">Original cohort-v2</a> · Separate-process probes: <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/isolated-boundary-G.json">Dex3</a> / <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/isolated-boundary-F.json">Inspire</a> / <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/isolated-boundary-S.json">SG3</a></p>
+<p>Current frozen cohort cohort-v2: 3/3 fresh executions passed; independent replay passed.</p>
+<p>DF-02-G <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-02-G/cohort-v1/status.json">cohort-v1</a>: 3/3 fresh executions passed; independent replay passed.</p>
+<p>DF-03-G <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-03-G/cohort-v1/status.json">cohort-v1</a>: 3/3 fresh executions passed; independent replay passed.</p>
+<p>DF-04-G <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-04-G/cohort-v1/status.json">cohort-v1</a>: 3/3 fresh executions passed; independent replay passed.</p>
+<p>DF-04-S <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-04-S/cohort-v1/status.json">cohort-v1</a>: 3/3 fresh executions passed; independent replay passed.</p>
+<p>4 additional runs were interrupted by shared-storage exhaustion. They count as infrastructure-incomplete, not physical failures or successes; <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/storage-incident-20261029.json">incident records</a> retain readable partial states. New attempts use fresh initial states and alternate output storage.</p>
+<p>The original online closed-loop expert completed the task in a separate Python process, receiving read-only JSON observations and emitting 23,312 joint commands. The parent owns physics and scoring, with no shared simulator memory. Independent replay: passed. <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/original-isolated-closed-loop.json">Execution and rejection probes</a>. This is privileged expert validation, not a public-agent score or OS sandbox.</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-original-expert-v2-b86c81b65bd4.tar.gz">Download original expert reproduction bundle</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/original-portable-download.json">Size, SHA-256 and scope</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/original-portable-validation.json">Fresh portable-source execution</a>. Includes robot assets/licenses, frozen expert/scorer, three repetitions, replay, process-isolated execution, trajectories, videos and commands.</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Automatic gates</th>
+<th>Human video review</th>
+<th>Second-person reproduction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DF-01-G</td>
+<td>10/10</td>
+<td>pending</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>DF-02-G</td>
+<td>10/10</td>
+<td>pending</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>DF-02-F</td>
+<td>0/10</td>
+<td>pending</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>DF-03-G</td>
+<td>10/10</td>
+<td>pending</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>DF-04-G</td>
+<td>10/10</td>
+<td>pending</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>DF-04-S</td>
+<td>10/10</td>
+<td>pending</td>
+<td>pending</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/disk-flip-development-scenes-557d1b1372ec.tar.gz">Historical portable development scenes</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-download.json">SHA-256 / scope</a></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Selected run</th>
+<th>Result / stop reason</th>
+<th>Duration</th>
+<th>Hz</th>
+<th>Replay</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#df-01-g">DF-01-G</a></td>
+<td>DF-01-G-a03</td>
+<td>success</td>
+<td>478.26 s</td>
+<td>400</td>
+<td>pass</td>
+</tr>
+<tr>
+<td><a href="#df-02-g">DF-02-G</a></td>
+<td>DF-02-G-a33</td>
+<td>success</td>
+<td>581.22 s</td>
+<td>2000</td>
+<td>pass</td>
+</tr>
+<tr>
+<td><a href="#df-02-f">DF-02-F</a></td>
+<td>DF-02-F-a38</td>
+<td>disk_angular_speed</td>
+<td>352.00 s</td>
+<td>2000</td>
+<td>pass</td>
+</tr>
+<tr>
+<td><a href="#df-03-g">DF-03-G</a></td>
+<td>DF-03-G-a23</td>
+<td>success</td>
+<td>573.56 s</td>
+<td>2000</td>
+<td>pass</td>
+</tr>
+<tr>
+<td><a href="#df-04-g">DF-04-G</a></td>
+<td>DF-04-G-a27</td>
+<td>success</td>
+<td>538.00 s</td>
+<td>2000</td>
+<td>pass</td>
+</tr>
+<tr>
+<td><a href="#df-04-s">DF-04-S</a></td>
+<td>DF-04-S-a28</td>
+<td>success</td>
+<td>545.00 s</td>
+<td>2000</td>
+<td>pass</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Implementation boundaries</h2>
+<p>DF-01 uses frozen original Genesis sources and scoring. Extensions use MuJoCo 3.14.0: selected historical extension records use 400 Hz physics; new development runs use 2,000 Hz. Both use 50 Hz control/trace and 10 fps video. Independent replay compares every qpos/qvel sample from a fresh initial state, and checks actuator limits, contact loads and high/low coverage. Replay agreement is not task success. Official G1 Dex3/Inspire bodies share the same 29-DOF base; Stretch 3 uses official SG3 geometry and linkage. Bases are fixed. All model adaptations and effort limits are recorded per run. No hardware or free-standing feasibility is claimed.</p>
+<p>Extension start (0.40, 0) has 50 mm overhang at the x=0.35 m table edge; target is (0.50, 0), table height 0.86 m. Original DF-01 still pushes from (0.50, 0). G/F share the world and object; hand-specific controllers may differ. Stretch base placement changed during development. This is not a common-policy embodiment ranking.</p>
+<p>Per-run plans declare linear/angular speed caps of 0.12 m/s and 0.65 rad/s; robot/table contact sums of 18/8 N; P3 additionally caps each contacting body at 4 N. Self/table collision loads above 20 N or unsupported time above 0.10 s fail. The goal requires ≤8° normal error, ≤45 mm planar error, whole-disk tabletop containment, full release and 2 s stability. P3 is a provisional rigid-body load proxy, not fracture simulation.</p>
+<p>The executed candidate uses grasp–lift–turn–place. The final development scorer permits controlled supported turnover with lift only a diagnostic. Dex3 and Stretch development attempts have reached full inversion, and Stretch has reached inverted setdown. Support transfer, release and the final goal are checked independently for each setting; see the verified witness table. Edge regrasp, tangential compliance and load-based release are under development; no failed attempt is relabeled successful.</p>
+<h2>Physical disk design</h2>
+<p><img alt="Radial cross section" src="/robo-si-results/infra/planning/disk-flip-family/execution/plate-design/plate-cross-section.png"/></p>
+<p>P1: 200 mm diameter, 12 mm thick, 120 g. P2/P3: 200 × 20 mm, 120 g; 4 mm floor, 6 mm rim over radii 79–100 mm, 10 mm cavity, support-ring radii 53–60 mm and height 6 mm, 14 mm under-rim clearance. Separate convex sectors retain the cavity/gaps; compound inertia is an approximation with overlapping components, not exact solid CAD. Object/table sliding friction is 0.7; effective hand friction also depends on imported contact parameters. Four 5 s upright/inverted static support probes passed (P1/P2, final 2 s stable). This is not a complete grasp/flip/release witness.</p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/plate-design/support-probes.json">Support probes</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/implementation.json">All attempts</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/run.py">Controller</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/model.py">Model</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/verify.py">Verifier</a></p>
+<h2>Per-setting plans, trajectories, physics and videos</h2>
+<h3 id="df-01-g">DF-01-G · DF-01-G-a03</h3>
+<p>Complete success; independent action replay passed.</p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">View the final delivered Nyx 8× recordings →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/plan.json">Plan</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/verification.json">Verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-01-G-a03-video-c6ee07dd6d2a.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-01-G-a03-trajectory-25b975cde9db.npz">trajectory.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/trajectory-download.json">SHA-256 / replay</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-01-G-a03-trace-ad560cf63a8a.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-01-G-a03-sources-412ba7ab4917.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-01-G trajectory" src="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/trajectory.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slide</td>
+<td>L01 · settle_raised_separated_hands</td>
+<td>0.00–4.50</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>slide</td>
+<td>L02 · approach_far_rim</td>
+<td>4.50–12.50</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>slide</td>
+<td>L03 · lower_outside_far_rim</td>
+<td>12.50–20.50</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>slide</td>
+<td>L04 · gentle_rim_contact</td>
+<td>20.50–31.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>slide</td>
+<td>L05 · slide_to_near_edge</td>
+<td>31.88–64.32</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L06 · unload_rim_pusher</td>
+<td>64.32–69.82</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L07 · clear_rim_pusher</td>
+<td>69.82–75.82</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L08 · retract_above_and_beside_disk</td>
+<td>75.82–91.82</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L09 · reconfigure_for_bimanual_approach</td>
+<td>91.82–107.82</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L10 · calibrate_free_finger_preshape</td>
+<td>107.82–130.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L11 · close_two_independent_edge_pinches</td>
+<td>130.88–161.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L12 · lift_with_two_edge_pinches</td>
+<td>161.42–172.80</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L13 · turn_with_two_edge_pinches</td>
+<td>172.80–222.92</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L14 · settle_after_bimanual_inversion</td>
+<td>222.92–232.94</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L15 · transfer_weight_to_one_pinch</td>
+<td>232.94–241.04</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L16 · clear_bridge_pusher</td>
+<td>241.04–257.04</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L17 · carry_inverted_disk_outside_edge</td>
+<td>257.04–277.04</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L18 · lower_outside_holding_hand</td>
+<td>277.04–302.04</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L19 · align_supported_disk_with_table_height</td>
+<td>302.04–305.20</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L20 · approach_near_rim_above_outside_bridge</td>
+<td>305.20–323.20</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L21 · lower_bridge_pusher_outside_near_rim</td>
+<td>323.20–335.20</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L22 · establish_bridge_push_contact</td>
+<td>335.20–344.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L23 · slide_disk_from_holding_hand_onto_table</td>
+<td>344.10–417.62</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L24 · table_and_lower_pads_share_load_after_thumb_release</td>
+<td>417.62–417.64</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L25 · withdraw_lower_pads_after_supported_centre</td>
+<td>417.64–474.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L26 · unload_bridge_pusher</td>
+<td>474.42–478.26</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="df-02-g">DF-02-G · DF-02-G-a33</h3>
+<p>Complete success; independent action replay passed.</p>
+<p>Policy scope: fixed nominal joint-reference prefix followed by measured-state withdrawal. Every physics step is freshly executed and scored. This is a nominal physical witness, not a generalizing closed-loop policy.</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-portable-expert-32985ed3d933.tar.gz">Portable frozen expert</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-DF-02-G-download.json">SHA-256 / scope</a></p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">View the final delivered Nyx 8× recordings →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/plan.json">Plan</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/verification.json">Verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-video-7b3a5dfd523b.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-trajectory-865012b431a1.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-trace-2e19e89ef621.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-sources-a55b72937fab.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-02-G trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-trajectory-db3444d98e3b.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>2.00–87.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>87.58–91.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>91.58–107.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>107.58–111.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>111.58–139.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>139.58–189.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>189.58–229.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>229.58–302.12</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>302.12–313.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>313.42–329.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>329.42–344.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>344.42–384.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>384.42–394.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>394.42–424.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>424.42–449.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>449.42–450.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>450.26–460.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>460.26–466.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>466.26–486.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>486.26–498.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>498.26–528.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>528.34–532.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>532.34–535.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>535.34–543.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>543.34–548.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>548.34–570.72</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>570.72–574.72</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>574.72–578.72</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>578.72–581.22</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="df-02-f">DF-02-F · DF-02-F-a38</h3>
+<p>Failed candidate: <code>disk_angular_speed</code> at 352.00 s. No complete feasibility witness yet.</p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">View the final delivered Nyx 8× recordings →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/plan.json">Plan</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/verification.json">Verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-video-dcfbb299e847.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-trajectory-212d1a874cd2.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-trace-c91b5e977f0d.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-sources-84a2e1745840.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-02-F trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-trajectory-8fb9027f08c0.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>2.00–8.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>8.00–18.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>18.00–34.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>34.00–46.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>46.00–54.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>54.00–90.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>90.60–100.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>100.60–112.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>112.60–126.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>126.60–130.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>130.60–146.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>146.60–150.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>150.60–162.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>162.60–202.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>202.60–210.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>210.60–310.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>310.60–310.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>310.88–350.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>350.88–352.00</td>
+<td>interrupted</td>
+</tr>
+</tbody>
+</table></div>
+<p>Unexecuted planned actions are not shown as completed; see plan.json for the full candidate.</p>
+<h3 id="df-03-g">DF-03-G · DF-03-G-a23</h3>
+<p>Complete success; independent action replay passed.</p>
+<p>Policy scope: fixed nominal joint-reference prefix followed by measured-state withdrawal. Every physics step is freshly executed and scored. This is a nominal physical witness, not a generalizing closed-loop policy.</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-portable-expert-8b56fc7eeb32.tar.gz">Portable frozen expert</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-DF-03-G-download.json">SHA-256 / scope</a></p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">View the final delivered Nyx 8× recordings →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/plan.json">Plan</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/verification.json">Verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-video-b1bc5ca37fdf.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-trajectory-5dffc1b818f8.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-trace-83e2874bf423.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-sources-07de2c36228a.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-03-G trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-trajectory-41d0e3c5d0f0.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>2.00–87.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>87.60–91.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>91.60–107.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>107.60–111.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>111.60–139.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>139.60–189.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>189.60–229.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>229.60–292.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>292.00–332.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>332.10–348.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>348.10–363.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>363.10–403.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>403.10–413.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>413.10–443.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>443.10–444.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>444.10–450.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>450.10–459.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>459.06–469.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>469.06–475.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>475.06–495.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>495.06–507.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>507.06–533.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>533.70–537.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>537.70–541.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>541.70–560.56</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>560.56–565.56</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>565.56–570.56</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>570.56–573.56</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="df-04-g">DF-04-G · DF-04-G-a27</h3>
+<p>Complete success; independent action replay passed.</p>
+<p>Policy scope: fixed nominal joint-reference prefix followed by measured-state withdrawal. Every physics step is freshly executed and scored. This is a nominal physical witness, not a generalizing closed-loop policy.</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-portable-expert-6e89b83a31ed.tar.gz">Portable frozen expert</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-DF-04-G-download.json">SHA-256 / scope</a></p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">View the final delivered Nyx 8× recordings →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/plan.json">Plan</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/verification.json">Verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-video-92398ea55486.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-trajectory-ceab2a2d6303.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-trace-1163a063c250.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-sources-c618e98bc92b.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-04-G trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-trajectory-d419c4ce5f1b.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>2.00–88.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>88.10–92.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>92.10–108.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>108.10–112.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>112.10–140.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>140.10–190.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>190.10–230.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>230.10–290.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>290.10–321.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>321.88–361.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>361.88–367.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>367.88–422.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>422.88–430.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>430.88–440.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>440.88–446.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>446.88–466.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>466.88–478.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>478.88–525.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>525.00–530.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>530.00–535.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>535.00–538.00</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="df-04-s">DF-04-S · DF-04-S-a28</h3>
+<p>Complete success; independent action replay passed.</p>
+<p>Policy scope: fixed nominal joint-reference prefix followed by measured-state withdrawal. Every physics step is freshly executed and scored. This is a nominal physical witness, not a generalizing closed-loop policy.</p>
+<p>Additional complete witness: <strong>DF-04-S-a27 · online expert · 546.06 s</strong>. Independent native and compact-reference replays passed; the frozen qualification cohort remains separately tracked.</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a27-video-f9a2112d1847.mp4">Video</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/plan.json">Plan</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/verification.json">Verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/reference-replay-verification.json">Reference replay</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a27-trajectory-4eecd0659823.npz">Trajectory</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a27-sources-d01a031f02cb.tar.gz">Frozen sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/external-media.json">SHA-256</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-portable-expert-aa5e669826c2.tar.gz">Portable frozen expert</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-DF-04-S-download.json">SHA-256 / scope</a></p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">View the final delivered Nyx 8× recordings →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/plan.json">Plan</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/verification.json">Verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-video-652723adcfaf.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-trajectory-7ee2381c5767.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-trace-1758b592c579.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-sources-0c0aaa3ff792.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-04-S trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-trajectory-2c9b76409636.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>2.00–6.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>6.00–18.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>18.00–32.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>32.00–60.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>60.00–105.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>105.00–131.96</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L13 · regrasp_release</td>
+<td>131.96–155.96</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>155.96–181.96</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>181.96–205.96</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>205.96–246.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>246.70–286.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>286.70–346.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>346.70–378.74</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>378.74–412.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>412.10–520.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>520.00–536.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>536.00–542.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>542.00–545.00</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Remaining work and reproduction</h2>
+<p>Resolve hand-specific approach and force closure, preserve safe P2/P3 load margin, and complete turnover, support transfer and withdrawal for dual/single-arm candidates. Full witnesses are needed before protocol freeze, paired comparisons and initial-condition robustness tests. All privileged expert artifacts remain author-only and excluded from agent bundles.</p>
+<p>To fit hosting limits, extension downloads retain every held 50 Hz reference and endpoint object state. The replay script reconstructs all joint states and actuator controls at each scene’s declared 400 / 2,000 Hz rate; every reconstructed array SHA-256 matches the original execution (see each linked report). Original DF-01 retains its native control trajectory. Public traces retain 50 Hz object states and aggregate loads, omitting repetitive individual contact lists. Full original NPZ/JSONL files remain unchanged in local df_family/runs/. A separate portable development bundle contains five extension scenes, 299 deduplicated assets, relative paths and upstream licenses; compiled physical arrays match the originals. It is a development scene bundle, not a qualified expert bundle. Archived per-run scenes retain their original paths.</p></div></section>
+<!-- disk-flip-implementation:end -->
+<!-- disk-flip-family:start -->
+<section class="tinted" id="disk-flip-family"><div class="wrap"><h2>Disk Flip family: compact task list and object design</h2>
+<p>2026-10-29 · 4 task variants, 3 embodiments and 6 selected settings, using 3 object profiles (2 main geometries). All six have candidate experts and physics executions; 5 complete witnesses, 1 still unresolved.</p>
+<p>A variant is an independent manipulation problem. A setting is a selected task/body/scene configuration. Parameter values, disclosure, ablations and seeds are not additional tasks; do not expand a Cartesian product.</p>
+<h2>Task list</h2>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Setting ID</th>
+<th>Variant</th>
+<th>Object</th>
+<th>Embodiment</th>
+<th>Task and mechanism</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DF-01-G</td>
+<td>DF-01</td>
+<td>P1</td>
+<td>G1 + Dex3</td>
+<td>Original gentle disk flip：Push to the edge, flip under bimanual grasp, place and release; preserve the original protocol.</td>
+<td>Fresh execution + replay passed</td>
+</tr>
+<tr>
+<td>DF-02-G</td>
+<td>DF-02</td>
+<td>P2</td>
+<td>G1 + Dex3</td>
+<td>Rimmed plate: three-finger grasp adaptation：Choose rim pinching, underside support or opposing-face grasp from rim clearance and finger geometry.</td>
+<td>Complete witness + replay passed; acceptance tracked separately</td>
+</tr>
+<tr>
+<td>DF-02-F</td>
+<td>DF-02</td>
+<td>P2</td>
+<td>G1 + Inspire five-finger hand</td>
+<td>Rimmed plate: five-finger grasp adaptation：Same world as DF-02-G; change only the hand and required control mapping, testing whether grasp strategy changes.</td>
+<td>Executed; no full witness</td>
+</tr>
+<tr>
+<td>DF-03-G</td>
+<td>DF-03</td>
+<td>P3</td>
+<td>G1 + Dex3</td>
+<td>Contact-load-limited plate flip：Balance slip resistance and local load limits; distribute load or use table support when needed.</td>
+<td>Complete witness + replay passed; acceptance tracked separately</td>
+</tr>
+<tr>
+<td>DF-04-G</td>
+<td>DF-04</td>
+<td>P1</td>
+<td>G1 + Dex3</td>
+<td>Open-strategy flip: dual-arm configuration：Choose one/two-hand grasp, regrasp and support transfer without the original mandatory sequence.</td>
+<td>Complete witness + replay passed; acceptance tracked separately</td>
+</tr>
+<tr>
+<td>DF-04-S</td>
+<td>DF-04</td>
+<td>P1</td>
+<td>Stretch 3 + specified gripper</td>
+<td>Open-strategy flip: single-arm configuration：Same object and table as DF-04-G; adapt the complete flip and release to one arm and its wrist.</td>
+<td>Complete witness + replay passed; acceptance tracked separately</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Object design</h2>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Object</th>
+<th>Geometry and properties</th>
+<th>Tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>Standard solid disk</td>
+<td>200 mm diameter, 12 mm thick, 120 g; flat faces and uniform mass.</td>
+<td>DF-01 / DF-04</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Rimmed shallow plate</td>
+<td>Shallow concavity, thin rim and underside support ring; specify under-rim clearance and inverted support. Development geometry: 200 mm diameter, 20 mm total height, 120 g, 14 mm under-rim clearance. Upright/inverted static support probes passed.</td>
+<td>DF-02</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>Contact-load-sensitive shallow plate</td>
+<td>Reuse P2 geometry with local contact-load limits. Initially fix friction and mass and retain a feasible safe grasp. Rigid-body damage proxy, not physical fracture.</td>
+<td>DF-03</td>
+</tr>
+</tbody>
+</table></div>
+<p>Freeze diameter, body/rim thickness, rim width and underside clearance, concavity, support-ring geometry, mass/COM/inertia, hand–object and table–object friction, and applicable local load limits. P2/P3 need stable inverted support and complete withdrawal; do not reuse the flat disk's height/contact predicates. Collision geometry must preserve the rim, cavity and insertion gaps rather than filling them.</p>
+<h2>Protocols and paired comparisons</h2>
+<ul>
+<li>Shared goal: target face up, fully in the goal region, released and stable, with public safety constraints satisfied throughout.</li>
+<li>DF-01 freezes the original bimanual requirement, sequence, scorer and limits. Its 6/6 executions and 2/2 replays cover only the fixed-pelvis dual-Dex3 reference and two declared initial configurations. Formal admission remains false.</li>
+<li>DF-02–04 use a separate extension protocol accepting every strategy satisfying the goal and public constraints, including regrasp, table support and controlled transfer. Freeze tolerances, contact-loss rules, speed/load limits and dwell times before implementation. Terminal pose cannot excuse a drop or a limit violation.</li>
+<li>DF-02-G/F use the same G1 body/base constraints, changing only the hand and necessary control mapping. Verify actual grasp differences rather than assuming five fingers are superior; remove the extra hand configuration if the same strategy covers both.</li>
+<li>DF-04-G/S share the object, table, goal and extension scorer, with separately validated initial placements and fixed bases during execution. First establish a complete Stretch flip-and-release witness. Failed single-arm screening does not prove impossibility.</li>
+<li>DF-03 uses an explicit local-load damage proxy. A net force that cancels opposing contacts is not a squeeze-load measure. Preserve a safe feasible grasp; visual materials do not establish physical fragility.</li>
+</ul>
+<h2>Scope and validation</h2>
+<p>The three embodiments are G1 + Dex3, G1 + Inspire five-finger hand, and Stretch 3 + a specified gripper. Reuse the existing families' Stretch 3 assets; bind the gripper and control interface to concrete assets. A3, dual-arm wheeled bodies and Stretch 4 are not additional entries.</p>
+<p>Elliptical/rectangular shapes, friction/mass/COM changes, known/unknown parameters and active-probing ablations remain within-task configurations or reserves. Declare available sensors separately; cross-body success alone does not establish self-modeling.</p>
+<p>Registration: 4 variants, 6 settings (one original plus five extensions), 3 object profiles and 2 main geometries. Candidate experts have been executed for all six settings; 5 settings have a complete witness. New settings do not inherit historical scores. The original 14-task inventory count, controller, scorer, evidence and admission state are unchanged.</p>
+<p><a href="/robo-si-results/infra/task-disk-flip-en.html#task">Original task and reference evidence</a> · <a href="/robo-si-results/infra/task-families-en.html#disk-flip-family">Family overview</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/README.md">中文</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/task-design.json">Structured design</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/IMPLEMENTATION-en.md">Per-setting experts, plans, trajectories and videos</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/implementation.json">Run ledger</a></p></div></section>
+<!-- disk-flip-family:end -->
+<section id="task"><div class="wrap"><h2>Task, scene and scoring</h2><p>A G1 with two Dex3 hands uses 43 joint targets to manipulate a 200 mm diameter, 12 mm thick, 120 g disk. The table is 0.86 m high, with its near edge at x = 0.35 m. The orange face starts up; the blue face must finish up.</p><p>First establish 55–95 mm overhang, then independent opposing-face pinches in both hands, lift and invert while both pinches remain valid. Controlled support transfer is allowed after inversion. Finish fully on the table, within 45 mm of the goal center and 8° of flat, without robot contact, stable for two seconds.</p>
+<div class="table-wrap"><table><thead><tr><th>Measurement</th><th>Declared limit</th></tr></thead><tbody><tr><td>Joint target speed</td><td>0.50 rad/s</td></tr><tr><td>Disk linear / angular speed</td><td>0.12 m/s / 0.65 rad/s</td></tr><tr><td>Robot / table summed contact-force magnitudes on disk</td><td>18 N / 8 N</td></tr><tr><td>Final stillness speeds</td><td>0.015 m/s / 0.08 rad/s</td></tr><tr><td>Release dwell / episode budget</td><td>2 s / 600 s</td></tr></tbody></table></div><p>Complete success scores 1; otherwise 0. Stage progress is diagnostic only. Disk constraints are checked at 400 Hz; control runs at 50 Hz. <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/instruction.zh.md">Complete public instruction</a> · <a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_tabletop_disk_flip/task.toml">Task manifest</a></p></div></section>
+<section class="tinted" id="videos"><div class="wrap"><h2>Complete executions and independent replays</h2><p>Each configuration passed three fresh continuous executions. These videos replay the corresponding commands in fresh scenes. Versions, seeds, asset and source hashes are retained. Video is 10 fps; inspect the raw records for 20 ms handoffs.</p><div class="disk-videos"><article class="card"><h3>Nominal · 457.305 s</h3><p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">View the final delivered Nyx 8× recordings →</a></p><p>XY = (0.50, 0); seed = 0. <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/release/nominal/replay/summary.json">Replay and audits</a></p></article><article class="card"><h3>Lateral offset · 478.925 s</h3><p class="archived-video-note"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/main/releases/g1-disk-flip/0.1.0-rc1-hierarchical">Additional videos in the complete release</a></p><p>XY = (0.50, 0.003); seed = 1. <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/release/offset_y_003/replay/summary.json">Replay and audits</a></p></article></div><p>If a clone lacks the videos, download the complete offline packet below. <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/release/coverage.json">Coverage record</a> · <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/candidate_attempts.json">Retained failures and development attempts</a></p></div></section>
+<section id="mapping"><div class="wrap"><h2>Concrete case: high level → low level → actual trajectory</h2><p>Reuse two existing complete expert trajectories with retrospective expansion into 26 / 27 low-level segments, without checkpoint splicing. Each segment binds generating source, constraints, command indices, time and measured boundary states, continuously covering 22,866 / 23,947 commands.</p><div class="table-wrap"><table><thead><tr><th>High-level goal</th><th>Low-level expansion</th><th>Measured completion: nominal / offset (s)</th></tr></thead><tbody><tr><td>Slide to edge</td><td>Settle hands → approach rim → establish contact → slide to edge</td><td>55.580 / 55.580</td></tr><tr><td>Establish two hand pinches</td><td>Unload → retract → reorient wrists → preshape fingers → close pinches</td><td>156.480 / 156.620</td></tr><tr><td>Lift with turn clearance</td><td>Maintain both pinches and lift together</td><td>172.800 / 173.240</td></tr><tr><td>Bimanual inversion</td><td>Rotate both wrists with attitude and load feedback</td><td>222.820 / 223.280</td></tr><tr><td>Place and release</td><td>Settle → transfer support → lower outside edge → push onto table → withdraw → release</td><td>457.305 / 478.925</td></tr></tbody></table></div><p>Completion times come from the environment evaluator; the controller may stabilize before changing actions. Constraint prose describes generation intent; evidence is scoped to measured states, physical limit checks and contact audits.</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_tabletop_disk_flip/validation/hierarchical/index.html">Play and inspect each low-level segment →</a> · <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/hierarchical/README.md">Full hierarchical mapping</a> · <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/hierarchical_checks.json">Automated mapping checks</a></p></div></section>
+<section class="tinted" id="scope"><div class="wrap"><h2>Screening, constraints and evidence scope</h2><p>The oracle returns high-level plans, skills and constraints, key states and bounded checks. Four statuses distinguish complete execution evidence, screening passed, undetermined and necessary-condition failure. All ten development draws are retained as screening passed only; no complete solve is required per draw.</p><p>Generic rolling planning, arbitrary skill composition, random robustness and continuous applicability ranges are separate extensions. Evidence covers two fixed-pelvis configurations only. Robot contact audits run at 50 Hz and do not certify substep whole-body collision freedom.</p><p>The controller outputs joint targets only; state writes are audited, with no welds or object teleportation. Physical speed and force limits remain active. No-op scores zero and scoring counterexamples are tested; human shortcut review and full expert replay through the new isolated sandbox remain pending.</p></div></section>
+<section id="download"><div class="wrap"><h2>Publication and acceptance status</h2><p class="disk-links"><a class="btn" href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/39845e9f4f8bfd300059b49cffa1b8bddc667ddc/releases/g1-disk-flip/0.1.0-rc1-hierarchical/g1-disk-flip-0.1.0-rc1-hierarchical.tar.gz">Download complete offline packet (private HF)</a><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/publication.json">Upload status, size and SHA-256</a><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/RELEASE.md">Reproduction instructions</a></p><p>After extraction open workspace/infra/task-disk-flip-en.html; run sha256sum -c SHA256SUMS in the extracted directory. GitHub file pages display HTML source; open the page from a clone or offline packet.</p><p><strong>Signed video review, manual stage-time comparison, second-person reproduction and full expert replay through the new isolated sandbox remain pending. Formal admission: admitted=false.</strong></p><p><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/release/human_review.json">Unsigned review record</a> · <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/planning/hierarchical-evaluation/README.md">Hierarchical acceptance policy</a></p></div></section><section id="inventory-additions"><div class="wrap"><h2>Unified 14-task inventory · two additions</h2><p>The original 12 tasks retain 62 skills / 193 candidate actions and pending mapping reviews. The two additions use their existing measured segment evidence; these counts are not summed and do not grant formal admission.</p><div class="table-wrap"><table><thead><tr><th>Task</th><th>Evidence</th><th>Remaining limits</th></tr></thead><tbody><tr data-task="DiskFlip"><td><a href="/robo-si-results/infra/task-disk-flip-en.html">G1 gentle tabletop disk flip</a></td><td>6/6 complete runs (three per configuration) and 2/2 independent action replays pass; the two witnesses have 26/27 low-level segments with representation mappings.</td><td>Human video sign-off, second-person reproduction, broader configurations and full self/environment-contact review; no general random-domain or whole-body locomotion claim.</td></tr><tr data-task="Sokoban"><td><a href="/robo-si-results/infra/task-sokoban-en.html">Two-G1 hidden-map box clearing</a></td><td>Gamma 8011370: 279.18 s, 24 high-level operations and 76 low-level segments; both robots dwell at their own goals for 3 s. Independent sampled review and complete public-input replay pass; task_success=null.</td><td>Complete contact/push-only validity certification, unseen-map evaluation, cooperation-benefit comparisons and human acceptance; remains an experimental candidate.</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/planning/INVENTORY.md">All 14 plans and evidence</a> · <a href="/robo-si-results/infra/planning/catalog.json">JSON</a></p></div></section>
+<section id="reference-designs"><div class="wrap"><h2>Reference executions and designs</h2><p>Scoped execution evidence exists; see the design, actions, support, trajectory mapping and reproduction sources.</p><p><a href="/robo-si-results/infra/reference-designs/DiskFlip.html">Reference executions and designs</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>Task specification and evidence</h2><p class="detail-nav"><a href="#detail-scope">Scope and scene</a> · <a href="#detail-interfaces">Observations, actions and interfaces</a> · <a href="#detail-planning">High-level goals and low-level actions</a> · <a href="#detail-trajectory">Trajectory and state correspondence</a> · <a href="#detail-scoring">Scoring and success criteria</a> · <a href="#detail-evidence">Representative evidence and review</a> · <a href="#detail-sandbox">Sandbox validation</a> · <a href="#detail-reproduce">Download and reproduce</a> · <a href="#detail-limits">Acceptance limits and remaining work</a></p><article id="detail-scope"><h3>Scope and scene</h3><p>Fixed pelvis, dual Dex3; nominal and lateral-offset declared configurations</p><p>6/6 complete runs (three per configuration) and 2/2 independent action replays pass; the two witnesses have 26/27 low-level segments with representation mappings.</p><p>Fixed-pelvis G1 with two Dex3 hands: slide the disk to the edge, clamp, lift, invert, replace and release. Table height: 0.86 m; tabletop: 0.70 × 1.15 m. Disk diameter: 0.20 m; thickness: 0.012 m; mass: 0.12 kg. nominal and offset_y_003 differ by a 3 mm lateral translation. These are two checked configurations, not a validated continuous range.</p></article><article id="detail-interfaces"><h3>Observations, actions and interfaces</h3><p>Privileged reference state and public-agent permissions are separate; this task’s SDK and instructions define the boundary.</p><p><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_tabletop_disk_flip/sandbox/agent_sdk">Agent SDK</a></p><p>The native reference uses privileged state feedback. Public agents use permitted SDK sensors and submit 43 joint targets at 50 Hz; physics timestep is 0.0025 s. Nonzero auxiliary torque/velocity and gain overrides cannot change the frozen actuator law. Fixed pelvis means this witness does not assess walking or whole-body balance.</p></article><article id="detail-planning"><h3>High-level goals and low-level actions</h3><h4>nominal</h4><div class="detail-table"><table><thead><tr><th>ID</th><th>目标 / Goal</th><th>低层段 / Segments</th><th>完成条件 / Predicate</th><th>观测完成 / Observed s</th></tr></thead><tbody><tr><td>slide</td><td>slide</td><td>L01, L02, L03, L04, L05</td><td>at_edge</td><td>55.58</td></tr><tr><td>clamp</td><td>clamp</td><td>L06, L07, L08, L09, L10, L11</td><td>bimanual_clamp</td><td>156.48</td></tr><tr><td>lift</td><td>lift</td><td>L12</td><td>bimanual_clamp, clear</td><td>172.8</td></tr><tr><td>turn</td><td>turn</td><td>L13</td><td>bimanual_clamp, clear, inverted</td><td>222.82</td></tr><tr><td>place</td><td>place</td><td>L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26</td><td>inverted, placed, released, still, in_goal</td><td>457.305</td></tr></tbody></table></div><h4>offset_y_003</h4><div class="detail-table"><table><thead><tr><th>ID</th><th>目标 / Goal</th><th>低层段 / Segments</th><th>完成条件 / Predicate</th><th>观测完成 / Observed s</th></tr></thead><tbody><tr><td>slide</td><td>slide</td><td>L01, L02, L03, L04, L05</td><td>at_edge</td><td>55.58</td></tr><tr><td>clamp</td><td>clamp</td><td>L06, L07, L08, L09, L10, L11</td><td>bimanual_clamp</td><td>156.62</td></tr><tr><td>lift</td><td>lift</td><td>L12</td><td>bimanual_clamp, clear</td><td>173.24</td></tr><tr><td>turn</td><td>turn</td><td>L13, L14</td><td>bimanual_clamp, clear, inverted</td><td>223.28</td></tr><tr><td>place</td><td>place</td><td>L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27</td><td>inverted, placed, released, still, in_goal</td><td>478.925</td></tr></tbody></table></div></article><article id="detail-trajectory"><h3>Trajectory and state correspondence</h3><p>Original Chinese contact specifications are retained in DiskFlip rows; phase identifiers and all measured intervals are shown alongside them.</p><p>Tables annotate the original continuous record, including preparation and waiting. This is not a new execution; time fields retain their original meanings.</p><details><summary>nominal · 26 low-level segments</summary><div class="detail-table"><table><thead><tr><th>ID</th><th>高层 / Goal</th><th>动作 / Action</th><th>接触约束 / Contact constraint</th><th>时间 / Time s</th><th>命令切片 / Command slice</th></tr></thead><tbody><tr><td>L01</td><td>slide</td><td>settle_raised_separated_hands</td><td>盘由桌面支撑；双手先稳定</td><td>[0.0, 4.5]</td><td>[0, 225]</td></tr><tr><td>L02</td><td>slide</td><td>approach_far_rim</td><td>接近阶段避免提前碰盘</td><td>[4.5, 12.5]</td><td>[225, 625]</td></tr><tr><td>L03</td><td>slide</td><td>lower_outside_far_rim</td><td>沿盘外侧下降，保留桌面支撑</td><td>[12.5, 20.5]</td><td>[625, 1025]</td></tr><tr><td>L04</td><td>slide</td><td>gentle_rim_contact</td><td>以测得接触建立推力，限制速度与受力</td><td>[20.5, 31.88]</td><td>[1025, 1594]</td></tr><tr><td>L05</td><td>slide</td><td>slide_to_near_edge</td><td>按实测悬伸量停止，盘心仍在支撑侧</td><td>[31.88, 64.32000000000001]</td><td>[1594, 3216]</td></tr><tr><td>L06</td><td>clamp</td><td>unload_rim_pusher</td><td>先卸力，再撤离；桌面继续承载</td><td>[64.32000000000001, 69.82000000000001]</td><td>[3216, 3491]</td></tr><tr><td>L07</td><td>clamp</td><td>clear_rim_pusher</td><td>从盘沿退出，避免带动圆盘</td><td>[69.82000000000001, 75.82000000000001]</td><td>[3491, 3791]</td></tr><tr><td>L08</td><td>clamp</td><td>retract_above_and_beside_disk</td><td>为改变手型预留几何空间</td><td>[75.82000000000001, 91.82000000000001]</td><td>[3791, 4591]</td></tr><tr><td>L09</td><td>clamp</td><td>reconfigure_for_bimanual_approach</td><td>局部 IK 使用关节范围和腕部间隙约束</td><td>[91.82000000000001, 107.82000000000001]</td><td>[4591, 5391]</td></tr><tr><td>L10</td><td>clamp</td><td>calibrate_free_finger_preshape</td><td>空载预整形后再建立盘面接触</td><td>[107.82000000000001, 130.88]</td><td>[5391, 6544]</td></tr><tr><td>L11</td><td>clamp</td><td>close_two_independent_edge_pinches</td><td>每只手建立两盘面的独立夹持；按接触力臂分配载荷</td><td>[130.88, 161.42000000000002]</td><td>[6544, 8071]</td></tr><tr><td>L12</td><td>lift</td><td>lift_with_two_edge_pinches</td><td>保持双手支撑；夹持丢失不得超过 0.1 s；建立旋转净空</td><td>[161.42000000000002, 172.8]</td><td>[8071, 8640]</td></tr><tr><td>L13</td><td>turn</td><td>turn_with_two_edge_pinches</td><td>双手夹持，腕部间隙、姿态和切向载荷反馈；保留全局限值</td><td>[172.8, 222.82]</td><td>[8640, 11141]</td></tr><tr><td>L14</td><td>place</td><td>settle_after_bimanual_inversion</td><td>蓝面朝上，准备受控支撑交接</td><td>[222.82, 232.84]</td><td>[11141, 11642]</td></tr><tr><td>L15</td><td>place</td><td>transfer_weight_to_one_pinch</td><td>此交接只发生在双手翻面完成后；保持圆盘受支撑</td><td>[232.84, 241.16]</td><td>[11642, 12058]</td></tr><tr><td>L16</td><td>place</td><td>clear_bridge_pusher</td><td>右手承载，左手从盘体附近移开</td><td>[241.16, 257.16]</td><td>[12058, 12858]</td></tr><tr><td>L17</td><td>place</td><td>carry_inverted_disk_outside_edge</td><td>保持姿态与右手支撑，避免下侧手指被桌沿夹住</td><td>[257.16, 277.16]</td><td>[12858, 13858]</td></tr><tr><td>L18</td><td>place</td><td>lower_outside_holding_hand</td><td>盘与承载手在桌沿外下降</td><td>[277.16, 302.16]</td><td>[13858, 15108]</td></tr><tr><td>L19</td><td>place</td><td>align_supported_disk_with_table_height</td><td>按测量高度调整，继续由右手支撑</td><td>[302.16, 305.36]</td><td>[15108, 15268]</td></tr><tr><td>L20</td><td>place</td><td>approach_near_rim_above_outside_bridge</td><td>右手承载期间保持推盘手净空</td><td>[305.36, 323.36]</td><td>[15268, 16168]</td></tr><tr><td>L21</td><td>place</td><td>lower_bridge_pusher_outside_near_rim</td><td>沿盘外侧下降至推盘高度</td><td>[323.36, 335.36]</td><td>[16168, 16768]</td></tr><tr><td>L22</td><td>place</td><td>establish_bridge_push_contact</td><td>右手继续承载，左手低速寻找接触</td><td>[335.36, 344.2]</td><td>[16768, 17210]</td></tr><tr><td>L23</td><td>place</td><td>slide_disk_from_holding_hand_onto_table</td><td>逐渐建立桌面支撑并打开右拇指；控制合力和姿态</td><td>[344.2, 407.76]</td><td>[17210, 20388]</td></tr><tr><td>L24</td><td>place</td><td>table_and_lower_pads_share_load_after_thumb_release</td><td>明确记录支撑交接控制步，不将它省略成瞬时跳转</td><td>[407.76, 407.78000000000003]</td><td>[20388, 20389]</td></tr><tr><td>L25</td><td>place</td><td>withdraw_lower_pads_after_supported_centre</td><td>撤指时暂停推进；左拇指维持桌面盘沿高度，避免撬起圆盘</td><td>[407.78000000000003, 453.98]</td><td>[20389, 22699]</td></tr><tr><td>L26</td><td>place</td><td>unload_bridge_pusher</td><td>完整位于桌内、蓝面朝上、目标内、无机器人接触并静止两秒</td><td>[453.98, 457.305]</td><td>[22699, 22866]</td></tr></tbody></table></div></details><details><summary>offset_y_003 · 27 low-level segments</summary><div class="detail-table"><table><thead><tr><th>ID</th><th>高层 / Goal</th><th>动作 / Action</th><th>接触约束 / Contact constraint</th><th>时间 / Time s</th><th>命令切片 / Command slice</th></tr></thead><tbody><tr><td>L01</td><td>slide</td><td>settle_raised_separated_hands</td><td>盘由桌面支撑；双手先稳定</td><td>[0.0, 4.5]</td><td>[0, 225]</td></tr><tr><td>L02</td><td>slide</td><td>approach_far_rim</td><td>接近阶段避免提前碰盘</td><td>[4.5, 12.5]</td><td>[225, 625]</td></tr><tr><td>L03</td><td>slide</td><td>lower_outside_far_rim</td><td>沿盘外侧下降，保留桌面支撑</td><td>[12.5, 20.5]</td><td>[625, 1025]</td></tr><tr><td>L04</td><td>slide</td><td>gentle_rim_contact</td><td>以测得接触建立推力，限制速度与受力</td><td>[20.5, 31.88]</td><td>[1025, 1594]</td></tr><tr><td>L05</td><td>slide</td><td>slide_to_near_edge</td><td>按实测悬伸量停止，盘心仍在支撑侧</td><td>[31.88, 64.34]</td><td>[1594, 3217]</td></tr><tr><td>L06</td><td>clamp</td><td>unload_rim_pusher</td><td>先卸力，再撤离；桌面继续承载</td><td>[64.34, 69.84]</td><td>[3217, 3492]</td></tr><tr><td>L07</td><td>clamp</td><td>clear_rim_pusher</td><td>从盘沿退出，避免带动圆盘</td><td>[69.84, 75.84]</td><td>[3492, 3792]</td></tr><tr><td>L08</td><td>clamp</td><td>retract_above_and_beside_disk</td><td>为改变手型预留几何空间</td><td>[75.84, 91.84]</td><td>[3792, 4592]</td></tr><tr><td>L09</td><td>clamp</td><td>reconfigure_for_bimanual_approach</td><td>局部 IK 使用关节范围和腕部间隙约束</td><td>[91.84, 107.84]</td><td>[4592, 5392]</td></tr><tr><td>L10</td><td>clamp</td><td>calibrate_free_finger_preshape</td><td>空载预整形后再建立盘面接触</td><td>[107.84, 130.9]</td><td>[5392, 6545]</td></tr><tr><td>L11</td><td>clamp</td><td>close_two_independent_edge_pinches</td><td>每只手建立两盘面的独立夹持；按接触力臂分配载荷</td><td>[130.9, 161.88]</td><td>[6545, 8094]</td></tr><tr><td>L12</td><td>lift</td><td>lift_with_two_edge_pinches</td><td>保持双手支撑；夹持丢失不得超过 0.1 s；建立旋转净空</td><td>[161.88, 173.24]</td><td>[8094, 8662]</td></tr><tr><td>L13</td><td>turn</td><td>turn_with_two_edge_pinches</td><td>双手夹持，腕部间隙、姿态和切向载荷反馈；保留全局限值</td><td>[173.24, 222.84]</td><td>[8662, 11142]</td></tr><tr><td>L14</td><td>turn</td><td>use_measured_pressure_feedback_near_inversion</td><td>仅在已接近反面朝上且双手夹持有效时触发；原物理约束不变</td><td>[222.84, 223.28]</td><td>[11142, 11164]</td></tr><tr><td>L15</td><td>place</td><td>settle_after_bimanual_inversion</td><td>蓝面朝上，准备受控支撑交接</td><td>[223.28, 233.3]</td><td>[11164, 11665]</td></tr><tr><td>L16</td><td>place</td><td>transfer_weight_to_one_pinch</td><td>此交接只发生在双手翻面完成后；保持圆盘受支撑</td><td>[233.3, 241.92000000000002]</td><td>[11665, 12096]</td></tr><tr><td>L17</td><td>place</td><td>clear_bridge_pusher</td><td>右手承载，左手从盘体附近移开</td><td>[241.92000000000002, 257.92]</td><td>[12096, 12896]</td></tr><tr><td>L18</td><td>place</td><td>carry_inverted_disk_outside_edge</td><td>保持姿态与右手支撑，避免下侧手指被桌沿夹住</td><td>[257.92, 277.92]</td><td>[12896, 13896]</td></tr><tr><td>L19</td><td>place</td><td>lower_outside_holding_hand</td><td>盘与承载手在桌沿外下降</td><td>[277.92, 302.92]</td><td>[13896, 15146]</td></tr><tr><td>L20</td><td>place</td><td>align_supported_disk_with_table_height</td><td>按测量高度调整，继续由右手支撑</td><td>[302.92, 307.26]</td><td>[15146, 15363]</td></tr><tr><td>L21</td><td>place</td><td>approach_near_rim_above_outside_bridge</td><td>右手承载期间保持推盘手净空</td><td>[307.26, 325.26]</td><td>[15363, 16263]</td></tr><tr><td>L22</td><td>place</td><td>lower_bridge_pusher_outside_near_rim</td><td>沿盘外侧下降至推盘高度</td><td>[325.26, 337.26]</td><td>[16263, 16863]</td></tr><tr><td>L23</td><td>place</td><td>establish_bridge_push_contact</td><td>右手继续承载，左手低速寻找接触</td><td>[337.26, 347.26]</td><td>[16863, 17363]</td></tr><tr><td>L24</td><td>place</td><td>slide_disk_from_holding_hand_onto_table</td><td>逐渐建立桌面支撑并打开右拇指；控制合力和姿态</td><td>[347.26, 420.44]</td><td>[17363, 21022]</td></tr><tr><td>L25</td><td>place</td><td>table_and_lower_pads_share_load_after_thumb_release</td><td>明确记录支撑交接控制步，不将它省略成瞬时跳转</td><td>[420.44, 420.46000000000004]</td><td>[21022, 21023]</td></tr><tr><td>L26</td><td>place</td><td>withdraw_lower_pads_after_supported_centre</td><td>撤指时暂停推进；左拇指维持桌面盘沿高度，避免撬起圆盘</td><td>[420.46000000000004, 475.66]</td><td>[21023, 23783]</td></tr><tr><td>L27</td><td>place</td><td>unload_bridge_pusher</td><td>完整位于桌内、蓝面朝上、目标内、无机器人接触并静止两秒</td><td>[475.66, 478.925]</td><td>[23783, 23947]</td></tr></tbody></table></div></details></article><article id="detail-scoring"><h3>Scoring and success criteria</h3><p>Native score = float(success); stage progress is diagnostic. Edge positioning, bimanual clamp, clearance, inversion and placement/release must occur in order; a final pose alone cannot pass. Edge dwell: 0.25 s; clamp and inversion: 0.30 s each; final stability: 2 s. Goal tolerance: 45 mm; flatness: 8 degrees; contact-loss grace: 0.10 s; timeout: 600 s. Force and speed limits are conservative task settings, not calibrated material-damage thresholds.</p><div class="detail-table"><table><thead><tr><th>量 / Quantity</th><th>硬上限 / Limit</th><th>nominal 实测峰值 / Peak</th></tr></thead><tbody><tr><td>Disk linear speed (m/s)</td><td>0.12</td><td>0.02991245</td></tr><tr><td>Disk angular speed (rad/s)</td><td>0.65</td><td>0.39503132</td></tr><tr><td>Robot force (N)</td><td>18</td><td>16.7604427</td></tr><tr><td>Table force (N)</td><td>8</td><td>3.39983333</td></tr><tr><td>Joint target speed (rad/s)</td><td>0.5</td><td>0.499999989</td></tr></tbody></table></div></article><article id="detail-evidence"><h3>Representative evidence and review</h3><p>The published representative cohort is 6/6 complete runs, three per configuration, plus 2/2 independent physical action replays. Selected continuous witnesses last 457.305 s and 478.925 s and contain 26/27 segments. Development attempts are counted separately; checkpoint fragments are not full successes. Native 400 Hz score monitoring differs from the 50 Hz robot-contact review, which does not certify collision freedom at every physics substep.</p><p><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/representative_plan.json">Representative selection</a> · <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/candidate_attempts.json">Retained development attempts</a></p></article><article id="detail-sandbox"><h3>Sandbox validation</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr><tr><td>Linux / WSL (same machine)</td><td>—</td><td>—</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>These checks exercise startup, sensors and actions, not complete task success. WSL on the same machine is not independent-machine reproduction.</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/DiskFlip/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>Download and reproduce</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/39845e9f4f8bfd300059b49cffa1b8bddc667ddc/releases/g1-disk-flip/0.1.0-rc1-hierarchical/g1-disk-flip-0.1.0-rc1-hierarchical.tar.gz">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: 485b48059f8053267babe6e123607904610fc0459a60b4bbca730082b2779c04</p><p>Private repository access is required. Reference packets preserve historical configurations and entrypoints; the current sandbox workspace supplies runtime assets. Install the documented environment and run the sandbox smoke example, then use the frozen reference entrypoint for reproduction. Smoke success is not a full expert replay.</p><p>Check this task’s entrypoint without running physics, then follow the linked environment and agent-delivery instructions. Replace historical machine-specific paths in the README; the sandbox table above is the current validation status.</p><pre><code>python -m infra.sandbox.inventory check --task DiskFlip
+python -m humanoid.g1_tabletop_disk_flip.sandbox.launch --help</code></pre><p><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p><details><summary>New-interface smoke example (not a complete expert)</summary><pre><code>python -m humanoid.g1_tabletop_disk_flip.sandbox.launch --mode dev --isolation process --seed 0 --sim-time 1 --sensors proprio --no-video --agent-dir humanoid/g1_tabletop_disk_flip/sandbox/agent_sdk/examples -- python hello_robot.py
+python -m humanoid.g1_tabletop_disk_flip.sandbox.launch --mode eval --sim-time 1 --sensors proprio --no-video --agent-dir humanoid/g1_tabletop_disk_flip/sandbox/agent_sdk/examples -- python hello_robot.py
+</code></pre></details></article><article id="detail-limits"><h3>Acceptance limits and remaining work</h3><p>Single-hand support cannot replace the bimanual clamp requirement; a specific single-hand support handoff is allowed during gentle placement after inversion. The offset case adds a feedback adjustment segment under unchanged limits. Human video sign-off, second-person reproduction and wider contact review remain open. The new isolated interface has short checks, but a complete expert replay through it is not yet verified.</p><p>Random instances retain four states: complete success evidence, feasibility-screened, unknown, or failed checks. Scoped representative witnesses and mappings between representations are required, not full solutions for every random instance. Page completion does not infer formal admission, human sign-off or independent-machine validation. New physics runs in this update: 0.</p><p><a href="/robo-si-results/infra/reference-designs/DiskFlip.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body></html>

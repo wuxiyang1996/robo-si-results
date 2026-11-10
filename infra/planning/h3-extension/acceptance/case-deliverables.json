@@ -1,0 +1,79 @@
+{
+  "schema": "h3-deliverable-matrix/1",
+  "updated_at": "2026-10-30T05:35:00+00:00",
+  "columns": [
+    "expert",
+    "high_low_planning",
+    "trajectories",
+    "physical_feasibility",
+    "video"
+  ],
+  "configurations": [
+    {
+      "id": "H3-01",
+      "deliverables": {
+        "expert": "原生专家完整",
+        "high_low_planning": "阶段映射已提供",
+        "trajectories": "200 Hz 全轨迹",
+        "physical_feasibility": "全门区通过；隔离待验",
+        "video": "完整原生视频"
+      },
+      "formal_admission": false
+    },
+    {
+      "id": "H3-02",
+      "deliverables": {
+        "expert": "原生专家完整",
+        "high_low_planning": "阶段映射已提供",
+        "trajectories": "200 Hz 全轨迹",
+        "physical_feasibility": "最新重复 2/3；稳定性未过；v3 固定重复为两次通过、一次执行中断，尚非 3/3。",
+        "video": "完整成功与失败视频"
+      },
+      "formal_admission": false
+    },
+    {
+      "id": "H3-03",
+      "deliverables": {
+        "expert": "单候选关门起始完整原生专家 413.92 s；自主多工具发现未完成",
+        "high_low_planning": "控制器 high/low 与真实命令同钟记录；助手停车期间的旧标签另附解释映射，不计规划模型表现",
+        "trajectories": "82784 个物理采样、20696 个命令；含关节状态、力矩、原生接触和完整任务复算",
+        "physical_feasibility": "独立复算通过；581 个门区采样均满足支撑／净空，撤辅助 3 s；三次固定重复待验",
+        "video": "413.92 s 从关门至原包裹释放的完整原生视频；历史失败均保留"
+      },
+      "formal_admission": false
+    },
+    {
+      "id": "H3-04",
+      "deliverables": {
+        "expert": "完整专家缺失",
+        "high_low_planning": "完整规划缺失",
+        "trajectories": "仅前置探针",
+        "physical_feasibility": "原包裹直接夹取失败",
+        "video": "仅前置视频"
+      },
+      "formal_admission": false
+    },
+    {
+      "id": "H3-05",
+      "deliverables": {
+        "expert": "局部恢复至原包裹交付已通过；无夹具关门起始真实恢复已通过，后续扶门切换失败",
+        "high_low_planning": "失效观察、恢复、支撑切换、取件、穿门、放桌；首轮旧阶段标签另附原命令解释映射",
+        "trajectories": "新增 450.90 s 关门起始负载故障与恢复全轨迹，另保留局部固定切换 3/3 和 211.48 s 交付续接",
+        "physical_feasibility": "关门起始故障恢复独立复核通过；切换初段门角 1.049896 rad 触发 1.05 rad 下限，未交付",
+        "video": "新增 450.90 s 连续失败原生视频；局部重复与恢复后交付视频保留"
+      },
+      "formal_admission": false
+    },
+    {
+      "id": "H3-06",
+      "deliverables": {
+        "expert": "完整专家缺失",
+        "high_low_planning": "完整规划缺失",
+        "trajectories": "完整轨迹缺失",
+        "physical_feasibility": "组合动力学未验",
+        "video": "完整视频缺失"
+      },
+      "formal_admission": false
+    }
+  ]
+}

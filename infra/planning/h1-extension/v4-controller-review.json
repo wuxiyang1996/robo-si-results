@@ -1,0 +1,55 @@
+{
+  "schema": "h1-p4-v4-controller-independent-source-review/1",
+  "reviewed_utc": "2026-10-27T22:00:31.691458+00:00",
+  "physics_executed_by_review": false,
+  "task_success_claimed": false,
+  "contract_path": "humanoid/g1_support_retrieval/extension/prospective-macro-contract-interior-v4-probe.json",
+  "contract_sha256": "4bb6c40fe8f146d0946454ffa9b82cb5d18bc31e9104cd30d75ba936dca75821",
+  "source_bindings_checked": {
+    "humanoid/g1_support_retrieval/solution/carry_box/plan_carry.py": "7631e0734196c0bbdf7cc41c4be076efb455fda294ab2a072f1540ea9f4e7bce",
+    "humanoid/g1_support_retrieval/solution/underhand_lift/hand_model.py": "d2d629649686864d77079a2b1153880bb54b08aec7169cf010cf2d73f501622e",
+    "humanoid/g1_support_retrieval/solution/underhand_lift/phases.py": "91d2d68645355454921cda51fc2b97866823517b4312f5f9e8158f15b6c01ffe",
+    "humanoid/g1_support_retrieval/extension/verify_p4.py": "23a88608d5823b2631ae34b5a1e6510fc4f0ebbf1e0f1d7f405255302d3168c8",
+    "humanoid/g1_support_retrieval/extension/safety_recording.py": "b70c5c4baed7b17796d235c646ffacd0d32b45780f663ed6a0ef21a05598073e",
+    "humanoid/g1_support_retrieval/sandbox/trusted/statelog.py": "86272084ad082f3006a8fc38c31ae05624a5d7860bf9eb2aa2443651a6263581",
+    "humanoid/g1_support_retrieval/extension/run_p4.py": "4f66abb203737c525334131679b1702bf259a1ec8be68d55a12ada557b77672a",
+    "humanoid/g1_support_retrieval/solution/push_box/run_push.py": "c21903e895067dbe85fc507000be098f547e19ac21cd4ce1544ef384d5c4711b",
+    "humanoid/g1_support_retrieval/extension/verify_skill_refinement.py": "5a6fc7754051e7483bc699f8293d3110d2716d933fdf272f0624b2d14f0e6522",
+    "humanoid/g1_support_retrieval/extension/verify_p4_safety.py": "7504fd4361f9763b028eac64f33ad983eecf42f586595bb4960c02d9c326f9d7",
+    "humanoid/g1_support_retrieval/sandbox/trusted/relay_safety.py": "2d65c3f8ee11a32e223efd67625247a38dddc7585b21d9a10f0d4bb4ecb59b16",
+    "humanoid/g1_support_retrieval/sandbox/trusted/relay_safety_rules.py": "3edf54de88ef1350360077213e0248ba9ea8be03f6aa454aa4935d8bb4a55bfb",
+    "infra/sandbox/monitors.py": "432680b21d784367a3742321dedcc1272b617021765b00eb8d5750442dadfb0c"
+  },
+  "unchanged_original_standard_and_robot": {
+    "humanoid/g1_support_retrieval/sandbox/trusted/relay_safety.py": "2d65c3f8ee11a32e223efd67625247a38dddc7585b21d9a10f0d4bb4ecb59b16",
+    "humanoid/g1_support_retrieval/sandbox/trusted/relay_safety_rules.py": "3edf54de88ef1350360077213e0248ba9ea8be03f6aa454aa4935d8bb4a55bfb",
+    "infra/sandbox/monitors.py": "432680b21d784367a3742321dedcc1272b617021765b00eb8d5750442dadfb0c",
+    "humanoid/g1_support_retrieval/sandbox/trusted/relay_scoring.py": "ab16f45a4567659e299ad5ff8e707c24fdf27d280926bf6922e6ce86842ecb56",
+    "humanoid/g1_support_retrieval/assets/unitree_g1/g1_with_hands.xml": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078"
+  },
+  "r3_macro_definition_identical": true,
+  "r3_macro_thresholds_identical": true,
+  "original_goal_target_public_acceptance_identical": true,
+  "diagnostic_only": true,
+  "diagnostic_repeat_count": 1,
+  "full_task_witness_allowed": false,
+  "source_review": {
+    "elbow_margin": "IK reference upper=2.0rad, original physical upper=2.0944 unchanged; margin applies by joint name, not by mutating physical MJCF ranges",
+    "finger_margin": "Index/middle flex+distal mirrored inward=.06rad for v4, including zero-opening commands; thumb2 remains unchanged and subject to the same physical audit",
+    "clear_hands": "Starts at measured MCP, resets reference integrator only, duration6s; stand-up duration20s; .005rad within-IK body joint step bound only during clear/stand",
+    "support_failure_handling": "Resolved prior string-classification bug: all reach exceptions contain palms; finite numeric feet<=.003m and COM<=.004m now required before allowing a palm-only fallback; otherwise controller stops and retains failure",
+    "diagnostic_full_boundary": "Both evaluate and outer native verifier reject diagnostic_only, full_task_witness_allowed=false and explicit partial/checkpoint/debug-start flags; physical_goal_met remains separately measured; no trajectory stitching"
+  },
+  "synthetic_checks": {
+    "native_and_original_safety_tests_passed": 43,
+    "real_MJCF_model_array_only": "Mirrored finger commands correct; physical joint_range array unchanged; default zero-margin backward behavior unchanged",
+    "ClearHands_array_only": "Stale commanded x1.0 versus measured x1.1 starts from measurement, clears integrator, smooth midpoint verified; no physical state setter",
+    "reach_failure_counterexamples": "Feet and COM violations reject even when error includes palms; NaN/malformed errors reject; valid palm-only miss accepted"
+  },
+  "remaining_limits": [
+    "These are source and synthetic checks, not proof v4 succeeds physically.",
+    "The one-cycle probe must satisfy its predeclared acceptance before any full three-cycle execution.",
+    "Full original-start three-cycle runs remain required; diagnostic results cannot become native full success or be spliced into a full witness.",
+    "Thumb2 neutral remains at its existing reference boundary, explicitly outside new index/middle margin coverage."
+  ]
+}

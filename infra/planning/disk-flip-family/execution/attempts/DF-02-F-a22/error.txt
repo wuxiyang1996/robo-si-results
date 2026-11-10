@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 703, in main
+    p=argparse.ArgumentParser();p.add_argument('--tuning',type=Path);p.add_argument('--setting',choices=list(PROFILES),required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();attempt=Attempt(a);error=None
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 383, in execute
+    if self.tuning.get('prepush',False):self.prepush_disk()
+                                        ^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 498, in prepush_disk
+    if any(k in n for k in ['shoulder','elbow','wrist','waist']):self.qref[self.m.jnt_qposadr[j]]=solution[self.m.jnt_qposadr[j]]
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 351, in step
+    self.command();mujoco.mj_step(self.m,self.d);self.records.append((self.d.time,self.d.qpos.copy(),self.d.qvel.copy(),self.d.ctrl.copy(),self.qref.copy(),self.phase));row=self.assess()
+                                                                                                                                                                             ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 176, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

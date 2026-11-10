@@ -1,0 +1,197 @@
+{
+ "schema": "infra-admission/1",
+ "task_id": "g1_tabletop_hanoi",
+ "title": "G1 tabletop Tower of Hanoi (fixed pelvis)",
+ "version": "0.3",
+ "updated": "2026-10-23",
+ "admitted": false,
+ "status": "standalone_scope_confirmed_human_acceptance_pending",
+ "sandbox": "sandbox",
+ "scene": "Randomised scenes by default (randomization.sample_scene keyed by the sealed seed and episode index: start / target pegs, peg positions, rod height, disk radii and colours, yaw, disk mass and friction; README 场景随机化方案); the nominal task_spec.TaskConfig scene (disks on A, target C) only for --nominal replays of the seed-0 recordings. The number of disks (3, 4, 5) is the grading layer with time limits 180 / 180 / 420 s.",
+ "gates": {
+  "reference_expert": {
+   "status": "passed",
+   "evidence": [
+    "acceptance/release_20261022/sweep_swept_thumb_release_v2/summary.json",
+    "acceptance/release_20261022/automatic_audit_swept_thumb_v2.json"
+   ],
+   "note": "Current measured-state centered controller passes all 58 frozen inputs with original physics, torque limits, IK tolerance, scoring thresholds and random ranges. All three nominal disk counts have successful independent physics and exact sandbox action replays. Swept-thumb clearance considers opened/closed hands and the full withdrawal path; rules do not special-case seeds."
+  },
+  "official_trajectories": {
+   "status": "passed",
+   "evidence": [
+    "solution/datasets/expert_3to5_release_20261023/manifest.json",
+    "acceptance/release_20261022/followups_swept_thumb_release_v5/summary.json",
+    "acceptance/release_20261022/subgoals_settle_swept_thumb_v2/summary.json",
+    "acceptance/release_20261022/dataset_release_20261023_v2/summary.json"
+   ],
+   "note": "Three current CPU demonstrations, 31004 aligned control transitions, are exported only after same-environment independent physical replay. All six released checkpoints pass the uniform recorded-suffix plus bounded last-target hold protocol (at most 1 s, within the original episode deadline); original strict suffix failures are retained. Nine contact-bearing subtask rollouts pass. Contact diagnostics restore sealed state/history only before control, require no privileged or gain writes afterwards and prove one committed legal move, not full puzzle success. The public API remains released-checkpoint only. Quality review flags are disclosed in dataset_release_20261023_v2, not converted into physical-admission claims. Historical archives and failed candidates are retained."
+  },
+  "coverage": {
+   "status": "passed",
+   "evidence": [
+    "acceptance/release_20261022/sweep_swept_thumb_release_v2/inputs.json",
+    "acceptance/release_20261022/sweep_swept_thumb_release_v2/summary.json",
+    "acceptance/release_20261022/automatic_audit_swept_thumb_v2.json"
+   ],
+   "note": "58/58 unchanged preselected cases pass under one frozen candidate, including historical failures, boundaries, nominal scenes and every disk count. Complete 5 Hz measured-snapshot videos are supplied separately from independent physics recordings. No source/config/input was changed during the sweep; this finite sample is not a universal numerical-stability proof."
+  },
+  "reference_rerun_spread": {
+   "status": "passed",
+   "evidence": [
+    "acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_repetition_spread.json",
+    "acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_repetition_spread.json",
+    "acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_repetition_spread.json"
+   ],
+   "note": "Each disk count has three fresh current-controller executions with score 1 and no VOID/monitor flags. Stage times agree at identical 200 Hz step indices; replays are separate evidence. CPU backend only."
+  },
+  "verifier_validity": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/reference",
+    "sandbox/runs/exploits/teleport-disk",
+    "sandbox/runs/escape",
+    "sandbox/runs/grade-noop",
+    "sandbox/runs/dev-hello",
+    "sandbox/runs/eval-hello",
+    "sandbox/tests/test_scoring.py",
+    "sandbox/runs/reference/ring12-replay-3disks",
+    "sandbox/runs/reference/ring12-replay-4disks",
+    "sandbox/runs/reference/ring12-replay-5disks",
+    "validation/ring12_adoption.json"
+   ],
+   "note": "Positives: every reference episode judged successful with stage and move times equal to the expert's own evaluator timeline; the replayed task evaluator reproduces the live latch row for row; the independent final-state check agrees. Negatives: hello / no-op runs score 0, not void (dev, eval container, 2 graded episodes); a synthetic negative for every stage (no hand contact, sideways through the rod, larger on smaller, back-and-forth moves, unreleased last disk, final hold cut short). Exploits: escape probes VOID; a real privileged pose write (top disk teleported onto C) VOID (privileged_writes, teleport, object speed, energy); synthetic monitor exploits. Manual stage labels: predicate_labels. 2026-10-22: all three current 12-segment sandbox replays also pass with exact live/replayed evaluator and final-state agreement."
+  },
+  "monitors_calibrated": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/README.md",
+    "sandbox/trusted/monitors.py",
+    "sandbox/tests/test_monitors.py",
+    "sandbox/runs/reference/ring12-replay-3disks",
+    "sandbox/runs/reference/ring12-replay-4disks",
+    "sandbox/runs/reference/ring12-replay-5disks",
+    "validation/ring12_adoption.json"
+   ],
+   "note": "Current 12-segment sandbox reference replays: no monitor flags, no privileged writes. Existing negative/attack tests pass; measured metrics are preserved in ring12_adoption.json. Old 24-segment calibration remains historical evidence."
+  },
+  "predicate_labels": {
+   "status": "pending",
+   "evidence": [
+    "acceptance/release_20261022/review_swept_thumb_v2/manual_review_template.json"
+   ],
+   "note": "Automatic timelines and all coverage/subtask videos are linked. Human timestamp labels remain blank."
+  },
+  "shortcut_audit": {
+   "status": "partial",
+   "evidence": [
+    "acceptance/release_20261022/shortcuts/larger_on_smaller/shortcut.json",
+    "acceptance/release_20261022/shortcuts/wrong_goal/shortcut.json"
+   ],
+   "note": "Two joint-action physical counterexamples completed their intended conditions and scored zero: larger disk on smaller disk, and seven legal moves to the wrong goal peg. Both have independent action-only replay videos. Signed shortcut review is pending."
+  },
+  "video_review": {
+   "status": "pending",
+   "evidence": [
+    "acceptance/release_20261022/review_swept_thumb_v2/index.html",
+    "acceptance/release_20261022/review_swept_thumb_v2/manual_review_template.json"
+   ],
+   "note": "No signed human review has been supplied. Quality flags remain visible alongside the source trajectories."
+  },
+  "independent_reproduction": {
+   "status": "partial",
+   "evidence": [
+    "acceptance/release_20261022/review_swept_thumb_v2/automatic_materials.json"
+   ],
+   "note": "Fresh controller repeats, independent physics and sandbox action replays pass. No second-person execution or signature is fabricated; independent reproduction commands are provided."
+  },
+  "sandbox_isolation": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/escape",
+    "sandbox/runs/eval-hello",
+    "acceptance/pipeline/20261022-235709-container.json"
+   ],
+   "note": "Docker container (uid 1000, read-only root, no capabilities, internal network, socat to the worker): hello reads every sensor (non-void); 38 escape probes as expected (motor mode and other gains refused, out-of-range targets clipped with the applied torque at most the limit, 17 interface violations), run VOID."
+  },
+  "grading_mode": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/grade-noop",
+    "acceptance/pipeline/20261022-235709-container.json"
+   ],
+   "note": "Two sealed episodes (3 and 4 disks), a fresh container and workspace per episode, one connection each, the worker advances only on the launcher's NEXT; the no-op scores 0 in both, not void."
+  },
+  "static_checks": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/tests/test_static.py",
+    "sandbox/tests/test_scoring.py",
+    "sandbox/tests/test_monitors.py",
+    "validation/ring12_adoption.json",
+    "../../tests/test_hanoi_placement.py",
+    "../../tests/test_hanoi_recording.py",
+    "acceptance/pipeline/20261022-223955-cpu.json",
+    "acceptance/pipeline/20261022-234217-cpu.json"
+   ],
+   "note": "2026-10-22: all 7 affected suites pass, 236 tests total, including 39 Hanoi sandbox tests. Added legacy ring replay compatibility and height-dependent placement feedback regressions."
+  },
+  "randomisation": {
+   "status": "passed",
+   "evidence": [
+    "randomization.py",
+    "acceptance/release_20261022/sweep_swept_thumb_release_v2/summary.json"
+   ],
+   "note": "All 58 fixed generator scenes and boundaries pass the current swept-thumb controller. RANGES, random inputs, physical settings and scoring tolerances were unchanged. Separate disclosed body-boundary successes do not qualify all body/geometry combinations; body variation remains opt-in."
+  },
+  "automatic_pipeline": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/pipeline.json",
+    "acceptance/pipeline/20261022-223955-cpu.json",
+    "acceptance/pipeline/20261022-234217-cpu.json",
+    "acceptance/pipeline/20261022-235709-container.json",
+    "acceptance/pipeline/20261023-022618-all.json"
+   ],
+   "note": "The earlier current-candidate all-tier run passed 19/19. After the standalone scope metadata and shared release checker change, a fresh all-tier report must match the frozen current sources; see acceptance/release_20261023_standalone/index.html. No physical code or scoring changed. Manual stage-time comparison remains pending; this gate is not release authorization."
+  }
+ },
+ "task_items": {
+  "servo_only_command_channel": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/tests/test_static.py",
+    "../g1_tabletop/sandbox/world.py"
+   ],
+   "note": "The environment executes absolute joint targets with its own fixed-gain explicit PD (step_targets); the sandbox offers mode 1 only (stated in info), refuses mode 0 and other gains, ignores dq / tau_ff as every servo mode does."
+  },
+  "evaluator_replay_exact": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/reference",
+    "../g1_tabletop/sandbox/evaluation.py"
+   ],
+   "note": "The state log keeps the exact per-physics-step evaluator input; the verifier's replay of the unchanged task evaluator reproduces the environment's live latch (row, reason, elapsed time, committed moves) on every recorded episode."
+  },
+  "release_scope": {
+   "status": "passed",
+   "evidence": [
+    "acceptance/release_20261023_standalone/scope_decision.json"
+   ],
+   "note": "User selected standalone Sequential Manipulation on 2026-10-23. No main tool-benchmark R9 claim, human acceptance or second-person reproduction is implied."
+  }
+ },
+ "pending_decisions": [
+  "Complete manual stage labels, signed video/shortcut reviews and second-person reproduction required by infra/acceptance-zh.html sections 03-05."
+ ],
+ "release": {
+  "scope": "standalone",
+  "main_benchmark_included": false,
+  "decision_record": "acceptance/release_20261023_standalone/scope_decision.json"
+ },
+ "release_exclusions": [
+  "Main tool benchmark and R9 certification",
+  "Default body variation and undisclosed combined geometry/body samples",
+  "Vision-policy and free-standing whole-body performance"
+ ]
+}

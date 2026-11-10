@@ -1,0 +1,167 @@
+{
+ "task": "H5",
+ "mode": "eval",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.0,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.0,
+ "score_std": 0.0,
+ "by_layer": {
+  "platform": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.0,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 0
+ },
+ "flags": [],
+ "privileged_reference": false,
+ "result_kind": "agent run",
+ "requests": {
+  "observe": 2,
+  "command": 1,
+  "reference": 0,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "7 entries"
+ },
+ "verifier": "infra-verifier/1 + h5-verifier/1 (h5-monitors/1)",
+ "verifier_sha256": "4358907eed4ed0aba8dfb96071f2b22c501f53a953146877f537b44cbf305ea7",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": "0.1",
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + h5-verifier/1 (h5-monitors/1)",
+  "verifier_sha256": "4358907eed4ed0aba8dfb96071f2b22c501f53a953146877f537b44cbf305ea7",
+  "scene": [
+   "platform/fcea90088a39"
+  ],
+  "simulator": [
+   "{\"genesis-world\": \"1.4.3\", \"numpy\": \"2.5.3\", \"torch\": \"2.11.0+cu128\"}"
+  ],
+  "image": "g1h5-agent:0eb3394658cd31b1",
+  "image_id": "sha256:dc18ba627e0239c773b09870cab0e52c48f4bf8cb45d38b862ec588b68575f34",
+  "bundle": "0eb3394658cd31b145329b6d0e72a2ff4fe8953af762bc857c3043c8f8b7363f",
+  "scenario_sha256": "46933284bc768b391aea81800ee103f0b98572edb7a5aa2072e52122facbb5f8",
+  "delivery_sha256": "dc34e04d990d209e886ddf51a5475383528593faca5b30ee7966cb96ee0c5719",
+  "source_manifest_sha256": "f7486e2f7ad9bd2452f668a2f504f93924a1b3a2983014c39215e84da249e5ac",
+  "launch_scope_source_frozen": true
+ },
+ "per_episode": [
+  {
+   "episode": "episode_00",
+   "void": false,
+   "void_reasons": [],
+   "flags": [],
+   "score": 0.0,
+   "success": false,
+   "scene": "platform",
+   "variant": "platform",
+   "scene_version": "platform/fcea90088a39",
+   "end_reason": "closed",
+   "samples": 101,
+   "sim_time_s": 2.0,
+   "source": "sandbox_worker",
+   "observations": 2,
+   "effort_limits": "hardware",
+   "simulator": {
+    "genesis-world": "1.4.3",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.3"
+   },
+   "final_progress": 0.0,
+   "peak_time_s": 0.0,
+   "stage_best": {
+    "tool_engaged": 0.0,
+    "cargo_raised": 0.0,
+    "cargo_supported": 0.0,
+    "transported": 0.0,
+    "delivered": 0.0
+   },
+   "stage_timeline": {
+    "tool_engaged": null,
+    "cargo_raised": null,
+    "cargo_supported": null,
+    "transported": null,
+    "delivered": null
+   },
+   "delivered_at_end": false,
+   "chain_complete": false,
+   "failed": false,
+   "core_success": false,
+   "core_success_time_s": null,
+   "core_failed_time_s": null,
+   "max_edge_lift_m": 0.0076,
+   "min_floor_share": 0.0,
+   "max_goal_progress": 0.0,
+   "max_goal_cover": 0.0,
+   "evaluation": {
+    "success": false,
+    "success_time_s": null,
+    "failed": false,
+    "failed_time_s": null,
+    "hold_s": 0.0,
+    "peak_edge_height_m": 0.0146
+   },
+   "alarms": [],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": []
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "h5-monitors/1",
+    "not_applicable": {
+     "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+    },
+    "max_reported_speed": 0.196,
+    "max_object_speed": 0.123,
+    "max_step_speed": 0.142,
+    "max_floor_penetration": 0.0006,
+    "max_out_of_bounds_m": -0.55,
+    "max_energy_excess_J": 0.028,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.055,
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0,
+    "initial_body_offset_m": 0.0,
+    "initial_body_turn_deg": 0.0,
+    "initial_robot_offset_m": 0.0,
+    "max_robot_cargo_share": 0.0,
+    "max_applied_torque_ratio": 0.323708
+   },
+   "verifier": "h5-verifier/1 (h5-monitors/1)",
+   "episode_index": 0,
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 2,
+    "commands": 1,
+    "reference": 0
+   }
+  }
+ ],
+ "admission_eligible": false,
+ "scene": "platform",
+ "effort_limits": "hardware",
+ "randomization": "none: TaskConfig is one fixed scene; every episode starts from the task's fixed initial state",
+ "diagnostic": false
+}

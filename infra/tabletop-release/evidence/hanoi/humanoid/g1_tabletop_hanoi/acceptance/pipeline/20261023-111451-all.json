@@ -1,0 +1,306 @@
+{
+ "schema": "infra-pipeline/1",
+ "task": "g1_tabletop_hanoi",
+ "stamp": "20261023-111451",
+ "tier": "all",
+ "sources": {
+  "task": "d7a18c236db291236cdf2b1a64ebe5c306f5d6cb5539b6b7a0a9c3266c83597b",
+  "task_files": 182,
+  "infra": "d9c884cef480a8331db616d9113536f41197baebae794cf79d84d78d3ed40f56",
+  "infra_files": 37
+ },
+ "steps": [
+  {
+   "name": "runtime_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 11.9,
+   "output_tail": [
+    "..............................",
+    "----------------------------------------------------------------------",
+    "Ran 30 tests in 8.632s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "sandbox_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 38.1,
+   "output_tail": [
+    ".......................................",
+    "----------------------------------------------------------------------",
+    "Ran 39 tests in 21.204s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "task_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 16.0,
+   "output_tail": [
+    ".............................................................................................................................",
+    "----------------------------------------------------------------------",
+    "Ran 125 tests in 4.310s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "controller_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 11.2,
+   "output_tail": [
+    "..................................................................................",
+    "----------------------------------------------------------------------",
+    "Ran 82 tests in 6.991s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "admission_record",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 0.8,
+   "output_tail": [
+    "task   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14  admitted  problems",
+    "g1_tabletop_hanoi  P  P  P  P  P  P  .  ~  .  ~  P  P  P  P  ~  False     0",
+    "gates: 0 reference_expert, 1 official_trajectories, 2 coverage, 3 reference_rerun_spread, 4 verifier_validity, 5 monitors_calibrated, 6 predicate_labels, 7 shortcut_audit, 8 video_review, 9 independent_reproduction, 10 sandbox_isolation, 11 grading_mode, 12 static_checks, 13 randomisation, 14 automatic_pipeline"
+   ],
+   "passed": true
+  },
+  {
+   "name": "dev_smoke_process",
+   "tier": "gpu",
+   "exit_code": 1,
+   "seconds": 58.9,
+   "output_tail": [
+    "[g1_tabletop_hanoi] run: C:\\Users\\wuxiy\\rsi_releases\\tabletop_release_candidate_20261023\\humanoid\\g1_tabletop_hanoi\\sandbox\\runs\\pipeline-dev-hello-20261023-111451",
+    "[g1_tabletop_hanoi] building the world (dev) ...",
+    "[g1_tabletop_hanoi] trusted worker ready; 1 episode run(s), process isolation",
+    "[g1_tabletop_hanoi] episode 0: exit=0 timed_out=False",
+    "[g1_tabletop_hanoi] {\"privileged_reference\": false, \"void\": false, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 1} -> C:\\Users\\wuxiy\\rsi_releases\\tabletop_release_candidate_20261023\\humanoid\\g1_tabletop_hanoi\\sandbox\\runs\\pipeline-dev-hello-20261023-111451\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-dev-hello-20261023-111451",
+   "expect": {
+    "void": false,
+    "score": 0.0
+   },
+   "got": {
+    "void": false,
+    "score": 0.0
+   },
+   "passed": true
+  },
+  {
+   "name": "dev_smoke_process_integrity",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 0.8,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_tabletop_hanoi\\\\sandbox\\\\runs\\\\pipeline-dev-hello-20261023-111451\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "reference_live_disks3",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 107.0,
+   "output_tail": [
+    "move=7 phase=transfer_settle t=79.04 count=6",
+    "move=7 phase=align_disk_over_rod t=79.44 count=6",
+    "move=7 phase=alignment_settle t=79.94 count=6",
+    "move=7 phase=place_on_target t=80.10 count=6",
+    "move=7 phase=placement_settle t=81.50 count=6",
+    "move=7 phase=release t=81.70 count=6",
+    "move=7 phase=release_clearance t=82.40 count=6",
+    "move=7 phase=retreat t=82.70 count=7",
+    "move=7 phase=placement_dwell t=83.50 count=7",
+    "move=7 phase=final_dwell t=83.52 count=7",
+    "{\"schema_version\": 1, \"task\": \"g1_tabletop_hanoi\", \"num_disks\": 3, \"accepted\": true, \"success\": true, \"recorded_evidence_accepted\": true, \"environment_success\": true, \"independent_physics_replay_verified\": false, \"physical_task_solution_verified\": false, \"recording_complete\": true, \"control_steps\": 4226, \"physics_steps\": 16902, \"duration_seconds\": 84.51, \"max_episode_seconds\": 180.0, \"move_count\": 7, \"minimum_moves\": 7, \"complete_legal_moves\": true, \"torque_within_limits\": true, \"max_applied_torque_nm\": [2.102712392807007, 0.06672269105911255, 0.019959308207035065, 0.9346750974655151, 0.1533672958612442, 0.0002755953464657068, 2.1087636947631836, 0.06672263890504837, 0.020818142220377922, 0.949374794960022, 0.15336421132087708, 0.0003120525216218084, 3.7066431045532227, 20.48511505126953, 30.64020347595215, 10.432828903198242, 7.985848426818848, 5.602331638336182, 6.030508995056152, 1.9227261543273926, 2.3665080070495605, 1.8259776830673218, 0.04184337705373764, 0.8378824591636658, 0.8333778977394104, 0.4649399220943451, 0.8275755047798157, 0.46495527029037476, 0.8276252746582031, 10.666786193847656, 7.953774452209473, 5.583940505981445, 6.028288841247559, 1.9256433248519897, 2.261577606201172, 1.8344461917877197, 0.04240195080637932, 0.8403916358947754, 0.8294874429702759, 0.4649393558502197, 0.8276028633117676, 0.46493640542030334, 0.8276530504226685], \"torque_limits_nm\": [88.0, 139.0, 88.0, 139.0, 50.0, 50.0, 88.0, 139.0, 88.0, 139.0, 50.0, 50.0, 88.0, 50.0, 50.0, 25.0, 25.0, 25.0, 25.0, 25.0, 5.0, 5.0, 2.450000047683716, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 25.0, 25.0, 25.0, 25.0, 25.0, 5.0, 5.0, 2.450000047683716, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142], \"final_status\": {\"success\": true, \"failed\": false, \"terminated\": true, \"reason\": \"success\", \"score\": 1, \"progress\": 1.0, \"move_count\": 7, \"minimum_moves\": 7, \"elapsed_seconds\": 84.50999999999563, \"phase\": \"completed\", \"active_disk\": null, \"placement_hold_seconds\": 0.0, \"goal_hold_seconds\": 1.9999999999999793, \"stacks\": {\"A\": [], \"B\": [], \"C\": [\"disk_0\", \"disk_1\", \"disk_2\"]}, \"moves\": [{\"disk\": \"disk_2\", \"source\": \"A\", \"target\": \"C\", \"time\": 15.210000000000978}, {\"disk\": \"disk_1\", \"source\": \"A\", \"target\": \"B\", \"time\": 26.11499999999909}, {\"disk\": \"disk_2\", \"source\": \"C\", \"target\": \"B\", \"time\": 36.99500000000047}, {\"disk\": \"disk_0\", \"source\": \"A\", \"target\": \"C\", \"time\": 49.19000000000671}, {\"disk\": \"disk_2\", \"source\": \"B\", \"target\": \"A\", \"time\": 60.07000000001228}, {\"disk\": \"disk_1\", \"source\": \"B\", \"target\": \"C\", \"time\": 70.97000000000794}, {\"disk\": \"disk_2\", \"source\": \"A\", \"target\": \"C\", \"time\": 82.50999999999745}]}, \"issues\": [], \"validation_scope\": \"Recorded environment evidence; no independent physics replay.\"}",
+    "{\"task\": \"hanoi\", \"accepted\": true, \"error\": null, \"seconds\": 99.09}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "reference_replay_disks3",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 76.1,
+   "output_tail": [
+    "{\"accepted\": true, \"comparison\": {\"rows_compared\": 4226, \"rows_sandbox\": 4226, \"rows_recording\": 4226, \"max_object_position_diff_m\": 0.0, \"max_time_diff_s\": 1.4210854715202004e-14, \"exact_fields\": {\"obj_pos\": true, \"obj_quat\": true, \"obj_vel\": true, \"obj_ang\": true, \"joint_pos\": true, \"joint_vel\": true}, \"raw_time_bitwise_equal\": false, \"same_physics_clock\": true, \"verdict_matches\": true, \"world_parameters_match\": true}}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "reference_live_disks4",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 206.4,
+   "output_tail": [
+    "move=15 phase=transfer_settle t=168.78 count=14",
+    "move=15 phase=align_disk_over_rod t=169.18 count=14",
+    "move=15 phase=alignment_settle t=169.68 count=14",
+    "move=15 phase=place_on_target t=169.84 count=14",
+    "move=15 phase=placement_settle t=171.24 count=14",
+    "move=15 phase=release t=171.44 count=14",
+    "move=15 phase=release_clearance t=172.14 count=14",
+    "move=15 phase=retreat t=172.44 count=15",
+    "move=15 phase=placement_dwell t=173.24 count=15",
+    "move=15 phase=final_dwell t=173.26 count=15",
+    "{\"schema_version\": 1, \"task\": \"g1_tabletop_hanoi\", \"num_disks\": 4, \"accepted\": true, \"success\": true, \"recorded_evidence_accepted\": true, \"environment_success\": true, \"independent_physics_replay_verified\": false, \"physical_task_solution_verified\": false, \"recording_complete\": true, \"control_steps\": 8714, \"physics_steps\": 34853, \"duration_seconds\": 174.26500000000001, \"max_episode_seconds\": 180.0, \"move_count\": 15, \"minimum_moves\": 15, \"complete_legal_moves\": true, \"torque_within_limits\": true, \"max_applied_torque_nm\": [2.102712392807007, 0.06672274321317673, 0.019959308207035065, 0.9346750974655151, 0.1533672958612442, 0.0002755953464657068, 2.1087636947631836, 0.06672272831201553, 0.020818142220377922, 0.949374794960022, 0.15336421132087708, 0.0003120525216218084, 3.750803232192993, 19.761260986328125, 30.394216537475586, 10.618947982788086, 8.006589889526367, 5.88997745513916, 6.030508995056152, 1.9227261543273926, 2.258388042449951, 1.8259776830673218, 0.04184337705373764, 0.8378321528434753, 0.830890953540802, 0.4649399220943451, 0.8275755047798157, 0.48087674379348755, 0.8276252746582031, 10.427473068237305, 7.914963245391846, 5.583940505981445, 6.028288841247559, 2.2324771881103516, 2.261577606201172, 1.8344461917877197, 0.04240195080637932, 0.8388410210609436, 0.8294768333435059, 0.4649393558502197, 0.8276028633117676, 0.47825202345848083, 0.8276530504226685], \"torque_limits_nm\": [88.0, 139.0, 88.0, 139.0, 50.0, 50.0, 88.0, 139.0, 88.0, 139.0, 50.0, 50.0, 88.0, 50.0, 50.0, 25.0, 25.0, 25.0, 25.0, 25.0, 5.0, 5.0, 2.450000047683716, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 25.0, 25.0, 25.0, 25.0, 25.0, 5.0, 5.0, 2.450000047683716, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142], \"final_status\": {\"success\": true, \"failed\": false, \"terminated\": true, \"reason\": \"success\", \"score\": 1, \"progress\": 1.0, \"move_count\": 15, \"minimum_moves\": 15, \"elapsed_seconds\": 174.264999999914, \"phase\": \"completed\", \"active_disk\": null, \"placement_hold_seconds\": 0.0, \"goal_hold_seconds\": 1.9999999999999793, \"stacks\": {\"A\": [], \"B\": [], \"C\": [\"disk_0\", \"disk_1\", \"disk_2\", \"disk_3\"]}, \"moves\": [{\"disk\": \"disk_3\", \"source\": \"A\", \"target\": \"B\", \"time\": 14.560000000000876}, {\"disk\": \"disk_2\", \"source\": \"A\", \"target\": \"C\", \"time\": 26.744999999998964}, {\"disk\": \"disk_3\", \"source\": \"B\", \"target\": \"C\", \"time\": 37.6300000000008}, {\"disk\": \"disk_1\", \"source\": \"A\", \"target\": \"B\", \"time\": 48.54000000000638}, {\"disk\": \"disk_3\", \"source\": \"C\", \"target\": \"A\", \"time\": 60.07000000001228}, {\"disk\": \"disk_2\", \"source\": \"C\", \"target\": \"B\", \"time\": 70.98000000000793}, {\"disk\": \"disk_3\", \"source\": \"A\", \"target\": \"B\", \"time\": 81.84499999999805}, {\"disk\": \"disk_0\", \"source\": \"A\", \"target\": \"C\", \"time\": 93.42499999998752}, {\"disk\": \"disk_3\", \"source\": \"B\", \"target\": \"C\", \"time\": 104.94499999997704}, {\"disk\": \"disk_2\", \"source\": \"B\", \"target\": \"A\", \"time\": 115.84499999996713}, {\"disk\": \"disk_3\", \"source\": \"C\", \"target\": \"A\", \"time\": 127.38999999995663}, {\"disk\": \"disk_1\", \"source\": \"B\", \"target\": \"C\", \"time\": 138.93999999994614}, {\"disk\": \"disk_3\", \"source\": \"A\", \"target\": \"B\", \"time\": 149.83999999993623}, {\"disk\": \"disk_2\", \"source\": \"A\", \"target\": \"C\", \"time\": 161.38499999992572}, {\"disk\": \"disk_3\", \"source\": \"B\", \"target\": \"C\", \"time\": 172.26499999991583}]}, \"issues\": [], \"validation_scope\": \"Recorded environment evidence; no independent physics replay.\"}",
+    "{\"task\": \"hanoi\", \"accepted\": true, \"error\": null, \"seconds\": 201.8}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "reference_replay_disks4",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 191.3,
+   "output_tail": [
+    "{\"accepted\": true, \"comparison\": {\"rows_compared\": 8714, \"rows_sandbox\": 8714, \"rows_recording\": 8714, \"max_object_position_diff_m\": 0.0, \"max_time_diff_s\": 2.842170943040401e-14, \"exact_fields\": {\"obj_pos\": true, \"obj_quat\": true, \"obj_vel\": true, \"obj_ang\": true, \"joint_pos\": true, \"joint_vel\": true}, \"raw_time_bitwise_equal\": false, \"same_physics_clock\": true, \"verdict_matches\": true, \"world_parameters_match\": true}}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "reference_live_disks5",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 449.0,
+   "output_tail": [
+    "move=31 phase=transfer_settle t=355.78 count=30",
+    "move=31 phase=align_disk_over_rod t=356.18 count=30",
+    "move=31 phase=alignment_settle t=356.68 count=30",
+    "move=31 phase=place_on_target t=356.84 count=30",
+    "move=31 phase=placement_settle t=358.24 count=30",
+    "move=31 phase=release t=358.44 count=30",
+    "move=31 phase=release_clearance t=359.14 count=30",
+    "move=31 phase=retreat t=359.44 count=31",
+    "move=31 phase=placement_dwell t=360.24 count=31",
+    "move=31 phase=final_dwell t=360.26 count=31",
+    "{\"schema_version\": 1, \"task\": \"g1_tabletop_hanoi\", \"num_disks\": 5, \"accepted\": true, \"success\": true, \"recorded_evidence_accepted\": true, \"environment_success\": true, \"independent_physics_replay_verified\": false, \"physical_task_solution_verified\": false, \"recording_complete\": true, \"control_steps\": 18064, \"physics_steps\": 72253, \"duration_seconds\": 361.265, \"max_episode_seconds\": 420.0, \"move_count\": 31, \"minimum_moves\": 31, \"complete_legal_moves\": true, \"torque_within_limits\": true, \"max_applied_torque_nm\": [2.102712392807007, 0.06672272831201553, 0.019959308207035065, 0.9346750974655151, 0.1533672958612442, 0.0002755953464657068, 2.1087636947631836, 0.06672275066375732, 0.020818142220377922, 0.949374794960022, 0.15336421132087708, 0.0003120525216218084, 3.1242423057556152, 19.39629554748535, 30.698392868041992, 10.441452026367188, 8.073184967041016, 6.5593109130859375, 6.030508995056152, 1.9227261543273926, 2.3405747413635254, 1.8259776830673218, 0.04184337705373764, 0.83713698387146, 0.8359788656234741, 0.4649399220943451, 0.8275755047798157, 0.5079324245452881, 0.8276252746582031, 10.494421005249023, 7.963159084320068, 6.170259475708008, 6.028288841247559, 1.899226188659668, 2.261577606201172, 1.8344461917877197, 0.04240195080637932, 0.8385979533195496, 0.8294265270233154, 0.4649393558502197, 0.8276028633117676, 0.5011261701583862, 0.8276530504226685], \"torque_limits_nm\": [88.0, 139.0, 88.0, 139.0, 50.0, 50.0, 88.0, 139.0, 88.0, 139.0, 50.0, 50.0, 88.0, 50.0, 50.0, 25.0, 25.0, 25.0, 25.0, 25.0, 5.0, 5.0, 2.450000047683716, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 25.0, 25.0, 25.0, 25.0, 25.0, 5.0, 5.0, 2.450000047683716, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142], \"final_status\": {\"success\": true, \"failed\": false, \"terminated\": true, \"reason\": \"success\", \"score\": 1, \"progress\": 1.0, \"move_count\": 31, \"minimum_moves\": 31, \"elapsed_seconds\": 361.26499999974396, \"phase\": \"completed\", \"active_disk\": null, \"placement_hold_seconds\": 0.0, \"goal_hold_seconds\": 1.9999999999999793, \"stacks\": {\"A\": [], \"B\": [], \"C\": [\"disk_0\", \"disk_1\", \"disk_2\", \"disk_3\", \"disk_4\"]}, \"moves\": [{\"disk\": \"disk_4\", \"source\": \"A\", \"target\": \"C\", \"time\": 15.405000000001008}, {\"disk\": \"disk_3\", \"source\": \"A\", \"target\": \"B\", \"time\": 26.51499999999901}, {\"disk\": \"disk_4\", \"source\": \"C\", \"target\": \"B\", \"time\": 37.61000000000079}, {\"disk\": \"disk_2\", \"source\": \"A\", \"target\": \"C\", \"time\": 49.98500000000712}, {\"disk\": \"disk_4\", \"source\": \"B\", \"target\": \"A\", \"time\": 61.0850000000128}, {\"disk\": \"disk_3\", \"source\": \"B\", \"target\": \"C\", \"time\": 72.15000000000687}, {\"disk\": \"disk_4\", \"source\": \"A\", \"target\": \"C\", \"time\": 84.56999999999557}, {\"disk\": \"disk_1\", \"source\": \"A\", \"target\": \"B\", \"time\": 95.67499999998547}, {\"disk\": \"disk_4\", \"source\": \"C\", \"target\": \"B\", \"time\": 106.7549999999754}, {\"disk\": \"disk_3\", \"source\": \"C\", \"target\": \"A\", \"time\": 118.48499999996473}, {\"disk\": \"disk_4\", \"source\": \"B\", \"target\": \"A\", \"time\": 130.22999999995406}, {\"disk\": \"disk_2\", \"source\": \"C\", \"target\": \"B\", \"time\": 141.33499999994396}, {\"disk\": \"disk_4\", \"source\": \"A\", \"target\": \"C\", \"time\": 153.0599999999333}, {\"disk\": \"disk_3\", \"source\": \"A\", \"target\": \"B\", \"time\": 164.1699999999232}, {\"disk\": \"disk_4\", \"source\": \"C\", \"target\": \"B\", \"time\": 175.2549999999131}, {\"disk\": \"disk_0\", \"source\": \"A\", \"target\": \"C\", \"time\": 187.65999999990183}, {\"disk\": \"disk_4\", \"source\": \"B\", \"target\": \"A\", \"time\": 198.73499999989176}, {\"disk\": \"disk_3\", \"source\": \"B\", \"target\": \"C\", \"time\": 209.82499999988167}, {\"disk\": \"disk_4\", \"source\": \"A\", \"target\": \"C\", \"time\": 221.569999999871}, {\"disk\": \"disk_2\", \"source\": \"B\", \"target\": \"A\", \"time\": 232.6549999998609}, {\"disk\": \"disk_4\", \"source\": \"C\", \"target\": \"B\", \"time\": 243.7549999998508}, {\"disk\": \"disk_3\", \"source\": \"C\", \"target\": \"A\", \"time\": 256.14499999983957}, {\"disk\": \"disk_4\", \"source\": \"B\", \"target\": \"A\", \"time\": 267.9049999998289}, {\"disk\": \"disk_1\", \"source\": \"B\", \"target\": \"C\", \"time\": 278.9849999998188}, {\"disk\": \"disk_4\", \"source\": \"A\", \"target\": \"C\", \"time\": 291.3899999998075}, {\"disk\": \"disk_3\", \"source\": \"A\", \"target\": \"B\", \"time\": 302.4949999997974}, {\"disk\": \"disk_4\", \"source\": \"C\", \"target\": \"B\", \"time\": 313.57999999978733}, {\"disk\": \"disk_2\", \"source\": \"A\", \"target\": \"C\", \"time\": 325.3499999997766}, {\"disk\": \"disk_4\", \"source\": \"B\", \"target\": \"A\", \"time\": 336.40999999976657}, {\"disk\": \"disk_3\", \"source\": \"B\", \"target\": \"C\", \"time\": 347.4999999997565}, {\"disk\": \"disk_4\", \"source\": \"A\", \"target\": \"C\", \"time\": 359.2649999997458}]}, \"issues\": [], \"validation_scope\": \"Recorded environment evidence; no independent physics replay.\"}",
+    "{\"task\": \"hanoi\", \"accepted\": true, \"error\": null, \"seconds\": 444.36}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "reference_replay_disks5",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 367.7,
+   "output_tail": [
+    "{\"accepted\": true, \"comparison\": {\"rows_compared\": 18064, \"rows_sandbox\": 18064, \"rows_recording\": 18064, \"max_object_position_diff_m\": 0.0, \"max_time_diff_s\": 5.684341886080802e-14, \"exact_fields\": {\"obj_pos\": true, \"obj_quat\": true, \"obj_vel\": true, \"obj_ang\": true, \"joint_pos\": true, \"joint_vel\": true}, \"raw_time_bitwise_equal\": false, \"same_physics_clock\": true, \"verdict_matches\": true, \"world_parameters_match\": true}}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "reference_default_archive_api",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 87.1,
+   "output_tail": [
+    "move=7 phase=transfer_settle t=79.04 count=6",
+    "move=7 phase=align_disk_over_rod t=79.44 count=6",
+    "move=7 phase=alignment_settle t=79.94 count=6",
+    "move=7 phase=place_on_target t=80.10 count=6",
+    "move=7 phase=placement_settle t=81.50 count=6",
+    "move=7 phase=release t=81.70 count=6",
+    "move=7 phase=release_clearance t=82.40 count=6",
+    "move=7 phase=retreat t=82.70 count=7",
+    "move=7 phase=placement_dwell t=83.50 count=7",
+    "move=7 phase=final_dwell t=83.52 count=7",
+    "{\"schema_version\": 1, \"task\": \"g1_tabletop_hanoi\", \"num_disks\": 3, \"accepted\": true, \"success\": true, \"recorded_evidence_accepted\": true, \"environment_success\": true, \"independent_physics_replay_verified\": false, \"physical_task_solution_verified\": false, \"recording_complete\": true, \"control_steps\": 4226, \"physics_steps\": 16902, \"duration_seconds\": 84.51, \"max_episode_seconds\": 180.0, \"move_count\": 7, \"minimum_moves\": 7, \"complete_legal_moves\": true, \"torque_within_limits\": true, \"max_applied_torque_nm\": [2.102712392807007, 0.06672269105911255, 0.019959308207035065, 0.9346750974655151, 0.1533672958612442, 0.0002755953464657068, 2.1087636947631836, 0.06672263890504837, 0.020818142220377922, 0.949374794960022, 0.15336421132087708, 0.0003120525216218084, 3.7066431045532227, 20.48511505126953, 30.64020347595215, 10.432828903198242, 7.985848426818848, 5.602331638336182, 6.030508995056152, 1.9227261543273926, 2.3665080070495605, 1.8259776830673218, 0.04184337705373764, 0.8378824591636658, 0.8333778977394104, 0.4649399220943451, 0.8275755047798157, 0.46495527029037476, 0.8276252746582031, 10.666786193847656, 7.953774452209473, 5.583940505981445, 6.028288841247559, 1.9256433248519897, 2.261577606201172, 1.8344461917877197, 0.04240195080637932, 0.8403916358947754, 0.8294874429702759, 0.4649393558502197, 0.8276028633117676, 0.46493640542030334, 0.8276530504226685], \"torque_limits_nm\": [88.0, 139.0, 88.0, 139.0, 50.0, 50.0, 88.0, 139.0, 88.0, 139.0, 50.0, 50.0, 88.0, 50.0, 50.0, 25.0, 25.0, 25.0, 25.0, 25.0, 5.0, 5.0, 2.450000047683716, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 25.0, 25.0, 25.0, 25.0, 25.0, 5.0, 5.0, 2.450000047683716, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142, 1.399999976158142], \"final_status\": {\"success\": true, \"failed\": false, \"terminated\": true, \"reason\": \"success\", \"score\": 1, \"progress\": 1.0, \"move_count\": 7, \"minimum_moves\": 7, \"elapsed_seconds\": 84.50999999999563, \"phase\": \"completed\", \"active_disk\": null, \"placement_hold_seconds\": 0.0, \"goal_hold_seconds\": 1.9999999999999793, \"stacks\": {\"A\": [], \"B\": [], \"C\": [\"disk_0\", \"disk_1\", \"disk_2\"]}, \"moves\": [{\"disk\": \"disk_2\", \"source\": \"A\", \"target\": \"C\", \"time\": 15.210000000000978}, {\"disk\": \"disk_1\", \"source\": \"A\", \"target\": \"B\", \"time\": 26.11499999999909}, {\"disk\": \"disk_2\", \"source\": \"C\", \"target\": \"B\", \"time\": 36.99500000000047}, {\"disk\": \"disk_0\", \"source\": \"A\", \"target\": \"C\", \"time\": 49.19000000000671}, {\"disk\": \"disk_2\", \"source\": \"B\", \"target\": \"A\", \"time\": 60.07000000001228}, {\"disk\": \"disk_1\", \"source\": \"B\", \"target\": \"C\", \"time\": 70.97000000000794}, {\"disk\": \"disk_2\", \"source\": \"A\", \"target\": \"C\", \"time\": 82.50999999999745}]}, \"issues\": [], \"validation_scope\": \"Recorded environment evidence; no independent physics replay.\"}",
+    "{\"success\": true, \"void\": false, \"flags\": [], \"stage_timeline\": {\"disk_lifted_clear\": 9.1, \"first_move\": 15.22, \"tower_progress\": 82.52, \"goal_hold\": 84.51}, \"comparison\": {\"source_episode\": \"../../../acceptance/release_20261022/sweep_swept_thumb_release_v2/disks3/nominal/run/expert\", \"source_success\": true, \"source_control_steps\": 4226, \"source_duration_s\": 84.51, \"verdict_success\": true, \"success_matches\": true, \"duration_matches\": true, \"rows_compared\": 4226, \"rows_sandbox\": 4226, \"rows_recording\": 4226, \"max_object_position_diff_m\": 0.0, \"max_time_diff_s\": 0.0}}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "exploit_teleport_disk",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 32.7,
+   "output_tail": [
+    "{\"void\": true, \"void_reasons\": [\"object_speed_severe (3_no_physics_violation)\", \"teleport (1_no_reward_hacking)\", \"energy_without_work_severe (3_no_physics_violation)\", \"privileged_writes (1_no_reward_hacking)\"], \"score\": 0.0, \"success\": false}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "escape_probes",
+   "tier": "container",
+   "exit_code": 1,
+   "seconds": 46.1,
+   "output_tail": [
+    "[g1_tabletop_hanoi] run: C:\\Users\\wuxiy\\rsi_releases\\tabletop_release_candidate_20261023\\humanoid\\g1_tabletop_hanoi\\sandbox\\runs\\pipeline-escape-20261023-111451",
+    "[g1_tabletop_hanoi] preparing the agent image",
+    "[g1_tabletop_hanoi] building the world (eval) ...",
+    "[g1_tabletop_hanoi] trusted worker ready; 1 episode run(s), container isolation",
+    "[g1_tabletop_hanoi] episode 0: exit=0 timed_out=False",
+    "[g1_tabletop_hanoi] {\"privileged_reference\": false, \"void\": true, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 1} -> C:\\Users\\wuxiy\\rsi_releases\\tabletop_release_candidate_20261023\\humanoid\\g1_tabletop_hanoi\\sandbox\\runs\\pipeline-escape-20261023-111451\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-escape-20261023-111451",
+   "expect": {
+    "void": true
+   },
+   "got": {
+    "void": true
+   },
+   "passed": true
+  },
+  {
+   "name": "escape_probes_integrity",
+   "tier": "container",
+   "exit_code": 0,
+   "seconds": 0.8,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_tabletop_hanoi\\\\sandbox\\\\runs\\\\pipeline-escape-20261023-111451\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "grade_noop_three_layers",
+   "tier": "container",
+   "exit_code": 1,
+   "seconds": 66.3,
+   "output_tail": [
+    "[g1_tabletop_hanoi] run: C:\\Users\\wuxiy\\rsi_releases\\tabletop_release_candidate_20261023\\humanoid\\g1_tabletop_hanoi\\sandbox\\runs\\pipeline-grade-noop-20261023-111451",
+    "[g1_tabletop_hanoi] preparing the agent image",
+    "[g1_tabletop_hanoi] building the world (grade) ...",
+    "[g1_tabletop_hanoi] trusted worker ready; 3 episode run(s), container isolation",
+    "[g1_tabletop_hanoi] episode 0: exit=0 timed_out=False",
+    "[g1_tabletop_hanoi] episode 1: exit=0 timed_out=False",
+    "[g1_tabletop_hanoi] episode 2: exit=0 timed_out=False",
+    "[g1_tabletop_hanoi] {\"privileged_reference\": false, \"void\": false, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 3} -> C:\\Users\\wuxiy\\rsi_releases\\tabletop_release_candidate_20261023\\humanoid\\g1_tabletop_hanoi\\sandbox\\runs\\pipeline-grade-noop-20261023-111451\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-grade-noop-20261023-111451",
+   "expect": {
+    "void": false,
+    "score": 0.0,
+    "success_rate": 0.0
+   },
+   "got": {
+    "void": false,
+    "score": 0.0,
+    "success_rate": 0.0
+   },
+   "passed": true
+  },
+  {
+   "name": "grade_noop_three_layers_integrity",
+   "tier": "container",
+   "exit_code": 0,
+   "seconds": 0.8,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_tabletop_hanoi\\\\sandbox\\\\runs\\\\pipeline-grade-noop-20261023-111451\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  }
+ ],
+ "passed": true
+}

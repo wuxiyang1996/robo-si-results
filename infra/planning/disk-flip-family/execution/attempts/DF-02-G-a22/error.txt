@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 698, in main
+    write(self.out/'segments.json',self.events)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 455, in execute
+    if any(k in n for k in ['shoulder','elbow','wrist','waist','joint_arm','joint_lift']):self.qref[self.m.jnt_qposadr[j]]=solution[self.m.jnt_qposadr[j]]
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 550, in finish_dex3_bridge
+    centre=self.d.xpos[self.obj].copy();hands={s:self.nominal_hand_pose(s) for s in ['left','right']}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 539, in apply_goals
+    if hasattr(self,key):delattr(self,key)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 349, in step
+    self.last_ref=self.qref.copy()
+                                   
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 176, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

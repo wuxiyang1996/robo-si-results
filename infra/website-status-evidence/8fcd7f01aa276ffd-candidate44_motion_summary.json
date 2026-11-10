@@ -1,0 +1,157 @@
+{
+  "schema": "h1-floor-relocation-diagnostic/1",
+  "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_44\\runs\\hand-push-20cm-01",
+  "simulation_seconds": 58.14,
+  "physics_steps": 11628,
+  "task_success": false,
+  "void": false,
+  "safety_complete": true,
+  "safety_events": [],
+  "max_joint_overshoot_rad": 0.0,
+  "source_unchanged": true,
+  "runtime_state_writes": [],
+  "error": null,
+  "recording_errors": [],
+  "actuator_rule": {
+    "status": "evaluated",
+    "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0
+  },
+  "expert_status": "direct:controlled_stop:hand_push_force_guard",
+  "diagnostic_status": "controlled_stop:hand_push_force_guard",
+  "floor_handoff": null,
+  "standing_recovery": null,
+  "unloaded_walk": null,
+  "hand_push_cycles": [],
+  "stool_displacement_m": [
+    0.08766984939575195,
+    -6.63322934997268e-05,
+    -4.2751431465148926e-05
+  ],
+  "max_robot_advance_m": 0.03921842575073242,
+  "peak_stool_body_contact_N": 0.0,
+  "peak_stool_hand_contact_N": 7.702373504638672,
+  "peak_stool_total_hand_contact_N": 15.302148342132568,
+  "peak_stool_foot_vertical_N": 0.0,
+  "sampled_contact_links_peak_N": {
+    "left_hand_thumb_2_link": 7.301943714979957,
+    "right_hand_thumb_2_link": 7.409274780820106
+  },
+  "planned_phases": [
+    "hand_push_approach",
+    "hand_push_continuous"
+  ],
+  "leg_motor_execution": {
+    "physics_steps": 10992,
+    "clipped_samples": 0,
+    "maximum_clipping_Nm": 0.0,
+    "maximum_effort_ratio": 0.3701120317747588,
+    "position_guard_margin_rad": 0.02,
+    "hardware_limits_unchanged": true,
+    "mode": "bounded_leg_force_upper_legacy_position"
+  },
+  "qp_fallbacks": 0,
+  "stages": [
+    {
+      "stage": "support_handled",
+      "weight": 0.05,
+      "mode": "once",
+      "best": 1.0,
+      "final": 1.0,
+      "first_full_s": 47.300000000000004,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.25
+    },
+    {
+      "stage": "support_relocated",
+      "weight": 0.15,
+      "mode": "once",
+      "best": 0.10958730782554243,
+      "final": 0.10958730782554243,
+      "first_full_s": null,
+      "progress_basis": "controlled geometric progress",
+      "minimum_evidence_seconds": null,
+      "full_evidence_seconds": null
+    },
+    {
+      "stage": "on_support",
+      "weight": 0.15,
+      "mode": "once",
+      "best": 0.0,
+      "final": 0.0,
+      "first_full_s": null,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.5
+    },
+    {
+      "stage": "target_secured",
+      "weight": 0.15,
+      "mode": "once",
+      "best": 0.0,
+      "final": 0.0,
+      "first_full_s": null,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.3
+    },
+    {
+      "stage": "target_staged",
+      "weight": 0.1,
+      "mode": "once",
+      "best": 0.0,
+      "final": 0.0,
+      "first_full_s": null,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.5
+    },
+    {
+      "stage": "descended_empty",
+      "weight": 0.1,
+      "mode": "once",
+      "best": 0.0,
+      "final": 0.0,
+      "first_full_s": null,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.5
+    },
+    {
+      "stage": "target_reacquired",
+      "weight": 0.1,
+      "mode": "once",
+      "best": 0.0,
+      "final": 0.0,
+      "first_full_s": null,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.3
+    },
+    {
+      "stage": "carried",
+      "weight": 0.1,
+      "mode": "once",
+      "best": 0.0,
+      "final": 0.0,
+      "first_full_s": null,
+      "progress_basis": "controlled geometric progress",
+      "minimum_evidence_seconds": null,
+      "full_evidence_seconds": null
+    },
+    {
+      "stage": "delivered",
+      "weight": 0.1,
+      "mode": "live",
+      "best": 0.0,
+      "final": 0.0,
+      "first_full_s": null,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.5
+    }
+  ],
+  "scope": "Bounded original-start diagnostic. Plans are not completion claims. No full task, action-channel, repeat, coverage or release qualification."
+}

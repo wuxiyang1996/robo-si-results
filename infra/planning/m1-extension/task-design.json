@@ -1,0 +1,1638 @@
+{
+  "schema": "m1-extension-design/3",
+  "version": "0.6.0",
+  "parent_task": "M1",
+  "date": "2026-10-27",
+  "status": "design_only_unvalidated",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "new_simulation_runs": 0,
+  "formal_admission": false,
+  "changes_existing_m1_scores": false,
+  "counts_toward_existing_14_task_inventory": false,
+  "documentation": {
+    "zh": "README.md",
+    "en": "README-en.md"
+  },
+  "policy_sources": [
+    {
+      "path": "../../task-design-zh.html",
+      "sha256": "dfba6a8ba0f155d7597e669d5fedfb2c50bafe89ad42b3256bf497c86be90217"
+    },
+    {
+      "path": "../../task-design-en.html",
+      "sha256": "c6d26a849e0e5e09222ffe31b6ea80274633b3670e49f69426ac311816daed4b"
+    },
+    {
+      "path": "../../acceptance-zh.html",
+      "sha256": "e909974ac042868b216534afedc830d904acc9b45d254e19f9f60f8f72f8e58a"
+    },
+    {
+      "path": "../../verifier-zh.html",
+      "sha256": "275678561f65600930b304d70a6ee855209ba970c27fe42aeac220055b946bd0"
+    },
+    {
+      "path": "../../protocol-zh.html",
+      "sha256": "d1566b4760a8e2a09d0784dd699ba37364dd4c464ffda33dd2ff75f5da9f2c6b"
+    },
+    {
+      "path": "../acceptance-policy.json",
+      "sha256": "516305662b92013bf220cfae386cc4a4197032bc7747d1794c8aece67cdbce42"
+    },
+    {
+      "path": "../tasks/M1.md",
+      "sha256": "87f132fe739a6b5cd8993f6bf72035ed126167b55c18715eab864e4f5096a362"
+    },
+    {
+      "path": "../../m1-current-evidence.json",
+      "sha256": "31f1aeb71dcdf25500c5c837efd31969434067a4ee4865aaefc1403e40501a51"
+    }
+  ],
+  "objective": {
+    "source": "identified yellow block inside an elevated crate",
+    "destination": "tray D deep inside a low cabinet",
+    "physical_success": "cabinet support precedes release of robots and held tools; full target containment and stable dwell through termination",
+    "route_independent": false,
+    "cooperation_required_by_default": false,
+    "optional_cooperation_variant": "required_manipulator_transfer: public designated-receiver transfer and final placement/release; physical necessity not claimed",
+    "route_independent_scope": "physical delivery is route-independent; task success additionally checks the selected public rule variant"
+  },
+  "existing_reference": {
+    "path": "../../m1-current-evidence.json",
+    "complete_successes": 13,
+    "physical_seeds": 8,
+    "strict_repeats": [
+      3,
+      3
+    ],
+    "scope": "original G1 + X5 privileged CPU configuration and scorer only",
+    "transfer_to_new_cells": "none without identity and refinement checks"
+  },
+  "embodiments": [
+    {
+      "id": "A",
+      "description": "G1 + Dex3 with X5 mobile arm",
+      "priority": "initial",
+      "asset_manifest": null,
+      "controller_manifest": null,
+      "sensor_manifest": null,
+      "extension_feasibility": "unknown"
+    },
+    {
+      "id": "B",
+      "description": "same G1 with five-finger dexterous hand, same X5; exact hand model pending",
+      "priority": "initial",
+      "asset_manifest": null,
+      "controller_manifest": null,
+      "sensor_manifest": null,
+      "extension_feasibility": "unknown"
+    },
+    {
+      "id": "C",
+      "description": "wheeled dual-arm robot plus low-level manipulation robot; models undecided",
+      "priority": "initial",
+      "asset_manifest": null,
+      "controller_manifest": null,
+      "sensor_manifest": null,
+      "extension_feasibility": "unknown"
+    },
+    {
+      "id": "D",
+      "description": "single-arm mobile robot plus environmental tools",
+      "priority": "deferred",
+      "asset_manifest": null,
+      "controller_manifest": null,
+      "sensor_manifest": null,
+      "extension_feasibility": "unknown"
+    }
+  ],
+  "decision_profiles": {
+    "Easy": {
+      "information": "accurate permitted body capability and interface descriptions; no scene truth or route",
+      "environment": "suitable transfer surface prepositioned",
+      "decision": "role assignment and continuous execution"
+    },
+    "Medium": {
+      "information": "basic interfaces and public limits; query or safely probe actual and loaded capability",
+      "environment": "changed end effector, predeclared joint limits or transfer layout",
+      "decision": "discover capability and change grasp, stance, transfer height or roles"
+    },
+    "Hard": {
+      "information": "permitted interfaces and observable tool properties",
+      "environment": "direct route unavailable; multiple candidate objects require selection and placement",
+      "decision": "construct a feasible manipulation chain using environmental tools"
+    }
+  },
+  "axis_separation": {
+    "decision_profiles_are_normative_tool_layers": false,
+    "decision_profiles_are_existing_cpu_release_scope": false,
+    "capability_disclosure": [
+      "explicit",
+      "partial",
+      "latent"
+    ],
+    "separate_slices": [
+      "route_selection",
+      "feasibility_decision"
+    ],
+    "no_full_cartesian_product_claim": false,
+    "cartesian_product_scope": "12 candidate route x embodiment x requirement cells only; no physical feasibility or witness claim",
+    "difficulty_is_primary_matrix_axis": false
+  },
+  "initial_cells": [
+    {
+      "id": "M1E-direct-dexterous_hand-N",
+      "retrieval_mode": "direct",
+      "embodiment": "dexterous_hand",
+      "legacy_embodiment": "B",
+      "task_requirement": "N",
+      "rule_variant": "free_route",
+      "scene_recipe_candidates": [
+        "M1E-01"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-direct-dexterous_hand-Y",
+      "retrieval_mode": "direct",
+      "embodiment": "dexterous_hand",
+      "legacy_embodiment": "B",
+      "task_requirement": "Y",
+      "rule_variant": "required_manipulator_transfer",
+      "scene_recipe_candidates": [
+        "M1E-01"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-direct-three_finger-N",
+      "retrieval_mode": "direct",
+      "embodiment": "three_finger",
+      "legacy_embodiment": "A",
+      "task_requirement": "N",
+      "rule_variant": "free_route",
+      "scene_recipe_candidates": [
+        "M1E-01"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-direct-three_finger-Y",
+      "retrieval_mode": "direct",
+      "embodiment": "three_finger",
+      "legacy_embodiment": "A",
+      "task_requirement": "Y",
+      "rule_variant": "required_manipulator_transfer",
+      "scene_recipe_candidates": [
+        "M1E-01"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-direct-wheeled-N",
+      "retrieval_mode": "direct",
+      "embodiment": "wheeled",
+      "legacy_embodiment": "C",
+      "task_requirement": "N",
+      "rule_variant": "free_route",
+      "scene_recipe_candidates": [
+        "M1E-01"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-direct-wheeled-Y",
+      "retrieval_mode": "direct",
+      "embodiment": "wheeled",
+      "legacy_embodiment": "C",
+      "task_requirement": "Y",
+      "rule_variant": "required_manipulator_transfer",
+      "scene_recipe_candidates": [
+        "M1E-01"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-help-dexterous_hand-N",
+      "retrieval_mode": "help",
+      "embodiment": "dexterous_hand",
+      "legacy_embodiment": "B",
+      "task_requirement": "N",
+      "rule_variant": "free_route",
+      "scene_recipe_candidates": [
+        "M1E-03",
+        "M1E-05"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-help-dexterous_hand-Y",
+      "retrieval_mode": "help",
+      "embodiment": "dexterous_hand",
+      "legacy_embodiment": "B",
+      "task_requirement": "Y",
+      "rule_variant": "required_manipulator_transfer",
+      "scene_recipe_candidates": [
+        "M1E-03",
+        "M1E-05"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-help-three_finger-N",
+      "retrieval_mode": "help",
+      "embodiment": "three_finger",
+      "legacy_embodiment": "A",
+      "task_requirement": "N",
+      "rule_variant": "free_route",
+      "scene_recipe_candidates": [
+        "M1E-03",
+        "M1E-05"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-help-three_finger-Y",
+      "retrieval_mode": "help",
+      "embodiment": "three_finger",
+      "legacy_embodiment": "A",
+      "task_requirement": "Y",
+      "rule_variant": "required_manipulator_transfer",
+      "scene_recipe_candidates": [
+        "M1E-03",
+        "M1E-05"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-help-wheeled-N",
+      "retrieval_mode": "help",
+      "embodiment": "wheeled",
+      "legacy_embodiment": "C",
+      "task_requirement": "N",
+      "rule_variant": "free_route",
+      "scene_recipe_candidates": [
+        "M1E-03",
+        "M1E-05"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    },
+    {
+      "id": "M1E-help-wheeled-Y",
+      "retrieval_mode": "help",
+      "embodiment": "wheeled",
+      "legacy_embodiment": "C",
+      "task_requirement": "Y",
+      "rule_variant": "required_manipulator_transfer",
+      "scene_recipe_candidates": [
+        "M1E-03",
+        "M1E-05"
+      ],
+      "decision_profile": null,
+      "feasibility": "unknown",
+      "reference_witness": null
+    }
+  ],
+  "layers": {
+    "status": "design_only; per-object body and route evidence pending",
+    "L1": "only necessary tools; removal checks required",
+    "L2": "add tools unusable by current body but evidenced usable by a specified different body; exclude usable combinations before calling unusable",
+    "L3": "add observable physical or body-mismatch distractors",
+    "same_seed_rule": "preserve target and necessary objects and poses; add cumulatively and recheck obstruction and shortcuts",
+    "agent_sees_layer_label": false,
+    "multi_valid_routes_and_infeasible_controls_claim_strict_L1": false
+  },
+  "instruction": {
+    "zh": "将高处货箱中带有 {可见标识} 的黄色方块完整放入低柜内标记为 D 的托盘。托盘承托目标后再撤去机器人或所持物体的支撑，并使目标释放后稳定 2 秒。遵守公开的碰撞、载荷、关节和物体完整性限制。如果判断当前身体和现场物品无法完成任务，可以不先尝试抓取，让所有参与机器人空手移动到 Q 区并停稳 3 秒，结束本回合。",
+    "en": "Place the yellow block bearing {visible identifier} from the elevated crate fully inside tray D in the low cabinet. Transfer its support to the tray before removing robot or held-object support, then leave it released and stable for 2 seconds. Follow the public collision, load, joint and object-integrity limits. If you judge that your current bodies and the available objects cannot complete the task, you may proceed without attempting a grasp: move all participating robots empty-handed to Q and remain stationary for 3 seconds to end the episode."
+  },
+  "agent": {
+    "observations": "only configured cameras/depth, encoders, IMU and installed force/touch/current sensors",
+    "sensor_specifications": null,
+    "control_interfaces": null,
+    "permitted_computational_tools": "documented sensor and robot command APIs; FK/IK and capability queries only on disclosed robot models; exact adapters pending",
+    "provided_task_skills": [],
+    "forbidden": [
+      "scene_truth_pose",
+      "hidden_mass_friction_or_strength",
+      "tool_role_labels",
+      "feasibility_labels_and_certificates",
+      "reference_routes",
+      "trusted_state_mutation"
+    ],
+    "safe_probe_requirement": "observable differences must be safely distinguishable; otherwise decision correctness remains unknown",
+    "budgets": {
+      "control_steps": null,
+      "observations": null,
+      "tokens": null,
+      "resets": null,
+      "wall_seconds": null,
+      "probe_count": null,
+      "probe_steps": null
+    },
+    "budgets_frozen": false
+  },
+  "simulation": {
+    "primary_backend": "Genesis",
+    "version": null,
+    "isaac_lab_alignment": "separate pending work",
+    "timestep": null,
+    "solver_and_contact_settings": null,
+    "assets": null,
+    "asset_policy": "prefer official robots and detailed objects; record sources, licenses, hashes, scale, inertia and collision geometry",
+    "weak_support_policy": "physical instability or failure with observable clues; no hidden scoring-only penalties"
+  },
+  "generator": {
+    "variables": [
+      "shelf_height",
+      "crate_rim",
+      "target_pose",
+      "transfer_surface_pose",
+      "cabinet_aperture",
+      "tray_depth",
+      "tool_dimensions",
+      "tool_handles",
+      "visible_ratings",
+      "mass",
+      "friction",
+      "Q_pose"
+    ],
+    "numeric_ranges": null,
+    "development_seed_set": null,
+    "sealed_evaluation_seed_set": null,
+    "reject_and_log": [
+      "invalid_geometry",
+      "spawn_overlap",
+      "Q_unreachable_by_any_participant",
+      "Q_overlaps_spawn_or_delivery_or_normal_work_area",
+      "Q_cannot_fit_all_participants"
+    ],
+    "preserve_all_benchmark_draws": true,
+    "replace_failed_seed": false,
+    "paired_control_rule": "For Y/N hold world, body, helper availability, tools and sensors fixed and change only public requirement. Infeasible/feasible pairs change one observable feasibility condition; retain all outcomes.",
+    "label_leakage_controls": [
+      "neutral_object_names",
+      "independent_colors",
+      "no_public_task_or_profile_label",
+      "Q_pose_independent_of_feasibility"
+    ]
+  },
+  "comparison_axes": [
+    "matched_world",
+    "same_body_capability_change",
+    "complete_capability_disclosure_vs_probe",
+    "reuse_old_plan_vs_reprobe_and_replan",
+    "environment_change",
+    "same_scene_body_and_helpers_requirement_Y_vs_N"
+  ],
+  "comparison_records": [
+    "capability_queries",
+    "safe_probes",
+    "tool_choices",
+    "unreachable_actions",
+    "failed_grasps",
+    "invalid_transfers",
+    "plan_changes_after_evidence",
+    "time_seconds",
+    "tokens",
+    "exit_latency",
+    "violations"
+  ],
+  "self_modeling_credit": "behavioral evidence and paired outcome/cost comparisons, not self-description; no causal-proof claim",
+  "tasks": [
+    {
+      "id": "M1E-01",
+      "name_zh": "预布置交接面的取物与交付",
+      "name_en": "Retrieval and delivery with a prepared transfer surface",
+      "decision_profiles": [
+        "Easy"
+      ],
+      "intended_configurations": [
+        "A",
+        "B",
+        "C"
+      ],
+      "track": "capability_execution",
+      "feasibility": "unknown",
+      "reference_witnesses": [],
+      "tool_candidates": [
+        "fixed_transfer_surface"
+      ],
+      "candidate_subtask_chain": [
+        "observe_model",
+        "retrieve_transfer",
+        "transport_insert",
+        "release_verify"
+      ],
+      "scenario_zh": "合适的固定交接面已就位；搬下货箱→独立支撑→取块→进入低柜→托盘承托→撤手。若当前身体能直接取块，可跳过搬箱。",
+      "scenario_en": "Suitable fixed transfer surface: lower crate → independent support → retrieve target → enter cabinet → tray support → release. Direct target retrieval is allowed when feasible.",
+      "checks_and_counterexamples_zh": "Easy 基线。能力说明与实际配置一致；查全程负载、双机净空和撤手可达性。反例：仅搬箱、目标仍在柜口、持住目标未释放。",
+      "checks_and_counterexamples_en": "Easy baseline. Match capability information to hardware and check loaded reach, clearance and withdrawal. Moving only the crate, stopping at the cabinet mouth or retaining the target does not complete delivery.",
+      "agent_visible": false,
+      "role": "manipulation_task",
+      "rule_variants": [
+        "free_route",
+        "required_manipulator_transfer_when_two_participants_available"
+      ],
+      "parent_family": "M1E",
+      "record_kind": "case_parent_group",
+      "counts_as_independent_family": false,
+      "selected": true,
+      "counts_as_independent_task": false,
+      "child_case_ids": [
+        "M1C-B01"
+      ]
+    },
+    {
+      "id": "M1E-02",
+      "name_zh": "同身体能力变化后的重新交接",
+      "name_en": "Transfer after capability changes within one embodiment",
+      "decision_profiles": [
+        "Medium"
+      ],
+      "intended_configurations": [
+        "A",
+        "B",
+        "C"
+      ],
+      "track": "within_embodiment_capability_adaptation",
+      "feasibility": "unknown",
+      "reference_witnesses": [],
+      "tool_candidates": [
+        "fixed_transfer_surfaces"
+      ],
+      "candidate_subtask_chain": [
+        "observe_model",
+        "retrieve_transfer",
+        "transport_insert",
+        "release_verify"
+      ],
+      "scenario_zh": "同一机器人、同一末端、同一布局，仅改变预声明的关节限制或控制能力；提供可调站位及固定交接面。探测可达性→选抓点／面→调整分工→交付。",
+      "scenario_en": "Same robot, hand and layout; change only predeclared joint limits or control capability. Adjustable stance and fixed transfer surfaces: probe → select grasp/surface → reassign roles → deliver.",
+      "checks_and_counterexamples_zh": "Medium，同身体能力适应。失败姿态不等于整机不能完成；编码器、碰撞观测与低风险探测支持换路线。限制在回合前锁定，公开安全限值始终可见。反例：复用原能力下的姿态、仅空载 IK 成功、重复撞同一箱沿。",
+      "checks_and_counterexamples_en": "Medium within-embodiment adaptation. One failed pose does not prove infeasibility. Encoder/contact observations and safe probes inform replanning. Limits are fixed before the episode and public safety limits remain visible. Reusing an old-capability pose, empty-load IK alone or repeated rim collisions is insufficient.",
+      "agent_visible": false,
+      "paired_variables": {
+        "fixed": [
+          "robot",
+          "end_effector",
+          "scene"
+        ],
+        "changed": [
+          "predeclared_joint_limits_or_control_capability"
+        ],
+        "safety_limits": "public throughout",
+        "hand_replacement_in_primary_pair": false
+      },
+      "role": "capability_control",
+      "rule_variants": [
+        "free_route",
+        "required_manipulator_transfer_when_two_participants_available"
+      ],
+      "parent_family": "M1E",
+      "record_kind": "case_parent_group",
+      "counts_as_independent_family": false,
+      "selected": false,
+      "counts_as_independent_task": false,
+      "applies_to_task_ids": [
+        "M1E-01",
+        "M1E-03",
+        "M1E-05",
+        "M1E-06"
+      ],
+      "child_case_ids": []
+    },
+    {
+      "id": "M1E-03",
+      "name_zh": "自主选择并布置货箱支撑",
+      "name_en": "Select and place independent crate support",
+      "decision_profiles": [
+        "Hard"
+      ],
+      "intended_configurations": [
+        "A",
+        "B",
+        "C"
+      ],
+      "track": "tool_construction",
+      "feasibility": "unknown",
+      "reference_witnesses": [],
+      "tool_candidates": [
+        "movable_stand",
+        "narrow_stool",
+        "under_rated_box"
+      ],
+      "candidate_subtask_chain": [
+        "observe_model",
+        "prepare",
+        "retrieve_transfer",
+        "transport_insert",
+        "release_verify"
+      ],
+      "scenario_zh": "同时提供可搬支架、窄顶凳、承载不足的箱体；选可抓持且能承箱的支架→在交接区布置→搬箱并撤手→另一机器人取块交付。",
+      "scenario_en": "Movable stand, narrow stool and under-rated box: choose a graspable, load-capable stand → position it → lower crate and withdraw → partner retrieves and delivers.",
+      "checks_and_counterexamples_zh": "Hard 的首个瓶颈：持箱状态下两机不能安全取物，必须独立支撑。几何、铭牌及小载荷响应可观察。须排除直接取块、放地面、替代家具等绕开瓶颈的路线，或将其归为合理替代解。反例：仍暗中托箱、窄支架静态不倒但取块时倾覆。",
+      "checks_and_counterexamples_en": "First Hard bottleneck: safe picking while the crate is held is unavailable. Check geometry, ratings and small-load responses. Exclude direct picking, floor placement and alternative furniture before claiming support is necessary; otherwise accept the valid route and revise its label. Hidden robot support or a stand that tips during picking must fail.",
+      "agent_visible": false,
+      "role": "manipulation_task",
+      "rule_variants": [
+        "free_route",
+        "required_manipulator_transfer_when_two_participants_available"
+      ],
+      "parent_family": "M1E",
+      "record_kind": "case_parent_group",
+      "counts_as_independent_family": false,
+      "selected": true,
+      "counts_as_independent_task": false,
+      "child_case_ids": [
+        "M1C-B02"
+      ]
+    },
+    {
+      "id": "M1E-04",
+      "name_zh": "支撑＋推车运输货箱",
+      "name_en": "Support plus cart transport",
+      "decision_profiles": [
+        "Hard"
+      ],
+      "intended_configurations": [
+        "A",
+        "C"
+      ],
+      "track": "tool_composition",
+      "feasibility": "unknown",
+      "reference_witnesses": [],
+      "tool_candidates": [
+        "support_stand",
+        "braked_cart",
+        "short_deck_cart"
+      ],
+      "candidate_subtask_chain": [
+        "observe_model",
+        "prepare",
+        "retrieve_transfer",
+        "transport_insert",
+        "release_verify"
+      ],
+      "scenario_zh": "同时有承托支架、带可操作制动的推车、较短承载面的另一推车；在货架旁承接货箱→选合适车辆→真实装载→运输→停车制动→取块入柜。",
+      "scenario_en": "Support stand, cart with an operable brake and a second cart with a shorter deck: support crate near shelf → load suitable cart → transport → park and brake → pick target and deliver.",
+      "checks_and_counterexamples_zh": "Hard，工具组合。检查机器人能装车也能停稳车，底盘＋车＋箱扫掠与负载抗倾覆。工具可用性不能仅由车能滚动推定；不允许用隐藏焊接代替车上支撑。反例：移动空车、目标仍在车上、车未固定就取块。",
+      "checks_and_counterexamples_en": "Hard tool composition. Check loading, braking, combined swept volume and loaded tipping. A rolling cart is not automatically usable. No hidden attachment may substitute for support. Moving an empty cart, leaving the block on the cart or picking from an unsecured cart is insufficient.",
+      "agent_visible": false,
+      "role": "manipulation_task",
+      "rule_variants": [
+        "free_route",
+        "required_manipulator_transfer_when_two_participants_available"
+      ],
+      "development_status": "deferred_outside_near_term",
+      "parent_family": "M1E",
+      "record_kind": "deferred_group",
+      "counts_as_independent_family": false,
+      "selected": false,
+      "counts_as_independent_task": false,
+      "child_case_ids": []
+    },
+    {
+      "id": "M1E-05",
+      "name_zh": "不能搬动的货箱内取块",
+      "name_en": "Retrieve from an immovable crate",
+      "decision_profiles": [
+        "Hard"
+      ],
+      "intended_configurations": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "track": "tool_selection",
+      "feasibility": "unknown",
+      "reference_witnesses": [],
+      "tool_candidates": [
+        "hook",
+        "extended_gripper",
+        "straight_rod",
+        "short_tool"
+      ],
+      "candidate_subtask_chain": [
+        "observe_model",
+        "prepare",
+        "retrieve_transfer",
+        "transport_insert",
+        "release_verify"
+      ],
+      "scenario_zh": "箱固定或当前身体不能搬箱；同时有可握持钩具、长夹取器、直杆和过短工具；用适配工具把块沿箱内底面移到可抓位置→抓取运输→入柜。",
+      "scenario_en": "Fixed/unliftable crate; hook, extended gripper, straight rod and short tool: use a compatible tool to slide the target along the crate floor into grasping reach → grasp → transport → deliver.",
+      "checks_and_counterexamples_zh": "Hard，工具长度之外还看握柄、腕矩、作用方向、箱沿和目标接触几何。给定目标上没有孔就不能假设可挂钩；可绕到块后侧的接触路线要实证。多条路线都有效才称多解。反例：工具够长但无法转入箱内；把目标拉出箱外自由落下。",
+      "checks_and_counterexamples_en": "Hard. Check handle, wrist moment, contact direction, rim clearance and target geometry, not length alone. Do not assume the target has a hook hole; validate access behind it. Call it multiple-route only after multiple witnesses. A long tool that cannot turn inside the crate or a target pulled into free fall is a negative case.",
+      "agent_visible": false,
+      "role": "manipulation_task",
+      "rule_variants": [
+        "free_route",
+        "required_manipulator_transfer_when_two_participants_available"
+      ],
+      "parent_family": "M1E",
+      "record_kind": "case_parent_group",
+      "counts_as_independent_family": false,
+      "selected": true,
+      "counts_as_independent_task": false,
+      "child_case_ids": [
+        "M1C-B03"
+      ]
+    },
+    {
+      "id": "M1E-06",
+      "name_zh": "低柜深处交付",
+      "name_en": "Deep-cabinet delivery",
+      "decision_profiles": [
+        "Hard"
+      ],
+      "intended_configurations": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "track": "delivery_tool_selection",
+      "feasibility": "unknown",
+      "reference_witnesses": [],
+      "tool_candidates": [
+        "narrow_pusher",
+        "thin_carrier",
+        "thick_carrier"
+      ],
+      "candidate_subtask_chain": [
+        "observe_model",
+        "prepare",
+        "retrieve_transfer",
+        "transport_insert",
+        "release_verify"
+      ],
+      "scenario_zh": "取块可行，但当前末端不能深入托盘；有窄推杆、薄托板、厚托板，以及可选低位机器人。候选路线一：柜体连续承托目标、推至 D 后撤杆；路线二：托板送入、把承重转给柜体后撤板；路线三：换交付者。",
+      "scenario_en": "Retrieval works but the current hand cannot reach D; narrow pusher, thin carrier, thick carrier and optional low-level robot. Candidates: push along continuous cabinet support; insert a carrier then transfer support and withdraw it; change delivery robot.",
+      "checks_and_counterexamples_zh": "Hard，末段能力限制。验证柜内沿途支撑、工具撤出空间、目标真实边界与无工具残留支撑。目标必须由 D／柜体承托再释放；工具下的目标不能悬空下落到 D。反例：工具和目标一起留在托盘、柜口浅放、外部工具继续承重。",
+      "checks_and_counterexamples_en": "Hard terminal capability bottleneck. Check support throughout insertion, true target bounds and tool withdrawal. Cabinet support must precede release; do not drop from a carrier. Leaving the target supported by the carrier, shallow placement or continued external support must fail.",
+      "agent_visible": false,
+      "role": "manipulation_task",
+      "rule_variants": [
+        "free_route",
+        "required_manipulator_transfer_when_two_participants_available"
+      ],
+      "parent_family": "M1E",
+      "record_kind": "case_parent_group",
+      "counts_as_independent_family": false,
+      "selected": true,
+      "counts_as_independent_task": false,
+      "child_case_ids": [
+        "M1C-B05",
+        "M1C-B06"
+      ]
+    },
+    {
+      "id": "M1E-07",
+      "name_zh": "多种有效工具与完整路线比较",
+      "name_en": "Compare complete tool routes",
+      "decision_profiles": [
+        "Hard"
+      ],
+      "intended_configurations": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "track": "route_selection",
+      "feasibility": "unknown",
+      "reference_witnesses": [],
+      "tool_candidates": [
+        "stand",
+        "cart",
+        "hook",
+        "extended_gripper",
+        "distractors"
+      ],
+      "candidate_subtask_chain": [
+        "observe_model",
+        "prepare",
+        "retrieve_transfer",
+        "transport_insert",
+        "release_verify"
+      ],
+      "scenario_zh": "支架、推车、钩具、长夹取器和干扰件同时存在。比较“搬箱→支架→取块”与“工具移块→直接运块”等完整链；至少两条在同一身体同一场景有见证才标多有效路线。",
+      "scenario_en": "Stand, cart, hook, extended gripper and distractors. Compare crate–stand–pick and tool–target–direct transport chains.",
+      "checks_and_counterexamples_zh": "`route_selection`，Hard。选工具后必须检查低柜交付与工具撤出，不能只优化取物阶段。合规较慢的路线同样成功；动作数、时间与探测成本为次指标。反例：搬得下来却无法交接；长工具取到了但柜前无法换抓。",
+      "checks_and_counterexamples_en": "Hard `route_selection`. At least two routes must have witnesses for the same body and scene before claiming multiple valid routes. Include low-cabinet delivery and regrasping, not just retrieval. Slower valid routes still succeed; cost is secondary. Retrieval followed by an impossible transfer is incomplete.",
+      "agent_visible": false,
+      "role": "manipulation_task",
+      "rule_variants": [
+        "free_route",
+        "required_manipulator_transfer_when_two_participants_available"
+      ],
+      "parent_family": "M1E",
+      "record_kind": "case_parent_group",
+      "counts_as_independent_family": false,
+      "selected": false,
+      "counts_as_independent_task": false,
+      "applies_to_task_ids": [
+        "M1E-01",
+        "M1E-03",
+        "M1E-05",
+        "M1E-06"
+      ],
+      "child_case_ids": []
+    },
+    {
+      "id": "M1E-08",
+      "name_zh": "工具不适配后的恢复与换计划",
+      "name_en": "Recover from an unsuitable tool",
+      "decision_profiles": [
+        "Medium",
+        "Hard"
+      ],
+      "intended_configurations": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "track": "replanning",
+      "feasibility": "unknown",
+      "reference_witnesses": [],
+      "tool_candidates": [
+        "similar_looking_tools_with_observable_differences",
+        "viable_alternative"
+      ],
+      "candidate_subtask_chain": [
+        "observe_model",
+        "prepare",
+        "retrieve_transfer",
+        "transport_insert",
+        "release_verify"
+      ],
+      "scenario_zh": "两个外观相近、握柄／刚度／额定载荷不同的支撑或取物工具，加一个真实可行备选。先观察或安全试探→发现不适配→保持目标原支撑→退回稳定状态→换工具／交付者→完成。",
+      "scenario_en": "Similar-looking supports or retrieval tools with differing handles, stiffness or ratings, plus a real alternative: observe/probe → recognize mismatch → preserve target support → return to a stable state → change tool/robot → deliver.",
+      "checks_and_counterexamples_zh": "Medium／Hard 的重规划切片。差异在回合开始就确定且能感知；不强制 agent 先选错。记录关键证据后计划是否改变；直接选对也能得任务成功。反例：重复同一失败、把目标推坏后再声称初始无解。",
+      "checks_and_counterexamples_en": "Medium/Hard replanning slice. Differences are fixed initially and observable. No forced initial mistake: choosing correctly at once can succeed. Repeated failed actions or destroying a feasible route and then claiming initial infeasibility are counterexamples.",
+      "agent_visible": false,
+      "role": "paired_recovery_variant",
+      "rule_variants": [
+        "free_route",
+        "required_manipulator_transfer_when_two_participants_available"
+      ],
+      "parent_family": "M1E",
+      "record_kind": "case_parent_group",
+      "counts_as_independent_family": false,
+      "selected": false,
+      "counts_as_independent_task": false,
+      "applies_to_task_ids": [
+        "M1E-01",
+        "M1E-03",
+        "M1E-05",
+        "M1E-06"
+      ],
+      "child_case_ids": [
+        "M1C-B04"
+      ]
+    }
+  ],
+  "infeasibility_controls": [
+    {
+      "id": "M1E-I01",
+      "name_zh": "取物高度／深度超出全部合法路径",
+      "name_en": "Reach bound across every legal route",
+      "paired_tasks": [
+        "M1E-05"
+      ],
+      "track": "feasibility_decision",
+      "feasibility": "unknown",
+      "certificate": null,
+      "exit_witnesses": [],
+      "feasible_pair_witnesses": [],
+      "certificate_scope_zh": "箱固定；所有身体姿态和合法工具组合的保守接触范围都不足以取得目标；排除移箱、攀爬、从另一侧接近、倾倒接取等路线。可从几何与公开限位取得判断证据。",
+      "certificate_scope_en": "Fixed crate; conservative reach bounds for all body poses and legal tool combinations fall short. Exclude moving the crate, climbing, other approaches and tipping/catching. Geometry and public limits provide observable evidence.",
+      "minimal_feasible_change_zh": "仅换成足够长且可操控的工具，或降低目标位置；建立完整交付见证。",
+      "minimal_feasible_change_en": "Replace one tool with a sufficiently long controllable tool, or lower the target; establish a full delivery witness.",
+      "expected_action_if_certified": "observe_and_move_all_robots_empty_handed_to_Q",
+      "requires_failed_attempt": false,
+      "provisional_decision_difficulty": "Medium",
+      "difficulty_validated": false,
+      "selected": true,
+      "registration_status": "selected_control",
+      "child_case_ids": [
+        "M1C-I01"
+      ],
+      "counts_as_independent_case": false
+    },
+    {
+      "id": "M1E-I02",
+      "name_zh": "无法建立安全交接支撑",
+      "name_en": "No safe transfer support",
+      "paired_tasks": [
+        "M1E-03",
+        "M1E-04"
+      ],
+      "track": "feasibility_decision",
+      "feasibility": "unknown",
+      "certificate": null,
+      "exit_witnesses": [],
+      "feasible_pair_witnesses": [],
+      "certificate_scope_zh": "当前身体不能持箱交接，也不能直接取块；所有可布置支撑／推车在可达性、承载或稳定性上至少失败一项，且地面放置、现有家具、工具组合、换交付者均不能绕过。",
+      "certificate_scope_en": "Neither held-crate transfer nor direct picking works; every support/cart violates a necessary reach, capacity or stability condition. Exclude floor placement, existing furniture, tool combinations and alternative delivery robots.",
+      "minimal_feasible_change_zh": "仅替换一个可观察承载能力／几何合格的支撑件。",
+      "minimal_feasible_change_en": "Replace one support with an observably sufficient capacity/geometry.",
+      "expected_action_if_certified": "observe_and_move_all_robots_empty_handed_to_Q",
+      "requires_failed_attempt": false,
+      "provisional_decision_difficulty": null,
+      "difficulty_validated": false,
+      "selected": false,
+      "registration_status": "deferred_control",
+      "child_case_ids": [],
+      "counts_as_independent_case": false
+    },
+    {
+      "id": "M1E-I03",
+      "name_zh": "低柜入口存在不可绕开的几何瓶颈",
+      "name_en": "Unavoidable cabinet aperture bottleneck",
+      "paired_tasks": [
+        "M1E-06"
+      ],
+      "track": "feasibility_decision",
+      "feasibility": "unknown",
+      "certificate": null,
+      "exit_witnesses": [],
+      "feasible_pair_witnesses": [],
+      "certificate_scope_zh": "固定封闭柜体唯一入口在所有允许姿态下都无法让完整刚性目标通过；排除拆柜、变形目标与其他入口。不能只因某末端太宽就宣称无解。",
+      "certificate_scope_en": "The fixed enclosed cabinet has one opening that cannot pass the complete rigid target in any allowed orientation. Exclude disassembly, target deformation and other openings. Hand width alone is not a certificate.",
+      "minimal_feasible_change_zh": "仅增加入口的瓶颈尺寸，保留取物端与工具布局。",
+      "minimal_feasible_change_en": "Enlarge only the limiting aperture dimension; preserve retrieval setup and tool layout.",
+      "expected_action_if_certified": "observe_and_move_all_robots_empty_handed_to_Q",
+      "requires_failed_attempt": false,
+      "provisional_decision_difficulty": "Easy",
+      "difficulty_validated": false,
+      "selected": true,
+      "registration_status": "selected_control",
+      "child_case_ids": [
+        "M1C-I02"
+      ],
+      "counts_as_independent_case": false
+    },
+    {
+      "id": "M1E-I04",
+      "name_zh": "工具与身体不匹配，所有转移链中断",
+      "name_en": "No body-compatible transfer chain",
+      "paired_tasks": [
+        "M1E-02",
+        "M1E-05",
+        "M1E-08"
+      ],
+      "track": "feasibility_decision",
+      "feasibility": "unknown",
+      "certificate": null,
+      "exit_witnesses": [],
+      "feasible_pair_witnesses": [],
+      "certificate_scope_zh": "所有候选工具均无法由本配置建立有效抓持／作用力，且直接抓、推、托、双机协同、环境重抓和组合工具不能完成必要转移；按完整路线图检查每个分支。",
+      "certificate_scope_en": "No candidate tool allows sufficient grasp/control by this body; exclude direct grasping, pushing, scooping, two-robot cooperation, environmental regrasping and combinations across every route branch.",
+      "minimal_feasible_change_zh": "同一身体只换末端，或只换一个工具握柄；其余保持不变。",
+      "minimal_feasible_change_en": "Change only the hand or one tool handle, keeping other conditions fixed; obtain a full witness.",
+      "expected_action_if_certified": "observe_and_move_all_robots_empty_handed_to_Q",
+      "requires_failed_attempt": false,
+      "provisional_decision_difficulty": null,
+      "difficulty_validated": false,
+      "selected": false,
+      "registration_status": "deferred_control",
+      "child_case_ids": [],
+      "counts_as_independent_case": false
+    }
+  ],
+  "exit_contract": {
+    "status": "draft_thresholds_require_calibration",
+    "region": "Q",
+    "participating_robots": "all, including an idle partner",
+    "ground_route_required_from_spawn": true,
+    "normal_work_or_spawn_overlap_allowed": false,
+    "all_envelopes_inside_simultaneously": true,
+    "upright_legal_ground_support": true,
+    "no_inter_robot_collision": true,
+    "empty_handed_and_no_indirect_held_tool_control": true,
+    "previously_moved_objects": "independently stable in allowed positions; safely release before Q entry",
+    "linear_speed_max_m_s": 0.03,
+    "angular_speed_max_rad_s": 0.05,
+    "dwell_seconds": 3.0,
+    "hard_violation_allowed": false,
+    "language_only_sufficient": false,
+    "failed_attempt_required": false,
+    "intent": "physical entry initiates retreat; optional declare_infeasible only logs intent",
+    "state_sequence": [
+      "active",
+      "retreating",
+      "abstained"
+    ],
+    "other_terminal_states": [
+      "delivered",
+      "timed_out",
+      "invalid"
+    ],
+    "single_terminal_commit": true,
+    "terminal_precedence": "invalid first; otherwise valid task delivery satisfying the selected public rule variant before abstention if both complete in the same sample; timeout only if no other terminal completes",
+    "timeout_counts_as_abstention": false
+  },
+  "subtasks": [
+    {
+      "id": "observe_model",
+      "entry": "stable initial scene",
+      "exit": "observable target identity, body capability and route evidence",
+      "low_level_actions": [
+        "view_change",
+        "read_visible_rating",
+        "permitted_capability_query",
+        "safe_probe"
+      ],
+      "scoring_stages": [],
+      "applicability_interval": null,
+      "evidence": [],
+      "diagnostic_start": "trusted reference checkpoint or valid generated and settled state; not an evaluation start",
+      "failure_policy": "preserve independent support, observe and replan; no assumed automatic recovery"
+    },
+    {
+      "id": "prepare",
+      "entry": "candidate route, original target support maintained",
+      "exit": "stable usable support or tool",
+      "low_level_actions": [
+        "grasp",
+        "push",
+        "place",
+        "brake",
+        "withdraw_to_check_independence"
+      ],
+      "scoring_stages": [],
+      "applicability_interval": null,
+      "evidence": [],
+      "diagnostic_start": "trusted reference checkpoint or valid generated and settled state; not an evaluation start",
+      "failure_policy": "preserve independent support, observe and replan; no assumed automatic recovery"
+    },
+    {
+      "id": "retrieve_transfer",
+      "entry": "shelf or crate support",
+      "exit": "off-shelf target with maintained control or support",
+      "low_level_actions": [
+        "crate_lowering_or_target_repositioning",
+        "grasp",
+        "support_transfer"
+      ],
+      "scoring_stages": [
+        "off_shelf",
+        "target_controlled"
+      ],
+      "applicability_interval": null,
+      "evidence": [],
+      "diagnostic_start": "trusted reference checkpoint or valid generated and settled state; not an evaluation start",
+      "failure_policy": "preserve independent support, observe and replan; no assumed automatic recovery"
+    },
+    {
+      "id": "transport_insert",
+      "entry": "stable target control",
+      "exit": "target in D with cabinet support",
+      "low_level_actions": [
+        "loaded_motion_or_supported_sliding",
+        "insert",
+        "transfer_load"
+      ],
+      "scoring_stages": [
+        "in_cabinet"
+      ],
+      "applicability_interval": null,
+      "evidence": [],
+      "diagnostic_start": "trusted reference checkpoint or valid generated and settled state; not an evaluation start",
+      "failure_policy": "preserve independent support, observe and replan; no assumed automatic recovery"
+    },
+    {
+      "id": "release_verify",
+      "entry": "cabinet already supports target",
+      "exit": "target released and stable through termination",
+      "low_level_actions": [
+        "release",
+        "withdraw_robots_and_held_tools",
+        "dwell"
+      ],
+      "scoring_stages": [
+        "delivered"
+      ],
+      "applicability_interval": null,
+      "evidence": [],
+      "diagnostic_start": "trusted reference checkpoint or valid generated and settled state; not an evaluation start",
+      "failure_policy": "preserve independent support, observe and replan; no assumed automatic recovery"
+    },
+    {
+      "id": "exit",
+      "entry": "initial observation or stable working state",
+      "exit": "all participants empty-handed and stationary in Q",
+      "low_level_actions": [
+        "safely_place_moved_objects",
+        "retract",
+        "walk_or_drive_to_Q",
+        "dwell"
+      ],
+      "scoring_stages": [],
+      "applicability_interval": null,
+      "evidence": [],
+      "diagnostic_start": "trusted reference checkpoint or valid generated and settled state; not an evaluation start",
+      "failure_policy": "preserve independent support, observe and replan; no assumed automatic recovery"
+    }
+  ],
+  "transition_state": [
+    "actual_pose",
+    "velocity",
+    "grasp",
+    "contact_topology_and_forces",
+    "support_geometry",
+    "committed_stage",
+    "remaining_task_time",
+    "estimation_uncertainty"
+  ],
+  "scoring": {
+    "version": "m1-extension-scoring/proposal-0.2",
+    "implemented": false,
+    "primary": "valid terminal outcome",
+    "progress_is_diagnostic": true,
+    "combine_progress_and_abstention_reward": false,
+    "credit_skipped_stages": false,
+    "original_scorer_changed": false,
+    "stages": [
+      {
+        "id": "container_handled",
+        "weight": 0.0,
+        "mode": "diagnostic",
+        "predicate": "crate manipulation route only",
+        "negative_cases": [
+          "in free_route, direct picking must not lose task success; in required variant transfer and designated final delivery still apply",
+          "crate moved but target not delivered"
+        ]
+      },
+      {
+        "id": "off_shelf",
+        "weight": 0.2,
+        "mode": "peak",
+        "predicate": "robot-independent target departure from shelf, under compliant control/support",
+        "negative_cases": [
+          "only crate moved",
+          "target falling"
+        ]
+      },
+      {
+        "id": "target_controlled",
+        "replaces": "mobile_grasp",
+        "weight": 0.2,
+        "mode": "peak",
+        "predicate": "genuine grasp or compliant maintained support/control after departure from initial storage",
+        "negative_cases": [
+          "initial passive crate support",
+          "geometric proximity without contact",
+          "unstable transient contact"
+        ]
+      },
+      {
+        "id": "in_cabinet",
+        "weight": 0.2,
+        "mode": "peak",
+        "predicate": "true target-bounds progress toward tray D",
+        "negative_cases": [
+          "tool tip only inside",
+          "wrong target",
+          "target center inside but bounds outside"
+        ]
+      },
+      {
+        "id": "delivered",
+        "weight": 0.4,
+        "mode": "live",
+        "predicate": "full target in D; cabinet support before robot/held-tool release; no extra support; stable through termination",
+        "dwell_seconds": 2.0,
+        "negative_cases": [
+          "throw_or_drop",
+          "target_left_on_carrier",
+          "continued_external_support",
+          "single_frame_success"
+        ]
+      }
+    ],
+    "uncalibrated_thresholds": {
+      "contact_force": null,
+      "cabinet_support_force": null,
+      "target_linear_speed": null,
+      "target_angular_speed": null,
+      "control_dwell": null
+    },
+    "decision_labels": [
+      "witnessed_feasible",
+      "certified_infeasible",
+      "unknown"
+    ],
+    "decision_table": {
+      "witnessed_feasible": {
+        "delivered": "task_success=1",
+        "abstained": "task_success=0; false_abstention=true"
+      },
+      "certified_infeasible": {
+        "delivered": "preserve valid success; flag certificate contradiction; suspend affected label statistics pending review",
+        "abstained": "task_success=0; correct_abstention=true"
+      },
+      "unknown": {
+        "delivered": "full verification may create a matching witness",
+        "abstained": "task_success=0; abstention_correctness=null"
+      }
+    },
+    "safe_exit_implies_correct_abstention": false,
+    "metrics": [
+      "delivery_rate_on_witnessed_feasible",
+      "correct_abstention_rate_on_certified_infeasible",
+      "false_abstention_rate_on_witnessed_feasible",
+      "exit_execution_success",
+      "violation_rate",
+      "unknown_count",
+      "decision_latency",
+      "probe_cost"
+    ],
+    "balanced_decision_success": "0.5 * (feasible delivery rate + certified infeasible correct abstention rate); null if either class has zero denominator",
+    "physical_delivery_separate_from_rule_compliance": true,
+    "task_success_gate": "valid physical delivery AND constraints of the publicly selected rule variant; required transfer cannot be replaced with stage points",
+    "decision_label_scope": "witnessed feasibility or certified infeasibility under the exact public rule variant; physical vs task-constraint causes recorded separately"
+  },
+  "monitors": {
+    "hard_limits": null,
+    "status": "freeze per-body torque, joint, load, collision, object-integrity and stability limits before execution",
+    "integrity": "trusted logs and verifier; agent cannot alter world, labels or scorer"
+  },
+  "evaluation": {
+    "representative_execution_repeats": 3,
+    "grading_repeats_per_episode": 3,
+    "sample_counts": null,
+    "reproduction_tolerances": null,
+    "reviewer": null,
+    "independent_reproducer": null
+  },
+  "feasibility": {
+    "screening_states": [
+      "witnessed_full",
+      "screen_pass",
+      "unknown",
+      "rejected"
+    ],
+    "initial_new_state": "unknown",
+    "new_draws": 0,
+    "certified_infeasible_requires": "instance-wide necessary-condition counterexample covering all legal alternatives with observable evidence; route rejection is insufficient",
+    "failed_search_or_budget_proves_infeasible": false,
+    "agent_created_infeasibility_counts_as_correct_abstention": false,
+    "full_solution_per_random_instance_required": false,
+    "minimum_continuous_generated_success_per_declared_cell_and_layer": 1,
+    "infeasible_controls_require": [
+      "certificate",
+      "feasible_paired_full_witness",
+      "physical_all_robot_exit_witness"
+    ],
+    "required_identity": [
+      "scene",
+      "assets",
+      "body_and_hand",
+      "controller",
+      "physics",
+      "public_rules",
+      "scorer",
+      "public_rule_variant_and_designated_receiver",
+      "planned_retrieval_mode",
+      "embodiment_profile",
+      "task_requirement_YN"
+    ],
+    "required_refinement": [
+      "HL_LL",
+      "LL_TRAJ",
+      "HL_TRAJ"
+    ],
+    "budgets": {
+      "wall_seconds": null,
+      "candidate_count": null,
+      "short_probe_count": null,
+      "short_probe_steps": null
+    },
+    "run_solver_without_frozen_budget": false,
+    "checkpoint_diagnostics_are_full_witnesses": false,
+    "retain_old_labels_and_certificates": true,
+    "infeasibility_cause_classes": [
+      "physical_infeasibility",
+      "task_constraint_infeasible",
+      "unknown"
+    ],
+    "cross_variant_evidence_transfer": "not automatic; free-route success does not witness required-transfer feasibility; failure of constrained route does not prove physical impossibility"
+  },
+  "attack_cases": {
+    "privileged_access": [
+      "read_truth",
+      "read_certificate"
+    ],
+    "world_mutation": [
+      "teleport_to_Q",
+      "edit_target_state"
+    ],
+    "physics_exploit": [
+      "tunneling",
+      "hidden_constraint",
+      "energy_injection"
+    ],
+    "predicate_exploit": [
+      "wrong_target",
+      "single_frame",
+      "throw",
+      "fall_into_Q",
+      "one_robot_only_in_Q",
+      "partner_still_holding_crate",
+      "retained_carrier_support"
+    ],
+    "reward_protocol": [
+      "repeat_exit",
+      "stage_reward_plus_abstention",
+      "timeout_as_exit"
+    ],
+    "memorization": [
+      "seed",
+      "color",
+      "Q_location"
+    ],
+    "route_assumptions": [
+      "legal_direct_pick_must_succeed_in_free_route",
+      "valid_single_robot_delivery_in_free_route",
+      "required_transfer_bypassed_by_single_robot_delivery",
+      "token_receiver_touch",
+      "wrong_final_deliverer",
+      "combination_makes_distractor_usable",
+      "destroy_route_then_exit",
+      "always_exit_on_feasible"
+    ]
+  },
+  "attack_tests_run": 0,
+  "human_review": [
+    "target_identity_and_full_D_containment",
+    "support_before_release",
+    "robot_and_tool_contacts",
+    "public_limits",
+    "all_robot_Q_trajectory_and_dwell",
+    "certificate_alternative_route_coverage",
+    "feasible_pair_full_witness",
+    "source_asset_log_identity",
+    "public_rule_variant_disclosed_before_episode",
+    "required_receiver_transfer_and_final_delivery_when_applicable",
+    "physical_vs_constraint_infeasibility_scope"
+  ],
+  "difficulty_hypothesis": "tool chains, contact transitions, capability discovery and replanning require repeated coding/probing; four-hour target unmeasured",
+  "implementation_order": [
+    "M1E-01",
+    "M1E-03",
+    "M1E-05",
+    "M1E-06",
+    "M1E-I01",
+    "M1E-I03",
+    "dexterous_hand_coverage",
+    "wheeled_coverage"
+  ],
+  "release_blockers": [
+    "asset_controller_sensor_manifests",
+    "physical_scene_and_tools",
+    "calibrated_limits_and_numeric_ranges",
+    "frozen_budgets_and_cohort",
+    "route_independent_scorer",
+    "physical_Q_exit_detector",
+    "representative_full_witnesses_and_refinement",
+    "infeasibility_certificates_and_pairs",
+    "scorer_negative_cases",
+    "agent_material_isolation",
+    "human_review_and_independent_reproduction"
+  ],
+  "task_organization": {
+    "status": "proposed_development_selection_not_validated_readiness",
+    "first_batch": {
+      "embodiments": [
+        "three_finger"
+      ],
+      "candidate_cells": [
+        "M1E-direct-three_finger-N",
+        "M1E-direct-three_finger-Y",
+        "M1E-help-three_finger-N",
+        "M1E-help-three_finger-Y"
+      ],
+      "scene_recipe_candidates": [
+        "M1E-01",
+        "M1E-03",
+        "M1E-05",
+        "M1E-06"
+      ],
+      "infeasibility_controls": [
+        "M1E-I01",
+        "M1E-I03"
+      ],
+      "prerequisite": "Establish full witnesses per declared task/body/rule instance; coverage cells are not required Cartesian products. Controls need certificates and feasible paired witnesses.",
+      "operation_task_ids": [
+        "M1E-01",
+        "M1E-03",
+        "M1E-05",
+        "M1E-06"
+      ]
+    },
+    "deferred_controls": [
+      "M1E-I02",
+      "M1E-I04"
+    ],
+    "later_embodiments": [
+      "dexterous_hand",
+      "wheeled"
+    ],
+    "deferred_embodiments": [
+      "D"
+    ],
+    "difficulty_status": "separate per-instance design hypothesis; no agent measurements",
+    "axes": [
+      "retrieval_mode",
+      "embodiment",
+      "task_requirement"
+    ],
+    "cross_embodiment": "same task and matched scene across bodies; A-to-B is end-effector change, A-to-C is body change; not synonymous with M1E-02",
+    "same_body_capability_change": "fix robot, hand and scene; vary only predefined joint limits or control capability; public safety limits remain visible",
+    "environment_change": "fix body and capability; vary transfer position; report separately",
+    "body_change_alone_increases_difficulty": false,
+    "delivery_extension_recipe": "M1E-06",
+    "paired_control_recipes": [
+      "M1E-02",
+      "M1E-08"
+    ],
+    "multi_route_recipe": "M1E-07",
+    "deferred_recipes": [
+      "M1E-04"
+    ],
+    "selected_operation_ids": [
+      "M1E-01",
+      "M1E-03",
+      "M1E-05",
+      "M1E-06"
+    ],
+    "selected_control_ids": [
+      "M1E-I01",
+      "M1E-I03"
+    ],
+    "embedded_variant_ids": [],
+    "coverage_matrix_role": "Body and N/Y execution configurations; no Cartesian multiplication into cases",
+    "promoted_variant_parent_ids": [
+      "M1E-08"
+    ]
+  },
+  "implementation_order_note": "Independent case registration is separate from implementation priority. Start with A baseline, support/tool/delivery and controls; then capability/multiroute/recovery profiles and other bodies. No new simulation claimed.",
+  "rule_variants": {
+    "default": "free_route",
+    "selection": "trusted configuration fixed and disclosed before the episode; never switched after failure",
+    "free_route": {
+      "instruction": {
+        "zh": "将高处货箱中带有 {可见标识} 的黄色方块完整放入低柜内标记为 D 的托盘。托盘承托目标后再撤去机器人或所持物体的支撑，并使目标释放后稳定 2 秒。遵守公开的碰撞、载荷、关节和物体完整性限制。如果判断当前身体和现场物品无法完成任务，可以不先尝试抓取，让所有参与机器人空手移动到 Q 区并停稳 3 秒，结束本回合。",
+        "en": "Place the yellow block bearing {visible identifier} from the elevated crate fully inside tray D in the low cabinet. Transfer its support to the tray before removing robot or held-object support, then leave it released and stable for 2 seconds. Follow the public collision, load, joint and object-integrity limits. If you judge that your current bodies and the available objects cannot complete the task, you may proceed without attempting a grasp: move all participating robots empty-handed to Q and remain stationary for 3 seconds to end the episode."
+      },
+      "direct_hand_retrieval_allowed": true,
+      "single_robot_delivery_allowed": true,
+      "task_success": "valid physical delivery"
+    },
+    "required_manipulator_transfer": {
+      "instruction": {
+        "zh": "将高处货箱中带有 {可见标识} 的黄色方块完整放入低柜内标记为 D 的托盘。托盘承托目标后再撤去机器人或所持物体的支撑，并使目标释放后稳定 2 秒。遵守公开的碰撞、载荷、关节和物体完整性限制。本回合必须由 {交付机械臂标识} 接手目标，并由该机械臂完成低柜内的放置和释放。目标必须从另一参与机器人的控制或承托状态，直接交接或经独立支撑面中转，到该机械臂的独立控制状态；另一机器人随后不得继续支撑或接触目标。即使其他机器人可以直接取出目标并自行交付，也必须完成上述交接。取物时是否搬箱、是否使用辅助工具以及交接位置由你决定。如果判断在上述公开要求下当前身体和现场物品无法完成任务，可以不先尝试抓取，让所有参与机器人空手移动到 Q 区并停稳 3 秒，结束本回合。",
+        "en": "Place the yellow block bearing {visible identifier} from the elevated crate fully inside tray D in the low cabinet. Transfer its support to the tray before removing robot or held-object support, then leave it released and stable for 2 seconds. Follow the public collision, load, joint and object-integrity limits. In this episode, {delivery manipulator identifier} must receive the target and perform its final placement and release inside the low cabinet. Transfer the target from another participating robot's control or support to the designated manipulator's independent control, either directly or through an independent support surface. The other robot must then stop supporting or contacting the target. This transfer is required even if another robot could retrieve and deliver the target alone. You may choose whether retrieval uses crate handling or auxiliary tools and where transfer occurs. If you judge that your current bodies and the available objects cannot complete the task under these public requirements, you may proceed without attempting a grasp: move all participating robots empty-handed to Q and remain stationary for 3 seconds to end the episode."
+      },
+      "direct_hand_retrieval_allowed": true,
+      "single_robot_delivery_allowed": false,
+      "designated_receiver": {
+        "A": "X5",
+        "B": "X5",
+        "C": null
+      },
+      "receiver_binding_required_before_episode": true,
+      "applicability": "at least two controllable participants; receiver and donor identified in public instructions; D has no required-transfer variant until a second participant is defined",
+      "physical_necessity_claimed": false,
+      "predicate_sequence": [
+        "donor_controls_or_supports_target",
+        "direct_or_surface_mediated_transfer",
+        "designated_receiver_independently_controls_target",
+        "donor_has_no_target_contact_or_support",
+        "designated_receiver_performs_final_cabinet_placement_and_release"
+      ],
+      "receiver_control_dwell_seconds": null,
+      "task_success": "valid physical delivery AND required transfer sequence AND designated final delivery",
+      "unmet_constraint_reason": "required_transfer_unmet",
+      "unmet_constraint_is_safety_violation": false,
+      "negative_cases": [
+        "receiver_only_touches_target",
+        "donor_continues_target_support",
+        "wrong_robot_delivers",
+        "receiver_picks_directly_from_initial_crate_without_prior_donor_control_or_support",
+        "crate_manipulation_without_target_support_chain_evidence"
+      ]
+    },
+    "separate_reporting": true,
+    "feasibility_bound_to_rule_variant": true,
+    "constraint_infeasible_label": "task_constraint_infeasible; record separately from physical infeasibility",
+    "required_participation_automatically_increases_difficulty": false,
+    "implementation_status": "design_only"
+  },
+  "family_design": {
+    "family_id": "M1E",
+    "name_zh": "高处取物与低柜交付",
+    "name_en": "Elevated retrieval and low-cabinet delivery",
+    "family_count": 1,
+    "primary_axes": {
+      "retrieval_mode": [
+        "direct",
+        "help"
+      ],
+      "embodiment": [
+        "dexterous_hand",
+        "three_finger",
+        "wheeled"
+      ],
+      "task_requirement": [
+        "N",
+        "Y"
+      ]
+    },
+    "candidate_cell_count": 12,
+    "validated_cell_count": 0,
+    "retrieval_mode_scope": "elevated retrieval only; mandatory post-retrieval delivery transfer does not count as retrieval help",
+    "route_definitions": {
+      "direct": "current retrieval body grasps the target without task-specific tool/robot assistance or crate/support preparation",
+      "help": "retrieval uses another robot, a tool, crate lowering or support preparation; passive initial shelf support alone is not help"
+    },
+    "route_label_visibility": "author-only coverage target, never an undisclosed success constraint",
+    "observation_fields": [
+      "planned_retrieval_mode",
+      "observed_retrieval_mode",
+      "retrieval_helper_ids",
+      "retrieval_tool_ids",
+      "delivery_robot_id",
+      "public_requirement_satisfied"
+    ],
+    "observed_route_values": [
+      "direct",
+      "help",
+      "mixed",
+      "none",
+      "unknown"
+    ],
+    "alternative_legal_route_policy": "preserve valid success; review planned route label; physical necessity of help requires direct-route exclusion evidence",
+    "embodiment_aliases": {
+      "dexterous_hand": "B",
+      "three_finger": "A",
+      "wheeled": "C"
+    },
+    "embodiment_naming": "dexterous_hand means five-finger profile, not a claim that three-finger hands lack dexterity",
+    "task_requirement_mapping": {
+      "N": "free_route",
+      "Y": "required_manipulator_transfer"
+    },
+    "N_means_help_forbidden": false,
+    "YN_pairing": "same body, world, tools, helper availability and sensors; change only the public requirement",
+    "cross_embodiment_pairing": "retain world layout for matched-world comparison; body/geometry-adjusted cell construction reported separately",
+    "difficulty": "per-instance annotation, not a primary matrix axis; direct known execution may be Easy, discovery Medium, tool setup/composition Hard; unmeasured",
+    "infeasible_controls": "separate certificate-backed controls, not a third route in the matrix",
+    "legacy_ids": "M1E-01 through M1E-08 are scene recipes or controls within this single family, not eight task families",
+    "operation_task_count": 4,
+    "selected_control_count": 2,
+    "selected_operation_ids": [
+      "M1E-01",
+      "M1E-03",
+      "M1E-05",
+      "M1E-06"
+    ],
+    "selected_control_ids": [
+      "M1E-I01",
+      "M1E-I03"
+    ],
+    "coverage_cell_count": 12,
+    "coverage_matrix_role": "Body and N/Y execution configurations; no Cartesian multiplication into cases",
+    "unique_solution_required": false
+  },
+  "superseded_designs": [
+    {
+      "version": "0.3.0",
+      "matrix": "three bodies x three decision profiles",
+      "cells": [
+        {
+          "id": "A-Easy",
+          "embodiment": "A",
+          "decision_profile": "Easy",
+          "representative_task": "M1E-01",
+          "feasibility": "unknown",
+          "reference_witness": null
+        },
+        {
+          "id": "A-Medium",
+          "embodiment": "A",
+          "decision_profile": "Medium",
+          "representative_task": "M1E-02",
+          "feasibility": "unknown",
+          "reference_witness": null
+        },
+        {
+          "id": "A-Hard",
+          "embodiment": "A",
+          "decision_profile": "Hard",
+          "representative_task": "M1E-03",
+          "feasibility": "unknown",
+          "reference_witness": null
+        },
+        {
+          "id": "B-Easy",
+          "embodiment": "B",
+          "decision_profile": "Easy",
+          "representative_task": "M1E-01",
+          "feasibility": "unknown",
+          "reference_witness": null
+        },
+        {
+          "id": "B-Medium",
+          "embodiment": "B",
+          "decision_profile": "Medium",
+          "representative_task": "M1E-02",
+          "feasibility": "unknown",
+          "reference_witness": null
+        },
+        {
+          "id": "B-Hard",
+          "embodiment": "B",
+          "decision_profile": "Hard",
+          "representative_task": "M1E-05",
+          "feasibility": "unknown",
+          "reference_witness": null
+        },
+        {
+          "id": "C-Easy",
+          "embodiment": "C",
+          "decision_profile": "Easy",
+          "representative_task": "M1E-01",
+          "feasibility": "unknown",
+          "reference_witness": null
+        },
+        {
+          "id": "C-Medium",
+          "embodiment": "C",
+          "decision_profile": "Medium",
+          "representative_task": "M1E-02",
+          "feasibility": "unknown",
+          "reference_witness": null
+        },
+        {
+          "id": "C-Hard",
+          "embodiment": "C",
+          "decision_profile": "Hard",
+          "representative_task": "M1E-03",
+          "feasibility": "unknown",
+          "reference_witness": null
+        }
+      ],
+      "status": "superseded_not_validated"
+    }
+  ],
+  "family_organization": "../task-families.json",
+  "current_task_registry": "../current-task-registry.json",
+  "load_constraint": {
+    "reported_limit_kg": 2.0,
+    "source": "user instruction in current conversation",
+    "interpretation": "conservative total external carried-load screening ceiling for new designs",
+    "hardware_scope": "unresolved; verify platform, per-arm/combined convention, lever arm and dynamics",
+    "verified_capability": false,
+    "sum_arm_limits": false,
+    "x5_compatibility": "unknown",
+    "support_capacity_includes_full_robot_mass": true
+  },
+  "family_boundary": "Object support/control transfer and supported deep-cabinet delivery. M1E-05 retains a meaningful low-cabinet delivery bottleneck; generic tool retrieval to a ground tray belongs in H1.",
+  "selected_load_screen": "For crate-carrying instances, screen crate + contents + simultaneously carried tools against the provisional 2 kg total external load ceiling; actual pose/moment/dynamic limits require verification.",
+  "case_catalog": "case-catalog.json",
+  "case_count": 9,
+  "operation_case_count": 7,
+  "control_case_count": 2,
+  "case_counting": "Observable capability bottleneck and tool/partner operation that can change complete-task feasibility; not a Cartesian product of robot names and rules",
+  "original_case_count": 1,
+  "extension_case_count": 8,
+  "original_case_id": "M1C-ORIG"
+}

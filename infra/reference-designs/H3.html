@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>H3 · 双 G1 自闭门搬运 · 参考设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main.wrap{padding-block:40px;overflow-wrap:anywhere}h2{margin-top:44px}h3{margin-top:30px}pre{overflow:auto;background:var(--panel);padding:18px;border-radius:10px}th,td{min-width:100px}h1{font-size:clamp(28px,5vw,44px)}</style><meta content="H3 · 双 G1 自闭门搬运 · 参考设计 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><main class="wrap"><nav><a href="/robo-si-results/infra/reference-designs-zh.html">14 项参考解设计</a> · <a href="/robo-si-results/infra/reference-designs/H3.md">Markdown 源文档</a> · <a href="/robo-si-results/infra/task-h3-zh.html">任务页面</a></nav><h1 id="h3-g1">H3 · 双 G1 自闭门搬运：参考解设计</h1>
+<p>已有声明范围内的参考执行见证；本文补齐统一设计说明。本次新增物理运行：0。</p>
+<h2 id="_1">设计思路</h2>
+<p>采用 heavy_prop 分支：一台机器人控制门，另一台布置重支撑物，再完成货物运输。门、支撑物和机器人之间存在并行协作，动作表不能解释为两台机器人完全串行。</p>
+<h2 id="_2">选定参考与范围</h2>
+<p>见证：<strong>heavy-delivery-05</strong>。范围：多机器人；有重物／无重物；固定名义场景；180 秒；特权原生参考。</p>
+<p>双 G1 原生参考：有重物版 2/2（172.44、169.24 秒），无重物版 1/1（102.22 秒），均在 180 秒内完成交付与支撑路线独立复核；开发失败全部保留。</p>
+<p><a href="/robo-si-results/infra/h3-release/heavy-delivery-05-audit.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/H3.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p>
+<h2 id="_3">高层计划与关键状态</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>打开并控制门</td>
+<td>H3.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>建立通行支撑</td>
+<td>H3.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>取得货物</td>
+<td>H3.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>携物穿门</td>
+<td>H3.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>台面交付</td>
+<td>H3.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>两台 G1 在 A 房间；选择发布变体</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>门打开，B 的路径可用</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>选定分支的撑门条件持续成立</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>0.4 kg 包裹受控离开台面</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>搬运者及包裹完全进入 B 房间</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>目标台面支撑、机器人释放并满足原判定</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_4">低层动作、接触支撑与轨迹对应</h2>
+<p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h3 id="h3k01-a">H3.K01 · A 接近门板、开门并保持接触</h3>
+<p>入口：两台 G1 在 A 房间；选择发布变体。出口：门打开，B 的路径可用。</p>
+<p>局部检查：开门接触力矩与 A 站姿可行；不假设装饰把手可抓。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K01.A01</td>
+<td>A 调整站位并让手接近门把部位</td>
+<td>A 双足→地面</td>
+<td>手门净空与双足载荷</td>
+<td>e0000: episode [9.94, 10.92] s; e0001: episode [10.94, 11.120000000000001] s; e0002: episode [11.14, 13.120000000000001] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H3.K01.A02</td>
+<td>A 建立手门接触并拉开门</td>
+<td>A→门；足→地面</td>
+<td>门角、角速度及接触力</td>
+<td>e0004: episode [13.780000000000001, 16.76] s; e0005: episode [16.78, 18.76] s; e0006: episode [18.78, 20.26] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H3.K01.A03</td>
+<td>A 捕获稳定撑门姿态，B 同时预定位</td>
+<td>A→门持续支撑</td>
+<td>门保持角和 B 路径</td>
+<td>e0009: episode [33.1, 33.78] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3k02-heavy_propb-12-kg-no_propa">H3.K02 · heavy_prop：B 推 12 kg 箱撑门；no_prop：A 持续撑门</h3>
+<p>入口：门受 A 控制，B 可到达其工作区。出口：选定分支的撑门条件持续成立。</p>
+<p>局部检查：heavy_prop 检查独立箱门接触与抗滑；no_prop 检查 A 接触可持续。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K02.A01</td>
+<td>B 绕行到重箱后方并接触箱体</td>
+<td>A→门；箱→地面</td>
+<td>B 站位、双拳接触</td>
+<td>e0012: local:prop_push; global_offset_unresolved [2.2, 5.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K02.A02</td>
+<td>B 推箱进入撑门位置并停稳</td>
+<td>A→门；B→箱→地面</td>
+<td>箱姿态、门箱相对位置</td>
+<td>e0013: local:prop_push; global_offset_unresolved [5.6, 20.0] s; e0014: local:prop_push; global_offset_unresolved [20.2, 21.8] s; e0017: local:prop_push; global_offset_unresolved [24.6, 26.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K02.A03</td>
+<td>将门载荷移到箱体，A 依序撤指撤臂</td>
+<td>箱→门；机器人卸载</td>
+<td>门箱受力、手分离</td>
+<td>e0019: episode [95.10000000000001, 95.26] s; e0020: episode [95.28, 96.06] s; e0021: episode [96.08, 96.46000000000001] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H3.K02.A04</td>
+<td>双机离开后观察箱独立撑门</td>
+<td>箱→门；双机无代撑</td>
+<td>持续开门角与无机器人接触</td>
+<td>e0026: episode [99.9, 100.88] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3k03-heavy_propa-no_propb">H3.K03 · heavy_prop：A 取件；no_prop：B 取件</h3>
+<p>入口：撑门条件成立且搬运者可接近包裹。出口：0.4 kg 包裹受控离开台面。</p>
+<p>局部检查：搬运者抓取姿态与另一机器人/工具净空。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K03.A01</td>
+<td>A 接近取件桌并下蹲</td>
+<td>箱继续撑门；件→桌</td>
+<td>站位、足支撑</td>
+<td>e0027: local:pickup; global_offset_unresolved [1.2, 6.0] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K03.A02</td>
+<td>双手从上方接近、下探并重平衡</td>
+<td>件→桌；手逐步接触</td>
+<td>避碰与双手相对位姿</td>
+<td>e0028: local:pickup; global_offset_unresolved [6.2, 6.6] s; e0029: local:pickup; global_offset_unresolved [6.8, 7.2] s; e0030: local:pickup; global_offset_unresolved [7.4, 9.2] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K03.A03</td>
+<td>夹紧后提起并站稳</td>
+<td>桌→双手；箱→门</td>
+<td>接触力、离桌高度与箱撑门状态</td>
+<td>e0031: local:pickup; global_offset_unresolved [9.4, 11.0] s; e0032: local:pickup; global_offset_unresolved [11.2, 14.2] s; e0033: local:pickup; global_offset_unresolved [14.4, 19.6] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3k04">H3.K04 · 搬运者短段通过，支撑者监视</h3>
+<p>入口：包裹受控且通行支撑有效。出口：搬运者及包裹完全进入 B 房间。</p>
+<p>局部检查：整个组合包络穿过门；门净空及撑门负载不中断。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K04.A01</td>
+<td>持件规划穿门净空</td>
+<td>双手持件；箱→门</td>
+<td>物体包络、门宽和门角</td>
+<td>e0034: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K04.A02</td>
+<td>沿通道搬运并修正身体朝向</td>
+<td>足→地面；双手持件</td>
+<td>人、件、门的碰撞间隙</td>
+<td>e0034: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K04.A03</td>
+<td>抵达交付桌前并减速</td>
+<td>双手持件</td>
+<td>目标桌可达性与姿态</td>
+<td>e0034: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3k05">H3.K05 · 降到目标台面、撤手并稳定</h3>
+<p>入口：包裹位于 B 房间且目标台面可达。出口：目标台面支撑、机器人释放并满足原判定。</p>
+<p>局部检查：真实支撑与最终静止；180 s 原任务预算不改变。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K05.A01</td>
+<td>双手将件调平到交付桌上方</td>
+<td>双手持件</td>
+<td>件与桌的水平对准</td>
+<td>e0035: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K05.A02</td>
+<td>下降至桌面承重后松手</td>
+<td>双手→桌面</td>
+<td>桌支撑力、手载荷下降</td>
+<td>e0035: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K05.A03</td>
+<td>撤手并观察独立支撑驻留</td>
+<td>件→目标桌</td>
+<td>无手接触、稳定驻留</td>
+<td>e0035: untimed_summary None s; e0036: episode [172.44, 172.44] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_5">尚需核对</h2>
+<p>仅 heavy_prop；抓取和推箱 trace 使用局部时钟，尚未建立到全程 trace 的唯一偏移。carry/place 摘要不能充当细动作边界。</p>
+<p>补开门、建立箱撑／另一机器人撑门、带物穿门的入口条件及连续支撑交接。 隔离双机器人代理接口、代表性重复核对、人工签审与第二人复现。</p>
+<h2 id="_6">复现与生成入口</h2>
+<ul>
+<li><a href="/robo-si-results/multi_robot/dual_g1_self_closing_door/README.md">multi_robot/dual_g1_self_closing_door/README.md</a></li>
+<li><a href="/robo-si-results/multi_robot/dual_g1_self_closing_door/instruction.md">multi_robot/dual_g1_self_closing_door/instruction.md</a></li>
+</ul>
+<p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/2cf4ebc452aeb859d9003104718c920dd99b0bc9/releases/H3/cooperative-20261024/h3-cooperative-reference-20261024.zip">完整参考包</a>。使用包内冻结配置、依赖说明与生成／回放入口；审阅包不替代完整包。</p>
+<p>历史源码说明只提供设计上下文；若与冻结见证冲突，以见证的配置、控制器身份和发布清单为准。设计动作表不等同于已绑定的通用控制器。</p>
+<h2 id="_7">验收与执行边界</h2>
+<p>本文件说明已有参考的设计与证据，不修改旧评分。任务级要求至少一个声明配置内的连续端到端生成见证；高层计划→低层动作、低层动作→轨迹、高层目标→实测终态分别核对。这里的“两两转换”是表示之间的对应，不是任意随机状态下技能可无条件拼接。</p>
+<p>随机实例保留四种结果：有完整成功证据、通过可行性筛查、未确定、检查不通过；筛查通过不写成已证明可解。只在需要执行时生成当前局部轨迹；通用滚动规划和全随机域鲁棒性另列，不是本参考文档的完成前提。</p>
+<p>若接触、支撑或守卫条件不满足，不推进下一动作；保留已有安全支撑并记录失败，仅在已知安全状态下重新观察与局部规划。不得凭事件名推断接触合格，不得将不同检查点的成功片段拼接成连续成功。</p>
+<h2 id="_8">来源与版本</h2>
+<p>来源内容哈希见 <a href="/robo-si-results/infra/reference-designs/catalog.json">catalog.json</a>，对应生成器为 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tools/build_reference_designs.py">build_reference_designs.py</a>。本次只整理设计与证据，不将待审事件关联计作验收通过。</p></main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

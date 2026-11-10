@@ -1,0 +1,39 @@
+{
+  "schema": "h1-p4-original-safety-adapter/1",
+  "status": "unknown",
+  "complete": false,
+  "safety_passed": false,
+  "formal_admission": false,
+  "thresholds_changed": false,
+  "errors": [
+    "FileNotFoundError:[Errno 2] No such file or directory: 'humanoid/g1_support_retrieval/extension/validation/attempt-8034905/execution/safety_meta.json'"
+  ],
+  "source_hashes": {
+    "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/sandbox/trusted/relay_safety.py": "2d65c3f8ee11a32e223efd67625247a38dddc7585b21d9a10f0d4bb4ecb59b16",
+    "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/sandbox/trusted/relay_safety_rules.py": "3edf54de88ef1350360077213e0248ba9ea8be03f6aa454aa4935d8bb4a55bfb",
+    "/fs/gamma-projects/vlm-robot/robo-si/infra/sandbox/monitors.py": "432680b21d784367a3742321dedcc1272b617021765b00eb8d5750442dadfb0c"
+  },
+  "adapter_source_sha256": "b1e055e4060304d1c87dd85ea8202f31f037ac27c9cd972ff01a769956d68929",
+  "partial_rule4_contact_identity_review": {
+    "events": [],
+    "metrics": {
+      "release": {
+        "time_s": 162.08,
+        "bottom_height_m": -0.0,
+        "linear_speed_mps": 0.0001,
+        "fall_within_settle_m": 0.0,
+        "came_to_rest": true,
+        "elevated_placement": false
+      }
+    },
+    "scope": "Contact-identity final release only; complete rules use canonical <1 N measured hand force."
+  },
+  "remaining_measurements": [
+    "root quaternion and exact foot-bottom geometry",
+    "all movable object poses and per-foot/per-hand/body object contacts",
+    "foot/hand/non-hand cabinet contact magnitudes",
+    "body-ground support magnitude",
+    "signed measured actual torque and joint positions for all 43 actuators throughout the control timeline",
+    "frozen robot/object/contact-link identities"
+  ]
+}

@@ -1,0 +1,605 @@
+{
+  "schema": "h3-extension-plan/1",
+  "updated": "2026-10-30",
+  "scope": "formal_acceptance_in_progress",
+  "formal_admission": false,
+  "goal": {
+    "zh": "将 0.4 kg 包裹穿过自闭门，放在 B 桌并稳定释放。",
+    "en": "Carry the 0.4 kg parcel through the self-closing door, place it on table B and release it stably."
+  },
+  "research_question": {
+    "zh": "面对相同目标和物理机制，agent 能否通过发现工具、理解自身与队友能力边界，自主选择并执行有效的协作方案？",
+    "en": "Given the same goal and physical mechanism, can an agent discover tools, infer its own and its partner’s capabilities, and choose and execute effective cooperation?"
+  },
+  "requirements": [
+    {
+      "id": "R01",
+      "title": {
+        "zh": "机制与难度分开",
+        "en": "Separate mechanism and difficulty"
+      },
+      "text": {
+        "zh": "heavy_prop 与 no_prop 是并列机制变体。L1/L2/L3 按物理约束、信息不确定性与决策需求定义。",
+        "en": "heavy_prop and no_prop are parallel mechanisms. Define L1/L2/L3 by physical constraints, information uncertainty and decision demands."
+      }
+    },
+    {
+      "id": "R02",
+      "title": {
+        "zh": "保持配对公平",
+        "en": "Keep comparisons matched"
+      },
+      "text": {
+        "zh": "修改包裹、把手或场景时，为所有对照机器人使用同一新版本；单纯换型号不证明 self-modeling。",
+        "en": "Apply parcel, handle or scene revisions to every paired robot. Merely replacing a robot model does not demonstrate self-modeling."
+      }
+    },
+    {
+      "id": "R03",
+      "title": {
+        "zh": "全过程物理验证",
+        "en": "Verify the full physical process"
+      },
+      "text": {
+        "zh": "同步记录门角度、角速度、支撑接触、包裹和机器人状态；检查组合包络从进入门区到完全离开的净空与支撑。最终接触力不能替代连续证据。",
+        "en": "Synchronize door angle/velocity, support contacts, parcel and robot states. Check clearance and support from combined-envelope entry until full exit; final contact force is insufficient."
+      }
+    },
+    {
+      "id": "R04",
+      "title": {
+        "zh": "能力预测可检验",
+        "en": "Make capability predictions testable"
+      },
+      "text": {
+        "zh": "动作前记录可达、推力或抓取预测，动作后对照实测；证据不足记未确定。比较固定分工、主动探测和关闭更新的对照。",
+        "en": "Record reach, force or grasp predictions before acting and compare with outcomes; insufficient evidence remains undetermined. Compare fixed roles, probing and no-update controls."
+      }
+    },
+    {
+      "id": "R05",
+      "title": {
+        "zh": "隐藏信息有边界",
+        "en": "Define information boundaries"
+      },
+      "text": {
+        "zh": "公开名义规格和合法控制接口；隐藏实际能力扰动、工具物理参数及故障真值。特权参考只用于可行性，不计为公开观测 agent 表现。",
+        "en": "Expose nominal specifications and legal controls; hide actual capability perturbations, tool physics and fault ground truth. Privileged references establish feasibility, not public-sensor agent performance."
+      }
+    },
+    {
+      "id": "R06",
+      "title": {
+        "zh": "预算先验证后冻结",
+        "en": "Validate before fixing budgets"
+      },
+      "text": {
+        "zh": "新组合先证明可行，再冻结预算；不直接沿用 180 秒。探测、通信、执行与恢复成本分别记录并纳入预算。",
+        "en": "Establish feasibility before freezing new budgets; do not automatically reuse 180 seconds. Record and budget probing, communication, execution and recovery costs."
+      }
+    },
+    {
+      "id": "R07",
+      "title": {
+        "zh": "证据分层管理",
+        "en": "Separate evidence levels"
+      },
+      "text": {
+        "zh": "保留完整成功见证／通过可行性筛查／未确定／检查不通过。资产加载、局部验证、任务成功和正式准入分别记录，不要求每个随机 seed 都有完整专家解。",
+        "en": "Retain complete witness / feasibility-screen passed / undetermined / check failed. Separate asset loading, local checks, task success and formal admission; a full expert solution is not required for every seed."
+      }
+    },
+    {
+      "id": "R08",
+      "title": {
+        "zh": "保留全部失败",
+        "en": "Retain all failures"
+      },
+      "text": {
+        "zh": "冻结参考成功数不是随机场景成功率。跨版本结果不得混算，新配置未验证时不得标为完成。",
+        "en": "Frozen reference counts are not randomized success rates. Do not pool versions or mark unvalidated configurations complete."
+      }
+    },
+    {
+      "id": "R09",
+      "title": {
+        "zh": "明确协作形式",
+        "en": "Specify the coordination model"
+      },
+      "text": {
+        "zh": "首轮采用集中式 agent 控制双机。若研究独立多 agent，另行冻结各自观测、通信权限、延迟和同步规则。",
+        "en": "Use centralized control of two robots initially. Independent-agent experiments additionally freeze each agent’s observations, communication permissions, latency and synchronization."
+      }
+    },
+    {
+      "id": "R10",
+      "title": {
+        "zh": "真实执行与合法故障",
+        "en": "Use physical execution and legitimate faults"
+      },
+      "text": {
+        "zh": "运行中禁止通过位置重设、隐藏吸附或修改物理参数制造成功；L3 仅允许可信侧执行预声明故障，保留原始记录。",
+        "en": "Do not manufacture success with pose resets, hidden attachments or physics edits. L3 permits only predeclared trusted-side faults with raw records."
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "P0-1",
+      "priority": "P0",
+      "depends_on": [],
+      "status": "in_progress",
+      "title": {
+        "zh": "冻结任务与实验合同",
+        "en": "Freeze the task and experiment contract"
+      },
+      "requirement": {
+        "zh": "明确机器人、夹爪、场景、包裹、观测权限和集中式／独立多 agent 控制方式；保留原 L1 基线。",
+        "en": "Specify robots, grippers, scene, parcel, observation permissions and centralized versus independent-agent control; retain the original L1 baseline."
+      },
+      "acceptance": {
+        "zh": "版本化规格、可见／隐藏参数清单及资产清单。",
+        "en": "Versioned specification, public/hidden parameter list and asset inventory."
+      },
+      "progress": {
+        "zh": "合同已有；准入未通过；逐次证据见实施看板。",
+        "en": "Contract recorded; admission pending; see the acceptance board for individual evidence."
+      },
+      "status_label": {
+        "zh": "合同已有；准入未通过",
+        "en": "Contract recorded; admission pending"
+      }
+    },
+    {
+      "id": "P0-2",
+      "priority": "P0",
+      "depends_on": [
+        "P0-1"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "接入 Stretch 4",
+        "en": "Integrate Stretch 4"
+      },
+      "requirement": {
+        "zh": "使用真实 Stretch 4 固定版本资产，不能以 Stretch 3 替代；验证纵移、横移、转向、停止、升降和伸缩。",
+        "en": "Use pinned, actual Stretch 4 assets, without substituting Stretch 3; verify translation, strafing, rotation, stopping, lift and extension."
+      },
+      "acceptance": {
+        "zh": "单体控制实测、驱动限值与原始轨迹。",
+        "en": "Measured single-robot controls, actuator limits and raw trajectories."
+      },
+      "progress": {
+        "zh": "导航与驱动已测；逐次证据见实施看板。",
+        "en": "Navigation and drives measured; see the acceptance board for individual evidence."
+      },
+      "status_label": {
+        "zh": "导航与驱动已测",
+        "en": "Navigation and drives measured"
+      }
+    },
+    {
+      "id": "P0-3",
+      "priority": "P0",
+      "depends_on": [
+        "P0-2"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "验证包裹抓取与释放",
+        "en": "Verify parcel grasp and release"
+      },
+      "requirement": {
+        "zh": "对 20 × 18 × 16 cm、0.4 kg 包裹实际完成抓取、运输和桌面释放；额定载荷不能替代抓取验证。",
+        "en": "Physically grasp, transport and release the 20 × 18 × 16 cm, 0.4 kg parcel; rated payload alone does not establish graspability."
+      },
+      "acceptance": {
+        "zh": "稳定操作见证；若改变包裹，对所有配对机器人使用同一新版本。",
+        "en": "Stable manipulation witness; any parcel revision is shared by every paired embodiment."
+      },
+      "progress": {
+        "zh": "G1 搬运已测；Stretch 抓取未通过；逐次证据见实施看板。",
+        "en": "G1 carry measured; Stretch grasp unproven; see the acceptance board for individual evidence."
+      },
+      "status_label": {
+        "zh": "G1 搬运已测；Stretch 抓取未通过",
+        "en": "G1 carry measured; Stretch grasp unproven"
+      }
+    },
+    {
+      "id": "P0-4",
+      "priority": "P0",
+      "depends_on": [
+        "P0-1",
+        "P0-2"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "实现异构机器人接口",
+        "en": "Implement embodiment adapters"
+      },
+      "requirement": {
+        "zh": "分别配置动作维度、驱动、抓持接触组、碰撞包络和稳定性判定；不能复用 G1 身高阈值判定轮式机器人跌倒。",
+        "en": "Configure action dimensions, drives, grasp contacts, collision envelopes and stability checks per embodiment; do not apply the G1 root-height fall threshold to a wheeled robot."
+      },
+      "acceptance": {
+        "zh": "G1 与 Stretch 在共享时钟下运行，所有动作经受限驱动执行。",
+        "en": "G1 and Stretch operate on a shared clock through bounded actuators."
+      },
+      "status_label": {
+        "zh": "共享异构接口已实现",
+        "en": "Shared heterogeneous interface implemented"
+      },
+      "progress": {
+        "zh": "共享异构接口已实现；逐次证据见实施看板。",
+        "en": "Shared heterogeneous interface implemented; see the acceptance board for individual evidence."
+      }
+    },
+    {
+      "id": "P0-5",
+      "priority": "P0",
+      "depends_on": [
+        "P0-4"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "改造评分器与沙盒",
+        "en": "Extend scoring and the sandbox"
+      },
+      "requirement": {
+        "zh": "支持单臂抓取；检查完整穿门区间；隐藏实际参数不得经元数据或特权参考接口泄漏。",
+        "en": "Support single-arm grasping, evaluate the entire crossing interval, and prevent hidden actual parameters leaking through metadata or privileged reference interfaces."
+      },
+      "acceptance": {
+        "zh": "评分检查、隔离检查、同步记录及独立重放；保留旧版评分。",
+        "en": "Scoring and isolation checks, synchronized records and independent replay; preserve the legacy scorer."
+      },
+      "status_label": {
+        "zh": "连续评分已实现；隔离闭环待完成",
+        "en": "Continuous scoring implemented; isolation pending"
+      },
+      "progress": {
+        "zh": "连续评分已实现；隔离闭环待完成；逐次证据见实施看板。",
+        "en": "Continuous scoring implemented; isolation pending; see the acceptance board for individual evidence."
+      }
+    },
+    {
+      "id": "P0-6",
+      "priority": "P0",
+      "depends_on": [
+        "P0-3",
+        "P0-5"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "完成异构双机基线",
+        "en": "Complete the heterogeneous baseline"
+      },
+      "requirement": {
+        "zh": "按用户确认的分工，以 G1 搬运原包裹、Stretch 扶门或布置工具验证物理可行性；全程真实接触，禁止运行中位置重设或隐藏吸附。",
+        "en": "Use the user-confirmed route: G1 carries the original parcel and Stretch supports the door or places tools. Verify real contact throughout, without runtime pose resets or hidden attachment."
+      },
+      "acceptance": {
+        "zh": "至少一条完整交付见证及独立审计；这条参考路线不规定 agent 必须采用同一分工。",
+        "en": "At least one complete delivery witness and independent audit; the reference does not prescribe the agent’s role allocation."
+      },
+      "status_label": {
+        "zh": "L1 完整见证已有；正式准入未通过",
+        "en": "Complete L1 witnesses; admission pending"
+      },
+      "progress": {
+        "zh": "L1 完整见证已有；正式准入未通过；逐次证据见实施看板。",
+        "en": "Complete L1 witnesses; admission pending; see the acceptance board for individual evidence."
+      }
+    },
+    {
+      "id": "P1-1",
+      "priority": "P1",
+      "depends_on": [
+        "P0-6"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "加入工具集合",
+        "en": "Introduce candidate tools"
+      },
+      "requirement": {
+        "zh": "首轮提供真实楔块、重箱和一个干扰物；检查撤去辅助后的支撑与通道占用；支撑杆留到后续。",
+        "en": "Start with a physical wedge, heavy crate and one distractor; check support after assistance is removed and passage occupancy; defer the brace rod."
+      },
+      "acceptance": {
+        "zh": "工具碰撞几何、稳定性、滑移与通行验证。",
+        "en": "Verified tool collision geometry, stability, slip and passage clearance."
+      },
+      "status_label": {
+        "zh": "局部工具筛查与布置已测",
+        "en": "Local tool screening and placement measured"
+      },
+      "progress": {
+        "zh": "局部工具筛查与布置已测；逐次证据见实施看板。",
+        "en": "Local tool screening and placement measured; see the acceptance board for individual evidence."
+      }
+    },
+    {
+      "id": "P1-2",
+      "priority": "P1",
+      "depends_on": [
+        "P1-1"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "构建工具反事实实例",
+        "en": "Build counterfactual tool pairs"
+      },
+      "requirement": {
+        "zh": "保持外观和几何一致，只改变指定摩擦或闭门参数；考虑材料组合规则，实测确认结果发生变化。",
+        "en": "Keep appearance and geometry matched, changing only the specified friction or closer parameter; account for contact-material combination and measure the resulting difference."
+      },
+      "acceptance": {
+        "zh": "同一放置动作产生可复现的稳定／失效差异；保留可行路线证据。",
+        "en": "The same placement produces reproducible stable/failing outcomes, with evidence for a feasible route."
+      },
+      "status_label": {
+        "zh": "局部物理反事实配对已测",
+        "en": "Local physical counterfactuals measured"
+      },
+      "progress": {
+        "zh": "局部物理反事实配对已测；逐次证据见实施看板。",
+        "en": "Local physical counterfactuals measured; see the acceptance board for individual evidence."
+      }
+    },
+    {
+      "id": "P1-3",
+      "priority": "P1",
+      "depends_on": [
+        "P1-2"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "实现工具发现与动态分工",
+        "en": "Discover tools and allocate roles"
+      },
+      "requirement": {
+        "zh": "不标注有效工具；通过预测、探测和反馈验证 affordance；包含工具必要或有明确成本收益的实例。",
+        "en": "Do not label effective tools; predict, probe and verify affordances through feedback; include instances where a tool is necessary or has a defined cost benefit."
+      },
+      "acceptance": {
+        "zh": "探测、选择、撤去辅助验证、交接与重分配轨迹。",
+        "en": "Traces of probing, selection, withdrawal checks, support handoff and role reassignment."
+      },
+      "status_label": {
+        "zh": "单候选交付通过；自主选择待完成",
+        "en": "Single-candidate delivery passed; autonomous choice pending"
+      },
+      "progress": {
+        "zh": "413.92 s 关门起始完整交付通过独立复算；三次固定重复在验。自主多工具选择仍缺。",
+        "en": "Closed-door delivery passed in 413.92 s with an independent audit; three fixed repeats are running. Autonomous multi-tool choice remains missing."
+      }
+    },
+    {
+      "id": "P1-4",
+      "priority": "P1",
+      "depends_on": [
+        "P0-6",
+        "P1-3"
+      ],
+      "status": "planned",
+      "title": {
+        "zh": "开展能力配对与消融",
+        "en": "Run capability pairs and ablations"
+      },
+      "requirement": {
+        "zh": "同场景比较双 G1 与 G1 + Stretch 4；统一感知、接口和预算条件；动作前记录能力预测。",
+        "en": "Compare dual G1 and G1 + Stretch 4 in matched scenes with matched sensing, interfaces and budgets; record capability predictions before actions."
+      },
+      "acceptance": {
+        "zh": "固定分工、主动探测、关闭探测／在线更新的对照；角色调整收益与路径规划收益分开。",
+        "en": "Fixed-role, active-probing and no-probe/no-update controls; distinguish role adaptation from path-planning gains."
+      }
+    },
+    {
+      "id": "P2-1",
+      "priority": "P2",
+      "depends_on": [
+        "P0-5"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "实现可信故障机制",
+        "en": "Implement trusted fault events"
+      },
+      "requirement": {
+        "zh": "预声明故障触发规则、幅度和允许变化；由可信侧执行并记录，与未授权修改物理参数区分。",
+        "en": "Predeclare fault triggers, magnitude and allowed changes; execute and record on the trusted side, separately from unauthorized physics changes."
+      },
+      "acceptance": {
+        "zh": "事件可重放，合法故障不被误判为 VOID，未授权修改仍被拒绝。",
+        "en": "Replayable events; legitimate faults are not misclassified as VOID and unauthorized changes remain rejected."
+      },
+      "status_label": {
+        "zh": "可信故障已实现并审计",
+        "en": "Trusted faults implemented and audited"
+      },
+      "progress": {
+        "zh": "可信故障已实现并审计；逐次证据见实施看板。",
+        "en": "Trusted faults implemented and audited; see the acceptance board for individual evidence."
+      }
+    },
+    {
+      "id": "P2-2",
+      "priority": "P2",
+      "depends_on": [
+        "P1-4",
+        "P2-1"
+      ],
+      "status": "in_progress",
+      "title": {
+        "zh": "验证在线恢复",
+        "en": "Verify online recovery"
+      },
+      "requirement": {
+        "zh": "一次只引入一种故障；先证明存在可恢复条件；记录能力更新及角色切换。",
+        "en": "Introduce one fault type at a time, first establish recoverability, and record capability updates and role changes."
+      },
+      "acceptance": {
+        "zh": "从故障到恢复交付的完整轨迹、恢复成功率及额外成本。",
+        "en": "Complete fault-to-delivery traces, recovery success and additional cost."
+      },
+      "status_label": {
+        "zh": "局部恢复已测；完整交付待完成",
+        "en": "Local recovery measured; full delivery pending"
+      },
+      "progress": {
+        "zh": "局部恢复已测；完整交付待完成；逐次证据见实施看板。",
+        "en": "Local recovery measured; full delivery pending; see the acceptance board for individual evidence."
+      }
+    },
+    {
+      "id": "P2-3",
+      "priority": "P2",
+      "depends_on": [
+        "P0-6"
+      ],
+      "status": "planned",
+      "title": {
+        "zh": "扩展机器人组合",
+        "en": "Expand robot pairings"
+      },
+      "requirement": {
+        "zh": "双 Stretch 4、G1 + Go2/Z1 先分别完成单体能力与场景可行性验证；A3 为后续候选。",
+        "en": "Validate individual capabilities and scene feasibility before dual Stretch 4 or G1 + Go2/Z1 tasks; retain A3 as a later candidate."
+      },
+      "acceptance": {
+        "zh": "每个新组合独立证据和预算，不能继承其他机器人的成功结论。",
+        "en": "Separate evidence and budget for each pairing; no transfer of success claims between embodiments."
+      }
+    }
+  ],
+  "configurations": [
+    {
+      "id": "H3-01",
+      "robots": "G1 + G1",
+      "level": "L1",
+      "mechanism": "no_prop",
+      "status": "complete_witness",
+      "budget_s": 180,
+      "evidence": {
+        "zh": "完整成功见证：冻结 1/1，102.22 s",
+        "en": "Complete witness: frozen 1/1, 102.22 s"
+      }
+    },
+    {
+      "id": "H3-02",
+      "robots": "G1 + G1",
+      "level": "L1",
+      "mechanism": "heavy_prop",
+      "status": "complete_witness",
+      "budget_s": 180,
+      "evidence": {
+        "zh": "完整成功见证：冻结 2/2，172.44 / 169.24 s",
+        "en": "Complete witnesses: frozen 2/2, 172.44 / 169.24 s"
+      }
+    },
+    {
+      "id": "H3-03",
+      "robots": "G1 + Stretch 4",
+      "level": "L2",
+      "mechanism": "tool_discovery",
+      "status": "undetermined",
+      "budget_s": null,
+      "evidence": {
+        "zh": "单候选关门起始完整原生交付 413.92 s 通过独立复算；固定重复在验。自主多工具发现未完成。",
+        "en": "Single-candidate closed-door native delivery passed in 413.92 s with independent audit; fixed repeats are pending. Autonomous multi-tool discovery remains incomplete."
+      }
+    },
+    {
+      "id": "H3-04",
+      "robots": "Stretch 4 + Stretch 4",
+      "level": "L2",
+      "mechanism": "single_arm_resource_allocation",
+      "status": "undetermined",
+      "budget_s": null,
+      "evidence": {
+        "zh": "双 Stretch 尚未完成独立实现与验证，不能继承混合双机结论。",
+        "en": "Dual Stretch has no independently verified implementation; mixed-pair results do not transfer."
+      }
+    },
+    {
+      "id": "H3-05",
+      "robots": "G1 + Stretch 4",
+      "level": "L3",
+      "mechanism": "hidden_capability_and_recovery",
+      "status": "undetermined",
+      "budget_s": null,
+      "evidence": {
+        "zh": "局部支撑切换固定重复 3/3；局部恢复后交付 211.48 s。新增关门起始实际故障恢复，但后续切换失败；新余量候选在验。",
+        "en": "Local support switching passed 3/3 fixed repeats; local recovery-to-delivery passed in 211.48 s. Closed-door actual fault recovery is now verified, but the later switch failed; an angle-reserve revision is being tested."
+      }
+    },
+    {
+      "id": "H3-06",
+      "robots": "G1 + Go2/Z1",
+      "level": "L3",
+      "mechanism": "heterogeneous_contact_and_reallocation",
+      "status": "undetermined",
+      "budget_s": null,
+      "evidence": {
+        "zh": "组合资产预检未完成；无物理运行。",
+        "en": "Composite asset preflight incomplete; no physics run."
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Tool Discovery Success",
+      "definition": {
+        "zh": "撤去辅助后，选定工具是否维持有效支撑并允许实际通过；持续扶门另记策略。",
+        "en": "Whether the selected tool maintains support after assistance is removed and permits actual passage; continuous robot holding is recorded separately."
+      }
+    },
+    {
+      "name": "Capability Prediction Accuracy",
+      "definition": {
+        "zh": "动作前预测与实测结果的一致性，记录置信度与未确定项；不能用事后解释替代预测。",
+        "en": "Agreement between pre-action predictions and outcomes, including confidence and undetermined cases; post-hoc explanation is not a prediction."
+      }
+    },
+    {
+      "name": "Role Allocation Quality",
+      "definition": {
+        "zh": "分工可行性、失败重分配次数及相对同条件参考的成本；未定义成本时不声称最优。",
+        "en": "Feasible roles, failed reassignments and cost against a matched reference; do not claim optimality without a cost definition."
+      }
+    },
+    {
+      "name": "Support Continuity",
+      "definition": {
+        "zh": "整个穿门区间的最小净空、支撑中断时长、支撑来源和交接事件；阈值通过物理验证后冻结。",
+        "en": "Minimum clearance, unsupported duration, support source and handoff events throughout crossing; freeze thresholds after physical validation."
+      }
+    },
+    {
+      "name": "Recovery Success",
+      "definition": {
+        "zh": "在预声明且可恢复的故障实例中，恢复安全支撑并完成交付；记录不可恢复实例。",
+        "en": "Restore safe support and complete delivery under predeclared recoverable faults; report unrecoverable cases separately."
+      }
+    },
+    {
+      "name": "Probe / Execution Cost",
+      "definition": {
+        "zh": "探测动作、仿真时间、观测／通信次数及每台机器人占用时间，恢复额外成本单列。",
+        "en": "Probe actions, simulation time, observation/communication counts and robot occupancy; separate additional recovery cost."
+      }
+    }
+  ],
+  "acceptance_tasks": "acceptance/tasks.json",
+  "acceptance_campaign": "acceptance/campaign.json",
+  "new_full_native_successes": 22,
+  "attempts_logged": 95,
+  "legacy_diagnostic_runs": 11,
+  "measured_progress": {
+    "zh": "L2 单候选关门起始交付 413.92 s 通过；自主多工具发现仍待验。 固定重复已完成 0/3，通过 0/3，首例不计入。 L3 支撑切换固定重复 3/3 通过。 局部夹具后恢复至原包裹交付 211.48 s 通过；关门起始故障交付待验。 另已验证无夹具关门起始的真实故障恢复；后续扶门切换未通过。 正式验收仍未通过。",
+    "en": "L2 single-candidate closed-door delivery passed in 413.92 s; autonomous multi-tool discovery remains pending. Fixed repeats: 0/3 completed, 0/3 passed; pilot excluded. L3 support switching passed 3/3 fixed repeats. Recovery-to-parcel delivery after a local fixture passed in 211.48 s; closed-door fault delivery remains pending. Actual fault recovery from a closed-door start without a fixture is also verified; the subsequent support switch failed. Formal admission remains pending."
+  }
+}

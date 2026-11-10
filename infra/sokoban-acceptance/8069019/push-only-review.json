@@ -1,0 +1,136 @@
+{
+  "schema": "sokoban-push-only-review/1",
+  "checks": {
+    "complete_substep_and_command_coverage": true,
+    "open_index_middle_commands": true,
+    "no_loaded_far_side_contact": true,
+    "no_force_driven_motion_toward_robot": false,
+    "contact_direction_defined": true
+  },
+  "operational_checks_passed": false,
+  "thresholds": {
+    "active_contact_N": 1.0,
+    "far_side_margin_m": 0.02,
+    "reverse_force_N": 1.0,
+    "motion_noise_m_per_substep": 1e-06
+  },
+  "flag_counts": {
+    "force_and_motion_toward_robot": 2
+  },
+  "flagged_samples": [
+    {
+      "substep": 29868,
+      "time_s": 74.67,
+      "robot": "g1_a",
+      "crate": "crate_d",
+      "flags": [
+        "force_and_motion_toward_robot"
+      ],
+      "metrics": {
+        "active_points": 3,
+        "net_force_away_N": -19.243528540341046,
+        "motion_toward_robot_m": 1.0231365293281283e-06,
+        "reverse_impulse_Ns": 0.048108821350852614
+      },
+      "points": [
+        {
+          "robot_link": "left_hand_thumb_1_link",
+          "position": [
+            -1.154710054397583,
+            0.20626778900623322,
+            0.5497802495956421
+          ],
+          "force_on_crate": [
+            -9.560754776000977,
+            -0.26994407176971436,
+            -42.701419830322266
+          ],
+          "hand": true
+        },
+        {
+          "robot_link": "right_hand_thumb_1_link",
+          "position": [
+            -1.1609102487564087,
+            -0.17039163410663605,
+            0.5498877763748169
+          ],
+          "force_on_crate": [
+            -4.88706636428833,
+            -0.14078344404697418,
+            -22.170913696289062
+          ],
+          "hand": true
+        },
+        {
+          "robot_link": "right_hand_thumb_1_link",
+          "position": [
+            -1.160974383354187,
+            -0.17388245463371277,
+            0.5498992204666138
+          ],
+          "force_on_crate": [
+            -4.790126800537109,
+            -0.14162273705005646,
+            -21.731338500976562
+          ],
+          "hand": true
+        }
+      ]
+    },
+    {
+      "substep": 39581,
+      "time_s": 98.9525,
+      "robot": "g1_a",
+      "crate": "crate_a",
+      "flags": [
+        "force_and_motion_toward_robot"
+      ],
+      "metrics": {
+        "active_points": 1,
+        "net_force_away_N": -11.826373803137406,
+        "motion_toward_robot_m": 4.098166604380996e-06,
+        "reverse_impulse_Ns": 0.029565934507843516
+      },
+      "points": [
+        {
+          "robot_link": "left_hand_thumb_1_link",
+          "position": [
+            -2.010798931121826,
+            1.5986968278884888,
+            0.5497725605964661
+          ],
+          "force_on_crate": [
+            -4.91357421875,
+            -11.92296028137207,
+            -148.50552368164062
+          ],
+          "hand": true
+        }
+      ]
+    }
+  ],
+  "reverse_contact_impulse_Ns": 0.8480884049260996,
+  "nonhand_contact_samples_by_link": {
+    "g1_a/crate_d/right_wrist_pitch_link": 62,
+    "g1_a/crate_d/left_wrist_pitch_link": 32,
+    "g1_a/crate_a/right_wrist_pitch_link": 60,
+    "g1_b/crate_c/left_wrist_pitch_link": 42,
+    "g1_b/crate_c/right_wrist_pitch_link": 39
+  },
+  "max_index_middle_command_rad": 0.0,
+  "substeps": 108624,
+  "controls": 13578,
+  "sha256": {
+    "trace.jsonl": "cd62f6ea800f938b60e0df732ff548558f0454314f0f6ed413c047a28117cc49",
+    "physics-substeps.jsonl": "812c3bd88c939b814cfda6fea527af4f87475136b6cdd48f82f4fb433592c0ff",
+    "physics-metadata.json": "8cf360e28995a7b32c9ab4f6d744a8c903b896a1c4f370dd023a753eb5d2e604"
+  },
+  "scope": "Conservative operational checks plus existing opposed-face/support/actuator audit. Human review still required.",
+  "limitations": [
+    "Subthreshold contact and force-closure modes are not universally excluded by these tests.",
+    "Non-hand contacts are classified by link; applicable clips need human review.",
+    "This result does not certify isolation, runtime integrity or formal admission."
+  ],
+  "formal_admission": false,
+  "task_success": null
+}

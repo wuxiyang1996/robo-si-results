@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 546, in main
+    def main():
+         ^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 387, in execute
+    if self.tuning.get('close_pose_feedback',False):self.close_goals=goals;self.close_disk_origin=self.d.xpos[self.obj].copy();self.close_drift=np.zeros(3)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 337, in move
+    elif target is not None:self.qref=q0+u*(target-q0)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 319, in step
+    for _ in range(8):
+                       
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 168, in assess
+    if pos[2]<.835:raise RuntimeError('disk_dropped')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: robot_table_collision

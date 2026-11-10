@@ -1,0 +1,343 @@
+{
+  "contract": {
+    "schema": "hanoi-tool-task/1",
+    "task_id": "Hanoi-02",
+    "embodiment": "parallel",
+    "disclosure": "explicit",
+    "disks": 3,
+    "capability_profile": "nominal",
+    "tools": [
+      "T1_tongs",
+      "T2_fork"
+    ],
+    "pelvis_fixed": true,
+    "timestep": 0.005,
+    "control_dt": 0.02,
+    "release_hold": 0.5,
+    "final_hold": 2.0,
+    "runtime_status": "experimental_not_admitted",
+    "boundary_calibrated": null,
+    "observation_scope": "privileged_physical_reference_not_agent_evaluation"
+  },
+  "plan": {
+    "schema": "hanoi-high-low-plan/1",
+    "task_id": "Hanoi-02",
+    "high_level": [
+      {
+        "id": "P00",
+        "goal": "Inspect candidate tools and estimate effective capability",
+        "guard": "bounded probe observations and recorded feasibility prediction"
+      },
+      {
+        "id": "P01",
+        "goal": "Acquire a compatible tool through hand contact",
+        "guard": "tool lifted from rack, hand-tool force, no attachment"
+      },
+      {
+        "id": "M01",
+        "goal": "Transfer disk_2 from A to C",
+        "disk": "disk_2",
+        "source": "A",
+        "target": "C",
+        "guard": "top disk; real tool contact; rod cleared; legal released support"
+      },
+      {
+        "id": "M02",
+        "goal": "Transfer disk_1 from A to B",
+        "disk": "disk_1",
+        "source": "A",
+        "target": "B",
+        "guard": "top disk; real tool contact; rod cleared; legal released support"
+      },
+      {
+        "id": "M03",
+        "goal": "Transfer disk_2 from C to B",
+        "disk": "disk_2",
+        "source": "C",
+        "target": "B",
+        "guard": "top disk; real tool contact; rod cleared; legal released support"
+      },
+      {
+        "id": "M04",
+        "goal": "Transfer disk_0 from A to C",
+        "disk": "disk_0",
+        "source": "A",
+        "target": "C",
+        "guard": "top disk; real tool contact; rod cleared; legal released support"
+      },
+      {
+        "id": "M05",
+        "goal": "Transfer disk_2 from B to A",
+        "disk": "disk_2",
+        "source": "B",
+        "target": "A",
+        "guard": "top disk; real tool contact; rod cleared; legal released support"
+      },
+      {
+        "id": "M06",
+        "goal": "Transfer disk_1 from B to C",
+        "disk": "disk_1",
+        "source": "B",
+        "target": "C",
+        "guard": "top disk; real tool contact; rod cleared; legal released support"
+      },
+      {
+        "id": "M07",
+        "goal": "Transfer disk_2 from A to C",
+        "disk": "disk_2",
+        "source": "A",
+        "target": "C",
+        "guard": "top disk; real tool contact; rod cleared; legal released support"
+      },
+      {
+        "id": "FINAL",
+        "goal": "Complete tower remains independently supported for 2 s",
+        "guard": "all disks legally committed; no hand/tool support"
+      }
+    ],
+    "low_level": [
+      {
+        "id": "P00.L01",
+        "high": "P00",
+        "action": "observe initial geometry and nominal limits"
+      },
+      {
+        "id": "P00.L02",
+        "high": "P00",
+        "action": "record prediction; update after contact/lift probe"
+      },
+      {
+        "id": "P01.L01",
+        "high": "P01",
+        "action": "approach tool above rack with open hand"
+      },
+      {
+        "id": "P01.L02",
+        "high": "P01",
+        "action": "descend, close around handle, dwell"
+      },
+      {
+        "id": "P01.L03",
+        "high": "P01",
+        "action": "lift 40 mm and test actual support/contact"
+      },
+      {
+        "id": "M01.L01",
+        "high": "M01",
+        "action": "approach legal source top disk"
+      },
+      {
+        "id": "M01.L02",
+        "high": "M01",
+        "action": "insert/support or clamp disk"
+      },
+      {
+        "id": "M01.L03",
+        "high": "M01",
+        "action": "lift completely above source rod"
+      },
+      {
+        "id": "M01.L04",
+        "high": "M01",
+        "action": "transfer above legal target"
+      },
+      {
+        "id": "M01.L05",
+        "high": "M01",
+        "action": "lower hole over rod"
+      },
+      {
+        "id": "M01.L06",
+        "high": "M01",
+        "action": "withdraw tool; release for 0.5 s"
+      },
+      {
+        "id": "M02.L01",
+        "high": "M02",
+        "action": "approach legal source top disk"
+      },
+      {
+        "id": "M02.L02",
+        "high": "M02",
+        "action": "insert/support or clamp disk"
+      },
+      {
+        "id": "M02.L03",
+        "high": "M02",
+        "action": "lift completely above source rod"
+      },
+      {
+        "id": "M02.L04",
+        "high": "M02",
+        "action": "transfer above legal target"
+      },
+      {
+        "id": "M02.L05",
+        "high": "M02",
+        "action": "lower hole over rod"
+      },
+      {
+        "id": "M02.L06",
+        "high": "M02",
+        "action": "withdraw tool; release for 0.5 s"
+      },
+      {
+        "id": "M03.L01",
+        "high": "M03",
+        "action": "approach legal source top disk"
+      },
+      {
+        "id": "M03.L02",
+        "high": "M03",
+        "action": "insert/support or clamp disk"
+      },
+      {
+        "id": "M03.L03",
+        "high": "M03",
+        "action": "lift completely above source rod"
+      },
+      {
+        "id": "M03.L04",
+        "high": "M03",
+        "action": "transfer above legal target"
+      },
+      {
+        "id": "M03.L05",
+        "high": "M03",
+        "action": "lower hole over rod"
+      },
+      {
+        "id": "M03.L06",
+        "high": "M03",
+        "action": "withdraw tool; release for 0.5 s"
+      },
+      {
+        "id": "M04.L01",
+        "high": "M04",
+        "action": "approach legal source top disk"
+      },
+      {
+        "id": "M04.L02",
+        "high": "M04",
+        "action": "insert/support or clamp disk"
+      },
+      {
+        "id": "M04.L03",
+        "high": "M04",
+        "action": "lift completely above source rod"
+      },
+      {
+        "id": "M04.L04",
+        "high": "M04",
+        "action": "transfer above legal target"
+      },
+      {
+        "id": "M04.L05",
+        "high": "M04",
+        "action": "lower hole over rod"
+      },
+      {
+        "id": "M04.L06",
+        "high": "M04",
+        "action": "withdraw tool; release for 0.5 s"
+      },
+      {
+        "id": "M05.L01",
+        "high": "M05",
+        "action": "approach legal source top disk"
+      },
+      {
+        "id": "M05.L02",
+        "high": "M05",
+        "action": "insert/support or clamp disk"
+      },
+      {
+        "id": "M05.L03",
+        "high": "M05",
+        "action": "lift completely above source rod"
+      },
+      {
+        "id": "M05.L04",
+        "high": "M05",
+        "action": "transfer above legal target"
+      },
+      {
+        "id": "M05.L05",
+        "high": "M05",
+        "action": "lower hole over rod"
+      },
+      {
+        "id": "M05.L06",
+        "high": "M05",
+        "action": "withdraw tool; release for 0.5 s"
+      },
+      {
+        "id": "M06.L01",
+        "high": "M06",
+        "action": "approach legal source top disk"
+      },
+      {
+        "id": "M06.L02",
+        "high": "M06",
+        "action": "insert/support or clamp disk"
+      },
+      {
+        "id": "M06.L03",
+        "high": "M06",
+        "action": "lift completely above source rod"
+      },
+      {
+        "id": "M06.L04",
+        "high": "M06",
+        "action": "transfer above legal target"
+      },
+      {
+        "id": "M06.L05",
+        "high": "M06",
+        "action": "lower hole over rod"
+      },
+      {
+        "id": "M06.L06",
+        "high": "M06",
+        "action": "withdraw tool; release for 0.5 s"
+      },
+      {
+        "id": "M07.L01",
+        "high": "M07",
+        "action": "approach legal source top disk"
+      },
+      {
+        "id": "M07.L02",
+        "high": "M07",
+        "action": "insert/support or clamp disk"
+      },
+      {
+        "id": "M07.L03",
+        "high": "M07",
+        "action": "lift completely above source rod"
+      },
+      {
+        "id": "M07.L04",
+        "high": "M07",
+        "action": "transfer above legal target"
+      },
+      {
+        "id": "M07.L05",
+        "high": "M07",
+        "action": "lower hole over rod"
+      },
+      {
+        "id": "M07.L06",
+        "high": "M07",
+        "action": "withdraw tool; release for 0.5 s"
+      },
+      {
+        "id": "FINAL.L01",
+        "high": "FINAL",
+        "action": "observe final released stable tower"
+      }
+    ],
+    "planning_only": true,
+    "evidence_rule": "Only actual executed action ranges establish trajectory correspondence."
+  }
+}

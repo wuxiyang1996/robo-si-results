@@ -1,0 +1,34 @@
+{
+  "controller_tuning": {
+    "prepush": true,
+    "deep_load_n": 2.5,
+    "dex3_soft_total_n": 14,
+    "left_thumb_yaw": 0.714,
+    "right_thumb_yaw": 0.342,
+    "dex3_close_s": 50,
+    "align_grasp": true,
+    "wrench_control": true,
+    "disk_collision_shape": "mesh128",
+    "turn_feedback": true,
+    "wrist_clearance": true,
+    "bridge_place": true,
+    "active_contact_fallback": true,
+    "lift_back": true,
+    "tangent_admittance": true,
+    "force_target_slew": true
+  },
+  "format": "held-reference-replay/1",
+  "physics_hz": 400,
+  "control_hz": 50,
+  "body": "G",
+  "physics_steps": 116080,
+  "full_array_sha256": {
+    "qpos": "c1a336ea7de60b29b198d8cfd947b71565b5e9766771e03c265c754167643c0c",
+    "qvel": "bc3d6c695ee1fcfc94d6bd5bbbce6a05eaabc514e3aaf2efcb70e624ba688584",
+    "ctrl": "c69125aa21ca6bf17fbce427e6687133eb3659bd270ab738a0268e463d405fc0"
+  },
+  "source_trajectory_npz_sha256": "875425b6ad7443181b175bb1af016054e9a1184898da9c36298811fffb352685",
+  "replay": "python compact_evidence.py --replay PATH_TO_RUN",
+  "requirements": "MuJoCo 3.14.0, NumPy, same official meshes, scene.xml and initial_state.json. Remap external mesh paths when needed.",
+  "storage": "References stored once per control interval; partial final interval retained. Object states shown at control endpoints; full 400 Hz states/controls are deterministically reconstructed and checked by array SHA-256."
+}

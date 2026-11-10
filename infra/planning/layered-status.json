@@ -1,0 +1,994 @@
+{
+  "schema": "layered-task-status/1",
+  "updated_utc": "2026-10-26T05:19:39.425455+00:00",
+  "applies_to": [
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "Hanoi",
+    "Assembly"
+  ],
+  "excluded_tasks": [
+    "H1"
+  ],
+  "policy": "acceptance-policy.json",
+  "full_solution_per_random_instance_required": false,
+  "summary": {
+    "scoped_full_witness_available": 11,
+    "published_tasks": 11,
+    "bound_local_evidence_registries": 4,
+    "new_random_instances_screened": 0,
+    "new_physics_runs": 0
+  },
+  "tasks": [
+    {
+      "id": "H2",
+      "name": {
+        "zh": "推车运货",
+        "en": "Cart-assisted transport"
+      },
+      "page": "task-h2",
+      "scope": {
+        "zh": "第一层，20 kg，transport-layout-v2",
+        "en": "Layer 1, 20 kg, transport-layout-v2"
+      },
+      "remaining": {
+        "zh": "补装载对准的独立条件、转弯接触余量及第二通道交接检查。 人工录像／阶段签审、工具必要性审阅和第二人复现。",
+        "en": "Check independent loading alignment, contact margins at turns and the second-passage transition. Human video/stage sign-off, tool-necessity review and second-person reproduction."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\h2-ca40961e39eb73-summary.json",
+          "sha256": "ca40961e39eb734350f8e46d24417389be0ba07db2efde8715c958ce59cd65a6",
+          "href": "website-status-evidence/h2-ca40961e39eb73-summary.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\humanoid\\g1_cart_assisted_transport\\acceptance\\closeout-20261024\\summary.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "第一层，20 kg，transport-layout-v2",
+            "en": "Layer 1, 20 kg, transport-layout-v2"
+          },
+          "evidence": {
+            "zh": "第一层工程收尾已完成：主批次 5/5、独立子任务 20/20、全部重复 14/15，集成检查 11/11；保留一次失败。参考资料已发布。",
+            "en": "Engineering closeout is complete: primary full runs 5/5, standalone subtasks 20/20, all repeats 14/15 and integration checks 11/11. One failure is retained. Reference materials are published."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "partial_local_evidence",
+          "evidence": {
+            "zh": "20/20 阶段探针已关联技能合同，采用反馈控制；保留 14/15 重复中的推送卡住失败。",
+            "en": "20/20 feedback stage probes are bound to skill contracts; the stuck-pushing failure in the 14/15 repeat cohort is retained."
+          },
+          "next_checks": {
+            "zh": "补装载对准的独立条件、转弯接触余量及第二通道交接检查。",
+            "en": "Check independent loading alignment, contact margins at turns and the second-passage transition."
+          },
+          "continuous_applicability_interval": null,
+          "registry": "skill-evidence/H2.json"
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/H2.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "人工录像／阶段签审、工具必要性审阅和第二人复现。",
+          "en": "Human video/stage sign-off, tool-necessity review and second-person reproduction."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "H3",
+      "name": {
+        "en": "Dual G1 self-closing door delivery",
+        "zh": "双 G1 自闭门搬运"
+      },
+      "page": "task-h3",
+      "scope": {
+        "en": "Multi-robot; heavy_prop / no_prop; fixed nominal scene; 180 s; privileged native reference",
+        "zh": "多机器人；有重物／无重物；固定名义场景；180 秒；特权原生参考"
+      },
+      "remaining": {
+        "zh": "补开门、建立箱撑／另一机器人撑门、带物穿门的入口条件及连续支撑交接。 隔离双机器人代理接口、代表性重复核对、人工签审与第二人复现。",
+        "en": "Check entry conditions for opening, box/robot door support and loaded passage, including continuous support handoff. Isolated dual-robot agent interface, representative-repeat review, human sign-off and second-person reproduction."
+      },
+      "historical_sources": [
+        {
+          "path": "infra/h3-release/publication.json",
+          "href": "h3-release/publication.json",
+          "sha256": "82c2234e627aa9f06d17561ffcaf22ed6113f8b8d7bca8b5b93dbf6ac9f22535",
+          "original_path": "D:\\rsi_vla\\releases\\h3-cooperative-publication-20261024\\upload\\publication.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "en": "Multi-robot; heavy_prop / no_prop; fixed nominal scene; 180 s; privileged native reference",
+            "zh": "多机器人；有重物／无重物；固定名义场景；180 秒；特权原生参考"
+          },
+          "evidence": {
+            "en": "Dual G1 native reference: heavy_prop 2/2 (172.44, 169.24 s), no_prop 1/1 (102.22 s), all within 180 s with independent delivery and support-route verification. Failed development attempts remain available.",
+            "zh": "双 G1 原生参考：有重物版 2/2（172.44、169.24 秒），无重物版 1/1（102.22 秒），均在 180 秒内完成交付与支撑路线独立复核；开发失败全部保留。"
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "full_run_context_or_separate_historical_evidence",
+          "evidence": {
+            "zh": "完整运行提供双机协作与支撑路线证据；有重物和无重物两种支撑方式分别保留，未建立通用技能适用区间。",
+            "en": "Full runs evidence cooperation and support routes. Heavy-prop and no-prop support modes remain separate; no general skill envelope is established."
+          },
+          "next_checks": {
+            "zh": "补开门、建立箱撑／另一机器人撑门、带物穿门的入口条件及连续支撑交接。",
+            "en": "Check entry conditions for opening, box/robot door support and loaded passage, including continuous support handoff."
+          },
+          "continuous_applicability_interval": null,
+          "registry": null
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/H3.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "隔离双机器人代理接口、代表性重复核对、人工签审与第二人复现。",
+          "en": "Isolated dual-robot agent interface, representative-repeat review, human sign-off and second-person reproduction."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "H4",
+      "name": {
+        "zh": "搭板过缺口",
+        "en": "Bridge construction"
+      },
+      "page": "task-h4",
+      "scope": {
+        "zh": "已授权的第一层参考资料",
+        "en": "Authorized layer 1 reference materials"
+      },
+      "remaining": {
+        "zh": "补板端支撑、足点、抗滑与负载返回交接的必要条件及关键短探针；保留源码版本差异。 人工签审、第二人复现和源码身份核对；R9 原延期记录保留。",
+        "en": "Check board-end support, footholds, slip resistance and loaded-return transitions with targeted short probes; preserve source-version differences. Human sign-off, second-person reproduction and source identity review; the existing R9 deferral is retained."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\h4-b768581955d9e8-author-partial-failure-acceptance.json",
+          "sha256": "b768581955d9e81989c4d4ae0da458182a13707cbc664a1951dcd7359255f874",
+          "href": "website-status-evidence/h4-b768581955d9e8-author-partial-failure-acceptance.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\humanoid\\g1_ramp_bridge_construction\\acceptance\\release-layer1-20261024\\author-partial-failure-acceptance.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\h4-ccbf2e1d3dd240-completion-decisions.json",
+          "sha256": "ccbf2e1d3dd240b18367e7f9b22aada83a3dfc474ad0bf05ef66dc4b9eb18c90",
+          "href": "website-status-evidence/h4-ccbf2e1d3dd240-completion-decisions.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\completion-decisions.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "已授权的第一层参考资料",
+            "en": "Authorized layer 1 reference materials"
+          },
+          "evidence": {
+            "zh": "第一层 11/14，三次失败已获作者接受并保留。已完成本次交付并发布；历史第二、三层结果单独留作附录。",
+            "en": "Layer 1 is 11/14; all three failures were accepted by the author and retained. The scoped delivery is complete and published. Historical layers 2/3 remain a separate appendix."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "full_run_context_or_separate_historical_evidence",
+          "evidence": {
+            "zh": "第一层历史全程 11/14；三条失败保留。搭板、过桥与负载返回目前作为完整运行内证据，独立技能证据待补。",
+            "en": "Historical layer-1 runs are 11/14 with three failures retained. Bridge placement, crossing and loaded return have full-run context; isolated skill evidence is pending."
+          },
+          "next_checks": {
+            "zh": "补板端支撑、足点、抗滑与负载返回交接的必要条件及关键短探针；保留源码版本差异。",
+            "en": "Check board-end support, footholds, slip resistance and loaded-return transitions with targeted short probes; preserve source-version differences."
+          },
+          "continuous_applicability_interval": null,
+          "registry": null
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/H4.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "人工签审、第二人复现和源码身份核对；R9 原延期记录保留。",
+          "en": "Human sign-off, second-person reproduction and source identity review; the existing R9 deferral is retained."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "H5",
+      "name": {
+        "zh": "杠杆辅助运输",
+        "en": "Lever-assisted transport"
+      },
+      "page": "task-h5",
+      "scope": {
+        "zh": "第一层 v3 / 100 kg 参考候选",
+        "en": "Layer 1 v3 / 100 kg reference candidate"
+      },
+      "remaining": {
+        "zh": "补杠杆接合、抬升→滑车承托及检查点间准备动作衔接；100 kg v3 不外推为 65 kg 已验证。 人工签审、第二人复现、工具必要性审计及 65 kg 正式入口同步。",
+        "en": "Check lever engagement, lift-to-skate support and preparation between checkpoints; 100 kg v3 does not establish the 65 kg configuration. Human sign-off, second-person reproduction, tool necessity and synchronization with the formal 65 kg entry."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\h5-3eeffa078d805f-h5-published-evidence.json",
+          "sha256": "3eeffa078d805faf2dfc0c30bb20e74512f03941f104a9f8418397ba0a59348b",
+          "href": "website-status-evidence/h5-3eeffa078d805f-h5-published-evidence.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\h5-published-evidence.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\h5-ccbf2e1d3dd240-completion-decisions.json",
+          "sha256": "ccbf2e1d3dd240b18367e7f9b22aada83a3dfc474ad0bf05ef66dc4b9eb18c90",
+          "href": "website-status-evidence/h5-ccbf2e1d3dd240-completion-decisions.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\completion-decisions.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "第一层 v3 / 100 kg 参考候选",
+            "en": "Layer 1 v3 / 100 kg reference candidate"
+          },
+          "evidence": {
+            "zh": "全程 5/5、独立子任务 20/20、同种子重复 3/3；限定范围已完成并发布。",
+            "en": "Full runs 5/5, standalone subtasks 20/20 and same-seed repeats 3/3; the scoped reference is complete and published."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "partial_local_evidence",
+          "evidence": {
+            "zh": "20/20 阶段探针已关联：5 条抬升命令回放、5 条实时承托控制、10 条反馈运输；同种子 3/3 与主队列重叠。",
+            "en": "20/20 stage probes are bound: 5 lift command replays, 5 live support-control probes and 10 feedback transport probes. The 3/3 same-seed repeats overlap the primary cohort."
+          },
+          "next_checks": {
+            "zh": "补杠杆接合、抬升→滑车承托及检查点间准备动作衔接；100 kg v3 不外推为 65 kg 已验证。",
+            "en": "Check lever engagement, lift-to-skate support and preparation between checkpoints; 100 kg v3 does not establish the 65 kg configuration."
+          },
+          "continuous_applicability_interval": null,
+          "registry": "skill-evidence/H5.json"
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/H5.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "人工签审、第二人复现、工具必要性审计及 65 kg 正式入口同步。",
+          "en": "Human sign-off, second-person reproduction, tool necessity and synchronization with the formal 65 kg entry."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "H6",
+      "name": {
+        "zh": "负重上下楼",
+        "en": "Loaded stair transport"
+      },
+      "page": "task-h6",
+      "scope": {
+        "zh": "第一层固定 seed 0、2 kg 素材库提手箱参考",
+        "en": "Layer 1 fixed seed 0, 2 kg library-crate reference"
+      },
+      "remaining": {
+        "zh": "补当前资产下双手承托、上下踏面、峰顶换向和放箱的技能条件与交接检查。 保留用户验收；第二人复现与正式准入待完成，更高层及连续工具任务另计。",
+        "en": "Check current-asset support, ascent/descent footholds, top reversal and box placement conditions and transitions. Retain user acceptance; second-person reproduction and formal admission remain pending, with higher layers and continuous tool tasks separate."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\h6-a2201773986600-release.json",
+          "sha256": "a220177398660050bb974d40c953fb33dbe966dc72cddba3bff1f8ad6d98bd59",
+          "href": "website-status-evidence/h6-a2201773986600-release.json",
+          "original_path": "C:\\Users\\wuxiy\\rsi_releases\\h6_release_20261024\\upload\\release.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\h6-4973b11fbd4ef4-author-authorization.json",
+          "sha256": "4973b11fbd4ef4837def657937e287b4049117d8a1bb16b4f35dae62604d5b3f",
+          "href": "website-status-evidence/h6-4973b11fbd4ef4-author-authorization.json",
+          "original_path": "C:\\Users\\wuxiy\\rsi_releases\\h6_release_20261024\\upload\\author-authorization.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\h6-bad9b13d00191e-validation-summary.json",
+          "sha256": "bad9b13d00191ee08711abff0e7a7dab08c2b7791ba33b1e8d5ae416a1e56e75",
+          "href": "website-status-evidence/h6-bad9b13d00191e-validation-summary.json",
+          "original_path": "C:\\Users\\wuxiy\\rsi_releases\\h6_release_20261024\\upload\\validation-summary.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "第一层固定 seed 0、2 kg 素材库提手箱参考",
+            "en": "Layer 1 fixed seed 0, 2 kg library-crate reference"
+          },
+          "evidence": {
+            "zh": "用户验收通过并发布。素材库箱子全程 1/1，587.74 s、得分 1.0、非 VOID、无报警；旧素材版本全程 3/3 和子任务 6/6 单列。",
+            "en": "User accepted and published. Library crate: 1/1 full pass, 587.74 s, score 1.0, non-VOID, no alarms. Historical procedural-asset full runs 3/3 and subtasks 6/6 remain separate."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "full_run_context_or_separate_historical_evidence",
+          "evidence": {
+            "zh": "2 kg 素材库箱参考已有全程；旧资产的 3/3 全程与 6/6 子任务单列，不移作新资产独立技能验证。",
+            "en": "The 2 kg library-crate reference has a full run. Historical-asset 3/3 full runs and 6/6 subtasks remain separate from new-asset skill validation."
+          },
+          "next_checks": {
+            "zh": "补当前资产下双手承托、上下踏面、峰顶换向和放箱的技能条件与交接检查。",
+            "en": "Check current-asset support, ascent/descent footholds, top reversal and box placement conditions and transitions."
+          },
+          "continuous_applicability_interval": null,
+          "registry": null
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/H6.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "保留用户验收；第二人复现与正式准入待完成，更高层及连续工具任务另计。",
+          "en": "Retain user acceptance; second-person reproduction and formal admission remain pending, with higher layers and continuous tool tasks separate."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "M1",
+      "name": {
+        "zh": "双机货架取物",
+        "en": "Humanoid + mobile gripper retrieval"
+      },
+      "page": "task-m1",
+      "scope": {
+        "zh": "第一层 v0.3 / V4，CPU 特权参考",
+        "en": "Layer 1 v0.3 / V4, privileged CPU reference"
+      },
+      "remaining": {
+        "zh": "补取容器→X5 夹取→低柜放置的可达、承重与释放交接证据，以及新实例必要条件筛查。 用户录像／阶段审阅、第二人复现、监视／捷径及代表性覆盖验收。",
+        "en": "Check reachability, load support and release transitions from container retrieval through X5 grasp to low-cabinet placement, plus necessary-condition screening for new instances. User video/stage review, second-person reproduction, monitor/shortcut and representative-coverage acceptance."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\m1-31f1aeb71dcdf2-m1-current-evidence.json",
+          "sha256": "31f1aeb71dcdf25500c5c837efd31969434067a4ee4865aaefc1403e40501a51",
+          "href": "website-status-evidence/m1-31f1aeb71dcdf2-m1-current-evidence.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\m1-current-evidence.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "第一层 v0.3 / V4，CPU 特权参考",
+            "en": "Layer 1 v0.3 / V4, privileged CPU reference"
+          },
+          "evidence": {
+            "zh": "13 条完整成功、8 个物理种子、严格重复 3/3，全为 1.0；第一层已完成并发布。",
+            "en": "13 complete successes across 8 physical seeds, with 3/3 strict repeats, all 1.0. Layer 1 is complete and published."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "full_run_context_or_separate_historical_evidence",
+          "evidence": {
+            "zh": "13 条完整成功、8 个物理种子、严格重复 3/3；这些是有限任务级见证，尚不授予每个技能的连续适用区间。",
+            "en": "13 complete successes across 8 physical seeds and 3/3 strict repeats are finite task-level witnesses, not continuous envelopes for every skill."
+          },
+          "next_checks": {
+            "zh": "补取容器→X5 夹取→低柜放置的可达、承重与释放交接证据，以及新实例必要条件筛查。",
+            "en": "Check reachability, load support and release transitions from container retrieval through X5 grasp to low-cabinet placement, plus necessary-condition screening for new instances."
+          },
+          "continuous_applicability_interval": null,
+          "registry": null
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/M1.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "用户录像／阶段审阅、第二人复现、监视／捷径及代表性覆盖验收。",
+          "en": "User video/stage review, second-person reproduction, monitor/shortcut and representative-coverage acceptance."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "M2",
+      "name": {
+        "zh": "双 G1 长物搬运",
+        "en": "Dual G1 long-object transport"
+      },
+      "page": "task-m2",
+      "scope": {
+        "zh": "第一层固定 0.25 kg / 1.8 m 通道",
+        "en": "Fixed layer 1, 0.25 kg / 1.8 m corridor"
+      },
+      "remaining": {
+        "zh": "补两端同步抓持、合抬负载分配、转弯扫掠及下放释放的技能条件与交接。9 kg 搬运仍未完成。 人工签审、第二人复现及代表性流水线检查；9 kg 与更高层另计。",
+        "en": "Check synchronized grasp, lift load sharing, swept turn clearance and lowering/release transitions. The 9 kg transport remains incomplete. Human sign-off, second-person reproduction and representative pipeline checks; 9 kg and higher layers remain separate."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\m2-ff82794db7d7d7-m2-current-evidence.json",
+          "sha256": "ff82794db7d7d786f7f217833948bfe508ea1d4fd07aada143606da2a5a30520",
+          "href": "website-status-evidence/m2-ff82794db7d7d7-m2-current-evidence.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\m2-current-evidence.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "第一层固定 0.25 kg / 1.8 m 通道",
+            "en": "Fixed layer 1, 0.25 kg / 1.8 m corridor"
+          },
+          "evidence": {
+            "zh": "09/10/11 特权参考 3/3，09d 普通开环回放成功；均 1.0、175.28 s、六阶段完成，已发布。",
+            "en": "Privileged references 09/10/11 pass 3/3; ordinary open-loop replay 09d also succeeds. All score 1.0 in 175.28 s with six stages complete; published."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "full_run_context_or_separate_historical_evidence",
+          "evidence": {
+            "zh": "09/10/11 完整参考 3/3，普通开环回放 09d 成功；限 0.25 kg、1.8 m 通道，未证明通用反馈规划。",
+            "en": "References 09/10/11 pass 3/3 and ordinary open-loop replay 09d succeeds; limited to 0.25 kg and a 1.8 m corridor, without a general feedback-planning claim."
+          },
+          "next_checks": {
+            "zh": "补两端同步抓持、合抬负载分配、转弯扫掠及下放释放的技能条件与交接。9 kg 搬运仍未完成。",
+            "en": "Check synchronized grasp, lift load sharing, swept turn clearance and lowering/release transitions. The 9 kg transport remains incomplete."
+          },
+          "continuous_applicability_interval": null,
+          "registry": null
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/M2.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "人工签审、第二人复现及代表性流水线检查；9 kg 与更高层另计。",
+          "en": "Human sign-off, second-person reproduction and representative pipeline checks; 9 kg and higher layers remain separate."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "M3",
+      "name": {
+        "zh": "小机器人辅助取球",
+        "en": "Small robot as a retrieval tool"
+      },
+      "page": "task-m3",
+      "scope": {
+        "zh": "固定 hooks-v0.1；箱体支撑取物；CPU 特权参考",
+        "en": "Fixed hooks-v0.1; box-supported picking; privileged CPU reference"
+      },
+      "remaining": {
+        "zh": "补抬升→箱体支撑取物→返回重抓→下放撤手→目标释放的接触／承重条件与交接；方块变体先做必要条件筛查。 人工录像／阶段签审、第二人复现、关键短探针及普通 RPC 接口验证；通用规划未验证。",
+        "en": "Check contact/load conditions and transitions through lifting, box-supported picking, return/regrasp, lowering/hand withdrawal and goal release; screen the block variant first. Human video/stage sign-off, second-person reproduction, critical short probes and ordinary RPC validation; general planning is unverified."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\m3-current-evidence.json",
+          "sha256": "5c3788fab22e9c4a7639e274548dad469fc5dc7233f82c4dfa90e900df95c587",
+          "href": "m3-current-evidence.json",
+          "original_path": "C:\\Users\\wuxiy\\rsi_releases\\m3_functional_release_20261025\\evidence\\release-summary.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\m3-61b6f892b334d6-m3-current-evidence.json",
+          "sha256": "61b6f892b334d64e97d4e7cb8ede3af2170fabba8bc3e43313580247c371435d",
+          "href": "website-status-evidence/m3-61b6f892b334d6-m3-current-evidence.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\m3-current-evidence.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "固定 hooks-v0.1；箱体支撑取物；CPU 特权参考",
+            "en": "Fixed hooks-v0.1; box-supported picking; privileged CPU reference"
+          },
+          "evidence": {
+            "zh": "完整链已完成并发布：正常初始化 2/2，均 1.0、411.16 s，无基准监视告警；抬升取物、返回下放与目标释放全部完成。同参重复，不是独立种子。",
+            "en": "Complete chain published: 2/2 normal-start runs, both 1.0 in 411.16 s, no benchmark monitor alarms. Raising, retrieval, return, lowering and goal release complete. Same-parameter repeats, not independent seeds."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "full_run_context_or_separate_historical_evidence",
+          "evidence": {
+            "zh": "固定 hooks-v0.1 完整链已有；箱体支撑与允许不影响操作的轻微运动保留。已验证对象为球，方块不自动继承证据。",
+            "en": "The fixed hooks-v0.1 full chain is evidenced. Box support and small motions that do not impair operation remain allowed. The evidenced object is a ball; a block does not inherit that evidence."
+          },
+          "next_checks": {
+            "zh": "补抬升→箱体支撑取物→返回重抓→下放撤手→目标释放的接触／承重条件与交接；方块变体先做必要条件筛查。",
+            "en": "Check contact/load conditions and transitions through lifting, box-supported picking, return/regrasp, lowering/hand withdrawal and goal release; screen the block variant first."
+          },
+          "continuous_applicability_interval": null,
+          "registry": null
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/M3.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "人工录像／阶段签审、第二人复现、关键短探针及普通 RPC 接口验证；通用规划未验证。",
+          "en": "Human video/stage sign-off, second-person reproduction, critical short probes and ordinary RPC validation; general planning is unverified."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "M4",
+      "name": {
+        "zh": "双四足协同拖运",
+        "en": "Dual-quadruped transport"
+      },
+      "page": "task-m4",
+      "scope": {
+        "zh": "固定 base / hard 预连接拖运，CPU 特权参考",
+        "en": "Fixed base / hard preconnected towing, privileged CPU reference"
+      },
+      "remaining": {
+        "zh": "补张紧、张力分配、滑移、转角整体扫掠和目标停稳的技能条件与交接。自主对接、装载和解绑另立任务；v2 停止记录保留。 人工录像／阶段签审、第二人复现和代表性覆盖验收。",
+        "en": "Check tensioning, load sharing, slip, swept turn clearance and final settling conditions/transitions. Docking, loading and detachment remain separate work; retain the v2 stop record. Human video/stage sign-off, second-person reproduction and representative-coverage acceptance."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\m4-current-evidence.json",
+          "sha256": "6bbc3952a71c86b1e40a65c1da1f711936116632bac83788cdaa3b7c57cd8d40",
+          "href": "m4-current-evidence.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\m4-release\\evidence\\release-summary.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\m4-ed6015247c62b7-admission.json",
+          "sha256": "ed6015247c62b7ddec1eda4415ccb07ec89fc252f9eef3ad7cb37b5d691e0a5b",
+          "href": "website-status-evidence/m4-ed6015247c62b7-admission.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_quadruped_cooperative_transport\\admission.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\m4-282dd2d6992118-release-gaps.json",
+          "sha256": "282dd2d6992118faaf984f9f3909d275daffede87e6d8d3d6bc976e69879cc62",
+          "href": "website-status-evidence/m4-282dd2d6992118-release-gaps.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_quadruped_cooperative_transport\\acceptance\\coupler-prototype-20261023-v1\\release-gaps.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\m4-9faf55b53dc266-v2-contact-phase-retest-resolution.json",
+          "sha256": "9faf55b53dc26629ad99bb74a78d7413db74d85a22251423496cc90201fa9429",
+          "href": "website-status-evidence/m4-9faf55b53dc266-v2-contact-phase-retest-resolution.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_quadruped_cooperative_transport\\acceptance\\coupler-prototype-20261023-v1\\v2-contact-phase-retest-resolution.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "固定 base / hard 预连接拖运，CPU 特权参考",
+            "en": "Fixed base / hard preconnected towing, privileged CPU reference"
+          },
+          "evidence": {
+            "zh": "预连接参考已完成并发布：历史 6/6、新目录复现 2/2 成功；当前重评 28/28 符合预期，扰动 base 4/6、hard 10/12。自主对接、装载与解绑定释放未完成。",
+            "en": "Preconnected reference complete and published: historical 6/6 and fresh-directory 2/2 successes; current rejudgment 28/28 expectations matched; perturbations base 4/6, hard 10/12. Autonomous docking, loading and detachment remain incomplete."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "full_run_context_or_separate_historical_evidence",
+          "evidence": {
+            "zh": "仅预连接拖运范围完成；扰动 base 4/6、hard 10/12 全部保留，28/28 为重评符合预期，不是 28 次搬运成功。",
+            "en": "Only preconnected towing is complete. All base 4/6 and hard 10/12 perturbation outcomes are retained; 28/28 means rejudgment expectations matched, not 28 successful transports."
+          },
+          "next_checks": {
+            "zh": "补张紧、张力分配、滑移、转角整体扫掠和目标停稳的技能条件与交接。自主对接、装载和解绑另立任务；v2 停止记录保留。",
+            "en": "Check tensioning, load sharing, slip, swept turn clearance and final settling conditions/transitions. Docking, loading and detachment remain separate work; retain the v2 stop record."
+          },
+          "continuous_applicability_interval": null,
+          "registry": null
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/M4.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "人工录像／阶段签审、第二人复现和代表性覆盖验收。",
+          "en": "Human video/stage sign-off, second-person reproduction and representative-coverage acceptance."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "Hanoi",
+      "name": {
+        "zh": "桌面汉诺塔",
+        "en": "Tabletop Hanoi"
+      },
+      "page": "task-hanoi",
+      "scope": {
+        "zh": "独立顺序操作任务，三／四／五盘",
+        "en": "Standalone sequencing task, 3/4/5 disks"
+      },
+      "remaining": {
+        "zh": "补抓盘、过杆、落盘的几何／接触余量及提交状态衔接；符号合法性不能代替物理检查。 原四项人工验收关口与独立第二人复现。",
+        "en": "Check grasp, rod-clearance and placement geometry/contact margins and committed-state transitions; symbolic legality does not replace physics checks. The existing four human acceptance gates and independent second-person reproduction."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\hanoi-cd76e0b330d470-publication-scope.json",
+          "sha256": "cd76e0b330d470d601a8ec1aababbafc70085e60c0b3494bd163e331ace805db",
+          "href": "website-status-evidence/hanoi-cd76e0b330d470-publication-scope.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\tabletop-release\\publication-scope.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\hanoi-d16c6c5d3c43ec-hanoi-data.json",
+          "sha256": "d16c6c5d3c43ec19ffe8ac3ac2570c9e26e3515350d4b2b41f719084f92ba0c6",
+          "href": "website-status-evidence/hanoi-d16c6c5d3c43ec-hanoi-data.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\tabletop-release\\hanoi-data.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\hanoi-ccbf2e1d3dd240-completion-decisions.json",
+          "sha256": "ccbf2e1d3dd240b18367e7f9b22aada83a3dfc474ad0bf05ef66dc4b9eb18c90",
+          "href": "website-status-evidence/hanoi-ccbf2e1d3dd240-completion-decisions.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\completion-decisions.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "独立顺序操作任务，三／四／五盘",
+            "en": "Standalone sequencing task, 3/4/5 disks"
+          },
+          "evidence": {
+            "zh": "58/58 场景、19/19 发布快照检查；三／四／五盘范围已完成并发布。",
+            "en": "58/58 scenarios and 19/19 release-snapshot checks; the 3/4/5-disk scope is complete and published."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "partial_local_evidence",
+          "evidence": {
+            "zh": "58/58 主覆盖，另有 6 条完整重复；9/9 接触探针。旧后缀 4/6，有限静置版 6/6，两版都保留，后缀不计新全程。",
+            "en": "58/58 primary coverage plus 6 full repeats; 9/9 contact probes. Historical suffixes are 4/6 and bounded-settling suffixes 6/6, both retained and not counted as new full runs."
+          },
+          "next_checks": {
+            "zh": "补抓盘、过杆、落盘的几何／接触余量及提交状态衔接；符号合法性不能代替物理检查。",
+            "en": "Check grasp, rod-clearance and placement geometry/contact margins and committed-state transitions; symbolic legality does not replace physics checks."
+          },
+          "continuous_applicability_interval": null,
+          "registry": "skill-evidence/Hanoi.json"
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/Hanoi.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "原四项人工验收关口与独立第二人复现。",
+          "en": "The existing four human acceptance gates and independent second-person reproduction."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    },
+    {
+      "id": "Assembly",
+      "name": {
+        "zh": "桌面套筒装配",
+        "en": "Tabletop sleeve assembly"
+      },
+      "page": "task-tabletop-assembly",
+      "scope": {
+        "zh": "工具辅助装配，基础第一层",
+        "en": "Tool-assisted assembly, basic layer 1"
+      },
+      "remaining": {
+        "zh": "补建撑并撤手稳定的独立短探针，以及支撑→套筒→盖帽的交接余量。 原四项人工验收关口与独立第二人复现。",
+        "en": "Add a short brace-establishment/hand-withdrawal probe and margin checks for brace-to-sleeve-to-cap transitions. The existing four human acceptance gates and independent second-person reproduction."
+      },
+      "historical_sources": [
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\assembly-cd76e0b330d470-publication-scope.json",
+          "sha256": "cd76e0b330d470d601a8ec1aababbafc70085e60c0b3494bd163e331ace805db",
+          "href": "website-status-evidence/assembly-cd76e0b330d470-publication-scope.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\tabletop-release\\publication-scope.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\assembly-b33f2e808fde8e-assembly-data.json",
+          "sha256": "b33f2e808fde8ee7633f44848d3adcf2eedfc36bb18fa5157bc8232279cfd770",
+          "href": "website-status-evidence/assembly-b33f2e808fde8e-assembly-data.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\tabletop-release\\assembly-data.json"
+        },
+        {
+          "path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\assembly-ccbf2e1d3dd240-completion-decisions.json",
+          "sha256": "ccbf2e1d3dd240b18367e7f9b22aada83a3dfc474ad0bf05ef66dc4b9eb18c90",
+          "href": "website-status-evidence/assembly-ccbf2e1d3dd240-completion-decisions.json",
+          "original_path": "D:\\rsi_vla\\robo-si\\infra\\website-status-evidence\\completion-decisions.json"
+        }
+      ],
+      "layered_status": {
+        "policy_version": "2026-10-26",
+        "full_solution_per_random_instance_required": false,
+        "task_level": {
+          "status": "scoped_full_witness_available",
+          "scope": {
+            "zh": "工具辅助装配，基础第一层",
+            "en": "Tool-assisted assembly, basic layer 1"
+          },
+          "evidence": {
+            "zh": "8/8 场景、14/14 发布快照检查；第一层已完成并发布。",
+            "en": "8/8 scenarios and 14/14 release-snapshot checks; layer 1 is complete and published."
+          },
+          "published": true
+        },
+        "skill_level": {
+          "status": "partial_local_evidence",
+          "evidence": {
+            "zh": "8/8 主覆盖，另有 2 条完整重复；两个检查点后缀原版和有限静置版均通过。建撑 K01 仍只有完整运行内证据。",
+            "en": "8/8 primary coverage plus 2 full repeats; both checkpoint suffixes pass in original and bounded-settling versions. Brace establishment K01 still has full-run context only."
+          },
+          "next_checks": {
+            "zh": "补建撑并撤手稳定的独立短探针，以及支撑→套筒→盖帽的交接余量。",
+            "en": "Add a short brace-establishment/hand-withdrawal probe and margin checks for brace-to-sleeve-to-cap transitions."
+          },
+          "continuous_applicability_interval": null,
+          "registry": "skill-evidence/Assembly.json"
+        },
+        "instance_level": {
+          "status": "not_evaluated_for_new_instances",
+          "default_result": "unknown",
+          "new_instances_screened": 0,
+          "historical_instances": "Keep original full, partial, failure and perturbation records. No per-instance ledger is synthesized by this status migration.",
+          "historical_state_counts": null,
+          "states": [
+            "witnessed_full",
+            "screen_pass",
+            "unknown",
+            "rejected"
+          ]
+        },
+        "execution_level": {
+          "status": "rolling_local_planning_specified_not_validated_as_general_planner"
+        },
+        "deliverables": {
+          "high_level_plan": "tasks/Assembly.json",
+          "selected_skills_and_constraints": "specified",
+          "key_states": "symbolic_conditions_specified_numeric_states_require_instance_evidence",
+          "feasibility_check_results": "existing_witnesses_retained_new_instance_checks_unknown"
+        },
+        "formal_acceptance_remaining": {
+          "zh": "原四项人工验收关口与独立第二人复现。",
+          "en": "The existing four human acceptance gates and independent second-person reproduction."
+        },
+        "formal_admission": false,
+        "new_physics_runs": 0
+      }
+    }
+  ]
+}

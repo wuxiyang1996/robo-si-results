@@ -1,0 +1,32 @@
+M1 第一层：独立第二人复现
+
+本轮已完成：13 条原始记录的独立离线重评、505 个冻结文件的哈希复核、
+3 个 Docker 镜像 ID 的只读预检。它们不等于独立第二人的物理执行。
+冻结源码、完整运行及原始记录位于：
+C:\Users\wuxiy\rsi_releases\m1_acceptance_closeout_20261024\
+
+1. 由实际第二位审阅者填写自己的姓名，创建新的独立目录（命令只准备文件，不运行仿真）：
+
+& 'D:/rsi_vla/genesis_env/Scripts/python.exe' -B -X utf8 'D:/rsi_vla/robo-si/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/prepare_reproduction.py' --destination 'C:/Users/wuxiy/rsi_releases/m1_person_reproduction_01' --reviewer '实际执行人姓名'
+
+2. 检查生成的 reproduction-plan.json，确认自己的身份、输出目录和实际环境。
+   检查 reproduction-preflight.json 中的镜像 ID；执行前应再次核对镜像，避免同名标签变化。
+   准备器不安装依赖、不改共享队列，不覆盖任何现有目录。
+
+3. 在本机已安装的 Genesis Python 与 Docker 环境中，执行新目录里的 run-reproduction.ps1。
+   命令经现有 release_queue3.py 排队，保留三槽配置；不得绕过队列或终止其他任务。
+   参数：第一层、CPU、物理种子3、Docker特权参考、300秒仿真、20分钟agent预算。
+   未固定新传感器噪声种子，因此这不是 noise_seed=0 的严格重复协议。
+   此标准入口没有严格重复试验专用的外部所有权监督器；不要沿用其监督认证结论。
+   现有环境预检不等于完整依赖锁定或异机兼容性认证。
+
+4. 不改原判决。保留成功或失败的全部 trusted/、workspace_00/、终端输出、
+   实际命令、时间、Python/包版本、Docker镜像ID和源码哈希。
+   检查 score=1.0、success=true、void=false、无告警，且 delivered 在结束时成立。
+   若失败，保留该次尝试；后续重试使用新目录和新名称，不覆盖失败。
+
+5. 第二人完整观看本次生成的视频，填写其独立结论与真实身份、日期、签名。
+   将新运行路径、verdict.json、source_manifest.json、requests.jsonl 和签署记录交回复核。
+   不能只填写“已执行”，也不能把本轮 AI 离线重评当成第二人签名。
+
+正式准入保持 false；通过后还需合并录像/阶段标签、覆盖及监视/捷径验收结论。

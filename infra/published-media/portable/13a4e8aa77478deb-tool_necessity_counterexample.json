@@ -1,0 +1,41 @@
+{
+ "schema": "transport-necessity-counterexample/1",
+ "task": "H5",
+ "run": "release-no-lever-reaching-20261023-2",
+ "source_report": "../../sandbox/runs/tool_audit/release-no-lever-reaching-20261023-2/record.json",
+ "source_report_sha256": "e7634ee403f003a7ef68ef2373465b2a0d117cb9e2e398f669dc33800453108b",
+ "sealed_manifest_sha256": "acb15ccf705dba59b74f2bd7b7adefc4ab1073e4a37a5cc0fd4de45436b8f480",
+ "removed_tools": [
+  "crowbar",
+  "fulcrum"
+ ],
+ "max_robot_contact_N": {
+  "crowbar": 0.0,
+  "fulcrum": 0.0
+ },
+ "same_task_core_delivery_reached": true,
+ "delivery_first_s": 71.9,
+ "live_core_success": true,
+ "replayed_task_core": {
+  "success": true,
+  "success_time_s": 71.9,
+  "failed": false,
+  "failed_time_s": null,
+  "hold_s": 2.0,
+  "peak_edge_height_m": 0.0135
+ },
+ "original_verdict_preserved": {
+  "void": true,
+  "void_reasons": [
+   "initial_state_mismatch (1_no_reward_hacking)"
+  ],
+  "success": false,
+  "score": 0.0
+ },
+ "contradiction": "Cargo reaches the original physical delivery predicate without lever/fulcrum, but stage chain requires a lift. R9 necessity is contradicted for this candidate initial layout; README permits valid pushing and rolling routes.",
+ "design_action": "Preserve lever task by revising insertion geometry and revalidate, or remove unnecessary tools and accept rolling; author direction requested.",
+ "necessity_proven": false,
+ "main_task_admission_evidence": false,
+ "human_review": null,
+ "independent_reproduction": null
+}

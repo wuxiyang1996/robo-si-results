@@ -1,0 +1,712 @@
+{
+  "task": "hanoi",
+  "accepted": true,
+  "error": null,
+  "expert": {
+    "exit_code": 0
+  },
+  "seconds": 500.25,
+  "verdict": {
+    "episode": "episode_00",
+    "void": false,
+    "void_reasons": [],
+    "flags": [],
+    "score": 1.0,
+    "success": true,
+    "end_reason": "task_ended",
+    "samples": 8748,
+    "sim_time_s": 174.925,
+    "source": "reference_recorder",
+    "observations": null,
+    "simulator": {
+      "genesis-world": "1.4.3",
+      "torch": "2.11.0+cu128",
+      "numpy": "2.5.3"
+    },
+    "episode_spec": null,
+    "layer": 4,
+    "process_score": 1.0,
+    "final_progress": 1.0,
+    "peak_time_s": 174.925,
+    "stage_best": {
+      "disk_lifted_clear": 1.0,
+      "first_move": 1.0,
+      "tower_progress": 1.0,
+      "goal_hold": 1.0
+    },
+    "stage_timeline": {
+      "disk_lifted_clear": 9.06,
+      "first_move": 14.56,
+      "tower_progress": 172.94,
+      "goal_hold": 174.925
+    },
+    "completed_at_end": true,
+    "move_count": 15,
+    "minimum_moves": 15,
+    "num_disks": 4,
+    "moves_left": 0,
+    "evaluation": {
+      "replay": {
+        "success": true,
+        "failed": false,
+        "reason": "success",
+        "elapsed": 174.9249999999134,
+        "latched_row": 8747
+      },
+      "live": {
+        "success": true,
+        "failed": false,
+        "reason": "success",
+        "elapsed": 174.9249999999134,
+        "latched_row": 8747,
+        "recorded": true
+      },
+      "replay_matches_live": true,
+      "mismatch": null,
+      "moves": [
+        {
+          "disk": "disk_3",
+          "source": "A",
+          "target": "B",
+          "t": 14.56
+        },
+        {
+          "disk": "disk_2",
+          "source": "A",
+          "target": "C",
+          "t": 26.09
+        },
+        {
+          "disk": "disk_3",
+          "source": "B",
+          "target": "C",
+          "t": 36.97
+        },
+        {
+          "disk": "disk_1",
+          "source": "A",
+          "target": "B",
+          "t": 47.88
+        },
+        {
+          "disk": "disk_3",
+          "source": "C",
+          "target": "A",
+          "t": 59.405
+        },
+        {
+          "disk": "disk_2",
+          "source": "C",
+          "target": "B",
+          "t": 70.315
+        },
+        {
+          "disk": "disk_3",
+          "source": "A",
+          "target": "B",
+          "t": 81.185
+        },
+        {
+          "disk": "disk_0",
+          "source": "A",
+          "target": "C",
+          "t": 92.765
+        },
+        {
+          "disk": "disk_3",
+          "source": "B",
+          "target": "C",
+          "t": 104.285
+        },
+        {
+          "disk": "disk_2",
+          "source": "B",
+          "target": "A",
+          "t": 115.185
+        },
+        {
+          "disk": "disk_3",
+          "source": "C",
+          "target": "A",
+          "t": 127.385
+        },
+        {
+          "disk": "disk_1",
+          "source": "B",
+          "target": "C",
+          "t": 138.945
+        },
+        {
+          "disk": "disk_3",
+          "source": "A",
+          "target": "B",
+          "t": 149.84
+        },
+        {
+          "disk": "disk_2",
+          "source": "A",
+          "target": "C",
+          "t": 162.045
+        },
+        {
+          "disk": "disk_3",
+          "source": "B",
+          "target": "C",
+          "t": 172.925
+        }
+      ],
+      "move_count": 15,
+      "minimum_moves": 15
+    },
+    "final_state": {
+      "disk_0": {
+        "xy_error_m": 0.00605,
+        "z_error_m": 4e-05,
+        "tilt_rad": 0.0,
+        "ok": true
+      },
+      "disk_1": {
+        "xy_error_m": 0.00202,
+        "z_error_m": 9e-05,
+        "tilt_rad": 0.0001,
+        "ok": true
+      },
+      "disk_2": {
+        "xy_error_m": 0.00133,
+        "z_error_m": 0.00013,
+        "tilt_rad": 0.0001,
+        "ok": true
+      },
+      "disk_3": {
+        "xy_error_m": 0.00247,
+        "z_error_m": 0.00015,
+        "tilt_rad": 0.0001,
+        "ok": true
+      }
+    },
+    "alarms": [],
+    "alarms_by_question": {
+      "1_no_reward_hacking": [],
+      "2_task_really_completed": [],
+      "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+      "monitor_version": "g1-tabletop-hanoi-monitors/1",
+      "not_applicable": {
+        "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+        "fall": "the pelvis is bolted to a stand",
+        "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+      },
+      "max_reported_speed": 0.443,
+      "max_object_speed": 0.443,
+      "max_step_speed": 0.443,
+      "max_support_penetration": 0.0011,
+      "max_energy_excess_J": 0.001,
+      "max_reversal_rate_hand_hz": 0.0,
+      "max_arm_shake": 0.156,
+      "max_saturation_s": 0.0,
+      "max_limit_push_s": 0.0,
+      "max_progress_spike": 0.0
+    },
+    "verifier": "g1-tabletop-hanoi-verifier/1 (g1-tabletop-hanoi-monitors/1)"
+  },
+  "scene_config": {
+    "num_disks": 4,
+    "table_height": 0.74,
+    "table_center": [
+      0.55,
+      0.0
+    ],
+    "table_size": [
+      0.7,
+      1.15,
+      0.05
+    ],
+    "max_episode_seconds": 180.0,
+    "control_dt": 0.02,
+    "arm_torque_scale": 1.0,
+    "initial_arm_offsets": [],
+    "pad_thickness": 0.025,
+    "pad_radius": 0.105,
+    "pad_shape": "box",
+    "enable_torsional_friction": true,
+    "friction_model": "elliptic",
+    "peg_x": 0.46,
+    "peg_ys": [
+      0.25,
+      0.0,
+      -0.25
+    ],
+    "peg_xs": null,
+    "start_peg": "A",
+    "target_peg": "C",
+    "rod_radius": 0.012,
+    "rod_height": 0.18,
+    "disk_inner_radius": 0.022,
+    "disk_height": 0.025,
+    "disk_mass": 0.12,
+    "disk_outer_radii": null,
+    "disk_color_order": null,
+    "disk_initial_offsets": null,
+    "disk_initial_lift": 0.0,
+    "disk_friction": 0.7,
+    "ring_segments": 12,
+    "ring_segment_shape": "wedge",
+    "placement_xy_tolerance": 0.011999999999999999,
+    "placement_z_tolerance": 0.006,
+    "departure_xy_tolerance": 0.011999999999999999,
+    "departure_z_tolerance": 0.009,
+    "ring_contact_allowance": 0.002,
+    "tilt_tolerance": 0.12,
+    "linear_speed_limit": 0.03,
+    "angular_speed_limit": 0.2,
+    "rod_clearance": 0.003,
+    "placement_hold_seconds": 0.5,
+    "success_hold_seconds": 2.0,
+    "hand_contact_memory_seconds": 0.1,
+    "support_force_min": 0.05,
+    "fall_distance": 0.1
+  },
+  "privileged_reference": true,
+  "video_replay": {
+    "source": "/work/runs/hanoi-qualified-linux04/4/episode_00",
+    "source_manifest_sha256": "caf8f3d49504711b839d2cf4348a46922a046c39699caa9d41dea747fb311e48",
+    "action_only_replay": true,
+    "source_environment_changes": [],
+    "exact_reproduction": true,
+    "accepted": true,
+    "video_fps": 10,
+    "world_parameters_match": true,
+    "comparison": {
+      "rows_compared": 8747,
+      "rows_sandbox": 8747,
+      "rows_recording": 8747,
+      "max_object_position_diff_m": 0.0,
+      "max_time_diff_s": 0.0,
+      "exact_fields": {
+        "t": true,
+        "joint_pos": true,
+        "joint_vel": true,
+        "obj_pos": true,
+        "obj_quat": true,
+        "obj_vel": true,
+        "obj_ang": true,
+        "live_success": true,
+        "live_failed": true,
+        "live_progress": true
+      },
+      "verdict_matches": true
+    },
+    "verdict": {
+      "episode": "episode_00",
+      "void": false,
+      "void_reasons": [],
+      "flags": [],
+      "score": 1.0,
+      "success": true,
+      "end_reason": "task_ended",
+      "samples": 8748,
+      "sim_time_s": 174.925,
+      "source": "reference_recorder",
+      "observations": null,
+      "simulator": {
+        "genesis-world": "1.4.3",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.5.3"
+      },
+      "episode_spec": null,
+      "layer": 4,
+      "process_score": 1.0,
+      "final_progress": 1.0,
+      "peak_time_s": 174.925,
+      "stage_best": {
+        "disk_lifted_clear": 1.0,
+        "first_move": 1.0,
+        "tower_progress": 1.0,
+        "goal_hold": 1.0
+      },
+      "stage_timeline": {
+        "disk_lifted_clear": 9.06,
+        "first_move": 14.56,
+        "tower_progress": 172.94,
+        "goal_hold": 174.925
+      },
+      "completed_at_end": true,
+      "move_count": 15,
+      "minimum_moves": 15,
+      "num_disks": 4,
+      "moves_left": 0,
+      "evaluation": {
+        "replay": {
+          "success": true,
+          "failed": false,
+          "reason": "success",
+          "elapsed": 174.9249999999134,
+          "latched_row": 8747
+        },
+        "live": {
+          "success": true,
+          "failed": false,
+          "reason": "success",
+          "elapsed": 174.9249999999134,
+          "latched_row": 8747,
+          "recorded": true
+        },
+        "replay_matches_live": true,
+        "mismatch": null,
+        "moves": [
+          {
+            "disk": "disk_3",
+            "source": "A",
+            "target": "B",
+            "t": 14.56
+          },
+          {
+            "disk": "disk_2",
+            "source": "A",
+            "target": "C",
+            "t": 26.09
+          },
+          {
+            "disk": "disk_3",
+            "source": "B",
+            "target": "C",
+            "t": 36.97
+          },
+          {
+            "disk": "disk_1",
+            "source": "A",
+            "target": "B",
+            "t": 47.88
+          },
+          {
+            "disk": "disk_3",
+            "source": "C",
+            "target": "A",
+            "t": 59.405
+          },
+          {
+            "disk": "disk_2",
+            "source": "C",
+            "target": "B",
+            "t": 70.315
+          },
+          {
+            "disk": "disk_3",
+            "source": "A",
+            "target": "B",
+            "t": 81.185
+          },
+          {
+            "disk": "disk_0",
+            "source": "A",
+            "target": "C",
+            "t": 92.765
+          },
+          {
+            "disk": "disk_3",
+            "source": "B",
+            "target": "C",
+            "t": 104.285
+          },
+          {
+            "disk": "disk_2",
+            "source": "B",
+            "target": "A",
+            "t": 115.185
+          },
+          {
+            "disk": "disk_3",
+            "source": "C",
+            "target": "A",
+            "t": 127.385
+          },
+          {
+            "disk": "disk_1",
+            "source": "B",
+            "target": "C",
+            "t": 138.945
+          },
+          {
+            "disk": "disk_3",
+            "source": "A",
+            "target": "B",
+            "t": 149.84
+          },
+          {
+            "disk": "disk_2",
+            "source": "A",
+            "target": "C",
+            "t": 162.045
+          },
+          {
+            "disk": "disk_3",
+            "source": "B",
+            "target": "C",
+            "t": 172.925
+          }
+        ],
+        "move_count": 15,
+        "minimum_moves": 15
+      },
+      "final_state": {
+        "disk_0": {
+          "xy_error_m": 0.00605,
+          "z_error_m": 4e-05,
+          "tilt_rad": 0.0,
+          "ok": true
+        },
+        "disk_1": {
+          "xy_error_m": 0.00202,
+          "z_error_m": 9e-05,
+          "tilt_rad": 0.0001,
+          "ok": true
+        },
+        "disk_2": {
+          "xy_error_m": 0.00133,
+          "z_error_m": 0.00013,
+          "tilt_rad": 0.0001,
+          "ok": true
+        },
+        "disk_3": {
+          "xy_error_m": 0.00247,
+          "z_error_m": 0.00015,
+          "tilt_rad": 0.0001,
+          "ok": true
+        }
+      },
+      "alarms": [],
+      "alarms_by_question": {
+        "1_no_reward_hacking": [],
+        "2_task_really_completed": [],
+        "3_no_physics_violation": []
+      },
+      "credit_windows": [],
+      "monitor_metrics": {
+        "monitor_version": "g1-tabletop-hanoi-monitors/1",
+        "not_applicable": {
+          "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+          "fall": "the pelvis is bolted to a stand",
+          "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+        },
+        "max_reported_speed": 0.443,
+        "max_object_speed": 0.443,
+        "max_step_speed": 0.443,
+        "max_support_penetration": 0.0011,
+        "max_energy_excess_J": 0.001,
+        "max_reversal_rate_hand_hz": 0.0,
+        "max_arm_shake": 0.156,
+        "max_saturation_s": 0.0,
+        "max_limit_push_s": 0.0,
+        "max_progress_spike": 0.0
+      },
+      "verifier": "g1-tabletop-hanoi-verifier/1 (g1-tabletop-hanoi-monitors/1)"
+    },
+    "source_verdict": {
+      "episode": "episode_00",
+      "void": false,
+      "void_reasons": [],
+      "flags": [],
+      "score": 1.0,
+      "success": true,
+      "end_reason": "task_ended",
+      "samples": 8748,
+      "sim_time_s": 174.925,
+      "source": "reference_recorder",
+      "observations": null,
+      "simulator": {
+        "genesis-world": "1.4.3",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.5.3"
+      },
+      "episode_spec": null,
+      "layer": 4,
+      "process_score": 1.0,
+      "final_progress": 1.0,
+      "peak_time_s": 174.925,
+      "stage_best": {
+        "disk_lifted_clear": 1.0,
+        "first_move": 1.0,
+        "tower_progress": 1.0,
+        "goal_hold": 1.0
+      },
+      "stage_timeline": {
+        "disk_lifted_clear": 9.06,
+        "first_move": 14.56,
+        "tower_progress": 172.94,
+        "goal_hold": 174.925
+      },
+      "completed_at_end": true,
+      "move_count": 15,
+      "minimum_moves": 15,
+      "num_disks": 4,
+      "moves_left": 0,
+      "evaluation": {
+        "replay": {
+          "success": true,
+          "failed": false,
+          "reason": "success",
+          "elapsed": 174.9249999999134,
+          "latched_row": 8747
+        },
+        "live": {
+          "success": true,
+          "failed": false,
+          "reason": "success",
+          "elapsed": 174.9249999999134,
+          "latched_row": 8747,
+          "recorded": true
+        },
+        "replay_matches_live": true,
+        "mismatch": null,
+        "moves": [
+          {
+            "disk": "disk_3",
+            "source": "A",
+            "target": "B",
+            "t": 14.56
+          },
+          {
+            "disk": "disk_2",
+            "source": "A",
+            "target": "C",
+            "t": 26.09
+          },
+          {
+            "disk": "disk_3",
+            "source": "B",
+            "target": "C",
+            "t": 36.97
+          },
+          {
+            "disk": "disk_1",
+            "source": "A",
+            "target": "B",
+            "t": 47.88
+          },
+          {
+            "disk": "disk_3",
+            "source": "C",
+            "target": "A",
+            "t": 59.405
+          },
+          {
+            "disk": "disk_2",
+            "source": "C",
+            "target": "B",
+            "t": 70.315
+          },
+          {
+            "disk": "disk_3",
+            "source": "A",
+            "target": "B",
+            "t": 81.185
+          },
+          {
+            "disk": "disk_0",
+            "source": "A",
+            "target": "C",
+            "t": 92.765
+          },
+          {
+            "disk": "disk_3",
+            "source": "B",
+            "target": "C",
+            "t": 104.285
+          },
+          {
+            "disk": "disk_2",
+            "source": "B",
+            "target": "A",
+            "t": 115.185
+          },
+          {
+            "disk": "disk_3",
+            "source": "C",
+            "target": "A",
+            "t": 127.385
+          },
+          {
+            "disk": "disk_1",
+            "source": "B",
+            "target": "C",
+            "t": 138.945
+          },
+          {
+            "disk": "disk_3",
+            "source": "A",
+            "target": "B",
+            "t": 149.84
+          },
+          {
+            "disk": "disk_2",
+            "source": "A",
+            "target": "C",
+            "t": 162.045
+          },
+          {
+            "disk": "disk_3",
+            "source": "B",
+            "target": "C",
+            "t": 172.925
+          }
+        ],
+        "move_count": 15,
+        "minimum_moves": 15
+      },
+      "final_state": {
+        "disk_0": {
+          "xy_error_m": 0.00605,
+          "z_error_m": 4e-05,
+          "tilt_rad": 0.0,
+          "ok": true
+        },
+        "disk_1": {
+          "xy_error_m": 0.00202,
+          "z_error_m": 9e-05,
+          "tilt_rad": 0.0001,
+          "ok": true
+        },
+        "disk_2": {
+          "xy_error_m": 0.00133,
+          "z_error_m": 0.00013,
+          "tilt_rad": 0.0001,
+          "ok": true
+        },
+        "disk_3": {
+          "xy_error_m": 0.00247,
+          "z_error_m": 0.00015,
+          "tilt_rad": 0.0001,
+          "ok": true
+        }
+      },
+      "alarms": [],
+      "alarms_by_question": {
+        "1_no_reward_hacking": [],
+        "2_task_really_completed": [],
+        "3_no_physics_violation": []
+      },
+      "credit_windows": [],
+      "monitor_metrics": {
+        "monitor_version": "g1-tabletop-hanoi-monitors/1",
+        "not_applicable": {
+          "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+          "fall": "the pelvis is bolted to a stand",
+          "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+        },
+        "max_reported_speed": 0.443,
+        "max_object_speed": 0.443,
+        "max_step_speed": 0.443,
+        "max_support_penetration": 0.0011,
+        "max_energy_excess_J": 0.001,
+        "max_reversal_rate_hand_hz": 0.0,
+        "max_arm_shake": 0.156,
+        "max_saturation_s": 0.0,
+        "max_limit_push_s": 0.0,
+        "max_progress_spike": 0.0
+      },
+      "verifier": "g1-tabletop-hanoi-verifier/1 (g1-tabletop-hanoi-monitors/1)"
+    }
+  }
+}

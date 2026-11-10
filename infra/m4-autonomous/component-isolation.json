@@ -1,0 +1,124 @@
+{
+  "schema": "m4-component-isolation/1",
+  "passed": true,
+  "scope": "Capability ledger process only. Full reference planning, simulation bridge, grading episodes and run-void attribution are not yet isolated/validated.",
+  "whole_agent_isolated": false,
+  "formal_admission": false,
+  "requests": [
+    {
+      "op": "isolation_probe",
+      "canary": "/tmp/m4-private-19778tlr/hidden",
+      "repo": "/fs/gamma-projects/vlm-robot/robo-si/m4_family/autonomous/admission.json"
+    },
+    {
+      "op": "select"
+    },
+    {
+      "op": "observe",
+      "probe": {
+        "candidate": "opaque-measured",
+        "elapsed_s": 2,
+        "commanded_travel_m": 0.03,
+        "measured_travel_m": 0.03,
+        "cargo_motion_m": 0.02,
+        "rope_load_n": 12,
+        "stance_slide_m": 0.01,
+        "connection_confirmed": true,
+        "pin_closed": true
+      }
+    },
+    {
+      "op": "select"
+    },
+    {
+      "op": "attach"
+    },
+    {
+      "op": "observe",
+      "probe": {
+        "candidate": "opaque-measured",
+        "elapsed_s": 2,
+        "commanded_travel_m": 0.03,
+        "measured_travel_m": 0.03,
+        "cargo_motion_m": 0.02,
+        "rope_load_n": 12,
+        "stance_slide_m": 0.01,
+        "connection_confirmed": true,
+        "pin_closed": true,
+        "mass": 15
+      }
+    }
+  ],
+  "responses": [
+    {
+      "ok": true,
+      "result": {
+        "host_canary": {
+          "denied": true,
+          "errno": 2
+        },
+        "parent_root": {
+          "denied": true,
+          "errno": 2
+        },
+        "private_repo": {
+          "denied": true,
+          "errno": 2
+        },
+        "code_write": {
+          "denied": true,
+          "errno": 30
+        },
+        "network": {
+          "denied": true,
+          "errno": 101
+        },
+        "host_environment_hidden": true,
+        "pid_namespace": true
+      }
+    },
+    {
+      "ok": true,
+      "result": {
+        "candidate": null,
+        "reason": "No measured useful candidate; probe/reconfigure without assuming team necessity"
+      }
+    },
+    {
+      "ok": true,
+      "result": {
+        "candidate": "opaque-measured",
+        "state": "useful_at_tested_load",
+        "measured": {
+          "candidate": "opaque-measured",
+          "elapsed_s": 2,
+          "commanded_travel_m": 0.03,
+          "measured_travel_m": 0.03,
+          "cargo_motion_m": 0.02,
+          "rope_load_n": 12,
+          "stance_slide_m": 0.01,
+          "connection_confirmed": true,
+          "pin_closed": true
+        },
+        "general_feasibility": null,
+        "extra_robot_required": null
+      }
+    },
+    {
+      "ok": true,
+      "result": {
+        "candidate": "opaque-measured",
+        "reason": "Measured progress and stance margin in the tested probe",
+        "scope": "Probe-specific; no full-task success claim"
+      }
+    },
+    {
+      "ok": false,
+      "error": "unsupported operation"
+    },
+    {
+      "ok": false,
+      "error": "__init__() got an unexpected keyword argument 'mass'"
+    }
+  ]
+}

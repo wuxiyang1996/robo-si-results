@@ -1,0 +1,162 @@
+{
+ "task": "M1",
+ "mode": "eval",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.0,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.0,
+ "score_std": 0.0,
+ "by_layer": {
+  "1": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.0,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 0
+ },
+ "flags": [],
+ "privileged_reference": false,
+ "result_kind": "agent run",
+ "requests": {
+  "observe": 2,
+  "command": 1,
+  "reference": 0,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "7 entries"
+ },
+ "verifier": "infra-verifier/1 + m1-verifier/2 (m1-monitors/3.1-numeric-boundary; m1-scoring/2-supported-release)",
+ "verifier_sha256": "9feeb06b936c33ecbb27d2928ba2f2574da06149cca2431910343b6d92c221c8",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": "0.2-candidate",
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + m1-verifier/2 (m1-monitors/3.1-numeric-boundary; m1-scoring/2-supported-release)",
+  "verifier_sha256": "9feeb06b936c33ecbb27d2928ba2f2574da06149cca2431910343b6d92c221c8",
+  "scene": [
+   "M1-v0.3"
+  ],
+  "simulator": [
+   "{\"genesis-world\": \"1.4.3\", \"numpy\": \"2.5.3\", \"torch\": \"2.11.0+cu128\"}"
+  ],
+  "image": "m1-agent:55d2108e815e0343",
+  "image_id": "sha256:96af9e25f593bf939e83b8df1bcb2c40cd28066e42da68d4d5515df628d346b5",
+  "bundle": "55d2108e815e0343b3277758a98189c38e419131c0fc38b3d4ad727899ae97d8",
+  "scenario_sha256": "9c87b984c291d8eb5aa3af9d3252deacd80d8e4f9ee2474c5a79676a5fa9d956",
+  "delivery_sha256": "7d10be89e105f4acb738696583873e1eacbe3478a4e13f23b75f27c04a790311",
+  "source_manifest_sha256": "875ea52ae42c4fbe6fd6bbd8e53b7447ca07c6066f196010282d45722d28c2d3",
+  "launch_scope_source_frozen": true
+ },
+ "per_episode": [
+  {
+   "episode": "episode_00",
+   "void": false,
+   "void_reasons": [],
+   "flags": [],
+   "score": 0.0,
+   "success": false,
+   "layer": 1,
+   "end_reason": "finished",
+   "physics_pose_samples": 101,
+   "samples": 26,
+   "sim_time_s": 0.5000000000000001,
+   "source": "sandbox_worker",
+   "observations": 2,
+   "scene_version": "M1-v0.3",
+   "simulator": {
+    "genesis-world": "1.4.3",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.3"
+   },
+   "final_progress": 0.0,
+   "peak_time_s": 0.0,
+   "stage_best": {
+    "container_handled": 0.0,
+    "off_shelf": 0.0,
+    "mobile_grasp": 0.0,
+    "in_cabinet": 0.0,
+    "delivered": 0.0
+   },
+   "stage_timeline": {
+    "container_handled": null,
+    "off_shelf": null,
+    "mobile_grasp": null,
+    "in_cabinet": null,
+    "delivered": null
+   },
+   "delivered_at_end": false,
+   "fallen": false,
+   "tipped": false,
+   "dropped": [],
+   "route": {
+    "g1_touched_crate": false,
+    "g1_touched_cube": false,
+    "x5_touched_crate": false,
+    "x5_touched_cube": false,
+    "cube_shared": false
+   },
+   "supported_release_at_end": false,
+   "scoring_version": "m1-scoring/2-supported-release",
+   "evaluation": {
+    "goal_observed": false,
+    "final_dwell_seconds": 0.0,
+    "violations": [],
+    "missing_evidence": []
+   },
+   "alarms": [],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": []
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "m1-monitors/3.1-numeric-boundary",
+    "not_applicable": {
+     "commands": "the record has no joint position / velocity / effort series"
+    },
+    "max_reported_speed": 0.196,
+    "max_object_speed": 0.123,
+    "max_step_speed": 0.319,
+    "max_floor_penetration": 0.0001,
+    "max_scene_box_penetration": 0.00031454050064080863,
+    "scene_box_sat_samples": 50,
+    "collision_geometry_version": "m1-recorded-collision-boxes/1",
+    "max_out_of_bounds_m": -0.4219,
+    "max_energy_excess_J": 0.002,
+    "max_progress_spike": 0.0,
+    "x5_commands": "not judged: episode shorter than the 1 s window",
+    "max_cube_energy_excess_J_per_kg": 0.0,
+    "cube_material_intrusion_samples": 0,
+    "max_cube_material_depth_m": 0.0,
+    "cube_material_pose_rate_hz": 200
+   },
+   "verifier": "m1-verifier/2 (m1-monitors/3.1-numeric-boundary; m1-scoring/2-supported-release)",
+   "episode_index": 0,
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 2,
+    "commands": 1,
+    "reference": 0
+   }
+  }
+ ],
+ "admission_eligible": false
+}

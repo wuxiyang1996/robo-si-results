@@ -1,0 +1,21 @@
+{
+  "schema": "m4-probe-timing-review/1",
+  "attempt": "v3j-continuous-budget-a46",
+  "prior_attempt": "v3j-continuous-tools-a44",
+  "diagnosis": "a44 rejected the small tool, opened and separated, navigated to the standard tool, and began closing it. At 60.28 s the standard pin was at 36.345 mm and still closing at 10.597 mm/s, geometrically through the aperture. The old 3 s timeout requested opening before q>=38.5 mm plus 0.5 s confirmation was possible. Subsequent released hold failed the unchanged slip limit at 68.855 s.",
+  "change": "Keep the 3 s closure budget if measured pin travel is below 30 mm; otherwise allow up to 5 s for closure and confirmation. Uses only the pin encoder, not hidden tool roles or nominal feasibility.",
+  "unchanged": [
+    "three candidate scene and seed 101",
+    "first rejected-tool path",
+    "same finite pin driver and motor gains",
+    "all physical limits",
+    "same 3 s measured pull and 3 s selected-tool use",
+    "final 2 s released hold"
+  ],
+  "source_sha256": "e06173874b9b2154696a286eefed7a481ed478df10a6f03f05c2e91a71ed77ab",
+  "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+  "seconds": 120,
+  "mode": "cycle",
+  "continuous_discovery": true,
+  "formal_admission": false
+}

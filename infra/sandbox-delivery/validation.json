@@ -1,0 +1,659 @@
+{
+  "schema": "sandbox-delivery-validation/1",
+  "checked_utc": "2026-10-26T23:41:54.873820+00:00",
+  "scope": "14 current task sandbox entries, unit contracts and short container sensor/action checks. These are not complete task executions or formal admissions.",
+  "platform": "Windows 11 + Docker Desktop; additional current H3, DiskFlip and Sokoban checks on native Ubuntu 22.04 under WSL2 on the same physical machine",
+  "summary": {
+    "tasks": 14,
+    "unit_checks_passed": 14,
+    "entry_checks_passed": 14,
+    "windows_container_checks_passed": 14,
+    "linux_additional_checks_passed": 3,
+    "escape_checks_passed": 5
+  },
+  "passed": true,
+  "rows": [
+    {
+      "task": "H1",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/H1",
+      "verdict_sha256": "f4b5515ccf7aa759796bae6438dcaf0a7e019a48d01c804406418bbfe2e11d86",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\humanoid\\g1_support_retrieval\\sandbox\\runs\\infra14-20261026-h1",
+      "unit_check": {
+        "task": "H1",
+        "sandbox": "humanoid/g1_support_retrieval/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "humanoid/g1_support_retrieval/sandbox/tests",
+          "-t",
+          "."
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 62.11,
+        "log": "H1-unit.log",
+        "pipeline_sha256": "1262f33f6cc833bb3c6e550b38bdc793884d450951db1b7168a0cbb40b62e45b"
+      },
+      "entry_check": {
+        "task": "H1",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "humanoid/g1_support_retrieval/sandbox"
+    },
+    {
+      "task": "H2",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/H2",
+      "verdict_sha256": "ab1ed2fc327e13dd56b99d06377e4e842fa099ed0f66a4096a5b7eec8a191f1a",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\humanoid\\g1_cart_assisted_transport\\sandbox\\runs\\infra14-20261026-h2",
+      "unit_check": {
+        "task": "H2",
+        "sandbox": "humanoid/g1_cart_assisted_transport/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "humanoid.g1_cart_assisted_transport.sandbox.tests.test_static",
+          "humanoid.g1_cart_assisted_transport.sandbox.tests.test_scoring",
+          "humanoid.g1_cart_assisted_transport.sandbox.tests.test_monitors",
+          "humanoid.g1_cart_assisted_transport.sandbox.tests.test_physics_evidence",
+          "humanoid.g1_cart_assisted_transport.sandbox.tests.test_validity_legacy",
+          "humanoid.g1_cart_assisted_transport.sandbox.tests.test_launcher_pipeline",
+          "infra.sandbox.tests.test_run_checks",
+          "infra.sandbox.tests.test_release_check",
+          "infra.sandbox.tests.test_transport_sampling",
+          "infra.sandbox.tests.test_transport_layout",
+          "infra.sandbox.tests.test_transport_subtasks",
+          "infra.sandbox.tests.test_transport_campaign",
+          "humanoid.g1_cart_assisted_transport.sandbox.tests.test_detour"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 51.05,
+        "log": "H2-unit.log",
+        "pipeline_sha256": "99b45e86631f0dae9f7dc6921ce318424e84029b2292da7741cabc371b21748a"
+      },
+      "entry_check": {
+        "task": "H2",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "humanoid/g1_cart_assisted_transport/sandbox"
+    },
+    {
+      "task": "H3",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/H3",
+      "verdict_sha256": "1f9634835ff10346056368eefae8c8119bab40875ef76e026ad4f28040010501",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_g1_self_closing_door\\sandbox\\runs\\native-rgb-04",
+      "unit_check": {
+        "task": "H3",
+        "sandbox": "multi_robot/dual_g1_self_closing_door/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "infra.sandbox.tests.test_native_reference"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 6.8,
+        "log": "H3-unit.log",
+        "pipeline_sha256": "435af99557ad33a5c37b34d0bc185236c8fb6ba3e1e27dd2230e001b79fcb1de"
+      },
+      "entry_check": {
+        "task": "H3",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "multi_robot/dual_g1_self_closing_door/sandbox"
+    },
+    {
+      "task": "H4",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/H4",
+      "verdict_sha256": "b2e4e4a417af35bb05549d3e5a3da59c4bf1994399c193a35e38f199baa2ec0a",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\humanoid\\g1_ramp_bridge_construction\\sandbox\\runs\\infra14-20261026-h4",
+      "unit_check": {
+        "task": "H4",
+        "sandbox": "humanoid/g1_ramp_bridge_construction/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "humanoid/g1_ramp_bridge_construction/sandbox/tests",
+          "-t",
+          "."
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 11.09,
+        "log": "H4-unit.log",
+        "pipeline_sha256": "b5526e0ad7d594b013288e496ea32b6b6767a7247778ad140ce3a7c8813f54f4"
+      },
+      "entry_check": {
+        "task": "H4",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "humanoid/g1_ramp_bridge_construction/sandbox"
+    },
+    {
+      "task": "H5",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/H5",
+      "verdict_sha256": "e8137165efd23a26b59eb4f60fef36bfb777f886e08dd6a54270a9fd1b284063",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\infra14-20261026-h5",
+      "unit_check": {
+        "task": "H5",
+        "sandbox": "humanoid/g1_lever_assisted_transport/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "humanoid.g1_lever_assisted_transport.sandbox.tests.test_static",
+          "humanoid.g1_lever_assisted_transport.sandbox.tests.test_scoring",
+          "humanoid.g1_lever_assisted_transport.sandbox.tests.test_monitors",
+          "humanoid.g1_lever_assisted_transport.sandbox.tests.test_release_review",
+          "infra.sandbox.tests.test_transport_sampling",
+          "infra.sandbox.tests.test_transport_subtasks",
+          "infra.sandbox.tests.test_transport_campaign"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 33.72,
+        "log": "H5-unit.log",
+        "pipeline_sha256": "d27d5b5e00c62a0e5777e50cc27677db98e631ca73f6800dde5dee4514d8ae95"
+      },
+      "entry_check": {
+        "task": "H5",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "humanoid/g1_lever_assisted_transport/sandbox"
+    },
+    {
+      "task": "H6",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/H6",
+      "verdict_sha256": "36196d0e3a081edae84ac510d1143a6dc9e9ade572bbf25301e11ff17d295c4e",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\humanoid\\g1_box_stair_transport\\sandbox\\runs\\infra14-20261026-h6",
+      "unit_check": {
+        "task": "H6",
+        "sandbox": "humanoid/g1_box_stair_transport/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "humanoid/g1_box_stair_transport/sandbox/tests",
+          "-t",
+          "."
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 29.8,
+        "log": "H6-unit.log",
+        "pipeline_sha256": "6508d208bbb8dcf2e8715e4242b435a7c81d840bcaf4cba7ded761676f5a9235"
+      },
+      "entry_check": {
+        "task": "H6",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "humanoid/g1_box_stair_transport/sandbox"
+    },
+    {
+      "task": "M1",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/M1",
+      "verdict_sha256": "91b87b5726d6422372a66fbf1394f4b6dd5d1c2f2297debc9d4633ddcdda64f3",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\multi_robot\\g1_mobile_gripper_retrieval\\sandbox\\runs\\infra14-20261026-m1-r2",
+      "unit_check": {
+        "task": "M1",
+        "sandbox": "multi_robot/g1_mobile_gripper_retrieval/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "multi_robot/g1_mobile_gripper_retrieval/sandbox/tests",
+          "-t",
+          "."
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 12.42,
+        "log": "M1-unit.log",
+        "pipeline_sha256": "fa2f2c36a547727da54ccea5b291f6a0ad49e08ada9ae685ce5142684fb790c4"
+      },
+      "entry_check": {
+        "task": "M1",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "multi_robot/g1_mobile_gripper_retrieval/sandbox"
+    },
+    {
+      "task": "M2",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/M2",
+      "verdict_sha256": "b072dc0cee3ed93287fb9a665f0aefcd3181de8a6d7fbadd4c989c5e696ba5ed",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_g1_long_object_transport\\sandbox\\runs\\infra14-20261026-m2",
+      "unit_check": {
+        "task": "M2",
+        "sandbox": "multi_robot/dual_g1_long_object_transport/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_infra",
+          "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_grading",
+          "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_audit_tools",
+          "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_bounded_reference",
+          "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_public_channel",
+          "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_reference_video",
+          "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_regrasp",
+          "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_endings"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 10.5,
+        "log": "M2-unit.log",
+        "pipeline_sha256": "29621817061110e85c9445e3dd2973cdf360c857bccc3ad8bb4fdd17c26fae11"
+      },
+      "entry_check": {
+        "task": "M2",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "multi_robot/dual_g1_long_object_transport/sandbox"
+    },
+    {
+      "task": "M3",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/M3",
+      "verdict_sha256": "213c773cef4bc5260a892228b185706240fa919789994a6d9d3a17714ecad098",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\multi_robot\\g1_improvised_robot_tool_use\\sandbox\\runs\\infra14-20261026-m3",
+      "unit_check": {
+        "task": "M3",
+        "sandbox": "multi_robot/g1_improvised_robot_tool_use/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "multi_robot/g1_improvised_robot_tool_use/sandbox/tests",
+          "-t",
+          "."
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 5.52,
+        "log": "M3-unit.log",
+        "pipeline_sha256": "8f3b175f254458b71e1cb0ac229321bde766302bab30a8c7164a45277194cf8e"
+      },
+      "entry_check": {
+        "task": "M3",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "multi_robot/g1_improvised_robot_tool_use/sandbox"
+    },
+    {
+      "task": "M4",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/M4",
+      "verdict_sha256": "37c7819be090fc77af722669728d2e191763ecc2f48f88b56c3c20a1757f8c4e",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_quadruped_cooperative_transport\\sandbox\\runs\\infra14-20261026-m4",
+      "unit_check": {
+        "task": "M4",
+        "sandbox": "multi_robot/dual_quadruped_cooperative_transport/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "multi_robot.dual_quadruped_cooperative_transport.sandbox.tests.test_static",
+          "multi_robot.dual_quadruped_cooperative_transport.sandbox.tests.test_scoring",
+          "multi_robot.dual_quadruped_cooperative_transport.sandbox.tests.test_monitors",
+          "multi_robot.dual_quadruped_cooperative_transport.sandbox.tests.test_hold_control",
+          "multi_robot.dual_quadruped_cooperative_transport.sandbox.tests.test_swing_clearance",
+          "multi_robot.dual_quadruped_cooperative_transport.sandbox.tests.test_coupler_geometry",
+          "multi_robot.dual_quadruped_cooperative_transport.sandbox.tests.test_coupler_campaign"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 16.67,
+        "log": "M4-unit.log",
+        "pipeline_sha256": "9ef6d13923cac5ffcfd208e3e177727fc2aaf6a14369a88292ce7c9a6b4e981b"
+      },
+      "entry_check": {
+        "task": "M4",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "multi_robot/dual_quadruped_cooperative_transport/sandbox"
+    },
+    {
+      "task": "Hanoi",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/Hanoi",
+      "verdict_sha256": "498b53bcc4e02660e5ae8c359f05b4e7852c5d4c046477f0ed77d2e3857ae5ae",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\humanoid\\g1_tabletop_hanoi\\sandbox\\runs\\infra14-20261026-hanoi",
+      "unit_check": {
+        "task": "Hanoi",
+        "sandbox": "humanoid/g1_tabletop_hanoi/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "humanoid/g1_tabletop_hanoi/sandbox/tests",
+          "-t",
+          "."
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 22.2,
+        "log": "Hanoi-unit.log",
+        "pipeline_sha256": "5e20d283cc6c573143aeaf2394d70c91d7a25f63686f23e2049a144572d750bb"
+      },
+      "entry_check": {
+        "task": "Hanoi",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "humanoid/g1_tabletop_hanoi/sandbox"
+    },
+    {
+      "task": "Assembly",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/Assembly",
+      "verdict_sha256": "849ae9ae8fe916e9e540583c9cb0fac5cf953d178f4c75ebbb2abe5ac729e3af",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\humanoid\\g1_tabletop_assembly\\sandbox\\runs\\infra14-20261026-assembly",
+      "unit_check": {
+        "task": "Assembly",
+        "sandbox": "humanoid/g1_tabletop_assembly/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "humanoid/g1_tabletop_assembly/sandbox/tests",
+          "-t",
+          "."
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 19.0,
+        "log": "Assembly-unit.log",
+        "pipeline_sha256": "13217a30136560f2f7735e5708324745ff1c6c7ad87b056191cb07ae252c3971"
+      },
+      "entry_check": {
+        "task": "Assembly",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "humanoid/g1_tabletop_assembly/sandbox"
+    },
+    {
+      "task": "DiskFlip",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/DiskFlip",
+      "verdict_sha256": "4d559c25be16c6cd81c99a62595878b27ac7ec509f3b7b2a6176639757d106c3",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "C:\\Users\\wuxiy\\rsi_releases\\infra14-publication-20261026\\sandbox-package\\workspace\\humanoid\\g1_tabletop_disk_flip\\sandbox\\runs\\portable-windows-rgb-07",
+      "unit_check": {
+        "task": "DiskFlip",
+        "sandbox": "humanoid/g1_tabletop_disk_flip/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "infra.sandbox.tests.test_native_reference"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 8.27,
+        "log": "DiskFlip-unit.log",
+        "pipeline_sha256": "ecd2cd145f9669cec2cf926d177e75b83afaa7dbe0599a9f841db7ccde670b46"
+      },
+      "entry_check": {
+        "task": "DiskFlip",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "humanoid/g1_tabletop_disk_flip/sandbox"
+    },
+    {
+      "task": "Sokoban",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/windows/Sokoban",
+      "verdict_sha256": "1e126298d59f790020a054a0d1355f341945da3e48480f59222c2abb48ae5568",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\multi_robot\\g1_sokoban\\sandbox\\runs\\paired-container-04",
+      "unit_check": {
+        "task": "Sokoban",
+        "sandbox": "multi_robot/g1_sokoban/sandbox",
+        "command": [
+          "-m",
+          "unittest",
+          "multi_robot.g1_sokoban.sandbox.test_contract"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "wall_s": 12.69,
+        "log": "Sokoban-unit.log",
+        "pipeline_sha256": "089fdbce3781eeb1ee76dceffc4c2fedbdb046212c845115e9bc2a7fa0754347"
+      },
+      "entry_check": {
+        "task": "Sokoban",
+        "entry_check_passed": true,
+        "missing": [],
+        "error": null,
+        "physics_executed": false
+      },
+      "sandbox": "multi_robot/g1_sokoban/sandbox"
+    }
+  ],
+  "additional_checks": [
+    {
+      "task": "H3",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/linux/H3",
+      "verdict_sha256": "406685a6d79e810cb3ab8d65379e31927fc15ce3ccbfffe7c17a8a6d7aaf9a92",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "C:\\Users\\wuxiy\\rsi_releases\\infra14-publication-20261026\\sandbox-package\\workspace\\multi_robot\\dual_g1_self_closing_door\\sandbox\\runs\\portable-linux-rgb-07"
+    },
+    {
+      "task": "DiskFlip",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/linux/DiskFlip",
+      "verdict_sha256": "75e77f165dc8d1c54d9545119f27be052ef84060de75852dba70049a23acd483",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "C:\\Users\\wuxiy\\rsi_releases\\infra14-publication-20261026\\sandbox-package\\workspace\\humanoid\\g1_tabletop_disk_flip\\sandbox\\runs\\portable-linux-rgb-07"
+    },
+    {
+      "task": "Sokoban",
+      "passed": true,
+      "errors": [],
+      "escape_probe": false,
+      "evidence": "evidence/linux/Sokoban",
+      "verdict_sha256": "5a732a243177bbba1904417e105ac289a6cdcf681d180daaff384598a7d1e8e6",
+      "score": 0.0,
+      "void": false,
+      "counts_as_task_success": false,
+      "original_run": "C:\\Users\\wuxiy\\rsi_releases\\infra14-publication-20261026\\sandbox-package\\workspace\\multi_robot\\g1_sokoban\\sandbox\\runs\\portable-linux-rgb-08"
+    },
+    {
+      "task": "H3",
+      "passed": true,
+      "errors": [],
+      "escape_probe": true,
+      "evidence": "evidence/escape-windows/H3",
+      "verdict_sha256": "0134f3954380c7ddf78c3898f79b19b3d39174f0e6988dfc2c40ae2840a29525",
+      "score": 0.0,
+      "void": true,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_g1_self_closing_door\\sandbox\\runs\\native-escape-05"
+    },
+    {
+      "task": "DiskFlip",
+      "passed": true,
+      "errors": [],
+      "escape_probe": true,
+      "evidence": "evidence/escape-windows/DiskFlip",
+      "verdict_sha256": "8185d7cd3349b0823a756d875514445b157e6af30c697f0640cf1adaed35bddf",
+      "score": 0.0,
+      "void": true,
+      "counts_as_task_success": false,
+      "original_run": "C:\\Users\\wuxiy\\rsi_releases\\infra14-publication-20261026\\sandbox-package\\workspace\\humanoid\\g1_tabletop_disk_flip\\sandbox\\runs\\portable-windows-escape-07"
+    },
+    {
+      "task": "Sokoban",
+      "passed": true,
+      "errors": [],
+      "escape_probe": true,
+      "evidence": "evidence/escape-windows/Sokoban",
+      "verdict_sha256": "e1d98c41e8d132da03530d6e3935a8f3ec32e25f04940c72a6dbff18412052f4",
+      "score": 0.0,
+      "void": true,
+      "counts_as_task_success": false,
+      "original_run": "D:\\rsi_vla\\robo-si\\multi_robot\\g1_sokoban\\sandbox\\runs\\paired-escape-03"
+    },
+    {
+      "task": "DiskFlip",
+      "passed": true,
+      "errors": [],
+      "escape_probe": true,
+      "evidence": "evidence/escape-linux/DiskFlip",
+      "verdict_sha256": "6dfeda93fd20fefe590e00f3cce2c2a3a679fafac59c961ba6e6b606cd637d6f",
+      "score": 0.0,
+      "void": true,
+      "counts_as_task_success": false,
+      "original_run": "C:\\Users\\wuxiy\\rsi_releases\\infra14-publication-20261026\\sandbox-package\\workspace\\humanoid\\g1_tabletop_disk_flip\\sandbox\\runs\\portable-linux-escape-07"
+    },
+    {
+      "task": "Sokoban",
+      "passed": true,
+      "errors": [],
+      "escape_probe": true,
+      "evidence": "evidence/escape-linux/Sokoban",
+      "verdict_sha256": "7ff14fb65707ba5d98587d8d296ea2345ed50ebac56832aaebdb683b5d6e83e0",
+      "score": 0.0,
+      "void": true,
+      "counts_as_task_success": false,
+      "original_run": "C:\\Users\\wuxiy\\rsi_releases\\infra14-publication-20261026\\sandbox-package\\workspace\\multi_robot\\g1_sokoban\\sandbox\\runs\\portable-linux-escape-08"
+    }
+  ],
+  "formal_admission_inferred": false,
+  "full_reference_replayed_through_new_adapters": false,
+  "independent_machine_verified": false,
+  "sokoban_task_success": null,
+  "limitations": [
+    "New adapters are interface/short-execution verified; full expert replay through them remains separate.",
+    "Sokoban complete push-only physical validity is not certified; success credit remains withheld.",
+    "Linux records here cover the three new adapters; historical deployment records for the older cohort remain separate."
+  ]
+}

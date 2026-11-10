@@ -1,0 +1,520 @@
+{
+  "schema": "table-tennis-extension-metrics/1",
+  "version": "0.1.0",
+  "status": "published_design",
+  "execution_ready": false,
+  "physical_validation": null,
+  "execution_results": null,
+  "existing_releases_unchanged": [
+    "ur10e-table-tennis-0.1.0-rc1",
+    "g1-table-tennis-0.1.0-rc1"
+  ],
+  "stage_scoring_semantics": "stage-scoring/1",
+  "documentation": "README.md",
+  "families": {
+    "I": {
+      "name": "single_interception",
+      "N": 1,
+      "stages": [
+        {
+          "id": "positioning",
+          "weight": 10,
+          "mode": "once"
+        },
+        {
+          "id": "legal_racket_contact",
+          "weight": 25,
+          "mode": "once"
+        },
+        {
+          "id": "net_clearance",
+          "weight": 20,
+          "mode": "once"
+        },
+        {
+          "id": "opponent_first_landing",
+          "weight": 20,
+          "mode": "once"
+        },
+        {
+          "id": "target_landing",
+          "weight": 15,
+          "mode": "once"
+        },
+        {
+          "id": "terminal_recovery",
+          "weight": 10,
+          "mode": "live"
+        }
+      ],
+      "success": "positioning before strike AND ordered legal target return AND terminal recovery AND no fatal violation",
+      "ball_stage_dependencies": [
+        "legal_racket_contact",
+        "net_clearance",
+        "opponent_first_landing",
+        "target_landing"
+      ]
+    },
+    "R": {
+      "name": "continuous_rally",
+      "N": 10,
+      "stages": [
+        {
+          "id": "consecutive_legal_returns",
+          "weight": 80,
+          "mode": "once",
+          "progress": "C/N"
+        },
+        {
+          "id": "target_returns",
+          "weight": 10,
+          "mode": "once",
+          "progress": "H/N"
+        },
+        {
+          "id": "terminal_recovery",
+          "weight": 10,
+          "mode": "live",
+          "progress": "R_end"
+        }
+      ],
+      "success": "C == N AND R_end == 1 AND no fatal violation",
+      "precision_success": "success AND H/N >= 0.8"
+    },
+    "MR": {
+      "name": "relocation_during_rally",
+      "N": 10,
+      "M": 4,
+      "stages": [
+        {
+          "id": "consecutive_legal_returns",
+          "weight": 60,
+          "mode": "once",
+          "progress": "C/N"
+        },
+        {
+          "id": "assigned_relocations",
+          "weight": 20,
+          "mode": "once",
+          "progress": "P/M"
+        },
+        {
+          "id": "target_returns",
+          "weight": 10,
+          "mode": "once",
+          "progress": "H/N"
+        },
+        {
+          "id": "terminal_recovery",
+          "weight": 10,
+          "mode": "live",
+          "progress": "R_end"
+        }
+      ],
+      "success": "C == N AND P == M AND R_end == 1 AND no fatal violation",
+      "precision_success": "success AND H/N >= 0.8",
+      "relocation_schedule": "four preregistered shot IDs; both directions and a reversal; complete by associated strike; only active slots can earn credit"
+    }
+  },
+  "variables": {
+    "C": "initial consecutive physically legal subject returns, capped at N; cannot restart after first failure",
+    "H": "target first-landings inside valid prefix; 0 <= H <= C",
+    "N": "preregistered subject return count; fixed denominator",
+    "P": "distinct completed prescribed relocation slots before their strike deadlines; 0 <= P <= M",
+    "M": "preregistered count of relocation slots; fixed denominator",
+    "R_end": "binary terminal recovery gate; I needs target and positioning, R needs C=N, MR also P=M; all need dwell and no fatal violation"
+  },
+  "profiles": [
+    {
+      "id": "g1_step_I",
+      "robot": "g1",
+      "family": "I",
+      "positioning": "physical_step",
+      "support": "single_or_double_stance"
+    },
+    {
+      "id": "g1_stationary_R",
+      "robot": "g1",
+      "family": "R",
+      "positioning": null,
+      "support": "stationary_double_stance"
+    },
+    {
+      "id": "g1_step_MR",
+      "robot": "g1",
+      "family": "MR",
+      "positioning": "physical_step",
+      "support": "single_or_double_stance"
+    },
+    {
+      "id": "ur10e_fixed_I",
+      "robot": "ur10e_fixed",
+      "family": "I",
+      "positioning": "racket_preparation",
+      "support": "fixed_base"
+    },
+    {
+      "id": "ur10e_fixed_R",
+      "robot": "ur10e_fixed",
+      "family": "R",
+      "positioning": null,
+      "support": "fixed_base"
+    },
+    {
+      "id": "ur10e_rail_I",
+      "robot": "ur10e_rail",
+      "family": "I",
+      "positioning": "powered_carriage_translation",
+      "support": "physical_rail"
+    },
+    {
+      "id": "ur10e_rail_locked_R",
+      "robot": "ur10e_rail",
+      "family": "R",
+      "positioning": null,
+      "support": "locked_carriage"
+    },
+    {
+      "id": "ur10e_rail_MR",
+      "robot": "ur10e_rail",
+      "family": "MR",
+      "positioning": "powered_carriage_translation",
+      "support": "physical_rail"
+    }
+  ],
+  "unsupported_profiles": {
+    "ur10e_fixed_MR": "no movable base; not applicable",
+    "ur10e_wheeled": "requires separate wheel/contact/tipping/braking model; not implemented"
+  },
+  "threshold_status": "proposed_uncalibrated_freeze_before_evaluation",
+  "proposed_thresholds": {
+    "step": {
+      "unload_force_N": 2,
+      "load_force_N": 5,
+      "contact_hysteresis_s": 0.01,
+      "clearance_m": 0.02,
+      "foot_translation_m": 0.08,
+      "load_dwell_s": 0.05,
+      "pelvis_progress_toward_region_m": 0.05
+    },
+    "gait": {
+      "max_zero_support_s": 0.02,
+      "min_root_height_m": 0.55,
+      "max_tilt_deg": 35,
+      "fall_pose_grace_s": 0.05,
+      "nonfoot_ground_contact": "immediate_failure",
+      "max_loaded_stance_slip_m": 0.04
+    },
+    "fixed_arm_preparation": {
+      "min_racket_translation_m": 0.02,
+      "position_error_m": 0.05,
+      "normal_error_deg": 15,
+      "dwell_s": 0.02,
+      "deadline": "strictly_before_subject_strike"
+    },
+    "rail": {
+      "min_translation_m": 0.08,
+      "progress_toward_region_m": 0.05,
+      "carriage_mass_kg": null,
+      "travel_bounds_m": null,
+      "max_speed_m_s": null,
+      "max_acceleration_m_s2": null,
+      "max_actuator_force_N": null
+    },
+    "recovery": {
+      "dwell_s": 0.25,
+      "g1_min_root_height_m": 0.65,
+      "g1_max_tilt_deg": 5,
+      "g1_max_root_speed_m_s": 0.03,
+      "g1_max_root_angular_speed_rad_s": 0.05,
+      "rail_max_speed_m_s": 0.02,
+      "max_joint_speed_rad_s": 0.08,
+      "ready_envelope": "must be frozen per profile; not expert joint matching"
+    },
+    "timing": {
+      "max_exchange_seconds": 3,
+      "N10_episode_timeout_seconds": 35,
+      "N20_episode_timeout_seconds": null
+    },
+    "precision_success_fraction": 0.8
+  },
+  "protocol": {
+    "ball_identity": "same physical ball throughout rally; launch at reset only",
+    "opponent": "frozen physically actuated opponent; policy and bounds preregistered",
+    "serve_stream": "auxiliary_feed_endurance_only_not_rally",
+    "opponent_fault": "terminates; keep outcome and fixed denominator; report separately",
+    "subject_return_completion": "first legal landing on opponent half",
+    "no_progress": "finite flight/exchange envelope and episode timeout",
+    "at_N_returns": "opponent stops; subject executes terminal recovery without state resets",
+    "unknown_or_unexecuted_prescribed": "zero official score; no inferred feasibility",
+    "integrity_failure": "VOID; every awarded stage zero",
+    "physical_failure": "terminal; earlier valid once credit retained; no later credit",
+    "target_region": "environment-selected before opportunity; immutable during shot",
+    "contact_events": "raw geometry/forces retained; physical separation hysteresis required"
+  },
+  "metrics": [
+    {
+      "id": "task_success_rate",
+      "unit": "fraction",
+      "numerator": "full task successes",
+      "denominator": "all prescribed episodes"
+    },
+    {
+      "id": "legal_return_rate",
+      "unit": "fraction",
+      "numerator": "legal subject returns",
+      "denominator": "started subject incoming opportunities",
+      "zero_denominator": null
+    },
+    {
+      "id": "prescribed_return_coverage",
+      "unit": "fraction",
+      "numerator": "sum(C)",
+      "denominator": "sum(prescribed N)"
+    },
+    {
+      "id": "target_hit_rate",
+      "unit": "fraction",
+      "numerator": "target legal first landings",
+      "denominator": "legal returns",
+      "zero_denominator": null
+    },
+    {
+      "id": "target_coverage",
+      "unit": "fraction",
+      "numerator": "sum(H)",
+      "denominator": "sum(prescribed N)"
+    },
+    {
+      "id": "landing_error_m",
+      "unit": "m",
+      "aggregation": [
+        "median",
+        "p90",
+        "sample_count"
+      ],
+      "population": "legal returns only; accompany coverage"
+    },
+    {
+      "id": "consecutive_returns",
+      "unit": "returns",
+      "aggregation": [
+        "mean",
+        "median",
+        "maximum"
+      ],
+      "population": "all prescribed episodes; official invalid/missing=0"
+    },
+    {
+      "id": "survival_at_k",
+      "unit": "fraction",
+      "k": [
+        1,
+        3,
+        5,
+        10,
+        20
+      ],
+      "numerator": "episodes with C>=k",
+      "denominator": "all prescribed episodes with N>=k"
+    },
+    {
+      "id": "relocation_completion_rate",
+      "unit": "fraction",
+      "numerator": "sum(P)",
+      "denominator": "all prescribed relocation slots",
+      "fixed_arm": null
+    },
+    {
+      "id": "racket_preparation_rate",
+      "unit": "fraction",
+      "numerator": "completed preparation windows",
+      "denominator": "prescribed fixed-arm I episodes"
+    },
+    {
+      "id": "recovery_rate",
+      "unit": "fraction",
+      "numerator": "valid gated terminal recovery",
+      "denominator": "all prescribed episodes"
+    },
+    {
+      "id": "fall_rate",
+      "unit": "fraction",
+      "denominator": "all prescribed episodes",
+      "requires": "observed-trace coverage",
+      "fixed_arm": null
+    },
+    {
+      "id": "collision_rate",
+      "unit": "fraction",
+      "denominator": "all prescribed episodes",
+      "requires": "observed-trace coverage"
+    },
+    {
+      "id": "limit_violation_rate",
+      "unit": "fraction",
+      "denominator": "all prescribed episodes",
+      "requires": "observed-trace coverage"
+    },
+    {
+      "id": "violation_free_completion_rate",
+      "unit": "fraction",
+      "numerator": "valid complete observed episodes without fatal physical violations",
+      "denominator": "all prescribed episodes"
+    },
+    {
+      "id": "stance_slip_m",
+      "unit": "m",
+      "aggregation": [
+        "p95",
+        "maximum"
+      ],
+      "population": "loaded G1 stances only"
+    },
+    {
+      "id": "carriage_tracking_and_limits",
+      "unit": "structured",
+      "population": "powered rail profiles only"
+    },
+    {
+      "id": "energy_J_per_legal_return",
+      "unit": "J/return",
+      "definition": "integral(sum(abs(tau*qdot)) + abs(carriage_force*carriage_velocity)) / legal returns",
+      "zero_denominator": null,
+      "usage": "secondary within-profile diagnostic"
+    },
+    {
+      "id": "replanning_latency_ms",
+      "unit": "ms",
+      "aggregation": [
+        "p50",
+        "p95",
+        "deadline_miss_fraction"
+      ],
+      "definition": "perception input timestamp to command availability; hardware specified"
+    }
+  ],
+  "evaluation_plan": {
+    "domains": [
+      "common_physical_domain",
+      "embodiment_operating_envelope"
+    ],
+    "capability_cases_per_profile": 20,
+    "capability_repeats_per_case": 3,
+    "case_factorization": [
+      5,
+      2,
+      2
+    ],
+    "later_heldout_seeds_per_profile": 100,
+    "scores_observed": null,
+    "strata": [
+      "lateral_displacement",
+      "short_deep",
+      "approach_speed",
+      "lead_time",
+      "repeated_alternating_sides",
+      "direction_reversal"
+    ],
+    "report": [
+      "counts",
+      "difficulty_cell_macro_mean",
+      "micro_mean",
+      "bootstrap_CI_over_independent_cases_or_seeds",
+      "trace_coverage",
+      "opponent_fault_rate"
+    ],
+    "prohibited": [
+      "posthoc_seed_replacement",
+      "shot_level_independence_assumption",
+      "mix_observation_tracks",
+      "average_I_R_MR_as_one_unlabeled_score",
+      "claim_unreachability_from_failed_IK"
+    ],
+    "before_execution_must_freeze": [
+      "physical_assets_and_actuator_bounds",
+      "ready_and_intercept_envelopes",
+      "target_regions",
+      "opponent_policy_and_action_bounds",
+      "flight_time_and_speed_envelopes",
+      "contact_event_hysteresis",
+      "case_and_seed_lists",
+      "N_M_and_slot_IDs",
+      "N20_timeout_if_enabled",
+      "calibrated_thresholds"
+    ]
+  },
+  "examples": [
+    {
+      "family": "R",
+      "C": 6,
+      "H": 4,
+      "N": 10,
+      "R_end": 0,
+      "expected_score": 52,
+      "success": false
+    },
+    {
+      "family": "R",
+      "C": 10,
+      "H": 8,
+      "N": 10,
+      "R_end": 1,
+      "expected_score": 98,
+      "success": true
+    },
+    {
+      "family": "R",
+      "C": 10,
+      "H": 10,
+      "N": 10,
+      "R_end": 0,
+      "fatal_violation": "fall",
+      "expected_score": 90,
+      "success": false
+    },
+    {
+      "family": "MR",
+      "C": 10,
+      "H": 8,
+      "N": 10,
+      "P": 3,
+      "M": 4,
+      "R_end": 0,
+      "expected_score": 83,
+      "success": false
+    },
+    {
+      "family": "MR",
+      "C": 10,
+      "H": 10,
+      "N": 10,
+      "P": 4,
+      "M": 4,
+      "R_end": 1,
+      "expected_score": 100,
+      "success": true
+    },
+    {
+      "family": "MR",
+      "C": 10,
+      "H": 10,
+      "N": 10,
+      "P": 4,
+      "M": 4,
+      "R_end": 1,
+      "void": true,
+      "expected_score": 0,
+      "success": false
+    }
+  ],
+  "hierarchy_validation": [
+    "HL_LL_temporal_dependencies_and_shot_identity",
+    "LL_TRAJ_bounded_actuation_support_transitions_time_coverage",
+    "HL_TRAJ_independent_motion_rally_prefix_recovery"
+  ],
+  "enabling_gate": "continuous normal-reset physical witness, independent regrade, fresh action replay, negative fixtures, calibrated thresholds; no current execution claim",
+  "publication_approved": true,
+  "release_url": "https://github.com/wuxiyang1996/robo-si/releases/tag/table-tennis-0.1.0",
+  "approval_record": "../publication/approval.json"
+}

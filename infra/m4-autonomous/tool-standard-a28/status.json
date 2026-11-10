@@ -1,0 +1,70 @@
+{
+  "status": "finished",
+  "passed": false,
+  "mode": "cycle",
+  "full_transport_requested": false,
+  "full_transport_success": false,
+  "error": "RuntimeError: physical monitor failed: ['traction_and_slip'][]",
+  "phase": "unload",
+  "sim_time_s": 34.104999999998995,
+  "steps": 6821,
+  "frames": 341,
+  "source_unchanged": true,
+  "proof_dwell_s": {
+    "go2_a": 0.5049999999998995
+  },
+  "events": [
+    {
+      "time_s": 15.80000000000107,
+      "robot": "go2_a",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.0011860054136820786,
+        0.0011773695034548726,
+        -0.0013637690516805079
+      ]
+    },
+    {
+      "time_s": 18.31500000000064,
+      "event": "BEGIN_EXTRACTION"
+    },
+    {
+      "time_s": 21.94499999999992,
+      "event": "EXTRACTED_LOADED_RETENTION_PROVED"
+    },
+    {
+      "time_s": 24.94999999999932,
+      "event": "BOUNDED_TOOL_PULL_FINISHED"
+    }
+  ],
+  "failures": {
+    "traction_and_slip": {
+      "first_time": 34.105,
+      "count": 1,
+      "detail": {
+        "pen_dynamic": 0.0003896858521831373,
+        "pen_rope": 0.0,
+        "impulse": 0.0,
+        "support": 1.000000002813984,
+        "robot_cargo": 0.0,
+        "slide": 0.05001165416668085,
+        "drift": 0.00010578474838493008,
+        "tension": {
+          "rope_left": 2.2764765875001403
+        },
+        "heights": {
+          "go2_a": 0.332531793545595
+        },
+        "tilts": {
+          "go2_a": 1.7557857854474608
+        },
+        "calls": [],
+        "steps": 1,
+        "gap": 0.005000000000002558
+      }
+    }
+  },
+  "wall_time_s": 136.74520254135132,
+  "scope": "Privileged physical coupling/extraction/release subtask; no full corridor, tool discovery or admission credit",
+  "formal_admission": false
+}

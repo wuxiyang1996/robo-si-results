@@ -1,0 +1,41 @@
+{
+  "schema": "m4-hardware-review/1",
+  "candidate": "v3i-damped-stroke-stop",
+  "geometry_sha256": "522936d04b09571b1dca74ca079f247669a03e01e6a768f1f9bfdb294159e830",
+  "evidence": [
+    "a34 pin speed violation",
+    "a35 service-load violation",
+    "a36 pin speed violation",
+    "a37 travel limit violation"
+  ],
+  "changes": {
+    "pin_kd": [
+      40,
+      80
+    ],
+    "nominal_joint_stop_m": [
+      0.04,
+      0.0395
+    ]
+  },
+  "unchanged": [
+    "20 N motor force",
+    "40 mm acceptance travel",
+    "40 mm/s speed",
+    "0.8 W power",
+    "0.8 J stroke work",
+    "150 N service load",
+    "50 mm stance slip",
+    "shapes/masses/contact masks/friction"
+  ],
+  "hypothesis": "More damping reduces axial backdrive; nominal stop margin compensates soft-limit overshoot without changing evaluator limits. A hypothesis, not a validated fix.",
+  "preflight": "v3i-preflight.json",
+  "trial": {
+    "name": "v3i-damped-a38",
+    "seconds": 180,
+    "substeps": 8,
+    "precision": "64",
+    "ground_friction": 0.3
+  },
+  "formal_admission": false
+}

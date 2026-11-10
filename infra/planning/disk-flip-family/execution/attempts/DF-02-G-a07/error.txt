@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 287, in main
+    t,q,v,u,refs,phases=zip(*self.records);np.savez_compressed(self.out/'trajectory.npz',time=t,qpos=q,qvel=v,ctrl=u,reference=refs,phase=phases)
+      ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 253, in execute
+    for n,j in self.joints.items():
+                               ^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 218, in move
+    self.step()
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 200, in step
+    self.command();mujoco.mj_step(self.m,self.d);self.records.append((self.d.time,self.d.qpos.copy(),self.d.qvel.copy(),self.d.ctrl.copy(),self.qref.copy(),self.phase));row=self.assess()
+                                                                                                                                                                             ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 130, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: table_contact_load

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><title>装配任务族 · 10 个独立任务</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main{padding:36px 0 64px}h2{margin-top:36px}td,th{vertical-align:top;overflow-wrap:anywhere}p{line-height:1.8}.table-wrap{overflow-x:auto;margin:18px 0}table{min-width:640px}nav{display:flex;gap:20px;flex-wrap:wrap}</style><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-assembly-family-en.html">English</a></div></header><main class="wrap"><h1>统一装配任务族：10 个独立任务</h1>
+<p>2026-10-28 · 10 个独立任务：Assembly 4、Gear Assembly 3、Reference Assembly 3；含 3 个原始任务和 7 个新增任务。身体与难度作为评测配置，不重复计数。五指手优先用于 Gear 工具相性；新增设计均待验证，本次新增仿真 0。</p>
+<p><a href="/robo-si-results/infra/planning/assembly-family/README.md">中文</a> · <a href="/robo-si-results/infra/planning/assembly-family/README-en.md">English</a> · <a href="/robo-si-results/infra/planning/assembly-family/task-design.json">JSON</a></p>
+<h2>计数与身体</h2>
+<p>独立操作问题算任务；身体、难度、信息公开条件、seed、探针和消融作为配置。旧版按场景 × embodiment 得到 25 项，本版明确替换该口径。三个综合场景并入对应相性任务的 D3 配置，实验保留而不单独计数。R1、A3、Go2＋臂和不可行退出任务暂不计入。</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Original</th>
+<th>Reasoning</th>
+<th>Compatibility</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Gear Assembly</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Reference Assembly</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>10</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Embodiment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G</td>
+<td>G1 + Dex3</td>
+</tr>
+<tr>
+<td>F</td>
+<td>G1 + Inspire five-finger hand</td>
+</tr>
+<tr>
+<td>S</td>
+<td>Stretch 3</td>
+</tr>
+</tbody>
+</table></div>
+<p>优先对照：ASM-04 用 G/S 比较支撑建立；GEAR-03 用 G/F 比较抓持与驱动；REF-03 用 G/S 比较工作区、顺序与夹具适配。其余任务先用 G。当前计划包含 13 个身体配置，其中含 3 个原始配置；这是开发清单，不是已验证数量。其他五指手或 Stretch 配置须由探针证明研究价值后再加入，不铺满笛卡尔积。</p>
+<p>G/F 相性对照使用同一官方 G1 身体、相同基座约束，只更换手及必要控制映射；手部校准单独验证。原始 G1 参考模型和 43 维轨迹不自动适用于新配置。固定骨盆／移动条件、模型哈希与控制器版本须在执行前冻结。S 使用现有 Stretch 3，不套用 Stretch 4 或 R1 Pro 的厂商参数。G/S 同时改变臂数、末端、工作空间与底盘，只解释为整体身体适应。</p>
+<h2>难度与信息条件</h2>
+<p>D1：执行已知可行方法；D2：从候选方法中选择；D3：组合、返工或改变中间约束。原版 L1–L3 定义保持不变。难度不是件数或型号的排名，各任务登记表中的 D 值是设计目标。</p>
+<p>信息条件单独登记为能力公开、适配未知、部分物理参数未知；最后一类提供可观察反馈的低风险短探针。不把组合工具或一次成功自动解释为主动自建模。软件工具发现作为接口条件另记，不增加物理任务数。</p>
+<h2>完整任务清单</h2>
+<h3>ASM · 4</h3>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>组</th>
+<th>Body</th>
+<th>Difficulty</th>
+<th>任务</th>
+<th>场景与考察</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASM-01</td>
+<td>原始</td>
+<td>G</td>
+<td>沿用原版</td>
+<td>原版支撑后套筒、顶盖装配</td>
+<td>沿用原配置与评分；先建立独立支撑，完成装配并撤手稳定。</td>
+<td>原范围已有见证</td>
+</tr>
+<tr>
+<td>ASM-02</td>
+<td>推理</td>
+<td>G</td>
+<td>D2</td>
+<td>多候选支撑选择</td>
+<td>固定身体；候选件在高度、插入路径和承载条件上不同，检查真实载荷转移。</td>
+<td>完整检查通过</td>
+</tr>
+<tr>
+<td>ASM-03</td>
+<td>推理</td>
+<td>G</td>
+<td>D3</td>
+<td>组合建立支撑</td>
+<td>单件支撑不足，支架与垫片组合为候选；须排除其他单件路线后才能标为必须组合。</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+<tr>
+<td>ASM-04</td>
+<td>相性</td>
+<td>G/S</td>
+<td>D2/D3</td>
+<td>支撑方法与身体相性</td>
+<td>同一世界提供可推入楔块、需抓放支架与垫片；方法本身有效，测身体能否完整布置和释放。 D3：候选件同时改变承载有效性和身体可操作性，需找到非空交集。</td>
+<td>完整检查通过</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GEAR · 3</h3>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>组</th>
+<th>Body</th>
+<th>Difficulty</th>
+<th>任务</th>
+<th>场景与考察</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GEAR-01</td>
+<td>原始</td>
+<td>G</td>
+<td>沿用原版</td>
+<td>原版按图装配与验转</td>
+<td>沿用原七步流程；齿面真实接触传动，验转后放下工具并释放。</td>
+<td>保存的 v6 见证；当前源码复验待完成</td>
+</tr>
+<tr>
+<td>GEAR-02</td>
+<td>推理</td>
+<td>G</td>
+<td>D3</td>
+<td>故障诊断、拆装修复与重新验转</td>
+<td>由可观察证据区分未落座、干涉或传动中断；新规则明确允许返工，不能读取隐藏故障标签。</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+<tr>
+<td>GEAR-03</td>
+<td>相性</td>
+<td>G/F</td>
+<td>D2/D3</td>
+<td>夹持、导向与拨杆工具相性</td>
+<td>同一世界提供不同握柄、导向器和拨杆，测获取、对准、传递力矩及撤出；不预设五指更强。 D3：可握持工具受工作区净空限制，需换抓、换工具或重新固定底座。</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+</tbody>
+</table></div>
+<h3>REF · 3</h3>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>组</th>
+<th>Body</th>
+<th>Difficulty</th>
+<th>任务</th>
+<th>场景与考察</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REF-01</td>
+<td>原始</td>
+<td>G</td>
+<td>沿用原版</td>
+<td>原版八件置物架装配</td>
+<td>保留指定逐步流程、阶段释放和承托链判据；机械初始化诊断不作为机器人专家。</td>
+<td>机械诊断；完整机器人装配未验证</td>
+</tr>
+<tr>
+<td>REF-02</td>
+<td>推理</td>
+<td>G</td>
+<td>D3</td>
+<td>有限临时夹具的调度与复用</td>
+<td>临时夹具有限，放置顺序影响后续可达与撤出；开放规划变体明确允许合法顺序变化。</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+<tr>
+<td>REF-03</td>
+<td>相性</td>
+<td>G/S</td>
+<td>D2/D3</td>
+<td>受限工作区下的身体适配</td>
+<td>同一世界提供主动扶持与被动定位方法，测同时操作、抓持包络与释放；单臂可用环境支撑。 D3：可用夹具阻挡后续件或撤出，需要转移约束并继续完成八件结构。</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+</tbody>
+</table></div>
+<h2>相性与成功判定</h2>
+<p>先分别测方法的物理有效性与身体的可执行性，再取交集。完整使用链包括到达、获取、保持与驱动、有效作用、承托转移、释放或撤出；仅拿起工具不算可用。每个身体 × 方法记录可行、已排除或未知及证据；失败一次不等于无解。</p>
+<p>相性任务的 D2 配置共用世界与工具；D3 综合配置同时变化物理有效性和身体可操作性。需要调整桌高或布局的配置标为条件化场景，不直接用于同世界对照。五指手可能减少工具需求，也可能受手部包络与控制限制；两种方向均为待测假设。不存在预定的最优工具或品牌能力排名。</p>
+<p>去重边界：ASM-02 固定身体，隔离支撑物理有效性；ASM-04 在 D2 先保证方法本身有效，隔离身体可操作性。REF-02 固定身体且空间宽裕，考有限夹具的依赖和复用；REF-03 在足量夹具条件下先考身体与工作区适配，D3 才加入阻挡。Gear 相性必须落在对准、力矩传递和验转上，避免重复 Assembly 的承重支撑选择。</p>
+<p>Assembly 最终必须独立支撑，不能继续用手扶住。Gear 必须真实齿面传动，验转后释放工具；诊断与返工是新变体，不能修改原七步任务的评分。Reference 保留八件及真实承托链；允许自主排序的扩展须公开标注，原指定流程不放宽。临时夹具是否撤出由各变体公开约束明确规定，不能暗改原任务可保留夹具的规则。合法替代路线均计成功。</p>
+<p>主指标为完整物理任务成功；原评分版本保持原样。方法选择、能力预测校准、探针成本、恢复与执行成本另记。同物理 seed 比较能力公开／需要探测、匹配／不匹配工具、有／无工具和能力变化前后；这些是消融，不增加任务数。不按是否用了指定工具给成功奖励。</p>
+<h2>实施与证据</h2>
+<p>先完成 Assembly 的 4 个任务，重点做 ASM-04 的 G/S 探针；随后完成 Gear 的 3 个任务，优先做 GEAR-03 的 Dex3／五指手对照；最后完成 Reference 的 3 个任务。任务数累计 4 → 7 → 10，身体配置单列。Reference 原版完整八件机器人专家仍是前置工作。</p>
+<p>每个新增计分配置需要匹配资产和规则的完整物理见证：运行前冻结场景与高／低层计划，从正常起点连续执行，保存动作、接触、轨迹、计划段映射、视频和独立验证结果。不通过执行中写位姿、吸附或隐藏绑定制造成功；探针及静态机械诊断不替代完整见证。保留失败和未知，不将单路线失败认定为全路线不可行。</p>
+<p>设计登记后已开始实现和物理尝试；当前运行、失败原因与完整证据见 <a href="/robo-si-results/infra/task-assembly-evidence-zh.html">执行进展</a>。ASM 原版保留发布范围；GEAR 原版只继承已保存 v6 记录的范围，当前源码复验与便携发布仍待完成；REF 原版只有机械诊断和静止接口检查，尚无完整机器人装配见证。三项原始任务不等于三项已验证成功，新增 7 个任务及新身体配置均未验证，不改变原 14 项统计或正式准入状态。</p>
+<h2>旧编号处置</h2>
+<p>旧 25 项方案存入 <a href="/robo-si-results/infra/planning/assembly-family/history/proposal-25-task-design.json">历史 JSON</a>，不再作为当前计数。所有 <code>.G/.F/.S</code> 后缀改为身体配置标识，不单独计任务。以下合并保留原实验问题：</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Old scene</th>
+<th>Current task</th>
+<th>Disposition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASM-05</td>
+<td>ASM-04</td>
+<td>D3 配置，不另计数</td>
+</tr>
+<tr>
+<td>GEAR-04</td>
+<td>GEAR-03</td>
+<td>D3 配置，不另计数</td>
+</tr>
+<tr>
+<td>REF-04</td>
+<td>REF-03</td>
+<td>D3 配置，不另计数</td>
+</tr>
+</tbody>
+</table></div><!-- assembly-execution:start --><section id="assembly-execution"><h2>装配任务 · 执行与证据</h2><p>10 个独立任务已接入候选专家与统一记录器。这里展示实际尝试，任务得分与物理审查分开。单次失败不代表任务不可行。</p><p><a href="task-assembly-evidence-zh.html">查看专家、计划、轨迹、物理检查与视频</a></p></section><!-- assembly-execution:end --></main></body></html>

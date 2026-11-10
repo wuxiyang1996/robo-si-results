@@ -1,0 +1,3465 @@
+{
+ "schema": "transport-tool-necessity-probe/1",
+ "task": "H2",
+ "setup": {
+  "kind": "tool_ablation_local_direct_drag",
+  "removed_from_route": "both",
+  "controller_variant": "local curled-finger drag at solid push blocks, original safe high-arm approach retained; backward walking; original 180 s budget and physical guards; not a full delivery planner",
+  "cart_initial_position": [
+   0.9,
+   1.7,
+   0.057
+  ],
+  "rails_initial_position": [
+   2.1,
+   1.7,
+   0.0
+  ],
+  "legacy_cli_push_height_m": 0.6,
+  "actual_approach": "original GraspPushExpert high-arm posture; see snapshotted controller",
+  "retained": "cargo mass, geometry and friction; passages; physical/hardware thresholds",
+  "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof"
+ },
+ "sample_spec": {
+  "distribution": "transport-layout-v2",
+  "split": "development",
+  "seed": 23,
+  "episode": 0,
+  "corner": null,
+  "task_config": {
+   "difficulty_layer": 1,
+   "asset_visuals": true,
+   "dock": "rails",
+   "rail_frictionloss": 0.02,
+   "deck_roller_frictionloss": 0.02,
+   "lane_guides": true,
+   "guide_north_x": 6.31158563,
+   "box_mass": 20.0,
+   "box_size": [
+    0.7,
+    0.7,
+    0.9
+   ],
+   "box_friction": 0.5,
+   "box_handholds": false,
+   "box_handles": true,
+   "box_handle_shape": "block",
+   "cart_mass": 12.0,
+   "cart_handle_mass": 1.0,
+   "wheel_mass": 0.5,
+   "wheel_friction": 0.055,
+   "wheel_damping": 0.002,
+   "wheel_frictionloss": 0.06,
+   "wheel_armature": 1e-05,
+   "deck_friction": 0.12,
+   "ground_friction": 0.03,
+   "passage_width": 1.5,
+   "dwell": 2.0,
+   "timeout": 180.0,
+   "collision_limit": 800.0,
+   "cart_payload_limit": 40.0,
+   "cart_pos": [
+    3.79812742,
+    -0.79925938,
+    0.015
+   ],
+   "cart_size": [
+    0.8,
+    0.8,
+    0.01
+   ],
+   "room_length": 10.5,
+   "goal": [
+    9.43739851,
+    0.77740829
+   ],
+   "goal_size": [
+    1.4,
+    1.4
+   ],
+   "box_xy": [
+    2.10178683,
+    -0.79925938
+   ],
+   "box_on_floor": true
+  },
+  "robot_pose": [
+   0.7846094,
+   0.09315436,
+   -0.08257425
+  ],
+  "draws": {
+   "robot_x": 0.7846094,
+   "robot_y": 0.09315436,
+   "robot_yaw": -0.08257425,
+   "box_x": 2.10178683,
+   "goal_x": 9.43739851,
+   "goal_y": 0.77740829,
+   "cart_x": 3.79812742,
+   "loading_y": -0.79925938,
+   "guide_north_x": 6.31158563
+  },
+  "rejected": 0
+ },
+ "effort_limits": "hardware",
+ "main_task_admission_evidence": false,
+ "necessity_proven": false,
+ "raw_goal_reached": false,
+ "raw_goal_hold_s": 0.0,
+ "minimum_goal_distance_m": 7.47459480109128,
+ "reason": "duration_limit",
+ "error": null,
+ "expert_sources_sha256": {
+  "h2/solution/floor_push/run_grasp_push.py": "ac42a07f5174ee47a1fbe582ddd979f4a0d676d910672f1e6e02ff455b4e85e0",
+  "h2/solution/floor_push/run_cart_push.py": "f99c86ac5568d33e1c11faa95e0a1783dc3d973e18300b917e6bbe6a6e0c3724",
+  "h2/solution/floor_push/run_floor_push.py": "506a499d63b837c376b20af3073d10506b3f36eaacb7bcc7ac0dfdddfeaadf80",
+  "humanoid/g1_support_retrieval/solution/agile.py": "ffb06f370e71a28ea715913959be04459aa6013774f6f547768653bebd0f2bb7",
+  "humanoid/g1_support_retrieval/oracle/upper_ik.py": "f5525862a2c042ba1e8aeeed1d2cb29f083d159bd5113f0293a2de9b1d48b6a1",
+  "humanoid/g1_support_retrieval/oracle/oracle.py": "1c88c21164289bbe62cbb5707e4f55316688afb2f58c8c5f63deb36c5054f9e3",
+  "tool_probe.py": "c9296ebb3a37d587cd94520eaad5e0477851a96997451b59d0055575587ed269",
+  "direct_drag_probe_controller_v2.py": "08e90f6be68ef47ffa59da5ed1fc2fe4ad45a5980c71230baab6fb8fc5a6cace"
+ },
+ "privileged_writes_after_start": [],
+ "control_steps": 9000,
+ "trace": [
+  {
+   "t": 0.0,
+   "phase": "stand",
+   "cargo": [
+    2.1017868518829346,
+    -0.79925936460495,
+    0.4505475163459778
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 1.0,
+   "phase": "walk",
+   "cargo": [
+    2.1017868518829346,
+    -0.79925936460495,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 2.0,
+   "phase": "walk",
+   "cargo": [
+    2.1017868518829346,
+    -0.79925936460495,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.7014340580958833,
+    "yaw_err": -0.02272323833977863,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 3.0,
+   "phase": "walk",
+   "cargo": [
+    2.1017868518829346,
+    -0.79925936460495,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.4275466935900544,
+    "yaw_err": -0.0594188114045493,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 4.0,
+   "phase": "walk",
+   "cargo": [
+    2.1017868518829346,
+    -0.79925936460495,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.26339951365925945,
+    "yaw_err": -0.020870128348594807,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 5.0,
+   "phase": "walk",
+   "cargo": [
+    2.1017868518829346,
+    -0.79925936460495,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 1,
+    "dist": 0.13505682322903803,
+    "yaw_err": -0.009493588648918472,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 6.0,
+   "phase": "push",
+   "cargo": [
+    2.1017868518829346,
+    -0.79925936460495,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "gp": "approach",
+    "theta": 0.0,
+    "e_t": 1.5395050012578793e-08,
+    "D": 0.7721712827682494,
+    "vx": 0.22,
+    "robot_lat": 0.037119388580322266,
+    "head_err": -0.013900471515837065,
+    "ik_err": {
+     "left": 2.326378830423132e-11,
+     "right": 2.2959750231412832e-11
+    },
+    "curl": 1.0,
+    "box_v": 1.5891260529699025e-11,
+    "push_N": 0.0,
+    "approach_restart": false,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 7.0,
+   "phase": "push",
+   "cargo": [
+    2.1017868518829346,
+    -0.79925936460495,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "gp": "approach",
+    "theta": 0.0,
+    "e_t": 1.5395050012578793e-08,
+    "D": 0.5154453754425048,
+    "vx": 0.14,
+    "robot_lat": 0.021822631359100342,
+    "head_err": 0.021754659431631573,
+    "ik_err": {
+     "left": 1.942146292619358e-11,
+     "right": 2.0429816077717914e-11
+    },
+    "curl": 1.0,
+    "box_v": -1.1052979712045108e-11,
+    "push_N": 0.0,
+    "approach_restart": false,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 8.0,
+   "phase": "drag",
+   "cargo": [
+    2.102368116378784,
+    -0.7991211414337158,
+    0.45001155138015747
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 0.09999999999999964,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 9.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7951381206512451,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 1.0999999999999996,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 10.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.795114278793335,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 2.0999999999999996,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 11.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7950904369354248,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 3.0999999999999996,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 12.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7950665950775146,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 4.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 13.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7950427532196045,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 5.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 14.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7950189113616943,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 6.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 15.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7949950695037842,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 7.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 16.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.794971227645874,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 8.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 17.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7949473857879639,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 9.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 18.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7949235439300537,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 10.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 19.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7948997020721436,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 11.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 20.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7948758602142334,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 12.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 21.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7948520183563232,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 13.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 22.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7948281764984131,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 14.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 23.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7948043346405029,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 15.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 24.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7947804927825928,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 16.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 25.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7947566509246826,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 17.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 26.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7947328090667725,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 18.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 27.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7947089672088623,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 19.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 28.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7946851253509521,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 20.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 29.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.794661283493042,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 21.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 30.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7946374416351318,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 22.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 31.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7946135997772217,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 23.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 32.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7945897579193115,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 24.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 33.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7945659160614014,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 25.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 34.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7945420742034912,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 26.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 35.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.794518232345581,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 27.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 36.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7944943904876709,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 28.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 37.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7944705486297607,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 29.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 38.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7944467067718506,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 30.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 39.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7944228649139404,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 31.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 40.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7943990230560303,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 32.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 41.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7943751811981201,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 33.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 42.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.79435133934021,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 34.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 43.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7943274974822998,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 35.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 44.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7943036556243896,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 36.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 45.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7942798137664795,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 37.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 46.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7942559719085693,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 38.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 47.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7942321300506592,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 39.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 48.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.794208288192749,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 40.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 49.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7941844463348389,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 41.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 50.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7941606044769287,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 42.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 51.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7941367626190186,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 43.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 52.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7941129207611084,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 44.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 53.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7940890789031982,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 45.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 54.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7940652370452881,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 46.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 55.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7940413951873779,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 47.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 56.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7940175533294678,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 48.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 57.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7939937114715576,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 49.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 58.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7939698696136475,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 50.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 59.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7939460277557373,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 51.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 60.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7939221858978271,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 52.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 61.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.793898344039917,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 53.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 62.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7938745021820068,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 54.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 63.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7938506603240967,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 55.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 64.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7938268184661865,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 56.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 65.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7938029766082764,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 57.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 66.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7937791347503662,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 58.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 67.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.793755292892456,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 59.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 68.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7937314510345459,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 60.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 69.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7937076091766357,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 61.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 70.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7936837673187256,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 62.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 71.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7936599254608154,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 63.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 72.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7936360836029053,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 64.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 73.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7936122417449951,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 65.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 74.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.793588399887085,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 66.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 75.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7935645580291748,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 67.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 76.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7935407161712646,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 68.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 77.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7935168743133545,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 69.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 78.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7934930324554443,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 70.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 79.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7934691905975342,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 71.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 80.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.793445348739624,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 72.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 81.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7934215068817139,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 73.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 82.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7933976650238037,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 74.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 83.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7933738231658936,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 75.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 84.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7933499813079834,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 76.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 85.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7933261394500732,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 77.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 86.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7933022975921631,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 78.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 87.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7932784557342529,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 79.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 88.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7932546138763428,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 80.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 89.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7932307720184326,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 81.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 90.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7932069301605225,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 82.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 91.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7931830883026123,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 83.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 92.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7931592464447021,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 84.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 93.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.793135404586792,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 85.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 94.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7931115627288818,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 86.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 95.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7930877208709717,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 87.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 96.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7930638790130615,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 88.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 97.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7930400371551514,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 89.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 98.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7930161952972412,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 90.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 99.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.792992353439331,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 91.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 100.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7929685115814209,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 92.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 101.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7929446697235107,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 93.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 102.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7929208278656006,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 94.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 103.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7928969860076904,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 95.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 104.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7928731441497803,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 96.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 105.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7928493022918701,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 97.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 106.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.79282546043396,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 98.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 107.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7928016185760498,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 99.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 108.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7927777767181396,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 100.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 109.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7927539348602295,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 101.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 110.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7927300930023193,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 102.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 111.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7927062511444092,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 103.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 112.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.792682409286499,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 104.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 113.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7926585674285889,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 105.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 114.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7926347255706787,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 106.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 115.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7926108837127686,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 107.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 116.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7925870418548584,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 108.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 117.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7925631999969482,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 109.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 118.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7925393581390381,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 110.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 119.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7925155162811279,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 111.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 120.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7924916744232178,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 112.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 121.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7924678325653076,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 113.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 122.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7924439907073975,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 114.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 123.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7924201488494873,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 115.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 124.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7923963069915771,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 116.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 125.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.792372465133667,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 117.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 126.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7923486232757568,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 118.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 127.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7923247814178467,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 119.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 128.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7923009395599365,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 120.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 129.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7922770977020264,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 121.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 130.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7922532558441162,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 122.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 131.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.792229413986206,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 123.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 132.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7922055721282959,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 124.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 133.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7921817302703857,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 125.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 134.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7921578884124756,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 126.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 135.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7921340465545654,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 127.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 136.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7921102046966553,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 128.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 137.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7920863628387451,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 129.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 138.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.792062520980835,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 130.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 139.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7920386791229248,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 131.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 140.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7920148372650146,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 132.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 141.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7919909954071045,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 133.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 142.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7919671535491943,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 134.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 143.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7919433116912842,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 135.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 144.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.791919469833374,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 136.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 145.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7918956279754639,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 137.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 146.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7918717861175537,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 138.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 147.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7918479442596436,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 139.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 148.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7918241024017334,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 140.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 149.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7918002605438232,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 141.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 150.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7917764186859131,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 142.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 151.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7917525768280029,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 143.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 152.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7917287349700928,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 144.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 153.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7917048931121826,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 145.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 154.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7916810512542725,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 146.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 155.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7916572093963623,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 147.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 156.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7916333675384521,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 148.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 157.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.791609525680542,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 149.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 158.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7915856838226318,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 150.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 159.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7915618419647217,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 151.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 160.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7915380001068115,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 152.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 161.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7915141582489014,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 153.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 162.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7914903163909912,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 154.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 163.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.791466474533081,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 155.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 164.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7914426326751709,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 156.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 165.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7914187908172607,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 157.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 166.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7913949489593506,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 158.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 167.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7913711071014404,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 159.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 168.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7913472652435303,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 160.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 169.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7913234233856201,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 161.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 170.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.79129958152771,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 162.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 171.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7912757396697998,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 163.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 172.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7912518978118896,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 164.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 173.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7912280559539795,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 165.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 174.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7912042140960693,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 166.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 175.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7911803722381592,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 167.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 176.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.791156530380249,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 168.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 177.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7911326885223389,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 169.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 178.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7911088466644287,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 170.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 179.0,
+   "phase": "drag",
+   "cargo": [
+    2.1292202472686768,
+    -0.7910850048065186,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 171.1,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  }
+ ],
+ "wall_s": 728.4620916843414,
+ "max_robot_tilt_deg": 27.614463806152344,
+ "max_cargo_tilt_deg": 0.6003568172454834,
+ "max_push_N": 240.8848533630371,
+ "first_failure": null,
+ "local_traction_only": true,
+ "complete_delivery_planner": false,
+ "human_review": null,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "score": 0.0,
+  "success": false,
+  "scene": "default",
+  "dock": "rails",
+  "scene_version": "default/bfa24c1ef020",
+  "end_reason": "finished",
+  "samples": 9001,
+  "sim_time_s": 180.0,
+  "source": "tool_necessity_probe",
+  "observations": null,
+  "effort_limits": "hardware",
+  "simulator": {
+   "genesis-world": "1.4.3",
+   "torch": "2.11.0+cu128",
+   "numpy": "2.5.3"
+  },
+  "final_progress": 0.0,
+  "peak_time_s": 0.0,
+  "stage_best": {
+   "crate_pushed": 0.0,
+   "cargo_loaded": 0.0,
+   "through_passage_1": 0.0,
+   "through_passage_2": 0.0,
+   "delivered": 0.0
+  },
+  "stage_timeline": {
+   "crate_pushed": null,
+   "cargo_loaded": null,
+   "through_passage_1": null,
+   "through_passage_2": null,
+   "delivered": null
+  },
+  "delivered_at_end": false,
+  "chain_complete": false,
+  "failed": false,
+  "core_success": false,
+  "core_success_time_s": null,
+  "core_loaded_time_s": null,
+  "core_failed_time_s": null,
+  "max_deck_cover": 0.0,
+  "max_goal_cover": 0.0,
+  "evaluation": {
+   "loaded": false,
+   "loaded_time_s": null,
+   "success": false,
+   "success_time_s": null,
+   "failed": false,
+   "failed_time_s": null,
+   "sampling": "physics_substeps",
+   "hold_s": 0.0
+  },
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "monitor_version": "h2-monitors/2",
+   "not_applicable": {},
+   "max_reported_speed": 0.281,
+   "max_object_speed": 0.241,
+   "max_step_speed": 0.698,
+   "max_floor_penetration": 0.0006,
+   "max_box_penetration": 0.0,
+   "max_out_of_bounds_m": -0.74,
+   "max_energy_excess_J": 0.007,
+   "max_reversal_rate_hand_hz": 2.0,
+   "max_arm_shake": 0.967,
+   "max_saturation_s": 0.28,
+   "max_limit_push_s": 0.0,
+   "max_progress_spike": 0.0
+  },
+  "verifier": "h2-verifier/2 (h2-monitors/2)"
+ }
+}

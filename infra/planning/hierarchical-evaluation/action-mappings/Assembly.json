@@ -1,0 +1,6232 @@
+{
+  "schema": "ordered-action-mapping/1",
+  "task": "Assembly",
+  "selected_witness": "layer1_boundary_high",
+  "generated_by": [
+    {
+      "path": "infra/planning/hierarchical-evaluation/build_action_mappings.py",
+      "sha256": "09ff4513817b52c8db8b46a07ba29a0e5f32ea6c88f148cf41d0169705827842"
+    },
+    {
+      "path": "infra/planning/hierarchical-evaluation/action_expansions.py",
+      "sha256": "1e88a0ef8b99d555bcef66edd58e3d18bf4a5ab2260fe5f8b17cbb7aa77bdb8c"
+    }
+  ],
+  "scope": {
+    "zh": "工具辅助装配，基础第一层",
+    "en": "Tool-assisted assembly, basic layer 1"
+  },
+  "plan": {
+    "path": "infra/planning/tasks/Assembly.json",
+    "sha256": "37eceee01bd181b6acc142594a92c699b29fceba6d3925606e265c233ebaff84"
+  },
+  "full_success_record": {
+    "path": "infra/planning/skill-evidence/sources/99bd9c34b2f68e1169a3007763f5bebe5862f6973c33e1ad8ce8402a8455ff1f.json",
+    "sha256": "99bd9c34b2f68e1169a3007763f5bebe5862f6973c33e1ad8ce8402a8455ff1f"
+  },
+  "source_files": [
+    {
+      "id": "s0",
+      "path": "C:/Users/wuxiy/rsi_releases/tabletop_layer1_candidate_20261023/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/coverage/layer1_boundary_high/run/expert/events.json",
+      "sha256": "b8ba680ae4b44da6112fc6cd7ca991d3c7c3ff4f9dd94f1f8ad1ccc4cb6cf1d6"
+    }
+  ],
+  "generation_provenance_status": "existing_provenance_not_replaced; full identity audit still pending",
+  "interpretation": {
+    "actions": "Ordered decomposition reviewed against available controller/event descriptions; not a newly executable planner.",
+    "event_matching": "Locates review candidates only; it does not prove the stated contact/guard nor exact micro-action interval.",
+    "timing": "Observed sample spans remain in their named clock. Point events are not expanded into invented intervals. No scoring milestone is used as an action boundary.",
+    "loops": "Hanoi repeats K01-K04 for each committed legal move; footfall and gait actions repeat. Numerical order is within a skill, not a universal serial schedule.",
+    "branches": "H3 heavy_prop only; asynchronous A/B operations may overlap.",
+    "portable_evidence": "Small excerpts below are portable; original absolute paths are provenance references, not deployment entrypoints. Raw full records still require the reference packages."
+  },
+  "skills": [
+    {
+      "skill": "Assembly.K01",
+      "high_level_steps": [
+        "P1"
+      ],
+      "entry_conditions": [
+        "基础第一层，平台初始倾斜"
+      ],
+      "exit_conditions": [
+        "平台水平低速，工具承托且全部释放稳定 0.5 s"
+      ],
+      "actions": [
+        {
+          "id": "Assembly.K01.A01",
+          "order": 1,
+          "action_zh": "抬手避桌、接近工具并夹起",
+          "required_support_contact_zh": "工具→桌面→手",
+          "check_observable_zh": "抓持与桌面净空",
+          "event_selector": "lift_hands_before_table|brace_hover|brace_lower|brace_close|brace_lift",
+          "evidence_ids": [
+            "e0000",
+            "e0001",
+            "e0002",
+            "e0003",
+            "e0004"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "Assembly.K01.A02",
+          "order": 2,
+          "action_zh": "转运到支撑预备位置并下放",
+          "required_support_contact_zh": "手→工具→桌面",
+          "check_observable_zh": "工具接触与位置反馈",
+          "event_selector": "brace_transfer|brace_staging|brace_set_down|brace_confirm_table_support",
+          "evidence_ids": [
+            "e0005",
+            "e0006",
+            "e0007",
+            "e0008",
+            "e0009",
+            "e0010",
+            "e0011",
+            "e0012",
+            "e0013",
+            "e0014",
+            "e0015",
+            "e0016",
+            "e0017",
+            "e0018"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "Assembly.K01.A03",
+          "order": 3,
+          "action_zh": "清手换姿态，按压平台并推入工具",
+          "required_support_contact_zh": "平台由机器人暂撑；工具→桌",
+          "check_observable_zh": "平台高度、工具对准与受力",
+          "event_selector": "press_|fixture_press|thumb_|brace_push",
+          "evidence_ids": [
+            "e0020",
+            "e0021",
+            "e0024",
+            "e0025",
+            "e0026",
+            "e0027",
+            "e0028",
+            "e0029",
+            "e0030",
+            "e0031",
+            "e0032",
+            "e0033",
+            "e0034",
+            "e0035",
+            "e0036",
+            "e0037",
+            "e0038",
+            "e0039",
+            "e0040",
+            "e0041",
+            "e0042",
+            "e0043",
+            "e0044",
+            "e0045",
+            "e0046",
+            "e0047",
+            "e0052"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "Assembly.K01.A04",
+          "order": 4,
+          "action_zh": "撤离按压手，确认工具独立承托",
+          "required_support_contact_zh": "桌面→工具→平台",
+          "check_observable_zh": "工具支撑、机器人不代撑",
+          "event_selector": "fixture_release|parts_transition",
+          "evidence_ids": [
+            "e0053",
+            "e0054",
+            "e0055",
+            "e0056",
+            "e0057"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "Assembly.K02",
+      "high_level_steps": [
+        "P2"
+      ],
+      "entry_conditions": [
+        "工具独立支撑平台且上一阶段已提交"
+      ],
+      "exit_conditions": [
+        "套筒正确装配并释放稳定 0.5 s"
+      ],
+      "actions": [
+        {
+          "id": "Assembly.K02.A01",
+          "order": 1,
+          "action_zh": "预成形、下降并夹住套筒外壁",
+          "required_support_contact_zh": "套筒→桌面→手",
+          "check_observable_zh": "指壁接触与抓持",
+          "event_selector": "sleeve_preshape|sleeve_approach|sleeve_hover|sleeve_lower|sleeve_close",
+          "evidence_ids": [
+            "e0058",
+            "e0059",
+            "e0060",
+            "e0061",
+            "e0062"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "Assembly.K02.A02",
+          "order": 2,
+          "action_zh": "提起并避开柱顶、对准孔柱",
+          "required_support_contact_zh": "手持套筒；工具支撑平台",
+          "check_observable_zh": "柱顶净空、孔柱同轴",
+          "event_selector": "sleeve_lift|sleeve_grasp_result|sleeve_clear_post|sleeve_align",
+          "evidence_ids": [
+            "e0063",
+            "e0064",
+            "e0065",
+            "e0066"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "Assembly.K02.A03",
+          "order": 3,
+          "action_zh": "下降套入、释放并检查就位",
+          "required_support_contact_zh": "手→套筒→平台→工具",
+          "check_observable_zh": "插入深度、释放后支撑",
+          "event_selector": "sleeve_engage|sleeve_release|sleeve_verify",
+          "evidence_ids": [
+            "e0067",
+            "e0068",
+            "e0069",
+            "e0070",
+            "e0071"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "Assembly.K03",
+      "high_level_steps": [
+        "P3"
+      ],
+      "entry_conditions": [
+        "套筒已释放稳定，支撑链有效"
+      ],
+      "exit_conditions": [
+        "全部装配正确且机器人接触均释放"
+      ],
+      "actions": [
+        {
+          "id": "Assembly.K03.A01",
+          "order": 1,
+          "action_zh": "整理手臂、接近顶盖并夹持",
+          "required_support_contact_zh": "顶盖→桌面→手",
+          "check_observable_zh": "手姿态与夹持",
+          "event_selector": "cap_recenter|cap_preshape|cap_approach|cap_descend|cap_squeeze",
+          "evidence_ids": [
+            "e0072",
+            "e0073",
+            "e0074",
+            "e0075",
+            "e0076",
+            "e0077"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "Assembly.K03.A02",
+          "order": 2,
+          "action_zh": "提起并移动到柱上方",
+          "required_support_contact_zh": "手持顶盖",
+          "check_observable_zh": "抓持、转运净空",
+          "event_selector": "cap_lift|cap_grasp_result|cap_transfer",
+          "evidence_ids": [
+            "e0078",
+            "e0079",
+            "e0080"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "Assembly.K03.A03",
+          "order": 3,
+          "action_zh": "沿柱下放到套筒上并释放",
+          "required_support_contact_zh": "手→顶盖→套筒→平台→工具",
+          "check_observable_zh": "顶盖就位、支撑链",
+          "event_selector": "cap_engage|cap_release",
+          "evidence_ids": [
+            "e0081",
+            "e0082"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "Assembly.K04",
+      "high_level_steps": [
+        "P4"
+      ],
+      "entry_conditions": [
+        "工具和装配件均独立支撑"
+      ],
+      "exit_conditions": [
+        "全部释放并稳定 2 s"
+      ],
+      "actions": [
+        {
+          "id": "Assembly.K04.A01",
+          "order": 1,
+          "action_zh": "释放后撤离双手",
+          "required_support_contact_zh": "桌面→工具→平台→套筒→顶盖",
+          "check_observable_zh": "手接触消失",
+          "event_selector": "cap_retract_after_release",
+          "evidence_ids": [
+            "e0083"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "Assembly.K04.A02",
+          "order": 2,
+          "action_zh": "核对顶盖和套筒就位",
+          "required_support_contact_zh": "完整支撑链独立承重",
+          "check_observable_zh": "姿态、支撑接触",
+          "event_selector": "cap_verify_seated",
+          "evidence_ids": [
+            "e0084"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "Assembly.K04.A03",
+          "order": 3,
+          "action_zh": "维持独立静置至装配成功",
+          "required_support_contact_zh": "完整支撑链保持",
+          "check_observable_zh": "无代撑与最终驻留",
+          "event_selector": "cap_assembly_result",
+          "evidence_ids": [
+            "e0085"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    }
+  ],
+  "event_evidence": [
+    {
+      "id": "e0000",
+      "source": "s0",
+      "pointer_first": "/0",
+      "pointer_last": "/0",
+      "stream": "",
+      "label": "lift_hands_before_table",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        0.0,
+        0.0
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "lift_hands_before_table",
+        "time": 0.0
+      },
+      "last": {
+        "phase": "lift_hands_before_table",
+        "time": 0.0
+      }
+    },
+    {
+      "id": "e0001",
+      "source": "s0",
+      "pointer_first": "/1",
+      "pointer_last": "/1",
+      "stream": "",
+      "label": "brace_hover",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        5.7,
+        5.7
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_hover",
+        "time": 5.7
+      },
+      "last": {
+        "phase": "brace_hover",
+        "time": 5.7
+      }
+    },
+    {
+      "id": "e0002",
+      "source": "s0",
+      "pointer_first": "/2",
+      "pointer_last": "/2",
+      "stream": "",
+      "label": "brace_lower",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        9.700000000000001,
+        9.700000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_lower",
+        "time": 9.700000000000001
+      },
+      "last": {
+        "phase": "brace_lower",
+        "time": 9.700000000000001
+      }
+    },
+    {
+      "id": "e0003",
+      "source": "s0",
+      "pointer_first": "/3",
+      "pointer_last": "/3",
+      "stream": "",
+      "label": "brace_close",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        13.700000000000001,
+        13.700000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_close",
+        "time": 13.700000000000001
+      },
+      "last": {
+        "phase": "brace_close",
+        "time": 13.700000000000001
+      }
+    },
+    {
+      "id": "e0004",
+      "source": "s0",
+      "pointer_first": "/4",
+      "pointer_last": "/4",
+      "stream": "",
+      "label": "brace_lift",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        15.700000000000001,
+        15.700000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_lift",
+        "time": 15.700000000000001
+      },
+      "last": {
+        "phase": "brace_lift",
+        "time": 15.700000000000001
+      }
+    },
+    {
+      "id": "e0005",
+      "source": "s0",
+      "pointer_first": "/5",
+      "pointer_last": "/5",
+      "stream": "",
+      "label": "brace_transfer_feedback",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        19.7,
+        19.7
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_feedback",
+        "time": 19.7
+      },
+      "last": {
+        "phase": "brace_transfer_feedback",
+        "time": 19.7
+      }
+    },
+    {
+      "id": "e0006",
+      "source": "s0",
+      "pointer_first": "/6",
+      "pointer_last": "/6",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        19.7,
+        19.7
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 19.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4074309468269348,
+              0.42170295119285583,
+              0.906010627746582
+            ],
+            "force": [
+              -11.1290283203125,
+              -0.34809666872024536,
+              -0.46593308448791504
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.40705427527427673,
+              0.4285566508769989,
+              0.8940883874893188
+            ],
+            "force": [
+              -15.800846099853516,
+              -0.42940473556518555,
+              -0.31838250160217285
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.47813913226127625,
+              0.45580872893333435,
+              0.8983225226402283
+            ],
+            "force": [
+              4.13742733001709,
+              0.11031363904476166,
+              -0.48524659872055054
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4780244529247284,
+              0.45687276124954224,
+              0.8943502306938171
+            ],
+            "force": [
+              4.6253743171691895,
+              0.1379857361316681,
+              -0.4917190670967102
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4780377745628357,
+              0.45618966221809387,
+              0.89410799741745
+            ],
+            "force": [
+              4.769887447357178,
+              0.14391301572322845,
+              -0.5000028610229492
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4798068404197693,
+              0.3988317549228668,
+              0.8985779285430908
+            ],
+            "force": [
+              6.843518257141113,
+              0.18979528546333313,
+              -0.7636556625366211
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4797227680683136,
+              0.39921286702156067,
+              0.8943629860877991
+            ],
+            "force": [
+              6.560405254364014,
+              0.196516752243042,
+              -0.7529895305633545
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.4425877034664154,
+            0.42597800493240356,
+            0.8730676174163818
+          ],
+          "quat": [
+            0.9998288750648499,
+            -0.005647904239594936,
+            0.009115285240113735,
+            0.015075531788170338
+          ],
+          "linear_velocity": [
+            -0.00020097391097806394,
+            -8.54699537740089e-05,
+            -0.0005418790969997644
+          ],
+          "angular_velocity": [
+            0.010357162915170193,
+            0.003973782528191805,
+            -0.0027353919576853514
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 54.06802225112915,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 19.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4074309468269348,
+              0.42170295119285583,
+              0.906010627746582
+            ],
+            "force": [
+              -11.1290283203125,
+              -0.34809666872024536,
+              -0.46593308448791504
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.40705427527427673,
+              0.4285566508769989,
+              0.8940883874893188
+            ],
+            "force": [
+              -15.800846099853516,
+              -0.42940473556518555,
+              -0.31838250160217285
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.47813913226127625,
+              0.45580872893333435,
+              0.8983225226402283
+            ],
+            "force": [
+              4.13742733001709,
+              0.11031363904476166,
+              -0.48524659872055054
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4780244529247284,
+              0.45687276124954224,
+              0.8943502306938171
+            ],
+            "force": [
+              4.6253743171691895,
+              0.1379857361316681,
+              -0.4917190670967102
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4780377745628357,
+              0.45618966221809387,
+              0.89410799741745
+            ],
+            "force": [
+              4.769887447357178,
+              0.14391301572322845,
+              -0.5000028610229492
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4798068404197693,
+              0.3988317549228668,
+              0.8985779285430908
+            ],
+            "force": [
+              6.843518257141113,
+              0.18979528546333313,
+              -0.7636556625366211
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4797227680683136,
+              0.39921286702156067,
+              0.8943629860877991
+            ],
+            "force": [
+              6.560405254364014,
+              0.196516752243042,
+              -0.7529895305633545
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.4425877034664154,
+            0.42597800493240356,
+            0.8730676174163818
+          ],
+          "quat": [
+            0.9998288750648499,
+            -0.005647904239594936,
+            0.009115285240113735,
+            0.015075531788170338
+          ],
+          "linear_velocity": [
+            -0.00020097391097806394,
+            -8.54699537740089e-05,
+            -0.0005418790969997644
+          ],
+          "angular_velocity": [
+            0.010357162915170193,
+            0.003973782528191805,
+            -0.0027353919576853514
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 54.06802225112915,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0007",
+      "source": "s0",
+      "pointer_first": "/7",
+      "pointer_last": "/7",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        20.2,
+        20.2
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 20.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.41062554717063904,
+              0.41978538036346436,
+              0.8932530879974365
+            ],
+            "force": [
+              -11.73539924621582,
+              -0.3196268379688263,
+              -0.40801382064819336
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4102824032306671,
+              0.4260222315788269,
+              0.8822165131568909
+            ],
+            "force": [
+              -15.292861938476562,
+              -0.34794357419013977,
+              -0.26929283142089844
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.48137417435646057,
+              0.45699477195739746,
+              0.8832877278327942
+            ],
+            "force": [
+              4.033504962921143,
+              0.1012292355298996,
+              -0.47751569747924805
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.48143863677978516,
+              0.45326054096221924,
+              0.8825890421867371
+            ],
+            "force": [
+              4.648813247680664,
+              0.11893197894096375,
+              -0.5105234384536743
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4814237058162689,
+              0.4533083438873291,
+              0.8820117115974426
+            ],
+            "force": [
+              4.741607666015625,
+              0.12345205247402191,
+              -0.5111711621284485
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.48288360238075256,
+              0.3959771990776062,
+              0.8869153261184692
+            ],
+            "force": [
+              6.878119468688965,
+              0.1559366136789322,
+              -0.8029463291168213
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4827905595302582,
+              0.3963271379470825,
+              0.8826978802680969
+            ],
+            "force": [
+              6.723496437072754,
+              0.16901764273643494,
+              -0.796073317527771
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.4457300007343292,
+            0.42331063747406006,
+            0.8603259325027466
+          ],
+          "quat": [
+            0.9998571276664734,
+            -0.005578060168772936,
+            0.010231359861791134,
+            0.012247027829289436
+          ],
+          "linear_velocity": [
+            -0.0016982711385935545,
+            0.0008089123293757439,
+            0.017339685931801796
+          ],
+          "angular_velocity": [
+            0.04386534541845322,
+            -0.009227204136550426,
+            0.0021581524051725864
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 54.25707006454468,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 20.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.41062554717063904,
+              0.41978538036346436,
+              0.8932530879974365
+            ],
+            "force": [
+              -11.73539924621582,
+              -0.3196268379688263,
+              -0.40801382064819336
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4102824032306671,
+              0.4260222315788269,
+              0.8822165131568909
+            ],
+            "force": [
+              -15.292861938476562,
+              -0.34794357419013977,
+              -0.26929283142089844
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.48137417435646057,
+              0.45699477195739746,
+              0.8832877278327942
+            ],
+            "force": [
+              4.033504962921143,
+              0.1012292355298996,
+              -0.47751569747924805
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.48143863677978516,
+              0.45326054096221924,
+              0.8825890421867371
+            ],
+            "force": [
+              4.648813247680664,
+              0.11893197894096375,
+              -0.5105234384536743
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4814237058162689,
+              0.4533083438873291,
+              0.8820117115974426
+            ],
+            "force": [
+              4.741607666015625,
+              0.12345205247402191,
+              -0.5111711621284485
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.48288360238075256,
+              0.3959771990776062,
+              0.8869153261184692
+            ],
+            "force": [
+              6.878119468688965,
+              0.1559366136789322,
+              -0.8029463291168213
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4827905595302582,
+              0.3963271379470825,
+              0.8826978802680969
+            ],
+            "force": [
+              6.723496437072754,
+              0.16901764273643494,
+              -0.796073317527771
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.4457300007343292,
+            0.42331063747406006,
+            0.8603259325027466
+          ],
+          "quat": [
+            0.9998571276664734,
+            -0.005578060168772936,
+            0.010231359861791134,
+            0.012247027829289436
+          ],
+          "linear_velocity": [
+            -0.0016982711385935545,
+            0.0008089123293757439,
+            0.017339685931801796
+          ],
+          "angular_velocity": [
+            0.04386534541845322,
+            -0.009227204136550426,
+            0.0021581524051725864
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 54.25707006454468,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0008",
+      "source": "s0",
+      "pointer_first": "/8",
+      "pointer_last": "/8",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        20.7,
+        20.7
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 20.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4123328924179077,
+              0.4174705743789673,
+              0.8968877792358398
+            ],
+            "force": [
+              -12.218996047973633,
+              -0.277909517288208,
+              -0.46089887619018555
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.41203176975250244,
+              0.42324554920196533,
+              0.8868299126625061
+            ],
+            "force": [
+              -14.646543502807617,
+              -0.2829955518245697,
+              -0.3590881824493408
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.48321443796157837,
+              0.45405954122543335,
+              0.8882588744163513
+            ],
+            "force": [
+              4.031904220581055,
+              0.08409560471773148,
+              -0.46426379680633545
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4832690358161926,
+              0.450334370136261,
+              0.887485146522522
+            ],
+            "force": [
+              4.598938941955566,
+              0.09911173582077026,
+              -0.49401235580444336
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4832557141780853,
+              0.4503817558288574,
+              0.8869578838348389
+            ],
+            "force": [
+              4.690029144287109,
+              0.10291881859302521,
+              -0.4944480061531067
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4845578372478485,
+              0.39301520586013794,
+              0.8914782404899597
+            ],
+            "force": [
+              6.77360200881958,
+              0.13195109367370605,
+              -0.7593222856521606
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.48446574807167053,
+              0.393393874168396,
+              0.8872631788253784
+            ],
+            "force": [
+              6.764169216156006,
+              0.14688004553318024,
+              -0.7575341463088989
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.4475102126598358,
+            0.42075440287590027,
+            0.863970160484314
+          ],
+          "quat": [
+            0.9998892545700073,
+            0.0015456252731382847,
+            0.010030368342995644,
+            0.010889755561947823
+          ],
+          "linear_velocity": [
+            0.007025850471109152,
+            -0.01007341593503952,
+            0.00636296859011054
+          ],
+          "angular_velocity": [
+            0.040349528193473816,
+            0.014553266577422619,
+            0.002292622346431017
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 53.91288614273071,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 20.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4123328924179077,
+              0.4174705743789673,
+              0.8968877792358398
+            ],
+            "force": [
+              -12.218996047973633,
+              -0.277909517288208,
+              -0.46089887619018555
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.41203176975250244,
+              0.42324554920196533,
+              0.8868299126625061
+            ],
+            "force": [
+              -14.646543502807617,
+              -0.2829955518245697,
+              -0.3590881824493408
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.48321443796157837,
+              0.45405954122543335,
+              0.8882588744163513
+            ],
+            "force": [
+              4.031904220581055,
+              0.08409560471773148,
+              -0.46426379680633545
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4832690358161926,
+              0.450334370136261,
+              0.887485146522522
+            ],
+            "force": [
+              4.598938941955566,
+              0.09911173582077026,
+              -0.49401235580444336
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4832557141780853,
+              0.4503817558288574,
+              0.8869578838348389
+            ],
+            "force": [
+              4.690029144287109,
+              0.10291881859302521,
+              -0.4944480061531067
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4845578372478485,
+              0.39301520586013794,
+              0.8914782404899597
+            ],
+            "force": [
+              6.77360200881958,
+              0.13195109367370605,
+              -0.7593222856521606
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.48446574807167053,
+              0.393393874168396,
+              0.8872631788253784
+            ],
+            "force": [
+              6.764169216156006,
+              0.14688004553318024,
+              -0.7575341463088989
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.4475102126598358,
+            0.42075440287590027,
+            0.863970160484314
+          ],
+          "quat": [
+            0.9998892545700073,
+            0.0015456252731382847,
+            0.010030368342995644,
+            0.010889755561947823
+          ],
+          "linear_velocity": [
+            0.007025850471109152,
+            -0.01007341593503952,
+            0.00636296859011054
+          ],
+          "angular_velocity": [
+            0.040349528193473816,
+            0.014553266577422619,
+            0.002292622346431017
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 53.91288614273071,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0009",
+      "source": "s0",
+      "pointer_first": "/9",
+      "pointer_last": "/9",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        21.2,
+        21.2
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 21.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4215732216835022,
+              0.4055796265602112,
+              0.8979954719543457
+            ],
+            "force": [
+              -13.04068374633789,
+              -0.24710790812969208,
+              -0.32065892219543457
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4212351143360138,
+              0.41081303358078003,
+              0.8889227509498596
+            ],
+            "force": [
+              -13.430994987487793,
+              -0.2802264392375946,
+              -0.318617582321167
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4925287961959839,
+              0.4414319694042206,
+              0.889829695224762
+            ],
+            "force": [
+              6.030581474304199,
+              0.11517490446567535,
+              -0.7393717765808105
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.492545485496521,
+              0.43775638937950134,
+              0.8885219097137451
+            ],
+            "force": [
+              6.7254791259765625,
+              0.12466270476579666,
+              -0.7590663433074951
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.49371615052223206,
+              0.3803775906562805,
+              0.8929263353347778
+            ],
+            "force": [
+              4.530484676361084,
+              0.09503680467605591,
+              -0.5502665638923645
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4935669004917145,
+              0.3844398558139801,
+              0.8900207877159119
+            ],
+            "force": [
+              4.4120659828186035,
+              0.08689409494400024,
+              -0.5545340776443481
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.49358853697776794,
+              0.38076430559158325,
+              0.8887129426002502
+            ],
+            "force": [
+              4.776012420654297,
+              0.09061936289072037,
+              -0.5596516132354736
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.45659273862838745,
+            0.4081438183784485,
+            0.8647758960723877
+          ],
+          "quat": [
+            0.9998643398284912,
+            0.0016862699994817376,
+            0.013854386284947395,
+            0.008751903660595417
+          ],
+          "linear_velocity": [
+            0.023358425125479698,
+            -0.03160474821925163,
+            -1.4907331205904484e-05
+          ],
+          "angular_velocity": [
+            -0.0069064730778336525,
+            0.0178940799087286,
+            -0.007474424317479134
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 53.15275764465332,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 21.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4215732216835022,
+              0.4055796265602112,
+              0.8979954719543457
+            ],
+            "force": [
+              -13.04068374633789,
+              -0.24710790812969208,
+              -0.32065892219543457
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4212351143360138,
+              0.41081303358078003,
+              0.8889227509498596
+            ],
+            "force": [
+              -13.430994987487793,
+              -0.2802264392375946,
+              -0.318617582321167
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.4925287961959839,
+              0.4414319694042206,
+              0.889829695224762
+            ],
+            "force": [
+              6.030581474304199,
+              0.11517490446567535,
+              -0.7393717765808105
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.492545485496521,
+              0.43775638937950134,
+              0.8885219097137451
+            ],
+            "force": [
+              6.7254791259765625,
+              0.12466270476579666,
+              -0.7590663433074951
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.49371615052223206,
+              0.3803775906562805,
+              0.8929263353347778
+            ],
+            "force": [
+              4.530484676361084,
+              0.09503680467605591,
+              -0.5502665638923645
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.4935669004917145,
+              0.3844398558139801,
+              0.8900207877159119
+            ],
+            "force": [
+              4.4120659828186035,
+              0.08689409494400024,
+              -0.5545340776443481
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.49358853697776794,
+              0.38076430559158325,
+              0.8887129426002502
+            ],
+            "force": [
+              4.776012420654297,
+              0.09061936289072037,
+              -0.5596516132354736
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.45659273862838745,
+            0.4081438183784485,
+            0.8647758960723877
+          ],
+          "quat": [
+            0.9998643398284912,
+            0.0016862699994817376,
+            0.013854386284947395,
+            0.008751903660595417
+          ],
+          "linear_velocity": [
+            0.023358425125479698,
+            -0.03160474821925163,
+            -1.4907331205904484e-05
+          ],
+          "angular_velocity": [
+            -0.0069064730778336525,
+            0.0178940799087286,
+            -0.007474424317479134
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 53.15275764465332,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0010",
+      "source": "s0",
+      "pointer_first": "/10",
+      "pointer_last": "/10",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        21.7,
+        21.7
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 21.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.436577171087265,
+              0.3871748149394989,
+              0.899256706237793
+            ],
+            "force": [
+              -13.73963737487793,
+              -0.206492617726326,
+              -0.2831883430480957
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4362623691558838,
+              0.3918304145336151,
+              0.8912034630775452
+            ],
+            "force": [
+              -12.879680633544922,
+              -0.2160712629556656,
+              -0.3375828266143799
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5076172351837158,
+              0.42020320892333984,
+              0.8912529349327087
+            ],
+            "force": [
+              6.349224090576172,
+              0.09752660244703293,
+              -0.7510485649108887
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5076199769973755,
+              0.41862931847572327,
+              0.8906913995742798
+            ],
+            "force": [
+              6.715107440948486,
+              0.10306878387928009,
+              -0.7598559856414795
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5087070465087891,
+              0.36124464869499207,
+              0.8950425982475281
+            ],
+            "force": [
+              4.328823089599609,
+              0.07416698336601257,
+              -0.5423905253410339
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5085580348968506,
+              0.36530977487564087,
+              0.8921412229537964
+            ],
+            "force": [
+              4.374734401702881,
+              0.06881582736968994,
+              -0.5525122880935669
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5085695385932922,
+              0.3616352677345276,
+              0.8908299207687378
+            ],
+            "force": [
+              4.861493110656738,
+              0.07381706684827805,
+              -0.5624256134033203
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.47163307666778564,
+            0.3889419734477997,
+            0.8659965991973877
+          ],
+          "quat": [
+            0.9998648166656494,
+            0.00043018016731366515,
+            0.014385917223989964,
+            0.007952548563480377
+          ],
+          "linear_velocity": [
+            0.03690905496478081,
+            -0.046708401292562485,
+            0.0009864786406978965
+          ],
+          "angular_velocity": [
+            -0.00474925572052598,
+            0.0024959559086710215,
+            -0.01728747971355915
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 53.45080375671387,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 21.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.436577171087265,
+              0.3871748149394989,
+              0.899256706237793
+            ],
+            "force": [
+              -13.73963737487793,
+              -0.206492617726326,
+              -0.2831883430480957
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4362623691558838,
+              0.3918304145336151,
+              0.8912034630775452
+            ],
+            "force": [
+              -12.879680633544922,
+              -0.2160712629556656,
+              -0.3375828266143799
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5076172351837158,
+              0.42020320892333984,
+              0.8912529349327087
+            ],
+            "force": [
+              6.349224090576172,
+              0.09752660244703293,
+              -0.7510485649108887
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5076199769973755,
+              0.41862931847572327,
+              0.8906913995742798
+            ],
+            "force": [
+              6.715107440948486,
+              0.10306878387928009,
+              -0.7598559856414795
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5087070465087891,
+              0.36124464869499207,
+              0.8950425982475281
+            ],
+            "force": [
+              4.328823089599609,
+              0.07416698336601257,
+              -0.5423905253410339
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5085580348968506,
+              0.36530977487564087,
+              0.8921412229537964
+            ],
+            "force": [
+              4.374734401702881,
+              0.06881582736968994,
+              -0.5525122880935669
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5085695385932922,
+              0.3616352677345276,
+              0.8908299207687378
+            ],
+            "force": [
+              4.861493110656738,
+              0.07381706684827805,
+              -0.5624256134033203
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.47163307666778564,
+            0.3889419734477997,
+            0.8659965991973877
+          ],
+          "quat": [
+            0.9998648166656494,
+            0.00043018016731366515,
+            0.014385917223989964,
+            0.007952548563480377
+          ],
+          "linear_velocity": [
+            0.03690905496478081,
+            -0.046708401292562485,
+            0.0009864786406978965
+          ],
+          "angular_velocity": [
+            -0.00474925572052598,
+            0.0024959559086710215,
+            -0.01728747971355915
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 53.45080375671387,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0011",
+      "source": "s0",
+      "pointer_first": "/11",
+      "pointer_last": "/11",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        22.2,
+        22.2
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 22.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4565524756908417,
+              0.3628920018672943,
+              0.8998989462852478
+            ],
+            "force": [
+              -13.631656646728516,
+              -0.40558481216430664,
+              -0.2672455310821533
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4562830328941345,
+              0.3669530153274536,
+              0.8928831815719604
+            ],
+            "force": [
+              -12.647150039672852,
+              -0.37716206908226013,
+              -0.31598782539367676
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.527744472026825,
+              0.3944036364555359,
+              0.8927236795425415
+            ],
+            "force": [
+              6.640530109405518,
+              0.1965627372264862,
+              -0.7676364183425903
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5277417302131653,
+              0.39344480633735657,
+              0.892380952835083
+            ],
+            "force": [
+              6.899370193481445,
+              0.20200833678245544,
+              -0.7834465503692627
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5284520387649536,
+              0.34012120962142944,
+              0.8938114643096924
+            ],
+            "force": [
+              6.035855770111084,
+              0.1848294734954834,
+              -0.8065617084503174
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5284462571144104,
+              0.3364473283290863,
+              0.892498791217804
+            ],
+            "force": [
+              6.697702407836914,
+              0.19598670303821564,
+              -0.8396511077880859
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.49162164330482483,
+            0.36383184790611267,
+            0.8666036128997803
+          ],
+          "quat": [
+            0.9998703598976135,
+            -0.0001893956068670377,
+            0.014923105016350746,
+            0.006042880937457085
+          ],
+          "linear_velocity": [
+            0.04266443848609924,
+            -0.05422980338335037,
+            0.0018420570995658636
+          ],
+          "angular_velocity": [
+            0.010609383694827557,
+            0.0029349755495786667,
+            0.0008624782785773277
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 52.776597023010254,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 22.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4565524756908417,
+              0.3628920018672943,
+              0.8998989462852478
+            ],
+            "force": [
+              -13.631656646728516,
+              -0.40558481216430664,
+              -0.2672455310821533
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.4562830328941345,
+              0.3669530153274536,
+              0.8928831815719604
+            ],
+            "force": [
+              -12.647150039672852,
+              -0.37716206908226013,
+              -0.31598782539367676
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.527744472026825,
+              0.3944036364555359,
+              0.8927236795425415
+            ],
+            "force": [
+              6.640530109405518,
+              0.1965627372264862,
+              -0.7676364183425903
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5277417302131653,
+              0.39344480633735657,
+              0.892380952835083
+            ],
+            "force": [
+              6.899370193481445,
+              0.20200833678245544,
+              -0.7834465503692627
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5284520387649536,
+              0.34012120962142944,
+              0.8938114643096924
+            ],
+            "force": [
+              6.035855770111084,
+              0.1848294734954834,
+              -0.8065617084503174
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5284462571144104,
+              0.3364473283290863,
+              0.892498791217804
+            ],
+            "force": [
+              6.697702407836914,
+              0.19598670303821564,
+              -0.8396511077880859
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.49162164330482483,
+            0.36383184790611267,
+            0.8666036128997803
+          ],
+          "quat": [
+            0.9998703598976135,
+            -0.0001893956068670377,
+            0.014923105016350746,
+            0.006042880937457085
+          ],
+          "linear_velocity": [
+            0.04266443848609924,
+            -0.05422980338335037,
+            0.0018420570995658636
+          ],
+          "angular_velocity": [
+            0.010609383694827557,
+            0.0029349755495786667,
+            0.0008624782785773277
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 52.776597023010254,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0012",
+      "source": "s0",
+      "pointer_first": "/12",
+      "pointer_last": "/12",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        22.7,
+        22.7
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 22.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.47947898507118225,
+              0.33521774411201477,
+              0.900093138217926
+            ],
+            "force": [
+              -14.048046112060547,
+              -0.2573031485080719,
+              -0.3905467987060547
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.47928619384765625,
+              0.3386228084564209,
+              0.894230306148529
+            ],
+            "force": [
+              -12.542387008666992,
+              -0.22760304808616638,
+              -0.46941113471984863
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5509241819381714,
+              0.36571016907691956,
+              0.8943765759468079
+            ],
+            "force": [
+              6.698755264282227,
+              0.12865446507930756,
+              -0.6735906600952148
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5509156584739685,
+              0.36468666791915894,
+              0.8940092325210571
+            ],
+            "force": [
+              6.975728988647461,
+              0.13278208673000336,
+              -0.6897797584533691
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5512775778770447,
+              0.3113580644130707,
+              0.8953728675842285
+            ],
+            "force": [
+              6.119929313659668,
+              0.1214805319905281,
+              -0.760979413986206
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5512517094612122,
+              0.3076859712600708,
+              0.894055187702179
+            ],
+            "force": [
+              6.803493499755859,
+              0.12929867208003998,
+              -0.795576810836792
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.5146675109863281,
+            0.3353201150894165,
+            0.8669008016586304
+          ],
+          "quat": [
+            0.9999059438705444,
+            0.0009906752966344357,
+            0.013388944789767265,
+            0.0028223474510014057
+          ],
+          "linear_velocity": [
+            0.04582143574953079,
+            -0.05818234011530876,
+            0.0014889821177348495
+          ],
+          "angular_velocity": [
+            0.007374566979706287,
+            -0.01937217265367508,
+            -0.005803272128105164
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 53.37316179275513,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 22.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.47947898507118225,
+              0.33521774411201477,
+              0.900093138217926
+            ],
+            "force": [
+              -14.048046112060547,
+              -0.2573031485080719,
+              -0.3905467987060547
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.47928619384765625,
+              0.3386228084564209,
+              0.894230306148529
+            ],
+            "force": [
+              -12.542387008666992,
+              -0.22760304808616638,
+              -0.46941113471984863
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5509241819381714,
+              0.36571016907691956,
+              0.8943765759468079
+            ],
+            "force": [
+              6.698755264282227,
+              0.12865446507930756,
+              -0.6735906600952148
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5509156584739685,
+              0.36468666791915894,
+              0.8940092325210571
+            ],
+            "force": [
+              6.975728988647461,
+              0.13278208673000336,
+              -0.6897797584533691
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5512775778770447,
+              0.3113580644130707,
+              0.8953728675842285
+            ],
+            "force": [
+              6.119929313659668,
+              0.1214805319905281,
+              -0.760979413986206
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5512517094612122,
+              0.3076859712600708,
+              0.894055187702179
+            ],
+            "force": [
+              6.803493499755859,
+              0.12929867208003998,
+              -0.795576810836792
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.5146675109863281,
+            0.3353201150894165,
+            0.8669008016586304
+          ],
+          "quat": [
+            0.9999059438705444,
+            0.0009906752966344357,
+            0.013388944789767265,
+            0.0028223474510014057
+          ],
+          "linear_velocity": [
+            0.04582143574953079,
+            -0.05818234011530876,
+            0.0014889821177348495
+          ],
+          "angular_velocity": [
+            0.007374566979706287,
+            -0.01937217265367508,
+            -0.005803272128105164
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 53.37316179275513,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0013",
+      "source": "s0",
+      "pointer_first": "/13",
+      "pointer_last": "/13",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        23.2,
+        23.2
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 23.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.5023466348648071,
+              0.307244211435318,
+              0.8996686339378357
+            ],
+            "force": [
+              -20.710216522216797,
+              0.2712041139602661,
+              -0.8209872245788574
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5740638971328735,
+              0.3353029191493988,
+              0.8954702019691467
+            ],
+            "force": [
+              9.85104751586914,
+              -0.10072759538888931,
+              -1.3513513803482056
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5739208459854126,
+              0.2819744348526001,
+              0.8968794345855713
+            ],
+            "force": [
+              5.103814125061035,
+              -0.06450674682855606,
+              -0.8008146286010742
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5738697648048401,
+              0.2783016860485077,
+              0.895564615726471
+            ],
+            "force": [
+              5.752735614776611,
+              -0.0764395222067833,
+              -0.798627495765686
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.5377625226974487,
+            0.3061891794204712,
+            0.8667908310890198
+          ],
+          "quat": [
+            0.9999593496322632,
+            -0.00024089265207294375,
+            0.00873713381588459,
+            -0.002248636679723859
+          ],
+          "linear_velocity": [
+            0.03871823847293854,
+            -0.050745557993650436,
+            -0.0020311372354626656
+          ],
+          "angular_velocity": [
+            -0.016769759356975555,
+            0.0004197927191853523,
+            -0.010654781945049763
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 41.64713954925537,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 23.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.5023466348648071,
+              0.307244211435318,
+              0.8996686339378357
+            ],
+            "force": [
+              -20.710216522216797,
+              0.2712041139602661,
+              -0.8209872245788574
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.5740638971328735,
+              0.3353029191493988,
+              0.8954702019691467
+            ],
+            "force": [
+              9.85104751586914,
+              -0.10072759538888931,
+              -1.3513513803482056
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5739208459854126,
+              0.2819744348526001,
+              0.8968794345855713
+            ],
+            "force": [
+              5.103814125061035,
+              -0.06450674682855606,
+              -0.8008146286010742
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5738697648048401,
+              0.2783016860485077,
+              0.895564615726471
+            ],
+            "force": [
+              5.752735614776611,
+              -0.0764395222067833,
+              -0.798627495765686
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.5377625226974487,
+            0.3061891794204712,
+            0.8667908310890198
+          ],
+          "quat": [
+            0.9999593496322632,
+            -0.00024089265207294375,
+            0.00873713381588459,
+            -0.002248636679723859
+          ],
+          "linear_velocity": [
+            0.03871823847293854,
+            -0.050745557993650436,
+            -0.0020311372354626656
+          ],
+          "angular_velocity": [
+            -0.016769759356975555,
+            0.0004197927191853523,
+            -0.010654781945049763
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 41.64713954925537,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0014",
+      "source": "s0",
+      "pointer_first": "/14",
+      "pointer_last": "/14",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        23.7,
+        23.7
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 23.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.5220988392829895,
+              0.2833976149559021,
+              0.9000367522239685
+            ],
+            "force": [
+              -25.53194236755371,
+              0.3364821672439575,
+              -1.1951608657836914
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.59391850233078,
+              0.3100632429122925,
+              0.8978554606437683
+            ],
+            "force": [
+              12.92021656036377,
+              -0.15496374666690826,
+              -1.1728029251098633
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5934901833534241,
+              0.25544366240501404,
+              0.8986151218414307
+            ],
+            "force": [
+              6.050853252410889,
+              -0.08123251795768738,
+              -0.6983904838562012
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5934463143348694,
+              0.25306376814842224,
+              0.897753894329071
+            ],
+            "force": [
+              6.588708877563477,
+              -0.08942854404449463,
+              -0.7000871896743774
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.5575852394104004,
+            0.2809004783630371,
+            0.8673607110977173
+          ],
+          "quat": [
+            0.9999590516090393,
+            -0.00393250398337841,
+            0.00651858514174819,
+            -0.004899175371974707
+          ],
+          "linear_velocity": [
+            0.03689427301287651,
+            -0.04670128598809242,
+            0.004636488389223814
+          ],
+          "angular_velocity": [
+            -0.009118945337831974,
+            -0.03424644097685814,
+            -0.015843888744711876
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 51.25434350967407,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 23.7,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.5220988392829895,
+              0.2833976149559021,
+              0.9000367522239685
+            ],
+            "force": [
+              -25.53194236755371,
+              0.3364821672439575,
+              -1.1951608657836914
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.59391850233078,
+              0.3100632429122925,
+              0.8978554606437683
+            ],
+            "force": [
+              12.92021656036377,
+              -0.15496374666690826,
+              -1.1728029251098633
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5934901833534241,
+              0.25544366240501404,
+              0.8986151218414307
+            ],
+            "force": [
+              6.050853252410889,
+              -0.08123251795768738,
+              -0.6983904838562012
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.5934463143348694,
+              0.25306376814842224,
+              0.897753894329071
+            ],
+            "force": [
+              6.588708877563477,
+              -0.08942854404449463,
+              -0.7000871896743774
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.5575852394104004,
+            0.2809004783630371,
+            0.8673607110977173
+          ],
+          "quat": [
+            0.9999590516090393,
+            -0.00393250398337841,
+            0.00651858514174819,
+            -0.004899175371974707
+          ],
+          "linear_velocity": [
+            0.03689427301287651,
+            -0.04670128598809242,
+            0.004636488389223814
+          ],
+          "angular_velocity": [
+            -0.009118945337831974,
+            -0.03424644097685814,
+            -0.015843888744711876
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 51.25434350967407,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0015",
+      "source": "s0",
+      "pointer_first": "/15",
+      "pointer_last": "/15",
+      "stream": "",
+      "label": "brace_transfer_contacts",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        24.2,
+        24.2
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_transfer_contacts",
+        "time": 24.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.5377812385559082,
+              0.2652914822101593,
+              0.8989881277084351
+            ],
+            "force": [
+              -21.929407119750977,
+              0.38313233852386475,
+              -1.9416942596435547
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.6097691655158997,
+              0.29085054993629456,
+              0.8990127444267273
+            ],
+            "force": [
+              11.680286407470703,
+              -0.1987433135509491,
+              -0.7645444869995117
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.6089612245559692,
+              0.23354369401931763,
+              0.8993082642555237
+            ],
+            "force": [
+              10.274796485900879,
+              -0.17923010885715485,
+              -1.0618646144866943
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.5737035870552063,
+            0.2613396644592285,
+            0.866820216178894
+          ],
+          "quat": [
+            0.999970018863678,
+            -0.002550785895437002,
+            -0.0011547921458259225,
+            -0.007224107161164284
+          ],
+          "linear_velocity": [
+            0.028549600392580032,
+            -0.032306574285030365,
+            -0.008629392832517624
+          ],
+          "angular_velocity": [
+            0.013043082319200039,
+            -0.13103944063186646,
+            -0.011486882343888283
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 44.05657768249512,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "brace_transfer_contacts",
+        "time": 24.2,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.5377812385559082,
+              0.2652914822101593,
+              0.8989881277084351
+            ],
+            "force": [
+              -21.929407119750977,
+              0.38313233852386475,
+              -1.9416942596435547
+            ]
+          },
+          {
+            "link": "left_hand_middle_1_link",
+            "position": [
+              0.6097691655158997,
+              0.29085054993629456,
+              0.8990127444267273
+            ],
+            "force": [
+              11.680286407470703,
+              -0.1987433135509491,
+              -0.7645444869995117
+            ]
+          },
+          {
+            "link": "left_hand_index_1_link",
+            "position": [
+              0.6089612245559692,
+              0.23354369401931763,
+              0.8993082642555237
+            ],
+            "force": [
+              10.274796485900879,
+              -0.17923010885715485,
+              -1.0618646144866943
+            ]
+          }
+        ],
+        "state": {
+          "pos": [
+            0.5737035870552063,
+            0.2613396644592285,
+            0.866820216178894
+          ],
+          "quat": [
+            0.999970018863678,
+            -0.002550785895437002,
+            -0.0011547921458259225,
+            -0.007224107161164284
+          ],
+          "linear_velocity": [
+            0.028549600392580032,
+            -0.032306574285030365,
+            -0.008629392832517624
+          ],
+          "angular_velocity": [
+            0.013043082319200039,
+            -0.13103944063186646,
+            -0.011486882343888283
+          ],
+          "hand_contact": true,
+          "robot_contact": true,
+          "support_contact": false,
+          "support_forces": {},
+          "fixture_contact": false,
+          "support_force_n": 0,
+          "robot_contact_force_n": 44.05657768249512,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0016",
+      "source": "s0",
+      "pointer_first": "/16",
+      "pointer_last": "/16",
+      "stream": "",
+      "label": "brace_staging_reached",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        24.54,
+        24.54
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_staging_reached",
+        "time": 24.54,
+        "position": [
+          0.5821827054023743,
+          0.25180643796920776,
+          0.8649255633354187
+        ]
+      },
+      "last": {
+        "phase": "brace_staging_reached",
+        "time": 24.54,
+        "position": [
+          0.5821827054023743,
+          0.25180643796920776,
+          0.8649255633354187
+        ]
+      }
+    },
+    {
+      "id": "e0017",
+      "source": "s0",
+      "pointer_first": "/17",
+      "pointer_last": "/17",
+      "stream": "",
+      "label": "brace_set_down_feedback",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        24.54,
+        24.54
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_set_down_feedback",
+        "time": 24.54
+      },
+      "last": {
+        "phase": "brace_set_down_feedback",
+        "time": 24.54
+      }
+    },
+    {
+      "id": "e0018",
+      "source": "s0",
+      "pointer_first": "/18",
+      "pointer_last": "/18",
+      "stream": "",
+      "label": "brace_confirm_table_support",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        26.04,
+        26.04
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_confirm_table_support",
+        "time": 26.04
+      },
+      "last": {
+        "phase": "brace_confirm_table_support",
+        "time": 26.04
+      }
+    },
+    {
+      "id": "e0019",
+      "source": "s0",
+      "pointer_first": "/19",
+      "pointer_last": "/19",
+      "stream": "",
+      "label": "brace_clear",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        26.44,
+        26.44
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_clear",
+        "time": 26.44
+      },
+      "last": {
+        "phase": "brace_clear",
+        "time": 26.44
+      }
+    },
+    {
+      "id": "e0020",
+      "source": "s0",
+      "pointer_first": "/20",
+      "pointer_last": "/20",
+      "stream": "",
+      "label": "press_retract_before_rebranch",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        27.44,
+        27.44
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "press_retract_before_rebranch",
+        "time": 27.44
+      },
+      "last": {
+        "phase": "press_retract_before_rebranch",
+        "time": 27.44
+      }
+    },
+    {
+      "id": "e0021",
+      "source": "s0",
+      "pointer_first": "/21",
+      "pointer_last": "/21",
+      "stream": "",
+      "label": "press_restore_safe_branch",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        28.94,
+        28.94
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "press_restore_safe_branch",
+        "time": 28.94
+      },
+      "last": {
+        "phase": "press_restore_safe_branch",
+        "time": 28.94
+      }
+    },
+    {
+      "id": "e0022",
+      "source": "s0",
+      "pointer_first": "/22",
+      "pointer_last": "/22",
+      "stream": "",
+      "label": "fixture_approach",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        30.94,
+        30.94
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "fixture_approach",
+        "time": 30.94
+      },
+      "last": {
+        "phase": "fixture_approach",
+        "time": 30.94
+      }
+    },
+    {
+      "id": "e0023",
+      "source": "s0",
+      "pointer_first": "/23",
+      "pointer_last": "/23",
+      "stream": "",
+      "label": "fixture_hover",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        32.94,
+        32.94
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "fixture_hover",
+        "time": 32.94
+      },
+      "last": {
+        "phase": "fixture_hover",
+        "time": 32.94
+      }
+    },
+    {
+      "id": "e0024",
+      "source": "s0",
+      "pointer_first": "/24",
+      "pointer_last": "/24",
+      "stream": "",
+      "label": "fixture_press",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        33.94,
+        33.94
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "fixture_press",
+        "time": 33.94
+      },
+      "last": {
+        "phase": "fixture_press",
+        "time": 33.94
+      }
+    },
+    {
+      "id": "e0025",
+      "source": "s0",
+      "pointer_first": "/25",
+      "pointer_last": "/25",
+      "stream": "",
+      "label": "fixture_press_feedback",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        37.94,
+        37.94
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "fixture_press_feedback",
+        "time": 37.94,
+        "initial_pitch": 0.022983535351796223
+      },
+      "last": {
+        "phase": "fixture_press_feedback",
+        "time": 37.94,
+        "initial_pitch": 0.022983535351796223
+      }
+    },
+    {
+      "id": "e0026",
+      "source": "s0",
+      "pointer_first": "/26",
+      "pointer_last": "/26",
+      "stream": "",
+      "label": "thumb_hover_branch",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        39.62,
+        39.62
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "thumb_hover_branch",
+        "time": 39.62,
+        "errors": {
+          "left": 0.002260362591343733,
+          "right": 0.0011324353367557257
+        },
+        "offset": [
+          0.0,
+          0.17
+        ]
+      },
+      "last": {
+        "phase": "thumb_hover_branch",
+        "time": 39.62,
+        "errors": {
+          "left": 0.002260362591343733,
+          "right": 0.0011324353367557257
+        },
+        "offset": [
+          0.0,
+          0.17
+        ]
+      }
+    },
+    {
+      "id": "e0027",
+      "source": "s0",
+      "pointer_first": "/27",
+      "pointer_last": "/27",
+      "stream": "",
+      "label": "thumb_lower",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        42.62,
+        42.62
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "thumb_lower",
+        "time": 42.62
+      },
+      "last": {
+        "phase": "thumb_lower",
+        "time": 42.62
+      }
+    },
+    {
+      "id": "e0028",
+      "source": "s0",
+      "pointer_first": "/28",
+      "pointer_last": "/28",
+      "stream": "",
+      "label": "brace_push_feedback",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        46.62,
+        46.62
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_feedback",
+        "time": 46.62
+      },
+      "last": {
+        "phase": "brace_push_feedback",
+        "time": 46.62
+      }
+    },
+    {
+      "id": "e0029",
+      "source": "s0",
+      "pointer_first": "/29",
+      "pointer_last": "/29",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        46.64,
+        46.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 46.64,
+        "position": [
+          0.6023572087287903,
+          0.2443816065788269,
+          0.7722354531288147
+        ],
+        "yaw": -0.03409784563180571,
+        "thumb_target": [
+          0.5989474241656098,
+          0.36389993079152827,
+          0.7689993033321394
+        ],
+        "contact_offset": 0.0,
+        "contacts": []
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 46.64,
+        "position": [
+          0.6023572087287903,
+          0.2443816065788269,
+          0.7722354531288147
+        ],
+        "yaw": -0.03409784563180571,
+        "thumb_target": [
+          0.5989474241656098,
+          0.36389993079152827,
+          0.7689993033321394
+        ],
+        "contact_offset": 0.0,
+        "contacts": []
+      }
+    },
+    {
+      "id": "e0030",
+      "source": "s0",
+      "pointer_first": "/30",
+      "pointer_last": "/30",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        47.14,
+        47.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 47.14,
+        "position": [
+          0.6023572087287903,
+          0.2443816065788269,
+          0.7722354531288147
+        ],
+        "yaw": -0.03409784563180571,
+        "thumb_target": [
+          0.5989474241656098,
+          0.3605639193793628,
+          0.7688163023590061
+        ],
+        "contact_offset": 0.0,
+        "contacts": []
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 47.14,
+        "position": [
+          0.6023572087287903,
+          0.2443816065788269,
+          0.7722354531288147
+        ],
+        "yaw": -0.03409784563180571,
+        "thumb_target": [
+          0.5989474241656098,
+          0.3605639193793628,
+          0.7688163023590061
+        ],
+        "contact_offset": 0.0,
+        "contacts": []
+      }
+    },
+    {
+      "id": "e0031",
+      "source": "s0",
+      "pointer_first": "/31",
+      "pointer_last": "/31",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        47.64,
+        47.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 47.64,
+        "position": [
+          0.6023572087287903,
+          0.2443816065788269,
+          0.7722354531288147
+        ],
+        "yaw": -0.03409784563180571,
+        "thumb_target": [
+          0.5989474241656098,
+          0.3510501090557798,
+          0.7682944106948855
+        ],
+        "contact_offset": 0.0,
+        "contacts": []
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 47.64,
+        "position": [
+          0.6023572087287903,
+          0.2443816065788269,
+          0.7722354531288147
+        ],
+        "yaw": -0.03409784563180571,
+        "thumb_target": [
+          0.5989474241656098,
+          0.3510501090557798,
+          0.7682944106948855
+        ],
+        "contact_offset": 0.0,
+        "contacts": []
+      }
+    },
+    {
+      "id": "e0032",
+      "source": "s0",
+      "pointer_first": "/32",
+      "pointer_last": "/32",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        48.14,
+        48.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 48.14,
+        "position": [
+          0.6052467226982117,
+          0.24176862835884094,
+          0.7723007202148438
+        ],
+        "yaw": -0.04403881940191055,
+        "thumb_target": [
+          0.6202189825587435,
+          0.3357155765978593,
+          0.7674532162217164
+        ],
+        "contact_offset": 0.01937614180072291,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.5792426466941833,
+              0.33576324582099915,
+              0.8045658469200134
+            ],
+            "force": [
+              -0.4507790207862854,
+              1.8358371257781982,
+              -1.1078531742095947
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 48.14,
+        "position": [
+          0.6052467226982117,
+          0.24176862835884094,
+          0.7723007202148438
+        ],
+        "yaw": -0.04403881940191055,
+        "thumb_target": [
+          0.6202189825587435,
+          0.3357155765978593,
+          0.7674532162217164
+        ],
+        "contact_offset": 0.01937614180072291,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.5792426466941833,
+              0.33576324582099915,
+              0.8045658469200134
+            ],
+            "force": [
+              -0.4507790207862854,
+              1.8358371257781982,
+              -1.1078531742095947
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0033",
+      "source": "s0",
+      "pointer_first": "/33",
+      "pointer_last": "/33",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        48.64,
+        48.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 48.64,
+        "position": [
+          0.6101853251457214,
+          0.23347286880016327,
+          0.7722560167312622
+        ],
+        "yaw": -0.05464838021529583,
+        "thumb_target": [
+          0.6286335648593466,
+          0.319035519537032,
+          0.7665382113560502
+        ],
+        "contact_offset": 0.023038947676866085,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6000689268112183,
+              0.32684144377708435,
+              0.8044877648353577
+            ],
+            "force": [
+              -0.21751725673675537,
+              3.444561004638672,
+              0.7490500211715698
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 48.64,
+        "position": [
+          0.6101853251457214,
+          0.23347286880016327,
+          0.7722560167312622
+        ],
+        "yaw": -0.05464838021529583,
+        "thumb_target": [
+          0.6286335648593466,
+          0.319035519537032,
+          0.7665382113560502
+        ],
+        "contact_offset": 0.023038947676866085,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6000689268112183,
+              0.32684144377708435,
+              0.8044877648353577
+            ],
+            "force": [
+              -0.21751725673675537,
+              3.444561004638672,
+              0.7490500211715698
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0034",
+      "source": "s0",
+      "pointer_first": "/34",
+      "pointer_last": "/34",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        49.14,
+        49.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 49.14,
+        "position": [
+          0.6175904870033264,
+          0.2185935527086258,
+          0.7723965048789978
+        ],
+        "yaw": -0.032874295089682586,
+        "thumb_target": [
+          0.6381261900352277,
+          0.3023554624762047,
+          0.7656232064903841
+        ],
+        "contact_offset": 0.019986937739539024,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6154564023017883,
+              0.3115808367729187,
+              0.8045967817306519
+            ],
+            "force": [
+              -1.2846425771713257,
+              1.8335524797439575,
+              0.36695295572280884
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6161634922027588,
+              0.3115595281124115,
+              0.8045950531959534
+            ],
+            "force": [
+              -1.2769031524658203,
+              1.8014914989471436,
+              0.44437044858932495
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 49.14,
+        "position": [
+          0.6175904870033264,
+          0.2185935527086258,
+          0.7723965048789978
+        ],
+        "yaw": -0.032874295089682586,
+        "thumb_target": [
+          0.6381261900352277,
+          0.3023554624762047,
+          0.7656232064903841
+        ],
+        "contact_offset": 0.019986937739539024,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6154564023017883,
+              0.3115808367729187,
+              0.8045967817306519
+            ],
+            "force": [
+              -1.2846425771713257,
+              1.8335524797439575,
+              0.36695295572280884
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6161634922027588,
+              0.3115595281124115,
+              0.8045950531959534
+            ],
+            "force": [
+              -1.2769031524658203,
+              1.8014914989471436,
+              0.44437044858932495
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0035",
+      "source": "s0",
+      "pointer_first": "/35",
+      "pointer_last": "/35",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        49.64,
+        49.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 49.64,
+        "position": [
+          0.6176064610481262,
+          0.20972076058387756,
+          0.7722406983375549
+        ],
+        "yaw": -0.025849561948506454,
+        "thumb_target": [
+          0.6344474904419487,
+          0.28567540541537745,
+          0.7647082016247179
+        ],
+        "contact_offset": 0.015583401169422681,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6114057898521423,
+              0.3026023805141449,
+              0.804483950138092
+            ],
+            "force": [
+              0.17136645317077637,
+              2.5478084087371826,
+              1.8610289096832275
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6147452592849731,
+              0.30251240730285645,
+              0.8044851422309875
+            ],
+            "force": [
+              0.17257699370384216,
+              2.5920772552490234,
+              1.8857851028442383
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 49.64,
+        "position": [
+          0.6176064610481262,
+          0.20972076058387756,
+          0.7722406983375549
+        ],
+        "yaw": -0.025849561948506454,
+        "thumb_target": [
+          0.6344474904419487,
+          0.28567540541537745,
+          0.7647082016247179
+        ],
+        "contact_offset": 0.015583401169422681,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6114057898521423,
+              0.3026023805141449,
+              0.804483950138092
+            ],
+            "force": [
+              0.17136645317077637,
+              2.5478084087371826,
+              1.8610289096832275
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6147452592849731,
+              0.30251240730285645,
+              0.8044851422309875
+            ],
+            "force": [
+              0.17257699370384216,
+              2.5920772552490234,
+              1.8857851028442383
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0036",
+      "source": "s0",
+      "pointer_first": "/36",
+      "pointer_last": "/36",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        50.14,
+        50.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 50.14,
+        "position": [
+          0.6218755841255188,
+          0.19384099543094635,
+          0.7722830176353455
+        ],
+        "yaw": -0.018377224121186655,
+        "thumb_target": [
+          0.6419179809583009,
+          0.2689953483545502,
+          0.7637931967590518
+        ],
+        "contact_offset": 0.016329885594693117,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6182504892349243,
+              0.28663700819015503,
+              0.804399311542511
+            ],
+            "force": [
+              -0.07246527075767517,
+              2.006988525390625,
+              1.338674545288086
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6198505163192749,
+              0.2866124212741852,
+              0.8044012784957886
+            ],
+            "force": [
+              -0.07780128717422485,
+              1.6615484952926636,
+              1.151600956916809
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 50.14,
+        "position": [
+          0.6218755841255188,
+          0.19384099543094635,
+          0.7722830176353455
+        ],
+        "yaw": -0.018377224121186655,
+        "thumb_target": [
+          0.6419179809583009,
+          0.2689953483545502,
+          0.7637931967590518
+        ],
+        "contact_offset": 0.016329885594693117,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6182504892349243,
+              0.28663700819015503,
+              0.804399311542511
+            ],
+            "force": [
+              -0.07246527075767517,
+              2.006988525390625,
+              1.338674545288086
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6198505163192749,
+              0.2866124212741852,
+              0.8044012784957886
+            ],
+            "force": [
+              -0.07780128717422485,
+              1.6615484952926636,
+              1.151600956916809
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0037",
+      "source": "s0",
+      "pointer_first": "/37",
+      "pointer_last": "/37",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        50.64,
+        50.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 50.64,
+        "position": [
+          0.6334455013275146,
+          0.17105624079704285,
+          0.7720895409584045
+        ],
+        "yaw": -0.03259451013755915,
+        "thumb_target": [
+          0.6542789663265178,
+          0.2523152912937229,
+          0.7628781918933856
+        ],
+        "contact_offset": 0.016092916012759088,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.632703959941864,
+              0.2640308141708374,
+              0.8045337200164795
+            ],
+            "force": [
+              -0.022831028327345848,
+              0.31746596097946167,
+              -0.24800315499305725
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6343984603881836,
+              0.26397550106048584,
+              0.8045335412025452
+            ],
+            "force": [
+              -0.03940146416425705,
+              0.1671249121427536,
+              -0.1040203645825386
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 50.64,
+        "position": [
+          0.6334455013275146,
+          0.17105624079704285,
+          0.7720895409584045
+        ],
+        "yaw": -0.03259451013755915,
+        "thumb_target": [
+          0.6542789663265178,
+          0.2523152912937229,
+          0.7628781918933856
+        ],
+        "contact_offset": 0.016092916012759088,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.632703959941864,
+              0.2640308141708374,
+              0.8045337200164795
+            ],
+            "force": [
+              -0.022831028327345848,
+              0.31746596097946167,
+              -0.24800315499305725
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6343984603881836,
+              0.26397550106048584,
+              0.8045335412025452
+            ],
+            "force": [
+              -0.03940146416425705,
+              0.1671249121427536,
+              -0.1040203645825386
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0038",
+      "source": "s0",
+      "pointer_first": "/38",
+      "pointer_last": "/38",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        51.14,
+        51.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 51.14,
+        "position": [
+          0.6361872553825378,
+          0.15942738950252533,
+          0.772284746170044
+        ],
+        "yaw": -0.038015455828000054,
+        "thumb_target": [
+          0.6571499210478055,
+          0.23563523423289562,
+          0.7619631870277195
+        ],
+        "contact_offset": 0.016764211248067606,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6357378363609314,
+              0.25227072834968567,
+              0.8044629693031311
+            ],
+            "force": [
+              -0.18430036306381226,
+              5.566831111907959,
+              4.0616936683654785
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 51.14,
+        "position": [
+          0.6361872553825378,
+          0.15942738950252533,
+          0.772284746170044
+        ],
+        "yaw": -0.038015455828000054,
+        "thumb_target": [
+          0.6571499210478055,
+          0.23563523423289562,
+          0.7619631870277195
+        ],
+        "contact_offset": 0.016764211248067606,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6357378363609314,
+              0.25227072834968567,
+              0.8044629693031311
+            ],
+            "force": [
+              -0.18430036306381226,
+              5.566831111907959,
+              4.0616936683654785
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0039",
+      "source": "s0",
+      "pointer_first": "/39",
+      "pointer_last": "/39",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        51.64,
+        51.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 51.64,
+        "position": [
+          0.6379353404045105,
+          0.14078278839588165,
+          0.7722563743591309
+        ],
+        "yaw": -0.04733827769306663,
+        "thumb_target": [
+          0.6587926776274633,
+          0.2189551771720683,
+          0.7610481821620533
+        ],
+        "contact_offset": 0.0175911649922594,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6387158632278442,
+              0.23369593918323517,
+              0.8045251369476318
+            ],
+            "force": [
+              -2.0780625343322754,
+              3.843252658843994,
+              1.5517442226409912
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 51.64,
+        "position": [
+          0.6379353404045105,
+          0.14078278839588165,
+          0.7722563743591309
+        ],
+        "yaw": -0.04733827769306663,
+        "thumb_target": [
+          0.6587926776274633,
+          0.2189551771720683,
+          0.7610481821620533
+        ],
+        "contact_offset": 0.0175911649922594,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6387158632278442,
+              0.23369593918323517,
+              0.8045251369476318
+            ],
+            "force": [
+              -2.0780625343322754,
+              3.843252658843994,
+              1.5517442226409912
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0040",
+      "source": "s0",
+      "pointer_first": "/40",
+      "pointer_last": "/40",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        52.14,
+        52.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 52.14,
+        "position": [
+          0.6361774206161499,
+          0.12241163849830627,
+          0.7720787525177002
+        ],
+        "yaw": -0.04570226650572947,
+        "thumb_target": [
+          0.6542487556959932,
+          0.20227512011124105,
+          0.7601331772963871
+        ],
+        "contact_offset": 0.014641561730416195,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6394825577735901,
+              0.21517130732536316,
+              0.7867895364761353
+            ],
+            "force": [
+              0.052378032356500626,
+              1.1496434211730957,
+              1.1502714157104492
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.642882227897644,
+              0.21501587331295013,
+              0.7843925952911377
+            ],
+            "force": [
+              0.05622604489326477,
+              1.314738154411316,
+              1.2981122732162476
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 52.14,
+        "position": [
+          0.6361774206161499,
+          0.12241163849830627,
+          0.7720787525177002
+        ],
+        "yaw": -0.04570226650572947,
+        "thumb_target": [
+          0.6542487556959932,
+          0.20227512011124105,
+          0.7601331772963871
+        ],
+        "contact_offset": 0.014641561730416195,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6394825577735901,
+              0.21517130732536316,
+              0.7867895364761353
+            ],
+            "force": [
+              0.052378032356500626,
+              1.1496434211730957,
+              1.1502714157104492
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.642882227897644,
+              0.21501587331295013,
+              0.7843925952911377
+            ],
+            "force": [
+              0.05622604489326477,
+              1.314738154411316,
+              1.2981122732162476
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0041",
+      "source": "s0",
+      "pointer_first": "/41",
+      "pointer_last": "/41",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        52.64,
+        52.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 52.64,
+        "position": [
+          0.6312075257301331,
+          0.10485617071390152,
+          0.7722087502479553
+        ],
+        "yaw": -0.03344414302017802,
+        "thumb_target": [
+          0.6474541425447734,
+          0.18559506305041376,
+          0.759218172430721
+        ],
+        "contact_offset": 0.01159103111665811,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6359300017356873,
+              0.19755947589874268,
+              0.7816604971885681
+            ],
+            "force": [
+              1.4929437637329102,
+              2.504302978515625,
+              0.47523000836372375
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 52.64,
+        "position": [
+          0.6312075257301331,
+          0.10485617071390152,
+          0.7722087502479553
+        ],
+        "yaw": -0.03344414302017802,
+        "thumb_target": [
+          0.6474541425447734,
+          0.18559506305041376,
+          0.759218172430721
+        ],
+        "contact_offset": 0.01159103111665811,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6359300017356873,
+              0.19755947589874268,
+              0.7816604971885681
+            ],
+            "force": [
+              1.4929437637329102,
+              2.504302978515625,
+              0.47523000836372375
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0042",
+      "source": "s0",
+      "pointer_first": "/42",
+      "pointer_last": "/42",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        53.14,
+        53.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 53.14,
+        "position": [
+          0.6270336508750916,
+          0.08825550228357315,
+          0.772195041179657
+        ],
+        "yaw": -0.03428855143159528,
+        "thumb_target": [
+          0.6423280147732499,
+          0.16891500598958648,
+          0.7583031675650548
+        ],
+        "contact_offset": 0.011109758691281191,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6317903995513916,
+              0.18108613789081573,
+              0.7788183093070984
+            ],
+            "force": [
+              2.3524169921875,
+              3.2494282722473145,
+              1.0931559801101685
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 53.14,
+        "position": [
+          0.6270336508750916,
+          0.08825550228357315,
+          0.772195041179657
+        ],
+        "yaw": -0.03428855143159528,
+        "thumb_target": [
+          0.6423280147732499,
+          0.16891500598958648,
+          0.7583031675650548
+        ],
+        "contact_offset": 0.011109758691281191,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6317903995513916,
+              0.18108613789081573,
+              0.7788183093070984
+            ],
+            "force": [
+              2.3524169921875,
+              3.2494282722473145,
+              1.0931559801101685
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0043",
+      "source": "s0",
+      "pointer_first": "/43",
+      "pointer_last": "/43",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        53.64,
+        53.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 53.64,
+        "position": [
+          0.6242538094520569,
+          0.06976043432950974,
+          0.772189199924469
+        ],
+        "yaw": -0.012587533272598504,
+        "thumb_target": [
+          0.6371557223110556,
+          0.1522349489287592,
+          0.7573881626993887
+        ],
+        "contact_offset": 0.007659142405435738,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6301501989364624,
+              0.16251404583454132,
+              0.7743492126464844
+            ],
+            "force": [
+              1.0553950071334839,
+              2.6981334686279297,
+              0.2810804545879364
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 53.64,
+        "position": [
+          0.6242538094520569,
+          0.06976043432950974,
+          0.772189199924469
+        ],
+        "yaw": -0.012587533272598504,
+        "thumb_target": [
+          0.6371557223110556,
+          0.1522349489287592,
+          0.7573881626993887
+        ],
+        "contact_offset": 0.007659142405435738,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6301501989364624,
+              0.16251404583454132,
+              0.7743492126464844
+            ],
+            "force": [
+              1.0553950071334839,
+              2.6981334686279297,
+              0.2810804545879364
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0044",
+      "source": "s0",
+      "pointer_first": "/44",
+      "pointer_last": "/44",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        54.14,
+        54.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 54.14,
+        "position": [
+          0.6238585114479065,
+          0.05353814363479614,
+          0.772165834903717
+        ],
+        "yaw": -0.00900737887038975,
+        "thumb_target": [
+          0.6366254403471217,
+          0.1355548918679319,
+          0.7564731578337225
+        ],
+        "contact_offset": 0.007324262207091489,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6292301416397095,
+              0.14633618295192719,
+              0.772870659828186
+            ],
+            "force": [
+              0.6874004006385803,
+              2.8633201122283936,
+              0.18000450730323792
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 54.14,
+        "position": [
+          0.6238585114479065,
+          0.05353814363479614,
+          0.772165834903717
+        ],
+        "yaw": -0.00900737887038975,
+        "thumb_target": [
+          0.6366254403471217,
+          0.1355548918679319,
+          0.7564731578337225
+        ],
+        "contact_offset": 0.007324262207091489,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6292301416397095,
+              0.14633618295192719,
+              0.772870659828186
+            ],
+            "force": [
+              0.6874004006385803,
+              2.8633201122283936,
+              0.18000450730323792
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0045",
+      "source": "s0",
+      "pointer_first": "/45",
+      "pointer_last": "/45",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        54.64,
+        54.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 54.64,
+        "position": [
+          0.6240537762641907,
+          0.038596466183662415,
+          0.7722019553184509
+        ],
+        "yaw": -0.008266019293869525,
+        "thumb_target": [
+          0.6367403560236616,
+          0.12056631614905078,
+          0.7556509412392487
+        ],
+        "contact_offset": 0.007091671183181666,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6292768716812134,
+              0.13137546181678772,
+              0.7718774080276489
+            ],
+            "force": [
+              -0.3025001883506775,
+              0.7339211702346802,
+              -0.4007369875907898
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6298291087150574,
+              0.1313667893409729,
+              0.7689352631568909
+            ],
+            "force": [
+              0.40121904015541077,
+              0.9512633085250854,
+              -0.3392547070980072
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 54.64,
+        "position": [
+          0.6240537762641907,
+          0.038596466183662415,
+          0.7722019553184509
+        ],
+        "yaw": -0.008266019293869525,
+        "thumb_target": [
+          0.6367403560236616,
+          0.12056631614905078,
+          0.7556509412392487
+        ],
+        "contact_offset": 0.007091671183181666,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6292768716812134,
+              0.13137546181678772,
+              0.7718774080276489
+            ],
+            "force": [
+              -0.3025001883506775,
+              0.7339211702346802,
+              -0.4007369875907898
+            ]
+          },
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6298291087150574,
+              0.1313667893409729,
+              0.7689352631568909
+            ],
+            "force": [
+              0.40121904015541077,
+              0.9512633085250854,
+              -0.3392547070980072
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0046",
+      "source": "s0",
+      "pointer_first": "/46",
+      "pointer_last": "/46",
+      "stream": "",
+      "label": "brace_push_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        55.14,
+        55.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_diagnostic",
+        "time": 55.14,
+        "position": [
+          0.6237303614616394,
+          0.029009554535150528,
+          0.7721433043479919
+        ],
+        "yaw": -0.007110522434112627,
+        "thumb_target": [
+          0.6360731673513949,
+          0.1115467297383812,
+          0.755156160830407
+        ],
+        "contact_offset": 0.006761713548511009,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6292927861213684,
+              0.12173719704151154,
+              0.7682833075523376
+            ],
+            "force": [
+              0.804123044013977,
+              1.9751620292663574,
+              -0.2650057375431061
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_push_diagnostic",
+        "time": 55.14,
+        "position": [
+          0.6237303614616394,
+          0.029009554535150528,
+          0.7721433043479919
+        ],
+        "yaw": -0.007110522434112627,
+        "thumb_target": [
+          0.6360731673513949,
+          0.1115467297383812,
+          0.755156160830407
+        ],
+        "contact_offset": 0.006761713548511009,
+        "contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6292927861213684,
+              0.12173719704151154,
+              0.7682833075523376
+            ],
+            "force": [
+              0.804123044013977,
+              1.9751620292663574,
+              -0.2650057375431061
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0047",
+      "source": "s0",
+      "pointer_first": "/47",
+      "pointer_last": "/47",
+      "stream": "",
+      "label": "brace_push_fine_alignment",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        55.620000000000005,
+        55.620000000000005
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_push_fine_alignment",
+        "time": 55.620000000000005
+      },
+      "last": {
+        "phase": "brace_push_fine_alignment",
+        "time": 55.620000000000005
+      }
+    },
+    {
+      "id": "e0048",
+      "source": "s0",
+      "pointer_first": "/48",
+      "pointer_last": "/48",
+      "stream": "",
+      "label": "brace_fine_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        55.64,
+        55.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_fine_diagnostic",
+        "time": 55.64,
+        "position": [
+          0.6233311891555786,
+          0.02492898516356945,
+          0.7721783518791199
+        ],
+        "thumb_target": [
+          0.6351208752355775,
+          0.12701244562186012,
+          0.755
+        ],
+        "brace_contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6287629008293152,
+              0.1172584816813469,
+              0.7680181860923767
+            ],
+            "force": [
+              1.5328407287597656,
+              2.746582508087158,
+              0.14916618168354034
+            ]
+          }
+        ],
+        "fixture_contacts": [
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.33137065172195435,
+              -0.027928989380598068,
+              0.8239304423332214
+            ],
+            "force": [
+              -1.658707618713379,
+              6.445200284588282e-08,
+              1.530659794807434
+            ]
+          },
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3307041823863983,
+              -0.007940403185784817,
+              0.8238936066627502
+            ],
+            "force": [
+              -4.388187408447266,
+              -1.2552368640899658,
+              10.584205627441406
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_fine_diagnostic",
+        "time": 55.64,
+        "position": [
+          0.6233311891555786,
+          0.02492898516356945,
+          0.7721783518791199
+        ],
+        "thumb_target": [
+          0.6351208752355775,
+          0.12701244562186012,
+          0.755
+        ],
+        "brace_contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6287629008293152,
+              0.1172584816813469,
+              0.7680181860923767
+            ],
+            "force": [
+              1.5328407287597656,
+              2.746582508087158,
+              0.14916618168354034
+            ]
+          }
+        ],
+        "fixture_contacts": [
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.33137065172195435,
+              -0.027928989380598068,
+              0.8239304423332214
+            ],
+            "force": [
+              -1.658707618713379,
+              6.445200284588282e-08,
+              1.530659794807434
+            ]
+          },
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3307041823863983,
+              -0.007940403185784817,
+              0.8238936066627502
+            ],
+            "force": [
+              -4.388187408447266,
+              -1.2552368640899658,
+              10.584205627441406
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0049",
+      "source": "s0",
+      "pointer_first": "/49",
+      "pointer_last": "/49",
+      "stream": "",
+      "label": "brace_fine_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        56.14,
+        56.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_fine_diagnostic",
+        "time": 56.14,
+        "position": [
+          0.6228604912757874,
+          0.02405531145632267,
+          0.7722355127334595
+        ],
+        "thumb_target": [
+          0.6351258124647232,
+          0.1230893767147828,
+          0.755
+        ],
+        "brace_contacts": [],
+        "fixture_contacts": [
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3313036859035492,
+              -0.02842526324093342,
+              0.8239232897758484
+            ],
+            "force": [
+              -0.9523334503173828,
+              0.8140662908554077,
+              6.922220230102539
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_fine_diagnostic",
+        "time": 56.14,
+        "position": [
+          0.6228604912757874,
+          0.02405531145632267,
+          0.7722355127334595
+        ],
+        "thumb_target": [
+          0.6351258124647232,
+          0.1230893767147828,
+          0.755
+        ],
+        "brace_contacts": [],
+        "fixture_contacts": [
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3313036859035492,
+              -0.02842526324093342,
+              0.8239232897758484
+            ],
+            "force": [
+              -0.9523334503173828,
+              0.8140662908554077,
+              6.922220230102539
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0050",
+      "source": "s0",
+      "pointer_first": "/50",
+      "pointer_last": "/50",
+      "stream": "",
+      "label": "brace_fine_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        56.64,
+        56.64
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_fine_diagnostic",
+        "time": 56.64,
+        "position": [
+          0.6228338479995728,
+          0.023743964731693268,
+          0.7722421288490295
+        ],
+        "thumb_target": [
+          0.6351073614403413,
+          0.10921319866207557,
+          0.755
+        ],
+        "brace_contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6242634654045105,
+              0.11636248975992203,
+              0.7723544836044312
+            ],
+            "force": [
+              0.11850741505622864,
+              2.2194669246673584,
+              -0.09340206533670425
+            ]
+          }
+        ],
+        "fixture_contacts": [
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3314066529273987,
+              -0.028651103377342224,
+              0.8239439725875854
+            ],
+            "force": [
+              -0.5009102821350098,
+              0.032646674662828445,
+              1.8412485122680664
+            ]
+          },
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3307957649230957,
+              -0.008660701103508472,
+              0.8239102363586426
+            ],
+            "force": [
+              -0.5417277812957764,
+              0.03580820560455322,
+              5.25916051864624
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_fine_diagnostic",
+        "time": 56.64,
+        "position": [
+          0.6228338479995728,
+          0.023743964731693268,
+          0.7722421288490295
+        ],
+        "thumb_target": [
+          0.6351073614403413,
+          0.10921319866207557,
+          0.755
+        ],
+        "brace_contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6242634654045105,
+              0.11636248975992203,
+              0.7723544836044312
+            ],
+            "force": [
+              0.11850741505622864,
+              2.2194669246673584,
+              -0.09340206533670425
+            ]
+          }
+        ],
+        "fixture_contacts": [
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3314066529273987,
+              -0.028651103377342224,
+              0.8239439725875854
+            ],
+            "force": [
+              -0.5009102821350098,
+              0.032646674662828445,
+              1.8412485122680664
+            ]
+          },
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3307957649230957,
+              -0.008660701103508472,
+              0.8239102363586426
+            ],
+            "force": [
+              -0.5417277812957764,
+              0.03580820560455322,
+              5.25916051864624
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0051",
+      "source": "s0",
+      "pointer_first": "/51",
+      "pointer_last": "/51",
+      "stream": "",
+      "label": "brace_fine_diagnostic",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        57.14,
+        57.14
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "brace_fine_diagnostic",
+        "time": 57.14,
+        "position": [
+          0.621521532535553,
+          0.011767927557229996,
+          0.7722357511520386
+        ],
+        "thumb_target": [
+          0.6331626992132715,
+          0.09589970736981202,
+          0.755
+        ],
+        "brace_contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6288909316062927,
+              0.10393983125686646,
+              0.7685030102729797
+            ],
+            "force": [
+              -0.13378578424453735,
+              3.919065475463867,
+              1.486838459968567
+            ]
+          }
+        ],
+        "fixture_contacts": [
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.33160147070884705,
+              -0.0285898856818676,
+              0.8239517211914062
+            ],
+            "force": [
+              -0.40593141317367554,
+              0.0830947756767273,
+              2.0231552124023438
+            ]
+          },
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3309856355190277,
+              -0.008599630557000637,
+              0.8239148259162903
+            ],
+            "force": [
+              -0.559341549873352,
+              0.08265268802642822,
+              5.423825263977051
+            ]
+          }
+        ]
+      },
+      "last": {
+        "phase": "brace_fine_diagnostic",
+        "time": 57.14,
+        "position": [
+          0.621521532535553,
+          0.011767927557229996,
+          0.7722357511520386
+        ],
+        "thumb_target": [
+          0.6331626992132715,
+          0.09589970736981202,
+          0.755
+        ],
+        "brace_contacts": [
+          {
+            "link": "left_hand_thumb_2_link",
+            "position": [
+              0.6288909316062927,
+              0.10393983125686646,
+              0.7685030102729797
+            ],
+            "force": [
+              -0.13378578424453735,
+              3.919065475463867,
+              1.486838459968567
+            ]
+          }
+        ],
+        "fixture_contacts": [
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.33160147070884705,
+              -0.0285898856818676,
+              0.8239517211914062
+            ],
+            "force": [
+              -0.40593141317367554,
+              0.0830947756767273,
+              2.0231552124023438
+            ]
+          },
+          {
+            "link": "right_hand_thumb_1_link",
+            "position": [
+              0.3309856355190277,
+              -0.008599630557000637,
+              0.8239148259162903
+            ],
+            "force": [
+              -0.559341549873352,
+              0.08265268802642822,
+              5.423825263977051
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e0052",
+      "source": "s0",
+      "pointer_first": "/52",
+      "pointer_last": "/52",
+      "stream": "",
+      "label": "thumb_clear",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        57.620000000000005,
+        57.620000000000005
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "thumb_clear",
+        "time": 57.620000000000005
+      },
+      "last": {
+        "phase": "thumb_clear",
+        "time": 57.620000000000005
+      }
+    },
+    {
+      "id": "e0053",
+      "source": "s0",
+      "pointer_first": "/53",
+      "pointer_last": "/53",
+      "stream": "",
+      "label": "fixture_release",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        59.620000000000005,
+        59.620000000000005
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "fixture_release",
+        "time": 59.620000000000005
+      },
+      "last": {
+        "phase": "fixture_release",
+        "time": 59.620000000000005
+      }
+    },
+    {
+      "id": "e0054",
+      "source": "s0",
+      "pointer_first": "/54",
+      "pointer_last": "/54",
+      "stream": "",
+      "label": "parts_transition_lift",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        62.42,
+        62.42
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "parts_transition_lift",
+        "time": 62.42
+      },
+      "last": {
+        "phase": "parts_transition_lift",
+        "time": 62.42
+      }
+    },
+    {
+      "id": "e0055",
+      "source": "s0",
+      "pointer_first": "/55",
+      "pointer_last": "/55",
+      "stream": "",
+      "label": "parts_transition_retract",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        63.92,
+        63.92
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "parts_transition_retract",
+        "time": 63.92
+      },
+      "last": {
+        "phase": "parts_transition_retract",
+        "time": 63.92
+      }
+    },
+    {
+      "id": "e0056",
+      "source": "s0",
+      "pointer_first": "/56",
+      "pointer_last": "/56",
+      "stream": "",
+      "label": "parts_transition_positive_elbows",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        65.92,
+        65.92
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "parts_transition_positive_elbows",
+        "time": 65.92
+      },
+      "last": {
+        "phase": "parts_transition_positive_elbows",
+        "time": 65.92
+      }
+    },
+    {
+      "id": "e0057",
+      "source": "s0",
+      "pointer_first": "/57",
+      "pointer_last": "/57",
+      "stream": "",
+      "label": "parts_transition_complete",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        68.18,
+        68.18
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "parts_transition_complete",
+        "time": 68.18,
+        "palms": {
+          "left": [
+            0.2650901734990795,
+            0.5102020633491731,
+            1.0457974371652705
+          ],
+          "right": [
+            0.2623815160454589,
+            -0.5113060230142488,
+            1.0477548273699777
+          ]
+        }
+      },
+      "last": {
+        "phase": "parts_transition_complete",
+        "time": 68.18,
+        "palms": {
+          "left": [
+            0.2650901734990795,
+            0.5102020633491731,
+            1.0457974371652705
+          ],
+          "right": [
+            0.2623815160454589,
+            -0.5113060230142488,
+            1.0477548273699777
+          ]
+        }
+      }
+    },
+    {
+      "id": "e0058",
+      "source": "s0",
+      "pointer_first": "/58",
+      "pointer_last": "/58",
+      "stream": "",
+      "label": "sleeve_preshape",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        68.18,
+        68.18
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_preshape",
+        "time": 68.18,
+        "hole_clear_for_post": true
+      },
+      "last": {
+        "phase": "sleeve_preshape",
+        "time": 68.18,
+        "hole_clear_for_post": true
+      }
+    },
+    {
+      "id": "e0059",
+      "source": "s0",
+      "pointer_first": "/59",
+      "pointer_last": "/59",
+      "stream": "",
+      "label": "sleeve_approach_high",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        68.68,
+        68.68
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_approach_high",
+        "time": 68.68
+      },
+      "last": {
+        "phase": "sleeve_approach_high",
+        "time": 68.68
+      }
+    },
+    {
+      "id": "e0060",
+      "source": "s0",
+      "pointer_first": "/60",
+      "pointer_last": "/60",
+      "stream": "",
+      "label": "sleeve_hover",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        71.98,
+        71.98
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_hover",
+        "time": 71.98
+      },
+      "last": {
+        "phase": "sleeve_hover",
+        "time": 71.98
+      }
+    },
+    {
+      "id": "e0061",
+      "source": "s0",
+      "pointer_first": "/61",
+      "pointer_last": "/61",
+      "stream": "",
+      "label": "sleeve_lower_to_outer_walls",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        74.28,
+        74.28
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_lower_to_outer_walls",
+        "time": 74.28
+      },
+      "last": {
+        "phase": "sleeve_lower_to_outer_walls",
+        "time": 74.28
+      }
+    },
+    {
+      "id": "e0062",
+      "source": "s0",
+      "pointer_first": "/62",
+      "pointer_last": "/62",
+      "stream": "",
+      "label": "sleeve_close_outer_walls",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        76.58,
+        76.58
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_close_outer_walls",
+        "time": 76.58
+      },
+      "last": {
+        "phase": "sleeve_close_outer_walls",
+        "time": 76.58
+      }
+    },
+    {
+      "id": "e0063",
+      "source": "s0",
+      "pointer_first": "/63",
+      "pointer_last": "/63",
+      "stream": "",
+      "label": "sleeve_lift",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        78.08,
+        78.08
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_lift",
+        "time": 78.08,
+        "commanded_lift_m": 0.25
+      },
+      "last": {
+        "phase": "sleeve_lift",
+        "time": 78.08,
+        "commanded_lift_m": 0.25
+      }
+    },
+    {
+      "id": "e0064",
+      "source": "s0",
+      "pointer_first": "/64",
+      "pointer_last": "/64",
+      "stream": "",
+      "label": "sleeve_grasp_result",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        81.08,
+        81.08
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_grasp_result",
+        "time": 81.08,
+        "hole_clear_for_post": true,
+        "lift_m": 0.23847466707229614,
+        "robot_contact": true,
+        "support_contact": false,
+        "linear_speed_m_s": 0.008237069835776286,
+        "palm_position": [
+          0.44195336658780093,
+          0.23693409801298712,
+          1.0843178580437143
+        ],
+        "sleeve_position": [
+          0.44203391671180725,
+          0.23582231998443604,
+          1.001635193824768
+        ],
+        "grasp_verified": true
+      },
+      "last": {
+        "phase": "sleeve_grasp_result",
+        "time": 81.08,
+        "hole_clear_for_post": true,
+        "lift_m": 0.23847466707229614,
+        "robot_contact": true,
+        "support_contact": false,
+        "linear_speed_m_s": 0.008237069835776286,
+        "palm_position": [
+          0.44195336658780093,
+          0.23693409801298712,
+          1.0843178580437143
+        ],
+        "sleeve_position": [
+          0.44203391671180725,
+          0.23582231998443604,
+          1.001635193824768
+        ],
+        "grasp_verified": true
+      }
+    },
+    {
+      "id": "e0065",
+      "source": "s0",
+      "pointer_first": "/65",
+      "pointer_last": "/65",
+      "stream": "",
+      "label": "sleeve_clear_post",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        81.08,
+        81.08
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_clear_post",
+        "time": 81.08
+      },
+      "last": {
+        "phase": "sleeve_clear_post",
+        "time": 81.08
+      }
+    },
+    {
+      "id": "e0066",
+      "source": "s0",
+      "pointer_first": "/66",
+      "pointer_last": "/66",
+      "stream": "",
+      "label": "sleeve_align_above_post",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        83.08,
+        83.08
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_align_above_post",
+        "time": 83.08
+      },
+      "last": {
+        "phase": "sleeve_align_above_post",
+        "time": 83.08
+      }
+    },
+    {
+      "id": "e0067",
+      "source": "s0",
+      "pointer_first": "/67",
+      "pointer_last": "/67",
+      "stream": "",
+      "label": "sleeve_engage_post",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        87.08,
+        87.08
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_engage_post",
+        "time": 87.08
+      },
+      "last": {
+        "phase": "sleeve_engage_post",
+        "time": 87.08
+      }
+    },
+    {
+      "id": "e0068",
+      "source": "s0",
+      "pointer_first": "/68",
+      "pointer_last": "/68",
+      "stream": "",
+      "label": "sleeve_released_over_post",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        88.28,
+        88.28
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_released_over_post",
+        "time": 88.28,
+        "position": [
+          0.5118116140365601,
+          0.007621494121849537,
+          0.9548510313034058
+        ]
+      },
+      "last": {
+        "phase": "sleeve_released_over_post",
+        "time": 88.28,
+        "position": [
+          0.5118116140365601,
+          0.007621494121849537,
+          0.9548510313034058
+        ]
+      }
+    },
+    {
+      "id": "e0069",
+      "source": "s0",
+      "pointer_first": "/69",
+      "pointer_last": "/69",
+      "stream": "",
+      "label": "sleeve_release",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        88.28,
+        88.28
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_release",
+        "time": 88.28
+      },
+      "last": {
+        "phase": "sleeve_release",
+        "time": 88.28
+      }
+    },
+    {
+      "id": "e0070",
+      "source": "s0",
+      "pointer_first": "/70",
+      "pointer_last": "/70",
+      "stream": "",
+      "label": "sleeve_release",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        88.28,
+        88.28
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_release",
+        "time": 88.28
+      },
+      "last": {
+        "phase": "sleeve_release",
+        "time": 88.28
+      }
+    },
+    {
+      "id": "e0071",
+      "source": "s0",
+      "pointer_first": "/71",
+      "pointer_last": "/71",
+      "stream": "",
+      "label": "sleeve_verify_seated",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        91.54,
+        91.54
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "sleeve_verify_seated",
+        "time": 91.54
+      },
+      "last": {
+        "phase": "sleeve_verify_seated",
+        "time": 91.54
+      }
+    },
+    {
+      "id": "e0072",
+      "source": "s0",
+      "pointer_first": "/72",
+      "pointer_last": "/72",
+      "stream": "",
+      "label": "cap_recenter_after_sleeve",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        92.34,
+        92.34
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_recenter_after_sleeve",
+        "time": 92.34
+      },
+      "last": {
+        "phase": "cap_recenter_after_sleeve",
+        "time": 92.34
+      }
+    },
+    {
+      "id": "e0073",
+      "source": "s0",
+      "pointer_first": "/73",
+      "pointer_last": "/73",
+      "stream": "",
+      "label": "cap_recenter_complete",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        96.04,
+        96.04
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_recenter_complete",
+        "time": 96.04,
+        "palms": {
+          "left": [
+            0.2625089156532141,
+            0.5125107578390021,
+            1.0453694383672318
+          ],
+          "right": [
+            0.2630565037851662,
+            -0.5111303484871051,
+            1.0473639165799626
+          ]
+        }
+      },
+      "last": {
+        "phase": "cap_recenter_complete",
+        "time": 96.04,
+        "palms": {
+          "left": [
+            0.2625089156532141,
+            0.5125107578390021,
+            1.0453694383672318
+          ],
+          "right": [
+            0.2630565037851662,
+            -0.5111303484871051,
+            1.0473639165799626
+          ]
+        }
+      }
+    },
+    {
+      "id": "e0074",
+      "source": "s0",
+      "pointer_first": "/74",
+      "pointer_last": "/74",
+      "stream": "",
+      "label": "cap_preshape",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        96.04,
+        96.04
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_preshape",
+        "time": 96.04,
+        "hole_clear_for_post": true
+      },
+      "last": {
+        "phase": "cap_preshape",
+        "time": 96.04,
+        "hole_clear_for_post": true
+      }
+    },
+    {
+      "id": "e0075",
+      "source": "s0",
+      "pointer_first": "/75",
+      "pointer_last": "/75",
+      "stream": "",
+      "label": "cap_approach_high",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        96.74000000000001,
+        96.74000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_approach_high",
+        "time": 96.74000000000001
+      },
+      "last": {
+        "phase": "cap_approach_high",
+        "time": 96.74000000000001
+      }
+    },
+    {
+      "id": "e0076",
+      "source": "s0",
+      "pointer_first": "/76",
+      "pointer_last": "/76",
+      "stream": "",
+      "label": "cap_descend",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        101.24000000000001,
+        101.24000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_descend",
+        "time": 101.24000000000001
+      },
+      "last": {
+        "phase": "cap_descend",
+        "time": 101.24000000000001
+      }
+    },
+    {
+      "id": "e0077",
+      "source": "s0",
+      "pointer_first": "/77",
+      "pointer_last": "/77",
+      "stream": "",
+      "label": "cap_squeeze",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        104.74000000000001,
+        104.74000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_squeeze",
+        "time": 104.74000000000001
+      },
+      "last": {
+        "phase": "cap_squeeze",
+        "time": 104.74000000000001
+      }
+    },
+    {
+      "id": "e0078",
+      "source": "s0",
+      "pointer_first": "/78",
+      "pointer_last": "/78",
+      "stream": "",
+      "label": "cap_lift",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        106.74000000000001,
+        106.74000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_lift",
+        "time": 106.74000000000001,
+        "commanded_lift_m": 0.2
+      },
+      "last": {
+        "phase": "cap_lift",
+        "time": 106.74000000000001,
+        "commanded_lift_m": 0.2
+      }
+    },
+    {
+      "id": "e0079",
+      "source": "s0",
+      "pointer_first": "/79",
+      "pointer_last": "/79",
+      "stream": "",
+      "label": "cap_grasp_result",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        110.74000000000001,
+        110.74000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_grasp_result",
+        "time": 110.74000000000001,
+        "hole_clear_for_post": true,
+        "lift_m": 0.2026987075805664,
+        "robot_contact": true,
+        "support_contact": false,
+        "linear_speed_m_s": 0.004348078849122294,
+        "palm_position": [
+          0.44040194490828855,
+          -0.23634571937443236,
+          1.041769485129659
+        ],
+        "cap_position": [
+          0.44089454412460327,
+          -0.2282293140888214,
+          0.9555591940879822
+        ],
+        "hook_angle_rad": 0.45,
+        "grasp_verified": true
+      },
+      "last": {
+        "phase": "cap_grasp_result",
+        "time": 110.74000000000001,
+        "hole_clear_for_post": true,
+        "lift_m": 0.2026987075805664,
+        "robot_contact": true,
+        "support_contact": false,
+        "linear_speed_m_s": 0.004348078849122294,
+        "palm_position": [
+          0.44040194490828855,
+          -0.23634571937443236,
+          1.041769485129659
+        ],
+        "cap_position": [
+          0.44089454412460327,
+          -0.2282293140888214,
+          0.9555591940879822
+        ],
+        "hook_angle_rad": 0.45,
+        "grasp_verified": true
+      }
+    },
+    {
+      "id": "e0080",
+      "source": "s0",
+      "pointer_first": "/80",
+      "pointer_last": "/80",
+      "stream": "",
+      "label": "cap_transfer_above",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        110.74000000000001,
+        110.74000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_transfer_above",
+        "time": 110.74000000000001
+      },
+      "last": {
+        "phase": "cap_transfer_above",
+        "time": 110.74000000000001
+      }
+    },
+    {
+      "id": "e0081",
+      "source": "s0",
+      "pointer_first": "/81",
+      "pointer_last": "/81",
+      "stream": "",
+      "label": "cap_engage_post",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        114.74000000000001,
+        114.74000000000001
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_engage_post",
+        "time": 114.74000000000001
+      },
+      "last": {
+        "phase": "cap_engage_post",
+        "time": 114.74000000000001
+      }
+    },
+    {
+      "id": "e0082",
+      "source": "s0",
+      "pointer_first": "/82",
+      "pointer_last": "/82",
+      "stream": "",
+      "label": "cap_release",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        115.54,
+        115.54
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_release",
+        "time": 115.54
+      },
+      "last": {
+        "phase": "cap_release",
+        "time": 115.54
+      }
+    },
+    {
+      "id": "e0083",
+      "source": "s0",
+      "pointer_first": "/83",
+      "pointer_last": "/83",
+      "stream": "",
+      "label": "cap_retract_after_release",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        116.8,
+        116.8
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_retract_after_release",
+        "time": 116.8
+      },
+      "last": {
+        "phase": "cap_retract_after_release",
+        "time": 116.8
+      }
+    },
+    {
+      "id": "e0084",
+      "source": "s0",
+      "pointer_first": "/84",
+      "pointer_last": "/84",
+      "stream": "",
+      "label": "cap_verify_seated",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        118.3,
+        118.3
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_verify_seated",
+        "time": 118.3
+      },
+      "last": {
+        "phase": "cap_verify_seated",
+        "time": 118.3
+      }
+    },
+    {
+      "id": "e0085",
+      "source": "s0",
+      "pointer_first": "/85",
+      "pointer_last": "/85",
+      "stream": "",
+      "label": "cap_assembly_result",
+      "clock": "episode",
+      "timing_semantics": "controller_phase_start_or_diagnostic_event",
+      "observed_span_s": [
+        118.395,
+        118.395
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "cap_assembly_result",
+        "time": 118.395,
+        "status": {
+          "success": true,
+          "failed": false,
+          "terminated": true,
+          "reason": "assembled_and_released",
+          "score": 1,
+          "progress": 1.0,
+          "stage": 3,
+          "stage_name": "complete",
+          "elapsed_seconds": 118.39499999996481,
+          "brace_stable_seconds": 0.5000000000000003,
+          "sleeve_stable_seconds": 0.5000000000000003,
+          "final_hold_seconds": 1.9999999999999793,
+          "conditions": {
+            "brace_supported": true,
+            "sleeve_seated": true,
+            "cap_seated": true
+          },
+          "support_objects": [
+            "brace"
+          ]
+        },
+        "cap": {
+          "pos": [
+            0.5102444887161255,
+            0.012350279837846756,
+            0.8886723518371582
+          ],
+          "quat": [
+            0.9999904036521912,
+            -3.6722426557389554e-06,
+            8.800883369985968e-05,
+            0.004392830654978752
+          ],
+          "linear_velocity": [
+            3.7569466257991735e-06,
+            -1.9365820946859458e-07,
+            -2.6271134174749022e-06
+          ],
+          "angular_velocity": [
+            8.248940503108315e-06,
+            7.159019878599793e-05,
+            -1.8106897314851267e-08
+          ],
+          "hand_contact": false,
+          "robot_contact": false,
+          "support_contact": true,
+          "support_forces": {
+            "sleeve": 1.2948685586452484
+          },
+          "fixture_contact": false,
+          "support_force_n": 1.2948685586452484,
+          "robot_contact_force_n": 0.0,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      },
+      "last": {
+        "phase": "cap_assembly_result",
+        "time": 118.395,
+        "status": {
+          "success": true,
+          "failed": false,
+          "terminated": true,
+          "reason": "assembled_and_released",
+          "score": 1,
+          "progress": 1.0,
+          "stage": 3,
+          "stage_name": "complete",
+          "elapsed_seconds": 118.39499999996481,
+          "brace_stable_seconds": 0.5000000000000003,
+          "sleeve_stable_seconds": 0.5000000000000003,
+          "final_hold_seconds": 1.9999999999999793,
+          "conditions": {
+            "brace_supported": true,
+            "sleeve_seated": true,
+            "cap_seated": true
+          },
+          "support_objects": [
+            "brace"
+          ]
+        },
+        "cap": {
+          "pos": [
+            0.5102444887161255,
+            0.012350279837846756,
+            0.8886723518371582
+          ],
+          "quat": [
+            0.9999904036521912,
+            -3.6722426557389554e-06,
+            8.800883369985968e-05,
+            0.004392830654978752
+          ],
+          "linear_velocity": [
+            3.7569466257991735e-06,
+            -1.9365820946859458e-07,
+            -2.6271134174749022e-06
+          ],
+          "angular_velocity": [
+            8.248940503108315e-06,
+            7.159019878599793e-05,
+            -1.8106897314851267e-08
+          ],
+          "hand_contact": false,
+          "robot_contact": false,
+          "support_contact": true,
+          "support_forces": {
+            "sleeve": 1.2948685586452484
+          },
+          "fixture_contact": false,
+          "support_force_n": 1.2948685586452484,
+          "robot_contact_force_n": 0.0,
+          "fixture_contact_force_n": 0.0,
+          "fixture_load_n": 0.0
+        }
+      }
+    }
+  ],
+  "source_clock_checks": [
+    {
+      "source": "s0",
+      "pointer": "",
+      "timed_rows": 86,
+      "clock": "episode",
+      "nondecreasing": true
+    }
+  ],
+  "physical_observations": {
+    "interpretation": "Descriptive checks recomputed from recorded samples. These are not a new simulation, formal acceptance or a full-rate independent contact audit.",
+    "status": "Event excerpts extracted; further numerical contact/support checks pending."
+  },
+  "review": {
+    "task": "Assembly",
+    "skills": 4,
+    "ordered_actions": 13,
+    "event_groups": 86,
+    "source_files": 1,
+    "action_mapping_counts": {
+      "episode_event_candidates": 13
+    },
+    "joint_mapping_review": "pending_physical_constraints_and_provenance_review",
+    "remaining_zh": "工具、套筒、顶盖动作及反馈事件已关联；需在物理 trace 核对工具独立承托、松手与最终驻留。"
+  },
+  "design_gate_complete": false,
+  "physics_runs": 0,
+  "legacy_scores_changed": false,
+  "h1_status_changed": false
+}

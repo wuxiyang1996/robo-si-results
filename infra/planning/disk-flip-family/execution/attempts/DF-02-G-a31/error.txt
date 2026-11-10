@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v2/expert/run.py", line 972, in main
+    try:attempt.execute()
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v2/expert/run.py", line 475, in execute
+    if self.tuning.get('reference_prefix_file'):return self.execute_reference_prefix()
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v2/expert/run.py", line 887, in execute_reference_prefix
+    return self.prefix_completion_callable(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v2/expert/dex3_plate_expert.py", line 51, in finish_from_prefix
+    return index_tail(a)
+           ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v2/expert/dex3_plate_expert.py", line 87, in index_tail
+    R=Rotation.from_euler('xyz',[120,75-15*smooth(np.clip((disk[0]-.37)/.06,0,1)),30],degrees=True).as_matrix();a.apply_goals({'left':(tip,R),'right':(rightp,rightR)})
+                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v2/expert/run.py", line 693, in apply_goals
+    self.step()
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v2/expert/run.py", line 426, in step
+    mujoco.mj_step(self.m,self.d);self.records.append((self.d.time,self.d.qpos.copy(),self.d.qvel.copy(),self.d.ctrl.copy(),self.qref.copy(),self.phase));row=self.assess()
+                                                                                                                                                              ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v2/expert/run.py", line 217, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: table_contact_load

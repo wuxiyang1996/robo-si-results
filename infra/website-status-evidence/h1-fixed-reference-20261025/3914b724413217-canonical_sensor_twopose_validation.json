@@ -1,0 +1,261 @@
+{
+  "passed": true,
+  "execution": {
+    "command": [
+      "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+      "-B",
+      "D:\\rsi_vla\\release_queue3.py",
+      "--",
+      "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+      "-B",
+      "-u",
+      "-m",
+      "humanoid.g1_support_retrieval.sandbox.tests.check_sensors_gate"
+    ],
+    "cwd": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_358\\workspace",
+    "log": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_358\\sensor_geometry_twopose.log",
+    "exit_code": 0,
+    "wall_seconds": 38.63
+  },
+  "measurements": {
+    "rows": [
+      {
+        "pose": "nominal",
+        "check": "head_depth.vs_genesis_pointcloud_m.median",
+        "value": 0.0012833922740281708,
+        "bound": 0.003,
+        "ok": true
+      },
+      {
+        "pose": "nominal",
+        "check": "head_depth.vs_genesis_pointcloud_m.p99",
+        "value": 0.004839589280560908,
+        "bound": 0.01,
+        "ok": true
+      },
+      {
+        "pose": "nominal",
+        "check": "head_depth.floor_abs_z_m.median",
+        "value": 0.0010271271982989494,
+        "bound": 0.003,
+        "ok": true
+      },
+      {
+        "pose": "nominal",
+        "check": "lidar.floor_abs_z_m.median",
+        "value": 0.0007006672582173801,
+        "bound": 0.003,
+        "ok": true
+      },
+      {
+        "pose": "calibration",
+        "check": "head_depth.vs_genesis_pointcloud_m.median",
+        "value": 0.0016405274691874377,
+        "bound": 0.003,
+        "ok": true
+      },
+      {
+        "pose": "calibration",
+        "check": "head_depth.vs_genesis_pointcloud_m.p99",
+        "value": 0.007597066727051281,
+        "bound": 0.01,
+        "ok": true
+      },
+      {
+        "pose": "calibration",
+        "check": "head_depth.floor_abs_z_m.median",
+        "value": 0.0013814202406750575,
+        "bound": 0.003,
+        "ok": true
+      },
+      {
+        "pose": "calibration",
+        "check": "lidar.floor_abs_z_m.median",
+        "value": 0.0001849533716172802,
+        "bound": 0.003,
+        "ok": true
+      },
+      {
+        "pose": "calibration",
+        "check": "lidar.floor_hits",
+        "value": 1013,
+        "bound": ">= 1000",
+        "ok": true
+      }
+    ],
+    "measurements": {
+      "nominal": {
+        "calibration": {
+          "waist_pitch_increment_rad": 0.0,
+          "measurement_time_s": 0.19999999999999998,
+          "physical_command_only": true
+        },
+        "lidar": {
+          "returns": 1268,
+          "rays": 10800,
+          "floor_hits": 721,
+          "floor_abs_z_m": {
+            "median": 0.0007006672582173801,
+            "p99": 0.17730565885906238,
+            "max": 0.18380047347413153
+          },
+          "floor_hit_range_m": [
+            9.407318115234375,
+            39.941795349121094
+          ],
+          "returns_per_elevation": [
+            360,
+            360,
+            227,
+            157,
+            30,
+            12,
+            12,
+            18,
+            21,
+            11,
+            7,
+            7,
+            21,
+            11,
+            9,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "head_depth": {
+          "valid_fraction": 1.0,
+          "vs_genesis_pointcloud_m": {
+            "median": 0.0012833922740281708,
+            "p99": 0.004839589280560908
+          },
+          "floor_abs_z_m": {
+            "median": 0.0010271271982989494,
+            "p99": 0.005360374286322426
+          }
+        },
+        "timing_s": {
+          "physics_4_substeps": 0.00692654000595212,
+          "state_log": 0.005952670006081462,
+          "end_check_and_imu": 0.001397169998381287,
+          "full_control_step": 0.01759731400059536,
+          "observe_all": 0.04295729997102171
+        }
+      },
+      "calibration": {
+        "calibration": {
+          "waist_pitch_increment_rad": -0.15,
+          "measurement_time_s": 1.700000000000001,
+          "physical_command_only": true
+        },
+        "lidar": {
+          "returns": 1262,
+          "rays": 10800,
+          "floor_hits": 1013,
+          "floor_abs_z_m": {
+            "median": 0.0001849533716172802,
+            "p99": 0.13157010576706699,
+            "max": 0.1528228544015482
+          },
+          "floor_hit_range_m": [
+            5.469109535217285,
+            39.83486557006836
+          ],
+          "returns_per_elevation": [
+            307,
+            257,
+            214,
+            197,
+            134,
+            82,
+            7,
+            6,
+            28,
+            21,
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "head_depth": {
+          "valid_fraction": 1.0,
+          "vs_genesis_pointcloud_m": {
+            "median": 0.0016405274691874377,
+            "p99": 0.007597066727051281
+          },
+          "floor_abs_z_m": {
+            "median": 0.0013814202406750575,
+            "p99": 0.0068767321663957956
+          }
+        },
+        "timing_s": {
+          "physics_4_substeps": 0.007491930003743619,
+          "state_log": 0.001990430010482669,
+          "end_check_and_imu": 0.0011667300015687943,
+          "full_control_step": 0.01823945400072262,
+          "observe_all": 0.041915299952961504
+        }
+      }
+    },
+    "coverage_note": "Nominal floor count is reported, not assumed to exceed 1,000 despite occlusion. The commanded calibration pose must independently provide at least 1,000 floor returns. All four original accuracy bounds apply to both poses."
+  },
+  "before": {
+    "check_sensors.py": "01a4287f01d773c1f3ecf67d7c0e48c5939c4aae56e44fe609bf6db0e956a31f",
+    "check_sensors_gate.py": "aa7d648e2876d977535fc0f9b47c9094a8ca8c2eafb05ea33f39ef2fcecf8e96"
+  },
+  "after": {
+    "check_sensors.py": "16a5a746cee3f5d268737f85faf39a91a35ad455fbfca7f4b924d1e3773d8eb3",
+    "check_sensors_gate.py": "90eb35bbe519edcc059c17e60088f0ada9fef7e5fcf78efb4cf0023bd7b4ac46",
+    "test_sensor_geometry_gate.py": "64afa40421ee9541d4c514c06337d23f08b913dc29e85918bec95a220c2a6ed8"
+  },
+  "scope": "Only sensor calibration test fixture/gate and its CPU negative controls promoted. All four original accuracy thresholds apply to nominal and commanded calibration poses; calibration still requires 1,000 floor hits. Initial nominal 721-hit failure remains preserved. No task-controller, production sensor or scoring changes.",
+  "main_pipeline_rerun_pending": false,
+  "prior_failure": "canonical_initial_sensor_geometry.json",
+  "main_pipeline_record": "acceptance/pipeline/20261025-022633-gpu.json",
+  "main_cpu_negative_controls": {
+    "tests": 3,
+    "execution": {
+      "command": [
+        "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "humanoid.g1_support_retrieval.sandbox.tests.test_sensor_geometry_gate"
+      ],
+      "cwd": "D:\\rsi_vla\\robo-si",
+      "log": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_358\\main_calibration_cpu.log",
+      "exit_code": 0,
+      "wall_seconds": 8.56
+    }
+  }
+}

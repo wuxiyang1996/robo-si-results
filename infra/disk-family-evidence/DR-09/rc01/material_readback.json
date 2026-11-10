@@ -1,0 +1,170 @@
+{
+  "geoms": [
+    {
+      "name": "bottom",
+      "geom": 2,
+      "friction": 0.25
+    },
+    {
+      "name": "rim_0",
+      "geom": 3,
+      "friction": 1.2
+    },
+    {
+      "name": "rim_1",
+      "geom": 4,
+      "friction": 1.2
+    },
+    {
+      "name": "rim_2",
+      "geom": 5,
+      "friction": 1.2
+    },
+    {
+      "name": "rim_3",
+      "geom": 6,
+      "friction": 1.2
+    },
+    {
+      "name": "rim_4",
+      "geom": 7,
+      "friction": 1.2
+    },
+    {
+      "name": "rim_5",
+      "geom": 8,
+      "friction": 1.2
+    },
+    {
+      "name": "rim_6",
+      "geom": 9,
+      "friction": 1.2
+    },
+    {
+      "name": "rim_7",
+      "geom": 10,
+      "friction": 1.2
+    }
+  ],
+  "model": "Stretch 3 SE3, not Stretch 4",
+  "configuration": {
+    "lifted_mass_kg": 3.845241210939004,
+    "robot_mass_kg": 24.789443580770488,
+    "link_masses": {
+      "base_link": 20.0723862,
+      "link_right_wheel": 0.20773,
+      "link_left_wheel": 0.20773,
+      "caster_link": 0.01,
+      "link_lift": 2.222793,
+      "link_arm_l3": 0.146817,
+      "link_arm_l2": 0.130565,
+      "link_arm_l1": 0.113658,
+      "link_arm_l0": 0.427734,
+      "link_wrist_yaw": 0.198970635554334,
+      "link_wrist_pitch": 0.116590512374845,
+      "link_wrist_roll": 0.38358132627506636,
+      "link_gripper_finger_right": 0.04844425137428679,
+      "link_gripper_fingertip_right": 0.00382162062525088,
+      "link_gripper_finger_left": 0.04844424419159909,
+      "link_gripper_fingertip_left": 0.00382162054362131,
+      "link_grasp_center": 1e-15,
+      "link_head_pan": 0.062462,
+      "link_head_tilt": 0.38389416983148306
+    },
+    "initial_joint_configuration": {
+      "joint_lift": 0.89,
+      "joint_arm_l3": 0.0,
+      "joint_wrist_yaw": 1.5708,
+      "joint_wrist_pitch": -1.56,
+      "joint_wrist_roll": 0.0,
+      "joint_gripper_finger_right": 0.0,
+      "joint_head_pan": 0.0,
+      "joint_head_tilt": 0.0
+    },
+    "excluded_self_collision_pairs": [
+      [
+        "link_lift",
+        "link_arm_l0"
+      ],
+      [
+        "link_lift",
+        "link_arm_l1"
+      ],
+      [
+        "link_lift",
+        "link_arm_l2"
+      ],
+      [
+        "link_arm_l0",
+        "link_arm_l1"
+      ],
+      [
+        "link_arm_l0",
+        "link_arm_l2"
+      ],
+      [
+        "link_arm_l0",
+        "link_arm_l3"
+      ],
+      [
+        "link_arm_l1",
+        "link_arm_l3"
+      ],
+      [
+        "link_wrist_yaw",
+        "link_arm_l0"
+      ],
+      [
+        "link_wrist_yaw",
+        "link_arm_l1"
+      ],
+      [
+        "link_wrist_yaw",
+        "link_arm_l2"
+      ],
+      [
+        "link_wrist_yaw",
+        "link_arm_l3"
+      ],
+      [
+        "link_wrist_pitch",
+        "link_arm_l0"
+      ],
+      [
+        "link_wrist_pitch",
+        "link_arm_l1"
+      ],
+      [
+        "link_wrist_pitch",
+        "link_arm_l2"
+      ],
+      [
+        "link_wrist_pitch",
+        "link_arm_l3"
+      ],
+      [
+        "link_gripper_finger_left",
+        "link_wrist_yaw"
+      ],
+      [
+        "link_gripper_finger_left",
+        "link_wrist_pitch"
+      ],
+      [
+        "link_gripper_finger_right",
+        "link_wrist_yaw"
+      ],
+      [
+        "link_gripper_finger_right",
+        "link_wrist_pitch"
+      ],
+      [
+        "link_gripper_fingertip_left",
+        "link_gripper_fingertip_right"
+      ]
+    ],
+    "configured_before_first_step": true
+  },
+  "command_interface": "10 real Stretch actuators; passive free base and mimic followers; optional 7 Panda actuators",
+  "contact_mixing": "max(mu_a,mu_b,0.01)"
+}

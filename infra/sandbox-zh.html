@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench（robo-si）的隔离沙箱：agent 与环境隔离、只用机器人传感器（可调用 L1–L3 等工具）；环境执行动作、世界不可改；用参考专家解证明可解并验证评分器，官方轨迹保留并可切成子目标；评分器与 agent 隔离，按阶段给分，用监视器防 reward hacking 和编造输入输出。参考 Terminal-Bench（Harbor）和 EmbodiedSWE。" name="description"/>
+<title>隔离沙箱</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/sandbox-en.html">English</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">任务基础设施 · 隔离沙箱</p>
+<h1>agent 只能<span class="nm">看传感器、动关节</span>；<br/>评分和监视都在环境一侧。</h1>
+<p class="lead">所有任务都在同一种隔离沙箱里评测，做法参考 Terminal-Bench（Harbor 格式）和 EmbodiedSWE。这一页讲沙箱的四条要求和实现原则；H1 的沙箱是参考实现（<a href="/robo-si-results/humanoid/g1_support_retrieval/sandbox/README.md">H1 沙箱 README</a>），进度见<a href="/robo-si-results/infra/status-zh.html">实现状态</a>。评分器、监视器和防编造见<a href="/robo-si-results/infra/verifier-zh.html">评分与验证</a>。</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>目录</h3>
+<ol class="toc">
+<li><a href="#reqs">01 四条要求</a></li>
+<li><a href="#arch">02 结构与生命周期</a></li>
+<li><a href="#iso">03 隔离与感知</a></li>
+<li><a href="#env">04 环境执行动作，世界不可改</a></li>
+<li><a href="#feedback">05 反馈：给 agent 的和私有的</a></li>
+<li><a href="#agent">06 agent 一侧的规程</a></li>
+<li><a href="#realism">07 多机器人与执行真实性</a></li>
+</ol></div>
+</div></div><section id="sandbox-delivery"><div class="wrap"><h2>14 项沙盒交付与实测</h2><p>14/14 具备统一启动入口、SDK、隔离运行、可信记录与校验入口；单元检查 14/14，Windows 容器观测／控制短运行 14/14。新增双 G1 H3、DiskFlip 和 Sokoban 在同机 WSL2 Ubuntu 22.04 上另做短运行 3/3；新增越权检查 5/5。</p><p>短运行预期 0 分，验证接口和执行链，不计作完整任务成功。现有完整参考见证另行保留；新接口的完整专家重放、第二台物理机复现和正式准入不从本次检查推断。Sokoban 的完整仅推不抓有效性仍未认证，task_success=null。</p><p><a href="/robo-si-results/infra/sandbox/DELIVERY-14.md">部署与使用</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">逐项验证账本</a> · <a href="/robo-si-results/infra/sandbox-delivery/reference-packages.json">14 项完整参考包</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">完整沙盒工作区下载</a></p></div></section>
+<section class="tinted" id="reqs"><div class="wrap">
+<p class="kicker">01 · 四条要求</p>
+<h2>沙箱要做到什么</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>要求</th><th>详见</th></tr></thead>
+<tbody>
+<tr><td><strong>1 agent 与环境隔离</strong>：agent 只拿到机器人的 RGB / LiDAR 和其他机载传感器，绝对隔离其他信息；自己做决策、选动作；可以调用 L1–L3 求解器和 VLA、IK/FK 等工具（任务允许时），但只能用自身传感器的结果；可以通过技能接口选用指定的技能，最好是自己产生的技能和 rollout；也可以用 coding agent 的能力自己规划轨迹。</td><td><a href="#iso">第 03 节</a></td></tr>
+<tr><td><strong>2 环境执行动作，世界不可改</strong>：绝对防止 agent 暴力修改环境设置（物体位置、大小、质量、摩擦等）。</td><td><a href="#env">第 04 节</a></td></tr>
+<tr><td><strong>3 参考专家解与官方轨迹</strong>：参考专家解（现有的专家解：读真值、用 IK/FK 规划）用来证明问题可解，并验证评分器有效；官方轨迹保留，可以沿用现在的设定并切成若干子目标；agent 不能用这些特权设定。</td><td><a href="/robo-si-results/infra/acceptance-zh.html#official">任务验收第 02 节</a></td></tr>
+<tr><td><strong>4 评分器与 agent 隔离，严禁 agent hack</strong>：至少把评分器和计分与 agent 隔开；按阶段给分；设置监视器，防止 reward hacking，防止 agent 编造输出和输入。</td><td><a href="/robo-si-results/infra/verifier-zh.html#placement">评分与验证第 02 节</a>；<a href="/robo-si-results/infra/verifier-zh.html">评分与验证</a></td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="arch"><div class="wrap">
+<p class="kicker">02 · 结构与生命周期</p>
+<h2>两边、一条通道、一条控制管道</h2>
+<pre><code>agent 容器（Linux；uid 1000，根文件系统只读，丢弃全部 capabilities，内部网络）
+  /opt/g1sandbox  只读：SDK、L1 权重、L2/L3 求解器、机器人模型、示例
+  /workspace      唯一可写目录（评分时每个回合一份全新副本）
+        │  RPC：令牌认证，长度前缀 JSON，不用 pickle，8 个白名单方法
+        │  唯一出口：socat 转发器 → 环境端口（可选：squid 白名单 → LLM API）
+        ▼
+环境一侧（可信；Linux 服务器上是 env 容器，本机是 Windows 宿主上的 worker 进程）
+  仿真世界     agent 连上之前按密封场景建好，之后没有修改入口
+  传感器       只挂在机器人身上：RGB-D、LiDAR、IMU、关节、手和脚的接触力
+  执行器限幅   校验指令，截到关节限位、速度、增益和力矩上限
+  记录器       特权状态日志、按物体的接触、全身快照、俯视录像、请求日志
+  监视器       接口、世界完整性、物理异常、指令模式、判据异常、资源
+  评分器       verifier：只读上面这些记录 → verdict.json
+        ▲
+        │  控制管道（worker 的标准输入，只有启动器持有）：换下一回合 / 关闭
+启动器（可信）：建场景、发令牌、起 agent 容器、在容器外记录 agent 的输出、按回合重跑交付程序</code></pre>
+<h3>环境一侧怎么部署</h3>
+<p>两种部署，隔离效果相同：在本机（Windows 工作站）上，环境一侧是宿主上的可信 worker 进程，因为 Genesis 和 Isaac 的渲染在 WSL2 的容器里只能用 llvmpipe；在 Linux GPU 服务器上，也可以把整个环境一侧放进独立的 env 容器。评分器也在环境一侧，见<a href="/robo-si-results/infra/verifier-zh.html#placement">评分与验证第 02 节</a>。</p>
+<h3>一次评测的生命周期</h3>
+<ol class="steps">
+<li><strong>开发会话。</strong>启动器按私有种子建好并密封场景，再起 agent 容器。agent 在开发模式下迭代，可以有限次 reset 回同一个密封初始状态。<span class="out">记录：请求日志、状态日志、录像、agent 输出。</span></li>
+<li><strong>交付。</strong>agent 在工作目录里留下一个只调用 SDK 的控制程序。</li>
+<li><strong>评分回合。</strong>可信侧按私有种子依次抽出 N 个新回合。每个回合给交付程序一份全新的工作目录副本，在新的 agent 容器里跑一次（没有 LLM，不能 reset，有墙钟预算）。程序结束后，启动器才通过控制管道通知换下一回合；没跑成的回合记 0 分。</li>
+<li><strong>自动判定。</strong>评分器读环境侧的记录和监视器告警，给出每个回合的阶段分、是否成功、是否无效，再汇总。</li>
+<li><strong>结果。</strong>自动判定就是最终成绩；被标记的回合汇总给任务维护者。人工检查只针对任务，在任务验收时做（见<a href="/robo-si-results/infra/acceptance-zh.html#humancheck">任务验收第 05 节</a>）。</li>
+</ol>
+</div></section>
+<section class="tinted" id="iso"><div class="wrap">
+<p class="kicker">03 · 隔离与感知</p>
+<h2>要求 1：agent 只拿到机器人自己的传感器</h2>
+<h3>agent 容器</h3>
+<ul class="check">
+<li>用户 uid 1000，根文件系统只读，<code>--cap-drop ALL</code>，<code>no-new-privileges</code>，限制进程数、内存和 CPU。</li>
+<li>只挂载两样东西：构建进镜像的只读 bundle（SDK、L1 权重、L2/L3 求解器、机器人模型、示例），和可写的 <code>/workspace</code>。</li>
+<li>bundle 和镜像按内容哈希命名；静态测试检查 bundle 里只有这几样东西，没有任何可信侧代码、场景、日志或参考解。</li>
+<li>网络是 <code>--internal</code>：唯一出口是 socat 转发器，只通向环境端口；需要 LLM 时，再经 squid 只放行 LLM API 的域名。</li>
+</ul>
+<p>agent 能拿到什么、拿不到什么，见<a href="#feedback">第 05 节</a>。</p>
+<p style="margin-top:12px">传感器安装位姿取自机器人官方模型（G1 取自 Unitree 官方 URDF）。场景文件可以关掉某种传感器，但关节本体感觉关不掉。仿真后端缺的传感器要说明怎么模拟：比如 Genesis 1.4.3 没有射线传感器，LiDAR 用四个深度相机拼出来。</p>
+<h3>决策和动作：调用工具，或自己写</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>层级</th><th>是什么</th><th>输入</th></tr></thead>
+<tbody>
+<tr><td>L1</td><td>GR00T WBC：站立和行走策略，给定机体坐标系的速度指令和骨盆高度，输出腿和腰的关节目标</td><td>骨盆 IMU 和关节读数；不用基座线速度，也不用世界坐标</td></tr>
+<tr><td>L2</td><td>目标点轨迹规划：在机器人自身模型上做 IK，再做带碰撞检查的插值或 RRT</td><td>当前关节角、IMU 姿态；障碍物由 agent 自己从深度或 LiDAR 估计后加进模型</td></tr>
+<tr><td>L3</td><td>中间点加 IK/FK 暴力求解：agent 给出中间点，逐段求解再拼接</td><td>同 L2</td></tr>
+<tr><td>VLA</td><td>视觉-语言-动作模型（任务提供时）：输入机载相机图像、本体感觉和指令，输出动作</td><td>机载相机和关节读数</td></tr>
+<tr><td>自己写</td><td>coding agent 自己写感知、规划和控制代码，直接发关节指令</td><td>同上：只有传感器读数和机器人模型</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:10px"><strong>部分允许，只用自身传感器。</strong>每个任务在任务卡里声明允许哪些工具（L1、L2、L3、VLA、IK/FK）；不允许的工具不放进 bundle，agent 仍然可以自己写。允许的工具都在 agent 一侧运行，那里没有任何真值，所以它们只能用 agent 自己的传感器读数和机器人模型作输入；这一点由结构保证，不靠规则。工具不给 agent 额外的信息或权限，也没有任务专用的原语。参考专家解可以读真值（<a href="/robo-si-results/infra/acceptance-zh.html#expert">任务验收第 01 节</a>），agent 不行。</p>
+<h3>技能接口：只用指定的技能，优先用 agent 自己产生的</h3>
+<p>任务执行时保留一个技能接口：agent 可以选用技能，也可以完全不用。能用的技能只有两种来源，都要事先指定：</p>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:6.5em">来源</th><th>是什么</th><th>怎么指定</th></tr></thead>
+<tbody>
+<tr><td>任务提供</td><td>任务卡里列出的技能，比如 L1 的站立和行走，以及跟踪轨迹、保持姿态这类执行辅助。不能有任务专用的宏，也不能泄露路线</td><td>写进任务卡的技能清单，随 bundle 一起构建并按内容哈希；清单以外的不进 bundle</td></tr>
+<tr><td>agent 自己产生（推荐）</td><td>agent 在开发会话里自己写出、调好的技能，以及它自己跑出来的 rollout（观测和指令序列），作为这些技能的参考：回放关键帧再闭环修正、拟合参数、离线训练小模型等</td><td>放在工作目录里，用清单登记：技能名、入口、代码哈希、引用了哪些 rollout；每条 rollout 带上环境发出的观测摘要，用来证明来源</td></tr>
+</tbody>
+</table></div>
+<ul class="check" style="margin-top:12px">
+<li><strong>不能用的。</strong>参考专家解和官方轨迹（包括它们的录制）、别的 agent 的产出、从网上下载的预训练策略、任务专用的宏。网络隔离和 bundle 清单从结构上挡住了大部分，剩下的靠来源核对。</li>
+<li><strong>来源核对。</strong>环境一侧给每次观测记一个摘要，写进请求日志的哈希链。agent 的 rollout 引用这些摘要；评分前，可信侧逐条核对清单里的 rollout 是否真的来自这个 agent 自己的开发会话。核对不上的，记为“编造 rollout”，整次自动判无效。</li>
+<li><strong>评分时。</strong>交付程序连同它的技能库和 rollout 一起交付；每个评分回合拿到的是一份全新副本，评分回合里写的东西带不到下一回合。初始状态是随机的，所以 rollout 只能当参考，单纯回放拿不到分。</li>
+<li><strong>报告。</strong>成绩里注明交付程序登记了哪些技能、各自的来源（任务提供 / agent 自己产生）。</li>
+</ul>
+</div></section>
+<section id="env"><div class="wrap">
+<p class="kicker">04 · 环境执行动作，世界不可改</p>
+<h2>要求 2：没有任何能改世界的入口</h2>
+<p>agent 只能调用 8 个方法：<code>info</code>、<code>status</code>、<code>observe</code>、<code>command</code>、<code>command_sequence</code>、<code>declare_infeasible</code>、<code>finish</code>，以及只在开发模式下可用的 <code>reset</code>。每个方法返回什么，见<a href="#feedback">第 05 节</a>。</p>
+<p style="margin-top:10px">未知方法、错误令牌、畸形帧一律拒绝，记为违规，整次运行判无效（VOID）。worker 一次只服务一个会话。</p>
+<h3>指令怎么处理</h3>
+<ul class="check">
+<li>每个关节一条指令（<code>mode</code>、<code>q</code>、<code>dq</code>、<code>kp</code>、<code>kd</code>、<code>tau</code>，参照 Unitree LowCmd）：电机模式每个物理子步按 PD 加前馈重算力矩，伺服模式用仿真器的隐式 PD。</li>
+<li>非有限值、形状不对、多余字段：直接拒绝。</li>
+<li><code>q</code> 截到关节限位，<code>dq</code> 截到速度上限，<code>kp</code> / <code>kd</code> 截到增益上限，<code>tau</code> 截到名义力矩；实际施加的力矩再截到本回合的实际上限（含不公开的力量系数）。</li>
+<li>仿真只在指令调用期间推进，agent 思考不消耗仿真时间。</li>
+</ul>
+<h3>不存在的东西</h3>
+<ul class="check cross">
+<li>设置物体位置、姿态、尺寸、质量、摩擦的方法。</li>
+<li>基座外力、把物体绑在手上、改重力或时间步长、改物理选项。</li>
+<li>复位到任意状态；评测和评分模式下没有 <code>reset</code>。</li>
+</ul>
+<h3>完整性检查</h3>
+<ul class="check">
+<li>场景在 agent 连上之前按密封的场景文件建好；没密封就连上，整次无效。</li>
+<li>全部刚体的质量和摩擦每 500 个控制步核对一次哈希；变了，整次无效。</li>
+<li>verifier 检查瞬移（两个控制步之间的位移相当于 &gt;20 m/s）。</li>
+<li>逃逸探针（H1：36 个）在容器里以 agent 身份尝试越权，结果全部符合预期：17 个记为违规，整次判 VOID。</li>
+</ul>
+</div></section>
+<section class="tinted" id="feedback"><div class="wrap">
+<p class="kicker">05 · 反馈：给 agent 的和私有的</p>
+<h2>环境容器只给机器人自己能感知到的东西</h2>
+<p>反馈分三层：会话中经 RPC 给 agent 的；只留在环境一侧、agent 永远拿不到的；评测结束后对外公布的。原则：给 agent 的反馈，真实机器人上也能拿到；和评分有关的一切都不给。</p>
+<h3>1 给 agent 的反馈（会话中，经 RPC）</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>来源</th><th>给什么</th></tr></thead>
+<tbody>
+<tr><td><code>info</code></td><td>指令；按档位披露的能力信息；预算（仿真时长、观测次数、reset 次数、每次调用最多步数）；机器人规格（关节名、限位、速度和力矩上限、增益上限、控制周期、两种指令模式）；传感器规格</td></tr>
+<tr><td><code>observe</code></td><td>机载传感器读数：关节、IMU、RGB-D、LiDAR、手和脚的接触力；每次调用消耗一次观测额度</td></tr>
+<tr><td><code>command</code> / <code>command_sequence</code></td><td>执行后的本体感觉（可选逐步序列）和状态；每个字段有多少个值被截到名义上限。实际施加的力矩在关节读数的 <code>tau_est</code> 里，agent 可以由此发现本回合真实的力量上限，和真机一样</td></tr>
+<tr><td><code>status</code></td><td>仿真时间、剩余仿真时间、剩余观测和 reset 次数、回合是否结束以及原因（完成、声明不可行、摔倒、超时、reset、断开）</td></tr>
+<tr><td>错误</td><td>参数不合法：返回错误类型和原因，不含世界信息。环境内部出错：只回“内部错误（已在可信侧记录）”</td></tr>
+<tr><td>越权请求</td><td>未知方法、令牌错误、畸形帧：只回一句拒绝，同时在可信侧记违规；agent 不会被告知这次运行已判无效</td></tr>
+<tr><td><code>reset</code>（只在开发模式）</td><td>回到本回合的密封初始状态，有次数上限</td></tr>
+</tbody>
+</table></div>
+<h3>2 私有反馈（只在环境一侧）</h3>
+<p>这些只用于评分、任务检查和维护；agent 在会话中和会话后都拿不到：</p>
+<ul class="check">
+<li>特权状态日志：每个控制步的物体位姿和速度，按物体记录的手、脚、其他部位接触力；10 Hz 全身快照。</li>
+<li>俯视录像。</li>
+<li>请求日志：每次调用、截断记录、违规（以后加哈希链和观测摘要）。</li>
+<li>监视器告警和标记。</li>
+<li>评分结果：自动分、各阶段时间线、是否成功、是否无效及原因。</li>
+<li>rollout 来源核对结果、任务检查记录、密封种子、参考解和录制。</li>
+</ul>
+<h3>3 评测结束后对外公布的</h3>
+<p>汇总成绩、开销和版本；私有任务不公布逐回合的录像、日志和判据细节。详见<a href="/robo-si-results/infra/protocol-zh.html#leakage">评测规程第 07 节</a>。</p>
+<h3>刻意不给的反馈</h3>
+<ul class="check cross">
+<li>分数、阶段进度、是否成功、判据的中间状态；<code>finish()</code> 之后也不给。</li>
+<li>监视器告警、是否被标记、是否判无效。</li>
+<li>物体的位姿、尺寸、质量、摩擦；难度层；种子；声明不可行是否正确。</li>
+</ul>
+<p style="margin-top:12px">理由：判断自己有没有完成任务，本身就是要考的能力，agent 要用自己的传感器去验证；给出成功信号，agent 就可以反复试探评分器，直到信号翻转。作为对照，EmbodiedSWE 在开发时会把场景自带的成功判定的输出回传给 agent，Terminal-Bench 不给测试结果。以后如果要提供成功信号之类的额外反馈，只能作为单独的赛道：限次数、单独报告，不和主榜混合。</p>
+</div></section>
+<section id="agent"><div class="wrap">
+<p class="kicker">06 · agent 一侧的规程</p>
+<h2>会话开始时拿到什么、能用什么、怎么交付</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:6.5em">环节</th><th>规定</th></tr></thead>
+<tbody>
+<tr><td>开始时拿到</td><td>任务指令和能力信息（经 <code>info</code>）；bundle 里的 SDK 文档（agent 指南）、示例程序、机器人模型；预算</td></tr>
+<tr><td>agent 框架</td><td>任意 coding agent 都可以，在 agent 容器里运行；模型 API 只经白名单代理访问。用于正式成绩的框架、模型和版本要固定，并写进报告</td></tr>
+<tr><td>容器里的工具</td><td>shell、Python 3.12，预装 numpy、scipy、mujoco、onnxruntime；没有外网，不能 pip 安装；额外依赖要由任务随 bundle 提供</td></tr>
+<tr><td>交付</td><td>工作目录里的约定入口 <code>solve.py</code>，只调用 SDK；连同自己的技能库和 rollout 一起交付。可信侧在预算点给工作目录拍快照（<a href="/robo-si-results/infra/protocol-zh.html#snapshots">评测规程第 02 节</a>）</td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section class="tinted" id="realism"><div class="wrap">
+<p class="kicker">07 · 多机器人与执行真实性</p>
+<h2>还没实现、但新任务会用到的两件事</h2>
+<h3>多机器人任务（M1–M4）</h3>
+<ul class="check">
+<li><strong>默认：一个 agent、一个会话，控制多台机器人。</strong>指令和观测按机器人分开命名，每台机器人只给它自己身上的传感器。考的是一个 coding agent 的能力，这样最简单。</li>
+<li><strong>可选：每台机器人一个 agent。</strong>每个 agent 一个会话、一个令牌，只拿到自己机器人的传感器；它们之间只能经环境提供的消息通道通信，消息由可信侧记录，带宽和延迟写进任务卡。作为单独的赛道报告。</li>
+<li>协作的必要性按任务设计指南的要求先验证：单台机器人做不到。</li>
+</ul>
+<h3>执行和感知的真实性</h3>
+<ul class="check">
+<li>现在指令在 50 Hz 控制步上同步、立即生效；IMU 由有限差分加噪声得到；相机和 LiDAR 没有延迟。</li>
+<li>建议加入：控制延迟和抖动、偶发丢指令、传感器延迟和时间戳，在公开范围内按回合随机（<a href="/robo-si-results/infra/task-design-zh.html#random">任务设计第 04 节</a>），让在仿真里写出的程序更接近真机。</li>
+<li>这些设置属于任务的仿真设置，写进任务卡，评测时不能改；改动它们要升任务的主版本（<a href="/robo-si-results/infra/protocol-zh.html#versions">评测规程第 06 节</a>）。</li>
+</ul>
+</div></section>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · 隔离沙箱 · 2026-10-19 · <a href="/robo-si-results/infra/sandbox-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/infra/contribute-zh.html">首页</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body>
+</html>

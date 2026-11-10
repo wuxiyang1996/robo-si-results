@@ -1,0 +1,69 @@
+{
+  "schema": "h3-extension-work-items/1",
+  "authorization": "User explicitly requested continuing L2/L3 on 2026-10-29",
+  "scope": "L2/L3 follow-on work; separate from L1 admission",
+  "parent_tasks_already_present": [
+    "A07",
+    "A08",
+    "A09",
+    "A10"
+  ],
+  "items": [
+    {
+      "id": "L2-01",
+      "parent": "A07",
+      "status": "passed_local_screen",
+      "requirement": "楔块、重箱和干扰物的原生支撑／滑移／净空筛查；同外观参数配对",
+      "evidence": "同形楔块摩擦配对、同形箱体质量配对均实测得到通过／失败差异；12 次夹具记录全部保留。"
+    },
+    {
+      "id": "L2-02",
+      "parent": "A07",
+      "status": "passed_local_skill",
+      "requirement": "机器人通过真实接触布置候选工具，验证可达、推力和搬运路径",
+      "evidence": "原 13.53 cm 局部推放与新 1.440 m 长距离推箱均已实测。8071093 最大横向偏移 9.74 mm，后退并撤辅助后独立支撑 3 s；仍为初始化助手／持门夹具的局部技能。"
+    },
+    {
+      "id": "L2-03",
+      "parent": "A07",
+      "status": "in_progress",
+      "requirement": "动作前预测、主动测试、撤去辅助、能力更新和分工；禁止有效工具标签泄漏"
+    },
+    {
+      "id": "L2-04",
+      "parent": "A07",
+      "status": "full_delivery_witness_repeat_pending",
+      "requirement": "工具选择到原包裹最终交付的完整专家、计划、轨迹、物理审计、视频和重复",
+      "evidence": "8072172 从关门开始单候选推放、松手并交付原包裹，413.92 s；独立复算、581 个门区采样、2885 条反馈核对均通过。同源固定重复 8072609/8072610/8072611 已预登记，首例不计入重复；自主多工具发现仍缺。"
+    },
+    {
+      "id": "L3-01",
+      "parent": "A09",
+      "status": "measured_diagnostic",
+      "requirement": "冻结可信故障时间和幅度，记录事件并检测实际支撑失效",
+      "evidence": "50 s 施加预声明的 4 倍关门负载；同 GPU 配对在 50.015 s 检测失效。独立审计逐物理步验证实际门轴扭矩。"
+    },
+    {
+      "id": "L3-02",
+      "parent": "A09",
+      "status": "passed_local_recovery",
+      "requirement": "停止危险动作，重新探测并通过真实机器人动作恢复支撑或重新分工",
+      "evidence": "原恢复配对及固定重复 3/3 有效；新增直接扶门切换固定重复另为 3/3，最小助手净空 0.6925–0.7033 m，均独立审计通过。两套队列不混算。"
+    },
+    {
+      "id": "L3-03",
+      "parent": "A09",
+      "status": "in_progress",
+      "requirement": "故障后完整交付及对应五项证据；配对无故障／不更新对照",
+      "evidence": "局部初始化后的原包裹交付 211.48 s 通过。新增 8071840 从关门开始完成开门、推放、撤辅助、430 s 负载故障及真实恢复；450.90 s 切换时角度低于安全线而停止，未取包裹。新恢复余量候选 8072428 在运行；仍缺连续交付、机器人能力故障、配对对照／重复。"
+    }
+  ],
+  "required_artifacts": [
+    "expert",
+    "high_low_plan",
+    "synchronized_trajectory",
+    "physical_audit",
+    "native_video"
+  ],
+  "formal_admission": false
+}

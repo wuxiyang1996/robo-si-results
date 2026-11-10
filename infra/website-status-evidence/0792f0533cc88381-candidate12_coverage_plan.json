@@ -1,0 +1,2468 @@
+{
+  "schema": "h1-layer1-coverage-plan/1",
+  "profile": "layer1_high_randomized",
+  "source": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_12\\workspace\\humanoid\\g1_support_retrieval\\relay_spec.py",
+  "source_sha256": "f19ba95916a7c4b121cbf59460972f029aead06d4685a64c85a882687a7d11ee",
+  "status": "draft_geometry_only_no_physical_qualification",
+  "scope": "Near-boundary samples are within 2.5% of each numerical endpoint; these are not exact endpoint trials or joint-corner coverage. Development split only; held-out evaluation and exact-boundary/corner plans remain pending.",
+  "inherited_ranges": "Existing randomized profile ranges retained; shelf 1.25 -> 1.52 m and nominal initial gap .46 -> .40 m.",
+  "sample_pool": 4096,
+  "valid_geometry": 4096,
+  "ranges": {
+    "target_y": [
+      -0.06,
+      0.06
+    ],
+    "target_front_inset": [
+      0.012,
+      0.02
+    ],
+    "stool_x": [
+      1.95,
+      2.07
+    ],
+    "stool_y_relative_to_target": [
+      -0.04,
+      0.04
+    ],
+    "stool_yaw": [
+      -0.035,
+      0.035
+    ],
+    "stool_mass": [
+      1.4,
+      1.6
+    ],
+    "stool_friction": [
+      0.48,
+      0.55
+    ],
+    "target_mass": [
+      0.43,
+      0.52
+    ],
+    "target_friction": [
+      0.48,
+      0.55
+    ],
+    "robot_x_jitter": [
+      -0.015,
+      0.015
+    ],
+    "robot_y_jitter": [
+      -0.015,
+      0.015
+    ],
+    "robot_yaw": [
+      -0.02,
+      0.02
+    ]
+  },
+  "fixed": {
+    "shelf_m": 1.52,
+    "relay_board_m": 0.9,
+    "physics_changed": false,
+    "hardware_limits_changed": false
+  },
+  "near_boundary_cases": 8,
+  "interior_cases": 4,
+  "physical_successes": 0,
+  "cases": [
+    {
+      "id": "near_boundary-seed985",
+      "seed": 985,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "near_boundary",
+      "covers": [
+        "size:2",
+        "stool_friction:low",
+        "stool_mass:high",
+        "stool_y_relative_to_target:high",
+        "stool_yaw:low",
+        "target_front_inset:low"
+      ],
+      "coordinates": {
+        "target_y": -0.03194135245948225,
+        "target_front_inset": 0.012066032338183666,
+        "stool_x": 1.9919447774979788,
+        "stool_y_relative_to_target": 0.039496761323619685,
+        "stool_yaw": -0.03477024815346921,
+        "stool_mass": 1.5980807854625723,
+        "stool_friction": 0.4802746887730464,
+        "target_mass": 0.45279618219636847,
+        "target_friction": 0.4834528478099246,
+        "robot_x_jitter": 0.0036202638164093415,
+        "robot_y_jitter": 0.003526915284359878,
+        "robot_yaw": 0.009094683751652934
+      },
+      "fractions": {
+        "target_y": 0.2338220628376479,
+        "target_front_inset": 0.008254042272958211,
+        "stool_x": 0.3495398124831576,
+        "stool_y_relative_to_target": 0.9937095165452461,
+        "stool_yaw": 0.003282169236154145,
+        "stool_mass": 0.9904039273128609,
+        "stool_friction": 0.0039241253292346765,
+        "target_mass": 0.253290913292983,
+        "target_friction": 0.04932639728463722,
+        "robot_x_jitter": 0.6206754605469781,
+        "robot_y_jitter": 0.6175638428119959,
+        "robot_yaw": 0.7273670937913234
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 985,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              1.9919447774979788,
+              0.007555408864137435,
+              0.11049
+            ],
+            "quaternion": [
+              0.9998488825366529,
+              0.0,
+              0.0,
+              -0.01738424833596158
+            ],
+            "mass": 1.5980807854625723,
+            "friction": 0.4802746887730464,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.16,
+              0.22,
+              0.18
+            ],
+            "position": [
+              3.3920660323381835,
+              -0.03194135245948225,
+              1.612
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.45279618219636847,
+            "friction": 0.4834528478099246,
+            "fixed": false,
+            "asset": "box",
+            "color": "blue",
+            "top_index": 2,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.595565041314388,
+          0.011082324148497313,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999896608587485,
+          0.0,
+          0.0,
+          0.004547326203945674
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          -0.03194135245948225
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0388063530412082,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "50f3ebc018b10f6a5551524ea1f96bd9701f0e7fe6a8fbc6d8ce42af5199673b",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "near_boundary-seed63",
+      "seed": 63,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "near_boundary",
+      "covers": [
+        "robot_y_jitter:high",
+        "size:0",
+        "stool_y_relative_to_target:low",
+        "target_friction:high",
+        "target_y:high"
+      ],
+      "coordinates": {
+        "target_y": 0.05894116068956759,
+        "target_front_inset": 0.01979872508377087,
+        "stool_x": 1.9950403334759765,
+        "stool_y_relative_to_target": -0.03897954308662608,
+        "stool_yaw": 0.012511834738722465,
+        "stool_mass": 1.4221976600687518,
+        "stool_friction": 0.5291094132884987,
+        "target_mass": 0.4433904860047521,
+        "target_friction": 0.5492634132129574,
+        "robot_x_jitter": -0.011953435688942138,
+        "robot_y_jitter": 0.014864438327752465,
+        "robot_yaw": 0.007788408442022464
+      },
+      "fractions": {
+        "target_y": 0.9911763390797299,
+        "target_front_inset": 0.9748406354713585,
+        "stool_x": 0.3753361122998052,
+        "stool_y_relative_to_target": 0.012755711417174014,
+        "stool_yaw": 0.6787404962674638,
+        "stool_mass": 0.11098830034375941,
+        "stool_friction": 0.7015630469785524,
+        "target_mass": 0.1487831778305791,
+        "target_friction": 0.9894773316136758,
+        "robot_x_jitter": 0.10155214370192872,
+        "robot_y_jitter": 0.9954812775917489,
+        "robot_yaw": 0.6947102110505616
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 63,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              1.9950403334759765,
+              0.01996161760294151,
+              0.11049
+            ],
+            "quaternion": [
+              0.9999804318127532,
+              0.0,
+              0.0,
+              0.006255876563653838
+            ],
+            "mass": 1.4221976600687518,
+            "friction": 0.5291094132884987,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.18,
+              0.2,
+              0.16
+            ],
+            "position": [
+              3.4097987250837707,
+              0.05894116068956759,
+              1.602
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.4433904860047521,
+            "friction": 0.5492634132129574,
+            "fixed": false,
+            "asset": "box",
+            "color": "red",
+            "top_index": 0,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.5830868977870345,
+          0.034826055930693975,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999924175963247,
+          0.0,
+          0.0,
+          0.003894194378530124
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          0.05894116068956759
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0356934469768357,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "48b80f65f2afeec5e37739855306865a249ba957b1c55c4e0946304ae1940749",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "near_boundary-seed476",
+      "seed": 476,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "near_boundary",
+      "covers": [
+        "size:1",
+        "stool_x:low",
+        "target_mass:high",
+        "target_y:low"
+      ],
+      "coordinates": {
+        "target_y": -0.05852386186747317,
+        "target_front_inset": 0.01938004795688872,
+        "stool_x": 1.9517502925340702,
+        "stool_y_relative_to_target": -0.03279304028557292,
+        "stool_yaw": -0.007238803751891426,
+        "stool_mass": 1.5785433859384972,
+        "stool_friction": 0.5057360795430574,
+        "target_mass": 0.5194016125365959,
+        "target_friction": 0.5240040035682036,
+        "robot_x_jitter": -0.0080332299037007,
+        "robot_y_jitter": -0.011404472345907288,
+        "robot_yaw": -0.01034641933373724
+      },
+      "fractions": {
+        "target_y": 0.012301151104390206,
+        "target_front_inset": 0.9225059946110897,
+        "stool_x": 0.01458577111725184,
+        "stool_y_relative_to_target": 0.09008699643033849,
+        "stool_yaw": 0.3965885178301225,
+        "stool_mass": 0.8927169296924856,
+        "stool_friction": 0.36765827918653476,
+        "target_mass": 0.9933512504066209,
+        "target_friction": 0.628628622402909,
+        "robot_x_jitter": 0.2322256698766433,
+        "robot_y_jitter": 0.1198509218030904,
+        "robot_yaw": 0.241339516656569
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 476,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              1.9517502925340702,
+              -0.0913169021530461,
+              0.11049
+            ],
+            "quaternion": [
+              0.9999934499721806,
+              0.0,
+              0.0,
+              -0.0036193939735479365
+            ],
+            "mass": 1.5785433859384972,
+            "friction": 0.5057360795430574,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.2,
+              0.18,
+              0.14
+            ],
+            "position": [
+              3.4193800479568885,
+              -0.05852386186747317,
+              1.592
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.5194016125365959,
+            "friction": 0.5240040035682036,
+            "fixed": false,
+            "asset": "box",
+            "color": "green",
+            "top_index": 1,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.5437170626303693,
+          -0.10272137449895338,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999866189807134,
+          0.0,
+          0.0,
+          -0.005173186592575261
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          -0.05852386186747317
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.078748263100124,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "1fdf2f3e0a8454eb852826c1306baf30a45c693b66288b62b1700abe471d30c9",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "near_boundary-seed2430",
+      "seed": 2430,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "near_boundary",
+      "covers": [
+        "robot_x_jitter:low",
+        "size:3",
+        "stool_mass:low",
+        "target_mass:low"
+      ],
+      "coordinates": {
+        "target_y": -0.0027818266228450753,
+        "target_front_inset": 0.013455472411434938,
+        "stool_x": 1.975118511928636,
+        "stool_y_relative_to_target": -0.025225885717593516,
+        "stool_yaw": -0.02856300661627306,
+        "stool_mass": 1.4025305802390526,
+        "stool_friction": 0.5181130542232852,
+        "target_mass": 0.43056370612843897,
+        "target_friction": 0.5013716968498486,
+        "robot_x_jitter": -0.014623366272418226,
+        "robot_y_jitter": -0.01237727598188925,
+        "robot_yaw": -0.018005341429554518
+      },
+      "fractions": {
+        "target_y": 0.47681811147629105,
+        "target_front_inset": 0.1819340514293672,
+        "stool_x": 0.20932093273863456,
+        "stool_y_relative_to_target": 0.18467642853008107,
+        "stool_yaw": 0.09195704833895635,
+        "stool_mass": 0.012652901195263622,
+        "stool_friction": 0.544472203189789,
+        "target_mass": 0.006263401427099763,
+        "target_friction": 0.3053099549978373,
+        "robot_x_jitter": 0.012554457586059128,
+        "robot_y_jitter": 0.08742413393702497,
+        "robot_yaw": 0.049866464261137056
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 2430,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              1.975118511928636,
+              -0.02800771234043859,
+              0.11049
+            ],
+            "quaternion": [
+              0.9998980210649608,
+              0.0,
+              0.0,
+              -0.014281017834003222
+            ],
+            "mass": 1.4025305802390526,
+            "friction": 0.5181130542232852,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.2,
+              0.2,
+              0.15
+            ],
+            "position": [
+              3.4134554724114348,
+              -0.0027818266228450753,
+              1.597
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.43056370612843897,
+            "friction": 0.5013716968498486,
+            "fixed": false,
+            "asset": "box",
+            "color": "yellow",
+            "top_index": 3,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.560495145656218,
+          -0.04038498832232784,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999594762336995,
+          0.0,
+          0.0,
+          -0.009002549107074015
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          -0.0027818266228450753
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0551830643001676,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "ebfa02ef27f876999cc37a5385741227f11932cf9b514d721b88efc998c4cb69",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "near_boundary-seed1233",
+      "seed": 1233,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "near_boundary",
+      "covers": [
+        "robot_x_jitter:high",
+        "robot_yaw:low",
+        "target_front_inset:high"
+      ],
+      "coordinates": {
+        "target_y": -0.0466133702598175,
+        "target_front_inset": 0.019896778349860117,
+        "stool_x": 1.9704002672249392,
+        "stool_y_relative_to_target": -0.009537494265628318,
+        "stool_yaw": -9.350903942054178e-05,
+        "stool_mass": 1.5652921542255296,
+        "stool_friction": 0.5304239461342726,
+        "target_mass": 0.4714278768919307,
+        "target_friction": 0.532045362914971,
+        "robot_x_jitter": 0.01487251492721775,
+        "robot_y_jitter": -0.00924458458681926,
+        "robot_yaw": -0.01951304551738971
+      },
+      "fractions": {
+        "target_y": 0.11155524783485414,
+        "target_front_inset": 0.9870972937325145,
+        "stool_x": 0.170002226874494,
+        "stool_y_relative_to_target": 0.380781321679646,
+        "stool_yaw": 0.49866415657970653,
+        "stool_mass": 0.8264607711276476,
+        "stool_friction": 0.720342087632465,
+        "target_mass": 0.46030974324367463,
+        "target_friction": 0.7435051844995847,
+        "robot_x_jitter": 0.995750497573925,
+        "robot_y_jitter": 0.191847180439358,
+        "robot_yaw": 0.012173862065257245
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 1233,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              1.9704002672249392,
+              -0.05615086452544582,
+              0.11049
+            ],
+            "quaternion": [
+              0.9999999989070074,
+              0.0,
+              0.0,
+              -4.6754519693236775e-05
+            ],
+            "mass": 1.5652921542255296,
+            "friction": 0.5304239461342726,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.18,
+              0.2,
+              0.16
+            ],
+            "position": [
+              3.40989677834986,
+              -0.0466133702598175,
+              1.602
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.4714278768919307,
+            "friction": 0.532045362914971,
+            "fixed": false,
+            "asset": "box",
+            "color": "red",
+            "top_index": 0,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.585272782152157,
+          -0.06539544911226508,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999524055093736,
+          0.0,
+          0.0,
+          -0.009756367972626726
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          -0.0466133702598175
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0596426555654725,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "c24820bee43444fde9f36771acb662dde55d5dc7b5262f86715e47067f2117eb",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "near_boundary-seed105",
+      "seed": 105,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "near_boundary",
+      "covers": [
+        "robot_y_jitter:low",
+        "robot_yaw:high"
+      ],
+      "coordinates": {
+        "target_y": -0.056089519077352844,
+        "target_front_inset": 0.01710772305077332,
+        "stool_x": 2.013016509309526,
+        "stool_y_relative_to_target": 0.03552906738638698,
+        "stool_yaw": 0.001809502859547056,
+        "stool_mass": 1.4996661814890413,
+        "stool_friction": 0.49297144395490056,
+        "target_mass": 0.5090919513873223,
+        "target_friction": 0.5191415426666685,
+        "robot_x_jitter": -0.008762623046779217,
+        "robot_y_jitter": -0.014711955007820882,
+        "robot_yaw": 0.01993584833726465
+      },
+      "fractions": {
+        "target_y": 0.03258734102205962,
+        "target_front_inset": 0.6384653813466651,
+        "stool_x": 0.5251375775793844,
+        "stool_y_relative_to_target": 0.9441133423298372,
+        "stool_yaw": 0.5258500408506722,
+        "stool_mass": 0.4983309074452065,
+        "stool_friction": 0.18530634221286518,
+        "target_mass": 0.8787994598591368,
+        "target_friction": 0.5591648952381205,
+        "robot_x_jitter": 0.20791256510735945,
+        "robot_y_jitter": 0.009601499739303928,
+        "robot_yaw": 0.9983962084316162
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 105,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              2.013016509309526,
+              -0.02056045169096586,
+              0.11049
+            ],
+            "quaternion": [
+              0.999999590712453,
+              0.0,
+              0.0,
+              0.0009047513063390269
+            ],
+            "mass": 1.4996661814890413,
+            "friction": 0.49297144395490056,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.2,
+              0.18,
+              0.14
+            ],
+            "position": [
+              3.417107723050773,
+              -0.056089519077352844,
+              1.592
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.5090919513873223,
+            "friction": 0.5191415426666685,
+            "fixed": false,
+            "asset": "box",
+            "color": "green",
+            "top_index": 1,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.604253886262747,
+          -0.03527240669878674,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999503206552292,
+          0.0,
+          0.0,
+          0.009967759101438484
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          -0.056089519077352844
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0176039185097154,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "8f99437b5292b0d1db6ae7c97022e0dc3726be780acc049ee6e6cafe5d2ca271",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "near_boundary-seed573",
+      "seed": 573,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "near_boundary",
+      "covers": [
+        "stool_yaw:high",
+        "target_friction:low"
+      ],
+      "coordinates": {
+        "target_y": -0.04055030029541069,
+        "target_front_inset": 0.01674006272862702,
+        "stool_x": 1.9647535548329098,
+        "stool_y_relative_to_target": 0.0261523162848609,
+        "stool_yaw": 0.03445854490046604,
+        "stool_mass": 1.4060006520374395,
+        "stool_friction": 0.5191390827187619,
+        "target_mass": 0.4653200254323666,
+        "target_friction": 0.48029555221548653,
+        "robot_x_jitter": -0.007709398122274447,
+        "robot_y_jitter": 0.005586159401487052,
+        "robot_yaw": 0.013115473773907194
+      },
+      "fractions": {
+        "target_y": 0.16208083087157754,
+        "target_front_inset": 0.5925078410783774,
+        "stool_x": 0.1229462902742489,
+        "stool_y_relative_to_target": 0.8269039535607613,
+        "stool_yaw": 0.9922649271495149,
+        "stool_mass": 0.030003260187197983,
+        "stool_friction": 0.5591297531251691,
+        "target_mass": 0.3924447270262957,
+        "target_friction": 0.004222174506950707,
+        "robot_x_jitter": 0.24302006259085177,
+        "robot_y_jitter": 0.6862053133829017,
+        "robot_yaw": 0.8278868443476799
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 573,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              1.9647535548329098,
+              -0.014397984010549793,
+              0.11049
+            ],
+            "quaternion": [
+              0.9998515797569912,
+              0.0,
+              0.0,
+              0.017228420050863943
+            ],
+            "mass": 1.4060006520374395,
+            "friction": 0.5191390827187619,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.18,
+              0.2,
+              0.16
+            ],
+            "position": [
+              3.406740062728627,
+              -0.04055030029541069,
+              1.602
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.4653200254323666,
+            "friction": 0.48029555221548653,
+            "fixed": false,
+            "asset": "box",
+            "color": "red",
+            "top_index": 0,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.5570441567106355,
+          -0.00881182460906274,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999784981205163,
+          0.0,
+          0.0,
+          0.006557689885663479
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          -0.04055030029541069
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0655674228260665,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "7738c1bede0a235ca8028c8530ade7a62bee5b8060c74939b0dceee1ab07b548",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "near_boundary-seed4069",
+      "seed": 4069,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "near_boundary",
+      "covers": [
+        "stool_friction:high",
+        "stool_x:high"
+      ],
+      "coordinates": {
+        "target_y": -0.04570232100016039,
+        "target_front_inset": 0.0151557876689353,
+        "stool_x": 2.0687666421465876,
+        "stool_y_relative_to_target": -0.002486661181951587,
+        "stool_yaw": -0.006384100477951803,
+        "stool_mass": 1.4809720538392237,
+        "stool_friction": 0.5484594744851841,
+        "target_mass": 0.5075407508174992,
+        "target_friction": 0.516756040439907,
+        "robot_x_jitter": 0.009634688580918427,
+        "robot_y_jitter": 0.011666282872988758,
+        "robot_yaw": 0.014242070901027363
+      },
+      "fractions": {
+        "target_y": 0.1191473249986634,
+        "target_front_inset": 0.39447345861691246,
+        "stool_x": 0.989722017888231,
+        "stool_y_relative_to_target": 0.4689167352256052,
+        "stool_yaw": 0.40879856460068853,
+        "stool_mass": 0.4048602691961186,
+        "stool_friction": 0.9779924926454859,
+        "target_mass": 0.8615638979722128,
+        "target_friction": 0.5250862919986709,
+        "robot_x_jitter": 0.8211562860306142,
+        "robot_y_jitter": 0.8888760957662919,
+        "robot_yaw": 0.8560517725256841
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 4069,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              2.0687666421465876,
+              -0.04818898218211198,
+              0.11049
+            ],
+            "quaternion": [
+              0.9999949054119618,
+              0.0,
+              0.0,
+              -0.0031920448182470723
+            ],
+            "mass": 1.4809720538392237,
+            "friction": 0.5484594744851841,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.18,
+              0.2,
+              0.16
+            ],
+            "position": [
+              3.405155787668935,
+              -0.04570232100016039,
+              1.602
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.5075407508174992,
+            "friction": 0.516756040439907,
+            "fixed": false,
+            "asset": "box",
+            "color": "red",
+            "top_index": 0,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.678401330727506,
+          -0.03652269930912322,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999746455341985,
+          0.0,
+          0.0,
+          0.007120975267062019
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          -0.04570232100016039
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 0.9612365742802237,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "a6d565079598d8940ba5fe3c3750fc64c058cdf55cf887f0b50e2e48b8d6163f",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "interior-seed1158",
+      "seed": 1158,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "interior",
+      "covers": [
+        "size:0"
+      ],
+      "coordinates": {
+        "target_y": 0.03265253814471181,
+        "target_front_inset": 0.017981014158803127,
+        "stool_x": 1.978654278058384,
+        "stool_y_relative_to_target": -0.005527579056194262,
+        "stool_yaw": 0.005689743811146987,
+        "stool_mass": 1.5101187552167217,
+        "stool_friction": 0.5213846128666412,
+        "target_mass": 0.4887999732461887,
+        "target_friction": 0.5194014050467893,
+        "robot_x_jitter": 0.003466260983377323,
+        "robot_y_jitter": -0.005803479970051352,
+        "robot_yaw": 0.004869284538172671
+      },
+      "fractions": {
+        "target_y": 0.7721044845392651,
+        "target_front_inset": 0.7476267698503908,
+        "stool_x": 0.238785650486534,
+        "stool_y_relative_to_target": 0.4309052617975717,
+        "stool_yaw": 0.581282054444957,
+        "stool_mass": 0.5505937760836084,
+        "stool_friction": 0.5912087552377308,
+        "target_mass": 0.653333036068763,
+        "target_friction": 0.5628772149541331,
+        "robot_x_jitter": 0.6155420327792441,
+        "robot_y_jitter": 0.3065506676649549,
+        "robot_yaw": 0.6217321134543168
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 1158,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              1.978654278058384,
+              0.027124959088517545,
+              0.11049
+            ],
+            "quaternion": [
+              0.9999959533546496,
+              0.0,
+              0.0,
+              0.0028448680681765685
+            ],
+            "mass": 1.5101187552167217,
+            "friction": 0.5213846128666412,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.18,
+              0.2,
+              0.16
+            ],
+            "position": [
+              3.407981014158803,
+              0.03265253814471181,
+              1.602
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.4887999732461887,
+            "friction": 0.5194014050467893,
+            "fixed": false,
+            "asset": "box",
+            "color": "red",
+            "top_index": 0,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.5821205390417614,
+          0.021321479118466193,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999970362599747,
+          0.0,
+          0.0,
+          0.00243463986387028
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          0.03265253814471181
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0513602528035573,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "0d20b54a270c731366e042d063784e82022f0576140df0d9965bd7c7aff5351b",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "interior-seed473",
+      "seed": 473,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "interior",
+      "covers": [
+        "size:1"
+      ],
+      "coordinates": {
+        "target_y": 0.03004089265564,
+        "target_front_inset": 0.01455392663170682,
+        "stool_x": 2.0026578078997286,
+        "stool_y_relative_to_target": 0.010928529006126154,
+        "stool_yaw": -0.02177396789531168,
+        "stool_mass": 1.4790495071934116,
+        "stool_friction": 0.5202730401565099,
+        "target_mass": 0.44828095116494937,
+        "target_friction": 0.531014396060658,
+        "robot_x_jitter": 0.0020187499896717753,
+        "robot_y_jitter": -0.006521001417199669,
+        "robot_yaw": -0.004527669526648985
+      },
+      "fractions": {
+        "target_y": 0.7503407721303333,
+        "target_front_inset": 0.31924082896335254,
+        "stool_x": 0.4388150658310723,
+        "stool_y_relative_to_target": 0.6366066125765769,
+        "stool_yaw": 0.18894331578126172,
+        "stool_mass": 0.39524753596705786,
+        "stool_friction": 0.575329145092998,
+        "target_mass": 0.20312167961054858,
+        "target_friction": 0.7287770865808286,
+        "robot_x_jitter": 0.5672916663223925,
+        "robot_y_jitter": 0.28263328609334437,
+        "robot_yaw": 0.38680826183377537
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 473,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              2.0026578078997286,
+              0.040969421661766155,
+              0.11049
+            ],
+            "quaternion": [
+              0.9999407373756141,
+              0.0,
+              0.0,
+              -0.01088676888305935
+            ],
+            "mass": 1.4790495071934116,
+            "friction": 0.5202730401565099,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.2,
+              0.18,
+              0.14
+            ],
+            "position": [
+              3.4145539266317066,
+              0.03004089265564,
+              1.592
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.44828095116494937,
+            "friction": 0.531014396060658,
+            "fixed": false,
+            "asset": "box",
+            "color": "green",
+            "top_index": 1,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.6046765578894004,
+          0.034448420244566486,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999974375271765,
+          0.0,
+          0.0,
+          -0.002263832829652476
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          0.03004089265564
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0274003175080433,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "f81b1c989a763752a788889b58e5e5bda8d315ef1e5c215d30fa82849c74a4bd",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "interior-seed2445",
+      "seed": 2445,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "interior",
+      "covers": [
+        "size:2"
+      ],
+      "coordinates": {
+        "target_y": -0.010915400979078303,
+        "target_front_inset": 0.015105769630543511,
+        "stool_x": 2.020064344517994,
+        "stool_y_relative_to_target": -0.002026194155876661,
+        "stool_yaw": 0.017410375961375242,
+        "stool_mass": 1.4794717575874465,
+        "stool_friction": 0.5290887279324689,
+        "target_mass": 0.4740582106772998,
+        "target_friction": 0.5147759191948597,
+        "robot_x_jitter": -0.004946524482406511,
+        "robot_y_jitter": -0.0011916626908054888,
+        "robot_yaw": -0.008447884524574926
+      },
+      "fractions": {
+        "target_y": 0.40903832517434746,
+        "target_front_inset": 0.3882212038179389,
+        "stool_x": 0.5838695376499528,
+        "stool_y_relative_to_target": 0.47467257305154176,
+        "stool_yaw": 0.7487196565910749,
+        "stool_mass": 0.3973587879372328,
+        "stool_friction": 0.7012675418924119,
+        "target_mass": 0.48953567419222,
+        "target_friction": 0.496798845640852,
+        "robot_x_jitter": 0.3351158505864496,
+        "robot_y_jitter": 0.4602779103064837,
+        "robot_yaw": 0.28880288688562683
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 2445,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              2.020064344517994,
+              -0.012941595134954964,
+              0.11049
+            ],
+            "quaternion": [
+              0.999962110090387,
+              0.0,
+              0.0,
+              0.008705078034147978
+            ],
+            "mass": 1.4794717575874465,
+            "friction": 0.5290887279324689,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.16,
+              0.22,
+              0.18
+            ],
+            "position": [
+              3.3951057696305433,
+              -0.010915400979078303,
+              1.612
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.4740582106772998,
+            "friction": 0.5147759191948597,
+            "fixed": false,
+            "asset": "box",
+            "color": "blue",
+            "top_index": 2,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.6151178200355878,
+          -0.014133257825760453,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.999991079169146,
+          0.0,
+          0.0,
+          -0.0042239297019218405
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          -0.010915400979078303
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0099376880167537,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "ebe2ffed5fb2ac35f3eb93382c0abe87ee42a58bcb1d6ad4d6bf6872f1e36262",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    },
+    {
+      "id": "interior-seed2272",
+      "seed": 2272,
+      "episode_index": 0,
+      "split": "development",
+      "kind": "interior",
+      "covers": [
+        "size:3"
+      ],
+      "coordinates": {
+        "target_y": -0.011691927953037529,
+        "target_front_inset": 0.013913172427194004,
+        "stool_x": 1.9775609799884704,
+        "stool_y_relative_to_target": -0.004302286479143838,
+        "stool_yaw": -0.018808347698575104,
+        "stool_mass": 1.4819873386786864,
+        "stool_friction": 0.5027297019871013,
+        "target_mass": 0.4736219362059057,
+        "target_friction": 0.5054970310029395,
+        "robot_x_jitter": 0.003914562728281057,
+        "robot_y_jitter": 0.003941032212367645,
+        "robot_yaw": -0.010376119309171683
+      },
+      "fractions": {
+        "target_y": 0.4025672670580206,
+        "target_front_inset": 0.23914655339925045,
+        "stool_x": 0.22967483323725357,
+        "stool_y_relative_to_target": 0.446221419010702,
+        "stool_yaw": 0.23130931859178425,
+        "stool_mass": 0.4099366933934319,
+        "stool_friction": 0.3247100283871617,
+        "target_mass": 0.48468818006561887,
+        "target_friction": 0.3642433000419931,
+        "robot_x_jitter": 0.6304854242760353,
+        "robot_y_jitter": 0.6313677404122549,
+        "robot_yaw": 0.24059701727070795
+      },
+      "scene": {
+        "schema_version": "stool_relay/1.0",
+        "seed": 2272,
+        "episode_index": 0,
+        "split": "development",
+        "profile": "layer1_high_randomized",
+        "difficulty_layer": 1,
+        "capability_tier": "explicit",
+        "episode_length_s": 1200.0,
+        "cabinet_id": "steel_frame_shelves_01_mid",
+        "cabinet_position": [
+          3.3,
+          0.0,
+          0.0
+        ],
+        "target_id": "target",
+        "objects": [
+          {
+            "id": "stool",
+            "kind": "stool",
+            "size": [
+              0.39892,
+              0.42227,
+              0.22098
+            ],
+            "position": [
+              1.9775609799884704,
+              -0.015994214432181367,
+              0.11049
+            ],
+            "quaternion": [
+              0.9999557810829954,
+              0.0,
+              0.0,
+              -0.009404035234751277
+            ],
+            "mass": 1.4819873386786864,
+            "friction": 0.5027297019871013,
+            "fixed": false,
+            "asset": "assets/stools/folding_stool/stool.urdf",
+            "color": "neutral",
+            "top_index": null,
+            "validation_status": "unvalidated"
+          },
+          {
+            "id": "target",
+            "kind": "target",
+            "size": [
+              0.2,
+              0.2,
+              0.15
+            ],
+            "position": [
+              3.413913172427194,
+              -0.011691927953037529,
+              1.597
+            ],
+            "quaternion": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "mass": 0.4736219362059057,
+            "friction": 0.5054970310029395,
+            "fixed": false,
+            "asset": "box",
+            "color": "yellow",
+            "top_index": 3,
+            "validation_status": "unvalidated"
+          }
+        ],
+        "robot_position": [
+          1.5814755427167515,
+          -0.012053182219813722,
+          0.7566980295944118
+        ],
+        "robot_quaternion": [
+          0.9999865420486964,
+          0.0,
+          0.0,
+          -0.005188036381013563
+        ],
+        "robot_joint_positions": {
+          "left_hip_pitch_joint": -0.312,
+          "left_hip_roll_joint": 0.0,
+          "left_hip_yaw_joint": 0.0,
+          "left_knee_joint": 0.669,
+          "left_ankle_pitch_joint": -0.363,
+          "left_ankle_roll_joint": 0.0,
+          "right_hip_pitch_joint": -0.312,
+          "right_hip_roll_joint": 0.0,
+          "right_hip_yaw_joint": 0.0,
+          "right_knee_joint": 0.669,
+          "right_ankle_pitch_joint": -0.363,
+          "right_ankle_roll_joint": 0.0,
+          "waist_yaw_joint": 0.0,
+          "waist_roll_joint": 0.0,
+          "waist_pitch_joint": 0.0,
+          "left_shoulder_pitch_joint": -0.15,
+          "left_shoulder_roll_joint": 0.5,
+          "left_shoulder_yaw_joint": 0.0,
+          "left_elbow_joint": 1.0,
+          "left_wrist_roll_joint": 0.0,
+          "left_wrist_pitch_joint": 0.0,
+          "left_wrist_yaw_joint": 0.0,
+          "right_shoulder_pitch_joint": -0.15,
+          "right_shoulder_roll_joint": -0.5,
+          "right_shoulder_yaw_joint": 0.0,
+          "right_elbow_joint": 1.0,
+          "right_wrist_roll_joint": 0.0,
+          "right_wrist_pitch_joint": 0.0,
+          "right_wrist_yaw_joint": 0.0,
+          "left_hand_thumb_0_joint": 0.0,
+          "left_hand_thumb_1_joint": 0.0,
+          "left_hand_thumb_2_joint": 0.0,
+          "left_hand_middle_0_joint": 0.0,
+          "left_hand_middle_1_joint": 0.0,
+          "left_hand_index_0_joint": 0.0,
+          "left_hand_index_1_joint": 0.0,
+          "right_hand_thumb_0_joint": 0.0,
+          "right_hand_thumb_1_joint": 0.0,
+          "right_hand_thumb_2_joint": 0.0,
+          "right_hand_middle_0_joint": 0.0,
+          "right_hand_middle_1_joint": 0.0,
+          "right_hand_index_0_joint": 0.0,
+          "right_hand_index_1_joint": 0.0
+        },
+        "goal_center": [
+          0.6,
+          1.2
+        ],
+        "goal_size": [
+          0.6,
+          0.6
+        ],
+        "board_height": 0.9,
+        "target_shelf_height": 1.52,
+        "support_zone_center": [
+          3.03,
+          -0.011691927953037529
+        ],
+        "support_zone_half_size": [
+          0.2,
+          0.26
+        ],
+        "requested_transport_m": 1.0524478136761828,
+        "validation_status": "unvalidated_layer1_high_randomized_scene",
+        "sampling_attempts": 1,
+        "rejected_candidates": []
+      },
+      "scene_sha256": "e68618f1838ca58fbd676b7f37cf05601c02a64335a4542405ba1d9854cf1b5a",
+      "geometry_errors": [],
+      "physical_trial_status": "pending",
+      "physics": {
+        "self_collision": false,
+        "torsional_friction": false,
+        "elliptic_friction": false,
+        "noslip_iterations": 0
+      }
+    }
+  ]
+}

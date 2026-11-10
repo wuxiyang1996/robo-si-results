@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="22 个选定任务。利用环境支撑改变自己的工作位置，判断可达、载荷、落脚与重心边界，完成取物、安全返回和地面交付。允许自主中转及其他合法完整路线。" name="description"/>
+<title>H1 · 自主登高、工具使用与身体适配</title>
+<link href="contribute.css" rel="stylesheet"/>
+<style>video{display:block;width:100%;max-width:960px;background:#111;border-radius:12px}td{vertical-align:top}.evidence{overflow-wrap:anywhere}</style>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex, nofollow, noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-h1-en.html">English</a></div></header><aside class="document-notice"><div class="wrap">本页保留历史任务设计与验收说明。视频统一移至最终交付的 Nyx 8× 任务页；<a href="/robo-si-results/infra/archive-task-h1-zh.html">历史原页存档</a></div></aside>
+<main id="main"><section id="retrieval-family-current"><div class="wrap"><h2>H1 当前任务：22 个选定独立任务</h2><p>20 项已有场景拆分＋2 项新增操作：自主中转与安全返回、窄工作区身体适配。原 H1S-07／10／11 仅作分组，不重复计数。不新增两种身体／手共同可解的简单校准任务。所有满足最终目标和公开约束的合法完整解均计成功，参考路线不是隐藏评分条件。</p><div class="table-wrap"><table><thead><tr><th>ID</th><th>任务</th><th>证据范围</th></tr></thead><tbody><tr><td>H1S-01</td><td>原版</td><td>原范围参考</td></tr><tr><td>H1S-02</td><td>G1 五指灵巧手</td><td>unknown</td></tr><tr><td>H1S-03</td><td>轮式＋斜坡</td><td>unknown</td></tr><tr><td>H1S-04</td><td>A3</td><td>unknown</td></tr><tr><td>H1S-05</td><td>G1 两层阶梯，A3 一层</td><td>unknown</td></tr><tr><td>H1S-06</td><td>完成不了的 case</td><td>unknown</td></tr><tr><td>H1S-07.P1</td><td>推箱清路后取物</td><td>unknown</td></tr><tr><td>H1S-07.P2</td><td>推箱到位作平台</td><td>unknown</td></tr><tr><td>H1S-07.P3</td><td>转角或换侧推箱</td><td>unknown</td></tr><tr><td>H1S-07.P4</td><td>抬不起但能推到目标区</td><td>unknown</td></tr><tr><td>H1S-08</td><td>Stretch＋有把手箱</td><td>unknown</td></tr><tr><td>H1S-09</td><td>Stretch 拒答 case</td><td>unknown</td></tr><tr><td>H1S-10.A</td><td>G1 多箱选择与布置</td><td>unknown</td></tr><tr><td>H1S-10.B</td><td>A3 多箱选择与布置</td><td>unknown</td></tr><tr><td>H1S-10.C</td><td>轮式平台与坡道选择</td><td>unknown</td></tr><tr><td>H1S-10.D</td><td>Stretch 工作／中转箱选择</td><td>unknown</td></tr><tr><td>H1S-11.A</td><td>直接可取场景</td><td>unknown</td></tr><tr><td>H1S-11.B</td><td>工具扩展取物能力</td><td>unknown</td></tr><tr><td>H1S-11.C</td><td>工具也无法完成并退出</td><td>unknown</td></tr><tr><td>H1S-12</td><td>同色干扰</td><td>unknown</td></tr><tr><td>H1S-13</td><td>自主中转与安全返回</td><td>unknown</td></tr><tr><td>H1S-14</td><td>窄工作区身体适配</td><td>unknown</td></tr></tbody></table></div><p>2 kg 是当前新设计的保守载荷筛选上界，适用部件、姿态和动态条件仍需核验；它不是整机质量上限，也不自动认证任一身体。不可完成时允许全员实际进入 Q、空手独立停稳 3 秒；正确放弃需完整路线排除证据，未知不算已认证无解。</p><p><a href="/robo-si-results/infra/task-h1-zh.html#h1-selected-scope">完整任务卡</a> · <a href="/robo-si-results/infra/task-families-zh.html">H1 / M1 / M3</a> · <a href="/robo-si-results/infra/planning/current-task-registry.json">JSON</a></p><p>已按用户要求启动实现与 Gamma GPU 开发验证；逐次结果及详细要求见下方实施记录。原参考评分和证据范围保留。</p></div></section><section id="h1-implementation"><div class="wrap"><h2>22 项实施与 Gamma GPU 验证</h2><p>实现合同、候选专家计划、真实物理运行及正式准入分别记录。以下只报告本轮证据；旧 H1 的成功率不转移到新场景。</p><p>22 项实施已启动，候选 high/low-level 合同已生成。当前保留 14 个作业，11 个有已封存物理记录（含 3 个诊断运行），0 项有本轮原生评分完整见证；另有 6 个被动资产检查单独记录。诊断运行和资产检查不能计完整任务见证；不表示全部任务完成或正式准入。</p><p>原发布标准的五条共用安全规则也属于验收范围；v3 起已记录并独立复核原五规则所需通道；早期缺失不补作通过。仅通过几何、速度和执行器峰值检查，不等于已通过全部发布规则。</p><div class="table-wrap"><table><thead><tr><th>任务</th><th>作业</th><th>类别</th><th>执行状态</th><th>物理结论</th></tr></thead><tbody><tr><td>H1S-07.P4</td><td>8034725</td><td>任务尝试</td><td>FAILED</td><td>物理启动前失败，保留异常，不计物理执行。</td></tr><tr><td>H1S-07.P4</td><td>8034773</td><td>任务尝试</td><td>FAILED</td><td>有真实物理记录，未通过完整成功判定。 原因：missing_or_invalid_evidence:FileNotFoundError:[Errno 2] No such file or directory: 'humanoid/g1_support_retrieval/extension/validation/attempt-8034773/execution_identity.json', original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.004651170rad &gt; original_standard=0.001rad 日志最近实测 t=241 s，阶段 hold_both。</td></tr><tr><td>H1S-07.P4</td><td>8034839</td><td>任务尝试</td><td>COMPLETED</td><td>有真实物理记录，未通过完整成功判定。 原因：actuator_max_position_overshoot, original_five_safety_rules_unknown, original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.004584532rad &gt; original_standard=0.001rad 日志最近实测 t=248 s，阶段 hold_both。</td></tr><tr><td>H1S-07.P4</td><td>8034905</td><td>任务尝试</td><td>COMPLETED</td><td>有真实物理记录，未通过完整成功判定。 原因：actuator_max_position_overshoot, original_five_safety_rules_unknown, original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.004719417rad &gt; original_standard=0.001rad 日志最近实测 t=235 s，阶段 hold_both。</td></tr><tr><td>H1S-07.P4</td><td>8035059</td><td>任务尝试</td><td>FAILED</td><td>有真实物理记录，未通过完整成功判定。 原因：actuator_max_position_overshoot, original_five_safety_rules_unknown, original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.004585128rad &gt; original_standard=0.001rad 日志最近实测 t=246 s，阶段 hold_both。</td></tr><tr><td>H1S-07.P4</td><td>8035603</td><td>短程诊断</td><td>FAILED</td><td>短程控制器诊断，不计完整任务见证。有真实物理记录，未通过完整成功判定。 原因：final_released_stable_dwell_too_short, original_five_safety_rules_unknown, original_five_rule_safety_failed_or_coverage_not_verified 日志最近实测 t=19 s，阶段 planned_steps_both。</td></tr><tr><td>H1S-07.P4</td><td>8035684</td><td>任务尝试</td><td>CANCELLED by 17237</td><td>排队期间取消，以纳入启动前审查修正；零物理步。</td></tr><tr><td>H1S-07.P4</td><td>8035717</td><td>任务尝试</td><td>COMPLETED</td><td>有真实物理记录，未通过完整成功判定。 原因：original_five_safety_rules_failed, original_five_rule_safety_failed_or_coverage_not_verified 日志最近实测 t=250 s，阶段 hold_both。</td></tr><tr><td>H1S-07.P4</td><td>8035839</td><td>任务尝试</td><td>COMPLETED</td><td>有真实物理记录，未通过完整成功判定。 原因：original_five_safety_rules_failed, original_five_rule_safety_failed_or_coverage_not_verified 日志最近实测 t=262 s，阶段 hold_both。</td></tr><tr><td>H1S-07.P4</td><td>8035840</td><td>任务尝试</td><td>COMPLETED</td><td>有真实物理记录，未通过完整成功判定。 原因：actuator_max_position_overshoot, original_five_safety_rules_failed, original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.003747418rad &gt; original_standard=0.001rad 日志最近实测 t=252 s，阶段 hold_both。</td></tr><tr><td>H1S-07.P4</td><td>8036294</td><td>短程诊断</td><td>COMPLETED</td><td>短程控制器诊断，不计完整任务见证。有真实物理记录，未通过完整成功判定。 原因：actuator_max_position_overshoot, diagnostic_or_partial_start_never_full_witness, final_released_stable_dwell_too_short, exact_physics_command_coverage_mismatch, diagnostic_or_partial_start_never_full_witness, joint_position_overshoot=0.002765279rad &gt; original_standard=0.001rad 日志最近实测 t=125 s，阶段 stand_up_both。 独立诊断报告：未通过。</td></tr><tr><td>H1S-07.P4</td><td>8036707</td><td>短程诊断</td><td>COMPLETED</td><td>短程控制器诊断，不计完整任务见证。有真实物理记录，未通过完整成功判定。 原因：diagnostic_or_partial_start_never_full_witness, final_released_stable_dwell_too_short, diagnostic_or_partial_start_never_full_witness 日志最近实测 t=24 s，阶段 hold_both。 独立诊断报告：通过。</td></tr><tr><td>H1S-07.P4</td><td>8036941</td><td>任务尝试</td><td>RUNNING</td><td>作业运行或排队中；尚无已封存物理结果。</td></tr><tr><td>H1S-01</td><td>8034801</td><td>原基线复跑</td><td>FAILED</td><td>有真实物理记录，未通过完整成功判定。 本次原始专家在放置准备时接触 QP 迭代达到上限；完整动作链未完成。 日志最近实测 t=434.22 s，阶段 walk:gate。</td></tr></tbody></table></div><p><a href="planning/h1-extension/execution-progress.json">Execution ledger JSON</a> · <a href="planning/h1-extension/implementation-status.json">Requirements JSON</a> · <a href="planning/h1-extension/implementation-contracts.json">High / low-level candidate plans</a></p><p><a href="planning/h1-extension/embodiment-selection.md">当前身体与手型选择：Stretch 3、Dex3 与 Inspire</a> · <a href="planning/h1-extension/g1-matched-body-audit.json">G1 matched-body static audit</a></p><h3>官方资产接入与短物理检查</h3><p>6 个开发身体候选已完成 Gamma GPU 被动物理加载检查；没有稳定、行走或操作控制器，任务成功为 null。导入器碰撞过滤与惯量近似保留在审计中，不算 22 项完整成功。</p><div class="table-wrap"><table><thead><tr><th>模型</th><th>物理步／仿真秒</th><th>末态线速度 m/s</th><th>中性碰撞过滤对数</th></tr></thead><tbody><tr><td>a3_t3d0</td><td>400 / 2</td><td>0.597261</td><td>10</td></tr><tr><td>stretch4_francis_sg4</td><td>400 / 2</td><td>0.000139</td><td>22</td></tr><tr><td>g1_inspire_DFQ</td><td>400 / 2</td><td>0.511504</td><td>2</td></tr><tr><td>galaxea_r1_v2_1_0</td><td>400 / 2</td><td>0.001478</td><td>5</td></tr><tr><td>stretch3_SE3_dw3_sg3</td><td>400 / 2</td><td>0.000000</td><td>23</td></tr><tr><td>g1_rev1_Dex3</td><td>400 / 2</td><td>1.082938</td><td>0</td></tr></tbody></table></div><p><a href="planning/h1-extension/asset-sources.md">固定版本、许可证与来源</a> · <a href="planning/h1-extension/asset-sources.json">JSON</a> · <a href="planning/h1-extension/asset-smoke-evidence/manifest.json">原始状态、日志与哈希</a></p><h3>三指／五指局部驱动实测</h3><p>两型各 800 步／4 秒。夹具显式锁定身体，零重力、无地面；只检查小幅手指指令和 mimic 耦合，不是抓取、平衡或 H1 任务成功。</p><div class="table-wrap"><table><thead><tr><th>手型／作业</th><th>局部指标</th><th>最大关节越限 mrad</th><th>保持跟踪误差 mrad</th><th>mimic 残差 mrad</th></tr></thead><tbody><tr><td>dex3 / 8036535_0</td><td>通过</td><td>0.057</td><td>0.270</td><td>N/A</td></tr><tr><td>inspire / 8036535_1</td><td>未通过</td><td>0.741</td><td>10.777</td><td>0.0437</td></tr></tbody></table></div><p>Inspire 的 12 个从属关节直接控制力为零，mimic 误差满足 1 mrad；当前拇指跟踪误差 10.777 mrad 超过预声明的 10 mrad，因此本控制配置未通过。</p><figure><img alt="Measured local finger commands, response and mimic residual with declared bounds" loading="lazy" src="planning/h1-extension/hand-drive-diagnostic.png" style="width:100%;height:auto"/></figure><p><a href="planning/h1-extension/hand-drive-review.md">完整局部审查、固定条件与原始状态下载</a> · <a href="planning/h1-extension/hand-drive-review.json">JSON</a> · <a href="planning/h1-extension/hand-drive-evidence/manifest.json">SHA-256 manifest</a></p><p><a href="planning/h1-extension/trajectory-viewer.html">打开交互轨迹浏览器：时间轴、high/low-level 阶段与实测位置</a></p><p><a href="planning/h1-extension/resource-allocation.json">Gamma allocation ledger</a> · <a href="../humanoid/g1_support_retrieval/extension/expert-runtime-source-guide.json">Expert source and data-flow index</a> · <a href="../humanoid/g1_support_retrieval/extension/v3-repeat-identity-audit.json">Frozen repetition identities and GPU differences</a></p><h3>实测专家执行：计划、轨迹与失败审计</h3><p>作业 8035717 尚未形成合规完整见证。图和视频展示真实运动，不能代替严格判定。失败、缺失和原始技能边界未知均保留在报告中。</p><figure><img alt="Measured trajectory and contact forces; read the corresponding strict outcome" loading="lazy" src="planning/h1-extension/p4-evidence/attempt-8035717/trajectory_overview.png" style="width:100%;height:auto"/><figcaption>连续实测：物体位置、D 边界余量、速度和支撑力。</figcaption></figure><p>视频为压缩预览；全量数值轨迹为无损原数据，原视频哈希和保存位置见清单。</p><p class="current-video-link"><a href="/robo-si-results/infra/families/H1.html">查看最终交付的 Nyx 8× 录像 →</a></p><p><a href="planning/h1-extension/p4-evidence/attempt-8035717/outcome.json">Strict outcome</a> · <a href="planning/h1-extension/p4-evidence/attempt-8035717/expert-plan.json">High / low plan</a> · <a href="planning/h1-extension/p4-evidence/attempt-8035717/plan_mapping.json">Observed plan mapping</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/infra--planning--h1-extension--p4-evidence--attempt-8035717--execution--trace.json.gz">Full state trajectory · gzip</a></p><p>站点保留全量状态轨迹；完整关节、控制及逐物理步数组保存在共享工作区，路径及哈希见证据清单。站点容量上限为 256 MiB。</p><p><a href="planning/h1-extension/p4-evidence/manifest.json">Local evidence export and SHA-256 manifest</a> · <a href="planning/h1-extension/hosted-evidence-manifest.json">Hosted subset and local-only paths</a> · <a href="planning/h1-extension/baseline-execution-8034801.md">Frozen baseline execution report</a> · <a href="planning/h1-extension/baseline-execution-8034801.json.gz">Baseline high / low / trajectory mapping</a></p><h3 id="h1-implementation-requirement-0">H1 22 项实现要求与证据账本</h3>
+<!-- official-asset-update -->
+<p><strong>本轮资产补齐：</strong> 六组独立Gamma被动检查均已完成400步／2秒、401状态：A3 T3.0、历史Stretch 4、G1＋Inspire DFQ、Galaxea R1、当前Stretch 3以及官方G1 rev1.0＋Dex3-1。R1 mesh 许可／再分发缺口保留。详见 <a href="/robo-si-results/infra/planning/h1-extension/asset-sources.md">官方资产与实测报告</a>、<a href="/robo-si-results/infra/planning/h1-extension/asset-sources.json">JSON</a>。当前选型表已按用户资料更新；Stretch 3作业8036300与官方Dex3作业8036343结果已单列，旧Stretch 4不替代它。有模型不等于手部／传感器／控制器和任务配置已冻结。导入器中性碰撞过滤、惯量近似和无稳定控制均明确保留；这些检查不算任务成功。</p>
+<p><strong>手部驱动另记两组：</strong> 官方Dex3-1与Inspire DFQ各完成800步／4秒、801状态的隔离驱动实验，不加入上面的6组被动检查，也不计H1任务成功。fixture锁定29个身体关节、固定根、零重力、无地面，手部关节XML原样保留。Dex3的14个候选驱动局部响应指标通过；Inspire的12个mimic等式已实测，最大残差 <strong>0.043744 mrad</strong>、followers直接控制力全部为0，不能再泛称耦合未验证。Inspire当前PD左拇指hold跟踪误差 <strong>10.7767 mrad &gt; 10 mrad</strong> 预声明门槛，局部整体判据未通过；这要求控制修订，不证明模型不可行。抓取/接触、全身平衡、真实硬件电机映射、传感器和完整任务仍未验。见<a href="/robo-si-results/infra/planning/h1-extension/hand-drive-review.md">手部驱动实测</a>、<a href="/robo-si-results/infra/planning/h1-extension/hand-drive-review.json">数值与来源</a>、<a href="/robo-si-results/infra/planning/h1-extension/asset-and-hand-package.json">本地资产与手部证据包清单</a>。</p>
+<!-- /official-asset-update -->
+<p>2026-10-27 · <code>h1-implementation-status/1</code> · 作者侧开发材料</p>
+<p>本轮用户已明确授权 <strong>Gamma GPU + sub-agent 实现和物理验证</strong>。这覆盖旧设计文档中的“暂停/不恢复仿真”描述。当前 22 项的编号和计数保持不变，H1S-07/10/11 仅是分组；Go1+臂和额外共同可解校准任务不在范围内。</p>
+<p>本文件记录可执行实现应满足的要求及资产审计快照，不把候选专家链、代码生成结果、静态测试或已有历史轨迹记作本轮新成功。真实运行以独立 manifest、Slurm/GPU 身份和原始轨迹为准；主线程可在执行结束后将它们绑定至本账本。原 14 项统计、历史 H1 分数、失败记录与未签人工准入保持不变。</p>
+<p><a href="/robo-si-results/infra/planning/h1-extension/implementation-status-en.md">English</a> · <a href="/robo-si-results/infra/planning/h1-extension/implementation-status.json">机器可读账本</a> · <a href="/robo-si-results/infra/planning/h1-extension/selected-scope.md">22 项任务</a> · <a href="/robo-si-results/infra/planning/acceptance-policy.json">验收政策</a> · <a href="/robo-si-results/infra/acceptance-zh.html">任务验收</a> · <a href="/robo-si-results/infra/protocol-zh.html">评测规程</a></p>
+<h3 id="h1-implementation-requirement-1">最新用户选型：保持已执行证据身份</h3>
+<p>用户补充官方资料后，明确以 <strong>G1 29DoF＋Dex3-1 为主线，Inspire 五指为优先对照</strong>，Stretch方向按 <strong>Stretch 3</strong> 的硬件资料继续。A3官方T3.0已缓存并有被动物理导入，可作为当前开发候选。官方IsaacLab对Dex3/Inspire的支持和XR对BrainCo的支持是平台能力资料，不等于这些手已经接入本项目Genesis专家控制。</p>
+<p>先前Stretch 4的400步/2秒probe保留为探索证据，<strong>不能替代Stretch 3</strong>。Stretch 3官方来源正按 <code>stretch_urdf@c8c6e27e1f87db126118049f22611399253cbe2b</code>、<code>stretch_mujoco@c78d6a1cd79bb5ead1b679610299563c1a91124a</code> 做独立身份和身体对照审计；尚不据此宣称夹爪/传感器/控制器或取物链可用。所有P4 v2/v3以及已冻结v4 profile保留原模型/物性/控制身份，不因选型补充改写历史运行。当前矩阵已更新为Stretch 3与Inspire DFQ等明确候选。见<a href="/robo-si-results/infra/planning/h1-extension/embodiment-selection.md">正式选型与来源</a>、<a href="/robo-si-results/infra/planning/h1-extension/g1-matched-body-audit.json">同身体换手审计</a>、<a href="/robo-si-results/infra/planning/h1-extension/stretch3-asset-review.md">Stretch 3实测</a>、<a href="/robo-si-results/infra/planning/h1-extension/g1-dex3-asset-review.md">官方Dex3实测</a>。</p>
+<h3 id="h1-implementation-requirement-2">当前实测结论：新增合规完整见证为 0</h3>
+<ul>
+<li><strong>H1S-01 / 8034801：</strong> 原冻结入口真实运行 434.22 s，86844 个物理步、21712 状态；放凳对齐遇 <code>contact QP maximum iterations reached</code>，原判分 0.1925、非 VOID、未完成。原约束检查通过不代表任务成功；一次规划失败也不是不可解证书。见 <a href="/robo-si-results/infra/planning/h1-extension/baseline-execution-8034801.json.gz">完整失败映射</a>。</li>
+<li><strong>H1S-07.P4 / 8034839：</strong> 真实运行 248.62 s、49724 个物理步、12432 状态；5 kg 目标确实完整进入 D、撤手且稳定驻留 6.46 s。但是实际关节最大超限 <strong>4.585 mrad &gt; 原 1 mrad</strong>，严格 <code>task_success=false</code>。旧 checker 曾误用 20 mrad，旧成功 verdict、源代码均保留并标为被严格重评取代。几何动作完成不等于合规完整见证。</li>
+<li><strong>三层语义审查：</strong> 原 v7 宏段 16 过／5 失败，展开叶动作 43 过／11 失败／3 未知；3 次 Touch 出口 raw 双手接触力为零，前两次 Push 端点速度未达到原技能条件，6 次名义 land 标签结束后 0.02 s 才实测落地，3 个内部标签缺失。v8 恢复原 1 mrad 执行器规则并保留所有叶结论。完整 PlannedSteps 的双足真实抬起、前移、落地已有测量，但不能将整个原细分合同称为通过。</li>
+<li><strong>后验宏解释：</strong> 新增 Touch＋Push＋Retreat、足步重定位及终态释放的连续宏映射，按原记录边界保留 high/low/trajectory、原始状态、数值与全体叶失败。宏效果确有测量支持；这份定义是在看见结果后开发，不能替代原叶合同或清除执行器超限。见 <a href="/robo-si-results/infra/planning/h1-extension/p4-evidence/attempt-8034839/observed_macro_mapping.json.gz">后验宏映射</a>。</li>
+<li><strong>身份和录像：</strong> 110 个冻结源文件、101 个独立复制资产 hash 无偏差，资产 pre/post 一致；物理命令 49724×81、关节状态 12432×50 连续，归档 verifier 身份匹配。已由助手抽看双视角视频和末帧，人工签审仍 pending；录像不能证明精确载荷和执行器合规。</li>
+<li><strong>其他证据：</strong> 六组模型 passive probe 仅证明导入后 2 s 有限状态动力学；两组手部隔离驱动另计，证明限定fixture的驱动/耦合响应，均不是抓取、行走或任一 H1 完整任务成功；导入碰撞过滤、惯量近似、未稳控和许可证限制逐项保留。其余未执行范围维持 unknown。</li>
+</ul>
+<p>三次原 v2 全程均已完成并保留：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>作业</th>
+<th style="text-align: right;">仿真秒</th>
+<th style="text-align: right;">最大关节越限</th>
+<th>原1mrad任务判定</th>
+<th>原细叶段（过/失败/未知）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8034839</td>
+<td style="text-align: right;">248.62</td>
+<td style="text-align: right;">4.585 mrad</td>
+<td>失败</td>
+<td>43 / 11 / 3</td>
+</tr>
+<tr>
+<td>8034905</td>
+<td style="text-align: right;">235.40</td>
+<td style="text-align: right;">4.719 mrad</td>
+<td>失败</td>
+<td>45 / 9 / 3</td>
+</tr>
+<tr>
+<td>8035059</td>
+<td style="text-align: right;">246.78</td>
+<td style="text-align: right;">4.585 mrad</td>
+<td>失败</td>
+<td>43 / 11 / 3</td>
+</tr>
+</tbody>
+</table></div>
+<p>三次都达成几何交付，但原五规则所需完整接触/足底几何/实际有符号扭矩时间序列缺失，安全覆盖保持 unknown。三次 source/asset hash 与实际快照均一致；这是 <strong>0/3 合规完整见证</strong>，不是 3 次任务成功。见 <a href="/robo-si-results/infra/planning/h1-extension/p4-v2-independent-review-summary.json">独立复核汇总</a>。新 v3 增加指令余量与原安全记录器，20 s 前缀最大超限 0.493 mrad；三次完整作业随后都真实执行，结果见下表。前缀不算全程成功。</p>
+<p>v3 原五安全规则已完整测量，三次仍为真实失败：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>作业</th>
+<th style="text-align: right;">仿真秒</th>
+<th style="text-align: right;">最大关节越限</th>
+<th>原五规则失败</th>
+<th>r3宏效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8035717（A4000）</td>
+<td style="text-align: right;">250.62</td>
+<td style="text-align: right;">0.474 mrad，位置约束通过</td>
+<td>右肘向上限推 8.00 s</td>
+<td>8段效果实测通过，但安全门失败</td>
+</tr>
+<tr>
+<td>8035839（A5000）</td>
+<td style="text-align: right;">262.76</td>
+<td style="text-align: right;">0.562 mrad，位置约束通过</td>
+<td>右肘向上限推 5.14 s</td>
+<td>尾段clear_hands有0.04s双足失载</td>
+</tr>
+<tr>
+<td>8035840（A5000）</td>
+<td style="text-align: right;">252.18</td>
+<td style="text-align: right;">3.747 mrad，位置约束失败</td>
+<td>左肘向上限推，最长4.44 s</td>
+<td>尾段也有双足失载样本</td>
+</tr>
+</tbody>
+</table></div>
+<p>这里“限位推”按原规则判：距物理限位≤0.02 rad、向外实际控制力矩超过限额50%、持续至少2 s；不是只检查角度未越过硬限位。第二次右肘实际角度2.07451–2.08015 rad，物理上限2.0944 rad，力矩12.51–20.07 Nm（限额25 Nm）。其双足失载为240.42/240.44s两样本，0.04s未达到原near-fall规则0.06s，因此原rule1不触发，但预先声明的作者宏“每个采样至少一足支撑”仍判失败，不事后放宽。</p>
+<p>三次独立source/asset/pre-post/manifest身份核验全部一致；原五规则coverage完整但判失败，<strong>新增合规完整见证仍为0</strong>。见<a href="/robo-si-results/infra/planning/h1-extension/p4-v3-independent-review-summary.json">独立v3审查及数值失败细节</a>。v4修复与诊断结果见下；所有旧失败保留，原物理限制和安全阈值不变。</p>
+<p>v4诊断8036294已按预声明wall预算停止于125.84模拟秒，StandUp尚未完成：原五规则对已记录区间通过，但腰俯仰实际越限2.765mrad（原门槛1mrad），104.16/104.18秒双足失载，且中断末端的精确physics command覆盖不完整；不能称诊断通过。肘参考≤2.0rad和末段手指参考内缩≥.06rad实测通过，仅证明这两项指令修复。见<a href="/robo-si-results/infra/planning/h1-extension/p4-v4-independent-review-summary.json">独立v4审查</a>。</p>
+<p>新v5是另一个<strong>运行前预声明</strong>的合法专家路线：前两轮仍推动、撤手、移步；末轮推动和撤手后，直接安全蹲姿settle并保持6秒，省去为下一次推动准备的无用移步及末段起立。原任务不要求站立，但原五规则、1mrad、逐帧足支撑、目标D和3秒驻留全部保留。单cycle fresh-start诊断8036707已提交，合同SHA <code>58151ac4781bb43abf65978928a692ae315f0ed7ed4f0f7830a95c18d76c60d5</code>；它本身永不算完整任务见证，完整三轮仍须原始起点新跑。</p>
+<p>本轮P4的精确范围是单seed无把手宽箱：目标材质friction=.5，继承plane材质friction=.1，不将二者推断成接触对有效摩擦。.5不是“整个场景摩擦”。5kg超过公开2kg搬举载荷规则，不是机械上无法抬5kg的证明。三次为A4000/A5000上的同配置重复，不宣称同GPU确定性复现；把手配对、随机分布、sensor-only及正式准入仍未完成。</p>
+<p>原 D／公开规则／预算在运行前冻结；细粒度语义审查是在作业启动后逐步开发，明确为 development/post-hoc audit，不回写成三次运行前全已声明。8034725 启动缺依赖、8034773 旧 recorder 诊断、同控制器其他重复及后续控制器修复分别保留，不跨修订合并成功率。新控制器只可调整规划和指令余量，不能放宽硬件或 1 mrad 规则；结果到齐后继续刷新。<a href="/robo-si-results/infra/planning/h1-extension/implementation-code-review.json">独立代码审查</a>保留修复前后哈希与反例。</p>
+<p>v5单轮诊断8036707已独立通过：24.76模拟秒／4952物理步，最大实际关节越限0.00786mrad，原五安全规则完整通过；3个预声明宏都有实测效果与连续共享轨迹，settle稳定1.02秒、Hold6.02秒。原细叶仍4通过／2失败（名义Touch退出同时接触、名义Push退出速度），没有改写成全过。D未达，因此<strong>依然0完整任务见证</strong>。完整三轮8036941已从原始起点按预冻结合同提交；结果待独立审查。见<a href="/robo-si-results/infra/planning/h1-extension/p4-v5-diagnostic-independent-summary.json">独立v5诊断</a>。</p>
+<h3 id="h1-implementation-requirement-3">1. 最小交付与物理含义</h3>
+<p>每个声明可完成的任务/具体配置至少需要一个从生成器原始起点开始、由动作接口驱动的连续完整成功见证，以及可核对的 high-level → low-level → trajectory 映射。专家可读真值并调用 IK/FK/WBC，但不能在首个物理步后写关节/物体状态、瞬移、隐藏固定或改变物性/执行器限制。新控制器必须有自己的执行证据。至少一个完整见证是设计可行性门槛；代表配置三次独立初始化重复、每条日志三次判分、人工审阅和第二人复现分别报告。</p>
+<p>“物理验证”在本项目指真实运行 Genesis 动力学、记录动作与接触及状态，不等于实体机器人实验。Gamma CUDA 设备使用要从作业和运行日志核实，不能仅凭提交了 GPU 请求宣称已运行。物理日志、动作日志与录像共享时间轴；视频人工审阅未完成时保持 pending。</p>
+<p>高层计划记录目标、候选路线、必要资源、公开约束和未知项。低层段记录动作/控制器、入口/出口、接触、抓持、支撑、速度及预算。trajectory 保存实际发出的动作与仿真测得状态，而不是仅有期望关键点。每段绑定 run_id、step 起止、父高层节点、源代码与场景身份。必须检查真实段间状态，不能用检查点拼接冒充全程。</p>
+<h3 id="h1-implementation-requirement-4">2. 冻结预算与执行顺序</h3>
+<p>下面为开发预算提案，<strong>只有写入具体任务运行 manifest 后才生效</strong>，不得事后反称已预声明：单实例静态/局部筛查墙钟 60 s、最多 3 条候选路线、最多 2 次短物理探针、每次不超过 1000 物理步；每个代表配置最多 3 次完整运行，每次单独 run_id，墙钟上限 3600 s。完整运行仿真时限继承所选 runtime 的任务上限，须在运行 manifest 写为数值。token、观测、控制步与 reset 预算同样在 runnable manifest 冻结；未冻结不得宣称正式 agent 评测。</p>
+<p>完整运行和筛查是分别预声明的工作，短探针耗尽不自动升级全程。开发参数修订可以继续，但必须新建 manifest，保留之前所有尝试、失败、超时和来源。三次重复不等于三个独立 seed。正式抽样不能换掉失败 seed；自生成开发场景须保留采样和拒绝原因。</p>
+<p>推荐顺序是：先用现有 G1/Dex3 验证原 H1 绑定及中转/推箱可复用链，再做 G1 新任务场景；官方五指/A3/Stretch 3已完成资产选择和被动检查，按剩余驱动、接触与稳定控制缺口推进，轮式候选继续明确任务绑定。这个顺序只影响调度，不减少 22 项目标。</p>
+<h4 id="h1-implementation-requirement-5">已冻结的首个执行配置：H1S-07.P4</h4>
+<p>实际数值见 <a href="/robo-si-results/humanoid/g1_support_retrieval/extension/p4-development.json"><code>p4-development.json</code></a>，只适用于 <code>g1_dex3_ground_push_v1</code>。1 张 Gamma GPU；每次墙钟 3600 s、仿真 600 s，physics dt=0.005 s、control dt=0.02 s，最多 120000 物理步/30000 控制步，1 条候选、筛查 60 s、0 个短探针、0 次中途 reset，计划 3 次代表重复。确定性专家不调用语言模型，因此 token budget 为 null 并有明确原因；每控制步真值观测，上限 30000。</p>
+<p>目标是 0.45×0.50×0.18 m、5 kg 的地面箱；初始中心 (2.30,0,0.09)，D 中心 (2.66,0)、大小 (0.60,0.70) m。公开规则是<strong>搬举载荷上限 2 kg，允许地面承托推动</strong>；这不构成机器人“物理上抬不起 5 kg”的证明。验证完整目标 AABB、地面独立承托、脱离手接触、速度及连续 3 s 驻留。runner 已真实执行；8034839 几何终态完成但原 1 mrad 执行器规则不通过，当前仍无新增合规完整见证。新运行不继承旧推箱的成功标签。</p>
+<p>可执行候选合同编译入口为 <code>python -m infra.h1_tasks compile --out infra/planning/h1-extension/implementation-contracts.json</code>，输出 22 项 <code>h1-execution-contract-catalog/1</code>。其专家计划包含子目标、低层动作、前后条件及支撑/接触约束，trajectory 在真实执行前保持 null。编译与证据检查代码不等同控制器、场景或物理运行完成。</p>
+<h3 id="h1-implementation-requirement-6">3. 当前资产与控制器审计</h3>
+<p>官方静态选型已明确，初始“未找到/待选”快照仅保存在JSON的 <code>initial_asset_inventory_history</code>。下面列当前事实及剩余控制工作；<a href="/robo-si-results/infra/planning/h1-extension/embodiment-selection.json">选型</a>与<a href="/robo-si-results/infra/planning/h1-extension/g1-matched-body-audit.json">同身体审计</a>保留精确commit、模型、mesh及许可信息。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>当前事实</th>
+<th>剩余实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>历史Menagerie G1＋Dex3</td>
+<td>现有43执行器运行时；P4 v2/v3实际失败轨迹保留，v4修复诊断另记</td>
+<td>完整合规专家见证仍未得到；不得转记为官方rev1.0身体证据。</td>
+</tr>
+<tr>
+<td>官方G1 rev1.0＋Dex3-1</td>
+<td>400步被动导入已完成；另8036535_0的800步隔离驱动局部响应指标通过</td>
+<td>局部驱动通过不代表整机稳定；抓取/接触、传感器与任务仍未验证，导入惯量近似保留。</td>
+</tr>
+<tr>
+<td>官方G1 rev1.0＋Inspire DFQ</td>
+<td>同身体29活动＋7固定关节／37共用links；来源固定。隔离fixture的12 mimic已实测，残差≤0.043744mrad、followers直接力0</td>
+<td>当前PD拇指hold误差10.7767mrad&gt;10，需控制修订；抓取/接触、平衡、硬件驱动映射及同任务配对仍未验。</td>
+</tr>
+<tr>
+<td>Agibot A3 T3.0</td>
+<td>官方资产/MulanPSL-2.0、独立SONIC参考固定；400步被动导入完成</td>
+<td>Genesis控制器移植、传感器/末端和完整取物/返回任务。</td>
+</tr>
+<tr>
+<td>轮式候选Galaxea R1</td>
+<td>固定官方候选并完成被动导入，当前任务轮式选型仍未最终锁定</td>
+<td>mesh再分发/许可缺口、底盘/臂控制与坡道完整任务。</td>
+</tr>
+<tr>
+<td>Stretch 3 SE3/sg3</td>
+<td>官方未标定URDF、标准柔顺夹爪和D405已选；8036300已完成400步被动导入</td>
+<td>保留23对中性碰撞过滤和惯量近似；底盘/臂/夹爪主动控制、传感器和任务全链未验证，不用旧Stretch4替代。</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h1-implementation-requirement-7">4. 逐任务实现矩阵</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>配置与阶段</th>
+<th>必须实现的场景</th>
+<th>当前主要缺口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1S-01 原版</td>
+<td>G1 + Dex3；<code>frozen_baseline_executed_qp_failure</code></td>
+<td>先复核原配置；独立生成本轮全程，不将旧发布数字重复记为新增。</td>
+<td>原冻结源身份及已执行段映射已核查；修复放凳对齐 QP 控制，重新从原始起点完成全链，补细粒度复核与人工审阅。</td>
+</tr>
+<tr>
+<td>H1S-02 G1 五指灵巧手</td>
+<td>官方G1 rev1.0 Dex3-1 / Inspire DFQ；<code>isolated_hand_drive_measured_task_control_pending</code></td>
+<td>同世界、相同宽箱/载荷和预算；允许各手适配控制器。</td>
+<td>隔离fixture的12 mimic耦合已实测（≤0.043744mrad、followers直接力0）；当前PD拇指hold误差10.7767mrad&gt;10未过。抓取/接触、平衡、硬件驱动映射、传感器与同身体完整任务仍未验，不称模型不可行。</td>
+</tr>
+<tr>
+<td>H1S-03 轮式＋斜坡</td>
+<td>轮式型号待选；<code>asset_binding_missing</code></td>
+<td>斜坡初始未就位；机器人自主搬/推、搭接，再上台取物并带载返回。</td>
+<td>轮式整机型号/驱动、坡道动态模型、搬推控制及带载坡道证据缺失。</td>
+</tr>
+<tr>
+<td>H1S-04 A3</td>
+<td>A3 T3.0 官方候选；<code>asset_binding_missing</code></td>
+<td>独立 A3 高柜取物；matched_world 与专用场景分别报告。</td>
+<td>A3 T3.0官方资产/许可与被动导入已完成；SONIC参考尚需Genesis移植，末端/传感器/全程任务控制待验。</td>
+</tr>
+<tr>
+<td>H1S-05 G1 两层阶梯，A3 一层</td>
+<td>G1 + Dex3 / A3；<code>paired_asset_and_scene_missing</code></td>
+<td>同世界检查 G1 两级与 A3 一级；层级可达包含柜深和抓取姿态。</td>
+<td>A3 T3.0资产已选但控制与任务未绑定；G1多箱布置和完整往返仍缺物理证据。</td>
+</tr>
+<tr>
+<td>H1S-06 完成不了的 case</td>
+<td>首版优先已绑定 G1；<code>certificate_and_exit_pending</code></td>
+<td>以最小改动配对可解场景；检查全部合法替代路线后判断。</td>
+<td>全路线必要条件证书、配对成功、Q 场景/传感器/物理验证未冻结。</td>
+</tr>
+<tr>
+<td>H1S-07.P1 推箱清路后取物</td>
+<td>首版 G1，其他身体分别绑定；<code>scene_and_chain_pending</code></td>
+<td>障碍箱挡工作位；清路后从同一次运行继续高柜取物。</td>
+<td>旧推箱技能可复用，但障碍/停车布局、全链衔接和新物理见证缺失。</td>
+</tr>
+<tr>
+<td>H1S-07.P2 推箱到位作平台</td>
+<td>首版 G1，轮式须另有坡道；<code>scene_and_chain_pending</code></td>
+<td>支撑箱起始未到工作位；实际推到位后登高取物。</td>
+<td>完整取物/下降/交付连续链，以及新场景初态和评分绑定。</td>
+</tr>
+<tr>
+<td>H1S-07.P3 转角或换侧推箱</td>
+<td>首版 G1，其他身体单独验证；<code>scene_and_chain_pending</code></td>
+<td>障碍限制直线推；保留换侧入口及下一段扫掠空间。</td>
+<td>转角场景、换侧足步控制及整段连续物理证据。</td>
+</tr>
+<tr>
+<td>H1S-07.P4 抬不起但能推到目标区</td>
+<td>首版 G1，带/无把手配对；<code>development_diagnostic_passed_full_validation_running</code></td>
+<td>目标在地面；5 kg超过公开2 kg搬举载荷上限，仍允许地面承托推动至D；不是机械不可能证明。</td>
+<td>旧完整运行失败保留；v5单轮预声明宏诊断通过，完整三轮8036941实测中，尚无合规完整见证。</td>
+</tr>
+<tr>
+<td>H1S-08 Stretch＋有把手箱</td>
+<td>Stretch 3（SE3/sg3）；<code>asset_binding_missing</code></td>
+<td>明确定义有把手箱是目标还是支撑；单臂不能隐含双手交接。</td>
+<td>Stretch 3官方未标定模型/标准夹爪已选；Genesis底盘/臂/夹爪控制、传感器实现和任务角色绑定待验。</td>
+</tr>
+<tr>
+<td>H1S-09 Stretch 拒答 case</td>
+<td>Stretch 3（SE3/sg3）；<code>asset_and_certificate_missing</code></td>
+<td>保持与可解场景可比；无把手本身不足证明不可完成。</td>
+<td>Stretch 3官方资产已选；实际控制、反例必要条件证书与物理Q退出未完成。</td>
+</tr>
+<tr>
+<td>H1S-10.A G1 多箱选择与布置</td>
+<td>G1 + Dex3；<code>scene_and_chain_pending</code></td>
+<td>多个高低/宽窄箱，起初均非工作位；选择可搬推、可登、可达且能返回的方案。</td>
+<td>候选尺寸/承载/摩擦与标签需标定，旧 layout 只几何筛查。</td>
+</tr>
+<tr>
+<td>H1S-10.B A3 多箱选择与布置</td>
+<td>A3；<code>asset_binding_missing</code></td>
+<td>先固定 10.A 的世界，仅换真实 A3；A3 专用世界单独标记。</td>
+<td>A3 绑定和 10.A 同世界基线均待完成。</td>
+</tr>
+<tr>
+<td>H1S-10.C 轮式平台与坡道选择</td>
+<td>轮式型号待选；<code>asset_binding_missing</code></td>
+<td>多个平台与可移动斜坡组合；连续滚动入口和带载返回共同成立。</td>
+<td>轮式绑定、动态坡道/平台组合、自动布置完整见证。</td>
+</tr>
+<tr>
+<td>H1S-10.D Stretch 工作／中转箱选择</td>
+<td>Stretch 3（SE3/sg3）；<code>asset_binding_missing</code></td>
+<td>箱子作为工作/中转面；登台版本只有另验有效坡道才开放。</td>
+<td>Stretch 3控制/传感器绑定、箱角色/把手净空、单臂中转完整链待验。</td>
+</tr>
+<tr>
+<td>H1S-11.A 直接可取场景</td>
+<td>Stretch 3（SE3/sg3）；<code>asset_binding_missing</code></td>
+<td>近处目标是现有拆分控制项；不再新增共同可解任务。</td>
+<td>Stretch 基础抓取/运输与完整可解控制证据。</td>
+</tr>
+<tr>
+<td>H1S-11.B 工具扩展取物能力</td>
+<td>Stretch 3（SE3/sg3）；<code>asset_and_tool_mechanism_missing</code></td>
+<td>深柜目标有环和把手；柜前支撑区允许单臂先拉近再换抓。</td>
+<td>Stretch 3控制绑定、被动钩/环动力学与接触、两侧对照和完整见证待验。</td>
+</tr>
+<tr>
+<td>H1S-11.C 工具也无法完成并退出</td>
+<td>Stretch 3（SE3/sg3）；<code>asset_and_certificate_missing</code></td>
+<td>最小改变深度等瓶颈，所有可用工具也无法完成；与 B 分开统计。</td>
+<td>资产/工具绑定、完整必要条件证书、物理退出。</td>
+</tr>
+<tr>
+<td>H1S-12 同色干扰</td>
+<td>首版 G1 + Dex3；<code>perception_scene_pending</code></td>
+<td>至少同色目标替身与同色工具，编号/图案及空间关系仍可唯一识别。</td>
+<td>可见编号材质、相机证据、同色/弱支撑物理机制和全程验证。</td>
+</tr>
+<tr>
+<td>H1S-13 自主中转与安全返回</td>
+<td>G1 + Dex3；<code>reusable_relay_runtime_new_scope_pending</code></td>
+<td>轻物取出后自主选择带载返回或中转；不以精细卡整机承重阈值强造中转。</td>
+<td>新目标/场景配置与连续链、三层映射；旧资料仅作具体技能参考。</td>
+</tr>
+<tr>
+<td>H1S-14 窄工作区身体适配</td>
+<td>G1 + Dex3 / A3；<code>scene_and_paired_asset_pending</code></td>
+<td>柜前窄通道/转向空间约束整机、工具和目标扫掠；首版不做复杂蹲钻。</td>
+<td>窄场景碰撞/传感器设置、G1 连续返回及 A3 资产/控制。</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h1-implementation-requirement-8">5. 每项候选专家解与验收重点</h3>
+<p>这些路线用于作者实现与复核，不进入 agent 指令，也不是隐藏的唯一成功条件。H1S-01 与 P4 已有本轮失败/部分物理 trajectory 绑定；其余仍为候选，不据此宣称完整成功。</p>
+<h4 id="h1-implementation-requirement-9">H1S-01 · 原版</h4>
+<p><strong>High-level：</strong> 观察 → 布置支撑 → 登高 → 取物 → 返回 → 交付。</p>
+<p><strong>Low-level：</strong> 接触抓/推、足步与 WBC、抓取抬离、载荷姿态、中转/下降、释放驻留。</p>
+<p><strong>物理验收：</strong> 绑定原场景、旧评分及公开限制；新运行有独立 run_id；任何扩展新规则不得追溯改变原成绩。</p>
+<p><strong>剩余实现：</strong> 原冻结源身份及已执行段映射已核查；修复放凳对齐 QP 控制，重新从原始起点完成全链，补细粒度复核与人工审阅。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/relay_env.py">humanoid/g1_support_retrieval/relay_env.py</a>、<a href="/robo-si-results/humanoid/g1_support_retrieval/relay_spec.py">humanoid/g1_support_retrieval/relay_spec.py</a>、<a href="/robo-si-results/humanoid/g1_support_retrieval/oracle/README.md">humanoid/g1_support_retrieval/oracle</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-10">H1S-02 · G1 五指灵巧手</h4>
+<p><strong>High-level：</strong> 观察抓持几何 → 选抓法 → 搬/推支撑 → 取物 → 返回交付。</p>
+<p><strong>Low-level：</strong> 手指闭合/接触、腕矩限制、双手载荷分配、重抓和放置。</p>
+<p><strong>物理验收：</strong> 五指优势是待检假设；Dex3 局部滑移不是全局不可解证书；每种手均记录完整重复结果。</p>
+<p><strong>剩余实现：</strong> 隔离fixture的12 mimic耦合已实测（≤0.043744mrad、followers直接力0）；当前PD拇指hold误差10.7767mrad&gt;10未过。抓取/接触、平衡、硬件驱动映射、传感器与同身体完整任务仍未验，不称模型不可行。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/side_carry/README.md">humanoid/g1_support_retrieval/solution/side_carry/README.md</a>、<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/underhand_lift/README.md">humanoid/g1_support_retrieval/solution/underhand_lift/README.md</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-11">H1S-03 · 轮式＋斜坡</h4>
+<p><strong>High-level：</strong> 观察 → 选择坡道/平台 → 布置 → 登坡 → 取物 → 下坡 → 交付。</p>
+<p><strong>Low-level：</strong> 夹持/推移板件、板端搭接与稳定、轮接触驱动、坡面制动、转向和下放。</p>
+<p><strong>物理验收：</strong> 需连续轮地/轮坡支撑、离地间隙、板端/平台足够面积与真实承载；预置坡道只能另记 use-only 诊断。</p>
+<p><strong>剩余实现：</strong> 轮式整机型号/驱动、坡道动态模型、搬推控制及带载坡道证据缺失。</p>
+<h4 id="h1-implementation-requirement-12">H1S-04 · A3</h4>
+<p><strong>High-level：</strong> 观察 → 支撑选择/布置 → 登高 → 取物 → 返回交付。</p>
+<p><strong>Low-level：</strong> 全身接触控制、A3 末端抓取、登阶、负载返回。</p>
+<p><strong>物理验收：</strong> 不得把 G1 资产缩放或改显示名称当 A3；不根据身高宣称可解。</p>
+<p><strong>剩余实现：</strong> A3 T3.0官方资产/许可与被动导入已完成；SONIC参考尚需Genesis移植，末端/传感器/全程任务控制待验。</p>
+<h4 id="h1-implementation-requirement-13">H1S-05 · G1 两层阶梯，A3 一层</h4>
+<p><strong>High-level：</strong> 观察 → 选择/布置阶梯 → 逐级登高 → 取物 → 下降 → 交付。</p>
+<p><strong>Low-level：</strong> 搬放上层支撑、足步落点、接触切换、负载重心与逐级下降。</p>
+<p><strong>物理验收：</strong> 几何高度和静态 IK 不足；每级入口/踏面/载荷/返回都须验证；合法一级 G1 解出现即修订机制标签。</p>
+<p><strong>剩余实现：</strong> A3 T3.0资产已选但控制与任务未绑定；G1多箱布置和完整往返仍缺物理证据。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/carry_climb_retrieve/layout.py">humanoid/g1_support_retrieval/solution/carry_climb_retrieve/layout.py</a>、<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/carry_climb_retrieve/README.md">humanoid/g1_support_retrieval/solution/carry_climb_retrieve/README.md</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-14">H1S-06 · 完成不了的 case</h4>
+<p><strong>High-level：</strong> 观察/安全探测 → 评估路线 → 安全收拢 → 前往 Q → 停稳。</p>
+<p><strong>Low-level：</strong> 卸载/撤臂、避障行走、全包络入 Q、足地接触、速度驻留检查。</p>
+<p><strong>物理验收：</strong> 物理 safe_exit 与 correct_abstention 分开；没有证书时正确性为 null；预算耗尽不证明无解。</p>
+<p><strong>剩余实现：</strong> 全路线必要条件证书、配对成功、Q 场景/传感器/物理验证未冻结。</p>
+<h4 id="h1-implementation-requirement-15">H1S-07.P1 · 推箱清路后取物</h4>
+<p><strong>High-level：</strong> 观察 → 推障碍停车 → 布置/接近 → 取物 → 返回交付。</p>
+<p><strong>Low-level：</strong> 双手贴合、推力/摩擦反馈、移步、撤手、清空扫掠空间、接续抓取。</p>
+<p><strong>物理验收：</strong> 只推开障碍不算任务成功；停车区需不阻塞返程；合法绕行完成仍接受。</p>
+<p><strong>剩余实现：</strong> 旧推箱技能可复用，但障碍/停车布局、全链衔接和新物理见证缺失。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/push_box/README.md">humanoid/g1_support_retrieval/solution/push_box/README.md</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-16">H1S-07.P2 · 推箱到位作平台</h4>
+<p><strong>High-level：</strong> 观察 → 推支撑到位 → 验稳定 → 登高 → 取物 → 返回交付。</p>
+<p><strong>Low-level：</strong> 接触推移、落脚接近、支撑静置、登阶、抓取、下降。</p>
+<p><strong>物理验收：</strong> 位置容差由可达/支撑需求决定；旧推箱+登箱成功不包含取物返回；合法组合支撑接受。</p>
+<p><strong>剩余实现：</strong> 完整取物/下降/交付连续链，以及新场景初态和评分绑定。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/push_box/README.md">humanoid/g1_support_retrieval/solution/push_box/README.md</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-17">H1S-07.P3 · 转角或换侧推箱</h4>
+<p><strong>High-level：</strong> 观察 → 第一推段 → 脱离换侧/转向 → 第二推段 → 完成取物/交付。</p>
+<p><strong>Low-level：</strong> 手箱接触、退步/转向、重新接触、箱体偏航控制、停止。</p>
+<p><strong>物理验收：</strong> 检查整机/手臂/箱扫掠；转角前后姿态速度真实连续；未执行换侧不假记技能完成。</p>
+<p><strong>剩余实现：</strong> 转角场景、换侧足步控制及整段连续物理证据。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/push_box/README.md">humanoid/g1_support_retrieval/solution/push_box/README.md</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-18">H1S-07.P4 · 抬不起但能推到目标区</h4>
+<p><strong>High-level：</strong> 观察 → 选择合法接触 → 推向 D → 减速 → 撤手驻留。</p>
+<p><strong>Low-level：</strong> 推力/偏航调节、移步、受控停止、撤离接触。</p>
+<p><strong>物理验收：</strong> 正确目标完整进入地面 D 且独立稳定；此任务不要求高柜取物；不能凭一次举失败声称抬不起。</p>
+<p><strong>剩余实现：</strong> P4 开发 runner 和数值预算已落地；等待真实 Gamma 作业结果与全程证据复核，把手配对、更多 seed、独立重放和人工审阅未完成。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/push_box/README.md">humanoid/g1_support_retrieval/solution/push_box/README.md</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-19">H1S-08 · Stretch＋有把手箱</h4>
+<p><strong>High-level：</strong> 观察 → 接近把手 → 抓持 → 撤出/运输 → 下放交付。</p>
+<p><strong>Low-level：</strong> 夹爪闭合、升降柱/伸缩臂、腕姿与偏载控制、底盘转向。</p>
+<p><strong>物理验收：</strong> 实测把手净空、腕矩、轮地稳定；不得默认 Stretch 会登直角箱。</p>
+<p><strong>剩余实现：</strong> Stretch 3官方未标定模型/标准夹爪已选；Genesis底盘/臂/夹爪控制、传感器实现和任务角色绑定待验。</p>
+<h4 id="h1-implementation-requirement-20">H1S-09 · Stretch 拒答 case</h4>
+<p><strong>High-level：</strong> 观察/探测 → 排除抓/推/托/工具路线 → 安全到 Q。</p>
+<p><strong>Low-level：</strong> 工具/目标卸载、收臂、底盘导航、空手稳定驻留。</p>
+<p><strong>物理验收：</strong> 证书涵盖推、托、侧抓、翻转、工具/环境辅助；未测试路线导致 unknown。</p>
+<p><strong>剩余实现：</strong> Stretch 3官方资产已选；实际控制、反例必要条件证书与物理Q退出未完成。</p>
+<h4 id="h1-implementation-requirement-21">H1S-10.A · G1 多箱选择与布置</h4>
+<p><strong>High-level：</strong> 观察候选 → 路线筛查 → 布置选定组合 → 取物 → 返回交付。</p>
+<p><strong>Low-level：</strong> 抓/推布置、足步落点、支撑接触检查、抓取与负载返回。</p>
+<p><strong>物理验收：</strong> 不按预定箱号评分；最高箱可能不可登；单箱不可用不能推出组合无解。</p>
+<p><strong>剩余实现：</strong> 候选尺寸/承载/摩擦与标签需标定，旧 layout 只几何筛查。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/carry_climb_retrieve/layout.py">humanoid/g1_support_retrieval/solution/carry_climb_retrieve/layout.py</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-22">H1S-10.B · A3 多箱选择与布置</h4>
+<p><strong>High-level：</strong> 观察候选 → A3 可达/支撑筛查 → 布置 → 取物 → 返回交付。</p>
+<p><strong>Low-level：</strong> A3 接触抓推/登阶/负载返回。</p>
+<p><strong>物理验收：</strong> 不强迫 A3 选择与 G1 不同箱；差异来自实测，不来自型号。</p>
+<p><strong>剩余实现：</strong> A3 绑定和 10.A 同世界基线均待完成。</p>
+<h4 id="h1-implementation-requirement-23">H1S-10.C · 轮式平台与坡道选择</h4>
+<p><strong>High-level：</strong> 观察 → 选平台坡道组合 → 搬推布置 → 上台取物 → 返回交付。</p>
+<p><strong>Low-level：</strong> 板件抓推、搭接、底盘对正、上坡/转弯/制动。</p>
+<p><strong>物理验收：</strong> 平台有效顶面覆盖底盘及操作姿态；前轮上台而后轮悬空不算通过。</p>
+<p><strong>剩余实现：</strong> 轮式绑定、动态坡道/平台组合、自动布置完整见证。</p>
+<h4 id="h1-implementation-requirement-24">H1S-10.D · Stretch 工作／中转箱选择</h4>
+<p><strong>High-level：</strong> 观察候选 → 选择可操作工作面 → 布置 → 取物/中转 → 交付。</p>
+<p><strong>Low-level：</strong> 把手抓/推、升降伸缩、稳定中转、放下后重抓。</p>
+<p><strong>物理验收：</strong> 单臂持物时后续操作须有独立承托资源；不能假定 Stretch 踩箱。</p>
+<p><strong>剩余实现：</strong> Stretch 3控制/传感器绑定、箱角色/把手净空、单臂中转完整链待验。</p>
+<h4 id="h1-implementation-requirement-25">H1S-11.A · 直接可取场景</h4>
+<p><strong>High-level：</strong> 识别 → 直接抓取 → 撤出 → 运输 → 交付。</p>
+<p><strong>Low-level：</strong> 夹爪把手接触、抬离/退臂、底盘运输、放开驻留。</p>
+<p><strong>物理验收：</strong> 无需工具；不能因为未用工具扣分；不能以此推断深柜 B 可解。</p>
+<p><strong>剩余实现：</strong> Stretch 基础抓取/运输与完整可解控制证据。</p>
+<h4 id="h1-implementation-requirement-26">H1S-11.B · 工具扩展取物能力</h4>
+<p><strong>High-level：</strong> 取钩 → 接环 → 受控拉近 → 稳定脱钩 → 放钩 → 抓把手 → 交付。</p>
+<p><strong>Low-level：</strong> 真实手柄抓持/钩环接触、支撑滑移、腕矩调节、脱钩、二次抓取。</p>
+<p><strong>物理验收：</strong> 不绑定目标、不隐藏驱动远端夹口；无工具对照须排除全部合法路线；若无工具可完成则取消能力扩展标签。</p>
+<p><strong>剩余实现：</strong> Stretch 3控制绑定、被动钩/环动力学与接触、两侧对照和完整见证待验。</p>
+<h4 id="h1-implementation-requirement-27">H1S-11.C · 工具也无法完成并退出</h4>
+<p><strong>High-level：</strong> 观察/探测 → 评估所有工具 → 放下工具 → 到 Q → 驻留。</p>
+<p><strong>Low-level：</strong> 可控卸载/脱钩、收臂、轮式导航、全包络退出。</p>
+<p><strong>物理验收：</strong> 不能重复记入 09；有限 IK/搜索失败不是全路线证书。</p>
+<p><strong>剩余实现：</strong> 资产/工具绑定、完整必要条件证书、物理退出。</p>
+<h4 id="h1-implementation-requirement-28">H1S-12 · 同色干扰</h4>
+<p><strong>High-level：</strong> 移动视角 → 核对目标 → 选择可用工具 → 取正确目标 → 交付。</p>
+<p><strong>Low-level：</strong> 相机观测/换位、真实抓推/登高/返回。</p>
+<p><strong>物理验收：</strong> 颜色不能泄漏角色/承载；错箱入 D 得 0；标签遮挡时不得将真值身份暴露给 agent。</p>
+<p><strong>剩余实现：</strong> 可见编号材质、相机证据、同色/弱支撑物理机制和全程验证。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/relay_spec.py">humanoid/g1_support_retrieval/relay_spec.py</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-29">H1S-13 · 自主中转与安全返回</h4>
+<p><strong>High-level：</strong> 观察 → 支撑布置/登高 → 取物 → 选择返程 → 可选中转/重抓 → 交付。</p>
+<p><strong>Low-level：</strong> 负载姿态/重心、柜口撤出、独立中转释放、空载下降、重抓运输。</p>
+<p><strong>物理验收：</strong> 任何合法直接返回均成功；中转必要性另证；旧 relay 脚本需对齐新初态、目标身份和终态。</p>
+<p><strong>剩余实现：</strong> 新目标/场景配置与连续链、三层映射；旧资料仅作具体技能参考。</p>
+<p>可复用来源：<a href="/robo-si-results/humanoid/g1_support_retrieval/relay_env.py">humanoid/g1_support_retrieval/relay_env.py</a>、<a href="/robo-si-results/humanoid/g1_support_retrieval/oracle/stool_chain.py">humanoid/g1_support_retrieval/oracle/stool_chain.py</a>。这些来源不自动转为本任务完整见证。</p>
+<h4 id="h1-implementation-requirement-30">H1S-14 · 窄工作区身体适配</h4>
+<p><strong>High-level：</strong> 观察通道 → 选择朝向/支撑位置 → 取物 → 带载转向/返程 → 交付。</p>
+<p><strong>Low-level：</strong> 侧向/转向步态、臂部收拢、碰撞检查、目标扫掠与负载跟踪。</p>
+<p><strong>物理验收：</strong> matched_world 比较；不可由更大身体推定失败；目标到手仍被困不算成功。</p>
+<p><strong>剩余实现：</strong> 窄场景碰撞/传感器设置、G1 连续返回及 A3 资产/控制。</p>
+<h3 id="h1-implementation-requirement-31">6. 成功、退出和反例</h3>
+<p>交付以正确目标的完整包络进入 D、独立承托、释放并稳定 3 s 为扩展草案；旧 H1 仍绑定其冻结评分。不能按使用预定箱号、必须中转、必须先失败或必须使用工具给最终成功设额外条件。合法替代解应接受并修订“必要工具/必要中转/不可解”机制标签。</p>
+<p>Q 退出需整机水平包络在区内，全部承重足/轮有合法地面支撑，空手且无悬吊物，线速度 ≤0.03 m/s、角速度 ≤0.05 rad/s，连续 3 s 且无硬违规。这些数值是待按身体标定并冻结的草案。只经过、仅手臂进入、跌入、出生即在 Q、单帧静止或日志缺失都不构成退出。</p>
+<p><code>safe_exit</code> 仅表示退出动作完成；<code>correct_abstention</code> 必须有与初始场景、身体和公开限制匹配的全路线不可解证书。未知场景退出的正确性保持 null。可解场景退出是 false_abstention。有限搜索失败、预算耗尽、IK 无解、某个抓法失败或某条返程失败，不自动证明整个实例无解。</p>
+<p>评分器至少覆盖：空操作、错箱、目标只部分入 D、抓持未放开、单帧入区、非法固定/状态写入、超限/穿模、支撑虚假接触、Q 跌入/擦边/持物/驻留不足、证书与场景不匹配、轨迹截断/重排、计划段被冒认为已执行段。正例由同一评分器判成功；负例需保存实际观测或明确标记为软件单元反例，不冒充 GPU 物理负例。</p>
+<h3 id="h1-implementation-requirement-32">7. 证据目录与状态更新规则</h3>
+<p>一个可复核的运行包至少包含以下材料：</p>
+<ul>
+<li><code>manifest.json</code>：任务、配置、世界、物理、资产/控制器/评分器哈希、环境版本、GPU/Slurm 身份、seed 和预算；manifest 在运行前冻结。</li>
+<li><code>high_level_plan.json</code> 与 <code>low_level_plan.json</code>：候选路线、技能合同、实际执行状态和映射引用。</li>
+<li>动作及状态轨迹：连续 step/仿真时间、实际关节/基座/目标状态、真实执行器努力与接触/支撑、监视器。</li>
+<li><code>mapping.json</code>：HL_LL / LL_TRAJ / HL_TRAJ 对应、帧区间、实际入口/出口与通过或失败原因。</li>
+<li><code>verdict.json</code>、原始 stdout/stderr、所有失败/中止尝试、视频与帧时序、必要的独立动作重放结果。</li>
+<li>发布 manifest、可移植相对路径和 SHA-256；人工录像审阅、第二人复现、正式 admission 独立列出。</li>
+</ul>
+<p>更新采用 <code>unknown → screen_pass / rejected / witnessed_full</code> 的证据状态。<code>screen_pass</code> 不计物理成功，<code>rejected</code> 要标明仅路线还是整个实例及必要条件证据。文件存在、软件测试通过、GPU 作业提交、技能片段通过都不能自动提升为 <code>witnessed_full</code>。本账本不覆盖原登记 JSON 的历史“新增仿真 0”快照；主线程在具体结果到齐后可通过明确日期和运行清单同步当前状态，避免删除或改写历史。</p></div></section><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">查看完整任务说明：场景、动作、评分、证据与复现</a></p><!-- task-detail-jump:end --><p class="wrap"><a href="#h1-selected-scope">当前选定任务与待补对照</a></p><p class="wrap"><a href="#h1-extension">H1 extension：平台、任务与放弃规则</a></p><section id="reference-closeout"><div class="wrap"><h2>原参考交付状态</h2><p>本项目的参考解与设计交付已完成并有远端资料。沙盒接入、物理有效性及正式准入按各自证据单独记录。</p><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/71ea702d485b28be849a28c894750b9538a40fe0/releases/h1-layered-reference-20261026">HF</a> · <a href="website-completion.json">JSON</a></p></div></section><div class="wrap" id="website-completion-status" style="padding-top:18px"><div class="card"><p><span class="pill warn">历史参考已有 · 当前验证见实施账本</span></p><p>固定场景完整成功、重复及容器证据已具备；C026随机63与963完整成功。原三组账本为2个有完整成功证据、1个未确定，全部既有尝试保留。此处保留历史分层证据快照；本轮 Gamma 执行结果见上方实施账本。限定范围的参考发布包已上传 HF，换目录核验及远端大小与 SHA-256 核验均通过。 <a href="planning/h1/README.md">分层证据与筛查</a> · <a href="planning/h1_release/README.md">参考包与核验记录</a></p></div></div><div class="hero"><div class="wrap">
+<p class="evidence" data-current-formal-status="true">未见配置的技能范围与动态筛查仍未确定；如发布新控制器，只补受影响的代表回归。人工签审、第二人复现和其他正式准入缺口仍保留，不要求每个随机实例完整求解。 <a href="planning/h1/README.md">分层证据与筛查</a> · <a href="planning/h1_release/README.md">参考包与核验记录</a></p>
+<p class="eyebrow">H1 · 第一层 · 2026-10-25</p>
+<h1>H1：自主登高与工具取物</h1><div id="family-page-intro"><p class="lead">22 个选定任务。利用环境支撑改变自己的工作位置，判断可达、载荷、落脚与重心边界，完成取物、安全返回和地面交付。允许自主中转及其他合法完整路线。</p><p>新增场景与能力配置待验证；现有成功记录只证明原配置与原评分范围。</p><nav aria-label="任务页导航"><a href="#retrieval-family-current">当前任务表</a> · <a href="task-families-zh.html">H1 / M1 / M3</a> · <a href="#task-details">原参考与证据</a></nav></div>
+<p class="reference-summary"><strong>原范围参考：</strong><strong>历史参考已有 · 当前验证见实施账本</strong> 固定场景完整成功、重复及容器证据已具备；C026随机63与963完整成功。原三组账本为2个有完整成功证据、1个未确定，全部既有尝试保留。此处保留历史分层证据快照；本轮 Gamma 执行结果见上方实施账本。限定范围的参考发布包已上传 HF，换目录核验及远端大小与 SHA-256 核验均通过。</p>
+<p id="reference-evidence-label"><strong>以下数字为原参考范围的证据，不是新任务族的验证进度。</strong></p><div class="cards"><div class="card"><h3>6 / 15</h3><p>验收登记通过项；8 项部分完成、1 项待完成。</p></div><div class="card"><h3>1.25 m</h3><p>复用原场景，保留绿色干扰箱。</p></div><div class="card"><h3>3 s</h3><p>持续力矩饱和阈值保持不变。</p></div></div>
+<p><a href="website-status-evidence/h1-fixed-reference-20261025/7974de4759957a-canonical_release_status.json">固定参考验证记录</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/c552771ef6dcdb-admission.json">完整验收登记</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/824143e999032a-TASK_CARD.md">任务卡</a></p>
+</div></div>
+<section><div class="wrap">
+<h2>01 任务说明：给了什么，要发现什么</h2>
+<dl><dt>环境与目标</dt><dd>G1、可搬动的折叠凳、固定层板柜、红色目标箱、绿色干扰箱和地面交付区。当前 reference_v15 原场景的目标层板为 1.25 m，中转板为 0.90 m，初始机器人与凳子的间距保持 0.46 m。</dd>
+<dt>需要发现</dt><dd>如何把支撑物搬到合适位置，建立稳定站立支撑，取下箱子并安全交付。参考路线是搬凳→上凳取箱→放到中转板→空手下凳→再取箱交付。凳子是否必需仍待验证；安全的其他路线按同一规则评判。</dd>
+<dt>执行与判定</dt><dd>机器人通过关节动作和接触完成任务。完整过程、稳定交付、硬件限制和安全事件均由记录与评分器检查；阶段完成、静态可达或录像中的单个姿态不等于完整成功。</dd></dl>
+<h2>02 证据分开看</h2>
+<div class="table-wrap"><table><thead><tr><th>记录</th><th>已证明</th><th>当前结论</th></tr></thead><tbody>
+<tr data-cohort="371"><td>C371 / C373</td><td>冻结 C371 的三次原始起点完整复跑全部通过（3/3；1003.36, 1003.16, 1004.16 秒），匹配 C373 的实际容器 LowCmd 全程通过（1003.12 秒）。四次均得分 1.0、非 VOID、无安全事件，LowCmd 零裁剪；源码与初始场景一致。</td><td><a href="website-status-evidence/h1-fixed-reference-20261025/62bfa117619798-candidate371_cohort_summary.json">完整批次审计</a></td></tr>
+<tr data-run="365-full01"><td>C365 original-start full-01</td><td>1003.00 s · 1.0 · non-VOID · no safety events</td><td><a href="website-status-evidence/h1-fixed-reference-20261025/a55650b96f03bd-candidate365_canonical-full-01_audit.json">Audit</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/eddc2fa2fb2e5d-motion-24x.mp4">24× video</a></td></tr>
+<tr data-candidate="365"><td>C365 减速后的取物至交付诊断</td><td>从凳上检查点执行 195.60 秒：取箱、中转、下凳、重新抓箱和稳定交付全部通过；零关节越界、安全事件和持续饱和。</td><td>局部诊断通过；同版本随后取得上列原始起点完整成功。393 项 CPU 回归通过。<a href="website-status-evidence/h1-fixed-reference-20261025/2075259131c915-candidate365_tail_audit.json">审核记录</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/3af6552d36b98b-ground_delivery_comparison.png">踝关节证据</a></td></tr>
+<tr data-candidate="357"><td>C357 原始起点 LowCmd 全程</td><td>通过双脚对齐，639.88 秒完成落凳；651.96 秒撤手时前倾与侧倾组合触发规则 1。双脚支撑和低速条件正常，侧倾超出受控前弯范围。</td><td>完整验证失败，尚不能发布。C359 验证撤手侧倾与偏航约束；安全规则保持不变。<a href="website-status-evidence/h1-fixed-reference-20261025/9031ad0551d838-candidate357_canonical-full-lowcmd-01_audit.json">终局记录</a></td></tr>
+<tr><td>原场景 C350 连续搬凳</td><td>17 步、约 1.014 米搬运，675.6 秒完成放凳、撤手与站稳。整段 710.50 秒、142,100 个物理步无安全事件和关节越界，最长饱和 1.98 秒。</td><td>上凳入口左脚误差约 13.9 毫米，超过 12 毫米门槛，控制器停止。得分 0.2，任务未完成；C353 的局部上凳修正已通过检查点诊断。<a href="website-status-evidence/h1-fixed-reference-20261025/32a7721f549611-candidate350_full01_audit.json">完整尝试审计</a></td></tr>
+<tr><td>原场景 C352 LowCmd</td><td>160 秒、8,000 条指令、32,000 个物理步；无安全事件、关节越界、通道裁剪或漏传。最长饱和 1.74 秒。</td><td>诊断通过，已开始携凳迈步；完整任务 success=false。完整容器尝试在 403.34 秒因 IK 连续性保护停止，未发生安全事件；采样细化修复正在重新验证。<a href="website-status-evidence/h1-fixed-reference-20261025/32dc197ad374b2-candidate352_lowcmd160_audit.json">审计</a></td></tr>
+<tr><td>C353 上凳与交付诊断</td><td>上凳新增 127.76 秒，凳上至交付新增 174.98 秒；两段均无安全事件、关节越界和持续饱和。旧取物路线完成取物、中转、下凳、重新抓取与交付。</td><td>均从检查点开始，不能拼接为原始起点完整成功。<a href="website-status-evidence/h1-fixed-reference-20261025/67f6686614a91f-candidate353_entry_climb_audit.json">上凳审计</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/8ca9a29cc23bc8-candidate353_tail_audit.json">交付审计</a></td></tr>
+<tr><td>当前平台检查</td><td>冻结 C371 的 399 项 CPU 回归通过；此前 36 项越权探测以及单层、三层空操作负控均符合预期。</td><td>主目录 GPU 传感器流水线已通过：保留初始姿态精度检查，增加实际腰部校准姿态，取得 1,013 个地面点，原精度与 1,000 点门槛不变。完整流水线仍受跨任务旧证据缺失阻塞。<a href="website-status-evidence/h1-fixed-reference-20261025/a6e083012be778-canonical_platform_audit.json">负控审计</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/3914b724413217-canonical_sensor_twopose_validation.json">传感器修复验证</a></td></tr>
+<tr><th colspan="3">以下为历史路线与开发试验；其中高层板试验不是当前发布前提。</th></tr>
+<tr><td>历史 canonical c</td><td>850.26 秒完整搬凳接力；旧 rubric 2.1 得分 1.0。</td><td>现行规则下腰部持续饱和超限，不能作为当前完整成功。</td></tr>
+<tr><td>真实沙箱 reference-full-1</td><td>通过 LowCmd 动作通道完成整段执行。</td><td>腰部最长饱和 5.9 秒，success=false。<a href="website-status-evidence/e2ca791a9b84f50c-verdict.json">判定</a></td></tr>
+<tr><td>旧场景 direct-v8</td><td>站在地面抓住 1.25 m 层板的目标。</td><td>拉取时滑脱，未交付；旧几何未证明凳子必要。<a href="website-status-evidence/c182baf0b91060f7-verdict.json">判定</a></td></tr>
+<tr><td>新场景 candidate 02</td><td>135 秒、27,000 个物理步，非 VOID；关节越限为 0，最长腰部饱和 1.58 秒。</td><td>44.90 秒触发 rule 1：深前倾时速度波动打断稳定确认。双脚仍有承重；后续试验被拦截。<a href="website-status-evidence/a10e0679e3a458c8-candidate02_verdict.json">判定</a> · <a href="website-status-evidence/8e977414dfc4e980-candidate02_fall_diagnosis.json">诊断</a></td></tr>
+<tr><td>高处抓取与抬高站姿</td><td>离线规划可保留膝关节余量，并生成固定落脚位置的抬高路径。</td><td>仅为规划证据，尚未物理验证。<a href="website-status-evidence/63a975f86f5f79cb-high_shelf_knee_reserve.json">静态筛选</a></td></tr>
+<tr><td>新场景 candidate 04 起身与复跑</td><td>首次 85.88 秒诊断非 VOID、无安全事件，最长饱和 1.32 秒；同源码复跑却在 43.26 秒触发支撑确认超时。</td><td>首次通过不能作为稳定复现。复跑在 78.90 秒主动停止，因此正式记录为 VOID；未执行到放凳。<a href="website-status-evidence/f8ddee0f2692902b-candidate04_standup_verdict.json">首次判定</a> · <a href="website-status-evidence/23afee3d7bdb0539-candidate04_repeat_summary.json">复跑诊断</a></td></tr>
+<tr><td>新高层板 direct-v8</td><td>52.78 秒有效物理试验，无安全事件；目标未移动。</td><td>双手未能到达箱子两侧，未抓取或交付；仅是一条有效负例。<a href="website-status-evidence/830132e567543ffd-direct_high_v8_summary.json">结果</a></td></tr>
+<tr><td>新候选 LowCmd 容器验证</td><td>2 秒启动短测通过。计划 90 秒的后续运行在 43.58 秒由沙箱自动结束：2,179 条指令、8,716 个物理步；非 VOID，无状态写入或通道裁剪。</td><td>正式判为失败：支撑确认超时。使用旧 C04 收凳动作，不是 C10 验证。<a href="website-status-evidence/5582526d41841eaa-candidate08_lowcmd_prefix_summary.json">正式结果</a> · <a href="website-status-evidence/a3d8012bfa9afe3a-candidate08_smoke_summary.json">启动短测</a></td></tr>
+<tr><td>高站姿返回下凳姿态</td><td>离线规划保留双脚位置，并检查速度、支撑余量、柜体净空与参考力矩。</td><td>历史落脚位置上的规划筛选，实际执行待验证。<a href="website-status-evidence/89d5d1cec2625388-high_stance_return_path.json">规划记录</a></td></tr>
+<tr><td>candidate 10 收凳修正</td><td>两次起身通过；搬凳随后完成 341.36 秒、68,272 步，非 VOID、无安全事件，最长饱和 1.32 秒。</td><td>第 18 步重心转移触及柜体净空检查，安全停止，尚未放凳。C19 提前 7 厘米停止后完成 17 步；随后放凳因右髋／膝碰凳而停止。全段 347.70 秒无安全事件，但未完成放凳。<a href="website-status-evidence/24873898d47fdd14-candidate10_setdown_summary.json">正式结果</a> · <a href="website-status-evidence/ba59c7163b639ef4-candidate19_setdown_summary.json">放凳失败诊断</a> · <a href="website-status-evidence/d15e668a69f88b20-candidate19_provenance.json">新参数与依据</a></td></tr>
+<tr><td>candidate 10 真实 LowCmd 通道</td><td>100 秒、5,000 条指令、20,000 个物理步；非 VOID、无安全事件、无状态写入或通道裁剪；最长饱和 1.78 秒。</td><td>完成起身并开始迈步，尚未走完或交付。完整任务 success=false，启动器退出码 1；诊断检查通过不改变任务判定。<a href="website-status-evidence/aafeb29990bd724d-candidate10_lowcmd_prefix_summary.json">通道核对</a></td></tr>
+<tr><td>地面单手前侧接触筛选</td><td>C16 较远接近试验完成 92.62 秒、18,524 步，非 VOID、无安全事件或关节越限；抬高站姿稳定。</td><td>未找到最终接近路径，无目标接触或位移。它是一条安全的有限负例，仍不能确认全部地面路线不可行；首次靠柜过近的失败保留。<a href="website-status-evidence/e7375b2c9df0358f-candidate16_safe_aim_summary.json">安全试验</a> · <a href="website-status-evidence/ba10dacad3580a83-candidate16_front_contact_summary.json">此前失败</a></td></tr>
+<tr><td>高层板场景传感器校准</td><td>安全实跑的 C10 第 25 秒蹲姿检查点恢复误差为零；测得 2,935 个地面点，四项几何误差均通过原有阈值。</td><td>仅为该检查点的几何校准，新增物理步数为 0。初始姿态及腰部调整后的覆盖失败仍保留；目标可见性与感知来源尚未验收。<a href="website-status-evidence/f79381f74d5f78e7-high_scene_sensors_v6.json">通过测量</a> · <a href="website-status-evidence/8c308e5293be9d73-high_scene_sensors_v3.json">此前失败</a></td></tr>
+<tr><td>目标传感器实测</td><td>C10 第 90 秒安全检查点：LiDAR 命中目标 20 点，头部 RGB／深度中的目标像素为 0。</td><td>状态恢复误差为零，新增物理步数为 0；该姿态下目标在相机视野之外。几何可见性有证据，相机覆盖及纯传感器策略仍待验证。<a href="website-status-evidence/96a13af323a6b63a-report.json">测量报告</a> · <a href="website-status-evidence/644b4760b261b5e2-rgb.png">实际 RGB</a></td></tr>
+<tr><td>地面全身姿态补充搜索</td><td>基于 C16 实际双脚位置，放开原策略的腰部、左手及手腕姿态限制后，找到局部预接触姿势。</td><td>只通过静态规划，尚无连续动作、接触或交付证据；凳子必要性继续保持未确认。<a href="website-status-evidence/51b03cb1de59308b-candidate16_full_body_ground_contact.json">规划记录</a></td></tr>
+<tr><td>随机场景完整 100 秒沙箱诊断</td><td>C18：5,000 条 LowCmd、20,000 个物理步，20 项通道审计全部通过；非 VOID、无安全事件，最长饱和 1.5 秒。</td><td>起身完成并开始迈步，整任务未完成。该 evaluation 样本已用于开发观察，不作为留出验收。<a href="website-status-evidence/4f9e03f027975a1e-candidate18_lowcmd100_summary.json">正式结果</a></td></tr>
+<tr><td>地面全身接触实跑</td><td>C27 完成 135.54 秒、27,108 步，无安全事件或关节越限；实际目标接触峰值 5.62 N。</td><td>受原硬件限制的直接腿部力矩执行通过本次诊断，目标向柜内移动约 11.68 mm。尚未拉出或交付，凳子必要性未确认。<a href="website-status-evidence/83b2392df12c3b38-candidate27_motion_summary.json">物理结果</a> · <a href="website-status-evidence/68116a1d61ffc22a-candidate27_verdict.json">完整判定</a> · <a href="website-status-evidence/41b277eeaa3e4013-candidate27_contact_diagnosis.json">末态几何</a></td></tr>
+<tr><td>带载下放规划</td><td>旧下放参考的静态腰部需求约 50–51 N·m，已达到 50 N·m 硬件上限。C28 负载力矩与错误处理的 7 项 CPU 检查通过。</td><td>连续下放筛选均未通过几何或规划力矩余量门槛；最后一组到 36.8 秒时需求为 47.523 N·m。该余量是规划约束，50 N·m 硬件上限和 3 秒安全规则不变；C28 没有物理运行。<a href="website-status-evidence/b4bdd58efd248a16-loaded_waist_diagnosis.json">负载分析</a> · <a href="website-status-evidence/c099868510ece257-candidate28_planning_summary.json">规划检查</a> · <a href="website-status-evidence/e797b2a9efdd8564-candidate28_stool_clearance_diagnosis.json">凳架净空</a></td></tr>
+<tr data-candidate="29"><td>地面搬移与动作通道验证</td><td>C43 实跑通过短推 6.114 厘米、撤手和站直后连续 1 秒稳定；最终倾角 8.59°。C44 长推在 8.767 厘米触发原有 15 N 手部力保护，安全停止，无饱和、越界或安全事件。</td><td>C47 真实 LowCmd 短推与站稳通过：87.88 秒、4,394 条指令、17,576 物理步，18 项审核全过，零饱和／安全事件。C48 推进 20 厘米后在撤手阶段触发力保护，C52 验证减速撤手。C49 步行未迈脚，C51 验证输入调整。完整取箱交付仍未通过。 <a href="website-status-evidence/709c7f5f6d23fdc8-floor_motion_progress.json">最新证据</a> · <a href="website-status-evidence/8fcd7f01aa276ffd-candidate44_motion_summary.json">C44</a> · <a href="website-status-evidence/6f7a95cc9d7da5ff-candidate47_terminal_replay_diagnosis.json">C45 / C47</a></td></tr>
+<tr><td>落凳前收脚修正</td><td>C24／C26 均能收脚并站稳；下蹲仍触发腰部俯仰关节越限，诊断已停止并判 VOID，两次原始场景后续均取消。</td><td>提前转移重心、放慢下降尚不足，需继续处理带载腰部力矩。尚无落凳或整任务通过。<a href="website-status-evidence/339f4b87fdfdc0bc-candidate24_setdown_summary.json">C24</a> · <a href="website-status-evidence/18dfb3e5a5ac171a-candidate26_setdown_summary.json">C26</a> · <a href="website-status-evidence/0302009b7499ae32-candidate24_com_screen.json">重心模型检查</a></td></tr>
+<tr><td>安全抬头后的目标可见性</td><td>C21 完成 22.46 秒、4,492 步抬头、保持及回正；非 VOID、无安全事件、无力矩饱和。相机安装不变，真实 RGB／深度看到目标 1,696 像素。</td><td>第 13.5 秒检查点恢复误差为 0；该姿态 LiDAR 目标命中为 0。不同姿态分别证明相机与 LiDAR 可见，尚无随机覆盖或纯传感器整任务成功。<a href="website-status-evidence/c36c2397b58f195c-candidate21_motion_summary.json">动作判定</a> · <a href="website-status-evidence/f13854e9615d4ef3-report.json">测量</a> · <a href="website-status-evidence/9dc642b72c9e149f-rgb.png">实际 RGB</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/901f5322405755-candidate21_head_scan.mp4">录像</a></td></tr>
+<tr><td>第一层随机场景草稿</td><td>保留原随机范围，4,096 个样本几何有效。开发样本 seed1158 已完成原始起点抓凳起身：95.16 秒、19,032 步，无安全事件，最长饱和 1.06 秒。</td><td>局部原生诊断通过；尚无随机场景完整成功，边界与重复运行待验。<a href="website-status-evidence/7bf06777a8f44256-candidate17_standup_summary.json">起身结果</a> · <a href="website-status-evidence/0792f0533cc88381-candidate12_coverage_plan.json">覆盖计划</a></td></tr>
+<tr><td>随机场景 LowCmd 适配启动检查</td><td>独立封存的适配完成真实容器 2 秒、100 条指令、400 个物理步；非 VOID、无安全事件、无状态写入或通道裁剪。</td><td>后续 100 秒诊断已完成，结果见上表；完整任务 success=false。该已查看的评测划分样本不算留出验收，且不同于 C17 的开发场景。<a href="website-status-evidence/6fb83e0725a883f2-candidate18_lowcmd_startup_summary.json">启动核对</a></td></tr>
+</tbody></table></div>
+<h2>03 现行规则下的完整成功录像</h2><p>C371 本批次第一次完整成功的 24 倍速录像。三次原生复跑和匹配通道均通过；以前的失败记录仍保留。交付包含从允许高度松手后箱体落地稳定，不表述为贴地轻放。</p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/H1.html">查看最终交付的 Nyx 8× 录像 →</a></p>
+<h2>04 参考实现发布与正式准入</h2><p>当前分层参考包已上传 HF，并完成远端大小与 SHA-256 核验。原固定 1.25 米场景的三次同源码原生全程、匹配 LowCmd 全程零裁剪与关键帧审阅作为固定参考证据保留，不代表随机控制器的重复性。<a href="/robo-si-results/infra/planning/h1_release/DELIVERY.json">当前发布回执</a>。 <a href="website-status-evidence/h1-fixed-reference-20261025/dbf5b275a9fc1d-canonical_release_artifact.json">归档路径、校验值与发布包检查回执</a></p><p>正式准入另需随机与多层覆盖、独立子任务起点、工具必要性、监视器校准，以及人工签审和第二人独立复现。<a href="website-status-evidence/h1-fixed-reference-20261025/c460c83b4aa5c7-human_review.json">人工签审表</a>: <code>admitted=false</code>.</p>
+<p class="evidence">候选运行与失败均保留。正式登记仍为 <code>admitted=false</code>，本页不提供 H1 发布包。</p>
+</div></section>
+<section id="h1-selected-scope"><div class="wrap"><h2>H1：22 个选定独立任务</h2>
+<!-- implementation-authorization -->
+<p><strong>实施更新 · 2026-10-27：</strong> 用户已要求启动 Gamma GPU 与 sub-agent 实现及物理验证；本页此前的“新增仿真 0／不恢复仿真”是设计快照，不再表示暂停授权。当前进度、逐任务要求、预算和失败记录见 <a href="/robo-si-results/infra/planning/h1-extension/implementation-status.md">实施要求</a>、<a href="/robo-si-results/infra/planning/h1-extension/execution-progress.json">执行账本</a>。参考计划不等于实测轨迹；原评分和正式准入不自动改变。</p>
+<!-- /implementation-authorization -->
+<p>2026-10-27 · <strong>20 项已有场景拆分＋2 项新增操作任务，共 22 项。</strong> 不新增“两种身体／手都能完成”的简单校准任务。每项独立登记场景、回合、评分和验收；原 H1S-07／10／11 改为分组，不再与子任务重复计数。</p>
+<p><a href="/robo-si-results/infra/planning/h1-extension/selected-scope-en.md">English</a> · <a href="/robo-si-results/infra/planning/h1-extension/selected-scope.json">JSON</a> · <a href="/robo-si-results/infra/planning/h1-extension/archive/selected-12-20261027/selected-scope.json">12 项历史登记</a></p>
+<p><strong>Benchmark 不要求唯一解。</strong> 只按最终目标和公开约束判定，接受直接取物、换抓法、工具组合、其他支撑或任何合法完整路线；参考动作链不是隐藏评分条件。发现合法替代解时保留成功，并修订“必须用某工具／必须中转／不可完成”等机制标签。原发布见证和旧评分仍按原范围保存。新增仿真 0，新增场景均为 unknown。</p>
+<h3 id="h1-selected-scope-1">1. 当前 22 项登记</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>独立任务</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1S-01</td>
+<td>原版</td>
+<td>原任务保留</td>
+</tr>
+<tr>
+<td>H1S-02</td>
+<td>G1 五指灵巧手</td>
+<td>原任务保留</td>
+</tr>
+<tr>
+<td>H1S-03</td>
+<td>轮式＋斜坡</td>
+<td>原任务保留</td>
+</tr>
+<tr>
+<td>H1S-04</td>
+<td>A3</td>
+<td>原任务保留</td>
+</tr>
+<tr>
+<td>H1S-05</td>
+<td>G1 两层阶梯，A3 一层</td>
+<td>原任务保留</td>
+</tr>
+<tr>
+<td>H1S-06</td>
+<td>完成不了的 case</td>
+<td>原任务保留</td>
+</tr>
+<tr>
+<td>H1S-07.P1</td>
+<td>推箱清路后取物</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-07.P2</td>
+<td>推箱到位作平台</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-07.P3</td>
+<td>转角或换侧推箱</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-07.P4</td>
+<td>抬不起但能推到目标区</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-08</td>
+<td>Stretch＋有把手箱</td>
+<td>原任务保留</td>
+</tr>
+<tr>
+<td>H1S-09</td>
+<td>Stretch 拒答 case</td>
+<td>原任务保留</td>
+</tr>
+<tr>
+<td>H1S-10.A</td>
+<td>G1 多箱选择与布置</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-10.B</td>
+<td>A3 多箱选择与布置</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-10.C</td>
+<td>轮式平台与坡道选择</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-10.D</td>
+<td>Stretch 工作／中转箱选择</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-11.A</td>
+<td>直接可取场景</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-11.B</td>
+<td>工具扩展取物能力</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-11.C</td>
+<td>工具也无法完成并退出</td>
+<td>原子场景独立登记</td>
+</tr>
+<tr>
+<td>H1S-12</td>
+<td>同色干扰</td>
+<td>原任务保留</td>
+</tr>
+<tr>
+<td>H1S-13</td>
+<td>自主中转与安全返回</td>
+<td>新增操作任务</td>
+</tr>
+<tr>
+<td>H1S-14</td>
+<td>窄工作区身体适配</td>
+<td>新增操作任务</td>
+</tr>
+</tbody>
+</table></div>
+<p>旧 H1S-11.A 的直接取物场景包含在已接受的 20 项拆分范围内；本轮不再追加共同可解校准任务。</p>
+<h3 id="h1-selected-scope-2">2. 五指手与阶梯对照怎样成立</h3>
+<p>五指手候选来自现有 <a href="/robo-si-results/humanoid/g1_support_retrieval/solution/side_carry/README.md">Dex3 侧夹实验</a>：8 次尝试未达到该实验的完整判据，记录了滑移、接触断开以及低位宽跨度工作空间问题。<a href="/robo-si-results/humanoid/g1_support_retrieval/solution/underhand_lift/README.md">托底实验</a>也报告了支撑跨度和拇指干涉问题。这些是特定设置与控制器下的局部证据，不是三指所有抓法的不可解证明，也没有五指结果。</p>
+<p>先在两种手都处于良好臂部工作空间的高度做抓取探针，再验证从实际初始场景开始的搬箱取物全程。冻结箱尺寸、质量、摩擦、身体、目标、传感器权限和调参／计算预算；各手允许适配控制器，不能要求新手沿用旧手关节轨迹。记录安装后手质量、惯量、碰撞体和真实执行器限制，不为制造优势临时加摩擦或隐藏固定。以重复成功率、滑移、载荷余量、重抓次数和完成时间判断“困难／容易”，不要把“一边失败一次、另一边成功一次”当作结论。</p>
+<p><a href="https://www.unitree.com/mobile/Dex3-1/">Dex3-1 官方参数</a>为三指、7 自由度；<a href="https://en.inspire-robots.com/product/rh56dfx/">Inspire RH56DFX 官方参数</a>列出的无腕版本为五指、6 自由度。因此手指数不能直接替代灵巧度、承载或几何能力比较；本记录不指定 RH56DFX 为最终选型，也不比较不同测试工况下的厂商载荷数值。</p>
+<p>阶梯对照先用几何上界筛查候选柜高：G1 一级支撑后的有效可达仍不足、两级有候选解；A3 地面姿态不足、一级有候选解。有效可达包括必需抓持姿态与柜内深度，而非指尖最高点。再验证每级踏面、登阶入口、搬放上层件的可达性、承载、抓取和下降。静态筛查通过不等于已有完整见证。世界保持相同；换整机得到的是身体整体对照，不能仅将差异归因于身高。</p>
+<h3 id="h1-selected-scope-3">3. 推箱子拆成四个具体任务</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>子场景</th>
+<th>目标与场景</th>
+<th>跨身体检查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1 清路后取物</td>
+<td>箱体挡住工作位；推到侧方停车区，随后完成高柜取物。</td>
+<td>合适接触高度、推力／摩擦、箱子不再挡路；不同身体可选不同接触姿态。</td>
+</tr>
+<tr>
+<td>P2 推到位作平台</td>
+<td>支撑箱可推但难搬；推至柜前稳定工作位。腿式需验证登阶；轮式还需坡道。</td>
+<td>停放精度由支撑和可达条件决定，不要求人为极小误差；防滑、承载、带载返回。</td>
+</tr>
+<tr>
+<td>P3 转角或换侧推</td>
+<td>直推会撞入障碍，必须改变接触侧或推行方向，保留下一次接触空间。</td>
+<td>整机、手臂与箱子的扫掠空间；没有换侧入口时不能默认可完成。</td>
+</tr>
+<tr>
+<td>P4 抬不起但推得动</td>
+<td>目标箱超过搬举能力，但在地面上可受控推动至 D；设置带把手与无把手配对。</td>
+<td>“不能抬”不等于“不能完成”；允许所有合法方式完成地面交付，验证推行和停止。</td>
+</tr>
+</tbody>
+</table></div>
+<p>H1S-07.P1—P4 现为独立任务。P4 是推箱运输辅助任务，终点为地面 D，不伪装成高柜取物。同世界跨身体比较与按身体能力缩放质量／尺寸的比较分别统计；若不是相同场景，不能宣称只换了身体。</p>
+<h3 id="h1-selected-scope-4">4. 本轮新增与范围取舍</h3>
+<ul>
+<li><strong>H1S-13 自主中转返回</strong>：从高处取轻物后，自主判断直接带载返回、中转卸载或其他完整路线。场景可提供中转面，但指令不要求使用；所有合法完成都成功。中转必要性需实证，不能只因参考采用中转就排除直接返回。</li>
+<li><strong>H1S-14 窄工作区身体适配</strong>：优先用柜前通道或转身空间限制整机、工具和目标扫掠，比较同世界下的站位、朝向、支撑布置和返回策略。暂不要求复杂蹲钻，不预设 A3 或更大身体必然失败。</li>
+<li><strong>不另建通用重规划任务</strong>：不能抬但能推、不能直接取但工具可取等已包含在现有任务中；不强制 agent 先失败。</li>
+<li><strong>不新增共同可解校准任务</strong>：两种身体／手都能完成的把手箱、低踏台不作为额外 benchmark 任务。</li>
+<li><strong>Go1＋机械臂延期</strong>：型号、安装惯量和控制器未冻结，不进入当前 22 项。</li>
+</ul>
+<p>新增任务涉及的物体和工具按当前 2 kg 操作载荷筛选上界审核；该上界不代表平台只需承重 2 kg。平台承重需覆盖真实整机、附件及载荷。H1S-13 优先检验带载姿态、下降净空与动态稳定，不用精细卡住整机承重阈值来制造中转必要性。H1S-14 的可行性标签需来自实际几何和完整路线，不来自型号名称。两项的参数、预算与完整见证均待冻结。</p>
+<h3 id="h1-selected-scope-5">5. 难度与当前状态</h3>
+<p>操作结构从单工具布置到多工具组合／路线选择逐步增加；infra 仍仅保留 L1 必要工具、L2 换身体才可用工具、L3 干扰项三层。两级阶梯可以是 L1，五指比三指更容易不自动构成 L2，同色也不自动构成完整 L3；拒答是独立可行性判断评测。多候选、确实多解、必须组合、跨身体适配分别标记，不用同一“困难”标签混合。</p>
+<p>历史 H1 仅在冻结范围内有完整见证；所有新选择的资产版本、数值范围、阈值、预算和代表样本仍待冻结，新场景状态为 <code>unknown</code>。Q 的 3 秒驻留及速度阈值沿用扩展草案，正式接入和标定待办。本记录不恢复仿真、不变更旧评分或正式准入。</p>
+<h3 id="h1-selected-scope-6">6. H1S-10：多箱选择与不同身体场景</h3>
+<p>统一目标是选用现场物体完成取物并返回交付。放置多个高箱和矮箱，候选箱还可在踏面大小、抓持部位、质量及承载力上不同。能不能登上、登上后够不够到、能否搬推到位、取物后能否安全返回，要分别判断；不能只选最高箱。箱子起初未布置在工作位，必要时由机器人搬或推到位。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>身体与布置</th>
+<th>要观察的选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1S-10.A 多高矮箱</td>
+<td>G1；多个高低箱，包含能登但不够高、够高但单步不可登、顶面过窄，以及满足完整路线的候选箱。</td>
+<td>选择可搬推、可登、足够高且能返回的箱子，布置后完成取物；各候选的实际可用性待标定。</td>
+</tr>
+<tr>
+<td>H1S-10.B 同世界换 A3</td>
+<td>先沿用 A 的柜子、箱子、目标及位姿，只换 A3；另设明确标记的 A3 专用布局。</td>
+<td>相同箱子对两种身体可能不同：A3 或许能用更低的箱子，或有不同登阶／净空限制。记录实际选择，不预先强制选不同箱。</td>
+</tr>
+<tr>
+<td>H1S-10.C 轮式选平台</td>
+<td>多个箱体平台与可移动斜坡，箱高、顶面面积、斜坡搭接及落脚位置不同。</td>
+<td>选择能形成连续轮式入口、容纳底盘和操作姿态的平台；需要时搬推箱子与斜坡到位，再完成带载往返。不默认轮式能登直角箱。</td>
+</tr>
+<tr>
+<td>H1S-10.D Stretch 选可操作箱</td>
+<td>多个高低箱具有不同把手位置和净空，可用作目标中转／工作面；若设计登台路线，必须另有经过验证的坡道。</td>
+<td>依据夹爪、单臂、升降柱与底盘能力选取可搬推并能服务完整任务的箱子；使用中转工作面的回合与登台回合分开，不声称 Stretch 必须踩／爬箱。</td>
+</tr>
+</tbody>
+</table></div>
+<p>H1S-10.A—D 现已提升为四个独立任务；H1S-10 只作分组，不再计分或计数。相同世界的身体对照标 <code>matched_world</code>；为某身体单独调整箱子／柜高／坡道的场景标 <code>body_specific_scene</code>，分别报告，避免同时改场景和身体后把差异全归因于身体。首批不做所有身体与所有布局的笛卡尔积。</p>
+<p>基础版本可先只变化高度与踏面，再加入搬推布置、载荷和返程限制；这属于本任务内部复杂度，不自动标为 infra L1/L2/L3。各候选的尺寸、质量、摩擦、承载和可用标签须基于实际身体与可观测证据冻结。能合法组合多个箱子、换抓法或换路线完成时应接受，不把单箱失败当成全局不可解。默认完成场景至少建立一条完整路线见证；专门的不可完成配对另计，不能因所有候选暂时未验证就要求去 Q。</p>
+<p>评分记录选择了哪些箱子、搬推布置是否完成、真实接触支撑、正确目标交付及机器人返回稳定；不以选择预定箱号或只登上箱顶代替成功。这里不要求双机协作，旧 M3／H1E-10 的协作证据不计作本任务见证。当前 A—D 均为设计场景，可行性 <code>unknown</code>，没有新增物理运行。</p>
+<h3 id="h1-selected-scope-7">7. H1S-11：工具必须真实可操作</h3>
+<p>把“工具本身功能成立”与“当前机器人能操作这件工具”分开验证。候选工具可以对不同身体具有不同可用性，但不能只有外形、没有实现机构或承托功能。普通可完成场景至少要有一件与当前身体和目标接口匹配的工具，并建立包含取物、撤出、运输和释放的完整见证；其他候选不必都对当前身体可用。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>机器人实际需要做到什么</th>
+<th>不算可操作的情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>短钩／长钩</td>
+<td>握稳手柄，控制钩头与目标可见环／边缘接合，沿有效方向受控拉取，最后脱钩或中转。</td>
+<td>仅钩头接近目标就绑定；没有接合结构却假定能钩；长钩碰柜或负载腕矩过大。</td>
+</tr>
+<tr>
+<td>手动长柄夹取器</td>
+<td>在持稳手柄的同时按压／开合真实控制部件，通过物理传动控制远端夹口；保持夹持并能主动松开。</td>
+<td>手能夹住杆但不能按动扳机；扳机行程／力超限；直接调用隐藏远端夹爪命令绕过手柄。</td>
+</tr>
+<tr>
+<td>托盘／承接件</td>
+<td>抓持可用部位，使盘面进入承托位置，形成真实支撑并保持姿态，再交接或放置目标。</td>
+<td>将目标吸附在盘面；能拿空盘但带载会翻；单臂持盘后没有手或独立支撑完成后续交接。</td>
+</tr>
+</tbody>
+</table></div>
+<p>若选电动夹取器，必须明确它作为带驱动设备的型号、真实执行器、供电／通信及公开可用控制接口，并单列协议；不能给普通被动工具偷偷增加电机或控制通道。机器人可用的传感器、手柄行程与作用力观测也需明确，不向 agent 提供隐藏的“可操作”标签。</p>
+<p>可操作性检查链：接近／抓持手柄 → 必要的驱动或接合 → 受控取出目标 → 带载撤出并保持稳定 → 放置／释放。每段检查手指闭合与干涉、操作所需的指／手数量、驱动力和行程、腕部与身体负载、扫掠净空，以及释放后的支撑。单臂若无法同时持工具和接目标，要有真实独立中转面或可行的动作顺序。尺寸、质量、驱动力和容差仍待标定。</p>
+<p>首版先验证最简单的被动钩与匹配目标接口，再考虑已完成机构建模和机器人操作验证的手动夹取器。托盘按真实交接需求加入。分别保存各工具×身体的操作证据；单次抓起工具、仅静态 IK 可达、参考控制器直接控制夹口都不等于操作通过。工具使用阶段只认真实功能交互；若开放任务允许其他合法路线，仍按最终物理目标判分并另记工具使用是否发生。</p>
+<p>本节作为 H1S-11.A—C 的共享工具验收合同，不再另增任务。所有新增工具操作能力仍为 <code>unknown</code>，没有新增仿真或通过声明。</p>
+<h3 id="h1-selected-scope-8">8. H1S-11：工具让原本完成不了的身体完成任务</h3>
+<p>核心对照是同一机器人、同一目标和同一场景，在没有辅助工具时无法完成，获得可实际操作的工具后能够完成完整取物交付。优先选择 Stretch 深柜取箱作为首个候选；不是仅让本来可完成的动作更快，也不是只证明能拿起工具。当前是场景设计假设，尚无物理验证结果。</p>
+<p><strong>Stretch 首选场景。</strong> 目标箱置于柜内较深处，有可见钩环及供后续夹取的把手；固定柜体或隔挡限制底盘进一步接近，侧后方也没有绕行入口。目标所在高度允许在拉近后直接抓持，但初始深度超出所有合法底盘位置与臂部姿态的直接抓取范围。柜前设稳定承托区，旁边有可放下工具的位置。质量、摩擦、环与把手几何、工具长度及腕部负载按实际模型标定，不预设 Stretch 的数值能力。</p>
+<p>动作链：取钩 → 接合目标环 → 沿柜面将箱子受控拉入可抓取的承托区 → 保证箱子稳定并脱钩 → 放下钩 → 用同一夹爪抓住箱把手 → 搬运交付。箱子在整个拉取过程中有真实支撑，不能拉落柜沿后算成功；单臂不需要同时持钩和抓箱。短钩可以够不到，较长钩可以有效，过长钩可能无法转向或腕矩过大；每个标签都要由实际几何和动力学验证。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>配对场景</th>
+<th>无工具／有工具的预期关系</th>
+<th>评测用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1S-11.A 直接可取</td>
+<td>将同一目标放近；直接抓取可完成。</td>
+<td>容易对照，检查基本控制能力，允许直接完成。</td>
+</tr>
+<tr>
+<td>H1S-11.B 工具使任务可解</td>
+<td>目标移深；无工具的全部合法路线不可行，至少一件可操作工具支持完整交付。</td>
+<td>核心能力扩展对照；匹配的无工具／有工具回合只改变工具可用性，其余世界、身体、目标、权限和预算一致。</td>
+</tr>
+<tr>
+<td>H1S-11.C 工具也无解</td>
+<td>最小改变关键瓶颈，例如进一步加深目标，连全部可用工具也无法接合；排除其他合法路线。</td>
+<td>真正不可完成的对照，机器人应放下工具后空手进入 Q 并停稳；与 B 分别统计。</td>
+</tr>
+</tbody>
+</table></div>
+<p>H1S-11.A—C 现已提升为三个独立任务；H1S-11 只作分组，同一回合不得重复计入 H1S-09。A／B／C 表示可行性对照，不是 infra 的 L1／L2／L3 难度。先做 B 的单一可用被动钩，再加入短／合适／过长候选与机构操作要求；新增候选不自动意味着更高工具层级。可在同一世界换 G1／A3 等身体，观察其是否仍需要工具；不预断某个更大身体必然能直接完成。</p>
+<p><strong>对照成立的证据。</strong> 无工具条件不能靠禁用原本合法动作来制造失败，须检查底盘换位、绕行、换抓法、推动以及现场其他物体等全部合法路线；不能只用一次失败或搜索超时宣称不可解。先建立几何／物理瓶颈证据，再为有工具条件保存从拿工具到释放交付的连续成功见证，并记录重复结果。若发现无工具也有合法解，应接受该解并取消该场景“工具使任务从不可解变可解”的标签。报告无工具与有工具的完整任务成功率、可行性证据、工具真实作用和放弃是否正确，不只比较接触或取到目标。所有新场景当前均为 <code>unknown</code>；只有两侧证据成立后才能声称工具扩展了能力。</p>
+<!-- p4-development-boundary -->
+<p><strong>P4 首个开发配置的边界：</strong> 使用现有 G1＋Dex3、5 kg 地面目标和公开的 2 kg 搬举上限，允许地面持续承托的推送。这证明的目标是“公开限制下不能搬举时仍可推送”，不宣称机器人在物理上绝对抬不起 5 kg。实际尺寸、摩擦、D 区、预算与三次重复在 <a href="/robo-si-results/humanoid/g1_support_retrieval/extension/p4-development.json">冻结配置</a> 中记录；带把手配对、更多质量及身体仍待验证。最终按物理目标与公开限制判定，不强制双手推或指定参考阶段。</p>
+<!-- /p4-development-boundary --></div></section>
+<section aria-labelledby="h1-extension-title" id="h1-extension"><div class="wrap"><p id="legacy-h1-scope-note"><strong>历史候选设计：下文“八个任务族／四类对照”为来源记录，当前以 22 项选定任务表为准，不重复计数。</strong></p>
+<!-- h1-extension-content: source=planning/h1-extension/README.md sha256=e43b8795125b1001ad7b0e2b84997a8c6e9e5f4d64046f2391115469f2d3dac1 -->
+<style>#h1-extension h3{margin-top:32px;scroll-margin-top:120px}#h1-extension .table-wrap{overflow-x:auto;max-width:100%}#h1-extension th,#h1-extension td{vertical-align:top;overflow-wrap:anywhere}#h1-extension nav{line-height:2}#h1-extension blockquote{margin:20px 0;padding:12px 20px;border-left:3px solid #526b85}</style>
+<h2 id="h1-extension-title">H1 extension：跨身体工具选择、组合取物与主动放弃</h2>
+<nav aria-label="扩展任务目录"><a href="#h1-extension-1">1. 身体配置</a> · <a href="#h1-extension-2">2. 共同场景与 agent 指令</a> · <a href="#h1-extension-3">3. 八个任务族</a> · <a href="#h1-extension-4">4. 四类“直接去 Q 放弃”的对照</a> · <a href="#h1-extension-5">5. 退出状态与评分</a> · <a href="#h1-extension-6">6. 难度、随机化与规划合同</a> · <a href="#h1-extension-7">7. 实施与验收待办</a> · <a href="#h1-extension-8">8. 当前任务族归属</a></nav>
+<p>2026-10-27 · <code>h1-extension/0.1.0</code> · <strong>设计提案，尚未实现或验证。</strong> H1 指任务编号，不是宇树 H1 机器人。目标支持集为 <strong>5 种平台、6 种配置</strong>；新增 8 个任务族及 4 类不可完成对照。这里的支持集是开发目标，不表示已有 Genesis 模型或控制器支持。</p>
+<p><a href="planning/h1-extension/README-en.md">English</a> · <a href="planning/h1-extension/task-design.json">机器可读任务卡</a> · <a href="task-h1-zh.html">现有 H1</a> · <a href="task-design-zh.html#card">任务设计规范</a> · <a href="acceptance-zh.html#screening">分层验收</a>。原 H1 的评分、见证、14 项统计和准入状态保持原样。本扩展新增仿真次数为 0，所有新配置／任务的可行性均为 <code>unknown</code>。</p>
+<h3 id="h1-extension-1">1. 身体配置</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">配置 ID</th>
+<th scope="col">配置</th>
+<th scope="col">要研究的身体差异</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>g1_dex3</td>
+<td>G1＋Dex3-1</td>
+<td>双足、双臂、三指手；作为换手对照的一端</td>
+</tr>
+<tr>
+<td>g1_inspire</td>
+<td>G1＋Inspire 五指手</td>
+<td>同一身体更换手；抓握宽度、指间干涉、持物稳定性变化</td>
+</tr>
+<tr>
+<td>agibot_a3</td>
+<td>智元 A3</td>
+<td>另一种双足身体；具体版本、末端执行器与资产待锁定</td>
+</tr>
+<tr>
+<td>galaxea_r1</td>
+<td>星海图 R1</td>
+<td>轮式、双臂、可调整躯干；不是宇树 R1</td>
+</tr>
+<tr>
+<td>stretch4</td>
+<td>Stretch 4</td>
+<td>轮式、单伸缩臂、升降柱；目标型号和可用资产待核验</td>
+</tr>
+<tr>
+<td>go1_arm</td>
+<td>Go1＋轻量机械臂＋夹爪</td>
+<td>四足、单臂；足点、身体高度／俯仰和负载共同决定操作能力</td>
+</tr>
+</tbody>
+</table></div>
+<p>Go1 的机械臂型号留待确定，<strong>不写成 Go1＋Z1</strong>。不能由臂长或空载步行能力推定高柜任务可完成：需要验证取物、撤臂、下降／坡道返回和负载运输的完整路线。手臂、夹爪、支架、电源与目标质量均进入整机惯量及负载计算。</p>
+<p><a href="https://manipulation-locomotion.github.io/">Deep Whole-Body Control 项目</a>及<a href="https://github.com/MarkFzp/Deep-Whole-Body-Control">代码中的 widowGo1</a>作为腿臂协调研究参考；<a href="https://github.com/PuenXu/Unitree-Go1-Arm">Unitree-Go1-Arm</a>提供机械设计与 URDF 线索。这些不是 Genesis 集成验收。<a href="https://shop.unitree.com/pages/faq">宇树 FAQ</a>明确提到 Z1 与 AlienGo／B1 的配套，不据此推定 Go1 的官方集成。</p>
+<h3 id="h1-extension-2">2. 共同场景与 agent 指令</h3>
+<p>房间包含固定柜体、目标箱、可交互箱体／凳子／板件、中转台、交付区 D 和退出区 Q。Q 用边界线和字母标识，随机布置且与 D、出生区、正常运输通道分开；不能仅靠颜色辨认。Q 从出生位置始终有当前机器人可通行的地面路线，尺寸覆盖整机收拢后的水平包络并留边界余量。</p>
+<p>统一指令模板：</p>
+<blockquote>
+<p>将位于 {位置描述}、带有 {可见编号或图案} 的 {颜色} 箱子完整送入 D 区并释放，保持稳定。不得损坏物体、使物体超出其公开承载限制，或违反机器人公开运行限制。如果判断当前身体与现场物品无法完成任务，请前往 Q 区，空手停稳 3 秒结束本回合；不要求先尝试搬动物体。</p>
+</blockquote>
+<p>只给目标、公开限制与退出规则，不告诉 agent 哪个物体是工具、用途、路线、难度层或可解标签。颜色可以重复，目标必须还能由可见编号／图案与空间关系唯一识别；允许移动视角消除遮挡。</p>
+<p>观测只来自已配置的 RGB／深度、编码器、IMU，以及确实装有的力／触觉／电流传感器。具体型号、外参、频率和噪声待资产冻结；不能默认为六种配置都有腕部力传感器。物体身份真值、质量、承载力、摩擦和可解标签仅可信侧可读。承载信息可由相机读取真实铭牌，或由安全小载荷试探中的形变／滑移／电流响应估计；无可观测证据的隐藏差异不得用于要求正确放弃。</p>
+<h3 id="h1-extension-3">3. 八个任务族</h3>
+<p>以下都是作者侧候选路线，不进入 agent 指令。实际成功按物理终态判定，不强迫复现唯一动作序列。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">ID／任务</th>
+<th scope="col">物体与候选完整路线</th>
+<th scope="col">核心判断、可观测证据与反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1E-01 推箱清路＋搬凳取物</td>
+<td>大箱挡住凳子搬运／柜前落脚空间；先推到停放位，再搬凳、登高、取箱、中转、空手下降、交付。箱子须可推但不可直接当有效增高物；单次搬凳不能完成。</td>
+<td>推力、凳子抓持和搬运净空、支撑面积同时受身体限制；从深度和小幅推移判断。反例：只把障碍推开、空踩凳子、搬错箱均不能算完成。轮式需另有有效坡道路线，不能套用双足登凳。</td>
+</tr>
+<tr>
+<td>H1E-02 多凳组合增高</td>
+<td>提供 2–3 个可搬支撑件；单件不足。候选 A 为稳定叠放后配独立登高入口，候选 B 为多件形成逐级踏面；都需验证下降和取物后的返回。</td>
+<td>总高度不代表能爬上去。检查每层接触面积、底层总载荷、侧向力、倾覆、上层抓放及中途可达性；从可见配合面、铭牌、低力试探判断。反例：高度够但无落足入口；下层空载可用、上人后超载。普通凳子不默认可安全叠放。</td>
+</tr>
+<tr>
+<td>H1E-03 坡道＋平台取物</td>
+<td>箱体作平台、板件形成坡道，机器人自行布置后上台取物并返回；轮式的必要路线是连续滚动支撑。也设“坡道预置”的独立变体，只测使用，不计搭建能力。</td>
+<td>板长／坡度、轮距、离地间隙、转弯平台、板端搭接、防滑和负载后制动；观察板面与轮接触。反例：前轮到台上但后轮悬空；空载上去后带箱无法返回。不得把轮式机器人瞬移到平台或默认会爬凳。</td>
+</tr>
+<tr>
+<td>H1E-04 同色目标与同色工具</td>
+<td>房间中至少两个同色箱，柜中目标另有编号／图案；多个同色支撑物的尺寸、抓持部位和额定载荷不同。在 01／02／03 的路线中选择正确目标与有效工具。</td>
+<td>颜色与用途、承载能力独立随机化；辨认身份和物理可用性是两项判断。反例：同色替身入 D；把不可读目标标签当作确定身份；只靠颜色记住强弱支撑。</td>
+</tr>
+<tr>
+<td>H1E-05 承载限制与返回路线</td>
+<td>下行踏面／坡道能承机器人空载、却不能承机器人＋目标；取物工作平台本身须能承带载机器人，另有从该平台可达且能承目标的中转台。取箱后先中转卸载，再空载下降、重抓交付。</td>
+<td>比较“身体＋安装件＋所有被承托物”的载荷，以及局部接触和弯矩；铭牌和可观测形变支持判断。单臂平台必须找到独立承托面才能松手；不得在已超载的工作平台上取箱后才卸载补救。反例：取到箱子即算成功；弱中转台；只有去程、没有安全返程。</td>
+</tr>
+<tr>
+<td>H1E-06 同身体换手选工具</td>
+<td>两种支撑件分别提供不同宽度、厚度、间距的抓持部位；G1 两种手在同一布局中选择可搬／可推的工具，布置后取物交付。</td>
+<td>不预设五指手优于三指手；逐一检查闭合范围、指间干涉、摩擦抓持和带载腕矩，并检查推移／托举是否绕过把手限制。反例：IK 可达却夹不住；仅更换手的外观或增加隐形吸附约束。</td>
+</tr>
+<tr>
+<td>H1E-07 Go1 腿臂协调与负载变化</td>
+<td>起始站位可接近目标但臂姿受限；候选路线为挪脚、调身体高度／俯仰、伸臂抓取、收臂恢复、持物移动。高柜变体额外提供经验证的宽平台／坡道；必要时先安置目标再调整足点。</td>
+<td>足点、支撑多边形、臂矩与整机重心联动；从深度、IMU、关节反馈和已配置的载荷观测推断。反例：固定底座机械臂可达就算 Go1 可达；抓到工具后沿用空载步态；身体抬高后无返回姿态。</td>
+</tr>
+<tr>
+<td>H1E-08 多路线综合选择</td>
+<td>同时有推箱＋搬凳、多个支撑件、坡道板、中转台；至少两条对当前配置可行的路线才标为“多有效路线”。混入同色物体和不同承载限制。</td>
+<td>比较自己的全程可达性、可搬性、接触稳定和返回负载；路线效率是次指标。仅一条路线已证实则标“候选选择”，不能宣称多解。反例：最快却超载、先取到目标再被困、无理由直接退出。</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h1-extension-4">4. 四类“直接去 Q 放弃”的对照</h3>
+<p>不可完成性绑定 <strong>场景版本＋身体／手／安装件＋公开规则</strong>，并对初始场景判断。下表只是待构造的反例规格，目前没有不可解证书。需要排除合法工具组合及非常规解法，不能把一条路线失败扩展成整回合无解。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">ID／关联任务</th>
+<th scope="col">触发条件与证书要求</th>
+<th scope="col">配对可完成回合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1E-I01 高度上界不足／02、07</td>
+<td>对所有合法支撑组合与身体姿态，保守最大可达高度仍低于必需接触高度；柜体固定且无其他合法支撑／拉取路径。还须排除拉倒、拉出后接取等替代路线。</td>
+<td>仅更换支撑高度或目标层高，获得一条完整路线。</td>
+</tr>
+<tr>
+<td>H1E-I02 所有载荷路径均不成立／05、08</td>
+<td>每条接近、抓取、中转、返回路径至少有一项必要承载条件失败；不是只检查最显眼的凳子。铭牌或可安全获取的物理响应足以判断。</td>
+<td>仅替换一个承载件或降低目标质量，消除该瓶颈。</td>
+</tr>
+<tr>
+<td>H1E-I03 轮式无有效入口／03</td>
+<td>必经高台没有合格坡道，现有板长、宽度、强度或搭接不足；地面伸臂、改躯干姿态、绕行和其他板件组合均无法完成。</td>
+<td>同一轮式配置换成有效坡道，或以另一身体作可解性对照；二者分开统计。</td>
+</tr>
+<tr>
+<td>H1E-I04 无法建立有效抓持／06</td>
+<td>当前手无法搬运所有必要支撑／目标；同时排除推移、托举、翻转、工具辅助和利用环境建立抓持的合法替代路线。</td>
+<td>同身体换手，或仅改变抓持部位；须实证变化后能完成。</td>
+</tr>
+</tbody>
+</table></div>
+<p>“直接”指可以在观察后不接触任何任务物体就去 Q，不要求先失败几次。涉及隐藏物性时可先做安全探测；若观测仍不足，结果保持 <code>unknown</code>。有限 IK 搜索失败、超时和控制器能力不足都不是物理不可解证书。机器人自己推翻／破坏可行路线后再退出，不算正确放弃。</p>
+<h3 id="h1-extension-5">5. 退出状态与评分</h3>
+<p>拟议状态机：<code>active → retreating → abstained</code>，另有 <code>delivered / timed_out / invalid</code> 终态。进入 Q 作为退出意图；机器人收臂、释放物体并满足驻留条件后，由可信侧提交一次终态，不要求语言声明。现有 <code>declare_infeasible</code> 若接入，只登记退出意图和理由，不能跳过实体移动；旧 H1 接口不由本文修改。</p>
+<p>Q 完成条件：机器人整机水平包络完全在 Q 内、全部承重足／轮处于合法地面支撑、无抓持或悬吊物、线速度 ≤0.03 m/s、角速度 ≤0.05 rad/s、稳定持续 3 s，且无硬违规。阈值是待标定草案，须按配置检查后冻结。倾倒、跌入区域、擦边经过、仅手臂伸入 Q、出生即在 Q 或缺失日志都不算退出完成。普通成功要求正确目标完整进入 D、独立承托、释放并稳定 3 s；未经过的阶段不补发分数。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">可信侧初始标签</th>
+<th scope="col">agent 完成取物</th>
+<th scope="col">agent 到 Q 有效退出</th>
+<th scope="col">未完成退出或超时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>witnessed feasible</td>
+<td><code>task_success=1</code></td>
+<td><code>task_success=0, false_abstention=true</code></td>
+<td>失败／超时</td>
+</tr>
+<tr>
+<td>certified infeasible</td>
+<td>证书矛盾，保留运行并复核标签</td>
+<td><code>task_success=0, correct_abstention=true</code></td>
+<td>漏检／退出失败</td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>通过完整验证可新增匹配见证</td>
+<td><code>task_success=0, abstention_correctness=null</code></td>
+<td>未确定，不猜标签</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>screen_pass</code> 不等于 witnessed feasible；可信不可解标签须另附必要条件证书及覆盖范围。原有四态筛查账本继续使用，单路线 <code>rejected</code> 不自动变成 certified infeasible。<code>safe_exit</code> 可独立统计，不能冒充正确不可解判断。</p>
+<p>分别报告可解回合交付率、不可解回合正确放弃率、可解回合误放弃率、退出执行成功率，以及 <code>unknown</code> 数量；未知回合不混入可解／不可解分母。另报告首次决策时间、退出耗时、试探次数和违规率。始终放弃策略必须在可解回合得 0；不把取物阶段分与放弃奖励相加，也不把超时自动归为放弃。若需总指标，使用已认证两类上的平衡决策成功率，缺任何一类则不出总分。</p>
+<h3 id="h1-extension-6">6. 难度、随机化与规划合同</h3>
+<p>保留规范的三层：L1 为一条路线的必要物体；L2 增加对当前身体不可用、但对指定另一身体可用的工具；L3 再加同色干扰和物理弱支撑。每个 L2 物体须有两个身体的证据，不能按外观或手指数量指定“可用”。同 seed 的目标、必要工具及位姿保持不变，逐层只加物体并复查碰撞／捷径。04 是 L3 的专项评测切片，不另造一层。</p>
+<p>08 的多个同时有效工具组合与严格 L1 定义不同，单列 <code>route_selection</code> 评测。不可完成对照单列 <code>feasibility_decision</code>；不要求其满足“去掉任一必要工具才不可解”的 L1 前提。跨身体使用同一世界的 <code>matched_world</code> 对照与按能力调参的 <code>body_scaled</code> 对照也分开报告。能力披露 explicit／partial／latent 为独立轴，均不能暴露场景真值。</p>
+<p>随机化包括目标高度／格位、箱凳与坡道位置、尺寸、抓持几何、质量、摩擦、承载力、同色编号和 Q 位置。数值区间在标定后冻结，目前为 null；颜色不与能力标签相关，退出区位置不与可解性相关。几何无效／出生重叠／Q 不可达的生成样本记录拒绝原因和比例；正式抽样中的失败、未知和超时全部保留，不换 seed。开发与密封评测划分独立。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">子任务</th>
+<th scope="col">入口 → 出口</th>
+<th scope="col">接触／低层动作与检查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observe</td>
+<td>原始场景 → 唯一目标与候选物体的观测证据</td>
+<td>移动视角、读标签、必要时小力试探；身份仍歧义则继续观察</td>
+</tr>
+<tr>
+<td>Prepare</td>
+<td>候选路线 → 已布置且可承载的结构</td>
+<td>推／抓／抬／放／撤手；真实接触、搭接、形变和承载，不以几何邻近代替</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>稳定地面状态 → 可操作工作姿态</td>
+<td>移重心、逐足落点或轮式坡道推进；全程防滑、净空与驱动力检查</td>
+</tr>
+<tr>
+<td>Retrieve</td>
+<td>目标在原支撑 → 正确目标受控离开</td>
+<td>夹持／托举、抬离、退出柜口；载荷反馈与重心变化</td>
+</tr>
+<tr>
+<td>Return</td>
+<td>工作姿态 → 地面可交付状态</td>
+<td>必要时中转释放、空载下降、重抓；前段实际位姿、速度、接触满足后段入口</td>
+</tr>
+<tr>
+<td>Deliver</td>
+<td>受控持物 → D 内释放且稳定</td>
+<td>下放、确认独立承托、撤手、驻留</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td>可安全移动状态 → Q 内空手稳定</td>
+<td>先稳定／卸载再退行、收拢、停稳；不能假设任意失败状态可安全撤退</td>
+</tr>
+</tbody>
+</table></div>
+<p>每个子任务可另生成物理有效起点用于课程学习，但不能把检查点片段拼成端到端见证。阶段建议为 Prepare 0.2、Retrieve 0.3、Deliver 0.5，仅作诊断且每阶段计一次；普通完成分与退出判断分别记录。路线不要求使用某工具时，仍按真实终态给完成分，并复查任务必要性；不追认未发生的准备阶段。</p>
+<h3 id="h1-extension-7">7. 实施与验收待办</h3>
+<p>后端目标为 Genesis，版本、时间步、子步、求解器、接触参数、自碰撞、每种身体的资产／许可证／哈希／尺度／惯量／控制器及传感器均待冻结。优先官方机器人和现有精细物体资产；需精确控制承载或叠放结构时才能自建，并记录不能使用前三级资产的理由。弱支撑须用可失稳／形变／失效的物理机制实现，不能用外观完全坚固的刚体加一条“用了扣分”规则。公开额定载荷和动态结构响应共同约束，不能把静态质量上限当作接触力上限。</p>
+<p>任务卡的预算字段现为 null，含控制步、观测、token、reset、墙钟和局部探测；冻结前不启动求解器。难度假设是工具组合、接触切换、手部能力及不确定性判断需要强 coding agent 多轮迭代，是否达到规范所述 4 小时以上需基线实测，尚无难度结果。</p>
+<p>验收顺序：01／05 建立与现有 H1 的连接；03 补轮式；06 做换手配对；02／04 做组合与干扰；07 在 Go1 资产锁定后验证；08 最后组合。每个声明配置／路线／层分别预声明代表样本、关键技能检查、边界反例、审阅人及复现人；任务级至少有连续生成的完整成功见证，再讨论范围扩展。不要求所有随机实例完整求解；每个样本保留四态、检查范围、预算和证据身份。代表运行至少重复 3 次，回合评分重复 3 次；其余数量、容差和名单待冻结。</p>
+<p>评分器反例覆盖七类攻击：私读真值／证书；修改世界或瞬移到 Q；穿模、锁臂、接触注能；错箱、单帧、跌入 Q；重复退出或先取阶段分再放弃；跨回合记种子／颜色；地面够取、组合工具或载荷中转等绕开预期路线。合法非常规解法按状态给分并修订路线标签；违规方法必须在公开规则或物理边界中明确。所有反例目前仅为设计，尚未执行测试。</p>
+<p>人工审阅需核对：目标身份与全包络入区；工具和机器人真实承载；取物后的完整返回；无破坏／超载／隐形固定；Q 退出全过程与 3 s 驻留；不可解证书确实覆盖合法替代路线；录制、源码、资产和可信日志身份一致。机器任务卡及本目录都属于作者材料，必须排除在 agent bundle 之外。</p>
+<h3 id="h1-extension-8">8. 当前任务族归属与历史协作提案</h3>
+<p><a href="planning/task-families.md">H1 / M1 / M3 当前总表</a> · <a href="planning/m3-extension/README.md">M3 条件性设计</a>。H1 近期聚焦单级登高、多级踏面选择、轻载取物后的重心调整与返回。旧 H1E-09—14 协作补充已被重新分类，停止计入 H1 活跃任务；原 8 条候选与 4 类退出对照保留编号。M3 新抬升方案须先审核当前 2 kg 约束和轻量伙伴资产；不包含人形相互承托。<a href="planning/h1-extension/cooperative-tools.md">历史提案</a>仅供追溯。</p>
+</div></section>
+<section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>已有参考执行见证；设计、动作、支撑、轨迹对应及复现来源见文档。</p><p><a href="reference-designs/H1.html">参考解与设计文档</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>完整任务说明与证据</h2><p class="detail-nav"><a href="#detail-scope">任务范围与场景</a> · <a href="#detail-interfaces">观测、动作与接口</a> · <a href="#detail-planning">高层目标与低层动作</a> · <a href="#detail-trajectory">轨迹与关键状态对应</a> · <a href="#detail-scoring">评分与成功判据</a> · <a href="#detail-evidence">代表证据与审阅</a> · <a href="#detail-sandbox">沙盒验证</a> · <a href="#detail-reproduce">下载与复现</a> · <a href="#detail-limits">验收边界与剩余工作</a></p><article id="detail-scope"><h3>任务范围与场景</h3><p>原始1.25米场景的分层证据交付；随机Layer1实例按四态记录</p><p>限定范围参考解与设计交付完成；固定成功、C026 seed 63/963 连续成功及 985 失败记录保留。5.26 GB 冻结包已上传 HF，远端大小与 SHA-256 核验通过。</p><p>先把支撑物搬到取物区，再登高、取物、下降和交付。支撑物位置决定足部落点和上肢可达性；登高前必须形成稳定支撑，不能以取物评分时间替代落脚完成时间。</p></article><article id="detail-interfaces"><h3>观测、动作与接口</h3><p>参考控制器的特权状态与公开代理权限分开；以本任务 SDK 和指令为准。</p><p><a href="../humanoid/g1_support_retrieval/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_support_retrieval/sandbox/agent_sdk">Agent SDK (GitHub; repository access required)</a></p></article><article id="detail-planning"><h3>高层目标与低层动作</h3><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>布置支撑物</td>
+<td>H1.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>登上支撑物</td>
+<td>H1.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>取得目标</td>
+<td>H1.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>中转放置</td>
+<td>H1.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>空手下台</td>
+<td>H1.K05</td>
+<td>S4 → S5</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>重抓并交付</td>
+<td>H1.K06</td>
+<td>S5 → S6</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>机器人和候选支撑物在原始场景中</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>支撑物在可登踏位置稳定，手已释放</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>双足在支撑面上，机器人稳定</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>正确目标离开原支撑，受控持有</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>目标由板面稳定承重、双手释放</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>双足落地、双手空，目标仍在板上</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>目标在指定区域落地释放并稳定</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>轨迹与关键状态对应</h3><details><summary>动作顺序、接触与轨迹事件</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>H1.K01 · 接近、抓持、搬移并落地</h5>
+<p>入口：机器人和候选支撑物在原始场景中。出口：支撑物在可登踏位置稳定，手已释放。</p>
+<p>局部检查：支撑顶面容纳足底；柜前可达；搬移负载和落地点有效。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K01.A01</td>
+<td>调整站位、双足稳定</td>
+<td>足→地面</td>
+<td>足载荷及重心余量</td>
+<td>e0000: episode [1.0, 1.0] s; e0001: episode [1.0, 1.0] s; e0002: episode [4.3, 4.3] s; 另 23 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K01.A02</td>
+<td>双手接近并坐实抓持</td>
+<td>地面→支撑物，手逐步接触</td>
+<td>左右手接触、物体姿态</td>
+<td>e0028: episode [74.28, 74.28] s; e0032: episode [79.76, 79.76] s; e0034: episode [87.5, 87.5] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K01.A03</td>
+<td>抬起、起身并逐足搬移</td>
+<td>双手→支撑物；交替足→地面</td>
+<td>持物高度、落足、接触不断开</td>
+<td>e0038: episode [88.02, 88.02] s; e0045: episode [98.4, 98.4] s; e0047: episode [108.94, 108.94] s; 另 246 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K01.A04</td>
+<td>下降、让支撑物落地、撤手</td>
+<td>双手→地面独立承重</td>
+<td>物体支撑及手分离</td>
+<td>e0280: episode [479.5, 479.5] s; e0283: episode [482.06, 482.06] s; e0284: episode [482.06, 482.06] s; 另 13 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K02 · 逐足落点与重心转移</h5>
+<p>入口：支撑物稳定且登踏面可用。出口：双足在支撑面上，机器人稳定。</p>
+<p>局部检查：台阶高度、足底完整覆盖、承重与抗滑；不能仅检查高度收益。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K02.A01</td>
+<td>收臂并调整登高入口</td>
+<td>双足→地面；支撑物已落地</td>
+<td>柜体净空及足点</td>
+<td>e0327: episode [762.6, 762.6] s; e0328: episode [762.6, 762.6] s; e0329: episode [765.74, 765.74] s; 另 24 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K02.A02</td>
+<td>重心移向支撑足、卸载摆动足</td>
+<td>单足→地面/支撑物</td>
+<td>支撑足法向力、重心</td>
+<td>e0355: episode [827.2, 827.2] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K02.A03</td>
+<td>抬腿、前摆、落足、确认承重后换脚</td>
+<td>地面单足→支撑物双足</td>
+<td>落足接触、身体高度和碰撞</td>
+<td>e0354: episode [827.2, 827.2] s; e0356: episode [888.4, 888.4] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K03 · 柜内接近、双手抓取、退出</h5>
+<p>入口：支撑面稳定且正确目标可识别。出口：正确目标离开原支撑，受控持有。</p>
+<p>局部检查：负载姿态可达、柜口扫掠无碰撞、支撑合力可行。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K03.A01</td>
+<td>整理肩部并检查柜口净空</td>
+<td>双足→支撑物；物体→柜板</td>
+<td>肩部距离、足稳定</td>
+<td>e0358: episode [888.4, 888.4] s; e0359: episode [888.4, 888.4] s; e0360: episode [891.9, 891.9] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K03.A02</td>
+<td>双手进入柜内并建立抓持</td>
+<td>柜板→柜板/双手共同承重</td>
+<td>双手接触与抓持姿态</td>
+<td>e0361: episode [913.18, 913.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K03.A03</td>
+<td>抬离柜板并退出柜口</td>
+<td>双手→目标；足→支撑物</td>
+<td>目标离板、柜口间隙</td>
+<td>e0361: episode [913.18, 913.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K04 · 将目标降到中转板并撤手</h5>
+<p>入口：目标由手承托，中转板可达。出口：目标由板面稳定承重、双手释放。</p>
+<p>局部检查：板面容纳真实物体边界，落地后仍可从地面重抓。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K04.A01</td>
+<td>规划目标到中转板的手部通道</td>
+<td>双手持目标</td>
+<td>手与板边间隙</td>
+<td>e0362: episode [913.18, 913.18] s; e0363: episode [913.18, 913.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K04.A02</td>
+<td>纠正高度、下降到中转板</td>
+<td>双手→板面承重</td>
+<td>目标支撑、姿态及残余手载荷</td>
+<td>e0364: episode [923.18, 923.18] s; e0365: episode [926.18, 926.18] s; e0366: episode [936.18, 936.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K04.A03</td>
+<td>确认板面承托后撤手收臂</td>
+<td>板面独立承重</td>
+<td>手已分离、目标稳定</td>
+<td>e0368: episode [938.68, 938.68] s; e0369: episode [942.18, 942.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K05 · 逐足下降与落地稳定</h5>
+<p>入口：目标已在中转板上独立稳定。出口：双足落地、双手空，目标仍在板上。</p>
+<p>局部检查：下降足点和重心路径有效，不允许携物下降替代该参考阶段。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K05.A01</td>
+<td>依据当前足点重排下降动作</td>
+<td>目标→中转板；足→支撑物</td>
+<td>实际足位置与地面可达性</td>
+<td>e0370: episode [942.18, 942.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K05.A02</td>
+<td>移重心、逐足卸载、抬脚并降到地面</td>
+<td>单足支撑交替切换</td>
+<td>足法向力、重心、落足误差</td>
+<td>e0371: episode [942.18, 942.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K05.A03</td>
+<td>双足落地并稳定</td>
+<td>双足→地面</td>
+<td>双足接触、身体稳定</td>
+<td>e0372: episode [1037.98, 1037.98] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K06 · 地面重抓、携物行走、放置撤手</h5>
+<p>入口：机器人落地且目标仍可达。出口：目标在指定区域落地释放并稳定。</p>
+<p>局部检查：重抓姿态、搬运净空、目标完整容纳和原评分驻留条件。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K06.A01</td>
+<td>接近中转板并重建双手抓持</td>
+<td>板面→双手</td>
+<td>抓取高度、双手载荷</td>
+<td>e0375: episode [1043.94, 1043.94] s; e0376: episode [1063.78, 1063.78] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K06.A02</td>
+<td>携物到目标、制动并稳定</td>
+<td>双手持物；足→地面</td>
+<td>速度、支撑及目标区几何</td>
+<td>e0377: episode [1075.9, 1075.9] s; e0378: episode [1077.6, 1077.6] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K06.A03</td>
+<td>调平并下放目标</td>
+<td>双手→目标区支撑</td>
+<td>支撑接触、姿态</td>
+<td>e0379: episode [1077.78, 1077.78] s; e0380: episode [1082.8, 1082.8] s; e0381: episode [1087.82, 1087.82] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K06.A04</td>
+<td>确认落地、释放、撤手、驻留</td>
+<td>目标区独立承重</td>
+<td>手分离及持续支撑</td>
+<td>e0382: episode [1088.12, 1088.12] s; e0383: episode [1090.12, 1090.12] s; e0384: episode [1090.62, 1090.62] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>评分与成功判据</h3><p>保留本页原任务评分及冻结参考 verdict；分层计划、技能展开和事件对应不产生额外任务分数。合同中的拟议评分不是当前评分实现。完整运行的分数不能赋给筛查或沙盒短测。</p><p>本参考的最终关键状态：目标在指定区域落地释放并稳定</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_support_retrieval/task_spec.py">原任务判据源码 / Original task criteria (GitHub; repository access required)</a></p></article><article id="detail-evidence"><h3>代表证据与审阅</h3><p>见证：<strong>C026-63</strong>。范围：原始1.25米场景的分层证据交付；随机Layer1实例按四态记录。</p>
+<p>限定范围参考解与设计交付完成；固定成功、C026 seed 63/963 连续成功及 985 失败记录保留。5.26 GB 冻结包已上传 HF，远端大小与 SHA-256 核验通过。</p>
+<p><a href="planning/h1/registry.json">完整见证原始记录</a>；<a href="planning/hierarchical-evaluation/action-mappings/H1.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>沙盒验证</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>这些检查验证启动、传感器与动作接口；不计完整任务成功。同机 WSL 不是独立第二台机器复现。</p><p><a href="sandbox-delivery/evidence/windows/H1/trusted/verdict.json">Trusted short-run verdict</a> · <a href="sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>下载与复现</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/71ea702d485b28be849a28c894750b9538a40fe0/releases/h1-layered-reference-20261026/h1_layered_reference_20261026.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: 300630ebf965ef40e6b8c16c231dfe7671fd84dabd70684b842b4138f6d03e03</p><p>下载需私有仓库权限。参考包保留历史配置与运行入口；当前沙盒工作区补齐运行资产。先按沙盒 README 安装环境并执行短测，再用参考包的冻结入口复现；不能把新接口短测当作完整专家回放。</p><p>先检查本任务入口（不运行物理），再按链接中的环境与代理交付说明启动。历史 README 中的原机器路径须替换为本机路径；本页沙盒验证表是当前检查状态。</p><pre><code>python -m infra.sandbox.inventory check --task H1
+python -m humanoid.g1_support_retrieval.sandbox.launch --help</code></pre><p><a href="../humanoid/g1_support_retrieval/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>验收边界与剩余工作</h3><p>未见配置的技能范围与动态筛查仍未确定；如发布新控制器，只补受影响的代表回归。人工签审、第二人复现和其他正式准入缺口仍保留，不要求每个随机实例完整求解。</p><p>登高/下降内部足步尚需从控制 trace 展开；评分 S2=876.08 s 不是登高结束，控制事件 on_stool=888.40 s。H1 原状态与运行不改。</p><p>随机实例分别记录：有完整成功证据、通过可行性筛查、未确定、检查不通过。只要求声明范围内的代表完整见证与表示间对应；不要求逐个随机实例生成完整解。正式准入、人工签审和独立机器验证不由页面完成状态推定。本次新增物理执行：0。</p><p><a href="reference-designs/H1.html">完整参考设计 / Full reference design</a> · <a href="task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main>
+<footer><div class="wrap">robo-si · H1 第一层验证 · <a href="contribute-zh.html">首页</a> · <a href="task-h1-en.html">English</a></div></footer>
+</body></html>

@@ -1,0 +1,676 @@
+{
+  "schema": "h1-implementation-code-review/1",
+  "date": "2026-10-27",
+  "author_only": true,
+  "reviewer": "requirements_subagent",
+  "review_scope": "Independent static code review plus targeted synthetic evidence-validator counterexamples. No physical execution performed by this review.",
+  "code_under_active_revision": true,
+  "line_reference_policy": "Line numbers refer to inspected revision; use hashes/anchors because owners may edit concurrently.",
+  "reviewed_files": [
+    {
+      "path": "humanoid/g1_support_retrieval/extension/run_p4.py",
+      "sha256": "5292e617291f9129b5cb2787f0fd17994cbeecdbf54a92c92f688afc57c45e44"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/extension/p4-development.json",
+      "sha256": "75011c35534bec852a070cb2a38a13a917f0def3d6eb0e5bcf2ef05cec5d42aa"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/extension/expert-plan.json",
+      "sha256": "1252e2e96eb0ea7f86617c48a749810e306b6a8f73e667d6f50d55d678335896"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/extension/run_gamma.sbatch",
+      "sha256": "84ffccd3d7d3a4ce1b90ae19c6d5f43735177c5f60a98c3bf25969e8ea0c1f0b"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/extension/verify_p4.py",
+      "sha256": "480ad99c6fbb71e077dfea12d40ac6a8933bcffb8472de60cf9f08c75d535807"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/extension/test_verify_p4.py",
+      "sha256": "9a9de043728e916ae6804548eac226002b1a22620ad9d405de513efaf8b53db7"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/solution/push_box/run_push.py",
+      "sha256": "030faa31d717d8bc9b0381368c6b7778564fb0e5221077ef78defe11ba0a12f3"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/genesis_env.py",
+      "sha256": "da3fa7e8fb6b74f30a7e7e92ee030e1102f0955e512a1df68ec53d560f26a516"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/task_spec.py",
+      "sha256": "2aa98d9686e42cd20fdd22d4f8b63c7c239415d10008a3415593c129f029659a"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/solution/step_up/contact_wbc.py",
+      "sha256": "06d66ed9972b15b4238ab871112c88e22cd1e1cd1ff57b91971488235e90fe52"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/solution/underhand_lift/run_underhand.py",
+      "sha256": "b82c47f4b4991686c5e8137be881e5c40b53d21e07c156ccb62870bba822619a"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/sandbox/trusted/statelog.py",
+      "sha256": "86272084ad082f3006a8fc38c31ae05624a5d7860bf9eb2aa2443651a6263581"
+    },
+    {
+      "path": "infra/h1_tasks/evidence.py",
+      "sha256": "22d7b1e068fab86aa96911ea6803ca8a79dfa72bdfa9b78228c337b6d4df1f9d"
+    },
+    {
+      "path": "infra/h1_tasks/registry.py",
+      "sha256": "e6049d7e5748e3a58c45cc6aa2aa2a050ac82853082379d69fbd289360588f4c"
+    }
+  ],
+  "static_positive_observations": [
+    {
+      "file": "humanoid/g1_support_retrieval/solution/push_box/run_push.py",
+      "line": 688,
+      "finding": "Robot/target pose writes and mass/friction initialization precede first scene.step. No post-start pose setter or applied root wrench found in inspected execution loop.",
+      "limit": "Static inspection, not a runtime forbidden-write interception audit."
+    },
+    {
+      "file": "humanoid/g1_support_retrieval/solution/push_box/run_push.py",
+      "line": 538,
+      "finding": "Narrow waist range modifies planner IK only, restored after solve; not a physical simulator joint lock.",
+      "limit": "No claim that arbitrary future controller code preserves this behavior."
+    },
+    {
+      "file": "humanoid/g1_support_retrieval/solution/step_up/contact_wbc.py",
+      "line": 163,
+      "finding": "QP upper-body locked entries constrain planned acceleration; actual robot uses bounded joint actuation rather than weld/fixed constraints."
+    },
+    {
+      "file": "humanoid/g1_support_retrieval/solution/push_box/run_push.py",
+      "line": 952,
+      "finding": "ActuatorIntervalAudit.sample called after every physics step; recorder validates 43 finite q/velocity/actual control-force readings and retains extrema.",
+      "limit": "Verifier currently validates only aggregate ratios/count; raw numeric provenance and bounds need stronger binding."
+    },
+    {
+      "file": "humanoid/g1_support_retrieval/extension/p4-development.json",
+      "finding": "5 kg vs 2 kg distinction is explicitly a public lifted-payload rule; ground supported pushing allowed, physical inability to lift is not claimed."
+    },
+    {
+      "file": "humanoid/g1_support_retrieval/genesis_env.py",
+      "line": 27,
+      "finding": "Genesis requests gs.gpu; attempt8034773 environment reports Gamma node gammagpu05, RTX A4000, Genesis1.4.3.",
+      "limit": "Host/GPU inventory plus code is not a completed successful physics witness."
+    }
+  ],
+  "findings": [
+    {
+      "id": "P4-01",
+      "severity": "high",
+      "file": "humanoid/g1_support_retrieval/solution/push_box/run_push.py",
+      "line": 942,
+      "title": "Trajectory records reference torque instead of exact issued substep command",
+      "details": "Four physics steps apply velocity-dependent clipped leg torques; command_rows stores the unclipped tau_qp once per control interval. This cannot support exact action replay or exact applied-command provenance.",
+      "recommended_action": "Record each physics substep control mode, clipped force/position command and active ranges; label existing v1 log as references. The owner acknowledged and intends a new attempt.",
+      "evidence_kind": "static_read",
+      "status": "resolved_v2_source_and_completed_artifact_identity_audit",
+      "resolution": "Physics commands now record 81 columns for every substep: time, leg mode, 43 actual position targets, 12 clipped leg forces, lower/upper ranges. Runtime archive not yet available; independent replay still pending."
+    },
+    {
+      "id": "P4-02",
+      "severity": "high",
+      "file": "humanoid/g1_support_retrieval/solution/push_box/run_push.py",
+      "line": 966,
+      "title": "Mixed-time measured state row",
+      "details": "Box position/linear velocity and base states are captured before four scene.step calls; box angular velocity is fetched afterward, then all fields are labeled time=t.",
+      "recommended_action": "Capture angular velocity alongside other pre-step states or record a unified post-step state with matching timestamp. Treat existing v1 attempt as diagnostic until provenance reviewed.",
+      "evidence_kind": "static_read",
+      "status": "resolved_v2_source_and_completed_artifact_identity_audit",
+      "resolution": "Box angular velocity captured with pre-step state; no mixed timestamp fetch in emitted row."
+    },
+    {
+      "id": "P4-03",
+      "severity": "medium",
+      "file": "humanoid/g1_support_retrieval/extension/verify_p4.py",
+      "line": 104,
+      "title": "Expert phase completion is a hidden success requirement",
+      "details": "The verifier requires result.status=plan_completed even if complete legal physical delivery already occurred. This contradicts accepting every legal complete route.",
+      "recommended_action": "Separate recording completeness/integrity from controller sequence completion; decide physical task_success from the goal and public constraints.",
+      "evidence_kind": "static_read",
+      "status": "resolved_independent_synthetic_regression_passed",
+      "resolution": "Controller status retained diagnostic, removed from goal success predicate. Synthetic alternative goal accepted."
+    },
+    {
+      "id": "P4-04",
+      "severity": "high",
+      "file": "humanoid/g1_support_retrieval/extension/verify_p4.py",
+      "line": 80,
+      "title": "Net grouped contact forces do not establish release",
+      "details": "contact_summary in solution/underhand_lift/run_underhand.py sums vectors per hand group. Opposing contacts can cancel although the target is still grasped.",
+      "recommended_action": "Use raw contact magnitude/count and contact identity with declared noise tolerance; do not use only group net force to establish no hand contact.",
+      "evidence_kind": "static_read",
+      "status": "resolved_independent_synthetic_regression_passed",
+      "resolution": "Release requires empty contact_links in addition to net forces; synthetic cancelled contact negative rejected."
+    },
+    {
+      "id": "P4-05",
+      "severity": "high",
+      "file": "humanoid/g1_support_retrieval/extension/run_p4.py",
+      "line": 77,
+      "title": "Frozen target/controller profile not fully forwarded or checked",
+      "details": "CLI forwards mass but leaves target size/friction/x and controller max_push at defaults. They coincide for the current profile, but later profile edits can produce mismatched physics while the verifier uses the claimed profile.",
+      "recommended_action": "Pass all frozen geometry/physics/controller values explicitly, validate supported initial coordinates, compare result/config/effective model to frozen profile before assigning witness status.",
+      "evidence_kind": "static_read",
+      "status": "resolved_for_frozen_v2_profile",
+      "resolution": "Profile size/friction/x/max-push forwarded; result geometry/mass/friction and initial position checked. Frozen profile y=0 and z=height/2 match constructor; arbitrary y/z profiles not supported."
+    },
+    {
+      "id": "P4-06",
+      "severity": "high",
+      "file": "humanoid/g1_support_retrieval/extension/verify_p4.py",
+      "line": 42,
+      "title": "Missing command, state shape and runtime-integrity validation",
+      "details": "Independent synthetic fixtures showed acceptance of NaN joint_position_target, a one-column joint array, runtime_pose_writes=true and result mass/size disagreeing with profile. These are software counterexamples, not GPU observations.",
+      "recommended_action": "Validate finite actual command vectors and expected joint ordering/dimensions; reject forbidden runtime writes/attachments/root wrench; bind effective geometry/mass and required integrity artifacts.",
+      "evidence_kind": "synthetic_negative_fixture_executed",
+      "status": "resolved_independent_synthetic_regression_passed",
+      "resolution": "Finite43 command and50 qpos checks, forbidden integrity flags and scene identity checks added. Four original negative cases now rejected. Flags remain declarations validated with source review, not intercepted runtime calls."
+    },
+    {
+      "id": "P4-07",
+      "severity": "medium",
+      "file": "humanoid/g1_support_retrieval/extension/run_p4.py",
+      "line": 48,
+      "title": "Snapshot excludes trusted actuator recorder and plan",
+      "details": "The source snapshot includes solution/extension plus three environment files but excludes sandbox/trusted/statelog.py imported for actuator/contact logging; expert-plan.json is also not copied by the *.py loop.",
+      "recommended_action": "Include imported trusted recorder and transitive implementation dependencies plus predeclared expert plan. Record verifier source identity actually used for the result.",
+      "evidence_kind": "static_read",
+      "status": "resolved_v2_source_and_completed_artifact_identity_audit",
+      "resolution": "Snapshot includes task trusted recorder, infra/sandbox sources, sonic.json and predeclared expert plan; subprocess executes frozen root. Await actual file/hash verification."
+    },
+    {
+      "id": "P4-08",
+      "severity": "medium",
+      "file": "humanoid/g1_support_retrieval/extension/run_p4.py",
+      "line": 64,
+      "title": "Asset identity collected before scene asset generation",
+      "details": "Asset hashes are collected before collider_mjcf is invoked by environment build; generated or mutated cabinet collision geometry may differ from the pre-build asset inventory.",
+      "recommended_action": "Record effective post-build recursive asset manifest and compare expected/frozen identities; retain any generated asset sources.",
+      "evidence_kind": "static_read",
+      "status": "resolved_v2_source_and_completed_artifact_identity_audit",
+      "resolution": "Cabinet colliders materialized before hashing; assets copied independently and effective final hashes collected. Await runtime pre/post comparison."
+    },
+    {
+      "id": "P4-09",
+      "severity": "medium",
+      "file": "humanoid/g1_support_retrieval/extension/verify_p4.py",
+      "line": 141,
+      "title": "Verifier does not require hardware/asset/attempt evidence",
+      "details": "verify reads profile/result/logs/source_hashes but does not require or validate environment.json, asset_hashes.json, attempt.json or a recorded CUDA device. Missing files are silently omitted from the final manifest.",
+      "recommended_action": "Require mandatory runtime, hardware, source and asset provenance before a Gamma physical witness claim; separate video/replay/publication gates from physical-goal scoring.",
+      "evidence_kind": "static_read",
+      "status": "resolved_v2_source_and_completed_artifact_identity_audit",
+      "resolution": "Verifier now requires environment/attempt/frozen execution identity and equal nonempty asset manifests; video review/release gates explicit. Remaining requested checks: key source entries, actual archived asset hashes, exact-command column schema/ranges and world_params required validation."
+    },
+    {
+      "id": "P4-10",
+      "severity": "medium",
+      "file": "humanoid/g1_support_retrieval/solution/push_box/run_push.py",
+      "line": 1024,
+      "title": "Terminal body collision measurement inherited from previous state",
+      "details": "terminal row copies rows[-1] and replaces forces/contact links but not body_contact_N; final body-target collision value can be stale.",
+      "recommended_action": "Recompute all terminal derived fields from the same final contact sample.",
+      "evidence_kind": "static_read",
+      "status": "resolved_v2_source_and_completed_artifact_identity_audit",
+      "resolution": "Terminal body_contact_N recomputed from same final contact sample."
+    },
+    {
+      "id": "P4-11",
+      "severity": "medium",
+      "file": "humanoid/g1_support_retrieval/extension/verify_p4.py",
+      "line": 120,
+      "title": "Three-level mapping describes phase intervals but not measured skill predicates",
+      "details": "Mapping provides HL labels and low phase intervals, but does not attach checked preconditions/effects, entry/exit support/contact/velocity and required continuity outcomes.",
+      "recommended_action": "Bind intervals to the predeclared expert-plan contracts and retain measured predicate values/results; report label/coverage mapping separately from fully checked skill refinement.",
+      "evidence_kind": "static_read",
+      "status": "measured_partial_original_leaf_refinement_posthoc_macro_explanation_retained_v3_prospective_contract_frozen",
+      "resolution": "Independent semantic reviewer now checks measured per-phase and observed step_label subactions, joint continuity, actual contact/support transitions and context-sensitive high-level binding. Contract v7 is an immutable development/post-job-start audit revision, not prospectively predeclared acceptance; partial progress was visible. Actual per-run review pending; task verdict never altered."
+    },
+    {
+      "id": "GEN-01",
+      "severity": "high",
+      "file": "infra/h1_tasks/evidence.py",
+      "line": 121,
+      "title": "Generic full-witness validator permits omitted actuator/integrity evidence",
+      "details": "qpos/qvel are checked only for finite nonempty consistent length, controls only finite plus public_limits_pass boolean. No actual effort, frozen joint count/limits, substep coverage, pose-write/attachment/root-wrench monitoring is mandatory. A synthetic fixture without all such measurements returns witnessed_full.",
+      "recommended_action": "Require frozen physical joint identities/limits and physics cadence; validate interval actual position/velocity/effort extrema and integrity monitor artifacts. Keep explicit trusted-worker boundary.",
+      "evidence_kind": "synthetic_negative_fixture_executed",
+      "status": "addressed_in_code_independent_negative_regressions_passed",
+      "resolution": "Mandatory frozen cadence/joint limits, per-control physics interval q/velocity/effort extrema and run integrity audit added. Four independent negative regressions return unknown. Still depends on trusted measurement adapter."
+    },
+    {
+      "id": "GEN-02",
+      "severity": "medium",
+      "file": "infra/h1_tasks/evidence.py",
+      "line": 158,
+      "title": "Skill predicate pass flags are trusted declarations",
+      "details": "Segment entry_pass/effect_pass/constraints_pass are booleans rather than independently recomputed predicates. Endpoint identity and range coverage are checked, but physical skill satisfaction depends on the trusted recorder.",
+      "recommended_action": "Either implement task-specific numeric predicate validators or clearly label this part declaration/identity validation pending independent review; never claim general physical feasibility solving.",
+      "evidence_kind": "static_read",
+      "status": "scope_clarified_not_generic_predicate_solver",
+      "resolution": "Owner documented skill flags as trusted adapter declarations, unlike independently recomputed D/Q physical predicates. A task-specific adapter remains required."
+    },
+    {
+      "id": "P4-12",
+      "severity": "critical",
+      "status": "resolved_verifier_bug_physical_run_failed",
+      "title": "20 mrad position allowance silently weakened original 1 mrad public actuator criterion",
+      "evidence": {
+        "original_standard": "humanoid/g1_support_retrieval/sandbox/trusted/relay_scoring.py:31",
+        "measured_max_position_overshoot_rad": 0.004584531784,
+        "original_tolerance_rad": 0.001,
+        "incorrect_v7_tolerance_rad": 0.02
+      },
+      "resolution": "Native checker restored original tolerance by GPU owner; independent semantic v8 does likewise. Original reports/source retained. No new successful physics claim."
+    },
+    {
+      "id": "P4-13",
+      "severity": "critical",
+      "status": "resolved_measurement_gap_v3_complete_audit_found_original_rule5_failures",
+      "title": "Original five safety rules absent from v2 evidence; root speed alone cannot exclude stationary fallen posture",
+      "resolution": "Independent adapter directly calls unchanged original safety modules. Native verifier now gates on complete safety review; v2 remains unknown. Recorder added exact foot geometry, all-object and cabinet contacts, signed measured actual torque for v3.",
+      "synthetic_counterexamples": 15,
+      "thresholds_changed": false
+    },
+    {
+      "id": "P4-14",
+      "severity": "physical_controller_failure",
+      "status": "v4_controller_repair_pending",
+      "title": "V3 terminal hand clearance/stand produces sustained elbow limit pushing and transient foot unloading; one run also has finger/waist position violations",
+      "evidence": "p4-v3-independent-review-summary.json",
+      "thresholds_changed": false,
+      "repair_scope": "Only planning/reference margins, slower final movement and bounded reference increments. Separate diagnostic never a full witness; full run must restart at original state."
+    }
+  ],
+  "synthetic_checks": {
+    "not_physics_runs": true,
+    "command": "Construct existing P4EvidenceTests/ContractsTest fixtures; alter one field and evaluate without modifying repository code.",
+    "results": {
+      "p4_nonfinite_command_accepted": true,
+      "p4_declared_runtime_pose_write_accepted": true,
+      "p4_one_joint_array_accepted": true,
+      "p4_wrong_measured_scene_report_accepted": true,
+      "generic_no_effort_or_integrity_artifact_accepted": true
+    },
+    "interpretation": "These results identify fail-open evidence schema gaps in the reviewed version. They do not imply actual GPU runs used illegal actions."
+  },
+  "physical_evidence_observed": {
+    "performed_by_this_review": false,
+    "successful_run_claimed": false,
+    "attempt_8034725": "Startup exception missing osqp; zero physics per execution owner; retained attempt file confirms exception_before_execution.",
+    "attempt_8034773": "Diagnostic v1; retained, no complete valid witness.",
+    "attempt_8034839": "Completed measured geometric delivery, strict actuator failure (4.585 mrad > 1 mrad), original five-rule safety unknown due missing channels; complete source/asset identity audited.",
+    "attempt_8034905": "Completed measured geometric delivery; strict original rule regrade failed; macro effects measured, leaf45pass/9fail/3unknown. Five-rule safety unknown.",
+    "new_compliant_full_witness_count": 0,
+    "baseline_8034801": "434.22 s; contact QP iteration failure at setdown; original score .1925 non-VOID, incomplete.",
+    "passive_asset_probe_count": 4
+  },
+  "release_gaps": [
+    "New compliant original-start P4 complete execution with original 1 mrad limits and original five safety rules",
+    "Matching-profile representative repeats and repeated scoring with failed attempts retained",
+    "Original fine-grained leaf diagnostics remain partial; v3 macro contract is a separately predeclared scope",
+    "Independent action replay, sensor-only/action-interface equivalence and human video review not complete",
+    "Formal admission remains false"
+  ],
+  "owner_coordination": {
+    "gpu_owner": "gpu_reference",
+    "contract_owner": "contracts",
+    "gpu_acknowledged": [
+      "P4-01",
+      "P4-02",
+      "P4-03"
+    ],
+    "remaining_reported": true
+  },
+  "recommendation": "No new compliant full witness: all v2 fail original position tolerance/incomplete safety; all v3 have complete safety evidence but fail original rule5. Preserve all originals and source-bound r3 macro failures; repair controller and freeze v4 before new diagnostic/full attempts. Human review and formal admission remain unsigned.",
+  "revision_followup": {
+    "generic_validator": {
+      "files": [
+        {
+          "path": "infra/h1_tasks/evidence.py",
+          "sha256": "22d7b1e068fab86aa96911ea6803ca8a79dfa72bdfa9b78228c337b6d4df1f9d"
+        },
+        {
+          "path": "infra/h1_tasks/registry.py",
+          "sha256": "e6049d7e5748e3a58c45cc6aa2aa2a050ac82853082379d69fbd289360588f4c"
+        }
+      ],
+      "synthetic_negative_results": {
+        "missing_actuator": {
+          "status": "unknown",
+          "task_success": false,
+          "errors": [
+            "Incomplete physics-substep actuator coverage"
+          ]
+        },
+        "missing_integrity": {
+          "status": "unknown",
+          "task_success": false,
+          "errors": [
+            "Missing complete physical-integrity audit"
+          ]
+        },
+        "root_wrench": {
+          "status": "unknown",
+          "task_success": false,
+          "errors": [
+            "Forbidden operation/missing audit: external_root_wrench_calls"
+          ]
+        },
+        "effort_overshoot": {
+          "status": "unknown",
+          "task_success": false,
+          "errors": [
+            "Measured actuator position/velocity/effort limit exceeded"
+          ]
+        }
+      },
+      "physical_runs": 0
+    },
+    "p4_v2": {
+      "date": "2026-10-27",
+      "job_id": "8034839",
+      "scheduler_state_at_review": "RUNNING gammagpu08",
+      "physical_success_claimed": false,
+      "snapshot_verified": true,
+      "files": [
+        {
+          "path": "humanoid/g1_support_retrieval/extension/run_p4.py",
+          "sha256": "5292e617291f9129b5cb2787f0fd17994cbeecdbf54a92c92f688afc57c45e44"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/extension/verify_p4.py",
+          "sha256": "cd6281f97a95e83f39919e972d68a237d88ed3cca8e4467d75e31af0332eb30f"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/solution/push_box/run_push.py",
+          "sha256": "030faa31d717d8bc9b0381368c6b7778564fb0e5221077ef78defe11ba0a12f3"
+        }
+      ],
+      "synthetic_negative_results": {
+        "nan_command": {
+          "task_success": false,
+          "errors": [
+            "invalid_command:joint_position_target"
+          ]
+        },
+        "pose_write": {
+          "task_success": false,
+          "errors": [
+            "forbidden_integrity_flag:runtime_pose_writes"
+          ]
+        },
+        "one_joint": {
+          "task_success": false,
+          "errors": [
+            "joint_state_shape_mismatch"
+          ]
+        },
+        "wrong_mass": {
+          "task_success": false,
+          "errors": [
+            "scene_binding_mismatch:box_mass_kg",
+            "scene_binding_mismatch:box_size"
+          ]
+        },
+        "cancelled_contact": {
+          "task_success": false,
+          "errors": [
+            "final_released_stable_dwell_too_short"
+          ]
+        },
+        "alternative_goal": {
+          "task_success": true,
+          "errors": []
+        }
+      },
+      "physical_runs_performed_by_reviewer": 0,
+      "human_video_review": "not_performed_pending_video",
+      "original_v1_findings_preserved": true,
+      "snapshot_audit": {
+        "source_hashes.json": {
+          "entries": 110,
+          "missing_or_changed": []
+        },
+        "asset_hashes.json": {
+          "entries": 101,
+          "missing_or_changed": []
+        },
+        "identity": {
+          "executed_source_root": "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8034839/source_snapshot",
+          "entrypoint": "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8034839/source_snapshot/humanoid/g1_support_retrieval/extension/run_p4.py",
+          "frozen_source_execution": true,
+          "asset_copy_mode": "independent copy, pre/post hash checked"
+        },
+        "environment": {
+          "host": "gammagpu08.umiacs.umd.edu",
+          "python": "3.12.14 (main, Sep  2 2026, 23:27:36) [GCC 15.3.0]",
+          "platform": "Linux-5.14.0-687.56.1.el9_8.x86_64-x86_64-with-glibc2.34",
+          "slurm_job_id": "8034839",
+          "slurm_partition": "gamma",
+          "versions": {
+            "genesis-world": "1.4.3",
+            "torch": "2.11.0+cu128",
+            "mujoco": "3.14.0",
+            "scipy": "1.18.1",
+            "numpy": "2.5.3",
+            "osqp": "1.1.3"
+          },
+          "gpu": "name, uuid, driver_version\nNVIDIA RTX A5000, GPU-75d4b492-23a5-88b6-9e43-9d262f640812, 595.91.07\n"
+        },
+        "expected_profile_sha256": "75011c35534bec852a070cb2a38a13a917f0def3d6eb0e5bcf2ef05cec5d42aa",
+        "actual_profile_sha256": "2e4c0ae93850693a413073d95db69530ba618b8d3cdf23f5a189567c1ade1319",
+        "effective_asset_hashes_available": false,
+        "profile_semantically_equal": true,
+        "profile_byte_difference_reason": "run_p4 normalizes JSON whitespace when copying; parsed values compared independently"
+      },
+      "completed_review": {
+        "scheduler_state": "COMPLETED 0:0 reported by runner",
+        "identity_audit_path": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/independent_review_identity.json",
+        "identity_audit": {
+          "source_hashes.json": {
+            "entries": 110,
+            "mismatched": []
+          },
+          "asset_hashes.json": {
+            "entries": 101,
+            "mismatched": []
+          },
+          "asset_pre_post_equal": true,
+          "manifest_mismatches": [],
+          "outcome": {
+            "schema": "h1-p4-measured-outcome/1",
+            "task_id": "H1S-07.P4",
+            "controller_status": "plan_completed",
+            "task_success": true,
+            "evidence_status": "witnessed_full",
+            "formal_admission": false,
+            "privileged": true,
+            "errors": [],
+            "measured_final_dwell_s": 6.460000000000008,
+            "measured_simulation_s": 248.62,
+            "state_samples": 12432,
+            "command_samples": 12431,
+            "physics_samples": 49724,
+            "final_target_entirely_in_D": true,
+            "max_absolute_target_bottom_m": 0.00022255085256013551,
+            "max_nonhand_target_contact_N": 0.0,
+            "cannot_lift_claim": "Only excluded by declared 2 kg lifted-payload rule; physical impossibility is not claimed.",
+            "physical_target_mass_kg": 5.0,
+            "target_mass_link_binding": "frozen G1 native scene global link22; creation order in genesis_env.py",
+            "verification_source_sha256": "898db35c5285ec2de23ca7a965714bc6bd819b5f9c2753fcca7594856e3a3a79",
+            "video_recorded": true,
+            "human_video_review": "pending",
+            "release_ready": false,
+            "three_level_mapping_scope": "observed phase-to-control/trajectory mapping; semantic skill entry/effect and transition review pending"
+          },
+          "actual_shapes": {
+            "physics_commands": [
+              49724,
+              81
+            ],
+            "measured_qpos": [
+              12432,
+              50
+            ]
+          },
+          "exact_physics_command_finite": true,
+          "actual_physics_time_monotonic": true,
+          "archived_verifier_matches_verdict": true
+        },
+        "strict_regrade_warning": "The archived original outcome used a 20 mrad allowance and is superseded. Under original H1 1 mrad actuator rule this execution fails; geometric delivery does not imply compliant task success.",
+        "assistant_video_spot_review": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/independent_video_review.json",
+        "human_video_review": "pending"
+      }
+    },
+    "semantic_refinement": {
+      "files": [
+        {
+          "path": "humanoid/g1_support_retrieval/extension/verify_skill_refinement.py",
+          "sha256": "13e4c88c6931608db0c07efb5e736dbad11e66903d18d10b30174e23be69b5cc"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/extension/skill-refinement-contract-v7.json",
+          "sha256": "c0ebfd1df6669b7393d2e3a9aba165a17c94afd70da43e7ecb4a6a0ed45aec71"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/extension/test_skill_refinement.py",
+          "sha256": "4bd66cc3187380cdd12c8c82cbdba80f189d312ef0f5ec7abd9d982e27cc6302"
+        },
+        {
+          "path": "infra/planning/h1-extension/skill-refinement-software-checks.json",
+          "sha256": "3519f2862aac11460ac2fada5d3b2e873e7869d1e939a4bab058447c713172ac"
+        }
+      ],
+      "status": "actual_run_partial_measured_refinement_strict_actuator_failed",
+      "threshold_policy": "Semantic audit rules were developed after jobs started with partial progress visible; not predeclared acceptance criteria for the three-run cohort. Original D/profile/budget not changed. All revisions retained.",
+      "runtime_results": [
+        {
+          "job_id": "8034839",
+          "original_v7_report": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/skill_refinement-v7-original.json",
+          "strict_v8_report": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/skill_refinement-strict-v8.json",
+          "counts": {
+            "macro_passed": 16,
+            "macro_failed": 5,
+            "leaf_passed": 43,
+            "leaf_failed": 11,
+            "leaf_unknown": 3
+          },
+          "complete": false,
+          "actuator_compliant": false,
+          "boundary_diagnostics": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/semantic_boundary_diagnostics.json"
+        }
+      ],
+      "human_review": "not_signed",
+      "contract_revision_note": "v7 adds observed internal step_label subactions and verifies support transfer by measured contact/load plus actual next swing; exact COM remains optional unmeasured extension. Final ReturnHands context and terminal stale-MCP provenance retained.",
+      "v8_revision_note": "Restores original 1 mrad actuator tolerance; preserves all leaf failures and v7 originals. Post-execution development audit, never prospective cohort acceptance.",
+      "v8_files": [
+        {
+          "path": "humanoid/g1_support_retrieval/extension/verify_skill_refinement.py",
+          "sha256": "a937e14eaa52f01cb2ef7af342baba9b1ad45d74bb409b7c705681377cf11c17"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/extension/skill-refinement-contract-v8.json",
+          "sha256": "992b715f97cb338e1f10d6c8b2b68ad934afb0a93753ced21466f4a6d0c98a79"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/extension/verify_skill_refinement_v7_archived.py",
+          "sha256": "13e4c88c6931608db0c07efb5e736dbad11e66903d18d10b30174e23be69b5cc"
+        }
+      ]
+    },
+    "observed_macro_mapping": {
+      "source": "humanoid/g1_support_retrieval/extension/map_observed_macros.py",
+      "report": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/observed_macro_mapping.json",
+      "definition_timing": "post-execution after original failure inspection",
+      "all_macro_effects_measured": true,
+      "complete_command_coverage": true,
+      "original_leaf_failures_preserved": true,
+      "compliant_complete_refinement": false
+    },
+    "baseline_actual_failure": {
+      "report": "baseline-execution-8034801.json",
+      "job_id": "8034801",
+      "simulated_seconds": 434.22,
+      "original_score": 0.1925,
+      "task_success": false,
+      "non_void": true,
+      "failure": "contact QP maximum iterations reached during setdown alignment",
+      "infeasibility_claimed": false
+    },
+    "asset_passive_probe_scope": {
+      "report": "asset-sources.json",
+      "models": 6,
+      "steps_each": 400,
+      "seconds_each": 2,
+      "states_each": 401,
+      "task_success_claimed": false,
+      "added_model_reports": [
+        "stretch3-asset-review.json",
+        "g1-dex3-asset-review.json"
+      ]
+    },
+    "original_safety_adapter": {
+      "source": "humanoid/g1_support_retrieval/extension/verify_p4_safety.py",
+      "sha256": "7504fd4361f9763b028eac64f33ad983eecf42f586595bb4960c02d9c326f9d7",
+      "tests": "humanoid/g1_support_retrieval/extension/test_p4_safety.py",
+      "synthetic_tests_passed": 16,
+      "physical_runs_performed_by_reviewer": 0,
+      "v2_result": "unknown_missing_required_measurements",
+      "v3_recorder_static_review": "Original contact classifier reused; exact four spherical-foot collider bottoms, pre-step aligned q/tau, fresh terminal, actual robot mass 34.394235253334045 agrees with original constant within 5.34e-8 kg."
+    },
+    "v3_prospective_macro_contract": {
+      "path": "humanoid/g1_support_retrieval/extension/prospective-macro-contract-margin-v3-r3.json",
+      "sha256": "6cc590cd7d82bc12dd9395639ffb012335334f56e15e48c6d8df0db458fe6c0a",
+      "timing": "Frozen before v3 full execution; rules originated in v2 post-execution audit, never retroactively predeclared for v2",
+      "strict_original_safety_required": true,
+      "old_leaf_diagnostics_preserved": true,
+      "revision_history": "humanoid/g1_support_retrieval/extension/prospective-macro-contract-history.json"
+    },
+    "v3_actual_cohort": {
+      "summary": "p4-v3-independent-review-summary.json",
+      "attempts": [
+        "8035717",
+        "8035839",
+        "8035840"
+      ],
+      "source_and_asset_identity": "all matched; pre/post assets equal; native manifests checked without mutation",
+      "original_safety_complete": true,
+      "original_safety_passed_runs": 0,
+      "strict_position_passed_runs": 2,
+      "predeclared_macro_effect_passed_runs": 1,
+      "compliant_full_witnesses": 0,
+      "formal_admission": false
+    },
+    "v4_actual_diagnostic": {
+      "summary": "p4-v4-independent-review-summary.json",
+      "attempt": "8036294",
+      "complete_original_plan": false,
+      "original_safety_recorded_interval_passed": true,
+      "max_actual_position_overshoot_rad": 0.0027652788162231268,
+      "sampled_support_failure": true,
+      "exact_command_coverage_complete": false,
+      "diagnostic_accepted": false,
+      "compliant_full_witnesses": 0
+    },
+    "v5_predeclared_route": {
+      "attempt": "8036707",
+      "status": "running",
+      "contract": "humanoid/g1_support_retrieval/extension/prospective-macro-contract-crouch-v5-probe-r1.json",
+      "sha256": "58151ac4781bb43abf65978928a692ae315f0ed7ed4f0f7830a95c18d76c60d5",
+      "frozen_at_utc": "2026-10-27T22:32:38.318468+00:00",
+      "bound_at_utc": "2026-10-27T22:33:14.035887+00:00",
+      "source_docs_profile_independently_match": true,
+      "threshold_changes": false,
+      "different_prospective_route": "Final transport then supported crouch settling/hold; no final reposition or standing",
+      "tests_scope": "30 synthetic checks (14 semantic,7 v5 reader,9 reused v4 reader); no dynamics proof",
+      "compliant_full_witnesses": 0
+    }
+  }
+}

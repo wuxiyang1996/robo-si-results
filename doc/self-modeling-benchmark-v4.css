@@ -1,0 +1,39 @@
+/* Version 4 only: keep earlier proposal rendering unchanged. */
+.card { box-shadow: none; }
+.mini-card, .grid-2 > *, .grid-3 > * { min-width: 0; overflow-wrap: anywhere; }
+.section-title { align-items: baseline; }
+.eyebrow { color: var(--accent); font-size: .8rem; font-weight: 700; letter-spacing: .07em; }
+.decision { border-left: 3px solid var(--accent); padding: 8px 18px; margin: 18px 0; background: var(--soft); }
+.architecture { margin: 18px 0; }
+.architecture .layer { border: 1px solid var(--line); padding: 15px 20px; border-radius: 8px; }
+.architecture .layer strong, .architecture .layer span { display: block; }
+.architecture .layer span { color: var(--muted); font-size: .92rem; }
+.architecture .arrow { text-align: center; margin: 3px; color: var(--accent); }
+.architecture .trusted { background: var(--soft); }
+.code-block { padding: 16px; background: var(--soft); overflow: auto; border-radius: 8px; font-size: .84rem; }
+.code-block code { padding: 0; background: none; }
+.levels { counter-reset: none; list-style: none; padding: 0; }
+.levels li { display: grid; grid-template-columns: 70px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.levels .level { font: 700 1rem ui-monospace, monospace; color: var(--accent); }
+.levels p { margin: 0; }
+.task-spec { display: grid; grid-template-columns: 135px 1fr; gap: 10px 18px; }
+.task-spec dt { font-weight: 650; color: var(--accent); }
+.task-spec dd { margin: 0; }
+.refs li { padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.refs strong { display: block; }
+.refs .comparison { display: block; margin-top: 5px; }
+.compact-list li { margin: 8px 0; }
+code, .equation { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .task-spec { grid-template-columns: 1fr; gap: 3px; }
+  .task-spec dd { margin-bottom: 12px; }
+  .levels li { grid-template-columns: 50px 1fr; gap: 12px; }
+  .architecture .layer { padding: 12px; }
+  .section-title h2 { overflow-wrap: anywhere; }
+}
+@media print {
+  .card { break-inside: auto; }
+  .architecture, .levels li { break-inside: avoid; }
+  details { display: block; }
+  .code-block { white-space: pre-wrap; }
+}

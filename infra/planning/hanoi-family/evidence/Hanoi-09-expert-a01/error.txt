@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/hanoi_family/run.py", line 124, in main
+    else:expert.run();reason='task_completed' if env.status['success'] else 'candidate_returned_without_success'
+         ^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/hanoi_family/controller.py", line 134, in run
+    self.grasp()
+  File "/fs/gamma-projects/vlm-robot/robo-si/hanoi_family/controller.py", line 109, in grasp
+    self.move(wrist,seconds=2.);self.fingers(.85 if self.e.contract['embodiment']=='parallel' else .8)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/hanoi_family/controller.py", line 68, in move
+    target=self.solve(np.asarray(pos),np.asarray(rot));start=self.q.copy()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/hanoi_family/controller.py", line 48, in solve
+    if err>.012 or angle>.12:raise GuardFailure(f'IK unreachable: position={err:.4f} m, rotation={angle:.3f} rad')
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+hanoi_family.controller.GuardFailure: IK unreachable: position=0.0903 m, rotation=0.088 rad

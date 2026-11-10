@@ -1,0 +1,98 @@
+{
+  "monitor_version": "m4-family-monitor/2",
+  "sampling_hz": 200.0,
+  "support_window_note": "Force average assessed after the first full 0.5 s; geometry and robot-support checks run from step one.",
+  "feet": {
+    "12": {
+      "robot": "go2_a",
+      "link": "FL_calf",
+      "local_point": [
+        0.0,
+        0.0,
+        -0.213
+      ]
+    },
+    "15": {
+      "robot": "go2_a",
+      "link": "FR_calf",
+      "local_point": [
+        0.0,
+        0.0,
+        -0.213
+      ]
+    },
+    "18": {
+      "robot": "go2_a",
+      "link": "RL_calf",
+      "local_point": [
+        0.0,
+        0.0,
+        -0.213
+      ]
+    },
+    "21": {
+      "robot": "go2_a",
+      "link": "RR_calf",
+      "local_point": [
+        0.0,
+        0.0,
+        -0.213
+      ]
+    }
+  },
+  "checks": {
+    "continuous_execution": "every sample is reached by consecutive scene.step() calls: elapsed == steps * dt, gap <= max sample gap",
+    "no_state_edits": "no pose/velocity setter, external wrench, weld add/delete or object actuation after t=0 (hooked)",
+    "no_contact_bypass": "collision masks unchanged since t=0 and no dynamic body penetrates a wall or the floor by more than 2 cm",
+    "robot_stability": "each robot root >= its embodiment-specific robot_minimum_base_height_m and tilt <= maximum_robot_tilt_degrees",
+    "actuator_limits": "applied joint torques within URDF effort limits (+0.1%) and joint targets within joint limits",
+    "no_severe_collision": "every collision impulse (|F| * dt) <= max_severe_collision_impulse_ns; collisions = robot/cargo/platform/rim against a wall, robot against robot, robot against cargo/platform/rim (floor support and ropes excluded)",
+    "target_supported": "cargo resting on the deck or floor: bottom within 5 mm of the deck top (or floor), tilt <= 10 deg, robots carry < 2 N of it vertically, and after the first complete 0.5 s window the 0.5 s mean vertical contact support from deck/rim/floor >= 30% of its weight (single-step Genesis contact forces under a resting box swing 15-130% of its weight, so force is only a sanity check)",
+    "connection_integrity": "all declared welds present, weld drift <= 10 mm, rope tension <= rated tension (the welds are compliant, ~0.035 mm/N measured; 10 mm ~ 280 N < 400 N rating; a released or broken weld drifts tens of cm)",
+    "rope_slack_tension_and_contact": "load-cell tension finite and in [0, rated]; no rope segment penetrates a wall or the floor by more than 1 cm",
+    "traction_and_slip": "no stance foot (loaded > 15 N) slides more than 5 cm within one stance. Also logged, not judged: slip_speed = stance-foot slide speed over 0.25 s (loaded walking shows brief 0.1-0.2 m/s slips that stay under 5 cm; a speed criterion of 0.10 m/s was tried and rejected, see README)"
+  },
+  "failures": {},
+  "hooked_calls": [],
+  "max": {
+    "penetration_dynamic": 0.0015018734033383288,
+    "penetration_rope": 0.0010011735579388995,
+    "impulse": 0.0,
+    "tension": 2.0457131805261906,
+    "weld_drift": 7.325234409819083e-05,
+    "stance_slide": 0.03226880584385607,
+    "tilt": 4.967061706540818,
+    "torque_ratio": 0.4483308806082228,
+    "robot_cargo_force": 0.0,
+    "rope_robot_force": 16.82666864144396,
+    "slip_speed": 0.030226013257783013
+  },
+  "min": {
+    "base_height": 0.3141938241095298,
+    "support_ratio": 0.0
+  },
+  "welds": 3,
+  "steps": 6814,
+  "slide_v1_violation_samples": 0,
+  "cost": {
+    "mechanical_work_j": {
+      "go2_a": 53.1
+    },
+    "walked_m": {
+      "go2_a": 0.457
+    }
+  },
+  "coupler_peaks": {
+    "go2_a": {
+      "force": 3.172138105562193,
+      "speed": 0.031974206989168905,
+      "contact": 3.6731618113628124,
+      "power": 0.06367120634211038,
+      "work": 0.013149822207071346
+    }
+  },
+  "coupler_violations": [],
+  "service_validation_scope_n": 150,
+  "actual_contact_hard_cap_n": 300,
+  "no_runtime_eye_weld": true
+}

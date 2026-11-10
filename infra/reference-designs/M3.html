@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>M3 · 小机器人辅助取球 · 参考设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main.wrap{padding-block:40px;overflow-wrap:anywhere}h2{margin-top:44px}h3{margin-top:30px}pre{overflow:auto;background:var(--panel);padding:18px;border-radius:10px}th,td{min-width:100px}h1{font-size:clamp(28px,5vw,44px)}</style><meta content="M3 · 小机器人辅助取球 · 参考设计 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><main class="wrap"><nav><a href="/robo-si-results/infra/reference-designs-zh.html">14 项参考解设计</a> · <a href="/robo-si-results/infra/reference-designs/M3.md">Markdown 源文档</a> · <a href="/robo-si-results/infra/task-m3-zh.html">任务页面</a></nav><h1 id="m3">M3 · 小机器人辅助取球：参考解设计</h1>
+<p>已有声明范围内的参考执行见证；本文补齐统一设计说明。本次新增物理运行：0。</p>
+<h2 id="_1">设计思路</h2>
+<p>G1 抱起小机器人到柜顶工作区，利用柜面支撑完成盒内取物，再重新抱持、下放交接，由小机器人完成最终交付。冻结参考仍取 65 mm 球；允许不妨碍操作的轻微抖动，不宣称全程悬空取物。</p>
+<h2 id="_2">选定参考与范围</h2>
+<p>见证：<strong>fullstart-474</strong>。范围：固定 hooks-v0.1；箱体支撑取物；CPU 特权参考。</p>
+<p>完整链已完成并发布：正常初始化 2/2，均 1.0、411.16 s，无基准监视告警；抬升取物、返回下放与目标释放全部完成。同参重复，不是独立种子。</p>
+<p><a href="/robo-si-results/infra/m3-release/evidence/fullstart-474-verdict.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/M3.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p>
+<h2 id="_3">高层计划与关键状态</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>接近并建立承托</td>
+<td>M3.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>抬升并放上支撑箱</td>
+<td>M3.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>取出柜内物体</td>
+<td>M3.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>整理返回姿态</td>
+<td>M3.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>重新承托并提离</td>
+<td>M3.K05</td>
+<td>S4 → S5</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>返回并下放</td>
+<td>M3.K06</td>
+<td>S5 → S6</td>
+</tr>
+<tr>
+<td>P7</td>
+<td>撤手并恢复行驶</td>
+<td>M3.K07</td>
+<td>S6 → S7</td>
+</tr>
+<tr>
+<td>P8</td>
+<td>目标交付</td>
+<td>M3.K08</td>
+<td>S7 → S8</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>hooks-v0.1；X5 在地面，原 65 mm 球在容器内</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>承托姿态可行且双侧真实接触成立</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>X5 由箱面稳定支撑且机械臂可操作</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>物体离开容器和货架并持续受控</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>返回承托入口可达，箱面支撑保持</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>X5 离箱且负载受控</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>实测地面承重达到当前控制器交接条件</td>
+</tr>
+<tr>
+<td>S7</td>
+<td>X5 可独立行驶且仍持有物体</td>
+</tr>
+<tr>
+<td>S8</td>
+<td>物体在目标内受支撑、双机释放且稳定 2 s</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_4">低层动作、接触支撑与轨迹对应</h2>
+<p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h3 id="m3k01-g1-hooks">M3.K01 · G1 定位、双手接近 hooks 承托部位</h3>
+<p>入口：hooks-v0.1；X5 在地面，原 65 mm 球在容器内。出口：承托姿态可行且双侧真实接触成立。</p>
+<p>局部检查：真实承托几何、双方姿态和组合重心；无焊接/绑定。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3.K01.A01</td>
+<td>G1 在小机器人两侧对齐站位</td>
+<td>X5→地面；G1 足→地面</td>
+<td>实际机体姿态、足载荷</td>
+<td>尚无动作事件标签</td>
+<td>needs_action_label_or_source_mapping</td>
+</tr>
+<tr>
+<td>M3.K01.A02</td>
+<td>双手从结构承托部位下方接近</td>
+<td>X5→地面；手逐步接触 hooks</td>
+<td>手与结构间隙、碰撞</td>
+<td>尚无动作事件标签</td>
+<td>needs_action_label_or_source_mapping</td>
+</tr>
+<tr>
+<td>M3.K01.A03</td>
+<td>建立双侧承托并预加载</td>
+<td>地面/双手共同承重</td>
+<td>左右手力、X5 姿态</td>
+<td>尚无动作事件标签</td>
+<td>needs_action_label_or_source_mapping</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m3k02">M3.K02 · 整身抬升与向箱面转移</h3>
+<p>入口：双手承托有效且低箱可承接。出口：X5 由箱面稳定支撑且机械臂可操作。</p>
+<p>局部检查：低箱顶面与 X5 支撑几何、手臂净空和接触转移。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3.K02.A01</td>
+<td>保持承托并整身抬升</td>
+<td>地面→G1 双手</td>
+<td>载荷、倾角与足支撑</td>
+<td>尚无动作事件标签</td>
+<td>needs_action_label_or_source_mapping</td>
+</tr>
+<tr>
+<td>M3.K02.A02</td>
+<td>向低箱面移动小机器人</td>
+<td>G1 双手承托 X5</td>
+<td>箱面净空与重心</td>
+<td>尚无动作事件标签</td>
+<td>needs_action_label_or_source_mapping</td>
+</tr>
+<tr>
+<td>M3.K02.A03</td>
+<td>下降到箱面并确认支撑</td>
+<td>双手→box_low</td>
+<td>箱面载荷、X5 稳定</td>
+<td>尚无动作事件标签</td>
+<td>needs_action_label_or_source_mapping</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m3k03-x5">M3.K03 · X5 伸臂、夹持、退出柜口</h3>
+<p>入口：X5 在箱面稳定，目标可见可达。出口：物体离开容器和货架并持续受控。</p>
+<p>局部检查：夹爪开口、柜内 IK、进出扫掠和伸臂抗倾覆。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3.K03.A01</td>
+<td>X5 在箱面支撑下向柜中物体伸臂</td>
+<td>X5→箱面；球→盒内</td>
+<td>臂可达性与柜口间隙</td>
+<td>尚无动作事件标签</td>
+<td>needs_action_label_or_source_mapping</td>
+</tr>
+<tr>
+<td>M3.K03.A02</td>
+<td>闭合双指并建立球体夹持</td>
+<td>盒内→X5 双指</td>
+<td>内部夹持力、物体脱离原支撑</td>
+<td>尚无动作事件标签</td>
+<td>needs_action_label_or_source_mapping</td>
+</tr>
+<tr>
+<td>M3.K03.A03</td>
+<td>持球退出柜口并收拢</td>
+<td>球→双指；X5→箱面</td>
+<td>柜口净空、持续夹持</td>
+<td>尚无动作事件标签</td>
+<td>needs_action_label_or_source_mapping</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m3k04-g1-x5">M3.K04 · G1 撤手；X5 在箱面小幅对准</h3>
+<p>入口：物体已夹持，X5 箱面支撑稳定。出口：返回承托入口可达，箱面支撑保持。</p>
+<p>局部检查：对准运动不得越过箱面；相对位置误差与实际支撑力。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3.K04.A01</td>
+<td>箱面承重后 G1 缓慢撤手</td>
+<td>X5→箱面；球→双指</td>
+<td>箱面支撑、球保持</td>
+<td>e0000: episode [222.04, 268.62] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M3.K04.A02</td>
+<td>G1 空载靠近并按实测姿态对齐</td>
+<td>X5→箱面；G1 足→地面</td>
+<td>机体间隙、双足载荷</td>
+<td>e0001: episode [268.66, 287.5] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M3.K04.A03</td>
+<td>保持箱面支撑准备重新插手</td>
+<td>箱面独立承重</td>
+<td>X5 姿态与抓持稳定</td>
+<td>e0001: episode [268.66, 287.5] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m3k05">M3.K05 · 实测姿态下插手、预加载、抬升</h3>
+<p>入口：X5 已对准，物体持续持有。出口：X5 离箱且负载受控。</p>
+<p>局部检查：腰部与承托框架一致；小段连续 IK、腕/躯干净空和载荷。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3.K05.A01</td>
+<td>双手按实际结构位置插到承托杆下</td>
+<td>箱面承重；球→双指</td>
+<td>手部间隙与足支撑</td>
+<td>e0002: episode [287.54, 318.98] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M3.K05.A02</td>
+<td>双侧预加载并调整重心</td>
+<td>箱面/双手共同承重</td>
+<td>左右手力、加载份额</td>
+<td>e0004: episode [327.52, 333.08] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M3.K05.A03</td>
+<td>整身抬离箱面并短时保持</td>
+<td>箱面→双手</td>
+<td>离箱间隙、载荷、功能性姿态</td>
+<td>e0006: episode [335.12, 347.1] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m3k06">M3.K06 · 整身局部规划、重心修正与降到地面</h3>
+<p>入口：X5 与物体均受控，地面落点可用。出口：实测地面承重达到当前控制器交接条件。</p>
+<p>局部检查：两足承重、载荷姿态、接触净空、落地反力；不能只凭目标高度。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3.K06.A01</td>
+<td>调整承托姿态后向地面侧摆移</td>
+<td>G1 双手承托；球→双指</td>
+<td>双足载荷、重心与球保持</td>
+<td>e0008: episode [350.12, 351.1] s; e0009: episode [351.12, 363.1] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M3.K06.A02</td>
+<td>连续下放并监视地面接触</td>
+<td>双手→双手/地面</td>
+<td>倾角、触地力、实际碰撞深度</td>
+<td>e0010: episode [363.12, 373.66] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M3.K06.A03</td>
+<td>达到持续地面承托后停止下降</td>
+<td>地面逐步承重</td>
+<td>连续触地样本与低速度</td>
+<td>e0011: episode [373.68, 373.96] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m3k07">M3.K07 · 确认独立地面支撑后撤离双手</h3>
+<p>入口：地面支撑成立，X5 持物稳定。出口：X5 可独立行驶且仍持有物体。</p>
+<p>局部检查：撤手后支撑仍成立、机器人碰撞净空及物体保持。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3.K07.A01</td>
+<td>在地面承重时逐步卸载双手</td>
+<td>X5→地面；球→双指</td>
+<td>地面支撑份额、手力</td>
+<td>e0011: episode [373.68, 373.96] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M3.K07.A02</td>
+<td>规划并执行双手退出</td>
+<td>地面独立承重</td>
+<td>手结构净空、X5 稳定</td>
+<td>e0012: episode [373.98, 379.96] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M3.K07.A03</td>
+<td>撤手后保持并确认独立地面支撑</td>
+<td>X5→地面</td>
+<td>无 G1 代撑、球仍夹持</td>
+<td>e0013: episode [379.98, 380.96] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m3k08-x5">M3.K08 · X5 到托盘、下放物体、释放并驻留</h3>
+<p>入口：X5 在地面独立稳定且路线可行。出口：物体在目标内受支撑、双机释放且稳定 2 s。</p>
+<p>局部检查：托盘容纳、释放高度/速度、原任务 420 s 与最终驻留。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3.K08.A01</td>
+<td>X5 持球移动到目标托盘</td>
+<td>轮→地面；球→双指</td>
+<td>轨迹避碰与持物状态</td>
+<td>e0014: summary; subphase_clock_unresolved None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>M3.K08.A02</td>
+<td>下降球体到托盘并张指</td>
+<td>双指→托盘</td>
+<td>托盘支撑、手指接触</td>
+<td>e0014: summary; subphase_clock_unresolved None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>M3.K08.A03</td>
+<td>撤臂并等待最终交付驻留</td>
+<td>球→托盘</td>
+<td>无机器人接触、稳定驻留</td>
+<td>e0014: summary; subphase_clock_unresolved None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_5">尚需核对</h2>
+<p>前 222 s 为原始 LowCmd 回放，缺细动作标签；后段已提取连续样本。保留探索性接触深度及实际力矩仅控制采样频率审计限制。</p>
+<p>补抬升→箱体支撑取物→返回重抓→下放撤手→目标释放的接触／承重条件与交接；方块变体先做必要条件筛查。 人工录像／阶段签审、第二人复现、关键短探针及普通 RPC 接口验证；通用规划未验证。</p>
+<h2 id="_6">复现与生成入口</h2>
+<ul>
+<li><a href="/robo-si-results/multi_robot/g1_improvised_robot_tool_use/README.md">multi_robot/g1_improvised_robot_tool_use/README.md</a></li>
+<li><a href="/robo-si-results/multi_robot/g1_improvised_robot_tool_use/instruction.md">multi_robot/g1_improvised_robot_tool_use/instruction.md</a></li>
+</ul>
+<p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/25ed0b6496708f547c30b3ef29e09c45e07e81b5/releases/m3-functional-20261025/m3-functional-reference-20261025.zip">完整参考包</a>。使用包内冻结配置、依赖说明与生成／回放入口；审阅包不替代完整包。</p>
+<p>历史源码说明只提供设计上下文；若与冻结见证冲突，以见证的配置、控制器身份和发布清单为准。设计动作表不等同于已绑定的通用控制器。</p>
+<h2 id="_7">验收与执行边界</h2>
+<p>本文件说明已有参考的设计与证据，不修改旧评分。任务级要求至少一个声明配置内的连续端到端生成见证；高层计划→低层动作、低层动作→轨迹、高层目标→实测终态分别核对。这里的“两两转换”是表示之间的对应，不是任意随机状态下技能可无条件拼接。</p>
+<p>随机实例保留四种结果：有完整成功证据、通过可行性筛查、未确定、检查不通过；筛查通过不写成已证明可解。只在需要执行时生成当前局部轨迹；通用滚动规划和全随机域鲁棒性另列，不是本参考文档的完成前提。</p>
+<p>若接触、支撑或守卫条件不满足，不推进下一动作；保留已有安全支撑并记录失败，仅在已知安全状态下重新观察与局部规划。不得凭事件名推断接触合格，不得将不同检查点的成功片段拼接成连续成功。</p>
+<h2 id="_8">来源与版本</h2>
+<p>来源内容哈希见 <a href="/robo-si-results/infra/reference-designs/catalog.json">catalog.json</a>，对应生成器为 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tools/build_reference_designs.py">build_reference_designs.py</a>。本次只整理设计与证据，不将待审事件关联计作验收通过。</p></main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

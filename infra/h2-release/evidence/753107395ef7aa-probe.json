@@ -1,0 +1,3462 @@
+{
+ "schema": "transport-tool-necessity-probe/1",
+ "task": "H2",
+ "setup": {
+  "kind": "tool_ablation_local_direct_drag",
+  "removed_from_route": "both",
+  "controller_variant": "local curled-finger drag at solid push blocks, original safe high-arm approach retained; backward walking; original 180 s budget and physical guards; not a full delivery planner",
+  "cart_initial_position": [
+   0.9,
+   1.7,
+   0.057
+  ],
+  "rails_initial_position": [
+   2.1,
+   1.7,
+   0.0
+  ],
+  "push_height_m": 0.6,
+  "retained": "cargo mass, geometry and friction; passages; physical/hardware thresholds",
+  "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof"
+ },
+ "sample_spec": {
+  "distribution": "transport-pose-v1",
+  "split": "development",
+  "seed": 23,
+  "episode": 0,
+  "corner": null,
+  "task_config": {
+   "difficulty_layer": 1,
+   "asset_visuals": true,
+   "dock": "rails",
+   "rail_frictionloss": 0.02,
+   "deck_roller_frictionloss": 0.02,
+   "lane_guides": true,
+   "guide_north_x": 6.3,
+   "box_mass": 20.0,
+   "box_size": [
+    0.7,
+    0.7,
+    0.9
+   ],
+   "box_friction": 0.5,
+   "box_handholds": false,
+   "box_handles": true,
+   "box_handle_shape": "block",
+   "cart_mass": 12.0,
+   "cart_handle_mass": 1.0,
+   "wheel_mass": 0.5,
+   "wheel_friction": 0.055,
+   "wheel_damping": 0.002,
+   "wheel_frictionloss": 0.06,
+   "wheel_armature": 1e-05,
+   "deck_friction": 0.12,
+   "ground_friction": 0.03,
+   "passage_width": 1.5,
+   "dwell": 2.0,
+   "timeout": 180.0,
+   "collision_limit": 800.0,
+   "cart_payload_limit": 40.0,
+   "cart_pos": [
+    3.81,
+    -0.8,
+    0.015
+   ],
+   "cart_size": [
+    0.8,
+    0.8,
+    0.01
+   ],
+   "room_length": 10.5,
+   "goal": [
+    9.56758839,
+    0.78092559
+   ],
+   "goal_size": [
+    1.4,
+    1.4
+   ],
+   "box_xy": [
+    2.02092773,
+    -0.8
+   ],
+   "box_on_floor": true
+  },
+  "robot_pose": [
+   0.77396032,
+   0.02652693,
+   0.09278798
+  ],
+  "draws": {
+   "robot_x": 0.77396032,
+   "robot_y": 0.02652693,
+   "robot_yaw": 0.09278798,
+   "box_x": 2.02092773,
+   "goal_x": 9.56758839,
+   "goal_y": 0.78092559
+  },
+  "rejected": 0
+ },
+ "effort_limits": "hardware",
+ "main_task_admission_evidence": false,
+ "necessity_proven": false,
+ "raw_goal_reached": false,
+ "raw_goal_hold_s": 0.0,
+ "minimum_goal_distance_m": 7.68739366236847,
+ "reason": "duration_limit",
+ "error": null,
+ "expert_sources_sha256": {
+  "h2/solution/floor_push/run_grasp_push.py": "ac42a07f5174ee47a1fbe582ddd979f4a0d676d910672f1e6e02ff455b4e85e0",
+  "h2/solution/floor_push/run_cart_push.py": "f99c86ac5568d33e1c11faa95e0a1783dc3d973e18300b917e6bbe6a6e0c3724",
+  "h2/solution/floor_push/run_floor_push.py": "506a499d63b837c376b20af3073d10506b3f36eaacb7bcc7ac0dfdddfeaadf80",
+  "humanoid/g1_support_retrieval/solution/agile.py": "ffb06f370e71a28ea715913959be04459aa6013774f6f547768653bebd0f2bb7",
+  "humanoid/g1_support_retrieval/oracle/upper_ik.py": "f5525862a2c042ba1e8aeeed1d2cb29f083d159bd5113f0293a2de9b1d48b6a1",
+  "humanoid/g1_support_retrieval/oracle/oracle.py": "1c88c21164289bbe62cbb5707e4f55316688afb2f58c8c5f63deb36c5054f9e3",
+  "tool_probe.py": "ee9f63df054e069df6f23598e301034df072d874178bf2c8ee251ff8a311d698",
+  "direct_drag_probe_controller_v2.py": "08e90f6be68ef47ffa59da5ed1fc2fe4ad45a5980c71230baab6fb8fc5a6cace"
+ },
+ "privileged_writes_after_start": [],
+ "control_steps": 9000,
+ "trace": [
+  {
+   "t": 0.0,
+   "phase": "stand",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.4505475163459778
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 1.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 2.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.5575101381934215,
+    "yaw_err": -0.08707773808731512,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 3.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.36488719865078667,
+    "yaw_err": 0.003356439906337272,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 4.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 1,
+    "dist": 0.19261969253103012,
+    "yaw_err": -0.02012775757638252,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 5.0,
+   "phase": "push",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "gp": "approach",
+    "theta": 0.0,
+    "e_t": -1.1920928910669204e-08,
+    "D": 0.7619390130043029,
+    "vx": 0.22,
+    "robot_lat": 0.02902299165725708,
+    "head_err": -0.12145931991068615,
+    "ik_err": {
+     "left": 0.00010446679751434806,
+     "right": 0.00010003506798395522
+    },
+    "curl": 1.0,
+    "box_v": -1.0035703518207484e-10,
+    "push_N": 0.0,
+    "approach_restart": false,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 6.0,
+   "phase": "push",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "gp": "approach",
+    "theta": 0.0,
+    "e_t": -1.1920928910669204e-08,
+    "D": 0.6504845857620238,
+    "vx": 0.22,
+    "robot_lat": 0.03974646329879761,
+    "head_err": -0.03851195830677279,
+    "ik_err": {
+     "left": 3.8156140217357075e-11,
+     "right": 3.7909703541982636e-11
+    },
+    "curl": 1.0,
+    "box_v": 1.007731766956843e-12,
+    "push_N": 0.0,
+    "approach_restart": false,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 7.0,
+   "phase": "drag",
+   "cargo": [
+    2.0443027019500732,
+    -0.7990332245826721,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 0.47999999999999954,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 8.0,
+   "phase": "drag",
+   "cargo": [
+    2.044255018234253,
+    -0.7990451455116272,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 1.4799999999999995,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 9.0,
+   "phase": "drag",
+   "cargo": [
+    2.0442073345184326,
+    -0.7990570664405823,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 2.4799999999999995,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 10.0,
+   "phase": "drag",
+   "cargo": [
+    2.0441596508026123,
+    -0.7990689873695374,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 3.4799999999999995,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 11.0,
+   "phase": "drag",
+   "cargo": [
+    2.044111967086792,
+    -0.7990809082984924,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 4.4799999999999995,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 12.0,
+   "phase": "drag",
+   "cargo": [
+    2.0440642833709717,
+    -0.7990928292274475,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 5.4799999999999995,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 13.0,
+   "phase": "drag",
+   "cargo": [
+    2.0440165996551514,
+    -0.7991047501564026,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 6.4799999999999995,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 14.0,
+   "phase": "drag",
+   "cargo": [
+    2.043968915939331,
+    -0.7991166710853577,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 7.4799999999999995,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 15.0,
+   "phase": "drag",
+   "cargo": [
+    2.0439212322235107,
+    -0.7991285920143127,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 8.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 16.0,
+   "phase": "drag",
+   "cargo": [
+    2.0438735485076904,
+    -0.7991405129432678,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 9.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 17.0,
+   "phase": "drag",
+   "cargo": [
+    2.04382586479187,
+    -0.7991524338722229,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 10.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 18.0,
+   "phase": "drag",
+   "cargo": [
+    2.04377818107605,
+    -0.799164354801178,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 11.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 19.0,
+   "phase": "drag",
+   "cargo": [
+    2.0437304973602295,
+    -0.7991762757301331,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 12.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 20.0,
+   "phase": "drag",
+   "cargo": [
+    2.043682813644409,
+    -0.7991881966590881,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 13.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 21.0,
+   "phase": "drag",
+   "cargo": [
+    2.043635129928589,
+    -0.7992001175880432,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 14.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 22.0,
+   "phase": "drag",
+   "cargo": [
+    2.0435874462127686,
+    -0.7992120385169983,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 15.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 23.0,
+   "phase": "drag",
+   "cargo": [
+    2.0435397624969482,
+    -0.7992239594459534,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 16.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 24.0,
+   "phase": "drag",
+   "cargo": [
+    2.043492078781128,
+    -0.7992358803749084,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 17.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 25.0,
+   "phase": "drag",
+   "cargo": [
+    2.0434443950653076,
+    -0.7992478013038635,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 18.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 26.0,
+   "phase": "drag",
+   "cargo": [
+    2.0433967113494873,
+    -0.7992597222328186,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 19.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 27.0,
+   "phase": "drag",
+   "cargo": [
+    2.043349027633667,
+    -0.7992716431617737,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 20.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 28.0,
+   "phase": "drag",
+   "cargo": [
+    2.0433013439178467,
+    -0.7992835640907288,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 21.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 29.0,
+   "phase": "drag",
+   "cargo": [
+    2.0432536602020264,
+    -0.7992954850196838,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 22.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 30.0,
+   "phase": "drag",
+   "cargo": [
+    2.043205976486206,
+    -0.7993074059486389,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 23.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 31.0,
+   "phase": "drag",
+   "cargo": [
+    2.0431582927703857,
+    -0.799319326877594,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 24.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 32.0,
+   "phase": "drag",
+   "cargo": [
+    2.0431106090545654,
+    -0.7993312478065491,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 25.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 33.0,
+   "phase": "drag",
+   "cargo": [
+    2.043062925338745,
+    -0.7993431687355042,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 26.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 34.0,
+   "phase": "drag",
+   "cargo": [
+    2.043015241622925,
+    -0.7993550896644592,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 27.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 35.0,
+   "phase": "drag",
+   "cargo": [
+    2.0429675579071045,
+    -0.7993670105934143,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 28.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 36.0,
+   "phase": "drag",
+   "cargo": [
+    2.042919874191284,
+    -0.7993789315223694,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 29.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 37.0,
+   "phase": "drag",
+   "cargo": [
+    2.042872190475464,
+    -0.7993908524513245,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 30.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 38.0,
+   "phase": "drag",
+   "cargo": [
+    2.0428245067596436,
+    -0.7994027733802795,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 31.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 39.0,
+   "phase": "drag",
+   "cargo": [
+    2.0427768230438232,
+    -0.7994146943092346,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 32.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 40.0,
+   "phase": "drag",
+   "cargo": [
+    2.042729139328003,
+    -0.7994266152381897,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 33.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 41.0,
+   "phase": "drag",
+   "cargo": [
+    2.0426814556121826,
+    -0.7994385361671448,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 34.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 42.0,
+   "phase": "drag",
+   "cargo": [
+    2.0426337718963623,
+    -0.7994504570960999,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 35.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 43.0,
+   "phase": "drag",
+   "cargo": [
+    2.042586088180542,
+    -0.7994623780250549,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 36.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 44.0,
+   "phase": "drag",
+   "cargo": [
+    2.0425384044647217,
+    -0.79947429895401,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 37.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 45.0,
+   "phase": "drag",
+   "cargo": [
+    2.0424907207489014,
+    -0.7994862198829651,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 38.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 46.0,
+   "phase": "drag",
+   "cargo": [
+    2.042443037033081,
+    -0.7994981408119202,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 39.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 47.0,
+   "phase": "drag",
+   "cargo": [
+    2.0423953533172607,
+    -0.7995100617408752,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 40.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 48.0,
+   "phase": "drag",
+   "cargo": [
+    2.0423476696014404,
+    -0.7995219826698303,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 41.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 49.0,
+   "phase": "drag",
+   "cargo": [
+    2.04229998588562,
+    -0.7995339035987854,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 42.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 50.0,
+   "phase": "drag",
+   "cargo": [
+    2.0422523021698,
+    -0.7995458245277405,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 43.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 51.0,
+   "phase": "drag",
+   "cargo": [
+    2.0422046184539795,
+    -0.7995577454566956,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 44.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 52.0,
+   "phase": "drag",
+   "cargo": [
+    2.042156934738159,
+    -0.7995696663856506,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 45.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 53.0,
+   "phase": "drag",
+   "cargo": [
+    2.042109251022339,
+    -0.7995815873146057,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 46.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 54.0,
+   "phase": "drag",
+   "cargo": [
+    2.0420615673065186,
+    -0.7995935082435608,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 47.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 55.0,
+   "phase": "drag",
+   "cargo": [
+    2.0420138835906982,
+    -0.7996054291725159,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 48.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 56.0,
+   "phase": "drag",
+   "cargo": [
+    2.041966199874878,
+    -0.799617350101471,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 49.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 57.0,
+   "phase": "drag",
+   "cargo": [
+    2.0419185161590576,
+    -0.799629271030426,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 50.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 58.0,
+   "phase": "drag",
+   "cargo": [
+    2.0418708324432373,
+    -0.7996411919593811,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 51.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 59.0,
+   "phase": "drag",
+   "cargo": [
+    2.041823148727417,
+    -0.7996531128883362,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 52.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 60.0,
+   "phase": "drag",
+   "cargo": [
+    2.0417754650115967,
+    -0.7996650338172913,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 53.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 61.0,
+   "phase": "drag",
+   "cargo": [
+    2.0417277812957764,
+    -0.7996769547462463,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 54.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 62.0,
+   "phase": "drag",
+   "cargo": [
+    2.041680097579956,
+    -0.7996888756752014,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 55.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 63.0,
+   "phase": "drag",
+   "cargo": [
+    2.0416324138641357,
+    -0.7997007966041565,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 56.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 64.0,
+   "phase": "drag",
+   "cargo": [
+    2.0415847301483154,
+    -0.7997127175331116,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 57.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 65.0,
+   "phase": "drag",
+   "cargo": [
+    2.041537046432495,
+    -0.7997246384620667,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 58.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 66.0,
+   "phase": "drag",
+   "cargo": [
+    2.041489362716675,
+    -0.7997365593910217,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 59.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 67.0,
+   "phase": "drag",
+   "cargo": [
+    2.0414416790008545,
+    -0.7997484803199768,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 60.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 68.0,
+   "phase": "drag",
+   "cargo": [
+    2.041393995285034,
+    -0.7997604012489319,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 61.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 69.0,
+   "phase": "drag",
+   "cargo": [
+    2.041346311569214,
+    -0.799772322177887,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 62.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 70.0,
+   "phase": "drag",
+   "cargo": [
+    2.0412986278533936,
+    -0.799784243106842,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 63.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 71.0,
+   "phase": "drag",
+   "cargo": [
+    2.0412509441375732,
+    -0.7997961640357971,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 64.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 72.0,
+   "phase": "drag",
+   "cargo": [
+    2.041203260421753,
+    -0.7998080849647522,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 65.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 73.0,
+   "phase": "drag",
+   "cargo": [
+    2.0411555767059326,
+    -0.7998200058937073,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 66.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 74.0,
+   "phase": "drag",
+   "cargo": [
+    2.0411078929901123,
+    -0.7998319268226624,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 67.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 75.0,
+   "phase": "drag",
+   "cargo": [
+    2.041060209274292,
+    -0.7998438477516174,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 68.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 76.0,
+   "phase": "drag",
+   "cargo": [
+    2.0410125255584717,
+    -0.7998557686805725,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 69.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 77.0,
+   "phase": "drag",
+   "cargo": [
+    2.0409648418426514,
+    -0.7998676896095276,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 70.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 78.0,
+   "phase": "drag",
+   "cargo": [
+    2.040917158126831,
+    -0.7998796105384827,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 71.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 79.0,
+   "phase": "drag",
+   "cargo": [
+    2.0408694744110107,
+    -0.7998915314674377,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 72.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 80.0,
+   "phase": "drag",
+   "cargo": [
+    2.0408217906951904,
+    -0.7999034523963928,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 73.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 81.0,
+   "phase": "drag",
+   "cargo": [
+    2.04077410697937,
+    -0.7999153733253479,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 74.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 82.0,
+   "phase": "drag",
+   "cargo": [
+    2.04072642326355,
+    -0.799927294254303,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 75.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 83.0,
+   "phase": "drag",
+   "cargo": [
+    2.0406787395477295,
+    -0.7999392151832581,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 76.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 84.0,
+   "phase": "drag",
+   "cargo": [
+    2.040631055831909,
+    -0.7999511361122131,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 77.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 85.0,
+   "phase": "drag",
+   "cargo": [
+    2.040583372116089,
+    -0.7999630570411682,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 78.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 86.0,
+   "phase": "drag",
+   "cargo": [
+    2.0405356884002686,
+    -0.7999749779701233,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 79.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 87.0,
+   "phase": "drag",
+   "cargo": [
+    2.0404880046844482,
+    -0.7999868988990784,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 80.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 88.0,
+   "phase": "drag",
+   "cargo": [
+    2.040440320968628,
+    -0.7999988198280334,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 81.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 89.0,
+   "phase": "drag",
+   "cargo": [
+    2.0403926372528076,
+    -0.8000107407569885,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 82.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 90.0,
+   "phase": "drag",
+   "cargo": [
+    2.0403449535369873,
+    -0.8000226616859436,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 83.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 91.0,
+   "phase": "drag",
+   "cargo": [
+    2.040297269821167,
+    -0.8000345826148987,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 84.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 92.0,
+   "phase": "drag",
+   "cargo": [
+    2.0402495861053467,
+    -0.8000465035438538,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 85.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 93.0,
+   "phase": "drag",
+   "cargo": [
+    2.0402019023895264,
+    -0.8000584244728088,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 86.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 94.0,
+   "phase": "drag",
+   "cargo": [
+    2.040154218673706,
+    -0.8000703454017639,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 87.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 95.0,
+   "phase": "drag",
+   "cargo": [
+    2.0401065349578857,
+    -0.800082266330719,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 88.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 96.0,
+   "phase": "drag",
+   "cargo": [
+    2.0400588512420654,
+    -0.8000941872596741,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 89.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 97.0,
+   "phase": "drag",
+   "cargo": [
+    2.040011167526245,
+    -0.8001061081886292,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 90.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 98.0,
+   "phase": "drag",
+   "cargo": [
+    2.039963483810425,
+    -0.8001180291175842,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 91.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 99.0,
+   "phase": "drag",
+   "cargo": [
+    2.0399158000946045,
+    -0.8001299500465393,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 92.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 100.0,
+   "phase": "drag",
+   "cargo": [
+    2.039868116378784,
+    -0.8001418709754944,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 93.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 101.0,
+   "phase": "drag",
+   "cargo": [
+    2.039820432662964,
+    -0.8001537919044495,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 94.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 102.0,
+   "phase": "drag",
+   "cargo": [
+    2.0397727489471436,
+    -0.8001657128334045,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 95.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 103.0,
+   "phase": "drag",
+   "cargo": [
+    2.0397250652313232,
+    -0.8001776337623596,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 96.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 104.0,
+   "phase": "drag",
+   "cargo": [
+    2.039677381515503,
+    -0.8001895546913147,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 97.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 105.0,
+   "phase": "drag",
+   "cargo": [
+    2.0396296977996826,
+    -0.8002014756202698,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 98.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 106.0,
+   "phase": "drag",
+   "cargo": [
+    2.0395820140838623,
+    -0.8002133965492249,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 99.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 107.0,
+   "phase": "drag",
+   "cargo": [
+    2.039534330368042,
+    -0.8002253174781799,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 100.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 108.0,
+   "phase": "drag",
+   "cargo": [
+    2.0394866466522217,
+    -0.800237238407135,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 101.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 109.0,
+   "phase": "drag",
+   "cargo": [
+    2.0394389629364014,
+    -0.8002491593360901,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 102.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 110.0,
+   "phase": "drag",
+   "cargo": [
+    2.039391279220581,
+    -0.8002610802650452,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 103.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 111.0,
+   "phase": "drag",
+   "cargo": [
+    2.0393435955047607,
+    -0.8002730011940002,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 104.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 112.0,
+   "phase": "drag",
+   "cargo": [
+    2.0392959117889404,
+    -0.8002849221229553,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 105.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 113.0,
+   "phase": "drag",
+   "cargo": [
+    2.03924822807312,
+    -0.8002968430519104,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 106.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 114.0,
+   "phase": "drag",
+   "cargo": [
+    2.0392005443573,
+    -0.8003087639808655,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 107.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 115.0,
+   "phase": "drag",
+   "cargo": [
+    2.0391528606414795,
+    -0.8003206849098206,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 108.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 116.0,
+   "phase": "drag",
+   "cargo": [
+    2.039105176925659,
+    -0.8003326058387756,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 109.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 117.0,
+   "phase": "drag",
+   "cargo": [
+    2.039057493209839,
+    -0.8003445267677307,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 110.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 118.0,
+   "phase": "drag",
+   "cargo": [
+    2.0390098094940186,
+    -0.8003564476966858,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 111.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 119.0,
+   "phase": "drag",
+   "cargo": [
+    2.0389621257781982,
+    -0.8003683686256409,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 112.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 120.0,
+   "phase": "drag",
+   "cargo": [
+    2.038914442062378,
+    -0.800380289554596,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 113.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 121.0,
+   "phase": "drag",
+   "cargo": [
+    2.0388667583465576,
+    -0.800392210483551,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 114.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 122.0,
+   "phase": "drag",
+   "cargo": [
+    2.0388190746307373,
+    -0.8004041314125061,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 115.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 123.0,
+   "phase": "drag",
+   "cargo": [
+    2.038771390914917,
+    -0.8004160523414612,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 116.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 124.0,
+   "phase": "drag",
+   "cargo": [
+    2.0387237071990967,
+    -0.8004279732704163,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 117.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 125.0,
+   "phase": "drag",
+   "cargo": [
+    2.0386760234832764,
+    -0.8004398941993713,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 118.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 126.0,
+   "phase": "drag",
+   "cargo": [
+    2.038628339767456,
+    -0.8004518151283264,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 119.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 127.0,
+   "phase": "drag",
+   "cargo": [
+    2.0385806560516357,
+    -0.8004637360572815,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 120.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 128.0,
+   "phase": "drag",
+   "cargo": [
+    2.0385329723358154,
+    -0.8004756569862366,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 121.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 129.0,
+   "phase": "drag",
+   "cargo": [
+    2.038485288619995,
+    -0.8004875779151917,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 122.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 130.0,
+   "phase": "drag",
+   "cargo": [
+    2.038437604904175,
+    -0.8004994988441467,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 123.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 131.0,
+   "phase": "drag",
+   "cargo": [
+    2.0383899211883545,
+    -0.8005114197731018,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 124.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 132.0,
+   "phase": "drag",
+   "cargo": [
+    2.038342237472534,
+    -0.8005233407020569,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 125.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 133.0,
+   "phase": "drag",
+   "cargo": [
+    2.038294553756714,
+    -0.800535261631012,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 126.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 134.0,
+   "phase": "drag",
+   "cargo": [
+    2.0382468700408936,
+    -0.800547182559967,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 127.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 135.0,
+   "phase": "drag",
+   "cargo": [
+    2.0381991863250732,
+    -0.8005591034889221,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 128.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 136.0,
+   "phase": "drag",
+   "cargo": [
+    2.038151502609253,
+    -0.8005710244178772,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 129.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 137.0,
+   "phase": "drag",
+   "cargo": [
+    2.0381038188934326,
+    -0.8005829453468323,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 130.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 138.0,
+   "phase": "drag",
+   "cargo": [
+    2.0380561351776123,
+    -0.8005948662757874,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 131.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 139.0,
+   "phase": "drag",
+   "cargo": [
+    2.038008451461792,
+    -0.8006067872047424,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 132.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 140.0,
+   "phase": "drag",
+   "cargo": [
+    2.0379607677459717,
+    -0.8006187081336975,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 133.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 141.0,
+   "phase": "drag",
+   "cargo": [
+    2.0379130840301514,
+    -0.8006306290626526,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 134.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 142.0,
+   "phase": "drag",
+   "cargo": [
+    2.037865400314331,
+    -0.8006425499916077,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 135.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 143.0,
+   "phase": "drag",
+   "cargo": [
+    2.0378177165985107,
+    -0.8006544709205627,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 136.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 144.0,
+   "phase": "drag",
+   "cargo": [
+    2.0377700328826904,
+    -0.8006663918495178,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 137.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 145.0,
+   "phase": "drag",
+   "cargo": [
+    2.03772234916687,
+    -0.8006783127784729,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 138.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 146.0,
+   "phase": "drag",
+   "cargo": [
+    2.03767466545105,
+    -0.800690233707428,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 139.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 147.0,
+   "phase": "drag",
+   "cargo": [
+    2.0376269817352295,
+    -0.8007021546363831,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 140.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 148.0,
+   "phase": "drag",
+   "cargo": [
+    2.037579298019409,
+    -0.8007140755653381,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 141.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 149.0,
+   "phase": "drag",
+   "cargo": [
+    2.037531614303589,
+    -0.8007259964942932,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 142.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 150.0,
+   "phase": "drag",
+   "cargo": [
+    2.0374839305877686,
+    -0.8007379174232483,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 143.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 151.0,
+   "phase": "drag",
+   "cargo": [
+    2.0374362468719482,
+    -0.8007498383522034,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 144.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 152.0,
+   "phase": "drag",
+   "cargo": [
+    2.037388563156128,
+    -0.8007617592811584,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 145.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 153.0,
+   "phase": "drag",
+   "cargo": [
+    2.0373408794403076,
+    -0.8007736802101135,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 146.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 154.0,
+   "phase": "drag",
+   "cargo": [
+    2.0372931957244873,
+    -0.8007856011390686,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 147.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 155.0,
+   "phase": "drag",
+   "cargo": [
+    2.037245512008667,
+    -0.8007975220680237,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 148.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 156.0,
+   "phase": "drag",
+   "cargo": [
+    2.0371978282928467,
+    -0.8008094429969788,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 149.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 157.0,
+   "phase": "drag",
+   "cargo": [
+    2.0371501445770264,
+    -0.8008213639259338,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 150.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 158.0,
+   "phase": "drag",
+   "cargo": [
+    2.037102460861206,
+    -0.8008332848548889,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 151.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 159.0,
+   "phase": "drag",
+   "cargo": [
+    2.0370547771453857,
+    -0.800845205783844,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 152.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 160.0,
+   "phase": "drag",
+   "cargo": [
+    2.0370070934295654,
+    -0.8008571267127991,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 153.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 161.0,
+   "phase": "drag",
+   "cargo": [
+    2.036959409713745,
+    -0.8008690476417542,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 154.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 162.0,
+   "phase": "drag",
+   "cargo": [
+    2.036911725997925,
+    -0.8008809685707092,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 155.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 163.0,
+   "phase": "drag",
+   "cargo": [
+    2.0368640422821045,
+    -0.8008928894996643,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 156.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 164.0,
+   "phase": "drag",
+   "cargo": [
+    2.036816358566284,
+    -0.8009048104286194,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 157.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 165.0,
+   "phase": "drag",
+   "cargo": [
+    2.036768674850464,
+    -0.8009167313575745,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 158.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 166.0,
+   "phase": "drag",
+   "cargo": [
+    2.0367209911346436,
+    -0.8009286522865295,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 159.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 167.0,
+   "phase": "drag",
+   "cargo": [
+    2.0366733074188232,
+    -0.8009405732154846,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 160.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 168.0,
+   "phase": "drag",
+   "cargo": [
+    2.036625623703003,
+    -0.8009524941444397,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 161.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 169.0,
+   "phase": "drag",
+   "cargo": [
+    2.0365779399871826,
+    -0.8009644150733948,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 162.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 170.0,
+   "phase": "drag",
+   "cargo": [
+    2.0365302562713623,
+    -0.8009763360023499,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 163.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 171.0,
+   "phase": "drag",
+   "cargo": [
+    2.036482572555542,
+    -0.8009882569313049,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 164.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 172.0,
+   "phase": "drag",
+   "cargo": [
+    2.0364348888397217,
+    -0.80100017786026,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 165.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 173.0,
+   "phase": "drag",
+   "cargo": [
+    2.0363872051239014,
+    -0.8010120987892151,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 166.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 174.0,
+   "phase": "drag",
+   "cargo": [
+    2.036339521408081,
+    -0.8010240197181702,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 167.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 175.0,
+   "phase": "drag",
+   "cargo": [
+    2.0362918376922607,
+    -0.8010359406471252,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 168.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 176.0,
+   "phase": "drag",
+   "cargo": [
+    2.0362441539764404,
+    -0.8010478615760803,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 169.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 177.0,
+   "phase": "drag",
+   "cargo": [
+    2.03619647026062,
+    -0.8010597825050354,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 170.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 178.0,
+   "phase": "drag",
+   "cargo": [
+    2.0361487865448,
+    -0.8010717034339905,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 171.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  },
+  {
+   "t": 179.0,
+   "phase": "drag",
+   "cargo": [
+    2.0361011028289795,
+    -0.8010836243629456,
+    0.449995756149292
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "phase": "drag",
+    "elapsed": 172.48,
+    "push_N": 0.0,
+    "local_traction_probe": true,
+    "complete_delivery_planner": false
+   }
+  }
+ ],
+ "wall_s": 1051.1294121742249,
+ "max_robot_tilt_deg": 29.579030990600586,
+ "max_cargo_tilt_deg": 0.10087054967880249,
+ "max_push_N": 643.3237361907959,
+ "first_failure": null,
+ "local_traction_only": true,
+ "complete_delivery_planner": false,
+ "human_review": null,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "score": 0.0,
+  "success": false,
+  "scene": "default",
+  "dock": "rails",
+  "scene_version": "default/ae3124afdef5",
+  "end_reason": "finished",
+  "samples": 9001,
+  "sim_time_s": 180.0,
+  "source": "tool_necessity_probe",
+  "observations": null,
+  "effort_limits": "hardware",
+  "simulator": {
+   "genesis-world": "1.4.3",
+   "torch": "2.11.0+cu128",
+   "numpy": "2.5.3"
+  },
+  "final_progress": 0.0,
+  "peak_time_s": 0.0,
+  "stage_best": {
+   "crate_pushed": 0.0,
+   "cargo_loaded": 0.0,
+   "through_passage_1": 0.0,
+   "through_passage_2": 0.0,
+   "delivered": 0.0
+  },
+  "stage_timeline": {
+   "crate_pushed": null,
+   "cargo_loaded": null,
+   "through_passage_1": null,
+   "through_passage_2": null,
+   "delivered": null
+  },
+  "delivered_at_end": false,
+  "chain_complete": false,
+  "failed": false,
+  "core_success": false,
+  "core_success_time_s": null,
+  "core_loaded_time_s": null,
+  "core_failed_time_s": null,
+  "max_deck_cover": 0.0,
+  "max_goal_cover": 0.0,
+  "evaluation": {
+   "loaded": false,
+   "loaded_time_s": null,
+   "success": false,
+   "success_time_s": null,
+   "failed": false,
+   "failed_time_s": null,
+   "sampling": "physics_substeps",
+   "hold_s": 0.0
+  },
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "monitor_version": "h2-monitors/2",
+   "not_applicable": {},
+   "max_reported_speed": 0.24,
+   "max_object_speed": 0.227,
+   "max_step_speed": 0.649,
+   "max_floor_penetration": 0.0006,
+   "max_box_penetration": 0.0,
+   "max_out_of_bounds_m": -0.74,
+   "max_energy_excess_J": 0.007,
+   "max_reversal_rate_hand_hz": 2.0,
+   "max_arm_shake": 1.076,
+   "max_saturation_s": 0.24,
+   "max_limit_push_s": 0.0,
+   "max_progress_spike": 0.0
+  },
+  "verifier": "h2-verifier/2 (h2-monitors/2)"
+ }
+}

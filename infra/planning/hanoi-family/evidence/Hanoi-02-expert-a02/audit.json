@@ -1,0 +1,66 @@
+{
+  "schema": "hanoi-attempt-audit/1",
+  "task_id": "Hanoi-02",
+  "scope": "record continuity and declared constraints; not independent physical replay",
+  "audit_passed": true,
+  "task_success": false,
+  "independent_replay": false,
+  "checks": {
+    "action_count": true,
+    "continuous_commands": true,
+    "finite_trajectory": true,
+    "target_limits": true,
+    "recorded_targets_match": true,
+    "phase_mapping": true,
+    "physics_steps_and_torque_caps": true,
+    "no_runtime_state_write_attempts": true,
+    "source_unchanged": true,
+    "video_exists": true
+  },
+  "artifacts": {
+    "high_low_plan.json": {
+      "bytes": 7401,
+      "sha256": "d99d7f315bfd392b5709bbb3d3c7bfdb8e6dd69ed9ff638d3a61168e12c457c6"
+    },
+    "executed-plan.json": {
+      "bytes": 2344,
+      "sha256": "55ab065228b4325a4d4dc07c6c1d7578cc33bb5189fb1855ed52311a326d94b4"
+    },
+    "trajectory.npz": {
+      "bytes": 966654,
+      "sha256": "ca862f3561284fa4c22b36011f138ae27d6fa4e5c293fc84adab389580a0b90d"
+    },
+    "physics.jsonl.gz": {
+      "bytes": 62178176,
+      "sha256": "ac433cadd6ba49db9bd31d62ed7727a1fd680f9feaf857d865782dcfe48c8c37"
+    },
+    "actions.jsonl.gz": {
+      "bytes": 193818,
+      "sha256": "0f07356ae393dd5b51d6e6f3c33b40ecd113719da7391384d36907525a9a4d03"
+    },
+    "video.mp4": {
+      "bytes": 197782,
+      "sha256": "ffcec022579925c33ac2fc912782ba853c9fd7c49a05167a00a2e76107e04aae"
+    },
+    "result.json": {
+      "bytes": 1397,
+      "sha256": "14bcf03fe626272a5186b21bbbb344bdb501be8258e23939b9e04cfcea5e7fff"
+    },
+    "source-hashes.json": {
+      "bytes": 766,
+      "sha256": "59df4f106c235898ddbf2f99544e71596c9445e0c1561aca2ae74dedfe3e6c27"
+    },
+    "source-check.json": {
+      "bytes": 1628,
+      "sha256": "a6389dd4972bddd4dbc420d0b4042abd96580c4f8682f1820863d3ce0e33c560"
+    },
+    "environment.json": {
+      "bytes": 286,
+      "sha256": "236bae2a80dc92a99bdfd6cc12bb1a69dfe1a0f80ef5e29b4cdaf3047b385553"
+    },
+    "limits.json": {
+      "bytes": 2477,
+      "sha256": "63b272f8e0436424b4cc49f57482d516c64fcbbee65052da9c8c531628c0d9fd"
+    }
+  }
+}

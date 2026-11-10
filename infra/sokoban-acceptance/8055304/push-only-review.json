@@ -1,0 +1,52 @@
+{
+  "schema": "sokoban-push-only-review/1",
+  "checks": {
+    "complete_substep_and_command_coverage": true,
+    "open_index_middle_commands": true,
+    "no_loaded_far_side_contact": true,
+    "no_force_driven_motion_toward_robot": true,
+    "contact_direction_defined": true
+  },
+  "operational_checks_passed": true,
+  "thresholds": {
+    "active_contact_N": 1.0,
+    "far_side_margin_m": 0.02,
+    "reverse_force_N": 1.0,
+    "motion_noise_m_per_substep": 1e-06
+  },
+  "flag_counts": {},
+  "flagged_samples": [],
+  "reverse_contact_impulse_Ns": 0.1732107092445582,
+  "nonhand_contact_samples_by_link": {
+    "g1_a/crate_d/left_wrist_pitch_link": 24,
+    "g1_a/crate_d/left_ankle_roll_link": 1,
+    "g1_a/crate_a/left_wrist_pitch_link": 82,
+    "g1_a/crate_a/right_wrist_pitch_link": 103,
+    "g1_a/crate_a/right_wrist_roll_link": 16,
+    "g1_a/crate_a/right_ankle_roll_link": 11,
+    "g1_b/crate_b/left_wrist_pitch_link": 15,
+    "g1_b/crate_b/right_wrist_pitch_link": 27,
+    "g1_b/crate_b/right_ankle_roll_link": 10,
+    "g1_a/crate_c/right_ankle_roll_link": 10,
+    "g1_a/crate_c/left_wrist_pitch_link": 41,
+    "g1_a/crate_c/right_wrist_pitch_link": 76,
+    "g1_b/crate_c/left_knee_link": 31,
+    "g1_b/crate_c/left_ankle_roll_link": 3
+  },
+  "max_index_middle_command_rad": 0.0,
+  "substeps": 103656,
+  "controls": 12957,
+  "sha256": {
+    "trace.jsonl": "19310fbb63ff92a85191b6c43b40b40f80f922c168419ff11ef9a46598519875",
+    "physics-substeps.jsonl": "59f88851b284232b434632ca4d7a37a52f916892b1e16e8f40b588f231b09454",
+    "physics-metadata.json": "8cf360e28995a7b32c9ab4f6d744a8c903b896a1c4f370dd023a753eb5d2e604"
+  },
+  "scope": "Conservative operational checks plus existing opposed-face/support/actuator audit. Human review still required.",
+  "limitations": [
+    "Subthreshold contact and force-closure modes are not universally excluded by these tests.",
+    "Non-hand contacts are classified by link; applicable clips need human review.",
+    "This result does not certify isolation, runtime integrity or formal admission."
+  ],
+  "formal_admission": false,
+  "task_success": null
+}

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 805, in main
+    self.step()
+      ^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 495, in execute
+    offsets,_=self.tangent_admittance();targets={s:(p+offsets[s],rot) for s,(p,rot) in targets.items()}
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 608, in finish_dex3_bridge
+    correction=self.attitude_correction(np.array([0.,0.,-1.]))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 630, in finish_dex3_bridge_after_transfer
+    def finish_dex3_push_from_bridge(self):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 394, in move
+    elif target is not None:self.qref=q0+u*(target-q0)
+                                   ^^^^^^^^^^^^^^^^^^^^
+RuntimeError: grasp_pose_not_reached:{'left': 0.025790597532385832}

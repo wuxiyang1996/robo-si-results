@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 736, in main
+    if any(k in n for k in ['wrist','joint_arm','joint_lift']):self.qref[self.m.jnt_qposadr[j]]=solution[self.m.jnt_qposadr[j]]
+     ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 390, in execute
+    normal=self.d.xmat[self.obj].reshape(3,3)[:,2];previous={s:p.copy() for s,p in self.admittance_offsets.items()}
+                                        ^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 512, in prepush_disk
+    ref,R=self.nominal_hand_pose('left');desired=tip.copy()
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 380, in move
+    if any(k in n for k in ['shoulder','elbow','wrist','waist']) or self.body=='S' and any(k in n for k in ['joint_arm','joint_lift']):self.qref[self.m.jnt_qposadr[j]]=solution[self.m.jnt_qposadr[j]]
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: grasp_pose_not_reached:{'left': 0.05511543677399933}

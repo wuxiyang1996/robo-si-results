@@ -1,0 +1,192 @@
+{
+  "updated_at": "2026-10-25T05:25:05.124924+00:00",
+  "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_350\\runs\\canonical-full-01",
+  "recording_valid_and_safe": true,
+  "original_start": true,
+  "task_success": false,
+  "score": 0.2,
+  "expert_status": "climb:climb entry measured gate failed: landed_0",
+  "physics_steps": 142100,
+  "physical_duration_s": 710.5,
+  "expert_control_clock_s": 710.52,
+  "integrity": {
+    "ok": true,
+    "void": false,
+    "reasons": [],
+    "excluded_frames": 0,
+    "safety_coverage": {
+      "complete": true,
+      "has_gaps": false,
+      "invalid_frames": 0
+    },
+    "max_joint_limit_overshoot": 0.0,
+    "max_effort_ratio": 1.0,
+    "max_speed_ratio": 0.08029249310493469,
+    "physics_samples": 142100,
+    "joint_count": 43,
+    "physics_dt": 0.005
+  },
+  "safety_events": [],
+  "rule5": {
+    "status": "evaluated",
+    "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+    "max_saturation_s": 1.98,
+    "max_limit_push_s": 0.02
+  },
+  "verified_carry_setdown": {
+    "completed_at_s": 675.6,
+    "steps": 17,
+    "pelvis_displacement_m": 1.0137,
+    "carry_setdown": {
+      "status": "carry_setdown_primitive_completed",
+      "diagnostic_only": true,
+      "bridge": {
+        "bridge_duration_s": 12.0,
+        "translation_xy_m": [
+          1.0007090317072063,
+          0.0030629712833233277
+        ],
+        "landing_position": [
+          3.030709031707205,
+          0.0005681383168466489,
+          0.11149
+        ],
+        "grip_displacement_m": 0.01266655082942001,
+        "max_foot_error_m": 0.0023879549314871572,
+        "peak_modeled_effort_ratio": 0.746719006208858,
+        "minimum_sampled_nonhand_stool_clearance_m": 0.027700962951002935,
+        "timing": {
+          "duration": 12.0,
+          "iterations": 1,
+          "joint_speed_radps": 0.04947893866261155,
+          "joint_acceleration_radps2": 0.016438063838233874,
+          "root_speed_mps": 0.0010368069776955245,
+          "root_acceleration_mps2": 0.0003444515953860808,
+          "root_angular_speed_radps": 0.014638205790797864,
+          "root_angular_acceleration_radps2": 0.004858991076367402,
+          "planning_bounds": {
+            "joint_speed_radps": 0.5,
+            "joint_acceleration_radps2": 2.0,
+            "root_speed_mps": 0.05,
+            "root_acceleration_mps2": 0.2,
+            "root_angular_speed_radps": 0.2,
+            "root_angular_acceleration_radps2": 0.8
+          },
+          "knot_times": [
+            0.0,
+            12.0
+          ]
+        },
+        "physics_steps": 0,
+        "scope": "CPU bridge checks only; actual contact, support and full-task qualification pending."
+      },
+      "drop_error_m": 0.006675120890335069,
+      "checkpoint": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_350\\runs\\canonical-full-01\\expert\\checkpoints\\chain-carry-setdown.pkl",
+      "execution_scope": "continuous_chain_handoff"
+    },
+    "release_final": {
+      "stable_seconds": 1.0000000000000004,
+      "hand_force_N": 0,
+      "stool_shift_m": 0.0010364147601649165,
+      "stool": [
+        3.036534309387207,
+        0.0013638327363878489,
+        0.11049434542655945
+      ],
+      "robot": {
+        "ok": true,
+        "root_height_m": 0.7380027174949646,
+        "pelvis_tilt_deg": 13.652408077040205,
+        "root_speed_mps": 2.5981407816288993e-05,
+        "root_angular_speed_radps": 3.501805258565582e-05,
+        "foot_fz_N": [
+          168.7730255126953,
+          168.6351776123047
+        ],
+        "foot_bottom_m": [
+          -0.0003268964168989044,
+          -0.00025529704967323236
+        ],
+        "support_margin_m": 0.04849546665851401,
+        "com": [
+          2.6280634197976944,
+          0.002893548622075622,
+          0.6542356201714096
+        ],
+        "root": [
+          2.5622241497039795,
+          -0.002479229122400284,
+          0.7380027174949646,
+          0.9861507415771484,
+          0.027979284524917603,
+          0.1155179813504219,
+          0.1156696304678917
+        ],
+        "feet": [
+          [
+            2.6301706763638055,
+            0.1199461995714262,
+            0.034752381877865085
+          ],
+          [
+            2.6291765882636975,
+            -0.11362211332915455,
+            0.03477519310411424
+          ]
+        ]
+      }
+    }
+  },
+  "failure": {
+    "stage": "climb entry landed_0",
+    "measured": {
+      "time": 710.52,
+      "phase": "landed_0",
+      "feet": [
+        [
+          2.5748270607622583,
+          0.10516334564226454,
+          0.03499867719174462
+        ],
+        [
+          2.630151929713893,
+          -0.11629817914001712,
+          0.03464467275330468
+        ]
+      ],
+      "fz": [
+        2.5178685188293457,
+        334.85821533203125
+      ],
+      "com_error": 0.008157551293683842,
+      "root_speed": 0.0005295310373909411,
+      "foot_error": [
+        0.013886600109291226,
+        0.0011346971083069856
+      ],
+      "support_margin": 0.019046347253387164
+    },
+    "required_landing_xy_error_m": 0.012,
+    "explanation": "Landing foot remains about 13.9 mm from target, so the unchanged 12 mm physical landing gate stops entry; no target retrieval attempted."
+  },
+  "bookkeeping_warning": {
+    "type": "ValueError",
+    "message": "Checkpoint requires a successfully completed setdown"
+  },
+  "retained_checkpoint": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_350\\runs\\canonical-full-01\\expert\\checkpoints\\chain-carry-setdown.pkl",
+  "scope": "Safe complete attempted episode, not complete task success. The continuous carry/setdown prefix is verified; checkpoint continuations cannot replace a fresh complete run.",
+  "evidence": {
+    "trusted_recording/verdict.json": {
+      "path": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_350\\runs\\canonical-full-01\\trusted_recording\\verdict.json",
+      "sha256": "f34ff666a04b655d907ccbce8ed84987909dd969ea119f743627ed47cbb8d069"
+    },
+    "trusted_recording/recording.json": {
+      "path": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_350\\runs\\canonical-full-01\\trusted_recording\\recording.json",
+      "sha256": "c306e7b3d803700a143f4608e5ee812a569e8e36018d81bda60f18307b56a1c3"
+    },
+    "expert/result.json": {
+      "path": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_350\\runs\\canonical-full-01\\expert\\result.json",
+      "sha256": "fce9d647c2df8d8117bdd2b71546400cbcb9175f7f136fcbeb20beb5778216b6"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "m4-continuous-discovery-plan/1",
+  "attempt": "v3j-continuous-tools-a44",
+  "seed": 101,
+  "mode": "cycle",
+  "seconds": 120,
+  "precision": "64",
+  "substeps": 8,
+  "ground_friction": 0.3,
+  "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+  "scene": "Single Go2, all three physical tools simultaneously present, original payload/platform. Overhead guides remain colliding; unused ropes are not deleted.",
+  "public_decision_inputs": [
+    "opaque candidate and observable port coordinate",
+    "measured robot/cargo displacement and load",
+    "measured stance displacement",
+    "observed closure and release"
+  ],
+  "stages": [
+    "bounded capture attempt",
+    "physical opening and separation if rejected",
+    "same-scene navigation to next public candidate",
+    "capture and 3 s measured probe",
+    "3 s selected-tool use",
+    "unload, physical release and 2 s dwell"
+  ],
+  "limits": "All existing contact, rope, actuator, pin, 50 mm slip and no-state-reset checks unchanged.",
+  "stop": "First physical alarm, 120 s ceiling, no candidates left, or complete selected-tool cycle.",
+  "preconditions": [
+    "28 contract tests pass",
+    "v3j static receiver and payload sweeps pass",
+    "single physical job at a time"
+  ],
+  "evidence_scope": "Continuous choice/use component only. Does not combine discovery with full corridor delivery, isolate the whole expert, establish all embodiments, or grant formal admission.",
+  "formal_admission": false,
+  "contract_tests_passed": 28,
+  "compute_namespace_preflight": {
+    "job_id": "8065382",
+    "isolated_pid": 2,
+    "passed": true,
+    "physics_steps": 0
+  }
+}

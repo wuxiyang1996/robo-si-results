@@ -1,0 +1,72 @@
+{
+  "schema": "disk-flip-isolated-closed-loop/1",
+  "snapshot": "original-expert-v2",
+  "separate_process": true,
+  "policy_is_closed_loop": true,
+  "privileged_read_only_observations": true,
+  "shared_simulator_memory": false,
+  "negative_cases": [
+    {
+      "case": "object_pose",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "model_edit",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "stage_write",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "nonfinite",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "out_of_range",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "partial",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    },
+    {
+      "case": "wrong_type",
+      "rejected": true,
+      "physical_state_and_reference_unchanged": true
+    }
+  ],
+  "negative_cases_passed": true,
+  "commands_from_child": 23312,
+  "policy_exit_code": 0,
+  "transport_sha256": "1d359e3d5fa785ae2d07087cb03e9f4dc79d6d59c220d32d9581b26675e94d09",
+  "adapter_sha256": "118cd69851fae58f130da54bd2e5c0897c58502bb00725171616adb552351bca",
+  "full_task_success": true,
+  "passed": true,
+  "scope": "Frozen expert receives read-only state over JSON and computes targets online in a child process; trusted parent owns native physics/scoring and actuator limits. Not an OS security sandbox, public-agent score, human signoff, or second-person reproduction.",
+  "independent_physics_replay": true,
+  "independent_replay_checks": {
+    "original_success": true,
+    "replay_success": true,
+    "all_commands_executed": true,
+    "duration_matches": true,
+    "final_pose_matches": true,
+    "orientation_matches": true,
+    "physics_metadata_matches": true,
+    "runtime_versions_match": true,
+    "robot_assets_match": true,
+    "physics_sources_match": true,
+    "no_forbidden_state_writes": true
+  },
+  "high_low_trajectory_coverage": true,
+  "execution_directory": "/fs/gamma-projects/vlm-robot/df-live-completed-20261029/original-v2-closed-loop-02",
+  "replay_directory": "/fs/gamma-projects/vlm-robot/df-live-completed-20261029/original-v2-closed-loop-02-replay",
+  "trajectory_sha256": "19761282cfad711a11804dab539c4f7926989a90fa9a978e5a60a5e48ed812a6",
+  "replay_summary_sha256": "e77b42a1cbd06151bdc1848c712838733972b3128cf5e6355dff4ada53fb8928"
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "m4-integrated-delivery-result/1",
+  "attempt": "v3j-integrated-delivery-a52",
+  "result_sha256": "0952b0bc64c800bfc7ae837fc3236f2a3e142180c640b81a11c78d5a324eb878",
+  "runtime_passed": true,
+  "sim_time_s": 171.17499999991682,
+  "verification": {
+    "agent_run_void": false,
+    "integrated_discovery_delivery_success": true,
+    "integrated": {
+      "passed": true,
+      "errors": [],
+      "min_radial_margin_m": 0.00846004684202891,
+      "min_axial_margin_m": 0.00986937224391443,
+      "scope": "Sequence/retention check only; requires enclosing dense physics, discovery and final-goal checks."
+    },
+    "continuous_discovery_success": true,
+    "discovery": {
+      "passed": true,
+      "errors": [],
+      "selected": "candidate_ec898a0ac984",
+      "rejected": [
+        "candidate_77965bd21b6a"
+      ],
+      "scope": "Reference-campaign choice/use predicate for the declared reject-then-select sequence, not a general agent scorer. Requires enclosing dense physics verification; no whole-agent isolation or full corridor credit."
+    },
+    "schema": "m4-physical-cycle-verification/2",
+    "passed": true,
+    "cycle_success": true,
+    "errors": [],
+    "family_checks_passed": true,
+    "physical_checks_passed": true,
+    "release_dwell_s": 1.9799999999981992,
+    "retention_dwell_s": {
+      "go2_a": 0.5049999999997539
+    },
+    "dense_geometric_proof": true,
+    "local_driver_replayed": true,
+    "goal_dwell_s": 2.0049999999981765,
+    "full_transport_success": true,
+    "steps": 34235,
+    "formal_admission": false,
+    "scope": "Dense actuators, clock, release command interlock and recorded separation rejudged. Physical-check status includes coupler limits. Runtime contact checks are not independent hardware calibration; full-transport credit requires explicit mode/goal evidence. Continuous choice/use component credit is separately reported by continuous_discovery_success; no formal admission credit."
+  },
+  "physics_peaks": {
+    "penetration_dynamic": 0.002999746864496007,
+    "penetration_rope": 0.006728694465004792,
+    "impulse": 0.3627449186520537,
+    "tension": 92.75194497777078,
+    "weld_drift": 0.00024403945569948947,
+    "stance_slide": 0.04952069377421676,
+    "tilt": 10.806003129282823,
+    "torque_ratio": 0.7498858936629331,
+    "robot_cargo_force": 0.0,
+    "rope_robot_force": 313.9942622666474,
+    "slip_speed": 0.03593060801144664
+  },
+  "scope": "Single-Go2 mechanism trial in one continuous scene; not a second main task or proof for other embodiments.",
+  "formal_admission": false,
+  "verification_revision": {
+    "reason": "Corrected misuse of insertion clearance as loaded retention; mathematical audit and known-positive comparison retained.",
+    "prior_verdict": "verification-insertion-clearance.json",
+    "prior_sha256": "6a725ea9411ec4b7d0090b440fe256b07c4de65f9ed599f2ab08405c6ef0a46d",
+    "audit": "loaded-retention-audit.json"
+  }
+}

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 667, in main
+    solution,_=self.solve({'right':(pos,R)},seed=self.qref)
+      ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 431, in execute
+    lift={s:(self.nominal_hand_pose(s)[0]+lift_delta,self.nominal_hand_pose(s)[1]) for s in goals}
+     ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 332, in step
+    if getattr(self,'deep_grasp',False) and self.tuning.get('wrench_control',False):self.regulate_six_contacts()
+                                                                                                                 
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 171, in assess
+    if not np.isfinite(self.d.qpos).all() or not np.isfinite(self.d.qvel).all():raise RuntimeError('nonfinite_physics')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

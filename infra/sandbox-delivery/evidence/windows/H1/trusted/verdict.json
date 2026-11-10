@@ -1,0 +1,275 @@
+{
+ "task": "H1",
+ "mode": "eval",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.0,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.0,
+ "score_std": 0.0,
+ "by_layer": {
+  "None": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.0,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 0
+ },
+ "flags": [],
+ "privileged_reference": false,
+ "result_kind": "agent run",
+ "requests": {
+  "observe": 2,
+  "command": 1,
+  "reference": 0,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "7 entries"
+ },
+ "verifier": "infra-verifier/1 + h1-verifier/4 (relay-rubric/2.3)",
+ "verifier_sha256": "acd94a102230cdfd40c66db5c560223b4b8ba32676fdd17678191874dac91e2b",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": "2.1.0",
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + h1-verifier/4 (relay-rubric/2.3)",
+  "verifier_sha256": "acd94a102230cdfd40c66db5c560223b4b8ba32676fdd17678191874dac91e2b",
+  "scene": [],
+  "simulator": [],
+  "image": "g1sandbox-agent:0ffa9c0b82010397",
+  "image_id": "sha256:4f392cc2542ea6b65cc07fe271668df78be75db7f098ecdec688d232439f90a6",
+  "bundle": "0ffa9c0b82010397785a6da6d3ff4c82e3fb91492a50d1adb4c69800347715aa",
+  "scenario_sha256": "8d19e0a62c014f99a10174acd3ce7b14d8f2b719a4b2f1cd48bffe1290922697",
+  "delivery_sha256": "a3ff8103078d227d3be213cf7db27436e7f98099ba669e80a477f8d39fbbb703",
+  "source_manifest_sha256": "10966b17a7017359585ce9914772a09e63331104610105ecfa7133f299d648e6",
+  "launch_scope_source_frozen": true
+ },
+ "per_episode": [
+  {
+   "episode": "episode_00",
+   "over": "closed",
+   "duration_s": 2.0000000000000013,
+   "fell": false,
+   "success": false,
+   "reason": "did not declare an infeasible task",
+   "score": 0.0,
+   "steps": {
+    "family": "infeasible",
+    "score": 0.0,
+    "peak_time_s": 0.0,
+    "final_progress": 0.0,
+    "stages": [
+     {
+      "stage": "declared_infeasible",
+      "weight": 1.0,
+      "mode": "final",
+      "best": 0.0,
+      "final": 0.0,
+      "first_full_s": null
+     }
+    ],
+    "dropped": [],
+    "distractor_engaged": false,
+    "wrong_declaration": false
+   },
+   "subgoals": {
+    "tool_engaged": {
+     "first_time_s": null,
+     "hold_s": 0.0,
+     "final_window": false
+    },
+    "support_placed": {
+     "first_time_s": null,
+     "hold_s": 1.0,
+     "final_window": false
+    },
+    "on_support": {
+     "first_time_s": null,
+     "hold_s": 2.0,
+     "final_window": false
+    },
+    "target_lifted": {
+     "first_time_s": null,
+     "hold_s": 1.0,
+     "final_window": false
+    },
+    "descended_holding": {
+     "first_time_s": null,
+     "hold_s": 1.0,
+     "final_window": false
+    },
+    "delivered": {
+     "first_time_s": null,
+     "hold_s": 1.0,
+     "final_window": false
+    }
+   },
+   "family": "infeasible",
+   "teleports": {},
+   "alarms": [],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": []
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "h1-monitors/2",
+    "not_applicable": {
+     "energy": "legacy records carry no object masses",
+     "floor_penetration": "legacy records park absent boxes off-scene",
+     "predicates": "legacy subgoal predicates have no per-step progress series",
+     "joint_velocity": "derived from the logged joint positions (finite differences)"
+    },
+    "max_reported_speed": 0.196,
+    "max_object_speed": 0.123,
+    "max_step_speed": 0.136,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.025,
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0
+   },
+   "monitor_version": "h1-monitors/2",
+   "monitor_flags": [],
+   "episode_number": 0,
+   "void": false,
+   "void_reasons": [],
+   "flags": [],
+   "episode_index": 0,
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 2,
+    "commands": 1,
+    "reference": 0
+   }
+  }
+ ],
+ "admission_eligible": false,
+ "scenario": "task/any/any",
+ "final_episode": {
+  "episode": "episode_00",
+  "over": "closed",
+  "duration_s": 2.0000000000000013,
+  "fell": false,
+  "success": false,
+  "reason": "did not declare an infeasible task",
+  "score": 0.0,
+  "steps": {
+   "family": "infeasible",
+   "score": 0.0,
+   "peak_time_s": 0.0,
+   "final_progress": 0.0,
+   "stages": [
+    {
+     "stage": "declared_infeasible",
+     "weight": 1.0,
+     "mode": "final",
+     "best": 0.0,
+     "final": 0.0,
+     "first_full_s": null
+    }
+   ],
+   "dropped": [],
+   "distractor_engaged": false,
+   "wrong_declaration": false
+  },
+  "subgoals": {
+   "tool_engaged": {
+    "first_time_s": null,
+    "hold_s": 0.0,
+    "final_window": false
+   },
+   "support_placed": {
+    "first_time_s": null,
+    "hold_s": 1.0,
+    "final_window": false
+   },
+   "on_support": {
+    "first_time_s": null,
+    "hold_s": 2.0,
+    "final_window": false
+   },
+   "target_lifted": {
+    "first_time_s": null,
+    "hold_s": 1.0,
+    "final_window": false
+   },
+   "descended_holding": {
+    "first_time_s": null,
+    "hold_s": 1.0,
+    "final_window": false
+   },
+   "delivered": {
+    "first_time_s": null,
+    "hold_s": 1.0,
+    "final_window": false
+   }
+  },
+  "family": "infeasible",
+  "teleports": {},
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "monitor_version": "h1-monitors/2",
+   "not_applicable": {
+    "energy": "legacy records carry no object masses",
+    "floor_penetration": "legacy records park absent boxes off-scene",
+    "predicates": "legacy subgoal predicates have no per-step progress series",
+    "joint_velocity": "derived from the logged joint positions (finite differences)"
+   },
+   "max_reported_speed": 0.196,
+   "max_object_speed": 0.123,
+   "max_step_speed": 0.136,
+   "max_reversal_rate_hand_hz": 0.0,
+   "max_arm_shake": 0.025,
+   "max_saturation_s": 0.0,
+   "max_limit_push_s": 0.0
+  },
+  "monitor_version": "h1-monitors/2",
+  "monitor_flags": [],
+  "episode_number": 0,
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "episode_index": 0,
+  "agent_exit": {
+   "exit_code": 0,
+   "timed_out": false
+  },
+  "requests": {
+   "connects": 1,
+   "sensor_reads": 2,
+   "commands": 1,
+   "reference": 0
+  }
+ },
+ "audit": {
+  "violations": 0,
+  "violation_examples": [],
+  "world_params_changed": false,
+  "invalid_physical_evidence": {},
+  "teleports": {},
+  "sealed_before_connect": true
+ }
+}

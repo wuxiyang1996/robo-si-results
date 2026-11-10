@@ -1,0 +1,29 @@
+{
+  "schema": "m4-corridor-repeat-plan/1",
+  "status": "complete_three_of_three_verified",
+  "condition": "Execute only if frozen a47 independently verifies full_transport_success and physical_checks_passed. Otherwise retain this unexecuted plan and diagnose the failure.",
+  "reference": "v3j-rope-heading-a47",
+  "additional_attempts": [
+    {
+      "name": "v3j-corridor-repeat-a48",
+      "seed": 0,
+      "jitter_m": 0
+    },
+    {
+      "name": "v3j-corridor-repeat-a49",
+      "seed": 0,
+      "jitter_m": 0
+    }
+  ],
+  "precision": "64",
+  "substeps": 8,
+  "ground_friction": 0.8,
+  "noslip_iterations": 0,
+  "seconds": 180,
+  "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+  "transport_sha256": "1fe76191f8c68b2ec3f448bb8e1bd8d79c5d99d85da6c66f01ae38582e5230f8",
+  "success_rule": "All three outcomes retained, with no replacements. Report successes/attempts and elapsed-time spread; component or goal-entry milestones do not count as released delivery.",
+  "scope": "Same-start reproducibility only; no broader seeds or cross-embodiment claim.",
+  "formal_admission": false,
+  "reference_verification_sha256": "2a3a870d49de0c7d2cd49fdce18e46e2f91aa51c02623627c07c48b66e50727f"
+}

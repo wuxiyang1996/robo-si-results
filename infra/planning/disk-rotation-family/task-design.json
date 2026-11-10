@@ -1,0 +1,383 @@
+{
+  "schema": "disk-rotation-family-design/1",
+  "updated": "2026-10-29",
+  "status": "accepted_simulation_scope",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "count": 9,
+  "original_count": 1,
+  "extension_count": 8,
+  "conditional_control_count": 1,
+  "counting": "independent_manipulation_problem",
+  "new_simulation_runs_this_update": 84,
+  "new_complete_witnesses": 43,
+  "implementation_status": "qualified",
+  "execution_evidence": "execution.json",
+  "changes_existing_reference": false,
+  "changes_existing_14_task_inventory": false,
+  "embodiments": {
+    "DP": "Dual Panda",
+    "P": "Single Panda",
+    "G": "G1 + Dex3",
+    "F": "G1 + Inspire five-finger hand",
+    "S": "Stretch 3",
+    "PS": "Panda + Stretch 3"
+  },
+  "tasks": [
+    {
+      "id": "DR-01",
+      "group": "original",
+      "difficulty": "L1",
+      "priority_embodiments": [
+        "DP"
+      ],
+      "name": {
+        "zh": "均质圆盘旋转",
+        "en": "Uniform disc rotation"
+      },
+      "mechanism": {
+        "zh": "保留 0.1.0：均质圆盘、±30°，完成接触建立、旋转和稳定释放。",
+        "en": "Preserve 0.1.0: a uniform disc, ±30°, contact acquisition, rotation and stable release."
+      },
+      "counted": true,
+      "status": "accepted_simulation_scope",
+      "feasibility": "exact_configuration_witness",
+      "execution": {
+        "acceptance": {
+          "primary": "rc01",
+          "normal_runs": [
+            "rc01",
+            "rc02"
+          ],
+          "replays": [
+            "replay-rc01"
+          ]
+        },
+        "id": "DR-01",
+        "complete_valid_attempts": 4,
+        "status": "accepted_simulation_scope",
+        "primary_attempt": "rc01",
+        "primary_sim_time": 43.480000000000004,
+        "primary_final_center_error": 7.4475575685493406e-06
+      }
+    },
+    {
+      "id": "DR-02",
+      "group": "contact_reasoning",
+      "difficulty": "L2",
+      "priority_embodiments": [
+        "DP"
+      ],
+      "name": {
+        "zh": "分区材质接触选择",
+        "en": "Select contacts on a segmented rim"
+      },
+      "mechanism": {
+        "zh": "侧面存在不同摩擦区域；通过观察或试探选择有效接触位置。初始有效区／低效区为配对配置，允许持续滑动到有效区。",
+        "en": "Observe or probe heterogeneous rim sectors to find useful contacts. Effective and ineffective initial sectors are paired configurations; continuous sliding to a useful sector is legal."
+      },
+      "counted": true,
+      "status": "accepted_simulation_scope",
+      "feasibility": "exact_configuration_witness",
+      "execution": {
+        "acceptance": {
+          "primary": "rc01",
+          "normal_runs": [
+            "rc01",
+            "rc02"
+          ],
+          "replays": [
+            "replay-rc01"
+          ]
+        },
+        "id": "DR-02",
+        "complete_valid_attempts": 5,
+        "status": "accepted_simulation_scope",
+        "primary_attempt": "rc01",
+        "primary_sim_time": 60.5,
+        "primary_final_center_error": 1.1362272543445302e-05
+      }
+    },
+    {
+      "id": "DR-03",
+      "group": "contact_reasoning",
+      "difficulty": "L2",
+      "priority_embodiments": [
+        "DP"
+      ],
+      "name": {
+        "zh": "旋转阻力与圆心漂移权衡",
+        "en": "Balance rotational resistance and centre drift"
+      },
+      "mechanism": {
+        "zh": "独立改变侧面和桌面摩擦；区分打滑、旋转阻力和中心漂移，调整接触力与运动方式。先用均质侧面隔离这一问题。",
+        "en": "Vary rim and support friction independently; distinguish slip, rotational resistance and centre drift, then adjust force and motion. Start with a uniform rim to isolate this problem."
+      },
+      "counted": true,
+      "status": "accepted_simulation_scope",
+      "feasibility": "exact_configuration_witness",
+      "execution": {
+        "acceptance": {
+          "primary": "rc01",
+          "normal_runs": [
+            "rc01",
+            "rc02"
+          ],
+          "replays": [
+            "replay-rc01"
+          ]
+        },
+        "id": "DR-03",
+        "complete_valid_attempts": 6,
+        "status": "accepted_simulation_scope",
+        "primary_attempt": "rc01",
+        "primary_sim_time": 45.04,
+        "primary_final_center_error": 1.7824804482335495e-05
+      }
+    },
+    {
+      "id": "DR-04",
+      "group": "contact_reasoning",
+      "difficulty": "L3",
+      "priority_embodiments": [
+        "DP"
+      ],
+      "name": {
+        "zh": "受限接近区域下的连续旋转",
+        "en": "Rotate through restricted approach sectors"
+      },
+      "mechanism": {
+        "zh": "桌面固定障碍限制末端沿圆周连续运动，但保留候选接触区域；规划撤离、绕行、重新接触与后续旋转。换点必要性待验证。",
+        "en": "Fixed table obstacles restrict continuous end-effector travel while leaving candidate contact sectors. Plan withdrawal, clearance and further rotation; recontact necessity is unverified."
+      },
+      "counted": true,
+      "status": "accepted_simulation_scope",
+      "feasibility": "exact_configuration_witness",
+      "execution": {
+        "acceptance": {
+          "primary": "rc03",
+          "normal_runs": [
+            "rc03",
+            "rc04"
+          ],
+          "replays": [
+            "replay-rc03"
+          ]
+        },
+        "id": "DR-04",
+        "complete_valid_attempts": 7,
+        "status": "accepted_simulation_scope",
+        "primary_attempt": "rc03",
+        "primary_sim_time": 78.54,
+        "primary_final_center_error": 1.5307603482372416e-05
+      }
+    },
+    {
+      "id": "DR-05",
+      "group": "body_scene",
+      "difficulty": "L3",
+      "priority_embodiments": [
+        "P",
+        "DP"
+      ],
+      "name": {
+        "zh": "单臂与双臂的接触分工",
+        "en": "Single-arm and dual-arm contact roles"
+      },
+      "mechanism": {
+        "zh": "同一圆盘与世界，比较单臂分段推动和双臂协同操作；考察有效力矩与圆心约束，不预设单臂不可解。",
+        "en": "Compare segmented single-arm pushing and coordinated dual-arm manipulation in the same world; assess torque and centre control without assuming single-arm infeasibility."
+      },
+      "counted": true,
+      "status": "accepted_simulation_scope",
+      "feasibility": "exact_configuration_witness",
+      "execution": {
+        "acceptance": {
+          "primary": "rc01",
+          "normal_runs": [
+            "rc01",
+            "rc02"
+          ],
+          "replays": [
+            "replay-rc01"
+          ]
+        },
+        "id": "DR-05",
+        "complete_valid_attempts": 5,
+        "status": "accepted_simulation_scope",
+        "primary_attempt": "rc01",
+        "primary_sim_time": 98.5,
+        "primary_final_center_error": 0.0053175459880861545
+      }
+    },
+    {
+      "id": "DR-06",
+      "group": "body_scene",
+      "difficulty": "L3",
+      "priority_embodiments": [
+        "S",
+        "P"
+      ],
+      "name": {
+        "zh": "移动改变接近方向",
+        "en": "Change approach direction through mobility"
+      },
+      "mechanism": {
+        "zh": "部分区域超出初始操作范围；移动机器人可绕桌建立工作位，固定臂检查其他合法路线。不同身体须分别核验可达性。",
+        "en": "Some sectors lie outside the initial workspace. A mobile robot may establish another work position; a fixed arm may use other legal routes. Verify reachability separately."
+      },
+      "counted": true,
+      "status": "accepted_simulation_scope",
+      "feasibility": "exact_configuration_witness",
+      "execution": {
+        "acceptance": {
+          "primary": "a12",
+          "normal_runs": [
+            "a12",
+            "repeat-a12"
+          ],
+          "replays": [
+            "replay-a12"
+          ]
+        },
+        "id": "DR-06",
+        "complete_valid_attempts": 3,
+        "status": "accepted_simulation_scope",
+        "primary_attempt": "a12",
+        "primary_sim_time": 114.22,
+        "primary_final_center_error": 0.005907830481817642
+      }
+    },
+    {
+      "id": "DR-07",
+      "group": "body_contact",
+      "difficulty": "L3",
+      "priority_embodiments": [
+        "G",
+        "F"
+      ],
+      "name": {
+        "zh": "推动与夹持方式选择",
+        "en": "Select pushing or grasping contacts"
+      },
+      "mechanism": {
+        "zh": "共同可达区域内比较末端接触方式；允许侧推、侧面捏持等，圆盘始终保持桌面支撑。同一 G1 身体和基座条件，只换手及控制映射。",
+        "en": "Compare side pushing and side pinching in a shared reachable region while keeping the disc table-supported. Use the same G1 body and base constraints, changing the hand and control mapping."
+      },
+      "counted": true,
+      "status": "accepted_simulation_scope",
+      "feasibility": "exact_configuration_witness",
+      "execution": {
+        "acceptance": {
+          "primary": "rc01",
+          "normal_runs": [
+            "rc01",
+            "rc02"
+          ],
+          "replays": [
+            "replay-rc01"
+          ]
+        },
+        "id": "DR-07",
+        "complete_valid_attempts": 4,
+        "status": "accepted_simulation_scope",
+        "primary_attempt": "rc01",
+        "primary_sim_time": 85.0,
+        "primary_final_center_error": 0.001749568794861926
+      }
+    },
+    {
+      "id": "DR-08",
+      "group": "body_tool",
+      "difficulty": "L3",
+      "priority_embodiments": [
+        "G",
+        "F",
+        "S"
+      ],
+      "name": {
+        "zh": "可选接触附件选择",
+        "en": "Select optional contact aids"
+      },
+      "mechanism": {
+        "zh": "提供高摩擦垫、带柄接触块等；检查获取、稳定持用、切向力传递与撤出。原末端足够时可直接完成，附件必须真实改变接触物理。",
+        "en": "Offer high-friction pads or handled contact blocks; test acquisition, stable use, tangential-force transfer and withdrawal. Direct completion is legal; aids must change contact physics."
+      },
+      "counted": true,
+      "status": "accepted_simulation_scope",
+      "feasibility": "exact_configuration_witness",
+      "execution": {
+        "acceptance": {
+          "primary": "a06",
+          "normal_runs": [
+            "a06",
+            "repeat-a06"
+          ],
+          "replays": [
+            "replay-a06"
+          ]
+        },
+        "id": "DR-08",
+        "complete_valid_attempts": 3,
+        "status": "accepted_simulation_scope",
+        "primary_attempt": "a06",
+        "primary_sim_time": 85.0,
+        "primary_final_center_error": 0.0017495687948615708
+      }
+    },
+    {
+      "id": "DR-09",
+      "group": "cooperation",
+      "difficulty": "L3",
+      "priority_embodiments": [
+        "PS"
+      ],
+      "name": {
+        "zh": "异构机器人协作旋转",
+        "en": "Heterogeneous cooperative rotation"
+      },
+      "mechanism": {
+        "zh": "固定臂和移动操作机器人自主分配约束漂移、推动与重新定位的职责；结束时双方撤离。允许合法单机解，协作收益待验证。",
+        "en": "A fixed arm and mobile manipulator allocate drift control, pushing and repositioning, then both withdraw. Legal single-robot solutions count; cooperation benefit is unverified."
+      },
+      "counted": true,
+      "status": "accepted_simulation_scope",
+      "feasibility": "exact_configuration_witness",
+      "execution": {
+        "acceptance": {
+          "primary": "rc03",
+          "normal_runs": [
+            "rc03",
+            "rc04"
+          ],
+          "replays": [
+            "replay-rc03"
+          ]
+        },
+        "id": "DR-09",
+        "complete_valid_attempts": 6,
+        "status": "accepted_simulation_scope",
+        "primary_attempt": "rc03",
+        "primary_sim_time": 63.32,
+        "primary_final_center_error": 0.006202321675487757
+      }
+    },
+    {
+      "id": "DR-I01",
+      "group": "conditional_control",
+      "difficulty": null,
+      "priority_embodiments": [],
+      "name": {
+        "zh": "当前身体与现场附件均无法完成",
+        "en": "No feasible route with available bodies and aids"
+      },
+      "mechanism": {
+        "zh": "需排除全部合法路线，并配一个仅改变关键能力或附件的可解孪生。安全撤离、圆盘稳定后报告无法完成；证据不足保持 unknown。",
+        "en": "Require exclusion of all legal routes and a feasible twin changing only a critical capability or aid. Withdraw safely and leave the disc stable before reporting inability; absent evidence remains unknown."
+      },
+      "counted": false,
+      "status": "design_unverified",
+      "feasibility": "unknown"
+    }
+  ]
+}

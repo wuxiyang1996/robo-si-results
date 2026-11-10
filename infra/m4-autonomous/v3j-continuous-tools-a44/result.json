@@ -1,0 +1,99 @@
+{
+  "continuous_discovery_requested": true,
+  "continuous_discovery_runtime_success": false,
+  "status": "finished",
+  "passed": false,
+  "mode": "cycle",
+  "full_transport_requested": false,
+  "full_transport_success": false,
+  "error": "RuntimeError: physical monitor failed: ['traction_and_slip'][]",
+  "phase": "released_hold",
+  "sim_time_s": 68.85500000000987,
+  "steps": 13771,
+  "frames": 688,
+  "source_unchanged": true,
+  "proof_dwell_s": {
+    "go2_a": 0.0
+  },
+  "events": [
+    {
+      "time_s": 24.479999999999414,
+      "robot": "go2_a",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        -0.0018075680076279355,
+        -0.00018791421448649537,
+        -0.000518700465622024
+      ]
+    },
+    {
+      "time_s": 27.484999999998816,
+      "event": "BOUNDED_CAPTURE_PROBE_REJECTED",
+      "reason": "No physical capture after 3 seconds; open through the unchanged local load interlock"
+    },
+    {
+      "time_s": 32.18499999999801,
+      "event": "PHYSICAL_SEPARATION"
+    },
+    {
+      "time_s": 34.184999999999036,
+      "event": "NEXT_TOOL_DECISION",
+      "decision": {
+        "action": "probe",
+        "candidate": "candidate_ec898a0ac984",
+        "port_hint_y_m": 0
+      }
+    },
+    {
+      "time_s": 57.28000000001085,
+      "robot": "go2_a",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.0011267720465548692,
+        -0.001501004348801203,
+        -0.002176911457446584
+      ]
+    },
+    {
+      "time_s": 60.280000000012386,
+      "event": "BOUNDED_CAPTURE_PROBE_REJECTED",
+      "reason": "No physical capture after 3 seconds; open through the unchanged local load interlock"
+    },
+    {
+      "time_s": 67.45000000001114,
+      "event": "PHYSICAL_SEPARATION"
+    }
+  ],
+  "failures": {
+    "traction_and_slip": {
+      "first_time": 68.855,
+      "count": 1,
+      "detail": {
+        "pen_dynamic": 0.0003905006700744354,
+        "pen_rope": 0.0011730471299747655,
+        "impulse": 0.0,
+        "support": 0.9999999998870959,
+        "robot_cargo": 0.0,
+        "slide": 0.05000821364449899,
+        "drift": 1.0040531351369436e-05,
+        "tension": {
+          "rope_centre": 0.29378586701670295,
+          "rope_right": 0.2936482612653231,
+          "rope_left": 0.08056030211536515
+        },
+        "heights": {
+          "go2_a": 0.3314026822979768
+        },
+        "tilts": {
+          "go2_a": 3.092585293455619
+        },
+        "calls": [],
+        "steps": 1,
+        "gap": 0.0049999999999954525
+      }
+    }
+  },
+  "wall_time_s": 526.8743069171906,
+  "scope": "Continuous physical tool-discovery component candidate; no full corridor, whole-agent isolation or admission credit",
+  "formal_admission": false
+}

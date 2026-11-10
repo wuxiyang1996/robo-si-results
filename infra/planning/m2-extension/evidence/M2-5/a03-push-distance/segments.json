@@ -1,0 +1,45 @@
+{
+  "schema": "m2-actual-segment-mapping/1",
+  "case": "M2-5",
+  "attempt": "a03-push-distance",
+  "state_source": "state-trajectory.npz",
+  "sample_interval_s": 0.02,
+  "limitation": "Recorded controller phases, not independent certification of every skill boundary. P3 includes both turning and straight transport.",
+  "segments": [
+    {
+      "high_level": "C1",
+      "low_level": "settle",
+      "start_time": 0.0,
+      "first_row": 0,
+      "end_time": 0.9800000000000008,
+      "last_row": 49,
+      "samples": 50
+    },
+    {
+      "high_level": "C1",
+      "low_level": "approach_obstacle",
+      "start_time": 1.0000000000000007,
+      "first_row": 50,
+      "end_time": 20.620000000000182,
+      "last_row": 1031,
+      "samples": 982
+    },
+    {
+      "high_level": "C1",
+      "low_level": "push_obstacle",
+      "start_time": 20.640000000000178,
+      "first_row": 1032,
+      "end_time": 29.17999999999848,
+      "last_row": 1459,
+      "samples": 428
+    }
+  ],
+  "unexecuted_high_level": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "public_trace_scope": "Exact timestamps, phases, robot poses/joints/velocities and cargo/obstacle poses/velocities. Contacts and control internals remain in raw records."
+}

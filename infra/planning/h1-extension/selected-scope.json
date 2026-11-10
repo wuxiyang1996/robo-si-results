@@ -1,0 +1,1225 @@
+{
+  "schema": "h1-selected-scope/0.2.0",
+  "date": "2026-10-27",
+  "status": "user_selected_design_scope",
+  "supersedes": "Previous 12 registrations: promote eleven subscenes in three groups, retain nine tasks, add two operations; no extra common-feasible calibration tasks",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "new_simulation_runs": 0,
+  "formal_admission": false,
+  "selection_entry_count": 22,
+  "independent_task_count": 22,
+  "counts_toward_existing_14_task_inventory": false,
+  "original_numbering_preserved": true,
+  "missing_user_numbers": [
+    4
+  ],
+  "documentation": {
+    "zh": "selected-scope.md",
+    "en": "selected-scope-en.md"
+  },
+  "selected_entries": [
+    {
+      "selection_id": "original",
+      "user_label": "1",
+      "name_zh": "原版",
+      "related_task_ids": [
+        "H1"
+      ],
+      "track": "frozen_reference",
+      "scene": "Original G1 + Dex3 retrieval; retain old scoring and physics",
+      "configurations": [],
+      "evidence_status": "historical_frozen_scope_only",
+      "validated_new_scene": false,
+      "task_id": "H1S-01",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "Frozen G1/Dex3 baseline",
+      "registration_origin": "retained_from_selected_12",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "five_finger_g1",
+      "user_label": "2",
+      "name_zh": "G1 五指灵巧手",
+      "related_task_ids": [
+        "H1E-06"
+      ],
+      "track": "hand_comparison",
+      "scene": "Handleless broad-box handling; five-finger advantage is a hypothesis",
+      "configurations": [
+        "g1_dex3",
+        "g1_inspire"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-02",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "G1 five-finger handling",
+      "registration_origin": "retained_from_selected_12",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "wheels_ramp",
+      "user_label": "3",
+      "name_zh": "轮式＋斜坡",
+      "related_task_ids": [
+        "H1E-03"
+      ],
+      "track": "ramp_access",
+      "scene": "Carry or push an initially unpositioned movable ramp to the designated placement region, align and stably support it at the platform, then ascend, retrieve, return loaded and deliver.",
+      "configurations": [
+        "wheeled_model_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-03",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "ramp_placement": {
+        "initially_outside_placement_region": true,
+        "ramp_type": "assembled movable ramp",
+        "allowed_methods": [
+          "carry",
+          "push"
+        ],
+        "panel_construction_required": false,
+        "prepositioned_only_counts_as_complete_task": false,
+        "functional_checks": [
+          "designated placement region",
+          "alignment and endpoint support or overlap",
+          "slope and width",
+          "traction and stability after release",
+          "loaded return"
+        ],
+        "numeric_tolerances": null,
+        "required_for_selected_ramp_route": true,
+        "alternative_legal_complete_route_accepted": true
+      },
+      "name_en": "Wheels and movable ramp",
+      "registration_origin": "retained_from_selected_12",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false,
+      "candidate_subtask_chain": [
+        "relocate ramp by carrying or pushing",
+        "align and establish stable ramp support",
+        "ascend",
+        "retrieve",
+        "loaded return",
+        "deliver"
+      ]
+    },
+    {
+      "selection_id": "a3",
+      "user_label": "5",
+      "name_zh": "A3",
+      "related_task_ids": [
+        "H1"
+      ],
+      "track": "body_comparison",
+      "scene": "Independent A3 matched-world high retrieval task; scores separately recorded",
+      "configurations": [
+        "agibot_a3"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-04",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "A3 retrieval",
+      "registration_origin": "retained_from_selected_12",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "two_tiers_vs_one",
+      "user_label": "6",
+      "name_zh": "G1 两层阶梯，A3 一层",
+      "related_task_ids": [
+        "H1E-02",
+        "H1E-14"
+      ],
+      "track": "body_comparison",
+      "scene": "Same world; certify G1 requires two tiers and A3 one, including return",
+      "configurations": [
+        "g1_dex3",
+        "agibot_a3"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-05",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "G1 two tiers / A3 one tier",
+      "registration_origin": "retained_from_selected_12",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "infeasible",
+      "user_label": "7",
+      "name_zh": "完成不了的 case",
+      "related_task_ids": [
+        "H1E-I01",
+        "H1E-I02"
+      ],
+      "track": "feasibility_decision",
+      "scene": "All-route obstruction with matched feasible control; physical Q exit",
+      "configurations": [],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-06",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "Infeasibility and physical exit",
+      "registration_origin": "retained_from_selected_12",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-07.P1",
+      "user_label": "8",
+      "name_zh": "推箱清路后取物",
+      "related_task_ids": [
+        "H1E-01",
+        "H1E-03",
+        "H1E-08"
+      ],
+      "track": "pushing_variants",
+      "scene": "Push an obstruction to a legal parking area, then complete elevated retrieval and delivery. Alternative legal complete routes remain accepted.",
+      "configurations": [
+        "g1_dex3",
+        "agibot_a3",
+        "wheeled_model_pending",
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-07.P1",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "Push clear and retrieve",
+      "parent_group_id": "H1S-07",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "P1",
+      "goal_scope": "retrieval_or_declared_delivery",
+      "outcome": "correct target wholly at declared D, released and independently stable; robot stable",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-07.P2",
+      "user_label": "8",
+      "name_zh": "推箱到位作平台",
+      "related_task_ids": [
+        "H1E-01",
+        "H1E-03",
+        "H1E-08"
+      ],
+      "track": "pushing_variants",
+      "scene": "Position a usable support by controlled pushing, establish stability, access the target and return; a wheeled route additionally needs validated ramp access.",
+      "configurations": [
+        "g1_dex3",
+        "agibot_a3",
+        "wheeled_model_pending",
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-07.P2",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "Push a support into place",
+      "parent_group_id": "H1S-07",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "P2",
+      "goal_scope": "retrieval_or_declared_delivery",
+      "outcome": "correct target wholly at declared D, released and independently stable; robot stable",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-07.P3",
+      "user_label": "8",
+      "name_zh": "转角或换侧推箱",
+      "related_task_ids": [
+        "H1E-01",
+        "H1E-03",
+        "H1E-08"
+      ],
+      "track": "pushing_variants",
+      "scene": "Move the box through a turn or change contact sides while maintaining collision clearance and access; complete the declared retrieval/delivery goal.",
+      "configurations": [
+        "g1_dex3",
+        "agibot_a3",
+        "wheeled_model_pending",
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-07.P3",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "Turn or change pushing side",
+      "parent_group_id": "H1S-07",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "P3",
+      "goal_scope": "retrieval_or_declared_delivery",
+      "outcome": "correct target wholly at declared D, released and independently stable; robot stable",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-07.P4",
+      "user_label": "8",
+      "name_zh": "抬不起但能推到目标区",
+      "related_task_ids": [
+        "H1E-01",
+        "H1E-03",
+        "H1E-08"
+      ],
+      "track": "pushing_variants",
+      "scene": "Deliver a target to ground D by controlled pushing despite insufficient lifting capability; this is auxiliary ground transport, not high-cabinet retrieval.",
+      "configurations": [
+        "g1_dex3",
+        "agibot_a3",
+        "wheeled_model_pending",
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-07.P4",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "Push a target that cannot be lifted",
+      "parent_group_id": "H1S-07",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "P4",
+      "goal_scope": "auxiliary_ground_transport",
+      "outcome": "correct target wholly at declared D, released and independently stable; robot stable",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false,
+      "development_binding": {
+        "profile": "../../../humanoid/g1_support_retrieval/extension/p4-development.json",
+        "configuration": "existing_g1_29dof_dex3",
+        "target_mass_kg": 5.0,
+        "lifted_payload_public_limit_kg": 2.0,
+        "ground_supported_push_allowed": true,
+        "interpretation": "This development profile excludes lifting under a public rule; it does not certify physical inability to lift 5 kg. Other legal contact routes remain accepted.",
+        "reference_start": "original_start",
+        "physical_evidence": "execution-progress.json",
+        "formal_admission": false
+      }
+    },
+    {
+      "selection_id": "stretch_handle",
+      "user_label": "9",
+      "name_zh": "Stretch＋有把手箱",
+      "related_task_ids": [
+        "H1E-06",
+        "H1E-10"
+      ],
+      "track": "grasp_affordance",
+      "scene": "Specify support-box versus target-box role; validate handle, wrist and eccentric load",
+      "configurations": [
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-08",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "Stretch handled box",
+      "registration_origin": "retained_from_selected_12",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "stretch_abstention",
+      "user_label": "10",
+      "name_zh": "Stretch 拒答 case",
+      "related_task_ids": [
+        "H1E-I01",
+        "H1E-I03",
+        "H1E-I04"
+      ],
+      "track": "feasibility_decision",
+      "scene": "No handle is not an impossibility certificate; audit all legal alternatives",
+      "configurations": [
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-09",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "Stretch infeasibility and exit",
+      "registration_origin": "retained_from_selected_12",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-10.A",
+      "user_label": "H1E-10",
+      "name_zh": "G1 多箱选择与布置",
+      "related_task_ids": [
+        "H1E-10"
+      ],
+      "track": "candidate_selection",
+      "scene": "multiple heights and top areas; distinguish accessible, useful and movable",
+      "configurations": [
+        "g1_dex3"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-10.A",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "protocol": "single_robot_support_selection",
+      "cooperation_required": false,
+      "required_checks": [
+        "multiple tall and short candidates",
+        "ability to carry or push selected box",
+        "access onto support when route requires it",
+        "useful reach from support",
+        "top area and capacity",
+        "placement and return clearance",
+        "correct target delivery and stable return"
+      ],
+      "accept_legal_box_combinations": true,
+      "require_intended_box_id": false,
+      "tool_layer": null,
+      "unknown_candidate_is_infeasible": false,
+      "prepositioned_only_counts_as_autonomous_placement": false,
+      "name_en": "G1 support selection",
+      "parent_group_id": "H1S-10",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "H1S-10.A",
+      "comparison": "base_scene",
+      "scene_parameters": null,
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-10.B",
+      "user_label": "H1E-10",
+      "name_zh": "A3 多箱选择与布置",
+      "related_task_ids": [
+        "H1E-10"
+      ],
+      "track": "candidate_selection",
+      "scene": "same world as A; separately tagged A3-specific layouts",
+      "configurations": [
+        "agibot_a3"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-10.B",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "protocol": "single_robot_support_selection",
+      "cooperation_required": false,
+      "required_checks": [
+        "multiple tall and short candidates",
+        "ability to carry or push selected box",
+        "access onto support when route requires it",
+        "useful reach from support",
+        "top area and capacity",
+        "placement and return clearance",
+        "correct target delivery and stable return"
+      ],
+      "accept_legal_box_combinations": true,
+      "require_intended_box_id": false,
+      "tool_layer": null,
+      "unknown_candidate_is_infeasible": false,
+      "prepositioned_only_counts_as_autonomous_placement": false,
+      "name_en": "A3 support selection",
+      "parent_group_id": "H1S-10",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "H1S-10.B",
+      "comparison": "matched_world_or_separately_tagged_body_specific_scene",
+      "scene_parameters": null,
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-10.C",
+      "user_label": "H1E-10",
+      "name_zh": "轮式平台与坡道选择",
+      "related_task_ids": [
+        "H1E-10"
+      ],
+      "track": "candidate_selection",
+      "scene": "choose box platform compatible with movable ramp and loaded return",
+      "configurations": [
+        "wheeled_model_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-10.C",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "protocol": "single_robot_support_selection",
+      "cooperation_required": false,
+      "required_checks": [
+        "multiple tall and short candidates",
+        "ability to carry or push selected box",
+        "access onto support when route requires it",
+        "useful reach from support",
+        "top area and capacity",
+        "placement and return clearance",
+        "correct target delivery and stable return"
+      ],
+      "accept_legal_box_combinations": true,
+      "require_intended_box_id": false,
+      "tool_layer": null,
+      "unknown_candidate_is_infeasible": false,
+      "prepositioned_only_counts_as_autonomous_placement": false,
+      "name_en": "Wheeled platform and ramp choice",
+      "parent_group_id": "H1S-10",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "H1S-10.C",
+      "comparison": "body_specific_scene",
+      "scene_parameters": null,
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-10.D",
+      "user_label": "H1E-10",
+      "name_zh": "Stretch 工作／中转箱选择",
+      "related_task_ids": [
+        "H1E-10"
+      ],
+      "track": "candidate_selection",
+      "scene": "choose handled boxes as transfer/work surfaces; ascent only with validated ramp",
+      "configurations": [
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-10.D",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "protocol": "single_robot_support_selection",
+      "cooperation_required": false,
+      "required_checks": [
+        "multiple tall and short candidates",
+        "ability to carry or push selected box",
+        "access onto support when route requires it",
+        "useful reach from support",
+        "top area and capacity",
+        "placement and return clearance",
+        "correct target delivery and stable return"
+      ],
+      "accept_legal_box_combinations": true,
+      "require_intended_box_id": false,
+      "tool_layer": null,
+      "unknown_candidate_is_infeasible": false,
+      "prepositioned_only_counts_as_autonomous_placement": false,
+      "name_en": "Stretch work/transfer surface choice",
+      "parent_group_id": "H1S-10",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "H1S-10.D",
+      "comparison": "body_specific_scene",
+      "scene_parameters": null,
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-11.A",
+      "user_label": "H1E-12",
+      "name_zh": "直接可取场景",
+      "related_task_ids": [
+        "H1E-12"
+      ],
+      "track": "goal_completion",
+      "scene": "directly feasible easy control",
+      "configurations": [
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-11.A",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "tool_operability": {
+        "status": "unknown",
+        "tool_functionality_separate_from_body_usability": true,
+        "at_least_one_complete_compatible_route_required_for_feasible_scene": true,
+        "all_candidates_must_work_for_current_body": false,
+        "required_chain": [
+          "approach and grasp handle",
+          "physical actuation or engagement",
+          "controlled extraction",
+          "loaded withdrawal and stable transport",
+          "placement and release"
+        ],
+        "tools": [
+          {
+            "id": "passive_hook",
+            "mechanism": "physical engagement with compatible ring or edge",
+            "direct_binding_allowed": false
+          },
+          {
+            "id": "manual_retrieval_gripper",
+            "mechanism": "robot operates handle/control through physical transmission to remote jaws",
+            "hidden_remote_jaw_command_allowed": false
+          },
+          {
+            "id": "tray",
+            "mechanism": "real support and controlled loaded orientation",
+            "target_attachment_allowed": false
+          }
+        ],
+        "checks": [
+          "closure and interference",
+          "required fingers and hands",
+          "operating force and stroke",
+          "wrist and body load",
+          "swept clearance",
+          "independent support after release",
+          "single-arm transfer resources"
+        ],
+        "electric_tool_policy": "Separate declared protocol with real actuator, model, power/communication and public control interface; never silently motorize passive tools",
+        "numeric_parameters": null,
+        "evidence_per_tool_and_body": true,
+        "holding_tool_alone_is_sufficient": false,
+        "static_ik_alone_is_sufficient": false,
+        "privileged_direct_jaw_control_is_sufficient": false,
+        "validation_order": [
+          "passive hook with compatible target",
+          "manual gripper after mechanism and robot-operation validation",
+          "tray where a real transfer requires it"
+        ],
+        "new_simulation_runs": 0
+      },
+      "name_en": "Directly reachable retrieval",
+      "parent_group_id": "H1S-11",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "H1S-11.A",
+      "tool_enabled_completion": {
+        "status": "unknown",
+        "priority_body": "Stretch, exact version pending",
+        "primary_candidate": "supported deep-cabinet box with hook ring and grasp handle",
+        "single_arm_chain": [
+          "acquire hook",
+          "engage ring",
+          "pull along support to reachable region",
+          "stabilize and disengage",
+          "park hook",
+          "grasp handle",
+          "transport and release at delivery"
+        ],
+        "scenes": [
+          {
+            "id": "H1S-11.A",
+            "intent": "directly feasible easy control",
+            "status": "unknown"
+          }
+        ],
+        "matched_B_only_changed_factor": "tool availability",
+        "same_world_body_comparison": "optional; body-specific tool need not assumed",
+        "tool_free_all_legal_routes_audited": false,
+        "tool_assisted_complete_witness": null,
+        "repeat_results": null,
+        "infeasibility_from_search_failure_allowed": false,
+        "artificial_disabling_of_legal_actions_allowed": false,
+        "legal_tool_free_success": "accept and remove tool-enables-completion label",
+        "difficulty": "A/B/C feasibility controls are not infra L1/L2/L3",
+        "progression": [
+          "one usable passive hook",
+          "multiple lengths and interface candidates",
+          "validated mechanism operation"
+        ],
+        "new_simulation_runs": 0,
+        "independent_registration": true
+      },
+      "outcome": "complete legal target retrieval and delivery; tool use is not a hidden required action",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-11.B",
+      "user_label": "H1E-12",
+      "name_zh": "工具扩展取物能力",
+      "related_task_ids": [
+        "H1E-12"
+      ],
+      "track": "goal_completion",
+      "scene": "tool-free infeasible, tool-assisted feasible",
+      "configurations": [
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-11.B",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "tool_operability": {
+        "status": "unknown",
+        "tool_functionality_separate_from_body_usability": true,
+        "at_least_one_complete_compatible_route_required_for_feasible_scene": true,
+        "all_candidates_must_work_for_current_body": false,
+        "required_chain": [
+          "approach and grasp handle",
+          "physical actuation or engagement",
+          "controlled extraction",
+          "loaded withdrawal and stable transport",
+          "placement and release"
+        ],
+        "tools": [
+          {
+            "id": "passive_hook",
+            "mechanism": "physical engagement with compatible ring or edge",
+            "direct_binding_allowed": false
+          },
+          {
+            "id": "manual_retrieval_gripper",
+            "mechanism": "robot operates handle/control through physical transmission to remote jaws",
+            "hidden_remote_jaw_command_allowed": false
+          },
+          {
+            "id": "tray",
+            "mechanism": "real support and controlled loaded orientation",
+            "target_attachment_allowed": false
+          }
+        ],
+        "checks": [
+          "closure and interference",
+          "required fingers and hands",
+          "operating force and stroke",
+          "wrist and body load",
+          "swept clearance",
+          "independent support after release",
+          "single-arm transfer resources"
+        ],
+        "electric_tool_policy": "Separate declared protocol with real actuator, model, power/communication and public control interface; never silently motorize passive tools",
+        "numeric_parameters": null,
+        "evidence_per_tool_and_body": true,
+        "holding_tool_alone_is_sufficient": false,
+        "static_ik_alone_is_sufficient": false,
+        "privileged_direct_jaw_control_is_sufficient": false,
+        "validation_order": [
+          "passive hook with compatible target",
+          "manual gripper after mechanism and robot-operation validation",
+          "tray where a real transfer requires it"
+        ],
+        "new_simulation_runs": 0
+      },
+      "name_en": "Tool-enabled complete retrieval",
+      "parent_group_id": "H1S-11",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "H1S-11.B",
+      "tool_enabled_completion": {
+        "status": "unknown",
+        "priority_body": "Stretch, exact version pending",
+        "primary_candidate": "supported deep-cabinet box with hook ring and grasp handle",
+        "single_arm_chain": [
+          "acquire hook",
+          "engage ring",
+          "pull along support to reachable region",
+          "stabilize and disengage",
+          "park hook",
+          "grasp handle",
+          "transport and release at delivery"
+        ],
+        "scenes": [
+          {
+            "id": "H1S-11.B",
+            "intent": "tool-free infeasible, tool-assisted feasible",
+            "status": "unknown"
+          }
+        ],
+        "matched_B_only_changed_factor": "tool availability",
+        "same_world_body_comparison": "optional; body-specific tool need not assumed",
+        "tool_free_all_legal_routes_audited": false,
+        "tool_assisted_complete_witness": null,
+        "repeat_results": null,
+        "infeasibility_from_search_failure_allowed": false,
+        "artificial_disabling_of_legal_actions_allowed": false,
+        "legal_tool_free_success": "accept and remove tool-enables-completion label",
+        "difficulty": "A/B/C feasibility controls are not infra L1/L2/L3",
+        "progression": [
+          "one usable passive hook",
+          "multiple lengths and interface candidates",
+          "validated mechanism operation"
+        ],
+        "new_simulation_runs": 0,
+        "independent_registration": true
+      },
+      "outcome": "complete legal target retrieval and delivery; tool use is not a hidden required action",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "H1S-11.C",
+      "user_label": "H1E-12",
+      "name_zh": "工具也无法完成并退出",
+      "related_task_ids": [
+        "H1E-12"
+      ],
+      "track": "feasibility_decision",
+      "scene": "all routes including available tools infeasible; empty-handed Q exit",
+      "configurations": [
+        "stretch_version_pending"
+      ],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-11.C",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "tool_operability": {
+        "status": "unknown",
+        "tool_functionality_separate_from_body_usability": true,
+        "at_least_one_complete_compatible_route_required_for_feasible_scene": true,
+        "all_candidates_must_work_for_current_body": false,
+        "required_chain": [
+          "approach and grasp handle",
+          "physical actuation or engagement",
+          "controlled extraction",
+          "loaded withdrawal and stable transport",
+          "placement and release"
+        ],
+        "tools": [
+          {
+            "id": "passive_hook",
+            "mechanism": "physical engagement with compatible ring or edge",
+            "direct_binding_allowed": false
+          },
+          {
+            "id": "manual_retrieval_gripper",
+            "mechanism": "robot operates handle/control through physical transmission to remote jaws",
+            "hidden_remote_jaw_command_allowed": false
+          },
+          {
+            "id": "tray",
+            "mechanism": "real support and controlled loaded orientation",
+            "target_attachment_allowed": false
+          }
+        ],
+        "checks": [
+          "closure and interference",
+          "required fingers and hands",
+          "operating force and stroke",
+          "wrist and body load",
+          "swept clearance",
+          "independent support after release",
+          "single-arm transfer resources"
+        ],
+        "electric_tool_policy": "Separate declared protocol with real actuator, model, power/communication and public control interface; never silently motorize passive tools",
+        "numeric_parameters": null,
+        "evidence_per_tool_and_body": true,
+        "holding_tool_alone_is_sufficient": false,
+        "static_ik_alone_is_sufficient": false,
+        "privileged_direct_jaw_control_is_sufficient": false,
+        "validation_order": [
+          "passive hook with compatible target",
+          "manual gripper after mechanism and robot-operation validation",
+          "tray where a real transfer requires it"
+        ],
+        "new_simulation_runs": 0
+      },
+      "name_en": "No feasible route including tools; exit",
+      "parent_group_id": "H1S-11",
+      "registration_origin": "promoted_existing_subscene",
+      "source_scene_id": "H1S-11.C",
+      "tool_enabled_completion": {
+        "status": "unknown",
+        "priority_body": "Stretch, exact version pending",
+        "primary_candidate": "supported deep-cabinet box with hook ring and grasp handle",
+        "single_arm_chain": [
+          "acquire hook",
+          "engage ring",
+          "pull along support to reachable region",
+          "stabilize and disengage",
+          "park hook",
+          "grasp handle",
+          "transport and release at delivery"
+        ],
+        "scenes": [
+          {
+            "id": "H1S-11.C",
+            "intent": "all routes including available tools infeasible; empty-handed Q exit",
+            "status": "unknown"
+          }
+        ],
+        "matched_B_only_changed_factor": "tool availability",
+        "same_world_body_comparison": "optional; body-specific tool need not assumed",
+        "tool_free_all_legal_routes_audited": false,
+        "tool_assisted_complete_witness": null,
+        "repeat_results": null,
+        "infeasibility_from_search_failure_allowed": false,
+        "artificial_disabling_of_legal_actions_allowed": false,
+        "legal_tool_free_success": "accept and remove tool-enables-completion label",
+        "difficulty": "A/B/C feasibility controls are not infra L1/L2/L3",
+        "progression": [
+          "one usable passive hook",
+          "multiple lengths and interface candidates",
+          "validated mechanism operation"
+        ],
+        "new_simulation_runs": 0,
+        "independent_registration": true
+      },
+      "outcome": "physical Q exit with valid initial infeasibility certificate",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "selection_id": "same_color",
+      "user_label": "H1E-04",
+      "name_zh": "同色干扰",
+      "related_task_ids": [
+        "H1E-04"
+      ],
+      "track": "same_color_identification",
+      "scene": "Independent target identification and retrieval task; reuse assets but retain separate episodes and scores",
+      "configurations": [],
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "task_id": "H1S-12",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "name_en": "Same-color identification",
+      "registration_origin": "retained_from_selected_12",
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "task_id": "H1S-13",
+      "selection_id": "autonomous_transfer_return",
+      "name_zh": "自主中转与安全返回",
+      "name_en": "Autonomous transfer and safe return",
+      "track": "return_strategy",
+      "scene": "Retrieve a light target from a working platform; choose a complete safe return strategy. A transfer surface is available, but the agent is not instructed to use it. Direct loaded return, intermediate placement and other legal solutions are accepted.",
+      "configurations": [
+        "g1_dex3"
+      ],
+      "candidate_subtask_chain": [
+        "inspect outbound and loaded return constraints",
+        "retrieve",
+        "choose direct return or independent intermediate support",
+        "return and recover target as needed",
+        "deliver and stabilize"
+      ],
+      "necessary_checks": [
+        "working platform supports actual robot plus payload",
+        "all transfer placements remain reachable from the return state",
+        "loaded return collision, stability and moment limits",
+        "target and carried tools screened against current 2 kg interpretation",
+        "do not fabricate necessity using a finely tuned whole-body load threshold"
+      ],
+      "mechanism_label": "transfer_required only after alternative loaded-return routes are excluded by evidence",
+      "user_label": "newly_approved",
+      "registration_origin": "new_operation_task",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "scene_parameters": null,
+      "budgets": null,
+      "reference_witnesses": [],
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    },
+    {
+      "task_id": "H1S-14",
+      "selection_id": "confined_workstation_body_adaptation",
+      "name_zh": "窄工作区身体适配",
+      "name_en": "Body adaptation in a narrow workstation",
+      "track": "workspace_adaptation",
+      "scene": "A narrow cabinet approach or turning area constrains robot, tool and carried-target swept volume. Choose stance, orientation, support placement or another legal route to retrieve and deliver. Compare matched worlds across bodies without assuming a larger body must fail.",
+      "configurations": [
+        "g1_dex3",
+        "agibot_a3"
+      ],
+      "candidate_subtask_chain": [
+        "observe approach and turning clearance",
+        "select stance or support arrangement",
+        "retrieve under actual body/target clearance",
+        "withdraw and deliver"
+      ],
+      "necessary_checks": [
+        "whole-body, tool and target swept volume",
+        "same-world comparisons kept separate from body-specific layouts",
+        "no implicit crouch/crawl requirement",
+        "observable geometric bottlenecks",
+        "all routes audited before infeasible label"
+      ],
+      "mechanism_label": "body-specific constraint must be evidenced; no brand/size-based feasibility labels",
+      "user_label": "newly_approved",
+      "registration_origin": "new_operation_task",
+      "independent_task": true,
+      "separate_scene_scoring_and_acceptance": true,
+      "evidence_status": "unknown",
+      "validated_new_scene": false,
+      "scene_parameters": null,
+      "budgets": null,
+      "reference_witnesses": [],
+      "success_policy": "goal_and_public_constraints; accept every legal complete solution; no required reference trace or tool identity",
+      "candidate_actions_are_hidden_success_constraints": false
+    }
+  ],
+  "hand_comparison": {
+    "candidate": "handleless broad-box side grasp and underhand support",
+    "five_finger_advantage": "hypothesis_not_demonstrated",
+    "exact_inspire_model": null,
+    "historical_dex3_side_attempts": 8,
+    "historical_side_complete_successes": 0,
+    "historical_failures_prove_impossibility": false,
+    "isolate_grasp_from_arm_workspace_first": true,
+    "allow_hand_specific_controller": true,
+    "freeze": [
+      "world geometry",
+      "object mass and friction",
+      "G1 body",
+      "goal",
+      "sensor access",
+      "tuning and compute budgets"
+    ],
+    "record": [
+      "hand and mount inertia",
+      "collision geometry",
+      "real actuator limits"
+    ],
+    "metrics": [
+      "repeated success",
+      "slip",
+      "load margin",
+      "regrasps",
+      "completion time"
+    ]
+  },
+  "stair_pair": {
+    "same_world": true,
+    "preferred_geometry": "successive steps with genuine foothold surfaces",
+    "vertical_stack_is_separate_variant": true,
+    "required_evidence": [
+      "G1 one tier insufficient across legal alternatives",
+      "G1 two tiers complete route",
+      "A3 floor-level retrieval insufficient",
+      "A3 one tier complete route",
+      "assembly reachable",
+      "each tier stable and load bearing",
+      "complete descent and delivery"
+    ],
+    "numeric_ranges": null,
+    "body_swap_is_height_only_causal_test": false
+  },
+  "pushing_subcases": [
+    {
+      "id": "P1",
+      "goal": "clear access then retrieve"
+    },
+    {
+      "id": "P2",
+      "goal": "position support/platform then retrieve",
+      "wheeled_requires_valid_ramp": true
+    },
+    {
+      "id": "P3",
+      "goal": "turn or change contact side while preserving future access"
+    },
+    {
+      "id": "P4",
+      "goal": "push target to ground D despite inability to lift",
+      "scope": "auxiliary_ground_transport",
+      "high_cabinet_retrieval": false
+    }
+  ],
+  "stretch_contract": {
+    "exact_version": null,
+    "handle_role_per_episode_required": true,
+    "missing_handle_implies_impossible": false,
+    "alternative_routes_to_audit": [
+      "push",
+      "cradle",
+      "reorient",
+      "ramp",
+      "long tool"
+    ],
+    "refusal_requires_physical_Q_exit": true,
+    "exit_dwell_s_draft": 3
+  },
+  "protocols": {
+    "H1E-10": "historical cooperative design reference only; its evidence does not validate H1S-10",
+    "H1E-09": "historical cooperative candidate, not required by the selected H1S-10 protocol",
+    "H1S-10": "Non-scoring group; evaluate each registered child independently",
+    "H1S-07": "Non-scoring group; evaluate each registered child independently",
+    "H1S-11": "Non-scoring group; evaluate each registered child independently"
+  },
+  "difficulty": {
+    "tool_layers": [
+      "L1 necessary tools",
+      "L2 additions unusable by this body but evidenced usable by another",
+      "L3 observable distractors added to L2"
+    ],
+    "operational_structure_separate": true,
+    "two_tiers_implies_L2": false,
+    "five_finger_easier_implies_L2": false,
+    "same_color_without_L2_label": "tool_layer_unassigned; independent task identity retained",
+    "abstention_is_separate_track": true,
+    "empirical_difficulty": null
+  },
+  "recommended_gaps": [
+    {
+      "id": "route_switch_not_refusal",
+      "selected": false,
+      "priority": "highest",
+      "related_task_ids": [
+        "H1E-11",
+        "H1E-14"
+      ],
+      "reuse": [
+        "P4",
+        "stretch_handle"
+      ],
+      "coverage_update": "Tool-assisted retrieval now selected within H1S-11; other route-switch cases remain recommendations.",
+      "status": "embedded_in_existing_tasks_not_an_extra_registration"
+    },
+    {
+      "id": "loaded_return_and_transfer",
+      "selected": true,
+      "related_task_ids": [
+        "H1E-05"
+      ],
+      "task_id": "H1S-13"
+    },
+    {
+      "id": "larger_body_disadvantage",
+      "selected": true,
+      "candidate": "low overhead or narrow turning clearance",
+      "task_id": "H1S-14",
+      "scope": "narrow approach/turning first; no assumed larger-body disadvantage"
+    },
+    {
+      "id": "easy_common_feasible_controls",
+      "selected": false,
+      "candidate": "both hands use handle; both bodies use low support",
+      "status": "not_selected_by_user",
+      "reason": "No extra common-feasible calibration tasks in current benchmark scope"
+    },
+    {
+      "id": "quadruped_coverage",
+      "selected": false,
+      "related_task_ids": [
+        "H1E-07"
+      ],
+      "go1_status": "retained_candidate_not_explicitly_reselected_not_deleted",
+      "arm_model": null,
+      "status": "deferred_not_in_22"
+    }
+  ],
+  "readiness": {
+    "new_scene_feasibility": "unknown",
+    "required_before_execution": [
+      "freeze assets and controllers",
+      "freeze actual sensor interfaces",
+      "calibrate geometry, mass and load ranges",
+      "declare budgets and representative samples"
+    ],
+    "required_before_claims": [
+      "continuous complete-route witnesses",
+      "necessary-condition evidence for infeasible labels",
+      "paired body/hand comparisons",
+      "negative verifier cases",
+      "review and reproduction as required by infra"
+    ],
+    "resume_simulation": false
+  },
+  "sources": [
+    {
+      "path": "../../../humanoid/g1_support_retrieval/solution/side_carry/README.md",
+      "sha256": "e7036a348fa781e6cc68921b7e6b5436aa1611a06bf0634073858ad4e7c0a991",
+      "scope": "Historical Dex3 local side-carry failures; not five-finger evidence or global infeasibility"
+    },
+    {
+      "path": "../../../humanoid/g1_support_retrieval/solution/underhand_lift/README.md",
+      "sha256": "0a3a084c67e081be16dacfc385912af9a4220e411b44d7de1b077352e928391d",
+      "scope": "Historical support-span and thumb-interference observations; not a hand superiority result"
+    },
+    {
+      "url": "https://www.unitree.com/mobile/Dex3-1/",
+      "scope": "Official three-finger seven-DoF description; no comparative success claim"
+    },
+    {
+      "url": "https://en.inspire-robots.com/product/rh56dfx/",
+      "scope": "Example five-finger six-DoF wristless hand; exact selected model remains open"
+    }
+  ],
+  "task_family": "H1",
+  "user_confirmed_all_entries_independent": true,
+  "task_id_namespace": "Stable H1S IDs; promoted tasks keep parent-qualified scene IDs; H1S-13/14 are new",
+  "pushing_subcase_policy": "P1-P4 promoted to four independently registered H1S-07.P* tasks; H1S-07 is a non-scoring group",
+  "aggregation_policy": "Each episode belongs to one active task ID; group aggregates never add duplicate task or episode counts",
+  "count_breakdown": {
+    "retained_tasks": 9,
+    "promoted_subscene_tasks": 11,
+    "existing_split_total": 20,
+    "new_operation_tasks": 2,
+    "active_total": 22
+  },
+  "parent_groups": [
+    {
+      "id": "H1S-07",
+      "status": "group_only",
+      "independent_task": false,
+      "counts_as_task": false,
+      "children": [
+        "H1S-07.P1",
+        "H1S-07.P2",
+        "H1S-07.P3",
+        "H1S-07.P4"
+      ]
+    },
+    {
+      "id": "H1S-10",
+      "status": "group_only",
+      "independent_task": false,
+      "counts_as_task": false,
+      "children": [
+        "H1S-10.A",
+        "H1S-10.B",
+        "H1S-10.C",
+        "H1S-10.D"
+      ]
+    },
+    {
+      "id": "H1S-11",
+      "status": "group_only",
+      "independent_task": false,
+      "counts_as_task": false,
+      "children": [
+        "H1S-11.A",
+        "H1S-11.B",
+        "H1S-11.C"
+      ]
+    }
+  ],
+  "solution_policy": {
+    "unique_solution_required": false,
+    "all_legal_solutions_accepted": true,
+    "reference_sequence_required": false,
+    "preferred_tool_required": false,
+    "extra_common_feasible_calibration_tasks": false,
+    "legal_shortcut": "retain success and revise necessity/route label",
+    "infeasibility_requires_all_route_evidence": true,
+    "historical_reference_scoring_unchanged": true
+  },
+  "excluded_from_current_scope": [
+    "extra common-feasible two-body/two-hand calibration tasks",
+    "Go1 arm task pending asset/controller selection",
+    "humanoid partner support"
+  ],
+  "archive": "archive/selected-12-20261027/selected-scope.json",
+  "implementation": {
+    "status": "active_user_authorized",
+    "date": "2026-10-27",
+    "requirements": "implementation-status.json",
+    "execution_progress": "execution-progress.json",
+    "design_snapshot_zero_runs_is_not_current_execution_count": true
+  }
+}

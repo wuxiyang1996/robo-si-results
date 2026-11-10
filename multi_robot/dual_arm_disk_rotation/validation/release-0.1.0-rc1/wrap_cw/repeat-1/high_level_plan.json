@@ -1,0 +1,1996 @@
+{
+  "high_level_plan": [
+    {
+      "id": "H0",
+      "goal": "stabilize and choose rotation direction"
+    },
+    {
+      "id": "H1",
+      "goal": "approach paired contact points"
+    },
+    {
+      "id": "H2",
+      "goal": "establish measured bilateral contact"
+    },
+    {
+      "id": "H3",
+      "goal": "rotate toward a local heading"
+    },
+    {
+      "id": "H4",
+      "goal": "unload, recontact and repeat when needed"
+    },
+    {
+      "id": "H5",
+      "goal": "align, withdraw and remain released for two seconds"
+    }
+  ],
+  "skills": [
+    {
+      "id": "stabilize",
+      "high_level": "H0",
+      "entry": "normal reset, noncontact arms",
+      "exit": "table support and settled velocities",
+      "constraints": [
+        "table support",
+        "center region",
+        "joint effort and speed",
+        "contact force",
+        "no unintended collision"
+      ],
+      "generator": "solution/controller.py:Expert.targets",
+      "applicability_interval": null
+    },
+    {
+      "id": "approach",
+      "high_level": "H1",
+      "entry": "stable table support",
+      "exit": "both pads near the rim without collision",
+      "constraints": [
+        "table support",
+        "center region",
+        "joint effort and speed",
+        "contact force",
+        "no unintended collision"
+      ],
+      "generator": "solution/controller.py:Expert.targets",
+      "applicability_interval": null
+    },
+    {
+      "id": "preload",
+      "high_level": "H2",
+      "entry": "both pads in approach region",
+      "exit": "two measured pad forces above 0.5 N",
+      "constraints": [
+        "table support",
+        "center region",
+        "joint effort and speed",
+        "contact force",
+        "no unintended collision"
+      ],
+      "generator": "solution/controller.py:Expert.targets",
+      "applicability_interval": null
+    },
+    {
+      "id": "rotate",
+      "high_level": "H3",
+      "entry": "two measured contacts and valid support",
+      "exit": "local heading reached or contact-sector boundary",
+      "constraints": [
+        "table support",
+        "center region",
+        "joint effort and speed",
+        "contact force",
+        "no unintended collision"
+      ],
+      "generator": "solution/controller.py:Expert.targets",
+      "applicability_interval": null
+    },
+    {
+      "id": "unload",
+      "high_level": "H4",
+      "entry": "rotation decelerated",
+      "exit": "both contact forces below 0.02 N",
+      "constraints": [
+        "table support",
+        "center region",
+        "joint effort and speed",
+        "contact force",
+        "no unintended collision"
+      ],
+      "generator": "solution/controller.py:Expert.targets",
+      "applicability_interval": null
+    },
+    {
+      "id": "reposition",
+      "high_level": "H4",
+      "entry": "released disk supported on table",
+      "exit": "pads outside rim at next approach sector",
+      "constraints": [
+        "table support",
+        "center region",
+        "joint effort and speed",
+        "contact force",
+        "no unintended collision"
+      ],
+      "generator": "solution/controller.py:Expert.targets",
+      "applicability_interval": null
+    },
+    {
+      "id": "release",
+      "high_level": "H5",
+      "entry": "heading aligned",
+      "exit": "both arms clear of disk",
+      "constraints": [
+        "table support",
+        "center region",
+        "joint effort and speed",
+        "contact force",
+        "no unintended collision"
+      ],
+      "generator": "solution/controller.py:Expert.targets",
+      "applicability_interval": null
+    },
+    {
+      "id": "settle",
+      "high_level": "H5",
+      "entry": "no arm contact",
+      "exit": "independent two-second settled-goal predicate",
+      "constraints": [
+        "table support",
+        "center region",
+        "joint effort and speed",
+        "contact force",
+        "no unintended collision"
+      ],
+      "generator": "solution/controller.py:Expert.targets",
+      "applicability_interval": null
+    }
+  ],
+  "key_states": {
+    "initial_yaw": -2.9670597283903604,
+    "target_yaw": 2.792526803190927,
+    "intermediate_numeric_states": null
+  },
+  "failure_policy": "Stop on global constraint violation; missing evidence or budget exhaustion remains unknown",
+  "schema": "disk-rotation-hierarchical-witness/1",
+  "annotation_timing": "Post-hoc annotation of online state-machine execution; not an independently precomputed whole-run trajectory",
+  "actual_action_sequence": [
+    {
+      "action_id": "L001",
+      "high_level": "H0",
+      "action": "stabilize",
+      "cycle": 0,
+      "entry_requirement": "normal reset, noncontact arms",
+      "exit_requirement": "table support and settled velocities",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": -2.9670597283903604,
+      "contact_mode": "table_support",
+      "command_interval": [
+        0,
+        50
+      ],
+      "physics_state_interval": [
+        0,
+        400
+      ],
+      "t_start": 0.0,
+      "t_end": 1.0
+    },
+    {
+      "action_id": "L002",
+      "high_level": "H1",
+      "action": "approach",
+      "cycle": 0,
+      "entry_requirement": "stable table support",
+      "exit_requirement": "both pads near the rim without collision",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": -2.9670597283903604,
+      "contact_mode": "table_support",
+      "command_interval": [
+        50,
+        250
+      ],
+      "physics_state_interval": [
+        400,
+        2000
+      ],
+      "t_start": 1.0,
+      "t_end": 5.0
+    },
+    {
+      "action_id": "L003",
+      "high_level": "H2",
+      "action": "preload",
+      "cycle": 0,
+      "entry_requirement": "both pads in approach region",
+      "exit_requirement": "two measured pad forces above 0.5 N",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": -2.9670597283903604,
+      "contact_mode": "two_pads",
+      "command_interval": [
+        250,
+        329
+      ],
+      "physics_state_interval": [
+        2000,
+        2632
+      ],
+      "t_start": 5.0,
+      "t_end": 6.58
+    },
+    {
+      "action_id": "L004",
+      "high_level": "H3",
+      "action": "rotate",
+      "cycle": 0,
+      "entry_requirement": "two measured contacts and valid support",
+      "exit_requirement": "local heading reached or contact-sector boundary",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": -3.1970595806033817,
+      "contact_mode": "two_pads",
+      "command_interval": [
+        329,
+        544
+      ],
+      "physics_state_interval": [
+        2632,
+        4352
+      ],
+      "t_start": 6.58,
+      "t_end": 10.88
+    },
+    {
+      "action_id": "L005",
+      "high_level": "H4",
+      "action": "unload",
+      "cycle": 0,
+      "entry_requirement": "rotation decelerated",
+      "exit_requirement": "both contact forces below 0.02 N",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": -3.1970595806033817,
+      "contact_mode": "table_support",
+      "command_interval": [
+        544,
+        815
+      ],
+      "physics_state_interval": [
+        4352,
+        6520
+      ],
+      "t_start": 10.88,
+      "t_end": 16.3
+    },
+    {
+      "action_id": "L006",
+      "high_level": "H4",
+      "action": "reposition",
+      "cycle": 0,
+      "entry_requirement": "released disk supported on table",
+      "exit_requirement": "pads outside rim at next approach sector",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": -3.1970595806033817,
+      "contact_mode": "table_support",
+      "command_interval": [
+        815,
+        882
+      ],
+      "physics_state_interval": [
+        6520,
+        7056
+      ],
+      "t_start": 16.3,
+      "t_end": 17.64
+    },
+    {
+      "action_id": "L007",
+      "high_level": "H1",
+      "action": "approach",
+      "cycle": 1,
+      "entry_requirement": "stable table support",
+      "exit_requirement": "both pads near the rim without collision",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": -3.1970595806033817,
+      "contact_mode": "table_support",
+      "command_interval": [
+        882,
+        1082
+      ],
+      "physics_state_interval": [
+        7056,
+        8656
+      ],
+      "t_start": 17.64,
+      "t_end": 21.64
+    },
+    {
+      "action_id": "L008",
+      "high_level": "H2",
+      "action": "preload",
+      "cycle": 1,
+      "entry_requirement": "both pads in approach region",
+      "exit_requirement": "two measured pad forces above 0.5 N",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": -3.1970595806033817,
+      "contact_mode": "two_pads",
+      "command_interval": [
+        1082,
+        1162
+      ],
+      "physics_state_interval": [
+        8656,
+        9296
+      ],
+      "t_start": 21.64,
+      "t_end": 23.240000000000002
+    },
+    {
+      "action_id": "L009",
+      "high_level": "H3",
+      "action": "rotate",
+      "cycle": 1,
+      "entry_requirement": "two measured contacts and valid support",
+      "exit_requirement": "local heading reached or contact-sector boundary",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": 2.8702512271925174,
+      "contact_mode": "two_pads",
+      "command_interval": [
+        1162,
+        1377
+      ],
+      "physics_state_interval": [
+        9296,
+        11016
+      ],
+      "t_start": 23.240000000000002,
+      "t_end": 27.54
+    },
+    {
+      "action_id": "L010",
+      "high_level": "H4",
+      "action": "unload",
+      "cycle": 1,
+      "entry_requirement": "rotation decelerated",
+      "exit_requirement": "both contact forces below 0.02 N",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": 2.8702512271925174,
+      "contact_mode": "table_support",
+      "command_interval": [
+        1377,
+        1648
+      ],
+      "physics_state_interval": [
+        11016,
+        13184
+      ],
+      "t_start": 27.54,
+      "t_end": 32.96
+    },
+    {
+      "action_id": "L011",
+      "high_level": "H4",
+      "action": "reposition",
+      "cycle": 1,
+      "entry_requirement": "released disk supported on table",
+      "exit_requirement": "pads outside rim at next approach sector",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": 2.8702512271925174,
+      "contact_mode": "table_support",
+      "command_interval": [
+        1648,
+        1715
+      ],
+      "physics_state_interval": [
+        13184,
+        13720
+      ],
+      "t_start": 32.96,
+      "t_end": 34.300000000000004
+    },
+    {
+      "action_id": "L012",
+      "high_level": "H1",
+      "action": "approach",
+      "cycle": 2,
+      "entry_requirement": "stable table support",
+      "exit_requirement": "both pads near the rim without collision",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": 2.8702512271925174,
+      "contact_mode": "table_support",
+      "command_interval": [
+        1715,
+        1915
+      ],
+      "physics_state_interval": [
+        13720,
+        15320
+      ],
+      "t_start": 34.300000000000004,
+      "t_end": 38.300000000000004
+    },
+    {
+      "action_id": "L013",
+      "high_level": "H2",
+      "action": "preload",
+      "cycle": 2,
+      "entry_requirement": "both pads in approach region",
+      "exit_requirement": "two measured pad forces above 0.5 N",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": 2.8702512271925174,
+      "contact_mode": "two_pads",
+      "command_interval": [
+        1915,
+        1995
+      ],
+      "physics_state_interval": [
+        15320,
+        15960
+      ],
+      "t_start": 38.300000000000004,
+      "t_end": 39.9
+    },
+    {
+      "action_id": "L014",
+      "high_level": "H3",
+      "action": "rotate",
+      "cycle": 2,
+      "entry_requirement": "two measured contacts and valid support",
+      "exit_requirement": "local heading reached or contact-sector boundary",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": 2.792526803190927,
+      "contact_mode": "two_pads",
+      "command_interval": [
+        1995,
+        2076
+      ],
+      "physics_state_interval": [
+        15960,
+        16608
+      ],
+      "t_start": 39.9,
+      "t_end": 41.52
+    },
+    {
+      "action_id": "L015",
+      "high_level": "H5",
+      "action": "release",
+      "cycle": 2,
+      "entry_requirement": "heading aligned",
+      "exit_requirement": "both arms clear of disk",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": 2.792526803190927,
+      "contact_mode": "table_support",
+      "command_interval": [
+        2076,
+        2149
+      ],
+      "physics_state_interval": [
+        16608,
+        17192
+      ],
+      "t_start": 41.52,
+      "t_end": 42.980000000000004
+    },
+    {
+      "action_id": "L016",
+      "high_level": "H5",
+      "action": "settle",
+      "cycle": 2,
+      "entry_requirement": "no arm contact",
+      "exit_requirement": "independent two-second settled-goal predicate",
+      "support_contact_constraints": "table-supported free disk; bounded center, tilt, speed, forces, joint effort and collision",
+      "generator": "Expert.targets -> Environment.ik -> bounded joint PD plus model feedforward",
+      "local_goal": 2.792526803190927,
+      "contact_mode": "table_support",
+      "command_interval": [
+        2149,
+        2178
+      ],
+      "physics_state_interval": [
+        17192,
+        17424
+      ],
+      "t_start": 42.980000000000004,
+      "t_end": 43.56
+    }
+  ],
+  "measured_key_states": [
+    {
+      "action_id": "L001",
+      "entry": {
+        "p": [
+          0.0,
+          0.0,
+          0.3602
+        ],
+        "yaw": -2.9670597283903604,
+        "v": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "omega": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 0.0,
+        "q": [
+          [
+            0.21743641959550428,
+            -0.42038602996182595,
+            -0.20482537150725655,
+            -2.5131866627721786,
+            -0.09623240334220863,
+            2.0985958246912992,
+            0.07858895676185876
+          ],
+          [
+            0.21743641959550436,
+            -0.42038602996182606,
+            -0.20482537150725658,
+            -2.5131866627721786,
+            -0.09623240334220845,
+            2.0985958246912992,
+            0.0785889567618587
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          6.703357193883215e-09,
+          -4.0452395803989883e-08,
+          0.35997084907284616
+        ],
+        "yaw": -2.9670597280720084,
+        "v": [
+          5.609842795128599e-06,
+          -3.181499939577319e-05,
+          7.337896577854335e-15
+        ],
+        "omega": [
+          0.0031870786958347595,
+          0.0005619679647616728,
+          1.8202041316461094e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9619999999999265,
+        "q": [
+          [
+            0.21747215619898427,
+            -0.42309172284906627,
+            -0.20425656241694265,
+            -2.508816135037576,
+            -0.09615717304206875,
+            2.0915305847381793,
+            0.07873760657560562
+          ],
+          [
+            0.21747215619898494,
+            -0.4230917228490655,
+            -0.20425656241694248,
+            -2.508816135037576,
+            -0.09615717304206722,
+            2.0915305847381793,
+            0.07873760657560527
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L002",
+      "entry": {
+        "p": [
+          6.703357193883215e-09,
+          -4.0452395803989883e-08,
+          0.35997084907284616
+        ],
+        "yaw": -2.9670597280720084,
+        "v": [
+          5.609842795128599e-06,
+          -3.181499939577319e-05,
+          7.337896577854335e-15
+        ],
+        "omega": [
+          0.0031870786958347595,
+          0.0005619679647616728,
+          1.8202041316461094e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9619999999999265,
+        "q": [
+          [
+            0.21747215619898427,
+            -0.42309172284906627,
+            -0.20425656241694265,
+            -2.508816135037576,
+            -0.09615717304206875,
+            2.0915305847381793,
+            0.07873760657560562
+          ],
+          [
+            0.21747215619898494,
+            -0.4230917228490655,
+            -0.20425656241694248,
+            -2.508816135037576,
+            -0.09615717304206722,
+            2.0915305847381793,
+            0.07873760657560527
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          6.703357193737044e-09,
+          -4.0452395803177764e-08,
+          0.35997084907284616
+        ],
+        "yaw": -2.9670597280720084,
+        "v": [
+          5.609842795128617e-06,
+          -3.1814999395773167e-05,
+          7.338108169369175e-15
+        ],
+        "omega": [
+          0.003187078695834756,
+          0.0005619679647616744,
+          1.7572870589528414e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9619999999999256,
+        "q": [
+          [
+            0.22631260728422298,
+            -0.3304170459339389,
+            -0.21397187173706939,
+            -2.426652935599443,
+            -0.0799812046056485,
+            2.1018512688929585,
+            0.06416327854137312
+          ],
+          [
+            0.22631260728422342,
+            -0.3304170459339389,
+            -0.21397187173706977,
+            -2.426652935599443,
+            -0.0799812046056488,
+            2.101851268892959,
+            0.06416327854137327
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L003",
+      "entry": {
+        "p": [
+          6.703357193737044e-09,
+          -4.0452395803177764e-08,
+          0.35997084907284616
+        ],
+        "yaw": -2.9670597280720084,
+        "v": [
+          5.609842795128617e-06,
+          -3.1814999395773167e-05,
+          7.338108169369175e-15
+        ],
+        "omega": [
+          0.003187078695834756,
+          0.0005619679647616744,
+          1.7572870589528414e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9619999999999256,
+        "q": [
+          [
+            0.22631260728422298,
+            -0.3304170459339389,
+            -0.21397187173706939,
+            -2.426652935599443,
+            -0.0799812046056485,
+            2.1018512688929585,
+            0.06416327854137312
+          ],
+          [
+            0.22631260728422342,
+            -0.3304170459339389,
+            -0.21397187173706977,
+            -2.426652935599443,
+            -0.0799812046056488,
+            2.101851268892959,
+            0.06416327854137327
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          4.228243934101885e-06,
+          -2.173037685252195e-08,
+          0.35996917498963743
+        ],
+        "yaw": -2.9670595806033817,
+        "v": [
+          5.9385884638729676e-05,
+          3.346543620253747e-05,
+          -0.0002130390276446082
+        ],
+        "omega": [
+          -0.0034547045005420864,
+          0.00036726741298334154,
+          2.3813009915500258e-06
+        ],
+        "contact_force": [
+          0.7146606749841822,
+          0.6437246584134712
+        ],
+        "table_force": 2.4295851143075273,
+        "q": [
+          [
+            0.22725633658308686,
+            -0.31938752083334937,
+            -0.21507315455484455,
+            -2.416413308281382,
+            -0.07782292918807013,
+            2.1025535504740502,
+            0.06227247823908042
+          ],
+          [
+            0.22725669771101822,
+            -0.3193781044710046,
+            -0.21507413814161785,
+            -2.416409656571653,
+            -0.0778230466087862,
+            2.1025773497186124,
+            0.06227227232447359
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L004",
+      "entry": {
+        "p": [
+          4.228243934101885e-06,
+          -2.173037685252195e-08,
+          0.35996917498963743
+        ],
+        "yaw": -2.9670595806033817,
+        "v": [
+          5.9385884638729676e-05,
+          3.346543620253747e-05,
+          -0.0002130390276446082
+        ],
+        "omega": [
+          -0.0034547045005420864,
+          0.00036726741298334154,
+          2.3813009915500258e-06
+        ],
+        "contact_force": [
+          0.7146606749841822,
+          0.6437246584134712
+        ],
+        "table_force": 2.4295851143075273,
+        "q": [
+          [
+            0.22725633658308686,
+            -0.31938752083334937,
+            -0.21507315455484455,
+            -2.416413308281382,
+            -0.07782292918807013,
+            2.1025535504740502,
+            0.06227247823908042
+          ],
+          [
+            0.22725669771101822,
+            -0.3193781044710046,
+            -0.21507413814161785,
+            -2.416409656571653,
+            -0.0778230466087862,
+            2.1025773497186124,
+            0.06227227232447359
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          0.000107691416448154,
+          -2.1988903876074502e-05,
+          0.35995186237636995
+        ],
+        "yaw": 3.1010670890029375,
+        "v": [
+          1.1050708558890236e-05,
+          -9.537251203504621e-06,
+          -1.179354185299871e-05
+        ],
+        "omega": [
+          -0.0034726318679590127,
+          0.0006182513146474348,
+          -0.019929248457125636
+        ],
+        "contact_force": [
+          2.460150635426562,
+          2.513958309637005
+        ],
+        "table_force": 3.283583717694279,
+        "q": [
+          [
+            0.24727464353610434,
+            -0.3080522163241688,
+            -0.18874911577456202,
+            -2.4076512948671454,
+            -0.06599563837603188,
+            2.1028753908956705,
+            0.10070432278968056
+          ],
+          [
+            0.2472685299394533,
+            -0.30864184429074215,
+            -0.18863170900716383,
+            -2.4082123810739704,
+            -0.06607654607244023,
+            2.1028474572371465,
+            0.1008833025095084
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L005",
+      "entry": {
+        "p": [
+          0.000107691416448154,
+          -2.1988903876074502e-05,
+          0.35995186237636995
+        ],
+        "yaw": 3.1010670890029375,
+        "v": [
+          1.1050708558890236e-05,
+          -9.537251203504621e-06,
+          -1.179354185299871e-05
+        ],
+        "omega": [
+          -0.0034726318679590127,
+          0.0006182513146474348,
+          -0.019929248457125636
+        ],
+        "contact_force": [
+          2.460150635426562,
+          2.513958309637005
+        ],
+        "table_force": 3.283583717694279,
+        "q": [
+          [
+            0.24727464353610434,
+            -0.3080522163241688,
+            -0.18874911577456202,
+            -2.4076512948671454,
+            -0.06599563837603188,
+            2.1028753908956705,
+            0.10070432278968056
+          ],
+          [
+            0.2472685299394533,
+            -0.30864184429074215,
+            -0.18863170900716383,
+            -2.4082123810739704,
+            -0.06607654607244023,
+            2.1028474572371465,
+            0.1008833025095084
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          0.00010825847567779672,
+          -2.2250139658812894e-05,
+          0.3599708367442142
+        ],
+        "yaw": 3.1002570210462306,
+        "v": [
+          8.807503785058032e-07,
+          2.1295154819839452e-05,
+          7.233236496393849e-07
+        ],
+        "omega": [
+          -0.002133690305835296,
+          8.82477051882131e-05,
+          -6.147565919333431e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9621157317830238,
+        "q": [
+          [
+            0.2470042222086209,
+            -0.4068461093490304,
+            -0.16894205098956486,
+            -2.4976671138521924,
+            -0.07691919059975114,
+            2.0947227275746196,
+            0.1301585301046805
+          ],
+          [
+            0.24700431231436112,
+            -0.4073677068704236,
+            -0.16883034863406857,
+            -2.4980967444419457,
+            -0.0769633265545849,
+            2.094647097080919,
+            0.13029460491171763
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L006",
+      "entry": {
+        "p": [
+          0.00010825847567779672,
+          -2.2250139658812894e-05,
+          0.3599708367442142
+        ],
+        "yaw": 3.1002570210462306,
+        "v": [
+          8.807503785058032e-07,
+          2.1295154819839452e-05,
+          7.233236496393849e-07
+        ],
+        "omega": [
+          -0.002133690305835296,
+          8.82477051882131e-05,
+          -6.147565919333431e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9621157317830238,
+        "q": [
+          [
+            0.2470042222086209,
+            -0.4068461093490304,
+            -0.16894205098956486,
+            -2.4976671138521924,
+            -0.07691919059975114,
+            2.0947227275746196,
+            0.1301585301046805
+          ],
+          [
+            0.24700431231436112,
+            -0.4073677068704236,
+            -0.16883034863406857,
+            -2.4980967444419457,
+            -0.0769633265545849,
+            2.094647097080919,
+            0.13029460491171763
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          0.00010825847567779683,
+          -2.225013965881297e-05,
+          0.3599708367442142
+        ],
+        "yaw": 3.1002570210462306,
+        "v": [
+          8.807503785057994e-07,
+          2.1295154819839435e-05,
+          7.233236496390528e-07
+        ],
+        "omega": [
+          -0.0021336903058352913,
+          8.824770518821263e-05,
+          -6.426109501499766e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9621157317830251,
+        "q": [
+          [
+            0.22109140089277995,
+            -0.42312296295833474,
+            -0.20486967184135213,
+            -2.5087630317328364,
+            -0.09644498727726013,
+            2.0914908756207007,
+            0.08195297135613683
+          ],
+          [
+            0.22108640088203918,
+            -0.42312254791473913,
+            -0.2048649890313836,
+            -2.5087630777987626,
+            -0.09644272835538144,
+            2.0914910658100356,
+            0.08195112127129696
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L007",
+      "entry": {
+        "p": [
+          0.00010825847567779683,
+          -2.225013965881297e-05,
+          0.3599708367442142
+        ],
+        "yaw": 3.1002570210462306,
+        "v": [
+          8.807503785057994e-07,
+          2.1295154819839435e-05,
+          7.233236496390528e-07
+        ],
+        "omega": [
+          -0.0021336903058352913,
+          8.824770518821263e-05,
+          -6.426109501499766e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9621157317830251,
+        "q": [
+          [
+            0.22109140089277995,
+            -0.42312296295833474,
+            -0.20486967184135213,
+            -2.5087630317328364,
+            -0.09644498727726013,
+            2.0914908756207007,
+            0.08195297135613683
+          ],
+          [
+            0.22108640088203918,
+            -0.42312254791473913,
+            -0.2048649890313836,
+            -2.5087630777987626,
+            -0.09644272835538144,
+            2.0914910658100356,
+            0.08195112127129696
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          0.00010825847567779669,
+          -2.22501396588135e-05,
+          0.3599708367442142
+        ],
+        "yaw": 3.1002570210462306,
+        "v": [
+          8.807503785058147e-07,
+          2.129515481983946e-05,
+          7.233236496391562e-07
+        ],
+        "omega": [
+          -0.0021336903058352926,
+          8.82477051882139e-05,
+          -6.662145211293238e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9621157317830253,
+        "q": [
+          [
+            0.22885313695981266,
+            -0.3305935174070142,
+            -0.21636821988728833,
+            -2.426637422907348,
+            -0.08090360381910161,
+            2.101787914184954,
+            0.06490320755901119
+          ],
+          [
+            0.22884791663375442,
+            -0.33059315262094235,
+            -0.2163632960271666,
+            -2.4266374549795295,
+            -0.08090170760156967,
+            2.1017880451763697,
+            0.0649016864552931
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L008",
+      "entry": {
+        "p": [
+          0.00010825847567779669,
+          -2.22501396588135e-05,
+          0.3599708367442142
+        ],
+        "yaw": 3.1002570210462306,
+        "v": [
+          8.807503785058147e-07,
+          2.129515481983946e-05,
+          7.233236496391562e-07
+        ],
+        "omega": [
+          -0.0021336903058352926,
+          8.82477051882139e-05,
+          -6.662145211293238e-19
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9621157317830253,
+        "q": [
+          [
+            0.22885313695981266,
+            -0.3305935174070142,
+            -0.21636821988728833,
+            -2.426637422907348,
+            -0.08090360381910161,
+            2.101787914184954,
+            0.06490320755901119
+          ],
+          [
+            0.22884791663375442,
+            -0.33059315262094235,
+            -0.2163632960271666,
+            -2.4266374549795295,
+            -0.08090170760156967,
+            2.1017880451763697,
+            0.0649016864552931
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          2.5168205601895664e-05,
+          -2.2701739234703007e-05,
+          0.35996606493837496
+        ],
+        "yaw": 3.1002512271925173,
+        "v": [
+          -8.923095365043646e-05,
+          -3.960282125228771e-05,
+          -0.00023204145201055683
+        ],
+        "omega": [
+          0.00410450126244884,
+          -0.0011822180468273713,
+          4.7273922584069726e-06
+        ],
+        "contact_force": [
+          0.7164981748937251,
+          0.9446129906375482
+        ],
+        "table_force": 2.510966410210343,
+        "q": [
+          [
+            0.22981599498560062,
+            -0.31946920780350513,
+            -0.21749242123849488,
+            -2.4163186568800525,
+            -0.07870466226524402,
+            2.102513523265695,
+            0.06297637199066292
+          ],
+          [
+            0.22980987887276633,
+            -0.31952410570120077,
+            -0.21748448489821343,
+            -2.416344770420782,
+            -0.07869502514795522,
+            2.102364095798719,
+            0.06297506898798404
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L009",
+      "entry": {
+        "p": [
+          2.5168205601895664e-05,
+          -2.2701739234703007e-05,
+          0.35996606493837496
+        ],
+        "yaw": 3.1002512271925173,
+        "v": [
+          -8.923095365043646e-05,
+          -3.960282125228771e-05,
+          -0.00023204145201055683
+        ],
+        "omega": [
+          0.00410450126244884,
+          -0.0011822180468273713,
+          4.7273922584069726e-06
+        ],
+        "contact_force": [
+          0.7164981748937251,
+          0.9446129906375482
+        ],
+        "table_force": 2.510966410210343,
+        "q": [
+          [
+            0.22981599498560062,
+            -0.31946920780350513,
+            -0.21749242123849488,
+            -2.4163186568800525,
+            -0.07870466226524402,
+            2.102513523265695,
+            0.06297637199066292
+          ],
+          [
+            0.22980987887276633,
+            -0.31952410570120077,
+            -0.21748448489821343,
+            -2.416344770420782,
+            -0.07869502514795522,
+            2.102364095798719,
+            0.06297506898798404
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          -2.3066038950072716e-05,
+          -1.022732118465762e-05,
+          0.3599522580875026
+        ],
+        "yaw": 2.885205275390512,
+        "v": [
+          3.587861410518114e-05,
+          -4.671319663523386e-05,
+          5.943360745773741e-05
+        ],
+        "omega": [
+          0.0005361535228870608,
+          0.0020697459814658812,
+          -0.01985623125754265
+        ],
+        "contact_force": [
+          2.7614719015354727,
+          2.409869971536365
+        ],
+        "table_force": 3.6399240248820637,
+        "q": [
+          [
+            0.24983760033390615,
+            -0.3085443311575722,
+            -0.19110124348982263,
+            -2.4079643392700523,
+            -0.06691167060753925,
+            2.1028179799409967,
+            0.10150598455075649
+          ],
+          [
+            0.24982823238247717,
+            -0.3084135466029082,
+            -0.19111485602110956,
+            -2.407843854542197,
+            -0.06688840444538188,
+            2.1028250067714493,
+            0.1014633330835296
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L010",
+      "entry": {
+        "p": [
+          -2.3066038950072716e-05,
+          -1.022732118465762e-05,
+          0.3599522580875026
+        ],
+        "yaw": 2.885205275390512,
+        "v": [
+          3.587861410518114e-05,
+          -4.671319663523386e-05,
+          5.943360745773741e-05
+        ],
+        "omega": [
+          0.0005361535228870608,
+          0.0020697459814658812,
+          -0.01985623125754265
+        ],
+        "contact_force": [
+          2.7614719015354727,
+          2.409869971536365
+        ],
+        "table_force": 3.6399240248820637,
+        "q": [
+          [
+            0.24983760033390615,
+            -0.3085443311575722,
+            -0.19110124348982263,
+            -2.4079643392700523,
+            -0.06691167060753925,
+            2.1028179799409967,
+            0.10150598455075649
+          ],
+          [
+            0.24982823238247717,
+            -0.3084135466029082,
+            -0.19111485602110956,
+            -2.407843854542197,
+            -0.06688840444538188,
+            2.1028250067714493,
+            0.1014633330835296
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          -2.5186743816990462e-05,
+          -9.817859457739956e-06,
+          0.35997027994145725
+        ],
+        "yaw": 2.884379576588144,
+        "v": [
+          3.663939717714403e-06,
+          -4.0396203460758296e-05,
+          -1.5674184479964863e-05
+        ],
+        "omega": [
+          0.0040467290446456776,
+          0.0003666680738132381,
+          4.246876530641392e-09
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.959141409909957,
+        "q": [
+          [
+            0.24945960858542576,
+            -0.4073485953906658,
+            -0.1711690208480263,
+            -2.4979375964111052,
+            -0.07801261047721379,
+            2.094603574645686,
+            0.13112794612295164
+          ],
+          [
+            0.2494472657345324,
+            -0.40722552255223066,
+            -0.1711843758600207,
+            -2.49783995213449,
+            -0.07799644962921987,
+            2.0946224103787574,
+            0.13109290801578904
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L011",
+      "entry": {
+        "p": [
+          -2.5186743816990462e-05,
+          -9.817859457739956e-06,
+          0.35997027994145725
+        ],
+        "yaw": 2.884379576588144,
+        "v": [
+          3.663939717714403e-06,
+          -4.0396203460758296e-05,
+          -1.5674184479964863e-05
+        ],
+        "omega": [
+          0.0040467290446456776,
+          0.0003666680738132381,
+          4.246876530641392e-09
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.959141409909957,
+        "q": [
+          [
+            0.24945960858542576,
+            -0.4073485953906658,
+            -0.1711690208480263,
+            -2.4979375964111052,
+            -0.07801261047721379,
+            2.094603574645686,
+            0.13112794612295164
+          ],
+          [
+            0.2494472657345324,
+            -0.40722552255223066,
+            -0.1711843758600207,
+            -2.49783995213449,
+            -0.07799644962921987,
+            2.0946224103787574,
+            0.13109290801578904
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          -2.5155249752694704e-05,
+          -9.742269548277984e-06,
+          0.359970544007699
+        ],
+        "yaw": 2.8843795755706587,
+        "v": [
+          -1.6153205958224822e-05,
+          6.111995131338634e-06,
+          -1.034309147264813e-05
+        ],
+        "omega": [
+          -0.0006122778133506451,
+          -0.00161882000431922,
+          3.4619036190778427e-09
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9578563668365243,
+        "q": [
+          [
+            0.22352897952988326,
+            -0.4233258136694293,
+            -0.20714598481600296,
+            -2.508740408460128,
+            -0.09754347852400043,
+            2.0913978698658173,
+            0.08285960541780514
+          ],
+          [
+            0.22351860650153657,
+            -0.4233249424102871,
+            -0.20713627081185282,
+            -2.5087405051835443,
+            -0.09753878876399077,
+            2.0913982692598916,
+            0.08285576442284462
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L012",
+      "entry": {
+        "p": [
+          -2.5155249752694704e-05,
+          -9.742269548277984e-06,
+          0.359970544007699
+        ],
+        "yaw": 2.8843795755706587,
+        "v": [
+          -1.6153205958224822e-05,
+          6.111995131338634e-06,
+          -1.034309147264813e-05
+        ],
+        "omega": [
+          -0.0006122778133506451,
+          -0.00161882000431922,
+          3.4619036190778427e-09
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9578563668365243,
+        "q": [
+          [
+            0.22352897952988326,
+            -0.4233258136694293,
+            -0.20714598481600296,
+            -2.508740408460128,
+            -0.09754347852400043,
+            2.0913978698658173,
+            0.08285960541780514
+          ],
+          [
+            0.22351860650153657,
+            -0.4233249424102871,
+            -0.20713627081185282,
+            -2.5087405051835443,
+            -0.09753878876399077,
+            2.0913982692598916,
+            0.08285576442284462
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          -2.5206853397208907e-05,
+          -9.753823641721288e-06,
+          0.3599704782990566
+        ],
+        "yaw": 2.8843795722004932,
+        "v": [
+          2.201124362890034e-05,
+          -1.5741697788537025e-05,
+          1.001246504681413e-05
+        ],
+        "omega": [
+          0.001576919534259262,
+          0.002205210367210953,
+          -1.3537180436037624e-08
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9657046710498518,
+        "q": [
+          [
+            0.23139545126260855,
+            -0.3307722325535948,
+            -0.21876605610903488,
+            -2.426621707325272,
+            -0.08182748920391052,
+            2.1017237241203968,
+            0.06564432715290812
+          ],
+          [
+            0.23138461999894883,
+            -0.33077146665154683,
+            -0.2187558407969819,
+            -2.426621774688156,
+            -0.08182355129410139,
+            2.1017239992775893,
+            0.06564116825570886
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L013",
+      "entry": {
+        "p": [
+          -2.5206853397208907e-05,
+          -9.753823641721288e-06,
+          0.3599704782990566
+        ],
+        "yaw": 2.8843795722004932,
+        "v": [
+          2.201124362890034e-05,
+          -1.5741697788537025e-05,
+          1.001246504681413e-05
+        ],
+        "omega": [
+          0.001576919534259262,
+          0.002205210367210953,
+          -1.3537180436037624e-08
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9657046710498518,
+        "q": [
+          [
+            0.23139545126260855,
+            -0.3307722325535948,
+            -0.21876605610903488,
+            -2.426621707325272,
+            -0.08182748920391052,
+            2.1017237241203968,
+            0.06564432715290812
+          ],
+          [
+            0.23138461999894883,
+            -0.33077146665154683,
+            -0.2187558407969819,
+            -2.426621774688156,
+            -0.08182355129410139,
+            2.1017239992775893,
+            0.06564116825570886
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          -1.5894870187694004e-05,
+          -9.686547090819442e-06,
+          0.3599665399605967
+        ],
+        "yaw": 2.8843779082507788,
+        "v": [
+          -4.177712038103203e-08,
+          1.9175385164776137e-05,
+          -0.00024593897958578045
+        ],
+        "omega": [
+          -0.00195118439821695,
+          -0.00021084101424391564,
+          -3.1003642182582193e-06
+        ],
+        "contact_force": [
+          0.9244217523387297,
+          0.7741344896787871
+        ],
+        "table_force": 2.5715302279621075,
+        "q": [
+          [
+            0.232371686373718,
+            -0.31965865928969084,
+            -0.21990304630873952,
+            -2.4163023918808126,
+            -0.07959534478080182,
+            2.1023505344858937,
+            0.06369232597387862
+          ],
+          [
+            0.23236196858559205,
+            -0.3196248075612218,
+            -0.21989575564038816,
+            -2.4162799965079116,
+            -0.07959327609719623,
+            2.1024188044810996,
+            0.06368755484786316
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L014",
+      "entry": {
+        "p": [
+          -1.5894870187694004e-05,
+          -9.686547090819442e-06,
+          0.3599665399605967
+        ],
+        "yaw": 2.8843779082507788,
+        "v": [
+          -4.177712038103203e-08,
+          1.9175385164776137e-05,
+          -0.00024593897958578045
+        ],
+        "omega": [
+          -0.00195118439821695,
+          -0.00021084101424391564,
+          -3.1003642182582193e-06
+        ],
+        "contact_force": [
+          0.9244217523387297,
+          0.7741344896787871
+        ],
+        "table_force": 2.5715302279621075,
+        "q": [
+          [
+            0.232371686373718,
+            -0.31965865928969084,
+            -0.21990304630873952,
+            -2.4163023918808126,
+            -0.07959534478080182,
+            2.1023505344858937,
+            0.06369232597387862
+          ],
+          [
+            0.23236196858559205,
+            -0.3196248075612218,
+            -0.21989575564038816,
+            -2.4162799965079116,
+            -0.07959327609719623,
+            2.1024188044810996,
+            0.06368755484786316
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          -5.971510546398959e-06,
+          -1.003184118402593e-05,
+          0.3599537998739102
+        ],
+        "yaw": 2.8103567098721585,
+        "v": [
+          0.00014002716796828604,
+          -7.528589394619079e-05,
+          6.762704341956048e-05
+        ],
+        "omega": [
+          0.0015805467140109848,
+          0.002757950864239938,
+          -0.023770643918438417
+        ],
+        "contact_force": [
+          2.6707587219830247,
+          2.364472575054302
+        ],
+        "table_force": 3.7562642410049154,
+        "q": [
+          [
+            0.23939584394661378,
+            -0.31732726005100287,
+            -0.21074736375008307,
+            -2.414763325091316,
+            -0.0757647503357946,
+            2.1020118195072133,
+            0.07745552804900502
+          ],
+          [
+            0.23938302200133496,
+            -0.31729754054393855,
+            -0.21073613394357793,
+            -2.4147367857974684,
+            -0.0757527391530805,
+            2.102019742467741,
+            0.07744508724157215
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L015",
+      "entry": {
+        "p": [
+          -5.971510546398959e-06,
+          -1.003184118402593e-05,
+          0.3599537998739102
+        ],
+        "yaw": 2.8103567098721585,
+        "v": [
+          0.00014002716796828604,
+          -7.528589394619079e-05,
+          6.762704341956048e-05
+        ],
+        "omega": [
+          0.0015805467140109848,
+          0.002757950864239938,
+          -0.023770643918438417
+        ],
+        "contact_force": [
+          2.6707587219830247,
+          2.364472575054302
+        ],
+        "table_force": 3.7562642410049154,
+        "q": [
+          [
+            0.23939584394661378,
+            -0.31732726005100287,
+            -0.21074736375008307,
+            -2.414763325091316,
+            -0.0757647503357946,
+            2.1020118195072133,
+            0.07745552804900502
+          ],
+          [
+            0.23938302200133496,
+            -0.31729754054393855,
+            -0.21073613394357793,
+            -2.4147367857974684,
+            -0.0757527391530805,
+            2.102019742467741,
+            0.07744508724157215
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          -5.409849333583719e-06,
+          -1.008733854103162e-05,
+          0.35997362859087195
+        ],
+        "yaw": 2.809483374425668,
+        "v": [
+          -4.6620000709782504e-05,
+          -2.7290202490024023e-06,
+          -5.994488783839829e-06
+        ],
+        "omega": [
+          0.0002732903265387787,
+          -0.004669167768392777,
+          3.2009324480518354e-09
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9618951321080427,
+        "q": [
+          [
+            0.2362669631018645,
+            -0.37047415689229335,
+            -0.20320738020461027,
+            -2.4635005269684513,
+            -0.08467090173952863,
+            2.098425931954479,
+            0.08920974975355055
+          ],
+          [
+            0.23625381779731625,
+            -0.3704438272029601,
+            -0.20319729364278638,
+            -2.4634744770984347,
+            -0.08466029350157427,
+            2.0984294424964665,
+            0.08919876244791372
+          ]
+        ]
+      }
+    },
+    {
+      "action_id": "L016",
+      "entry": {
+        "p": [
+          -5.409849333583719e-06,
+          -1.008733854103162e-05,
+          0.35997362859087195
+        ],
+        "yaw": 2.809483374425668,
+        "v": [
+          -4.6620000709782504e-05,
+          -2.7290202490024023e-06,
+          -5.994488783839829e-06
+        ],
+        "omega": [
+          0.0002732903265387787,
+          -0.004669167768392777,
+          3.2009324480518354e-09
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9618951321080427,
+        "q": [
+          [
+            0.2362669631018645,
+            -0.37047415689229335,
+            -0.20320738020461027,
+            -2.4635005269684513,
+            -0.08467090173952863,
+            2.098425931954479,
+            0.08920974975355055
+          ],
+          [
+            0.23625381779731625,
+            -0.3704438272029601,
+            -0.20319729364278638,
+            -2.4634744770984347,
+            -0.08466029350157427,
+            2.0984294424964665,
+            0.08919876244791372
+          ]
+        ]
+      },
+      "exit": {
+        "p": [
+          -5.395459497936347e-06,
+          -1.0090092247030474e-05,
+          0.359973527225137
+        ],
+        "yaw": 2.809483378041281,
+        "v": [
+          -4.640737105271848e-05,
+          -2.882731672475531e-06,
+          -4.614361343966415e-06
+        ],
+        "omega": [
+          0.0002886713221973702,
+          -0.004647944870795413,
+          2.418612692995624e-09
+        ],
+        "contact_force": [
+          0.0,
+          0.0
+        ],
+        "table_force": 1.9622032758531525,
+        "q": [
+          [
+            0.23617227595833443,
+            -0.3721819683804506,
+            -0.20298509082889654,
+            -2.4650304302180333,
+            -0.0849438155286554,
+            2.0982422643272747,
+            0.0895711931322713
+          ],
+          [
+            0.23615723538453234,
+            -0.3721807634101895,
+            -0.20297094523970627,
+            -2.4650302652234113,
+            -0.08493772773202603,
+            2.09824269633462,
+            0.08956619528566072
+          ]
+        ]
+      }
+    }
+  ],
+  "feasibility_check_results": {
+    "passed": true,
+    "HL_LL": true,
+    "LL_TRAJ": true,
+    "HL_TRAJ": true
+  },
+  "configuration": {
+    "initial_yaw": -2.9670597283903604,
+    "goal_yaw": 2.792526803190927,
+    "seed": 1,
+    "center_radius": 0.03,
+    "final_center_error": 0.01,
+    "heading_tolerance": 0.05235987755982989,
+    "table_height": 0.35,
+    "disk_half_height": 0.01,
+    "disk_mass": 0.2,
+    "tilt_max": 0.08726646259971647,
+    "height_tolerance": 0.003,
+    "linear_speed_max": 0.12,
+    "angular_speed_max": 0.65,
+    "contact_force_max": 20.0,
+    "joint_speed_max": 1.5,
+    "target_speed_max": 0.5,
+    "settle_linear_speed": 0.01,
+    "settle_angular_speed": 0.05,
+    "settle_duration": 2.0,
+    "release_force": 0.02,
+    "support_loss_duration": 0.05,
+    "time_limit": 120.0
+  },
+  "generation_sources": {
+    "__init__.py": "b90f539abd35649547f35235e0aa007843b8a68f668cb20bacc569a3f1a60447",
+    "assets/disk.obj": "224836e1ee16bd30faaa2b3af62edc8e032cdebf1c0e9a7a56296d2b00ce5f23",
+    "assets/disk.urdf": "6fd054db2f014826bdd271a40dc17993f66dec12b041406ac33d0d8318439832",
+    "assets/panda/LICENSE.txt": "59899c6091b540582ed617e8eeaac4919dc985ccfc35459ee9752b699be5205b",
+    "assets/panda/meshes/finger.obj": "c05dee2e2770ac3d45a097cec4a9d758e279ebdb7dc550eb249571c4690a6476",
+    "assets/panda/meshes/hand.obj": "a216bedc742a736f2c6cab010c6014475fe5f7b5ed53e371509adf885df618a2",
+    "assets/panda/meshes/link0.obj": "d29233f03537b6ee92a6861d4139290960325c2bacf9a640ab7935a5539c653f",
+    "assets/panda/meshes/link1.obj": "0879335b20930eccccdc7d2565553895589f9125d4c8c0d462ad0f74f17e7472",
+    "assets/panda/meshes/link2.obj": "cfca62e5846d3ba6db8be3740fc2219454401f1048db11a78bd9ec8f30cdc128",
+    "assets/panda/meshes/link3.obj": "22235fb3676b5cb45a2f512065fab94fecf052a767cddfaed62cbb6d1efcf1f8",
+    "assets/panda/meshes/link4.obj": "64b5914ef159149f87b767ff0eae4db41b9c267aecdddf2816ff25726fa0e6f2",
+    "assets/panda/meshes/link5.obj": "ff8d4bb5ab506b8cf621f44b928be7714dff86b669a92909b8d4f71c5b01597e",
+    "assets/panda/meshes/link6.mtl": "569f88e12d5672c190e2aa14526fcc16b609c25bd5ade907ddb83106ac61e78c",
+    "assets/panda/meshes/link6.obj": "e1dc8bbca8690944e6331f5a108d49c363eeec179b56a9f913541a541e6a2cfc",
+    "assets/panda/meshes/link7.obj": "675a784e949b2b47894f1965016bd56b992b136bd90e1a62e832f49b4a55b240",
+    "assets/panda/original.urdf": "8a78827252ceee4987fe7bffae8edb60d7ec64478785f7d1c0a4e33acb27f2f5",
+    "assets/panda/pusher.urdf": "5f1b7951017974d44a4c4cc10c11ceab257c2f70e4231f7d02284bb6f4223f12",
+    "assets.py": "534e7707c888e70bb6aa9f4d5f149d6b8c14176dc88a024387688cb1a81b7461",
+    "env.py": "e847730f3fb42fd55b72cdcfe151a98c7eeb133ef40f21751ebdf5b5fc200a9a",
+    "solution/__init__.py": "59ee1a44773f59f75baf10ccc8f554660a4e5d111f11f50ba9bceca41521658a",
+    "solution/controller.py": "b58b84a7040a6c6e97cd6047070bea2092a460696819dfbc765b6c804d6ee8e5",
+    "solution/run.py": "ffa27838c4546cbecefb30d9eb7b4466c09a2c662fd286abe6feafe8edf294c4",
+    "task_spec.py": "f5b3876296c56dd633ec4387f4c80b0bf6e2d0bef5f2185bc1d4853a22783e0b"
+  },
+  "trajectory_sha256": "2f5f7a4558d0132847f222fa03731aee3961d3145df596d9dbe9f8d1c23556b9",
+  "segments_sha256": "0e3ceb57418fdf223391b6fec46eba5d92a90b787a1cb08fdcbb7dc662023b5d",
+  "arbitrary_skill_composition_claim": false
+}

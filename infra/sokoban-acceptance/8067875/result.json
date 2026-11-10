@@ -1,0 +1,38 @@
+{
+  "status": "error",
+  "job_id": "8067875",
+  "host": "gammagpu12.umiacs.umd.edu",
+  "scope": "RGB/proprioception/message-only cooperative baseline; trusted judge is separate",
+  "task_success": null,
+  "runtime_pose_writes": false,
+  "object_attachments": false,
+  "external_object_forces": false,
+  "agent_fields": [
+    "angular_velocity_body",
+    "gravity_body",
+    "joint_positions",
+    "joint_velocities",
+    "messages",
+    "own_target",
+    "rgb",
+    "robot_id"
+  ],
+  "container": false,
+  "agent_global_map": false,
+  "case_id": "sk-l1",
+  "seed": 0,
+  "communication": "enabled",
+  "formal_admission": false,
+  "peer_clearance_cells": 0.0,
+  "persistent_obstacles": false,
+  "repair_profile": "acceptance-v64",
+  "policy_device": "cuda",
+  "upper_effort_scales": {
+    "g1_a": 1.0,
+    "g1_b": 1.0
+  },
+  "error": "RuntimeError('Isolated policy exited; retained stderr explains failure')",
+  "traceback": "Traceback (most recent call last):\n  File \"/fs/gamma-projects/vlm-robot/robo-si-local-tests/20261029-sokoban-acceptance/source-v60/multi_robot/g1_sokoban/run_hidden.py\", line 78, in run\n    agents[rid]=IsolatedPolicy(rid,bundle,out/(rid+'-workspace'),args.communication,args.repair_profile,out,\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/fs/gamma-projects/vlm-robot/robo-si-local-tests/20261029-sokoban-acceptance/source-v60/multi_robot/g1_sokoban/isolated_policy.py\", line 84, in __init__\n    try:ready=self.read(90)\n              ^^^^^^^^^^^^^\n  File \"/fs/gamma-projects/vlm-robot/robo-si-local-tests/20261029-sokoban-acceptance/source-v60/multi_robot/g1_sokoban/isolated_policy.py\", line 99, in read\n    if not line:raise RuntimeError('Isolated policy exited; retained stderr explains failure')\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Isolated policy exited; retained stderr explains failure\n",
+  "wall_seconds": 122.91926187998615,
+  "rgb_frames": 0
+}

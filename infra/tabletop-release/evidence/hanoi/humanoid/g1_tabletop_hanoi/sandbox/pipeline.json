@@ -1,0 +1,305 @@
+{
+ "schema": "infra-pipeline/1",
+ "task": "g1_tabletop_hanoi",
+ "note": "CPU tests and admission-schema validation; simulator tier uses the CPU backend. Each of the three layers runs the current measured-state controller from the normal initial state with no archived action prefix, then replays its sealed absolute joint targets through the real sandbox command path. Positive gates require clean successful verifier results, exact object/joint fields, unchanged physical parameters and the same 200 Hz clock. Historical datasets remain preserved separately. Container checks include all 38 escape probes, clean worker/agent exits and three-layer no-op runs. Full frozen coverage, repeated runs, subgoal suffixes and video evidence are separate release records. Human stage labels, signed video/shortcut review and second-person reproduction remain required; this pipeline does not award admission.",
+ "steps": [
+  {
+   "name": "runtime_tests",
+   "tier": "cpu",
+   "args": [
+    "-m",
+    "unittest",
+    "infra.sandbox.tests.test_runtime",
+    "infra.sandbox.tests.test_release_check"
+   ]
+  },
+  {
+   "name": "sandbox_tests",
+   "tier": "cpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "humanoid/g1_tabletop_hanoi/sandbox/tests",
+    "-t",
+    "."
+   ]
+  },
+  {
+   "name": "task_tests",
+   "tier": "cpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_tabletop*.py"
+   ]
+  },
+  {
+   "name": "controller_tests",
+   "tier": "cpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_hanoi*.py"
+   ]
+  },
+  {
+   "name": "admission_record",
+   "tier": "cpu",
+   "args": [
+    "-m",
+    "infra.sandbox.records",
+    "humanoid/g1_tabletop_hanoi/admission.json"
+   ]
+  },
+  {
+   "name": "dev_smoke_process",
+   "tier": "gpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop_hanoi.sandbox.launch",
+    "task",
+    "--mode",
+    "dev",
+    "--seed",
+    "1",
+    "--isolation",
+    "process",
+    "--name",
+    "pipeline-dev-hello-{stamp}",
+    "--agent-dir",
+    "humanoid/g1_tabletop_hanoi/sandbox/agent_sdk/examples",
+    "--",
+    "python",
+    "hello_robot.py"
+   ],
+   "run": "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-dev-hello-{stamp}",
+   "expect": {
+    "void": false,
+    "score": 0.0
+   }
+  },
+  {
+   "name": "dev_smoke_process_integrity",
+   "tier": "gpu",
+   "args": [
+    "-m",
+    "infra.sandbox.run_checks",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-dev-hello-{stamp}",
+    "--isolation",
+    "process",
+    "--require-observe"
+   ]
+  },
+  {
+   "name": "reference_live_disks3",
+   "tier": "gpu",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop.sandbox.qualification",
+    "hanoi",
+    "--scene",
+    "humanoid/g1_tabletop_hanoi/solution/runs/ring12_20261022/disks3/nominal/scene.json",
+    "--out",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-live-disks3-{stamp}",
+    "--disks",
+    "3"
+   ]
+  },
+  {
+   "name": "reference_replay_disks3",
+   "tier": "gpu",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop.acceptance.release_20261022.replay_sandbox",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-live-disks3-{stamp}/episode_00",
+    "--scene",
+    "humanoid/g1_tabletop_hanoi/solution/runs/ring12_20261022/disks3/nominal/scene.json",
+    "--out",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-replay-disks3-{stamp}"
+   ]
+  },
+  {
+   "name": "reference_live_disks4",
+   "tier": "gpu",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop.sandbox.qualification",
+    "hanoi",
+    "--scene",
+    "humanoid/g1_tabletop_hanoi/solution/runs/ring12_20261022/disks4/nominal/scene.json",
+    "--out",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-live-disks4-{stamp}",
+    "--disks",
+    "4"
+   ]
+  },
+  {
+   "name": "reference_replay_disks4",
+   "tier": "gpu",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop.acceptance.release_20261022.replay_sandbox",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-live-disks4-{stamp}/episode_00",
+    "--scene",
+    "humanoid/g1_tabletop_hanoi/solution/runs/ring12_20261022/disks4/nominal/scene.json",
+    "--out",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-replay-disks4-{stamp}"
+   ]
+  },
+  {
+   "name": "reference_live_disks5",
+   "tier": "gpu",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop.sandbox.qualification",
+    "hanoi",
+    "--scene",
+    "humanoid/g1_tabletop_hanoi/solution/runs/ring12_20261022/disks5/nominal/scene.json",
+    "--out",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-live-disks5-{stamp}",
+    "--disks",
+    "5"
+   ]
+  },
+  {
+   "name": "reference_replay_disks5",
+   "tier": "gpu",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop.acceptance.release_20261022.replay_sandbox",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-live-disks5-{stamp}/episode_00",
+    "--scene",
+    "humanoid/g1_tabletop_hanoi/solution/runs/ring12_20261022/disks5/nominal/scene.json",
+    "--out",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-replay-disks5-{stamp}"
+   ]
+  },
+  {
+   "name": "reference_default_archive_api",
+   "tier": "gpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop_hanoi.sandbox.trusted.record_reference",
+    "live",
+    "--disks",
+    "3",
+    "--no-video",
+    "--out",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-reference-api-{stamp}"
+   ]
+  },
+  {
+   "name": "exploit_teleport_disk",
+   "tier": "gpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop_hanoi.sandbox.trusted.record_reference",
+    "exploit",
+    "--disks",
+    "3",
+    "--no-video",
+    "--out",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-exploit-teleport-disk-{stamp}"
+   ]
+  },
+  {
+   "name": "escape_probes",
+   "tier": "container",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop_hanoi.sandbox.launch",
+    "task",
+    "--mode",
+    "eval",
+    "--name",
+    "pipeline-escape-{stamp}",
+    "--agent-dir",
+    "humanoid/g1_tabletop_hanoi/sandbox/tests/agents",
+    "--",
+    "python",
+    "escape_probes.py"
+   ],
+   "run": "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-escape-{stamp}",
+   "expect": {
+    "void": true
+   }
+  },
+  {
+   "name": "escape_probes_integrity",
+   "tier": "container",
+   "args": [
+    "-m",
+    "infra.sandbox.run_checks",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-escape-{stamp}",
+    "--isolation",
+    "container",
+    "--escape",
+    "--min-probes",
+    "38"
+   ]
+  },
+  {
+   "name": "grade_noop_three_layers",
+   "tier": "container",
+   "timeout_s": 3600,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop_hanoi.sandbox.launch",
+    "task",
+    "--mode",
+    "grade",
+    "--episodes",
+    "3",
+    "--name",
+    "pipeline-grade-noop-{stamp}",
+    "--agent-dir",
+    "humanoid/g1_tabletop_hanoi/sandbox/agent_sdk/examples",
+    "--",
+    "python",
+    "noop.py"
+   ],
+   "run": "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-grade-noop-{stamp}",
+   "expect": {
+    "void": false,
+    "score": 0.0,
+    "success_rate": 0.0
+   }
+  },
+  {
+   "name": "grade_noop_three_layers_integrity",
+   "tier": "container",
+   "args": [
+    "-m",
+    "infra.sandbox.run_checks",
+    "humanoid/g1_tabletop_hanoi/sandbox/runs/pipeline-grade-noop-{stamp}",
+    "--isolation",
+    "container",
+    "--episodes",
+    "3"
+   ]
+  }
+ ]
+}

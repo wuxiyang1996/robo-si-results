@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="The isolated sandbox of Embodied Terminal-Bench (robo-si): the agent is isolated from the environment and sees only robot sensors (it may call L1–L3 and similar tools); the environment executes actions and cannot be edited; a reference expert solution proves solvability and validates the verifier, and official trajectories are kept and can be split into subgoals; the verifier is isolated from the agent, scores by stage, and monitors guard against reward hacking and fabricated inputs or outputs. Modelled on Terminal-Bench (Harbor) and EmbodiedSWE." name="description"/>
+<title>Isolated Sandbox</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/sandbox-zh.html">中文</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">Task infrastructure · Isolated sandbox</p>
+<h1>The agent only sees <span class="nm">its sensors</span>;<br/>scoring stays on the environment side.</h1>
+<p class="lead">Every task is evaluated in the same kind of isolated sandbox, modelled on Terminal-Bench (the Harbor format) and EmbodiedSWE. This page sets out the sandbox's four requirements and implementation principles. The H1 sandbox is the reference implementation (<a href="/robo-si-results/humanoid/g1_support_retrieval/sandbox/README.md">H1 sandbox README</a>); its progress is on the <a href="/robo-si-results/infra/status-en.html">implementation status</a> page. The verifier, monitors and fabrication checks are on <a href="/robo-si-results/infra/verifier-en.html">scoring and verification</a>.</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>Contents</h3>
+<ol class="toc">
+<li><a href="#reqs">01 Four requirements</a></li>
+<li><a href="#arch">02 Structure and lifecycle</a></li>
+<li><a href="#iso">03 Isolation and perception</a></li>
+<li><a href="#env">04 The environment acts; the world cannot be edited</a></li>
+<li><a href="#feedback">05 Feedback: to the agent, and private</a></li>
+<li><a href="#agent">06 The agent side</a></li>
+<li><a href="#realism">07 Multiple robots and realistic execution</a></li>
+</ol></div>
+</div></div><section id="sandbox-delivery"><div class="wrap"><h2>14-task sandbox delivery and checks</h2><p>14/14 provide launchers, SDKs, isolated execution, trusted records and verification. Unit checks: 14/14; Windows container sensor/action smokes: 14/14. The current dual-G1 H3, DiskFlip and Sokoban also pass 3/3 short runs on Ubuntu 22.04 under WSL2 on the same machine; added escape checks: 5/5.</p><p>Short runs intentionally score zero and validate the interface/execution path, not task success. Existing complete reference witnesses remain separate. Full expert replay through the new adapters, a second physical machine and formal admission are not inferred. Sokoban full push-only validity remains uncertified, task_success=null.</p><p><a href="/robo-si-results/infra/sandbox/DELIVERY-14.md">Setup and usage</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">Per-task checks</a> · <a href="/robo-si-results/infra/sandbox-delivery/reference-packages.json">14 full reference packages</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">Download complete sandbox workspace</a></p></div></section>
+<section class="tinted" id="reqs"><div class="wrap">
+<p class="kicker">01 · Four requirements</p>
+<h2>What the sandbox must guarantee</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Requirement</th><th>Details</th></tr></thead>
+<tbody>
+<tr><td><strong>1 Agent and environment are isolated.</strong> The agent gets only the robot's RGB / LiDAR and other onboard sensors, and is strictly cut off from everything else; it decides and chooses actions itself; it may call the L1–L3 solvers and tools such as VLA or IK/FK (where the task allows), using only its own sensor results; it may use designated skills through the skill interface, preferably skills and rollouts it produced itself; or it may plan trajectories with its own coding ability.</td><td><a href="#iso">Section 03</a></td></tr>
+<tr><td><strong>2 The environment executes actions; the world cannot be edited.</strong> The agent can never force changes to the environment (object positions, sizes, masses, friction and so on).</td><td><a href="#env">Section 04</a></td></tr>
+<tr><td><strong>3 A reference expert solution and the official trajectories.</strong> A reference expert solution (the existing expert, which reads ground truth and plans with IK/FK) proves the problem is solvable and validates the verifier; official trajectories are kept, may use the current settings and be split into subgoals; the agent may never use these privileged settings.</td><td><a href="/robo-si-results/infra/acceptance-en.html#expert">Section 01 of task acceptance</a></td></tr>
+<tr><td><strong>4 The verifier is isolated from the agent and cannot be hacked.</strong> At minimum, verification and scoring are kept apart from the agent; scoring is by stage; monitors guard against reward hacking and against the agent fabricating outputs or inputs.</td><td><a href="/robo-si-results/infra/verifier-en.html#placement">Section 02 of scoring and verification</a>; <a href="/robo-si-results/infra/verifier-en.html">scoring and verification</a></td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="arch"><div class="wrap">
+<p class="kicker">02 · Structure and lifecycle</p>
+<h2>Two sides, one channel, one control pipe</h2>
+<pre><code>agent container (Linux; uid 1000, read-only root, all capabilities dropped, internal network)
+  /opt/g1sandbox  read-only: SDK, L1 weights, L2/L3 solvers, robot model, examples
+  /workspace      the only writable directory (a fresh copy per graded episode)
+        |  RPC: token auth, length-prefixed JSON, no pickle, 8 whitelisted methods
+        |  only exit: socat forwarder -&gt; environment port (optional: squid allowlist -&gt; LLM API)
+        v
+environment side (trusted; an env container on a Linux server, a worker process on the Windows host here)
+  world        built from a sealed scene before the agent connects; no way to edit it afterwards
+  sensors      mounted on the robot only: RGB-D, LiDAR, IMU, joints, hand and foot contact forces
+  limits       commands validated and clipped to joint, velocity, gain and torque limits
+  recorder     privileged state log, per-object contacts, full-body snapshots, top-down video, request log
+  monitors     interface, world integrity, physical anomalies, command patterns, predicate anomalies, resources
+  verifier     reads only the records above -&gt; verdict.json
+        ^
+        |  control pipe (the worker's stdin, held only by the launcher): next episode / shut down
+launcher (trusted): builds the scene, issues the token, starts the agent container,
+                    records the agent's output outside the container, re-runs the delivered program per episode</code></pre>
+<h3>Deploying the environment side</h3>
+<p>Two deployments give the same isolation: on this machine (a Windows workstation) the environment side is a trusted worker process on the host, because Genesis and Isaac rendering only get llvmpipe inside WSL2 containers; on a Linux GPU server the whole environment side can also run as its own env container. The verifier lives on the environment side too; see <a href="/robo-si-results/infra/verifier-en.html#placement">section 02 of scoring and verification</a>.</p>
+<h3>Lifecycle of one evaluation</h3>
+<ol class="steps">
+<li><strong>Development session.</strong> The launcher builds and seals the scene from a private seed, then starts the agent container. The agent iterates in development mode and may reset a limited number of times to the same sealed initial state.<span class="out">Recorded: request log, state log, video, agent output.</span></li>
+<li><strong>Delivery.</strong> The agent leaves a control program in its workspace that only calls the SDK.</li>
+<li><strong>Graded episodes.</strong> The trusted side draws N new episodes from private seeds. In each, the delivered program runs once from a fresh copy of the workspace in a new agent container (no LLM, no reset, a wall-clock budget). Only after the program ends does the launcher signal the next episode over the control pipe; an episode that never ran scores 0.</li>
+<li><strong>Automatic verdict.</strong> The verifier reads the environment-side records and monitor alarms, gives every episode its stage credits, success and void status, and aggregates.</li>
+<li><strong>Result.</strong> The automatic verdict is the final result; flagged episodes are collected for the task maintainers. The human check is for the task and happens when it is admitted (see <a href="/robo-si-results/infra/acceptance-en.html#humancheck">section 05 of task acceptance</a>).</li>
+</ol>
+</div></section>
+<section class="tinted" id="iso"><div class="wrap">
+<p class="kicker">03 · Isolation and perception</p>
+<h2>Requirement 1: the agent gets only the robot's own sensors</h2>
+<h3>The agent container</h3>
+<ul class="check">
+<li>User uid 1000, read-only root filesystem, <code>--cap-drop ALL</code>, <code>no-new-privileges</code>, process, memory and CPU limits.</li>
+<li>Only two things are mounted: the read-only bundle built into the image (SDK, L1 weights, L2/L3 solvers, robot model, examples) and the writable <code>/workspace</code>.</li>
+<li>Bundles and images are named by content hash; a static test checks that the bundle contains only these items and no trusted code, scenes, logs or reference solutions.</li>
+<li>The network is <code>--internal</code>: the only exit is a socat forwarder to the environment port; when an LLM is needed, squid allows only the LLM API's domain.</li>
+</ul>
+<p>What the agent gets and never gets is in <a href="#feedback">section 05</a>.</p>
+<p style="margin-top:12px">Sensor mounts come from the robot's official model (for the G1, Unitree's official URDF). A scene may disable a sensor, but joint proprioception cannot be disabled. Sensors the simulator lacks must be emulated and documented: Genesis 1.4.3 has no ray sensor, so the LiDAR is assembled from four depth cameras.</p>
+<h3>Decisions and actions: call tools, or write your own</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Level</th><th>What it is</th><th>Inputs</th></tr></thead>
+<tbody>
+<tr><td>L1</td><td>GR00T WBC: standing and walking policies; given a body-frame velocity command and pelvis height, they output leg and waist joint targets</td><td>Pelvis IMU and joint readings; no base linear velocity, no world coordinates</td></tr>
+<tr><td>L2</td><td>Target-point trajectory planning: IK on the robot's own model, then collision-checked interpolation or RRT</td><td>Current joint angles, IMU attitude; obstacles estimated by the agent from depth or LiDAR and added to the model</td></tr>
+<tr><td>L3</td><td>Intermediate points with brute-force IK/FK: the agent supplies waypoints, solved segment by segment and joined</td><td>As L2</td></tr>
+<tr><td>VLA</td><td>A vision-language-action model (where the task provides one): onboard camera images, proprioception and the instruction in, actions out</td><td>Onboard cameras and joint readings</td></tr>
+<tr><td>Own code</td><td>The coding agent writes its own perception, planning and control and sends joint commands directly</td><td>The same: sensor readings and the robot model only</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:10px"><strong>Partly allowed, own sensors only.</strong> Each task declares in its task card which tools are allowed (L1, L2, L3, VLA, IK/FK); tools that are not allowed are left out of the bundle, and the agent may still write its own. Allowed tools run on the agent side, where no ground truth exists, so their only inputs are the agent's own sensor readings and the robot model; this is enforced by structure, not by rules. Tools give the agent no extra information or privileges, and there are no task-specific primitives. The reference expert solution may read ground truth (<a href="/robo-si-results/infra/acceptance-en.html#expert">section 01 of task acceptance</a>); the agent may not.</p>
+<h3>Skill interface: designated skills only, preferably the agent's own</h3>
+<p>Task execution keeps a skill interface: the agent may use skills, or none at all. Usable skills come from only two sources, both designated in advance:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Source</th><th>What it is</th><th>How it is designated</th></tr></thead>
+<tbody>
+<tr><td>Provided by the task</td><td>Skills listed in the task card, such as L1 standing and walking, plus execution helpers such as trajectory tracking and posture holding. No task-specific macros, nothing that gives away the route</td><td>Listed in the task card, built into the bundle and hashed by content; anything not listed stays out of the bundle</td></tr>
+<tr><td>Produced by the agent (preferred)</td><td>Skills the agent writes and tunes itself during development, and the rollouts it ran itself (observation and command sequences) as references for them: replaying keyframes with closed-loop correction, fitting parameters, training small models offline and so on</td><td>Kept in the workspace and registered in a manifest: skill name, entry point, code hash, which rollouts it references; every rollout carries the observation digests issued by the environment, which prove where it came from</td></tr>
+</tbody>
+</table></div>
+<ul class="check" style="margin-top:12px">
+<li><strong>Not allowed.</strong> The reference expert solution and official trajectories (including their recordings), other agents' outputs, pretrained policies downloaded from the internet, task-specific macros. Network isolation and the bundle manifest block most of these by structure; the provenance check covers the rest.</li>
+<li><strong>Provenance check.</strong> The environment side records a digest of every observation in the hash-chained request log. The agent's rollouts reference these digests; before scoring, the trusted side checks every rollout in the manifest against the log to confirm it came from this agent's own development sessions. Anything that does not match is recorded as a fabricated rollout and voids the run automatically.</li>
+<li><strong>At grading.</strong> The delivered program ships with its skill library and rollouts; every graded episode gets a fresh copy, and nothing written during one graded episode reaches the next. Initial states are random, so rollouts can only serve as references; plain replay scores nothing.</li>
+<li><strong>Reporting.</strong> Results state which skills the delivered program registered and where each came from (provided by the task / produced by the agent).</li>
+</ul>
+</div></section>
+<section id="env"><div class="wrap">
+<p class="kicker">04 · The environment acts; the world cannot be edited</p>
+<h2>Requirement 2: there is no way in to change the world</h2>
+<p>The agent can call only eight methods: <code>info</code>, <code>status</code>, <code>observe</code>, <code>command</code>, <code>command_sequence</code>, <code>declare_infeasible</code>, <code>finish</code>, and <code>reset</code> in development mode only. What each returns is in <a href="#feedback">section 05</a>.</p>
+<p style="margin-top:10px">Unknown methods, wrong tokens and malformed frames are refused, recorded as violations, and void the whole run (VOID). The worker serves one session at a time.</p>
+<h3>How commands are handled</h3>
+<ul class="check">
+<li>One command per joint (<code>mode</code>, <code>q</code>, <code>dq</code>, <code>kp</code>, <code>kd</code>, <code>tau</code>, following Unitree LowCmd): motor mode recomputes PD plus feed-forward torque every physics substep; servo mode uses the simulator's implicit PD.</li>
+<li>Non-finite values, wrong shapes and extra fields are refused.</li>
+<li><code>q</code> is clipped to joint limits, <code>dq</code> to velocity limits, <code>kp</code> / <code>kd</code> to gain limits, <code>tau</code> to nominal torque; the applied torque is further clipped to this episode's actual limit (including an undisclosed strength factor).</li>
+<li>The simulation advances only during command calls; the agent's thinking costs no simulated time.</li>
+</ul>
+<h3>What does not exist</h3>
+<ul class="check cross">
+<li>Any method that sets an object's position, orientation, size, mass or friction.</li>
+<li>External base forces, attaching objects to the hands, changing gravity, the time step or physics options.</li>
+<li>Resetting to an arbitrary state; there is no <code>reset</code> in evaluation or grading.</li>
+</ul>
+<h3>Integrity checks</h3>
+<ul class="check">
+<li>The scene is built from a sealed scene file before the agent connects; connecting before sealing voids the run.</li>
+<li>Masses and friction of all rigid bodies are hash-checked every 500 control steps; any change voids the run.</li>
+<li>The verifier detects teleports (a displacement between two control steps implying &gt;20 m/s).</li>
+<li>Escape probes (36 for H1) try to break out from inside the container as the agent; all behave as expected, 17 are recorded as violations and the run is VOID.</li>
+</ul>
+</div></section>
+<section class="tinted" id="feedback"><div class="wrap">
+<p class="kicker">05 · Feedback: to the agent, and private</p>
+<h2>The environment container gives only what the robot itself can sense</h2>
+<p>Feedback has three tiers: what the agent gets over RPC during a session; what stays on the environment side and the agent never gets; and what is published after an evaluation. The principle: feedback to the agent is what a real robot could also get; nothing related to scoring is given.</p>
+<h3>1 Feedback to the agent (during the session, over RPC)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Source</th><th>What it gives</th></tr></thead>
+<tbody>
+<tr><td><code>info</code></td><td>The instruction; capability information per disclosure tier; budgets (simulated time, observations, resets, steps per call); robot specification (joint names, limits, velocity and torque limits, gain limits, control period, the two command modes); sensor specifications</td></tr>
+<tr><td><code>observe</code></td><td>Onboard sensor readings: joints, IMUs, RGB-D, LiDAR, hand and foot contact forces; each call uses one observation from the budget</td></tr>
+<tr><td><code>command</code> / <code>command_sequence</code></td><td>Proprioception after execution (optionally per step) and status; how many values per field were clipped to the nominal limits. The applied torque is in the joints' <code>tau_est</code>, so the agent can discover this episode's actual strength limit, as on a real robot</td></tr>
+<tr><td><code>status</code></td><td>Simulated time, simulated time left, observations and resets left, whether the episode is over and why (finished, declared infeasible, fallen, time limit, reset, closed)</td></tr>
+<tr><td>Errors</td><td>Invalid parameters: the error type and reason, with no world information. Internal environment errors: only "internal error (logged on the trusted side)"</td></tr>
+<tr><td>Out-of-bounds requests</td><td>Unknown methods, wrong tokens, malformed frames: a bare refusal, recorded as a violation on the trusted side; the agent is not told that the run is now void</td></tr>
+<tr><td><code>reset</code> (development mode only)</td><td>Back to this episode's sealed initial state, a limited number of times</td></tr>
+</tbody>
+</table></div>
+<h3>2 Private feedback (environment side only)</h3>
+<p>Used only for scoring, task checks and maintenance; the agent never gets it, during or after the session:</p>
+<ul class="check">
+<li>The privileged state log: object poses and velocities at every control step, contact forces per object split into hand, foot and other; 10 Hz full-body snapshots.</li>
+<li>The top-down video.</li>
+<li>The request log: every call, clipping records, violations (later with a hash chain and observation digests).</li>
+<li>Monitor alarms and flags.</li>
+<li>Scoring results: automatic score, stage timelines, success, void status and reasons.</li>
+<li>Rollout provenance results, task check records, sealed seeds, reference solutions and recordings.</li>
+</ul>
+<h3>3 What is published after an evaluation</h3>
+<p>Aggregate results, cost and versions; for private tasks no per-episode videos, logs or predicate details. Details in <a href="/robo-si-results/infra/protocol-en.html#leakage">section 07 of the evaluation protocol</a>.</p>
+<h3>Feedback deliberately withheld</h3>
+<ul class="check cross">
+<li>Scores, stage progress, success, intermediate predicate states; not even after <code>finish()</code>.</li>
+<li>Monitor alarms, flags, void status.</li>
+<li>Object poses, sizes, masses, friction; the difficulty layer; seeds; whether a declaration of infeasibility was right.</li>
+</ul>
+<p style="margin-top:12px">Why: judging whether the task is done is itself part of what is tested, and the agent has to verify it with its own sensors; a success signal would let it probe the verifier until the signal flips. For comparison, EmbodiedSWE feeds the scene's own success check back to the agent during development, while Terminal-Bench shows no test results. Any extra feedback such as a success signal can only be a separate track: rate-limited, reported separately and never mixed into the main leaderboard.</p>
+</div></section>
+<section id="agent"><div class="wrap">
+<p class="kicker">06 · The agent side</p>
+<h2>What the agent gets at the start, what it may use, how it delivers</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>Rule</th></tr></thead>
+<tbody>
+<tr><td>At the start</td><td>The instruction and capability information (via <code>info</code>); the SDK documentation (agent guide), examples and robot model in the bundle; the budgets</td></tr>
+<tr><td>Agent framework</td><td>Any coding agent, running inside the agent container; model APIs only through the allowlist proxy. Frameworks, models and versions used for official results are pinned and reported</td></tr>
+<tr><td>Tools in the container</td><td>A shell and Python 3.12 with numpy, scipy, mujoco and onnxruntime preinstalled; no internet, so no pip install; extra dependencies must ship in the task's bundle</td></tr>
+<tr><td>Delivery</td><td>An agreed entry point <code>solve.py</code> in the workspace that only calls the SDK, delivered with the agent's own skill library and rollouts. The trusted side snapshots the workspace at budget points (<a href="/robo-si-results/infra/protocol-en.html#snapshots">section 02 of the evaluation protocol</a>)</td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section class="tinted" id="realism"><div class="wrap">
+<p class="kicker">07 · Multiple robots and realistic execution</p>
+<h2>Two things new tasks will need that do not exist yet</h2>
+<h3>Multi-robot tasks (M1–M4)</h3>
+<ul class="check">
+<li><strong>Default: one agent, one session, several robots.</strong> Commands and observations are namespaced per robot, and each robot gets only its own onboard sensors. This keeps the test about one coding agent and is the simplest.</li>
+<li><strong>Optional: one agent per robot.</strong> Each agent has its own session and token and only its own robot's sensors; agents talk only through a message channel provided by the environment, logged on the trusted side, with bandwidth and latency stated in the task card. Reported as a separate track.</li>
+<li>The need for cooperation is verified first, as the task design guide requires: one robot alone cannot do it.</li>
+</ul>
+<h3>Realistic actuation and sensing</h3>
+<ul class="check">
+<li>Today commands take effect synchronously and immediately at the 50 Hz control step; the IMU comes from finite differences plus noise; cameras and LiDAR have no latency.</li>
+<li>Suggested: control latency and jitter, occasional dropped commands, sensor latency and timestamps, randomised per episode within public ranges (<a href="/robo-si-results/infra/task-design-en.html#random">section 04 of the task design guide</a>), so programs written in simulation are closer to what a real robot needs.</li>
+<li>These are simulation settings of the task: stated in the task card, fixed during evaluation, and changing them bumps the task's major version (<a href="/robo-si-results/infra/protocol-en.html#versions">section 06 of the evaluation protocol</a>).</li>
+</ul>
+</div></section>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · Isolated sandbox · 2026-10-19 · <a href="/robo-si-results/infra/sandbox-zh.html" hreflang="zh-CN" lang="zh-CN">中文</a> · <a href="/robo-si-results/infra/contribute-en.html">Home</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><title>Disc manipulation family · 9 main tasks</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main{padding:36px 0 64px}h2{margin-top:36px}td,th{vertical-align:top;overflow-wrap:anywhere}p,li{line-height:1.8}.table-wrap{overflow-x:auto;margin:18px 0}table{min-width:860px}nav{display:flex;gap:20px;flex-wrap:wrap}</style><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">Skip to content</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/task-disk-rotation-family-zh.html">中文</a></div></header><main class="wrap" id="main"><h1>DR: Material-Aware Disc Manipulation</h1><!-- dr-release-supplement:start --><aside style="padding:14px 18px;margin:18px 0;border-left:4px solid #2861a0;background:#eef5ff"><strong>0.2.0-rc1</strong> · Adds an isolated interface, 42 declared perturbation/control runs and 3 separate follow-ups. Main benchmark admission still requires human review and independent evaluation. <a href="/robo-si-results/infra/task-disk-rotation-release-en.html">Release evidence and downloads</a></aside><!-- dr-release-supplement:end -->
+<p>2026-10-29 · All nine primary tasks pass exact-configuration simulation qualification: two normal-reset runs, independent actuator replay, hierarchical plans, continuous trajectories, physics audits and same-run video. DR-I01 remains excluded; untested bodies, tools and generalization claims remain unknown.</p>
+<p><a href="/robo-si-results/infra/planning/disk-rotation-family/README.md">中文</a> · <a href="/robo-si-results/infra/planning/disk-rotation-family/README-en.md">English</a> · <a href="/robo-si-results/infra/planning/disk-rotation-family/task-design.json">JSON</a></p>
+<p>Rotate a freely resting disc to the target orientation, control centre drift, then withdraw and leave it stable. No required tool, arm count or recontact count. Keep table support; lifting, welding, object-pose writes and externally applied object forces are not solutions.</p>
+<p><a href="/robo-si-results/infra/planning/disk-rotation-family/EXECUTION-en.md">执行证据汇总 / Execution evidence</a> · <a href="/robo-si-results/infra/disk-family-evidence/monitor.json">All attempts</a> · <a href="/robo-si-results/infra/disk-family-evidence/artifact-validation.json">Source and video validation</a></p>
+<h2>Main task list</h2>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Group</th>
+<th>Tier</th>
+<th>Task</th>
+<th>Scene and purpose</th>
+<th>Priority bodies</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-01-en.html">DR-01</a></td>
+<td>Original</td>
+<td>L1</td>
+<td>Uniform disc rotation</td>
+<td>Preserve 0.1.0: a uniform disc, ±30°, contact acquisition, rotation and stable release.</td>
+<td>Dual Panda</td>
+<td>accepted_simulation_scope</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-02-en.html">DR-02</a></td>
+<td>Contact reasoning</td>
+<td>L2</td>
+<td>Select contacts on a segmented rim</td>
+<td>Observe or probe heterogeneous rim sectors to find useful contacts. Effective and ineffective initial sectors are paired configurations; continuous sliding to a useful sector is legal.</td>
+<td>Dual Panda</td>
+<td>accepted_simulation_scope</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-03-en.html">DR-03</a></td>
+<td>Contact reasoning</td>
+<td>L2</td>
+<td>Balance rotational resistance and centre drift</td>
+<td>Vary rim and support friction independently; distinguish slip, rotational resistance and centre drift, then adjust force and motion. Start with a uniform rim to isolate this problem.</td>
+<td>Dual Panda</td>
+<td>accepted_simulation_scope</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-04-en.html">DR-04</a></td>
+<td>Contact reasoning</td>
+<td>L3</td>
+<td>Rotate through restricted approach sectors</td>
+<td>Fixed table obstacles restrict continuous end-effector travel while leaving candidate contact sectors. Plan withdrawal, clearance and further rotation; recontact necessity is unverified.</td>
+<td>Dual Panda</td>
+<td>accepted_simulation_scope</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-05-en.html">DR-05</a></td>
+<td>Body–scene compatibility</td>
+<td>L3</td>
+<td>Single-arm and dual-arm contact roles</td>
+<td>Compare segmented single-arm pushing and coordinated dual-arm manipulation in the same world; assess torque and centre control without assuming single-arm infeasibility.</td>
+<td>Single Panda / Dual Panda</td>
+<td>accepted_simulation_scope</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-06-en.html">DR-06</a></td>
+<td>Body–scene compatibility</td>
+<td>L3</td>
+<td>Change approach direction through mobility</td>
+<td>Some sectors lie outside the initial workspace. A mobile robot may establish another work position; a fixed arm may use other legal routes. Verify reachability separately.</td>
+<td>Stretch 3 / Single Panda</td>
+<td>accepted_simulation_scope</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-07-en.html">DR-07</a></td>
+<td>Body–contact compatibility</td>
+<td>L3</td>
+<td>Select pushing or grasping contacts</td>
+<td>Compare side pushing and side pinching in a shared reachable region while keeping the disc table-supported. Use the same G1 body and base constraints, changing the hand and control mapping.</td>
+<td>G1 + Dex3 / G1 + Inspire five-finger hand</td>
+<td>accepted_simulation_scope</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-08-en.html">DR-08</a></td>
+<td>Body–tool compatibility</td>
+<td>L3</td>
+<td>Select optional contact aids</td>
+<td>Offer high-friction pads or handled contact blocks; test acquisition, stable use, tangential-force transfer and withdrawal. Direct completion is legal; aids must change contact physics.</td>
+<td>G1 + Dex3 / G1 + Inspire five-finger hand / Stretch 3</td>
+<td>accepted_simulation_scope</td>
+</tr>
+<tr>
+<td><a href="/robo-si-results/infra/task-dr-09-en.html">DR-09</a></td>
+<td>Cooperation</td>
+<td>L3</td>
+<td>Heterogeneous cooperative rotation</td>
+<td>A fixed arm and mobile manipulator allocate drift control, pushing and repositioning, then both withdraw. Legal single-robot solutions count; cooperation benefit is unverified.</td>
+<td>Panda + Stretch 3</td>
+<td>accepted_simulation_scope</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Conditional control (outside the nine main tasks)</h2>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Group</th>
+<th>Tier</th>
+<th>Task</th>
+<th>Scene and purpose</th>
+<th>Priority bodies</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DR-I01</td>
+<td>Conditional control</td>
+<td>—</td>
+<td>No feasible route with available bodies and aids</td>
+<td>Require exclusion of all legal routes and a feasible twin changing only a critical capability or aid. Withdraw safely and leave the disc stable before reporting inability; absent evidence remains unknown.</td>
+<td>To be bound</td>
+<td>Design; unverified</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Difficulty, configurations and deduplication</h2>
+<ul>
+<li>L1: basic contact execution. L2: infer contact conditions and select a method. L3: adapt body capabilities, contact switching, aids or cooperation. These are design targets pending measurement.</li>
+<li>Count independent manipulation problems. Embodiment, rotation direction/angle, materials, seeds, disclosure and ablations are configurations, not a Cartesian task expansion.</li>
+<li>Record known parameters, unknown compatibility and partly hidden physics separately. Hide truth from the evaluated agent, not from author configurations and audit records.</li>
+<li>DR-02 fixes support conditions to test contact selection; DR-03 starts with a uniform rim to test resistance and drift. Merge DR-04/06 or demote one to a configuration if they expose only the same workspace problem.</li>
+<li>DR-05 varies arm count; DR-07 varies hands on the same body. DR-06 changes base, end effector and workspace together and measures overall embodiment adaptation.</li>
+<li>Verify the existing Stretch 3 asset first; Stretch 4 needs separate validation. The existing Panda reference has spherical pushers and does not establish grasping capability.</li>
+</ul>
+<h2>Shared scoring and evidence boundaries</h2>
+<p>The primary metric is complete valid success. Accept every legal solution satisfying the goal and public constraints, including no-tool, no-recontact and single-arm solutions. Report time, probes, contact switches, centre drift, peak force, cooperation and aid use separately; they do not compensate for failure.</p>
+<p>DR-01 preserves 0.1.0 configurations, scoring and evidence: three complete executions for each of two exact configurations (6/6) and two independent action replays (2/2). Repeats do not establish random-domain performance. On the nominal case, fixed_contacts succeeds in 18.52 s versus 43.48 s for the full expert. It still moves around the rim but does not withdraw to recontact. Necessary recontact, indispensable dual-arm use and heterogeneous-cooperation benefits remain unproved.</p>
+<p>New scenes start from the original criteria: final heading error ≤3°, maximum/final centre drift ≤30/10 mm, two-second stable release and tilt ≤5°, with the original speed/force definitions and 120 s budget as initial candidates. Declare and freeze any extension changes before execution; do not rewrite historical results. Verify actuator and stability constraints per body.</p>
+<p>Configure rim friction, effective bottom–table friction, mass and inertia independently. Genesis 1.4.3 takes the larger coefficient of a contact pair; a high-friction pusher can mask a low-friction rim. Verify the actual contact pairs. Sectors rotate with the disc and aids transmit real contact forces. Initially fix geometry, mass and inertia.</p>
+<p>Separate privileged state-feedback experts from perception agents. Compare fixed_contacts, single_arm, the original full expert and an adaptive contact expert as policies, not extra tasks. One failure, timeout or unsuccessful IK search is not a global infeasibility certificate. DR-I01 needs all-route evidence and a feasible twin before scoring correct exits.</p>
+<h2>Development order and current status</h2>
+<p>Start with DR-01–04, bind DR-05–08 configurations after body-compatibility probes, then address DR-09 and DR-I01. Preserve goals, candidate routes, capability boundaries, evidence status and observed strategies. Unverified entries remain unknown; draft code is not a reference witness.</p>
+<p>Implementation resumed under the subsequent request, with per-task expert attempts and controls. See the execution summary and task pages for retained build errors, physical failures and complete successes. Unverified G1, single-arm and mobile routes remain unknown. DR-I01 is not declared infeasible without an all-route certificate.</p>
+<h2>References</h2>
+<p><a href="/robo-si-results/infra/task-disk-rotation-en.html">Original task</a> · <a href="/robo-si-results/infra/planning/task-families-en.md">Family overview</a> · <a href="/robo-si-results/infra/planning/assembly-family/README-en.md">Assembly suite</a> · <a href="/robo-si-results/infra/task-space-extraction-en.html">Constrained extraction</a></p>
+<h2>Current execution and qualification</h2>
+<ul>
+<li><a href="/robo-si-results/infra/task-dr-01-en.html">DR-01</a>: accepted_simulation_scope · rc01 · 43.480000000000004 s.</li>
+<li><a href="/robo-si-results/infra/task-dr-02-en.html">DR-02</a>: accepted_simulation_scope · rc01 · 60.5 s.</li>
+<li><a href="/robo-si-results/infra/task-dr-03-en.html">DR-03</a>: accepted_simulation_scope · rc01 · 45.04 s.</li>
+<li><a href="/robo-si-results/infra/task-dr-04-en.html">DR-04</a>: accepted_simulation_scope · rc03 · 78.54 s.</li>
+<li><a href="/robo-si-results/infra/task-dr-05-en.html">DR-05</a>: accepted_simulation_scope · rc01 · 98.5 s.</li>
+<li><a href="/robo-si-results/infra/task-dr-06-en.html">DR-06</a>: accepted_simulation_scope · a12 · 114.22 s.</li>
+<li><a href="/robo-si-results/infra/task-dr-07-en.html">DR-07</a>: accepted_simulation_scope · rc01 · 85.0 s.</li>
+<li><a href="/robo-si-results/infra/task-dr-08-en.html">DR-08</a>: accepted_simulation_scope · a06 · 85.0 s.</li>
+<li><a href="/robo-si-results/infra/task-dr-09-en.html">DR-09</a>: accepted_simulation_scope · rc03 · 63.32 s.</li>
+</ul>
+<p><a href="/robo-si-results/infra/disk-family-evidence/acceptance.json">Full qualification report</a> · <a href="/robo-si-results/infra/disk-family-evidence/acceptance-contract.json">Predeclared criteria</a></p>
+<p>Fixed contacts still succeed on DR-02/03. DR-04 only distinguishes the tested controllers and obstacle configuration. Both single and dual arms solve DR-05. Five-finger G1 hands, successful aid use, cooperation necessity and randomized-domain generalization remain unverified. Failed trials are not infeasibility proofs.</p></main></body></html>

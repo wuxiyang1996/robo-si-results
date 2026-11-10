@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>H4 · 搭板过缺口 · 参考设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main.wrap{padding-block:40px;overflow-wrap:anywhere}h2{margin-top:44px}h3{margin-top:30px}pre{overflow:auto;background:var(--panel);padding:18px;border-radius:10px}th,td{min-width:100px}h1{font-size:clamp(28px,5vw,44px)}</style><meta content="H4 · 搭板过缺口 · 参考设计 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><main class="wrap"><nav><a href="/robo-si-results/infra/reference-designs-zh.html">14 项参考解设计</a> · <a href="/robo-si-results/infra/reference-designs/H4.md">Markdown 源文档</a> · <a href="/robo-si-results/infra/task-h4-zh.html">任务页面</a></nav><h1 id="h4">H4 · 搭板过缺口：参考解设计</h1>
+<p>已有声明范围内的参考执行见证；本文补齐统一设计说明。本次新增物理运行：0。</p>
+<h2 id="_1">设计思路</h2>
+<p>先用板形成跨越路径，再过桥取物并返回。板两端的支撑及承载时的稳定性是关键；成功记录与历史源码的对应缺口仍保留。</p>
+<h2 id="_2">选定参考与范围</h2>
+<p>见证：<strong>v42-L1-s101</strong>。范围：已授权的第一层参考资料。</p>
+<p>第一层 11/14，三次失败已获作者接受并保留。已完成本次交付并发布；历史第二、三层结果单独留作附录。</p>
+<p><a href="/robo-si-results/infra/website-status-evidence/a8546201cf67a83b-record.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/H4.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p>
+<h2 id="_3">高层计划与关键状态</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>布桥</td>
+<td>H4.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>空载过桥</td>
+<td>H4.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>取得目标</td>
+<td>H4.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>负载返回</td>
+<td>H4.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>放置交付</td>
+<td>H4.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>长板可操作且缺口边缘可观测</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>桥板跨越缺口并独立稳定</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>双足到远平台且稳定</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>目标离开原支撑且受控</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>机器人与目标回到近平台</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>真实目标边界在目标区、释放且稳定</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_4">低层动作、接触支撑与轨迹对应</h2>
+<p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h3 id="h4k01">H4.K01 · 接近长板、接触翻转并放平</h3>
+<p>入口：长板可操作且缺口边缘可观测。出口：桥板跨越缺口并独立稳定。</p>
+<p>局部检查：板端搭接、水平、摩擦抗滑与机器人操板能力。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K01.A01</td>
+<td>接近板尾并预成形手部</td>
+<td>板→原支撑；足→地面</td>
+<td>手与板尾距离</td>
+<td>e0000: local:push; global_offset_unresolved [3.6, 3.6] s; e0001: local:push; global_offset_unresolved [3.6, 7.6] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K01.A02</td>
+<td>双手推转长板</td>
+<td>手→板；板端受支撑</td>
+<td>板倾角、双手力与板端位置</td>
+<td>e0002: local:push; global_offset_unresolved [7.62, 8.62] s; e0003: local:push; global_offset_unresolved [8.64, 16.44] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K01.A03</td>
+<td>收臂、释放并检查两端搭接</td>
+<td>板→近远平台</td>
+<td>双端接触、桥面姿态</td>
+<td>e0004: local:push; global_offset_unresolved [16.52, 18.72] s; e0005: local:push; global_offset_unresolved [18.82, 20.82] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h4k02">H4.K02 · 选足点、依次踏板和上远平台</h3>
+<p>入口：两端支撑成立且桥面可用。出口：双足到远平台且稳定。</p>
+<p>局部检查：足底包络、桥板受载响应和跌落边界。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K02.A01</td>
+<td>对齐桥前站位并选足点</td>
+<td>足→近平台；板两端受支撑</td>
+<td>足点与板边距离</td>
+<td>e0006: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K02.A02</td>
+<td>依次移重心、抬脚、落在桥面</td>
+<td>单足→平台/桥板</td>
+<td>足接触、板端支撑、碰撞</td>
+<td>e0006: untimed_summary None s; e0007: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K02.A03</td>
+<td>跨到远平台并稳定</td>
+<td>双足→远平台</td>
+<td>脚已离桥、身体稳定</td>
+<td>e0006: untimed_summary None s; e0007: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h4k03">H4.K03 · 接近把手或有效抓持面并提起</h3>
+<p>入口：机器人在远平台，目标可达。出口：目标离开原支撑且受控。</p>
+<p>局部检查：所选发布资产的真实抓持面、负载与平衡。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K03.A01</td>
+<td>接近目标、摆臂到抓取上方</td>
+<td>目标→原支撑</td>
+<td>手与把手间隙</td>
+<td>e0012: local:pickup; global_offset_unresolved [0.8, 3.4] s; e0013: local:pickup; global_offset_unresolved [3.6, 4.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K03.A02</td>
+<td>屈指、下探并滑入抓持位置</td>
+<td>目标→原支撑；手接触</td>
+<td>手指与把手接触</td>
+<td>e0014: local:pickup; global_offset_unresolved [4.6, 5.4] s; e0015: local:pickup; global_offset_unresolved [5.6, 8.0] s; e0016: local:pickup; global_offset_unresolved [8.2, 10.4] s; 另 1 组见 JSON</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K03.A03</td>
+<td>提起、转手并稳定持物姿态</td>
+<td>原支撑→双手</td>
+<td>目标离地、持续抓持</td>
+<td>e0018: local:pickup; global_offset_unresolved [11.4, 13.2] s; e0019: local:pickup; global_offset_unresolved [13.4, 13.8] s; e0020: local:pickup; global_offset_unresolved [14.0, 16.2] s; 另 2 组见 JSON</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h4k04">H4.K04 · 负载足步规划与姿态保持</h3>
+<p>入口：目标受控、桥板支撑仍有效。出口：机器人与目标回到近平台。</p>
+<p>局部检查：负载后的重心、板端反力和组合净空重新检查。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K04.A01</td>
+<td>负载后退并转向桥口</td>
+<td>双手持物；足→远平台</td>
+<td>物体与桥口净空</td>
+<td>e0008: untimed_summary None s; e0009: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K04.A02</td>
+<td>持物逐足过桥</td>
+<td>足→桥板；板端受支撑</td>
+<td>桥板形变、落足与抓持</td>
+<td>e0008: untimed_summary None s; e0009: untimed_summary None s; e0010: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K04.A03</td>
+<td>离桥进入目标区并停稳</td>
+<td>足→近平台/地面；手持物</td>
+<td>目标区位置与速度</td>
+<td>e0011: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h4k05">H4.K05 · 受控落地、撤手和驻留</h3>
+<p>入口：目标区可达且近平台稳定。出口：真实目标边界在目标区、释放且稳定。</p>
+<p>局部检查：采用原尺寸/姿态判定；保留历史失败，不外推全范围。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K05.A01</td>
+<td>稳住负载后下蹲</td>
+<td>双手持物</td>
+<td>姿态与足载荷</td>
+<td>e0023: local:place; global_offset_unresolved [0.2, 1.0] s; e0024: local:place; global_offset_unresolved [1.2, 4.0] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K05.A02</td>
+<td>微调目标并让支撑面承重</td>
+<td>双手→目标区支撑</td>
+<td>支撑和手载荷</td>
+<td>e0025: local:place; global_offset_unresolved [4.2, 6.0] s; e0026: local:place; global_offset_unresolved [6.2, 7.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K05.A03</td>
+<td>张手、起身并驻留</td>
+<td>目标区独立承重</td>
+<td>手分离、物体稳定</td>
+<td>e0027: local:place; global_offset_unresolved [7.6, 9.0] s; e0028: local:place; global_offset_unresolved [9.2, 11.0] s; e0029: local:place; global_offset_unresolved [11.2, 13.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_5">尚需核对</h2>
+<p>搭板、抓取、放置局部 trace 已提取；跨桥足步与全程时钟待映射，历史源码身份缺口仍保留。</p>
+<p>补板端支撑、足点、抗滑与负载返回交接的必要条件及关键短探针；保留源码版本差异。 人工签审、第二人复现和源码身份核对；R9 原延期记录保留。</p>
+<h2 id="_6">复现与生成入口</h2>
+<ul>
+<li><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/README.md">humanoid/g1_ramp_bridge_construction/README.md</a></li>
+<li><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/solution/README.md">humanoid/g1_ramp_bridge_construction/solution/README.md</a></li>
+<li><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/instruction.md">humanoid/g1_ramp_bridge_construction/instruction.md</a></li>
+</ul>
+<p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/1ff8b0cbaceab25389daf00b83ff970ab0250cba/releases/H4/layer1-20261024/h4-layer1-20261024.zip">完整参考包</a>。使用包内冻结配置、依赖说明与生成／回放入口；审阅包不替代完整包。</p>
+<p>历史源码说明只提供设计上下文；若与冻结见证冲突，以见证的配置、控制器身份和发布清单为准。设计动作表不等同于已绑定的通用控制器。</p>
+<h2 id="_7">验收与执行边界</h2>
+<p>本文件说明已有参考的设计与证据，不修改旧评分。任务级要求至少一个声明配置内的连续端到端生成见证；高层计划→低层动作、低层动作→轨迹、高层目标→实测终态分别核对。这里的“两两转换”是表示之间的对应，不是任意随机状态下技能可无条件拼接。</p>
+<p>随机实例保留四种结果：有完整成功证据、通过可行性筛查、未确定、检查不通过；筛查通过不写成已证明可解。只在需要执行时生成当前局部轨迹；通用滚动规划和全随机域鲁棒性另列，不是本参考文档的完成前提。</p>
+<p>若接触、支撑或守卫条件不满足，不推进下一动作；保留已有安全支撑并记录失败，仅在已知安全状态下重新观察与局部规划。不得凭事件名推断接触合格，不得将不同检查点的成功片段拼接成连续成功。</p>
+<h2 id="_8">来源与版本</h2>
+<p>来源内容哈希见 <a href="/robo-si-results/infra/reference-designs/catalog.json">catalog.json</a>，对应生成器为 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tools/build_reference_designs.py">build_reference_designs.py</a>。本次只整理设计与证据，不将待审事件关联计作验收通过。</p></main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

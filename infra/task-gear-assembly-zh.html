@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><meta content="已有保存的完整专家见证与独立回放；当前源码和便携发布材料仍需同步。" name="description"/><title>按图装配齿轮机构并验转 · robo-si</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>html{scroll-padding-top:100px}.hero{padding:64px 0}.hero .tags{justify-content:center}.jump,.evidence-links{display:flex;flex-wrap:wrap;gap:12px 24px}.evidence-links{padding-left:20px}.status-facts{display:grid;grid-template-columns:180px minmax(0,1fr);gap:12px 24px}.status-facts dt{font-weight:650}.status-facts dd{margin:0}section{padding:38px 0}p,dd,a{overflow-wrap:anywhere}.small{font-size:14px;color:var(--ink3)}@media(max-width:600px){.status-facts{grid-template-columns:1fr;gap:6px}.status-facts dd{margin-bottom:12px}.hero{padding:38px 0}.nav .wrap{flex-wrap:wrap}.nav nav{order:3;width:100%}}</style><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">跳到正文</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-gear-assembly-en.html">English</a></div></header><main id="main"><div class="hero"><div class="wrap"><p class="eyebrow">TASK STATUS · 2026-10-27</p><h1>按图装配齿轮机构并验转</h1><p class="lead">已有保存的完整专家见证与独立回放；当前源码和便携发布材料仍需同步。</p><div class="tags"><span class="pill warn">开发中 · 已有完整见证</span><span class="pill">正式准入未完成</span></div><p class="jump"><a href="#task">任务与接口</a><a href="#evidence">验证报告</a><a href="#limits">证据范围</a><a href="#release">发布状态</a></p></div></div><section id="task"><div class="wrap"><h2>任务与接口</h2><p>G1 按七步图文顺序定位底座，装配大、中、小齿轮和上盖，握持拨杆验转，再放下工具并松手稳定。齿面必须通过真实接触传动，不能用角度联动代替。</p><p>声明记录使用固定骨盆 G1、双 Dex3 手和 43 维关节目标角；Genesis CPU、64 位物理。专家读取特权位姿与接触状态。此页不声明视觉策略、自由站立或通用随机布局能力。</p></div></section><section id="evidence"><div class="wrap"><h2>已保存的验证结果</h2><dl class="status-facts"><dt>保存的配置</dt><dd>expert_v6 · seed 0 · anticlockwise</dd><dt>完整执行</dt><dd>七步完成，216.9975 秒，评分 1</dd><dt>独立回放</dt><dd>10,850 个关节命令；任务同样成功，报告中的关节、时间与末态物体误差均为 0</dd><dt>原始策略审计</dt><dd>默认起点复位；记录未发现物体状态写入或外力调用</dd></dl><ul class="evidence-links"><li><a href="/robo-si-results/infra/task-status-evidence/gear-assembly/expert-v6-report.json">完整专家执行报告</a></li><li><a href="/robo-si-results/infra/task-status-evidence/gear-assembly/expert-v6-replay-report.json">独立动作回放报告</a></li><li><a href="/robo-si-results/infra/task-status-evidence/gear-assembly/task-status.json">当前状态、来源与 SHA-256</a></li></ul><p class="small">回放报告单独标记 robot_expert_verified=false，因为回放本身不审计原始策略；同一报告的 replay_verified、recorded_task_success 和 replayed_task_success 均为 true。原始执行报告另行记录了策略审计。</p></div></section><section id="limits"><div class="wrap"><h2>证据范围</h2><p>这些结果对应保存的 expert_v6 记录。当前 run.py、replay.py、policy_example.py 和 assets.py 的哈希与记录不同，不能据此声明当前工作区已重新复现。task.toml 还保留旧版本字段；本页采用原始执行、回放报告及当前文件哈希核对结果。</p></div></section><section id="release"><div class="wrap"><h2>发布与验收状态</h2><p>当前公开的是状态与测量报告。便携完整复现包、发布验收和独立第二人复现未在本次整理中验证；正式 benchmark 准入为 false。一次保存的成功轨迹不构成多种子成功率。</p></div></section><!-- assembly-family:start -->
+<section id="detail-family"><div class="wrap"><h2>GEAR 任务族：3 个任务</h2>
+<p>10 个独立任务：Assembly 4、Gear Assembly 3、Reference Assembly 3；含 3 个原始任务和 7 个新增任务。身体与难度作为评测配置，不重复计数。五指手优先用于 Gear 工具相性；新增设计均待验证，本次新增仿真 0。</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Group</th>
+<th>Embodiment</th>
+<th>任务</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GEAR-01</td>
+<td>原始</td>
+<td>G1 + Dex3</td>
+<td>原版按图装配与验转</td>
+<td>保存的 v6 见证；当前源码复验待完成</td>
+</tr>
+<tr>
+<td>GEAR-02</td>
+<td>推理</td>
+<td>G1 + Dex3</td>
+<td>故障诊断、拆装修复与重新验转</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+<tr>
+<td>GEAR-03</td>
+<td>相性</td>
+<td>G1 + Dex3 / G1 + Inspire five-finger hand</td>
+<td>夹持、导向与拨杆工具相性</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+</tbody>
+</table></div>
+<p>相性任务优先对照 G/F；原综合任务并入 D3 配置，不单独计数。身体配置均须重新验证。</p>
+<p><a href="/robo-si-results/infra/task-assembly-family-zh.html">完整设计、难度与判据</a> · <a href="/robo-si-results/infra/planning/assembly-family/task-design.json">JSON</a></p></div></section>
+<!-- assembly-family:end --><!-- assembly-execution:start --><section id="assembly-execution"><h2>装配任务 · 执行与证据</h2><p>10 个独立任务已接入候选专家与统一记录器。这里展示实际尝试，任务得分与物理审查分开。单次失败不代表任务不可行。</p><p><a href="task-assembly-evidence-zh.html#GEAR-01">查看专家、计划、轨迹、物理检查与视频</a></p></section><!-- assembly-execution:end -->
+</main><footer class="wrap"><p><a href="/robo-si-results/infra/contribute-zh.html#gear-assembly">返回全部任务</a></p></footer></body></html>

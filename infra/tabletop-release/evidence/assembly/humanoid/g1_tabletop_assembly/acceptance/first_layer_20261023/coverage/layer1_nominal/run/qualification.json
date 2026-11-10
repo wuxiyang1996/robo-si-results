@@ -1,0 +1,236 @@
+{
+  "task": "assembly",
+  "accepted": true,
+  "error": null,
+  "expert": {
+    "output": "C:\\Users\\wuxiy\\rsi_releases\\tabletop_layer1_candidate_20261023\\humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_nominal\\run\\expert",
+    "full_task_success": true,
+    "error": null,
+    "replay_verified": false
+  },
+  "seconds": 92.47,
+  "verdict": {
+    "episode": "episode_00",
+    "void": false,
+    "void_reasons": [],
+    "flags": [],
+    "score": 1.0,
+    "success": true,
+    "end_reason": "task_ended",
+    "samples": 5834,
+    "sim_time_s": 116.645,
+    "source": "reference_recorder",
+    "observations": null,
+    "simulator": {
+      "genesis-world": "1.4.3",
+      "torch": "2.11.0+cu128",
+      "numpy": "2.5.3"
+    },
+    "episode_spec": null,
+    "layer": "nominal",
+    "process_score": 1.0,
+    "final_progress": 1.0,
+    "peak_time_s": 116.645,
+    "stage_best": {
+      "brace_supported": 1.0,
+      "sleeve_seated": 1.0,
+      "cap_seated": 1.0,
+      "assembled_released": 1.0
+    },
+    "stage_timeline": {
+      "brace_supported": 58.42,
+      "sleeve_seated": 87.32,
+      "cap_seated": 115.16,
+      "assembled_released": 116.645
+    },
+    "completed_at_end": true,
+    "evaluator_stage": 3,
+    "evaluator_stage_times": {
+      "support_fixture": 58.42,
+      "insert_sleeve": 87.32,
+      "complete": 116.645
+    },
+    "evaluation": {
+      "replay": {
+        "success": true,
+        "failed": false,
+        "reason": "assembled_and_released",
+        "elapsed": 116.6449999999664,
+        "latched_row": 5833
+      },
+      "live": {
+        "success": true,
+        "failed": false,
+        "reason": "assembled_and_released",
+        "elapsed": 116.6449999999664,
+        "latched_row": 5833,
+        "recorded": true
+      },
+      "replay_matches_live": true,
+      "mismatch": null,
+      "stage_times": {
+        "support_fixture": 58.42,
+        "insert_sleeve": 87.32,
+        "complete": 116.645
+      },
+      "conditions": {
+        "brace_supported": true,
+        "sleeve_seated": true,
+        "cap_seated": true
+      }
+    },
+    "final_state": {
+      "fixture": true,
+      "sleeve": true,
+      "cap": true,
+      "brace": true,
+      "support_chain": true
+    },
+    "alarms": [],
+    "alarms_by_question": {
+      "1_no_reward_hacking": [],
+      "2_task_really_completed": [],
+      "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+      "monitor_version": "g1-tabletop-assembly-monitors/1",
+      "not_applicable": {
+        "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+        "fall": "the pelvis is bolted to a stand",
+        "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+      },
+      "max_reported_speed": 0.79,
+      "max_object_speed": 0.801,
+      "max_step_speed": 0.826,
+      "max_support_penetration": 0.0009,
+      "max_energy_excess_J": 0.001,
+      "max_reversal_rate_hand_hz": 1.0,
+      "max_arm_shake": 0.562,
+      "max_saturation_s": 0.0,
+      "max_limit_push_s": 0.0,
+      "max_progress_spike": 0.0
+    },
+    "verifier": "g1-tabletop-assembly-verifier/1 (g1-tabletop-assembly-monitors/1)"
+  },
+  "scene_config": {
+    "table_height": 0.74,
+    "table_center": [
+      0.95,
+      0.0
+    ],
+    "table_size": [
+      1.5,
+      1.15,
+      0.05
+    ],
+    "max_episode_seconds": 120.0,
+    "control_dt": 0.02,
+    "arm_torque_scale": 1.0,
+    "initial_arm_offsets": [],
+    "difficulty": 1,
+    "distractor_layout": "mounted_v1",
+    "tool_layout": "remote_v1",
+    "object_names": [
+      "brace",
+      "sleeve",
+      "cap"
+    ],
+    "measurement_names": [
+      "brace",
+      "sleeve",
+      "cap",
+      "fixture"
+    ],
+    "fixture_pivot_xy": [
+      0.46,
+      0.0
+    ],
+    "fixture_pivot_height": 0.075,
+    "fixture_size": [
+      0.36,
+      0.2,
+      0.025
+    ],
+    "fixture_initial_pitch": 0.28,
+    "post_offset": [
+      0.04,
+      0.0
+    ],
+    "post_size": [
+      0.036,
+      0.024
+    ],
+    "post_height": 0.12,
+    "brace_size": [
+      0.07,
+      0.18,
+      0.0625
+    ],
+    "brace_goal_xy": [
+      0.59,
+      0.0
+    ],
+    "sleeve_outer_size": [
+      0.12,
+      0.1
+    ],
+    "sleeve_inner_size": [
+      0.044,
+      0.032
+    ],
+    "sleeve_height": 0.045,
+    "cap_outer_size": [
+      0.1,
+      0.08
+    ],
+    "cap_inner_size": [
+      0.044,
+      0.032
+    ],
+    "cap_height": 0.025,
+    "brace_start_xy": [
+      0.43,
+      0.4
+    ],
+    "sleeve_start_xy": [
+      0.43,
+      0.25
+    ],
+    "cap_start_xy": [
+      0.43,
+      -0.25
+    ],
+    "part_yaws": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "part_masses": [
+      0.35,
+      0.2,
+      0.12
+    ],
+    "part_frictions": [
+      0.7,
+      0.7,
+      0.7
+    ],
+    "fixture_mass": 1.2,
+    "fixture_hinge_damping": 0.06,
+    "brace_stable_seconds": 0.5,
+    "sleeve_stable_seconds": 0.5,
+    "final_hold_seconds": 2.0,
+    "support_loss_grace_seconds": 0.1,
+    "linear_speed_max": 0.025,
+    "angular_speed_max": 0.15,
+    "height_tolerance": 0.004,
+    "xy_tolerance": 0.005,
+    "part_contact_allowance": 0.001,
+    "max_part_tilt_degrees": 5.0,
+    "max_fixture_tilt_degrees": 3.0,
+    "drop_distance": 0.12
+  },
+  "privileged_reference": true,
+  "video_replay": null
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "m4-controller-review/1",
+  "attempt": "v3j-load85-a43",
+  "prior_attempt": "v3j-overhead-a42",
+  "diagnosis": "After removing the measured snag, cargo progressed about 1.43 m by 90 s without monitor alarms. The 60 N target limits outward speed near the observed 45\u201360 N sustained rope loads, creating slow progress.",
+  "change": {
+    "target_load_n": [
+      60,
+      85
+    ],
+    "outward_speed_cap_m_s": [
+      0.08,
+      0.12
+    ]
+  },
+  "unchanged": [
+    "0.12 m/s total command cap",
+    "per-axis command slew, switched at declared load target",
+    "frozen locomotion weights",
+    "geometry, masses, friction and motor gains",
+    "all physical evaluation limits"
+  ],
+  "geometry_equivalent_to_a42": true,
+  "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+  "transport_sha256": "9de0183bbbdd309c439cd20bda40ab3f89378494090577af5cf0a5f88b2be7a4",
+  "launch_condition": "Wait for a42 to finish; only launch if a42 did not complete the full task.",
+  "formal_admission": false
+}

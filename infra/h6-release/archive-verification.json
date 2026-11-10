@@ -1,0 +1,58 @@
+{
+  "schema": "h6-baseline-archive-relocation-verification/1",
+  "passed": true,
+  "archive": "C:\\Users\\wuxiy\\rsi_releases\\h6-baseline-layer1-library-crate-review-20261024.zip",
+  "sha256": "415a52cde99ecbcd9bd2949e204be614e12102d01e68b4352217f0dbeef574a4",
+  "zip_crc_verified": true,
+  "runtime_tokens_excluded": true,
+  "extracted_directory": "C:\\Users\\wuxiy\\rsi_releases\\h6_baseline_layer1_library_crate_verified_20261024",
+  "checks": [
+    {
+      "command": [
+        "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\wuxiy\\rsi_releases\\h6_baseline_layer1_library_crate_verified_20261024\\verify_packet.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"passed\": true, \"files_checked\": 1339, \"errors\": [], \"physics_executed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\wuxiy\\rsi_releases\\h6_baseline_layer1_library_crate_verified_20261024\\reproduce_baseline.py",
+        "--out",
+        "reproduction/relocation-check",
+        "--check-only"
+      ],
+      "returncode": 0,
+      "stdout": "{\"passed\": true, \"checked\": 1010, \"physics_executed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\wuxiy\\rsi_releases\\h6_baseline_layer1_library_crate_verified_20261024\\reproduce_subtask.py",
+        "--stage",
+        "all",
+        "--out",
+        "reproduction/relocation-subtask-check",
+        "--check-only"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"passed\": true,\n  \"physics_executed\": false,\n  \"source_files_checked\": 1010,\n  \"stages\": [\n    \"pickup\",\n    \"ascent\",\n    \"peak\",\n    \"descent\",\n    \"place\",\n    \"stand_released\"\n  ],\n  \"commands\": [\n    [\n      \"D:\\\\rsi_vla\\\\genesis_env\\\\Scripts\\\\python.exe\",\n      \"-B\",\n      \"-X\",\n      \"utf8\",\n      \"-m\",\n      \"humanoid.g1_box_stair_transport.sandbox.trusted.subtask_reference\",\n      \"--stage\",\n      \"pickup\",\n      \"--source\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\library-full-01\",\n      \"--out\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\relocation-subtask-check\\\\pickup\"\n    ],\n    [\n      \"D:\\\\rsi_vla\\\\genesis_env\\\\Scripts\\\\python.exe\",\n      \"-B\",\n      \"-X\",\n      \"utf8\",\n      \"-m\",\n      \"humanoid.g1_box_stair_transport.sandbox.trusted.subtask_reference\",\n      \"--stage\",\n      \"ascent\",\n      \"--source\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\library-full-01\",\n      \"--out\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\relocation-subtask-check\\\\ascent\"\n    ],\n    [\n      \"D:\\\\rsi_vla\\\\genesis_env\\\\Scripts\\\\python.exe\",\n      \"-B\",\n      \"-X\",\n      \"utf8\",\n      \"-m\",\n      \"humanoid.g1_box_stair_transport.sandbox.trusted.subtask_reference\",\n      \"--stage\",\n      \"peak\",\n      \"--source\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\library-full-01\",\n      \"--out\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\relocation-subtask-check\\\\peak\"\n    ],\n    [\n      \"D:\\\\rsi_vla\\\\genesis_env\\\\Scripts\\\\python.exe\",\n      \"-B\",\n      \"-X\",\n      \"utf8\",\n      \"-m\",\n      \"humanoid.g1_box_stair_transport.sandbox.trusted.subtask_reference\",\n      \"--stage\",\n      \"descent\",\n      \"--source\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\library-full-01\",\n      \"--out\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\relocation-subtask-check\\\\descent\"\n    ],\n    [\n      \"D:\\\\rsi_vla\\\\genesis_env\\\\Scripts\\\\python.exe\",\n      \"-B\",\n      \"-X\",\n      \"utf8\",\n      \"-m\",\n      \"humanoid.g1_box_stair_transport.sandbox.trusted.subtask_reference\",\n      \"--stage\",\n      \"place\",\n      \"--source\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\library-full-01\",\n      \"--out\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\relocation-subtask-check\\\\place\"\n    ],\n    [\n      \"D:\\\\rsi_vla\\\\genesis_env\\\\Scripts\\\\python.exe\",\n      \"-B\",\n      \"-X\",\n      \"utf8\",\n      \"-m\",\n      \"humanoid.g1_box_stair_transport.sandbox.trusted.subtask_reference\",\n      \"--stage\",\n      \"stand_released\",\n      \"--source\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\library-full-01\",\n      \"--out\",\n      \"C:\\\\Users\\\\wuxiy\\\\rsi_releases\\\\h6_baseline_layer1_library_crate_verified_20261024\\\\reproduction\\\\relocation-subtask-check\\\\stand_released\"\n    ]\n  ],\n  \"main_task_credit\": false\n}\n",
+      "stderr": ""
+    }
+  ],
+  "physics_executed": false,
+  "new_python_environment_tested": false,
+  "independent_person_reproduction": false
+}

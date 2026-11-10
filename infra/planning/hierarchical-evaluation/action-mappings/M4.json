@@ -1,0 +1,584 @@
+{
+  "schema": "ordered-action-mapping/1",
+  "task": "M4",
+  "selected_witness": "base-v1",
+  "generated_by": [
+    {
+      "path": "infra/planning/hierarchical-evaluation/build_action_mappings.py",
+      "sha256": "09ff4513817b52c8db8b46a07ba29a0e5f32ea6c88f148cf41d0169705827842"
+    },
+    {
+      "path": "infra/planning/hierarchical-evaluation/action_expansions.py",
+      "sha256": "1e88a0ef8b99d555bcef66edd58e3d18bf4a5ab2260fe5f8b17cbb7aa77bdb8c"
+    }
+  ],
+  "scope": {
+    "zh": "固定 base / hard 预连接拖运，CPU 特权参考",
+    "en": "Fixed base / hard preconnected towing, privileged CPU reference"
+  },
+  "plan": {
+    "path": "infra/planning/tasks/M4.json",
+    "sha256": "4213e1e5953ee287dce8e376c8a3caf5d6ac1b756fb371ec95d1b48861752e88"
+  },
+  "full_success_record": {
+    "path": "infra/m4-current-evidence.json",
+    "sha256": "6bbc3952a71c86b1e40a65c1da1f711936116632bac83788cdaa3b7c57cd8d40"
+  },
+  "source_files": [
+    {
+      "id": "s0",
+      "path": "multi_robot/dual_quadruped_cooperative_transport/sandbox/runs/reference/base-v1/expert/events.json",
+      "sha256": "09ac95ab9f25351bcb41d60f95967f27c887fcaf3231f621783705bb2dd609a8"
+    },
+    {
+      "id": "s1",
+      "path": "multi_robot/dual_quadruped_cooperative_transport/sandbox/runs/reference/base-v1/expert/trajectory.json",
+      "sha256": "4ae5ba352b21848d1139fbc0de3fb0abb8fb11c5480fbcf386361dbb228ac82b"
+    }
+  ],
+  "generation_provenance_status": "existing_provenance_not_replaced; full identity audit still pending",
+  "interpretation": {
+    "actions": "Ordered decomposition reviewed against available controller/event descriptions; not a newly executable planner.",
+    "event_matching": "Locates review candidates only; it does not prove the stated contact/guard nor exact micro-action interval.",
+    "timing": "Observed sample spans remain in their named clock. Point events are not expanded into invented intervals. No scoring milestone is used as an action boundary.",
+    "loops": "Hanoi repeats K01-K04 for each committed legal move; footfall and gait actions repeat. Numerical order is within a skill, not a universal serial schedule.",
+    "branches": "H3 heavy_prop only; asynchronous A/B operations may overlap.",
+    "portable_evidence": "Small excerpts below are portable; original absolute paths are provenance references, not deployment entrypoints. Raw full records still require the reference packages."
+  },
+  "skills": [
+    {
+      "skill": "M4.K01",
+      "high_level_steps": [
+        "P1"
+      ],
+      "entry_conditions": [
+        "base/hard 发布的预连接且预装载初态"
+      ],
+      "exit_conditions": [
+        "双侧受力进入可拖运状态"
+      ],
+      "actions": [
+        {
+          "id": "M4.K01.A01",
+          "order": 1,
+          "action_zh": "预连接状态下站稳并检查连接几何",
+          "required_support_contact_zh": "足→地面；绳已连接；载荷→货台",
+          "check_observable_zh": "连接点、绳长、支撑",
+          "event_selector": "plan",
+          "evidence_ids": [
+            "e0000"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M4.K01.A02",
+          "order": 2,
+          "action_zh": "低速前移消除绳松弛",
+          "required_support_contact_zh": "足地牵引→绳→货台",
+          "check_observable_zh": "张力、脚端滑移",
+          "event_selector": "tow",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M4.K01.A03",
+          "order": 3,
+          "action_zh": "调整双机间距形成牵引队形",
+          "required_support_contact_zh": "双机足→地面；货台承重",
+          "check_observable_zh": "横向间距与各绳张力",
+          "event_selector": "tow",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M4.K02",
+      "high_level_steps": [
+        "P2"
+      ],
+      "entry_conditions": [
+        "两侧受力稳定且前方通道可行"
+      ],
+      "exit_conditions": [
+        "货台完成规定直线段"
+      ],
+      "actions": [
+        {
+          "id": "M4.K02.A01",
+          "order": 1,
+          "action_zh": "交替步态沿直道牵引",
+          "required_support_contact_zh": "足地牵引→绳→货台",
+          "check_observable_zh": "足滑移、张力及货物支撑",
+          "event_selector": "tow",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M4.K02.A02",
+          "order": 2,
+          "action_zh": "按队形进度差修正双机速度",
+          "required_support_contact_zh": "绳保持物理连接",
+          "check_observable_zh": "前后差与牵引张力",
+          "event_selector": "tow",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M4.K02.A03",
+          "order": 3,
+          "action_zh": "保持货台平稳接近转角",
+          "required_support_contact_zh": "载荷→货台",
+          "check_observable_zh": "货物速度、支撑比例",
+          "event_selector": "tow",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M4.K03",
+      "high_level_steps": [
+        "P3"
+      ],
+      "entry_conditions": [
+        "货台到转角入口，双机可调整间距"
+      ],
+      "exit_conditions": [
+        "双机/货台/绳扫掠均通过转角"
+      ],
+      "actions": [
+        {
+          "id": "M4.K03.A01",
+          "order": 1,
+          "action_zh": "按转角路径调整内外侧速度",
+          "required_support_contact_zh": "脚地牵引→绳→货台",
+          "check_observable_zh": "角速度、净空与张力",
+          "event_selector": "tow",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M4.K03.A02",
+          "order": 2,
+          "action_zh": "容许瞬时松绳并调整队形",
+          "required_support_contact_zh": "绳连接保持；货台承重",
+          "check_observable_zh": "松弛长度、足滑移与货台姿态",
+          "event_selector": "slack_rope",
+          "evidence_ids": [
+            "e0002",
+            "e0003",
+            "e0004"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M4.K03.A03",
+          "order": 3,
+          "action_zh": "完成转角后继续向目标牵引",
+          "required_support_contact_zh": "脚地牵引→绳→货台",
+          "check_observable_zh": "货台转向及目标包含",
+          "event_selector": "tow",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M4.K04",
+      "high_level_steps": [
+        "P4"
+      ],
+      "entry_conditions": [
+        "组合体已进入目标区"
+      ],
+      "exit_conditions": [
+        "载荷在目标内满足原稳定驻留"
+      ],
+      "actions": [
+        {
+          "id": "M4.K04.A01",
+          "order": 1,
+          "action_zh": "货台进入目标后停止前进",
+          "required_support_contact_zh": "货台承重；绳仍连接",
+          "check_observable_zh": "目标包含、速度",
+          "event_selector": "slack",
+          "evidence_ids": [
+            "e0002",
+            "e0003",
+            "e0004",
+            "e0005"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M4.K04.A02",
+          "order": 2,
+          "action_zh": "两机小幅后退释放绳张力",
+          "required_support_contact_zh": "货台→地面；连接保持",
+          "check_observable_zh": "绳张力与货台漂移",
+          "event_selector": "slack",
+          "evidence_ids": [
+            "e0002",
+            "e0003",
+            "e0004",
+            "e0005"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M4.K04.A03",
+          "order": 3,
+          "action_zh": "保持静止并确认驻留",
+          "required_support_contact_zh": "预连接保留；货台独立支撑",
+          "check_observable_zh": "低张力、货物稳定",
+          "event_selector": "hold",
+          "evidence_ids": [
+            "e0006"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    }
+  ],
+  "event_evidence": [
+    {
+      "id": "e0000",
+      "source": "s0",
+      "pointer_first": "/0",
+      "pointer_last": "/0",
+      "stream": "",
+      "label": "plan",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        0.0,
+        0.0
+      ],
+      "rows": 1,
+      "first": {
+        "time": 0.0,
+        "event": "plan",
+        "start": [
+          -1.4,
+          0.0
+        ],
+        "length": 7.621,
+        "w0": 0.65
+      },
+      "last": {
+        "time": 0.0,
+        "event": "plan",
+        "start": [
+          -1.4,
+          0.0
+        ],
+        "length": 7.621,
+        "w0": 0.65
+      }
+    },
+    {
+      "id": "e0001",
+      "source": "s0",
+      "pointer_first": "/1",
+      "pointer_last": "/1",
+      "stream": "",
+      "label": "phase:tow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        1.0,
+        1.0
+      ],
+      "rows": 1,
+      "first": {
+        "time": 1.0,
+        "event": "phase",
+        "phase": "tow"
+      },
+      "last": {
+        "time": 1.0,
+        "event": "phase",
+        "phase": "tow"
+      }
+    },
+    {
+      "id": "e0002",
+      "source": "s0",
+      "pointer_first": "/2",
+      "pointer_last": "/2",
+      "stream": "",
+      "label": "slack_rope",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        15.0,
+        15.0
+      ],
+      "rows": 1,
+      "first": {
+        "time": 15.0,
+        "event": "slack_rope",
+        "robot": "go2_b",
+        "span": 0.439,
+        "length": 0.537,
+        "ahead": 0.3
+      },
+      "last": {
+        "time": 15.0,
+        "event": "slack_rope",
+        "robot": "go2_b",
+        "span": 0.439,
+        "length": 0.537,
+        "ahead": 0.3
+      }
+    },
+    {
+      "id": "e0003",
+      "source": "s0",
+      "pointer_first": "/3",
+      "pointer_last": "/3",
+      "stream": "",
+      "label": "slack_rope",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        16.0,
+        16.0
+      ],
+      "rows": 1,
+      "first": {
+        "time": 16.0,
+        "event": "slack_rope",
+        "robot": "go2_b",
+        "span": 0.413,
+        "length": 0.537,
+        "ahead": 0.3
+      },
+      "last": {
+        "time": 16.0,
+        "event": "slack_rope",
+        "robot": "go2_b",
+        "span": 0.413,
+        "length": 0.537,
+        "ahead": 0.3
+      }
+    },
+    {
+      "id": "e0004",
+      "source": "s0",
+      "pointer_first": "/4",
+      "pointer_last": "/4",
+      "stream": "",
+      "label": "slack_rope",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        17.0,
+        17.0
+      ],
+      "rows": 1,
+      "first": {
+        "time": 17.0,
+        "event": "slack_rope",
+        "robot": "go2_b",
+        "span": 0.43,
+        "length": 0.537,
+        "ahead": 0.3
+      },
+      "last": {
+        "time": 17.0,
+        "event": "slack_rope",
+        "robot": "go2_b",
+        "span": 0.43,
+        "length": 0.537,
+        "ahead": 0.3
+      }
+    },
+    {
+      "id": "e0005",
+      "source": "s0",
+      "pointer_first": "/5",
+      "pointer_last": "/5",
+      "stream": "",
+      "label": "phase:slack",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        31.28,
+        31.28
+      ],
+      "rows": 1,
+      "first": {
+        "time": 31.28,
+        "event": "phase",
+        "phase": "slack",
+        "s": 6.132,
+        "note": "cargo in goal: stop and step back to slacken ropes"
+      },
+      "last": {
+        "time": 31.28,
+        "event": "phase",
+        "phase": "slack",
+        "s": 6.132,
+        "note": "cargo in goal: stop and step back to slacken ropes"
+      }
+    },
+    {
+      "id": "e0006",
+      "source": "s0",
+      "pointer_first": "/6",
+      "pointer_last": "/6",
+      "stream": "",
+      "label": "phase:hold",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        32.28,
+        32.28
+      ],
+      "rows": 1,
+      "first": {
+        "time": 32.28,
+        "event": "phase",
+        "phase": "hold",
+        "tension": {
+          "go2_a": 1.7,
+          "go2_b": 1.7
+        }
+      },
+      "last": {
+        "time": 32.28,
+        "event": "phase",
+        "phase": "hold",
+        "tension": {
+          "go2_a": 1.7,
+          "go2_b": 1.7
+        }
+      }
+    }
+  ],
+  "source_clock_checks": [
+    {
+      "source": "s0",
+      "pointer": "",
+      "timed_rows": 7,
+      "clock": "episode",
+      "nondecreasing": true
+    }
+  ],
+  "physical_observations": {
+    "interpretation": "Descriptive checks recomputed from recorded samples. These are not a new simulation, formal acceptance or a full-rate independent contact audit.",
+    "source": {
+      "path": "multi_robot/dual_quadruped_cooperative_transport/sandbox/runs/reference/base-v1/expert/trajectory.json",
+      "sha256": "4ae5ba352b21848d1139fbc0de3fb0abb8fb11c5480fbcf386361dbb228ac82b"
+    },
+    "clock": {
+      "rows": 1815,
+      "start_s": 0.02,
+      "end_s": 36.3,
+      "strictly_increasing": true,
+      "sample_gap_s": {
+        "min": 0.01999999999999602,
+        "max": 0.020000000000003126
+      }
+    },
+    "recorded_monitor_false_counts": {
+      "continuous_execution": 0,
+      "no_state_edits": 0,
+      "no_contact_bypass": 0,
+      "target_supported": 0,
+      "no_severe_collision": 0,
+      "robot_stability": 0,
+      "actuator_limits": 0,
+      "traction_and_slip": 0,
+      "connection_integrity": 0,
+      "rope_slack_tension_and_contact": 0
+    },
+    "monitor_origin": "Existing run monitor flags, counted here; not independently reimplemented.",
+    "measured_ranges": {
+      "support_ratio": {
+        "min": 0.734,
+        "max": 1.449
+      },
+      "stance_slide": {
+        "min": 0.0,
+        "max": 0.0471
+      },
+      "weld_drift_max": {
+        "min": 4e-05,
+        "max": 0.00369
+      },
+      "max_penetration": {
+        "min": 0.00012,
+        "max": 0.00819
+      }
+    },
+    "rope_tension_N": {
+      "min": 0.0,
+      "max": 149.45
+    },
+    "slack_sample_counts": {
+      "rope_b": 439,
+      "rope_a": 104
+    },
+    "final_goal_probe": {
+      "fully_inside": true,
+      "slow": true
+    }
+  },
+  "review": {
+    "task": "M4",
+    "skills": 4,
+    "ordered_actions": 12,
+    "event_groups": 7,
+    "source_files": 2,
+    "action_mapping_counts": {
+      "episode_event_candidates": 12
+    },
+    "joint_mapping_review": "pending_physical_constraints_and_provenance_review",
+    "remaining_zh": "仅预连接 base；tow 内直行/转角与足步待按路径分段。15–17 s 松绳事件保留；不要求两绳始终张紧，不加入自主对接或解绳。"
+  },
+  "design_gate_complete": false,
+  "physics_runs": 0,
+  "legacy_scores_changed": false,
+  "h1_status_changed": false
+}

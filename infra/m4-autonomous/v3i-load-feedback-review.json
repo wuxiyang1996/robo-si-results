@@ -1,0 +1,17 @@
+{
+  "schema": "m4-controller-review/1",
+  "source_evidence": "runs/v3i-damped-a38/trajectory.json",
+  "finding": "Stopping path progress at high tension leaves positive position-error feedback and slewed forward commands; a38 still applied roughly 0.12 m/s while rope load exceeded 100 N, then failed 50 mm slip at 28.475 s.",
+  "change": "Project body velocity along measured rope; outward velocity cap clip(0.004*(60-T), -0.04, 0.08) m/s. Preserve tangential/yaw command, allow 0.20 m/s2 per-axis command slew above 60 N and keep 0.04 otherwise. Path progress stops above 60 N. No claim of force or body-acceleration bound.",
+  "geometry_sha256": "522936d04b09571b1dca74ca079f247669a03e01e6a768f1f9bfdb294159e830",
+  "transport_sha256": "088da68708ae2b349603a7ac958dff17987eb1edeafb62b12d237a4b16ddcd33",
+  "unchanged": [
+    "geometry and actuator",
+    "ground friction .3",
+    "64-bit / 8 substeps",
+    "50 mm stance slip and all physical limits"
+  ],
+  "tests": "19 autonomous contract tests passed, including direction-invariant unloading and preservation of an existing unloading command.",
+  "attempt": "v3i-load-feedback-a39",
+  "formal_admission": false
+}

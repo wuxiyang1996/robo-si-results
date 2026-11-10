@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 667, in main
+    if any(k in n for k in ['wrist','joint_arm','joint_lift']):self.qref[self.m.jnt_qposadr[j]]=solution[self.m.jnt_qposadr[j]]
+     ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 431, in execute
+    if self.d.xpos[self.obj][2]<.99:raise RuntimeError('lift_without_object')
+     ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 332, in step
+    if getattr(self,'deep_grasp',False) and self.tuning.get('wrench_control',False):self.regulate_six_contacts()
+                                                                                                                 
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 171, in assess
+    if not np.isfinite(self.d.qpos).all() or not np.isfinite(self.d.qvel).all():raise RuntimeError('nonfinite_physics')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: local_damage_proxy

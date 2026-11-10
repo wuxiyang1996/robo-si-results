@@ -1,0 +1,827 @@
+{
+  "schema_version": 1,
+  "task": "g1_tabletop_hanoi",
+  "status": "completed",
+  "created_at_utc": "2026-10-23T06:00:08.504023+00:00",
+  "format": "NumPy NPZ, load with allow_pickle=False; canonical evidence in source JSONL",
+  "sample_hz": 50,
+  "physics_hz": 200,
+  "episode_path_base": "manifest_directory",
+  "observation_mode": "privileged_development",
+  "rgb_frames_included": false,
+  "accepted_count": 3,
+  "all_passed": true,
+  "training_episodes": [
+    "disks_3_seed_0.npz",
+    "disks_4_seed_0.npz",
+    "disks_5_seed_0.npz"
+  ],
+  "episodes": [
+    {
+      "num_disks": 3,
+      "seed": 0,
+      "accepted": true,
+      "independent_same_environment_replay_verified": true,
+      "archive": "disks_3_seed_0.npz",
+      "archive_sha256": "221014b3ef812e6a606fff1f928268d003a2509f643c3f04827bd62392a62908",
+      "source_episode": "../../../acceptance/release_20261022/sweep_swept_thumb_release_v2/disks3/nominal/run/expert",
+      "replay_episode": "../../../acceptance/release_20261022/followups_swept_thumb_release_v5/disks3_physics",
+      "source_trajectory_sha256": "aa3d4ee9431aaab09a13bd76aee0233b6785afa245de3acb5e510c5e5122df27",
+      "source_actions_sha256": "d0a89c2a2f8d06e0436b48340790d5df570278d7c27e116136baa406035ec7a2",
+      "replay_report_sha256": "de8f0e93b9f9f46edb0cae09df9c0427af2de150ed8c07fce9ccd0b70d9d004a",
+      "control_steps": 4226,
+      "physics_steps": 16902,
+      "duration_seconds": 84.51,
+      "move_count": 7,
+      "task_config": {
+        "num_disks": 3,
+        "table_height": 0.74,
+        "table_center": [
+          0.55,
+          0.0
+        ],
+        "table_size": [
+          0.7,
+          1.15,
+          0.05
+        ],
+        "max_episode_seconds": 180.0,
+        "control_dt": 0.02,
+        "arm_torque_scale": 1.0,
+        "initial_arm_offsets": [],
+        "pad_thickness": 0.025,
+        "pad_radius": 0.105,
+        "pad_shape": "box",
+        "enable_torsional_friction": true,
+        "friction_model": "elliptic",
+        "peg_x": 0.46,
+        "peg_ys": [
+          0.25,
+          0.0,
+          -0.25
+        ],
+        "peg_xs": null,
+        "start_peg": "A",
+        "target_peg": "C",
+        "rod_radius": 0.012,
+        "rod_height": 0.18,
+        "disk_inner_radius": 0.022,
+        "disk_height": 0.025,
+        "disk_mass": 0.12,
+        "disk_outer_radii": null,
+        "disk_color_order": null,
+        "disk_initial_offsets": null,
+        "disk_initial_lift": 0.0,
+        "disk_friction": 0.7,
+        "ring_segments": 12,
+        "ring_segment_shape": "wedge",
+        "placement_xy_tolerance": 0.011999999999999999,
+        "placement_z_tolerance": 0.006,
+        "departure_xy_tolerance": 0.011999999999999999,
+        "departure_z_tolerance": 0.009,
+        "ring_contact_allowance": 0.002,
+        "tilt_tolerance": 0.12,
+        "linear_speed_limit": 0.03,
+        "angular_speed_limit": 0.2,
+        "rod_clearance": 0.003,
+        "placement_hold_seconds": 0.5,
+        "success_hold_seconds": 2.0,
+        "hand_contact_memory_seconds": 0.1,
+        "support_force_min": 0.05,
+        "fall_distance": 0.1
+      },
+      "controller_config": {
+        "finger_offset_x": 0.001,
+        "wrist_height": 0.034,
+        "wrist_backoff": 0.15467536,
+        "open_margin": 0.036,
+        "closed_margin": 0.002,
+        "contact_preload": 0.012,
+        "carry_height": 1.005,
+        "approach_seconds": 1.2,
+        "descend_seconds": 1.4,
+        "squeeze_seconds": 0.4,
+        "grasp_retries": 2,
+        "regrasp_squeeze_step": 0.004,
+        "ik_position_tolerance": 0.003,
+        "ik_max_evaluations": 100,
+        "lift_seconds": 1.5,
+        "transfer_seconds": 1.5,
+        "transfer_settle_seconds": 0.4,
+        "lower_seconds": 1.4,
+        "placement_settle_seconds": 0.2,
+        "release_seconds": 0.7,
+        "retreat_seconds": 0.8,
+        "settle_timeout_seconds": 3.0,
+        "max_joint_speed": 2.0,
+        "dense_approach_seconds": 1.4,
+        "release_settle_seconds": 0.3,
+        "follow_ring_apothem": true,
+        "track_placement": true,
+        "track_lift": true,
+        "fold_thumbs": false,
+        "fold_thumbs_near_disks": false,
+        "select_thumb_clearance": true,
+        "fold_thumb_proximal": 1.04,
+        "fold_thumb_distal": 0.75,
+        "placement_gain": 4.0,
+        "placement_speed": 0.03,
+        "limit_transfer_speed": true,
+        "transfer_speed": 0.43,
+        "transfer_speed_min_radius_ratio": 0.01
+      },
+      "arrays": {
+        "action": {
+          "shape": [
+            4226,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "target": {
+          "shape": [
+            4226,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "reward": {
+          "shape": [
+            4226
+          ],
+          "dtype": "float64"
+        },
+        "done": {
+          "shape": [
+            4226
+          ],
+          "dtype": "bool"
+        },
+        "controller_phase": {
+          "shape": [
+            4226
+          ],
+          "dtype": "<U24"
+        },
+        "environment_phase": {
+          "shape": [
+            4226
+          ],
+          "dtype": "<U17"
+        },
+        "move_index": {
+          "shape": [
+            4226
+          ],
+          "dtype": "int64"
+        },
+        "move_count": {
+          "shape": [
+            4226
+          ],
+          "dtype": "int64"
+        },
+        "object_names": {
+          "shape": [
+            3
+          ],
+          "dtype": "<U6"
+        },
+        "joint_names": {
+          "shape": [
+            43
+          ],
+          "dtype": "<U26"
+        },
+        "object_state_fields": {
+          "shape": [
+            13
+          ],
+          "dtype": "<U2"
+        },
+        "contact_fields": {
+          "shape": [
+            3
+          ],
+          "dtype": "<U15"
+        },
+        "pre_joint_position": {
+          "shape": [
+            4226,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "pre_joint_velocity": {
+          "shape": [
+            4226,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "pre_time": {
+          "shape": [
+            4226
+          ],
+          "dtype": "float64"
+        },
+        "pre_object_state": {
+          "shape": [
+            4226,
+            3,
+            13
+          ],
+          "dtype": "float64"
+        },
+        "pre_object_contacts": {
+          "shape": [
+            4226,
+            3,
+            3
+          ],
+          "dtype": "bool"
+        },
+        "post_joint_position": {
+          "shape": [
+            4226,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "post_joint_velocity": {
+          "shape": [
+            4226,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "post_time": {
+          "shape": [
+            4226
+          ],
+          "dtype": "float64"
+        },
+        "post_object_state": {
+          "shape": [
+            4226,
+            3,
+            13
+          ],
+          "dtype": "float64"
+        },
+        "post_object_contacts": {
+          "shape": [
+            4226,
+            3,
+            3
+          ],
+          "dtype": "bool"
+        }
+      },
+      "quality_report": "../../../acceptance/release_20261022/dataset_release_20261023_v2/disks3_quality.json",
+      "quality_report_sha256": "5fd5d0bdad9dabd85a4d2a2f987c569a9c31ce85906d920857537c42c7e6aa7b",
+      "quality_review_flags": []
+    },
+    {
+      "num_disks": 4,
+      "seed": 0,
+      "accepted": true,
+      "independent_same_environment_replay_verified": true,
+      "archive": "disks_4_seed_0.npz",
+      "archive_sha256": "63030fb1943cf42c826db9f361959ed5502df549ebc0dcbc093d9225a8258baa",
+      "source_episode": "../../../acceptance/release_20261022/sweep_swept_thumb_release_v2/disks4/nominal/run/expert",
+      "replay_episode": "../../../acceptance/release_20261022/followups_swept_thumb_release_v5/disks4_physics",
+      "source_trajectory_sha256": "63d4288d1749d651a9d8372688198e6e31790a2778ca4dba80f58c75e8a5c192",
+      "source_actions_sha256": "dc4758b3e4b7ae28bf17956d036258211e2b0617459a57e98a0afef688e95340",
+      "replay_report_sha256": "5a799d5751115e1d1ed554df626fcf52585484d5dae1ce63f593cfe4426f01fd",
+      "control_steps": 8714,
+      "physics_steps": 34853,
+      "duration_seconds": 174.26500000000001,
+      "move_count": 15,
+      "task_config": {
+        "num_disks": 4,
+        "table_height": 0.74,
+        "table_center": [
+          0.55,
+          0.0
+        ],
+        "table_size": [
+          0.7,
+          1.15,
+          0.05
+        ],
+        "max_episode_seconds": 180.0,
+        "control_dt": 0.02,
+        "arm_torque_scale": 1.0,
+        "initial_arm_offsets": [],
+        "pad_thickness": 0.025,
+        "pad_radius": 0.105,
+        "pad_shape": "box",
+        "enable_torsional_friction": true,
+        "friction_model": "elliptic",
+        "peg_x": 0.46,
+        "peg_ys": [
+          0.25,
+          0.0,
+          -0.25
+        ],
+        "peg_xs": null,
+        "start_peg": "A",
+        "target_peg": "C",
+        "rod_radius": 0.012,
+        "rod_height": 0.18,
+        "disk_inner_radius": 0.022,
+        "disk_height": 0.025,
+        "disk_mass": 0.12,
+        "disk_outer_radii": null,
+        "disk_color_order": null,
+        "disk_initial_offsets": null,
+        "disk_initial_lift": 0.0,
+        "disk_friction": 0.7,
+        "ring_segments": 12,
+        "ring_segment_shape": "wedge",
+        "placement_xy_tolerance": 0.011999999999999999,
+        "placement_z_tolerance": 0.006,
+        "departure_xy_tolerance": 0.011999999999999999,
+        "departure_z_tolerance": 0.009,
+        "ring_contact_allowance": 0.002,
+        "tilt_tolerance": 0.12,
+        "linear_speed_limit": 0.03,
+        "angular_speed_limit": 0.2,
+        "rod_clearance": 0.003,
+        "placement_hold_seconds": 0.5,
+        "success_hold_seconds": 2.0,
+        "hand_contact_memory_seconds": 0.1,
+        "support_force_min": 0.05,
+        "fall_distance": 0.1
+      },
+      "controller_config": {
+        "finger_offset_x": 0.001,
+        "wrist_height": 0.034,
+        "wrist_backoff": 0.15467536,
+        "open_margin": 0.036,
+        "closed_margin": 0.002,
+        "contact_preload": 0.012,
+        "carry_height": 1.005,
+        "approach_seconds": 1.2,
+        "descend_seconds": 1.4,
+        "squeeze_seconds": 0.4,
+        "grasp_retries": 2,
+        "regrasp_squeeze_step": 0.004,
+        "ik_position_tolerance": 0.003,
+        "ik_max_evaluations": 100,
+        "lift_seconds": 1.5,
+        "transfer_seconds": 1.5,
+        "transfer_settle_seconds": 0.4,
+        "lower_seconds": 1.4,
+        "placement_settle_seconds": 0.2,
+        "release_seconds": 0.7,
+        "retreat_seconds": 0.8,
+        "settle_timeout_seconds": 3.0,
+        "max_joint_speed": 2.0,
+        "dense_approach_seconds": 1.4,
+        "release_settle_seconds": 0.3,
+        "follow_ring_apothem": true,
+        "track_placement": true,
+        "track_lift": true,
+        "fold_thumbs": false,
+        "fold_thumbs_near_disks": false,
+        "select_thumb_clearance": true,
+        "fold_thumb_proximal": 1.04,
+        "fold_thumb_distal": 0.75,
+        "placement_gain": 4.0,
+        "placement_speed": 0.03,
+        "limit_transfer_speed": true,
+        "transfer_speed": 0.43,
+        "transfer_speed_min_radius_ratio": 0.01
+      },
+      "arrays": {
+        "action": {
+          "shape": [
+            8714,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "target": {
+          "shape": [
+            8714,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "reward": {
+          "shape": [
+            8714
+          ],
+          "dtype": "float64"
+        },
+        "done": {
+          "shape": [
+            8714
+          ],
+          "dtype": "bool"
+        },
+        "controller_phase": {
+          "shape": [
+            8714
+          ],
+          "dtype": "<U24"
+        },
+        "environment_phase": {
+          "shape": [
+            8714
+          ],
+          "dtype": "<U17"
+        },
+        "move_index": {
+          "shape": [
+            8714
+          ],
+          "dtype": "int64"
+        },
+        "move_count": {
+          "shape": [
+            8714
+          ],
+          "dtype": "int64"
+        },
+        "object_names": {
+          "shape": [
+            4
+          ],
+          "dtype": "<U6"
+        },
+        "joint_names": {
+          "shape": [
+            43
+          ],
+          "dtype": "<U26"
+        },
+        "object_state_fields": {
+          "shape": [
+            13
+          ],
+          "dtype": "<U2"
+        },
+        "contact_fields": {
+          "shape": [
+            3
+          ],
+          "dtype": "<U15"
+        },
+        "pre_joint_position": {
+          "shape": [
+            8714,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "pre_joint_velocity": {
+          "shape": [
+            8714,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "pre_time": {
+          "shape": [
+            8714
+          ],
+          "dtype": "float64"
+        },
+        "pre_object_state": {
+          "shape": [
+            8714,
+            4,
+            13
+          ],
+          "dtype": "float64"
+        },
+        "pre_object_contacts": {
+          "shape": [
+            8714,
+            4,
+            3
+          ],
+          "dtype": "bool"
+        },
+        "post_joint_position": {
+          "shape": [
+            8714,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "post_joint_velocity": {
+          "shape": [
+            8714,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "post_time": {
+          "shape": [
+            8714
+          ],
+          "dtype": "float64"
+        },
+        "post_object_state": {
+          "shape": [
+            8714,
+            4,
+            13
+          ],
+          "dtype": "float64"
+        },
+        "post_object_contacts": {
+          "shape": [
+            8714,
+            4,
+            3
+          ],
+          "dtype": "bool"
+        }
+      },
+      "quality_report": "../../../acceptance/release_20261022/dataset_release_20261023_v2/disks4_quality.json",
+      "quality_report_sha256": "e24c5f9c74665d0ae9809ab80c32bdd7fac58e1590127ce4ce6aa81c25aefaa6",
+      "quality_review_flags": []
+    },
+    {
+      "num_disks": 5,
+      "seed": 0,
+      "accepted": true,
+      "independent_same_environment_replay_verified": true,
+      "archive": "disks_5_seed_0.npz",
+      "archive_sha256": "b5285fa4c80045c41a837493939b4c2c8b7c8020f36fa8bbc8ed28194f544ce5",
+      "source_episode": "../../../acceptance/release_20261022/sweep_swept_thumb_release_v2/disks5/nominal/run/expert",
+      "replay_episode": "../../../acceptance/release_20261022/followups_swept_thumb_release_v5/disks5_physics",
+      "source_trajectory_sha256": "c8107ffa45992927a5cc12b074c14a8319b071bf0415f26cb31f7a627725eaa5",
+      "source_actions_sha256": "acb6b5ec1df6cb2b7c0f098d3272a39ed12e26e8e60b5830f47117e16bfbd5ea",
+      "replay_report_sha256": "66f5d970fe01ae544ec840a7580641e4ecb9aefce4b41cc9c62facaec54bf33a",
+      "control_steps": 18064,
+      "physics_steps": 72253,
+      "duration_seconds": 361.265,
+      "move_count": 31,
+      "task_config": {
+        "num_disks": 5,
+        "table_height": 0.74,
+        "table_center": [
+          0.55,
+          0.0
+        ],
+        "table_size": [
+          0.7,
+          1.15,
+          0.05
+        ],
+        "max_episode_seconds": 420.0,
+        "control_dt": 0.02,
+        "arm_torque_scale": 1.0,
+        "initial_arm_offsets": [],
+        "pad_thickness": 0.025,
+        "pad_radius": 0.105,
+        "pad_shape": "box",
+        "enable_torsional_friction": true,
+        "friction_model": "elliptic",
+        "peg_x": 0.46,
+        "peg_ys": [
+          0.25,
+          0.0,
+          -0.25
+        ],
+        "peg_xs": null,
+        "start_peg": "A",
+        "target_peg": "C",
+        "rod_radius": 0.012,
+        "rod_height": 0.18,
+        "disk_inner_radius": 0.022,
+        "disk_height": 0.025,
+        "disk_mass": 0.12,
+        "disk_outer_radii": null,
+        "disk_color_order": null,
+        "disk_initial_offsets": null,
+        "disk_initial_lift": 0.0,
+        "disk_friction": 0.7,
+        "ring_segments": 12,
+        "ring_segment_shape": "wedge",
+        "placement_xy_tolerance": 0.011999999999999999,
+        "placement_z_tolerance": 0.006,
+        "departure_xy_tolerance": 0.011999999999999999,
+        "departure_z_tolerance": 0.009,
+        "ring_contact_allowance": 0.002,
+        "tilt_tolerance": 0.12,
+        "linear_speed_limit": 0.03,
+        "angular_speed_limit": 0.2,
+        "rod_clearance": 0.003,
+        "placement_hold_seconds": 0.5,
+        "success_hold_seconds": 2.0,
+        "hand_contact_memory_seconds": 0.1,
+        "support_force_min": 0.05,
+        "fall_distance": 0.1
+      },
+      "controller_config": {
+        "finger_offset_x": 0.001,
+        "wrist_height": 0.034,
+        "wrist_backoff": 0.15467536,
+        "open_margin": 0.036,
+        "closed_margin": 0.002,
+        "contact_preload": 0.012,
+        "carry_height": 1.005,
+        "approach_seconds": 1.2,
+        "descend_seconds": 1.4,
+        "squeeze_seconds": 0.4,
+        "grasp_retries": 2,
+        "regrasp_squeeze_step": 0.004,
+        "ik_position_tolerance": 0.003,
+        "ik_max_evaluations": 100,
+        "lift_seconds": 1.5,
+        "transfer_seconds": 1.5,
+        "transfer_settle_seconds": 0.4,
+        "lower_seconds": 1.4,
+        "placement_settle_seconds": 0.2,
+        "release_seconds": 0.7,
+        "retreat_seconds": 0.8,
+        "settle_timeout_seconds": 3.0,
+        "max_joint_speed": 2.0,
+        "dense_approach_seconds": 1.4,
+        "release_settle_seconds": 0.3,
+        "follow_ring_apothem": true,
+        "track_placement": true,
+        "track_lift": true,
+        "fold_thumbs": false,
+        "fold_thumbs_near_disks": false,
+        "select_thumb_clearance": true,
+        "fold_thumb_proximal": 1.04,
+        "fold_thumb_distal": 0.75,
+        "placement_gain": 4.0,
+        "placement_speed": 0.03,
+        "limit_transfer_speed": true,
+        "transfer_speed": 0.43,
+        "transfer_speed_min_radius_ratio": 0.01
+      },
+      "arrays": {
+        "action": {
+          "shape": [
+            18064,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "target": {
+          "shape": [
+            18064,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "reward": {
+          "shape": [
+            18064
+          ],
+          "dtype": "float64"
+        },
+        "done": {
+          "shape": [
+            18064
+          ],
+          "dtype": "bool"
+        },
+        "controller_phase": {
+          "shape": [
+            18064
+          ],
+          "dtype": "<U24"
+        },
+        "environment_phase": {
+          "shape": [
+            18064
+          ],
+          "dtype": "<U17"
+        },
+        "move_index": {
+          "shape": [
+            18064
+          ],
+          "dtype": "int64"
+        },
+        "move_count": {
+          "shape": [
+            18064
+          ],
+          "dtype": "int64"
+        },
+        "object_names": {
+          "shape": [
+            5
+          ],
+          "dtype": "<U6"
+        },
+        "joint_names": {
+          "shape": [
+            43
+          ],
+          "dtype": "<U26"
+        },
+        "object_state_fields": {
+          "shape": [
+            13
+          ],
+          "dtype": "<U2"
+        },
+        "contact_fields": {
+          "shape": [
+            3
+          ],
+          "dtype": "<U15"
+        },
+        "pre_joint_position": {
+          "shape": [
+            18064,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "pre_joint_velocity": {
+          "shape": [
+            18064,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "pre_time": {
+          "shape": [
+            18064
+          ],
+          "dtype": "float64"
+        },
+        "pre_object_state": {
+          "shape": [
+            18064,
+            5,
+            13
+          ],
+          "dtype": "float64"
+        },
+        "pre_object_contacts": {
+          "shape": [
+            18064,
+            5,
+            3
+          ],
+          "dtype": "bool"
+        },
+        "post_joint_position": {
+          "shape": [
+            18064,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "post_joint_velocity": {
+          "shape": [
+            18064,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "post_time": {
+          "shape": [
+            18064
+          ],
+          "dtype": "float64"
+        },
+        "post_object_state": {
+          "shape": [
+            18064,
+            5,
+            13
+          ],
+          "dtype": "float64"
+        },
+        "post_object_contacts": {
+          "shape": [
+            18064,
+            5,
+            3
+          ],
+          "dtype": "bool"
+        }
+      },
+      "quality_report": "../../../acceptance/release_20261022/dataset_release_20261023_v2/disks5_quality.json",
+      "quality_report_sha256": "acee5f88cfa3d9f1b70b20688e6242b5f3fa81abbd786066d2cc3a90c4ea4a85",
+      "quality_review_flags": [
+        "move_8: sampled hand-contact gap before commanded release",
+        "move_8: sampled left hand-force gap before commanded release",
+        "move_8: sampled right hand-force gap before commanded release"
+      ]
+    }
+  ],
+  "scope": "Local physical demonstrations and same-environment independent replays; no isolated benchmark admission.",
+  "quality_review": {
+    "required": true,
+    "reviewer": null,
+    "reviewed_at": null,
+    "note": "Five-disk move 8 has one sampled 20 ms both-hand contact gap during placement at 94.12 s, before commanded release. The largest sampled disk tilt in that placement is 0.567647 rad. It subsequently recontacts and commits a legal released placement at 95.675 s. The task and independent replays pass; these quality observations still require human review. No physics or scoring threshold was changed."
+  }
+}

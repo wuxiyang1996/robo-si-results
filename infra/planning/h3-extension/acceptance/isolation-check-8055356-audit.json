@@ -1,0 +1,148 @@
+{
+  "schema": "h3-isolated-audit/1",
+  "run": "isolation-check-8055356",
+  "task_success": false,
+  "independent_episodes": [
+    {
+      "score": 0.0,
+      "final_progress": 0.0,
+      "process_score": 0.0,
+      "legacy_score": 0.0,
+      "peak_time_s": 0.005,
+      "stage_best": {
+        "parcel_lifted": 0.0,
+        "carried_through_door": 0.0,
+        "released_table_hold": 0.0
+      },
+      "stage_final": {
+        "parcel_lifted": 0.0,
+        "carried_through_door": 0.0,
+        "released_table_hold": 0.0
+      },
+      "stage_timeline": {
+        "parcel_lifted": null,
+        "carried_through_door": null,
+        "released_table_hold": null
+      },
+      "stage_weights": {
+        "parcel_lifted": 0.3,
+        "carried_through_door": 0.35,
+        "released_table_hold": 0.35
+      },
+      "stage_modes": {
+        "parcel_lifted": "once",
+        "carried_through_door": "once",
+        "released_table_hold": "live"
+      },
+      "completed_at_end": false,
+      "success": false,
+      "void": false,
+      "void_reasons": [],
+      "flags": [],
+      "steps": 10,
+      "time_s": 0.2000000000000001,
+      "scorer_replay_matches_live": true,
+      "scope": "trusted native replay with stage-scoring/1; physical calibration recorded separately",
+      "stage_scoring_version": "stage-scoring/1",
+      "score_scale": 1,
+      "stage_score": 0.0,
+      "stage_scores": {
+        "parcel_lifted": {
+          "weight": 30.0,
+          "mode": "once",
+          "progress": 0.0,
+          "points": 0.0,
+          "credit_withheld": false
+        },
+        "carried_through_door": {
+          "weight": 35.0,
+          "mode": "once",
+          "progress": 0.0,
+          "points": 0.0,
+          "credit_withheld": false
+        },
+        "released_table_hold": {
+          "weight": 35.0,
+          "mode": "live",
+          "progress": 0.0,
+          "points": 0.0,
+          "credit_withheld": false
+        }
+      }
+    }
+  ],
+  "isolation_probes": {
+    "hidden_/fs/gamma-projects/vlm-robot/robo-si": true,
+    "hidden_/nfshomes/wuxiyang": true,
+    "hidden_.config/huggingface/token": true,
+    "external_network_blocked": true
+  },
+  "agent_inputs_verified": 6,
+  "server": {
+    "sessions": 1,
+    "violations": 0,
+    "status": {
+      "time_s": 0.2,
+      "steps": 10,
+      "over": true,
+      "reason": "finished",
+      "sim_time_left_s": 1.8,
+      "observations_left": 19998,
+      "resets_left": 0,
+      "episode": 0
+    },
+    "server": "infra-server/1"
+  },
+  "source_stability": {
+    "launch_scope_source_frozen": true,
+    "changed": {}
+  },
+  "channel_checks": [
+    {
+      "test": "unknown robot",
+      "rejected": true,
+      "steps_before": 0,
+      "steps_after": 0
+    },
+    {
+      "test": "wrong shape",
+      "rejected": true,
+      "steps_before": 0,
+      "steps_after": 0
+    },
+    {
+      "test": "hidden state write",
+      "rejected": true,
+      "steps_before": 0,
+      "steps_after": 0
+    },
+    {
+      "test": "unsupported gain",
+      "rejected": true,
+      "steps_before": 0,
+      "steps_after": 0
+    },
+    {
+      "test": "unsupported mode",
+      "rejected": true,
+      "steps_before": 0,
+      "steps_after": 0
+    }
+  ],
+  "execution_result": {
+    "agent_exit_code": 0,
+    "relay_errors": [],
+    "worker_exit_code": 0,
+    "schema": "h3-isolated-execution/1",
+    "kind": "legacy",
+    "variant": "no_prop",
+    "wall_seconds": 175.4587856528815,
+    "isolation": "bubblewrap user/pid/mount/ipc/uts/cgroup/network namespaces; private Unix RPC relay",
+    "privileged_command_replay": false,
+    "general_policy_evaluation": false,
+    "formal_admission": false
+  },
+  "privileged_replay": false,
+  "formal_admission": false,
+  "limitation": "A sealed precomputed author command stream tests transport and physics; it is not an online sensor-only expert."
+}

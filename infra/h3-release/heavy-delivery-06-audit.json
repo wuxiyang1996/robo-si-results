@@ -1,0 +1,100 @@
+{
+  "run": "heavy-delivery-06",
+  "variant": "heavy_prop",
+  "files_verified": 626,
+  "source_snapshot_files": 546,
+  "frozen_native_assets_verified": 63,
+  "frozen_package_markers_verified": 2,
+  "task_timeout_s": 180.0,
+  "current_sources_match": false,
+  "changed_source_files": [
+    "humanoid/g1_support_retrieval/admission.json"
+  ],
+  "python_and_xml_sources_match": true,
+  "seconds": 169.24,
+  "control_steps": 8462,
+  "physics_steps": 33848,
+  "max_robot_robot_force_N": 0.0,
+  "max_door_angle_rad": 1.2240906953811646,
+  "final_door_angle_rad": 1.1364686489105225,
+  "final_robot_positions": {
+    "g1_a": [
+      4.502358913421631,
+      0.25019317865371704,
+      0.7330941557884216
+    ],
+    "g1_b": [
+      4.0337395668029785,
+      -1.098335862159729,
+      0.7237475514411926
+    ]
+  },
+  "empty_B_entry_observed": false,
+  "min_A_cycle_door_force_during_B_doorway_transit_N": 2.731548994779587,
+  "reported_result": {
+    "ok": true,
+    "reason": "native delivery score",
+    "variant": "heavy_prop",
+    "seconds": 169.24,
+    "task_success": true,
+    "score": {
+      "elapsed": 169.24,
+      "lifted": true,
+      "crossed": true,
+      "failed": false,
+      "success": true,
+      "hold": 7.459999999999863,
+      "carrier": "g1_a",
+      "events": [
+        {
+          "t": 130.635,
+          "event": "lifted",
+          "carrier": "g1_a"
+        },
+        {
+          "t": 148.21,
+          "event": "carried_crossing",
+          "carrier": "g1_a"
+        },
+        {
+          "t": 163.78,
+          "event": "released_table_dwell"
+        }
+      ]
+    },
+    "scope": "native heavy reference candidate; not isolated sandbox or release",
+    "diagnostic_failure": null
+  },
+  "independent_delivery_verdict": {
+    "available": true,
+    "lift_observed": true,
+    "carried_crossings": [
+      {
+        "t": 148.21,
+        "carrier": "g1_a"
+      }
+    ],
+    "failed": false,
+    "max_released_table_dwell_s": 7.459999999999863,
+    "task_success": true,
+    "reference_route": {
+      "passed": true,
+      "unassisted_prop_verified": true,
+      "prop_verified_time_s": 95.72,
+      "prop_before_carried_crossing": true,
+      "max_unassisted_prop_dwell_s": 57.5600000000034,
+      "crate_displacement_m": 1.5207127974672123,
+      "robot_contact_linked_path_m": 1.5040028363485018,
+      "min_passage_clearance_during_prop_m": 0.7913257072540988
+    }
+  },
+  "task_success": true,
+  "independent_heavy_transit_prop": {
+    "transit_cycles": 38,
+    "min_crate_door_cycle_mean_N": 4.944509983062744,
+    "max_robot_door_force_N": 0.0,
+    "max_robot_crate_force_N": 0.0,
+    "passed": true
+  },
+  "scope": "native host reference audit; no isolated sandbox, repeat or release claim"
+}

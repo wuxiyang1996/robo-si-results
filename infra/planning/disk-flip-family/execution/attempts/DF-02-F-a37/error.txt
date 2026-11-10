@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 913, in main
+    try:attempt.execute()
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 516, in execute
+    self.move('lift',lift,seconds=40)
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 431, in move
+    if max(residual.values())>tolerance:raise RuntimeError('grasp_pose_not_reached:'+str(residual))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: grasp_pose_not_reached:{'left': 0.04959273263547627, 'right': 0.04714103348356963}

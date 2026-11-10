@@ -1,0 +1,348 @@
+{
+  "plan": {
+    "schema": "disk-representative-validation-plan/1",
+    "purpose": "few_task_level_witnesses_not_per_random_instance_solutions",
+    "selection": "nominal design plus a prospectively selected 3 mm lateral translation; exact configurations, no inferred interval",
+    "selection_timing": "nominal first run already underway; offset case and repetitions selected before their execution",
+    "cases": [
+      {
+        "id": "nominal",
+        "config": "configs/nominal.json",
+        "seed": 0,
+        "controller_repetitions": 3,
+        "run_prefix": "release-nominal",
+        "replay_run": "release-nominal-replay-002",
+        "selected_run_names": [
+          "release-nominal-007",
+          "release-nominal-008",
+          "release-nominal-009"
+        ]
+      },
+      {
+        "id": "offset_y_003",
+        "config": "configs/offset_y_003.json",
+        "seed": 1,
+        "controller_repetitions": 3,
+        "run_prefix": "release-offset",
+        "replay_run": "release-offset-replay-002",
+        "selected_run_names": [
+          "release-offset-003",
+          "release-offset-004",
+          "release-offset-005"
+        ]
+      }
+    ],
+    "independent_action_replay_per_case": 1,
+    "video_review_required": true,
+    "preserve_failed_and_unknown_attempts": true,
+    "random_screening_requires_complete_trajectory": false,
+    "admission": "pending_complete_execution_replay_audit_and_human_video_review",
+    "revision": 3,
+    "revision_reason": "Retain offset 002 angular-speed failure; revise lower-pad withdrawal and table-height rim pushing, then repeat the same two configurations with the final policy.",
+    "all_prior_attempts_retained_in": "candidate_attempts.json",
+    "replay_binding": "Applied command arrays must equal the selected current-policy witness exactly; an earlier independent replay may be reused only if configuration, seed, physics, runtime, assets and commands all match."
+  },
+  "cases": [
+    {
+      "case": "nominal",
+      "controller_repetitions": 3,
+      "complete_successes": 3,
+      "independent_replay": true,
+      "duration_seconds": [
+        457.30499999962035,
+        457.30499999962035,
+        457.30499999962035
+      ],
+      "duration_spread_seconds": 0.0,
+      "peaks": [
+        {
+          "linear_speed_m_s": 0.029912449286348806,
+          "angular_speed_rad_s": 0.39503132416935877,
+          "robot_force_n": 16.760442732601035,
+          "table_force_n": 3.3998333307664694
+        },
+        {
+          "linear_speed_m_s": 0.029912449286348806,
+          "angular_speed_rad_s": 0.39503132416935877,
+          "robot_force_n": 16.760442732601035,
+          "table_force_n": 3.3998333307664694
+        },
+        {
+          "linear_speed_m_s": 0.029912449286348806,
+          "angular_speed_rad_s": 0.39503132416935877,
+          "robot_force_n": 16.760442732601035,
+          "table_force_n": 3.3998333307664694
+        }
+      ],
+      "robot_self_contacts": {
+        "sampling_hz": 50,
+        "threshold_n": 0.1,
+        "scope": "control-boundary observations only; not substep collision certification",
+        "pairs": {
+          "left_hand_middle_1_link / right_hand_middle_1_link": {
+            "peak_force_n": 1.0607570796658354,
+            "observed_control_samples": 381
+          },
+          "left_hand_middle_1_link / right_hand_index_1_link": {
+            "peak_force_n": 0.20192128959507438,
+            "observed_control_samples": 110
+          },
+          "left_hand_index_1_link / right_hand_index_1_link": {
+            "peak_force_n": 2.3110152892196245,
+            "observed_control_samples": 1327
+          },
+          "left_wrist_yaw_link / torso_link": {
+            "peak_force_n": 1.0620588673957603,
+            "observed_control_samples": 32
+          }
+        }
+      },
+      "robot_environment_contacts": {
+        "sampling_hz": 50,
+        "threshold_n": 0.1,
+        "scope": "control-boundary observations only; not substep collision certification",
+        "pairs": {
+          "right_wrist_yaw_link / table": {
+            "peak_force_n": 3.656126278033907,
+            "observed_control_samples": 67,
+            "peak_time_s": 9.66,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_thumb_2_link / disk": {
+            "peak_force_n": 6.067505095227168,
+            "observed_control_samples": 10375,
+            "peak_time_s": 370.64,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_thumb_2_link / table": {
+            "peak_force_n": 3.6166379157093522,
+            "observed_control_samples": 209,
+            "peak_time_s": 65.72,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_middle_1_link / disk": {
+            "peak_force_n": 4.92127877985766,
+            "observed_control_samples": 6089,
+            "peak_time_s": 221.78,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_middle_1_link / disk": {
+            "peak_force_n": 3.2112850091976943,
+            "observed_control_samples": 4696,
+            "peak_time_s": 221.70000000000002,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_index_1_link / disk": {
+            "peak_force_n": 3.090830817107952,
+            "observed_control_samples": 12063,
+            "peak_time_s": 404.40000000000003,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_thumb_2_link / table": {
+            "peak_force_n": 5.802289551905277,
+            "observed_control_samples": 1136,
+            "peak_time_s": 156.46,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_thumb_1_link / disk": {
+            "peak_force_n": 4.647140139012461,
+            "observed_control_samples": 11441,
+            "peak_time_s": 201.6,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_thumb_1_link / disk": {
+            "peak_force_n": 3.906368886205962,
+            "observed_control_samples": 2475,
+            "peak_time_s": 194.86,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_index_1_link / disk": {
+            "peak_force_n": 2.95199398578386,
+            "observed_control_samples": 2862,
+            "peak_time_s": 164.3,
+            "peak_phase": "action_replay"
+          },
+          "right_wrist_yaw_link / disk": {
+            "peak_force_n": 3.667678138720162,
+            "observed_control_samples": 8198,
+            "peak_time_s": 269.98,
+            "peak_phase": "action_replay"
+          },
+          "torso_link / disk": {
+            "peak_force_n": 1.9254153157776035,
+            "observed_control_samples": 463,
+            "peak_time_s": 282.62,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_thumb_2_link / disk": {
+            "peak_force_n": 2.7632462640335302,
+            "observed_control_samples": 3974,
+            "peak_time_s": 370.64,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_middle_0_link / disk": {
+            "peak_force_n": 0.2913073710629839,
+            "observed_control_samples": 76,
+            "peak_time_s": 399.78000000000003,
+            "peak_phase": "action_replay"
+          }
+        }
+      },
+      "video": "nominal/replay/video.mp4",
+      "video_sha256": "745e34d49421a6e7503457a3abce0805f449cf58335725931ec3f6fa296581c4",
+      "human_review": "pending"
+    },
+    {
+      "case": "offset_y_003",
+      "controller_repetitions": 3,
+      "complete_successes": 3,
+      "independent_replay": true,
+      "duration_seconds": [
+        478.9249999996007,
+        478.9249999996007,
+        478.9249999996007
+      ],
+      "duration_spread_seconds": 0.0,
+      "peaks": [
+        {
+          "linear_speed_m_s": 0.05104231889686313,
+          "angular_speed_rad_s": 0.6030108755178154,
+          "robot_force_n": 16.766354319961327,
+          "table_force_n": 3.343011442995499
+        },
+        {
+          "linear_speed_m_s": 0.05104231889686313,
+          "angular_speed_rad_s": 0.6030108755178154,
+          "robot_force_n": 16.766354319961327,
+          "table_force_n": 3.343011442995499
+        },
+        {
+          "linear_speed_m_s": 0.05104231889686313,
+          "angular_speed_rad_s": 0.6030108755178154,
+          "robot_force_n": 16.766354319961327,
+          "table_force_n": 3.343011442995499
+        }
+      ],
+      "robot_self_contacts": {
+        "sampling_hz": 50,
+        "threshold_n": 0.1,
+        "scope": "control-boundary observations only; not substep collision certification",
+        "pairs": {
+          "left_hand_middle_1_link / right_hand_middle_1_link": {
+            "peak_force_n": 1.3952860804964393,
+            "observed_control_samples": 525
+          },
+          "left_hand_middle_1_link / right_hand_index_1_link": {
+            "peak_force_n": 0.231317523042236,
+            "observed_control_samples": 113
+          },
+          "left_hand_index_1_link / right_hand_index_1_link": {
+            "peak_force_n": 2.5348969199802713,
+            "observed_control_samples": 1626
+          },
+          "left_wrist_yaw_link / torso_link": {
+            "peak_force_n": 2.0206867698281306,
+            "observed_control_samples": 45
+          }
+        }
+      },
+      "robot_environment_contacts": {
+        "sampling_hz": 50,
+        "threshold_n": 0.1,
+        "scope": "control-boundary observations only; not substep collision certification",
+        "pairs": {
+          "right_wrist_yaw_link / table": {
+            "peak_force_n": 4.392603925879463,
+            "observed_control_samples": 67,
+            "peak_time_s": 8.48,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_thumb_2_link / disk": {
+            "peak_force_n": 5.375143885609008,
+            "observed_control_samples": 11179,
+            "peak_time_s": 375.8,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_thumb_2_link / table": {
+            "peak_force_n": 2.752109799281713,
+            "observed_control_samples": 209,
+            "peak_time_s": 65.7,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_middle_1_link / disk": {
+            "peak_force_n": 5.303524378577156,
+            "observed_control_samples": 8919,
+            "peak_time_s": 412.66,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_middle_1_link / disk": {
+            "peak_force_n": 3.1119527160417766,
+            "observed_control_samples": 4716,
+            "peak_time_s": 222.76,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_index_1_link / disk": {
+            "peak_force_n": 2.866347833244986,
+            "observed_control_samples": 11209,
+            "peak_time_s": 194.28,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_thumb_2_link / table": {
+            "peak_force_n": 5.98975296239666,
+            "observed_control_samples": 1170,
+            "peak_time_s": 156.52,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_thumb_1_link / disk": {
+            "peak_force_n": 4.638388751533241,
+            "observed_control_samples": 10786,
+            "peak_time_s": 164.48,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_thumb_1_link / disk": {
+            "peak_force_n": 3.8844955793702827,
+            "observed_control_samples": 2534,
+            "peak_time_s": 195.28,
+            "peak_phase": "action_replay"
+          },
+          "left_hand_index_1_link / disk": {
+            "peak_force_n": 3.1322320361989684,
+            "observed_control_samples": 2762,
+            "peak_time_s": 164.76,
+            "peak_phase": "action_replay"
+          },
+          "right_wrist_yaw_link / disk": {
+            "peak_force_n": 4.007273696142687,
+            "observed_control_samples": 8820,
+            "peak_time_s": 272.62,
+            "peak_phase": "action_replay"
+          },
+          "torso_link / disk": {
+            "peak_force_n": 2.6467398548551264,
+            "observed_control_samples": 618,
+            "peak_time_s": 283.12,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_thumb_2_link / disk": {
+            "peak_force_n": 2.363425025202438,
+            "observed_control_samples": 3592,
+            "peak_time_s": 378.40000000000003,
+            "peak_phase": "action_replay"
+          },
+          "right_hand_middle_0_link / disk": {
+            "peak_force_n": 0.7366777513505652,
+            "observed_control_samples": 51,
+            "peak_time_s": 413.04,
+            "peak_phase": "action_replay"
+          }
+        }
+      },
+      "video": "offset_y_003/replay/video.mp4",
+      "video_sha256": "81b7ef82ea0abe09cdb5d01bdf64f067b747b8a0558ed32ba9f7df857e9ddafc",
+      "human_review": "pending"
+    }
+  ],
+  "interval_validation": false,
+  "benchmark_samples_filtered": false,
+  "formal_admission": false
+}

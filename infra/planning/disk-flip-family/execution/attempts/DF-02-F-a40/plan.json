@@ -1,0 +1,177 @@
+{
+  "controller_tuning": {
+    "inspire_index_only": false,
+    "inspire_thumb_yaw": 1.05,
+    "inspire_hand_yaw": 0.26,
+    "inspire_offset": [
+      0.03,
+      0.02,
+      0
+    ],
+    "inspire_thumb_n": 2.8,
+    "inspire_fingers_n": 2.1,
+    "inspire_close_s": 100,
+    "collision_profile": "inspire-palms-v2",
+    "align_grasp": true,
+    "prepush": true,
+    "inspire_absolute_x": 0.36,
+    "inspire_push_z": 0.866,
+    "inspire_push_finger_kp": 6.0,
+    "inspire_push_feedback": 0.02,
+    "inspire_push_speed": 0.001,
+    "inspire_push_load_n": 1.2,
+    "inspire_index_push": true,
+    "inspire_push_pitch": -0.2,
+    "inspire_table_clearance": false,
+    "inspire_vertical_withdraw": true,
+    "inspire_edge_x": 0.378,
+    "inspire_park_left": true,
+    "inspire_bimanual": true,
+    "inspire_total_target_cap": 14,
+    "inspire_fingers": [
+      "middle",
+      "ring"
+    ],
+    "wrist_clearance": true,
+    "turn_feedback": true,
+    "physics_dt": 0.0005,
+    "inspire_unused_fold": 0.0,
+    "insert_seconds": 40,
+    "inspire_bimanual_y": 0.17,
+    "inspire_left_x": 0.355,
+    "inspire_right_x": 0.335,
+    "require_inspire_grasp": true,
+    "inspire_grasp_z": 0.034,
+    "inspire_insert_pose_tolerance_m": 0.035,
+    "inspire_grasp_yaw": 0.26,
+    "inspire_orient_before_insert": true,
+    "reference_prefix_file": "DF-02-F-vertical-program.npz",
+    "prefix_completion": "recorded_complete",
+    "finger_servo_schedule": [
+      {
+        "start_step": 621760,
+        "kp": 2.4,
+        "kd": 0.25
+      }
+    ]
+  },
+  "setting": "DF-02-F",
+  "created_before_execution": true,
+  "high_level": [
+    "prepare",
+    "grasp",
+    "lift",
+    "turn",
+    "place"
+  ],
+  "low_level": [
+    {
+      "id": "L01",
+      "phase": "settle",
+      "high_level": "prepare",
+      "action": "Stabilize the fixed body and supported plate"
+    },
+    {
+      "id": "L02",
+      "phase": "preshape",
+      "high_level": "prepare",
+      "action": "Open and orient fingers"
+    },
+    {
+      "id": "L03",
+      "phase": "orient_clear",
+      "high_level": "prepare",
+      "action": "Orient hands above and outside the disk"
+    },
+    {
+      "id": "L04",
+      "phase": "pregrasp",
+      "high_level": "grasp",
+      "action": "Approach the exposed rim from outside the table"
+    },
+    {
+      "id": "L05",
+      "phase": "insert",
+      "high_level": "grasp",
+      "action": "Insert opposing contacts around the rim"
+    },
+    {
+      "id": "L06",
+      "phase": "close",
+      "high_level": "grasp",
+      "action": "Close under measured contact loads"
+    },
+    {
+      "id": "L07",
+      "phase": "lift",
+      "high_level": "lift",
+      "action": "Raise the plate while maintaining actual grasp"
+    },
+    {
+      "id": "L08",
+      "phase": "turn",
+      "high_level": "turn",
+      "action": "Rotate the grasp through 180 degrees with clearance"
+    },
+    {
+      "id": "L09",
+      "phase": "place",
+      "high_level": "place",
+      "action": "Transfer support to the table"
+    },
+    {
+      "id": "L10",
+      "phase": "release",
+      "high_level": "place",
+      "action": "Open, withdraw and verify stable release"
+    },
+    {
+      "id": "L12",
+      "phase": "edge_slide",
+      "high_level": "grasp",
+      "action": "Move the table-supported plate toward the edge using measured contact"
+    },
+    {
+      "id": "L13",
+      "phase": "regrasp_release",
+      "high_level": "grasp",
+      "action": "Release the table-supported plate before deeper regrasp"
+    }
+  ],
+  "goal": {
+    "xy": [
+      0.5,
+      0
+    ],
+    "position_tolerance_m": 0.045,
+    "normal_z_max": -0.9902680687415704,
+    "release_hold_s": 2
+  },
+  "world": {
+    "start_xy": [
+      0.4,
+      0
+    ],
+    "table_height_m": 0.86,
+    "table_edge_x_m": 0.35,
+    "initial_overhang_m": 0.05,
+    "base_motion": false
+  },
+  "limits": {
+    "linear_speed_m_s": 0.12,
+    "angular_speed_rad_s": 0.65,
+    "robot_contact_sum_n": 18,
+    "table_contact_sum_n": 8,
+    "local_contact_body_n": null
+  },
+  "engine": "MuJoCo extension development; original Genesis evidence is separate",
+  "policy": "joint targets through effort-limited actuators; no object pose/velocity/force writes or attachment",
+  "strategy": "Fixed nominal joint-reference program, executed from the generated initial state; not online replanning or a generalizing policy",
+  "reference_program_scope": "Commands may originate from development diagnoses; only this complete new execution and its independent replay can establish task success",
+  "reference_program_provenance": "Intentionally incomplete development program stopping at table-supported vertical orientation. No success implied. Commands only; no object state writes.",
+  "integration": {
+    "physics_dt_s": 0.0005,
+    "control_dt_s": 0.02,
+    "status": "refined-step development candidate"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "user_requirement_zh": "抱起小机器人，抓取柜子上盒子里的物体，再放到目标位置；抖动不影响操作可以接受。",
+  "interpretation": "Small motion is acceptable if support, object retention and complete delivery remain valid; no zero-jitter requirement.",
+  "numerical_guards_set_by": "engineering judgment, not user-specified thresholds",
+  "original_score_and_monitor_rules_unchanged": true,
+  "guard_changes": {
+    "loaded_palm_stop_m": 0.015,
+    "payload_xy_stop_m": 0.035,
+    "base_xy_stop_m": 0.06,
+    "tilt_stop_deg": 15,
+    "support_contact_warning_m": 0.003,
+    "whitelisted_upward_support_contact_exploratory_stop_m": 0.005,
+    "other_contact_stop_m": 0.003,
+    "foot_anchor_warning_m": 0.005,
+    "gross_foot_motion_stop_m": 0.03,
+    "both_foot_min_vertical_N": 5,
+    "COM_margin_min_m": 0.02,
+    "ground_assisted_palm_warning_m": 0.025,
+    "ground_assisted_palm_stop_m": 0.05
+  },
+  "observed_peak_support_contact_depth_m": 0.003704562783241272,
+  "physical_review_required": true,
+  "final_release": "Finger opening changed from 32 mm to 40.5 mm per finger within public 44 mm stroke, followed by measured 2.1 s rest. Original 65 mm ball retained.",
+  "hardware_or_friction_or_mass_changes": false
+}

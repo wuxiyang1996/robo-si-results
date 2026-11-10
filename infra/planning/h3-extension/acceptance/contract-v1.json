@@ -1,0 +1,102 @@
+{
+  "schema": "h3-formal-acceptance-contract/1",
+  "status": "implementation_and_physical_validation_in_progress",
+  "scope": [
+    "H3-01",
+    "H3-02",
+    "H3-03",
+    "H3-04",
+    "H3-05",
+    "H3-06"
+  ],
+  "policy": "infra/planning/acceptance-policy.json",
+  "historical_records_unchanged": true,
+  "formal_admission": false,
+  "automatic_admission_upgrade": false,
+  "gates": [
+    {
+      "id": "identity",
+      "requirement": "Frozen scene, asset, controller, simulator, scorer, task version, visibility and motor-limit identities."
+    },
+    {
+      "id": "physical_witness",
+      "requirement": "At least one continuous full native success per declared configuration, including L2 discovery or L3 recovery where claimed. Local probes do not count."
+    },
+    {
+      "id": "planning",
+      "requirement": "High-level plan, selected skills and constraints, key states, HL_LL / LL_TRAJ / HL_TRAJ mappings with shared-clock command and physics indices."
+    },
+    {
+      "id": "support",
+      "requirement": "Continuous support and conservative full carrier/parcel envelope clearance during the complete door occupancy interval, not only center crossing."
+    },
+    {
+      "id": "isolation",
+      "requirement": "Complete representative expert execution through validated agent action interface; hidden parameters and privileged reference files excluded."
+    },
+    {
+      "id": "verifier",
+      "requirement": "Independent rescoring; positive, noop, support-gap, collision, incomplete-release and integrity-tampering controls."
+    },
+    {
+      "id": "repeatability",
+      "requirement": "Three preselected same-seed representative repeats with unchanged identity and tolerances; retain every failure and environment error."
+    },
+    {
+      "id": "publication",
+      "requirement": "Accessible expert source, plans, complete raw trajectories, physical audits and videos with verified hashes; synchronized task-page state."
+    },
+    {
+      "id": "human_review",
+      "requirement": "Named human review of declared representative full videos and critical positive/negative clips; never inferred from automated checks."
+    },
+    {
+      "id": "independent_reproduction",
+      "requirement": "Independent person's reproduction record on another physical machine; author-run cluster jobs may demonstrate machine portability but cannot impersonate another person."
+    }
+  ],
+  "cohorts": {
+    "H3-01-legacy-portability": {
+      "seed": 0,
+      "planned_repeats": 3,
+      "selection": "Existing no-prop-delivery-07 reference configuration, frozen published runtime, retained native online controller.",
+      "original_timeout_s": 180,
+      "first_job_id": "8054753",
+      "failure_rule": "If the first attempt exposes a common runtime or physical failure, record it and diagnose before scheduling remaining repeats. No seed replacement.",
+      "job_ids": [
+        "8054753",
+        "8054834",
+        "8054835"
+      ]
+    },
+    "heterogeneous": {
+      "status": "pilot_stage",
+      "exploratory_budget_s": 600,
+      "benchmark_timeout_s": null,
+      "repeat_cohort": null,
+      "note": "Freeze the repeat identity and comparable benchmark budget after pilot feasibility, before the acceptance repeats."
+    },
+    "H3-02-legacy-portability": {
+      "seed": 0,
+      "planned_repeats": 3,
+      "selection": "Frozen published heavy_prop representative configuration; unchanged original 180 s task criteria.",
+      "job_ids": [
+        "8054836",
+        "8054933",
+        "8054934"
+      ],
+      "original_timeout_s": 180
+    },
+    "legacy_success_criterion": "Three full physical successes under original task gates and unchanged source identity; elapsed-time spread reported separately, no claim of bitwise-identical trajectories."
+  },
+  "parcel": {
+    "size_m": [
+      0.2,
+      0.18,
+      0.16
+    ],
+    "mass_kg": 0.4,
+    "revision": "original_unmodified"
+  },
+  "role_selection": "User confirmed: preserve original parcel; G1 carries, Stretch supports door or arranges tools. Full physical role transfer remains to be demonstrated."
+}

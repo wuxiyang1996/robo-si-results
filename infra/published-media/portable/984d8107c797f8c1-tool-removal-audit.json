@@ -1,0 +1,1572 @@
+{
+ "schema": "h5-counterfactual-physics-review/1",
+ "source_sha256": "c25f8ff67211131597053e018ed494662aa40ba20cb8dff866b3fd967605d1a4",
+ "scope": "read-only review of explicitly declared changed initial poses; not a task verifier",
+ "rows": [
+  {
+   "run": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\tool_audit\\release-insertion-v3-centred-no-lever-20261023-1",
+   "setup": {
+    "kind": "tool_removal_by_initial_parking",
+    "tools": {
+     "crowbar": {
+      "original": [
+       1.2334711979346427,
+       -0.13,
+       0.10860352326672584
+      ],
+      "parked": [
+       5.45,
+       1.65,
+       0.10860352326672584
+      ]
+     },
+     "fulcrum": {
+      "original": [
+       1.51,
+       -0.13,
+       0.02
+      ],
+      "parked": [
+       6.35,
+       1.7,
+       0.02
+      ]
+     }
+    },
+    "strategy": "direct_transport",
+    "centre_push": true,
+    "hands_ahead": 0.36,
+    "stop_before": 0.3,
+    "development_design": "lever-insertion-v3",
+    "necessity_proven": false,
+    "main_task_admission_evidence": false
+   },
+   "manifest_sha256": "db2ddfb23321f207ab77bfd893e80c679496325de003ecbf8c7837b180bf82d2",
+   "original_verdict": {
+    "episode": "episode_00",
+    "void": true,
+    "void_reasons": [
+     "initial_state_mismatch (1_no_reward_hacking)"
+    ],
+    "flags": [],
+    "score": 0.0,
+    "success": false,
+    "scene": "platform",
+    "variant": "platform",
+    "scene_version": "platform/33e9a7a1e497",
+    "end_reason": "finished",
+    "samples": 849,
+    "sim_time_s": 16.96,
+    "source": "reference_recorder",
+    "observations": null,
+    "effort_limits": "hardware",
+    "simulator": {
+     "genesis-world": "1.4.3",
+     "torch": "2.11.0+cu128",
+     "numpy": "2.5.3"
+    },
+    "final_progress": 0.05,
+    "peak_time_s": 12.68,
+    "stage_best": {
+     "tool_engaged": 1.0,
+     "cargo_raised": 0.0,
+     "cargo_supported": 0.0,
+     "transported": 0.0,
+     "delivered": 0.0
+    },
+    "stage_timeline": {
+     "tool_engaged": 12.68,
+     "cargo_raised": null,
+     "cargo_supported": null,
+     "transported": null,
+     "delivered": null
+    },
+    "delivered_at_end": false,
+    "chain_complete": false,
+    "failed": false,
+    "core_success": false,
+    "core_success_time_s": null,
+    "core_failed_time_s": null,
+    "max_edge_lift_m": 0.0033,
+    "min_floor_share": 0.0,
+    "max_goal_progress": 0.0,
+    "max_goal_cover": 0.0,
+    "evaluation": {
+     "success": false,
+     "success_time_s": null,
+     "failed": false,
+     "failed_time_s": null,
+     "hold_s": 0.0,
+     "peak_edge_height_m": 0.0103
+    },
+    "score_before_void": 0.05,
+    "alarms": [
+     {
+      "kind": "initial_state_mismatch",
+      "question": "1_no_reward_hacking",
+      "handling": "void",
+      "t0": 0.0,
+      "t1": 0.0,
+      "bodies": [
+       "crowbar",
+       "fulcrum"
+      ],
+      "max_body_offset_m": 5.1744,
+      "max_body_turn_deg": 0.0,
+      "robot_offset_m": 0.0
+     }
+    ],
+    "alarms_by_question": {
+     "1_no_reward_hacking": [
+      {
+       "kind": "initial_state_mismatch",
+       "question": "1_no_reward_hacking",
+       "handling": "void",
+       "t0": 0.0,
+       "t1": 0.0,
+       "bodies": [
+        "crowbar",
+        "fulcrum"
+       ],
+       "max_body_offset_m": 5.1744,
+       "max_body_turn_deg": 0.0,
+       "robot_offset_m": 0.0
+      }
+     ],
+     "2_task_really_completed": [],
+     "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+     "monitor_version": "h5-monitors/1",
+     "not_applicable": {
+      "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+     },
+     "max_reported_speed": 1.865,
+     "max_object_speed": 2.201,
+     "max_step_speed": 2.201,
+     "max_floor_penetration": 0.0041,
+     "max_out_of_bounds_m": -0.4509,
+     "max_energy_excess_J": 0.0,
+     "max_reversal_rate_hand_hz": 0.0,
+     "max_arm_shake": 0.564,
+     "max_saturation_s": 0.06,
+     "max_limit_push_s": 0.0,
+     "max_progress_spike": 0.0,
+     "initial_body_offset_m": 5.1744,
+     "initial_body_turn_deg": 0.0,
+     "initial_robot_offset_m": 0.0,
+     "max_robot_cargo_share": 0.0,
+     "max_applied_torque_ratio": 1.0
+    },
+    "verifier": "h5-verifier/1 (h5-monitors/1)"
+   },
+   "original_verdict_retained": true,
+   "expected_counterfactual_initial_state_checked": true,
+   "physical_parameters_unchanged": true,
+   "counterfactual_alarms": [],
+   "counterfactual_metrics": {
+    "monitor_version": "h5-monitors/1",
+    "not_applicable": {
+     "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+    },
+    "max_reported_speed": 1.865,
+    "max_object_speed": 2.201,
+    "max_step_speed": 2.201,
+    "max_floor_penetration": 0.0041,
+    "max_out_of_bounds_m": -0.4509,
+    "max_energy_excess_J": 0.0,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.564,
+    "max_saturation_s": 0.06,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0,
+    "initial_body_offset_m": 0.0,
+    "initial_body_turn_deg": 0.0,
+    "initial_robot_offset_m": 0.0,
+    "max_robot_cargo_share": 0.0,
+    "max_applied_torque_ratio": 1.0
+   },
+   "counterfactual_physics_valid": true,
+   "max_cargo_displacement_m": 0.0031420949766859914,
+   "duration_s": 16.96,
+   "raw_goal_hold_s": 0.0,
+   "raw_goal_reached": false,
+   "raw_goal_predicate": "unchanged TaskCore delivery, including support and no prior failure",
+   "minimum_goal_distance_m": 3.6799818372845223,
+   "necessity_proven": false,
+   "main_task_admission_evidence": false,
+   "human_review": null
+  },
+  {
+   "run": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\tool_audit\\release-insertion-v3-direct-cargo-20261023-1",
+   "setup": {
+    "kind": "tool_removal_by_initial_parking",
+    "tools": {
+     "crowbar": {
+      "original": [
+       1.2334711979346427,
+       -0.13,
+       0.10860352326672584
+      ],
+      "parked": [
+       5.45,
+       1.65,
+       0.10860352326672584
+      ]
+     },
+     "fulcrum": {
+      "original": [
+       1.51,
+       -0.13,
+       0.02
+      ],
+      "parked": [
+       6.35,
+       1.7,
+       0.02
+      ]
+     },
+     "skate_1": {
+      "original": [
+       1.54,
+       0.07,
+       0.0555
+      ],
+      "parked": [
+       6.35,
+       -1.65,
+       0.0555
+      ]
+     }
+    },
+    "strategy": "direct_transport",
+    "centre_push": false,
+    "hands_ahead": 0.3,
+    "stop_before": 0.45,
+    "development_design": "lever-insertion-v3",
+    "necessity_proven": false,
+    "main_task_admission_evidence": false
+   },
+   "manifest_sha256": "56d860d322fcc7572c713d72b7b40bb1f98bb1e4993bec15af29a97fdb64cfde",
+   "original_verdict": {
+    "episode": "episode_00",
+    "void": true,
+    "void_reasons": [
+     "initial_state_mismatch (1_no_reward_hacking)"
+    ],
+    "flags": [],
+    "score": 0.0,
+    "success": false,
+    "scene": "platform",
+    "variant": "platform",
+    "scene_version": "platform/33e9a7a1e497",
+    "end_reason": "failed",
+    "samples": 1488,
+    "sim_time_s": 29.74,
+    "source": "reference_recorder",
+    "observations": null,
+    "effort_limits": "hardware",
+    "simulator": {
+     "genesis-world": "1.4.3",
+     "torch": "2.11.0+cu128",
+     "numpy": "2.5.3"
+    },
+    "final_progress": 0.0,
+    "peak_time_s": 0.0,
+    "stage_best": {
+     "tool_engaged": 0.0,
+     "cargo_raised": 0.0,
+     "cargo_supported": 0.0,
+     "transported": 0.0,
+     "delivered": 0.0
+    },
+    "stage_timeline": {
+     "tool_engaged": null,
+     "cargo_raised": null,
+     "cargo_supported": null,
+     "transported": null,
+     "delivered": null
+    },
+    "delivered_at_end": false,
+    "chain_complete": false,
+    "failed": true,
+    "core_success": false,
+    "core_success_time_s": null,
+    "core_failed_time_s": 29.74,
+    "max_edge_lift_m": 0.0033,
+    "min_floor_share": 0.0,
+    "max_goal_progress": 0.001,
+    "max_goal_cover": 0.0,
+    "evaluation": {
+     "success": false,
+     "success_time_s": null,
+     "failed": true,
+     "failed_time_s": 29.74,
+     "hold_s": 0.0,
+     "peak_edge_height_m": 0.0103
+    },
+    "score_before_void": 0.0,
+    "alarms": [
+     {
+      "kind": "initial_state_mismatch",
+      "question": "1_no_reward_hacking",
+      "handling": "void",
+      "t0": 0.0,
+      "t1": 0.0,
+      "bodies": [
+       "crowbar",
+       "fulcrum",
+       "skate_1"
+      ],
+      "max_body_offset_m": 5.1744,
+      "max_body_turn_deg": 0.0,
+      "robot_offset_m": 0.0
+     }
+    ],
+    "alarms_by_question": {
+     "1_no_reward_hacking": [
+      {
+       "kind": "initial_state_mismatch",
+       "question": "1_no_reward_hacking",
+       "handling": "void",
+       "t0": 0.0,
+       "t1": 0.0,
+       "bodies": [
+        "crowbar",
+        "fulcrum",
+        "skate_1"
+       ],
+       "max_body_offset_m": 5.1744,
+       "max_body_turn_deg": 0.0,
+       "robot_offset_m": 0.0
+      }
+     ],
+     "2_task_really_completed": [],
+     "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+     "monitor_version": "h5-monitors/1",
+     "not_applicable": {
+      "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+     },
+     "max_reported_speed": 1.865,
+     "max_object_speed": 2.201,
+     "max_step_speed": 2.201,
+     "max_floor_penetration": 0.0041,
+     "max_out_of_bounds_m": -0.4509,
+     "max_energy_excess_J": 0.0,
+     "max_reversal_rate_hand_hz": 1.0,
+     "max_arm_shake": 0.359,
+     "max_saturation_s": 0.06,
+     "max_limit_push_s": 0.0,
+     "max_progress_spike": 0.0,
+     "initial_body_offset_m": 5.1744,
+     "initial_body_turn_deg": 0.0,
+     "initial_robot_offset_m": 0.0,
+     "max_robot_cargo_share": 0.097,
+     "max_applied_torque_ratio": 1.0
+    },
+    "verifier": "h5-verifier/1 (h5-monitors/1)"
+   },
+   "original_verdict_retained": true,
+   "expected_counterfactual_initial_state_checked": true,
+   "physical_parameters_unchanged": true,
+   "counterfactual_alarms": [],
+   "counterfactual_metrics": {
+    "monitor_version": "h5-monitors/1",
+    "not_applicable": {
+     "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+    },
+    "max_reported_speed": 1.865,
+    "max_object_speed": 2.201,
+    "max_step_speed": 2.201,
+    "max_floor_penetration": 0.0041,
+    "max_out_of_bounds_m": -0.4509,
+    "max_energy_excess_J": 0.0,
+    "max_reversal_rate_hand_hz": 1.0,
+    "max_arm_shake": 0.359,
+    "max_saturation_s": 0.06,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0,
+    "initial_body_offset_m": 0.0,
+    "initial_body_turn_deg": 0.0,
+    "initial_robot_offset_m": 0.0,
+    "max_robot_cargo_share": 0.097,
+    "max_applied_torque_ratio": 1.0
+   },
+   "counterfactual_physics_valid": true,
+   "max_cargo_displacement_m": 0.0036877918309185676,
+   "duration_s": 29.74,
+   "raw_goal_hold_s": 0.0,
+   "raw_goal_reached": false,
+   "raw_goal_predicate": "unchanged TaskCore delivery, including support and no prior failure",
+   "minimum_goal_distance_m": 3.6772919865366367,
+   "necessity_proven": false,
+   "main_task_admission_evidence": false,
+   "human_review": null
+  },
+  {
+   "run": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\tool_audit\\release-insertion-v3-no-far-skate-20261023-1",
+   "setup": {
+    "kind": "tool_removal_by_initial_parking",
+    "tools": {
+     "skate_0": {
+      "original": [
+       2.31,
+       -0.1,
+       0.0555
+      ],
+      "parked": [
+       5.35,
+       -1.65,
+       0.0555
+      ]
+     }
+    },
+    "strategy": "full",
+    "centre_push": false,
+    "hands_ahead": 0.34,
+    "stop_before": 0.3,
+    "development_design": "lever-insertion-v3",
+    "necessity_proven": false,
+    "main_task_admission_evidence": false
+   },
+   "manifest_sha256": "e61099b0d58fc7eab09360d61afd97900a34c08aaba9de3cfd7f7514efb2fdc1",
+   "original_verdict": {
+    "episode": "episode_00",
+    "void": true,
+    "void_reasons": [
+     "initial_state_mismatch (1_no_reward_hacking)"
+    ],
+    "flags": [],
+    "score": 0.0,
+    "success": false,
+    "scene": "platform",
+    "variant": "platform",
+    "scene_version": "platform/33e9a7a1e497",
+    "end_reason": "failed",
+    "samples": 1625,
+    "sim_time_s": 32.48,
+    "source": "reference_recorder",
+    "observations": null,
+    "effort_limits": "hardware",
+    "simulator": {
+     "genesis-world": "1.4.3",
+     "torch": "2.11.0+cu128",
+     "numpy": "2.5.3"
+    },
+    "final_progress": 0.1245,
+    "peak_time_s": 27.5,
+    "stage_best": {
+     "tool_engaged": 1.0,
+     "cargo_raised": 0.3727,
+     "cargo_supported": 0.0,
+     "transported": 0.0,
+     "delivered": 0.0
+    },
+    "stage_timeline": {
+     "tool_engaged": 6.44,
+     "cargo_raised": null,
+     "cargo_supported": null,
+     "transported": null,
+     "delivered": null
+    },
+    "delivered_at_end": false,
+    "chain_complete": false,
+    "failed": true,
+    "core_success": false,
+    "core_success_time_s": null,
+    "core_failed_time_s": 32.48,
+    "max_edge_lift_m": 0.0175,
+    "min_floor_share": 0.0,
+    "max_goal_progress": 0.003,
+    "max_goal_cover": 0.0,
+    "evaluation": {
+     "success": false,
+     "success_time_s": null,
+     "failed": true,
+     "failed_time_s": 32.48,
+     "hold_s": 0.0,
+     "peak_edge_height_m": 0.0245
+    },
+    "score_before_void": 0.1245,
+    "alarms": [
+     {
+      "kind": "initial_state_mismatch",
+      "question": "1_no_reward_hacking",
+      "handling": "void",
+      "t0": 0.0,
+      "t1": 0.0,
+      "bodies": [
+       "skate_0"
+      ],
+      "max_body_offset_m": 3.4123,
+      "max_body_turn_deg": 0.0,
+      "robot_offset_m": 0.0
+     }
+    ],
+    "alarms_by_question": {
+     "1_no_reward_hacking": [
+      {
+       "kind": "initial_state_mismatch",
+       "question": "1_no_reward_hacking",
+       "handling": "void",
+       "t0": 0.0,
+       "t1": 0.0,
+       "bodies": [
+        "skate_0"
+       ],
+       "max_body_offset_m": 3.4123,
+       "max_body_turn_deg": 0.0,
+       "robot_offset_m": 0.0
+      }
+     ],
+     "2_task_really_completed": [],
+     "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+     "monitor_version": "h5-monitors/1",
+     "not_applicable": {
+      "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+     },
+     "max_reported_speed": 0.503,
+     "max_object_speed": 0.46,
+     "max_step_speed": 1.515,
+     "max_floor_penetration": 0.0008,
+     "max_out_of_bounds_m": -0.8,
+     "max_energy_excess_J": 0.011,
+     "max_reversal_rate_hand_hz": 0.0,
+     "max_arm_shake": 0.322,
+     "max_saturation_s": 0.0,
+     "max_limit_push_s": 0.0,
+     "max_progress_spike": 0.0,
+     "initial_body_offset_m": 3.4123,
+     "initial_body_turn_deg": 0.0,
+     "initial_robot_offset_m": 0.0,
+     "max_robot_cargo_share": 0.0,
+     "max_applied_torque_ratio": 1.0
+    },
+    "verifier": "h5-verifier/1 (h5-monitors/1)"
+   },
+   "original_verdict_retained": true,
+   "expected_counterfactual_initial_state_checked": true,
+   "physical_parameters_unchanged": true,
+   "counterfactual_alarms": [],
+   "counterfactual_metrics": {
+    "monitor_version": "h5-monitors/1",
+    "not_applicable": {
+     "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+    },
+    "max_reported_speed": 0.503,
+    "max_object_speed": 0.46,
+    "max_step_speed": 1.515,
+    "max_floor_penetration": 0.0008,
+    "max_out_of_bounds_m": -0.8,
+    "max_energy_excess_J": 0.011,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.322,
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0,
+    "initial_body_offset_m": 0.0,
+    "initial_body_turn_deg": 0.0,
+    "initial_robot_offset_m": 0.0,
+    "max_robot_cargo_share": 0.0,
+    "max_applied_torque_ratio": 1.0
+   },
+   "counterfactual_physics_valid": true,
+   "max_cargo_displacement_m": 0.010568025318327725,
+   "duration_s": 32.48,
+   "raw_goal_hold_s": 0.0,
+   "raw_goal_reached": false,
+   "raw_goal_predicate": "unchanged TaskCore delivery, including support and no prior failure",
+   "minimum_goal_distance_m": 3.671189739930967,
+   "necessity_proven": false,
+   "main_task_admission_evidence": false,
+   "human_review": null
+  },
+  {
+   "run": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\tool_audit\\release-insertion-v3-no-fulcrum-20261023-1",
+   "setup": {
+    "kind": "tool_removal_by_initial_parking",
+    "tools": {
+     "fulcrum": {
+      "original": [
+       1.51,
+       -0.13,
+       0.02
+      ],
+      "parked": [
+       6.35,
+       1.7,
+       0.02
+      ]
+     }
+    },
+    "strategy": "full",
+    "centre_push": false,
+    "hands_ahead": 0.34,
+    "stop_before": 0.3,
+    "development_design": "lever-insertion-v3",
+    "necessity_proven": false,
+    "main_task_admission_evidence": false
+   },
+   "manifest_sha256": "1c572ac8a5ab77f2943271e20340a1504fbe9821c27a0a522abd8259d1f65a48",
+   "original_verdict": {
+    "episode": "episode_00",
+    "void": true,
+    "void_reasons": [
+     "initial_state_mismatch (1_no_reward_hacking)"
+    ],
+    "flags": [],
+    "score": 0.0,
+    "success": false,
+    "scene": "platform",
+    "variant": "platform",
+    "scene_version": "platform/33e9a7a1e497",
+    "end_reason": "finished",
+    "samples": 1054,
+    "sim_time_s": 21.06,
+    "source": "reference_recorder",
+    "observations": null,
+    "effort_limits": "hardware",
+    "simulator": {
+     "genesis-world": "1.4.3",
+     "torch": "2.11.0+cu128",
+     "numpy": "2.5.3"
+    },
+    "final_progress": 0.05,
+    "peak_time_s": 13.18,
+    "stage_best": {
+     "tool_engaged": 1.0,
+     "cargo_raised": 0.0,
+     "cargo_supported": 0.0,
+     "transported": 0.0,
+     "delivered": 0.0
+    },
+    "stage_timeline": {
+     "tool_engaged": 13.18,
+     "cargo_raised": null,
+     "cargo_supported": null,
+     "transported": null,
+     "delivered": null
+    },
+    "delivered_at_end": false,
+    "chain_complete": false,
+    "failed": false,
+    "core_success": false,
+    "core_success_time_s": null,
+    "core_failed_time_s": null,
+    "max_edge_lift_m": 0.0033,
+    "min_floor_share": 0.0,
+    "max_goal_progress": 0.0,
+    "max_goal_cover": 0.0,
+    "evaluation": {
+     "success": false,
+     "success_time_s": null,
+     "failed": false,
+     "failed_time_s": null,
+     "hold_s": 0.0,
+     "peak_edge_height_m": 0.0103
+    },
+    "score_before_void": 0.05,
+    "alarms": [
+     {
+      "kind": "initial_state_mismatch",
+      "question": "1_no_reward_hacking",
+      "handling": "void",
+      "t0": 0.0,
+      "t1": 0.0,
+      "bodies": [
+       "fulcrum"
+      ],
+      "max_body_offset_m": 5.1744,
+      "max_body_turn_deg": 0.0,
+      "robot_offset_m": 0.0
+     }
+    ],
+    "alarms_by_question": {
+     "1_no_reward_hacking": [
+      {
+       "kind": "initial_state_mismatch",
+       "question": "1_no_reward_hacking",
+       "handling": "void",
+       "t0": 0.0,
+       "t1": 0.0,
+       "bodies": [
+        "fulcrum"
+       ],
+       "max_body_offset_m": 5.1744,
+       "max_body_turn_deg": 0.0,
+       "robot_offset_m": 0.0
+      }
+     ],
+     "2_task_really_completed": [],
+     "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+     "monitor_version": "h5-monitors/1",
+     "not_applicable": {
+      "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+     },
+     "max_reported_speed": 0.734,
+     "max_object_speed": 0.598,
+     "max_step_speed": 0.677,
+     "max_floor_penetration": 0.0014,
+     "max_out_of_bounds_m": -0.6,
+     "max_energy_excess_J": 0.0,
+     "max_reversal_rate_hand_hz": 0.0,
+     "max_arm_shake": 0.322,
+     "max_saturation_s": 0.0,
+     "max_limit_push_s": 0.0,
+     "max_progress_spike": 0.0,
+     "initial_body_offset_m": 5.1744,
+     "initial_body_turn_deg": 0.0,
+     "initial_robot_offset_m": 0.0,
+     "max_robot_cargo_share": 0.0,
+     "max_applied_torque_ratio": 1.0
+    },
+    "verifier": "h5-verifier/1 (h5-monitors/1)"
+   },
+   "original_verdict_retained": true,
+   "expected_counterfactual_initial_state_checked": true,
+   "physical_parameters_unchanged": true,
+   "counterfactual_alarms": [],
+   "counterfactual_metrics": {
+    "monitor_version": "h5-monitors/1",
+    "not_applicable": {
+     "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+    },
+    "max_reported_speed": 0.734,
+    "max_object_speed": 0.598,
+    "max_step_speed": 0.677,
+    "max_floor_penetration": 0.0014,
+    "max_out_of_bounds_m": -0.6,
+    "max_energy_excess_J": 0.0,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.322,
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0,
+    "initial_body_offset_m": 0.0,
+    "initial_body_turn_deg": 0.0,
+    "initial_robot_offset_m": 0.0,
+    "max_robot_cargo_share": 0.0,
+    "max_applied_torque_ratio": 1.0
+   },
+   "counterfactual_physics_valid": true,
+   "max_cargo_displacement_m": 0.0031339197163737886,
+   "duration_s": 21.06,
+   "raw_goal_hold_s": 0.0,
+   "raw_goal_reached": false,
+   "raw_goal_predicate": "unchanged TaskCore delivery, including support and no prior failure",
+   "minimum_goal_distance_m": 3.6799818372845223,
+   "necessity_proven": false,
+   "main_task_admission_evidence": false,
+   "human_review": null
+  },
+  {
+   "run": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\tool_audit\\release-insertion-v3-no-lever-20261023-1",
+   "setup": {
+    "kind": "tool_removal_by_initial_parking",
+    "tools": {
+     "crowbar": {
+      "original": [
+       1.2334711979346427,
+       -0.13,
+       0.10860352326672584
+      ],
+      "parked": [
+       5.45,
+       1.65,
+       0.10860352326672584
+      ]
+     },
+     "fulcrum": {
+      "original": [
+       1.51,
+       -0.13,
+       0.02
+      ],
+      "parked": [
+       6.35,
+       1.7,
+       0.02
+      ]
+     }
+    },
+    "strategy": "direct_transport",
+    "centre_push": false,
+    "hands_ahead": 0.34,
+    "stop_before": 0.3,
+    "development_design": "lever-insertion-v3",
+    "necessity_proven": false,
+    "main_task_admission_evidence": false
+   },
+   "manifest_sha256": "70895e9279ec3142af21fcfbe9edadf1ce100431a051a7b9f5ebaf300f9c595a",
+   "original_verdict": {
+    "episode": "episode_00",
+    "void": true,
+    "void_reasons": [
+     "initial_state_mismatch (1_no_reward_hacking)"
+    ],
+    "flags": [],
+    "score": 0.0,
+    "success": false,
+    "scene": "platform",
+    "variant": "platform",
+    "scene_version": "platform/33e9a7a1e497",
+    "end_reason": "finished",
+    "samples": 896,
+    "sim_time_s": 17.9,
+    "source": "reference_recorder",
+    "observations": null,
+    "effort_limits": "hardware",
+    "simulator": {
+     "genesis-world": "1.4.3",
+     "torch": "2.11.0+cu128",
+     "numpy": "2.5.3"
+    },
+    "final_progress": 0.05,
+    "peak_time_s": 12.16,
+    "stage_best": {
+     "tool_engaged": 1.0,
+     "cargo_raised": 0.0,
+     "cargo_supported": 0.0,
+     "transported": 0.0,
+     "delivered": 0.0
+    },
+    "stage_timeline": {
+     "tool_engaged": 12.16,
+     "cargo_raised": null,
+     "cargo_supported": null,
+     "transported": null,
+     "delivered": null
+    },
+    "delivered_at_end": false,
+    "chain_complete": false,
+    "failed": false,
+    "core_success": false,
+    "core_success_time_s": null,
+    "core_failed_time_s": null,
+    "max_edge_lift_m": 0.0033,
+    "min_floor_share": 0.0,
+    "max_goal_progress": 0.0,
+    "max_goal_cover": 0.0,
+    "evaluation": {
+     "success": false,
+     "success_time_s": null,
+     "failed": false,
+     "failed_time_s": null,
+     "hold_s": 0.0,
+     "peak_edge_height_m": 0.0103
+    },
+    "score_before_void": 0.05,
+    "alarms": [
+     {
+      "kind": "initial_state_mismatch",
+      "question": "1_no_reward_hacking",
+      "handling": "void",
+      "t0": 0.0,
+      "t1": 0.0,
+      "bodies": [
+       "crowbar",
+       "fulcrum"
+      ],
+      "max_body_offset_m": 5.1744,
+      "max_body_turn_deg": 0.0,
+      "robot_offset_m": 0.0
+     }
+    ],
+    "alarms_by_question": {
+     "1_no_reward_hacking": [
+      {
+       "kind": "initial_state_mismatch",
+       "question": "1_no_reward_hacking",
+       "handling": "void",
+       "t0": 0.0,
+       "t1": 0.0,
+       "bodies": [
+        "crowbar",
+        "fulcrum"
+       ],
+       "max_body_offset_m": 5.1744,
+       "max_body_turn_deg": 0.0,
+       "robot_offset_m": 0.0
+      }
+     ],
+     "2_task_really_completed": [],
+     "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+     "monitor_version": "h5-monitors/1",
+     "not_applicable": {
+      "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+     },
+     "max_reported_speed": 1.865,
+     "max_object_speed": 2.201,
+     "max_step_speed": 2.201,
+     "max_floor_penetration": 0.0041,
+     "max_out_of_bounds_m": -0.4509,
+     "max_energy_excess_J": 0.0,
+     "max_reversal_rate_hand_hz": 0.0,
+     "max_arm_shake": 0.724,
+     "max_saturation_s": 0.14,
+     "max_limit_push_s": 0.02,
+     "max_progress_spike": 0.0,
+     "initial_body_offset_m": 5.1744,
+     "initial_body_turn_deg": 0.0,
+     "initial_robot_offset_m": 0.0,
+     "max_robot_cargo_share": 0.0,
+     "max_applied_torque_ratio": 1.0
+    },
+    "verifier": "h5-verifier/1 (h5-monitors/1)"
+   },
+   "original_verdict_retained": true,
+   "expected_counterfactual_initial_state_checked": true,
+   "physical_parameters_unchanged": true,
+   "counterfactual_alarms": [],
+   "counterfactual_metrics": {
+    "monitor_version": "h5-monitors/1",
+    "not_applicable": {
+     "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+    },
+    "max_reported_speed": 1.865,
+    "max_object_speed": 2.201,
+    "max_step_speed": 2.201,
+    "max_floor_penetration": 0.0041,
+    "max_out_of_bounds_m": -0.4509,
+    "max_energy_excess_J": 0.0,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.724,
+    "max_saturation_s": 0.14,
+    "max_limit_push_s": 0.02,
+    "max_progress_spike": 0.0,
+    "initial_body_offset_m": 0.0,
+    "initial_body_turn_deg": 0.0,
+    "initial_robot_offset_m": 0.0,
+    "max_robot_cargo_share": 0.0,
+    "max_applied_torque_ratio": 1.0
+   },
+   "counterfactual_physics_valid": true,
+   "max_cargo_displacement_m": 0.0031420949766859914,
+   "duration_s": 17.9,
+   "raw_goal_hold_s": 0.0,
+   "raw_goal_reached": false,
+   "raw_goal_predicate": "unchanged TaskCore delivery, including support and no prior failure",
+   "minimum_goal_distance_m": 3.679921833341992,
+   "necessity_proven": false,
+   "main_task_admission_evidence": false,
+   "human_review": null
+  },
+  {
+   "run": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\tool_audit\\release-insertion-v3-no-near-skate-20261023-1",
+   "setup": {
+    "kind": "tool_removal_by_initial_parking",
+    "tools": {
+     "skate_1": {
+      "original": [
+       1.54,
+       0.07,
+       0.0555
+      ],
+      "parked": [
+       6.35,
+       -1.65,
+       0.0555
+      ]
+     }
+    },
+    "strategy": "full",
+    "centre_push": false,
+    "hands_ahead": 0.34,
+    "stop_before": 0.3,
+    "development_design": "lever-insertion-v3",
+    "necessity_proven": false,
+    "main_task_admission_evidence": false
+   },
+   "manifest_sha256": "7ba2ebb6b98d73b5c5d702f311e32a618796b3912686564dd8394367f260189c",
+   "original_verdict": {
+    "episode": "episode_00",
+    "void": true,
+    "void_reasons": [
+     "initial_state_mismatch (1_no_reward_hacking)"
+    ],
+    "flags": [],
+    "score": 0.0,
+    "success": false,
+    "scene": "platform",
+    "variant": "platform",
+    "scene_version": "platform/33e9a7a1e497",
+    "end_reason": "failed",
+    "samples": 3381,
+    "sim_time_s": 67.6,
+    "source": "reference_recorder",
+    "observations": null,
+    "effort_limits": "hardware",
+    "simulator": {
+     "genesis-world": "1.4.3",
+     "torch": "2.11.0+cu128",
+     "numpy": "2.5.3"
+    },
+    "final_progress": 0.25,
+    "peak_time_s": 32.04,
+    "stage_best": {
+     "tool_engaged": 1.0,
+     "cargo_raised": 1.0,
+     "cargo_supported": 0.0,
+     "transported": 0.0,
+     "delivered": 0.0
+    },
+    "stage_timeline": {
+     "tool_engaged": 6.46,
+     "cargo_raised": 32.04,
+     "cargo_supported": null,
+     "transported": null,
+     "delivered": null
+    },
+    "delivered_at_end": false,
+    "chain_complete": false,
+    "failed": true,
+    "core_success": false,
+    "core_success_time_s": null,
+    "core_failed_time_s": 67.6,
+    "max_edge_lift_m": 0.0312,
+    "min_floor_share": 0.0,
+    "max_goal_progress": 0.014,
+    "max_goal_cover": 0.0,
+    "evaluation": {
+     "success": false,
+     "success_time_s": null,
+     "failed": true,
+     "failed_time_s": 67.6,
+     "hold_s": 0.0,
+     "peak_edge_height_m": 0.0382
+    },
+    "score_before_void": 0.25,
+    "alarms": [
+     {
+      "kind": "initial_state_mismatch",
+      "question": "1_no_reward_hacking",
+      "handling": "void",
+      "t0": 0.0,
+      "t1": 0.0,
+      "bodies": [
+       "skate_1"
+      ],
+      "max_body_offset_m": 5.1083,
+      "max_body_turn_deg": 0.0,
+      "robot_offset_m": 0.0
+     }
+    ],
+    "alarms_by_question": {
+     "1_no_reward_hacking": [
+      {
+       "kind": "initial_state_mismatch",
+       "question": "1_no_reward_hacking",
+       "handling": "void",
+       "t0": 0.0,
+       "t1": 0.0,
+       "bodies": [
+        "skate_1"
+       ],
+       "max_body_offset_m": 5.1083,
+       "max_body_turn_deg": 0.0,
+       "robot_offset_m": 0.0
+      }
+     ],
+     "2_task_really_completed": [],
+     "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+     "monitor_version": "h5-monitors/1",
+     "not_applicable": {
+      "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+     },
+     "max_reported_speed": 0.307,
+     "max_object_speed": 0.306,
+     "max_step_speed": 0.51,
+     "max_floor_penetration": 0.001,
+     "max_out_of_bounds_m": -0.6,
+     "max_energy_excess_J": 0.002,
+     "max_reversal_rate_hand_hz": 0.0,
+     "max_arm_shake": 2.047,
+     "max_saturation_s": 0.1,
+     "max_limit_push_s": 0.0,
+     "max_progress_spike": 0.0,
+     "initial_body_offset_m": 5.1083,
+     "initial_body_turn_deg": 0.0,
+     "initial_robot_offset_m": 0.0,
+     "max_robot_cargo_share": 0.0,
+     "max_applied_torque_ratio": 1.0
+    },
+    "verifier": "h5-verifier/1 (h5-monitors/1)"
+   },
+   "original_verdict_retained": true,
+   "expected_counterfactual_initial_state_checked": true,
+   "physical_parameters_unchanged": true,
+   "counterfactual_alarms": [],
+   "counterfactual_metrics": {
+    "monitor_version": "h5-monitors/1",
+    "not_applicable": {
+     "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+    },
+    "max_reported_speed": 0.307,
+    "max_object_speed": 0.306,
+    "max_step_speed": 0.51,
+    "max_floor_penetration": 0.001,
+    "max_out_of_bounds_m": -0.6,
+    "max_energy_excess_J": 0.002,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 2.047,
+    "max_saturation_s": 0.1,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0,
+    "initial_body_offset_m": 0.0,
+    "initial_body_turn_deg": 0.0,
+    "initial_robot_offset_m": 0.0,
+    "max_robot_cargo_share": 0.0,
+    "max_applied_torque_ratio": 1.0
+   },
+   "counterfactual_physics_valid": true,
+   "max_cargo_displacement_m": 0.048227299298985365,
+   "duration_s": 67.6,
+   "raw_goal_hold_s": 0.0,
+   "raw_goal_reached": false,
+   "raw_goal_predicate": "unchanged TaskCore delivery, including support and no prior failure",
+   "minimum_goal_distance_m": 3.635281865497169,
+   "necessity_proven": false,
+   "main_task_admission_evidence": false,
+   "human_review": null
+  },
+  {
+   "run": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\tool_audit\\release-insertion-v3-single-far-skate-20261023-1",
+   "setup": {
+    "kind": "tool_removal_by_initial_parking",
+    "tools": {
+     "crowbar": {
+      "original": [
+       1.2334711979346427,
+       -0.13,
+       0.10860352326672584
+      ],
+      "parked": [
+       5.45,
+       1.65,
+       0.10860352326672584
+      ]
+     },
+     "fulcrum": {
+      "original": [
+       1.51,
+       -0.13,
+       0.02
+      ],
+      "parked": [
+       6.35,
+       1.7,
+       0.02
+      ]
+     },
+     "skate_1": {
+      "original": [
+       1.54,
+       0.07,
+       0.0555
+      ],
+      "parked": [
+       6.35,
+       -1.65,
+       0.0555
+      ]
+     }
+    },
+    "strategy": "direct_transport",
+    "centre_push": false,
+    "hands_ahead": 0.34,
+    "stop_before": 0.3,
+    "development_design": "lever-insertion-v3",
+    "necessity_proven": false,
+    "main_task_admission_evidence": false
+   },
+   "manifest_sha256": "8687f5cac2629a87a09210ab200ef2ebb70f3a55a5fd25deceb83b9bbe4152a3",
+   "original_verdict": {
+    "episode": "episode_00",
+    "void": true,
+    "void_reasons": [
+     "initial_state_mismatch (1_no_reward_hacking)"
+    ],
+    "flags": [],
+    "score": 0.0,
+    "success": false,
+    "scene": "platform",
+    "variant": "platform",
+    "scene_version": "platform/33e9a7a1e497",
+    "end_reason": "finished",
+    "samples": 2653,
+    "sim_time_s": 53.04,
+    "source": "reference_recorder",
+    "observations": null,
+    "effort_limits": "hardware",
+    "simulator": {
+     "genesis-world": "1.4.3",
+     "torch": "2.11.0+cu128",
+     "numpy": "2.5.3"
+    },
+    "final_progress": 0.05,
+    "peak_time_s": 44.06,
+    "stage_best": {
+     "tool_engaged": 1.0,
+     "cargo_raised": 0.0,
+     "cargo_supported": 0.0,
+     "transported": 0.0,
+     "delivered": 0.0
+    },
+    "stage_timeline": {
+     "tool_engaged": 44.06,
+     "cargo_raised": null,
+     "cargo_supported": null,
+     "transported": null,
+     "delivered": null
+    },
+    "delivered_at_end": false,
+    "chain_complete": false,
+    "failed": false,
+    "core_success": false,
+    "core_success_time_s": null,
+    "core_failed_time_s": null,
+    "max_edge_lift_m": 0.0033,
+    "min_floor_share": 0.0,
+    "max_goal_progress": 0.0,
+    "max_goal_cover": 0.0,
+    "evaluation": {
+     "success": false,
+     "success_time_s": null,
+     "failed": false,
+     "failed_time_s": null,
+     "hold_s": 0.0,
+     "peak_edge_height_m": 0.0103
+    },
+    "score_before_void": 0.05,
+    "alarms": [
+     {
+      "kind": "initial_state_mismatch",
+      "question": "1_no_reward_hacking",
+      "handling": "void",
+      "t0": 0.0,
+      "t1": 0.0,
+      "bodies": [
+       "crowbar",
+       "fulcrum",
+       "skate_1"
+      ],
+      "max_body_offset_m": 5.1744,
+      "max_body_turn_deg": 0.0,
+      "robot_offset_m": 0.0
+     }
+    ],
+    "alarms_by_question": {
+     "1_no_reward_hacking": [
+      {
+       "kind": "initial_state_mismatch",
+       "question": "1_no_reward_hacking",
+       "handling": "void",
+       "t0": 0.0,
+       "t1": 0.0,
+       "bodies": [
+        "crowbar",
+        "fulcrum",
+        "skate_1"
+       ],
+       "max_body_offset_m": 5.1744,
+       "max_body_turn_deg": 0.0,
+       "robot_offset_m": 0.0
+      }
+     ],
+     "2_task_really_completed": [],
+     "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+     "monitor_version": "h5-monitors/1",
+     "not_applicable": {
+      "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+     },
+     "max_reported_speed": 1.865,
+     "max_object_speed": 2.201,
+     "max_step_speed": 2.201,
+     "max_floor_penetration": 0.0041,
+     "max_out_of_bounds_m": -0.1316,
+     "max_energy_excess_J": 0.006,
+     "max_reversal_rate_hand_hz": 1.0,
+     "max_arm_shake": 0.611,
+     "max_saturation_s": 0.08,
+     "max_limit_push_s": 0.0,
+     "max_progress_spike": 0.0,
+     "initial_body_offset_m": 5.1744,
+     "initial_body_turn_deg": 0.0,
+     "initial_robot_offset_m": 0.0,
+     "max_robot_cargo_share": 0.0,
+     "max_applied_torque_ratio": 1.0
+    },
+    "verifier": "h5-verifier/1 (h5-monitors/1)"
+   },
+   "original_verdict_retained": true,
+   "expected_counterfactual_initial_state_checked": true,
+   "physical_parameters_unchanged": true,
+   "counterfactual_alarms": [],
+   "counterfactual_metrics": {
+    "monitor_version": "h5-monitors/1",
+    "not_applicable": {
+     "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+    },
+    "max_reported_speed": 1.865,
+    "max_object_speed": 2.201,
+    "max_step_speed": 2.201,
+    "max_floor_penetration": 0.0041,
+    "max_out_of_bounds_m": -0.1316,
+    "max_energy_excess_J": 0.006,
+    "max_reversal_rate_hand_hz": 1.0,
+    "max_arm_shake": 0.611,
+    "max_saturation_s": 0.08,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0,
+    "initial_body_offset_m": 0.0,
+    "initial_body_turn_deg": 0.0,
+    "initial_robot_offset_m": 0.0,
+    "max_robot_cargo_share": 0.0,
+    "max_applied_torque_ratio": 1.0
+   },
+   "counterfactual_physics_valid": true,
+   "max_cargo_displacement_m": 0.0031537736483616633,
+   "duration_s": 53.04,
+   "raw_goal_hold_s": 0.0,
+   "raw_goal_reached": false,
+   "raw_goal_predicate": "unchanged TaskCore delivery, including support and no prior failure",
+   "minimum_goal_distance_m": 3.6799818372845223,
+   "necessity_proven": false,
+   "main_task_admission_evidence": false,
+   "human_review": null
+  },
+  {
+   "run": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\tool_audit\\release-insertion-v3-single-near-skate-20261023-1",
+   "setup": {
+    "kind": "tool_removal_by_initial_parking",
+    "tools": {
+     "crowbar": {
+      "original": [
+       1.2334711979346427,
+       -0.13,
+       0.10860352326672584
+      ],
+      "parked": [
+       5.45,
+       1.65,
+       0.10860352326672584
+      ]
+     },
+     "fulcrum": {
+      "original": [
+       1.51,
+       -0.13,
+       0.02
+      ],
+      "parked": [
+       6.35,
+       1.7,
+       0.02
+      ]
+     },
+     "skate_0": {
+      "original": [
+       2.31,
+       -0.1,
+       0.0555
+      ],
+      "parked": [
+       5.35,
+       -1.65,
+       0.0555
+      ]
+     }
+    },
+    "strategy": "direct_transport",
+    "centre_push": false,
+    "hands_ahead": 0.34,
+    "stop_before": 0.3,
+    "development_design": "lever-insertion-v3",
+    "necessity_proven": false,
+    "main_task_admission_evidence": false
+   },
+   "manifest_sha256": "af4231ee2a3ceba1087abaf2e7c20b4ec4834e752956e45eb877d1cc889e8aed",
+   "original_verdict": {
+    "episode": "episode_00",
+    "void": true,
+    "void_reasons": [
+     "initial_state_mismatch (1_no_reward_hacking)"
+    ],
+    "flags": [],
+    "score": 0.0,
+    "success": false,
+    "scene": "platform",
+    "variant": "platform",
+    "scene_version": "platform/33e9a7a1e497",
+    "end_reason": "finished",
+    "samples": 1025,
+    "sim_time_s": 20.48,
+    "source": "reference_recorder",
+    "observations": null,
+    "effort_limits": "hardware",
+    "simulator": {
+     "genesis-world": "1.4.3",
+     "torch": "2.11.0+cu128",
+     "numpy": "2.5.3"
+    },
+    "final_progress": 0.05,
+    "peak_time_s": 12.16,
+    "stage_best": {
+     "tool_engaged": 1.0,
+     "cargo_raised": 0.0,
+     "cargo_supported": 0.0,
+     "transported": 0.0,
+     "delivered": 0.0
+    },
+    "stage_timeline": {
+     "tool_engaged": 12.16,
+     "cargo_raised": null,
+     "cargo_supported": null,
+     "transported": null,
+     "delivered": null
+    },
+    "delivered_at_end": false,
+    "chain_complete": false,
+    "failed": false,
+    "core_success": false,
+    "core_success_time_s": null,
+    "core_failed_time_s": null,
+    "max_edge_lift_m": 0.0,
+    "min_floor_share": 0.0,
+    "max_goal_progress": 0.0,
+    "max_goal_cover": 0.0,
+    "evaluation": {
+     "success": false,
+     "success_time_s": null,
+     "failed": false,
+     "failed_time_s": null,
+     "hold_s": 0.0,
+     "peak_edge_height_m": 0.007
+    },
+    "score_before_void": 0.05,
+    "alarms": [
+     {
+      "kind": "initial_state_mismatch",
+      "question": "1_no_reward_hacking",
+      "handling": "void",
+      "t0": 0.0,
+      "t1": 0.0,
+      "bodies": [
+       "crowbar",
+       "fulcrum",
+       "skate_0"
+      ],
+      "max_body_offset_m": 5.1744,
+      "max_body_turn_deg": 0.0,
+      "robot_offset_m": 0.0
+     }
+    ],
+    "alarms_by_question": {
+     "1_no_reward_hacking": [
+      {
+       "kind": "initial_state_mismatch",
+       "question": "1_no_reward_hacking",
+       "handling": "void",
+       "t0": 0.0,
+       "t1": 0.0,
+       "bodies": [
+        "crowbar",
+        "fulcrum",
+        "skate_0"
+       ],
+       "max_body_offset_m": 5.1744,
+       "max_body_turn_deg": 0.0,
+       "robot_offset_m": 0.0
+      }
+     ],
+     "2_task_really_completed": [],
+     "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+     "monitor_version": "h5-monitors/1",
+     "not_applicable": {
+      "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+     },
+     "max_reported_speed": 1.865,
+     "max_object_speed": 2.201,
+     "max_step_speed": 2.201,
+     "max_floor_penetration": 0.0041,
+     "max_out_of_bounds_m": -0.4509,
+     "max_energy_excess_J": 0.0,
+     "max_reversal_rate_hand_hz": 0.0,
+     "max_arm_shake": 0.779,
+     "max_saturation_s": 0.14,
+     "max_limit_push_s": 0.02,
+     "max_progress_spike": 0.0,
+     "initial_body_offset_m": 5.1744,
+     "initial_body_turn_deg": 0.0,
+     "initial_robot_offset_m": 0.0,
+     "max_robot_cargo_share": 0.0,
+     "max_applied_torque_ratio": 1.0
+    },
+    "verifier": "h5-verifier/1 (h5-monitors/1)"
+   },
+   "original_verdict_retained": true,
+   "expected_counterfactual_initial_state_checked": true,
+   "physical_parameters_unchanged": true,
+   "counterfactual_alarms": [],
+   "counterfactual_metrics": {
+    "monitor_version": "h5-monitors/1",
+    "not_applicable": {
+     "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+    },
+    "max_reported_speed": 1.865,
+    "max_object_speed": 2.201,
+    "max_step_speed": 2.201,
+    "max_floor_penetration": 0.0041,
+    "max_out_of_bounds_m": -0.4509,
+    "max_energy_excess_J": 0.0,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.779,
+    "max_saturation_s": 0.14,
+    "max_limit_push_s": 0.02,
+    "max_progress_spike": 0.0,
+    "initial_body_offset_m": 0.0,
+    "initial_body_turn_deg": 0.0,
+    "initial_robot_offset_m": 0.0,
+    "max_robot_cargo_share": 0.0,
+    "max_applied_torque_ratio": 1.0
+   },
+   "counterfactual_physics_valid": true,
+   "max_cargo_displacement_m": 0.008828997611999512,
+   "duration_s": 20.48,
+   "raw_goal_hold_s": 0.0,
+   "raw_goal_reached": false,
+   "raw_goal_predicate": "unchanged TaskCore delivery, including support and no prior failure",
+   "minimum_goal_distance_m": 3.679248013044237,
+   "necessity_proven": false,
+   "main_task_admission_evidence": false,
+   "human_review": null
+  }
+ ],
+ "necessity_proven": false,
+ "main_task_admission_evidence": false,
+ "limitation": "Only the recorded bounded strategies were tested; their failure does not exclude other strategies.",
+ "human_review": null,
+ "independent_reproduction": null
+}

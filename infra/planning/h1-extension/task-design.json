@@ -1,0 +1,1105 @@
+{
+  "schema": "h1-extension-design/0.1.0",
+  "task_family": "H1 extension",
+  "parent_task": "H1",
+  "date": "2026-10-27",
+  "status": "design_proposal",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "new_simulation_runs": 0,
+  "formal_admission": false,
+  "changes_existing_h1_scores": false,
+  "counts_toward_existing_14_task_inventory": false,
+  "documentation": {
+    "zh": "README.md",
+    "en": "README-en.md"
+  },
+  "policy_sources": [
+    "../../task-design-zh.html",
+    "../../acceptance-zh.html",
+    "../../verifier-zh.html",
+    "../acceptance-policy.json"
+  ],
+  "intended_support": {
+    "platform_count": 5,
+    "configuration_count": 6,
+    "meaning": "Development target, not a validated simulator or controller support claim",
+    "configurations": [
+      {
+        "id": "g1_dex3",
+        "platform": "g1",
+        "name": "G1 + Dex3-1",
+        "locomotion": "biped",
+        "arms": 2,
+        "end_effector": "Dex3-1 three-finger hand",
+        "asset_status": "extension_profile_pending",
+        "capability_envelope": null
+      },
+      {
+        "id": "g1_inspire",
+        "platform": "g1",
+        "name": "G1 + Inspire five-finger hand",
+        "locomotion": "biped",
+        "arms": 2,
+        "end_effector": "Inspire five-finger hand; exact version pending",
+        "asset_status": "extension_profile_pending",
+        "capability_envelope": null
+      },
+      {
+        "id": "agibot_a3",
+        "platform": "agibot_a3",
+        "name": "智元 A3 / AgiBot A3",
+        "locomotion": "biped",
+        "arms": 2,
+        "end_effector": null,
+        "asset_status": "exact_version_and_assets_pending",
+        "capability_envelope": null
+      },
+      {
+        "id": "galaxea_r1",
+        "platform": "galaxea_r1",
+        "name": "星海图 R1 / Galaxea R1",
+        "locomotion": "wheeled",
+        "arms": 2,
+        "end_effector": null,
+        "torso": "adjustable",
+        "asset_status": "extension_profile_pending",
+        "capability_envelope": null
+      },
+      {
+        "id": "stretch4",
+        "platform": "stretch4",
+        "name": "Stretch 4",
+        "locomotion": "wheeled",
+        "arms": 1,
+        "arm_type": "telescoping_with_lift_column",
+        "end_effector": null,
+        "asset_status": "intended_model_and_assets_require_verification",
+        "capability_envelope": null
+      },
+      {
+        "id": "go1_arm",
+        "platform": "go1",
+        "name": "Go1 + lightweight arm + gripper",
+        "locomotion": "quadruped",
+        "arms": 1,
+        "arm_model": null,
+        "end_effector": "gripper; exact model pending",
+        "assume_z1": false,
+        "asset_status": "integrated_model_and_controller_pending",
+        "capability_envelope": null
+      }
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://manipulation-locomotion.github.io/",
+      "role": "Leg-arm coordination research precedent, not Genesis validation"
+    },
+    {
+      "url": "https://github.com/MarkFzp/Deep-Whole-Body-Control",
+      "role": "Research implementation and widowGo1 asset lead"
+    },
+    {
+      "url": "https://github.com/PuenXu/Unitree-Go1-Arm",
+      "role": "CAD and URDF lead; license and physical integration audit pending"
+    },
+    {
+      "url": "https://shop.unitree.com/pages/faq",
+      "role": "Official Z1 pairing mentions AlienGo/B1; does not establish Go1 integration"
+    }
+  ],
+  "instruction": {
+    "zh": "将位于{位置描述}、带有{可见编号或图案}的{颜色}箱子完整送入 D 区并释放，保持稳定。不得损坏物体、使物体超出其公开承载限制，或违反机器人公开运行限制。如果判断当前身体与现场物品无法完成任务，请前往 Q 区，空手停稳 3 秒结束本回合；不要求先尝试搬动物体。",
+    "en": "Deliver the {color} box bearing {visible identifier/pattern} at {location description} completely into D, release it and leave it stable. Do not damage objects, exceed their publicly stated load limits or violate the robot's public operating limits. If you judge that your current body and the available objects cannot complete the task, move to Q and remain stationary and empty-handed for 3 seconds to end the episode. You need not attempt to move any object first.",
+    "forbidden_hints": [
+      "tool roles",
+      "solution routes",
+      "difficulty layer",
+      "feasibility labels",
+      "privileged object IDs"
+    ]
+  },
+  "agent": {
+    "disclosure_modes": [
+      "explicit",
+      "partial",
+      "latent"
+    ],
+    "observation_sources": [
+      "configured RGB/depth cameras",
+      "encoders",
+      "IMU",
+      "force/tactile/current sensors only if physically installed"
+    ],
+    "sensor_profiles": null,
+    "action_interface": "bounded physical actuator commands through trusted sandbox; per-platform adapters pending",
+    "allowed_tools": [
+      "sandbox-approved perception and planning",
+      "IK/FK from permitted body information",
+      "validated platform skills when available"
+    ],
+    "task_provided_skills": null,
+    "hidden": [
+      "object poses and properties",
+      "ground-truth identities",
+      "feasibility certificate",
+      "reference routes",
+      "scoring state",
+      "seeds",
+      "layer"
+    ],
+    "budgets": {
+      "control_steps": null,
+      "observations": null,
+      "tokens": null,
+      "resets": null,
+      "wall_clock_s": null
+    },
+    "start_solver_with_unset_budgets": false
+  },
+  "simulation": {
+    "backend_target": "Genesis",
+    "version": null,
+    "time_step_s": null,
+    "substeps": null,
+    "solver": null,
+    "contact_parameters": null,
+    "self_collision_configuration": null,
+    "asset_manifest": null,
+    "required_asset_fields": [
+      "source",
+      "license",
+      "hash",
+      "scale",
+      "collision_geometry",
+      "mass",
+      "inertia",
+      "actuator_limits",
+      "mount_transform",
+      "sensor_configuration"
+    ],
+    "weak_support_requirement": "Physical deflection, instability or failure mechanism; not a rigid object with an arbitrary scoring penalty",
+    "asset_priority": "Official robot models and existing detailed object assets first; document why higher-priority sources cannot serve any custom geometry"
+  },
+  "generator": {
+    "variables": [
+      "target shelf height and cell",
+      "tool positions and dimensions",
+      "grasp geometry",
+      "mass",
+      "friction",
+      "capacity",
+      "same-color identifiers",
+      "Q position"
+    ],
+    "numeric_ranges": null,
+    "development_seed_set": null,
+    "evaluation_seed_reference": null,
+    "reject_generation_if": [
+      "initial collision or overlap",
+      "ambiguous target after allowed observation",
+      "Q unreachable from spawn for assigned body",
+      "Q intersects spawn, D or ordinary transport path",
+      "hidden property has no safe observable evidence for a required decision"
+    ],
+    "record_rejection_reasons_and_rate": true,
+    "retain_all_prescribed_evaluation_results": true,
+    "replace_failed_seeds": false,
+    "independence_requirements": [
+      "color independent of role and capacity",
+      "Q placement independent of feasibility"
+    ],
+    "paired_world_fields_frozen": [
+      "target",
+      "necessary tools",
+      "poses",
+      "public constraints"
+    ],
+    "capacity_observation": [
+      "camera-readable physical rating",
+      "safe probe with observable deflection, slip or motor response"
+    ],
+    "capacity_model": "Include robot, attachments and every supported object; evaluate local forces, moments and dynamic loading, not mass alone"
+  },
+  "tracks": [
+    {
+      "id": "layered_tools",
+      "layers": [
+        "L1",
+        "L2",
+        "L3"
+      ]
+    },
+    {
+      "id": "route_selection",
+      "layers": null,
+      "rule": "Multiple simultaneously valid tool combinations; separate from strict L1 necessity"
+    },
+    {
+      "id": "feasibility_decision",
+      "layers": null,
+      "rule": "Paired feasible and certified-infeasible initial scenes; unknown labels retained separately"
+    }
+  ],
+  "layers": {
+    "L1": "Only objects necessary for one declared route; necessity needs evidence",
+    "L2": "Add tools unusable by this body but usable by a specified other body; require evidence for both, including combinations",
+    "L3": "Add same-color and physically unusable distractors with safe observable evidence",
+    "same_seed_additive": true,
+    "added_objects_require_shortcut_and_collision_audit": true,
+    "family_04_is_L3_slice": true
+  },
+  "comparison_axes": [
+    "matched_world",
+    "body_scaled",
+    "capability_disclosure"
+  ],
+  "tasks": [
+    {
+      "id": "H1E-01",
+      "name_zh": "推箱清路＋搬凳取物",
+      "name_en": "Clear a box and relocate a stool",
+      "track": "layered_tools",
+      "feasibility": "unknown",
+      "objects": [
+        "blocking pushable box",
+        "carryable stool",
+        "cabinet target",
+        "transfer surface",
+        "D",
+        "Q"
+      ],
+      "route": [
+        "observe",
+        "push box aside",
+        "carry and place stool",
+        "access",
+        "retrieve",
+        "transfer and descend empty",
+        "regrasp",
+        "deliver"
+      ],
+      "necessary_checks": [
+        "box cannot substitute as an effective height support",
+        "stool cannot reach working position without clearing box",
+        "push force",
+        "grasp and carrying clearance",
+        "support footprint and capacity",
+        "loaded return"
+      ],
+      "observable_evidence": [
+        "depth geometry",
+        "small push response",
+        "visible handles and ratings"
+      ],
+      "negative_cases": [
+        "only clearing obstacle",
+        "touching stool without support",
+        "wrong box delivered"
+      ],
+      "body_note": "Biped route is a candidate; wheeled profiles require a separately validated ramp route"
+    },
+    {
+      "id": "H1E-02",
+      "name_zh": "多凳组合增高",
+      "name_en": "Combine multiple supports",
+      "track": "layered_tools",
+      "feasibility": "unknown",
+      "objects": [
+        "two or three compatible supports",
+        "ascent entry if needed",
+        "cabinet target",
+        "transfer surface",
+        "D",
+        "Q"
+      ],
+      "route": [
+        "observe mating and load limits",
+        "assemble stacked supports or successive steps",
+        "access",
+        "retrieve",
+        "return",
+        "deliver"
+      ],
+      "necessary_checks": [
+        "single support insufficient",
+        "assembly reachable",
+        "ascent entry",
+        "each contact area",
+        "bottom support cumulative load",
+        "lateral stability",
+        "loaded return"
+      ],
+      "observable_evidence": [
+        "visible mating geometry",
+        "ratings",
+        "safe low-force probes"
+      ],
+      "negative_cases": [
+        "enough height but no ascent route",
+        "lower support overloaded after robot climbs",
+        "unverified ordinary stool stacking"
+      ],
+      "body_note": "Do not assume biped or quadruped can ascend; wheel access requires a ramp"
+    },
+    {
+      "id": "H1E-03",
+      "name_zh": "坡道＋平台取物",
+      "name_en": "Ramp and platform retrieval",
+      "track": "layered_tools",
+      "feasibility": "unknown",
+      "objects": [
+        "box platform",
+        "ramp panel",
+        "cabinet target",
+        "D",
+        "Q"
+      ],
+      "route": [
+        "observe",
+        "position platform and ramp",
+        "check continuous support",
+        "ascend",
+        "retrieve",
+        "loaded descent",
+        "deliver"
+      ],
+      "variants": [
+        "self_constructed",
+        "prepositioned_use_only"
+      ],
+      "necessary_checks": [
+        "slope",
+        "width and wheel spacing",
+        "ground clearance",
+        "turning platform",
+        "panel overlap",
+        "traction",
+        "loaded braking",
+        "construction reach"
+      ],
+      "observable_evidence": [
+        "depth geometry",
+        "panel-end contact",
+        "visible ratings",
+        "wheel slip feedback"
+      ],
+      "negative_cases": [
+        "front wheels up with rear wheels unsupported",
+        "unloaded ascent without loaded return",
+        "teleporting base"
+      ],
+      "body_note": "Primary wheel comparison: galaxea_r1 and stretch4; legged profiles need independent witnesses"
+    },
+    {
+      "id": "H1E-04",
+      "name_zh": "同色目标与同色工具",
+      "name_en": "Same-color targets and tools",
+      "track": "layered_tools",
+      "layer_slice": "L3",
+      "feasibility": "unknown",
+      "objects": [
+        "target with visible identifier",
+        "same-color boxes",
+        "same-color supports with different geometry and capacity",
+        "D",
+        "Q"
+      ],
+      "route": [
+        "resolve target identity",
+        "observe support differences",
+        "select route from 01, 02 or 03",
+        "retrieve",
+        "return",
+        "deliver"
+      ],
+      "necessary_checks": [
+        "target uniquely identifiable through allowed observations",
+        "color independent of function",
+        "route and capacity validated"
+      ],
+      "observable_evidence": [
+        "visible identifier or pattern",
+        "spatial relations",
+        "ratings",
+        "geometry"
+      ],
+      "negative_cases": [
+        "same-color substitute delivered",
+        "unreadable identifier treated as certain",
+        "color-to-strength shortcut"
+      ],
+      "body_note": "Perception overlay for all six intended configurations; no existing support claim"
+    },
+    {
+      "id": "H1E-05",
+      "name_zh": "承载限制与返回路线",
+      "name_en": "Load limits and return route",
+      "track": "layered_tools",
+      "feasibility": "unknown",
+      "objects": [
+        "return step or ramp sufficient only for unloaded robot",
+        "working platform rated for robot plus target",
+        "reachable target-rated transfer surface",
+        "cabinet target",
+        "D",
+        "Q"
+      ],
+      "route": [
+        "establish access",
+        "retrieve",
+        "unload target to independent support",
+        "descend empty",
+        "regrasp",
+        "deliver"
+      ],
+      "necessary_checks": [
+        "body and attachment mass",
+        "cumulative payload",
+        "local contact forces and moments",
+        "transfer surface capacity and reach",
+        "complete return",
+        "working platform carries loaded robot throughout pickup before transfer; no transient overload allowed"
+      ],
+      "observable_evidence": [
+        "physical ratings",
+        "safe observable deflection",
+        "configured load feedback"
+      ],
+      "negative_cases": [
+        "retrieval without return",
+        "overloaded transfer surface",
+        "single arm releases without independent support"
+      ],
+      "body_note": "Target mass and support capacity must be calibrated per declared configuration"
+    },
+    {
+      "id": "H1E-06",
+      "name_zh": "同身体换手选工具",
+      "name_en": "Tool selection after changing hands",
+      "track": "layered_tools",
+      "feasibility": "unknown",
+      "objects": [
+        "supports with different handle widths, thicknesses and clearances",
+        "cabinet target",
+        "D",
+        "Q"
+      ],
+      "route": [
+        "observe handles",
+        "select stable grasp or legal push route",
+        "prepare",
+        "access",
+        "retrieve",
+        "return",
+        "deliver"
+      ],
+      "necessary_checks": [
+        "closure range",
+        "finger interference",
+        "frictional grasp",
+        "loaded wrist moments",
+        "pushing and cradling alternatives"
+      ],
+      "observable_evidence": [
+        "handle and hand geometry",
+        "configured tactile or current feedback",
+        "grasp motion"
+      ],
+      "negative_cases": [
+        "reachable IK without grasp",
+        "cosmetic hand replacement",
+        "hidden object-hand weld"
+      ],
+      "body_note": "Matched comparison of g1_dex3 and g1_inspire; no assumed superiority"
+    },
+    {
+      "id": "H1E-07",
+      "name_zh": "Go1 腿臂协调与负载变化",
+      "name_en": "Go1 whole-body retrieval and changed load",
+      "track": "layered_tools",
+      "feasibility": "unknown",
+      "objects": [
+        "target",
+        "broad platform and ramp for high-cabinet variant",
+        "independent placement surface if needed",
+        "D",
+        "Q"
+      ],
+      "route": [
+        "observe",
+        "reposition feet",
+        "adjust body height and pitch",
+        "reach and grasp",
+        "retract and recover",
+        "recheck loaded mobility",
+        "return",
+        "deliver"
+      ],
+      "necessary_checks": [
+        "arm model fixed before execution",
+        "mount and power-system inertia",
+        "foot contacts",
+        "support polygon",
+        "arm moment",
+        "whole-body center of mass",
+        "loaded gait",
+        "recovery and return"
+      ],
+      "observable_evidence": [
+        "depth",
+        "IMU",
+        "joint feedback",
+        "configured load sensing"
+      ],
+      "negative_cases": [
+        "fixed-base IK claimed as whole-body reach",
+        "unloaded gait reused without checking load",
+        "extended pose without recovery route"
+      ],
+      "body_note": "go1_arm; neither high-cabinet feasibility nor Z1 integration is assumed"
+    },
+    {
+      "id": "H1E-08",
+      "name_zh": "多路线综合选择",
+      "name_en": "Selection among complete tool routes",
+      "track": "route_selection",
+      "feasibility": "unknown",
+      "objects": [
+        "pushable box",
+        "carryable stool",
+        "multiple supports",
+        "ramp panels",
+        "transfer surfaces",
+        "same-color distractors",
+        "load-limited props",
+        "target",
+        "D",
+        "Q"
+      ],
+      "route": [
+        "observe",
+        "compare complete body-specific routes",
+        "prepare selected route",
+        "retrieve",
+        "return",
+        "deliver"
+      ],
+      "necessary_checks": [
+        "at least two witnessed routes before multi-solution label",
+        "every tool combination audited",
+        "loaded return",
+        "observable distractor evidence"
+      ],
+      "observable_evidence": [
+        "geometry",
+        "identifiers and ratings",
+        "safe probes",
+        "configured body feedback"
+      ],
+      "negative_cases": [
+        "fast route with overload",
+        "retrieved target but stranded robot",
+        "unjustified abstention"
+      ],
+      "body_note": "All six are intended comparisons; route labels are configuration-specific"
+    }
+  ],
+  "infeasibility_controls": [
+    {
+      "id": "H1E-I01",
+      "parents": [
+        "H1E-02",
+        "H1E-07"
+      ],
+      "name": "Reach upper bound insufficient",
+      "certificate_status": "not_constructed",
+      "certificate_required": "Conservative height/contact bound over all legal support combinations and body postures; exclude alternate support, pulling, tipping and catch routes",
+      "paired_change": "support height or target shelf height",
+      "feasibility": "unknown"
+    },
+    {
+      "id": "H1E-I02",
+      "parents": [
+        "H1E-05",
+        "H1E-08"
+      ],
+      "name": "Every load path fails",
+      "certificate_status": "not_constructed",
+      "certificate_required": "Necessary capacity obstruction on every legal access, grasp, transfer and return route with observable evidence",
+      "paired_change": "one support capacity or target mass",
+      "feasibility": "unknown"
+    },
+    {
+      "id": "H1E-I03",
+      "parents": [
+        "H1E-03"
+      ],
+      "name": "No valid wheeled entry",
+      "certificate_status": "not_constructed",
+      "certificate_required": "All panel combinations fail necessary entry conditions; exclude ground reach, torso adjustment and detours",
+      "paired_change": "valid ramp for same robot; separate different-body comparison",
+      "feasibility": "unknown"
+    },
+    {
+      "id": "H1E-I04",
+      "parents": [
+        "H1E-06"
+      ],
+      "name": "No effective grasp or handling route",
+      "certificate_status": "not_constructed",
+      "certificate_required": "Current hand cannot handle required objects, including pushing, cradling, reorientation, tool and environment-assisted alternatives",
+      "paired_change": "hand on same body or grasp geometry",
+      "feasibility": "unknown"
+    }
+  ],
+  "exit_contract": {
+    "region": "Q",
+    "public_marker": "boundary and letter; not color alone",
+    "geometry": null,
+    "reachable_from_spawn": "must be established per assigned configuration before admission",
+    "must_be_disjoint_from": [
+      "spawn",
+      "D",
+      "ordinary transport paths"
+    ],
+    "entry_signals_intent": true,
+    "verbal_declaration_required": false,
+    "existing_declare_infeasible_semantics": "If integrated, records intent and reason only; cannot bypass physical exit; current H1 API unchanged",
+    "requires_prior_failed_attempt": false,
+    "transitions": [
+      [
+        "active",
+        "retreating"
+      ],
+      [
+        "retreating",
+        "abstained"
+      ]
+    ],
+    "other_terminals": [
+      "delivered",
+      "timed_out",
+      "invalid"
+    ],
+    "commit_source": "trusted physical-state log",
+    "commit_count_max": 1,
+    "predicates": [
+      "complete horizontal robot envelope inside Q",
+      "all load-bearing feet or wheels legally ground-supported",
+      "no held or suspended object",
+      "stable posture",
+      "no hard violation",
+      "complete trusted log"
+    ],
+    "threshold_status": "draft_requires_calibration_and_freezing",
+    "max_linear_speed_m_s": 0.03,
+    "max_angular_speed_rad_s": 0.05,
+    "dwell_s": 3.0,
+    "negative_cases": [
+      "fallen into Q",
+      "one-frame pass",
+      "arm alone enters",
+      "spawn inside Q",
+      "teleport",
+      "holding a load",
+      "missing log",
+      "repeated terminal event"
+    ],
+    "unsafe_state_policy": "Stabilize or independently unload before retreat when physically possible; do not assume every failed state permits safe exit"
+  },
+  "subtasks": [
+    {
+      "id": "observe",
+      "entry": "initial valid scene",
+      "exit": "unique target and candidate observation evidence",
+      "actions": [
+        "change view",
+        "read identifiers",
+        "safe probe if needed"
+      ],
+      "failure": "continue observation or retain uncertainty"
+    },
+    {
+      "id": "prepare",
+      "entry": "candidate route",
+      "exit": "stable load-bearing structure",
+      "actions": [
+        "push or grasp",
+        "lift or translate",
+        "place",
+        "release and check support"
+      ],
+      "failure": "retain safe support; replan without assuming reset"
+    },
+    {
+      "id": "access",
+      "entry": "stable ground state",
+      "exit": "working pose with legal support",
+      "actions": [
+        "shift weight and place feet, or drive ramp",
+        "verify traction and clearance"
+      ],
+      "failure": "stop in supported state when possible"
+    },
+    {
+      "id": "retrieve",
+      "entry": "correct target on original support",
+      "exit": "correct target held clear",
+      "actions": [
+        "grasp or cradle",
+        "lift",
+        "retract",
+        "check changed load"
+      ],
+      "failure": "retain or restore independent support when possible"
+    },
+    {
+      "id": "return",
+      "entry": "working pose",
+      "exit": "ground delivery state",
+      "actions": [
+        "transfer if needed",
+        "release",
+        "descend empty if needed",
+        "regrasp"
+      ],
+      "failure": "no assumed safe retreat from arbitrary state"
+    },
+    {
+      "id": "deliver",
+      "entry": "controlled target",
+      "exit": "correct target released and stable wholly in D",
+      "actions": [
+        "lower",
+        "confirm independent support",
+        "withdraw",
+        "dwell"
+      ],
+      "failure": "no success without stable independent support"
+    },
+    {
+      "id": "exit",
+      "entry": "safely mobile state",
+      "exit": "empty robot stable wholly in Q",
+      "actions": [
+        "stabilize or unload",
+        "retreat",
+        "stow",
+        "stop and dwell"
+      ],
+      "failure": "exit incomplete or invalid; not correct abstention"
+    }
+  ],
+  "subtask_start_policy": "Generate physically valid standalone starts for curriculum; never stitch checkpoints into a continuous full witness",
+  "transition_state": [
+    "actual poses",
+    "velocities",
+    "contacts",
+    "support",
+    "grasp",
+    "committed stages",
+    "remaining budget",
+    "uncertainty"
+  ],
+  "stages": [
+    {
+      "id": "prepare",
+      "weight": 0.2,
+      "mode": "once",
+      "predicate": "stable usable structure with true support",
+      "negative": "mere proximity or touching"
+    },
+    {
+      "id": "retrieve",
+      "weight": 0.3,
+      "mode": "once",
+      "predicate": "correct target held clear under control",
+      "negative": "wrong target or knocked airborne"
+    },
+    {
+      "id": "deliver",
+      "weight": 0.5,
+      "mode": "once",
+      "predicate": "correct target wholly in D, independently supported, released and stable for 3 s",
+      "negative": "single-frame pass, partial containment or still held"
+    }
+  ],
+  "stage_parameters": {
+    "status": "draft_diagnostic_only",
+    "dwell_s": 3.0,
+    "pose_and_speed_tolerances": null,
+    "backfill_skipped_stages": false,
+    "add_to_abstention_reward": false
+  },
+  "monitors": {
+    "profiles": null,
+    "required": [
+      "actuator and joint limits",
+      "load and structural response",
+      "support and slip",
+      "penetration and collision",
+      "damage",
+      "velocity and energy discontinuity",
+      "log integrity"
+    ]
+  },
+  "evaluation": {
+    "trusted_initial_labels": [
+      "witnessed_feasible",
+      "certified_infeasible",
+      "unknown"
+    ],
+    "screen_pass_is_witnessed_feasible": false,
+    "route_rejection_is_infeasibility_certificate": false,
+    "agent_created_infeasibility_earns_credit": false,
+    "outcomes": [
+      {
+        "label": "witnessed_feasible",
+        "event": "delivered",
+        "task_success": 1
+      },
+      {
+        "label": "witnessed_feasible",
+        "event": "abstained",
+        "task_success": 0,
+        "false_abstention": true
+      },
+      {
+        "label": "certified_infeasible",
+        "event": "abstained",
+        "task_success": 0,
+        "correct_abstention": true
+      },
+      {
+        "label": "certified_infeasible",
+        "event": "delivered",
+        "task_success": null,
+        "action": "retain run and review certificate contradiction"
+      },
+      {
+        "label": "unknown",
+        "event": "abstained",
+        "task_success": 0,
+        "abstention_correctness": null
+      },
+      {
+        "label": "unknown",
+        "event": "delivered",
+        "task_success": 1,
+        "action": "validate complete matching witness before updating feasibility label"
+      }
+    ],
+    "timeout_counts_as_abstention": false,
+    "invalid_run_can_score": false,
+    "safe_exit_proves_correct_abstention": false,
+    "metrics": [
+      "delivery rate on witnessed feasible episodes",
+      "correct abstention rate on certified infeasible episodes",
+      "false abstention rate on witnessed feasible episodes",
+      "exit execution success",
+      "unknown count",
+      "decision time",
+      "exit time",
+      "probe count",
+      "violation rate"
+    ],
+    "optional_aggregate": "0.5 * feasible_delivery_rate + 0.5 * certified_infeasible_correct_abstention_rate; undefined unless both denominators exist",
+    "unknown_in_certified_denominators": false,
+    "representative_run_repeats_min": 3,
+    "scoring_passes_per_episode": 3,
+    "episodes_per_scope": null,
+    "reproduction_tolerances": null
+  },
+  "feasibility": {
+    "screening_states": [
+      "witnessed_full",
+      "screen_pass",
+      "unknown",
+      "rejected"
+    ],
+    "initial_extension_state": "unknown",
+    "reference_witnesses": [],
+    "infeasibility_certificates": [],
+    "required_certificate_fields": [
+      "scene and asset hashes",
+      "body, hand and attachment identity",
+      "public rules",
+      "initial-state identity",
+      "legal alternatives covered",
+      "necessary-condition obstruction",
+      "observable evidence",
+      "paired feasible control",
+      "review scope"
+    ],
+    "not_impossibility_evidence": [
+      "failed finite IK search",
+      "budget exhaustion",
+      "one controller failure",
+      "one route rejection"
+    ],
+    "screening_budgets": {
+      "wall_clock_s": null,
+      "ik_candidates": null,
+      "short_probes": null,
+      "probe_steps": null
+    },
+    "full_solution_required_per_random_draw": false,
+    "representative_complete_witness_required_per_claimed_scope": true,
+    "skill_applicability_evidence": null,
+    "finite_reference_cohort": null,
+    "reviewer": null,
+    "independent_reproducer": null
+  },
+  "attack_cases": [
+    {
+      "category": "privileged_information",
+      "cases": [
+        "read hidden capacities, labels, certificates or seed"
+      ],
+      "test_status": "not_run"
+    },
+    {
+      "category": "world_modification",
+      "cases": [
+        "teleport into Q",
+        "change friction or mass",
+        "weld object to hand"
+      ],
+      "test_status": "not_run"
+    },
+    {
+      "category": "physics_exploit",
+      "cases": [
+        "penetrate support",
+        "inject contact energy",
+        "disable self-collision"
+      ],
+      "test_status": "not_run"
+    },
+    {
+      "category": "stage_predicate",
+      "cases": [
+        "same-color substitute",
+        "one-frame containment",
+        "fall into Q"
+      ],
+      "test_status": "not_run"
+    },
+    {
+      "category": "score_rule",
+      "cases": [
+        "repeat exit",
+        "combine partial progress and abstention reward",
+        "backfill skipped stages"
+      ],
+      "test_status": "not_run"
+    },
+    {
+      "category": "evaluation_mode",
+      "cases": [
+        "memorize seeds or color roles",
+        "persist cross-episode data"
+      ],
+      "test_status": "not_run"
+    },
+    {
+      "category": "shortcut",
+      "cases": [
+        "unexamined ground reach",
+        "new tool combination",
+        "alternate load transfer"
+      ],
+      "policy": "Reward legal completion and revise route label; prohibit only through public rules or genuine physical constraints",
+      "test_status": "not_run"
+    }
+  ],
+  "human_review": [
+    "correct identity and whole-region containment",
+    "actual load-bearing contacts",
+    "complete loaded return",
+    "no damage, overload or hidden attachment",
+    "physical Q exit and dwell",
+    "certificate covers legal alternatives",
+    "matching recordings, source, assets and trusted logs"
+  ],
+  "difficulty_hypothesis": {
+    "basis": [
+      "tool composition",
+      "contact transitions",
+      "hand constraints",
+      "uncertainty and refusal"
+    ],
+    "four_hour_coding_agent_target_measured": false
+  },
+  "implementation_order": [
+    [
+      "H1E-01",
+      "H1E-05"
+    ],
+    [
+      "H1E-03"
+    ],
+    [
+      "H1E-06"
+    ],
+    [
+      "H1E-02",
+      "H1E-04"
+    ],
+    [
+      "H1E-07"
+    ],
+    [
+      "H1E-08"
+    ]
+  ],
+  "release_blockers": [
+    "freeze assets, body versions and licenses",
+    "select Go1 arm and integrated controller",
+    "freeze sensors and actuator adapters",
+    "calibrate ranges, thresholds and budgets",
+    "implement physical weak supports and exit monitor",
+    "predeclare finite representative cohort",
+    "generate scoped continuous witnesses",
+    "construct infeasibility certificates and feasible pairs",
+    "validate stage and attack negatives",
+    "human review and independent reproduction"
+  ],
+  "supplements": [
+    {
+      "path": "cooperative-tools.json",
+      "status": "superseded_design_proposal",
+      "active_task_count": 0,
+      "superseded_by": "../task-families.json"
+    }
+  ],
+  "current_family_organization": "../task-families.json",
+  "family_organization": "../task-families.json",
+  "current_task_registry": "../current-task-registry.json",
+  "load_constraint": {
+    "reported_limit_kg": 2.0,
+    "source": "user instruction in current conversation",
+    "interpretation": "conservative total external carried-load screening ceiling for new designs",
+    "hardware_scope": "unresolved; verify platform, per-arm/combined convention, lever arm and dynamics",
+    "verified_capability": false,
+    "sum_arm_limits": false,
+    "x5_compatibility": "unknown",
+    "support_capacity_includes_full_robot_mass": true
+  },
+  "family_boundary": "Change own workspace using environmental support; selected H1S IDs define current independent tasks.",
+  "current_selection": "selected-scope.json",
+  "catalog_role": "Legacy H1E candidate recipes; active registrations are the 22 tasks in selected-scope.json.",
+  "current_independent_task_count": 22,
+  "solution_policy": {
+    "unique_solution_required": false,
+    "all_legal_solutions_accepted": true,
+    "reference_sequence_required": false,
+    "preferred_tool_required": false,
+    "extra_common_feasible_calibration_tasks": false,
+    "legal_shortcut": "retain success and revise necessity/route label",
+    "infeasibility_requires_all_route_evidence": true,
+    "historical_reference_scoring_unchanged": true
+  }
+}

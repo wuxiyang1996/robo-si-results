@@ -1,0 +1,264 @@
+{
+  "task": "M2",
+  "scope": "Existing fixed 0.25 kg bounded privileged-feedback bounded-reference-10 only; no RPC replay or admission claim.",
+  "capture": "sandbox/runs/bounded-reference-10",
+  "capture_metadata": {
+    "kind": "privileged bounded reference capture; not RPC execution",
+    "frames": 8764,
+    "physics_steps": 35056,
+    "control_dt": 0.02,
+    "physics_dt": 0.005,
+    "robots": [
+      "g1_a",
+      "g1_b"
+    ],
+    "arrival_offset_y": 0.06,
+    "capture_tool_sha256": "efcf3b1646922a388bba05360fab112af8cdd9b0922fa2bd97bb407fb1ab4578",
+    "rpc_initialization": true,
+    "video_requested": true,
+    "suppressed_identical_setter_calls": {
+      "set_dofs_armature": 4,
+      "set_dofs_position": 2,
+      "set_pos": 2,
+      "set_dofs_force_range": 2,
+      "set_friction": 40
+    },
+    "denied_calls": [],
+    "rule_source": "sandbox/AUTHOR_RULES_2026-10-23.md; author-authorized G2/E2",
+    "scorer_version": "2.0-g2-e2",
+    "ending_rule": "m2-e2/1",
+    "source_snapshot": "capture_source.py",
+    "native_gain_values_clipped": {
+      "g1_a.kd": 10250,
+      "g1_b.kd": 10250
+    },
+    "command_values_clipped": {
+      "g1_a.q": 8000
+    },
+    "commands_sha256": "7fe6f1a0c2c684206085294cc11384bf2a30732135673d930d85f301b4053f58",
+    "adapter_sha256": "a40533a64becae98fa81ce4f869463c59a8e3e61a7363477b6d2d171e55d4eb1",
+    "expert_sha256": "53ffc19066656ec4738d052f2067fcfa7d7cb558a92aa3d9235d61678b2e48ed",
+    "score": 1.0,
+    "success": true,
+    "void": false,
+    "limitation": "Fixed-scene open-loop replay is a command-interface check, not sensor-only closed-loop solvability."
+  },
+  "replays": [],
+  "capture_audit": {
+    "verdict": {
+      "score": 1.0,
+      "success": true,
+      "void": false,
+      "flags": [],
+      "alarms": [],
+      "stage_times": {
+        "grasp": 18.595000000000585,
+        "lift": 33.01499999999844,
+        "turn": 120.25499999996312,
+        "transport": 154.84499999993167,
+        "lower": 173.14999999991502,
+        "place": 175.1699999999132
+      },
+      "admission_eligible": false
+    },
+    "recording_status": "completed",
+    "state_writes": [],
+    "parameter_check_count": 71,
+    "all_parameter_checks_unchanged": true,
+    "initial_final_parameters_match": true,
+    "adapter_events": {
+      "rpc_initialization": true,
+      "physics_steps": 35056,
+      "suppressed_identical_setter_calls": {
+        "set_dofs_armature": 4,
+        "set_dofs_position": 2,
+        "set_pos": 2,
+        "set_dofs_force_range": 2,
+        "set_friction": 40
+      },
+      "denied_calls": []
+    },
+    "file_sha256": {
+      "meta.json": "6b36efa98097f68ea85400918219ce644537ded1b3351a070006b2bcd38ec74d",
+      "recording.json": "ae4f1a4f497cb0915817020431dd3aaa16d37389dadbff03ba7c159f886128b6",
+      "verdict.json": "b9a3335f38d4014069abc5671b6fb3dde9457fbc0ef6cf866f912774d90c04d1",
+      "files.json": "e5b217de9f10e6d58d8d06d94cd20b4fb77bf4abbc39f5f44aa9078574c0f42e"
+    },
+    "robots": {
+      "g1_a": {
+        "command_shapes": {
+          "mode": [
+            8764,
+            43
+          ],
+          "q": [
+            8764,
+            43
+          ],
+          "dq": [
+            8764,
+            43
+          ],
+          "kp": [
+            8764,
+            43
+          ],
+          "kd": [
+            8764,
+            43
+          ],
+          "tau": [
+            8764,
+            43
+          ]
+        },
+        "commands_all_finite": true,
+        "modes_valid": true,
+        "kp_out_of_bounds_values": 0,
+        "kd_out_of_bounds_values": 0,
+        "feedforward_out_of_bounds_values": 0,
+        "recorded_control_force_max_excess_Nm": 0.0,
+        "note": "All exported LowCmd fields checked directly against public/model bounds; recorded actual motor forces checked at every 200 Hz sample. Raw request clipping is not an applied-bound violation.",
+        "q_out_of_model_bounds_values": 0,
+        "dq_out_of_public_bounds_values": 0,
+        "command_frame_count": 8764,
+        "max_applied_kp": 3000.0,
+        "max_applied_kd": 50.0
+      },
+      "g1_b": {
+        "command_shapes": {
+          "mode": [
+            8764,
+            43
+          ],
+          "q": [
+            8764,
+            43
+          ],
+          "dq": [
+            8764,
+            43
+          ],
+          "kp": [
+            8764,
+            43
+          ],
+          "kd": [
+            8764,
+            43
+          ],
+          "tau": [
+            8764,
+            43
+          ]
+        },
+        "commands_all_finite": true,
+        "modes_valid": true,
+        "kp_out_of_bounds_values": 0,
+        "kd_out_of_bounds_values": 0,
+        "feedforward_out_of_bounds_values": 0,
+        "recorded_control_force_max_excess_Nm": 0.0,
+        "note": "All exported LowCmd fields checked directly against public/model bounds; recorded actual motor forces checked at every 200 Hz sample. Raw request clipping is not an applied-bound violation.",
+        "q_out_of_model_bounds_values": 0,
+        "dq_out_of_public_bounds_values": 0,
+        "command_frame_count": 8764,
+        "max_applied_kp": 3000.0,
+        "max_applied_kd": 50.0
+      }
+    },
+    "commands_sha256_matches": true,
+    "world_parameter_digest_matches": true,
+    "sample_count_matches": true,
+    "time_is_strictly_increasing": true,
+    "physics_interval_max_error_s": 9.663277122928804e-15,
+    "frame_physics_count_matches": true,
+    "all_state_fields_finite": true,
+    "record_manifest_file_count": 39
+  },
+  "input_absolute_path": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_g1_long_object_transport\\sandbox\\runs\\bounded-reference-10",
+  "repository_archive_path": "D:\\rsi_vla\\robo-si\\multi_robot\\dual_g1_long_object_transport\\sandbox\\runs\\bounded-reference-10",
+  "regrade": {
+    "verdict": {
+      "score": 1.0,
+      "success": true,
+      "void": false,
+      "flags": [],
+      "alarms": [],
+      "stage_best": {
+        "grasp": 1.0,
+        "lift": 1.0,
+        "turn": 1.0,
+        "transport": 1.0,
+        "lower": 1.0,
+        "place": 1.0
+      },
+      "stage_final": {
+        "grasp": 1.0,
+        "lift": 1.0,
+        "turn": 1.0,
+        "transport": 1.0,
+        "lower": 1.0,
+        "place": 1.0
+      },
+      "stage_times": {
+        "grasp": 18.595000000000585,
+        "lift": 33.01499999999844,
+        "turn": 120.25499999996312,
+        "transport": 154.84499999993167,
+        "lower": 173.14999999991502,
+        "place": 175.1699999999132
+      }
+    },
+    "recorded_verdict_exact_on_task_fields": true
+  },
+  "source_record_unchanged_by_audit": true,
+  "source_files_changed_during_audit": [],
+  "audit_tools_unchanged_during_audit": true,
+  "current_recorded_sources_unchanged_during_audit": true,
+  "schema": "m2-layer1-offline-reference-audit/1",
+  "created_utc": "2026-10-24T13:33:53.815272+00:00",
+  "completed_utc": "2026-10-24T13:34:41.615068+00:00",
+  "checks": {
+    "task_complete": true,
+    "no_flags_or_alarms": true,
+    "commands_and_measured_effort_within_public_limits": true,
+    "no_recorded_state_writes_or_denied_setters": true,
+    "physical_parameters_unchanged": true,
+    "recorded_sources_match": true,
+    "recorded_assets_match": true,
+    "capture_identifiers_match": true,
+    "commands_digest_matches": true,
+    "sample_and_frame_counts_match": true,
+    "state_arrays_finite_and_chronological": true,
+    "unchanged_source_record": true,
+    "unchanged_audit_sources": true,
+    "video_metadata_and_full_decode": true,
+    "video_actual_state_time_mapping": true
+  },
+  "all_offline_checks_passed": true,
+  "samples": 35057,
+  "final_time_s": 175.2799999999131,
+  "mass_kg": 0.25,
+  "corridor_width_m": 1.8,
+  "provenance_limitations": [
+    "One existing privileged-feedback physical reference; not a new execution or independent reproduction.",
+    "File manifest and parameter sealing establish recorded integrity, not authentication or a signature.",
+    "No RPC scenario seal/request-chain claim applies to this privileged capture.",
+    "Historical action_digest covers raw expert actions; it is not reconstructed from clipped LowCmd export.",
+    "Default 300 s launcher wall budget does not apply automatically to this standalone capture; recorded wall time is disclosed separately.",
+    "Human video signoff, three successful repeats and admission remain separate gates."
+  ],
+  "resources": {
+    "physics_steps": 35056,
+    "declared_physics_limit": 60000,
+    "physics_limit_pass": true,
+    "capture_wall_seconds": 331.18700000003446,
+    "launcher_default_wall_seconds": 300,
+    "isolated_agent_wall_budget_validated": false,
+    "observation_budget_validated": false
+  },
+  "reused_tools": {
+    "multi_robot\\dual_g1_long_object_transport\\acceptance\\release_candidate\\compare_bounded_replay.py": "90b9b40a1252d6d78f5503baf2bf62d8d09598343c301ec921e0bccc332b8f3c",
+    "multi_robot/dual_g1_long_object_transport/reference_video.py": "b2781996abf89b0b57d73886b87138330999944e8d7d18db35cea7b112ad64f2"
+  }
+}

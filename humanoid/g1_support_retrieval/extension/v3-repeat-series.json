@@ -1,0 +1,124 @@
+{
+  "schema": "h1-p4-frozen-repeat-series/1",
+  "created_at_utc": "2026-10-27T21:07:09.167238+00:00",
+  "profile": "p4-margin-v3.json",
+  "profile_sha256": "c322b7d65edcd2de076d2c6439620049275469224563ee02019429ab5e5b8225",
+  "contract": "prospective-macro-contract-margin-v3-r3.json",
+  "contract_sha256": "6cc590cd7d82bc12dd9395639ffb012335334f56e15e48c6d8df0db458fe6c0a",
+  "jobs": [
+    8035717,
+    8035839,
+    8035840
+  ],
+  "baseline_job": 8035717,
+  "repeat_count": 3,
+  "execution": "Each starts a fresh simulator, copies the first complete immutable source/assets snapshot, uses same seed0; no checkpoint or trajectory reuse.",
+  "maximum_wall_seconds_each": 3600,
+  "maximum_sim_seconds_each": 600,
+  "maximum_resets_each": 0,
+  "success_count": 0,
+  "status": "completed_all_three_failed_original_standard",
+  "formal_admission": false,
+  "allocated_gpu_models": {
+    "8035717": "RTX A4000",
+    "8035839": "RTX A5000",
+    "8035840": "RTX A5000"
+  },
+  "same_hardware_replication": false,
+  "results": [
+    {
+      "job": 8035717,
+      "task_success": false,
+      "physical_goal_met": true,
+      "simulation_s": 250.62,
+      "final_dwell_s": 6.460000000000008,
+      "max_position_overshoot_rad": 0.00047382013872265816,
+      "safety_complete": true,
+      "safety_passed": false,
+      "safety_events": [
+        {
+          "rule": 5,
+          "kind": "joint_limit_push",
+          "time_s": 229.24,
+          "end_s": 237.24,
+          "occurrences": 1,
+          "measured": {
+            "joint": "right_elbow_joint",
+            "longest_s": 8.0
+          },
+          "threshold": {
+            "limit_distance_rad": 0.02,
+            "torque_fraction": 0.5,
+            "seconds": 2.0
+          }
+        }
+      ],
+      "errors": [
+        "original_five_safety_rules_failed"
+      ]
+    },
+    {
+      "job": 8035839,
+      "task_success": false,
+      "physical_goal_met": true,
+      "simulation_s": 262.76,
+      "final_dwell_s": 6.479999999999961,
+      "max_position_overshoot_rad": 0.0005624541663564742,
+      "safety_complete": true,
+      "safety_passed": false,
+      "safety_events": [
+        {
+          "rule": 5,
+          "kind": "joint_limit_push",
+          "time_s": 241.38,
+          "end_s": 246.52,
+          "occurrences": 1,
+          "measured": {
+            "joint": "right_elbow_joint",
+            "longest_s": 5.14
+          },
+          "threshold": {
+            "limit_distance_rad": 0.02,
+            "torque_fraction": 0.5,
+            "seconds": 2.0
+          }
+        }
+      ],
+      "errors": [
+        "original_five_safety_rules_failed"
+      ]
+    },
+    {
+      "job": 8035840,
+      "task_success": false,
+      "physical_goal_met": true,
+      "simulation_s": 252.18,
+      "final_dwell_s": 6.199999999999989,
+      "max_position_overshoot_rad": 0.0037474180571734905,
+      "safety_complete": true,
+      "safety_passed": false,
+      "safety_events": [
+        {
+          "rule": 5,
+          "kind": "joint_limit_push",
+          "time_s": 230.66,
+          "end_s": 237.48,
+          "occurrences": 2,
+          "measured": {
+            "joint": "left_elbow_joint",
+            "longest_s": 4.44
+          },
+          "threshold": {
+            "limit_distance_rad": 0.02,
+            "torque_fraction": 0.5,
+            "seconds": 2.0
+          }
+        }
+      ],
+      "errors": [
+        "actuator_max_position_overshoot",
+        "original_five_safety_rules_failed"
+      ]
+    }
+  ]
+}

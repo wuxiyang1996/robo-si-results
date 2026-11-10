@@ -1,0 +1,42 @@
+{
+  "schema": "sokoban-push-only-review/1",
+  "checks": {
+    "complete_substep_and_command_coverage": true,
+    "open_index_middle_commands": true,
+    "no_loaded_far_side_contact": true,
+    "no_force_driven_motion_toward_robot": true,
+    "contact_direction_defined": true
+  },
+  "operational_checks_passed": true,
+  "thresholds": {
+    "active_contact_N": 1.0,
+    "far_side_margin_m": 0.02,
+    "reverse_force_N": 1.0,
+    "motion_noise_m_per_substep": 1e-06
+  },
+  "flag_counts": {},
+  "flagged_samples": [],
+  "reverse_contact_impulse_Ns": 0.01152121675104363,
+  "nonhand_contact_samples_by_link": {
+    "g1_a/crate_d/right_wrist_pitch_link": 80,
+    "g1_a/crate_d/right_ankle_roll_link": 4,
+    "g1_a/crate_d/left_wrist_pitch_link": 55,
+    "g1_a/crate_d/left_ankle_roll_link": 9
+  },
+  "max_index_middle_command_rad": 0.0,
+  "substeps": 96248,
+  "controls": 12031,
+  "sha256": {
+    "trace.jsonl": "0f2ecd40c01fbcb8c6849287213d5f08b70cdb529260991530267acb90ef95f5",
+    "physics-substeps.jsonl": "189fe6701606436b1eaee19f2dee81ffa365bbb4331e1ea6cfb63d9baa862491",
+    "physics-metadata.json": "a294ade8ad2c69008dde6c61b7f7599d846b6bc05d04c4962c5e6b76c299c5e6"
+  },
+  "scope": "Conservative operational checks plus existing opposed-face/support/actuator audit. Human review still required.",
+  "limitations": [
+    "Subthreshold contact and force-closure modes are not universally excluded by these tests.",
+    "Non-hand contacts are classified by link; applicable clips need human review.",
+    "This result does not certify isolation, runtime integrity or formal admission."
+  ],
+  "formal_admission": false,
+  "task_success": null
+}

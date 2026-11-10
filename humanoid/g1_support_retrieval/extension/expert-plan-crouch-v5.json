@@ -1,0 +1,58 @@
+{
+  "schema": "h1-expert-high-low-plan/2",
+  "task_id": "H1S-07.P4",
+  "revision": "crouch-hold-v5",
+  "privileged": true,
+  "public_goal": "Entire target in D, independently ground supported, released, and stable for at least 3s; robot meets the unchanged original five safety rules and hardware limits.",
+  "high_level": [
+    {
+      "id": "H1",
+      "goal": "Establish a legal approach from the original scene",
+      "low_level": [
+        "approach"
+      ]
+    },
+    {
+      "id": "H2",
+      "goal": "Transport the ground-supported target toward D",
+      "low_level": [
+        "touch",
+        "push",
+        "retreat"
+      ],
+      "repeat": "controller.cycles"
+    },
+    {
+      "id": "H3",
+      "goal": "Reposition only when another push remains",
+      "low_level": [
+        "planned_steps",
+        "return_hands"
+      ],
+      "repeat": "controller.cycles-1, interleaved after H2"
+    },
+    {
+      "id": "H4",
+      "goal": "Maintain released target and safely supported crouch",
+      "low_level": [
+        "settle_release",
+        "hold"
+      ]
+    }
+  ],
+  "terminal_controller": {
+    "entry": "Last commanded joint reference after final Retreat; no checkpoint or measured-state reset",
+    "reference": "Keep this posture reference and send ordinary bounded joint control every physics step; leg gravity/balance feedback continues",
+    "settle": "At most 8s; raw release, target ground support and existing target/root speed bounds must hold continuously for 1s",
+    "hold": "6s actual physical hold, evaluated independently; at least 3s final public goal dwell remains required",
+    "posture": "Safe supported crouch is allowed by the original task; standing is not required"
+  },
+  "integrity": {
+    "runtime_pose_writes": false,
+    "root_wrench": false,
+    "object_attachment": false,
+    "fixed_robot_base": false
+  },
+  "trajectory": "Fresh continuous qpos, measured safety channels, actual reference commands and per-physics commands; no concatenated or replayed trajectories.",
+  "preservation": "Earlier v3/v4 standing-route failures remain failures. This distinct prospective route removes unnecessary actions; no physical or acceptance threshold changes."
+}

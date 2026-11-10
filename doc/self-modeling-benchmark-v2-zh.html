@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="跨身体能力发现与能力感知规划：四个设计轴、三档能力可见性、五个核心指标。" name="description"/><title>Capability-Aware Embodied Problem Solving · Benchmark v2 · 中文</title><link href="/robo-si-results/doc/styles.css" rel="stylesheet"/><link href="/robo-si-results/doc/self-modeling-benchmark-v1.css" rel="stylesheet"/><link href="/robo-si-results/doc/self-modeling-benchmark-v2.css" rel="stylesheet"/><meta content="noindex,nofollow,noarchive" name="robots"/></head>
+<body><a class="skip-link" href="#main">跳到正文</a>
+<header class="hero"><p class="meta">SELF-MODELING ROBOTICS / BENCHMARK PROPOSAL 02 / 2026-10-04</p><span class="badge">研究提案 · 实现与实验结果待完成</span><h1>Capability-Aware<br/>Embodied Problem Solving</h1><p class="lead">机器人能否通过交互发现自身物理边界，区分自身限制与环境约束，并跨身体、跨世界调整求解策略？</p><p class="subtitle">Task × Constraint × Embodiment × Capability Knowledge<br/>Discovery · Attribution · Adaptation</p><nav aria-label="页面导航"><a href="/robo-si-results/doc/self-modeling-benchmark-v2-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/README.md">项目索引</a> · <a href="/robo-si-results/doc/self-modeling-benchmark-v1-zh.html">Benchmark v1</a> · <span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html">V3 方法 [external workspace]</span></nav></header>
+<main id="main"><nav aria-label="目录" class="card"><ol class="toc"><li><a href="#core">核心：发现、归因与适应</a></li><li><a href="#capability">自身与世界信念</a></li><li><a href="#counterfactual">四种身体的反事实例子</a></li><li><a href="#levels">任务分类与四个设计轴</a></li><li><a href="#constraints">约束分类与归因</a></li><li><a href="#embodiments">Embodiment 与覆盖矩阵</a></li><li><a href="#settings">Explicit / Partial / Latent</a></li><li><a href="#observations">观察与 verifier 隔离</a></li><li><a href="#taskspec">TaskSpec 作为唯一任务定义</a></li><li><a href="#assets">资产与物理参数协议</a></li><li><a href="#backends">双仿真同步开发</a></li><li><a href="#runtime">Worker 隔离与 backend API</a></li><li><a href="#equivalence">Sim2Sim harness 与发布门槛</a></li><li><a href="#metrics">五个核心指标</a></li><li><a href="#positioning">相关工作定位</a></li><li><a href="#pilot">第一个决定性实验</a></li><li><a href="#seed-families">24 个 seed families</a></li><li><a href="#roadmap">扩展规模与发布门槛</a></li></ol></nav>
+<section class="card" id="core"><div class="section-title"><span class="number">01</span><h2>发现能力边界，归因物理约束，适应不同身体</h2></div>
+<p><strong>Cross-embodiment capability discovery + capability-aware planning。</strong> 研究 embodied agent 能否发现自身身体的物理能力边界，区分自身限制与环境约束，并跨身体、跨世界调整求解策略。</p>
+<div class="equation">Discovery → Attribution → Adaptation
+目标 → 能力假设 → 交互证据 → 自身/世界模型 → 构造替代解法 → 执行</div>
+<p>机器人一开始可能不知道精确 reach、payload、夹爪、跨台阶、接触力或协同搬举边界。它需要估计当前身体与执行器能做什么，识别能力缺口，再通过环境资源或其他机器人扩展 effective capability。</p>
+<div class="grid-2"><div class="mini-card"><h3>核心检验</h3><p>固定目标和场景，改变身体及能力信息的披露程度；测量交互证据是否更新能力判断，并带来合理的直接、环境增强或协作策略。跨 embodiment 的 policy transfer 保留为泛化测试，核心成功标准是能力发现与策略适应。</p></div><div class="mini-card"><h3>范围与前版关系</h3><p><a href="/robo-si-results/doc/self-modeling-benchmark-v1-zh.html">Benchmark v1</a> 提供 solution discovery 与复合任务视角；<span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html">V3 方法 [external workspace]</span> 保留单平台、冻结策略的 harness 范围。本 benchmark 接受不同 agent 架构；显式 capability memory 是待检验假设，不是参赛条件。</p></div></div>
+<p>覆盖空间统一为 <strong>Task × Constraint × Embodiment × Capability Knowledge</strong>。下述任务、阈值与评测协议均为设计，尚待实现及物理验证。</p></section>
+<section class="card" id="capability"><div class="section-title"><span class="number">02</span><h2>联合建模自身能力与世界物理属性</h2></div>
+<div class="equation">Instance I = (T, E, C, O, W)
+hₜ = (o₁:ₜ, a₁:ₜ₋₁, r₁:ₜ₋₁)
+bₜ(C, W) = P(C, W | hₜ, disclosure(O))
+Ĉₜ, Ŵₜ = bₜ 的估计摘要；π(aₜ | T, hₜ, Ĉₜ, Ŵₜ)
+F(a; s) = f(C_robot, P_object, G_geometry, D_dynamics; s)</div>
+<p><strong>T</strong> 是目标，<strong>E</strong> 是身体/团队与控制器，<strong>C</strong> 是依赖上下文的潜在能力 profile，<strong>O</strong> 是信息披露策略，<strong>W</strong> 是世界物理参数。E 约束 C。Agent 接收正常观察 o，以及 O 允许披露的能力信息，不直接读取完整的私有 C、W。</p>
+<p>bₜ 是信念分布，Ĉₜ、Ŵₜ 是估计或摘要。反馈 r 指可观察的物理执行证据，<strong>不代表隐藏 reward、feasibility label 或 verifier 输出</strong>。动作可行性由自身、物体属性、几何和动力学共同决定；标量 reach / payload 阈值仅在明确的校准条件下有意义。</p>
+<ol class="chain"><li><strong>观察并提出假设。</strong>结合身体外观、本体感知、先验与已披露规格。</li><li><strong>尝试或探测。</strong>当不确定性影响决策时，选择预算内的信息性互动。</li><li><strong>更新自身与世界模型。</strong>对模糊反馈保留多个竞争解释。</li><li><strong>识别缺口并构造替代解法。</strong>重新定位、延长 reach、创造支撑、搭桥、重新分配载荷或招募伙伴。</li><li><strong>执行并修订。</strong>依据可观察结果，在 episode 内更新计划。</li></ol>
+<p>Effective capability 指在公开有效性约束和预算下，利用允许资源与伙伴可以实现的目标集合。物理可行性与当前策略的执行成功概率分开评测；一次控制器执行失败不等于动作物理上不可行。</p></section>
+<section class="card" id="counterfactual"><div class="section-title"><span class="number">03</span><h2>同一个货架，四种身体，不同解法</h2></div>
+<div class="equation">P(strategy | goal, scene, embodiment, interaction history)
+仅改变身体：(T, W, E₁) ↔ (T, W, E₂)，固定 O</div>
+<p class="shared-scene"><strong>目标：</strong>取回 1.3 m 货架上的红盒子。目标、平台、杆子、接收表面及有能力的伙伴在<strong>所有变体</strong>中均保持一致，仅改变主机器人身体/控制器。下面数值为 evaluator 侧示例，在 Latent 模式下不向 agent 披露。</p>
+<div class="grid-2">
+<div class="mini-card pair-card"><p class="track-tag">A / REACH 1.4 m</p><h3>直接取物</h3><p class="verdict">推断或探测 → 抓取</p><p>已验证的直接路径可行。直接执行本身也能提供证据，无须额外安排一次失败探测。</p></div>
+<div class="mini-card pair-card augmented"><p class="track-tag">B / REACH 1.0 m + STEPPING</p><h3>建立稳定支撑</h3><p class="verdict">识别 reach 缺口 → 移平台 → 踏上 → 抓取</p><p>验证平台高度、稳定性、承重及 stepping 控制。伸手失败可以提供缺口证据，但不是必经步骤。</p></div>
+<div class="mini-card pair-card augmented"><p class="track-tag">C / REACH 1.0 m + POLE CONTROL</p><h3>改变交互几何</h3><p class="verdict">判断 stepping 限制 → 用杆 → 取物</p><p>无法使用平台路线。杆子路线需要经验证的接收面、把手或转移几何，真正把盒子带到可达区域；沿着仍不可达的货架拉近或任其跌落，不能默认构成解法。</p></div>
+<div class="mini-card pair-card augmented"><p class="track-tag">D / REACH 1.0 m + WEAK ARM</p><h3>招募有能力的伙伴</h3><p class="verdict">推断自身不足 → 分配伙伴 → 接收目标</p><p>独立验证伙伴的 reach、载荷、交接与协调。A–D 的伙伴访问权限相同，伙伴工作和通信都计入成本。</p></div>
+</div>
+<p><strong>这些是候选路线，不是四条唯一标准答案。</strong> 同一个伙伴或工具可能让多个身体共享可行策略。仅当所选路线变得不可行或可行策略集合不相交时，计入必须切换；在明确成本目标下另报效率优选切换。同一策略仍然合适时，正确不变也应得分。</p>
+<details><summary>四身体示意与干净的干预实验分开</summary><p>A–D 为解释目的组合了多项身体差异。诊断 pilot 每次仅改变一个已验证能力轴：reach 几何、力/力矩边界、夹爪开口或移动/控制能力。固定目标、世界参数、资源、伙伴、预算、O 及兼容接口；重新验证碰撞、视角与控制器能力。只改 metadata 不构成物理干预。</p></details>
+<details><summary>不变、无解与不确定对照</summary><p>加入无关或外观身体变化、共享可行策略，以及不存在允许解法的任务。对有证据的不确定性与弃权给予相应评价；策略改变只有与已验证的可行性或成本差异一致时才有价值。</p></details></section>
+<section class="card" id="levels"><div class="section-title"><span class="number">04</span><h2>四个任务主类 + 一个 Composite Challenge Split</h2></div>
+<div class="equation">Task × Constraint × Embodiment × Capability Knowledge
+Access / Manipulation / Environmental Augmentation / Collaboration / Composite</div>
+<p>Task 定义需求或增强机制，Constraint 标注物理限制，Embodiment 指定身体/团队，Capability Knowledge 控制信息披露。四者是独立的设计维度，不意味着统计独立或任意组合都成立。四个主类用于报告；Composite 是任务轴的第五个取值，单独组成 challenge split。</p>
+<div class="grid-2">
+<div class="mini-card"><p class="stage-title">01 / ACCESS</p><h3>Mobility &amp; Access · 访问能力</h3><p>目标已知，但机器人的移动能力与环境不匹配。例如机器人宽于门口、门被物体挡住、开门需要 pull 而只支持 push、台阶、gap，以及更长但可行的绕行路线。</p><p><strong>评测链：</strong>mobility constraint → alternative access strategy。验证通道宽度、转弯空间、台阶/地形控制，以及障碍物是否确实可移动。</p></div>
+<div class="mini-card"><p class="stage-title">02 / MANIPULATION</p><h3>Manipulation · 物体操作</h3><p>抓取、搬举、保持和重新定向属于 manipulation 需求；reach、payload、gripper、dexterity 与几何属于贯穿任务的约束。例如 1.4 m 高目标对比 1.0 m 可达范围、8 kg 物体对比经验证的 3 kg 搬举限制，以及物体宽于夹爪开口。</p><p><strong>评测目标：</strong>尝试前预测哪个直接动作不可行。数值是受控示例，物体质量仍属私有状态。单臂“撑住盖子并取物”只有在经验证条件排除了顺序操作与支撑替代时，才能判为不可行。</p></div>
+<div class="mini-card"><p class="stage-title">03 / ENVIRONMENT</p><h3>Environmental Augmentation · 环境增强</h3><p>环境资源改变 effective capability。Tool use 是其中的 subclass；有用资源也可以是普通箱子、木板、桌子或推车。</p><ul><li><strong>Extend：</strong>杆子延长交互 reach。</li><li><strong>Support：</strong>稳定平台改变有效高度。</li><li><strong>Bridge：</strong>木板扩大可访问空间。</li><li><strong>Mechanical advantage / 载荷重新分配：</strong>杠杆、滑轮或推车改变作用力与运输需求。</li></ul><p>移动桌子也可形成中间可达表面。每种收益都取决于已验证的接触与控制条件。</p></div>
+<div class="mini-card"><p class="stage-title">04 / COLLABORATION</p><h3>Collaborative Capability Augmentation · 协作增强</h3><p>机器人认识到伙伴可以补足自身限制。例如移动机器人把物体送进强固定臂的 workspace、协同搬举，以及能进入窄区的机器人将物体交给 reach 更高的机器人。</p><p>弱机械臂不能被默认能够搬运 8 kg 物体，应验证 cart/push/drag 等运输机制。同样，m &gt; P_A, m &gt; P_B, m &lt; P_A + P_B 只是联合搬举的初筛条件；载荷分配、抓取几何、协调与执行器限制仍须验证。</p></div>
+</div>
+<p><strong>标注规则：</strong>Access 和 Manipulation 描述任务需求，Environment 和 Collaboration 描述弥补机制，彼此可能重叠。预先指定 primary category，并附加 deficit/mechanism 标签；报告交叉覆盖，每个 family 在配额中仅计一次。这些可能提示解法的标签不向 agent 公开。</p>
+<h3>Composite Challenge Split · 组合多种能力缺口</h3>
+<p class="goal">目标：把阁楼上的红盒子带到厨房。</p>
+<p>拟议场景包含被堵住的楼梯、储藏室里的木板、挡住储藏室的重柜子，以及附近的另一个机器人。一条候选依赖链是：</p>
+<ol class="chain"><li><strong>诊断访问问题。</strong>识别当前路线为什么不可用。</li><li><strong>发现可能用作 ramp 的资源。</strong>木板可能形成替代路径，但暂时拿不到。</li><li><strong>招募具备相应能力的伙伴。</strong>在力与抓取限制经验证的前提下，协调清理柜子。</li><li><strong>取出并放置木板。</strong>检查长度、坡度、固定、承重及 embodiment 的通行能力。</li><li><strong>取回并运送目标。</strong>通过这条或其他允许路线满足最终状态。</li></ol>
+<p>这是候选场景，不是已运行的物理解法。木板必须真正形成有效路径；humanoid 标签不自动意味着能走 ramp 或楼梯。复合任务结合多类需求与嵌套前置条件，而非简单串联独立 puzzles。</p>
+<p>前版“能力认知 → 环境 → 协作”保留为评测视角，不再作为另一套任务 taxonomy。通用 API 与隐藏 verifier 边界保持一致；团队构成、通信和伙伴工作量都需要控制并记录。</p>
+</section>
+<section class="card" id="constraints"><div class="section-title"><span class="number">05</span><h2>物理约束贯穿所有任务类型</h2></div>
+<p>同一种物理限制可能阻碍访问、操作、环境增强或协作。约束标签与 primary task category 分开；一个实例可以同时具有多个约束标签。</p>
+<ul class="taxonomy"><li><strong>Kinematic · 运动学</strong>Reach 包络、关节限制与运动可行性。</li><li><strong>Dynamic · 动力学</strong>执行器力/力矩、载荷、加速度与搬举限制。</li><li><strong>Geometric · 几何</strong>空间间隙、物体匹配、碰撞与抓取几何。</li><li><strong>Contact / friction · 接触与摩擦</strong>牵引、滑动阻力、接触姿态与卡住。</li><li><strong>Stability · 稳定性</strong>支撑、倾覆、平衡与载荷分配。</li><li><strong>Morphological · 身体形态</strong>宽度/高度、手臂数量、DoF 与移动结构。</li><li><strong>Multi-agent dependency · 多体依赖</strong>能力互补、同步动作与角色前置条件。</li></ul>
+<h3>为什么箱子推不动？</h3><p>机器人作用力不足、物体质量大、摩擦高、几何卡住、接触姿态不佳，都是竞争解释。一次失败推箱通常无法识别唯一原因。Agent 应更新自身与世界信念，表达不确定性，并在有价值时选择能区分假设的互动。</p>
+<div class="hypothesis"><strong>归因诊断：</strong>分别构造仅改变作用力、质量、摩擦、间隙或接触的匹配干预，固定其余相关变量，验证因果变化，再用 evaluator 私有标签评估 agent 预测。加入多原因与观察上无法区分的情形；自身和环境的相互作用也可以是正确解释。</div>
+<p>约束/机制标签、干预及因果标签属于 evaluator metadata。Agent 只得到正常物理反馈，不能通过 API 直接读取隐藏原因。解释得分须有预测、探测和结果支撑。</p></section>
+<section class="card benchmark" id="embodiments"><div class="section-title"><span class="number">06</span><h2>Embodiment 单独成轴</h2></div>
+<div class="grid-2"><div class="mini-card"><h3>Fixed Arm</h3><p>固定 workspace 内的 manipulation，不假设底座移动。Access 类须有合理的工作区内访问、工具介入或伙伴协助解释。</p></div><div class="mini-card"><h3>Mobile Manipulator</h3><p>底座导航加操作，地形、间隙、reach 与 payload 限制均需验证。可移动不自动意味着可以攀爬。</p></div><div class="mini-card"><h3>Humanoid</h3><p>Whole-body、stepping、bimanual 或 climbing，仅在具体身体与控制器支持时成立。身高与 reach 仍是需要测量的变量。</p></div><div class="mini-card"><h3>Heterogeneous Multi-Robot</h3><p>由明确的各机器人 embodiment 与互补能力构成的团队配置，不是另一种单机器人形态。</p></div></div>
+<p>用下方矩阵规划覆盖。前三列表示单机器人配置，最后一列表示团队。Humanoid 与伙伴合作时，协作结果归入团队配置。</p>
+<p class="small matrix-hint">窄屏可左右滚动矩阵，查看全部 embodiment 列。</p><div aria-label="任务类别与 embodiment 规划覆盖矩阵" class="matrix-scroll" role="region" tabindex="0"><table class="coverage-matrix"><caption>拟议覆盖范围；符号不代表实测能力</caption><thead><tr><th scope="col">任务类别 / split</th><th scope="col">Fixed Arm</th><th scope="col">Mobile Manipulator</th><th scope="col">Humanoid</th><th scope="col">Multi-Robot</th></tr></thead><tbody>
+<tr><th scope="row">Mobility &amp; Access</th><td>△</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><th scope="row">Manipulation</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><th scope="row">Environmental Augmentation</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><th scope="row">Collaborative Augmentation</th><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><th scope="row">Composite Challenge Split</th><td>△</td><td>✓</td><td>✓</td><td>✓</td></tr>
+</tbody></table></div>
+<p class="small">✓＝计划覆盖、待物理验证；△＝有条件的子集；—＝不适用于该单机器人配置。不要求填满矩阵；不支持或尚未测试的格子，与任务失败分开报告。</p>
+<details><summary>同一个高处取物目标，跨不同身体</summary><p>固定臂可能需要长工具，也可能无解；mobile manipulator 可能重新定位或利用中间表面；经验证支持 stepping 的 humanoid 可能使用平台；更高的身体可能直接抓取。目标与场景保持不变，逐条验证路线；没有路线时保留不确定或不可行结论。</p></details>
+<p>设计空间为 Task × Constraint × Embodiment × Capability Knowledge，另行报告 skill/VLA 接口。通过已验证的物理/控制变化改变臂长、底座移动、载荷、夹爪宽度、手臂数量、身高、DoF、最大台阶及移动方式。矩阵只是两轴投影；在成立的组合中稀疏采样，并说明各单元的实例范围与预算。</p>
+</section>
+<section class="card" id="settings"><div class="section-title"><span class="number">07</span><h2>三档能力知识：已知、部分、潜在</h2></div>
+<div class="grid-3">
+<div class="mini-card track"><p class="track-tag">A / EXPLICIT · KNOWN</p><h3>利用明确披露的边界</h3><p>提供经校准的规格，例如 reach 0.9 m、payload 3 kg、最大台阶 0.2 m、夹爪开口 8 cm，并说明测量条件。检验规划能否遵守这些限制。</p></div>
+<div class="mini-card track"><p class="track-tag">B / PARTIAL</p><h3>根据粗粒度信息估计</h3><p>只提供“mobile manipulator”“small gripper”“low-payload arm”等描述，不给精确阈值。结合观察、先验与交互证据形成估计。</p></div>
+<div class="mini-card track track-b"><p class="track-tag">C / LATENT · DISCOVERY</p><h3>发现实际可用的能力 profile</h3><p>提供身体、可用的动作接口和正常传感反馈，不给能力阈值。通过预算内交互，发现当前情境中哪些运动及通用 primitive 确实可执行。</p></div>
+</div>
+<p>上述数值仅为披露示例，不代表机器人通用属性。Explicit 也不公开世界私有参数或正确策略。Latent 不等于零先验：身体外观和历史都是合理证据。检查 URDF/config、机器人 ID 与 debug 响应是否泄漏阈值。</p>
+<p>每档可见性分别交叉 <strong>Track A</strong>（通用 skills）或 <strong>Track B</strong>（连续执行，包括冻结 VLA）。公开命令语法及可观察执行状态，避免返回 oracle 前置条件判断。命令存在不代表在每种身体上都物理可行；受控配对的接口须兼容。</p>
+<p>比较三档披露时，在隔离运行中复用同一已验证物理实例，匹配交互预算。记录探测前后的能力概率、不确定性、假设与策略。探索计入任务预算，不能免费重置仿真或查询带标签的可行性。</p>
+<p>初始 pilot 冻结权重，允许 episode 内信念和记忆更新；持久训练或 harness 适应仅使用 development split，并在测试前冻结。配对测试 episode 之间不共享记忆，除非另设明确允许的 adaptation setting。</p></section>
+<section class="card boundary" id="observations"><div class="section-title"><span class="number">08</span><h2>私有世界状态留在 agent 进程之外</h2></div>
+<div class="grid-2"><div class="mini-card"><h3>仅供 generator / evaluator / oracle</h3><p>精确物体质量、摩擦、全局位置、仿真器内部状态、可行性标签、隐藏解法图及 verifier 源码。完整 TaskSpec 属于这一特权侧。</p></div><div class="mini-card"><h3>Agent observation 白名单</h3><p>RGB 或 RGB-D、本体感觉与关节状态、符合当前设定的机器人 specification、可观察的技能结果，以及可选的校准力传感。感知估计应包含不确定性和来源。</p></div></div>
+<p>“技能失败”应描述可观察执行证据，不能返回“精确质量超过未公开 payload 阈值”之类的隐藏解释。通过感知估计世界坐标，与直接读取仿真器 ground truth 是不同的信息来源。</p>
+<p>从显式白名单构造 <strong>AgentView</strong>，不将 TaskSpec 整体序列化后仅在界面上隐藏字段。隔离 evaluator 的进程/权限，过滤日志与错误消息，检查文件名、机器人身份、reward 通道及 API 返回中的泄漏。</p>
+<p>隐藏 verifier 在终止后评测最终状态；测试时不提供实时 feasibility oracle 或隐藏进度反馈。公开有效性规则保持可见；精确物理边界按所选披露策略处理。真机可获得的观察通道有助于后续迁移研究，但本身不证明 sim2real 成功。</p></section>
+<section class="card" id="taskspec"><div class="section-title"><span class="number">09</span><h2>TaskSpec 才是任务定义的 source of truth</h2></div>
+<p>从第一天定义 simulator-independent 任务中间表示。Genesis、Isaac 和真机适配器读取同一套任务语义，避免让 Genesis scene export 成为其他仿真器的权威输入。</p>
+<figure><div class="ir-root"><strong>TaskSpec / Benchmark IR</strong><span>唯一语义来源 · 两套 compiler</span></div><p aria-hidden="true" class="ir-arrow">↓</p><div class="grid-2 backend-grid"><div class="mini-card"><h3>Genesis compiler → worker</h3><p>批量生成与主评测。</p></div><div class="mini-card"><h3>Isaac compiler → worker</h3><p>从第一天进行物理与传感器验证。</p></div></div><p aria-hidden="true" class="ir-arrow">↓</p><div class="ir-root result-node"><strong>SimulationResult → Sim2Sim harness</strong><span>统一的 evaluator 私有比较</span></div><figcaption>拟议架构：同一 task.yaml 编译到两引擎，任务只编写一次；后续 ROS 2 部署使用独立适配器。</figcaption></figure>
+<p><strong>共享核心：</strong>TaskSpec、RobotSpec、ObjectSpec、CapabilitySpec、ObservationSpec、Skill API 及 success predicates。版本化结果协议和 worker 协议连接执行与评测。Core 模块不 import 仿真器；compiler 映射资产、物理、传感器和控制器语义，不另写一套任务目标。</p>
+<details><summary>查看拟议 TaskSpec schema</summary><pre class="spec"><code>schema_version: "0.4-dual-backend-draft"
+task_id: shelf_retrieval_pair_001
+evaluator_metadata:  # private; never serialized into AgentView
+  primary_category: environmental_augmentation
+  challenge_split: core
+  constraint_tags: [kinematic, stability]
+  deficit_tags: [reach]
+  mechanism_tags: [support]
+  seed_family_id: E2
+  embodiment_family: TO_BE_DECLARED
+  team_configuration: single_agent
+  latent_capability_profile: {context: TO_BE_DEFINED, evidence: TO_BE_VALIDATED}
+  attribution_labels: EVALUATOR_ONLY
+units: {length: m, mass: kg, time: s, force: N}
+frame: {handedness: right, up: z}
+goal: {text: "Retrieve the target from the shelf"}
+robot:
+  asset: {format: urdf, uri: assets/robot.urdf, hash: TO_BE_PINNED}
+  embodiment:
+    reach: {value_m: TO_BE_CALIBRATED, evidence: reach_sweep}
+    payload: {value_kg: TO_BE_CALIBRATED, evidence: lift_protocol}
+    gripper_width: {max_m: TO_BE_CALIBRATED}
+    mobility: {mode: DECLARED_BASE_MODE}
+  controller: {id: TO_BE_PINNED, limits: TO_BE_VALIDATED}
+collaborators: []
+objects: []  # assets, poses, dimensions; private world definition
+physics:
+  gravity_m_s2: [0, 0, -9.81]
+  object_parameters: [mass, friction, restitution, joint_limits, dimensions]
+skills: {contract_version: "generic-v0", implementation: TO_BE_PINNED}
+observations:
+  allowlist: [rgb_d, proprioception, joint_state, observable_skill_status]
+  capability_knowledge: latent  # explicit | partial | latent
+  disclosure:
+    explicit_fields: [reach, payload, gripper_width, mobility]
+    partial_descriptors: [body_class, coarse_gripper, coarse_payload]
+    latent_fields: [public_action_contract]
+  physical_feedback_only: true
+  force_sensing: optional
+success_condition: {private_predicates: TO_BE_AUTHORED, tolerance: TO_BE_SET}
+protocol:
+  public_constraints: []
+  budget: {total: TO_BE_SET, probes_counted: true, partner_work_counted: true}
+  reset_policy: evaluator_only
+  persistent_test_adaptation: false
+counterfactual: {pair_id: shelf_001, intervention: reach, held_fixed: [world, goal, disclosure], split: development}
+diagnostics: {pre_post_beliefs: true, attribution: true, discovery_tolerance: TO_BE_SET}
+execution:  # controller only; excluded from AgentView
+  backends: [genesis, isaac]
+  worker_isolation: separate_processes_and_environments
+  backend_interface: "simulator-v0"
+  result_schema: "simulation-result-v0"
+validation:
+  release_gate: dual_backend_core_predicates
+  core_predicates: TO_BE_AUTHORED
+  seeds: []
+  backend_versions: {}
+  asset_and_spec_hashes: {}
+  calibration_profiles: {}
+  tolerances: TO_BE_SET
+  feasibility_evidence: []
+  status: pending</code></pre><p class="small">包含占位符的 schema 草案，不是可执行配置。Generator/evaluator 读取完整 specification，AgentView 仅包含许可公开的信息；可行性标签和私有 predicates 不传给 agent。</p></details>
+<p>版本化管理 schema、单位、坐标系、资产、控制器、观察协议、seeds 与 predicate 容差。Backend 必须报告不支持的字段，不能静默丢弃。机器人资产替换需保持动作协议一致，或明确声明其变化。</p></section>
+<section class="card" id="assets"><div class="section-title"><span class="number">10</span><h2>共享资产定义，验证实际物理实现</h2></div>
+<div class="grid-2"><div class="mini-card"><h3>Robot canonical asset：URDF</h3><div class="equation">URDF → Genesis import
+URDF → Isaac importer → USD</div><p>锁定 meshes、关节约定、惯性、限制及控制器配置。执行器行为与传感器设置仍需在各 backend 中明确配置。</p></div><div class="mini-card"><h3>复杂物体与环境：优先 USD</h3><p>Genesis 文档支持 USD 加载，Isaac 技术栈使用 USD 资产。共享文件不保证接触行为、关节、材质解释或视觉输出完全相同。<a href="https://genesis-world.readthedocs.io/en/latest/user_guide/assets/usd_import.html">Genesis USD</a> · <a href="https://isaac-sim.github.io/IsaacLab/main/source/refs/reference_architecture/index.html">Isaac Lab assets</a>。</p></div></div>
+<p>TaskSpec 以明确的单位和约定描述 mass、friction、restitution、joint limits 与 dimensions；backend adapter 映射到引擎设置并记录覆盖项。通过校准测试检查碰撞几何、惯性、缩放、solver/timestep、力/力矩限制及抓取行为。</p>
+<p><strong>能力字段描述测得的工作范围。</strong>Reach 随配置变化；payload 取决于姿态、加速度、抓取与执行器。能力变化要由模型/控制器变化产生，再通过任务相关测试确认；不能将一个标量字段当作引擎已强制实现的物理限制。</p><p>同一 canonical robot 编译到两个引擎，派生资产按源 hash、importer 版本与选项缓存。Genesis 支持 URDF，Isaac Sim 提供 URDF → USD 导入；导入后的物理仍须验证。<a href="https://genesis-world.readthedocs.io/en/v1.2.2/user_guide/assets/loading_assets.html">Genesis 资产</a> · <a href="https://docs.isaacsim.omniverse.nvidia.com/latest/importer_exporter/import_urdf.html">Isaac URDF 导入</a>。</p></section>
+<section class="card" id="backends"><div class="section-title"><span class="number">11</span><h2>一个 benchmark，两个仿真 backend 从第一天同步开发</h2></div>
+<p><strong>Genesis 与 Isaac Sim 按任务同步推进。</strong> 每个 canonical task 只在 TaskSpec 中编写一次，再编译到两个 backend。任务实现必须通过两边的检查，才合入已验证任务集合。</p>
+<div class="grid-2 backend-grid"><div class="mini-card"><p class="stage-title">GENESIS / FULL EVALUATION</p><h3>程序化生成与批量 rollout</h3><p>主 agent 实验覆盖 100% 的正式物理实例。Genesis 通过 <code>scene.build(n_envs=N)</code> 支持相互独立的批量环境；按兼容场景结构分组，并实测吞吐与显存。该 API 本身不保证任意不同 morphology 都能混进同一个 batch。<a href="https://genesis-world.readthedocs.io/en/latest/user_guide/getting_started/parallel_simulation.html">Genesis 并行仿真文档</a>。</p></div><div class="mini-card"><p class="stage-title">ISAAC SIM / PARALLEL IMPLEMENTATION</p><h3>物理与传感器验证</h3><p>从第一个 canonical task 开始实现。核心判据检查覆盖正式任务，再对分层抽取的 10%–20% 子集运行完整 agent rollout。利用独立配置的仿真与传感器系统检验稳健性；Isaac Lab 可提供额外评测层。Standalone Python 支持 headless 和受控 stepping。<a href="https://docs.isaacsim.omniverse.nvidia.com/latest/introduction/workflows.html">Isaac 开发方式</a>。</p></div></div>
+<h3>五个 canonical tasks：两边通过后再合入</h3>
+<ol class="canonical-list"><li><strong>Reach limit</strong> — 直接可达与已验证替代路线。</li><li><strong>Payload limit</strong> — 搬举与可行的 push/cart/partner 运输。</li><li><strong>Gap + bridge</strong> — 放置、支撑、承重与通行。</li><li><strong>Box + height augmentation</strong> — 稳定平台及兼容 stepping 控制。</li><li><strong>Multi-robot complementary capability</strong> — 经验证的访问/reach/载荷分工与交接。</li></ol>
+<div class="equation">编写 TaskSpec → 双 backend 编译 → 双边验证 → 比较 → 合入
+reach_001: Genesis [direct=False, support=True]
+           Isaac   [direct=False, support=True] → candidate PASS</div>
+<p>这是拟议测试，不是实测结果。通过还需要版本、语义、容差、观察协议和证据满足约定。若桥在一边稳定、另一边不稳定，暂不纳入正式集合，先排查资产、参数、控制器、求解器设置及 specification 本身。</p>
+<p><strong>覆盖率口径：</strong>每个正式发布任务都做核心判据的双仿真验证，与重复运行完整 agent 实验分开。250–400 个物理实例的 10%–20% 约为 25–80 个；50–100 的示例对应 500 实例规模。按 family、constraint、body/team 和知识档位分层，覆盖不足时增加样本并报告实际比例。“每族 2–5 seeds 再加变体”是抽样参考，不是额外固定配额。</p>
+<p>数量按唯一物理实例统计；身体变体、agent、披露条件及重复试验分别计数。未来 500 specs × 10 body mutations × 20 agents 对应 100,000 个评测组合，尚未乘披露档位和重复次数，不等于 100,000 个独立基础任务。</p>
+<p>快速批量运行与更丰富的传感器验证是拟议分工，不是实测优越性结论。真机仍为后续独立阶段；跨仿真一致性支持已测试配置中的结论，不直接证明普遍 simulator independence。</p></section>
+<section class="card" id="runtime"><div class="section-title"><span class="number">12</span><h2>独立进程，共用 backend 协议</h2></div>
+<div class="equation">Benchmark controller / scheduler
+├── genesis worker → capbench-genesis environment
+└── isaac worker   → capbench-isaac environment
+        ↓ 统一消息与结果</div>
+<p>Controller 不 import 仿真引擎；各 worker 使用独立、锁定版本的 Python/runtime 环境、依赖和生命周期。环境可采用 conda、venv 或仿真器支持的 launcher。<strong>同一个 Python process 不同时 import 两套仿真 runtime。</strong>这是本项目拟采用的隔离规则。</p>
+<p>Isaac 的 SimulationApp 先启动 Kit runtime，再 import 依赖 runtime 的 Omniverse 模块。配置包含 <code>headless</code>、渲染用 <code>active_gpu</code>、物理用 <code>physics_gpu</code> 及 <code>multi_gpu</code>。应选择并核验渲染和物理设备；只设 active_gpu 不代表 worker 已完全隔离。<a href="https://docs.isaacsim.omniverse.nvidia.com/latest/py/source/extensions/isaacsim.simulation_app/docs/api.html">SimulationApp API</a>。</p>
+<div class="grid-2"><div class="mini-card"><h3>单 GPU：顺序调度</h3><p>单卡，包括若使用 5090，先采用 Genesis batch validation → Isaac validation，并在 worker 切换时释放 GPU 分配。RTX rendering、物理与批量任务同时运行须实测显存和算力余量，不能默认可以并发。</p></div><div class="mini-card"><h3>多 GPU：并发 workers</h3><p>例如 GPU 0 专供 Genesis、GPU 1 专供 Isaac；后续扩为 GPU 0–2 跑 Genesis、GPU 3 跑 Isaac。固定设备可见性及渲染/物理配置，核验实际位置，避免意外占用其他 GPU。工程并行不要求执行时同时运行。</p></div></div>
+<details><summary>查看统一接口与访问边界</summary><pre class="code-block"><code>class SimulatorBackend:
+    def build(self, task_spec): ...
+    def reset(self, seed): ...
+    def observe(self): ...
+    def execute_skill(self, skill, args): ...
+    def get_state(self): ...          # evaluator only
+    def check_predicates(self): ...   # evaluator only
+    def close(self): ...
+
+class GenesisBackend(SimulatorBackend): ...
+class IsaacBackend(SimulatorBackend): ...</code></pre><p>这是伪代码。<code>build</code>、<code>reset</code>、privileged state/predicates 及 <code>close</code> 只属于 controller/evaluator；Agent 只访问 AgentView 观察与允许的动作/skill 接口。Track B 使用版本化连续动作适配器，并遵守同样隔离。</p></details>
+<p>统一 task/episode ID、seed、单位、观察时间戳、动作 schema、skill 状态词汇与结构化超时/错误状态。Runtime 崩溃属于基础设施错误，不能判成物理不可行。记录 build report 与不支持字段，禁止静默降级。</p>
+<p>Agent 接口只传递观察、本体感知、skill 调用和可观察结果，不含 backend 标识、privileged state 或隐藏 predicates。Backend 名称和诊断保留在私有实验记录中。渲染仍可能有仿真器特征；隐藏 metadata 不等于保证视觉上无法辨认引擎。</p></section>
+<section class="card" id="equivalence"><div class="section-title"><span class="number">13</span><h2>Sim2Sim harness：比较物理与策略结论</h2></div>
+<p>两个 worker 返回同一私有 <strong>SimulationResult</strong> schema。比较前对齐 task/spec hash、控制器目标、单位、seed、预算、校准条件和容差。同一个 seed 不保证随机轨迹一致。</p>
+<details><summary>查看标准结果与比较示例</summary><pre class="code-block"><code>SimulationResult(                    # evaluator-only result
+    task_id="reach_001",
+    spec_hash="...", seed=0,
+    backend="genesis_or_isaac", versions={...},
+    task_success=True,
+    predicates={
+        "direct_reach": False,
+        "can_move_box": True,
+        "can_step_on_box": True,
+        "can_reach_after_step": True,
+    },
+    predicate_evidence={...},         # tests, trials, tolerances
+    strategy_outcomes={...},          # validated candidate routes
+    costs={...}, trajectory_ref="...",
+)
+compare(genesis_result, isaac_result)</code></pre><p>数值仅作说明。真实记录须包含重复试验证据、明确的 unknown/unsupported 状态和来源。完整结果只给 evaluator；Agent 仅得到经过过滤的可观察 skill result。</p></details>
+<div class="grid-3"><div class="mini-card"><h3>Physics Agreement</h3><p>在容差内比较预定义物理量与检查，例如力响应、滑动、支撑、倾覆或桥稳定性。报告差异和原始证据，不要求轨迹相同。</p></div><div class="mini-card"><h3>Feasibility Agreement</h3><p>比较已验证的直接/增强动作及路线 predicates。学习策略失败不足以证明物理不可行；使用构造性控制器、针对性测试和有依据的界限。</p></div><div class="mini-card"><h3>Strategy Agreement</h3><p>比较哪些候选策略仍然可行，以及在已定义成本时的排序。不同成功路径可以语义一致。Agent 实际策略稳定性与已验证解集分开评价。</p></div></div>
+<div class="equation">C_sim2sim = 已确定且匹配的可行性 predicates / 全部预定义 predicates
+同时报告：未决覆盖率、不一致率和各 family 结果</div>
+<p>接触存在随机性时重复试验，预设判定 margin，保留 uncertain 类别。两个 uncertain 不能计为匹配。Physics 与 Strategy Agreement 各自定义测量依据，不把三项分数混成不明含义的平均值。</p>
+<div class="hypothesis"><strong>发布门槛：</strong>每个正式任务都有 simulator-independent 语义定义，以及核心 feasibility predicates 在 Genesis 与 Isaac Sim 中的验证证据。逐项记录验证过的 predicates、版本、容差和状态。这是目标准入规则，不代表数据集已完成。</div>
+<p>不一致或核心标签未决的任务暂列 provisional，校准和重跑后再决定纳入；保留候选数及各 family 剔除率。差异可能来自导入、控制器、数值设置或脆弱的任务定义。按物理证据校准，不能为了偏好的 agent 结果调参。</p>
+<p>区分候选总体、双边验证后的正式集合、完整 rollout 抽样子集，并报告抽样与筛选偏差。一致性支持两个已配置引擎中的受测判据；两边仍可能共享建模误差，因此不能据此保证真机迁移或普遍 simulator independence。</p></section>
+<section class="card" id="metrics"><div class="section-title"><span class="number">14</span><h2>五个主指标：从发现到执行</h2></div>
+<ol class="metric-list">
+<li><h3>Task Success · 任务成功</h3><p>在公开有效性规则和固定总预算下，用隐藏最终状态判断成功；探测与伙伴工作都计入预算。报告样本数及不确定性区间。</p></li>
+<li><h3>Capability Calibration · 能力校准</h3><p>执行前预测 P(feasible | action, context, evidence)，对照已验证的私有 physics labels，计算 Brier score、reliability curves 及固定分箱的 ECE。AUROC 衡量区分能力，不是校准指标。报告 false-feasible、弃权与未决标签覆盖率；另行评测当前执行器成功概率。</p></li>
+<li><h3>Capability Discovery Efficiency · 能力发现效率</h3><p>达到预设估计误差或已验证策略判据前，需要多少交互、物理时间与成本。例如固定 reach 校准条件下，r = 0.95 m、r̂ = 0.97 m，误差 |r̂ − r| = 0.02 m。报告估计区间和预算耗尽仍未达标的运行，不能只统计成功发现者。非标量能力使用 held-out probe 预测误差。</p></li>
+<li><h3>Strategy Adaptation Score · 策略适应</h3><p>根据实际轨迹验证跨身体策略的可行性，分别评价必须切换、明确成本下的效率优选，以及正确不变。不同可行集合仍可能重叠；单纯换策略不得分，也不设置唯一口头标准计划。</p></li>
+<li><h3>Constraint Attribution · 约束归因</h3><p>失败后预测 reach、payload、friction、gripper geometry、mobility、collision、stability 或组合原因。使用已验证的单因素干预，并单列多原因/模糊情形。可识别标签报告各原因 precision/recall 与概率质量；证据无法区分原因时，合理的不确定性应获得认可。</p></li>
+</ol>
+<p><strong>Oracle 质量：</strong>标签需要构造性解法、针对性物理测试或有依据的不可行界限。接触敏感任务重复测试，记录随机与未决结果。学习策略失败不构成不可行 oracle。预测评分在 evaluator 内完成，不在线向 agent 返回标签。</p>
+<p><strong>补充诊断：</strong>资源/伙伴消融下的 augmentation gain、恢复成功率与成本、held-out embodiment 泛化及世界参数泛化。仅身体、仅世界和二者联合变化分开报告；报告 category × constraint × body/team × knowledge 覆盖，并单列 Composite 结果。</p>
+<h3>匹配基线与消融</h3><p>比较不使用 embodiment 信息的 agent、规格条件规划、容量匹配的记忆反思、能力感知规划与能力引导探测。消融自身模型更新、世界模型更新、归因、探测及资源/伙伴访问。各基线匹配可见性允许的信息和预算；oracle capability 单列为诊断上界。</p>
+<p>测试前冻结系统并隔离 episode 记忆。使用重复配对种子、分 family 汇总、样本数及不确定性区间，记录 tokens、调用、动作、物理时间、重置、伙伴工作与人工干预。若声称 optimal strategy，须定义成本及最优性证据，否则使用 best-known feasible routes。</p></section>
+<section class="card related" id="positioning"><div class="section-title"><span class="number">15</span><h2>围绕 embodiment 条件化决策建立比较</h2></div>
+<div class="grid-2"><div class="mini-card"><h3>RoboTool</h3><p>创造性工具使用及环境/embodiment 约束推理已与本方向重叠。拟新增的重点是受控能力干预、校准预测及可测量的能力扩展。<a href="https://arxiv.org/abs/2310.13065">论文</a>。</p></div><div class="mini-card"><h3>RoboWits</h3><p>研究意外物理条件下的推理与策略适应。本项目比较只改变身体时是否正确修订策略，也包含无需改变策略的对照。<a href="https://umass-embodied-agi.github.io/RoboWits/">项目</a>。</p></div><div class="mini-card"><h3>RoboDojo</h3><p>综合评估通用操作策略。已有执行类别可帮助覆盖任务；本提案着重显式能力判断及干预协议。<a href="https://github.com/robodojo-benchmark/RoboDojo">仓库</a>。</p></div><div class="mini-card"><h3>RoboColiseum / Genie Sim</h3><p>VLA 操作评测与仿真基础设施可提供执行层对照。比较时需要对齐 embodiment、观察、控制与适应预算。<a href="https://github.com/AgibotTech/genie_sim">仓库</a>。</p></div><div class="mini-card"><h3>Terminal-Bench</h3><p>在声明的计算机接口下进行目标驱动问题求解，为评测结构提供类比。物理能力还取决于身体、接触与可控制性。<a href="https://www.tbench.ai/news/announcement">官方介绍</a>。</p></div><div class="mini-card"><h3>其他重要近邻</h3><p>KinDER、EBench、PARTNR、工具反事实推理与 VLMgineer 分别关联物理推理、能力诊断、协作及资源设计。见 <a href="/robo-si-results/doc/self-modeling-benchmark-v1-zh.html#positioning">v1 定位</a>与 <span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html#tool-use">V3 阅读列表 [external workspace]</span>。</p></div></div>
+<p><strong>拟议区别：</strong>在受控身体/世界干预下评估能力发现、自身/世界约束归因和策略适应，再检验这些是否改善增强策略与任务成功。需要方法和协议层面的比较，不声称已有工作忽略了能力边界。</p></section>
+<section class="card" id="pilot"><div class="section-title"><span class="number">16</span><h2>先联测能力发现、约束归因与策略适应</h2></div>
+<div class="hypothesis"><strong>主假设：</strong>在 Partial 与 Latent 披露下，有信息量的互动改善自身/世界估计，并相较于没有这些更新的匹配 agent，带来更合理的 embodiment-conditioned 策略。</div>
+<ol class="chain"><li><strong>建立受控物理配对。</strong>从 reach、载荷、夹爪及移动 family 开始。仅身体配对固定世界和目标，加入必须切换、仅效率变化、不变和无解对照。</li><li><strong>验证标签及归因对照。</strong>验证构造性解法与有依据的不可行结论。另设仅改变世界的摩擦、质量、间隙与接触干预，区分自身和环境解释。</li><li><strong>运行 Explicit、Partial、Latent。</strong>匹配预算、隔离 episode；采集行动前的可行性、不确定性、策略及失败原因预测，再记录物理反馈后的修订。</li><li><strong>评估五个结果。</strong>任务成功、能力校准、发现效率、策略适应和约束归因。每次探测与伙伴动作均计成本；验证实际行为。</li><li><strong>诊断后再扩规模。</strong>区分推理失败、感知误差、阈值泄漏、执行器不匹配与标签不可靠，做自身/世界模型及探测消融。</li></ol>
+<p>有说服力的 pilot 应显示：交互证据引起的信念更新，确实解释了跨身体、跨世界的决策改善。低任务成功率本身不证明 benchmark 有效。Held-out 身体族和身体/世界联合变化放在后续泛化测试中单独报告。</p><p>先在两个 backend 中实现五个 <a href="#backends">canonical tasks</a>，再扩展本 pilot。同一任务定义与观察协议驱动比较；worker 隔离和 Sim2Sim 检查从首个里程碑开始。</p></section>
+<section class="card" id="seed-families"><div class="section-title"><span class="number">17</span><h2>首版设计：24 个 seed families</h2></div>
+<p>配额为 Access 6 个 + Manipulation 6 个 + Environmental Augmentation 6 个 + Collaborative Augmentation 4 个，再加 Composite Challenge 2 个。下列清单是任务编写草案，不是已实现数据集。</p>
+<details class="seed-group"><summary>Access · 6 个任务族</summary><ol class="seed-list"><li data-seed="A1"><strong>A1 · 窄通道</strong><span>身体宽度与转弯空间；替代路线。</span></li><li data-seed="A2"><strong>A2 · 堵塞门口</strong><span>清理可移动障碍或绕行。</span></li><li data-seed="A3"><strong>A3 · 推拉门限制</strong><span>可用作用方向与门把手可达性。</span></li><li data-seed="A4"><strong>A4 · 台阶与坡道</strong><span>经验证的地形通过能力与路线选择。</span></li><li data-seed="A5"><strong>A5 · 跨 gap 访问</strong><span>可跨越范围与替代访问路径。</span></li><li data-seed="A6"><strong>A6 · 长距离可行绕行</strong><span>最短路线受空间限制，需选择绕行。</span></li></ol></details>
+<details class="seed-group"><summary>Manipulation · 6 个任务族</summary><ol class="seed-list"><li data-seed="P1"><strong>P1 · 高处目标可达性</strong><span>固定目标下的 reach 范围干预。</span></li><li data-seed="P2"><strong>P2 · 搬举载荷限制</strong><span>经验证的搬举限制与物体需求。</span></li><li data-seed="P3"><strong>P3 · 夹爪开口限制</strong><span>夹爪范围与允许的抓取几何。</span></li><li data-seed="P4"><strong>P4 · 保持与操作</strong><span>单/双末端执行器；检查支撑替代方案。</span></li><li data-seed="P5"><strong>P5 · 大物体重定向</strong><span>物体尺寸、工作空间与动作限制。</span></li><li data-seed="P6"><strong>P6 · 腕部载荷与抓取姿态</strong><span>随姿态变化的力矩与抓取稳定性。</span></li></ol></details>
+<details class="seed-group"><summary>Environmental Augmentation · 6 个任务族</summary><ol class="seed-list"><li data-seed="E1"><strong>E1 · 杆件延伸</strong><span>用适合的杆件延伸交互范围。</span></li><li data-seed="E2"><strong>E2 · 支撑平台</strong><span>兼容 embodiment 的稳定升高。</span></li><li data-seed="E3"><strong>E3 · 木板搭桥</strong><span>跨度、固定、承重与通行检查。</span></li><li data-seed="E4"><strong>E4 · 杠杆辅助</strong><span>支点、作用力与位移约束。</span></li><li data-seed="E5"><strong>E5 · 推车运输</strong><span>滚动阻力、控制与载荷支撑。</span></li><li data-seed="E6"><strong>E6 · 中间可达表面</strong><span>调整桌子以支持分段操作。</span></li></ol></details>
+<details class="seed-group"><summary>Collaborative Augmentation · 4 个任务族</summary><ol class="seed-list"><li data-seed="C1"><strong>C1 · 移动到固定臂交接</strong><span>将物体运入强机械臂 workspace。</span></li><li data-seed="C2"><strong>C2 · 联合载荷操作</strong><span>验证协调载荷分配与抓取。</span></li><li data-seed="C3"><strong>C3 · 窄区到高处接力</strong><span>互补的访问与高处操作能力。</span></li><li data-seed="C4"><strong>C4 · 保持/操作角色分配</strong><span>将稳定与操作分配给适合的伙伴。</span></li></ol></details>
+<details class="seed-group"><summary>Composite Challenge · 2 个任务族</summary><ol class="seed-list"><li data-seed="X1"><strong>X1 · 阁楼取物</strong><span>伙伴 → 柜子 → 木板 → 访问 → 运送。</span></li><li data-seed="X2"><strong>X2 · 工作台资源链</strong><span>获取资源、清理访问、协作、验证终态。</span></li></ol></details>
+<div class="equation">6 + 6 + 6 + 4 + 2 = 24 个 seed families
+24 × 10–20 个变体 = 240–480 个候选实例
+验证与覆盖平衡后的目标：约 250–400 个实例</div>
+<p>一个物理实例固定目标、场景、身体/团队及潜在能力/世界参数。每个 Explicit/Partial/Latent 运行对应协议实例 (T, E, C, O, W)；披露条件单独报告，不重复计为新物理任务。一组 counterfactual pair 连接两个实例；配对关系单独统计，不重复计作新任务。如果初始候选只有 240 个，就需要额外生成有效实例，才能达到至少 250 个的目标。</p>
+<p>先生成受控 body-only 配对；scene-only 的资源或约束变化单独作为干预族。归因于 embodiment 时，不同时改变身体与场景。纳入必须切换、仅效率变化、保持不变及不可解实例。</p>
+<p>区分参数泛化与未见 family/未见组合泛化。默认将关联变体分在同一 split；若刻意使用 shared-family、held-out-parameter 划分，须单独命名并审计泄漏。Composite 测试图不能复制开发集的解法结构。</p>
+</section>
+<section class="card" id="roadmap"><div class="section-title"><span class="number">18</span><h2>同步实现，按职责分配 rollout 规模</h2></div>
+<ol class="pipeline"><li><strong>共享协议</strong><span>Task/Robot/Object/Capability/Observation specs、skills、predicates、结果 schema 与进程协议。</span></li><li><strong>五个 canonical tasks</strong><span>同步开发双 compiler 与 worker；双边检查及 Sim2Sim 一致性通过后合入。</span></li><li><strong>Discovery pilot</strong><span>在 canonical 核心上测试三档知识、归因、策略变化及不变对照。</span></li><li><strong>24 个 seed families</strong><span>扩为 22 个主类与 2 个 Composite families，继续配对验证。</span></li><li><strong>250–400 个正式实例</strong><span>两引擎验证核心判据；Genesis 全量 agent 评测，Isaac 分层抽取 10%–20%。</span></li><li><strong>5–10 个真机任务</strong><span>后续硬件验证，单独定义部署、reset 与校准流程。</span></li></ol>
+<p><strong>初始开发投入：</strong>共享 TaskSpec/协议 40%、Genesis 40%、Isaac 20%。这是规划权重，不是实测工作量或任务覆盖率；两套实现从首个里程碑开始。Canonical tests 与观察隔离检查通过后，再扩大规模。</p>
+<details><summary>拟议 capbench 目录结构</summary><pre class="code-block"><code>capbench/
+├── core/
+│   ├── task_spec.py
+│   ├── robot_spec.py
+│   ├── object_spec.py
+│   ├── capability.py
+│   ├── observation_spec.py
+│   ├── predicates.py
+│   ├── skills.py
+│   └── results.py
+├── backends/
+│   ├── genesis/{compiler.py, backend.py}
+│   └── isaac/{compiler.py, backend.py}
+├── workers/
+│   ├── genesis_worker.py
+│   └── isaac_worker.py
+├── tasks/
+│   ├── access/
+│   ├── manipulation/
+│   ├── environment/
+│   ├── collaboration/
+│   └── composite/
+└── validation/
+    └── sim2sim.py</code></pre><p>目录树是设计草案，本次网页更新没有创建 Python backend 或仿真环境。</p></details>
+<details open=""><summary>Pilot 编码前需要确定</summary><p>锁定两个仿真器、物理配置、控制器、资产和独立环境。确定 worker 协议、支持字段、观察 allowlist、GPU 调度、canonical task 容差及失败/不确定性处理。Agent 测试前冻结知识披露、split 规则与验证分层。</p></details>
+<p><strong>TaskSpec is the benchmark; Genesis and Isaac are executors。</strong>未来 MuJoCo、ManiSkill 或 ROS 2 适配器消费同一受支持的语义协议；新增能力需要扩展时显式版本化。ROS 2 是中间件，真实环境准备与 reset 仍需要物理流程。</p>
+<p class="small">根据用户双 backend 并行开发补充更新。两套 backend、Sim2Sim harness、规模及发布门槛均为拟议工作；本页已用同步开发路线替换前版 Genesis 先做、Isaac 后补的阶段安排。</p></section>
+</main><footer><p>Benchmark proposal v2 · 2026-10-04 · 能力发现、约束归因与策略适应。</p><p><a href="/robo-si-results/doc/self-modeling-benchmark-v2-en.html" lang="en">English version</a> · <a href="/robo-si-results/README.md">项目索引</a> · <a href="/robo-si-results/doc/self-modeling-benchmark-v1-zh.html">前版 benchmark 提案</a></p></footer><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

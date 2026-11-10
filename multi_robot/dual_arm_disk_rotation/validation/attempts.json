@@ -1,0 +1,280 @@
+{
+  "policy": "All development probes, candidate runs, full cohort and ablations retained; no seed replacement",
+  "development": [
+    {
+      "id": "full01",
+      "kind": "development_full_attempt",
+      "success": true,
+      "source_identity": {
+        "__init__.py": "b90f539abd35649547f35235e0aa007843b8a68f668cb20bacc569a3f1a60447",
+        "assets/disk.obj": "224836e1ee16bd30faaa2b3af62edc8e032cdebf1c0e9a7a56296d2b00ce5f23",
+        "assets/disk.urdf": "6fd054db2f014826bdd271a40dc17993f66dec12b041406ac33d0d8318439832",
+        "assets/panda/LICENSE.txt": "59899c6091b540582ed617e8eeaac4919dc985ccfc35459ee9752b699be5205b",
+        "assets/panda/meshes/finger.obj": "c05dee2e2770ac3d45a097cec4a9d758e279ebdb7dc550eb249571c4690a6476",
+        "assets/panda/meshes/hand.obj": "a216bedc742a736f2c6cab010c6014475fe5f7b5ed53e371509adf885df618a2",
+        "assets/panda/meshes/link0.obj": "d29233f03537b6ee92a6861d4139290960325c2bacf9a640ab7935a5539c653f",
+        "assets/panda/meshes/link1.obj": "0879335b20930eccccdc7d2565553895589f9125d4c8c0d462ad0f74f17e7472",
+        "assets/panda/meshes/link2.obj": "cfca62e5846d3ba6db8be3740fc2219454401f1048db11a78bd9ec8f30cdc128",
+        "assets/panda/meshes/link3.obj": "22235fb3676b5cb45a2f512065fab94fecf052a767cddfaed62cbb6d1efcf1f8",
+        "assets/panda/meshes/link4.obj": "64b5914ef159149f87b767ff0eae4db41b9c267aecdddf2816ff25726fa0e6f2",
+        "assets/panda/meshes/link5.obj": "ff8d4bb5ab506b8cf621f44b928be7714dff86b669a92909b8d4f71c5b01597e",
+        "assets/panda/meshes/link6.mtl": "569f88e12d5672c190e2aa14526fcc16b609c25bd5ade907ddb83106ac61e78c",
+        "assets/panda/meshes/link6.obj": "e1dc8bbca8690944e6331f5a108d49c363eeec179b56a9f913541a541e6a2cfc",
+        "assets/panda/meshes/link7.obj": "675a784e949b2b47894f1965016bd56b992b136bd90e1a62e832f49b4a55b240",
+        "assets/panda/original.urdf": "8a78827252ceee4987fe7bffae8edb60d7ec64478785f7d1c0a4e33acb27f2f5",
+        "assets/panda/pusher.urdf": "5f1b7951017974d44a4c4cc10c11ceab257c2f70e4231f7d02284bb6f4223f12",
+        "assets.py": "534e7707c888e70bb6aa9f4d5f149d6b8c14176dc88a024387688cb1a81b7461",
+        "env.py": "c2b8dbcf873b99e5fdb6aeca7a6e8531fac8b495516d2505b2d450bf09ccbd16",
+        "solution/__init__.py": "59ee1a44773f59f75baf10ccc8f554660a4e5d111f11f50ba9bceca41521658a",
+        "solution/controller.py": "9fa23bb5d99e252157c1984502063554a9523ae493aac634e08d5640888d3953",
+        "solution/probe.py": "b8defd951a4de2a40a21840c6818ece7b08186d8113fd5f6292ea7070647f2b5",
+        "solution/run.py": "04dccc0888b492c7a554a0265e442bbed3a21e48ef67b31eb1b0a43e4a2fd7a3",
+        "task_spec.py": "17ebbf6bf81d7dfe9f9c2671d68fe013b7dcbfa59766007ed4519e7fc8e1493b"
+      },
+      "summary": "dev_runs/full01/summary.json",
+      "release_witness": false
+    },
+    {
+      "id": "probe01",
+      "kind": "development_contact_probe",
+      "success": null,
+      "release_witness": false,
+      "recorded_control_samples": 2000,
+      "provenance": "Exploratory pre-freeze code; not a version-certified task execution",
+      "reason": "No effective rim contact; video finalization API error"
+    },
+    {
+      "id": "probe02",
+      "kind": "development_contact_probe",
+      "success": null,
+      "release_witness": false,
+      "recorded_control_samples": 2000,
+      "provenance": "Exploratory pre-freeze code; not a version-certified task execution",
+      "reason": "Rotation with excessive contact force"
+    },
+    {
+      "id": "probe03",
+      "kind": "development_contact_probe",
+      "success": null,
+      "release_witness": false,
+      "recorded_control_samples": 2000,
+      "provenance": "Exploratory pre-freeze code; not a version-certified task execution",
+      "reason": "Force feedback under uncompensated gravity; not independently scored"
+    },
+    {
+      "id": "probe04",
+      "kind": "development_contact_probe",
+      "success": null,
+      "release_witness": false,
+      "recorded_control_samples": 2000,
+      "provenance": "Exploratory pre-freeze code; not a version-certified task execution",
+      "reason": "Symmetric force feedback and model feedforward contact calibration"
+    }
+  ],
+  "cohort": [
+    {
+      "case": "nominal_ccw",
+      "repeat": 1,
+      "summary": "validation/release-0.1.0-rc1/nominal_ccw/repeat-1/summary.json",
+      "success": true,
+      "success_score": 100.0,
+      "sim_time": 43.480000000000004,
+      "final_heading_error": 0.01709329946213456,
+      "final_center_error": 7.4475575685493406e-06,
+      "physical_peaks": {
+        "center_error": 1.697571580034559e-05,
+        "linear_speed": 0.073575,
+        "angular_speed": 0.05623000081604803,
+        "contact_force": 5.439848890210493,
+        "joint_speed": 0.145786022652854,
+        "tilt": 2.5270757091627007e-05
+      },
+      "segment_count": 16,
+      "contact_changes": 2,
+      "slurm_job_id": "8024121",
+      "gpu": "NVIDIA RTX A4000, GPU-2e590cba-70fd-4261-9f9f-c5ee813fd305"
+    },
+    {
+      "case": "nominal_ccw",
+      "repeat": 2,
+      "summary": "validation/release-0.1.0-rc1/nominal_ccw/repeat-2/summary.json",
+      "success": true,
+      "success_score": 100.0,
+      "sim_time": 43.480000000000004,
+      "final_heading_error": 0.017093299462134115,
+      "final_center_error": 7.4475575688741176e-06,
+      "physical_peaks": {
+        "center_error": 1.6975715800256117e-05,
+        "linear_speed": 0.073575,
+        "angular_speed": 0.05623000081603491,
+        "contact_force": 5.439848890206449,
+        "joint_speed": 0.145786022652854,
+        "tilt": 2.5270757091627007e-05
+      },
+      "segment_count": 16,
+      "contact_changes": 2,
+      "slurm_job_id": "8024122",
+      "gpu": "NVIDIA RTX A5000, GPU-113f52aa-e74b-28c7-f300-f2d856c0c624"
+    },
+    {
+      "case": "nominal_ccw",
+      "repeat": 3,
+      "summary": "validation/release-0.1.0-rc1/nominal_ccw/repeat-3/summary.json",
+      "success": true,
+      "success_score": 100.0,
+      "sim_time": 43.480000000000004,
+      "final_heading_error": 0.01709329946213456,
+      "final_center_error": 7.4475575685493406e-06,
+      "physical_peaks": {
+        "center_error": 1.697571580034559e-05,
+        "linear_speed": 0.073575,
+        "angular_speed": 0.05623000081604803,
+        "contact_force": 5.439848890210493,
+        "joint_speed": 0.145786022652854,
+        "tilt": 2.5270757091627007e-05
+      },
+      "segment_count": 16,
+      "contact_changes": 2,
+      "slurm_job_id": "8024123",
+      "gpu": "NVIDIA RTX A5000, GPU-05239f20-0c82-2e2d-ed6b-f456ec09c5c4"
+    },
+    {
+      "case": "wrap_cw",
+      "repeat": 1,
+      "summary": "validation/release-0.1.0-rc1/wrap_cw/repeat-1/summary.json",
+      "success": true,
+      "success_score": 100.0,
+      "sim_time": 43.56,
+      "final_heading_error": 0.016956574850353956,
+      "final_center_error": 1.1442069076327762e-05,
+      "physical_peaks": {
+        "center_error": 0.0001105331325891646,
+        "linear_speed": 0.073575,
+        "angular_speed": 0.056629308850479336,
+        "contact_force": 5.404350768511808,
+        "joint_speed": 0.145786022652854,
+        "tilt": 2.7706063647572373e-05
+      },
+      "segment_count": 16,
+      "contact_changes": 2,
+      "slurm_job_id": "8024157",
+      "gpu": "NVIDIA RTX A4000, GPU-9a31a590-7f83-23a3-6499-05b67357dbf1"
+    },
+    {
+      "case": "wrap_cw",
+      "repeat": 2,
+      "summary": "validation/release-0.1.0-rc1/wrap_cw/repeat-2/summary.json",
+      "success": true,
+      "success_score": 100.0,
+      "sim_time": 43.56,
+      "final_heading_error": 0.01695657485035129,
+      "final_center_error": 1.1442069075770303e-05,
+      "physical_peaks": {
+        "center_error": 0.00011053313258841209,
+        "linear_speed": 0.073575,
+        "angular_speed": 0.056629308850477504,
+        "contact_force": 5.404350768513039,
+        "joint_speed": 0.145786022652854,
+        "tilt": 2.7706063647572373e-05
+      },
+      "segment_count": 16,
+      "contact_changes": 2,
+      "slurm_job_id": "8024158",
+      "gpu": "NVIDIA RTX A4000, GPU-2e590cba-70fd-4261-9f9f-c5ee813fd305"
+    },
+    {
+      "case": "wrap_cw",
+      "repeat": 3,
+      "summary": "validation/release-0.1.0-rc1/wrap_cw/repeat-3/summary.json",
+      "success": true,
+      "success_score": 100.0,
+      "sim_time": 43.56,
+      "final_heading_error": 0.016956574850353956,
+      "final_center_error": 1.1442069076327762e-05,
+      "physical_peaks": {
+        "center_error": 0.0001105331325891646,
+        "linear_speed": 0.073575,
+        "angular_speed": 0.056629308850479336,
+        "contact_force": 5.404350768511808,
+        "joint_speed": 0.145786022652854,
+        "tilt": 2.7706063647572373e-05
+      },
+      "segment_count": 16,
+      "contact_changes": 2,
+      "slurm_job_id": "8024120",
+      "gpu": "NVIDIA RTX A5000, GPU-a8c3281f-c5b4-99b8-2d9e-fdd487b23d0b"
+    }
+  ],
+  "ablations": [
+    {
+      "variant": "noop",
+      "success": false,
+      "success_score": 0.0,
+      "sim_time": 120.0,
+      "final_heading_error": 0.5235987759972194,
+      "final_center_error": 4.095201798705958e-08,
+      "failure_reason": "timeout",
+      "controller_stop_reason": null,
+      "summary": "validation/ablations/noop/summary.json"
+    },
+    {
+      "variant": "single_arm",
+      "success": false,
+      "success_score": 0.0,
+      "sim_time": 24.6,
+      "final_heading_error": 0.4844226304186059,
+      "final_center_error": 0.006548391761944459,
+      "failure_reason": null,
+      "controller_stop_reason": "rotation_progress_timeout",
+      "summary": "validation/ablations/single_arm/summary.json"
+    },
+    {
+      "variant": "fixed_contacts",
+      "success": true,
+      "success_score": 100.0,
+      "sim_time": 18.52,
+      "final_heading_error": 0.017260383880458918,
+      "final_center_error": 6.676571058706084e-06,
+      "failure_reason": null,
+      "controller_stop_reason": null,
+      "summary": "validation/ablations/fixed_contacts/summary.json"
+    },
+    {
+      "variant": "no_center_feedback",
+      "success": true,
+      "success_score": 100.0,
+      "sim_time": 43.5,
+      "final_heading_error": 0.01710371112611886,
+      "final_center_error": 3.28818941573172e-06,
+      "failure_reason": null,
+      "controller_stop_reason": null,
+      "summary": "validation/ablations/no_center_feedback/summary.json"
+    }
+  ],
+  "replays": [
+    {
+      "case": "nominal_ccw",
+      "summary": "validation/release-0.1.0-rc1/nominal_ccw/replay/summary.json",
+      "passed": true,
+      "max_absolute_errors": {
+        "p": 0.0,
+        "quat": 0.0,
+        "q": 0.0,
+        "yaw": 0.0
+      },
+      "slurm_job_id": "8024202"
+    },
+    {
+      "case": "wrap_cw",
+      "summary": "validation/release-0.1.0-rc1/wrap_cw/replay/summary.json",
+      "passed": true,
+      "max_absolute_errors": {
+        "p": 0.0,
+        "quat": 0.0,
+        "q": 0.0,
+        "yaw": 0.0
+      },
+      "slurm_job_id": "8024155"
+    }
+  ]
+}

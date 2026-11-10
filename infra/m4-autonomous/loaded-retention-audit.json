@@ -1,0 +1,28 @@
+{
+  "schema": "m4-loaded-retention-audit/1",
+  "finding": "The pre-insertion clearance predicate subtracts both tube radius and shaft radius; loaded contact intentionally consumes this gap. It is not a loaded-retention predicate.",
+  "method": "Conservative shaft-axis intersection inside the closed 16-segment ring centreline polygon, and finite shaft endpoints beyond the ring plane by its 4 mm tube radius. Logged axis-plane angle gives a conservative axial interval. Closed pin required. No contact/force/slip/goal limit changed.",
+  "scope": "50 Hz logged control geometry plus the enclosing 200 Hz physical checks. Does not certify real hardware or human review.",
+  "cases": [
+    {
+      "attempt": "v3j-rope-heading-a47",
+      "trajectory_sha256": "d7a48880589d24376c1509c8ef9849aa32d764b2d132ee31aa131ef4c0b74598",
+      "samples": 11722,
+      "insertion_clearance_false": 11699,
+      "threaded_retention_failures": [],
+      "minimum_radial_margin_m": 0.007965644182903912,
+      "minimum_axial_margin_m": 0.009819290182371397
+    },
+    {
+      "attempt": "v3j-integrated-delivery-a52",
+      "trajectory_sha256": "5b94d27590eb1de9f72c1dfbeac08089f692a207334ccb8fda16733a184d9902",
+      "samples": 4434,
+      "insertion_clearance_false": 4434,
+      "threaded_retention_failures": [],
+      "minimum_radial_margin_m": 0.00846004684202891,
+      "minimum_axial_margin_m": 0.00986937224391443
+    }
+  ],
+  "source_sha256": "af80c0fedc79c6299ba6b54a36971e6a7f24cc1eef7b2e77ead55a0542131d3c",
+  "formal_admission": false
+}

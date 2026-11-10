@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 563, in main
+    n='right_hand_'+part+'_joint';qi=self.m.jnt_qposadr[self.joints[n]];self.joint_set(self.qref,n,self.qref[qi]+.02*np.clip(.8*(want-self.d.qpos[qi]),-.08,.08))
+    ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 426, in execute
+    self.turn_height_offset=np.clip(getattr(self,'turn_height_offset',0.)+.02*np.clip(.5*(centre[2]+.01-self.d.xpos[self.obj][2]),-.001,.003),0.,.06)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 341, in move
+    if goals:
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 323, in step
+    else:self.regulate_pinch()
+                               
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 170, in assess
+    for value,limit,reason in [(speed,.12,'disk_linear_speed'),(ang,.65,'disk_angular_speed'),(robot,18,'robot_contact_load'),(table,8,'table_contact_load'),(local,4 if self.profile=='P3' else 18,'local_damage_proxy')]:
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

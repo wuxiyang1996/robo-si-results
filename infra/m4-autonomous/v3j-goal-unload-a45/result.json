@@ -1,0 +1,82 @@
+{
+  "continuous_discovery_requested": false,
+  "continuous_discovery_runtime_success": false,
+  "status": "finished",
+  "passed": false,
+  "mode": "corridor",
+  "full_transport_requested": true,
+  "full_transport_success": false,
+  "error": "RuntimeError: physical monitor failed: ['traction_and_slip'][]",
+  "phase": "corridor_tow",
+  "sim_time_s": 83.45499999999659,
+  "steps": 16691,
+  "frames": 834,
+  "source_unchanged": true,
+  "proof_dwell_s": {
+    "go2_a": 0.5349999999998936,
+    "go2_b": 0.5049999999998995
+  },
+  "events": [
+    {
+      "time_s": 15.840000000001076,
+      "robot": "go2_a",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.001054191845708763,
+        0.0006377654007200806,
+        -0.0013283456571999697
+      ]
+    },
+    {
+      "time_s": 15.840000000001076,
+      "robot": "go2_b",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.0009363388728542699,
+        0.0003087821075049013,
+        -0.0013127201578180814
+      ]
+    },
+    {
+      "time_s": 19.5300000000004,
+      "event": "BEGIN_EXTRACTION"
+    },
+    {
+      "time_s": 23.069999999999695,
+      "event": "EXTRACTED_LOADED_RETENTION_PROVED"
+    }
+  ],
+  "failures": {
+    "traction_and_slip": {
+      "first_time": 83.455,
+      "count": 1,
+      "detail": {
+        "pen_dynamic": 0.00048098136964642296,
+        "pen_rope": 0.0,
+        "impulse": 0.0,
+        "support": 0.9916947733860413,
+        "robot_cargo": 0.0,
+        "slide": 0.05007378428246211,
+        "drift": 0.0001368700523743115,
+        "tension": {
+          "rope_right": 7.725826857693261,
+          "rope_left": 48.83379683521126
+        },
+        "heights": {
+          "go2_a": 0.30276763496618286,
+          "go2_b": 0.31635939710291194
+        },
+        "tilts": {
+          "go2_a": 16.364656812887258,
+          "go2_b": 3.8959362925023937
+        },
+        "calls": [],
+        "steps": 1,
+        "gap": 0.0049999999999954525
+      }
+    }
+  },
+  "wall_time_s": 554.7377271652222,
+  "scope": "Privileged physical coupling, corridor delivery and release candidate; no tool-discovery or admission credit",
+  "formal_admission": false
+}

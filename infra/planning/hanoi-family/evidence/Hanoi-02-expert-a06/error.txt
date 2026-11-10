@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/run.py", line 146, in main
+    else:expert.run();reason='task_completed' if env.status['success'] else 'candidate_returned_without_success'
+         ^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/controller.py", line 163, in run
+    self.tool_move(tool+np.array([-.18,0,.20]))
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/controller.py", line 149, in tool_move
+    self.move(np.asarray(pos)-wrist_rotation@relative,wrist_rotation,seconds)
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/controller.py", line 73, in move
+    target=self.solve(np.asarray(pos),np.asarray(rot));start=self.q.copy()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/controller.py", line 52, in solve
+    if err>.012 or angle>.12:raise GuardFailure(f'IK unreachable: position={err:.4f} m, rotation={angle:.3f} rad')
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+hanoi_family.controller.GuardFailure: IK unreachable: position=0.0847 m, rotation=0.502 rad

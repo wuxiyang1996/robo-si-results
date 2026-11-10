@@ -1,0 +1,62 @@
+{
+  "schema": "m2-actual-segment-mapping/1",
+  "case": "M2-2",
+  "attempt": "a02-urdf-type",
+  "state_source": "state-trajectory.npz",
+  "sample_interval_s": 0.02,
+  "limitation": "Recorded controller phases, not independent certification of every skill boundary. P3 includes both turning and straight transport.",
+  "segments": [
+    {
+      "high_level": "P1",
+      "low_level": "settle",
+      "start_time": 0.0,
+      "first_row": 0,
+      "end_time": 0.9800000000000008,
+      "last_row": 49,
+      "samples": 50
+    },
+    {
+      "high_level": "P1",
+      "low_level": "approach_contact",
+      "start_time": 1.0000000000000007,
+      "first_row": 50,
+      "end_time": 12.98000000000063,
+      "last_row": 649,
+      "samples": 600
+    },
+    {
+      "high_level": "P1",
+      "low_level": "close_grasp",
+      "start_time": 13.000000000000632,
+      "first_row": 650,
+      "end_time": 18.98000000000051,
+      "last_row": 949,
+      "samples": 300
+    },
+    {
+      "high_level": "P1",
+      "low_level": "test_lift",
+      "start_time": 19.000000000000504,
+      "first_row": 950,
+      "end_time": 28.999999999998515,
+      "last_row": 1450,
+      "samples": 501
+    },
+    {
+      "high_level": "P1",
+      "low_level": "hold_probe",
+      "start_time": 29.01999999999851,
+      "first_row": 1451,
+      "end_time": 34.01999999999895,
+      "last_row": 1701,
+      "samples": 251
+    }
+  ],
+  "unexecuted_high_level": [
+    "P0",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "public_trace_scope": "Exact timestamps, phases, robot poses/joints/velocities and cargo/obstacle poses/velocities. Contacts and control internals remain in raw records."
+}

@@ -1,0 +1,231 @@
+{
+ "task": "g1_tabletop_hanoi",
+ "mode": "eval",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.0,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.0,
+ "score_std": 0.0,
+ "by_layer": {
+  "3": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.0,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 0
+ },
+ "flags": [],
+ "privileged_reference": false,
+ "result_kind": "agent run",
+ "requests": {
+  "observe": 2,
+  "command": 1,
+  "reference": 0,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "7 entries"
+ },
+ "verifier": "infra-verifier/1 + g1-tabletop-hanoi-verifier/1 (g1-tabletop-hanoi-monitors/1)",
+ "verifier_sha256": "2b611cac04571f1a3ddc915c8340e9863bba14d2148708e481036de14f16575a",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": "0.3",
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + g1-tabletop-hanoi-verifier/1 (g1-tabletop-hanoi-monitors/1)",
+  "verifier_sha256": "2b611cac04571f1a3ddc915c8340e9863bba14d2148708e481036de14f16575a",
+  "scene": [],
+  "simulator": [
+   "{\"genesis-world\": \"1.4.3\", \"numpy\": \"2.5.3\", \"torch\": \"2.11.0+cu128\"}"
+  ],
+  "image": "g1hanoi-agent:5f2b82d9f7a45230",
+  "image_id": "sha256:a58ce2498f70499dfcd5d2ed91f780dfa18c16ccb64465c8d0e9975e672bfc05",
+  "bundle": "5f2b82d9f7a45230f75afeb7fde7a9d35533862e64fe6951feca42f2debd06f1",
+  "scenario_sha256": "807a4ae926661128732be73166af7766450d5ebc555e5d0e2acec78152a14139",
+  "delivery_sha256": "7734d6d04452af89197f64501c707a7150d5507dec294ccc3dccf6a1650a9ef8",
+  "source_manifest_sha256": "6e08282b79d625389bfc91f524f61315000d0587d2d20d0b7259bd4972e56780",
+  "launch_scope_source_frozen": true
+ },
+ "per_episode": [
+  {
+   "episode": "episode_00",
+   "void": false,
+   "void_reasons": [],
+   "flags": [],
+   "score": 0.0,
+   "success": false,
+   "end_reason": "finished",
+   "samples": 101,
+   "sim_time_s": 2.0,
+   "source": "sandbox_worker",
+   "observations": 2,
+   "simulator": {
+    "genesis-world": "1.4.3",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.3"
+   },
+   "episode_spec": {
+    "num_disks": 3,
+    "scene": {
+     "disk_color_order": [
+      3,
+      1,
+      4
+     ],
+     "disk_friction": 0.780335331811068,
+     "disk_initial_lift": 0.001,
+     "disk_initial_offsets": [
+      [
+       0.0,
+       0.0,
+       0.7524986710625011
+      ],
+      [
+       0.0,
+       0.0,
+       4.167737073378391
+      ],
+      [
+       0.0,
+       0.0,
+       3.1501257714808104
+      ]
+     ],
+     "disk_mass": 0.1126500573821245,
+     "disk_outer_radii": [
+      0.09028304012230425,
+      0.07367780195118034,
+      0.05248871536139833
+     ],
+     "peg_xs": [
+      0.4247924652919123,
+      0.4377580796595633,
+      0.4381296288407994
+     ],
+     "peg_ys": [
+      0.26354801153049023,
+      0.019355578413824567,
+      -0.22307629358030748
+     ],
+     "rod_height": 0.18443129389129345,
+     "start_peg": "B",
+     "target_peg": "C"
+    },
+    "sim_time_limit_s": 10.0
+   },
+   "layer": 3,
+   "process_score": 0.0,
+   "final_progress": 0.0,
+   "peak_time_s": 0.0,
+   "stage_best": {
+    "disk_lifted_clear": 0.0,
+    "first_move": 0.0,
+    "tower_progress": 0.0,
+    "goal_hold": 0.0
+   },
+   "stage_timeline": {
+    "disk_lifted_clear": null,
+    "first_move": null,
+    "tower_progress": null,
+    "goal_hold": null
+   },
+   "completed_at_end": false,
+   "move_count": 0,
+   "minimum_moves": 7,
+   "num_disks": 3,
+   "moves_left": 7,
+   "evaluation": {
+    "replay": {
+     "success": false,
+     "failed": false,
+     "reason": "",
+     "elapsed": 1.9999999999999793,
+     "latched_row": null
+    },
+    "live": {
+     "success": false,
+     "failed": false,
+     "reason": "",
+     "elapsed": 1.9999999999999793,
+     "latched_row": null,
+     "recorded": true
+    },
+    "replay_matches_live": true,
+    "mismatch": null,
+    "moves": [],
+    "move_count": 0,
+    "minimum_moves": 7
+   },
+   "final_state": {
+    "disk_0": {
+     "xy_error_m": 0.24243,
+     "z_error_m": 3e-05,
+     "tilt_rad": 0.0,
+     "ok": false
+    },
+    "disk_1": {
+     "xy_error_m": 0.24243,
+     "z_error_m": 6e-05,
+     "tilt_rad": 0.0,
+     "ok": false
+    },
+    "disk_2": {
+     "xy_error_m": 0.24243,
+     "z_error_m": 8e-05,
+     "tilt_rad": 0.0,
+     "ok": false
+    }
+   },
+   "alarms": [],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": []
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "g1-tabletop-hanoi-monitors/1",
+    "not_applicable": {
+     "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+     "fall": "the pelvis is bolted to a stand",
+     "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+    },
+    "max_reported_speed": 0.196,
+    "max_object_speed": 0.123,
+    "max_step_speed": 0.123,
+    "max_support_penetration": 0.0003,
+    "max_energy_excess_J": 0.0,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.042,
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0
+   },
+   "verifier": "g1-tabletop-hanoi-verifier/1 (g1-tabletop-hanoi-monitors/1)",
+   "episode_index": 0,
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 2,
+    "commands": 1,
+    "reference": 0
+   }
+  }
+ ],
+ "admission_eligible": false
+}

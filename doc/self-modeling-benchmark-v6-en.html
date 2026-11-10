@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench research proposal, version 6: research questions, evaluation tracks, executors and skill distillation, three difficulty layers, task progress, experiments and roadmap." name="description"/>
+<title>Research Proposal v6</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a aria-current="page" href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html">中文</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">Research proposal · v6</p>
+<h1>Can a coding agent get a robot to<br/><span class="nm">work out its own solution</span>?</h1>
+<p class="lead">Embodied Terminal-Bench gives an agent a goal, one or more robots and a physical world it can interact with. Using only the robots' own sensors, the agent writes code, runs experiments and discovers what objects are good for, over hours of iteration, to complete long-horizon tasks. Version 6 keeps the research framing of v5, adopts the settled task design, acceptance, sandbox, scoring and evaluation protocol, and updates the actual progress of every task and executor.</p>
+<div class="buttons">
+<a class="btn primary" href="#changes">Changes from v5</a>
+<a class="btn" href="#tasks">Tasks and progress</a>
+<a class="btn" href="/robo-si-results/infra/contribute-en.html">Contribute a task</a>
+<a class="btn" href="/robo-si-results/doc/self-modeling-benchmark-v5-en.html">v5</a>
+</div>
+<div class="card" id="toc" style="margin-top:18px"><h3>Contents</h3>
+<ol class="toc">
+<li><a href="#changes">01 Changes from v5</a></li>
+<li><a href="#thesis">02 Question and scope</a></li>
+<li><a href="#questions">03 Three research questions</a></li>
+<li><a href="#tracks">04 Evaluation tracks</a></li>
+<li><a href="#harness">05 Agent, harness and executors</a></li>
+<li><a href="#solver">06 Execution fallback and skills</a></li>
+<li><a href="#discovery">07 Observation and tool use</a></li>
+<li><a href="#difficulty">08 Difficulty and randomisation</a></li>
+<li><a href="#tasks">09 Tasks and progress</a></li>
+<li><a href="#self-model">10 Cross-embodiment and self-modelling</a></li>
+<li><a href="#verification">11 Scoring and verification</a></li>
+<li><a href="#budget">12 Budget, cost and speed</a></li>
+<li><a href="#experiments">13 Experiments and baselines</a></li>
+<li><a href="#curriculum">14 Curriculum and extensions</a></li>
+<li><a href="#related">15 Related work</a></li>
+<li><a href="#roadmap">16 Roadmap and scope of v6</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="changes"><div class="wrap">
+<p class="kicker">01 · Changes from v5</p>
+<h2>What changed in v6</h2>
+<p>The left column is what v5 said; the right column is what v6 settles. Where they conflict, v6 applies. The detailed specifications live on the other pages, and this page only links to them.</p>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:7em">Topic</th><th>v5</th><th>v6</th><th style="min-width:10em">Details</th></tr></thead>
+<tbody>
+<tr><td>Difficulty</td><td>Five grades: L0, L0.5, L1, L1.5, L2</td><td>Exactly three cumulative layers with the same seed: only the necessary tools → add tools another body could use → add distractors</td><td><a href="/robo-si-results/infra/task-design-en.html#layers">section 05 of the task design guide</a></td></tr>
+<tr><td>Solve time and budget</td><td>Pilot budgets of 5 / 15 / 30 minutes; make speed an evaluation metric</td><td>A strong agent needs more than 4 hours, with no upper limit; the main budgets are simulation steps and tokens, wall-clock time is only a cap; time is reported as a secondary metric</td><td><a href="/robo-si-results/infra/protocol-en.html#budget">section 01 of the evaluation protocol</a></td></tr>
+<tr><td>Scoring</td><td>Binary ValidSuccess</td><td>Process score by stage, peak per episode; success (0/1) reported separately</td><td><a href="/robo-si-results/infra/verifier-en.html#rules">section 04 of scoring and verification</a></td></tr>
+<tr><td>Human review</td><td>People review videos during evaluation; two blind reviewers label anomalies and novel solutions</td><td>Grading agents is fully automatic; people watch recordings only during task acceptance and answer three questions</td><td><a href="/robo-si-results/infra/acceptance-en.html#humancheck">section 05 of task acceptance</a></td></tr>
+<tr><td>Anomalies</td><td>Marked for review</td><td>Monitor rules frozen in advance: an integrity alarm voids the episode; a physical anomaly cancels stage credit in its window; uncertain cases are handled conservatively and flagged, then re-graded automatically after a revision</td><td><a href="/robo-si-results/infra/verifier-en.html#monitors">section 06 of scoring and verification</a></td></tr>
+<tr><td>Agent interface</td><td><code>execute(robot, skill, args)</code> plus a set of public atomic skills</td><td>Eight RPC methods; the agent commands its own joints; L1–L3, VLA and IK/FK take only the agent's own sensor results; the skill interface is optional, limited to designated skills, preferably ones the agent produced itself</td><td><a href="/robo-si-results/infra/sandbox-en.html#iso">section 03 of the isolated sandbox</a></td></tr>
+<tr><td>Where the verifier runs</td><td>Harbor's separate verifier container</td><td>At minimum isolated from the agent; on this machine the environment side is a trusted worker on the host, because WSL2 containers only get llvmpipe software rendering</td><td><a href="/robo-si-results/infra/verifier-en.html#placement">section 02 of scoring and verification</a></td></tr>
+<tr><td>Repeats and statistics</td><td>Seed counts pre-registered from the variance</td><td>Three independent evaluations per agent and task; every delivery scored three times on the same sealed episodes and averaged, and marked "not reproducible" beyond the tolerance</td><td><a href="/robo-si-results/infra/protocol-en.html#stats">section 04 of the evaluation protocol</a></td></tr>
+<tr><td>New specifications</td><td>Only a draft task package</td><td>Eleven hard requirements and the task card; asset policy; initial-state randomisation; subtasks; task acceptance (reference expert, manual feasibility verification, verifier validated both ways); feedback tiers; fabrication checks; delivery snapshots; versions and leakage prevention</td><td><a href="/robo-si-results/infra/task-design-en.html">Task design</a>, <a href="/robo-si-results/infra/acceptance-en.html">task acceptance</a>, <a href="/robo-si-results/infra/protocol-en.html">evaluation protocol</a></td></tr>
+<tr><td>Progress</td><td>Controllers had only run in MuJoCo under WSL; every task except H1 was a specification</td><td>Controllers now run in Genesis and Isaac Lab; nine tasks have a simulation environment or prototype; the H1 expert has completed two kinds of chain</td><td><a href="#harness">Section 05</a>, <a href="#tasks">section 09</a></td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="thesis"><div class="wrap">
+<p class="kicker">02 · Question and scope</p>
+<h2>Terminal-Bench, moved into the physical world</h2>
+<p>VLAs, whole-body controllers and atomic skills provide execution; the coding agent observes, reasons about physics, runs experiments, composes programs and recovers from failure. The target coverage is humanoids, manipulators, quadrupeds and multi-robot teams; the first tasks focus on humanoids and multi-robot teams.</p>
+<div class="callout"><p><strong>Core hypothesis:</strong> with the same executors, observations and budget, an agent that can write and debug programs handles multi-step physical problems better than a direct VLA or an agent that only calls fixed skills, and a reusable harness spreads the cost of exploration over later tasks. Both claims need experiments.</p></div>
+<h3>How this page relates to the others</h3>
+<ul class="check">
+<li><strong>This page:</strong> research questions, evaluation tracks, experiment design, task taxonomy and progress, roadmap.</li>
+<li><strong>Specifications:</strong> how tasks are designed and accepted, how the sandbox isolates the agent, how scoring works and how evaluations are run, each on its own page: <a href="/robo-si-results/infra/task-design-en.html">task design</a>, <a href="/robo-si-results/infra/acceptance-en.html">task acceptance</a>, <a href="/robo-si-results/infra/sandbox-en.html">isolated sandbox</a>, <a href="/robo-si-results/infra/verifier-en.html">scoring and verification</a>, <a href="/robo-si-results/infra/protocol-en.html">evaluation protocol</a>.</li>
+<li><strong>Progress details:</strong> on the <a href="/robo-si-results/infra/status-en.html">implementation status</a> page.</li>
+<li><strong>Scope:</strong> this is a research and engineering proposal. No LLM agent has been run yet, and there are no formal experimental results.</li>
+</ul>
+</div></section>
+<section class="tinted" id="questions"><div class="wrap">
+<p class="kicker">03 · Three research questions</p>
+<h2>Three research questions and how each could be refuted</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:10em">Question</th><th>Comparison</th><th>What would refute it</th></tr></thead>
+<tbody>
+<tr><td>RQ1 · Does a coding agent help with complex robot tasks?</td><td>Direct VLA, fixed-skill calls by the same reasoning model, a programmable agent, and an agent that can revise a persistent harness; matched executors, sensors, tasks and budgets; compare valid success, recovery rate and time</td><td>Gains appear only with stronger executors, more retries or longer budgets; with matched skill coverage, the coding group's success–cost curve does not improve</td></tr>
+<tr><td>RQ2 · How can physical reasoning be tested in a sandbox?</td><td>Write decisions as a "hypothesis → prediction → probe → update → act" loop; compare observation only, random probes on the same budget, informative probes, and removed feedback; record success probabilities and constraint predictions before acting</td><td>Explanations get more complete but prediction calibration, probing efficiency or final success do not improve; reasoning depends on leaked hidden state</td></tr>
+<tr><td>RQ3 · Does self-modelling help across bodies?</td><td>Fix the world and change reach, gripper, torque or locomotion; compare no memory, general memory of equal capacity, explicit capability memory, and an upper bound with full capability information; difficulty layer 2 tests the same thing inside the scene</td><td>General memory of equal capacity explains all the gain; the self-model only remembers robot names</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:12px">The direct VLA is a system-level reference; causal evidence that code helps comes from the call-versus-program ablation with the same model and interface.</p>
+</div></section>
+<section id="tracks"><div class="wrap">
+<p class="kicker">04 · Evaluation tracks</p>
+<h2>Three tracks: solve, reuse, light adaptation</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:9em">Track</th><th>What is allowed</th><th>How it is evaluated</th></tr></thead>
+<tbody>
+<tr><td>A · Solve within the episode</td><td>Fixed executors and task-provided tools; the agent writes code and runs experiments without changing weights; cross-task memory is cleared for every test instance</td><td>The main track. After the development session the delivered program is re-run on new sealed episodes; see <a href="/robo-si-results/infra/protocol-en.html#snapshots">section 02 of the evaluation protocol</a></td></tr>
+<tr><td>B · Build a harness, then freeze and reuse it</td><td>Perception wrappers, skills, parameter estimation and scheduling code built up over development tasks; skills only from designated sources, preferably rollouts the agent produced itself</td><td>Frozen before the hidden test; development and test costs reported separately, with amortised cost = (development cost + N test costs) / N and N stated</td></tr>
+<tr><td>C · Light adaptation</td><td>Small adapters, calibrators or skill fine-tuning declared in advance; trainable parameters, data volume, update steps and GPU time published</td><td>Total budget matched to a no-update control; ranked separately and never mixed with training-free results</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:14px">"Training-free" means no weight updates inside this benchmark; it does not mean the pretrained controllers cost nothing to train. Persistent changes to code and skill libraries also count as learning and must be versioned. A complete solution may not be packaged as a public skill.</p>
+</div></section>
+<section class="tinted" id="harness"><div class="wrap">
+<p class="kicker">05 · Agent, harness and executors</p>
+<h2>The agent only sees sensors and only commands joints</h2>
+<p>The structure is the same as in v5: agent → editable harness → frozen executors → trusted simulation → verifier. Version 6 implements it as the H1 isolated sandbox.</p>
+<ul class="check">
+<li><strong>Isolation:</strong> the agent runs in a Linux container (uid 1000, read-only root file system, <code>--cap-drop ALL</code>, internal network) and talks to the environment side only through token-authenticated RPC. Eight methods: <code>info</code>, <code>status</code>, <code>observe</code>, <code>command</code>, <code>command_sequence</code>, <code>declare_infeasible</code>, <code>finish</code>, and <code>reset</code>, which exists only in development mode.</li>
+<li><strong>Sensors:</strong> only the robot's own cameras (RGB and depth), LiDAR, IMU and joint readings. Genesis 1.4.3 has no ray sensor, so the LiDAR is stitched from four depth cameras. No coordinates, object poses, physical properties, segmentation or affordances.</li>
+<li><strong>Tools:</strong> L1 is GR00T WBC standing and walking; L2 is trajectory planning to a target; L3 is IK/FK solving through intermediate points; a VLA is added when the task provides one. Their inputs can only be the agent's own sensor results, and the agent may also write everything itself.</li>
+<li><strong>Skills:</strong> the skill interface is optional. Only skills designated by the task, and skills and rollouts the agent produced in its own development session, may be used; the environment side checks their origin against observation digests.</li>
+</ul>
+<p>Details are in <a href="/robo-si-results/infra/sandbox-en.html#iso">section 03 of the isolated sandbox</a>; the feedback the agent receives is in <a href="/robo-si-results/infra/sandbox-en.html#feedback">section 05 of the isolated sandbox</a>.</p>
+<h3>Executor progress (16 to 19 October 2026)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:10em">Executor</th><th>Verified</th><th>Not verified</th></tr></thead>
+<tbody>
+<tr><td>GR00T Decoupled WBC, HANDOFF, ULTRA</td><td>Moved from MuJoCo under WSL to native Windows; short motion tests in the H1 Genesis and Isaac Lab scenes (<a href="/robo-si-results/controllers/g1_wbc/README.md">controller notes</a>)</td><td>Task-level manipulation and loads; Isaac video recording crashes during Kit/Hydra start-up</td></tr>
+<tr><td>SONIC, GR00T N1.7</td><td>SONIC standing held for the full 5 s in both Genesis and Isaac Lab; N1.7 + SONIC completed one 5-second language-driven squat in Genesis</td><td>Carrying a box</td></tr>
+<tr><td>Arena GR00T + Decoupled WBC</td><td>The official box-carrying example passed in full, one episode each: box lifted about 16–18 cm and carried about 1.9 m</td><td>A robust success rate; this is an official fine-tuned example, not H1</td></tr>
+<tr><td>L2 / L3 solvers</td><td>Position IK, collision-checked RRT and waypoint composition on a MuJoCo kinematic copy, including a G1 bimanual planning smoke test (<a href="/robo-si-results/solvers/README.md">solver notes</a>)</td><td>Physical execution: <code>execution_verified</code> is always false</td></tr>
+<tr><td>Agile lower-body policy</td><td>Walks in both simulators; the H1 expert uses it for walking</td><td>Walking while holding the stool runs away</td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="solver"><div class="wrap">
+<p class="kicker">06 · Execution fallback and skills</p>
+<h2>When skills fall short, solve level by level, then distil what worked into skills</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:9em">Level</th><th>What it does</th><th>On failure</th></tr></thead>
+<tbody>
+<tr><td>L1 · Call an existing skill</td><td>Pick a verified skill from the frozen library and check its preconditions, target range and termination conditions</td><td>Escalate to L2 within the remaining budget</td></tr>
+<tr><td>L2 · Solve a trajectory directly</td><td>Given the current state, a target pose and obstacle geometry the agent estimated itself, a solver searches for a trajectory</td><td>Return an observable diagnosis and move to L3</td></tr>
+<tr><td>L3 · Write intermediate states</td><td>The agent supplies waypoints, contact phases and constraints; each segment is solved with IK/FK and the segments are joined</td><td>Change the waypoints or constraints; stop when the budget runs out</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:10px">L1–L3 here are execution fallback levels, a separate axis from the three difficulty layers.</p>
+<h3>The distillation loop</h3>
+<ol class="steps">
+<li><strong>Save.</strong> After a successful execution, save the solver code, parameters, states, actions, contact events and result.<span class="out">Success on the original task is only where a candidate skill starts.</span></li>
+<li><strong>Parameterise.</strong> Prefer extracting the solving program, for example <code>lift_box(box_pose, box_size, lift_height)</code>, which regenerates motion for new parameters; with only a trajectory, segment it into templates at contact events.</li>
+<li><strong>Validate.</strong> Replay on held-out initial states, target positions, box sizes and physical variations, with perturbations.</li>
+<li><strong>Register.</strong> Only validated skills are registered, with a version, the bodies they apply to, parameter ranges, preconditions and termination conditions; from then on L1 reuses them directly.</li>
+</ol>
+<h3>Showing it is a skill, not a cached trajectory</h3>
+<ul class="check">
+<li>Compare fixed L1, L1+L2, L1+L2+L3, and skill distillation on and off; add a raw trajectory cache as a control, with controllers, observations and total budget fixed.</li>
+<li>Report the candidate pass rate, success on unseen parameters, later reuse counts, fallback frequency and amortised time.</li>
+<li>Graded episodes start from random initial states, so replaying a rollout earns nothing.</li>
+</ul>
+<p><strong>Progress:</strong> L2/L3 are implemented on a MuJoCo kinematic copy but are not yet connected to physical execution, and there is no skill registration yet. Next: a Genesis native planner or cuRobo backend, solving with orientation and contact constraints, and a trajectory-tracking executor.</p>
+</div></section>
+<section class="tinted" id="discovery"><div class="wrap">
+<p class="kicker">07 · Observation and tool use</p>
+<h2>No stated affordances, only on-board sensors</h2>
+<p>API calls and physical tool use are different things. The semantics of the interface are public; which objects can serve as tools, how to combine them and which route works are never told to the agent. Objects carry neutral IDs, and the instruction states only the goal and the public compliance constraints; see <a href="/robo-si-results/infra/task-design-en.html#scene">section 02 of the task design guide</a>.</p>
+<ul class="check">
+<li>Only sensors native to the robot or that could be fitted to it, with model, mounting pose and noise written into the task card; see <a href="/robo-si-results/infra/task-design-en.html#sensors">section 08 of the task design guide</a>.</li>
+<li>Contact, force/torque or tactile sensing are optional extensions, with their body locations and noise declared.</li>
+<li>Text descriptions generated from ground truth belong only to a separate diagnostic condition, never to the main comparison.</li>
+</ul>
+<h3>The capability-information axis</h3>
+<p>The Explicit / Partial / Latent capability-information settings from v3 and v5 remain a separate experimental axis, reported apart from the difficulty layers and sensor sets: Partial for the main comparison, Latent for discovery diagnostics, Explicit as an information upper bound. The Harbor CPU version of H1 already implements these three settings (<a href="/robo-si-results/benchmarks/harbor/README.md">Harbor version notes</a>).</p>
+</div></section>
+<section id="difficulty"><div class="wrap">
+<p class="kicker">08 · Difficulty and randomisation</p>
+<h2>Exactly three layers, each adding to the last</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:6em">Layer</th><th>What the scene contains</th><th>What it tests</th><th>In v5</th></tr></thead>
+<tbody>
+<tr><td>Layer 1</td><td>Only the necessary tools and objects</td><td>Discovering uses, ordering steps, executing</td><td>L0</td></tr>
+<tr><td>Layer 2</td><td>Adds tools or objects this robot cannot use but another body could</td><td>Self-modelling: knowing what it can and cannot do</td><td>New; tied to RQ3</td></tr>
+<tr><td>Layer 3</td><td>Adds distractors: beyond the robot's capability, not actually usable, or useful-looking but bound to fail</td><td>Experimenting and ruling options out</td><td>L0.5, L1, L1.5</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:14px">The v5 L2 grade (weakened grippers, degraded sensors, action noise) is no longer a layer of its own: noise and physical variation go into initial-state randomisation, and faults become separately labelled robustness variants.</p>
+<ul class="check">
+<li><strong>Randomisation:</strong> randomise everything that can be randomised, without breaking solvability, opening shortcuts, or making the key to the solution knowable only from ground truth; see <a href="/robo-si-results/infra/task-design-en.html#random">section 04 of the task design guide</a>.</li>
+<li><strong>Subtasks:</strong> completion conditions defined by state, each with a start state from which it can begin on its own, for curriculum learning and diagnosis; subtask scenarios are never offered to the agent under evaluation; see <a href="/robo-si-results/infra/task-design-en.html#subtasks">section 06 of the task design guide</a>.</li>
+<li><strong>Difficulty target:</strong> a strong coding agent needs more than 4 hours of iteration. If a difficulty trial solves layer 3 within 4 hours, deepen the dependencies, widen the randomisation, or use distractors that are harder to tell apart.</li>
+</ul>
+</div></section>
+<section class="tinted" id="tasks"><div class="wrap">
+<p class="kicker">09 · Tasks and progress</p>
+<h2>Ten task definitions in five goal families</h2>
+<p>Tasks are classified by goal; mechanisms, bodies and implementation status are separate labels. The v5 Version letters are retired; they map as A = M1, B = M2, C = H2, D = H3, E = H4, F = M3, G = H5, H = M4. The goal, interactive objects and "what must be discovered" for every task are in <a href="/robo-si-results/infra/contribute-en.html#tasks">section 02 of the home page</a>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:7em">Goal family</th><th style="min-width:10em">Task</th><th>Body</th><th>Simulation</th><th>Solution progress</th></tr></thead>
+<tbody>
+<tr><td>Elevated retrieval</td><td><a href="/robo-si-results/humanoid/g1_support_retrieval/README.md">H1 Support-assisted retrieval</a></td><td>G1</td><td>Genesis + Isaac Lab, in the sandbox</td><td><span class="pill warn">Partly solved</span> Expert direct family 10/10; the full chain using the stool completed 3 times (stool placed in front of the cabinet beforehand, box first set down below and re-taken from the floor); carrying the stool in from elsewhere is not solved; none of these runs has been graded by the verifier yet</td></tr>
+<tr><td>Elevated retrieval</td><td>M1 Humanoid + mobile manipulator</td><td>G1 + mobile manipulator</td><td>None</td><td><span class="pill no">Proposal</span></td></tr>
+<tr><td>Elevated retrieval</td><td><a href="/robo-si-results/multi_robot/g1_improvised_robot_tool_use/README.md">M3 Robot as a tool</a></td><td>G1 + wheeled robot with arm</td><td>Genesis scene prototype and scoring interface</td><td><span class="pill no">Not verified</span></td></tr>
+<tr><td>Heavy / long-object transport</td><td><a href="/robo-si-results/humanoid/g1_cart_assisted_transport/README.md">H2 Cart-assisted transport</a></td><td>G1</td><td>Genesis + Isaac Lab</td><td><span class="pill no">Not verified</span> Physical candidate rollouts, not successful demonstrations</td></tr>
+<tr><td>Heavy / long-object transport</td><td><a href="/robo-si-results/humanoid/g1_lever_assisted_transport/README.md">H5 Lever-assisted transport</a></td><td>G1</td><td>Genesis + Isaac Lab</td><td><span class="pill no">Not verified</span> Candidate experiments</td></tr>
+<tr><td>Heavy / long-object transport</td><td><a href="/robo-si-results/multi_robot/dual_g1_long_object_transport/README.md">M2 Dual G1 long box</a></td><td>2 × G1</td><td>Genesis (CPU)</td><td><span class="pill warn">Light setup solved</span> With a 0.25 kg, 2.25 m box: ground pickup, L-corridor transport and cooperative placement verified; the original heavy box is not verified</td></tr>
+<tr><td>Heavy / long-object transport</td><td><a href="/robo-si-results/multi_robot/dual_quadruped_cooperative_transport/README.md">M4 Quadruped towing</a></td><td>2 × Go1 / Go2</td><td>Genesis scene prototype and scoring interface</td><td><span class="pill no">Not verified</span></td></tr>
+<tr><td>Dynamic obstacle</td><td><a href="/robo-si-results/humanoid/g1_self_closing_door/README.md">H3 Self-closing door</a></td><td>G1</td><td>Genesis + Isaac Lab</td><td><span class="pill no">Not verified</span></td></tr>
+<tr><td>Route construction</td><td><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/README.md">H4 Ramp / bridge</a></td><td>G1</td><td>Genesis scene configuration and trajectory checks</td><td><span class="pill no">Not verified</span></td></tr>
+<tr><td>Loaded stair transport</td><td><a href="/robo-si-results/humanoid/g1_box_stair_transport/README.md">H6 Up/down stairs and ground placement</a></td><td>G1</td><td>Genesis task package, sealed generator, sensor/command sandbox and offline verifier</td><td><span class="pill no">Not verified</span> Complete IK/FK geometry reference; full dynamic execution and admission pending</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:12px">Status as of 2026-10-19, from each task's README and run records. No task yet meets the acceptance bar (full chain on all three layers, manual feasibility verification, verifier validated both ways). The Harbor CPU version of H1 is a skill-level model and is not counted as a separate physical task; controllers are not counted as tasks.</p>
+</div></section>
+<section id="self-model"><div class="wrap">
+<p class="kicker">10 · Cross-embodiment and self-modelling</p>
+<h2>Fix the world, change the capabilities</h2>
+<p>Goal, world, resources and budget stay fixed; only the body, the end effector or a validated controller capability changes. The question is whether the agent forms beliefs about itself and the world from evidence, and chooses resources and strategies accordingly.</p>
+<ul class="check">
+<li>Capability memory records what can be done under which conditions, with predictions, confidence, evidence and failure conditions. One failure is not automatically a body limit: mass, friction, perception and control error are competing explanations.</li>
+<li>Clean interventions: change one of reach, gripper opening, torque or locomotion at a time, by actually modifying geometry, dynamics or control configuration and re-validating, not by editing a description field.</li>
+<li>Four kinds of control: the route must change; only an efficiency preference changes; the same route still works; no feasible solution exists (the agent should declare it infeasible).</li>
+<li>Difficulty layer 2 is the same idea inside a scene: the body stays the same, and the scene contains tools another body could use, testing whether the agent knows it cannot use them.</li>
+<li>Generalisation is held out by body family, object geometry, mechanism and layout; world-only interventions are kept to test whether the agent attributes failure to itself or to the environment.</li>
+</ul>
+</div></section>
+<section class="tinted" id="verification"><div class="wrap">
+<p class="kicker">11 · Scoring and verification</p>
+<h2>Scores come only from environment-side records</h2>
+<ul class="check">
+<li>The verifier runs on the environment side and reads trusted state logs, never the agent's own account; the agent never sees its score. See <a href="/robo-si-results/infra/verifier-en.html#placement">section 02 of scoring and verification</a>.</li>
+<li>Stage predicates require contact evidence, object identity, dwell times and rest conditions; stages earn process credit, each episode scores its peak, and success (0/1) is reported separately. See <a href="/robo-si-results/infra/verifier-en.html#predicates">section 03 of scoring and verification</a> and <a href="/robo-si-results/infra/verifier-en.html#rules">section 04 of scoring and verification</a>.</li>
+<li>Success is still defined as ValidSuccess = goal reached ∧ contract satisfied ∧ integrity passed; an integrity alarm voids the episode.</li>
+<li>Monitor rules are frozen in advance and grading is fully automatic; people watch recordings only during task acceptance, to check the task and the verifier themselves. See <a href="/robo-si-results/infra/acceptance-en.html#humancheck">section 05 of task acceptance</a>.</li>
+<li>Tool understanding is not inferred from final success: diagnostic episodes record predictions about uses and properties, then remove a tool, swap properties or change the body to see whether plans and execution change accordingly. Diagnostics serve research analysis only and do not enter the main score.</li>
+</ul>
+</div></section>
+<section id="budget"><div class="wrap">
+<p class="kicker">12 · Budget, cost and speed</p>
+<h2>Budgets count simulation steps and tokens; time is only reported</h2>
+<ul class="check">
+<li><strong>Main budgets:</strong> simulation steps counted on the environment side and tokens metered by a trusted proxy; observations and resets have their own limits; wall-clock time only guards against hangs. See <a href="/robo-si-results/infra/protocol-en.html#budget">section 01 of the evaluation protocol</a>.</li>
+<li><strong>Budget curves:</strong> delivery snapshots are scored at budget points to draw success–budget curves, without picking the best seed again at each budget. See <a href="/robo-si-results/infra/protocol-en.html#snapshots">section 02 of the evaluation protocol</a>.</li>
+<li><strong>Speed:</strong> reported as a secondary metric: cold-start time, warm solve time, simulated time and total compute cost; Track B reports amortised cost with N stated; for multi-robot runs, wall-clock saved by parallelism is reported together with the extra total work.</li>
+<li><strong>Measure the base first:</strong> the executor's closed-loop ceiling, simulation throughput, model-call latency and reset cost come first, then the affordable task scale. H1 takes about 0.67 s per control step when the GPU is busy with other jobs, which is one reason wall-clock time is not a main budget.</li>
+</ul>
+</div></section>
+<section class="tinted" id="experiments"><div class="wrap">
+<p class="kicker">13 · Experiments and baselines</p>
+<h2>Show that coding helps before scaling up</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:10em">Condition</th><th>What it is</th><th>What it answers</th></tr></thead>
+<tbody>
+<tr><td>B0 · Direct VLA</td><td>The same frozen VLA, given the goal, with normal feedback</td><td>End-to-end system reference; unsupported bodies listed separately</td></tr>
+<tr><td>B1 · Fixed-skill agent</td><td>The same reasoning model, perception and skills, calling one step at a time with no free-form programs</td><td>The ablation control for RQ1</td></tr>
+<tr><td>B2 · Coding agent</td><td>The same interface, with code, loops, branches and debugging allowed</td><td>Within-episode gains (Track A)</td></tr>
+<tr><td>B3 · Reusable harness</td><td>B2 plus cross-task skill building during development, then frozen</td><td>Development and amortised gains (Track B)</td></tr>
+<tr><td>No-op</td><td>Does nothing</td><td>Lower anchor; must score 0</td></tr>
+<tr><td>Reference expert</td><td>The expert solution that reads ground truth</td><td>Upper anchor; proves solvability and validates the verifier</td></tr>
+<tr><td>Simple script (optional)</td><td>A fixed script that only uses task-provided skills and does no perception</td><td>Whether a fixed routine can score on the task</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:14px">The standard agent configuration (a pinned coding agent with a default prompt) is one instance of B2, and it is the configuration used for difficulty trials in the contribution process; see <a href="/robo-si-results/infra/protocol-en.html#baselines">section 05 of the evaluation protocol</a>.</p>
+<ul class="check">
+<li><strong>Repeats:</strong> three independent evaluations per agent and task; every delivery scored three times on the same sealed episodes and averaged; paired bootstrap confidence intervals over task and scene clusters. See <a href="/robo-si-results/infra/protocol-en.html#stats">section 04 of the evaluation protocol</a>.</li>
+<li><strong>Ablations:</strong> RQ2 runs observation-only, random-probe, informative-probe and removed-feedback variants of B2; RQ3 compares no memory, general memory and a self-model under the same storage, token and trial budgets.</li>
+<li><strong>Decision rules:</strong> if scripts cannot execute reliably, fix the executors first; if coding does not improve valid success at matched budgets, analyse failures and costs instead of adding tasks to support the claim; if gains come only from seen routes, hold out mechanisms and bodies rather than adding in-distribution variants.</li>
+</ul>
+</div></section>
+<section id="curriculum"><div class="wrap">
+<p class="kicker">14 · Curriculum and extensions</p>
+<h2>Subtasks support a curriculum; new tasks must pass acceptance</h2>
+<ul class="check">
+<li><strong>Curriculum:</strong> atomic-skill baselines → single uses (support, push, extended reach) → composed preconditions → the final goal after freezing → the next development round. Subtask start scenarios let each step be practised and measured on its own.</li>
+<li><strong>RSI-WM:</strong> "choose an experiment → gather physical evidence → revise the harness → improve the final task" as a curriculum loop; the world model can be a structured belief or a bounded predictor, with no requirement to train a video world model.</li>
+<li><strong>Data flywheel:</strong> its gains must be measured: valid-trajectory rate, behavioural diversity, cost per valid trajectory, and downstream success at the same data volume; all augmented trajectories are re-validated.</li>
+<li><strong>Generated tasks:</strong> may propose candidates, but must pass <a href="/robo-si-results/infra/acceptance-en.html">task acceptance</a> before admission.</li>
+<li><strong>Extensions:</strong> deformable objects (cloth, bags, ropes) need matching simulation, controllers and predicates; the first tasks do not depend on them.</li>
+</ul>
+</div></section>
+<section class="tinted" id="related"><div class="wrap">
+<p class="kicker">15 · Related work</p>
+<h2>Acknowledging the overlap; contributions still to be shown</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:8em">Work</th><th>What this project borrows or compares</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.tbench.ai/">Terminal-Bench</a></td><td>Borrows goal-driven agent evaluation, isolated containers, and oracle and no-op anchors; here physical execution decides success, with body and controller limits on top</td></tr>
+<tr><td><a href="https://embodiedswe.github.io/">EmbodiedSWE</a></td><td>Already covers long-horizon robot coding-agent solving, cross-embodiment transfer, data augmentation and task generation; this project focuses on budget-limited skill harnesses, tool combinations with no stated affordances, and capability interventions</td></tr>
+<tr><td><a href="https://github.com/RLE-Bench/RLE-Bench">RLE-Bench</a></td><td>Nine task families, including reusable-harness tasks; this project restricts itself to training-free or light adaptation with aligned executors, and examines tool discovery, body interventions and cost curves</td></tr>
+<tr><td><a href="https://arxiv.org/abs/2310.13065">RoboTool</a></td><td>Language models generate control code for creative tool use; this project systematically hides affordances and adds distractors, physical variation and cross-body pairs</td></tr>
+<tr><td><a href="https://github.com/UMass-Embodied-AGI/RoboWits">RoboWits</a></td><td>Bimanual creative problem solving and tool use; this project separately measures the effect of coding and of reusable harnesses</td></tr>
+<tr><td><a href="https://enpire-research.github.io/">ENPIRE</a></td><td>An iterative loop of reset, rollout, verification and policy improvement; this project focuses on frozen executors and limited development cost</td></tr>
+<tr><td><a href="https://research.nvidia.com/labs/gear/aspire/">ASPIRE</a></td><td>Diagnoses and repairs control programs from execution traces and builds a skill library; this project tests whether curricula and skill memory help on unseen bodies and physical properties, counting all development and inference costs</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:14px">A point-by-point comparison with Terminal-Bench and EmbodiedSWE is in <a href="/robo-si-results/infra/glossary-en.html#refs">section 03 of the glossary</a>. Proposed contributions: the effect of coding with matched executors; physical tool discovery without stated affordances; self-modelling under controlled body and world changes; auditable separation of valid solutions from exploits; and curricula and reuse with explicit budgets. Each needs evidence, and none is claimed as a first.</p>
+</div></section>
+<section id="roadmap"><div class="wrap">
+<p class="kicker">16 · Roadmap and scope of v6</p>
+<h2>Where things stand and what comes next</h2>
+<ol class="steps">
+<li><strong>G0 · Reproduction and selection.</strong> The three WBCs, SONIC and N1.7 passed short tests in local simulation; the L2/L3 solvers are implemented.<span class="out">Open: box-level manipulation exists only in the official example.</span></li>
+<li><strong>G1 · Trusted bridge.</strong> The H1 isolated sandbox is implemented: escape probes, sensor geometry, checkpoint restore and grading mode are verified with scripted agents.<span class="out">Open: no LLM agent has been run; the scoring and monitoring to-do items are on the status page.</span></li>
+<li><strong>G2 · Executable tasks.</strong> H1 first: the expert direct family at 10/10 and the stool chain completed 3 times; the light M2 setup solved.<span class="out">Next: reorganise H1 into the three layers, solve carrying the stool, and complete acceptance; build reference experts for the other tasks.</span></li>
+<li><strong>G3 · Minimal comparison.</strong> Run B0–B3 and the baselines; report budget curves, failure attribution and executor coverage; answer RQ1 first, then RQ2 and RQ3.</li>
+<li><strong>G4 · Curriculum and generalisation.</strong> Add body and end-effector changes, frozen skill libraries and mechanism hold-outs, and test the data gains; more bodies and deformable objects follow one at a time.</li>
+</ol>
+<p style="margin-top:18px">Version 6 delivers this proposal in English and Chinese together with the specifications on the other pages. No model has been trained and no formal experiment has been run on this benchmark; public material must keep design goals, implementation coverage and measured results apart.</p>
+</div></section>
+<!-- m2-six-configurations:start --><section id="m2-six-configurations"><h2>M2 · Cooperative long-object transport · Six configurations</h2><p>One M2 family: M2-1 two-G1 light transport; M2-2 G1 + Stretch light transport; M2-3 two-G1 heavy transport; M2-4 mixed-team heavy mechanism selection; M2-5 two-G1 clearing and transport; M2-6 the same obstructed scene with three G1s. The historical fixed reference belongs to M2-1; new runs are tracked separately on the task page. The current implementation uses Stretch 3 SE3/DW3/SG3; the heavy-load boundary remains under investigation.</p><p><a href="m2-task-family-en.html">Full descriptions and acceptance conditions</a> · <a href="../infra/task-m2-en.html#m2-family">Task website</a></p></section><!-- m2-six-configurations:end --></main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · Research proposal v6 · 2026-10-19 · <a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html" hreflang="zh-CN" lang="zh-CN">中文</a> · <a href="/robo-si-results/doc/self-modeling-benchmark-v5-en.html">v5</a> · <a href="/robo-si-results/infra/contribute-en.html">Home</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body>
+</html>

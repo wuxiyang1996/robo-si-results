@@ -1,0 +1,38 @@
+{
+  "body": "S",
+  "simulation_engine": "MuJoCo",
+  "base": "fixed during episode",
+  "adaptations": [
+    "fixed base at declared placement",
+    "original tendon, finger mimic equality and collision exclusions",
+    "original position actuators; explicit effort caps applied at runtime",
+    "MuJoCo 3.14 compatibility: visual mesh shellinertia moved to mesh inertia=shell"
+  ],
+  "source": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch_mujoco/stretch_mujoco/models/stretch.xml",
+  "source_sha256": "e68303cd05f3fabbe5be4a6c873d076b146b320b40cc56ff2ba32306f6359290",
+  "effort_caps": {
+    "left_wheel_vel": 4.0,
+    "right_wheel_vel": 4.0,
+    "lift": 70.0,
+    "arm": 56.0,
+    "wrist_yaw": 1.9,
+    "wrist_pitch": 10.6,
+    "wrist_roll": 4.1,
+    "gripper": 80.0,
+    "head_pan": 1.5,
+    "head_tilt": 1.9
+  },
+  "degenerate_mesh_shell_inertia": [
+    "link_lift_1"
+  ],
+  "object_profile": "P1",
+  "geometry": "convex sector decomposition; gaps retained",
+  "physics_dt": 0.0025,
+  "object_mass": 0.12,
+  "object_com": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mujoco": "3.14.0"
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench（robo-si）的评测规程：以仿真步数和 token 为主预算，按预算点给交付快照评分，成绩的归一化、分层和汇总，回合数、重复会话和置信区间，基线，版本与可复现，防泄露和对外公布的内容。" name="description"/>
+<title>评测规程</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/protocol-en.html">English</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">任务基础设施 · 评测规程</p>
+<h1>成绩要<span class="nm">能比较、能复现</span>，<br/>不被泄露。</h1>
+<p class="lead">这一页规定评测怎么组织、成绩怎么报告：预算口径、按预算点给交付快照评分、分数的归一化和汇总、统计要求、基线、版本与可复现、防泄露和对外公布的内容。评分器本身见<a href="/robo-si-results/infra/verifier-zh.html">评分与验证</a>，agent 在会话中能拿到哪些反馈见<a href="/robo-si-results/infra/sandbox-zh.html#feedback">隔离沙箱第 05 节</a>。</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>目录</h3>
+<ol class="toc">
+<li><a href="#budget">01 预算口径</a></li>
+<li><a href="#snapshots">02 交付快照与按预算点评分</a></li>
+<li><a href="#reporting">03 成绩怎么报告</a></li>
+<li><a href="#stats">04 统计要求</a></li>
+<li><a href="#baselines">05 基线</a></li>
+<li><a href="#versions">06 版本与可复现</a></li>
+<li><a href="#leakage">07 防泄露与对外公布</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="budget"><div class="wrap">
+<p class="kicker">01 · 预算口径</p>
+<h2>主预算用仿真步数和 token，墙钟只作上限</h2>
+<p>“4 小时以上、不设上限”说的是任务的难度；评测时还需要一个能比较的预算口径。墙钟时间受硬件和负载影响很大：H1 在 GPU 被别的任务占用时，每个控制步要 0.67 s，同一个 agent 换一台机器、换一个时段，能做的实验次数就差好几倍。所以：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>预算</th><th>怎么计</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>仿真步数</td><td>环境一侧计数：<code>command</code> 推进的控制步之和，reset 前后都算</td><td><strong>主预算</strong>：决定 agent 能做多少次物理实验</td></tr>
+<tr><td>token</td><td>可信侧代理独立计量的 LLM 输入、输出 token，以及折算的费用</td><td><strong>主预算</strong>：决定 agent 能思考多少</td></tr>
+<tr><td>观测次数</td><td>环境一侧计数</td><td>防止无限制地读传感器</td></tr>
+<tr><td>reset 次数</td><td>开发模式下的上限</td><td>防止靠反复重来代替理解</td></tr>
+<tr><td>墙钟</td><td>启动器计时</td><td>只作上限，防止卡死；不用来比较</td></tr>
+</tbody>
+</table></div>
+<ul class="check" style="margin-top:12px">
+<li>任一主预算用完，开发会话结束。</li>
+<li>所有预算都由环境一侧或可信代理计量，agent 自己报的不算。</li>
+<li>各项额度写进每个任务的任务卡，并注明它们在参考硬件上大致对应的墙钟时间。</li>
+</ul>
+</div></section>
+<section id="snapshots"><div class="wrap">
+<p class="kicker">02 · 交付快照与按预算点评分</p>
+<h2>报告分数随预算怎么变化，而不只是一个最终分</h2>
+<ul class="check">
+<li>开发会话中，可信侧在几个预算点给工作目录拍快照，记下当时的预算用量。预算点按仿真步数和 token 定义，比如参考硬件上大约 4、12、24 小时对应的量。</li>
+<li>每个快照都在评分模式下、在密封的新回合上自动评分（每个回合 3 次，见<a href="#stats">第 04 节</a>）。一次评测因此得到一条“分数—预算”曲线，3 次评测得到 3 条。</li>
+<li>agent 不知道快照在什么时候拍；它只需要随时把当前最好的程序放在约定的入口（见<a href="/robo-si-results/infra/sandbox-zh.html#agent">隔离沙箱第 06 节</a>）。</li>
+<li>EmbodiedSWE 也会给每次提交的快照记下墙钟时间和对话位置；这里改用环境一侧计量的预算。</li>
+</ul>
+</div></section>
+<section class="tinted" id="reporting"><div class="wrap">
+<p class="kicker">03 · 成绩怎么报告</p>
+<h2>每个任务、每一层分开报告，再汇总</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>报告项</th><th>怎么算</th></tr></thead>
+<tbody>
+<tr><td>原始分</td><td>每个评分回合的过程分（进度峰值，3 次评分取平均），按回合平均</td></tr>
+<tr><td>成功率</td><td>每个评分回合是否成功（0 / 1，3 次评分取平均）的平均</td></tr>
+<tr><td>归一化分</td><td>原始分除以参考专家解的分（空操作为 0）。参考解没有覆盖全部阶段的任务，只报原始分</td></tr>
+<tr><td>分层</td><td>第 1、2、3 层分开报告，另给三层等权平均</td></tr>
+<tr><td>跨任务汇总</td><td>每个任务等权：归一化分（没有的用原始分）的平均、成功率的平均；不按回合数加权</td></tr>
+<tr><td>阶段</td><td>每个阶段的平均最好值，看 agent 卡在哪一步</td></tr>
+<tr><td>重复</td><td>3 次评测各自的分数、均值和范围；评分重跑 3 次之间的最大差别；不可复现的回合数</td></tr>
+<tr><td>开销</td><td>仿真步数、token 和费用、观测次数、reset 次数、墙钟</td></tr>
+<tr><td>标记与无效</td><td>被标记的回合数和原因；判无效的回合数</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">所有数字都来自自动评分；每份报告都注明任务版本和评分器版本（<a href="#versions">第 06 节</a>）。</p>
+</div></section>
+<div class="wrap"><div class="card" id="feasibility-reporting"><h3>筛查账本与执行成绩分开</h3><p>按 <code>witnessed_full</code>、<code>screen_pass</code>、<code>unknown</code>、<code>rejected</code> 分别报告数量、总抽样数、预算耗尽和拒绝原因。技能探测与完整执行另列分母，筛查通过不计任务成功或参考满分。自建候选集可按预声明规则筛选；基准预定样本全部保留，未知／失败不能静默移除或换 seed。若报告子集，必须同时给出完整抽样账本、预声明选择规则和各状态数量。原 agent 评测及评分重跑要求继续有效，不意味着先求出每个随机样本的完整参考解。</p><p><a href="/robo-si-results/infra/acceptance-zh.html#screening">验收状态定义</a> · <a href="/robo-si-results/infra/planning/instance-template.json">记录模板</a></p></div></div>
+<section id="stats"><div class="wrap">
+<p class="kicker">04 · 统计要求</p>
+<h2>回合数、重复 3 次和置信区间</h2>
+<ul class="check">
+<li><strong>评分回合：</strong>建议每层至少 10 个密封回合，按任务类型分层抽样。回合太少，得分波动会很大（H1 沙箱的说明里也提到了这一点）。</li>
+<li><strong>评测重复 3 次（硬性要求）：</strong>每个 agent 在每个任务上跑 3 次独立的评测，每次从新的开发会话开始。agent 自身的随机性往往比回合的随机性还大，单次评测代表不了能力。三次的分数都报告，再给均值和范围。</li>
+<li><strong>评分重跑 3 次（硬性要求）：</strong>每个交付快照在同一批密封回合上自动评分 3 次。GPU 上的物理仿真不保证逐位重复，重跑检验评测输出能不能复现：三次的成功判定要一致，单回合得分差在容差内（比如 ≤0.05，具体写进任务卡）。回合得分取三次的平均。</li>
+<li><strong>复现不了怎么办：</strong>三次评分差别超过容差的回合，自动标记为“不可复现”，仍取平均计分；这说明任务或评分器对物理波动不稳健，由维护者修，下个版本自动重评。</li>
+<li><strong>置信区间：</strong>对回合和会话做自助法重采样，给出 95% 置信区间；两个 agent 的区间重叠时，不排先后。</li>
+<li><strong>不挑最好：</strong>评分取平均，评测全部计入，不重跑挑最好。</li>
+</ul>
+<p class="muted" style="margin-top:8px">回合数和容差是建议值，每个任务按自己的方差在任务卡里定下来；重复 3 次是硬性要求。都在评测前冻结。</p>
+</div></section>
+<section class="tinted" id="baselines"><div class="wrap">
+<p class="kicker">05 · 基线</p>
+<h2>除了空操作和参考解，还要有标准 agent 基线</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>基线</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td>空操作</td><td>下锚点，必须得 0</td></tr>
+<tr><td>参考专家解</td><td>上锚点；证明可解、验证评分器</td></tr>
+<tr><td>标准 agent 配置</td><td>固定版本的 coding agent（比如 agent 镜像里可选安装、版本固定的 Claude Code）加默认提示词，在同样的预算下跑。给出难度和区分度的参照，并检验“强 agent 要 4 小时以上”这个假设</td></tr>
+<tr><td>简单脚本基线（可选）</td><td>只用任务提供的技能、不做感知的固定脚本。检验任务是不是靠固定套路就能拿分</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">基线结果随任务版本一起发布，任务改版后重跑。贡献流程里的难度试跑就用标准 agent 配置。</p>
+</div></section>
+<section id="versions"><div class="wrap">
+<p class="kicker">06 · 版本与可复现</p>
+<h2>每个成绩都能追溯到确定的版本</h2>
+<h3>版本号和哈希</h3>
+<ul class="check">
+<li>任务版本 <code>主版本.次版本</code>：会改变评分结果的改动（场景、判据、阈值、权重、监视器规则、仿真设置、执行和感知的延迟）升主版本；只改文档升次版本。</li>
+<li>每个评分结果都记下：任务版本、评分器代码哈希、仿真器版本（如 Genesis 1.4.3）、素材哈希、agent 镜像的内容哈希、硬件，以及（只在可信侧）种子。</li>
+</ul>
+<h3>GPU 上的物理不确定性</h3>
+<p>GPU 上的物理仿真不保证逐位重复。评测时怎么重跑，见<a href="#stats">第 04 节</a>；任务验收时怎么重跑，见<a href="/robo-si-results/infra/acceptance-zh.html#feasibility">任务验收第 03 节</a>。</p>
+<h3>改版后自动重评</h3>
+<ul class="check">
+<li>可信侧保存所有交付快照。任务升主版本后，自动在新版本上重评全部快照；旧成绩保留，并标明版本。</li>
+<li>每个任务维护一份变更记录：改了什么、为什么（比如哪个被标记的回合暴露了什么问题）、对成绩有什么影响。</li>
+</ul>
+</div></section>
+<section class="tinted" id="leakage"><div class="wrap">
+<p class="kicker">07 · 防泄露与对外公布</p>
+<h2>私有材料不出可信侧，对外只公布汇总</h2>
+<h3>公开和私有</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>材料</th><th>公开的开发任务</th><th>私有的评测任务</th></tr></thead>
+<tbody>
+<tr><td>指令、机器人和传感器规格、SDK</td><td>公开</td><td>公开（agent 本来就能拿到）</td></tr>
+<tr><td>任务说明、设计文档</td><td>公开</td><td>只公开目标和类别，不公开要发现什么</td></tr>
+<tr><td>参考专家解、官方轨迹</td><td>可以公开</td><td>私有</td></tr>
+<tr><td>评分器代码、判据阈值、权重、反例集、监视器阈值</td><td>可以公开</td><td>私有</td></tr>
+<tr><td>密封种子</td><td>私有</td><td>私有，每轮评测更换</td></tr>
+<tr><td>任务检查记录、被标记的回合</td><td>只给维护者</td><td>只给维护者</td></tr>
+</tbody>
+</table></div>
+<h3>防止进入训练数据</h3>
+<ul class="check">
+<li>私有材料只放在私有仓库或可信侧，不进任何公开仓库、网页或论文附录。robo-si 现在是私有仓库。</li>
+<li>每个任务文件里放一个 canary 字符串，用来检测训练数据有没有被污染；Terminal-Bench 的任务文件就带有这样的字符串，本地的 Harbor 任务里还没有。</li>
+<li>agent 的网络只放行 LLM API（<a href="/robo-si-results/infra/sandbox-zh.html#iso">隔离沙箱第 03 节</a>），评测时搜不到任务资料。</li>
+</ul>
+<h3>评测结束后对外公布什么</h3>
+<ul class="check">
+<li>公布：每个任务、每一层的原始分、归一化分、成功率、置信区间和开销；阶段平均最好值；被标记和判无效的回合数；任务和评分器版本。</li>
+<li>不公布（私有任务）：逐回合的录像和日志、判据细节、密封种子、交付程序和对话记录。公布这些，下一轮就可以针对评分器过拟合。</li>
+<li>公开的开发任务可以公布逐回合的录像和日志。</li>
+<li>会话中 agent 能拿到哪些反馈、哪些只留在可信侧，见<a href="/robo-si-results/infra/sandbox-zh.html#feedback">隔离沙箱第 05 节</a>。</li>
+</ul>
+</div></section>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · 评测规程 · 2026-10-26 · <a href="/robo-si-results/infra/protocol-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/infra/contribute-zh.html">首页</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body>
+</html>

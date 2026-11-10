@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 761, in main
+    self.trace.close();self.render('final.png');self.writer.close();self.renderer.close()
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 484, in execute
+    if self.body=='G' and self.tuning.get('bridge_place',False):return self.finish_dex3_bridge()
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 598, in finish_dex3_bridge
+    self.move('place',{'right':right,'left':(left[0]+[-.04,.15,.06],left[1])},seconds=12)
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 386, in move
+    if max(residual.values())>.025:raise RuntimeError('grasp_pose_not_reached:'+str(residual))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: grasp_pose_not_reached:{'right': 0.018131152203584043, 'left': 0.040756013575573284}

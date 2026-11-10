@@ -1,0 +1,81 @@
+{
+  "setting": "DF-04-S",
+  "task_success": false,
+  "status": "failed_attempt",
+  "failure": "disk_angular_speed",
+  "simulated_seconds": 160.64249999989016,
+  "wall_seconds": 196.86676072282717,
+  "physics_hz": 400,
+  "trace_hz": 50,
+  "video_fps": 10,
+  "physics_records": 64257,
+  "video_frames": 1608,
+  "peaks": {
+    "speed": 0.0310463807501731,
+    "angular": 0.6955064865528651,
+    "robot": 7.944248360779859,
+    "table": 2.5513905988930308,
+    "local": 4.273055441618823,
+    "self_contact": 0.0,
+    "robot_table": 0.0
+  },
+  "seen_lift": false,
+  "seen_flip": false,
+  "independent_verification": {
+    "report": "verification.json",
+    "replay_matches": true,
+    "task_success": false
+  },
+  "binding": {
+    "body": "S",
+    "simulation_engine": "MuJoCo",
+    "base": "fixed during episode",
+    "adaptations": [
+      "fixed base at declared placement",
+      "original tendon, finger mimic equality and collision exclusions",
+      "original position actuators; explicit effort caps applied at runtime",
+      "MuJoCo 3.14 compatibility: visual mesh shellinertia moved to mesh inertia=shell"
+    ],
+    "source": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch_mujoco/stretch_mujoco/models/stretch.xml",
+    "source_sha256": "e68303cd05f3fabbe5be4a6c873d076b146b320b40cc56ff2ba32306f6359290",
+    "effort_caps": {
+      "left_wheel_vel": 4.0,
+      "right_wheel_vel": 4.0,
+      "lift": 70.0,
+      "arm": 56.0,
+      "wrist_yaw": 1.9,
+      "wrist_pitch": 10.6,
+      "wrist_roll": 4.1,
+      "gripper": 80.0,
+      "head_pan": 1.5,
+      "head_tilt": 1.9
+    },
+    "degenerate_mesh_shell_inertia": [
+      "link_lift_1"
+    ],
+    "object_profile": "P1",
+    "geometry": "solid cylinder",
+    "physics_dt": 0.0025,
+    "object_mass": 0.12,
+    "object_com": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mujoco": "3.14.0"
+  },
+  "policy_state_writes": 0,
+  "object_attachment": false,
+  "source_hashes": {
+    "run.py": "0dccc811342260b0aa8f0ea15cea9a82d324402a05ae027c7ad6f133871ed9b5",
+    "model.py": "790d99b77ff8f08e045705ed5dad1baa5497e83c5f5a2efa12d602b32bed9c4b",
+    "wrench.py": "3619f332040667260483d851a2f3401ac544bac02232e9fdf8dbec8e54c0cbb0",
+    "plan.json": "cb2661795c3c974b0db5fed464df46b2dba081bbdf492b3a66a2d7e486cb319f",
+    "scene.xml": "4e0d1f4c091fe0e23aa1bc9ffe9c62ff98b4fc96135f048d9598101425c23cf9"
+  },
+  "limitations": [
+    "Privileged development expert; no public-agent score",
+    "MuJoCo extension protocol; original Genesis evidence is separate",
+    "No comparison success inferred from a failed or single-body attempt"
+  ]
+}

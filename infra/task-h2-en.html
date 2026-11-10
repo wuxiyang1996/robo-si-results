@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="H2 layer-one closeout: 5/5 full references, 20/20 subtasks, 14/15 repeats, 11/11 integration checks and source evidence." name="description"/><title>H2 Cart-assisted transport · Layer 1 report</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><link href="/robo-si-results/infra/h2-release/report.css" rel="stylesheet"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">Skip to content</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/task-h2-zh.html">中文</a></div></header><aside class="document-notice"><div class="wrap">Historical task design and acceptance notes are retained. Videos are consolidated in the final Nyx 8× galleries; <a href="/robo-si-results/infra/archive-task-h2-en.html">archived original page</a></div></aside><main id="main"><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">One representative video is shown. Additional successes, failures and segment videos remain in the original release; this display selection does not change evidence or scores.</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">Full task details: scene, actions, scoring, evidence and reproduction</a></p><!-- task-detail-jump:end --><section data-layered-task="H2" id="layered-status"><div class="wrap"><h2>Current delivery scope and evidence</h2><p>Layer 1, 20 kg, transport-layout-v2</p><p>Engineering closeout is complete: primary full runs 5/5, standalone subtasks 20/20, all repeats 14/15 and integration checks 11/11. One failure is retained. Reference materials are published.</p><p>Check independent loading alignment, contact margins at turns and the second-passage transition. Human video/stage sign-off, tool-necessity review and second-person reproduction.</p><p><a href="#task-details">Full actions, trajectory and acceptance limits</a></p></div></section><div class="wrap" id="website-completion-status" style="padding-top:18px"><div class="card"><p><span class="pill ok">Complete (declared scope)</span> · <a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Published</a></p><p><strong>H2 · Layer 1, 20 kg, transport-layout-v2</strong> — Engineering closeout is complete: primary full runs 5/5, standalone subtasks 20/20, all repeats 14/15 and integration checks 11/11. One failure is retained. Reference materials are published.</p><p class="small">Formal admission pending. Check independent loading alignment, contact margins at turns and the second-passage transition. Human video/stage sign-off, tool-necessity review and second-person reproduction. <a href="/robo-si-results/infra/status-en.html#completion">All-task completion status</a></p></div></div><div class="hero" id="top"><div class="wrap"><p class="eyebrow">robo-si · H2 · Layer 1 reference report</p><h1>Load the heavy crate onto a dolly,<br/><span class="nm">navigate the passages and deliver.</span></h1><p class="lead">A 20 kg crate, G1 with Dex3 hands, and a 180-second physics budget. Full references, standalone subtasks and current-entry integration checks form an auditable evidence set. First-layer engineering closeout is complete.</p><div class="status-line"><span class="stamp complete">Layer 1 · Completed</span><span class="stamp">Published · Layer 1 reference materials</span><span class="report-note">2026-10-24</span></div><div class="cards"><div class="card"><h3>5 / 5</h3><p>Primary full runs</p></div><div class="card"><h3>20 / 20</h3><p>Standalone subtasks</p></div><div class="card"><h3>14 / 15</h3><p>All full-run repeats</p></div><div class="card"><h3>11 / 11</h3><p>Current integration checks</p></div></div><div class="actions"><a class="primary" href="#videos">Watch full references</a><a href="#repeats">Inspect retained failure</a><a href="#gates">Review validation</a></div><div class="card" id="toc" style="margin-top:24px"><h3>Contents</h3><ol class="toc"><li><a href="#desc">01 Task and scope</a></li><li><a href="#videos">02 Full references and coverage</a></li><li><a href="#subtasks">03 Standalone subtasks</a></li><li><a href="#scoring">04 Scoring</a></li><li><a href="#expert">05 Expert and reproduction</a></li><li><a href="#repeats">06 Repeated runs and retained failure</a></li><li><a href="#shortcuts">07 Shortcuts and tool necessity</a></li><li><a href="#gates">08 Integration and closeout</a></li></ol></div></div></div><section class="tinted" id="desc"><div class="wrap"><p class="kicker">01 · H2</p><h2>Task and scope</h2><h3>Agent-facing goal</h3><div class="instructions">Bring the heavy crate to the green goal beyond two rows of shelves. Leave it upright and at rest on the wheeled dolly for at least two seconds. Objects in the room may be used; actions must execute through the robot joint command interface.</div><p><a href="/robo-si-results/infra/h2-release/evidence/71bd8da502b262-instruction.md">Read the original agent instruction</a></p><div class="table-wrap"><table><thead><tr><th>Item</th><th>Configuration</th></tr></thead><tbody><tr><td>Robot</td><td>Unitree G1 + Dex3</td></tr><tr><td>Crate</td><td>20 kg · 0.70 × 0.70 × 0.90 m</td></tr><tr><td>Time budget</td><td>180 s</td></tr><tr><td>Scope</td><td>Layer 1; transport-layout-v2; R9 and additional layers deferred</td></tr><tr><td>Samples</td><td>seed23 / seed47 / seed71 / corner0 / corner511</td></tr><tr><td>Control and observations</td><td>Privileged reference observations; original joint, torque, collision and trusted-scoring constraints</td></tr></tbody></table></div><h3>Scene ranges (designer/reviewer only)</h3><p>Three interior seeds and two boundary samples cover the declared cohort. Nine dimensions vary robot x/y/yaw, crate x, goal x/y, cart x, loading-lane y and north guide x. Two corners do not exhaust all 512 boundary combinations. Physics and scoring thresholds were not relaxed.</p></div></section><section id="videos"><div class="wrap"><p class="kicker">02 · H2</p><h2>Full references and coverage</h2><p>All five primary cases completed. Original recordings are retained; close views change only the replay camera, with no new physics run or added success.</p><div class="table-wrap"><table><thead><tr><th>Case</th><th>Delivery time</th><th>Score</th><th>Load the dolly</th><th>Pass corridor 1</th><th>Pass corridor 2</th><th>Deliver and settle</th></tr></thead><tbody><tr><td>corner0</td><td>87.58 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>corner511</td><td>83.38 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>seed23</td><td>81.78 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>seed47</td><td>84.02 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>seed71</td><td>74.94 s</td><td><span class="pill ok">1.0</span></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr></tbody></table></div><div class="vgrid"><figure class="vcard"><p class="current-video-link"><a href="/robo-si-results/infra/families/H2.html">View the final delivered Nyx 8× recordings →</a></p><figcaption><div class="vrow"><strong>corner0 · Full task</strong><span class="pill ok">Passed</span></div><div class="vsub">87.58 s · Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/94bd6033965124-record.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/085eea9af2ba97-report.json">Camera provenance</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Compatible playback</a></div><details><summary>Show automatic stage times</summary><ul class="timeline"><li>Move the crate: 7.88 s</li><li>Load the dolly: 16.32 s</li><li>Pass corridor 1: 22.60 s</li><li>Pass corridor 2: 76.58 s</li><li>Deliver and settle: 87.58 s</li></ul></details></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>corner511 · Full task</strong><span class="pill ok">Passed</span></div><div class="vsub">83.38 s · Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/13381931eca5e4-record.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/0e472ff57ff929-report.json">Camera provenance</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Compatible playback</a></div><details><summary>Show automatic stage times</summary><ul class="timeline"><li>Move the crate: 7.08 s</li><li>Load the dolly: 14.84 s</li><li>Pass corridor 1: 21.20 s</li><li>Pass corridor 2: 72.34 s</li><li>Deliver and settle: 83.38 s</li></ul></details></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed23 · Full task</strong><span class="pill ok">Passed</span></div><div class="vsub">81.78 s · Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/6550b8a18459fe-record.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/e87891338b0135-report.json">Camera provenance</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Compatible playback</a></div><details><summary>Show automatic stage times</summary><ul class="timeline"><li>Move the crate: 8.48 s</li><li>Load the dolly: 17.52 s</li><li>Pass corridor 1: 23.98 s</li><li>Pass corridor 2: 72.54 s</li><li>Deliver and settle: 81.78 s</li></ul></details></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed47 · Full task</strong><span class="pill ok">Passed</span></div><div class="vsub">84.02 s · Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/addde0e99e51cb-record.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/814d2256b37af4-report.json">Camera provenance</a></div><details><summary>Show automatic stage times</summary><ul class="timeline"><li>Move the crate: 8.34 s</li><li>Load the dolly: 19.10 s</li><li>Pass corridor 1: 26.36 s</li><li>Pass corridor 2: 74.44 s</li><li>Deliver and settle: 84.02 s</li></ul></details></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed71 · Full task</strong><span class="pill ok">Passed</span></div><div class="vsub">74.94 s · Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/b022c8694b3d78-record.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/2397cfe8ab1288-report.json">Camera provenance</a></div><details><summary>Show automatic stage times</summary><ul class="timeline"><li>Move the crate: 8.14 s</li><li>Load the dolly: 15.56 s</li><li>Pass corridor 1: 21.76 s</li><li>Pass corridor 2: 65.60 s</li><li>Deliver and settle: 74.94 s</li></ul></details></figcaption></figure></div></div></section><section class="tinted" id="subtasks"><div class="wrap"><p class="kicker">03 · H2</p><h2>Standalone subtasks</h2><p>Twenty checks start independently from sealed solver checkpoints, execute joint commands, and reach their target states again. They are not clips of full runs and do not count as additional full-task successes.</p><div class="subtasks"><details open=""><summary>corner0 · 4/4 passed</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>corner0 · Load the dolly</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/4c53bc13d8eb71-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/2315daefdb00b6-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>corner0 · Pass corridor 1</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/99e0eb7db20a1c-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/a2f3d6ae554ced-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>corner0 · Pass corridor 2</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/97e220067aa54c-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/e88f651e48deea-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>corner0 · Deliver and settle</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/488d6393da836b-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/7053b43607651b-report.json">Camera provenance</a></div></figcaption></figure></div></details><details><summary>corner511 · 4/4 passed</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>corner511 · Load the dolly</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/ccb8e375f40e84-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/4bca979f5e3697-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>corner511 · Pass corridor 1</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/b44087ddd1b406-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/5193ba09a94d11-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>corner511 · Pass corridor 2</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/6145bc61aa9b75-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/729927db4baa82-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>corner511 · Deliver and settle</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/1983954b450a3c-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/132614ee779456-report.json">Camera provenance</a></div></figcaption></figure></div></details><details><summary>seed23 · 4/4 passed</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed23 · Load the dolly</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/f5b56e4d51ee8b-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/59496149f9e242-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed23 · Pass corridor 1</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/f6d61456e40b59-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/626ffe24e5afe0-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed23 · Pass corridor 2</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/4e819b7a39d65f-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/69f42c75fce41b-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed23 · Deliver and settle</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/dc5d914c000106-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/8c60cf8ef79d66-report.json">Camera provenance</a></div></figcaption></figure></div></details><details><summary>seed47 · 4/4 passed</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed47 · Load the dolly</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/428e7c29a9eec9-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/b74ba8e5ae8c96-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed47 · Pass corridor 1</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/02d9aacc8af036-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/ef7a1058796218-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed47 · Pass corridor 2</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/dad8226db38842-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/0942d1c0e0f142-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed47 · Deliver and settle</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/1e5a15225922da-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/dbc36fc4ae73cb-report.json">Camera provenance</a></div></figcaption></figure></div></details><details><summary>seed71 · 4/4 passed</summary><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed71 · Load the dolly</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/e163a89df49d5e-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/5ea3981a6ea47f-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed71 · Pass corridor 1</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/493a75f5d17073-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/04882f8ff95e12-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed71 · Pass corridor 2</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/593fa41fb46341-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/722d02c3b1012a-report.json">Camera provenance</a></div></figcaption></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed71 · Deliver and settle</strong><span class="pill ok">Passed</span></div><div class="vsub">Physical record · close view from recorded states</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/31efaa6344c5ce-subtask.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a> · <a href="/robo-si-results/infra/h2-release/evidence/4d5a944e1d0bd1-report.json">Camera provenance</a></div></figcaption></figure></div></details></div></div></section><section id="scoring"><div class="wrap"><p class="kicker">04 · H2</p><h2>Scoring</h2><div class="table-wrap"><table><thead><tr><th>Stage</th><th>Weight</th><th>Core predicate</th></tr></thead><tbody><tr><td>Move the crate<br/><code>crate_pushed</code></td><td>5%</td><td>Robot contact moves the crate at least 5 cm, with ≥5 N contact for ≥0.5 s.</td></tr><tr><td>Load the dolly<br/><code>cargo_loaded</code></td><td>25%</td><td>The crate satisfies on-dolly geometry and support, with 0.5 s of riding.</td></tr><tr><td>Pass corridor 1<br/><code>through_passage_1</code></td><td>15%</td><td>The loaded crate passes fully beyond rack row 1 while riding, for 0.5 s.</td></tr><tr><td>Pass corridor 2<br/><code>through_passage_2</code></td><td>20%</td><td>The loaded crate passes rack row 2 along the route, riding for 0.5 s.</td></tr><tr><td>Deliver and settle<br/><code>delivered</code></td><td>35%</td><td>The crate is inside the goal, upright, stationary and supported by the dolly for 2 s.</td></tr></tbody></table></div><p>Process score and binary success are reported separately. Full delivery requires the stage chain, task-core success and no failure. The verifier handles physics anomalies, tampering and monitor alarms. A no-op scores zero; escape probes should be VOID. <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/h2-release/evidence/a506f28490e67e-scoring.py">Full scoring implementation</a></p></div></section><section class="tinted" id="expert"><div class="wrap"><p class="kicker">05 · H2</p><h2>Expert and reproduction</h2><p>The reference approaches and establishes hand contact, loads the dolly, passes the first corridor, repositions for the turn and second corridor, then settles in the goal. The controller keeps the feet centered until clear of the loading rails and prevents cargo-avoidance commands from undoing curb clearance.</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/h2-release/evidence/ac42a07f5174ee-run_grasp_push.py">Reference controller</a> · <a href="/robo-si-results/infra/h2-release/evidence/c483b835106b8e-reproduction-plan.json">Frozen reproduction plan</a> · <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/h2-release/evidence/89d8e71444f2a4-reproduce.py">Original reproduction script (requires the complete packet tree)</a></p><div class="wide-note">Fresh-directory reproduction on the author’s machine passed 5/5. This is distinct from second-person reproduction. Original physical evidence, integrated sources and this report preserve separate provenance. <a href="/robo-si-results/infra/h2-release/evidence/76f80373838f59-reproduction.json">JSON</a></div><h3>Canonical entry: select layer 1 explicitly</h3><pre class="codeblock">python -m infra.sandbox.pipeline humanoid/g1_cart_assisted_transport --tier all
+
+python -m humanoid.g1_cart_assisted_transport.sandbox.trusted.record_reference --out &lt;fresh-output-directory&gt; --randomize --seed 23 --layer 1 --scene default --effort-limits hardware --distribution transport-layout-v2</pre><p>Run from the repository root and use the machine’s established simulator queue. Full-reference reproduction and interface/container validation are separate checks.</p><h3>Sealed offline package</h3><p>About 1.24 GB, 1,894 files; CRC and per-file SHA-256 checks passed. Location and checksum:</p><pre class="codeblock">C:\Users\wuxiy\rsi_releases\h2_closeout_20261024\h2-layer1-closeout-20261024.zip</pre><p class="hash">SHA-256: ba266038efda823eb5e841d2b3a39d8ae35160633e3caf498ee8d6f7e7b6c953</p><p><a href="/robo-si-results/infra/h2-release/evidence/ca40961e39eb73-summary.json">Closeout and archive metadata</a></p></div></section><section id="repeats"><div class="wrap"><p class="kicker">06 · H2</p><h2>Repeated runs and retained failure</h2><p>Each layout was run from a fresh start three times: 14/15 successes overall. These are not three independent agent sessions.</p><div class="table-wrap"><table><thead><tr><th>Case</th><th>1</th><th>2</th><th>3</th><th>Successful delivery range</th></tr></thead><tbody><tr><td>corner0</td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td>85.44–91.54 s</td></tr><tr><td>corner511</td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td>77.40–92.04 s</td></tr><tr><td>seed23</td><td><span class="pill ok">Pass</span></td><td><span class="pill no">Fail</span></td><td><span class="pill ok">Pass</span></td><td>81.78–83.04 s</td></tr><tr><td>seed47</td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td>84.02–89.50 s</td></tr><tr><td>seed71</td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td>74.94–89.32 s</td></tr></tbody></table></div><h3>Retained failure: seed23 · repeat 2</h3><div class="failure-layout"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><strong>seed23 · repeat 2 · Full task</strong><span class="pill no">Failed · retained</span></div><div class="vsub">49.60 s · Physical record</div><div class="vmeta"><a href="/robo-si-results/infra/h2-release/evidence/7f71d318ef70a2-record.json">Original report</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Original video</a></div><details><summary>Show automatic stage times</summary><ul class="timeline"><li>Move the crate: 8.40 s</li><li>Load the dolly: 16.26 s</li><li>Pass corridor 1: 23.20 s</li><li>Pass corridor 2: not reached</li><li>Deliver and settle: not reached</li></ul></details></figcaption></figure><div><p>At 49.60 s the “cargo stuck while pushing” guard stopped the run, with process score 0.4758. Loading and passage 1 completed; passage 2 and delivery did not.</p><p>The automatic diagnosis classifies it as a controller stall on the northbound leg; the task core reported no physical failure and monitors raised no alarm. It remains a failed run in the denominator.</p><p><a href="/robo-si-results/infra/h2-release/evidence/2e893267812eb5-h2-seed23-repeat2-failure-analysis.json">Failure diagnosis</a> · <a href="/robo-si-results/infra/h2-release/evidence/9621d1c75d0c53-campaign-audit.json">All repeats and stage times</a></p><div class="wide-note">“First-layer task completed” describes the engineering delivery scope, not a claim that every repeat succeeded.</div></div></div></div></section><section class="tinted" id="shortcuts"><div class="wrap"><p class="kicker">07 · H2</p><h2>Shortcuts and tool necessity</h2><p>Fourteen direct-push, tool-removal and local grasp/traction records are retained. Four completed checks match the official seed23 layout; none of the tested attempts physically delivered the crate.</p><div class="wide-note">Failure of finitely many strategies does not prove that no alternative exists. The drag check had only 0.24 s of hand contact, with no contact samples after the retreat command; sustained dragging was not validated. Human tool-necessity classification remains unsigned.</div><div class="table-wrap"><table><thead><tr><th>Record</th><th>Distribution</th><th>Physical delivery</th><th>Stop reason</th></tr></thead><tbody><tr><td><a href="/robo-si-results/infra/h2-release/evidence/916e764ac0e6f8-probe.json">direct-budget180-height60-20261024-1</a></td><td>transport-pose-v1</td><td>No delivery</td><td>RuntimeError('cargo stuck while pushing')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/23a3bc8cbf87f5-probe.json">direct-continuous180-height60-20261024-1</a></td><td>transport-pose-v1</td><td>No delivery</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/f35ee2c0942350-probe.json">direct-crouch-height60-20261024-1</a></td><td>transport-pose-v1</td><td>No delivery</td><td>RuntimeError('push leg timeout')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/48290a4702fea2-probe.json">layout2-direct180-20261024-1</a></td><td>transport-layout-v2</td><td>No delivery</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/4cd9033f161ff2-probe.json">layout2-drag180-20261024-1</a></td><td>transport-layout-v2</td><td>No delivery</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/08c5eab815a683-probe.json">layout2-no-cart-20261024-1</a></td><td>transport-layout-v2</td><td>No delivery</td><td>task_failed</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/f7a76498e01526-probe.json">layout2-no-rails-20261024-1</a></td><td>transport-layout-v2</td><td>No delivery</td><td>RuntimeError('push leg timeout')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/f0fc3626851b9a-probe.json">layout2-no-rails-continuous180-20261024-2</a></td><td>transport-layout-v2</td><td>No delivery</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/b392d05015f504-probe.json">local-drag180-20261024-1</a></td><td>transport-pose-v1</td><td>No delivery</td><td>task_failed</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/753107395ef7aa-probe.json">local-drag180-20261024-2</a></td><td>transport-pose-v1</td><td>No delivery</td><td>duration_limit</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/9737b1f8c7ef27-probe.json">no-both-height60-20261024-1</a></td><td>transport-pose-v1</td><td>No delivery</td><td>RuntimeError('push leg timeout')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/515b542d3862a6-probe.json">no-cart-height60-20261024-1</a></td><td>transport-pose-v1</td><td>No delivery</td><td>RuntimeError('cargo stuck while pushing')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/1511015bbe64ef-probe.json">no-cart-height64-20261024-1</a></td><td>transport-pose-v1</td><td>No delivery</td><td>RuntimeError('cargo stuck while pushing')</td></tr><tr><td><a href="/robo-si-results/infra/h2-release/evidence/30ef81f4503b91-probe.json">no-rails-height60-20261024-1</a></td><td>transport-pose-v1</td><td>No delivery</td><td>RuntimeError('push leg timeout')</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/h2-release/evidence/2b6d00487b7e42-readiness.json">Original scope audit (predates this integration)</a></p></div></section><section id="gates"><div class="wrap"><p class="kicker">08 · H2</p><h2>Integration and closeout</h2><p>The fresh canonical pipeline passed 11/11 checks on 2026-10-24: 123 unit tests, 44 escape probes, development/container sensor interfaces, two grading episodes, and their independent record checks.</p><div class="table-wrap"><table><thead><tr><th>Check</th><th>Tier</th><th>Result</th><th>Wall time</th></tr></thead><tbody><tr><td>sandbox_tests</td><td>cpu</td><td><span class="pill ok">Passed</span></td><td>91.6 s</td></tr><tr><td>task_tests</td><td>cpu</td><td><span class="pill ok">Passed</span></td><td>5.3 s</td></tr><tr><td>admission_record</td><td>cpu</td><td><span class="pill ok">Passed</span></td><td>1.5 s</td></tr><tr><td>dev_hello</td><td>gpu</td><td><span class="pill ok">Passed</span></td><td>93.2 s</td></tr><tr><td>dev_hello_completed</td><td>gpu</td><td><span class="pill ok">Passed</span></td><td>2.9 s</td></tr><tr><td>escape_probes</td><td>container</td><td><span class="pill ok">Passed</span></td><td>62.1 s</td></tr><tr><td>escape_probes_completed</td><td>container</td><td><span class="pill ok">Passed</span></td><td>2.9 s</td></tr><tr><td>eval_hello</td><td>container</td><td><span class="pill ok">Passed</span></td><td>66.2 s</td></tr><tr><td>eval_hello_completed</td><td>container</td><td><span class="pill ok">Passed</span></td><td>2.8 s</td></tr><tr><td>grade_noop</td><td>container</td><td><span class="pill ok">Passed</span></td><td>64.3 s</td></tr><tr><td>grade_noop_completed</td><td>container</td><td><span class="pill ok">Passed</span></td><td>2.7 s</td></tr></tbody></table></div><p>No-op checks expect score zero and escape probes expect VOID. A nonzero launcher exit alone is not a failure; independent completion checks require clean agent/worker exits, a valid request chain and no internal errors. <a href="/robo-si-results/infra/h2-release/evidence/006db60405fec8-20261024-093441-closeout-all.json">Full pipeline record</a></p><h3>Closeout and follow-ups</h3><div class="table-wrap"><table><thead><tr><th>Item</th><th>Status</th><th>Notes</th></tr></thead><tbody><tr><td>First-layer engineering closeout</td><td>Completed</td><td>Canonical entry synchronized; full pipeline and package checks passed</td></tr><tr><td>Source and resource consistency</td><td>Passed</td><td>43 reference source files aligned; 144 dependency/resource hashes verified</td></tr><tr><td>Coverage and repeats</td><td>5/5 · 20/20 · 14/15</td><td>Declared first-layer cohort; failure retained; boundaries not exhaustive</td></tr><tr><td>Human stage, video and shortcut review</td><td>Follow-up</td><td>No signatures automatically filled</td></tr><tr><td>Second-person reproduction</td><td>Follow-up</td><td>Author-machine 5/5 reported separately</td></tr><tr><td>R9 / additional layers</td><td>Deferred</td><td>Not certified; outside this closeout scope</td></tr><tr><td>Remote publication</td><td>Reference materials published</td><td><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">GitHub Release</a> · Full evidence and offline review packets</td></tr><tr><td>Formal admission</td><td><code>admitted=false</code></td><td>Recorded separately from engineering completion</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/h2-release/evidence/4770448bf64f27-review_record.json">Original unsigned human review form</a> · <a href="/robo-si-results/infra/h2-release/evidence-manifest.json">Page evidence and SHA-256 manifest</a></p><p class="report-note">This report follows the structure and visual conventions of the published H4, H5 and tabletop task reports. Report generation added no physical successes, changed no original scores, and publishes the reference materials with author authorization. Unpublished flags inside sealed evidence are historical snapshots; this release does not certify human sign-off or formal admission.</p></div></section><section id="publication"><div class="wrap"><h2>Release and reproduction materials</h2><p>Download and extract the review packet, then open index.html for bilingual reports, videos and failure analysis. The full packet additionally contains the unchanged closeout source and physical-evidence archive; see its README.txt for environment and reproduction commands.</p><p>The 5/5 author-host reproductions are not independent second-person reproductions. All repeats are 14/15; the failed second repeat of seed 23 is retained. No tested tool-necessity probe delivered, which is not an exhaustive impossibility proof.</p><p><a class="btn primary" href="https://github.com/wuxiyang1996/robo-si/releases/tag/h2-layer1-20261024">GitHub Release · H2</a> · <a href="/robo-si-results/infra/h2-release/author-authorization.json">Publication scope and authorization</a></p></div></section><section id="reference-designs"><div class="wrap"><h2>Reference executions and designs</h2><p>Scoped execution evidence exists; see the design, actions, support, trajectory mapping and reproduction sources.</p><p><a href="/robo-si-results/infra/reference-designs/H2.html">Reference executions and designs</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>Task specification and evidence</h2><p class="detail-nav"><a href="#detail-scope">Scope and scene</a> · <a href="#detail-interfaces">Observations, actions and interfaces</a> · <a href="#detail-planning">High-level goals and low-level actions</a> · <a href="#detail-trajectory">Trajectory and state correspondence</a> · <a href="#detail-scoring">Scoring and success criteria</a> · <a href="#detail-evidence">Representative evidence and review</a> · <a href="#detail-sandbox">Sandbox validation</a> · <a href="#detail-reproduce">Download and reproduce</a> · <a href="#detail-limits">Acceptance limits and remaining work</a></p><article id="detail-scope"><h3>Scope and scene</h3><p>Layer 1, 20 kg, transport-layout-v2</p><p>Engineering closeout is complete: primary full runs 5/5, standalone subtasks 20/20, all repeats 14/15 and integration checks 11/11. One failure is retained. Reference materials are published.</p></article><article id="detail-interfaces"><h3>Observations, actions and interfaces</h3><p>Privileged reference state and public-agent permissions are separate; this task’s SDK and instructions define the boundary.</p><p><a href="/robo-si-results/humanoid/g1_cart_assisted_transport/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_cart_assisted_transport/sandbox/agent_sdk">Agent SDK</a></p></article><article id="detail-planning"><h3>High-level goals and low-level actions</h3><p>The detailed action specifications below are the original Chinese source. IDs, contact requirements, recorded times and review status are retained without changing their interpretation.</p><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>对准装载入口</td>
+<td>H2.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>装载货箱</td>
+<td>H2.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>通过第一通道</td>
+<td>H2.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>转向并通过第二通道</td>
+<td>H2.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>停放交付</td>
+<td>H2.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>20 kg 发布配置的箱、轨道和车存在</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>推力方向与装载轨道对齐</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>货箱稳定在车上</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>机器人、车和货箱完全通过第一通道</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>组合体完全通过第二通道</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>货箱在目标内受车支撑、释放稳定</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>Trajectory and state correspondence</h3><p>The detailed action specifications below are the original Chinese source. IDs, contact requirements, recorded times and review status are retained without changing their interpretation.</p><details><summary>Ordered actions, contacts and trajectory events</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>H2.K01 · 站位与货箱接触面选择</h5>
+<p>入口：20 kg 发布配置的箱、轨道和车存在。出口：推力方向与装载轨道对齐。</p>
+<p>局部检查：机器人可达推点、脚不跨入危险轨缘、可实现推力。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K01.A01</td>
+<td>站稳并绕到装载推点</td>
+<td>双足→地面；箱→原支撑</td>
+<td>机器人与货箱距离</td>
+<td>e0001: episode [1.0199992656707764, 1.0199992656707764] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K01.A02</td>
+<td>面对把手接近</td>
+<td>足→地面；箱仍受支撑</td>
+<td>推向、站位和间隙</td>
+<td>e0002: episode [5.480077743530273, 5.480077743530273] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K01.A03</td>
+<td>将双拳接触把手</td>
+<td>手→箱把手</td>
+<td>接触距离与受力</td>
+<td>e0003: episode [7.120115280151367, 7.120115280151367] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H2.K02 · 接触推送和车体对准</h5>
+<p>入口：箱体对准轨道，车具备承接位置。出口：货箱稳定在车上。</p>
+<p>局部检查：轨道到车面的高度连续、货箱重心与车体支撑有效。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K02.A01</td>
+<td>沿装载方向建立推力</td>
+<td>手→箱；原支撑承重</td>
+<td>箱位移、姿态与接触</td>
+<td>e0002: episode [5.480077743530273, 5.480077743530273] s; e0003: episode [7.120115280151367, 7.120115280151367] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K02.A02</td>
+<td>持续推动箱体进入车面</td>
+<td>原支撑→车面</td>
+<td>箱与车相对位置、支撑力</td>
+<td>e0004: episode [16.22028160095215, 16.22028160095215] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K02.A03</td>
+<td>保持接触并转入第一通道</td>
+<td>车面持续承重</td>
+<td>装载完成后的控制连续性</td>
+<td>e0005: episode [16.22028160095215, 16.22028160095215] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H2.K03 · 短段推车与转向</h5>
+<p>入口：货箱受车支撑、推点可保持。出口：机器人、车和货箱完全通过第一通道。</p>
+<p>局部检查：组合扫掠体与通道边界、轮接触、箱体滑移。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K03.A01</td>
+<td>保持推点沿第一通道推进</td>
+<td>箱→车面→轮地</td>
+<td>货箱高度及通道间隙</td>
+<td>e0005: episode [16.22028160095215, 16.22028160095215] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K03.A02</td>
+<td>监视车箱相对姿态并修正推向</td>
+<td>手推箱；轮地滚动</td>
+<td>偏航、车箱位姿</td>
+<td>e0006: episode [27.078458786010742, 27.078458786010742] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K03.A03</td>
+<td>结束该直段、准备换侧站位</td>
+<td>车面独立承重</td>
+<td>停车和换侧净空</td>
+<td>e0007: episode [27.078458786010742, 27.078458786010742] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H2.K04 · 重选站位、分段转弯和修正</h5>
+<p>入口：组合体通过第一通道且仍稳定。出口：组合体完全通过第二通道。</p>
+<p>局部检查：转角配置空间及轨尾足部净空；路线连通不只看中心线。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K04.A01</td>
+<td>退出推点并绕到侧面</td>
+<td>车面承重；足→地面</td>
+<td>绕行路径及避碰</td>
+<td>e0007: episode [27.078458786010742, 27.078458786010742] s; e0011: episode [49.6814079284668, 49.6814079284668] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K04.A02</td>
+<td>重新对准把手后沿中间通道推动</td>
+<td>手→把手；车面承重</td>
+<td>推点距离、箱姿态</td>
+<td>e0008: episode [39.19916915893555, 39.19916915893555] s; e0009: episode [40.59946823120117, 40.59946823120117] s; e0010: episode [49.6814079284668, 49.6814079284668] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K04.A03</td>
+<td>再次换侧、对准第二通道并推进</td>
+<td>车面承重、轮地滚动</td>
+<td>转向后路径与箱体稳定</td>
+<td>e0007: episode [27.078458786010742, 27.078458786010742] s; e0011: episode [49.6814079284668, 49.6814079284668] s; e0014: episode [84.07343292236328, 84.07343292236328] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H2.K05 · 减速、对准、停止接触</h5>
+<p>入口：车载货物已进入目标附近。出口：货箱在目标内受车支撑、释放稳定。</p>
+<p>局部检查：按原判定检查完整边界和驻留；不额外要求卸货。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K05.A01</td>
+<td>推进至目标区并减速</td>
+<td>手推箱；车面承重</td>
+<td>目标包含、箱速度</td>
+<td>e0014: episode [84.07343292236328, 84.07343292236328] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K05.A02</td>
+<td>后退并侧移退出接触</td>
+<td>车面独立承重</td>
+<td>机器人与货箱分离</td>
+<td>e0015: episode [84.07343292236328, 84.07343292236328] s; e0016: episode [84.6930923461914, 84.6930923461914] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K05.A03</td>
+<td>在释放状态保持并确认交付</td>
+<td>车面→车轮→地面</td>
+<td>目标内驻留与稳定</td>
+<td>e0015: episode [84.07343292236328, 84.07343292236328] s; e0024: episode [84.07343292236328, 87.55152130126953] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>Scoring and success criteria</h3><p>Original task scoring and frozen reference verdicts remain authoritative. Plans, skill expansion and event mappings earn no additional task credit. Proposed contract scoring is not the current implementation. A full-run score cannot be transferred to feasibility screening or a sandbox smoke check.</p><p>Final key-state criterion (original source): 货箱在目标内受车支撑、释放稳定</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_cart_assisted_transport/task_spec.py">原任务判据源码 / Original task criteria</a></p></article><article id="detail-evidence"><h3>Representative evidence and review</h3><p>见证：<strong>corner0</strong>。范围：第一层，20 kg，transport-layout-v2。</p>
+<p>第一层工程收尾已完成：主批次 5/5、独立子任务 20/20、全部重复 14/15，集成检查 11/11；保留一次失败。参考资料已发布。</p>
+<p><a href="/robo-si-results/infra/planning/skill-evidence/sources/94bd6033965124d6599e443b0f02c2f5cd2fd7ff6cffeb92147cb255b69dfdc2.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/H2.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>Sandbox validation</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>These checks exercise startup, sensors and actions, not complete task success. WSL on the same machine is not independent-machine reproduction.</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/H2/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>Download and reproduce</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/51a01f83404dc4afae5e21d4f528ff5dc4b03af1/releases/H2/layer1-20261024/h2-layer1-20261024.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: 9ee0816cc9e495e15cfc1c1735509db0ed66755b9bff7fcc0ee0012af9b9b6ed</p><p>Private repository access is required. Reference packets preserve historical configurations and entrypoints; the current sandbox workspace supplies runtime assets. Install the documented environment and run the sandbox smoke example, then use the frozen reference entrypoint for reproduction. Smoke success is not a full expert replay.</p><p>Check this task’s entrypoint without running physics, then follow the linked environment and agent-delivery instructions. Replace historical machine-specific paths in the README; the sandbox table above is the current validation status.</p><pre><code>python -m infra.sandbox.inventory check --task H2
+python -m humanoid.g1_cart_assisted_transport.sandbox.launch --help</code></pre><p><a href="/robo-si-results/humanoid/g1_cart_assisted_transport/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>Acceptance limits and remaining work</h3><p>Check independent loading alignment, contact margins at turns and the second-passage transition. Human video/stage sign-off, tool-necessity review and second-person reproduction.</p><p>The joint review of the new action-to-trajectory mapping is pending. Event candidates do not certify exact skill boundaries; unresolved local clocks and summary-only spans remain visible in the table.</p><p>Random instances retain four states: complete success evidence, feasibility-screened, unknown, or failed checks. Scoped representative witnesses and mappings between representations are required, not full solutions for every random instance. Page completion does not infer formal admission, human sign-off or independent-machine validation. New physics runs in this update: 0.</p><p><a href="/robo-si-results/infra/reference-designs/H2.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main><footer><div class="wrap">robo-si · H2 · 2026-10-24 · First-layer engineering complete; formal admission remains separate · <a href="/robo-si-results/infra/task-h2-zh.html">中文</a></div></footer><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body></html>

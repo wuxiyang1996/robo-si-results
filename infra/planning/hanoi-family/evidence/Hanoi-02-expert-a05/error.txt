@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/run.py", line 146, in main
+    else:expert.run();reason='task_completed' if env.status['success'] else 'candidate_returned_without_success'
+         ^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/controller.py", line 160, in run
+    self.tool_move(tool+np.array([-.18,0,.20]))
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/controller.py", line 149, in tool_move
+    self.move(np.asarray(pos)-wrist_rotation@relative,wrist_rotation,seconds)
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/controller.py", line 77, in move
+    self.q=start+s*(target-start);self.command(self.q)
+                                  ^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si-hanoi-probe/hanoi_family/controller.py", line 68, in command
+    if self.m.rod_obstruction_seconds>.10:raise GuardFailure('robot_link_obstructed_by_rod')
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+hanoi_family.controller.GuardFailure: robot_link_obstructed_by_rod

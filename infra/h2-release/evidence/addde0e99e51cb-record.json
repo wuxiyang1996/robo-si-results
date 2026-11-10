@@ -1,0 +1,576 @@
+{
+ "scene": "default",
+ "task_config": {
+  "difficulty_layer": 1,
+  "asset_visuals": true,
+  "dock": "rails",
+  "rail_frictionloss": 0.02,
+  "deck_roller_frictionloss": 0.02,
+  "lane_guides": true,
+  "guide_north_x": 6.28078324,
+  "box_mass": 20.0,
+  "box_size": [
+   0.7,
+   0.7,
+   0.9
+  ],
+  "box_friction": 0.5,
+  "box_handholds": false,
+  "box_handles": true,
+  "box_handle_shape": "block",
+  "cart_mass": 12.0,
+  "cart_handle_mass": 1.0,
+  "wheel_mass": 0.5,
+  "wheel_friction": 0.055,
+  "wheel_damping": 0.002,
+  "wheel_frictionloss": 0.06,
+  "wheel_armature": 1e-05,
+  "deck_friction": 0.12,
+  "ground_friction": 0.03,
+  "passage_width": 1.5,
+  "dwell": 2.0,
+  "timeout": 180.0,
+  "collision_limit": 800.0,
+  "cart_payload_limit": 40.0,
+  "cart_pos": [
+   3.77941419,
+   -0.77157119,
+   0.015
+  ],
+  "cart_size": [
+   0.8,
+   0.8,
+   0.01
+  ],
+  "room_length": 10.5,
+  "goal": [
+   9.48582287,
+   0.76642602
+  ],
+  "goal_size": [
+   1.4,
+   1.4
+  ],
+  "box_xy": [
+   1.89492444,
+   -0.77157119
+  ],
+  "box_on_floor": true
+ },
+ "sample_spec": {
+  "distribution": "transport-layout-v2",
+  "split": "development",
+  "seed": 47,
+  "episode": 0,
+  "corner": null,
+  "task_config": {
+   "difficulty_layer": 1,
+   "asset_visuals": true,
+   "dock": "rails",
+   "rail_frictionloss": 0.02,
+   "deck_roller_frictionloss": 0.02,
+   "lane_guides": true,
+   "guide_north_x": 6.28078324,
+   "box_mass": 20.0,
+   "box_size": [
+    0.7,
+    0.7,
+    0.9
+   ],
+   "box_friction": 0.5,
+   "box_handholds": false,
+   "box_handles": true,
+   "box_handle_shape": "block",
+   "cart_mass": 12.0,
+   "cart_handle_mass": 1.0,
+   "wheel_mass": 0.5,
+   "wheel_friction": 0.055,
+   "wheel_damping": 0.002,
+   "wheel_frictionloss": 0.06,
+   "wheel_armature": 1e-05,
+   "deck_friction": 0.12,
+   "ground_friction": 0.03,
+   "passage_width": 1.5,
+   "dwell": 2.0,
+   "timeout": 180.0,
+   "collision_limit": 800.0,
+   "cart_payload_limit": 40.0,
+   "cart_pos": [
+    3.77941419,
+    -0.77157119,
+    0.015
+   ],
+   "cart_size": [
+    0.8,
+    0.8,
+    0.01
+   ],
+   "room_length": 10.5,
+   "goal": [
+    9.48582287,
+    0.76642602
+   ],
+   "goal_size": [
+    1.4,
+    1.4
+   ],
+   "box_xy": [
+    1.89492444,
+    -0.77157119
+   ],
+   "box_on_floor": true
+  },
+  "robot_pose": [
+   0.88011986,
+   -0.03470449,
+   0.06022836
+  ],
+  "draws": {
+   "robot_x": 0.88011986,
+   "robot_y": -0.03470449,
+   "robot_yaw": 0.06022836,
+   "box_x": 1.89492444,
+   "goal_x": 9.48582287,
+   "goal_y": 0.76642602,
+   "cart_x": 3.77941419,
+   "loading_y": -0.77157119,
+   "guide_north_x": 6.28078324
+  },
+  "rejected": 0
+ },
+ "command_tape": {
+  "schema": "trusted-command-tape/1",
+  "control_hz": 50,
+  "commands": 4201,
+  "sha256": "3927c9190ee4465874bb466ef4ef1e2eb3d04ca7bcd963d1fe9c5e7ddcce1239"
+ },
+ "effort_limits": "hardware",
+ "expert": "solution\\floor_push\\run_grasp_push.py",
+ "expert_argv": [
+  "--out",
+  "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_cart_assisted_transport\\sandbox\\runs\\reference\\resume-curb-guard-H2-layer1-seed47-20261024-1\\oracle",
+  "--video"
+ ],
+ "expert_sources_sha256": {
+  "h2/solution/floor_push/run_grasp_push.py": "ac42a07f5174ee47a1fbe582ddd979f4a0d676d910672f1e6e02ff455b4e85e0",
+  "h2/solution/floor_push/run_cart_push.py": "f99c86ac5568d33e1c11faa95e0a1783dc3d973e18300b917e6bbe6a6e0c3724",
+  "h2/solution/floor_push/run_floor_push.py": "506a499d63b837c376b20af3073d10506b3f36eaacb7bcc7ac0dfdddfeaadf80",
+  "humanoid/g1_support_retrieval/solution/agile.py": "ffb06f370e71a28ea715913959be04459aa6013774f6f547768653bebd0f2bb7",
+  "humanoid/g1_support_retrieval/oracle/upper_ik.py": "f5525862a2c042ba1e8aeeed1d2cb29f083d159bd5113f0293a2de9b1d48b6a1",
+  "humanoid/g1_support_retrieval/oracle/oracle.py": "1c88c21164289bbe62cbb5707e4f55316688afb2f58c8c5f63deb36c5054f9e3"
+ },
+ "oracle": {
+  "reason": "task_success",
+  "exception": null,
+  "elapsed_s": 83.99847412109375,
+  "steps": 4201,
+  "task": {
+   "loaded": true,
+   "success": true,
+   "failed": false
+  },
+  "hold_s": 0.0,
+  "box_on_cart": true,
+  "final_box": [
+   9.384961128234863,
+   0.7628545165061951,
+   0.5119958519935608,
+   0.9995818138122559,
+   1.6990002293937323e-08,
+   -1.3636894209412276e-06,
+   -0.028920505195856094,
+   1.219224668602692e-05,
+   -3.771429646803881e-06,
+   3.894637757184682e-06,
+   1.0461776582815219e-05,
+   5.8584060752764344e-05,
+   -1.3709032486985961e-07
+  ],
+  "final_cart": [
+   9.355460166931152,
+   0.760208249092102,
+   0.05699976906180382,
+   0.9996097683906555,
+   3.07039478286697e-08,
+   2.467021147367632e-07,
+   -0.027933014556765556,
+   2.2517330933169433e-07,
+   1.193574945546061e-07,
+   1.7870604551717406e-07,
+   -3.534356892487267e-06,
+   -2.427831532259006e-05,
+   8.587131006265736e-09
+  ],
+  "wall_seconds": 589.7390465999488,
+  "events": [
+   {
+    "time": 0.0,
+    "event": "arm gains limited",
+    "gains": {
+     "left_shoulder_pitch_joint": [
+      500.0,
+      6.0
+     ],
+     "left_shoulder_roll_joint": [
+      500.0,
+      6.0
+     ],
+     "left_shoulder_yaw_joint": [
+      500.0,
+      6.0
+     ],
+     "left_elbow_joint": [
+      500.0,
+      6.0
+     ],
+     "left_wrist_roll_joint": [
+      300.0,
+      2.0
+     ],
+     "left_wrist_pitch_joint": [
+      300.0,
+      2.0
+     ],
+     "left_wrist_yaw_joint": [
+      300.0,
+      2.0
+     ],
+     "right_shoulder_pitch_joint": [
+      500.0,
+      6.0
+     ],
+     "right_shoulder_roll_joint": [
+      500.0,
+      6.0
+     ],
+     "right_shoulder_yaw_joint": [
+      500.0,
+      6.0
+     ],
+     "right_elbow_joint": [
+      500.0,
+      6.0
+     ],
+     "right_wrist_roll_joint": [
+      300.0,
+      2.0
+     ],
+     "right_wrist_pitch_joint": [
+      300.0,
+      2.0
+     ],
+     "right_wrist_yaw_joint": [
+      300.0,
+      2.0
+     ]
+    }
+   },
+   {
+    "time": 1.0199992656707764,
+    "event": "stand->walk",
+    "leg": 0,
+    "robot": [
+     0.7509332299232483,
+     -0.04476989805698395,
+     0.7805017828941345
+    ],
+    "box": [
+     1.8949244022369385,
+     -0.771571159362793,
+     0.5149990320205688
+    ],
+    "waypoints": [
+     [
+      0.6,
+      -0.77,
+      0.0
+     ],
+     [
+      0.72,
+      -0.77,
+      0.0
+     ]
+    ]
+   },
+   {
+    "time": 5.220071792602539,
+    "event": "walk->push",
+    "leg": 0,
+    "robot": [
+     0.772453784942627,
+     -0.7005429863929749,
+     0.7193039059638977
+    ],
+    "box": [
+     1.8949244022369385,
+     -0.771571159362793,
+     0.5149990320205688
+    ]
+   },
+   {
+    "time": 7.420122146606445,
+    "event": "fists on the handles",
+    "D": 0.4377980470657348
+   },
+   {
+    "time": 19.319761276245117,
+    "event": "leg 0 load_east complete",
+    "box": [
+     3.9712815284729004,
+     -0.7965645790100098,
+     0.5119954347610474
+    ],
+    "box_yaw": -0.02763936555083215
+   },
+   {
+    "time": 19.319761276245117,
+    "event": "continue into leg 1 east_through_1",
+    "box": [
+     3.9712815284729004,
+     -0.7965645790100098,
+     0.5119954347610474
+    ]
+   },
+   {
+    "time": 32.21767807006836,
+    "event": "leg 1 east_through_1 complete",
+    "box": [
+     6.2118120193481445,
+     -0.7501541972160339,
+     0.5118985772132874
+    ],
+    "box_yaw": -0.019640908793246658
+   },
+   {
+    "time": 32.21767807006836,
+    "event": "push->walk",
+    "leg": 2,
+    "robot": [
+     5.358469009399414,
+     -0.6473033428192139,
+     0.7260279059410095
+    ],
+    "box": [
+     6.2118120193481445,
+     -0.7501541972160339,
+     0.5118985772132874
+    ],
+    "waypoints": [
+     [
+      5.32,
+      -2.0,
+      -0.02
+     ],
+     [
+      6.2,
+      -1.83,
+      1.57
+     ],
+     [
+      6.2,
+      -1.83,
+      1.57
+     ]
+    ]
+   },
+   {
+    "time": 40.739498138427734,
+    "event": "walk->push",
+    "leg": 2,
+    "robot": [
+     6.165036678314209,
+     -1.8035060167312622,
+     0.7082865238189697
+    ],
+    "box": [
+     6.252463340759277,
+     -0.7388869524002075,
+     0.511995792388916
+    ]
+   },
+   {
+    "time": 42.03977584838867,
+    "event": "fists on the handles",
+    "D": 0.43684697824354624
+   },
+   {
+    "time": 51.221736907958984,
+    "event": "leg 2 north_between complete",
+    "box": [
+     6.319150447845459,
+     0.6676701903343201,
+     0.5119746327400208
+    ],
+    "box_yaw": -0.04084581445180858
+   },
+   {
+    "time": 51.221736907958984,
+    "event": "push->walk",
+    "leg": 3,
+    "robot": [
+     6.205763816833496,
+     -0.1830490380525589,
+     0.7285289764404297
+    ],
+    "box": [
+     6.319150447845459,
+     0.6676701903343201,
+     0.5119746327400208
+    ],
+    "waypoints": [
+     [
+      5.22,
+      -0.02,
+      1.53
+     ],
+     [
+      5.24,
+      0.68,
+      0.0
+     ],
+     [
+      5.24,
+      0.68,
+      0.0
+     ]
+    ]
+   },
+   {
+    "time": 62.06405258178711,
+    "event": "walk->push",
+    "leg": 3,
+    "robot": [
+     5.243685245513916,
+     0.6115480661392212,
+     0.7175530195236206
+    ],
+    "box": [
+     6.307122230529785,
+     0.6845178604125977,
+     0.5119959712028503
+    ]
+   },
+   {
+    "time": 63.544368743896484,
+    "event": "fists on the handles",
+    "D": 0.4355636380268076
+   },
+   {
+    "time": 81.4148941040039,
+    "event": "leg 3 east_to_goal complete",
+    "box": [
+     9.27692699432373,
+     0.7651850581169128,
+     0.5118555426597595
+    ],
+    "box_yaw": -0.07584502411618713
+   },
+   {
+    "time": 81.4148941040039,
+    "event": "push->back_off",
+    "leg": 4,
+    "robot": [
+     8.366530418395996,
+     0.8924849629402161,
+     0.7277678847312927
+    ],
+    "box": [
+     9.27692699432373,
+     0.7651850581169128,
+     0.5118555426597595
+    ]
+   },
+   {
+    "time": 82.03455352783203,
+    "event": "finish strafe right (guide curb on the left)"
+   }
+  ]
+ },
+ "privileged_writes_after_start": [],
+ "gain_writes": [],
+ "notes": [],
+ "control_steps": 4201,
+ "error": null,
+ "wall_s": 612.1,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "score": 1.0,
+  "success": true,
+  "scene": "default",
+  "dock": "rails",
+  "scene_version": "default/6f7f02c043df",
+  "end_reason": "finished",
+  "samples": 4202,
+  "sim_time_s": 84.02,
+  "source": "reference_recorder",
+  "observations": null,
+  "effort_limits": "hardware",
+  "simulator": {
+   "genesis-world": "1.4.3",
+   "torch": "2.11.0+cu128",
+   "numpy": "2.5.3"
+  },
+  "final_progress": 1.0,
+  "peak_time_s": 84.02,
+  "stage_best": {
+   "crate_pushed": 1.0,
+   "cargo_loaded": 1.0,
+   "through_passage_1": 1.0,
+   "through_passage_2": 1.0,
+   "delivered": 1.0
+  },
+  "stage_timeline": {
+   "crate_pushed": 8.34,
+   "cargo_loaded": 19.1,
+   "through_passage_1": 26.36,
+   "through_passage_2": 74.44,
+   "delivered": 84.02
+  },
+  "delivered_at_end": true,
+  "chain_complete": true,
+  "failed": false,
+  "core_success": true,
+  "core_success_time_s": 84.02,
+  "core_loaded_time_s": 18.64,
+  "core_failed_time_s": null,
+  "max_deck_cover": 1.0,
+  "max_goal_cover": 1.0,
+  "evaluation": {
+   "loaded": true,
+   "loaded_time_s": 18.625,
+   "success": true,
+   "success_time_s": 84.005,
+   "failed": false,
+   "failed_time_s": null,
+   "sampling": "physics_substeps",
+   "hold_s": 2.0
+  },
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "monitor_version": "h2-monitors/2",
+   "not_applicable": {},
+   "max_reported_speed": 0.481,
+   "max_object_speed": 0.466,
+   "max_step_speed": 0.67,
+   "max_floor_penetration": 0.0,
+   "max_box_penetration": 0.0008,
+   "max_out_of_bounds_m": -1.055,
+   "max_energy_excess_J": 0.027,
+   "max_reversal_rate_hand_hz": 1.0,
+   "max_arm_shake": 1.205,
+   "max_saturation_s": 0.38,
+   "max_limit_push_s": 0.04,
+   "max_progress_spike": 0.0
+  },
+  "verifier": "h2-verifier/2 (h2-monitors/2)"
+ }
+}

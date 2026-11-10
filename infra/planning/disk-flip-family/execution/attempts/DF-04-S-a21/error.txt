@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 732, in main
+    self.move('slide_goal',target=self.preshape(close=1),seconds=8)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 462, in execute
+    self.pressure_control=True;self.move('close',seconds=45)
+                                                             
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 661, in finish_sg3_edge
+    self.move('release',{'left':(tip+[-.035,0,.12],R)},seconds=6)
+                                                  ^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 653, in release_sg3_on_table
+    tip[2]+=.02*np.clip(2*(.862-tip[2]),-.002,.002)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 352, in step
+    # References slewed at 0.5 rad/s; prismatic references at 0.05 m/s.
+                                                                        
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 176, in assess
+    speed=float(np.linalg.norm(v[3:]));ang=float(np.linalg.norm(v[:3]));robot,table,local,rt,selfc,pairs=self.contacts()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

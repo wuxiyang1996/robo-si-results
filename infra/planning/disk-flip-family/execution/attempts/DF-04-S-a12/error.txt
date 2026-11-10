@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 424, in main
+    write(self.out/'summary.json',summary);print(json.dumps(summary),flush=True)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 314, in execute
+    self.pressure_control=True;self.move('close',seconds=22)
+                                                  ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 350, in edge_regrasp
+    goals={s:(np.array([.295 if s=='left' else .324,disk[1]+(.09 if s=='left' else -.09),disk[2]+.044]),self.nominal_hand_pose(s)[1]) for s in goals}
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 262, in move
+    solution,err=self.solve(current,seed=self.qref)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 244, in step
+    qi=self.m.jnt_qposadr[j];rate=.05 if self.m.jnt_type[j]==mujoco.mjtJoint.mjJNT_SLIDE else .5
+                                                                                                 
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 152, in assess
+    speed=float(np.linalg.norm(v[3:]));ang=float(np.linalg.norm(v[:3]));robot,table,local,rt,selfc,pairs=self.contacts()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

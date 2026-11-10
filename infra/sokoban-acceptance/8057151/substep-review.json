@@ -1,0 +1,71 @@
+{
+  "schema": "sokoban-substep-review/1",
+  "substeps": 37144,
+  "control_steps": 4643,
+  "substep_dt": 0.0025,
+  "simulated_seconds": 92.86,
+  "checks": {
+    "complete_substep_coverage": true,
+    "robot_stability": true,
+    "crate_support_and_tilt": true,
+    "peer_contact": true,
+    "actuator_limits": true,
+    "historical_nonhand_duration": true,
+    "no_opposed_hand_faces": true
+  },
+  "automated_physical_checks_passed": true,
+  "goal_observed": false,
+  "pose_difference_goal_observed": false,
+  "maximum_goal_dwell_s": 0.0,
+  "maximum_pose_goal_dwell_s": 0.0,
+  "body_contact_over_10N_s": 0.0425,
+  "peak_total_nonhand_N": 472.6991882324219,
+  "max_effort_ratio": 1.0,
+  "max_speed_ratio": 0.7644840478897095,
+  "max_crate_tilt_deg": 0.14807289179431263,
+  "max_crate_bottom_deviation_m": 0.0019387066364288108,
+  "max_peer_contact_N": 0.0,
+  "min_root_height_m": 0.7024704813957214,
+  "min_upright_cosine": 0.9116314668787506,
+  "opposed_hand_face_substeps": 0,
+  "link_contact_stats": {
+    "g1_a/crate_d/right_ankle_roll_link": {
+      "contact_samples": 8,
+      "force_integral_Ns": 0.8596205213756161,
+      "peak_N": 160.11628463382297
+    },
+    "g1_a/crate_d/left_hand_middle_1_link": {
+      "contact_samples": 99,
+      "force_integral_Ns": 12.21080284285185,
+      "peak_N": 144.17806427208473
+    },
+    "g1_a/crate_d/right_hand_middle_1_link": {
+      "contact_samples": 64,
+      "force_integral_Ns": 9.141635807314985,
+      "peak_N": 182.66697611522335
+    },
+    "g1_a/crate_d/left_knee_link": {
+      "contact_samples": 7,
+      "force_integral_Ns": 1.8637490504705652,
+      "peak_N": 407.3047777447657
+    },
+    "g1_a/crate_d/right_knee_link": {
+      "contact_samples": 8,
+      "force_integral_Ns": 3.4694539713201613,
+      "peak_N": 472.6991732945694
+    }
+  },
+  "task_success": null,
+  "formal_admission": false,
+  "limitations": [
+    "No automated classification alone proves absence of every grasp/pull mode.",
+    "Non-hand contacts retain the historical threshold and require link/phase review.",
+    "Native logical observation boundary, not OS container isolation or human acceptance."
+  ],
+  "sha256": {
+    "physics-substeps.jsonl": "81005fe958e7aaa3191719879a26374cd9c8f67873bfec3633a3182c3cec60c8",
+    "physics-metadata.json": "8cf360e28995a7b32c9ab4f6d744a8c903b896a1c4f370dd023a753eb5d2e604",
+    "trace.jsonl": "d6aa3c1535341d162eb1c1cff69aca48dc124ad10571154960bf23346a24644c",
+    "result.json": "d7c1125df493cbdaf437481a5a50aa30bedad21bdf37697fe55a9339111e8e96"
+  }
+}

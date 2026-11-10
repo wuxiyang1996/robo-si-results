@@ -1,0 +1,40 @@
+[38;5;226m[Genesis] [16:35:10] [WARNING] Mesh is not watertight. Falling back to convex hull for estimating inertial properties.[0m
+[38;5;226m[Genesis] [16:35:10] [WARNING] Mesh is not watertight. Falling back to convex hull for estimating inertial properties.[0m
+[38;5;226m[Genesis] [16:35:10] [WARNING] Link 'caster_link' has dubious inertia [ixx=1.000e-03,iyy=1.000e-03,izz=1.000e-03] compared to the estimate from geometry [ixx=4.096e-06,iyy=4.096e-06,izz=4.096e-06].[0m
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/conda/envs/genesis/lib/python3.12/site-packages/genesis/options/morphs.py", line 627, in _resolve_file_and_defaults
+    ET.fromstring(file)
+  File "/fs/gamma-projects/vlm-robot/conda/envs/genesis/lib/python3.12/xml/etree/ElementTree.py", line 1335, in XML
+    parser.feed(text)
+xml.etree.ElementTree.ParseError: not well-formed (invalid token): line 1, column 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/fs/gamma-projects/vlm-robot/robo-si/disk_family/runs/DR-09/a01/workspace/disk_family/run.py", line 109, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/disk_family/runs/DR-09/a01/workspace/disk_family/run.py", line 49, in main
+    env=MobileEnvironment(cfg,materials,disk_path,out,not a.no_video,paired=spec['body']=='PS')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/disk_family/runs/DR-09/a01/workspace/disk_family/mobile_env.py", line 35, in __init__
+    self.panda=add(gs.morphs.URDF(file=str(ROOT/'assets/panda/pusher.urdf'),fixed=True,pos=(-.55,0,.39),merge_fixed_links=False),material=gs.materials.Rigid(friction=materials.pad_friction))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/conda/envs/genesis/lib/python3.12/site-packages/genesis/options/morphs.py", line 668, in __init__
+    super().__init__(**kwargs)
+  File "/fs/gamma-projects/vlm-robot/conda/envs/genesis/lib/python3.12/site-packages/genesis/utils/misc.py", line 125, in new_init
+    original_init(self, *args, **kwargs)
+  File "/fs/gamma-projects/vlm-robot/conda/envs/genesis/lib/python3.12/site-packages/genesis/options/options.py", line 33, in __init__
+    super().__init__(**data)
+  File "/fs/gamma-projects/vlm-robot/conda/envs/genesis/lib/python3.12/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/conda/envs/genesis/lib/python3.12/site-packages/genesis/options/morphs.py", line 633, in _resolve_file_and_defaults
+    gs.raise_exception(f"File not found in either current directory or assets directory: '{file}'.")
+  File "/fs/gamma-projects/vlm-robot/conda/envs/genesis/lib/python3.12/site-packages/genesis/utils/misc.py", line 39, in raise_exception
+    raise gs.GenesisException(msg)
+genesis.GenesisException: File not found in either current directory or assets directory: '/fs/gamma-projects/vlm-robot/robo-si/disk_family/runs/DR-09/a01/workspace/multi_robot/dual_arm_disk_rotation/assets/assets/panda/pusher.urdf'.
+
+[38;5;9m[Genesis] [16:35:10] [ERROR] GenesisException: File not found in either current directory or assets directory: '/fs/gamma-projects/vlm-robot/robo-si/disk_family/runs/DR-09/a01/workspace/multi_robot/dual_arm_disk_rotation/assets/assets/panda/pusher.urdf'.[0m

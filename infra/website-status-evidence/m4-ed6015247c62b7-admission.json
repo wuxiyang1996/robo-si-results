@@ -1,0 +1,674 @@
+{
+ "schema": "infra-admission/1",
+ "task_id": "M4",
+ "title": "Dual Go2 cooperative long-object towing",
+ "version": "m4-candidate-20261023.1",
+ "updated": "2026-10-23",
+ "admitted": false,
+ "status": "legacy_welded_candidates_and_separate_mechanical_fixture_not_ready_for_admission",
+ "sandbox": "sandbox",
+ "scene": "The two scene variants the reference expert solves, sealed unchanged with their pre-connected ropes and welded platform rim: layer 1 base = solution/task_tow.json (corridors 2.6 m, cargo 15 kg, floor 0.8), layer 2 hard = solution/task_hard.json (corridors 1.6 m, cargo 50 kg, floor 0.3, 120 s limit). Physics content frozen by digest (sandbox/trusted/scenarios.py); no randomised generator.",
+ "gates": {
+  "reference_expert": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/runs/reference/base-v*",
+    "sandbox/runs/reference/hard-v*",
+    "solution/runs/final-mu080",
+    "solution/runs/hard-final",
+    "sandbox/trusted/record_reference.py"
+   ],
+   "note": "The expert (solution/run_expert.py, arguments of runs/final-mu080 and runs/hard-final) recorded unchanged as a black box by sandbox/trusted/record_reference.py on the sealed scenes and judged by the sandbox verifier: base 2/2 and hard 2/2 success, score 1.0, no alarm, no privileged write, no gain write, no sub-control-rate target change; multi_robot/evaluate.py goal_observed on the same samples agrees 4/4; final dwell 4.92 s (base) / 5.66 s (hard), identical to the expert's documented runs. The expert drives the robots only through TaskScene.step joint targets under the agent's actuator model and torque limits (go2.urdf). Partial: the variants are fixed scenes not admitted by the author (status expert_candidate_not_admitted), and the expert reads privileged state (platform pose, rope tension). A third recording per variant (reference/base-v3, hard-v3, 2026-10-21 evening, with the shared runtime as changed that day) is bitwise identical to v1."
+  },
+  "official_trajectories": {
+   "status": "not_applicable",
+   "evidence": [],
+   "note": "M4 has no official trajectory set; the reference expert's runs are recorded by the sandbox recorder."
+  },
+  "coverage": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/trusted/scenarios.py",
+    "sandbox/runs/perturbations/*",
+    "sandbox/runs/shortcuts/*",
+    "sandbox/README.md"
+   ],
+   "note": "Both variants (layers 1, 2) have recorded reference successes, but each layer is one fixed scene: no random ranges, no edges, no subtask starts (snapshots are kept at 5 Hz; restoring them is not implemented). Recorded besides the successes: two perturbed reference failures (perturbations/*, judged failures, agreeing with the expert's evidence sample by sample) and eight shortcut attempts (shortcuts/*). A coverage table (layer x sample x subtask) and the samples it needs are proposed in sandbox/README.md 10.5 (author decision). Release follow-up adds two sealed contact-drag probes (ten shortcut attempts total), without claiming random-range or subtask-start coverage."
+  },
+  "reference_rerun_spread": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/runs/validation/resume-20261022/rerun-spread/report.md",
+    "sandbox/trusted/rerun_spread.py",
+    "sandbox/runs/reference/*",
+    "sandbox/runs/perturbations/*"
+   ],
+   "note": "Three same-argument recordings per sealed variant agree in every state array and verdict (base 1816 rows, hard 1910 rows); same-seed CPU spread is zero. Existing settle-time perturbations pass base 4/6 and hard 10/12. Maximum stance slip spans 3.3-7.5 cm and 3.9-6.2 cm around the current 5 cm constraint. Two failed settings re-recorded through the sandbox fail consistently with the task evaluator and expert evidence. Partial until the author resolves perturbation robustness and the reference/constraint contract; no threshold changed. GPU backend unvalidated."
+  },
+  "verifier_validity": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/validation/report.json",
+    "sandbox/runs/exploits",
+    "sandbox/runs/escape-v3",
+    "sandbox/runs/grade-noop-v3",
+    "sandbox/runs/eval-hello-v3",
+    "sandbox/runs/dev-hello-v3",
+    "sandbox/runs/dev-reset-v3",
+    "sandbox/runs/validation/stage-review-v1/report.md",
+    "sandbox/runs/pipeline-rejudge-20261021-182929/report.json",
+    "sandbox/runs/validation/resume-20261022/stage-review/report.md",
+    "sandbox/runs/pipeline-stage-review-20261022-220711/report.json"
+   ],
+   "note": "Re-judged with m4-verifier/1 (m4-monitors/1): positives 4/4 successful with stage times matching the expert's phase timeline and evaluate.py; the ten evidence checks recomputed from the sandbox log agree sample by sample with the expert's own evidence layer (1815 + 1909 samples x 10 checks, 0 mismatches). Negatives: hello, no-op and reset runs score 0, not void. Exploits: escape probes VOID (47/47 as expected, 20 interface violations); the recorder teleporting the cargo into the goal at 5 s VOID (privileged writes, teleport, severe speed); set_mass on the cargo at 5 s VOID (world parameters changed, privileged write). Synthetic exploit and negative cases for every monitor and stage in the unit tests. Manual stage labels on video are not done (predicate_labels). 2026-10-21 evening: the verifier digest changed to 574929bd... because the shared infra/sandbox monitors.py / verifier.py were edited by another session; every recording re-judged with it gives the same score, success, void, stage times and alarms as runs/validation/report.json (20 common rows); stage-review-v1 re-judges positives (6/6), negatives (4/4), exploits (3/3) and shortcut attempts (8/8) against their expectations. Resumed 2026-10-22 current verifier: 6/6 reference positives, 8/8 negative runs, 4/4 void checks, 8/8 shortcut regression/contract expectations; shortcut match is not proof of shortcut elimination. Release follow-up now checks 28 expectations: 6 positives, 10 shortcut cases, 8 negative runs and 4 void checks; all match. Two new contact probes agree with expert evidence on all 800 samples each."
+  },
+  "monitors_calibrated": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/trusted/monitors.py",
+    "sandbox/tests/test_monitors.py",
+    "sandbox/runs/validation/report.json",
+    "sandbox/README.md"
+   ],
+   "note": "Shared monitor suite (infra.sandbox.monitors) with the M4 profile and all shared default thresholds: no alarm on the 4 reference recordings and the sandbox episodes; measured maxima vs thresholds: object speed 0.30 m/s vs 9, step speed 0.33 vs 20 (trunks 0.91), floor penetration 0.8 mm vs 3 cm, wall OBB overlap 0.5 mm vs 3 cm, cargo-deck overlap 0.8 mm vs 3 cm, energy excess 0.002 J vs 6, torque saturation 0.04 s vs 3 s, limit push 0 s vs 2 s, progress spike 0 vs 0.25. Exploit cases (teleport, launch, energy from nowhere, floor / wall / deck penetration, saturation and limit push per robot, trunk teleport, progress spike, chain order, declarations, privileged and gain writes) trigger in the unit tests and the sim exploits."
+  },
+  "predicate_labels": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/trusted/stage_review.py",
+    "sandbox/runs/validation/resume-20261022/stage-review/report.md",
+    "sandbox/runs/validation/resume-20261022/stage-review/keyframes/*.png",
+    "sandbox/runs/validation/resume-20261022/stage-review/review_record.json",
+    "sandbox/runs/validation/resume-20261022/stage-review/visual_review_resume.json"
+   ],
+   "note": "Six successful reference records have stage-time sheets (-1/0/+1 s) and unsigned human label templates. Only base-v1 and hard-v1 have original video; four no-video repeats get clearly labelled representative footage from v1 only after every trusted state array is byte-identical and verifier stage times match. Source video and SHA-256 are recorded. Codex inspected the original two sheets; sparse images do not independently prove 5 cm displacement, averaged force or continuous dwell. Manual video labels and signed human review remain pending."
+  },
+  "shortcut_audit": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/trusted/shortcuts.py",
+    "sandbox/runs/shortcuts/*/shortcut.json",
+    "sandbox/runs/validation/stage-review-v1/keyframes/*-v1.png",
+    "sandbox/README.md",
+    "acceptance/release-readiness-20261022/contact_audit.json",
+    "sandbox/trusted/contact_audit.py"
+   ],
+   "note": "The shortcut the task design lists for M4 (one robot alone) and the routes asked for, tried with the expert's own privileged pieces through the sandbox recorder and judged by the current verifier (sandbox/README.md 10.3; shortcuts.py --check re-judges all 10 against shortcut.json). Hard: the two tested lone-Go2 strategies (sealed scene, partner on a slack rope; and the expert's scene-edit control) stalls at the corner entry, 0.05, fail as expected; not an exhaustive impossibility proof. Base: a lone Go2 with a slack partner DELIVERS the cargo into the goal and rests (base-solo-slack-v1, 48 s); the verifier fails it (0.76) only for one 7.7 cm stance slide, the same rule that fails 2/6 perturbed cooperative references; a gentler solo pull is too slow (0.11). So the solo shortcut is not ruled out physically in layer 1 (consistent with the expert's capability data). A genuinely rope-free configuration is not present in the sealed scenes; forward pushing from behind is blocked by their tether geometry (the tether keeps the robots within 0.62-0.67 m of the platform's front corners); pushing the front end moves the platform away from the goal and still earns tensioned 0.10 (base-push-back-v1). Body contact on the cargo is a target_supported violation (push-back, passive-partner). No monitor alarm in any attempt. Partial: layer 1 solo not ruled out, no human confirmation; scoring changes are proposals only. Release follow-up added two unchanged-scene, joint-controlled contact-rake recordings: base 0.0501 (target_supported at 5.72 s), hard 0.0500 (target_supported 4.72 s, slip 9.38 s). Both non-void, 0 privileged/gain writes and expert-evidence agreement. Before any violation, contact >=20 N with each rope <=5 N occurs for 2.60/0.60 s; largest continuous-interval net platform motion is 5.9/1.4 mm. These are real contact attempts, not a demonstration that every contact route is impossible. Literal rope removal remains outside the sealed interface. Conditional URDF/rope geometry excludes reaching the rear platform face, but does not exclude side-contact routes."
+  },
+  "video_review": {
+   "status": "pending",
+   "evidence": [
+    "sandbox/runs/validation/resume-20261022/stage-review/review_record.json",
+    "sandbox/runs/validation/resume-20261022/stage-review/visual_review_resume.json",
+    "acceptance/release-readiness-20261022/review_record.json"
+   ],
+   "note": "Unsigned review template available (manual timestamps, three-question answers, reviewer/date/signature empty). AI observations are not human signoff. Four repeats lack original video; representative v1 sheets are labelled and cannot count as independent video review."
+  },
+  "independent_reproduction": {
+   "status": "pending",
+   "evidence": [],
+   "note": "No second-person reproduction."
+  },
+  "sandbox_isolation": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/escape-v3",
+    "sandbox/runs/eval-hello-v3",
+    "sandbox/tests/agents/escape_probes.py"
+   ],
+   "note": "Agent in the Docker container (uid 1000, read-only root, no capabilities, internal network, socat to the worker): both robots' sensors read; 47 escape probes as expected (torque 1e6 and gains 1e9 clipped; unknown robots, fields and modes refused; no genesis or task code, no repository, no network), 20 interface violations, run VOID."
+  },
+  "grading_mode": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/grade-noop-v3"
+   ],
+   "note": "Two sealed episodes (layer 1 base, layer 2 hard), a fresh container per episode, one connection each; a no-op scores 0 in both, not void."
+  },
+  "static_checks": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/tests/test_static.py",
+    "sandbox/tests/test_scoring.py",
+    "sandbox/tests/test_monitors.py"
+   ],
+   "note": "55 unit tests (test_static 13, test_scoring 18, test_monitors 24): bundle allowlist (no G1 artefacts, no task code), the shared wire protocol, frozen variant digests, sealed scenarios refusing physics edits, the client's command checks, the episode-end order, every stage and every evidence check with a negative case, evaluate.py agreement, every monitor with cases that must and must not trigger it, fail-closed verifier cases, the request-log hash chain."
+  },
+  "randomisation": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/trusted/scenarios.py",
+    "sandbox/README.md"
+   ],
+   "note": "Sealed layers (base, hard) with private evaluation seeds, but no random ranges: each layer is one fixed scene. Proposed ranges (start poses, cargo mass, corridor width, ...) with the validation each needs are in sandbox/README.md 10.5 (author decision, not implemented)."
+  },
+  "automatic_pipeline": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/pipeline.json",
+    "acceptance/pipeline/20261021-142043-cpu.json",
+    "acceptance/pipeline/20261021-142351-cpu.json",
+    "acceptance/pipeline/20261021-152121-gpu.json",
+    "acceptance/pipeline/20261021-162435-container.json",
+    "acceptance/pipeline/20261021-184702-gpu.json",
+    "acceptance/pipeline/20261022-210714-container.json",
+    "acceptance/resume-20261022/approval_rejections.json",
+    "acceptance/pipeline/20261022-211558-cpu.json",
+    "acceptance/release-readiness-20261022/authorization.json",
+    "acceptance/pipeline/20261022-220711-cpu.json",
+    "sandbox/runs/pipeline-stage-review-20261022-220711/report.json",
+    "acceptance/release-readiness-20261022/README.md"
+   ],
+   "note": "The user explicitly authorized integration and validation of three offline CPU stages on 2026-10-22. Expanded CPU pipeline 20261022-220711 passes 7/7: runtime tests, 55 task tests, rejudge, stage review, 10 shortcut expectations, rerun spread and admission validation. Existing GPU/container tiers retain passing records. Historical queue-timeout failures and approval denial are preserved; authorization resolved the denied pipeline edit. Invocation remains manual with no on-change trigger, so this gate stays partial. No queue/runtime, physics, scene, scorer or threshold change was made."
+  }
+ },
+ "task_items": {
+  "variants_not_admitted": {
+   "status": "pending",
+   "evidence": [
+    "solution/task_tow.json",
+    "solution/task_hard.json"
+   ],
+   "note": "Old sealed variants remain expert_candidate_not_admitted. Their welded towing evidence does not demonstrate autonomous attachment/release/reconnection. Cargo preload is an explicitly permitted initial condition, not an unresolved autonomous-loading requirement. The new mechanical candidate is separate and also not admitted."
+  },
+  "sensors_legged_module": {
+   "status": "passed",
+   "evidence": [
+    "../../infra/sandbox/sensors_legged.py",
+    "sandbox/trusted/sensors.py"
+   ],
+   "note": "New robot-generic runtime module infra/sandbox/sensors_legged.py (added for M4): joint proprio with applied effort, trunk IMU with relative yaw, foot contact forces in the foot frames (zero before the first step), optional front RGB-D camera; GO2 spec from go2.urdf; wrapped per robot in NamespacedSensors."
+  },
+  "rig_generated_files": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/trusted/world.py",
+    "sandbox/trusted/record_reference.py"
+   ],
+   "note": "solution/rig.py writes its rope MJCF / rim URDF at construction; the world and the recorder point rig.OUT into the run directory, so nothing is written into solution/ and parallel runs cannot race on the files."
+  },
+  "dev_reset_rebuild": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/dev-reset-v3"
+   ],
+   "note": "Restoring the solver state in place (scene.reset + qpos/qvel) left the rope welds 9 cm off their anchors after a hard episode (connection_integrity violated 0.14 s after the reset); development resets rebuild the sealed scene instead (start posture restored exactly)."
+  },
+  "scoring_routes_and_release": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/trusted/scoring.py"
+   ],
+   "note": "Existing task contract credits physically valid push/solo routes. Legacy scoring still uses stable cargo dwell without rope detachment and is unchanged. The authorized separate candidate requires real unloaded release. Centred fixture capture/retention/release was observed, but case 03 fails strict actual pin travel; case 07 later passed strict fixture checks, while full-task evidence remains incomplete. Complete candidate scoring integration and end-to-end physical evidence remain incomplete."
+  },
+  "agent_l1_and_tension_sensor": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/agent_sdk/README.md"
+   ],
+   "note": "New-candidate latch q/qd, physical closed switch and bounded 50 Hz load cell are explicitly authorized in the coupler design; the legacy public SDK remains unchanged and the new public interface is not implemented/validated. The fixture contact-force proxy is not a public rope load cell. Public walking-policy packaging/licensing and the sensor-based end-to-end reference remain unresolved."
+  },
+  "design_notes_from_the_expert": {
+   "status": "pending",
+   "evidence": [
+    "solution/README.md"
+   ],
+   "note": "Expert findings that bear on the task: on the base floor (0.8) the platform's 0.3 friction never acts (Genesis takes max) and one Go2 can tow the loaded platform, so cooperation is not required in layer 1; in layer 2 the tested lone-Go2 strategies stall at the corner entry (including the 120 s trial), which does not prove that all single-robot routes are impossible."
+  },
+  "solo_route_layer1": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/runs/shortcuts/base-solo-slack-v1/shortcut.json",
+    "sandbox/runs/shortcuts/base-solo-gentle-v1/shortcut.json"
+   ],
+   "note": "A tested lone Go2 delivered legacy base cargo but failed for 7.7 cm stance slip; no legal solo success or universal solo impossibility is established. Physically valid solo routes remain eligible for credit. R9 design and broader route coverage remain open; no ad hoc cooperation requirement is added."
+  },
+  "predicate_tensioned_direction": {
+   "status": "pending",
+   "evidence": [
+    "sandbox/runs/shortcuts/base-push-back-v1/shortcut.json"
+   ],
+   "note": "Proposal: tensioned's 5 cm platform displacement should be progress along the first leg; pushing the platform 0.36 m away from the goal earned 0.10."
+  },
+  "predicate_corner_lateral": {
+   "status": "pending",
+   "evidence": [
+    "sandbox/runs/shortcuts/hard-formation-v1/shortcut.json"
+   ],
+   "note": "Proposal: count corner progress only after straight_tow is complete (or use arc length along the L); a lateral shift inside the first leg earns up to 0.18 (base) / 0.14 (hard); hard-formation earned 0.098 that way."
+  },
+  "score_peak_vs_success": {
+   "status": "pending",
+   "evidence": [
+    "sandbox/runs/shortcuts/hard-keepout-off-v1/shortcut.json"
+   ],
+   "note": "The episode score is the peak over time: a run that rested 2 s in the goal and then violated a check scores 1.0 without success. Proposal: live stages by the last sample, or cap unsuccessful scores below 1."
+  },
+  "traction_threshold_vs_spread": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/runs/validation/rerun-spread-v1/report.md"
+   ],
+   "note": "The authorized candidate retains the original 5 cm stance limit. No proposal to raise or replace it is pending implementation. Historical base 4/6 and hard 10/12 perturbation rates remain; hold feedback has successful defaults/repeats, but the disabled-by-default swing candidate fails default hard at exact 0.050015684041936376 m. Controller robustness and current-hardware coverage remain incomplete."
+  },
+  "pipeline_queue_timeouts": {
+   "status": "pending",
+   "evidence": [
+    "acceptance/pipeline/20261021-152121-gpu.json",
+    "acceptance/pipeline/20261021-162435-container.json"
+   ],
+   "note": "Historical queue waits counted toward step timeout; later GPU 2/2 and resumed container 3/3 passed using the unchanged default single slot. Shared-runtime suggestion only: start execution timeout after lock acquisition. No queue/runtime edit."
+  },
+  "pipeline_extra_cpu_steps_approval": {
+   "status": "passed",
+   "evidence": [
+    "acceptance/release-readiness-20261022/authorization.json",
+    "sandbox/pipeline.json",
+    "acceptance/resume-20261022/approval_rejections.json",
+    "acceptance/pipeline/20261022-220711-cpu.json"
+   ],
+   "note": "Explicit user authorization resolved the historical denial. The three added offline CPU stages are integrated and validated in 20261022-220711-cpu.json (expanded CPU tier 7/7)."
+  },
+  "release_readiness": {
+   "status": "pending",
+   "evidence": [
+    "acceptance/release-readiness-20261022/author_decisions.json",
+    "acceptance/release-readiness-20261022/README.md"
+   ],
+   "note": "Not ready for admitted release. Human signoff, independent reproduction, scope/rule/resource decisions and validated random/subtask coverage remain open; no ad hoc cooperation restriction or physical/scoring change was made."
+  },
+  "contact_routes_release_probe": {
+   "status": "partial",
+   "evidence": [
+    "acceptance/release-readiness-20261022/contact_audit.json",
+    "sandbox/runs/shortcuts/base-contact-rake-release-v1/shortcut.json",
+    "sandbox/runs/shortcuts/hard-contact-rake-release-v1/shortcut.json"
+   ],
+   "note": "Both new unchanged-scene contact probes generate real low-rope-tension platform contact but fail cargo support; hard also slips later. Conditional model reach bounds: base 1.560 m, hard 1.594 m versus 1.985 m to rear face. This does not establish impossibility of every side-contact strategy. No detachment action exists; a rope-free variant would be a separate design change."
+  },
+  "physical_coupler_prototype": {
+   "status": "partial",
+   "evidence": [
+    "acceptance/coupler-prototype-20261023-v1/authorization.json",
+    "acceptance/coupler-prototype-20261023-v1/budget.json",
+    "acceptance/coupler-prototype-20261023-v1/cases/centre50-v1-03/physical-audit.json",
+    "acceptance/coupler-prototype-20261023-v1/cases/centre50-v1-03/video-integrity.json",
+    "acceptance/coupler-prototype-20261023-v1/cases/centre50-v1-07/strict-run-review.json",
+    "acceptance/coupler-prototype-20261023-v1/cases/centre50-v1-07/physical-audit.json"
+   ],
+   "note": "Explicitly authorized separate colliding ring and finite-force pin. Case 03 remains failed for strict travel and measured dwell; original evidence retained. Case 07 passes strict 50 N fixture capture/retention/release and loaded-open rejection: actual q max 0.039294276386499405 m, actual force max 0.5095199346542358 N, speed max 0.021623509004712105 m/s. 4000 states and 401 original frames independently audited, no forbidden writes or parameter changes. Initialization failures and pre-queue cancellations remain fully charged. No Go2 docking/transport, complete coverage, 300 N rating, R9, human signoff or independent reproduction is claimed."
+  },
+  "machine_specification": {
+   "status": "partial",
+   "evidence": [
+    "task.toml",
+    "acceptance/coupler-prototype-20261023-v1/release-gaps.json"
+   ],
+   "note": "Machine inventory states an actual candidate version, required physical-spec sections and explicit incomplete claims. Two fixed legacy variants do not establish R9 tool layers. No scene, score, physics, release scope or admission status is changed by this metadata."
+  }
+ },
+ "pending_decisions": [
+  "Admission of legacy base/hard variants and the separate unlatched candidate after required physical/public-resource coverage and acceptance",
+  "Public L1 walking policy packaging/licensing and validation of the same-resource sensor-based reference",
+  "R9 necessary-tool / alternate-body-utility / distractor layer design and complete benchmark scope",
+  "Score semantics for unsuccessful peak-score episodes and the tensioned/corner progress loopholes in legacy scoring",
+  "Randomised generator ranges and coverage table, including validated standalone subtask starts"
+ ],
+ "reference_runs": [
+  {
+   "path": "sandbox/runs/reference/base-v1",
+   "layer": 1,
+   "variant": "base",
+   "score": 1.0,
+   "success": true,
+   "end": "finished",
+   "final_dwell_s": 4.92,
+   "evaluator_goal_observed": true,
+   "stage_timeline": {
+    "tensioned": 2.16,
+    "straight_tow": 10.34,
+    "corner": 24.5,
+    "in_goal": 30.38,
+    "released_settled": 33.38
+   },
+   "alarms": [],
+   "video": "sandbox/runs/reference/base-v1/expert/motion.mp4"
+  },
+  {
+   "path": "sandbox/runs/reference/base-v2",
+   "layer": 1,
+   "variant": "base",
+   "score": 1.0,
+   "success": true,
+   "end": "finished",
+   "final_dwell_s": 4.92,
+   "evaluator_goal_observed": true,
+   "stage_timeline": {
+    "tensioned": 2.16,
+    "straight_tow": 10.34,
+    "corner": 24.5,
+    "in_goal": 30.38,
+    "released_settled": 33.38
+   },
+   "alarms": [],
+   "video": null
+  },
+  {
+   "path": "sandbox/runs/reference/hard-v1",
+   "layer": 2,
+   "variant": "hard",
+   "score": 1.0,
+   "success": true,
+   "end": "finished",
+   "final_dwell_s": 5.66,
+   "evaluator_goal_observed": true,
+   "stage_timeline": {
+    "tensioned": 1.66,
+    "straight_tow": 16.84,
+    "corner": 22.34,
+    "in_goal": 31.24,
+    "released_settled": 34.52
+   },
+   "alarms": [],
+   "video": "sandbox/runs/reference/hard-v1/expert/motion.mp4"
+  },
+  {
+   "path": "sandbox/runs/reference/hard-v2",
+   "layer": 2,
+   "variant": "hard",
+   "score": 1.0,
+   "success": true,
+   "end": "finished",
+   "final_dwell_s": 5.66,
+   "evaluator_goal_observed": true,
+   "stage_timeline": {
+    "tensioned": 1.66,
+    "straight_tow": 16.84,
+    "corner": 22.34,
+    "in_goal": 31.24,
+    "released_settled": 34.52
+   },
+   "alarms": [],
+   "video": null
+  },
+  {
+   "path": "sandbox/runs/reference/base-v3",
+   "layer": 1,
+   "variant": "base",
+   "score": 1.0,
+   "success": true,
+   "end": "finished",
+   "final_dwell_s": 4.92,
+   "evaluator_goal_observed": true,
+   "stage_timeline": {
+    "tensioned": 2.16,
+    "straight_tow": 10.34,
+    "corner": 24.5,
+    "in_goal": 30.38,
+    "released_settled": 33.38
+   },
+   "alarms": [],
+   "video": null
+  },
+  {
+   "path": "sandbox/runs/reference/hard-v3",
+   "layer": 2,
+   "variant": "hard",
+   "score": 1.0,
+   "success": true,
+   "end": "finished",
+   "final_dwell_s": 5.66,
+   "evaluator_goal_observed": true,
+   "stage_timeline": {
+    "tensioned": 1.66,
+    "straight_tow": 16.84,
+    "corner": 22.34,
+    "in_goal": 31.24,
+    "released_settled": 34.52
+   },
+   "alarms": [],
+   "video": null
+  }
+ ],
+ "exploit_runs": [
+  {
+   "path": "sandbox/runs/exploits/teleport-v1",
+   "attack": "the recorder teleports the cargo into the goal (set_pos) at 5 s of the base expert run",
+   "expected": "void",
+   "void_reasons": [
+    "object_speed_severe (3_no_physics_violation)",
+    "teleport (1_no_reward_hacking)",
+    "privileged_writes (1_no_reward_hacking)"
+   ]
+  },
+  {
+   "path": "sandbox/runs/exploits/mass-v1",
+   "attack": "the recorder sets the cargo's mass to 1 kg (set_mass) at 5 s of the base expert run",
+   "expected": "void",
+   "void_reasons": [
+    "world parameters changed",
+    "privileged_writes (1_no_reward_hacking)"
+   ]
+  },
+  {
+   "path": "sandbox/runs/escape-v3",
+   "attack": "47 agent-side escape probes in the container",
+   "expected": "void, every probe as expected"
+  }
+ ],
+ "verifier": {
+  "version": "m4-verifier/1 (m4-monitors/1)",
+  "sha256": "574929bdf45478b21d2738e2300131c2d27fabe31038fe66dc6a883631fd4ded",
+  "code": [
+   "sandbox/trusted/verifier.py",
+   "sandbox/trusted/scoring.py",
+   "sandbox/trusted/monitors.py",
+   "sandbox/trusted/statelog.py",
+   "../evaluate.py"
+  ],
+  "note": "Current rejudging digest; shared verifier/monitor updates on 2026-10-21 changed the former f87348bf digest to 574929bd. Resumed offline evidence confirms all recorded expectations under this digest."
+ },
+ "human_reviews": [],
+ "independent_reproductions": [],
+ "shortcut_runs": [
+  {
+   "path": "sandbox/runs/shortcuts/base-contact-rake-release-v1",
+   "case": "base-contact-rake",
+   "route": "back into the front rim, then attempt contact dragging while retreating whenever a rope loads",
+   "score": 0.0501,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "target_supported": 5.72
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "regression",
+   "matches_expectation": true
+  },
+  {
+   "path": "sandbox/runs/shortcuts/base-passive-partner-v1",
+   "case": "base-passive-partner",
+   "route": "one Go2 tows alone and drags its idle partner along by the partner's rope",
+   "score": 0.1266,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "robot_stability": 21.82,
+    "target_supported": 21.94,
+    "traction_and_slip": 4.56
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "regression",
+   "matches_expectation": true
+  },
+  {
+   "path": "sandbox/runs/shortcuts/base-push-back-v1",
+   "case": "base-push-back",
+   "route": "both robots walk backwards into the platform front for 8 s (body push, ropes slack)",
+   "score": 0.1054,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "target_supported": 12.58,
+    "traction_and_slip": 12.62
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "regression",
+   "matches_expectation": true
+  },
+  {
+   "path": "sandbox/runs/shortcuts/base-solo-gentle-v1",
+   "case": "base-solo-gentle",
+   "route": "base-solo-slack with a gentler pull (v_pull 0.15 -> 0.08 m/s, pull distance beyond the rope 0.10 -> 0.06 m)",
+   "score": 0.1068,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "traction_and_slip": 3.56
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "regression",
+   "matches_expectation": true
+  },
+  {
+   "path": "sandbox/runs/shortcuts/base-solo-slack-v1",
+   "case": "base-solo-slack",
+   "route": "one Go2 tows the loaded sled through the 2.6 m L alone; the partner stays on a slack rope",
+   "score": 0.7632,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "traction_and_slip": 39.22
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "regression",
+   "matches_expectation": true
+  },
+  {
+   "path": "sandbox/runs/shortcuts/hard-contact-rake-release-v1",
+   "case": "hard-contact-rake",
+   "route": "the same tension-limited contact-drag attempt on the sealed hard variant",
+   "score": 0.05,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "target_supported": 4.72,
+    "traction_and_slip": 9.38
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "regression",
+   "matches_expectation": true
+  },
+  {
+   "path": "sandbox/runs/shortcuts/hard-formation-v1",
+   "case": "hard-formation",
+   "route": "two Go2 force the platform through the 1.6 m corner with the base formation controller",
+   "score": 0.2213,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "robot_stability": 14.08,
+    "traction_and_slip": 8.46
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "contract",
+   "matches_expectation": true
+  },
+  {
+   "path": "sandbox/runs/shortcuts/hard-keepout-off-v1",
+   "case": "hard-keepout-off",
+   "route": "the anchor controller without its keep-out and pull-direction guards (robots may press on the load)",
+   "score": 1.0,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "traction_and_slip": 36.2
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "regression",
+   "matches_expectation": true
+  },
+  {
+   "path": "sandbox/runs/shortcuts/hard-solo-scene-v1",
+   "case": "hard-solo-scene",
+   "route": "DIAGNOSTIC: the hard scene with one robot on one rope at the platform front centre",
+   "score": 0.0518,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "traction_and_slip": 2.96
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "contract",
+   "matches_expectation": true
+  },
+  {
+   "path": "sandbox/runs/shortcuts/hard-solo-slack-v1",
+   "case": "hard-solo-slack",
+   "route": "one Go2 tows the loaded sled through the 1.6 m L alone; the partner stays on a slack rope",
+   "score": 0.0525,
+   "success": false,
+   "void": false,
+   "first_violation": {
+    "traction_and_slip": 3.0
+   },
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "basis": "contract",
+   "matches_expectation": true
+  }
+ ],
+ "gate_scope": "Existing passed verifier/monitor/isolation gates concern the legacy sealed welded sandbox; they do not certify the new coupler or the full unlatched task.",
+ "resolved_decisions": [
+  {
+   "decision": "Integrate and validate the three existing offline CPU checks",
+   "authorization": "acceptance/release-readiness-20261022/authorization.json",
+   "status": "authorized_and_implemented"
+  },
+  {
+   "decision": "Implement bounded separate real eye/pin coupler prototype and declared local sensors",
+   "authorization": "acceptance/coupler-prototype-20261023-v1/authorization.json",
+   "status": "authorized_implementation_in_progress",
+   "limits": "28 cases / 1040 simulated seconds / two geometry versions; no automatic admission"
+  },
+  {
+   "decision": "Keep original preloaded cargo and existing physical constraints including 5 cm stance slip",
+   "authorization": "acceptance/coupler-prototype-20261023-v1/authorization.json",
+   "status": "retained"
+  },
+  {
+   "decision": "Credit physically valid solo routes and qualify cooperation claims by tested evidence",
+   "authorization": "README.md",
+   "status": "existing_task_contract_retained"
+  }
+ ]
+}

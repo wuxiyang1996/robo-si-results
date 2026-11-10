@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="第四版：面向 VLA 与具身 coding agents 的长程工具使用、harness 编写和跨身体评测。" name="description"/><title>Embodied Terminal-Bench · Benchmark v4 · 中文</title><link href="/robo-si-results/doc/styles.css" rel="stylesheet"/><link href="/robo-si-results/doc/self-modeling-benchmark-v1.css" rel="stylesheet"/><link href="/robo-si-results/doc/self-modeling-benchmark-v4.css" rel="stylesheet"/><meta content="noindex,nofollow,noarchive" name="robots"/></head>
+<body><a class="skip-link" href="#main">跳到正文</a>
+<header class="hero"><p class="meta">SELF-MODELING ROBOTICS / BENCHMARK PROPOSAL 04 / 2026-10-10</p><span class="badge">研究提案 · 实现与实验待完成</span><h1>Embodied Terminal-Bench<br/>工具使用、编程与 Harness 学习</h1><p class="lead">Coding agent 能否通过物理交互、程序组合与可复用技能，低成本解决跨身体的长程机器人任务？</p><p class="subtitle">Long-horizon · Agentic · VLA / atomic skills<br/>默认零训练 · 可选轻训练 · 物理结果验证</p><nav aria-label="页面导航"><a href="/robo-si-results/doc/self-modeling-benchmark-v4-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/README.md">项目索引</a> · <a href="/robo-si-results/doc/self-modeling-benchmark-v3-zh.html">Benchmark v3</a> · <span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html">V3 方法 [external workspace]</span></nav></header>
+<main id="main"><nav aria-label="目录" class="card"><ol class="toc"><li><a href="#thesis">Terminal-Bench for embodied agents</a></li>
+<li><a href="#questions">三个研究问题与可证伪实验</a></li>
+<li><a href="#tracks">三条评测 track：求解、复用、轻训练</a></li>
+<li><a href="#harness">Robot brain、harness 与执行器</a> · <a href="#controller-status">三套控制器的验证状态</a></li>
+<li><a href="#discovery">不给工具用途说明；明确观察与接口</a></li>
+<li><a href="#levels">难度课程：从用途发现到不确定执行</a></li>
+<li><a href="#task-taxonomy">现有任务分类：9 个任务 / 4 个目标类别</a> · <a href="#humanoid">人形任务详情</a></li>
+<li><a href="#team">工具发现 / 多机器人：四足牵引、Robot-as-a-Tool、协同搬运与取物</a></li>
+<li><a href="#coverage">任务扩展与长程定义</a></li>
+<li><a href="#self-model">跨身体与 self-modeling：固定世界，改变能力</a></li>
+<li><a href="#curriculum">分步课程、RSI-WM 扩展与数据飞轮</a></li>
+<li><a href="#latency">把快做成评测指标，而不是口号</a></li>
+<li><a href="#sandbox">Harbor sandbox 与可信物理边界</a></li>
+<li><a href="#verification">Verifier：成功、工具理解与异常行为</a></li>
+<li><a href="#experiments">最小实验：先验证 coding 收益，再扩展</a></li>
+<li><a href="#positioning">相关工作：承认重叠，定位待验证贡献</a></li>
+<li><a href="#roadmap">实施顺序与第四版交付边界</a></li></ol></nav>
+<section class="card" id="thesis"><div class="section-title"><span class="number">01</span><h2>Terminal-Bench for embodied agents</h2></div>
+<p class="goal">给 agent 一个目标、一具或多具身体，以及可交互的物理世界。让它写代码、发现工具用途、组合技能并修订 harness，完成长程任务。</p>
+<p>第四版以 <strong>tool use + coding + harness writing</strong> 为主线，暂称 <strong>Embodied Terminal-Bench</strong>。VLA、全身控制器与原子技能提供执行能力；coding agent 负责观察、物理推理、实验、程序组合与恢复。Humanoid、manipulator、quadruped 与 multi-robot 是目标覆盖范围，首批任务归入工具发现（Tool Discovery），以人形与多机器人作为身体配置标签。其中双 G1 长箱搬运（M2 / Version B）、G1 推车辅助重物运输（H2 / Version C）、G1 自动回弹门穿越（H3 / Version D）与 G1 斜坡/桥梁搭建（H4 / Version E）均为 P0 优先实现任务。利用机器人作为工具的高架取球（M3 / Version F）以 P0/P1 加入创造性工具使用与协作评测。杠杆辅助重物抬升与运输（H5 / Version G）以 P1 加入机械增益与多阶段工具组合评测。双四足运输（M4 / Version H）以 P0 加入 Go1/Go2 协同牵引评测。</p>
+<div class="decision"><strong>核心假设：</strong>在相同执行器、观察与资源预算下，能编写和调试程序的 agent，比直接 VLA 或仅调用固定技能的 agent 更擅长多步物理问题；可复用 harness 能把探索成本摊薄到后续任务。两点均需实验验证。</div>
+<p><strong>相对 v3：</strong>能力发现与 self-modeling 保留为 RQ3 的机制检验；主问题回到 coding agent 是否真正帮助机器人。训练默认关闭，可另设有明确预算的轻训练；可变形物体是扩展项。降低求解延迟是设计目标，不把“现有工作普遍很慢”当作已验证结论。</p>
+<p class="small">本文是研究与工程提案。Benchmark 接口、预算、任务和实验均待实现；三套执行器的独立仿真进展见<a href="#controller-status">控制器验证状态</a>，不代表任务已经可执行。旧版 <a href="/robo-si-results/doc/self-modeling-benchmark-v3-zh.html">benchmark v3</a> 与 <span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html">V3 方法提案 [external workspace]</span>继续独立保留。</p>
+</section>
+<section class="card" id="questions"><div class="section-title"><span class="number">02</span><h2>三个研究问题与可证伪实验</h2></div>
+<div class="metric"><h3>RQ1 · Coding agent 是否帮助复杂机器人任务？</h3><p>比较直接 VLA、同一推理模型的固定技能调用、可编程 agent，以及能持久修订 harness 的 agent。匹配底层技能、传感器、任务、token 与交互上限；比较锁定预算下的有效成功率、恢复率和耗时。直接 VLA 是系统对照；“代码是否有用”的因果证据来自同模型、同接口的调用—编程消融。</p><p><strong>反证：</strong>收益只出现在更强执行器、更多重试或更长预算下；或者技能覆盖匹配后，代码组的成功—成本曲线没有改善。</p></div>
+<div class="metric"><h3>RQ2 · 如何在 sandbox 中检验物理推理？</h3><p>把 robot brain 定义为可检验的“假设 → 预测 → 探测 → 更新 → 执行”闭环。比较纯观察、同预算随机探测、有信息量的探测，以及移除反馈后的版本。记录行动前的成功概率和约束预测；用世界物性干预与实际执行评估更新是否有效。</p><p><strong>反证：</strong>解释文字更完整，但预测校准、探测效率或最终成功没有提升；推理结果仅依赖隐藏状态泄漏。</p></div>
+<div class="metric"><h3>RQ3 · Self-modeling 是否带来跨身体收益？</h3><p>固定场景和目标，改变 reach、gripper、力矩或已验证的移动能力。比较无持久记忆、等容量一般经验记忆、显式自身/世界能力记忆，以及完整能力信息的诊断上界。检验迁移后的计划适配、能力校准与样本效率。</p><p><strong>反证：</strong>等容量一般记忆已解释全部收益，或 self-model 只记住机器人名称；在新身体、无关变化和无需换策略的控制条件下不成立。</p></div>
+</section>
+<section class="card" id="tracks"><div class="section-title"><span class="number">03</span><h2>三条评测 track：求解、复用、轻训练</h2></div>
+<div class="grid-3"><div class="mini-card"><p class="eyebrow">A / SOLVE</p><h3>回合内编程求解</h3><p>固定 VLA/控制器和公共技能。Agent 可写代码、分支、循环、局部记忆与恢复逻辑，但不改模型权重。每个测试实例清空跨任务记忆；episode 内预算允许的重试全部计费。</p></div><div class="mini-card"><p class="eyebrow">B / BUILD A HARNESS</p><h3>开发后冻结复用</h3><p>在开发任务上构建 perception wrapper、技能组合、参数估计、失败检测与调度代码。提交源码、依赖锁、说明和技能库快照；隐藏测试前冻结，单独报告开发成本和测试成本。</p></div><div class="mini-card"><p class="eyebrow">C / LIGHT ADAPTATION</p><h3>可选的受限学习</h3><p>仅允许预声明的小型 adapter、校准器或技能微调，公布可训练参数、数据量、更新步数与 GPU 时间。与零更新对照匹配总预算；独立排名，不与 training-free 结果混合。</p></div></div>
+<p>“Training-free”指本 benchmark 内无权重更新，不表示预训练控制器没有训练成本。持久代码/技能库变化也属于学习，应记录版本。不得把完整任务答案包装成公共原子技能；复合技能只能从允许的开发经历形成。</p>
+</section>
+<section class="card" id="harness"><div class="section-title"><span class="number">04</span><h2>Robot brain、harness 与执行器</h2></div>
+<figure aria-label="从目标到物理执行的分层架构" class="architecture"><div class="layer"><strong>目标 + 允许的观察 → Coding / embodied agent</strong><span>形成假设 · 选择实验 · 写程序 · 决定工具、顺序与恢复</span></div><p aria-hidden="true" class="arrow">↓</p><div class="layer"><strong>可编辑的 agent harness</strong><span>感知封装 · 技能编排 · 能力记忆 · 调度与日志</span></div><p aria-hidden="true" class="arrow">↓ 受限 RPC / SDK</p><div class="layer trusted"><strong>冻结的 solver / executor adapter</strong><span>结构化子目标 → VLA action chunks / 原生 action tokens / 全身参考 / IK 目标</span></div><p aria-hidden="true" class="arrow">↓</p><div class="layer trusted"><strong>可信仿真 worker → 传感器反馈</strong><span>Humanoid · Manipulator · Quadruped · Multi-robot；私有状态旁路送至 verifier</span></div><figcaption>拟议架构。VLA 是 harness 后方的一类执行器；其输出格式与机器人绑定，不假定存在跨身体通用 action token。</figcaption></figure>
+<p><strong>慢速推理与快速闭环分离。</strong>Agent 在技能边界或失败事件处决策，冻结的控制器维持控制周期。LLM 超时由 executor 进入已验证的保持/停止状态。语言子目标须转成有类型的对象、位姿、接触、时间范围与终止条件；没有可用控制器的技能要标成 coverage gap。</p>
+<p>候选公共原子接口为 <code>observe</code>、<code>navigate</code>、<code>reach</code>、<code>grasp</code>、<code>place</code>、<code>push</code> 与经验证的 <code>step</code>。Handoff 由显式双方动作和同步条件组成。必须公布每个 body/controller 支持的接口、单位、坐标系、有效参数和可观察错误，不能通过隐藏调用语法考 agent。</p>
+<h3 id="controller-status">G1 全身控制器：本机安装与初步验证</h3>
+<p class="small">更新于 2026-10-16。以下是独立 MuJoCo 仿真中的短时运行结果，尚未接入本 benchmark 的任务、RPC 与 verifier。测试环境为 WSL Ubuntu 22.04、Python 3.10、RTX 5090（32 GB）与 PyTorch 2.8.0+cu128；三个项目分别使用独立环境。</p>
+<div class="grid-3">
+<div class="mini-card"><h4><a href="https://github.com/NVlabs/GR00T-WholeBodyControl">GR00T WBC</a></h4><p><strong>已验证：</strong>Decoupled WBC 的 Balance / Walk ONNX 策略在 MuJoCo 中连续运行 2,000 个物理步（10 秒），切换站立与行走命令后状态及动作数值有限，最终机身高度约 0.743 m。</p><p><strong>候选用途：</strong>作为 G1 站立与移动执行层，后续验证操作技能与移动的组合。</p><p><strong>未验证：</strong>SONIC 控制器、VR、实机、训练及各 benchmark 任务中的负载与接触能力。</p></div>
+<div class="mini-card"><h4><a href="https://github.com/lzyang2000/HANDOFF">HANDOFF</a></h4><p><strong>已验证：</strong>自带 ONNX 策略在同步 MuJoCo 循环中运行 10,000 个物理步（10 秒），状态数值有限，最终机身高度约 0.787 m；修复 ROS 线程退出流程后正常结束。</p><p><strong>候选用途：</strong>评估任务空间命令到 G1 全身动作的执行接口，逐项校准移动、机身高度和双腕目标。</p><p><strong>未验证：</strong>上述命令的完整能力范围、训练、VR 与实机；当前默认模型缺少夹爪关节，夹爪控制禁用。此处 HANDOFF 是项目名，不代表双机器人交接技能已经实现。</p></div>
+<div class="mini-card"><h4><a href="https://github.com/Sirui-Xu/ULTRA">ULTRA</a></h4><p><strong>已验证：</strong>自带 teacher checkpoint 成功加载，使用官方数据中的一个 largebox 动作样本完成 MuJoCo 回放并生成视频。</p><p><strong>候选用途：</strong>提供动作跟踪执行基线，后续评估移动与操作组合的覆盖范围。</p><p><strong>未验证：</strong>student 策略、自主任务成功率与完整训练；未安装旧版 IsaacGym Preview 4。teacher 回放不等于视觉自主操作已跑通。</p></div>
+</div>
+<div class="decision"><strong>接入门槛：</strong>三者目前是已安装并完成初步仿真的执行器候选，不计作 H1–H5 / M1–M4 的任务成功证据。下一步先统一坐标系、命令单位、观测边界、超时/停止与重置接口，再逐项测量原子技能成功率、延迟、接触和载荷范围。同一消融内固定控制器、权重与技能覆盖；不同控制器的结果单独报告。</div>
+<details><summary>本机启动、依赖修复与验证记录</summary><p>源码位于 WSL <code>/home/wxy/rsi_wbc/</code>，每个仓库使用自己的 <code>.venv</code>。在 Windows 的 <code>D:\rsi_vla</code> 目录运行：</p><pre class="code-block"><code>.\scripts\run_wbc.ps1 GR00T-WholeBodyControl
+.\scripts\run_wbc.ps1 HANDOFF
+.\scripts\run_wbc.ps1 ULTRA</code></pre><p>前两项启动 MuJoCo 窗口，ULTRA 默认离屏回放并写入 <code>~/rsi_wbc/ULTRA/out.mp4</code>。交互窗口与键盘操作尚未人工验证。安装记录位于工作区 <code>D:\rsi_vla\WBC_SETUP.md</code>；视频、HANDOFF 日志、依赖版本与本地补丁位于 <code>D:\rsi_vla\logs\wbc\</code>，这些文件不随本提案仓库发布。</p><p>GR00T 修复了包内文档路径和示例模型文件名；HANDOFF 使用稳定版 MuJoCo 3.8.1、mujoco-warp 3.8.0.3 与 mjviser 0.0.14，原锁文件仍引用失效 nightly，不能直接用 <code>uv sync</code> 恢复；ULTRA 仅提取一个测试动作。GR00T / HANDOFF 的依赖检查通过；ULTRA 的 rl-games wheel 有重复元数据提示，但本次 teacher 回放成功。完整训练仍需要额外数据与依赖验证。</p></details>
+<details><summary>拟议 SDK：代码可编辑，可信执行接口冻结</summary><pre class="code-block"><code>obs = client.observe(modalities=["rgb", "proprioception"])
+# agent chooses robot, skill, targets, and bounded parameters
+ticket = client.execute(robot_id, skill, arguments, max_duration)
+feedback = client.wait(ticket)  # sensors, termination, observable errors
+client.stop(robot_id)
+# no set_state(), private_reward(), or evaluator filesystem access</code></pre><p>这只是接口合约，不是已实现 SDK。预算、超时和动作验证在可信服务端计量；agent 不能通过修改本地 client 绕开。VLA 只能看同一 track 允许的输入，不能从私有状态获得额外优势。</p></details>
+</section>
+<section class="card" id="discovery"><div class="section-title"><span class="number">05</span><h2>不给工具用途说明；明确观察与接口</h2></div>
+<p><strong>区分 API tool calling 与 physical tool use。</strong>API 的操作语义公开；场景中哪些物体可当工具、该怎样组合、哪条路线能成功，不向 agent 标注。物体使用中性 ID，不出现 <code>correct_step_box</code>、用途标签或解法图；自然语言任务只陈述目标与公开有效性约束。</p>
+<p>Agent 可以看到外观、空间关系和传感器允许的物理反馈，自主估计承重、摩擦、可移动性、可抓取性与支撑关系。发现“可以用作台阶”不同于知道“调用 step 的参数格式”。禁止任务专属的 <code>solve_shelf()</code>，允许可迁移的移动、接触与抓取技能。</p>
+<div class="grid-3"><div class="mini-card"><h3>视觉</h3><p>基础 RGB + proprioception；RGB-D 作为明确的传感器变体，记录分辨率、帧率、延迟与标定。不能在视觉 track 中偷偷补充仿真器精确物体位姿。</p></div><div class="mini-card"><h3>接触与触觉</h3><p>力/力矩、接触或 tactile 作为可选扩展，声明可用部位与噪声。传感器缺失与低质量信号分别记录。</p></div><div class="mini-card"><h3>文本 grounding</h3><p>由允许的感知管线产生对象描述，附来源和置信度。使用真实状态生成的文本只进入单列 oracle track；文本不描述推荐用途。</p></div></div>
+<p>沿用 v3 的 Explicit / Partial / Latent 能力信息设置。它是独立实验轴，与下面的难度等级和传感器组合分别报告。主比较建议 Partial，Latent 用于发现诊断，Explicit 用于信息上界。</p>
+</section>
+<section class="card" id="levels"><div class="section-title"><span class="number">06</span><h2>难度课程：从用途发现到不确定执行</h2></div>
+<ol class="levels"><li><span class="level">L0</span><div><strong>所有候选物体都有可用功能</strong><p>无干扰物，物性可靠；agent 仍需选择、排序并调用技能。“有用途”不表示每件物体都必须用，也不提供用途说明。</p></div></li><li><span class="level">L0.5</span><div><strong>用途不直观 / 物性变化</strong><p>外观相似但高度、摩擦或承重不同；常见物体可被重新利用。需要从可观察证据或预算内互动判断。</p></div></li><li><span class="level">L1</span><div><strong>相关物体与无用物体混合</strong><p>增加 distractors；选择不使用某物体也是正确决策。保持有效解路线，避免只增加视觉拥挤。</p></div></li><li><span class="level">L1.5</span><div><strong>看似有用的陷阱</strong><p>如易滑的支撑、会倒的箱体或导致死路的资源。陷阱要有可获得的证据或探测机会；无法辨别的情况应允许不确定性。</p></div></li><li><span class="level">L2</span><div><strong>对抗、故障与不确定性</strong><p>加入弱化 gripper、传感器退化、动作噪声或受控扰动。先做单因素实验，再组合；agent 需感知失败、恢复或合理停止。</p></div></li></ol>
+<p>将笔记中 L1 的附加难度记为 <strong>L1.5</strong>，避免与 L0.5 重名。等级是课程标签，不是已经测得的难度排序；用失败分布与代价验证。陷阱、物性、故障与观测噪声保留独立标签，失败率不可全归为推理能力。</p>
+</section>
+<section aria-labelledby="task-taxonomy-title" class="card" id="task-taxonomy"><div class="section-title"><h2 id="task-taxonomy-title">现有任务分类：9 个任务，4 个目标类别</h2></div>
+<p>上位类别统一为<strong>工具发现（Tool Discovery）</strong>，主分类按任务目标划分，便于比较同类问题在不同身体上的表现。物理机制、身体配置与实现状态分别作为独立标签；保留 H1–H5 / M1–M4 编号和现有目录，不因重新分类而改名。</p>
+<div class="grid-2"><div class="mini-card"><h3>1 · 高处取物与可达性扩展</h3><p><strong>H1、M1、M3。</strong>将不可直接访问的目标取出并交付。机制包括搭建支撑、容器姿态调整、异构机器人分工，以及将另一台机器人举升或支撑为工具。M1 侧重角色分工与交接；M3 侧重发现机器人作为工具的用途。</p></div><div class="mini-card"><h3>2 · 重物 / 长物运输</h3><p><strong>H2、H5、M2、M4。</strong>克服负载或几何限制，将物体运到目标区。分别考察推车承载、杠杆机械增益与支撑转移、双 G1 分担负载，以及双四足牵引和张力协调。</p></div><div class="mini-card"><h3>3 · 动态障碍处理</h3><p><strong>H3。</strong>运输过程中处理会自动恢复的通路约束。核心机制是保持门开启、验证工具是否有效，以及开门—放置工具—重新抓取—通过的时序组织。</p></div><div class="mini-card"><h3>4 · 通路搭建与地形改造</h3><p><strong>H4。</strong>将材料组合成可通行结构，再完成取回或交付。核心机制是坡道 / 桥梁构造、支撑与联合载荷稳定性验证。与 H1 的局部触及高度扩展相比，这类任务要求验证整条通路的可通行性。</p></div></div>
+<table><caption>任务清单与当前实现状态</caption><thead><tr><th scope="col">目标类别</th><th scope="col">任务</th><th scope="col">身体配置</th><th scope="col">优先级</th><th scope="col">实现状态</th></tr></thead><tbody>
+<tr><td>高处取物</td><td><a href="/robo-si-results/humanoid/g1_support_retrieval/README.md">H1 · 支撑辅助取物</a></td><td>单 G1</td><td>未单列；已有示例</td><td>已有 Genesis / Isaac Lab 环境；完整物理解法与难度校准待验证</td></tr>
+<tr><td>高处取物</td><td><a href="#team-m1">M1 / A · 人形与移动抓取机器人协作</a></td><td>G1 + 移动抓取机器人</td><td>未单列；候选任务</td><td>提案；无独立任务实现</td></tr>
+<tr><td>高处取物</td><td><a href="/robo-si-results/multi_robot/g1_improvised_robot_tool_use/README.md">M3 / F · 将机器人作为工具取球</a></td><td>G1 + 带机械臂的小车</td><td>P0/P1</td><td>任务规格；举升 / 支撑与精确抓取待验证</td></tr>
+<tr><td>重物 / 长物运输</td><td><a href="/robo-si-results/humanoid/g1_cart_assisted_transport/README.md">H2 / C · 推车辅助运输</a></td><td>单 G1</td><td>P0</td><td>任务规格；完整物理可行性待验证</td></tr>
+<tr><td>重物 / 长物运输</td><td><a href="/robo-si-results/humanoid/g1_lever_assisted_transport/README.md">H5 / G · 杠杆辅助抬升与运输</a></td><td>单 G1</td><td>P1</td><td>任务规格；机械增益与完整运输待验证</td></tr>
+<tr><td>重物 / 长物运输</td><td><a href="/robo-si-results/multi_robot/dual_g1_long_object_transport/README.md">M2 / B · 双 G1 长箱搬运</a></td><td>双 G1</td><td>P0</td><td>任务规格；完整物理可行性待验证</td></tr>
+<tr><td>重物 / 长物运输</td><td><a href="/robo-si-results/multi_robot/dual_quadruped_cooperative_transport/README.md">M4 / H · 双四足协同牵引</a></td><td>双 Go1 / Go2</td><td>P0</td><td>任务规格；连接操作与完整运输待验证</td></tr>
+<tr><td>动态障碍处理</td><td><a href="/robo-si-results/humanoid/g1_self_closing_door/README.md">H3 / D · 自动回弹门穿越</a></td><td>单 G1</td><td>P0</td><td>任务规格；完整物理可行性待验证</td></tr>
+<tr><td>通路搭建</td><td><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/README.md">H4 / E · 斜坡 / 桥梁搭建</a></td><td>基础为单 G1；四足 / 轮式变体另验</td><td>P0</td><td>任务规格；结构与完整路径待验证</td></tr>
+</tbody></table>
+<p><strong>交叉标签：</strong>任务可同时涉及运输、支撑或协作，但清单中只按主目标计数一次。推荐记录 <code>goal_family</code>、<code>mechanisms</code>、<code>embodiment</code>、<code>coordination</code> 与 <code>implementation_status</code>；这些是拟议元数据，不是已经实现的 SDK 字段。多机器人场景还需区分“必须合作”和“合作只改善成本”，不能仅按机器人数量认定协作必要。</p>
+<p class="small">计数口径：1 个已有物理环境的任务（H1）、7 个任务规格（H2–H5、M2–M4）、1 个提案任务（M1），共 9 个任务定义，不是 9 个已跑通任务。<a href="/robo-si-results/benchmarks/harbor/README.md">Harbor support retrieval</a> 是 H1 的 CPU 解析 / 技能层版本，不另计物理任务；GR00T WBC、HANDOFF 和 ULTRA 是执行器候选，也不计作任务。</p>
+</section>
+<section class="card" id="humanoid"><div class="section-title"><span class="number">07</span><h2>工具发现 — 人形机器人</h2></div>
+<p class="small">主类别：工具发现（Tool Discovery）。身体配置：人形机器人（Humanoid）。推车辅助运输（H2 / Version C）、自动回弹门穿越（H3 / Version D）与斜坡/桥梁搭建（H4 / Version E）均为 P0 优先实现任务。杠杆辅助重物抬升与运输（H5 / Version G）为 P1。H4 另设需独立验证的四足和轮式机器人变体；搭建支撑取物（H1）保留为独立示例任务。Humanoid 与 Multi-Robot 是身体配置标签，不是任务主类别。</p>
+<article id="humanoid-h5">
+<h3>Version G — G1 Lever-Assisted Heavy Object Lifting and Transport</h3>
+<p class="badge">H5 · P1 · Tool Discovery · 人形机器人 · 任务定义阶段</p>
+<p class="goal">单台 Unitree G1 需要将一个超过自身直接举升能力的重箱子移动至指定区域。环境中存在长杆、支点块、垫片、滚筒和其他可交互物体，但没有预先提供工具使用说明。Agent 需要自主探索如何利用这些物体改变受力条件，完成重物的抬升和运输。</p>
+<ul class="compact-list">
+<li>G1 无法直接抬起重箱子。Agent 需要通过物理交互认识自身的举升能力、抓取限制及箱体的质量分布，判断直接搬运为什么不可行。</li>
+<li>Agent 需要自主发现长杆与支点可以构成杠杆，通过选择合适的支点位置、施力位置和接触角度，以较小的作用力抬起箱体一侧。</li>
+<li>Agent 可以进一步探索使用垫片、支撑块或滚筒，在分阶段抬升后支撑箱体，并通过滚动、推动或重新定位的方式完成运输。</li>
+<li>Agent 自主编写多阶段控制 harness，协调工具抓取、支点放置、接触位置调整、施力控制、临时支撑、滚筒插入及重物运输。</li>
+<li>当杠杆发生滑移、支点不稳定、施力不足或箱体倾斜时，Agent 需要根据执行反馈分析失败原因，调整杠杆结构、接触位置或运输方案。</li>
+<li><strong>进阶版本：</strong>改变箱体质量、质心位置、杠杆长度与刚度、支点摩擦系数、G1 的有效施力能力及可用工具组合。在保证每个正式可解实例至少存在一种经过物理验证的可执行解法的前提下，测试 Agent 能否自主发现机械增益、组合多个工具，并重新构造控制程序。</li>
+</ul>
+<p><strong>核心考察：</strong>Autonomous Tool Discovery · Lever and Torque Reasoning · Mechanical Advantage · Multi-Stage Tool Composition · Harness Construction · Embodied Self-Modeling · Long-Horizon Planning</p>
+<p><strong>实现门槛：</strong>验证直接举升能力不足，以及完整的工具操作、边缘抬升、支撑转移与运输流程。检查接触几何、有效力臂、抓持、机器人力矩与平衡、杠杆行程、摩擦和支点稳定性。机械增益必须来自真实接触与力矩，刚度变体需建模柔顺性；仅抬起一侧不构成任务可解证明。候选策略属于设计示例，不作为 Agent 的工具使用指令。</p>
+<p class="small">环境实现与物理可行性验证尚未完成。<a href="/robo-si-results/humanoid/g1_lever_assisted_transport/README.md">H5 任务说明与实现清单（英文）</a>。</p>
+</article>
+<article id="humanoid-h4">
+<h3>Version E — G1 Ramp / Bridge Construction</h3>
+<p class="badge">H4 · P0 · Tool Discovery · 基础身体：人形机器人 · 任务定义阶段</p>
+<p class="goal">单台 Unitree G1 需要将一个目标物体从障碍物另一侧取回，或将物体运输至指定区域，但路径中存在无法直接跨越的台阶、沟槽或高度差。环境中存在木板、箱子、支撑块等可交互物体，但没有预先指定其工具用途。Agent 需要自主探索如何利用这些物体构造可通行路径。</p>
+<ul class="compact-list">
+<li>Agent 需要判断 G1 的跨步能力、可达范围及障碍物几何约束，识别直接移动无法完成任务的原因。</li>
+<li>Agent 需要探索木板、箱子和支撑物的潜在用途，通过允许的观察和交互测量或估计长度、刚度、承重能力和摩擦条件，判断能否构造斜坡或临时桥梁。</li>
+<li>Agent 自主编写工具组合与环境改造 harness，协调材料搬运、支撑物放置、木板定位、结构稳定性验证及后续穿越。</li>
+<li>当斜坡过陡、木板发生滑移或支撑结构不稳定时，Agent 需要根据物理反馈修改结构、改变材料组合或重新规划路径。</li>
+<li><strong>进阶版本：</strong>改变沟槽宽度、台阶高度、木板长度与刚度、支撑物稳定性，以及 G1 的有效跨步能力。部分实例需要组合多个物体才能构造可行路径；另设 quadruped 或 wheeled robot 变体，测试 Agent 能否根据不同身体能力重新设计通行方案。所有正式可解实例均需通过物理仿真验证。</li>
+</ul>
+<p><strong>核心考察：</strong>Autonomous Tool Discovery · Physical Reasoning · Environmental Construction · Harness Synthesis · Embodied Self-Modeling · Cross-Embodiment Adaptation</p>
+<p><strong>实现门槛：</strong>对指定身体与控制器验证完整的材料搬运、结构搭建、稳定性探测、穿越和取回/交付流程；取回任务还需验证携带目标返回的路径。检查坡度、支撑接触、摩擦、挠曲以及机器人与物体的联合载荷。刚度变体必须在仿真中体现相应柔顺性；四足和轮式变体需具备经过验证的操作与移动能力。候选结构属于设计示例，不作为评测解法提示。</p>
+<p class="small">环境实现与物理可行性验证尚未完成。<a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/README.md">H4 任务说明与实现清单（英文）</a>。</p>
+</article>
+<article id="humanoid-h3">
+<h3>Version D — G1 Self-Closing Door Traversal</h3>
+<p class="badge">H3 · P0 · Tool Discovery · 人形机器人 · 任务定义阶段</p>
+<p class="goal">单台 Unitree G1 需要将一个箱子从房间 A 搬运至房间 B，但两个房间之间有一扇带自动回弹机构的门。G1 可以打开门，但在双手搬运箱子时无法持续扶住门。环境中存在木楔、重物及其他可交互物体，Agent 需要自主发现保持门开启的方法。</p>
+<ul class="compact-list">
+<li>Agent 需要通过交互认识门的回弹机制，判断直接搬运为什么失败，并探索环境中哪些物体可以作为临时固定工具。</li>
+<li>Agent 可以利用木楔、重物或其他物体阻止门关闭，但需要验证工具放置位置、摩擦力和固定效果。</li>
+<li>Agent 自主编写长程控制 harness，协调开门、放置工具、验证门状态、重新抓取箱子、穿过门口及最终放置物体。</li>
+<li>当门无法稳定保持开启时，Agent 需要根据执行反馈调整工具、固定位置或通过顺序，避免反复执行失败策略。</li>
+<li><strong>进阶版本：</strong>改变门的回弹力、摩擦系数、门宽、箱体尺寸及可用工具的物理属性。加入失效的楔子或容易滑动的重物，在保证存在物理可执行解的条件下，测试 Agent 能否自主识别工具失效并重新构造控制程序。</li>
+</ul>
+<p><strong>核心考察：</strong>Autonomous Tool Discovery · Physical Affordance Reasoning · Environmental Modification · Harness Construction · Long-Horizon Planning · Failure Recovery</p>
+<p><strong>实现门槛：</strong>验证开门、双手搬箱、工具的物理放置、稳定通行空间以及完整的松手—重新抓取—穿门流程。箱子需经连续物理执行到达房间 B 并稳定放置；固定效果来自接触物理，不能用脚本锁门替代。候选工具与策略属于设计示例，不作为评测解法提示，其他有效路线同样计分。</p>
+<p class="small">环境实现与物理可行性验证尚未完成。<a href="/robo-si-results/humanoid/g1_self_closing_door/README.md">H3 任务说明与实现清单（英文）</a>。</p>
+</article>
+<article id="humanoid-h2">
+<h3>Version C — G1 Cart-Assisted Heavy Object Transport</h3>
+<p class="badge">H2 · P0 · 优先实现 · 任务定义阶段</p>
+<p class="goal">单台 Unitree G1 需要将一个超过自身直接搬运能力的重箱子运送至指定区域。环境中存在一辆可移动推车（cart），但运输路径包含狭窄通道，无法简单地沿直线推动箱子到达目标。</p>
+<ul class="compact-list">
+<li>G1 无法直接搬起箱子。Agent 需要通过物理交互发现自身的承重限制，并自主识别环境中的推车可以作为辅助运输工具。</li>
+<li>Agent 需要探索如何将重箱子装载到推车上，例如通过推动、倾斜、分阶段抬升或利用环境支撑物，而不是假设机器人可以直接将箱子举起。</li>
+<li>Agent 自主编写推车控制 harness，协调 G1 的移动、推力、接触位置与推车运动，实现稳定运输。</li>
+<li>通过狭窄通道时，需要根据推车尺寸、箱体朝向、转弯半径及 G1 的运动能力调整运输策略，必要时重新定位、改变推动方向或多次调整姿态。</li>
+<li><strong>进阶版本：</strong>改变箱体质量、推车承重上限、轮子摩擦、通道宽度及机器人推力限制。在保证至少存在一种物理可执行解法的前提下，测试 Agent 能否发现工具使用条件、识别控制失败原因并修改 harness。</li>
+</ul>
+<p><strong>核心考察：</strong>Autonomous Tool Discovery · Physical Reasoning · Harness Construction · Load and Mobility Constraints · Embodied Self-Modeling · Long-Horizon Planning</p>
+<p><strong>实现门槛：</strong>验证直接抬升能力不足且至少存在一种可执行装载路线，再验证接触驱动的推车运动、稳定运输、通过通道与最终交付。检查承重、轮子行为、接触力、平衡以及机器人、推车和箱体的通行空间。候选策略属于设计示例，不作为评测解法提示。推车由机器人接触驱动，不能直接控制推车绕过 G1 的能力限制；任务未明确要求时，交付不额外要求卸货。</p>
+<p class="small">环境实现与物理可行性验证尚未完成。<a href="/robo-si-results/humanoid/g1_cart_assisted_transport/README.md">H2 任务说明与实现清单（英文）</a>。</p>
+</article>
+<article id="humanoid-h1">
+<h3>H1 — 搭建支撑，取下高处盒子</h3>
+<p class="goal">“把架子上的目标盒子放到指定接收区。”</p>
+<dl class="task-spec"><dt>身体与场景</dt><dd>G1 或其他人形；高处目标、可搬动的箱体/平台、地面与接收区。不同身体共享同一目标、场景和资源集合。初期只用刚体。</dd><dt>待发现结构</dt><dd>箱体可能成为支撑或台阶；agent 自行决定是否需要、选择哪些、如何布置和如何恢复。指令不出现“堆箱”“爬上”等解法提示。</dd><dt>候选依赖链</dt><dd>观察目标 → 估计自身 reach → 检验箱体可移动/承重 → 搬运与布置 → 稳定踏上 → 抓取 → 带回接收区。每一步都需可执行，直接取物等其他有效路径同样计分。</dd><dt>跨身体变体</dt><dd>高 reach 身体可直接取；另一身体可能只需一个支撑；更矮身体可能需要两个箱体构成可上去的阶梯/稳定堆叠。两箱一直在场，不通过资源数量泄漏答案。</dd><dt>物理入选条件</dt><dd>验证足底空间、抬脚高度、重心、箱体接触、承重、摩擦、抓取与踏上/踏下过渡。两个箱子“总高度够”并不代表可以爬上；禁止把高度公式当可行性证明。</dd><dt>成功合约</dt><dd>目标经机器人动作到达接收区并保持预定时长；全程满足公开的跌倒、目标损坏与接触约束。仿真轨迹验证连续运动，无 teleport、状态写入或绕过接触。</dd></dl>
+<p><strong>执行器门槛：</strong>先用独立脚本复现移动箱体、稳定踏上、抓取与下台阶，再开放 agent 求解。若 G1 尚不支持踏箱，将该配置标为未就绪；可以用固定平台调试接口，但不得把它报告成完成了工具构造任务。</p>
+</article>
+</section>
+<section class="card" id="team"><div class="section-title"><span class="number">08</span><h2>工具发现 — 多机器人</h2></div>
+<p class="small">主类别：工具发现（Tool Discovery）。身体配置：多机器人（Multi-Robot）。Version B（M2）与双四足牵引运输（M4 / Version H）均为 P0 优先实现任务；Version F（M3）以 P0/P1 加入创造性 Robot-as-a-Tool 发现。Version A（M1）保留为独立候选任务。</p>
+<article id="team-m4">
+<h3>Version H — Dual Quadruped Cooperative Long-Object Transport</h3>
+<p class="badge">M4 · P0 · Tool Discovery · 多机器人 / 四足 · 任务定义阶段</p>
+<p class="goal">两台 Unitree Go1/Go2 需要协作将一个长条形货箱运输至指定区域，途中必须通过狭窄通道及 90° L 型走廊。由于机器狗没有机械手，无法直接抓取货箱，环境中提供绳索、牵引连接点、拖板及其他可交互物体。Agent 需要自主探索可行的牵引与运输方式，并编写双机器人协同控制程序。</p>
+<ul class="compact-list">
+<li>Agent 需要通过物理交互认识两台机器狗的牵引能力、运动限制，以及货箱的质量、摩擦和几何约束，判断单机器人是否能够完成运输。</li>
+<li>Agent 需要自主发现如何利用绳索、牵引连接点或拖板构造运输方案，并探索不同连接位置对货箱运动方向、旋转和稳定性的影响。</li>
+<li>Agent 自主编写多机器人控制 harness，协调两台机器狗的移动、牵引方向、相对位置和牵引张力，实现货箱的稳定运输。</li>
+<li>在 L 型转角处，Agent 需要联合规划货箱的平移与旋转，通过调整两台机器狗的牵引方向、速度和队形，使货箱能够在不发生严重碰撞或连接失效的情况下通过狭窄区域。</li>
+<li>当货箱卡住、绳索松弛、牵引力不足或两台机器狗运动不同步时，Agent 需要根据执行反馈诊断问题，并自主修改牵引策略、运动顺序或控制 harness。</li>
+<li><strong>进阶版本：</strong>改变货箱长度、质量、质心、地面摩擦、走廊宽度及两台机器狗的有效牵引能力。部分实例中，两台机器狗具有不同的牵引力或运动能力，需要 Agent 通过交互发现差异，动态分配主要牵引与转向控制角色。在保证每个正式可解实例至少存在一种经过物理验证的可执行解法的前提下，测试 Agent 能否自主调整连接方式、协作策略及控制程序。</li>
+</ul>
+<p><strong>核心考察：</strong>Multi-Robot Coordination · Autonomous Tool Discovery · Cooperative Towing · Physical Reasoning · Harness Construction · Embodied Self-Modeling · Long-Horizon Planning · Failure Recovery</p>
+<p><strong>实现门槛：</strong>明确初始连接状态，以及身体和硬件能够物理执行的连接、释放、重新连接和拖板使用操作。无机械手时不能假定能够抓绳、打结或装载；预连接场景只能验证牵引，不能证明自主构造连接。验证完整路径中的绳索松弛/张力、地面牵引、连接载荷、机器人稳定性和通行空间。有效单机器人路线同样计分，协作必要性需验证；候选策略属于设计示例，不作为 Agent 的预设方案。</p>
+<p class="small">环境实现与物理可行性验证尚未完成。<a href="/robo-si-results/multi_robot/dual_quadruped_cooperative_transport/README.md">M4 任务说明与实现清单（英文）</a>。</p>
+</article>
+<article id="team-m3">
+<h3>Version F — G1 High-Shelf Retrieval via Improvised Robot Tool Use</h3>
+<p class="badge">M3 · P0/P1 · Tool Discovery · 多机器人 · 任务定义阶段</p>
+<p class="goal">单台 Unitree G1 需要从高处书架上的盒子中取出一个小球，并将其放置到指定区域。由于目标位置较高、盒子开口有限，G1 难以直接伸手完成精确抓取。环境中存在若干可以作为台阶的箱子，以及一台配备机械臂的小型轮式机器人。Agent 可以控制两台机器人，但不会获得预先设计的工具使用方案或协作程序。</p>
+<ul class="compact-list">
+<li>Agent 需要探索书架高度、盒子开口、目标位置及 G1 的 reach、抓取精度和身体稳定性，判断直接抓取的可行性。</li>
+<li><strong>Solution A — Box-Assisted Retrieval：</strong>Agent 可以发现并利用环境中的箱子构造临时台阶，增加 G1 的有效操作高度，再尝试从盒子中取出小球。</li>
+<li><strong>Solution B — Robot-as-a-Tool：</strong>Agent 可以发现轮式机器人搭载的机械臂更适合精确抓取小球，但其自身高度或机械臂工作空间不足。Agent 可以探索由 G1 抱起或支撑轻量轮式机器人，提升其机械臂的操作高度，再由轮式机器人的机械臂完成抓取。</li>
+<li>Agent 自主编写多机器人控制 harness，协调 G1 的抓取、举升与稳定支撑，以及轮式机械臂的定位、伸展、视觉伺服、抓取和物体交接。</li>
+<li>Agent 需要根据实际反馈判断不同方案的可行性，包括 G1 的有效承重能力、轮式机器人的质量与重心、机械臂工作空间、支撑稳定性和目标抓取精度，并选择或修订可执行方案。</li>
+<li><strong>进阶版本：</strong>改变书架高度、箱子承重能力、轮式机器人重量、机械臂 reach 和 G1 的有效载荷。通过物理验证保证每个正式可解实例至少存在一种可行解法，使部分实例适合搭建台阶，部分实例需要利用另一台机器人的机械臂，也允许出现组合两种工具才能成功的实例。</li>
+</ul>
+<p><strong>核心考察：</strong>Creative Tool Use · Robot-as-a-Tool · Autonomous Affordance Discovery · Multi-Robot Harness Construction · Embodied Self-Modeling · Physical Reasoning · Long-Horizon Planning</p>
+<p><strong>实现门槛：</strong>验证完整路线，包括台阶稳定性、真实抓取/支撑接触、组合重心、机械臂运动反作用、视觉可见性、精确抓取、交付以及被支撑机器人的稳定放置。举升不能依赖脚本吸附或冻结基座。Solution A/B 是设计候选，不是提供给 Agent 的指令；有效单机器人路线同样计分，协作或组合工具的必要性需独立验证。</p>
+<p class="small">环境实现与物理可行性验证尚未完成；M1 保留为独立协作任务。<a href="/robo-si-results/multi_robot/g1_improvised_robot_tool_use/README.md">M3 任务说明与实现清单（英文）</a>。</p>
+</article>
+<article id="team-m2">
+<h3>Version B — Dual G1 Cooperative Long-Object Transport</h3>
+<p class="badge">M2 · P0 · 优先实现 · 任务定义阶段</p>
+<p class="goal">两台 Unitree G1 协作搬运一个长条形箱子，通过狭窄的 90° L 型走廊，将其运送至指定区域。</p>
+<ul class="compact-list">
+<li>两台 G1 分别负责箱子的一端，Agent 自主编写双机器人协同搬运的控制 harness。</li>
+<li>在 L 型转角处，需要联合调整箱体的位置、朝向、抓取点及两台机器人的相对队形，避免箱体与墙壁碰撞。</li>
+<li>两台 G1 可能具有不同的有效承重能力、抓取稳定性或移动限制。Agent 需要通过交互认识这些能力边界，并合理分配负载。</li>
+<li>当直接搬运无法通过转角时，Agent 需要自主探索替代策略，例如改变抓取位置、分阶段旋转箱体、临时放置箱子并重新抓取。</li>
+<li><strong>进阶版本：</strong>改变箱体长度、质量、质心、走廊宽度及机器人承重上限，在保证至少存在一种物理可执行解法的前提下，测试 Agent 能否自主发现约束并重新构造可行的协作控制程序。</li>
+</ul>
+<p><strong>核心考察：</strong>Multi-Robot Coordination · Long-Horizon Planning · Physical Reasoning · Harness Construction · Embodied Self-Modeling</p>
+<p><strong>实现门槛：</strong>使用选定控制器验证协同抬起、搬运、转向、放置与重新抓取，检查两台机器人和箱体的通行空间、负载分配、抓持稳定性与平衡。上述候选策略属于任务设计示例，不作为评测指令中的解法提示。成功要求通过连续物理执行将箱体送入目标区，满足公开的碰撞与稳定性约束；允许有效的临时放置。</p>
+<p class="small">环境实现与物理可行性验证尚未完成。<a href="/robo-si-results/multi_robot/dual_g1_long_object_transport/README.md">M2 任务说明与实现清单（英文）</a>。</p>
+</article>
+<article id="team-m1">
+<h3>Version A — 人形与移动抓取机器人协作（M1）</h3>
+<p class="goal">“取出架子上容器里的小方块 / 球，并送到指定位置。”两台机器人均可控制。</p>
+<dl class="task-spec"><dt>团队</dt><dd>一台人形 + 一台带 gripper 的移动小车。提供统一 robot ID、独立观察与动作状态；主设定由同一 agent 集中调度，分布式 agent 是后续独立条件。</dd><dt>候选合作</dt><dd>人形将容器取下或调整到可访问姿态，小车接近并取出小物体，再运输；或者人形取出后交接。仅在接触、夹爪尺寸、承重和可达性验证后使用这些路线。</dd><dt>协作必要性</dt><dd>先测每台机器人单独求解。构造“必须合作”和“合作仅改善成本”两类；不能因场景里有两台机器人就宣称任务检验了合作。若存在单体有效捷径，应如实计分并修正标签。</dd><dt>物理变化</dt><dd>容器开口、末端执行器尺寸、容器质量和物体形状影响角色分配。方块和球分开变体；球的滚动、抓持及接收区保持需独立验证。</dd><dt>成功合约</dt><dd>正确物体从容器中取出并到达目标区；容器和其他物体满足预声明约束，交接连续且无穿透；双方动作、等待、失败与总机器人工作量完整计费。</dd></dl>
+<p><strong>同步设计：</strong>先实现确定性的顺序调度，之后再允许并行动作。显式记录占用区、handoff-ready、grasp-confirmed 与 release 条件；不把小车当可承重台阶，除非该用途在当前配置中经过物理验证。</p>
+</article>
+</section>
+<section class="card" id="coverage"><div class="section-title"><span class="number">09</span><h2>任务扩展与长程定义</h2></div>
+<p>长程由<strong>依赖深度、工具组合、持续状态和恢复需求</strong>定义，不由视频时长或重复动作数定义。记录关键依赖节点、决策数、仿真时间与实际墙钟时间；部分进度由可验证状态定义，不要求复现一条标准路线。</p>
+<ul class="compact-list"><li><strong>普通操作：</strong>搬运、取放、开合与重定位作为原子技能和端到端控制基线。</li><li><strong>推理密集：</strong>物理 Hanoi、嵌套容器与阻挡移除，检验先后顺序、暂存与约束遵守；符号解题正确仍需真实抓放执行。</li><li><strong>资源构造：</strong>箱体阶梯、桥/坡道或长杆改变可达性；要求真实受力、接触和通行能力。</li><li><strong>身体覆盖：</strong>固定臂先验证桌面工具；人形验证支撑与全身过渡；四足从导航、推物或已支持的机械臂动作开始，不假定每个四足都能抓取。</li><li><strong>可变形物体（可选）：</strong>布料拉动物体、柔性袋装取物或绳索牵引。需要匹配的仿真与控制器、形变/接触判据和独立吞吐测量；首批不依赖它们。</li></ul>
+<p>自动任务生成可提出物体、目标和约束组合，但不能直接扩充正式测试集。每个候选需控制器可行性、稳定性、评分反例、解法去重及数据划分审查；只靠物体 teleport 成功不算机器人可行性证据。</p>
+</section>
+<section class="card" id="self-model"><div class="section-title"><span class="number">10</span><h2>跨身体与 self-modeling：固定世界，改变能力</h2></div>
+<div class="equation">(Goal, World, Resources, Budget) 固定
+Body / End-effector / Validated controller capability 干预
+历史证据 → 自身与世界信念 → 资源选择与可行策略</div>
+<p>能力记忆记录“在什么条件下能做什么”，包含预测、置信度、证据来源和失效条件。例如 reach 必须关联站姿和支撑状态，载荷必须关联抓持、速度与稳定性。一次失败不能自动判为身体极限：物体质量、摩擦、感知和控制器误差都是竞争解释。</p>
+<ul class="compact-list"><li><strong>干净干预：</strong>先只改变 reach、gripper 开口、力矩或移动能力之一；真实修改几何/动力学/控制配置并重新验证，不只改描述字段。自然不同型号作为后续泛化测试。</li><li><strong>一箱 / 两箱：</strong>同一场景可对比不同有效 reach；更改身体也可能影响平衡和视角，需记录这些伴随变化。方案多解时，不把“换了策略”本身计为正确。</li><li><strong>四类对照：</strong>必须换路线、仅效率偏好改变、同路线仍有效、资源下无可行解。不可解标签须限定验证范围，不能仅因一个 agent 失败而认定。</li><li><strong>泛化划分：</strong>按身体家族、物体几何、机制和布局分组留出；机器人改名、颜色变化和隐藏无关变化可检查名称记忆及过度适应。</li></ul>
+<p>同时保留 world-only 干预来检验自身/环境归因。完整能力上界与真实状态上界单列，不进入公平主比较。显式 self-model 是待验证方法，不是 benchmark 的参赛要求。</p>
+</section>
+<section class="card" id="curriculum"><div class="section-title"><span class="number">11</span><h2>分步课程、RSI-WM 扩展与数据飞轮</h2></div>
+<ol class="chain"><li><strong>建立原子技能基线。</strong>使用已有控制器，独立测量移动、抓取、放置、推物和可用踏步技能；失败先归因到执行覆盖。</li><li><strong>学习单个 affordance。</strong>在开发场景中尝试支撑、推动、延伸 reach 等机制；写下有条件的技能和失败证据。</li><li><strong>组合前置条件。</strong>先搬开阻挡，再取工具；先验证支撑，再攀登；通过新布局检查技能是否可复用。</li><li><strong>冻结后完成最终目标。</strong>在未见组合、物性与身体上测试；测试回合允许 track 内的适应，但不能把测试 verifier 结果写回课程。</li><li><strong>下一轮开发。</strong>仅用开发/训练池的可信轨迹、失败和代码修订更新技能库；再冻结一个新版本做独立评测。</li></ol>
+<p><strong>RSI-WM 扩展在本文中的含义：</strong>把“选择实验 → 获取物理证据 → 修订 harness → 改善最终任务”作为拟议课程闭环，不假定已经接入某个外部实现。世界模型可以是结构化信念或有界预测器，不强制训练大型视频世界模型。</p>
+<p><strong>数据飞轮要测收益：</strong>记录有效轨迹率、有效行为/策略多样性、每条有效轨迹成本，以及相同数据量/训练预算下的下游成功率。对照固定脚本随机化与无课程采样；所有扩增轨迹重新验证。主线先评估代码/技能复用，可选轻训练再检验小规模 VLA 数据收益，不把大量新轨迹等同于能力提升。</p>
+</section>
+<section class="card" id="latency"><div class="section-title"><span class="number">12</span><h2>把快做成评测指标，而不是口号</h2></div>
+<p><strong>性能目标：</strong>预训练执行器持续控制，agent 用少量关键观察进行规划与程序调试。先测执行器闭环上限、仿真吞吐、模型调用等待、图像处理、初始化/重置成本，再决定可负担的任务规模。</p>
+<div class="grid-2"><div class="mini-card"><h3>降低重复开销</h3><p>固定依赖与预热模型；复用进程但彻底重置 episode 状态；在开发阶段缓存通用技能。以动作块和事件触发观察减少 LLM 回合，保留失败与关键接触视频，完整状态日志在可信端留存。</p></div><div class="mini-card"><h3>预算公平</h3><p>统一 wall-clock、LLM tokens、模拟步数、重置次数、GPU 时间与并发数上限。工具探测、失败、内部重试、两台机器人的工作量和代码运行均计费，不能只统计最终成功录像。</p></div></div>
+<p>建议 pilot 先测 <strong>5 / 15 / 30 分钟</strong>的 success–budget 曲线；这是待校准的预算网格，不是已实现速度或实时性保证。使用同一轨迹的预算前缀与预定 checkpoint，避免每档重新挑最好的随机种子。Verifier 只离线读取，不向求解 agent 返回分数。</p>
+<p>分别报告端到端冷启动时间、预热求解时间、模拟物理时间、总计算成本与摊销成本 <code>(开发成本 + N 次测试成本) / N</code>，注明 N。Track B 不能只报冻结 harness 的快速执行而省略昂贵开发。多机器人并行降低的墙钟时间与增加的总工作量同时报告。</p>
+</section>
+<section class="card" id="sandbox"><div class="section-title"><span class="number">13</span><h2>Harbor sandbox 与可信物理边界</h2></div>
+<p>采用 <a href="https://docs.harborframework.com/">Harbor</a> 编排任务、agent 和 sandbox；利用其 <a href="https://docs.harborframework.com/tasks/separate-verifier">separate-verifier 机制</a>作为独立评测基础。<strong>容器隔离不是杜绝 reward hacking 的保证。</strong>以下是本项目拟实施的隔离协议，仍需实际验证。</p>
+<ol class="compact-list"><li><strong>Agent workspace：</strong>只挂载公共指令、SDK、允许的依赖和可写代码目录。私有 TaskSpec、解法、真实物性、隐藏种子和评分脚本不进入该容器。</li><li><strong>可信 simulator worker：</strong>在 agent 权限之外维护状态与物理参数，只提供传感器、动作和有预算的开发 reset。禁止任意 Python eval、状态 setter、文件读取和引擎调试接口透传。</li><li><strong>隔离 verifier：</strong>只由可信端读取状态日志/轨迹及提交物。评分输出不可写；冻结程序在干净环境与隐藏实例上重放。在线 Track A 使用可信记录的闭环轨迹，复测时重新运行 agent。</li><li><strong>最小可达范围：</strong>锁定依赖，任务运行时网络仅允许所需模型代理和执行 RPC；无宿主 Docker socket、无特权模式、无评分目录挂载，检查 IPC、进程与错误日志是否泄漏。</li><li><strong>审计与反例：</strong>测试篡改 client、伪造成功日志、越界 RPC、读评分文件、跨 episode 残留等情况；物理异常另由接触/能量/连续性诊断和视频复核发现。</li></ol>
+<p>开发阶段可以重置、试验并查看公开的执行反馈；测试阶段只允许该 track 声明的 reset 次数与观察。容器限制只能减少软件篡改和泄漏，不能自动识别仿真接触漏洞；两条边界分别评估。</p>
+</section>
+<section class="card" id="verification"><div class="section-title"><span class="number">14</span><h2>Verifier：成功、工具理解与异常行为</h2></div>
+<p><strong>双通道证据：</strong>可信仿真合约负责对象身份、目标区域、保持时间、接触、稳定性与约束；同步视频供人类复核策略、异常接触及评分分歧。固定机位与 robot-view 视频保留时间戳。Video judge 不替代状态合约，仿真状态也不能仅凭“看起来合理”证明真实物理正确。</p>
+<div class="grid-3"><div class="mini-card"><h3>有效新解法</h3><p>满足公开约束和目标，连续物理执行，能在小扰动和重新运行中复现；用不同工具组合或角色分配完成任务。无需匹配参考路线。</p></div><div class="mini-card"><h3>物理 / 合约漏洞</h3><p>穿透、能量异常、非预期引擎行为，或终态计分成功但实际物体取错。标记为待审查或无效，不计入有效成功或训练正样本。</p></div><div class="mini-card"><h3>评测篡改 / 泄漏</h3><p>修改奖励文件、读取隐藏答案或调用状态 setter。根据访问和动作证据标记违规，不凭 agent 的解释猜测其意图。</p></div></div>
+<p><strong>工具理解不由最终成功反推。</strong>在诊断回合记录用途/属性预测，再移除工具、交换物性或改变身体，观察计划和执行是否相应改变。语言解释只作辅助证据；诊断询问的额外 token 与延迟单列，不污染主速度比较。</p>
+<ul class="compact-list"><li><strong>主要结果：</strong>有效成功率随预算变化；同种子配对成功差与置信区间。成本报告 tokens、墙钟、GPU/机器人工作量和每个有效成功的成本。</li><li><strong>推理与适应：</strong>失败后的恢复率、有效探测代价、能力预测 Brier score / 校准、约束归因、必须换路线与应保持路线的分别准确率。</li><li><strong>行为审计：</strong>新颖有效策略比例、漏洞/篡改率、未决案例比例；公布分母。由两位不知道方法身份的评审独立标注异常/新颖性，分歧进入复核。</li><li><strong>基础设施结果：</strong>崩溃、超时、执行器缺失与 agent 失败分开。运行总数和基础设施失败必须披露，不能静默删除不利样本。</li></ul>
+<p>主指标可写为 <code>ValidSuccess = GoalReached ∧ ContractSatisfied ∧ IntegrityPassed</code>。阈值、窗口、容差和异常处理在评测前固定；结果未决时分别给出保守统计与未决数量。参考解仅证明可行性，不定义唯一合格路线。</p>
+</section>
+<section class="card" id="experiments"><div class="section-title"><span class="number">15</span><h2>最小实验：先验证 coding 收益，再扩展</h2></div>
+<p><strong>起点：</strong>优先完成 H2、H3、H4、M2 与 M4 的执行器门槛，再完成 H1 与 M1，为每族创建直接/简单、工具必需、受扰动三个经过验证的条件。每个条件用分离的开发、验证和隐藏测试场景；同源布局、变体和轨迹不能跨 split。首轮小样本用于发现失效与估计方差，正式 seed 数按方差和可负担预算预注册。</p>
+<ol class="compact-list"><li><strong>B0 / Direct VLA：</strong>同一冻结 VLA，目标输入与正常反馈，作为端到端系统基线；不支持的身体单列，不用不同控制器冒充同条件。</li><li><strong>B1 / Fixed-skill agent：</strong>同一推理模型、同一感知和技能，仅逐步调用，无任意程序和持久 harness 修订。</li><li><strong>B2 / Coding agent：</strong>相同接口下允许代码、循环、分支与反馈调试；Track A 衡量回合内收益。</li><li><strong>B3 / Reusable harness：</strong>基于 B2，允许开发阶段跨任务技能积累，随后冻结；Track B 报告开发和摊销收益。</li><li><strong>诊断参考：</strong>手写可执行脚本测 executor coverage；完整能力信息测信息上界。二者不混入 agent 排名。</li></ol>
+<p>RQ2 在 B2 上做 observation-only / random-probe / informative-probe / removed-feedback 消融；RQ3 比较无记忆、一般记忆与 self-model，限制同样的存储、token 和试验预算。轻训练、传感器与多机器人调度变化在主效应成立后逐项加入。</p>
+<p><strong>统计单位：</strong>重复相同任务的独立求解种子，按任务/场景簇计算配对不确定性，不把视频帧当样本；同时报告每族结果，避免长任务权重过高。隐藏测试只用于最终比较；若据此改方法，启用新的测试留出集。</p>
+<p><strong>决策规则：</strong>若脚本无法稳定执行，先修执行器；若 coding 没有改善匹配预算下的有效成功，先分析失败与代价，不靠增加任务数量支撑主张；若收益只来自已见路线，增加机制/身体留出而不是扩大同分布变体。</p>
+</section>
+<section class="card" id="positioning"><div class="section-title"><span class="number">16</span><h2>相关工作：承认重叠，定位待验证贡献</h2></div>
+<p>以下基于官方论文/项目资料，核查日期 <strong>2026-10-10</strong>。每项“本项目比较”是研究设计判断，不能据此断言已有工作缺少某种能力。</p>
+<ol class="refs"><li><strong>Terminal-Bench</strong>借鉴终端中目标驱动的 agent 评测形式。<a href="https://www.tbench.ai/">官方项目</a>。<span class="comparison">本项目比较：程序提交的价值最终由物理执行而非文本答案决定，另计身体与控制器限制。</span></li>
+<li><strong>EmbodiedSWE / EmbodiedSWE-Bench · 主要参考</strong>已覆盖长程机器人 coding-agent 求解、跨身体迁移、解法数据扩增与任务生成。<a href="https://embodiedswe.github.io/">官方项目</a>。<span class="comparison">本项目比较：重点验证预算受限的技能 harness、未标注用途的工具组合与能力干预；长程、自动生成和数据飞轮本身不构成区别。</span></li>
+<li><strong>RLE-Bench</strong>九个任务族覆盖交互控制、策略学习、感知估计与机械设计；其中已有 reusable harness 任务。<a href="https://arxiv.org/html/2609.34210v2">技术报告</a> · <a href="https://github.com/RLE-Bench/RLE-Bench">代码</a>。<span class="comparison">本项目比较：限定零/轻训练、对齐执行器，并检查工具发现、身体干预和成本曲线。不能只凭“写 harness”主张新颖性。</span></li>
+<li><strong>RoboTool</strong>以语言模型生成控制代码来处理隐式物理约束与创造性工具使用。<a href="https://arxiv.org/abs/2310.13065">论文</a>。<span class="comparison">本项目比较：系统化用途隐藏、干扰/陷阱、物性变化与跨身体配对。</span></li>
+<li><strong>RoboWits</strong>针对机器人创造性问题求解、工具使用与意外条件的双臂 benchmark。<a href="https://github.com/UMass-Embodied-AGI/RoboWits">官方代码</a>。<span class="comparison">本项目比较：把故障和不确定性纳入 L2，并单独测试 coding 与可复用 harness 的作用。</span></li>
+<li><strong>ENPIRE</strong>以 reset、rollout、verification 与 policy improvement 构成现实机器人迭代闭环。<a href="https://enpire-research.github.io/">官方项目</a>。<span class="comparison">本项目比较：借鉴可重复反馈，主线聚焦冻结执行器与受限开发成本，不依赖大规模策略训练。</span></li>
+<li><strong>ASPIRE</strong>从执行轨迹诊断与修复控制程序，并积累可复用技能库。<a href="https://research.nvidia.com/labs/gear/aspire/">官方项目</a>。<span class="comparison">本项目比较：检验课程与技能记忆在未见身体/物性上的收益，并完整计入开发与推理成本。</span></li></ol>
+<p><strong>拟议贡献组合：</strong>匹配执行器下的 coding 效果；不提示用途的物理工具发现；受控身体与世界变化中的自我建模；可审计的有效解法/漏洞区分；预算明确的课程与复用。每项都需要实证，不作“首次”主张。</p>
+</section>
+<section class="card" id="roadmap"><div class="section-title"><span class="number">17</span><h2>实施顺序与第四版交付边界</h2></div>
+<ol class="chain"><li><strong>G0 · 复现与选型。</strong>先复现一个 EmbodiedSWE 刚体任务及评分，再复现一个可用的 VLA/原子技能接口。保留 v3 的复用优先思路，锁定上游版本；控制器选择以支持身体、技能成功率和延迟为依据。</li><li><strong>G1 · 可信桥接。</strong>打通 Harbor agent container → RPC → simulator → verifier，验证观察边界、预算计量、重置和篡改反例。输出运行清单、威胁模型与失败记录。</li><li><strong>G2 · 可执行 seed。</strong>优先完成 H2、H3、H4、M2 与 M4（P0），按 P0/P1 纳入 M3 并独立验证举升/支撑与精确抓取能力，同时完成 H1/M1；H5 按 P1 纳入，先验证杠杆接触控制、支撑转移与完整运输；每个任务均需脚本、视频、success predicates、物理有效性和负例。踏箱等缺失能力作为明确 blocker，不用隐藏宏替 agent 解题。</li><li><strong>G3 · 最小对照。</strong>运行 B0–B3，给出预算曲线、失败归因和 executor coverage；先回答 RQ1，再做 RQ2/RQ3。</li><li><strong>G4 · 课程与泛化。</strong>加入 L0–L2、身体/末端执行器变化、冻结技能库与机制留出；检验数据收益。更多身体、可变形物体与第二仿真器随后按覆盖逐项加入。</li></ol>
+<p><strong>任务包草案：</strong>公开目标与限制、环境/依赖清单、body/controller manifest、传感器与 disclosure 配置、预算与 split ID；私有生成种子、成功合约、能力标签与负例；输出程序、harness 快照、计费日志、可信轨迹、视频和审计结果。这里是自定义 robotics 合约，不声称这些字段已经是 Harbor 原生格式。</p>
+<p><strong>首个可发布结果：</strong>两类真实可执行任务 + 一套可隔离/计费的 harness + 对齐基线 + 有效成功/耗时/漏洞审计。任务数量和实现速度由可行性与试跑决定，不用大规模训练填补未验证的技能。</p>
+<p class="small">第四版交付包括中英双语研究网页与版本导航；2026-10-16 补充了 GR00T WBC、HANDOFF 与 ULTRA 的本机安装和独立 MuJoCo 初步验证记录。尚未训练模型或运行本 benchmark；任务接入、技能覆盖与正式实验仍待完成。公开材料需区分设计目标、实现覆盖与测得结果。</p>
+</section>
+<section id="constrained-box-evidence"><h2>最新实测：物理约束 fallback 在当前场景登箱成功</h2>
+<p>2026-10-16，G1 在现有 Genesis 柜子场景从箱前地面站姿登上 18 cm、5 kg 的可动箱子，45.885 秒时达到连续 2 秒双脚稳定支撑。采用显式全身 IK、接触力规划和状态反馈 WBC；开启自碰撞，执行中不写根节点位置、不托举、不绑定箱子。箱子水平位移约 0.856 mm。此结果不属于 N1.7 + SONIC。</p>
+<p>参考轨迹限速 1 rad/s、离散加速度限制 4 rad/s²；实际最大控制力矩约为模型上限的 44.51%，最大关节速度为对应上限的 2.94%。独立加密碰撞检查通过。仅验证一个初态，从远处走近及搬箱后接续登箱尚未验证。</p>
+<p>Arena 搬箱 checkpoint 已接入当前场景，但最新测试在 17.72 秒跌倒，录像显示推碰/翻动箱子，没有完成抓取搬运。原 Arena demo 的搬运成功不能移算到当前场景。</p>
+<p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">登箱录像</a> · <a href="/robo-si-results/controllers/g1_wbc/runs/constrained-step-collision-aware-execution/review.json">物理检查记录</a> · <a href="/robo-si-results/controllers/g1_wbc/BOX_CAPABILITY.md">配置、限制与复现命令</a></p></section>
+<section id="box-capability-evidence"><h2>补充实测：搬箱子与登箱分开验证（2026-10-16）</h2>
+<table><thead><tr><th>能力</th><th>实测状态</th><th>范围</th></tr></thead><tbody>
+<tr><td>抓起并搬运箱子</td><td>通过 Arena 官方目标判定；19.26 秒，抬高 17.8 cm，水平移动 1.93 m。</td><td>任务微调 GR00T + Decoupled WBC；不是 N1.7 + SONIC。</td></tr>
+<tr><td>从地面走上箱顶并站稳</td><td>未通过。18 cm、5 kg 可移动箱子，HANDOFF、GR00T 步行策略、N1.7 + SONIC 三次测试均未建立双脚箱顶支撑。</td><td>要求双脚箱顶承重并稳定 2 秒；N1.7 试验在 9.94 秒触发跌倒判定。</td></tr>
+</tbody></table><p>初始化在箱顶的正对照通过了站立检测，但不计作登箱成功；6 cm 低箱 HANDOFF 对照也未通过。这些是执行器能力测试，不是完整 benchmark 成功率，也不能证明 G1 原理上不能登箱。<a href="/robo-si-results/controllers/g1_wbc/BOX_CAPABILITY.md">视频、逐帧接触证据与复现命令</a>。</p></section>
+</main><footer><p>Benchmark proposal v4 · 2026-10-10 · Tool use + coding + harness writing；所有实验结果待验证。</p><p><a href="/robo-si-results/doc/self-modeling-benchmark-v4-en.html">English version</a> · <a href="/robo-si-results/README.md">版本导航</a></p></footer><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

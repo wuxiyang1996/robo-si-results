@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench 任务 H4（G1 越过地面缺口取物）：任务描述、22 次参考解录像和攻击样本、评分标准、参考专家解、已知捷径和验收状态。" name="description"/>
+<title>H4 搭板过缺口</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style>
+
+.vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 14px; }
+
+.vcard { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; min-width: 0; }
+
+.vcard video { display: block; width: 100%; height: auto; background: #000; }
+
+.vcard figcaption { padding: 10px 12px 12px; font-size: 13.5px; line-height: 1.5; }
+
+.vrow { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+
+.vsub { color: var(--ink2); margin-top: 2px; }
+
+.vmeta { color: var(--ink3); margin-top: 4px; }
+
+.sheet { margin: 18px 0 0; max-width: 560px; }
+
+.sheet img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+
+.sheet figcaption { margin-top: 8px; font-size: 13.5px; }
+
+</style>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-h4-en.html">English</a></div></header><aside class="document-notice"><div class="wrap">本页保留历史任务设计与验收说明。视频统一移至最终交付的 Nyx 8× 任务页；<a href="/robo-si-results/infra/archive-task-h4-zh.html">历史原页存档</a></div></aside>
+<main id="main"><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">本页展示一段代表录像：v42-L1-s101。其他成功、失败与分段录像保留在原发布包；本次筛选不改变原证据或评分。</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">查看完整任务说明：场景、动作、评分、证据与复现</a></p><!-- task-detail-jump:end --><section data-layered-task="H4" id="layered-status"><div class="wrap"><h2>当前交付范围与证据</h2><p>已授权的第一层参考资料</p><p>第一层 11/14，三次失败已获作者接受并保留。已完成本次交付并发布；历史第二、三层结果单独留作附录。</p><p>补板端支撑、足点、抗滑与负载返回交接的必要条件及关键短探针；保留源码版本差异。 人工签审、第二人复现和源码身份核对；R9 原延期记录保留。</p><p><a href="#task-details">完整动作、轨迹与验收边界</a></p></div></section><div class="wrap" id="website-completion-status" style="padding-top:18px"><div class="card"><p><span class="pill ok">已完成（声明范围）</span> · 已发布</p><p><strong>H4 · 已授权的第一层参考资料</strong> — 第一层 11/14，三次失败已获作者接受并保留。已完成本次交付并发布；历史第二、三层结果单独留作附录。</p><p class="small">正式准入待完成。补板端支撑、足点、抗滑与负载返回交接的必要条件及关键短探针；保留源码版本差异。 人工签审、第二人复现和源码身份核对；R9 原延期记录保留。 <a href="/robo-si-results/infra/status-zh.html#completion">全站完成情况</a></p></div></div>
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow"><a href="/robo-si-results/infra/status-zh.html#tasks">实现状态</a> · 任务页 · H4</p>
+<h1>G1 越过地面缺口取物：<br/><span class="nm">先把木板推倒成桥</span></h1>
+<p class="lead">一块长木板斜靠在两根立柱上。G1 要把它推过竖直，让它倒下横跨 1.10 m 宽的缺口；过桥后用一只手提起远侧底座上的带提手箱子，带回来静止放进近侧的绿色方块。当前版本 v4.2，<strong>未入库</strong>。</p>
+<div class="cards">
+<div class="card"><h3>19 / 22</h3><p>历史三层参考成功次数</p></div>
+<div class="card"><h3>6 / 15</h3><p>已通过的验收关口</p></div>
+<div class="card"><h3>240 s</h3><p>每回合的仿真时间预算</p></div>
+<div class="card"><h3>3</h3><p>难度层</p></div>
+</div>
+<div class="card" id="release"><h2>第一层交付已完成 · 资料已发布 · 2026-10-24</h2><p id="accepted-failures"><strong>作者已明确接受第一层 11/14 的结果及三次失败（2026-10-24）；修复这些失败不再作为本次发布的前置条件。</strong> <a href="/robo-si-results/infra/website-status-evidence/h4-b768581955d9e8-author-partial-failure-acceptance.json">作者决定</a></p><p>第一层 11/14，保留 3 次失败。第二、三层已有录像作为历史附录保留（各 4/4），不作为本轮 R9 验收。独立子任务、人工签审和第二人复现仍待完成，尚未正式入库。</p><p>原始证据不变；随包源码是发布时快照，部分运行时与历史记录哈希不同，详见来源审计。</p><p><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">GitHub Release / Download</a> · <a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/acceptance/release-layer1-20261024/evidence.json">Evidence JSON</a> · <a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/acceptance/release-layer1-20261024/source-provenance.json">Source audit</a> · <a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/acceptance/release-layer1-20261024/offline-rejudge.json">2026-10-24 offline verification</a></p></div>
+<div class="card" id="toc" style="margin-top:18px"><h3>目录</h3>
+<ol class="toc">
+<li><a href="#desc">01 任务描述</a></li>
+<li><a href="#videos">02 视频</a></li>
+<li><a href="#scoring">03 评分标准</a></li>
+<li><a href="#expert">04 专家解</a></li>
+<li><a href="#shortcuts">05 已知捷径</a></li>
+<li><a href="#gates">06 验收状态</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="desc"><div class="wrap">
+<p class="kicker">01 · 任务描述</p>
+<h2>agent 看到什么，场景里藏着什么</h2>
+<p class="muted">标“agent 不可见”的部分只给设计者和评审看，绝不能出现在给 agent 的指令里。</p>
+<h3>给 agent 的指令（原文）</h3>
+<div class="card"><p>地面缺口的另一侧有一个箱子放在底座上。把箱子带回这一侧，静止放在地面上标出的绿色方块区域内，并保持至少 2 秒。房间里的任何物体都可以使用。</p><p>调用 <code>finish()</code>、模拟时间预算用完或机器人摔倒（骨盆低于 0.35 m，或偏离直立超过 50 度）时，回合结束。掉进缺口算摔倒。箱子不能最终落在缺口里。</p><p>使用机器人搭载的传感器和提供的关节命令接口。可以编写自己的感知、规划、IK/FK 和控制代码，也可以调用提供的机器人技能，但动作必须通过同一物理接口执行。不得直接修改世界或机器人状态、把物体绑在机器人上、更改物理参数、读取私有场景或评分文件，也不得伪造观测或接触。私有机器人规划模型不会改变仿真世界。</p><p>通过 <code>info()</code> 查询启用的传感器、执行器限制和预算，通过 <code>observe()</code> 读取传感器，用 <code>command()</code> 或 <code>command_sequence()</code> 下发关节目标，完成后调用 <code>finish()</code>。开发模式有有限的重置次数；评测和评分模式不能重置。评分会在布局与开发回合不同的新回合上重跑你交付的程序。得分按仿真中实际发生的物理进展给出；运行期间接口不返回进度或得分。</p></div>
+<h3 style="margin-top:22px">机器人与接口（agent 可见）</h3>
+<ul class="check">
+<li>宇树 G1 加两只 Dex3-1 手，43 个关节（MuJoCo Menagerie 模型，BSD-3-Clause）。力矩上限按真机：腿 88–139 N·m，腰 88/50/50，肩、肘、腕滚转 25，腕俯仰和偏航 5，Dex3 手指 1.4–2.45 N·m；腿部电机有直流电机的力矩-转速包络。手上贴硅胶垫（摩擦 2.0）。</li>
+<li>指令通道同宇树 LowCmd：模式 0 电机（每个物理步前馈加 PD），模式 1 伺服（隐式 PD）；按关节、速度、增益和力矩上限截断。</li>
+<li>传感器（安装位姿取自 G1 URDF）：头部 D435 RGB-D、头部 MID-360 激光雷达、骨盆和躯干 IMU、关节本体感知（含实际力矩）、Dex3 连杆接触力、足底力。</li>
+<li>工具：L1 GR00T WBC（站立、行走）、L2 <code>MotionSolver.solve</code>、L3 <code>solve_waypoints</code>、执行辅助（hold、move_joints、track）。没有任务专用技能。</li>
+<li>仿真：Genesis 1.4.3，物理 200 Hz，控制 50 Hz，开启自碰撞，只有刚体。</li>
+</ul>
+<h3 style="margin-top:22px">场景与随机化（agent 不可见）</h3>
+<p>缺口在 x 0.9–2.0 m 之间，宽 1.10 m、深 0.82 m；目标区是近侧 (−2.1, 0) 处边长 0.65 m 的绿色方块。机器人起点 x −0.70…−0.40、y −0.10…0.25、偏航 ±0.25 rad。每个变量都先由（种子、回合号）抽出，再由难度层决定放哪些可选物体，所以同一个种子在三层里的必需工具完全一样。开局检查拒绝互相嵌入的摆放（900 次抽样 0 次拒绝）。开发种子是小整数；评测和评分种子在可信侧私下抽取。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>物体</th><th>层</th><th>作用</th><th>随机范围</th></tr></thead>
+<tbody>
+<tr><td>长木板 1.65×0.62×0.04 m（v4.1；task.json 为 0.06 m）</td><td>1</td><td>必需工具（桥）</td><td>倾角 43–45°，底端 x 0.35–0.39，车道 y −1.04…−0.96，质量 4.8–5.2 kg</td></tr>
+<tr><td>两根立柱（竖立的支撑块）</td><td>1</td><td>撑住长板</td><td>随长板</td></tr>
+<tr><td>底座 0.26×0.14×0.40 m，6 kg</td><td>1</td><td>放箱子</td><td>随箱子</td></tr>
+<tr><td>带提手的箱子 0.30×0.18×0.18 m（连提手高 0.26 m）</td><td>1</td><td>要取回的目标</td><td>x 3.50–3.65，y −1.33…−1.27，偏航 ±0.08 rad，质量 0.8–1.2 kg，摩擦 0.5–0.7</td></tr>
+<tr><td>重板 1.6×0.6×0.08 m，45 kg</td><td>2</td><td>只有更强的身体才推得动的桥</td><td>x −1.90…−1.55，y 1.60–1.65</td></tr>
+<tr><td>短板 0.85×0.52×0.06 m</td><td>3</td><td>干扰物：跨不过 1.10 m 的缺口</td><td>x −1.35…−1.15，y 0.92–1.00</td></tr>
+<tr><td>板条箱 0.6×0.4×0.3 m，3 kg</td><td>3</td><td>干扰物，在远侧平台上</td><td>x 2.80–3.20，y 1.10–1.50</td></tr>
+</tbody>
+</table></div>
+<h3 style="margin-top:22px">三层难度（agent 不知道自己在哪一层）</h3>
+<ul class="check">
+<li><strong>第 1 层：</strong>只有必需工具。</li>
+<li><strong>第 2 层：</strong>加一块 45 kg 的重板。它够长、能跨过缺口，但在摩擦 0.9 的地面上约 400 N 才推得动，G1 只能推 60–100 N。</li>
+<li><strong>第 3 层：</strong>再加干扰物。0.85 m 的短板跨不过 1.10 m 的缺口，动手前可以用深度相机或激光雷达量出来；远侧平台上的板条箱与任务无关。</li>
+</ul>
+<h3 style="margin-top:22px">要发现的（agent 不可见）</h3>
+<ul class="check">
+<li>缺口跨不过去，掉进去算摔倒。</li>
+<li>斜靠的长板可以绕底边推过竖直，它会自己倒下，平落在两侧平台边缘上成为桥；板下的四个卡块落进缺口，防止桥滑动。</li>
+<li>推力有窗口：44° 时托住板约需 19 N，超过约 30 N 板的底端就会滑走。</li>
+<li>桥要承受两次通过，第二次是一只手提着箱子迈上 4 cm 高的板端。</li>
+<li>能力类别：工具组合（板加立柱）、结构力学、全身控制、非直观解法（桥是推倒出来的，不是搬过去的）。</li>
+</ul>
+<h3 style="margin-top:22px">版本记录</h3>
+<ul class="check">
+<li><strong>v2</strong>（作者批准，2026-10-19…20）：长板斜靠在两根竖立的立柱上，板摩擦 1.2，板面加 4 个 5 cm 卡块，手垫，预算 240 s。</li>
+<li><strong>v2.1</strong>：目标区高度范围由 0…0.32 m 改为 −0.05…0.32 m（下界在地面上时，静止在地上的箱子余量正好为 0）。缺陷修正。</li>
+<li><strong>v4</strong>（作者选定，2026-10-20）：目标换成带提手的箱子，单手提在身侧。之前的两手侧夹小箱子、H1 折叠凳都没能稳定带回。</li>
+<li><strong>v4.1</strong>：长板由 6 cm 改为 4 cm 厚。6 cm 时 G1 提着箱子迈上板端，20 次里 11 次摔倒或冲出板外；4 cm 时 4 次都没有。</li>
+<li><strong>v4.2</strong>：第 3 层短板与重板开局互相嵌入 6 cm 的缺陷修正（能量监视器发现的）。</li>
+<li><strong>2026-10-21</strong>：作者确认 v4.1 板厚、单手持有规则、v4.2 修正，以及监视器规则与阈值（<code>h4-monitors/2</code>）。</li>
+</ul>
+</div></section>
+<section id="videos"><div class="wrap">
+<p class="kicker">02 · 视频</p>
+<h2>22 次参考解录制和 3 个攻击样本</h2>
+<p>v4.2 场景、随机种子、真实 G1 力矩上限，由沙箱录制器录制，用当前 verifier（<code>h4-verifier/2</code>）判定。录像来自固定的全景相机。视频文件在本机仓库里：请用浏览器打开本页，VS Code 的预览播不了 H.264。成功回合附关键帧图：每个阶段完成时刻及前后 1 s 的截图。</p>
+<h3 style="margin-top:22px">第 1 层 · 11/14</h3>
+<div class="vgrid">
+<figure class="vcard"><p class="current-video-link"><a href="/robo-si-results/infra/families/H4.html">查看最终交付的 Nyx 8× 录像 →</a></p><figcaption><div class="vrow"><b>v42-L1-s101</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 121.0 s</div><div class="vmeta"><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/media--cb29d3145c456654710e.mp4">视频</a> · <a href="/robo-si-results/media/f9dbcdca23f92948ddb3.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/a8546201cf67a83b-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s102</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 124.0 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/f636af6be1fe81615550.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/e631a5e395a917e6-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s103</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 117.1 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/564085da7eb804f15539.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/cc9172303d0cbfff-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s104</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 123.4 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/c249895d12b75858856e.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/1a8bf62ecc92dd86-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s105</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 120.7 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/6491da3bc79262c0854a.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/c5300e94327f3429-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s106</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 116.5 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/b6cd1cf35d1ed21bb052.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/a816137d87b7806a-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s107</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 125.8 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/f95362ebf57a37c0255d.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/9d6ee0d1c4c87290-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s108</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 122.2 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/ab1b4e8e5b39c263d162.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/eafb8392e404ac82-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s109</b><span class="pill no">失败 0.15</span></div><div class="vmeta">板倒下时机器人摔倒</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/infra/website-status-evidence/474cb5e6e84deef8-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s110</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 121.6 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/b24f48d0a9ae02353d16.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/9cd3836d297c0cd1-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s111</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 123.7 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/d19ab7811fb921dd33c3.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/aa464eee88377ace-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s112</b><span class="pill no">失败 0.15</span></div><div class="vmeta">板落地没跨住缺口（底端没滑动，落在远侧边缘前）</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/infra/website-status-evidence/82e9b7ee1f104f58-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s113</b><span class="pill no">失败 0.15</span></div><div class="vmeta">推板后收臂时摔倒</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/infra/website-status-evidence/7286691be4bc13f0-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L1-s114</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 126.1 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/f1513ce0bb5b8fc87bd4.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/306563a3f0ee0d2f-record.json">记录</a></div></figcaption></figure>
+</div>
+<h3 style="margin-top:22px">第 2 层 · 4/4</h3>
+<div class="vgrid">
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L2-s201</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 117.8 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/cb0a2cb747ab798f9c11.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/65dbb9fde1fcfd21-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L2-s202</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 119.5 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/1af1447d8f5e8d42e450.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/2fd64c094b5030da-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L2-s203</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 115.5 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/26cea2fe14c1cb966de0.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/2b915bb44e6c3b5a-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L2-s204</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 118.8 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/a4bc55daa69297eabf7e.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/d4a1a6ebe39fb83d-record.json">记录</a></div></figcaption></figure>
+</div>
+<h3 style="margin-top:22px">第 3 层 · 4/4</h3>
+<div class="vgrid">
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L3-s301</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 116.9 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/bef317b971cd0dedb0c3.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/b0f2f307b4382896-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L3-s302</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 118.7 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/f7a34b3fc7c0ad9533ca.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/ac17296f36936441-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L3-s303</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 125.7 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/d15cbedc1b3792360385.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/b27a8597b4a835a9-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>v42-L3-s304</b><span class="pill ok">成功 1</span></div><div class="vmeta">送达 121.2 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/media/cd54074df311cacea0a6.png">关键帧</a> · <a href="/robo-si-results/infra/website-status-evidence/47b4459066b68245-record.json">记录</a></div></figcaption></figure>
+</div>
+<h3 style="margin-top:22px">攻击样本</h3>
+<div class="vgrid">
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>抖动注能</b><span class="pill warn">告警窗 0.076</span></div><div class="vsub"><code>jitter-v1</code></div><div class="vmeta">手臂抵在板上，肩、肘每 2 个控制步 ±0.25 rad 方波，持续 4 s。arm_shaking 告警窗 12.4–16.04 s：抖动中得到的分不计，之前平稳推板得到的 0.076 保留</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/infra/website-status-evidence/875c6ad5fce8bb5f-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>改物理属性</b><span class="pill no">VOID 0</span></div><div class="vsub"><code>mass-v1</code></div><div class="vmeta">2 s 后把长板质量改成 0.5 kg：世界参数变化、特权写入，整次作废</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/infra/website-status-evidence/38c1a869c8662c4a-record.json">记录</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">其他录像见完整发布包</a></p><figcaption><div class="vrow"><b>瞬移</b><span class="pill no">VOID 0</span></div><div class="vsub"><code>teleport-v1</code></div><div class="vmeta">2 s 后把箱子 set_pos 到目标区上方：瞬移、物体速度严重超限、特权写入，整次作废</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">视频</a> · <a href="/robo-si-results/infra/website-status-evidence/149d44598088e776-record.json">记录</a></div></figcaption></figure>
+</div>
+</div></section>
+<section class="tinted" id="scoring"><div class="wrap">
+<p class="kicker">03 · 评分标准</p>
+<h2>7 个阶段，得分取进度峰值</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>阶段</th><th>方式</th><th>权重</th><th>判据</th></tr></thead>
+<tbody>
+<tr><td style="white-space:nowrap">碰板推动<br/><code>plank_engaged</code></td><td>once</td><td>0.05</td><td>手对长板的接触力 ≥5 N 累计 ≥0.5 s，且长板移动 ≥5 cm 或转动 ≥5°</td></tr>
+<tr><td style="white-space:nowrap">桥建成<br/><code>bridge_built</code></td><td>once</td><td>0.20</td><td>机器人碰过长板之后，按长板向竖直转过的比例给 0.5×；长板平放横跨缺口（两端越过边缘 8 cm、水平 5° 以内、静止）保持 1 s 记满分</td></tr>
+<tr><td style="white-space:nowrap">过桥<br/><code>crossed</code></td><td>once</td><td>0.10</td><td>桥建成后按越过缺口的进度给 0.5×；站上远侧平台（骨盆越过边缘 0.25 m、双脚在平台上）保持 1 s 记满分</td></tr>
+<tr><td style="white-space:nowrap">碰到箱子<br/><code>target_reached</code></td><td>once</td><td>0.05</td><td>手对箱子的接触力 ≥2 N 累计 0.2 s</td></tr>
+<tr><td style="white-space:nowrap">提起箱子<br/><code>target_lifted</code></td><td>once</td><td>0.15</td><td>箱子<strong>最低点</strong>比起始高 ≥3 cm 且持箱（带提手的箱子：任一只手接触；无提手的箱子：双手都接触），保持 1 s</td></tr>
+<tr><td style="white-space:nowrap">持箱返回<br/><code>returned_holding</code></td><td>once</td><td>0.15</td><td>持箱时按带回近侧的进度给 0.5×；持箱站回近侧平台保持 1 s 记满分</td></tr>
+<tr><td style="white-space:nowrap">送达<br/><code>delivered</code></td><td>live</td><td>0.30</td><td>箱子按真实尺寸和朝向静止在目标区内（0.65 m 正方形，z −0.05…0.32 m），机器人直立，保持 2 s</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:10px">once：达到后保留；live：只在条件成立时计，箱子被碰出目标区，当前进度就掉回去（得分仍取峰值）。</p>
+<p><strong>得分</strong>等于进度峰值。<strong>success</strong> 要求回合结束时“送达”成立、观察到“去远侧再回来”的路线，并且任务自带的评估器（<code>task_spec.Evaluator</code>，读同一份日志）没有违规；两者不一致时标记。评分只读环境一侧的可信日志，运行期间不向 agent 透露进度和得分。阶段阈值是初值，还没有在 agent 试跑上标定。</p>
+<h3 style="margin-top:22px">告警与处理（<code>h4-monitors/2</code>，阈值冻结）</h3>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:6em">处理</th><th>触发条件</th></tr></thead>
+<tbody>
+<tr><td><span class="pill no">作废</span></td><td>整次 0 分：接口违规、世界参数变化、物体瞬移（&gt;20 m/s）、录制中的特权写入或增益越界、请求日志哈希链断开；严重物理异常：物体 &gt;15 m/s、穿透 &gt;10 cm、不是机器人接触带来的物体能量 &gt;60 J</td></tr>
+<tr><td><span class="pill warn">窗口</span></td><td>窗口内得到的阶段分、以及窗口内首次达到的阶段水平，之后都不计，回合标记：物体 &gt;9 m/s、穿透 &gt;3 cm 持续 0.1 s、0.2 s 内 &gt;6 J 无功能量、手臂抖动、手指抖动、腿或腰力矩持续饱和、顶关节限位、进度尖峰</td></tr>
+<tr><td><span class="pill ok">标记</span></td><td>只标记：阶段顺序不对、声明不可行、阶段判据与任务评估器不一致</td></tr>
+<tr><td>0 分</td><td>没调用 <code>observe()</code> 却得分（分数作废）；没跑成、记录缺失或损坏、verifier 出错、分数不是 [0, 1] 内的有限值</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">阈值按“已录的合法运行一次也不触发”设定。合法运行里的最大值：物体速度 5.5 m/s（阈值 9），无功能量 2.5 J（阈值 6），手臂抖动 2.47（阈值 3.0）。</p>
+<h3 style="margin-top:22px">人工检查清单（验收时看录像）</h3>
+<ol>
+<li><strong>没有 reward hack：</strong>每一份阶段分都对应录像里的一个物理事件：板是机器人推倒的、机器人到了远侧、箱子挂在手上、箱子被带回、松手后箱子留在方块里。桥的部分分只在机器人碰过长板之后才给。</li>
+<li><strong>任务确实完成：</strong>结束时箱子整个（0.30×0.18 m）静止在 0.65 m 的绿色方块里，机器人经桥去了远侧又回来。</li>
+<li><strong>没有违反物理或限制：</strong>板和平台没有互相穿透、没有物体被弹飞、关节力矩在真实 G1 上限内（可信日志记录了每个控制步每个关节的实际力矩）。</li>
+</ol>
+</div></section>
+<section id="expert"><div class="wrap">
+<p class="kicker">04 · 专家解</p>
+<h2>读真值的参考解：先推倒木板，再单手提箱往返</h2>
+<p><code>solution/run_oracle.py</code> 读仿真真值（物体位姿、接触），只用来证明可解和验证评分器，不是 agent 基线。物理设定和真实 G1 力矩上限与 agent 相同；取放时调软的手臂增益（kp 500，手腕 300）都在指令通道的上限内；录制中没有特权写入。</p>
+<ol class="steps">
+<li><strong>推板搭桥。</strong><code>push_plank.py</code>：走到板前，手臂调软（肩、肘 kp 100），掌心贴板，靠身体前进把板绕底边推向竖直；计划角度跟着身体走，最多超前实测 0.5°。推到 86° 停推，一边以 0.3 m/s 侧移离开车道一边收臂；板自己越过竖直倒下，平落在缺口上，卡块落进缺口。<span class="out">中位完成时刻：碰板推动 19.7 s，桥建成 29.6 s</span></li>
+<li><strong>过桥。</strong><code>run_oracle.cross</code>：沿车道路径跟随，助跑后以 0.3 m/s 踏上板端，走到远侧平台。<span class="out">中位完成时刻：过桥 46.9 s</span></li>
+<li><strong>取箱。</strong><code>handle_grasp.py</code>：接触 QP 接管站姿；右手“反钩”：手指朝下、掌心朝外，食指和中指从横杆下穿过再弯曲包住，竖直提起 0.10 m；再先平移、后转腕，把箱子收到身侧（关节空间直线摆过去曾把箱子绕横杆翻了 147°）。<span class="out">中位完成时刻：碰到箱子 63.1 s，提起箱子 64.6 s</span></li>
+<li><strong>回程。</strong><code>run_oracle.handle_return</code>：朝板倒退到离板端约 0.5 m，顺时针原地转 180°，沿车道过桥，从近侧立柱的北侧绕过（立柱之间的通道会让外伸的箱子撞上立柱），停在箱子正好在目标区上方的位置。行走时给步态策略看默认上身姿态。<span class="out">中位完成时刻：持箱返回 101.8 s</span></li>
+<li><strong>放下。</strong><code>place_handle</code>：接触 QP 接管腿，下蹲到骨盆 0.55 m、前倾 0.2 rad，手微调到目标区中心上方并下降 8 cm，静置 1.5 s 等摆动停下，手指伸直让横杆滑落，箱子从约 0.2 m 高落地。<span class="out">中位完成时刻：送达 121.0 s</span></li>
+</ol>
+<h3 style="margin-top:22px">结果</h3>
+<p>22 个随机回合成功 19 次（第 1 层 11/14、第 2 层 4/4、第 3 层 4/4），平均分 0.88，送达时刻 116–126 s（预算 240 s）。建成桥的 19 个回合全部完成；3 次失败都在推板架桥：s109 板倒下时机器人摔倒；s112 板落地没跨住缺口（底端没滑动，落在远侧边缘前）；s113 推板后收臂时摔倒。verifier 和任务自带评估器 22 次判定一致，没有任何告警。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>阶段</th><th>中位完成时刻</th><th>范围</th></tr></thead>
+<tbody>
+<tr><td>碰板推动</td><td>19.7 s</td><td>19.0–20.7 s</td></tr>
+<tr><td>桥建成</td><td>29.6 s</td><td>28.7–30.7 s</td></tr>
+<tr><td>过桥</td><td>46.9 s</td><td>45.4–47.7 s</td></tr>
+<tr><td>碰到箱子</td><td>63.1 s</td><td>61.5–63.9 s</td></tr>
+<tr><td>提起箱子</td><td>64.6 s</td><td>63.0–65.4 s</td></tr>
+<tr><td>持箱返回</td><td>101.8 s</td><td>96.6–106.9 s</td></tr>
+<tr><td>送达</td><td>121.0 s</td><td>115.5–126.1 s</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">仿真在这张 GPU 上不能逐位复现：同一场景重跑，最初几秒就开始分叉。第 1 层同样的 14 个场景在 v4.1 和 v4.2 各跑了一次，5 个结局不同，其中 2 个受推板护栏修改影响，另外 3 个纯粹是仿真不可复现。所以单个种子的结局只是成功率的一个样本，评分时每个回合要跑 3 次。</p>
+<figure class="sheet"><a href="/robo-si-results/media/f9dbcdca23f92948ddb3.png"><img alt="关键帧图（v42-L1-s101）：每行一个阶段，三列是完成时刻前 1 s、完成时刻、后 1 s。点击看原图。" decoding="async" loading="lazy" src="/robo-si-results/media/f9dbcdca23f92948ddb3.png"/></a><figcaption class="muted">关键帧图（v42-L1-s101）：每行一个阶段，三列是完成时刻前 1 s、完成时刻、后 1 s。点击看原图。</figcaption></figure>
+<h3 style="margin-top:22px">难点</h3>
+<ul class="check">
+<li>推板越过竖直的那一下风险最大：手臂伸着时，步态的任何停顿都可能让躯干前倾冲出；侧移收臂是试过十几种收尾方式后最稳的一种（同一家族 20/22）。</li>
+<li>板的底端在推的过程中会滑动 3–6 cm，倒下时还会向前滑 17–24 cm，所以起始底端位置决定了能不能跨住缺口。</li>
+<li>带着挂在身侧的箱子迈上板端，6 cm 厚时一半以上会失稳，这就是 v4.1 改成 4 cm 的原因。</li>
+</ul>
+</div></section>
+<section class="tinted" id="shortcuts"><div class="wrap">
+<p class="kicker">05 · 已知捷径</p>
+<h2>已知捷径、替代路线和对策</h2>
+<p>正式的捷径排查（用 oracle 手段逐条尝试）还没做，这项关口待做。下表是目前已知的路线和已经验证过的防护。原则：合同判的是<strong>状态</strong>，合规的意外解法照样给分；靠改世界、伪造或钻判据空子拿到的分不算。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>做法</th><th>结论</th><th>依据</th></tr></thead>
+<tbody>
+<tr><td>跳过或跨过缺口</td><td>G1 物理上做不到；掉进缺口算摔倒，回合结束</td><td>任务合同</td></tr>
+<tr><td>把长板搬起来横放过去，而不是推倒</td><td>合法的替代路线</td><td>按达到的状态计分</td></tr>
+<tr><td>把平放的板从边缘推出去</td><td>静力上会翻进缺口</td><td><code>solution/feasibility.py</code>；允许，按状态计分</td></tr>
+<tr><td>把立柱放进缺口当桥墩</td><td>没试过</td><td>如果成功，按状态计分</td></tr>
+<tr><td>把箱子扔过缺口</td><td>Dex3 做不到；还必须静止落在方块里</td><td>任务合同</td></tr>
+<tr><td>在方块上方松手让箱子掉下去，或箱子掉地后被踢、推进方块</td><td>算成功：合同是“往返之后箱子静止在方块内”这个状态。参考解开发中偶然出现过一次（<code>fetch2-soft22-b</code>）</td><td>评审看录像时注明这类回合</td></tr>
+<tr><td>第 2 层用杠杆或支撑挪动 45 kg 重板</td><td>只有静力估算（约 400 N 才滑动，G1 推 60–100 N），参考解没有专门尝试</td><td><strong>未排查</strong></td></tr>
+<tr><td>第 3 层用短板搭桥</td><td>0.85 m 跨不过 1.10 m</td><td>几何</td></tr>
+<tr><td>站在桥上，不真正到远侧</td><td>不算过桥，只给 0.5× 进度分</td><td>单元测试</td></tr>
+<tr><td>在远侧松手，空手走回来</td><td>不算持箱返回</td><td>单元测试</td></tr>
+<tr><td>把箱子在底座上立起来，冒充提起</td><td>中心升高 6 cm，但最低点不变，不算提起</td><td>单元测试</td></tr>
+<tr><td>让箱子穿过目标区一帧</td><td>不算，要静止保持 2 s</td><td>单元测试</td></tr>
+<tr><td>不碰板，等板自己转</td><td>桥的部分分要求机器人先碰过长板</td><td>单元测试</td></tr>
+<tr><td>不调用 <code>observe()</code> 就交出分数</td><td>分数作废并标记</td><td>单元测试</td></tr>
+<tr><td>瞬移箱子、改长板质量</td><td>整次作废</td><td>攻击样本（第 02 节）</td></tr>
+<tr><td>手臂抵着板高频抖动、向板注入能量</td><td>告警窗口：抖动中得到的分不计</td><td>攻击样本（第 02 节）</td></tr>
+<tr><td>越权：容器逃逸、改文件、伪造观测</td><td>37 项探针全部符合预期，整次作废</td><td><code>escape-container-v42</code></td></tr>
+</tbody>
+</table></div>
+<h3 style="margin-top:22px">还没堵上的</h3>
+<ul class="check">
+<li>第 2 层重板能不能被杠杆或支撑撬动，还没用 oracle 试过。</li>
+<li>更温和的抖动可能低于手臂抖动阈值（合法运行最大 2.47，阈值 3.0，攻击样本 5.4）；它能注入的能量也相应更小，由无功能量监控兜底。</li>
+<li>机器人连杆与物体的穿透没有监视（日志里没有连杆几何），只靠录像人工检查。</li>
+<li>观测摘要还没下发给 agent，rollout 来源核对还不能做；LLM 请求还没在可信侧计量。</li>
+<li>每回合 3 次评分和复现容差还没定，而 H4 的仿真不可逐位复现，这一项对它是必要的。</li>
+</ul>
+</div></section>
+<section id="gates"><div class="wrap">
+<p class="kicker">06 · 验收状态</p>
+<h2>15 项关口：通过 6，部分 5，待做 3，不适用 1</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>关口</th><th style="min-width:6em">状态</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>参考专家解</td><td><span class="pill ok">通过</span></td><td>随机 v4.2 场景 19/22，由沙箱 verifier 判定</td></tr>
+<tr><td>官方轨迹</td><td>不适用</td><td>H4 没有官方轨迹，参考解的运行由沙箱录制器记录</td></tr>
+<tr><td>覆盖范围</td><td><span class="pill warn">部分</span></td><td>三层都有随机样本，随机范围的边界没专门测；从中间状态开回合没实现</td></tr>
+<tr><td>重跑波动</td><td><span class="pill warn">部分</span></td><td>GPU 上不可逐位复现；同种子重跑 3 次及复现容差未做</td></tr>
+<tr><td>评分器有效性</td><td><span class="pill ok">通过</span></td><td>正例 22/22、负例 4/4、攻击 4/4</td></tr>
+<tr><td>监视器校准</td><td><span class="pill ok">通过</span></td><td>共用监视器在 99 次运行上与 h4-monitors/2 逐条一致；阈值冻结，作者已确认</td></tr>
+<tr><td>阶段人工标注</td><td><span class="pill warn">部分</span></td><td>19 张关键帧图由开发者核对过，没有签字的人工标注</td></tr>
+<tr><td>捷径排查</td><td><span class="pill no">待做</span></td><td>没做，见第 05 节</td></tr>
+<tr><td>录像核对</td><td><span class="pill no">待做</span></td><td>需要人签字，可用第 02 节的视频</td></tr>
+<tr><td>独立复现</td><td><span class="pill no">待做</span></td><td>还没有第二个人复现</td></tr>
+<tr><td>沙箱隔离</td><td><span class="pill ok">通过</span></td><td>37 项逃逸探针全部符合预期，整次作废</td></tr>
+<tr><td>评分模式</td><td><span class="pill ok">通过</span></td><td>三层各一个密封回合，每回合一个新容器；空操作 0 分、非 VOID</td></tr>
+<tr><td>静态检查</td><td><span class="pill ok">通过</span></td><td>56 项单元测试</td></tr>
+<tr><td>随机化</td><td><span class="pill warn">部分</span></td><td>密封的 v4.2 生成器，三层；范围边界没被参考解专门测</td></tr>
+<tr><td>自动流水线</td><td><span class="pill warn">部分</span></td><td>检查已串进 sandbox/pipeline.json，2026-10-21 CPU 层 4/4（49 s）、容器层 2/2（约 6.5 min）全部通过；还没有自动触发</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px"><a href="/robo-si-results/infra/status-zh.html#tasks">返回各任务验收</a></p>
+</div></section>
+<section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>已有参考执行见证；设计、动作、支撑、轨迹对应及复现来源见文档。</p><p><a href="/robo-si-results/infra/reference-designs/H4.html">参考解与设计文档</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>完整任务说明与证据</h2><p class="detail-nav"><a href="#detail-scope">任务范围与场景</a> · <a href="#detail-interfaces">观测、动作与接口</a> · <a href="#detail-planning">高层目标与低层动作</a> · <a href="#detail-trajectory">轨迹与关键状态对应</a> · <a href="#detail-scoring">评分与成功判据</a> · <a href="#detail-evidence">代表证据与审阅</a> · <a href="#detail-sandbox">沙盒验证</a> · <a href="#detail-reproduce">下载与复现</a> · <a href="#detail-limits">验收边界与剩余工作</a></p><article id="detail-scope"><h3>任务范围与场景</h3><p>已授权的第一层参考资料</p><p>第一层 11/14，三次失败已获作者接受并保留。已完成本次交付并发布；历史第二、三层结果单独留作附录。</p><p>先用板形成跨越路径，再过桥取物并返回。板两端的支撑及承载时的稳定性是关键；成功记录与历史源码的对应缺口仍保留。</p></article><article id="detail-interfaces"><h3>观测、动作与接口</h3><p>参考控制器的特权状态与公开代理权限分开；以本任务 SDK 和指令为准。</p><p><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_ramp_bridge_construction/sandbox/agent_sdk">Agent SDK</a></p></article><article id="detail-planning"><h3>高层目标与低层动作</h3><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>布桥</td>
+<td>H4.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>空载过桥</td>
+<td>H4.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>取得目标</td>
+<td>H4.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>负载返回</td>
+<td>H4.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>放置交付</td>
+<td>H4.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>长板可操作且缺口边缘可观测</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>桥板跨越缺口并独立稳定</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>双足到远平台且稳定</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>目标离开原支撑且受控</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>机器人与目标回到近平台</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>真实目标边界在目标区、释放且稳定</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>轨迹与关键状态对应</h3><details><summary>动作顺序、接触与轨迹事件</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>H4.K01 · 接近长板、接触翻转并放平</h5>
+<p>入口：长板可操作且缺口边缘可观测。出口：桥板跨越缺口并独立稳定。</p>
+<p>局部检查：板端搭接、水平、摩擦抗滑与机器人操板能力。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K01.A01</td>
+<td>接近板尾并预成形手部</td>
+<td>板→原支撑；足→地面</td>
+<td>手与板尾距离</td>
+<td>e0000: local:push; global_offset_unresolved [3.6, 3.6] s; e0001: local:push; global_offset_unresolved [3.6, 7.6] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K01.A02</td>
+<td>双手推转长板</td>
+<td>手→板；板端受支撑</td>
+<td>板倾角、双手力与板端位置</td>
+<td>e0002: local:push; global_offset_unresolved [7.62, 8.62] s; e0003: local:push; global_offset_unresolved [8.64, 16.44] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K01.A03</td>
+<td>收臂、释放并检查两端搭接</td>
+<td>板→近远平台</td>
+<td>双端接触、桥面姿态</td>
+<td>e0004: local:push; global_offset_unresolved [16.52, 18.72] s; e0005: local:push; global_offset_unresolved [18.82, 20.82] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H4.K02 · 选足点、依次踏板和上远平台</h5>
+<p>入口：两端支撑成立且桥面可用。出口：双足到远平台且稳定。</p>
+<p>局部检查：足底包络、桥板受载响应和跌落边界。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K02.A01</td>
+<td>对齐桥前站位并选足点</td>
+<td>足→近平台；板两端受支撑</td>
+<td>足点与板边距离</td>
+<td>e0006: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K02.A02</td>
+<td>依次移重心、抬脚、落在桥面</td>
+<td>单足→平台/桥板</td>
+<td>足接触、板端支撑、碰撞</td>
+<td>e0006: untimed_summary None s; e0007: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K02.A03</td>
+<td>跨到远平台并稳定</td>
+<td>双足→远平台</td>
+<td>脚已离桥、身体稳定</td>
+<td>e0006: untimed_summary None s; e0007: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H4.K03 · 接近把手或有效抓持面并提起</h5>
+<p>入口：机器人在远平台，目标可达。出口：目标离开原支撑且受控。</p>
+<p>局部检查：所选发布资产的真实抓持面、负载与平衡。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K03.A01</td>
+<td>接近目标、摆臂到抓取上方</td>
+<td>目标→原支撑</td>
+<td>手与把手间隙</td>
+<td>e0012: local:pickup; global_offset_unresolved [0.8, 3.4] s; e0013: local:pickup; global_offset_unresolved [3.6, 4.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K03.A02</td>
+<td>屈指、下探并滑入抓持位置</td>
+<td>目标→原支撑；手接触</td>
+<td>手指与把手接触</td>
+<td>e0014: local:pickup; global_offset_unresolved [4.6, 5.4] s; e0015: local:pickup; global_offset_unresolved [5.6, 8.0] s; e0016: local:pickup; global_offset_unresolved [8.2, 10.4] s; 另 1 组见 JSON</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K03.A03</td>
+<td>提起、转手并稳定持物姿态</td>
+<td>原支撑→双手</td>
+<td>目标离地、持续抓持</td>
+<td>e0018: local:pickup; global_offset_unresolved [11.4, 13.2] s; e0019: local:pickup; global_offset_unresolved [13.4, 13.8] s; e0020: local:pickup; global_offset_unresolved [14.0, 16.2] s; 另 2 组见 JSON</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H4.K04 · 负载足步规划与姿态保持</h5>
+<p>入口：目标受控、桥板支撑仍有效。出口：机器人与目标回到近平台。</p>
+<p>局部检查：负载后的重心、板端反力和组合净空重新检查。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K04.A01</td>
+<td>负载后退并转向桥口</td>
+<td>双手持物；足→远平台</td>
+<td>物体与桥口净空</td>
+<td>e0008: untimed_summary None s; e0009: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K04.A02</td>
+<td>持物逐足过桥</td>
+<td>足→桥板；板端受支撑</td>
+<td>桥板形变、落足与抓持</td>
+<td>e0008: untimed_summary None s; e0009: untimed_summary None s; e0010: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K04.A03</td>
+<td>离桥进入目标区并停稳</td>
+<td>足→近平台/地面；手持物</td>
+<td>目标区位置与速度</td>
+<td>e0011: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H4.K05 · 受控落地、撤手和驻留</h5>
+<p>入口：目标区可达且近平台稳定。出口：真实目标边界在目标区、释放且稳定。</p>
+<p>局部检查：采用原尺寸/姿态判定；保留历史失败，不外推全范围。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K05.A01</td>
+<td>稳住负载后下蹲</td>
+<td>双手持物</td>
+<td>姿态与足载荷</td>
+<td>e0023: local:place; global_offset_unresolved [0.2, 1.0] s; e0024: local:place; global_offset_unresolved [1.2, 4.0] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K05.A02</td>
+<td>微调目标并让支撑面承重</td>
+<td>双手→目标区支撑</td>
+<td>支撑和手载荷</td>
+<td>e0025: local:place; global_offset_unresolved [4.2, 6.0] s; e0026: local:place; global_offset_unresolved [6.2, 7.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K05.A03</td>
+<td>张手、起身并驻留</td>
+<td>目标区独立承重</td>
+<td>手分离、物体稳定</td>
+<td>e0027: local:place; global_offset_unresolved [7.6, 9.0] s; e0028: local:place; global_offset_unresolved [9.2, 11.0] s; e0029: local:place; global_offset_unresolved [11.2, 13.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>评分与成功判据</h3><p>保留本页原任务评分及冻结参考 verdict；分层计划、技能展开和事件对应不产生额外任务分数。合同中的拟议评分不是当前评分实现。完整运行的分数不能赋给筛查或沙盒短测。</p><p>本参考的最终关键状态：真实目标边界在目标区、释放且稳定</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_ramp_bridge_construction/task_spec.py">原任务判据源码 / Original task criteria</a></p></article><article id="detail-evidence"><h3>代表证据与审阅</h3><p>见证：<strong>v42-L1-s101</strong>。范围：已授权的第一层参考资料。</p>
+<p>第一层 11/14，三次失败已获作者接受并保留。已完成本次交付并发布；历史第二、三层结果单独留作附录。</p>
+<p><a href="/robo-si-results/infra/website-status-evidence/a8546201cf67a83b-record.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/H4.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>沙盒验证</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>这些检查验证启动、传感器与动作接口；不计完整任务成功。同机 WSL 不是独立第二台机器复现。</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/H4/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>下载与复现</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/1ff8b0cbaceab25389daf00b83ff970ab0250cba/releases/H4/layer1-20261024/h4-layer1-20261024.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: d547ae7342b471326bcf7926c43fb0f3e83a7629a7ad0b770ba3cb245bee9ca3</p><p>下载需私有仓库权限。参考包保留历史配置与运行入口；当前沙盒工作区补齐运行资产。先按沙盒 README 安装环境并执行短测，再用参考包的冻结入口复现；不能把新接口短测当作完整专家回放。</p><p>先检查本任务入口（不运行物理），再按链接中的环境与代理交付说明启动。历史 README 中的原机器路径须替换为本机路径；本页沙盒验证表是当前检查状态。</p><pre><code>python -m infra.sandbox.inventory check --task H4
+python -m humanoid.g1_ramp_bridge_construction.sandbox.launch --help</code></pre><p><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>验收边界与剩余工作</h3><p>补板端支撑、足点、抗滑与负载返回交接的必要条件及关键短探针；保留源码版本差异。 人工签审、第二人复现和源码身份核对；R9 原延期记录保留。</p><p>搭板、抓取、放置局部 trace 已提取；跨桥足步与全程时钟待映射，历史源码身份缺口仍保留。</p><p>随机实例分别记录：有完整成功证据、通过可行性筛查、未确定、检查不通过。只要求声明范围内的代表完整见证与表示间对应；不要求逐个随机实例生成完整解。正式准入、人工签审和独立机器验证不由页面完成状态推定。本次新增物理执行：0。</p><p><a href="/robo-si-results/infra/reference-designs/H4.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · 任务页 H4 · 2026-10-21 · <a href="/robo-si-results/infra/task-h4-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/infra/contribute-zh.html">首页</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body>
+</html>

@@ -1,0 +1,79 @@
+{
+  "status": "finished",
+  "passed": false,
+  "mode": "cycle",
+  "error": "RuntimeError: physical monitor failed: ['traction_and_slip'][]",
+  "phase": "open_pin",
+  "sim_time_s": 39.010000000001504,
+  "steps": 7802,
+  "frames": 390,
+  "source_unchanged": true,
+  "proof_dwell_s": {
+    "go2_a": 0.5049999999998995,
+    "go2_b": 0.6349999999998737
+  },
+  "events": [
+    {
+      "time_s": 15.86000000000108,
+      "robot": "go2_a",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.001590398163113571,
+        -0.0002569336564390845,
+        -0.0015065773724278753
+      ]
+    },
+    {
+      "time_s": 15.86000000000108,
+      "robot": "go2_b",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.0016105657763878511,
+        0.0002445016409635681,
+        -0.0014189001104119026
+      ]
+    },
+    {
+      "time_s": 18.37500000000063,
+      "event": "BEGIN_EXTRACTION"
+    },
+    {
+      "time_s": 29.82999999999835,
+      "event": "EXTRACTED_LOADED_RETENTION_PROVED"
+    }
+  ],
+  "failures": {
+    "traction_and_slip": {
+      "first_time": 39.01,
+      "count": 1,
+      "detail": {
+        "pen_dynamic": 0.0004360079765319824,
+        "pen_rope": 9.037164272740483e-05,
+        "impulse": 0.0,
+        "support": 1.0000003735629466,
+        "robot_cargo": 0.0,
+        "slide": 0.05001134073877962,
+        "drift": 0.0005290775153999716,
+        "tension": {
+          "rope_left": 7.351584886782803,
+          "rope_right": 17.239223785873037,
+          "rope_centre": 0.28787953149489454
+        },
+        "heights": {
+          "go2_a": 0.3292793929576874,
+          "go2_b": 0.33231478929519653
+        },
+        "tilts": {
+          "go2_a": 4.536990085397302,
+          "go2_b": 3.9721464674176135
+        },
+        "calls": [],
+        "steps": 1,
+        "gap": 0.005000000000002558
+      }
+    }
+  },
+  "wall_time_s": 193.4713659286499,
+  "scope": "Privileged physical coupling/extraction/release subtask; no full corridor, tool discovery or admission credit",
+  "formal_admission": false
+}

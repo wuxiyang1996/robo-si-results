@@ -1,0 +1,56 @@
+{
+  "controller_tuning": {
+    "inspire_index_only": false,
+    "inspire_thumb_yaw": 1.05,
+    "inspire_hand_yaw": 0.26,
+    "inspire_offset": [
+      0.03,
+      0.02,
+      0
+    ],
+    "inspire_thumb_n": 2.5,
+    "inspire_fingers_n": 2.1,
+    "inspire_close_s": 80,
+    "collision_profile": "inspire-palms-v2",
+    "align_grasp": true,
+    "prepush": true,
+    "inspire_absolute_x": 0.36,
+    "inspire_push_z": 0.866,
+    "inspire_push_finger_kp": 6.0,
+    "inspire_push_feedback": 0.02,
+    "inspire_push_speed": 0.001,
+    "inspire_push_load_n": 1.2,
+    "inspire_index_push": true,
+    "inspire_push_pitch": -0.2,
+    "inspire_table_clearance": false,
+    "inspire_vertical_withdraw": true,
+    "inspire_edge_x": 0.378,
+    "inspire_park_left": true,
+    "inspire_bimanual": true,
+    "inspire_total_target_cap": 14,
+    "inspire_fingers": [
+      "middle",
+      "ring"
+    ],
+    "wrist_clearance": true,
+    "turn_feedback": true,
+    "physics_dt": 0.0005,
+    "inspire_unused_fold": 0.0,
+    "insert_seconds": 40,
+    "inspire_bimanual_y": 0.16
+  },
+  "format": "held-reference-replay/1",
+  "physics_hz": 2000,
+  "control_hz": 50,
+  "body": "F",
+  "physics_steps": 611968,
+  "full_array_sha256": {
+    "qpos": "20aa84d911cdaf7c127547e9ea5448aa8b84ed3a52bc243b621f7c388a388abe",
+    "qvel": "3ab53c3a2ea1f9c5d67eddff92380a57184717d05ec34f756f9183795c32f6a2",
+    "ctrl": "b5ea9f9b90a84ff6c3daf10f9d327667f08869852dd6a0e2d8f499adf5951c66"
+  },
+  "source_trajectory_npz_sha256": "ad88b7ec836860f8e0f755204065f3586c14d0b1ed9f836a53c8104e54cd023f",
+  "replay": "python compact_evidence.py --replay PATH_TO_RUN",
+  "requirements": "MuJoCo 3.14.0, NumPy, same official meshes, scene.xml and initial_state.json. Remap external mesh paths when needed.",
+  "storage": "References stored once per control interval; partial final interval retained. Object states shown at control endpoints; full physics-step states/controls are deterministically reconstructed and checked by array SHA-256."
+}

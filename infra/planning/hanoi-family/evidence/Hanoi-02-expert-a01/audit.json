@@ -1,0 +1,66 @@
+{
+  "schema": "hanoi-attempt-audit/1",
+  "task_id": "Hanoi-02",
+  "scope": "record continuity and declared constraints; not independent physical replay",
+  "audit_passed": true,
+  "task_success": false,
+  "independent_replay": false,
+  "checks": {
+    "action_count": true,
+    "continuous_commands": true,
+    "finite_trajectory": true,
+    "target_limits": true,
+    "recorded_targets_match": true,
+    "phase_mapping": true,
+    "physics_steps_and_torque_caps": true,
+    "no_runtime_state_write_attempts": true,
+    "source_unchanged": true,
+    "video_exists": true
+  },
+  "artifacts": {
+    "high_low_plan.json": {
+      "bytes": 7401,
+      "sha256": "d99d7f315bfd392b5709bbb3d3c7bfdb8e6dd69ed9ff638d3a61168e12c457c6"
+    },
+    "executed-plan.json": {
+      "bytes": 874,
+      "sha256": "5937d2ea4e24678d36090d015ee45f2a00b5593dae78cb467636a70617ac75d5"
+    },
+    "trajectory.npz": {
+      "bytes": 101676,
+      "sha256": "3db6c9481ab73fe510713119604eff55ad4685278c967fb1bc08fc97d8026417"
+    },
+    "physics.jsonl.gz": {
+      "bytes": 6752287,
+      "sha256": "54cd36b46b0c19483731bff7c6a3f39f2cfe797ef77a63a6b6ff670cdb843aba"
+    },
+    "actions.jsonl.gz": {
+      "bytes": 10436,
+      "sha256": "b48ec1bf495bee8035794de6ab928eac086ac562c6a333bc5f0408e988c8dc5b"
+    },
+    "video.mp4": {
+      "bytes": 50915,
+      "sha256": "282b1f8ae82f8fe5e060b4b3cf6ea72537ff45a276c8d68e02458c3271199ee0"
+    },
+    "result.json": {
+      "bytes": 1396,
+      "sha256": "a1c31ba4cda3c20192f2cfa13cc503bc1a0d476895bbe142c5e2771975983144"
+    },
+    "source-hashes.json": {
+      "bytes": 766,
+      "sha256": "d7413f73df1eb2c0647f72c8a516bd0600eb9f193529bc6e75db00d121725ff9"
+    },
+    "source-check.json": {
+      "bytes": 1628,
+      "sha256": "e67e6783716006e72ad9b2e3fe8134268fa2bdb65df52a1e9d1b1a03af5f86f8"
+    },
+    "environment.json": {
+      "bytes": 286,
+      "sha256": "3c6beffcdff25058cb25352894e4a6c997dee28b653949ae4e4125d624dbd0e0"
+    },
+    "limits.json": {
+      "bytes": 2477,
+      "sha256": "63b272f8e0436424b4cc49f57482d516c64fcbbee65052da9c8c531628c0d9fd"
+    }
+  }
+}

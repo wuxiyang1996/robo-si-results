@@ -1,0 +1,150 @@
+{
+  "setting": "DF-01-G",
+  "created_before_execution": true,
+  "high_level": [
+    "slide",
+    "clamp",
+    "lift",
+    "turn",
+    "place"
+  ],
+  "low_level": {
+    "settle_raised_separated_hands": {
+      "high_level": "slide",
+      "action": "稳定抬起且分开的双手",
+      "constraint": "盘由桌面支撑；双手先稳定"
+    },
+    "approach_far_rim": {
+      "high_level": "slide",
+      "action": "拇指从上方接近远侧盘沿",
+      "constraint": "接近阶段避免提前碰盘"
+    },
+    "lower_outside_far_rim": {
+      "high_level": "slide",
+      "action": "在远侧盘沿外降低拇指",
+      "constraint": "沿盘外侧下降，保留桌面支撑"
+    },
+    "gentle_rim_contact": {
+      "high_level": "slide",
+      "action": "低速建立拇指推盘接触",
+      "constraint": "以测得接触建立推力，限制速度与受力"
+    },
+    "slide_to_near_edge": {
+      "high_level": "slide",
+      "action": "沿桌面轻推至近侧桌沿",
+      "constraint": "按实测悬伸量停止，盘心仍在支撑侧"
+    },
+    "unload_rim_pusher": {
+      "high_level": "clamp",
+      "action": "卸掉原推盘拇指的载荷",
+      "constraint": "先卸力，再撤离；桌面继续承载"
+    },
+    "clear_rim_pusher": {
+      "high_level": "clamp",
+      "action": "撤开推盘拇指",
+      "constraint": "从盘沿退出，避免带动圆盘"
+    },
+    "retract_above_and_beside_disk": {
+      "high_level": "clamp",
+      "action": "双手撤至盘上方和侧方",
+      "constraint": "为改变手型预留几何空间"
+    },
+    "reconfigure_for_bimanual_approach": {
+      "high_level": "clamp",
+      "action": "调整腕部姿态以双手接近",
+      "constraint": "局部 IK 使用关节范围和腕部间隙约束"
+    },
+    "calibrate_free_finger_preshape": {
+      "high_level": "clamp",
+      "action": "预张开并调整空载手指",
+      "constraint": "空载预整形后再建立盘面接触"
+    },
+    "close_two_independent_edge_pinches": {
+      "high_level": "clamp",
+      "action": "分别闭合两手的拇指与下侧手指",
+      "constraint": "每只手建立两盘面的独立夹持；按接触力臂分配载荷"
+    },
+    "lift_with_two_edge_pinches": {
+      "high_level": "lift",
+      "action": "保持双手夹持共同抬盘",
+      "constraint": "保持双手支撑；夹持丢失不得超过 0.1 s；建立旋转净空"
+    },
+    "turn_with_two_edge_pinches": {
+      "high_level": "turn",
+      "action": "同步旋转两手以翻转圆盘",
+      "constraint": "双手夹持，腕部间隙、姿态和切向载荷反馈；保留全局限值"
+    },
+    "use_measured_pressure_feedback_near_inversion": {
+      "high_level": "turn",
+      "action": "接近翻面完成时改用实测压力反馈",
+      "constraint": "仅在已接近反面朝上且双手夹持有效时触发；原物理约束不变"
+    },
+    "settle_after_bimanual_inversion": {
+      "high_level": "place",
+      "action": "翻面后先稳定双手夹持",
+      "constraint": "蓝面朝上，准备受控支撑交接"
+    },
+    "transfer_weight_to_one_pinch": {
+      "high_level": "place",
+      "action": "将载荷移交右手夹持并释放左手",
+      "constraint": "此交接只发生在双手翻面完成后；保持圆盘受支撑"
+    },
+    "clear_bridge_pusher": {
+      "high_level": "place",
+      "action": "移开左手并准备再次推盘",
+      "constraint": "右手承载，左手从盘体附近移开"
+    },
+    "carry_inverted_disk_outside_edge": {
+      "high_level": "place",
+      "action": "右手将反面朝上的盘移至桌沿外侧",
+      "constraint": "保持姿态与右手支撑，避免下侧手指被桌沿夹住"
+    },
+    "lower_outside_holding_hand": {
+      "high_level": "place",
+      "action": "在桌沿外降低右手及圆盘",
+      "constraint": "盘与承载手在桌沿外下降"
+    },
+    "align_supported_disk_with_table_height": {
+      "high_level": "place",
+      "action": "对齐圆盘与桌面高度",
+      "constraint": "按测量高度调整，继续由右手支撑"
+    },
+    "approach_near_rim_above_outside_bridge": {
+      "high_level": "place",
+      "action": "左手拇指从上方接近近侧盘沿",
+      "constraint": "右手承载期间保持推盘手净空"
+    },
+    "lower_bridge_pusher_outside_near_rim": {
+      "high_level": "place",
+      "action": "在近侧盘沿外降低左手拇指",
+      "constraint": "沿盘外侧下降至推盘高度"
+    },
+    "establish_bridge_push_contact": {
+      "high_level": "place",
+      "action": "建立左手拇指与盘沿的轻柔接触",
+      "constraint": "右手继续承载，左手低速寻找接触"
+    },
+    "slide_disk_from_holding_hand_onto_table": {
+      "high_level": "place",
+      "action": "将圆盘从承载手推向桌面",
+      "constraint": "逐渐建立桌面支撑并打开右拇指；控制合力和姿态"
+    },
+    "table_and_lower_pads_share_load_after_thumb_release": {
+      "high_level": "place",
+      "action": "核对桌面与下侧指垫共同承载",
+      "constraint": "明确记录支撑交接控制步，不将它省略成瞬时跳转"
+    },
+    "withdraw_lower_pads_after_supported_centre": {
+      "high_level": "place",
+      "action": "盘心获得桌面支撑后撤出下侧指垫并继续推盘",
+      "constraint": "撤指时暂停推进；左拇指维持桌面盘沿高度，避免撬起圆盘"
+    },
+    "unload_bridge_pusher": {
+      "high_level": "place",
+      "action": "卸去左拇指推力并松手稳定",
+      "constraint": "完整位于桌内、蓝面朝上、目标内、无机器人接触并静止两秒"
+    }
+  },
+  "goal": "blue face up, fully on table, in goal, released and stable for 2 s",
+  "constraints": "Original scorer and frozen limits; joint targets only; no attachment or object pose writes."
+}

@@ -1,0 +1,244 @@
+{
+ "schema": "infra-pipeline/1",
+ "task": "H5",
+ "stamp": "20261023-185459",
+ "tier": "all",
+ "sources": {
+  "task": "d65992f719578361d1439153c102b8d5d7fc835bd7a42eebe9017962b106a9d8",
+  "task_files": 78,
+  "infra": "7af31a3e6946ebd4cf7f78e3f3e3d258fb399a3417ed509096168c63e13de62f",
+  "infra_files": 41
+ },
+ "steps": [
+  {
+   "name": "runtime_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 7.6,
+   "output_tail": [
+    "....................................",
+    "----------------------------------------------------------------------",
+    "Ran 36 tests in 5.995s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "sandbox_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 43.5,
+   "output_tail": [
+    "                              [--seconds SECONDS] [--randomize]",
+    "                              [--distribution {transport-pose-v1,transport-layout-v2}]",
+    "                              [--layer {0,1,2,3}] [--seed SEED]",
+    "                              [--corner CORNER]",
+    "                              [--development-design {lever-insertion-v1,lever-insertion-v2,lever-insertion-v3}]",
+    "                              [--audit-shortcut {direct_transport}]",
+    "                              [--backend {gpu,cpu}]",
+    "python.exe -m unittest: error: the recording runs the expert from the task start, on the sealed scene, with its own constants",
+    "....................................................................................",
+    "----------------------------------------------------------------------",
+    "Ran 95 tests in 28.859s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "admission_record",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 1.2,
+   "output_tail": [
+    "task   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14  admitted  problems",
+    "H5     P  -  .  P  ~  P  .  ~  .  .  P  P  P  .  P  False     0",
+    "gates: 0 reference_expert, 1 official_trajectories, 2 coverage, 3 reference_rerun_spread, 4 verifier_validity, 5 monitors_calibrated, 6 predicate_labels, 7 shortcut_audit, 8 video_review, 9 independent_reproduction, 10 sandbox_isolation, 11 grading_mode, 12 static_checks, 13 randomisation, 14 automatic_pipeline"
+   ],
+   "passed": true
+  },
+  {
+   "name": "verifier_rejudge",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 207.3,
+   "output_tail": [
+    "reference/emulate-1: fail -> void=False score=0.0 success=False",
+    "reference/emulate-cpu-1: fail -> void=False score=0.0 success=False",
+    "reference/channel-cpu-e1: pass -> void=False score=1.0 success=True",
+    "reference/channel-cpu-e2: pass -> void=False score=1.0 success=True",
+    "reference/channel-cpu-e3: pass -> void=False score=1.0 success=True",
+    "reference/channel-gpu-e1: pass -> void=False score=1.0 success=True",
+    "reference/channel-gpu-e2: pass -> void=False score=1.0 success=True",
+    "reference/channel-gpu-e3: pass -> void=False score=1.0 success=True",
+    "reference/release-video-gpu-20261022-2: pass -> void=False score=1.0 success=True",
+    "reference/release-video-gpu-20261022-3: pass -> void=False score=1.0 success=True",
+    "shortcuts/release-direct-transport-20261022-1: fail -> void=False score=0.05 success=False",
+    "23/23 recorded runs re-judged as expected"
+   ],
+   "passed": true
+  },
+  {
+   "name": "dev_hello",
+   "tier": "gpu",
+   "exit_code": 1,
+   "seconds": 91.4,
+   "output_tail": [
+    "[gpu_queue] gpu-1.lock acquired: D:\\rsi_vla\\genesis_env\\Scripts\\python.exe -X utf8 -m humanoid.g1_lever_assisted_transport.sandbox.launch task --mode dev --isolation process --no-video --name pipeline-dev-hello-20261023-185459 --agen",
+    "[H5] run: C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\pipeline-dev-hello-20261023-185459",
+    "[H5] building the world (dev) ...",
+    "[H5] trusted worker ready; 1 episode run(s), process isolation",
+    "[H5] episode 0: exit=0 timed_out=False",
+    "[H5] {\"privileged_reference\": false, \"void\": false, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 1} -> C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\pipeline-dev-hello-20261023-185459\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_lever_assisted_transport/sandbox/runs/pipeline-dev-hello-20261023-185459",
+   "expect": {
+    "void": false,
+    "score": 0.0
+   },
+   "got": {
+    "void": false,
+    "score": 0.0
+   },
+   "passed": true
+  },
+  {
+   "name": "dev_hello_completed",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 1.9,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_lever_assisted_transport\\\\sandbox\\\\runs\\\\pipeline-dev-hello-20261023-185459\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "sensor_geometry",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 30.6,
+   "output_tail": [
+    "    \"p99\": 0.0019022446270113402",
+    "   }",
+    "  },",
+    "  \"timing_s\": {",
+    "   \"full_control_step\": 0.07177451000316068,",
+    "   \"observe_all\": 0.045846099965274334",
+    "  },",
+    "  \"robot_root_z_after_0.6_s\": 0.7839149236679077",
+    " },",
+    " \"passed\": true",
+    "}",
+    "sensor geometry: PASS"
+   ],
+   "passed": true
+  },
+  {
+   "name": "escape",
+   "tier": "container",
+   "exit_code": 1,
+   "seconds": 40.6,
+   "output_tail": [
+    "[gpu_queue] gpu-1.lock acquired: D:\\rsi_vla\\genesis_env\\Scripts\\python.exe -X utf8 -m humanoid.g1_lever_assisted_transport.sandbox.launch task --mode eval --no-video --name pipeline-escape-20261023-185459 --agent-dir humanoid/g1_leve",
+    "[H5] run: C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\pipeline-escape-20261023-185459",
+    "[H5] preparing the agent image",
+    "[H5] building the world (eval) ...",
+    "[H5] trusted worker ready; 1 episode run(s), container isolation",
+    "[H5] episode 0: exit=0 timed_out=False",
+    "[H5] {\"privileged_reference\": false, \"void\": true, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 1} -> C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\pipeline-escape-20261023-185459\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_lever_assisted_transport/sandbox/runs/pipeline-escape-20261023-185459",
+   "expect": {
+    "void": true
+   },
+   "got": {
+    "void": true
+   },
+   "passed": true
+  },
+  {
+   "name": "escape_completed",
+   "tier": "container",
+   "exit_code": 0,
+   "seconds": 2.0,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_lever_assisted_transport\\\\sandbox\\\\runs\\\\pipeline-escape-20261023-185459\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "eval_hello",
+   "tier": "container",
+   "exit_code": 1,
+   "seconds": 44.6,
+   "output_tail": [
+    "[gpu_queue] gpu-1.lock acquired: D:\\rsi_vla\\genesis_env\\Scripts\\python.exe -X utf8 -m humanoid.g1_lever_assisted_transport.sandbox.launch task --mode eval --no-video --name pipeline-eval-hello-20261023-185459 --agent-dir humanoid/g1_",
+    "[H5] run: C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\pipeline-eval-hello-20261023-185459",
+    "[H5] preparing the agent image",
+    "[H5] building the world (eval) ...",
+    "[H5] trusted worker ready; 1 episode run(s), container isolation",
+    "[H5] episode 0: exit=0 timed_out=False",
+    "[H5] {\"privileged_reference\": false, \"void\": false, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 1} -> C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\pipeline-eval-hello-20261023-185459\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_lever_assisted_transport/sandbox/runs/pipeline-eval-hello-20261023-185459",
+   "expect": {
+    "void": false,
+    "score": 0.0
+   },
+   "got": {
+    "void": false,
+    "score": 0.0
+   },
+   "passed": true
+  },
+  {
+   "name": "eval_hello_completed",
+   "tier": "container",
+   "exit_code": 0,
+   "seconds": 1.7,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_lever_assisted_transport\\\\sandbox\\\\runs\\\\pipeline-eval-hello-20261023-185459\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "grade_noop",
+   "tier": "container",
+   "exit_code": 1,
+   "seconds": 275.5,
+   "output_tail": [
+    "[gpu_queue] gpu-1.lock acquired: D:\\rsi_vla\\genesis_env\\Scripts\\python.exe -X utf8 -m humanoid.g1_lever_assisted_transport.sandbox.launch task --mode grade --episodes 3 --no-video --name pipeline-grade-noop-20261023-185459 --agent-di",
+    "[H5] run: C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\pipeline-grade-noop-20261023-185459",
+    "[H5] preparing the agent image",
+    "[H5] building the world (grade) ...",
+    "[H5] trusted worker ready; 3 episode run(s), container isolation",
+    "[H5] episode 0: exit=0 timed_out=False",
+    "[H5] episode 1: exit=0 timed_out=False",
+    "[H5] episode 2: exit=0 timed_out=False",
+    "[H5] {\"privileged_reference\": false, \"void\": false, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 3} -> C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\pipeline-grade-noop-20261023-185459\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_lever_assisted_transport/sandbox/runs/pipeline-grade-noop-20261023-185459",
+   "expect": {
+    "void": false,
+    "score": 0.0,
+    "success_rate": 0.0
+   },
+   "got": {
+    "void": false,
+    "score": 0.0,
+    "success_rate": 0.0
+   },
+   "passed": true
+  },
+  {
+   "name": "grade_noop_completed",
+   "tier": "container",
+   "exit_code": 0,
+   "seconds": 1.7,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_lever_assisted_transport\\\\sandbox\\\\runs\\\\pipeline-grade-noop-20261023-185459\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  }
+ ],
+ "passed": true
+}

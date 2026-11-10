@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 828, in main
+    def execute_sg3_supported(self):
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 483, in execute
+    self.pressure_control=True;self.move('close',seconds=45)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 396, in move
+    current[s]=(p0+u*(p-p0),rot)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 370, in step
+    elif self.body=='F':self.regulate_inspire()
+                                                
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 184, in assess
+    elif all(b>0 for b in bs):selfc+=mag
+                        ^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

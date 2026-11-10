@@ -1,0 +1,159 @@
+{
+  "schema": "layered-feasibility-policy/1",
+  "version": "2026-10-26",
+  "status": "normative_design_and_acceptance_policy",
+  "scope": "Task design and author-side acceptance evidence; no automatic changes to historical verdicts, admission records or agent scoring.",
+  "full_solution_per_random_instance_required": false,
+  "deliverables": [
+    "high_level_plan",
+    "selected_skills_and_constraints",
+    "key_states",
+    "feasibility_check_results"
+  ],
+  "full_trajectories": "At least one continuous generated success witness for scoped design feasibility; reuse existing evidence with checked representation mappings. Additional robustness trajectories are separate; none is mandatory per random draw.",
+  "levels": {
+    "task": "Representative complete physical successes establish the recorded configurations can be completed; no universal random-range claim.",
+    "skill": "Demonstrate high-level-to-low-level refinement and low-level-to-trajectory realization in a declared case. Continuous applicability domains and arbitrary-start skill composition are separate extensions; uncalibrated envelopes remain null.",
+    "instance": "Budgeted identity, reachability, collision, support/load, transition and time checks, with targeted short physics probes when necessary.",
+    "execution": "Generate the current local segment from observations and replan; retain original action-interface, physical and scoring constraints."
+  },
+  "instance_states": {
+    "witnessed_full": {
+      "label_zh": "有完整成功证据",
+      "requires": [
+        "matching_scene_asset_physics_controller_scorer_identity",
+        "successful_continuous_full_run",
+        "valid_integrity_and_monitor_result"
+      ],
+      "claims_random_family_solved": false
+    },
+    "screen_pass": {
+      "label_zh": "通过可行性筛查",
+      "requires": [
+        "all_predeclared_required_checks_passed",
+        "all_required_evidence_present",
+        "scope_and_assumptions_recorded"
+      ],
+      "counts_as_full_success": false
+    },
+    "unknown": {
+      "label_zh": "未确定",
+      "causes": [
+        "missing_checker",
+        "missing_evidence",
+        "uncalibrated_skill_envelope",
+        "search_did_not_find_solution",
+        "budget_exhausted"
+      ],
+      "counts_as_success": false,
+      "proves_infeasibility": false
+    },
+    "rejected": {
+      "label_zh": "检查不通过",
+      "requires": [
+        "evidenced_failure_of_a_necessary_condition",
+        "reason",
+        "rejection_scope"
+      ],
+      "rejection_scope": [
+        "route",
+        "instance"
+      ],
+      "whole_instance_requirement": "A route-independent necessary-condition counterexample; failure of one route or solver is insufficient."
+    }
+  },
+  "transition_requirements": [
+    "actual_pose",
+    "velocity",
+    "grasp",
+    "contact_topology_and_forces",
+    "support_geometry",
+    "committed_stage",
+    "remaining_task_time",
+    "estimation_uncertainty"
+  ],
+  "checkpoint_rule": "Independently restored or constructed starts are local diagnostics. They do not establish continuous full-task success or arbitrary skill composition.",
+  "budget_policy": {
+    "declare_before_screening": [
+      "wall_seconds",
+      "candidate_count",
+      "short_probe_count",
+      "short_probe_steps"
+    ],
+    "exhaustion_result": "unknown",
+    "automatic_full_run_escalation": false,
+    "original_execution_time_limits_retained": true
+  },
+  "sampling": {
+    "self_generated": "May preferentially sample evidenced skill envelopes, with declared filters and retained draw/rejection records.",
+    "benchmark": "Retain every prescribed random sample and its result; do not silently exclude unknowns/failures or replace failed seeds.",
+    "subset_reports": "Require a predeclared selection rule, full sampling ledger, separate state counts and explicit denominators.",
+    "representative_cohort": "Choose a finite risk-based cohort and rationale before execution; consider boundaries, interiors and contact changes. No universal minimum of five complete seeds per layer.",
+    "existing_explicit_cohorts": "Remain in force until separately revised; this policy does not cancel ongoing finite acceptance work."
+  },
+  "acceptance": {
+    "design_feasibility_gate": {
+      "policy": "hierarchical-evaluation/refinement-policy.json",
+      "mapping_checks": ["HL_LL", "LL_TRAJ", "HL_TRAJ"],
+      "minimum_successful_continuous_generated_witnesses": 1,
+      "existing_witness_reuse_allowed_with_checked_mappings_and_provenance": true,
+      "universal_random_state_solvability_required": false,
+      "arbitrary_skill_composition_required": false,
+      "general_rolling_planner_required": false,
+      "changes_agent_scoring_or_formal_gate_status": false
+    },
+    "representative_complete_witness_required_for_complete_task_claim": true,
+    "skill_evidence_and_transition_review_required": true,
+    "full_run_skill_probe_screening_counts_separate": true,
+    "screen_pass_is_verifier_full_positive": false,
+    "representative_same_seed_repeats": 3,
+    "repeat_scope": "Separate repeatability/formal reproduction reporting for preselected representative seeds. Not a prerequisite for the one-witness design-feasibility gate and not required for every screened random instance.",
+    "human_review": "Applicable declared representative full runs and critical positive/negative clips; static screening needs no video; headless evidence cannot be signed as video-reviewed.",
+    "independent_reproduction": "Declared representative solutions, not every random screening sample.",
+    "verifier_and_integrity_gates_retained": true,
+    "agent_evaluation_and_grading_repeat_protocol_unchanged": true,
+    "existing_admission_gate_ids_and_statuses_unchanged": true,
+    "historical_evidence_and_unsigned_gates_preserved": true,
+    "automatic_admission_upgrade": false
+  },
+  "implementation_boundary": "This file defines evidence requirements. It does not implement a geometric/dynamic feasibility solver, budget scheduler, status inference engine or automatic admission migration.",
+  "agent_visibility": "Author routes and privileged evidence must be excluded from agent-visible bundles.",
+  "references": {
+    "design_zh": "../task-design-zh.html#hierarchical-planning",
+    "design_en": "../task-design-en.html#hierarchical-planning",
+    "acceptance_zh": "../acceptance-zh.html#screening",
+    "acceptance_en": "../acceptance-en.html#screening",
+    "reporting_zh": "../protocol-zh.html#feasibility-reporting",
+    "reporting_en": "../protocol-en.html#feasibility-reporting",
+    "instance_record": "instance-template.json",
+    "task_plan_catalog": "catalog.json"
+  },
+  "status_reporting_rollout": {
+    "date": "2026-10-26",
+    "tasks": [
+      "H2",
+      "H3",
+      "H4",
+      "H5",
+      "H6",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "Hanoi",
+      "Assembly"
+    ],
+    "excluded_from_this_update": [
+      "H1"
+    ],
+    "record": "layered-status.json",
+    "rules": [
+      "Keep scoped task completion and publication separate from skill and instance readiness.",
+      "Use finite representative full witnesses; no per-random-instance full-solution prerequisite.",
+      "Validate skill applicability and actual-state transitions; gaps remain unknown.",
+      "Preserve every prescribed benchmark draw, failure, rejection and timeout; declare self-generated sampling filters.",
+      "Generate local trajectories during execution; full trajectories are additional representative evidence.",
+      "No automatic promotion of formal admission or screening passes."
+    ]
+  }
+}

@@ -1,0 +1,246 @@
+{
+ "how": "live",
+ "num_disks": 3,
+ "wall_s": 103.1,
+ "run": {
+  "expert_exit_code": 0,
+  "expert_report": {
+   "accepted": true,
+   "success": true,
+   "control_steps": 4226,
+   "duration_seconds": 84.51,
+   "move_count": 7
+  }
+ },
+ "comparison": {
+  "source_episode": "../../../acceptance/release_20261022/sweep_swept_thumb_release_v2/disks3/nominal/run/expert",
+  "source_success": true,
+  "source_control_steps": 4226,
+  "source_duration_s": 84.51,
+  "verdict_success": true,
+  "success_matches": true,
+  "moves_match": true,
+  "moves_sandbox": [
+   [
+    "disk_2",
+    "A",
+    "C",
+    15.21
+   ],
+   [
+    "disk_1",
+    "A",
+    "B",
+    26.115
+   ],
+   [
+    "disk_2",
+    "C",
+    "B",
+    36.995
+   ],
+   [
+    "disk_0",
+    "A",
+    "C",
+    49.19
+   ],
+   [
+    "disk_2",
+    "B",
+    "A",
+    60.07
+   ],
+   [
+    "disk_1",
+    "B",
+    "C",
+    70.97
+   ],
+   [
+    "disk_2",
+    "A",
+    "C",
+    82.51
+   ]
+  ],
+  "moves_source": [
+   [
+    "disk_2",
+    "A",
+    "C",
+    15.21
+   ],
+   [
+    "disk_1",
+    "A",
+    "B",
+    26.115
+   ],
+   [
+    "disk_2",
+    "C",
+    "B",
+    36.995
+   ],
+   [
+    "disk_0",
+    "A",
+    "C",
+    49.19
+   ],
+   [
+    "disk_2",
+    "B",
+    "A",
+    60.07
+   ],
+   [
+    "disk_1",
+    "B",
+    "C",
+    70.97
+   ],
+   [
+    "disk_2",
+    "A",
+    "C",
+    82.51
+   ]
+  ],
+  "duration_matches": true,
+  "rows_compared": 4226,
+  "rows_sandbox": 4226,
+  "rows_recording": 4226,
+  "max_object_position_diff_m": 0.0,
+  "max_time_diff_s": 0.0
+ },
+ "source_replay_accepted": true,
+ "verdict": {
+  "score": 1.0,
+  "success": true,
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "process_score": 1.0,
+  "stage_timeline": {
+   "disk_lifted_clear": 9.1,
+   "first_move": 15.22,
+   "tower_progress": 82.52,
+   "goal_hold": 84.51
+  },
+  "stage_best": {
+   "disk_lifted_clear": 1.0,
+   "first_move": 1.0,
+   "tower_progress": 1.0,
+   "goal_hold": 1.0
+  },
+  "end_reason": "task_ended",
+  "sim_time_s": 84.51,
+  "evaluation": {
+   "replay": {
+    "success": true,
+    "failed": false,
+    "reason": "success",
+    "elapsed": 84.50999999999563,
+    "latched_row": 4226
+   },
+   "live": {
+    "success": true,
+    "failed": false,
+    "reason": "success",
+    "elapsed": 84.50999999999563,
+    "latched_row": 4226,
+    "recorded": true
+   },
+   "replay_matches_live": true,
+   "mismatch": null,
+   "moves": [
+    {
+     "disk": "disk_2",
+     "source": "A",
+     "target": "C",
+     "t": 15.21
+    },
+    {
+     "disk": "disk_1",
+     "source": "A",
+     "target": "B",
+     "t": 26.115
+    },
+    {
+     "disk": "disk_2",
+     "source": "C",
+     "target": "B",
+     "t": 36.995
+    },
+    {
+     "disk": "disk_0",
+     "source": "A",
+     "target": "C",
+     "t": 49.19
+    },
+    {
+     "disk": "disk_2",
+     "source": "B",
+     "target": "A",
+     "t": 60.07
+    },
+    {
+     "disk": "disk_1",
+     "source": "B",
+     "target": "C",
+     "t": 70.97
+    },
+    {
+     "disk": "disk_2",
+     "source": "A",
+     "target": "C",
+     "t": 82.51
+    }
+   ],
+   "move_count": 7,
+   "minimum_moves": 7
+  },
+  "final_state": {
+   "disk_0": {
+    "xy_error_m": 0.00216,
+    "z_error_m": 3e-05,
+    "tilt_rad": 0.0,
+    "ok": true
+   },
+   "disk_1": {
+    "xy_error_m": 0.00215,
+    "z_error_m": 6e-05,
+    "tilt_rad": 0.0,
+    "ok": true
+   },
+   "disk_2": {
+    "xy_error_m": 0.00142,
+    "z_error_m": 8e-05,
+    "tilt_rad": 0.0001,
+    "ok": true
+   }
+  },
+  "monitor_metrics": {
+   "monitor_version": "g1-tabletop-hanoi-monitors/1",
+   "not_applicable": {
+    "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+    "fall": "the pelvis is bolted to a stand",
+    "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+   },
+   "max_reported_speed": 0.444,
+   "max_object_speed": 0.443,
+   "max_step_speed": 0.444,
+   "max_support_penetration": 0.0007,
+   "max_energy_excess_J": 0.0,
+   "max_reversal_rate_hand_hz": 0.0,
+   "max_arm_shake": 0.156,
+   "max_saturation_s": 0.0,
+   "max_limit_push_s": 0.0,
+   "max_progress_spike": 0.0
+  },
+  "error": null
+ },
+ "accepted": true
+}

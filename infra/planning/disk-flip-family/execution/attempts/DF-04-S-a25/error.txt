@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 894, in main
+    solution,_=self.solve({'right':(pos,R)},seed=self.qref)
+      ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 521, in execute
+    R=Rotation.from_euler('x' if self.body=='S' else 'y',(-1 if self.body=='S' else 1)*np.pi*smooth((i+1)/3000)).as_matrix()
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 822, in finish_sg3_edge
+    self.events[-1].update(end_s=float(self.d.time),record_end=len(self.records))
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 841, in finish_sg3_push
+    return self.finish_sg3_push()
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 409, in move
+    bridge_feedback=self.body=='G' and phase=='place' and self.tuning.get('bridge_transport_feedback',False) and getattr(self,'handoff_progress',0.)>=.99 and goals and 'right' in goals
+     ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 383, in step
+    solution,_=self.solve(targets,seed=self.qref)
+                                                  
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 193, in assess
+    for k,val in [('speed',speed),('angular',ang),('robot',robot),('table',table),('local',local),('self_contact',selfc),('robot_table',rt)]:self.peaks[k]=max(self.peaks[k],val)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_linear_speed

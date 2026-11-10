@@ -1,0 +1,155 @@
+{
+  "schema": "h1-skill-refinement-software-checks/1",
+  "synthetic_only": true,
+  "physical_runs": 0,
+  "contract": "skill-refinement-contract-v7.json",
+  "checks": {
+    "touch_with_raw_contacts": {
+      "status": "passed",
+      "nonpassing": []
+    },
+    "filtered_residue_without_raw_contact_fails": {
+      "status": "failed",
+      "nonpassing": [
+        "both_hand_contacts_established",
+        "simultaneous_contact_at_exit"
+      ]
+    },
+    "push_without_motion_is_not_refined": {
+      "status": "failed",
+      "nonpassing": [
+        "target_progress_toward_D"
+      ]
+    },
+    "retreat_still_in_contact_fails": {
+      "status": "failed",
+      "nonpassing": [
+        "released_at_exit"
+      ]
+    },
+    "dragged_feet_not_swing": {
+      "status": "failed",
+      "nonpassing": [
+        "left_unloaded_swing_and_supported_landing",
+        "right_unloaded_swing_and_supported_landing"
+      ]
+    },
+    "return_without_next_contact_unknown": {
+      "status": "unknown",
+      "nonpassing": [
+        "next_contact_reachable_in_continuous_run"
+      ]
+    },
+    "missing_support_with_valid_contacts_unknown": {
+      "status": "unknown",
+      "nonpassing": [
+        "no_measured_reference_body_collision",
+        "at_least_one_ground_support_throughout",
+        "target_ground_support_throughout",
+        "two_foot_exit_support"
+      ]
+    },
+    "final_return_needs_release_not_unused_touch": {
+      "status": "passed"
+    },
+    "final_return_MCP_not_behind_rear_plane": {
+      "status": "failed"
+    },
+    "missing_support_plus_absent_contacts": {
+      "status": "failed",
+      "nonpassing": [
+        "no_measured_reference_body_collision",
+        "at_least_one_ground_support_throughout",
+        "target_ground_support_throughout",
+        "two_foot_exit_support",
+        "both_hand_contacts_established",
+        "simultaneous_contact_at_exit"
+      ]
+    },
+    "terminal_mcp_predicate_is_unknown": {
+      "status": "unknown"
+    },
+    "terminal_hold_uses_fresh_fields": {
+      "status": "passed"
+    },
+    "terminal_stale_field_provenance": {
+      "status": "passed"
+    },
+    "two_measured_unloaded_swings_and_landings": {
+      "status": "passed"
+    },
+    "measured_load_transfer_and_next_swing": {
+      "status": "passed",
+      "exact_COM": "unknown_non_gating"
+    },
+    "reference_lift_label_without_lift": {
+      "status": "failed"
+    },
+    "observed_sublabels_exact_shared_boundaries": {
+      "status": "passed",
+      "ranges": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    "frozen_joint_order_verified_against_MuJoCo": {
+      "method": "Load frozen MJCF with MuJoCo CPU model parser; no dynamics steps",
+      "mujoco_version": "3.14.0",
+      "nq": 50,
+      "nv": 49,
+      "qpos_addresses": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "xml_order_matches_measured_qpos_order": true,
+      "simulation_steps": 0
+    }
+  }
+}

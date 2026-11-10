@@ -1,0 +1,84 @@
+{
+  "schema": "g1-extraction-release-readiness/1",
+  "release_ready": true,
+  "checks": {
+    "appliance": {
+      "fresh": [
+        {
+          "run": "validation/appliance-cohort-v2/run-1",
+          "valid": true,
+          "full_task_success": true,
+          "status": "finished"
+        },
+        {
+          "run": "validation/appliance-cohort-v2/run-2",
+          "valid": true,
+          "full_task_success": true,
+          "status": "finished"
+        },
+        {
+          "run": "validation/appliance-cohort-v2/run-3",
+          "valid": true,
+          "full_task_success": true,
+          "status": "finished"
+        }
+      ],
+      "action_replays": [
+        {
+          "run": "validation/appliance-cohort-v2/replay-1",
+          "success": false
+        }
+      ],
+      "selected_witness": "validation/appliance-cohort-v2/run-1",
+      "verified_fresh_count": 3,
+      "fresh_attempt_count": 3,
+      "nominal_closed_loop_reference_pass": true,
+      "finite_replay_diagnostic_complete": true
+    },
+    "retrieval": {
+      "fresh": [
+        {
+          "run": "validation/retrieval-cohort-v2/run-1",
+          "valid": true,
+          "full_task_success": true,
+          "status": "finished"
+        },
+        {
+          "run": "validation/retrieval-cohort-v2/run-2",
+          "valid": false,
+          "full_task_success": false,
+          "status": "failed"
+        },
+        {
+          "run": "validation/retrieval-cohort-v2/run-3",
+          "valid": false,
+          "full_task_success": false,
+          "status": "failed"
+        }
+      ],
+      "action_replays": [
+        {
+          "run": "validation/retrieval-cohort-v2/replay-1",
+          "success": false
+        }
+      ],
+      "selected_witness": "validation/retrieval-cohort-v2/run-1",
+      "verified_fresh_count": 1,
+      "fresh_attempt_count": 3,
+      "nominal_closed_loop_reference_pass": true,
+      "finite_replay_diagnostic_complete": true
+    }
+  },
+  "claim": "Two nominal closed-loop G1 reference tasks; random variants are screened candidates only",
+  "design_gate": "At least one complete independently verified continuous witness per task, as predeclared in cohort.json; all three repeat outcomes are retained separately",
+  "prescribed_screening_complete": true,
+  "screening_ledger": "validation/screening-final",
+  "software_checks_pass": true,
+  "nominal_hand_access_check_pass": true,
+  "unfinished_attempts": [],
+  "open_loop_replay_success_required_for_claim": false,
+  "replay_interpretation": "Raw action replay is a retained diagnostic, not a claim of stable open-loop control. All replay failures must be disclosed.",
+  "human_review": "pending",
+  "formal_admission": false,
+  "published": false
+}

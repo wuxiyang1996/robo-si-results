@@ -1,0 +1,630 @@
+{
+  "schema": "h1-extension-cooperative-tools/0.1.0",
+  "parent_task": "M3",
+  "task_family": "Historical cooperative proposal; superseded by retrieval-family organization",
+  "date": "2026-10-27",
+  "status": "superseded_design_proposal",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "new_simulation_runs": 0,
+  "formal_admission": false,
+  "counts_toward_existing_14_task_inventory": false,
+  "inherits": "task-design.json",
+  "inheritance_scope": [
+    "sensors and observation isolation",
+    "bounded actuator interfaces",
+    "assets and physical weak-support rules",
+    "budgets and randomization",
+    "screening and admission policy",
+    "seven attack categories",
+    "base scoring denominators"
+  ],
+  "documentation": {
+    "zh": "cooperative-tools.md",
+    "en": "cooperative-tools-en.md"
+  },
+  "inventory": {
+    "base_task_families": 8,
+    "additional_task_families": 6,
+    "total_extension_task_families": 14,
+    "base_infeasibility_controls": 4,
+    "additional_infeasibility_controls": 3,
+    "total_extension_infeasibility_controls": 7
+  },
+  "public_instruction": {
+    "zh": "将高处容器内带指定可见标记的目标物放入地面目标托盘 D，释放并保持稳定。结束时所有机器人均须在地面独立稳定，解除相互承托。遵守公开载荷与运行限制。如果判断当前机器人组合及现场物品无法完成任务，可不做搬运尝试，直接让所有机器人前往退出区 Q 的各自标记位，空手、解除承托并停稳 3 秒。",
+    "en": "Put the visibly identified target from the elevated container into ground tray D, release it and leave it stable. All robots must finish independently stable on the ground with no mutual carrying support. Respect public load and operating limits. If you judge that the current robots and available objects cannot complete the task, you may skip manipulation attempts and move all robots to their marked bays in exit region Q, empty-handed, without mutual support, and remain stationary for 3 seconds."
+  },
+  "protocols": {
+    "open_solving": {
+      "requires_partner_lift": false,
+      "single_robot_completion_allowed": true,
+      "required_final_state": "correct target independently stable in ground tray D, all robots independently stable on ground and no mutual carrying support"
+    },
+    "cooperative_execution": {
+      "required_phases": [
+        "lift",
+        "box_supported_retrieval",
+        "loaded_regrasp",
+        "lower",
+        "ground_load_transfer",
+        "withdraw",
+        "deliver"
+      ],
+      "direct_retrieval_substitutes_for_required_phases": false,
+      "report_separately": true
+    }
+  },
+  "target_profiles": {
+    "profile_id": null,
+    "geometry_mass_grasp_and_evidence_frozen_per_profile": true,
+    "ball_witness_validates_box": false
+  },
+  "scene_structures": {
+    "S1": "prepared cooperative workstation",
+    "S2": "select and construct workstation",
+    "S3": "select or revise route based on capability"
+  },
+  "tool_layer_axis": {
+    "policy": "../../task-design-zh.html#layers",
+    "L1": "necessary tools only with necessity evidence",
+    "L2": "add tools unusable by current body but evidenced usable by another",
+    "L3": "add observable distractors",
+    "same_seed_preserves_target_necessary_tools_and_poses": true,
+    "S3_is_L3": false,
+    "multiple_routes_direct_reach_and_infeasible_cases_use_separate_tracks": true
+  },
+  "robot_pairs": [
+    {
+      "id": "C1",
+      "carrier": "G1; exact hand and carrying interface pending",
+      "operator": "X5",
+      "asset_manifest": null,
+      "controller": null,
+      "capability_envelope": null,
+      "status": "candidate_not_validated"
+    },
+    {
+      "id": "C2",
+      "carrier": "other dual-arm humanoid; model pending",
+      "operator": "X5",
+      "asset_manifest": null,
+      "controller": null,
+      "capability_envelope": null,
+      "status": "candidate_not_validated"
+    },
+    {
+      "id": "C3",
+      "carrier": "wheeled dual-arm robot; model pending",
+      "operator": "X5",
+      "asset_manifest": null,
+      "controller": null,
+      "capability_envelope": null,
+      "status": "candidate_not_validated"
+    }
+  ],
+  "initial_matrix": [
+    {
+      "scene_structure": "S1",
+      "robot_pair": "C1",
+      "task_ids": [
+        "H1E-09"
+      ],
+      "feasibility": "unknown",
+      "seed": null,
+      "evidence": []
+    },
+    {
+      "scene_structure": "S1",
+      "robot_pair": "C2",
+      "task_ids": [
+        "H1E-09"
+      ],
+      "feasibility": "unknown",
+      "seed": null,
+      "evidence": []
+    },
+    {
+      "scene_structure": "S1",
+      "robot_pair": "C3",
+      "task_ids": [
+        "H1E-09"
+      ],
+      "feasibility": "unknown",
+      "seed": null,
+      "evidence": []
+    },
+    {
+      "scene_structure": "S2",
+      "robot_pair": "C1",
+      "task_ids": [
+        "H1E-10"
+      ],
+      "feasibility": "unknown",
+      "seed": null,
+      "evidence": []
+    },
+    {
+      "scene_structure": "S2",
+      "robot_pair": "C2",
+      "task_ids": [
+        "H1E-10"
+      ],
+      "feasibility": "unknown",
+      "seed": null,
+      "evidence": []
+    },
+    {
+      "scene_structure": "S2",
+      "robot_pair": "C3",
+      "task_ids": [
+        "H1E-10"
+      ],
+      "feasibility": "unknown",
+      "seed": null,
+      "evidence": []
+    },
+    {
+      "scene_structure": "S3",
+      "robot_pair": "C1",
+      "task_ids": [
+        "H1E-11",
+        "H1E-12",
+        "H1E-13",
+        "H1E-14"
+      ],
+      "feasibility": "unknown",
+      "seed": null,
+      "evidence": []
+    },
+    {
+      "scene_structure": "S3",
+      "robot_pair": "C2",
+      "task_ids": [
+        "H1E-11",
+        "H1E-12",
+        "H1E-13",
+        "H1E-14"
+      ],
+      "feasibility": "unknown",
+      "seed": null,
+      "evidence": []
+    },
+    {
+      "scene_structure": "S3",
+      "robot_pair": "C3",
+      "task_ids": [
+        "H1E-11",
+        "H1E-12",
+        "H1E-13",
+        "H1E-14"
+      ],
+      "feasibility": "unknown",
+      "seed": null,
+      "evidence": []
+    }
+  ],
+  "record_axes": [
+    "task_id",
+    "scene_structure",
+    "tool_layer_or_null",
+    "track",
+    "robot_pair",
+    "capability_profile",
+    "seed",
+    "protocol",
+    "target_profile",
+    "scene_and_asset_hashes",
+    "controller_hash"
+  ],
+  "tasks": [
+    {
+      "id": "H1E-09",
+      "name_en": "Prepared cooperative retrieval",
+      "name_zh": "预布置协作取物",
+      "scene_structure": "S1",
+      "track": "cooperative_execution",
+      "feasibility": "unknown",
+      "tool_layer": null,
+      "layer_status": "No L1/L2/L3 claim until necessity and body-specific additions are verified",
+      "protocols": [
+        "open_solving",
+        "cooperative_execution"
+      ],
+      "scene_and_tools": {
+        "en": "Positioned support box, X5 carrying surfaces, elevated container, D and Q; S1",
+        "zh": "已定位支撑箱、带可见承托面的 X5、高处容器、D、Q；S1"
+      },
+      "candidate_route_and_observations": {
+        "en": "Inspect interfaces → lift → independent box support → retrieve → stow/align → regrasp → lower → withdraw → deliver. Observe contacts, poses and configured load feedback.",
+        "zh": "检查接口 → 抬升 → 箱面独立承重 → X5 取物 → 收臂对准 → 重新承托 → 下放 → 撤手 → 交付。观察接触、姿态及已配置载荷反馈。"
+      },
+      "paired_change_and_negatives": {
+        "en": "Execution baseline; open solving may use direct reach. Negatives: continuous suspended picking claimed as box support, correct height without ground loading, or partner left elevated.",
+        "zh": "执行版基线；开放版容许直接抓取。反例：一直悬托取物却声称验证箱面支撑；只落到目标高度但地面未承重；拿到目标后未放下伙伴。"
+      },
+      "candidate_route_ids": [
+        "lift_box_regrasp_lower"
+      ],
+      "reference_witnesses": []
+    },
+    {
+      "id": "H1E-10",
+      "name_en": "Select and place a support",
+      "name_zh": "选择并布置支撑箱",
+      "scene_structure": "S2",
+      "track": "candidate_selection",
+      "feasibility": "unknown",
+      "tool_layer": null,
+      "layer_status": "No L1/L2/L3 claim until necessity and body-specific additions are verified",
+      "protocols": [
+        "open_solving"
+      ],
+      "scene_and_tools": {
+        "en": "Tall narrow, low broad and adequately high/load-rated candidate boxes, initially unpositioned; S2",
+        "zh": "高而窄、低而宽、足够高且承载合适的候选箱；位置未就绪；S2"
+      },
+      "candidate_route_and_observations": {
+        "en": "Inspect dimensions, handles and visible ratings; compare target depth and return clearance; select, move and place support, then execute 09. Audit stacking alternatives.",
+        "zh": "读尺寸、抓持部位与可读铭牌 → 比较目标深度与回程重抓净空 → 选箱并搬放 → 检查独立支撑 → 完成 09 的接触链。宽箱可否叠用须纳入检查。"
+      },
+      "paired_change_and_negatives": {
+        "en": "Change only carrier reach/carrying height in the same world. Negatives: tallest box tips, support blocks return regrasp, or prepositioned support counted as autonomous placement.",
+        "zh": "保持场景，仅换承托者的臂展／承托高度，观察箱子与站位选择变化。反例：选最高箱却倾覆；箱子挡住重抓入口；把预置箱使用记为自主布置。"
+      },
+      "candidate_route_ids": [
+        "select_place_support",
+        "lift_box_regrasp_lower"
+      ],
+      "reference_witnesses": []
+    },
+    {
+      "id": "H1E-11",
+      "name_en": "Lift or ramp",
+      "name_zh": "抬升还是坡道",
+      "scene_structure": "S3",
+      "track": "route_selection",
+      "feasibility": "unknown",
+      "tool_layer": null,
+      "layer_status": "No L1/L2/L3 claim until necessity and body-specific additions are verified",
+      "protocols": [
+        "open_solving"
+      ],
+      "scene_and_tools": {
+        "en": "Stable platform, boards of different lengths/widths, carrying interface; direct reach may also exist; S3",
+        "zh": "稳定平台、不同长宽的板件、X5 承托面；可配置直接够取；S3"
+      },
+      "candidate_route_and_observations": {
+        "en": "Lift-and-support route, or place board → verify overlap → X5 ascends → retrieves → descends loaded → delivers, or either robot retrieves directly. Observe reach, ratings, board geometry, wheel spacing and safe probes.",
+        "zh": "候选 A：抬升后箱面操作；B：布板 → 验证搭接 → X5 上台 → 取物 → 带载下坡 → 交付；C：任一机器人直接取物。从臂展、公开载荷、板端几何、轮距及安全试探判断。"
+      },
+      "paired_change_and_negatives": {
+        "en": "Reduce carrier lift capability while preserving a complete ramp alternative. Negatives: immediate abstention after rejecting lifting, unloaded-only ramp proof, or unverified board joining.",
+        "zh": "只减小承托者抬升能力，保留同一场景中的坡道完整解。反例：不能抬就立即退出；只验证空载上坡；两块短板未经搭接检查就当成长坡道。"
+      },
+      "candidate_route_ids": [
+        "direct",
+        "lift_box_regrasp_lower",
+        "ramp"
+      ],
+      "reference_witnesses": []
+    },
+    {
+      "id": "H1E-12",
+      "name_en": "Choose a long retrieval tool",
+      "name_zh": "多种长柄工具取深处目标",
+      "scene_structure": "S3",
+      "track": "candidate_selection",
+      "feasibility": "unknown",
+      "tool_layer": null,
+      "layer_status": "No L1/L2/L3 claim until necessity and body-specific additions are verified",
+      "protocols": [
+        "open_solving"
+      ],
+      "scene_and_tools": {
+        "en": "Short hook, long hook, long-handled gripper, shallow tray, supports; deep target with observable interfaces; S3",
+        "zh": "短钩、长钩、长柄夹取器、浅托盘、支撑件；目标较深，抓取部位可观察；S3"
+      },
+      "candidate_route_and_observations": {
+        "en": "Hook a compatible ring/edge and draw target into grasp range, use an operable gripper, or change workstation and grasp directly; return and deliver. Check handle closure, wrist moment, swept clearance and retention.",
+        "zh": "候选 A：匹配可见环／边缘的钩子将物体受控拉到可抓位置，再抓取返回；B：用可操作的夹取器夹出；C：改变工作位后直接抓取。检测手柄闭合、腕矩、工具扫掠与目标保持。"
+      },
+      "paired_change_and_negatives": {
+        "en": "Change hand closure or tool operation capability only. Negatives: assume a ringless target is hookable or tool names imply compatibility. Accept legal combined extensions if discovered.",
+        "zh": "同世界只换手的闭合范围或工具操作能力，使钩／夹取器选择改变。无环目标不能假设可钩，不能凭工具名称认定兼容；短钩可组合延伸时必须承认合法新路线。"
+      },
+      "candidate_route_ids": [
+        "hook_then_grasp",
+        "long_gripper",
+        "reposition_direct"
+      ],
+      "reference_witnesses": []
+    },
+    {
+      "id": "H1E-13",
+      "name_en": "Ramp, platform and tool composition",
+      "name_zh": "坡道＋平台＋工具组合",
+      "scene_structure": "S3",
+      "track": "tool_composition",
+      "feasibility": "unknown",
+      "tool_layer": null,
+      "layer_status": "No L1/L2/L3 claim until necessity and body-specific additions are verified",
+      "protocols": [
+        "open_solving"
+      ],
+      "scene_and_tools": {
+        "en": "Boards, platform, long gripper/hook and transfer tray; ground-level tool reach and bare-hand platform reach each insufficient; S3",
+        "zh": "板件、工作平台、长柄夹取器／钩、中转托盘均可见；地面单用长工具仍不足，登台空手也不足；S3"
+      },
+      "candidate_route_and_observations": {
+        "en": "Build access → bring usable tool → ascend/stabilize → retrieve with tool → independently transfer target → stow tool/reposition → recover target → return/deliver. A single arm needs real placement support.",
+        "zh": "布置坡道和平台 → 将合适工具带到工作位 → 上台并稳住 → 用工具取物 → 放入独立中转托盘 → 收工具／调整姿态 → 取回目标并返回 D。单臂必须有真实放置面。"
+      },
+      "paired_change_and_negatives": {
+        "en": "Construct necessity controls removing platform or compatible long tool, auditing other combinations. Negatives: tool occupies the only hand needed for ramp work, unreachable transfer placement, hidden target/tool fixation.",
+        "zh": "构造“去掉平台或合适长工具任一即失败”的必要性对照，仍检查其他组合。反例：拿了工具后再无手操作坡道；目标中转到之后够不到的位置；隐藏固定工具或目标。"
+      },
+      "candidate_route_ids": [
+        "ramp_platform_tool_transfer"
+      ],
+      "reference_witnesses": []
+    },
+    {
+      "id": "H1E-14",
+      "name_en": "Change plans after a body change",
+      "name_zh": "同场景换身体后改计划",
+      "scene_structure": "S3",
+      "track": "capability_adaptation",
+      "feasibility": "unknown",
+      "tool_layer": null,
+      "layer_status": "No L1/L2/L3 claim until necessity and body-specific additions are verified",
+      "protocols": [
+        "open_solving"
+      ],
+      "scene_and_tools": {
+        "en": "Same cabinet, target, supports, boards, long tools and poses as 11/12; S3",
+        "zh": "与 11／12 同一柜子、目标、箱、板、长工具和位姿；S3"
+      },
+      "candidate_route_and_observations": {
+        "en": "Long reach may enable direct retrieval; another profile may lift; insufficient payload may require a ramp or long tool. Screen from observable geometry and safe probes; replan from the actual state after contrary evidence.",
+        "zh": "长臂配置可直接抓；另一配置可抬升；负载不足配置可能走坡道或用长工具。先用可见几何和安全能力探针筛查，再执行对应完整路线。预期方案的否定证据出现后，从实际状态重新规划。"
+      },
+      "paired_change_and_negatives": {
+        "en": "Change one capability at a time and bind all remaining world/body parameters. A witnessed alternative is required for an expected route switch; all-route exclusion is required for expected abstention. Negatives: replay old actions after body change or treat final success alone as self-modeling evidence.",
+        "zh": "每次只改变一个关键能力，记录其他身体参数和场景哈希。至少保留一条已验证替代路线才测“应换方案”；全部路线有排除证据才测“应放弃”。反例：换身体后机械重复旧动作；把最终成功本身当作 self-modeling 证据。"
+      },
+      "candidate_route_ids": [
+        "direct",
+        "lift_box_regrasp_lower",
+        "ramp",
+        "hook_then_grasp",
+        "long_gripper"
+      ],
+      "reference_witnesses": []
+    }
+  ],
+  "infeasibility_controls": [
+    {
+      "id": "H1E-I05",
+      "parents": [
+        "H1E-11",
+        "H1E-13",
+        "H1E-14"
+      ],
+      "track": "feasibility_decision",
+      "protocol": "open_solving",
+      "feasibility": "unknown",
+      "certificate_status": "not_constructed",
+      "obstruction_and_observations": {
+        "en": "Conservative bounds exclude both robots' direct reach, legal supports/stacks, partner lifting, all board combinations and long tools. Geometry is visible; audit pulling/catching, detours and fixed-cabinet alternatives.",
+        "zh": "双方直接可达、合法支撑／叠放、伙伴抬升、所有板件搭接和长柄延伸的保守界均达不到必需接触区；尺寸可见，固定柜体不能成为额外活动工具。还须排除拉出后接取、绕行等路线。"
+      },
+      "paired_feasible_change": {
+        "en": "Replace one board or tool and witness a complete route. Sufficient observable evidence permits no manipulation before exiting.",
+        "zh": "只替换一块板或一个工具，使完整路线成立；几何与能力证据足够时可完全不搬运就去 Q。"
+      },
+      "expected_action_if_certified": "all_robots_physically_exit_to_Q",
+      "prior_manipulation_required": false,
+      "certificates": []
+    },
+    {
+      "id": "H1E-I06",
+      "parents": [
+        "H1E-10",
+        "H1E-11",
+        "H1E-13"
+      ],
+      "track": "feasibility_decision",
+      "protocol": "open_solving",
+      "feasibility": "unknown",
+      "certificate_status": "not_constructed",
+      "obstruction_and_observations": {
+        "en": "Carrier cannot safely lift the partner; platforms/ramps cannot support the required combined loads; direct and tool routes also lack a valid load/return path. Ratings or safe physical responses must make the distinction observable.",
+        "zh": "承托者不能安全抬升伙伴，平台／坡道对伙伴与目标的组合负载不够，直接取物和工具辅助也无有效载荷路径。公开铭牌或安全可观测响应足以判别。"
+      },
+      "paired_feasible_change": {
+        "en": "Replace one load-bearing item or one public capability limit; validate access, retrieval, transfers and return. Rejecting partner lifting alone is insufficient.",
+        "zh": "只更换一个承载件或提升一个公开能力参数，验证去程、取物、中转、返程全链；仅证实不能抱 X5 不构成无解。"
+      },
+      "expected_action_if_certified": "all_robots_physically_exit_to_Q",
+      "prior_manipulation_required": false,
+      "certificates": []
+    },
+    {
+      "id": "H1E-I07",
+      "parents": [
+        "H1E-12",
+        "H1E-14"
+      ],
+      "track": "feasibility_decision",
+      "protocol": "open_solving",
+      "feasibility": "unknown",
+      "certificate_status": "not_constructed",
+      "obstruction_and_observations": {
+        "en": "Neither hand can control the target, hooks cannot engage and grippers cannot be operated; exclude pushing, cradling, tilting, environment-assisted regrasp and legal combinations. Interfaces are visible or safely probeable.",
+        "zh": "双方手都不能控制目标，钩与目标无有效接合，夹取器无法由当前手操作；推／托／倾斜／环境重抓／合法工具组合均排除。接口几何可见，必要时安全小力探测。"
+      },
+      "paired_feasible_change": {
+        "en": "Replace one end effector or compatible tool and witness completion. Color alone cannot change feasibility.",
+        "zh": "只换一个末端执行器或兼容工具，取得完整成功见证；只改颜色不能改变标签。"
+      },
+      "expected_action_if_certified": "all_robots_physically_exit_to_Q",
+      "prior_manipulation_required": false,
+      "certificates": []
+    }
+  ],
+  "route_evidence": {
+    "candidate_selection": "multiple candidates without a multi-solution claim",
+    "multiple_feasible_routes": "at least two scoped complete witnesses for the same configuration",
+    "tool_composition": "multiple tools used in sequence",
+    "reference_witnesses": []
+  },
+  "joint_exit_contract": {
+    "region": "Q",
+    "assigned_bays": [
+      "Q-A",
+      "Q-B"
+    ],
+    "all_robots_required": true,
+    "simultaneous_dwell_s": 3.0,
+    "max_linear_speed_m_s": 0.03,
+    "max_angular_speed_rad_s": 0.05,
+    "threshold_status": "draft_requires_per_body_calibration",
+    "bay_geometry": null,
+    "initial_joint_access_and_parking_required": true,
+    "Q_independent_of_feasibility": true,
+    "predicates": [
+      "each complete horizontal body envelope inside its assigned bay",
+      "legal independent ground support for all robots",
+      "stable posture",
+      "no held or suspended object",
+      "no mutual carrying support",
+      "no hard violation",
+      "complete trusted log"
+    ],
+    "prior_manipulation_required": false,
+    "verbal_declaration_required": false,
+    "max_terminal_commits": 1,
+    "transitions": [
+      [
+        "active",
+        "retreating"
+      ],
+      [
+        "retreating",
+        "abstained"
+      ]
+    ],
+    "unsafe_retreat": "independently support partner and payload before release; unsafe/incomplete retreat is not abstained; no teleport or reset",
+    "negatives": [
+      "one robot only",
+      "partner carried into Q",
+      "fallen into Q",
+      "one-frame pass",
+      "holding object",
+      "outside assigned bay",
+      "missing logs"
+    ]
+  },
+  "delivery_contract": {
+    "dwell_s": 3.0,
+    "status": "draft",
+    "target_wholly_inside_D": true,
+    "target_independently_supported_and_released": true,
+    "all_robots_independently_stable_on_ground": true,
+    "mutual_carrying_support": false,
+    "historical_M3_dwell_unchanged": true
+  },
+  "evaluation": {
+    "inherits": "task-design.json#/evaluation",
+    "unknown_abstention_correctness": null,
+    "timeout_is_abstention": false,
+    "agent_created_infeasibility_earns_credit": false,
+    "execution_infeasibility_proves_open_infeasibility": false,
+    "correct_abstention_task_success": 0,
+    "false_abstention_on_feasible": true,
+    "switch_metric_denominator": "old route excluded under declared capability, with a witnessed alternative in the same world",
+    "new_metrics": [
+      "route switch rate in eligible matched pairs",
+      "timestamped route evidence",
+      "first route choice",
+      "probe count",
+      "revision count and duration"
+    ],
+    "success_alone_proves_self_modeling": false
+  },
+  "refinement": {
+    "required_levels": [
+      "high_level_goal",
+      "low_level_contact_actions",
+      "actual_trajectory_segments"
+    ],
+    "transition_fields": [
+      "actual pose",
+      "velocity",
+      "contacts",
+      "support",
+      "load",
+      "grasp",
+      "remaining budget",
+      "uncertainty"
+    ],
+    "continuous_witness_required_per_claimed_route": true,
+    "checkpoint_stitching_allowed": false
+  },
+  "reference_sources": [
+    {
+      "path": "../../m3-current-evidence.json",
+      "sha256": "5c3788fab22e9c4a7639e274548dad469fc5dc7233f82c4dfa90e900df95c587",
+      "role": "historical contact-chain reference only",
+      "scope": "fixed hooks-v0.1, 65 mm ball, box-supported retrieval; same-parameter normal-start repeats",
+      "validates_new_extension": false,
+      "excluded_claims": [
+        "autonomous support selection and placement",
+        "new embodiments",
+        "ramp route",
+        "long tools",
+        "physical Q exit"
+      ]
+    }
+  ],
+  "implementation_order": [
+    "freeze C1 and target assets",
+    "H1E-09",
+    "H1E-10",
+    "H1E-11",
+    "H1E-12",
+    "H1E-13",
+    "H1E-14",
+    "H1E-I05",
+    "H1E-I06",
+    "H1E-I07"
+  ],
+  "execution_parameters": {
+    "simulation_parameters": null,
+    "numeric_ranges": null,
+    "per_cell_budgets": null,
+    "representative_seeds": null,
+    "reviewer": null,
+    "independent_reproducer": null,
+    "start_solver_with_unset_budgets": false,
+    "representative_runs_min": 3,
+    "scoring_passes_per_episode": 3,
+    "retain_failed_and_unknown_draws": true
+  },
+  "historical_parent_task": "H1",
+  "superseded_by": "../task-families.json",
+  "current_m3_design": "../m3-extension/task-design.json",
+  "active_task_count": 0,
+  "legacy_disposition": {
+    "H1E-09": "M3E-01",
+    "H1E-10": "M3E-02; self-climbing variants belong to H1",
+    "H1E-11": "M3E-03",
+    "H1E-12": "merge generic tool selection into relevant H1/M1 scenes",
+    "H1E-13": "H1 self-climbing composition; humanoid partner-support variant withdrawn",
+    "H1E-14": "cross-case embodiment/capability evaluation axis",
+    "H1E-I05": "historical specification; no active H1 count",
+    "H1E-I06": "historical specification; current conditional control is M3E-I01",
+    "H1E-I07": "historical specification; no active H1 count"
+  }
+}

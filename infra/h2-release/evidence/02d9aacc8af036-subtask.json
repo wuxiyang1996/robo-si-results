@@ -1,0 +1,89 @@
+{
+ "schema": "transport-standalone-physical-probe/1",
+ "task_id": "H2",
+ "target_stage": "through_passage_1",
+ "checkpoint": {
+  "source": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_cart_assisted_transport\\sandbox\\runs\\reference\\resume-curb-guard-H2-layer1-seed47-20261024-1",
+  "manifest_sha256": "f0ea65d46495d60dcce211312aa8c05c5a68f528bc4b2674fc87fb8aa23bc850",
+  "time_s": 19.2,
+  "target_stage": "through_passage_1",
+  "task_id": "H2"
+ },
+ "source_command_tape": {
+  "schema": "trusted-command-tape/1",
+  "control_hz": 50,
+  "commands": 4201,
+  "sha256": "3927c9190ee4465874bb466ef4ef1e2eb3d04ca7bcd963d1fe9c5e7ddcce1239"
+ },
+ "backend": "cpu",
+ "passed": true,
+ "main_task_admission_evidence": false,
+ "controller": "feedback",
+ "controller_provenance": {
+  "controller": "existing GraspPushExpert with measured-state feedback",
+  "trace_sha256": "201e3447407e8d7acd3a6aa38a6a03391846ef3dc58d8c4fa85a933cc0ddba7b",
+  "last_command_index": 959,
+  "phase": "push",
+  "leg": 0,
+  "grasp_phase": "hold",
+  "controller_source_sha256": "ac42a07f5174ee47a1fbe582ddd979f4a0d676d910672f1e6e02ff455b4e85e0",
+  "clock": "task core elapsed, matching the original expert entry point",
+  "adapter_source_sha256": "7c4a39cb8718b952f2053a7c913ebd379ebb6b33b136f9555d111ea95e730cf4",
+  "physics_writes": false
+ },
+ "human_review": null,
+ "error": null,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "success": false,
+  "score": 0.0,
+  "scope": "standalone_training_subtask",
+  "checkpoint": {
+   "source": "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_cart_assisted_transport\\sandbox\\runs\\reference\\resume-curb-guard-H2-layer1-seed47-20261024-1",
+   "manifest_sha256": "f0ea65d46495d60dcce211312aa8c05c5a68f528bc4b2674fc87fb8aa23bc850",
+   "time_s": 19.2,
+   "target_stage": "through_passage_1",
+   "task_id": "H2"
+  },
+  "standalone_passed": true,
+  "target_stage": "through_passage_1",
+  "target_time_after_checkpoint_s": 7.039999999999999,
+  "stage_timeline": {
+   "crate_pushed": 8.34,
+   "cargo_loaded": 19.1,
+   "through_passage_1": 26.24,
+   "through_passage_2": null,
+   "delivered": null
+  },
+  "alarms": [],
+  "monitor_metrics": {
+   "monitor_version": "h2-monitors/2",
+   "not_applicable": {},
+   "max_reported_speed": 0.481,
+   "max_object_speed": 0.466,
+   "max_step_speed": 0.646,
+   "max_floor_penetration": 0.0,
+   "max_box_penetration": 0.0008,
+   "max_out_of_bounds_m": -1.6368,
+   "max_energy_excess_J": 0.007,
+   "max_reversal_rate_hand_hz": 1.0,
+   "max_arm_shake": 0.904,
+   "max_saturation_s": 0.12,
+   "max_limit_push_s": 0.04,
+   "max_progress_spike": 0.0
+  },
+  "prefix_samples": 961,
+  "continuation_samples": 376,
+  "main_task_admission_evidence": false
+ },
+ "stopping_rule": "current scoring predicates for the requested standalone stage",
+ "stopped_at_stage": {
+  "stage": "through_passage_1",
+  "stage_time_s": 26.24,
+  "stop_time_after_checkpoint_s": 7.5
+ },
+ "runner_source_sha256": "13eaf43ecf453322f12f207ee865974ba3ad39d19811a1c479b2a3ee7559b5eb"
+}

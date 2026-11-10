@@ -1,0 +1,113 @@
+{
+  "schema": "m4-full-corridor-witness/1",
+  "attempt": "v3j-rope-heading-a47",
+  "sim_time_s": 153.19999999993317,
+  "verification": {
+    "continuous_discovery_success": false,
+    "discovery": null,
+    "schema": "m4-physical-cycle-verification/2",
+    "passed": true,
+    "cycle_success": true,
+    "errors": [],
+    "family_checks_passed": true,
+    "physical_checks_passed": true,
+    "release_dwell_s": 1.999999999998181,
+    "retention_dwell_s": {
+      "go2_a": 0.5349999999998936,
+      "go2_b": 0.5049999999998995
+    },
+    "dense_geometric_proof": true,
+    "local_driver_replayed": true,
+    "goal_dwell_s": 2.0049999999981765,
+    "full_transport_success": true,
+    "steps": 30640,
+    "formal_admission": false,
+    "scope": "Dense actuators, clock, release command interlock and recorded separation rejudged. Physical-check status includes coupler limits. Runtime contact checks are not independent hardware calibration; full-transport credit requires explicit mode/goal evidence. Continuous choice/use component credit is separately reported by continuous_discovery_success; no formal admission credit."
+  },
+  "physics_peaks": {
+    "penetration_dynamic": 0.0035590775155480772,
+    "penetration_rope": 0.006257364145833584,
+    "impulse": 0.0,
+    "tension": 104.6009425282974,
+    "weld_drift": 0.00027012702976442654,
+    "stance_slide": 0.04666124084097364,
+    "tilt": 10.813205364274125,
+    "torque_ratio": 0.7481685900178928,
+    "robot_cargo_force": 0.0,
+    "rope_robot_force": 540.3214583737235,
+    "slip_speed": 0.05394574569115238
+  },
+  "coupler_peaks": {
+    "go2_a": {
+      "force": 0.9430036442900994,
+      "speed": 0.012980978811493073,
+      "contact": 112.93334903915198,
+      "power": 0.006379863875195067,
+      "work": 0.022445407462131226
+    },
+    "go2_b": {
+      "force": 1.124780274752858,
+      "speed": 0.012803786817526957,
+      "contact": 91.95293317982096,
+      "power": 0.01355076011029952,
+      "work": 0.02263286795243681
+    }
+  },
+  "stage_intervals": [
+    {
+      "stage": "settle",
+      "start_s": 0.02,
+      "end_s": 2.9999999999999583
+    },
+    {
+      "stage": "approach_free_eye",
+      "start_s": 3.019999999999958,
+      "end_s": 15.000000000000945
+    },
+    {
+      "stage": "align_and_close_pin",
+      "start_s": 15.020000000000948,
+      "end_s": 19.5200000000004
+    },
+    {
+      "stage": "extract_and_prove_load",
+      "start_s": 19.540000000000397,
+      "end_s": 23.059999999999697
+    },
+    {
+      "stage": "corridor_tow",
+      "start_s": 23.079999999999693,
+      "end_s": 140.27999999994492
+    },
+    {
+      "stage": "unload",
+      "start_s": 140.2999999999449,
+      "end_s": 142.51999999994288
+    },
+    {
+      "stage": "open_pin",
+      "start_s": 142.53999999994286,
+      "end_s": 146.87999999993892
+    },
+    {
+      "stage": "separate",
+      "start_s": 146.8999999999389,
+      "end_s": 151.179999999935
+    },
+    {
+      "stage": "released_hold",
+      "start_s": 151.199999999935,
+      "end_s": 153.19999999993317
+    }
+  ],
+  "evidence_sha256": {
+    "result.json": "c17e465d4aac28778e780185e710c69b4f250ff8f35c175bd2c783377721b216",
+    "verification.json": "2a3a870d49de0c7d2cd49fdce18e46e2f91aa51c02623627c07c48b66e50727f",
+    "monitor.json": "16897a291c42cd8aacf6c55c3d0a3e66c17ceefc0190ce90b0640ac771e9fec7",
+    "trajectory.json": "d7a48880589d24376c1509c8ef9849aa32d764b2d132ee31aa131ef4c0b74598",
+    "motion.mp4": "d070f05791c59b40584503b7079e5ea12e38550ea6bbee547d2173994ca6beae",
+    "coupler.mp4": "d9709a2cb77c4d6e9b3a073bbc75868f811c3f16dc8bf38c75247d597453d268"
+  },
+  "scope": "First full two-Go2 autonomous coupling, corridor towing, unload, uncoupling, separation and released goal-dwell witness. Does not include continuous tool choice in this same episode, whole-agent isolation, cross-embodiment acceptance or human signoff.",
+  "formal_admission": false
+}

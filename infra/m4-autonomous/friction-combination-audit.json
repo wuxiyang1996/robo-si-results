@@ -1,0 +1,51 @@
+{
+  "schema": "m4-friction-combination-audit/1",
+  "source": "/fs/gamma-projects/vlm-robot/conda/envs/genesis/lib/python3.12/site-packages/genesis/engine/solvers/rigid/collider/contact.py",
+  "source_sha256": "73255ea726b0e95c5c64679ba823a15fb7862b60b64e11a06e4061edc0308302",
+  "rule": "contact friction = max(friction_a * ratio_a, friction_b * ratio_b, 0.01)",
+  "source_line": 455,
+  "rows": [
+    {
+      "attempt": "v3i-damped-a38",
+      "ground_friction": 0.3,
+      "foot_geom_frictions": [
+        1.0
+      ],
+      "effective_foot_ground_frictions": [
+        1.0
+      ]
+    },
+    {
+      "attempt": "v3i-load-feedback-a39",
+      "ground_friction": 0.3,
+      "foot_geom_frictions": [
+        1.0
+      ],
+      "effective_foot_ground_frictions": [
+        1.0
+      ]
+    },
+    {
+      "attempt": "v3i-load-feedback-ground08-a40",
+      "ground_friction": 0.8,
+      "foot_geom_frictions": [
+        1.0
+      ],
+      "effective_foot_ground_frictions": [
+        1.0
+      ]
+    },
+    {
+      "attempt": "v3j-goal-unload-a45",
+      "ground_friction": 0.8,
+      "foot_geom_frictions": [
+        1.0
+      ],
+      "effective_foot_ground_frictions": [
+        1.0
+      ]
+    }
+  ],
+  "interpretation": "Ground 0.3 versus 0.8 changes payload/platform resistance but does not lower these Go2 foot-ground coefficients, which remain 1.0. These trials do not establish a foot-traction capacity boundary.",
+  "formal_admission": false
+}

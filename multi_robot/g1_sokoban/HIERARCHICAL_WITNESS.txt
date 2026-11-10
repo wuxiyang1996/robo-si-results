@@ -1,0 +1,97 @@
+Case-specific hierarchical witness: two-G1 hidden-map box clearing
+2026-10-26
+
+Acceptance
+The requirement is that an expert plan can be realized in a concrete declared
+configuration. We check conversions between representations, not arbitrary
+pairwise skill composition or solvability from every random state:
+  High level -> low level: each executed operation has an action/constraint expansion.
+  Low level -> trajectory: each expansion maps to generated motor targets and
+    measured physical states in the original continuous execution.
+  High level -> trajectory: measured postconditions realize the intended subgoal.
+  End to end: the same complete execution reaches both robots' own goals and
+    passes the declared sampled physical checks.
+Universal rolling planning, new-layout robustness and arbitrary skill entry
+states are separate work. They are not prerequisites for this case-level witness.
+Random draws retain full-success / screened-feasible / unknown / rejected labels;
+this annotation does not promote any other instance to full-success evidence.
+
+Selected expert and provenance
+Reuse native Gamma job 8011370, the observation-matched expert on the four-crate
+development layout. The agents used own RGB, proprioception and explicit peer
+messages; evaluator global poses were not policy inputs. The high-level plan
+comes from recorded action_start/action_completed events. Its low-level actions
+come from the frozen HiddenAgent state machine and learned leg controller.
+The trajectory is the original joint-target and measured-state trace, with
+complete public-input replay as separate generation-provenance evidence.
+The hierarchy annotation is retrospective; no new physical rollout was run.
+
+There are 24 high-level operations (19 walks and 5 pushes), 76 low-level segments,
+13,959 control steps and 27,918 per-robot joint-target vectors over 279.18 s.
+54 segments expand the operations; 22 retain initial stabilization, exploration,
+communication waits, operation handoffs and final goal standing. Both robots'
+commands cover the whole episode without gaps, duplicate intervals or inserted
+standalone probes. Their concurrent time intervals are checked separately.
+
+Concrete example: action_6, g1_a pushes crate_d
+High-level goal: move the crate from agent-local cell (1,-1) to (2,-1), then
+occupy (1,-1). The recorded low-level expansion is:
+  Physical time (s)   Phase             Action and controller constraint
+   58.92 - 61.04      align             Approach 0.95 m behind the tracked crate;
+                                       estimated error <0.13 m and <0.16 rad.
+   61.04 - 64.04      arms              Deploy arms; smoothly lower commanded
+                                       height from 0.72 to 0.65 m over 3 s.
+   64.04 - 75.42      push              Visual crate feedback; 0.18 m/s forward,
+                                       lateral correction capped at 0.08 m/s;
+                                       stop translation if tracking is stale.
+   75.42 - 76.02      retract           Retreat until odometry OR fresh RGB plus
+                                       own FK indicates release clearance.
+   76.02 - 77.04      settle_retract    Hold crouched posture for at least 1 s.
+   77.04 - 80.06      lower_arms        Retract arms and restore commanded height
+                                       smoothly over 3 s.
+   80.06 - 85.84      center            Reach post-push robot subgoal.
+These intervals map to trace command rows [2946,4292), with seven exact subranges
+in mapping.json. The measured crate displacement is approximately (1.0248,-0.0126)
+m in world XY; its final cell-center L-infinity error is 0.1248 m. The robot's
+corresponding error is 0.1084 m. Both occupy their intended nominal cells.
+Cell occupancy is a representation check, not an added benchmark scoring rule.
+Controller guards are source-defined estimates; measured physical outcomes and
+the existing independent review provide the separate physical evidence.
+
+Time semantics and integrity
+Command i drives [i*0.02,(i+1)*0.02]; trace row i is the resulting physical state.
+An action includes its completion tick. A phase change inside a control branch
+affects the next tick, while action_start precedes the current tick's branch.
+The adapter accounts for that distinction instead of blindly copying debug
+labels. Preparing, releasing and standing are part of the recorded execution.
+The checker verifies original artifact hashes, all 46 frozen source hashes,
+the supported controller version, continuous per-robot coverage, complete phase
+expansions and each operation's measured postcondition. A different controller
+requires a reviewed phase adapter; a mismatched version fails closed.
+
+Physical scope and grader
+Reuse the original independent review: 3 s simultaneous own-goal dwell (2 s
+required), actuator limits, posture, crate support/tilt and sampled contacts.
+Maximum crate tilt is 0.638041 degrees; floor-bottom deviation is 1.537887 mm;
+inter-robot contact is zero; non-hand crate contact above 10 N totals 0.78 s.
+The phase mapping does not add every-physics-substep or complete no-grasp
+certification. Formal task_success remains null and formal admission false.
+The case witness passes within the declared sampled scope. Neither reproducing
+this expert path nor executing this exact skill sequence is a task scoring
+requirement. A different valid solution is graded by the same task conditions.
+
+Artifacts and reproduction (from repository root, Python 3.11+; no GPU needed)
+Original immutable run:
+  /fs/gamma-projects/vlm-robot/robo-si-local-tests/20261026-hidden-map/hidden-gamma-8011370/
+New hierarchy addendum:
+  /fs/gamma-projects/vlm-robot/robo-si-local-tests/20261026-hierarchical/sokoban-8011370/
+  mapping-final.json: complete high/low/trajectory mapping and original reports.
+  verification.json: addendum hashes and check results.
+  source/: exact annotation adapter, regression tests and task notes.
+  mapping.json and mapping-draft.json: earlier retained annotation drafts.
+Generate into a new output file:
+  python -m multi_robot.g1_sokoban.hierarchical --run /path/to/hidden-gamma-8011370 --out /path/to/new-mapping.json
+Regression checks:
+  python -m unittest multi_robot.g1_sokoban.test_hierarchical -v
+The original run, source snapshot and g1-sokoban-hidden-map-0.1.0-rc1 archive stay
+unchanged. This addendum is local and is not present in that earlier archive.

@@ -1,0 +1,728 @@
+{
+  "id": "g1_sokoban_prototype",
+  "title": "Multi-G1 hidden-map box-clearing puzzle",
+  "status": "scene_prototype",
+  "simulation": {
+    "dt": 0.005
+  },
+  "ground": {
+    "friction": 0.4
+  },
+  "robots": [
+    {
+      "id": "g1_a",
+      "asset": "g1",
+      "pos": [
+        -2.7,
+        0.9,
+        0.78
+      ],
+      "euler": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "g1_b",
+      "asset": "g1",
+      "pos": [
+        2.7,
+        0.9,
+        0.78
+      ],
+      "euler": [
+        0,
+        0,
+        180
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "wall_0_0",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        8.1,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        0.0,
+        2.7,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_1_0",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        -3.6,
+        1.8,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_1_4",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        0.0,
+        1.8,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_1_8",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        3.6,
+        1.8,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_2_0",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        -3.6,
+        0.9,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_2_8",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        3.6,
+        0.9,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_3_0",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        -3.6,
+        0.0,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_3_4",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        0.0,
+        0.0,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_3_8",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        3.6,
+        0.0,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_4_0",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        -3.6,
+        -0.9,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_4_4",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        0.0,
+        -0.9,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_4_8",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        3.6,
+        -0.9,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_5_0",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        -3.6,
+        -1.8,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_5_4",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        0.0,
+        -1.8,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_5_8",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        0.9,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        3.6,
+        -1.8,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "wall_6_0",
+      "shape": "box",
+      "fixed": true,
+      "size": [
+        8.1,
+        0.9,
+        1.5
+      ],
+      "pos": [
+        0.0,
+        -2.7,
+        0.75
+      ],
+      "friction": 0.5,
+      "color": [
+        0.52,
+        0.58,
+        0.62
+      ]
+    },
+    {
+      "id": "crate_a",
+      "shape": "box",
+      "fixed": false,
+      "size": [
+        0.65,
+        0.65,
+        0.55
+      ],
+      "pos": [
+        -1.8,
+        0.9,
+        0.277
+      ],
+      "mass": 4.0,
+      "friction": 0.4,
+      "color": [
+        0.65,
+        0.47,
+        0.25
+      ]
+    },
+    {
+      "id": "crate_b",
+      "shape": "box",
+      "fixed": false,
+      "size": [
+        0.65,
+        0.65,
+        0.55
+      ],
+      "pos": [
+        1.8,
+        0.9,
+        0.277
+      ],
+      "mass": 4.0,
+      "friction": 0.4,
+      "color": [
+        0.65,
+        0.47,
+        0.25
+      ]
+    },
+    {
+      "id": "crate_c",
+      "shape": "box",
+      "fixed": false,
+      "size": [
+        0.65,
+        0.65,
+        0.55
+      ],
+      "pos": [
+        0.0,
+        0.9,
+        0.277
+      ],
+      "mass": 4.0,
+      "friction": 0.4,
+      "color": [
+        0.65,
+        0.47,
+        0.25
+      ]
+    },
+    {
+      "id": "crate_d",
+      "shape": "box",
+      "fixed": false,
+      "size": [
+        0.65,
+        0.65,
+        0.55
+      ],
+      "pos": [
+        0.9,
+        0.0,
+        0.277
+      ],
+      "mass": 4.0,
+      "friction": 0.4,
+      "color": [
+        0.65,
+        0.47,
+        0.25
+      ]
+    },
+    {
+      "id": "goal_0",
+      "shape": "box",
+      "fixed": true,
+      "collision": false,
+      "size": [
+        0.85,
+        0.85,
+        0.004
+      ],
+      "pos": [
+        2.7,
+        -1.8,
+        0.002
+      ],
+      "color": [
+        0.9,
+        0.28,
+        0.12
+      ]
+    },
+    {
+      "id": "goal_1",
+      "shape": "box",
+      "fixed": true,
+      "collision": false,
+      "size": [
+        0.85,
+        0.85,
+        0.004
+      ],
+      "pos": [
+        -2.7,
+        -1.8,
+        0.002
+      ],
+      "color": [
+        0.12,
+        0.45,
+        0.95
+      ]
+    }
+  ],
+  "camera": {
+    "pos": [
+      0,
+      -10,
+      13
+    ],
+    "lookat": [
+      0,
+      0,
+      0.2
+    ],
+    "res": [
+      1280,
+      960
+    ]
+  },
+  "goals": {},
+  "robot_goals": {
+    "g1_a": {
+      "center": [
+        2.7,
+        -1.8
+      ],
+      "size": [
+        0.85,
+        0.85
+      ],
+      "hold_seconds": 2.0,
+      "linear_speed_max": 0.05,
+      "angular_speed_max": 0.1,
+      "tilt_max_degrees": 10.0,
+      "minimum_root_height_m": 0.45
+    },
+    "g1_b": {
+      "center": [
+        -2.7,
+        -1.8
+      ],
+      "size": [
+        0.85,
+        0.85
+      ],
+      "hold_seconds": 2.0,
+      "linear_speed_max": 0.05,
+      "angular_speed_max": 0.1,
+      "tilt_max_degrees": 10.0,
+      "minimum_root_height_m": 0.45
+    }
+  },
+  "goal_mode": "robot_targets",
+  "task_spec": {
+    "id": "g1_sokoban_prototype",
+    "title": "Multi-G1 hidden-map box-clearing puzzle",
+    "status": "experimental_release_candidate",
+    "focus": "Explore an unknown layout, rearrange multiple crates, coordinate shared-space access, and bring each robot to its own target.",
+    "robots": [
+      "g1_a",
+      "g1_b"
+    ],
+    "rules": {
+      "helping_allowed": true,
+      "pulling_or_grasping": false,
+      "runtime_pose_writes": false,
+      "external_object_forces": false,
+      "grid_planner": "Privileged author-side oracle and separate observed-cell belief planner; neither moves physical bodies",
+      "cooperation_claim": "Shared-space coordination task; physical necessity of two robots is not established",
+      "primary_goal": "Both robots at their own labeled targets simultaneously; crates do not have delivery targets",
+      "global_map_to_agent": false,
+      "agent_observation": [
+        "own first-person RGB",
+        "own joint state and body-frame inertial state",
+        "own target color/id",
+        "explicitly received peer messages"
+      ],
+      "shared_information": "No automatic map or peer-state sharing; each robot decides what to send"
+    },
+    "simulation": {
+      "dt": 0.005,
+      "control_decimation": 4,
+      "cell_size_m": 0.9
+    },
+    "crate": {
+      "size_m": [
+        0.65,
+        0.65,
+        0.55
+      ],
+      "mass_kg": 4.0,
+      "friction": 0.4
+    },
+    "goal": {
+      "size_m": [
+        0.85,
+        0.85
+      ],
+      "hold_seconds": 2.0,
+      "linear_speed_max": 0.05,
+      "angular_speed_max": 0.1,
+      "tilt_max_degrees": 10.0,
+      "minimum_root_height_m": 0.45
+    },
+    "evaluation": {
+      "primary": "Each robot root is inside its own goal, upright and slow; both hold simultaneously for 2 seconds",
+      "diagnostics": [
+        "robot arrivals",
+        "elapsed simulated time",
+        "pushes per robot",
+        "exploration coverage",
+        "message bytes",
+        "corridor waits",
+        "deadlocks",
+        "falls"
+      ],
+      "validity": "Arrival geometry alone does not prove legal push-only execution",
+      "pending": [
+        "complete physical no-grasp/contact certification",
+        "skill robustness across perturbations and layouts",
+        "unseen map cohort",
+        "Isaac backend"
+      ],
+      "physical_skill_evidence": {
+        "short_push_calibration": {
+          "job": 8006479,
+          "status": "passed",
+          "scope": "H1 calibration scene; 0.082962 m forward"
+        },
+        "turn_doorway_yielding": {
+          "job": 8006602,
+          "status": "passed",
+          "scope": "Four crates parked outside route; both own goals held 2 s; independent trace replay confirmed"
+        },
+        "native_box_push": {
+          "job": 8006695,
+          "status": "passed",
+          "scope": "Actual four-crate scene; 0.211291 m plus retreat and settling; hardware-capped actuators"
+        },
+        "initialization_fix": "Explicit initial root position removes authored MJCF height offset; old standing result used elevated start",
+        "native_one_cell_push": {
+          "job": 8006696,
+          "status": "passed",
+          "scope": "Actual four-crate scene; 0.911273 m plus retreat and settling; sampled independent review passed"
+        },
+        "full_reference": {
+          "job": 8006717,
+          "status": "completed_and_sampled_review_passed",
+          "scope": "24 actions / 8 pushes on the original four-crate level; both own goals held for 2 s; privileged reference only"
+        },
+        "observation_matched_reference": {
+          "job": 8011370,
+          "status": "completed_and_sampled_review_passed",
+          "scope": "One fixed four-crate development layout; 24 actions / 5 pushes; both own goals held 3 s; complete public-input CPU replay passed"
+        }
+      }
+    },
+    "version": 2,
+    "default_level": "levels/exploration.json",
+    "communication": {
+      "max_message_bytes": 256,
+      "max_pending_per_robot": 16
+    },
+    "task_note": "TASK_NOTE.txt",
+    "oracle": {
+      "symbolic": {
+        "status": "solved_development_level",
+        "information": "full map and joint discrete state",
+        "actions": 24,
+        "pushes": 8,
+        "physical_execution": false
+      },
+      "physical_reference": {
+        "status": "completed_one_development_layout",
+        "information": "privileged measured simulator state",
+        "job_id": 8006717,
+        "completed_actions": 24,
+        "pushes": 8,
+        "simulated_seconds": 491.2,
+        "sampled_independent_review": "passed",
+        "formal_task_success": null
+      },
+      "observation_matched_reference": {
+        "status": "completed_and_independently_reviewed_development_layout",
+        "information": "own RGB, proprioception, target identity and explicit bounded messages; no global map",
+        "job_id": 8011370,
+        "completed_actions": 24,
+        "pushes": 5,
+        "simulated_seconds": 279.18,
+        "both_own_goal_dwell_seconds": 3.0,
+        "independent_samples": 13959,
+        "complete_sensor_replay_steps": 13959,
+        "success_scope": "observation_matched_physical_goals_and_sampled_checks_only",
+        "formal_task_success": null,
+        "formal_admission": false
+      },
+      "acceptance": "Retain measured execution and independent validity checks; symbolic success alone is insufficient",
+      "artifact_contract": "oracle-assessment/1: high-level plan, skill constraints, key states, budgeted checks; full trajectories optional for representative cases",
+      "instance_screening_entrypoint": "python -m infra.oracle.sokoban screen",
+      "instance_statuses": [
+        "full_success_evidence",
+        "screening_passed",
+        "undetermined",
+        "check_failed"
+      ]
+    },
+    "release_candidate": {
+      "version": "g1-sokoban-hidden-map-0.1.0-rc1",
+      "kind": "experimental_source_and_evidence_packet",
+      "formal_admission": false,
+      "published": false
+    }
+  },
+  "layout": [
+    "#########",
+    "#...#...#",
+    "#1A.C.B2#",
+    "#...#D..#",
+    "#...#...#",
+    "#b..#..a#",
+    "#########"
+  ]
+}

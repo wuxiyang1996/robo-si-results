@@ -1,0 +1,176 @@
+{
+  "schema": "h3-stretch4-binding/1",
+  "source_sha256": "e3a2668fb2138d895146789feb7a5e2fcae4c5e768cb107516c2c4d03dba5b65",
+  "urdf_commit": "3ce2c9511d3857447cd7df2bb25f48cf8afa196e",
+  "mjcf_commit": "0b20cf4fb5faf514ac40581582f9b64aa8f96e50",
+  "derived_sha256": "3fd092b90a8674d717b04c2b91e62e1a01bf6db91e40c80ac6c8ffc1f810fdae",
+  "changes": [
+    "Add three telescope mimic equalities matching the official MuJoCo equality chain",
+    "Replace three rigid wheel collision meshes with radius .080 m hubs and 24 passive spherical rollers per wheel (roller radius .012 m, center radius .088 m, mass .02 kg); outer radius .100 m matches official MuJoCo contact. Preserve aggregate wheel mass, COM and rest inertia. Original visuals retained. Explicit approximate contact model, not hardware validation."
+  ],
+  "wheel_model": "rollers",
+  "actuators": {
+    "lift_joint": {
+      "kp": 8000.0,
+      "kv": 200.0,
+      "force": 200.0,
+      "velocity": 0.2,
+      "range": [
+        0.0,
+        1.2
+      ],
+      "source": "official stretch4_mujoco defaults lift_stretch4; probe speed capped at .2 m/s"
+    },
+    "arm_l1_joint": {
+      "kp": 40000.0,
+      "kv": 1920.0,
+      "force": 700.0,
+      "velocity": 0.05,
+      "range": [
+        0.0,
+        0.13
+      ],
+      "source": "single master with 3 mimic followers; virtual-work mapping from official tendon: F_master=4*175 N, kp_master=16*2500, kv_master=16*120"
+    },
+    "wrist_yaw_joint": {
+      "kp": 400.0,
+      "kv": 4.3,
+      "force": 20.0,
+      "velocity": 0.5,
+      "range": [
+        -1.135,
+        4.276
+      ],
+      "source": "URDF effort 20 Nm; MJCF gains"
+    },
+    "wrist_pitch_joint": {
+      "kp": 400.0,
+      "kv": 3.5,
+      "force": 20.0,
+      "velocity": 0.5,
+      "range": [
+        -1.135,
+        4.276
+      ],
+      "source": "URDF effort 20 Nm; MJCF gains"
+    },
+    "wrist_roll_joint": {
+      "kp": 250.0,
+      "kv": 1.2,
+      "force": 20.0,
+      "velocity": 0.5,
+      "range": [
+        -4.276,
+        1.135
+      ],
+      "source": "URDF effort 20 Nm; MJCF gains"
+    },
+    "gripper_finger_left_joint": {
+      "kp": 500.0,
+      "kv": 20.0,
+      "force": 20.0,
+      "velocity": 0.5,
+      "range": [
+        0.0,
+        0.5
+      ],
+      "source": "URDF effort 20 Nm (below MJCF 30 Nm); MJCF gains; separate drives as upstream"
+    },
+    "gripper_finger_right_joint": {
+      "kp": 500.0,
+      "kv": 20.0,
+      "force": 20.0,
+      "velocity": 0.5,
+      "range": [
+        0.0,
+        0.5
+      ],
+      "source": "URDF effort 20 Nm (below MJCF 30 Nm); MJCF gains; separate drives as upstream"
+    },
+    "wheel_0_joint": {
+      "kp": 0.0,
+      "kv": 4.0,
+      "force": 8.0,
+      "velocity": 6.0,
+      "range": null,
+      "source": "author-declared conservative probe bound, NOT a verified hardware torque; raw URDF wheel joint has no limit"
+    },
+    "wheel_1_joint": {
+      "kp": 0.0,
+      "kv": 4.0,
+      "force": 8.0,
+      "velocity": 6.0,
+      "range": null,
+      "source": "author-declared conservative probe bound, NOT a verified hardware torque; raw URDF wheel joint has no limit"
+    },
+    "wheel_2_joint": {
+      "kp": 0.0,
+      "kv": 4.0,
+      "force": 8.0,
+      "velocity": 6.0,
+      "range": null,
+      "source": "author-declared conservative probe bound, NOT a verified hardware torque; raw URDF wheel joint has no limit"
+    }
+  },
+  "root_fixed": false,
+  "gravity_compensation": false,
+  "hardware_calibrated": false,
+  "limitations": [
+    "Wheel contact model must be measured; explicit rollers are an approximation, not the official MuJoCo anisotropic contact model",
+    "Wheel torque bound is an author probe bound",
+    "Genesis neutral-pose contact filtering must be audited"
+  ],
+  "meshes": {
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/base_link.STL": "e0080409aeede04d035893fd9f2589217f2d69d5729be02ba64f57ffbb230f93",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/base_collision_link.STL": "149ec2e04c41482ca3ab05b1b308ecdbf0baa46fe38ab420e0c00a7ee55792d4",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/head_link.STL": "0e310b8780aef7202e173b3af9822357d168c12cf73f08ea328f42e9c93e4950",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/head_collision_link.STL": "31bef2ee8dada52c9c435151602c6687494b2d5be05bed8dd70e2e1c33bb19d9",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/mast_link.STL": "5dfd0088cb823a562be3d1da5940798f0a948cb7217e08904b1680ca5c3251e9",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/mast_collision_link.STL": "c81adf1023c11da3ca2101b4393a64cfdf8d69e8e1cde3801f96e3334358cc0d",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/lift_link.STL": "510c11572189a69b9793c3a763703848d63c4fdb5dd35e58e26a06a7d779d802",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/lift_collision_link.STL": "5b5dde0c7d024b7b1441fc163177eec57649de1338840b4464ed7f97121e2752",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l0_link.STL": "096812f9457cf93518fee75a250c2c910e7a7bb1ea26f5f0f5470e489a4fef04",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l0_collision_link.STL": "093ec61034e4b71fbc7129bd9147b6b0520ff0ad98b2520c9ca81388b958a867",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l1_link.STL": "2304d34ae96637eecfd1ed77d4a98aa8096a8ebabc7a0363e6f344d371d2dbd9",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l1_collision_link.STL": "af9d10d4cdfc8655a88d16519a150cf31eb3db5e1440869eae82faa38ecc5e6c",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l2_link.STL": "3efee5feab6c5ed4b78abbbf4dfce135c13043eb3c3f759dca64e417b18aaa58",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l2_collision_link.STL": "2029fa8d8ea7e17f143ef6596ba1a1dcc7ff139da66a0c8ee3807b8c8a526cbb",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l3_link.STL": "485aa299d5f47dae3b9c767b29b0d2a861996d907e00bc2644cb15652a579112",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l3_collision_link.STL": "ff0009bc4c1fcf0c45f6c6c18cc6b95773c7e7d6c84bdfc65b72988838d2afce",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l4_link.STL": "bcbe240a6dbf8f4c4419057516b1eeabf1b11133f20e1dd266c492912002c01a",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/arm_l4_collision_link.STL": "34f49f246d6c651cca5be75dcb5059e8c2578642bb1d5da6712fed120d1c4aa5",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_link.STL": "500f954aa54e44ade4df01bd4d2c8949747afa6b4cc4a8b1092ebf09da068fd7",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_collision_link.STL": "a93b81d10b0f087d1147b0786dec08f9d72bf40ab62003fd142136864cac2552",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_yaw_link.STL": "c3b038780bfa486c444fb4c6f2dc8437c55fbb4fc5439a47de5ec22dc6ddb763",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_yaw_collision_link.STL": "e601c354c2fd61d42ddeb224a2200fd37ffff65498f2072cd068b358c06bec1f",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_pitch_link.STL": "5ee9b3b2ac941c49aba3515064722980f1895b460a0880016961269bb1abb8f6",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_pitch_collision_link.STL": "dd9084b858ceae87ff5328c9de37a32b433280b2d680ba6ea41773a5bde297fe",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_roll_link.STL": "64c916147ae8bd85cc18a985fe8f5adfd6e3d7e7e80f172f07deae268d04eb2e",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_roll_collision_link.STL": "aaf9b9c6a90249f9c1595d221e2e5de31a7f3154d50c43d07665619cd050821f",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/gripper_camera_link.STL": "6729fe5d676b258d73369b9eea74b1a4106efbb80f3c8952280a9789024671fb",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/gripper_camera_collision_link.STL": "c7dd7e4768e74099341db6de424661abd742ab2012ec3a0f12c21897f1f7aa27",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/tool_attachment_site_link.STL": "b18051736f25b6fc7812bd38f6251ebcdea03c5fe12f384d9d1163004aedd662",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/tool_attachment_site_collision_link.STL": "024b7aeae4c23931961df485afe962c6daceeb8bd39a8193eaa78eda57841f78",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_aruco_link.STL": "53ecb42c34d374385ca35f3464bca71b96189884997ab3ea93168bbedf41b017",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_aruco_collision_link.STL": "7a28e9d338dfc8b3353d57732b6c3228678a35fc311755149a65e0c51d34c5a3",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_reflector_link.STL": "1568ec99f3d86f1221a9c9009bae104e369204b38441e2a2fa833521e1197475",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wrist_reflector_collision_link.STL": "81498d2a2483b64e16525d6df36c6e4f0c5bf15d8187c02ed3923af8c36c4730",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wheel_2_link.STL": "b69c3a07e238dfbb5b62bff60dcf53156aa9652749e9163d4c47260af773b0ab",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wheel_1_link.STL": "9cbc58394508deb3478bdf48918050ca662f50d00de29fdc2a80a35b151a916d",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_francis/meshes/wheel_0_link.STL": "5288bd8ea058b485724fa08754057ff56cbb1832282524d65e8d790c49b81780",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/quick_connect_interface_link.STL": "9287613c32d9c0d25edb44bdd6a3fa0c0053496e2a9bb3d403d93dbf6b4892d9",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/quick_connect_interface_collision_link.STL": "1dcb8aa10c8656992928b6b2194225688e7d6eef5eabaf8e8cb9c0b98c585276",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/gripper_finger_right_link.STL": "89ea2ad6d68c7b96d4974ab59c25ed5149d9a6217ae41be07580f33371bbea19",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/gripper_finger_right_collision_link.STL": "6d7493046503ed7ae0fce1be4cf59cca76d2a3962d8673841c88bdd9f3621dfb",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/gripper_fingertip_right_link.STL": "1b97275acc627cef84df9d00d4ed4ccffae99fa92f534cb8b7f84230a79d704d",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/gripper_fingertip_right_collision_link.STL": "e4605ad86e42fcf3c73d0931fd657a6ca276804fa1f1d2ea2b443e7e0c121b11",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/aruco_fingertip_right_link.STL": "686b1daa262331d91f4fcfa333628777dcf6ca5eecbfd5a170b1a0aa0d534eb3",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/aruco_fingertip_right_collision_link.STL": "7043e8d96deae85bec86c13acda42b6161f9dfe41a1807163ac6146c0f15c71a",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/gripper_finger_left_link.STL": "60f7d74a122b727f55016a62cb90d0ef0593d4210c4c66de633383d4e6dfe4e3",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/gripper_finger_left_collision_link.STL": "bd811547a7a62dee4415e71e7c773ddcf294e241cabab9fd44158397bbbf7564",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/gripper_fingertip_left_link.STL": "a209f63b4295588bd4b9c94da09a145506f78846d21cd90be14e23c8503701ed",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/gripper_fingertip_left_collision_link.STL": "5e50f640e204f0fecf2917266d9ea25a3ce5ca6fc92611f3fd07b68adee1d9ec",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/aruco_fingertip_left_link.STL": "c6e7067e977c28bd8f50852a80e1ead51692cfe0efd987bf1751123cafee1ab6",
+    "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch4_urdf/stretch4_urdf/SE4_tools/eoa_wrist_dw4_tool_sg4/meshes/aruco_fingertip_left_collision_link.STL": "aa25cfe4d88957c9bc1e572691ba7b246e81fa0c68c9ec9eeec07cb51e3af4d6"
+  }
+}

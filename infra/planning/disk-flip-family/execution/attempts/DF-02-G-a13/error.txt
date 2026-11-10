@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 382, in main
+    try:attempt.execute()
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 306, in execute
+    if not all(v>self.tuning.get('dex3_min_face_n',.8) for faces in self.pinch_loads().values() for v in faces.values()):raise RuntimeError('opposing_grasp_loads_not_established')
+                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: opposing_grasp_loads_not_established

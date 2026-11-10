@@ -1,0 +1,84 @@
+{
+ "schema": "dual-g1-door/1",
+ "task_family": "H3-cooperative",
+ "variant": "no_prop",
+ "configuration": {
+  "variant": "no_prop",
+  "scene": {
+   "use_asset_visuals": true,
+   "door_swing_sign": 1,
+   "door_pull_bar": true,
+   "crate_start_x": 4.25,
+   "table_style": "legs",
+   "door_width": 1.5,
+   "door_height": 2.1,
+   "door_mass": 12.0,
+   "door_thickness": 0.045,
+   "closing_stiffness": 3.0,
+   "closing_damping": 6.0,
+   "door_initial_angle": 0.0,
+   "box_mass": 0.4,
+   "box_size": [
+    0.2,
+    0.18,
+    0.16
+   ],
+   "stand_height": 0.7,
+   "ground_friction": 0.18,
+   "tool_friction": 0.9,
+   "crate_size": [
+    0.7,
+    0.4,
+    0.9
+   ],
+   "crate_mass": 12.0,
+   "crate_friction": 0.18,
+   "hand_friction": 2.0,
+   "dwell": 2.0,
+   "timeout": 180.0,
+   "collision_limit": 800.0
+  },
+  "robot_starts": [
+   [
+    0.8,
+    0.0,
+    0.78
+   ],
+   [
+    0.8,
+    1.1,
+    0.78
+   ]
+  ]
+ },
+ "robots": [
+  "g1_a",
+  "g1_b"
+ ],
+ "objects": [
+  {
+   "name": "box",
+   "size": [
+    0.2,
+    0.18,
+    0.16
+   ],
+   "pos": [
+    1.45,
+    0.8,
+    0.7829999999999999
+   ],
+   "mass": 0.4,
+   "friction": 0.7
+  }
+ ],
+ "action_dimension": 86,
+ "physics_hz": 200.0,
+ "control_hz": 50.0,
+ "timeout_s": 180.0,
+ "effort_limits": "hardware",
+ "common_goal": "Carry the parcel from the A pedestal through the self-closing door and leave it stably on the B table.",
+ "variant_evidence": "Native door support by the other robot during parcel crossing",
+ "difficulty_order": "unranked until measured",
+ "physical_reference_validated": false
+}

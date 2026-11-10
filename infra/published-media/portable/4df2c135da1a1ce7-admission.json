@@ -1,0 +1,607 @@
+{
+ "schema": "infra-admission/1",
+ "task_id": "H5",
+ "title": "G1 lever-assisted heavy object transport",
+ "version": "0.1",
+ "updated": "2026-10-23",
+ "admitted": false,
+ "status": "motor_channel_reference_passes_cpu_and_gpu_3_of_3_review_pending",
+ "sandbox": "sandbox",
+ "scene": "Historical layer 0 preserved. Candidate layers 1..3 and transport-pose-v1 sampling implemented; physical layer/range and tool-combination acceptance incomplete.",
+ "gates": {
+  "reference_expert": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/reference/channel-cpu-e1",
+    "sandbox/runs/reference/channel-cpu-e2",
+    "sandbox/runs/reference/channel-cpu-e3",
+    "sandbox/runs/reference/channel-gpu-e1",
+    "sandbox/runs/reference/channel-gpu-e2",
+    "sandbox/runs/reference/channel-gpu-e3",
+    "acceptance/resume-20261022/rejudge/summary.json",
+    "acceptance/resume-20261022/reference_summary.json",
+    "acceptance/release-20261022/review-2/index.html",
+    "acceptance/release-20261022/review-2/review_record.json"
+   ],
+   "note": "Eight same-expert-source hardware-channel successes retained: earlier CPU 3/3 and GPU 3/3 plus two new GPU full-video recordings. The complete-video cohort channel-gpu-e1 / release-video-gpu-20261022-2 / release-video-gpu-20261022-3 is 3/3 successful, score 1.0, non-VOID, no alarms, writes or torque bypass. Live core times 166.52, 169.20, 167.60 s; evaluator differs by at most 0.02 s. Fixed platform scene only."
+  },
+  "official_trajectories": {
+   "status": "not_applicable",
+   "evidence": [],
+   "note": "H5 has no official trajectory set; the reference expert is recorded by the sandbox recorder."
+  },
+  "coverage": {
+   "status": "pending",
+   "evidence": [],
+   "note": "Candidate cumulative layers, seeded initial poses/goals and trusted standalone checkpoints are implemented. Runtime and physical coverage are being collected; this gate remains pending."
+  },
+  "reference_rerun_spread": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/reference/channel-cpu-e1",
+    "sandbox/runs/reference/channel-cpu-e2",
+    "sandbox/runs/reference/channel-cpu-e3",
+    "sandbox/runs/reference/channel-gpu-e1",
+    "sandbox/runs/reference/channel-gpu-e2",
+    "sandbox/runs/reference/channel-gpu-e3",
+    "acceptance/resume-20261022/rejudge/summary.json",
+    "acceptance/resume-20261022/reference_summary.json",
+    "acceptance/release-20261022/review-2/index.html",
+    "acceptance/release-20261022/review-2/review_record.json"
+   ],
+   "note": "Three complete GPU runs with original videos and identical expert source hashes: live-core completion 166.52 / 169.20 / 167.60 s, range 2.68 s, population std 1.101 s. Older CPU 3/3 at 168.16 s and GPU 3/3 remain separate recorded cohorts; overlapping channel-gpu-e1 is never counted twice. No random-range reliability claim."
+  },
+  "verifier_validity": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/runs/reference/channel-cpu-1",
+    "sandbox/runs/reference/channel-1",
+    "sandbox/runs/reference/privileged-smoke-cpu-1",
+    "sandbox/runs/reference/privileged-task-cpu-1",
+    "sandbox/runs/escape-motor",
+    "sandbox/runs/grade-noop-motor",
+    "sandbox/tests/test_scoring.py",
+    "sandbox/tests/test_monitors.py",
+    "sandbox/tests/rejudge.py",
+    "acceptance/release-20261022/review-2/index.html",
+    "acceptance/release-20261022/review-2/review_record.json"
+   ],
+   "note": "Current review-2: all three complete GPU videos have successful verifier and task-evaluator outcomes, live/evaluator timing difference <= 0.02 s, score 1 and no alarms. Earlier six-reference audit, physical bypass/escape negatives and stage/monitor regressions remain linked. Formal validity is partial until independent manual stage annotation and random/layer coverage are complete."
+  },
+  "monitors_calibrated": {
+   "status": "passed",
+   "evidence": [
+    "acceptance/release-20261022/review-1/review_record.json",
+    "sandbox/tests/test_monitors.py",
+    "sandbox/runs/escape-motor",
+    "sandbox/runs/reference/privileged-smoke-cpu-1"
+   ],
+   "note": "Rejudged six hardware-channel positives across CPU and GPU: no alarms, monitor metrics retained individually in the review packet. Existing no-op controls are alarm-free; synthetic exploit regressions trigger, and physical channel-bypass/escape negatives VOID. Calibration is for the fixed platform scene; additional generator families need fresh calibration."
+  },
+  "predicate_labels": {
+   "status": "pending",
+   "evidence": [],
+   "note": "No manual stage labels on video."
+  },
+  "shortcut_audit": {
+   "status": "partial",
+   "evidence": [
+    "sandbox/runs/shortcuts/release-direct-transport-20261022-1/record.json"
+   ],
+   "note": "Physical attempt from the unchanged canonical start, hardware-limited channel: skipped the lever stages and drove the transport skill directly. Cargo advanced about 3 cm; controller stopped at 14.06 s on 11.9 cm approach gap. Non-VOID, no success, score 0.05 for actual tool engagement, no raise/support/transport/delivery credit. This failed attempt is not an impossibility proof or a completed human shortcut review."
+  },
+  "video_review": {
+   "status": "pending",
+   "evidence": [
+    "acceptance/release-20261022/review-1/index.html",
+    "acceptance/release-20261022/review-1/review_record.json",
+    "acceptance/release-20261022/review-2/index.html",
+    "acceptance/release-20261022/review-2/review_record.json"
+   ],
+   "note": "New unsigned review-2 packet contains three original full videos, hashes, stage sheets and exact evaluator/core times; automatic eligibility 3/3 with source equality. Human stage labels, three-question answers, reviewer signature and independent reproduction remain blank. The old review-1 packet is retained and its five absent videos are not substituted."
+  },
+  "independent_reproduction": {
+   "status": "pending",
+   "evidence": [],
+   "note": "No second-person reproduction."
+  },
+  "sandbox_isolation": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/escape-motor",
+    "sandbox/runs/eval-hello-motor",
+    "sandbox/tests/agents/escape_probes.py"
+   ],
+   "note": "Motor-mode interface, container (uid 1000, read-only root, no capabilities, internal network, socat to the worker): 47/47 escape probes as expected under the real G1 limits: agent identity (uid 1000, CapEff 0, writing / refused), protocol and method violations (24, incl. reference_info, lever_state, set_gains, leg_torque), value-level refusals, gains 1e9 clipped, targets beyond the limits clipped, motor-mode torque 1e6 clipped (43 values; applied torque 1.0000 x limit), no genesis / task / expert / trusted code, no repository, no network; run VOID, request log chain ok (44 entries). The eval hello reads every sensor, 0 and not void. The fixed-gain version of the morning passed 48/48 (sandbox/runs/escape)."
+  },
+  "grading_mode": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/grade-noop-motor",
+    "sandbox/runs/grade-noop"
+   ],
+   "note": "Three sealed episodes (identical fixed scene), a fresh container per episode, the worker advances only on the launcher's NEXT, one connection each; the no-op scores 0 in every episode, not void; request log chain ok (26 entries). Motor mode (grade-noop-motor) and the morning's fixed-gain version (grade-noop)."
+  },
+  "static_checks": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/tests/test_static.py",
+    "sandbox/tests/test_scoring.py",
+    "sandbox/tests/test_monitors.py"
+   ],
+   "note": "64 unit tests (test_static 19, test_scoring 15, test_monitors 30): bundle allowlist and no strategy word in the instruction, scenario sealing and tampering (configuration and geometry), the frozen platform preset equals the task's current platform variant and the expert runs' variant / timeout, the motor-mode command channel (leg torque accepted and clipped to the real limits, gains and targets clipped, the task's own actuation is a valid command, malformed commands refused), the expert's env.step as a LowCmd (support-leg torque, swing-leg PD, clipping), the recorder refuses development starts and overrides, a negative case for every stage, monitor exploits (incl. torque outside the channel and applied torque above the limits), fail-closed records, the request-log hash chain."
+  },
+  "randomisation": {
+   "status": "pending",
+   "evidence": [],
+   "note": "No sealed generator: the task has one fixed scene."
+  },
+  "automatic_pipeline": {
+   "status": "passed",
+   "evidence": [
+    "acceptance/pipeline/20261022-233253-all.json"
+   ],
+   "note": "All 13 integration checks passed, including reference rejudging, sensor geometry, container escape probes, eval, grading and strict completion checks. Current-source freshness is independently required by infra.sandbox.release_check. This software integration gate does not award random-range/layer/subtask coverage or human review."
+  }
+ },
+ "task_items": {
+  "motor_mode_action_interface": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/trusted/world.py",
+    "sandbox/tests/test_static.py",
+    "sandbox/runs/escape-motor",
+    "sandbox/runs/reference/channel-cpu-1",
+    "README.md"
+   ],
+   "note": "Author decision 2026-10-21 (replaces the morning's fixed-gain position-only interface): the shared LowCmd channel with motor and servo mode as in H2 / H3 / H4, RobotLimits with the real G1 effort limits (min(robot.py, MJCF)), clipping by the shared CommandChannel; the control-step law (Actuator) is shared by the worker and the reference recorder. Leg torque within the limits is an agent capability; the task README has an action-interface section stating it."
+  },
+  "torque_channel_integrity": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/trusted/monitors.py",
+    "sandbox/trusted/record_reference.py",
+    "sandbox/runs/reference/privileged-smoke-cpu-1",
+    "sandbox/runs/reference/privileged-task-cpu-1",
+    "sandbox/tests/test_monitors.py"
+   ],
+   "note": "What still voids: torque or state written outside the channel. torque_outside_channel (a recording in which the expert applied its own leg_tau: 367 steps in privileged-smoke-cpu-1, 5267 in the older privileged-task-cpu-1, both VOID), applied_torque_over_limit (logged applied effort above the record's limits: the clip was bypassed; max ratio 1.0000 on every recording), privileged_writes (setters after the first step; the channel's own servo-gain writes excepted). Through the channel the leg torque is counted (channel_leg_torque_steps) and never alarms."
+  },
+  "reference_backend_sensitivity": {
+   "status": "passed",
+   "evidence": [
+    "acceptance/release-20261022/review-1/review_record.json"
+   ],
+   "note": "Historical channel-1 GPU failure superseded by six current-expert-source successes, CPU 3/3 and GPU 3/3; fixed-scene backend repeatability only."
+  },
+  "lift_predicate_floor_contact": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/reference/privileged-task-cpu-1",
+    "sandbox/trusted/scoring.py",
+    "sandbox/tests/test_scoring.py"
+   ],
+   "note": "Found on the privileged recording: while the lever raises the near end 2.9 cm, the far feet tip onto the floor beside skate_0 (floor 20 %, lever tip 51 %, skate_0 28 %), so the first cargo_raised rule (floor < 10 %) gave only partial credit. Now: edge >= 2 cm, tools >= 50 %, robot < 10 %, robot touching a tool, for 1 s (stage at 25.02 s inside the expert's step_up)."
+  },
+  "drag_shortcut_scoring": {
+   "status": "pending",
+   "evidence": [
+    "sandbox/trusted/scoring.py",
+    "sandbox/tests/test_scoring.py",
+    "sandbox/instruction.md"
+   ],
+   "note": "skate_0 carries ~73 % of the cargo from the start; pushing it with the near feet sliding might deliver it without the lever. The task's own delivery test accepts that; the scorer requires the cargo to have rested on tools by itself first and to ride on tools (floor < 10 %) for transport credit, and the instruction says so. The task README says rolling, pushing and staged routes receive credit: author decision."
+  },
+  "instruction_draft": {
+   "status": "pending",
+   "evidence": [
+    "sandbox/instruction.md",
+    "sandbox/tests/test_static.py"
+   ],
+   "note": "Drafted by the sandbox builder: goal square, the task's delivery test, the transport-on-objects rule, failure conditions, the command interface (position targets with gains or motor torques within the limits); no tool or strategy word (test_static). To be confirmed by the author."
+  },
+  "sensor_geometry": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/sensors-motor/report.json",
+    "sandbox/runs/sensors-1/report.json",
+    "sandbox/tests/check_sensors.py"
+   ],
+   "note": "H1's sensor geometry gate on the H5 scene (GPU, motor-mode world): head depth vs Genesis's point cloud median 1.3 mm; head floor z median 1.0 mm; LiDAR returns on the floor / wall planes 145, plane distance median 0.03 mm (the head LiDAR, -7..52 deg, meets the floor only beyond the 7 m room, so the walls carry the LiDAR check). The fixed-gain world of the morning gave the same (sensors-1)."
+  },
+  "request_log_hash_chain": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/runs/escape-motor",
+    "sandbox/runs/grade-noop-motor",
+    "sandbox/tests/test_monitors.py"
+   ],
+   "note": "Shared runtime chain verified on every run (dev 7, eval 7, grade 26, escape 44 entries); broken chains void (unit tests)."
+  },
+  "offline_regrade_consistency": {
+   "status": "passed",
+   "evidence": [
+    "sandbox/tests/rejudge.py",
+    "sandbox/pipeline.json",
+    "acceptance/pipeline/20261021-183240-cpu.json"
+   ],
+   "note": "tests/rejudge.py re-judges every recorded run with the current verifier, read-only, and requires both the expected class and the verdict recorded at the time (score, success, void): 14/14 (the four motor-mode and four fixed-gain validation runs, channel-cpu-1 pass, channel-1 / emulate-1 / emulate-cpu-1 fail, privileged-smoke-cpu-1 / privileged-task-cpu-1 VOID)."
+  },
+  "expert_in_development": {
+   "status": "passed",
+   "evidence": [
+    "acceptance/release-20261022/review-1/review_record.json"
+   ],
+   "note": "Six full CPU/GPU references have matching current expert source snapshots. The successful expert has not been modified during release preparation; new video repeats retain their own exact source hashes."
+  },
+  "machine_readable_task_spec": {
+   "status": "passed",
+   "evidence": [
+    "task.toml",
+    "sandbox/tests/test_static.py"
+   ],
+   "note": "Added versioned task specification, stage/subtask mapping, exact current budgets and negative-test links. Static tests compare stage ids/modes/weights and timeout to runtime. It explicitly declares one implemented scene, no geometric randomisation and missing R9 layers; it does not pretend the release-design gates pass."
+  }
+ },
+ "pending_decisions": [
+  "whether a drag delivery (near feet sliding, no lever) earns transport / delivery credit",
+  "the stage weights (0.05 / 0.20 / 0.15 / 0.25 / 0.35) and thresholds (edge 2 cm, tools >= 50 % during the lift, floor < 10 %, tools >= 70 %, robot < 10 %, 5 N contact-free, 1 s dwells)",
+  "the instruction wording (it states the transport-on-objects rule)"
+ ],
+ "reference_runs": [
+  {
+   "path": "sandbox/runs/reference/channel-cpu-1",
+   "profile": "channel",
+   "backend": "cpu",
+   "effort_limits": "hardware",
+   "score": 1.0,
+   "score_before_void": null,
+   "success": true,
+   "void": false,
+   "void_reasons": [],
+   "end": "finished",
+   "sim_time_s": 176.34,
+   "stage_timeline": {
+    "tool_engaged": 23.98,
+    "cargo_raised": 24.94,
+    "cargo_supported": 76.34,
+    "transported": 172.56,
+    "delivered": 176.34
+   },
+   "core_success_time_s": 176.34,
+   "evaluator_success_time_s": 176.34,
+   "expert_stages": {
+    "approach": [
+     true,
+     7.48,
+     ""
+    ],
+    "step_up": [
+     true,
+     44.58,
+     ""
+    ],
+    "push": [
+     true,
+     67.82,
+     ""
+    ],
+    "step_down": [
+     true,
+     111.72,
+     ""
+    ],
+    "to_transport": [
+     true,
+     117.06,
+     ""
+    ],
+    "transport": [
+     true,
+     176.34,
+     ""
+    ]
+   },
+   "leg_torque_steps": null,
+   "privileged_writes": 0,
+   "alarms": 0
+  },
+  {
+   "path": "sandbox/runs/reference/channel-1",
+   "profile": "channel",
+   "backend": "gpu",
+   "effort_limits": "hardware",
+   "score": 0.4031,
+   "score_before_void": null,
+   "success": false,
+   "void": false,
+   "void_reasons": [],
+   "end": "failed",
+   "sim_time_s": 117.78,
+   "stage_timeline": {
+    "tool_engaged": 24.02,
+    "cargo_raised": 24.98,
+    "cargo_supported": 76.52,
+    "transported": null,
+    "delivered": null
+   },
+   "core_success_time_s": null,
+   "evaluator_success_time_s": null,
+   "expert_stages": {
+    "approach": [
+     true,
+     7.58,
+     ""
+    ],
+    "step_up": [
+     true,
+     44.64,
+     ""
+    ],
+    "push": [
+     true,
+     67.9,
+     ""
+    ],
+    "step_down": [
+     true,
+     112.98,
+     ""
+    ],
+    "to_transport": [
+     false,
+     117.78,
+     "episode ended while walking"
+    ]
+   },
+   "leg_torque_steps": null,
+   "privileged_writes": 0,
+   "alarms": 0
+  },
+  {
+   "path": "sandbox/runs/reference/privileged-smoke-cpu-1",
+   "profile": "privileged",
+   "backend": "cpu",
+   "effort_limits": "hardware",
+   "score": 0.0,
+   "score_before_void": 0.0,
+   "success": false,
+   "void": true,
+   "void_reasons": [
+    "torque_outside_channel (1_no_reward_hacking)"
+   ],
+   "end": "finished",
+   "sim_time_s": 15.0,
+   "stage_timeline": {
+    "tool_engaged": null,
+    "cargo_raised": null,
+    "cargo_supported": null,
+    "transported": null,
+    "delivered": null
+   },
+   "core_success_time_s": null,
+   "evaluator_success_time_s": null,
+   "expert_stages": {
+    "approach": [
+     true,
+     7.48,
+     ""
+    ]
+   },
+   "leg_torque_steps": null,
+   "privileged_writes": 0,
+   "alarms": 1
+  },
+  {
+   "path": "sandbox/runs/reference/privileged-task-cpu-1",
+   "profile": "privileged",
+   "backend": "cpu",
+   "effort_limits": "task",
+   "score": 0.0,
+   "score_before_void": 1.0,
+   "success": false,
+   "void": true,
+   "void_reasons": [
+    "privileged_leg_torque (1_no_reward_hacking)"
+   ],
+   "end": "finished",
+   "sim_time_s": 181.04,
+   "stage_timeline": {
+    "tool_engaged": 24.06,
+    "cargo_raised": 25.02,
+    "cargo_supported": 78.7,
+    "transported": 176.34,
+    "delivered": 181.02
+   },
+   "core_success_time_s": 181.04,
+   "evaluator_success_time_s": 181.02,
+   "expert_stages": {
+    "approach": [
+     true,
+     7.48,
+     ""
+    ],
+    "step_up": [
+     true,
+     44.58,
+     ""
+    ],
+    "push": [
+     true,
+     68.08,
+     ""
+    ],
+    "step_down": [
+     true,
+     113.0,
+     ""
+    ],
+    "to_transport": [
+     true,
+     119.94,
+     ""
+    ],
+    "transport": [
+     true,
+     181.04,
+     ""
+    ]
+   },
+   "leg_torque_steps": 5267,
+   "privileged_writes": 0,
+   "alarms": 1
+  },
+  {
+   "path": "sandbox/runs/reference/emulate-1",
+   "profile": "emulate",
+   "backend": "gpu",
+   "effort_limits": "hardware",
+   "score": 0.0,
+   "score_before_void": null,
+   "success": false,
+   "void": false,
+   "void_reasons": [],
+   "end": "failed",
+   "sim_time_s": 14.18,
+   "stage_timeline": {
+    "tool_engaged": null,
+    "cargo_raised": null,
+    "cargo_supported": null,
+    "transported": null,
+    "delivered": null
+   },
+   "core_success_time_s": null,
+   "evaluator_success_time_s": null,
+   "expert_stages": {
+    "approach": [
+     true,
+     7.78,
+     ""
+    ],
+    "step_up": [
+     false,
+     14.18,
+     "episode ended unloading the foot"
+    ]
+   },
+   "leg_torque_steps": 0,
+   "privileged_writes": 0,
+   "alarms": 0
+  },
+  {
+   "path": "sandbox/runs/reference/emulate-cpu-1",
+   "profile": "emulate",
+   "backend": "cpu",
+   "effort_limits": "hardware",
+   "score": 0.0,
+   "score_before_void": null,
+   "success": false,
+   "void": false,
+   "void_reasons": [],
+   "end": "failed",
+   "sim_time_s": 13.94,
+   "stage_timeline": {
+    "tool_engaged": null,
+    "cargo_raised": null,
+    "cargo_supported": null,
+    "transported": null,
+    "delivered": null
+   },
+   "core_success_time_s": null,
+   "evaluator_success_time_s": null,
+   "expert_stages": {
+    "approach": [
+     true,
+     7.48,
+     ""
+    ],
+    "step_up": [
+     false,
+     13.94,
+     "episode ended unloading the foot"
+    ]
+   },
+   "leg_torque_steps": 0,
+   "privileged_writes": 0,
+   "alarms": 0
+  }
+ ],
+ "validation_runs": {
+  "dev-hello-motor": {
+   "void": false,
+   "score": 0.0,
+   "episodes": 1,
+   "mode": "dev",
+   "success_rate": 0.0,
+   "chain": "ok"
+  },
+  "eval-hello-motor": {
+   "void": false,
+   "score": 0.0,
+   "episodes": 1,
+   "mode": "eval",
+   "success_rate": 0.0,
+   "chain": "ok"
+  },
+  "grade-noop-motor": {
+   "void": false,
+   "score": 0.0,
+   "episodes": 3,
+   "mode": "grade",
+   "success_rate": 0.0,
+   "chain": "ok"
+  },
+  "escape-motor": {
+   "void": true,
+   "score": 0.0,
+   "episodes": 1,
+   "mode": "eval",
+   "success_rate": 0.0,
+   "chain": "ok"
+  },
+  "dev-hello": {
+   "void": false,
+   "score": 0.0,
+   "episodes": 1,
+   "mode": "dev",
+   "success_rate": 0.0,
+   "chain": "ok"
+  },
+  "eval-hello": {
+   "void": false,
+   "score": 0.0,
+   "episodes": 1,
+   "mode": "eval",
+   "success_rate": 0.0,
+   "chain": "ok"
+  },
+  "grade-noop": {
+   "void": false,
+   "score": 0.0,
+   "episodes": 3,
+   "mode": "grade",
+   "success_rate": 0.0,
+   "chain": "ok"
+  },
+  "escape": {
+   "void": true,
+   "score": 0.0,
+   "episodes": 1,
+   "mode": "eval",
+   "success_rate": 0.0,
+   "chain": "ok"
+  }
+ },
+ "verifier": {
+  "version": "h5-verifier/1 (h5-monitors/1)",
+  "sha256": "287e86c07f00dcba944f901fefcc6edefb0d64d17709263ac0225bc8760564fb",
+  "code": [
+   "sandbox/trusted/verifier.py",
+   "sandbox/trusted/scoring.py",
+   "sandbox/trusted/monitors.py"
+  ]
+ },
+ "human_reviews": [],
+ "independent_reproductions": [],
+ "author_decision_record": "acceptance/release-20261023/author_decisions.json"
+}

@@ -1,0 +1,186 @@
+{
+  "schema": "h1-p4-prospective-macro-contract/1",
+  "frozen_at_utc": "2026-10-27T22:32:38.318468+00:00",
+  "task_id": "H1S-07.P4",
+  "origin": "Rules developed after v2 outcomes; prospectively declared only for later run IDs started after this freeze.",
+  "reviewer_source_sha256": "9667300ec28c4980d91a705e5794e87a798da9701a8470a848dc2097e46712c0",
+  "profile_sha256": "b0dd7637d187a591cd62a9aa6eea1ef1ec19c1516bc786e1cb4bfdc130917c95",
+  "profile_snapshot": {
+    "schema": "h1-extension-physical-development/1",
+    "task_id": "H1S-07.P4",
+    "profile": "g1_dex3_ground_push_crouch_v5_one_cycle_diagnostic",
+    "created_date": "2026-10-27",
+    "development_only": true,
+    "formal_admission": false,
+    "seed": 0,
+    "robot": "existing_g1_29dof_dex3_43_actuated_joints",
+    "target": {
+      "size_m": [
+        0.45,
+        0.5,
+        0.18
+      ],
+      "mass_kg": 5.0,
+      "initial_center_m": [
+        2.3,
+        0.0,
+        0.09
+      ],
+      "friction": 0.5
+    },
+    "goal": {
+      "center_xy_m": [
+        2.66,
+        0.0
+      ],
+      "size_xy_m": [
+        0.6,
+        0.7
+      ],
+      "hold_s": 3.0,
+      "max_linear_speed_m_s": 0.03,
+      "max_angular_speed_rad_s": 0.05,
+      "max_tilt_deg": 5.0,
+      "max_ground_gap_m": 0.008
+    },
+    "public_rules": {
+      "lifted_payload_limit_kg": 2.0,
+      "ground_supported_push_allowed": true,
+      "attachment_allowed": false,
+      "runtime_pose_write_allowed": false,
+      "root_wrench_allowed": false,
+      "explanation": "5 kg exceeds the declared 2 kg lifted-payload rule. This is a public-rule boundary, not a certificate that the robot cannot physically lift 5 kg. Ground-supported push is the selected legal operation."
+    },
+    "budget": {
+      "wall_seconds_per_attempt": 1800,
+      "simulation_seconds_per_attempt": 180,
+      "physics_dt_s": 0.005,
+      "control_dt_s": 0.02,
+      "max_control_steps": 9000,
+      "max_physics_steps": 36000,
+      "candidate_plans": 1,
+      "short_probe_count": 0,
+      "short_probe_max_steps": 0,
+      "screening_wall_seconds": 60,
+      "max_resets_per_attempt": 0,
+      "representative_repeats": 1,
+      "token_budget": null,
+      "token_budget_reason": "deterministic privileged expert; no language model called",
+      "observation_budget": 9000,
+      "observation_scope": "privileged state each control step"
+    },
+    "controller": {
+      "cycles": 1,
+      "stroke_m": 0.12,
+      "max_push_per_hand_N": 45.0,
+      "final_approach_m": 0.0,
+      "final_hold_s": 6.0,
+      "video_fps": 5,
+      "waist_upper_rad": 0.44,
+      "thumb_fold_rad": -0.99,
+      "elbow_upper_rad": 2.0,
+      "finger_reference_min_rad": 0.06,
+      "clear_hands_seconds": 6.0,
+      "stand_up_seconds": 20.0,
+      "terminal_joint_step_rad": 0.005,
+      "measured_clear_start": true,
+      "final_mode": "crouch_hold",
+      "final_settle_max_s": 8.0,
+      "final_settle_dwell_s": 1.0
+    },
+    "scope": "Bounded privileged development reference; no handle variant, no general randomized-policy or sensor-only claim. The task accepts every complete legal route. Full target AABB, ground support, no hand contact and 3 second dwell are scored from measured trace. Initial D exclusion is checked.",
+    "revision_reason": "Use a different legal final action sequence: last Push/Retreat already has measured released ground-supported crouch states. Continue actual bounded joint control at the last reference, settle for measured1s, then hold6s. Skip final reposition/ReturnHands/ClearHands/StandUp. Do not truncate, splice, or reset any old run; all old safety failures remain.",
+    "acceptance": {
+      "position_tolerance_rad": 0.001,
+      "source": "sandbox/trusted/relay_scoring.py:31",
+      "goal_dwell_s": 3.0,
+      "no_weakening_from_historical_standard": true
+    },
+    "controller_scope_notes": [
+      "finger_reference_min_rad applies only mirrored index/middle flex/distal, including zero-open commands in StandUp; thumb2 neutral is unchanged and still physically audited",
+      "reach joint upper overrides constrain IK references, never actual simulator joint limits or actual state",
+      "ClearHands starts from fresh measured MCP and clears the reference integrator, never resets physical state",
+      "only explicit palm-only IK misses may use fallback; foot or COM constraint failures stop rather than silently accepting infeasible references",
+      "final crouch_hold keeps ordinary physical PD/gravity/balance control and original force caps; it holds references, never actual joints or free base"
+    ],
+    "expert_plan_path": "humanoid/g1_support_retrieval/extension/expert-plan-crouch-v5.json",
+    "diagnostic_only": true,
+    "full_task_witness_allowed": false,
+    "diagnostic_scope": "Fresh original scene, approach then one Touch/Push/Retreat/SettleRelease/Hold; no walking needed when no later push remains. Unchanged D not shortened, no full witness credit; full3cycle still required."
+  },
+  "definition": {
+    "schema": "h1-p4-observed-macro-definition/1",
+    "version": "2026-10-27.prospective-crouch.v1",
+    "timing": "New v5 terminal route defined before its first physics execution. Earlier transport/reposition measurements informed the plan choice; previous v2/v3/v4 failures remain unchanged.",
+    "scope": "Observed effects of this continuous physical trace only. Does not validate arbitrary skill starts, independent low-level leaf contracts, actuator compliance, sensor-only execution, or formal admission.",
+    "transport": "Adjacent Touch+Push+Retreat interval: both raw hand contacts occur, target progresses toward D on ground with two feet planted, exits released and target speed <.02 m/s. No claim of simultaneous raw contact at nominal Touch exit.",
+    "reposition": "Only the first cycles-1 transports are followed by PlannedSteps and ReturnHands. Preserve the original measured bilateral footfall/support/reachability predicates.",
+    "release": "After final Touch+Push+Retreat, settle_release then hold_both, without final footfalls or standing. Every settling/holding state remains raw released with measured ground support; settling has independently measured final 1 s target/base speed bounds within the declared 8 s timeout, Hold retains original all-state base speed bounds for at least the declared 6 s. Full D/3 s dwell, original five safety rules and 1 mrad actuator limits remain necessary.",
+    "preservation": "Every original command interval, raw boundary and leaf fail/unknown is referenced without relabeling its success. No command or physics state is changed."
+  },
+  "definition_role_override": "Prospective executable macro skill contract for future matching-profile runs; old leaf predicates retained as diagnostic, not exact leaf-boundary acceptance.",
+  "thresholds": {
+    "actuator_position_tolerance_rad": 0.001,
+    "touch_normal_N": 1.0,
+    "ground_contact_N": 1.0,
+    "hand_release_net_force_N": 0.5,
+    "foot_lift_above_initial_m": 0.006,
+    "numeric_position_epsilon_m": 1e-06,
+    "joint_difference_epsilon_rad": 1e-06,
+    "max_body_collision_N": 10.0
+  },
+  "plan": [
+    {
+      "high_level": "H1",
+      "macro": "observed_approach"
+    },
+    {
+      "high_level": "H2/H3",
+      "repeat": 0,
+      "sequence": [
+        "observed_ground_transport",
+        "observed_foot_reposition"
+      ]
+    },
+    {
+      "high_level": "H2",
+      "macro": "observed_ground_transport"
+    },
+    {
+      "high_level": "H4",
+      "macro": "declared_release_and_crouch_hold"
+    }
+  ],
+  "success": "All measured macro effects, complete command/shared-boundary coverage, original 1 mrad actuator compliance and strict native goal/identity verdict. Original fine-grained leaf statuses remain separately visible. No human or formal admission claim. Original shared five-rule safety review must be complete with no events; missing fields mean unknown.",
+  "source_bindings": {
+    "humanoid/g1_support_retrieval/solution/carry_box/plan_carry.py": "7631e0734196c0bbdf7cc41c4be076efb455fda294ab2a072f1540ea9f4e7bce",
+    "humanoid/g1_support_retrieval/solution/underhand_lift/hand_model.py": "d2d629649686864d77079a2b1153880bb54b08aec7169cf010cf2d73f501622e",
+    "humanoid/g1_support_retrieval/solution/underhand_lift/phases.py": "91d2d68645355454921cda51fc2b97866823517b4312f5f9e8158f15b6c01ffe",
+    "humanoid/g1_support_retrieval/extension/verify_p4.py": "3ff463e6afb4cf62a77f4c49cbef364a485dbd8d5da0489b212be73a7d1b0168",
+    "humanoid/g1_support_retrieval/extension/safety_recording.py": "b70c5c4baed7b17796d235c646ffacd0d32b45780f663ed6a0ef21a05598073e",
+    "humanoid/g1_support_retrieval/sandbox/trusted/statelog.py": "86272084ad082f3006a8fc38c31ae05624a5d7860bf9eb2aa2443651a6263581",
+    "humanoid/g1_support_retrieval/extension/run_p4.py": "aaf8086e36b610fbd912d6b8239888cce324206fd36f6e175bd6433ae8cc0f52",
+    "humanoid/g1_support_retrieval/solution/push_box/run_push.py": "6fd5795a082490b0c5a01cdc3f162c36da7803f23ff588a768373c52685d85db",
+    "humanoid/g1_support_retrieval/extension/verify_skill_refinement.py": "a6e4b591ab8a3ead2a56744c153de1eb9d41709a648cb7d76ff93fa88130d4ff",
+    "humanoid/g1_support_retrieval/extension/verify_p4_safety.py": "7504fd4361f9763b028eac64f33ad983eecf42f586595bb4960c02d9c326f9d7",
+    "humanoid/g1_support_retrieval/sandbox/trusted/relay_safety.py": "2d65c3f8ee11a32e223efd67625247a38dddc7585b21d9a10f0d4bb4ecb59b16",
+    "humanoid/g1_support_retrieval/sandbox/trusted/relay_safety_rules.py": "3edf54de88ef1350360077213e0248ba9ea8be03f6aa454aa4935d8bb4a55bfb",
+    "infra/sandbox/monitors.py": "432680b21d784367a3742321dedcc1272b617021765b00eb8d5750442dadfb0c",
+    "humanoid/g1_support_retrieval/extension/verify_v5_probe.py": "1c49d22f82e71643c30d7c05d5f85fbb94ff324801738647e2cc2ae5a2f9df1e"
+  },
+  "diagnostic_only": true,
+  "frozen_documents": [
+    {
+      "path": "humanoid/g1_support_retrieval/extension/v5-probe-acceptance.json",
+      "sha256": "061a5b960b3b7a7f85a832f55baf125ec1c9f22f0a283d78a42d7da5fb52fcad"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/extension/expert-plan-crouch-v5.json",
+      "sha256": "02c4f41e1edd34d9bed9ff6ea7f559a62e69296470b41fde5d432a29e7776559"
+    },
+    {
+      "path": "humanoid/g1_support_retrieval/extension/skill-refinement-contract-crouch-v5-probe.json",
+      "sha256": "58ebc5fb987723a81b20bbdd01fe94e8928d7aa41511dfc0147b333303bb7f73"
+    }
+  ]
+}

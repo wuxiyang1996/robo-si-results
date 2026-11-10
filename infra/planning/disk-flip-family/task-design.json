@@ -1,0 +1,176 @@
+{
+  "schema": "disk-flip-family/1.0",
+  "updated": "2026-10-29",
+  "status": "implementation_in_progress",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "variant_count": 4,
+  "embodiment_count": 3,
+  "setting_count": 6,
+  "object_profile_count": 3,
+  "geometry_count": 2,
+  "original_setting_count": 1,
+  "unverified_setting_count": 1,
+  "new_simulation_runs": 140,
+  "changes_existing_14_task_inventory": false,
+  "embodiments": {
+    "G": "G1 + Dex3",
+    "F": "G1 + Inspire five-finger hand",
+    "S": "Stretch 3 + specified gripper"
+  },
+  "counting": "independent operation variants; selected task/body/scene settings; no Cartesian product",
+  "objects": [
+    {
+      "id": "P1",
+      "name": {
+        "zh": "标准实心圆盘",
+        "en": "Standard solid disk"
+      },
+      "design": {
+        "zh": "直径 200 mm、厚 12 mm、质量 120 g；两面平整、质量均匀。",
+        "en": "200 mm diameter, 12 mm thick, 120 g; flat faces and uniform mass."
+      },
+      "status": "historical_scope_only",
+      "prototype_support_probe": "execution/plate-design/support-probes.json"
+    },
+    {
+      "id": "P2",
+      "name": {
+        "zh": "带盘沿浅盘",
+        "en": "Rimmed shallow plate"
+      },
+      "design": {
+        "zh": "浅凹盘面、薄外沿、底部支撑圈；明确盘沿下方净空与倒扣支撑面。开发几何为外径 200 mm、总高 20 mm、120 g；14 mm 沿下净空，正放／倒扣静态支撑探针已通过。",
+        "en": "Shallow concavity, thin rim and underside support ring; specify under-rim clearance and inverted support. Development geometry: 200 mm diameter, 20 mm total height, 120 g, 14 mm under-rim clearance. Upright/inverted static support probes passed."
+      },
+      "status": "design_unverified",
+      "prototype_support_probe": "execution/plate-design/support-probes.json"
+    },
+    {
+      "id": "P3",
+      "name": {
+        "zh": "受力敏感浅盘",
+        "en": "Contact-load-sensitive shallow plate"
+      },
+      "design": {
+        "zh": "复用 P2 几何，增加局部接触载荷限制；首版固定摩擦与质量，保留安全可行抓法。刚体损伤代理，不模拟真实破碎。",
+        "en": "Reuse P2 geometry with local contact-load limits. Initially fix friction and mass and retain a feasible safe grasp. Rigid-body damage proxy, not physical fracture."
+      },
+      "status": "design_unverified",
+      "prototype_support_probe": "execution/plate-design/support-probes.json"
+    }
+  ],
+  "settings": [
+    {
+      "id": "DF-01-G",
+      "variant": "DF-01",
+      "object": "P1",
+      "embodiment": "G",
+      "name": {
+        "zh": "原版轻柔翻圆盘",
+        "en": "Original gentle disk flip"
+      },
+      "mechanism": {
+        "zh": "推到桌边、双手夹持翻面、放回并释放；保留原协议。",
+        "en": "Push to the edge, flip under bimanual grasp, place and release; preserve the original protocol."
+      },
+      "status": "fresh_witness_verified",
+      "protocol": "original_frozen",
+      "new_witness": "DF-01-G-a03",
+      "evidence": "execution/DF-01-G-a03"
+    },
+    {
+      "id": "DF-02-G",
+      "variant": "DF-02",
+      "object": "P2",
+      "embodiment": "G",
+      "name": {
+        "zh": "带沿浅盘：三指抓取适配",
+        "en": "Rimmed plate: three-finger grasp adaptation"
+      },
+      "mechanism": {
+        "zh": "根据盘沿净空与手指几何，选择夹沿、托底或上下夹持。",
+        "en": "Choose rim pinching, underside support or opposing-face grasp from rim clearance and finger geometry."
+      },
+      "status": "fresh_witness_verified",
+      "protocol": "open_strategy_extension",
+      "new_witness": "DF-02-G-a33",
+      "evidence": "execution/DF-02-G-a33"
+    },
+    {
+      "id": "DF-02-F",
+      "variant": "DF-02",
+      "object": "P2",
+      "embodiment": "F",
+      "name": {
+        "zh": "带沿浅盘：五指抓取适配",
+        "en": "Rimmed plate: five-finger grasp adaptation"
+      },
+      "mechanism": {
+        "zh": "与 DF-02-G 同场景，只更换手及必要控制映射；检验抓取策略是否改变。",
+        "en": "Same world as DF-02-G; change only the hand and required control mapping, testing whether grasp strategy changes."
+      },
+      "status": "implemented_failed_attempt",
+      "protocol": "open_strategy_extension",
+      "new_witness": null,
+      "evidence": "execution/DF-02-F-a38"
+    },
+    {
+      "id": "DF-03-G",
+      "variant": "DF-03",
+      "object": "P3",
+      "embodiment": "G",
+      "name": {
+        "zh": "受力敏感浅盘翻面",
+        "en": "Contact-load-limited plate flip"
+      },
+      "mechanism": {
+        "zh": "在抗滑与局部载荷限制之间选择安全抓法，必要时分担载荷或利用桌面。",
+        "en": "Balance slip resistance and local load limits; distribute load or use table support when needed."
+      },
+      "status": "fresh_witness_verified",
+      "protocol": "open_strategy_extension",
+      "new_witness": "DF-03-G-a23",
+      "evidence": "execution/DF-03-G-a23"
+    },
+    {
+      "id": "DF-04-G",
+      "variant": "DF-04",
+      "object": "P1",
+      "embodiment": "G",
+      "name": {
+        "zh": "自主翻面：双臂配置",
+        "en": "Open-strategy flip: dual-arm configuration"
+      },
+      "mechanism": {
+        "zh": "自主选择单／双手抓持、重抓与支撑交接，不强制沿用原版动作顺序。",
+        "en": "Choose one/two-hand grasp, regrasp and support transfer without the original mandatory sequence."
+      },
+      "status": "fresh_witness_verified",
+      "protocol": "open_strategy_extension",
+      "new_witness": "DF-04-G-a27",
+      "evidence": "execution/DF-04-G-a27"
+    },
+    {
+      "id": "DF-04-S",
+      "variant": "DF-04",
+      "object": "P1",
+      "embodiment": "S",
+      "name": {
+        "zh": "自主翻面：单臂配置",
+        "en": "Open-strategy flip: single-arm configuration"
+      },
+      "mechanism": {
+        "zh": "与 DF-04-G 同物体、同桌面；按单臂与腕部能力选择完整翻面及释放策略。",
+        "en": "Same object and table as DF-04-G; adapt the complete flip and release to one arm and its wrist."
+      },
+      "status": "fresh_witness_verified",
+      "protocol": "open_strategy_extension",
+      "new_witness": "DF-04-S-a28",
+      "evidence": "execution/DF-04-S-a28"
+    }
+  ],
+  "extension_setting_count": 5,
+  "implementation": "implementation.json",
+  "complete_witness_settings": 5
+}

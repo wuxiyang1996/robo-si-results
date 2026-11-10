@@ -1,0 +1,229 @@
+{
+  "status": "exception:RuntimeError:bounded_wall_stop_signal_2",
+  "recorder_version": "p4_aligned_state_exact_substep_commands_v2",
+  "command_trace_semantics": "control-rate reference targets; exact clipped per-substep commands are in physics_commands.npz",
+  "last_phase": "stand_up_both",
+  "events": [
+    {
+      "time": 9.14,
+      "phase": "touch_both",
+      "done": 10.84
+    },
+    {
+      "time": 10.86,
+      "phase": "push_both",
+      "done": 15.86
+    },
+    {
+      "time": 15.88,
+      "phase": "retreat_both",
+      "done": 17.7
+    },
+    {
+      "time": 17.72,
+      "phase": "planned_steps_both",
+      "done": 92.68
+    },
+    {
+      "time": 92.7,
+      "phase": "return_hands_both",
+      "done": 100.22
+    },
+    {
+      "time": 100.24,
+      "phase": "retreat_both",
+      "done": 101.56
+    },
+    {
+      "time": 101.58,
+      "phase": "clear_hands_both",
+      "done": 108.1
+    },
+    {
+      "time": 108.12,
+      "phase": "hold_both",
+      "done": 109.12
+    },
+    {
+      "time": 109.14,
+      "phase": "recenter_both",
+      "done": 109.14
+    },
+    {
+      "time": 109.16,
+      "phase": "stand_up_both"
+    }
+  ],
+  "plan": [
+    "touch_both",
+    "push_both",
+    "retreat_both",
+    "planned_steps_both",
+    "return_hands_both",
+    "retreat_both",
+    "clear_hands_both",
+    "hold_both",
+    "recenter_both",
+    "stand_up_both",
+    "hold_both"
+  ],
+  "approach_mcp_error_m": 2.6166219624993904e-07,
+  "approach_rotation_error_rad": [
+    8.850147355325787e-07,
+    8.853281093732602e-07
+  ],
+  "approach_penetrations": [],
+  "max_effort_ratio": 1.0,
+  "max_speed_ratio": 0.0902656763792038,
+  "box_size": [
+    0.45,
+    0.5,
+    0.18
+  ],
+  "box_mass_kg": 5.0,
+  "box_floor_friction": 0.5,
+  "box_start": [
+    2.3,
+    0.0,
+    0.09
+  ],
+  "box_final": [
+    2.408656358718872,
+    -0.0006466977647505701,
+    0.08997271209955215
+  ],
+  "box_moved_m": 0.10865828320033029,
+  "leg_control": "planned footfalls: step_up stage IK + contact QP; pushing: IK + PD",
+  "friction_cone": "elliptic",
+  "torsional_friction": true,
+  "self_collision": true,
+  "object_attachment": false,
+  "runtime_pose_writes": false,
+  "applied_root_wrench": false,
+  "wall_seconds": 1632.1581314099021,
+  "metrics": {
+    "box_start": [
+      2.3,
+      0.0,
+      0.09
+    ],
+    "push_strokes_m": [
+      0.1066
+    ],
+    "force_check_infeasible_steps": 204,
+    "reach_palm_only_degraded_steps": 272,
+    "planned_step_cycles_s": [
+      74.94
+    ],
+    "footfalls_m": [
+      0.119,
+      0.1187
+    ]
+  },
+  "step_on": null,
+  "final": {
+    "support_contacts": {
+      "target_ground_fz_N": 0.0,
+      "feet_ground_fz_N": [
+        0.0,
+        0.0
+      ],
+      "body_ground_force_N": 0.0
+    },
+    "time": 125.84,
+    "phase": "terminal",
+    "box": [
+      2.408656358718872,
+      -0.0006466977647505701,
+      0.08997271209955215
+    ],
+    "box_quat": [
+      0.9999985098838806,
+      -1.5513814233258927e-08,
+      6.562603971360659e-07,
+      0.0017504598945379257
+    ],
+    "box_speed": 5.6241055972350296e-06,
+    "box_angular_speed": 6.230508734006435e-05,
+    "root_linear_velocity": [
+      -0.005795699544250965,
+      6.711586320307106e-05,
+      0.002760854549705982
+    ],
+    "root_angular_velocity": [
+      -0.0003902013704646379,
+      -0.005934836808592081,
+      -0.0008111766655929387
+    ],
+    "tilt_deg": 7.522903804156201e-05,
+    "yaw_deg": 0.20058802235152604,
+    "bottom": -2.759041182068267e-05,
+    "forces": {},
+    "push_normal": {
+      "left": 0.0,
+      "right": 0.0
+    },
+    "mcp_meas": [
+      [
+        2.017565232167912,
+        0.32992652686578194,
+        0.6502395480611978
+      ],
+      [
+        2.01732079253316,
+        -0.33476553683870647,
+        0.6498983374951507
+      ]
+    ],
+    "mcp_cmd": [
+      [
+        2.014291011516281,
+        0.3313368774931642,
+        0.6544585193182219
+      ],
+      [
+        2.01426013701577,
+        -0.33600767183146835,
+        0.6543417267883458
+      ]
+    ],
+    "feet_cmd": [
+      [
+        1.796426583731081,
+        0.12281733241793086,
+        0.035
+      ],
+      [
+        1.7953743930464894,
+        -0.1210319522416935,
+        0.035
+      ]
+    ],
+    "feet_meas": [
+      [
+        1.8086538489714232,
+        0.12041978686032107,
+        0.034782990198586536
+      ],
+      [
+        1.805228911794579,
+        -0.12254989907215662,
+        0.0348700711187548
+      ]
+    ],
+    "support_legs": [
+      0,
+      1
+    ],
+    "leg_control": "pd",
+    "step_label": null,
+    "root": [
+      1.839699149131775,
+      -0.004337639082223177,
+      0.7121111154556274
+    ],
+    "orientation_error": 0.010307940990104214,
+    "contact_links": [],
+    "body_contact_N": 0.0
+  }
+}

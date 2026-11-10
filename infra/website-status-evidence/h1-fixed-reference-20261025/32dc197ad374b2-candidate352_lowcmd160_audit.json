@@ -1,0 +1,124 @@
+{
+  "updated_at": "2026-10-25T04:54:22.820573+00:00",
+  "diagnostic_passed": true,
+  "checks": {
+    "actual_container": true,
+    "privileged_reference": true,
+    "frozen_bundle": true,
+    "launch_scope_source_frozen": true,
+    "worker_exit": true,
+    "agent_exit": true,
+    "declared_diagnostic_stop": true,
+    "exact_duration": true,
+    "physical_coverage": true,
+    "command_count": true,
+    "channel_no_clipping": true,
+    "channel_no_lost_changes": true,
+    "channel_force_envelope": true,
+    "sealed_request_chain": true,
+    "no_protocol_errors": true,
+    "initial_state_validation": true,
+    "canonical_core": true,
+    "nonvoid": true,
+    "no_joint_overshoot": true,
+    "safety": true,
+    "not_full_task_claim": true
+  },
+  "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_352\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-approach-lowcmd160-03",
+  "simulated_seconds": 160.00000000000804,
+  "integrity": {
+    "ok": true,
+    "void": false,
+    "reasons": [],
+    "excluded_frames": 0,
+    "safety_coverage": {
+      "complete": true,
+      "has_gaps": false,
+      "invalid_frames": 0
+    },
+    "max_joint_limit_overshoot": 0.0,
+    "max_effort_ratio": 1.0,
+    "max_speed_ratio": 0.07884227262960898,
+    "physics_samples": 32000,
+    "joint_count": 43,
+    "physics_dt": 0.005
+  },
+  "rule5": {
+    "status": "evaluated",
+    "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+    "max_saturation_s": 1.74,
+    "max_limit_push_s": 0.0
+  },
+  "channel": {
+    "commands": 8000,
+    "reference_state_calls": 8001,
+    "max_steps_per_command": 1,
+    "joint_steps": {
+      "servo": 298760,
+      "torque": 45240,
+      "dc_motor_pd": 0
+    },
+    "channel_clipped": {},
+    "tau_beyond_hardware": 0,
+    "servo_steps_with_narrower_expert_force_range": 0,
+    "torque_steps_with_narrower_or_binding_expert_force_range": {
+      "narrower": 0,
+      "binding": 0
+    },
+    "applied_torque_outside_expert_force_range": {
+      "count": 0,
+      "max_Nm": 0.0,
+      "joint": null,
+      "t": null
+    },
+    "expert_changes_between_substeps_not_sent": {
+      "position": 0,
+      "torque": 0,
+      "force_range": 0,
+      "gains": 0,
+      "mode": 0
+    },
+    "facade_writes": {
+      "set_dofs_force_range": 32006,
+      "set_dofs_kp": 2871,
+      "set_dofs_kv": 2873,
+      "control_dofs_position": 48920,
+      "control_dofs_force": 15080
+    },
+    "facade_reads": {
+      "state": 12221,
+      "get_links_mass": 3,
+      "get_links_COM": 3,
+      "get_links_inertia": 3,
+      "get_dofs_velocity": 95999,
+      "get_dofs_control_force": 69491,
+      "get_dofs_position": 32000,
+      "get_pos": 9381,
+      "get_quat": 6521,
+      "get_vel": 6520,
+      "get_contacts": 8922,
+      "get_links_net_contact_force": 2298,
+      "get_ang": 1
+    }
+  },
+  "safety_events": [],
+  "score": 0.0523,
+  "task_success": false,
+  "original_start": true,
+  "evidence": {
+    "agent": {
+      "path": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_352\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-approach-lowcmd160-03\\workspace_00\\reference_out\\reference_result.json",
+      "sha256": "804b1df5db307dce3af2acce92dabf9d5e75bb257b0543461c14f5996da66b01"
+    },
+    "run": {
+      "path": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_352\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-approach-lowcmd160-03\\trusted\\run.json",
+      "sha256": "15f1d453be975e4e8ac7fc86b4c16c48bbd3c7386642e5f0caa9b528f0b56693"
+    },
+    "verdict": {
+      "path": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_352\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-approach-lowcmd160-03\\trusted\\verdict.json",
+      "sha256": "5564aa626d5a551bccfd76b95381ff428c982faf104b1e5aeb321836a234ba80"
+    }
+  },
+  "scope": "Original-scene approach, lift, stand-up and beginning of carrying over the actual LowCmd channel. Diagnostic stop at 160 seconds; not complete retrieval, randomized coverage or admission.",
+  "initial_state_note": "The five t=0 facade calls validate agreement with the sealed worker initial state; the adapter does not mutate worker poses. Runtime pose writes are refused."
+}

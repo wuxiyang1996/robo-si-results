@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>M1 · 能力边界与工具交付 · 9 个 case</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>
+
+    .vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.vcard{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}.vcard img{display:block;width:100%}figcaption{padding:12px;font-size:14px}.player{width:100%;max-height:650px;background:#0b151d;border-radius:14px}select{max-width:100%;padding:10px;font:inherit;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px}.actions{display:flex;flex-wrap:wrap;gap:16px;margin:18px 0}.note{border-left:4px solid var(--accent);padding:14px 18px;background:var(--panel)}.small{font-size:14px;color:var(--ink2)}td{vertical-align:top}.hero h1{max-width:1000px}
+
+    </style><meta content="1 个原始任务＋6 个扩展操作 case＋2 个不可完成对照。从高处货箱取得目标，送入低柜深处并在独立承托后释放。重点测试搬／推、支撑、工具可操作性、身体适配、进入和撤出边界；不将身体型号与规则版本全排列计数。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-m1-en.html">English</a></div></header><aside class="document-notice"><div class="wrap">本页保留历史任务设计与验收说明。视频统一移至最终交付的 Nyx 8× 任务页；<a href="/robo-si-results/infra/archive-task-m1-zh.html">历史原页存档</a></div></aside>
+<main id="main">
+<section id="retrieval-family-current"><div class="wrap"><h2>M1：9 个独立 case</h2><p>1 个原始任务＋6 个扩展操作 case＋2 个不可完成对照。按能力瓶颈及工具／伙伴如何改变可行性划分；不将型号和规则全排列计数。原始任务已有原范围见证；扩展通过实测能力绑定，仍为 unknown。所有合法完整解均成功，不强制先失败。</p><div class="table-wrap"><table><thead><tr><th>Case ID</th><th>能力边界</th><th>工具／伙伴</th><th>场景与完整目标</th><th>状态</th></tr></thead><tbody><tr><td>M1C-ORIG</td><td>原始 M1：搬箱、取块与低柜交付</td><td>货箱、原交接台、G1＋X5</td><td>原 G1＋Dex3 将货箱搬到交接台，X5 取出目标块，送入低柜深处并由柜体先承托后释放。沿用原 v0.3 / V4 配置、评分与预算；已有 13 条完整成功、8 个物理种子及严格重复 3/3，不计为新增仿真。</td><td>原范围已有见证</td></tr><tr><td>M1C-B01</td><td>抬不动货箱，但能推移建立取物位</td><td>货箱、承托面</td><td>当前抓持／携带条件不支持抬箱，且原位置不便取块；可通过受控推移与环境支撑建立取物位置，再完成低柜交付。</td><td>待验证</td></tr><tr><td>M1C-B02</td><td>持箱时无法安全取块，需建立独立支撑</td><td>支架、箱体、工作台</td><td>同时提供顶面、承载与可搬性不同的支撑物；判断哪种支撑能让货箱释放后仍稳定，并完成取块和低柜交付。</td><td>待验证</td></tr><tr><td>M1C-B03</td><td>手直接够不到，但可操作工具取块</td><td>钩、长夹具、直杆、短工具</td><td>固定货箱中的目标超出直接可达范围；钩、长夹具、直杆与短工具并存，需判断可握持、能作用且可撤出的工具；必须继续完成低柜交付。</td><td>待验证</td></tr><tr><td>M1C-B04</td><td>自己无法操作可用工具，伙伴可以</td><td>身体适配不同的工具及伙伴</td><td>保持目标和工具的工作端条件，当前手受握柄、驱动方式或腕矩限制；另一身体候选可操作该工具。自主改变操作者或使用其他合法工具完成交付，不强制先失败。</td><td>待验证</td></tr><tr><td>M1C-B05</td><td>末端进不了低柜，但工具能完成交付</td><td>窄推杆、薄／厚托板</td><td>目标本体可通过柜口，但当前手的包络或可达域不适合深入；选择推杆或托板，保证目标沿途受支撑且最终能撤去工具。</td><td>待验证</td></tr><tr><td>M1C-B06</td><td>自己的工具无法完成撤出，需改变交付者</td><td>交接面、低位操作者与候选交付工具</td><td>目标可进入，但当前身体与工具的组合无法完成承重转移和撤出；低位或较小末端的伙伴为候选替代。不能把伸进柜内、工具仍承重当成功。</td><td>待验证</td></tr><tr><td>M1C-I01</td><td>所有身体与工具都无法完成取物</td><td>全部现场工具与参与者</td><td>必须排除所有身体姿态、移箱、其他接近方向、合法工具组合与协作路线；有全路线证书后才判正确退出。</td><td>待验证</td></tr><tr><td>M1C-I02</td><td>目标本体无法通过低柜入口</td><td>全部交付工具与参与者</td><td>瓶颈来自完整刚性目标和唯一入口，不是手太宽；排除其他入口、拆解和变形后验证实体退出。</td><td>待验证</td></tr></tbody></table></div><p>原始任务沿用原配置与原评分；新增 Y/N、Q 和 2 kg 规则不追溯适用，旧见证不证明扩展可行。 <a href="/robo-si-results/infra/m1-current-evidence.json">原始任务证据</a></p><p>2 kg 是当前新设计的保守载荷筛选上界，适用部件、姿态和动态条件仍需核验；它不是整机质量上限，也不自动认证任一身体。不可完成时允许全员实际进入 Q、空手独立停稳 3 秒；正确放弃需完整路线排除证据，未知不算已认证无解。</p><p><a href="/robo-si-results/infra/planning/m1-extension/cases.md">完整任务卡</a> · <a href="/robo-si-results/infra/task-families-zh.html">H1 / M1 / M3</a> · <a href="/robo-si-results/infra/planning/current-task-registry.json">JSON</a></p><p>本次更新为设计与登记同步，新增仿真 0；原参考评分和证据范围保留。</p></div></section>
+<p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">本页展示一段代表录像：strict-r1 · 完整交付。其他成功、失败与分段录像保留在原发布包；本次筛选不改变原证据或评分。</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">查看完整任务说明：场景、动作、评分、证据与复现</a></p><!-- task-detail-jump:end --><section data-layered-task="M1" id="layered-status"><div class="wrap"><h2>原参考交付范围与证据</h2><p>第一层 v0.3 / V4，CPU 特权参考</p><p>13 条完整成功、8 个物理种子、严格重复 3/3，全为 1.0；第一层已完成并发布。</p><p>补取容器→X5 夹取→低柜放置的可达、承重与释放交接证据，以及新实例必要条件筛查。 用户录像／阶段审阅、第二人复现、监视／捷径及代表性覆盖验收。</p><p><a href="#task-details">完整动作、轨迹与验收边界</a></p></div></section><div class="wrap" id="website-completion-status" style="padding-top:18px"><div class="card"><p><span class="pill ok">已完成（声明范围）</span> · 已发布</p><p><strong>M1 · 第一层 v0.3 / V4，CPU 特权参考</strong> — 13 条完整成功、8 个物理种子、严格重复 3/3，全为 1.0；第一层已完成并发布。</p><p class="small">正式准入待完成。补取容器→X5 夹取→低柜放置的可达、承重与释放交接证据，以及新实例必要条件筛查。 用户录像／阶段审阅、第二人复现、监视／捷径及代表性覆盖验收。 <a href="/robo-si-results/infra/status-zh.html#completion">全站完成情况</a></p></div></div><div class="hero"><div class="wrap"><p class="eyebrow">M1 · v0.3 / V4 · LAYER 1 · 2026-10-24</p><h1>M1：能力边界与工具交付</h1><div id="family-page-intro"><p class="lead">1 个原始任务＋6 个扩展操作 case＋2 个不可完成对照。从高处货箱取得目标，送入低柜深处并在独立承托后释放。重点测试搬／推、支撑、工具可操作性、身体适配、进入和撤出边界；不将身体型号与规则版本全排列计数。</p><p>新增场景与能力配置待验证；现有成功记录只证明原配置与原评分范围。</p><nav aria-label="任务页导航"><a href="#retrieval-family-current">当前任务表</a> · <a href="task-families-zh.html">H1 / M1 / M3</a> · <a href="#task-details">原参考与证据</a></nav></div><p class="reference-summary"><strong>原范围参考：</strong>G1 将货箱从货架搬到交接台，移动机械臂取出黄色方块，再驶入低柜，将方块放上深处的托盘。M1 第一层已完成，CPU 特权反馈参考全流程成功，资料已发布。人工签审与第二人复现另列验收待办。</p><p id="reference-evidence-label"><strong>以下数字为原参考范围的证据，不是新任务族的验证进度。</strong></p><div class="cards"><div class="card"><h3>13 / 13</h3><p>完整成功 · 均为 1.0</p></div><div class="card"><h3>8</h3><p>不同物理种子</p></div><div class="card"><h3>3 / 3</h3><p>固定物理种子与噪声的严格重复</p></div><div class="card"><h3>5</h3><p>连续完成的评分阶段</p></div></div>
+<div class="card" id="release"><h2>原 M1 第一层参考完成 · 资料已发布</h2><p>13 条原始录像和审计、冻结源码、完整运行记录与人工审阅工作台一同打包。原始证据不改写；正式准入仍为 <code>admitted=false</code>。</p><div class="actions"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/m1-layer1-20261024">GitHub Release / Download</a><a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/index.html">打开人工审阅工作台</a><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/release-layer1-20261024/evidence.json">Evidence JSON</a><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/release-layer1-20261024/source-provenance.json">源码来源审计</a></div><p class="small">沿用其他任务的私有 GitHub / Hugging Face 发布渠道。下载 ZIP 后本地打开任务页；仓库未启用 GitHub Pages。</p></div><div class="card" style="margin-top:18px"><h3>目录</h3><ol class="toc"><li><a href="#desc">01 任务描述</a></li><li><a href="#videos">02 视频与执行记录</a></li><li><a href="#scoring">03 评分标准</a></li><li><a href="#expert">04 参考专家解</a></li><li><a href="#shortcuts">05 已知捷径与边界</a></li><li><a href="#gates">06 验收状态</a></li></ol></div></div></div>
+<section class="tinted" id="desc"><div class="wrap"><p class="kicker">01 · 任务描述</p><h2>原参考场景：货箱下架与低柜交付</h2><p>4.5 cm 黄色方块位于 0.90 m 高的钢制货架上，装在箱沿高达 1.10 m 的塑料货箱内。目标是低柜深处的托盘：柜内高 0.62 m，托盘中心距开口约 0.80 m。最终必须由柜内表面先承重、两台机器人再完全释放，方块保持稳定。</p><div class="cards"><div class="card"><h3>Unitree G1 + Dex3</h3><p>承担高处货箱操作与降低交接高度。</p></div><div class="card"><h3>ARX X5 + mobile base</h3><p>从交接台取物，进入低柜，完成支撑放置。移动底盘为任务定制；夹指 40 N 换算属于建模假设。</p></div></div><p>普通 agent 仅使用机器人自身传感器与公开关节接口；预算 300 s、40,000 次观测，开发模式可重置 3 次。任务允许其他合规路线，不强制使用参考解动作顺序。</p><p class="small">画面沿用封存仿真：Unitree / MuJoCo Menagerie G1 模型，Poly Haven 钢制货架及塑料货箱等素材，配合任务定制柜体、交接台与底盘。来源说明与许可随完整源码包保留。</p></div></section>
+<section id="videos"><div class="wrap"><p class="kicker">02 · 视频与执行记录</p><h2>看完整过程，再核对五个阶段</h2><p>下方默认播放严格重复第 1 条。切换可观看全部 13 条原始录像。关键帧来自同一条录像的机器阶段时刻，不替代人工阶段标注。</p><label for="run-select">选择记录 </label><select id="run-select"><option value="published-media/g1_mobile_gripper_retrieval/bf43d5bf693e-video.mp4">seed3-01 · seed 3 · 179.26 s</option><option value="published-media/g1_mobile_gripper_retrieval/3c74276aabf7-video.mp4">repeat3-02 · seed 3 · 144.58 s</option><option value="published-media/g1_mobile_gripper_retrieval/7411ccce78c4-video.mp4">repeat3-03 · seed 3 · 147.16 s</option><option value="published-media/g1_mobile_gripper_retrieval/5dd681063e65-video.mp4">edge3680 · seed 3680 · 178.16 s</option><option value="published-media/g1_mobile_gripper_retrieval/08c312737591-video.mp4">edge550 · seed 550 · 143.96 s</option><option value="published-media/g1_mobile_gripper_retrieval/7bb3256b186e-video.mp4">edge3638 · seed 3638 · 180.44 s</option><option value="published-media/g1_mobile_gripper_retrieval/7182ec734acb-video.mp4">coverage11 · seed 11 · 144.86 s</option><option selected="" value="published-media/g1_mobile_gripper_retrieval/194c38dbe29d-video.mp4">strict-r1 · seed 3 · 146.10 s</option><option value="published-media/g1_mobile_gripper_retrieval/194c38dbe29d-video.mp4">strict-r2 · seed 3 · 146.10 s</option><option value="published-media/g1_mobile_gripper_retrieval/194c38dbe29d-video.mp4">strict-r3 · seed 3 · 146.10 s</option><option value="published-media/g1_mobile_gripper_retrieval/7ad6e64edd65-video.mp4">range-seed9 · seed 9 · 181.64 s</option><option value="published-media/g1_mobile_gripper_retrieval/c2bf6d989258-video.mp4">range-seed17 · seed 17 · 181.94 s</option><option value="published-media/g1_mobile_gripper_retrieval/062cf211c99b-video.mp4">range-seed9851 · seed 9851 · 180.28 s</option></select><p><p class="current-video-link" id="run-video"><a href="/robo-si-results/infra/families/M1.html">查看最终交付的 Nyx 8× 录像 →</a></p></p><div class="vgrid"><figure class="vcard"><img alt="操作货箱" decoding="async" loading="lazy" src="/robo-si-results/media/e60e21779ef292499579.jpg"/><figcaption><strong>1. 操作货箱</strong><br/>20.66 s · strict-r1</figcaption></figure><figure class="vcard"><img alt="离开货架" decoding="async" loading="lazy" src="/robo-si-results/media/2052a4a1c548bae477f6.jpg"/><figcaption><strong>2. 离开货架</strong><br/>24.82 s · strict-r1</figcaption></figure><figure class="vcard"><img alt="移动臂独立抓持" decoding="async" loading="lazy" src="/robo-si-results/media/1088453e9290688d1969.jpg"/><figcaption><strong>3. 移动臂独立抓持</strong><br/>75.24 s · strict-r1</figcaption></figure><figure class="vcard"><img alt="进入柜内" decoding="async" loading="lazy" src="/robo-si-results/media/515706671e22a53cef66.jpg"/><figcaption><strong>4. 进入柜内</strong><br/>109.76 s · strict-r1</figcaption></figure><figure class="vcard"><img alt="支撑后释放" decoding="async" loading="lazy" src="/robo-si-results/media/e8340783da1b454de9e5.jpg"/><figcaption><strong>5. 支撑后释放</strong><br/>127.88 s · strict-r1</figcaption></figure></div><p class="note">柜内接触可能被遮挡。看不清时请在审阅工作台选择“无法判断”，结合原始位姿、接触和支撑证据复核；不要仅凭 1.0 分判定人审通过。</p><div class="table-wrap"><table><thead><tr><th>Run / Video</th><th>Physical seed</th><th>Noise seed</th><th>Score</th><th>结束时刻</th><th>Delivered</th><th>Evidence</th></tr></thead><tbody><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">seed3-01</a></td><td>3</td><td>1396661415</td><td>1.0</td><td>179.26 s</td><td>161.02 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/seed3-01/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/seed3-01/verdict.json">recheck</a></td></tr><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">repeat3-02</a></td><td>3</td><td>1617034633</td><td>1.0</td><td>144.58 s</td><td>126.30 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/repeat3-02/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/repeat3-02/verdict.json">recheck</a></td></tr><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">repeat3-03</a></td><td>3</td><td>1040282928</td><td>1.0</td><td>147.16 s</td><td>128.80 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/repeat3-03/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/repeat3-03/verdict.json">recheck</a></td></tr><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">edge3680</a></td><td>3680</td><td>527720906</td><td>1.0</td><td>178.16 s</td><td>159.92 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/edge3680/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/edge3680/verdict.json">recheck</a></td></tr><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">edge550</a></td><td>550</td><td>497649259</td><td>1.0</td><td>143.96 s</td><td>125.58 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/edge550/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/edge550/verdict.json">recheck</a></td></tr><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">edge3638</a></td><td>3638</td><td>1076059786</td><td>1.0</td><td>180.44 s</td><td>162.12 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/edge3638/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/edge3638/verdict.json">recheck</a></td></tr><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">coverage11</a></td><td>11</td><td>623026624</td><td>1.0</td><td>144.86 s</td><td>126.64 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/coverage11/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/coverage11/verdict.json">recheck</a></td></tr><tr><td><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/media--194c38dbe29d6800fc93.mp4">strict-r1</a></td><td>3</td><td>0</td><td>1.0</td><td>146.10 s</td><td>127.88 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/strict-r1/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/strict-r1/verdict.json">recheck</a></td></tr><tr><td><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/media--194c38dbe29d6800fc93.mp4">strict-r2</a></td><td>3</td><td>0</td><td>1.0</td><td>146.10 s</td><td>127.88 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/strict-r2/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/strict-r2/verdict.json">recheck</a></td></tr><tr><td><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/media--194c38dbe29d6800fc93.mp4">strict-r3</a></td><td>3</td><td>0</td><td>1.0</td><td>146.10 s</td><td>127.88 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/strict-r3/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/strict-r3/verdict.json">recheck</a></td></tr><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">range-seed9</a></td><td>9</td><td>0</td><td>1.0</td><td>181.64 s</td><td>163.22 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/range-seed9/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/range-seed9/verdict.json">recheck</a></td></tr><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">range-seed17</a></td><td>17</td><td>0</td><td>1.0</td><td>181.94 s</td><td>163.56 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/range-seed17/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/range-seed17/verdict.json">recheck</a></td></tr><tr><td><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">range-seed9851</a></td><td>9851</td><td>0</td><td>1.0</td><td>180.28 s</td><td>162.04 s</td><td><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/cases/range-seed9851/audit.json">audit</a> · <a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/range-seed9851/verdict.json">recheck</a></td></tr></tbody></table></div></div></section>
+<section class="tinted" id="scoring"><div class="wrap"><p class="kicker">03 · 评分标准</p><h2>阶段分数与最终成功分别核对</h2><p><code>m1-scoring/2-supported-release</code> · 累计阶段峰值计分；最终成功要求 delivered 在结束时仍然成立，并通过有效性检查。</p><div class="table-wrap"><table><thead><tr><th>Stage</th><th>Weight</th><th>物理判据摘要</th></tr></thead><tbody><tr><td><code>container_handled</code></td><td>10%</td><td>手／手指真实接触货箱或方块，力 ≥ 3 N 持续 0.3 s，且其中一个移动 ≥ 3 cm。</td></tr><tr><td><code>off_shelf</code></td><td>20%</td><td>方块至少离开货架前沿 5 cm，非下落且机器人直立，保持 1 s；按距离给部分分。</td></tr><tr><td><code>mobile_grasp</code></td><td>20%</td><td>两夹指各 ≥ 1 N 持续 0.2 s 获部分分；移动臂独立抓持、无其他支撑或 G1 接触 1 s 获满分。</td></tr><tr><td><code>in_cabinet</code></td><td>20%</td><td>按进入柜内的深度给部分分；到达托盘上方得满分。</td></tr><tr><td><code>delivered</code></td><td>30%</td><td>方块真实包围盒在托盘内；柜体先支撑、机器人后释放。释放力 &lt; 0.3 N，支撑力 &gt; 半重力，速度 ≤ 0.03 m/s、角速度 ≤ 0.5 rad/s，稳定 2 s，结束时仍成立。</td></tr></tbody></table></div><p>G1 摔倒、底盘倾覆、越限落物及监视器违规会影响成功／有效性。评分逻辑有 14/14 定向合成用例通过；这些是评分器测试，不是新增物理成功记录。</p></div></section>
+<section id="expert"><div class="wrap"><p class="kicker">04 · 参考专家解</p><h2>CPU 特权状态反馈参考，第一层范围</h2><p>参考控制器根据仿真真值反馈完成货箱下架、交接、抓取、运输、柜内放置与释放。此结果证明限定场景下存在完整物理执行，不代表仅用公开传感器的自主策略已经成功。</p><ul class="check"><li>严格重复：物理 seed 3、noise_seed 0，3/3 全分；每条结束 146.10 s，delivered 127.88 s。</li><li>选定边界案例 seed 9、17、9851 均成功；共覆盖 8 个物理种子。17 项活跃参数有范围表，但有限样本不等于完整分布或交互覆盖。</li><li>本轮离线重评 13/13、CPU 测试 65/65；没有新增物理运行。冻结源码 505 文件已校验，3 个本机容器镜像标识匹配；原发布包未提供完整环境锁；2026-10-25 部署补充包提供 Windows/Linux 与 agent 容器依赖锁，详见部署与复现页。</li><li>每条运行保留 56 个绑定源文件；冻结版本匹配其中 55 项，仅 admission.json 元数据不同。完整包同时保留各条运行的原始源码副本。</li></ul><div class="actions"><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/REPRODUCTION.txt">第二人复现步骤</a><a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/coverage-review.html">覆盖与子任务证据</a><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/cpu-tests.json">65 CPU tests</a><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck-summary.json">13 offline rechecks</a></div></div></section>
+<section class="tinted" id="shortcuts"><div class="wrap"><p class="kicker">05 · 已知捷径与边界</p><h2>保留失败记录与监视边界</h2><p>当前代码绑定的历史证据：正例 11/11、负例 4/4、攻击预期 11/12，另有 77 项校准记录和 5 条捷径记录。历史未封存 mass-01 失败仍保留；后续封存的质量篡改案例被判 VOID。</p><ul class="check"><li>旧低抛投成功已被当前支撑后释放评分拒绝，原判决保留供审计。</li><li>独立交付诊断曾发生阶段顺序错误；上下文补充通过，不把该失败擦除或计作五阶段独立全成功。</li><li>接触力范数 50 Hz、位姿 200 Hz；不保证连续时间或采样间隙穿透检测。</li><li>夹指存在约 1.2 mm/s 的已知抓持缓慢滑移；参考姿态让下侧手指承重。CPU 结论不外推为 GPU 成功。</li></ul><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/review/evidence/m1-current-monitor-shortcut-evidence-map-v1.json">查看完整监视／捷径证据映射</a></div></section>
+<section id="gates"><div class="wrap"><p class="kicker">06 · 验收状态</p><h2>第一层任务已完成 · 后续验收待办</h2><div class="table-wrap"><table><thead><tr><th>项目</th><th>状态</th><th>依据与剩余工作</th></tr></thead><tbody><tr><td>全流程参考</td><td>完成</td><td>13 条记录 / 8 种子，全部 1.0、success、非 VOID；离线重评 13/13。</td></tr><tr><td>严格重复</td><td>完成</td><td>物理 seed 3、noise_seed 0，3/3；得分差 0，每条 146.10 s。</td></tr><tr><td>边界与子任务</td><td>待人工验收</td><td>3 个选定边界案例通过；4 次原生诊断通过 + 1 次带上下文交付补充，不是 5 次完整任务成功。</td></tr><tr><td>录像与阶段签审</td><td>已分配，未完成</td><td>由本次请求的用户本人审阅；没有填写签名或通过结论。</td></tr><tr><td>独立第二人复现</td><td>待安排</td><td>第二人尚未确定；复现步骤及冻结源码已备齐，环境依赖仍需复现者核验。</td></tr><tr><td>监视与捷径判断</td><td>待验收</td><td>保留历史失败和采样边界；证据存在不等于人工认可。</td></tr><tr><td>发布 / 正式准入</td><td>参考资料预发布</td><td>本轮获得发布授权；admitted=false。R9 和可选第二、三层延期。</td></tr></tbody></table></div><div class="actions"><a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/index.html">开始录像与阶段审阅</a><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/release-layer1-20261024/review-assignment.json">人员分工</a><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/release-layer1-20261024/author-authorization.json">本次发布授权</a><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/m1-layer1-20261024">下载发布包</a></div><p class="small">封存文件中的历史 HOLD 状态保留原样。本次授权仅允许参考材料发布，没有代签人工验收，也没有修改准入判决。</p></div></section><section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>已有参考执行见证；设计、动作、支撑、轨迹对应及复现来源见文档。</p><p><a href="/robo-si-results/infra/reference-designs/M1.html">参考解与设计文档</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>完整任务说明与证据</h2><p class="detail-nav"><a href="#detail-scope">任务范围与场景</a> · <a href="#detail-interfaces">观测、动作与接口</a> · <a href="#detail-planning">高层目标与低层动作</a> · <a href="#detail-trajectory">轨迹与关键状态对应</a> · <a href="#detail-scoring">评分与成功判据</a> · <a href="#detail-evidence">代表证据与审阅</a> · <a href="#detail-sandbox">沙盒验证</a> · <a href="#detail-reproduce">下载与复现</a> · <a href="#detail-limits">验收边界与剩余工作</a></p><article id="detail-scope"><h3>任务范围与场景</h3><p>第一层 v0.3 / V4，CPU 特权参考</p><p>13 条完整成功、8 个物理种子、严格重复 3/3，全为 1.0；第一层已完成并发布。</p><p>G1 将货箱移到支架，小机器人再取出目标物并交付。把大尺度搬运与精细取物分开，交接时由支架提供稳定支撑。</p></article><article id="detail-interfaces"><h3>观测、动作与接口</h3><p>参考控制器的特权状态与公开代理权限分开；以本任务 SDK 和指令为准。</p><p><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/multi_robot/g1_mobile_gripper_retrieval/sandbox/agent_sdk">Agent SDK</a></p></article><article id="detail-planning"><h3>高层目标与低层动作</h3><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>取下并准备交接</td>
+<td>M1.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>移动夹爪取物</td>
+<td>M1.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>到达低柜</td>
+<td>M1.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>柜内放置</td>
+<td>M1.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>释放交付</td>
+<td>M1.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>正确立方体在货架容器内，双机未相撞</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>立方体和容器在货架外可供交接</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>目标由 X5 独立夹持</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>目标在柜口外的可插入姿态</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>立方体在托盘内且已获得柜体支撑</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>在低柜目标内释放稳定 2 s</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>轨迹与关键状态对应</h3><details><summary>动作顺序、接触与轨迹事件</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>M1.K01 · G1 接近货架、操作容器并退出</h5>
+<p>入口：正确立方体在货架容器内，双机未相撞。出口：立方体和容器在货架外可供交接。</p>
+<p>局部检查：整体抓取与退出可达，箱/目标不跌落，交接区可同时容纳双机。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1.K01.A01</td>
+<td>G1 对齐货架并预成形双手</td>
+<td>容器→货架；足→地面</td>
+<td>站位、手部误差</td>
+<td>e0000: episode [0.5, 0.5] s; e0001: episode [9.2, 9.2] s; e0002: episode [11.98, 11.98] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K01.A02</td>
+<td>挤紧容器并抬离货架</td>
+<td>货架→双手</td>
+<td>双手力、容器抬升</td>
+<td>e0004: episode [19.56, 19.56] s; e0005: episode [22.92, 22.92] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K01.A03</td>
+<td>后退并搬到低支架上方</td>
+<td>双手持容器</td>
+<td>柜口净空与容器姿态</td>
+<td>e0006: episode [25.82, 25.82] s; e0007: episode [25.82, 25.82] s; e0008: episode [30.12, 30.12] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K01.A04</td>
+<td>下放、释放容器并撤开</td>
+<td>双手→支架</td>
+<td>支架接触、容器高度</td>
+<td>e0009: episode [37.52, 37.52] s; e0010: episode [83.1, 83.1] s; e0011: episode [84.6, 84.6] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>M1.K02 · X5 对准目标并双指夹持</h5>
+<p>入口：目标可达且原支撑保持至夹持成立。出口：目标由 X5 独立夹持。</p>
+<p>局部检查：双指真实接触及净空，不能以 G1 隐藏支撑代替独立夹持。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1.K02.A01</td>
+<td>X5 选择可达抓取轴并绕行</td>
+<td>目标→容器；轮→地面</td>
+<td>容器沿口间隙及路线</td>
+<td>e0012: episode [84.6, 84.6] s; e0013: episode [84.6, 84.6] s; e0014: episode [84.6, 84.6] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K02.A02</td>
+<td>伸臂对准并闭合双指</td>
+<td>目标→容器/双指</td>
+<td>手指距离及持物状态</td>
+<td>e0016: episode [107.64, 107.64] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K02.A03</td>
+<td>抬出容器并收拢持物姿态</td>
+<td>目标→双指</td>
+<td>目标脱离容器与持物偏移</td>
+<td>e0017: episode [120.84, 120.84] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>M1.K03 · X5 持物行驶与柜前对准</h5>
+<p>入口：独立夹持稳定，G1 已让开路线。出口：目标在柜口外的可插入姿态。</p>
+<p>局部检查：底盘及持物臂扫掠、抗倾覆、柜口姿态可达。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1.K03.A01</td>
+<td>规划到柜前的绕行路线</td>
+<td>双指持目标；轮→地面</td>
+<td>障碍物及柜前站位</td>
+<td>e0018: episode [120.84, 120.84] s; e0019: episode [120.84, 120.84] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K03.A02</td>
+<td>持物行驶到柜前并对齐</td>
+<td>双指持续夹持</td>
+<td>持物偏移、轮地接触</td>
+<td>e0018: episode [120.84, 120.84] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K03.A03</td>
+<td>将物体移到柜内托盘上方</td>
+<td>双指持物</td>
+<td>柜口净空、托盘包含</td>
+<td>e0020: episode [147.84, 147.84] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>M1.K04 · 短段插入、降到托盘</h5>
+<p>入口：柜口姿态可行且托盘可达。出口：立方体在托盘内且已获得柜体支撑。</p>
+<p>局部检查：完整物体边界和入口碰撞；最后接触样本之前已承重。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1.K04.A01</td>
+<td>保持夹持伸入柜口</td>
+<td>双指持物</td>
+<td>目标包络与柜体间隙</td>
+<td>e0020: episode [147.84, 147.84] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K04.A02</td>
+<td>下降直至托盘有实际支撑</td>
+<td>双指→托盘共同承重</td>
+<td>托盘支撑力与手载荷</td>
+<td>e0021: episode [149.82, 149.82] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K04.A03</td>
+<td>在支撑持续时开始张指</td>
+<td>托盘逐步承担重量</td>
+<td>持续支撑而非只看一次触碰</td>
+<td>e0022: episode [158.76, 158.76] s; e0025: episode [158.86, 158.86] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>M1.K05 · 张指、撤臂与稳定确认</h5>
+<p>入口：托盘承重成立，撤臂路线可行。出口：在低柜目标内释放稳定 2 s。</p>
+<p>局部检查：原 supported-release 判定；不能空中松手掉到托盘。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1.K05.A01</td>
+<td>监视弱再接触并继续受控张指</td>
+<td>托盘承重；手接触递减</td>
+<td>手力、支撑力、连续采样</td>
+<td>e0022: episode [158.76, 158.76] s; e0023: episode [158.82, 158.82] s; e0024: episode [158.84, 158.84] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K05.A02</td>
+<td>确认托盘独立承重后完全张开</td>
+<td>托盘独立承重</td>
+<td>手力为零、支撑保持</td>
+<td>e0026: episode [162.66, 162.66] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M1.K05.A03</td>
+<td>撤臂并等待交付驻留</td>
+<td>目标→柜内托盘</td>
+<td>无机器人代撑与目标稳定</td>
+<td>e0027: episode [164.46, 164.46] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>评分与成功判据</h3><p>保留本页原任务评分及冻结参考 verdict；分层计划、技能展开和事件对应不产生额外任务分数。合同中的拟议评分不是当前评分实现。完整运行的分数不能赋给筛查或沙盒短测。</p><p>本参考的最终关键状态：在低柜目标内释放稳定 2 s</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/g1_mobile_gripper_retrieval/sandbox/trusted/scoring.py">原任务判据源码 / Original task criteria</a></p></article><article id="detail-evidence"><h3>代表证据与审阅</h3><p>见证：<strong>seed3-01</strong>。范围：第一层 v0.3 / V4，CPU 特权参考。</p>
+<p>13 条完整成功、8 个物理种子、严格重复 3/3，全为 1.0；第一层已完成并发布。</p>
+<p><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/seed3-01/verdict.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/M1.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>沙盒验证</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>这些检查验证启动、传感器与动作接口；不计完整任务成功。同机 WSL 不是独立第二台机器复现。</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/M1/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>下载与复现</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/ee546ff0328096ad688c58690f33b9e5afd30849/releases/M1/layer1-20261024/m1-layer1-20261024.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: f3a63959dc796d13cf62b39adfa96abb79ff4d76e8c34df6c4e8af5b5c47d7fe</p><p>下载需私有仓库权限。参考包保留历史配置与运行入口；当前沙盒工作区补齐运行资产。先按沙盒 README 安装环境并执行短测，再用参考包的冻结入口复现；不能把新接口短测当作完整专家回放。</p><p>先检查本任务入口（不运行物理），再按链接中的环境与代理交付说明启动。历史 README 中的原机器路径须替换为本机路径；本页沙盒验证表是当前检查状态。</p><pre><code>python -m infra.sandbox.inventory check --task M1
+python -m multi_robot.g1_mobile_gripper_retrieval.sandbox.launch --help</code></pre><p><a href="/robo-si-results/multi_robot/g1_mobile_gripper_retrieval/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>验收边界与剩余工作</h3><p>补取容器→X5 夹取→低柜放置的可达、承重与释放交接证据，以及新实例必要条件筛查。 用户录像／阶段审阅、第二人复现、监视／捷径及代表性覆盖验收。</p><p>已定位容器下放、抓持和释放支撑；G1/X5 部分事件是动作完成点，需用原始状态补实际动作起点及连续接触检查。</p><p>随机实例分别记录：有完整成功证据、通过可行性筛查、未确定、检查不通过。只要求声明范围内的代表完整见证与表示间对应；不要求逐个随机实例生成完整解。正式准入、人工签审和独立机器验证不由页面完成状态推定。本次新增物理执行：0。</p><p><a href="/robo-si-results/infra/reference-designs/M1.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+<section id="m1-extension"><div class="wrap"><h2>M1 完整任务表与配置</h2><p>一个任务族，9 个 case（1 个原始任务＋8 个扩展）；身体和公开规则是实测配置，不做全排列。多工具与恢复在具体场景中测试，新增仿真 0。</p><p><a href="planning/m1-extension/README.md">中文任务表</a> · <a href="planning/m1-extension/README-en.md">English task table</a> · <a href="planning/m1-extension/task-design.json">JSON</a></p></div></section></main><footer><div class="wrap">Embodied Terminal-Bench · M1 · 2026-10-24 · 第一层已完成，资料已发布；正式准入待签审</div></footer><script>document.getElementById('run-select').addEventListener('change',function(){const v=document.getElementById('run-video');v.pause();v.removeAttribute('poster');v.src=this.value;v.load();});</script><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

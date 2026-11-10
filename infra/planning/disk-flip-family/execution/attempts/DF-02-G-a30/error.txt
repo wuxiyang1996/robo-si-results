@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v1/expert/run.py", line 968, in main
+    try:attempt.execute()
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v1/expert/run.py", line 471, in execute
+    if self.tuning.get('reference_prefix_file'):return self.execute_reference_prefix()
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v1/expert/run.py", line 883, in execute_reference_prefix
+    return self.prefix_completion_callable(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v1/expert/dex3_plate_expert.py", line 50, in finish_from_prefix
+    return index_tail(a)
+           ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v1/expert/dex3_plate_expert.py", line 83, in index_tail
+    R=Rotation.from_euler('xyz',[120,75-15*smooth(np.clip((disk[0]-.37)/.06,0,1)),30],degrees=True).as_matrix();a.apply_goals({'left':(tip,R),'right':(rightp,rightR)})
+                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v1/expert/run.py", line 689, in apply_goals
+    self.step()
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v1/expert/run.py", line 422, in step
+    mujoco.mj_step(self.m,self.d);self.records.append((self.d.time,self.d.qpos.copy(),self.d.qvel.copy(),self.d.ctrl.copy(),self.qref.copy(),self.phase));row=self.assess()
+                                                                                                                                                              ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/snapshots/p2-index-bridge-v1/expert/run.py", line 216, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

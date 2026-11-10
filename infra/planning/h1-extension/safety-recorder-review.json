@@ -1,0 +1,36 @@
+{
+  "schema": "h1-p4-safety-recorder-source-review/1",
+  "reviewed_utc": "2026-10-27T21:05:15.165421+00:00",
+  "physics_executed": false,
+  "source_sha256": {
+    "humanoid/g1_support_retrieval/extension/safety_recording.py": "b70c5c4baed7b17796d235c646ffacd0d32b45780f663ed6a0ef21a05598073e",
+    "humanoid/g1_support_retrieval/extension/verify_p4_safety.py": "7504fd4361f9763b028eac64f33ad983eecf42f586595bb4960c02d9c326f9d7",
+    "humanoid/g1_support_retrieval/solution/push_box/run_push.py": "a842016caed0c1d8698127392ddb3a0b016c01ac18aba290cfa02e676506ccb2",
+    "humanoid/g1_support_retrieval/sandbox/trusted/statelog.py": "86272084ad082f3006a8fc38c31ae05624a5d7860bf9eb2aa2443651a6263581",
+    "infra/planning/collect_h1_execution.py": "a18645cef7e7fedb2aaf0509c7afdddf7d9d9b357c60ab1ff4089707b32cb718"
+  },
+  "status": "reviewed_with_partial_interval_limitation",
+  "checks": {
+    "synthetic_safety_tests_passed": 16,
+    "publication_package_tests_passed": 30,
+    "all_instantiated_collidable_objects_in_original_rule2": true,
+    "episode_presence_mask_kept_separately": true,
+    "foot_bottom_geometry": "Four frozen MJCF sphere centers transformed by measured ankle quaternion/position, subtract unchanged sphere radius",
+    "target_geometry_binding": "run_push updates FLOOR_SIZES before scene construction; adapter checks target size against frozen profile",
+    "contact_classifier": "Reuses unchanged RelayStateLogger._relay_contacts; required robot/object/ground/cabinet link maps initialized; all original classifier channels retained",
+    "torque_channel": "Signed current-state clipped control force from Genesis get_dofs_control_force, matching original logger. Not unclipped planner torque, independent mechanical torque sensing, or previous-substep qf_applied",
+    "normal_terminal_alignment": "Removes redundant pre-command sample and records terminal state at completed command count times control_dt, matching main trace and joint trace",
+    "robot_mass_runtime_sum_kg": 34.394235253334045,
+    "original_robot_mass_kg": 34.3942352,
+    "mass_abs_error_kg": 5.333404828888888e-08,
+    "mass_check_atol_kg": 1e-06,
+    "mass_tolerance_changed": false,
+    "mass_precision": "world_params promotes each float32 link mass to float64 before summation; direct float32 accumulation would be less precise and is not used",
+    "frozen_safety_report_identity": "Collector permits per-attempt snapshot absolute paths only with exact execution root/entrypoint identity and manifest+file+report digest agreement; original monitor and approved adapter bytes must match reviewed version"
+  },
+  "remaining_limitations": [
+    "A signal/exception during a four-substep control interval can leave the terminal state labelled with completed-command time rather than partial physics time. The physics/control sample-count mismatch prevents a safety pass; partial recordings must remain unknown and require careful clock interpretation. No runtime source change was made after freeze.",
+    "Source review and synthetic tests do not establish full task success or genuine physical safety coverage before a new measured run.",
+    "The force channel retains original monitor semantics; it is not an independent torque sensor or an assertion of previous-step applied impulse."
+  ]
+}

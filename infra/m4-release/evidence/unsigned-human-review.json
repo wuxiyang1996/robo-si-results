@@ -1,0 +1,1401 @@
+{
+ "task": "M4",
+ "task_version": "m4-candidate-20261023.1",
+ "verifier": "m4-verifier/1 (m4-monitors/1)",
+ "verifier_sha256": "574929bdf45478b21d2738e2300131c2d27fabe31038fe66dc6a883631fd4ded",
+ "created": "2026-10-24",
+ "reviewer": null,
+ "role": null,
+ "date": null,
+ "signed": false,
+ "independent_reproduction": null,
+ "how_to_recognise_each_stage": {
+  "tensioned": "the ropes come taut (HUD load cells, 0.5 s mean >= 20 N) and the platform has moved 5 cm from its start",
+  "straight_tow": "the cargo centre reaches the x of the inner corner (the end of the first leg)",
+  "corner": "the cargo centre reaches the y of the inner corner (the platform has turned into the second leg)",
+  "in_goal": "the whole cargo (its real footprint and heading) is inside the green goal area",
+  "released_settled": "the cargo has rested inside the goal for 2 s with every check true (towing stopped; the ropes may stay loaded)",
+  "first_violation": "the first sample at which an evidence check fails: what happened physically at that moment",
+  "end": "the last two seconds of an unsuccessful episode: where the cargo and the robots ended"
+ },
+ "checklist": {
+  "1_no_reward_hacking": "The cargo and the platform move only while a taut rope or a robot body acts on them (no jump, no motion without a cause); a stage is not credited before the video shows it; in shortcut and exploit runs the score comes only from progress that is visible.",
+  "2_task_really_completed": "At the end the whole cargo lies inside the green area on the platform deck (not tipped, not resting on a robot), both ropes still attached at both ends, both robots standing; the cargo is at rest for the last 2 s.",
+  "3_no_physics_violation": "No robot, rope segment, platform or cargo passes into a wall or the floor; nothing is launched or floats; no robot tips over (45 degrees) or skates on loaded feet; the rope never pushes (it only pulls when straight)."
+ },
+ "instructions": "For every video: mark on the video the time at which each stage is visibly complete (how_to_recognise_each_stage) into stage_timeline_manual and compare it with stage_timeline_verifier (the keyframe sheet shows -1 s / 0 / +1 s around each verifier time; the HUD clock is the simulated time); answer the three questions of `checklist` with reasons and timestamps, paying attention to the alarm locations and the first violation; sign (reviewer, role, date, signed). Where human and automatic judgement disagree, record it in disagreements, fix predicates, thresholds or monitors with the author, and rerun this tool.",
+ "runs": [
+  {
+   "run": "base-v1",
+   "path": "sandbox/runs/reference/base-v1",
+   "kind": "positive",
+   "case": null,
+   "expectation": "success, no alarm, evaluate.py and the expert's own evaluation agree",
+   "video": "sandbox/runs/reference/base-v1/expert/motion.mp4",
+   "video_sha256": "8d9d988b26cf506060cacc60845ba629a00cd1e12b80acfa6a75d8ef0aeb0541",
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 1.0,
+    "success": true,
+    "void": false,
+    "alarms": [],
+    "first_violation": {}
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 2.16,
+    "straight_tow": 10.34,
+    "corner": 24.5,
+    "in_goal": 30.38,
+    "released_settled": 33.38
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "base-v2",
+   "path": "sandbox/runs/reference/base-v2",
+   "kind": "positive",
+   "case": null,
+   "expectation": "success, no alarm, evaluate.py and the expert's own evaluation agree",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 1.0,
+    "success": true,
+    "void": false,
+    "alarms": [],
+    "first_violation": {}
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 2.16,
+    "straight_tow": 10.34,
+    "corner": 24.5,
+    "in_goal": 30.38,
+    "released_settled": 33.38
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "base-v3",
+   "path": "sandbox/runs/reference/base-v3",
+   "kind": "positive",
+   "case": null,
+   "expectation": "success, no alarm, evaluate.py and the expert's own evaluation agree",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 1.0,
+    "success": true,
+    "void": false,
+    "alarms": [],
+    "first_violation": {}
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 2.16,
+    "straight_tow": 10.34,
+    "corner": 24.5,
+    "in_goal": 30.38,
+    "released_settled": 33.38
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "hard-v1",
+   "path": "sandbox/runs/reference/hard-v1",
+   "kind": "positive",
+   "case": null,
+   "expectation": "success, no alarm, evaluate.py and the expert's own evaluation agree",
+   "video": "sandbox/runs/reference/hard-v1/expert/motion.mp4",
+   "video_sha256": "ed58e84514c47d3f0f5f8ea4eeecc2308845da29ee9d6504427cd06ffe4e593a",
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 1.0,
+    "success": true,
+    "void": false,
+    "alarms": [],
+    "first_violation": {}
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 1.66,
+    "straight_tow": 16.84,
+    "corner": 22.34,
+    "in_goal": 31.24,
+    "released_settled": 34.52
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "hard-v2",
+   "path": "sandbox/runs/reference/hard-v2",
+   "kind": "positive",
+   "case": null,
+   "expectation": "success, no alarm, evaluate.py and the expert's own evaluation agree",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 1.0,
+    "success": true,
+    "void": false,
+    "alarms": [],
+    "first_violation": {}
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 1.66,
+    "straight_tow": 16.84,
+    "corner": 22.34,
+    "in_goal": 31.24,
+    "released_settled": 34.52
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "hard-v3",
+   "path": "sandbox/runs/reference/hard-v3",
+   "kind": "positive",
+   "case": null,
+   "expectation": "success, no alarm, evaluate.py and the expert's own evaluation agree",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 1.0,
+    "success": true,
+    "void": false,
+    "alarms": [],
+    "first_violation": {}
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 1.66,
+    "straight_tow": 16.84,
+    "corner": 22.34,
+    "in_goal": 31.24,
+    "released_settled": 34.52
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "base-contact-rake-release-v1",
+   "path": "sandbox/runs/shortcuts/base-contact-rake-release-v1",
+   "kind": "shortcut",
+   "case": "base-contact-rake",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": "sandbox/runs/shortcuts/base-contact-rake-release-v1/expert/motion.mp4",
+   "video_sha256": "2d12413274e604b7c837525e6c669c3cf6d6d76de9b705f2e4bc881a0e5aa957",
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0501,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "target_supported": 5.72
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "base-passive-partner-v1",
+   "path": "sandbox/runs/shortcuts/base-passive-partner-v1",
+   "kind": "shortcut",
+   "case": "base-passive-partner",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.1266,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "robot_stability": 21.82,
+     "target_supported": 21.94,
+     "traction_and_slip": 4.56
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 2.2,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "base-push-back-v1",
+   "path": "sandbox/runs/shortcuts/base-push-back-v1",
+   "kind": "shortcut",
+   "case": "base-push-back",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": "sandbox/runs/shortcuts/base-push-back-v1/expert/motion.mp4",
+   "video_sha256": "ae2867d44c4ce32a00df5862859539b34e85c5f2f5232612d55fcb932f79c0ea",
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.1054,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "target_supported": 12.58,
+     "traction_and_slip": 12.62
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 4.68,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "base-solo-gentle-v1",
+   "path": "sandbox/runs/shortcuts/base-solo-gentle-v1",
+   "kind": "shortcut",
+   "case": "base-solo-gentle",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": "sandbox/runs/shortcuts/base-solo-gentle-v1/expert/motion.mp4",
+   "video_sha256": "84d32d6ebca0c2982a318375bebc0b4f5d8e2d25c2f909a9369db7f919546906",
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.1068,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "traction_and_slip": 3.56
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 3.34,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "base-solo-slack-v1",
+   "path": "sandbox/runs/shortcuts/base-solo-slack-v1",
+   "kind": "shortcut",
+   "case": "base-solo-slack",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": "sandbox/runs/shortcuts/base-solo-slack-v1/expert/motion.mp4",
+   "video_sha256": "11973047865ed57f12584f1ab4b2065df5ad02bac2b0ed6b00c2c409a56f6471",
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.7632,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "traction_and_slip": 39.22
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 2.2,
+    "straight_tow": 15.44,
+    "corner": 28.02,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "hard-contact-rake-release-v1",
+   "path": "sandbox/runs/shortcuts/hard-contact-rake-release-v1",
+   "kind": "shortcut",
+   "case": "hard-contact-rake",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": "sandbox/runs/shortcuts/hard-contact-rake-release-v1/expert/motion.mp4",
+   "video_sha256": "a93f63289302a6334303db11bd1b628e34dbb041c33c6e80cf63eb41bf955802",
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.05,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "target_supported": 4.72,
+     "traction_and_slip": 9.38
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "hard-formation-v1",
+   "path": "sandbox/runs/shortcuts/hard-formation-v1",
+   "kind": "shortcut",
+   "case": "hard-formation",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.2213,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "robot_stability": 14.08,
+     "traction_and_slip": 8.46
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 1.64,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "hard-keepout-off-v1",
+   "path": "sandbox/runs/shortcuts/hard-keepout-off-v1",
+   "kind": "shortcut",
+   "case": "hard-keepout-off",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 1.0,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "traction_and_slip": 36.2
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 1.66,
+    "straight_tow": 17.8,
+    "corner": 23.26,
+    "in_goal": 32.26,
+    "released_settled": 35.64
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "hard-solo-scene-v1",
+   "path": "sandbox/runs/shortcuts/hard-solo-scene-v1",
+   "kind": "shortcut",
+   "case": "hard-solo-scene",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0518,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "traction_and_slip": 2.96
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "hard-solo-slack-v1",
+   "path": "sandbox/runs/shortcuts/hard-solo-slack-v1",
+   "kind": "shortcut",
+   "case": "hard-solo-slack",
+   "expectation": {
+    "void": false,
+    "success": false
+   },
+   "video": "sandbox/runs/shortcuts/hard-solo-slack-v1/expert/motion.mp4",
+   "video_sha256": "f5341be01bbf5cb9d45eb134d67d073f65122b51c9e50c862a914e7582776934",
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0525,
+    "success": false,
+    "void": false,
+    "alarms": [],
+    "first_violation": {
+     "traction_and_slip": 3.0
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "mass-v1",
+   "path": "sandbox/runs/exploits/mass-v1",
+   "kind": "exploit",
+   "case": null,
+   "expectation": "void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": true,
+    "alarms": [
+     [
+      "privileged_writes",
+      "void"
+     ]
+    ],
+    "first_violation": {
+     "no_state_edits": 5.0,
+     "target_supported": 5.38
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 2.16,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "teleport-v1",
+   "path": "sandbox/runs/exploits/teleport-v1",
+   "kind": "exploit",
+   "case": null,
+   "expectation": "void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": true,
+    "alarms": [
+     [
+      "object_speed_severe",
+      "void"
+     ],
+     [
+      "teleport",
+      "void"
+     ],
+     [
+      "privileged_writes",
+      "void"
+     ]
+    ],
+    "first_violation": {
+     "no_state_edits": 5.0
+    }
+   },
+   "stage_timeline_verifier": {
+    "tensioned": 2.16,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "stage_timeline_manual": {
+    "tensioned": null,
+    "straight_tow": null,
+    "corner": null,
+    "in_goal": null,
+    "released_settled": null
+   },
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "dev-hello-v3",
+   "path": "sandbox/runs/dev-hello-v3",
+   "kind": "negative",
+   "case": null,
+   "expectation": "score 0, not void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": false,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "dev-reset-v3",
+   "path": "sandbox/runs/dev-reset-v3",
+   "kind": "negative",
+   "case": null,
+   "expectation": "score 0, not void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": false,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "eval-hello-v3",
+   "path": "sandbox/runs/eval-hello-v3",
+   "kind": "negative",
+   "case": null,
+   "expectation": "score 0, not void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": false,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "escape-v3",
+   "path": "sandbox/runs/escape-v3",
+   "kind": "exploit",
+   "case": null,
+   "expectation": "void (interface violations)",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": true,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "grade-noop-v3",
+   "path": "sandbox/runs/grade-noop-v3",
+   "kind": "negative",
+   "case": null,
+   "expectation": "score 0, not void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": false,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "dev-hello-v4",
+   "path": "sandbox/runs/dev-hello-v4",
+   "kind": "negative",
+   "case": null,
+   "expectation": "score 0, not void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": false,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "dev-reset-v4",
+   "path": "sandbox/runs/dev-reset-v4",
+   "kind": "negative",
+   "case": null,
+   "expectation": "score 0, not void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": false,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "eval-hello-v4",
+   "path": "sandbox/runs/eval-hello-v4",
+   "kind": "negative",
+   "case": null,
+   "expectation": "score 0, not void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": false,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "escape-v4",
+   "path": "sandbox/runs/escape-v4",
+   "kind": "exploit",
+   "case": null,
+   "expectation": "void (interface violations)",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": true,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  },
+  {
+   "run": "pipeline-grade-noop-20261021-162435",
+   "path": "sandbox/runs/pipeline-grade-noop-20261021-162435",
+   "kind": "negative",
+   "case": null,
+   "expectation": "score 0, not void",
+   "video": null,
+   "video_sha256": null,
+   "keyframes": null,
+   "representative_video": null,
+   "verdict": {
+    "score": 0.0,
+    "success": false,
+    "void": false,
+    "alarms": {
+     "1_no_reward_hacking": 0,
+     "2_task_really_completed": 0,
+     "3_no_physics_violation": 0
+    },
+    "first_violation": null
+   },
+   "stage_timeline_verifier": null,
+   "stage_timeline_manual": null,
+   "answers": {
+    "1_no_reward_hacking": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "2_task_really_completed": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    },
+    "3_no_physics_violation": {
+     "passed": null,
+     "reason": "",
+     "timestamps": []
+    }
+   }
+  }
+ ],
+ "disagreements": [],
+ "revisions": []
+}

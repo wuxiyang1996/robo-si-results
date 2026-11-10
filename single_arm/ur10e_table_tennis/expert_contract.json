@@ -1,0 +1,140 @@
+{
+  "schema": "hierarchical-expert-contract/1",
+  "task_id": "ur10e_table_tennis",
+  "implemented": true,
+  "scope": "finite_exact_state_based_single_return_cases",
+  "high_level_goals": [
+    {
+      "id": "H0",
+      "goal": "prepare_interception",
+      "actions": [
+        "approach"
+      ]
+    },
+    {
+      "id": "H1",
+      "goal": "return_to_target",
+      "actions": [
+        "strike",
+        "follow_through"
+      ]
+    },
+    {
+      "id": "H2",
+      "goal": "recover_ready",
+      "actions": [
+        "recover",
+        "hold"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "approach",
+      "subgoal_id": "H0",
+      "entry_predicates": [
+        "normal_reset",
+        "incoming_ball_approaching",
+        "candidate_screen_pass"
+      ],
+      "measured_exit_predicates": [
+        "actual_joint_position_tracks_preparation_reference"
+      ],
+      "constraints": [
+        "joint_limits",
+        "no_robot_collision"
+      ],
+      "controller": "quintic_pd_inverse_dynamics_v1",
+      "failure_exit": "record_failure; no fabricated success; bounded trajectory ends at ready",
+      "feedback_scope": "joint_tracking_feedback; ball_plan_frozen_before_clock_advance"
+    },
+    {
+      "id": "strike",
+      "subgoal_id": "H1",
+      "entry_predicates": [
+        "approach_completed",
+        "incoming_own_bounce_expected"
+      ],
+      "measured_exit_predicates": [
+        "measured_racket_contact_at_contact_window"
+      ],
+      "constraints": [
+        "single_legal_contact",
+        "bounded_joint_speed",
+        "bounded_torque"
+      ],
+      "controller": "quintic_pd_inverse_dynamics_v1",
+      "failure_exit": "record_failure; no fabricated success; bounded trajectory ends at ready",
+      "feedback_scope": "joint_tracking_feedback; ball_plan_frozen_before_clock_advance"
+    },
+    {
+      "id": "follow_through",
+      "subgoal_id": "H1",
+      "entry_predicates": [
+        "strike_trajectory_entered"
+      ],
+      "measured_exit_predicates": [
+        "racket_motion_decelerates",
+        "actual_ball_outgoing"
+      ],
+      "constraints": [
+        "no_second_strike",
+        "no_robot_collision"
+      ],
+      "controller": "quintic_pd_inverse_dynamics_v1",
+      "failure_exit": "record_failure; no fabricated success; bounded trajectory ends at ready",
+      "feedback_scope": "joint_tracking_feedback; ball_plan_frozen_before_clock_advance"
+    },
+    {
+      "id": "recover",
+      "subgoal_id": "H2",
+      "entry_predicates": [
+        "follow_through_completed"
+      ],
+      "measured_exit_predicates": [
+        "ready_joint_tolerance_reached"
+      ],
+      "constraints": [
+        "bounded_joint_motion",
+        "no_robot_collision"
+      ],
+      "controller": "quintic_pd_inverse_dynamics_v1",
+      "failure_exit": "record_failure; no fabricated success; bounded trajectory ends at ready",
+      "feedback_scope": "joint_tracking_feedback; ball_plan_frozen_before_clock_advance"
+    },
+    {
+      "id": "hold",
+      "subgoal_id": "H2",
+      "entry_predicates": [
+        "ready_pose_reached"
+      ],
+      "measured_exit_predicates": [
+        "joint_speed_below_threshold_for_dwell",
+        "independent_target_landing_true"
+      ],
+      "constraints": [
+        "live_hold_at_episode_end",
+        "no_reset_or_stitching"
+      ],
+      "controller": "quintic_pd_inverse_dynamics_v1",
+      "failure_exit": "record_failure; no fabricated success; bounded trajectory ends at ready",
+      "feedback_scope": "joint_tracking_feedback; ball_plan_frozen_before_clock_advance"
+    }
+  ],
+  "mapping_checks": {
+    "HL_LL": "ordered action IDs and plan identity",
+    "LL_TRAJ": "polynomial position/velocity/acceleration reconstruction; contiguous command ranges; measured entry/exit; substep physical monitors",
+    "HL_TRAJ": "independent contact, net, first landing and recovery predicates plus strike/action time alignment"
+  },
+  "instance_statuses": [
+    "witnessed_full",
+    "screen_pass",
+    "unknown",
+    "rejected"
+  ],
+  "screen_pass_is_success": false,
+  "general_skill_envelopes": null,
+  "arbitrary_skill_composition_verified": false,
+  "at_least_one_continuous_witness_required": true,
+  "evidence": "acceptance/reference-v1/campaign.json"
+}

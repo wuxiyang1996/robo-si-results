@@ -1,0 +1,51 @@
+{
+  "schema": "disk-flip-acceptance-plan/1",
+  "created_at": "2026-10-29T02:43:51.339986+00:00",
+  "scope": "Six declared fixed-base settings; no arbitrary random-start, whole-body, hardware or agent-performance claim",
+  "settings": [
+    "DF-01-G",
+    "DF-02-G",
+    "DF-02-F",
+    "DF-03-G",
+    "DF-04-G",
+    "DF-04-S"
+  ],
+  "development_trials": "Retain all attempts; failed candidates cannot count as acceptance repetitions",
+  "qualification_cohort": {
+    "case": "declared nominal generator configuration per setting",
+    "reason": "Covers every selected task/body/object combination and all grip/turn/support/release transitions",
+    "fresh_runs_per_setting": 3,
+    "independent_control_replays_per_setting": 1,
+    "freeze_controller_before_cohort": true,
+    "change_requires_new_cohort": true,
+    "replace_failed_repetition": false
+  },
+  "required_automatic_gates": [
+    "complete_generated_start_to_goal_success",
+    "high_low_and_trajectory_mapping_coverage",
+    "same_limits_and_physics_as_task",
+    "independent_scorer_and_control_replay",
+    "no_op_and_stage_counterexamples",
+    "integrity_and_illegal_action_probes",
+    "repetition_cohort",
+    "portable_assets_and_reproducible_commands",
+    "isolated_action_interface_execution",
+    "videos_and_contact_transition_review_material"
+  ],
+  "required_external_gates": {
+    "human_video_signoff": "pending; must name a real reviewer with timestamps",
+    "second_person_reproduction": "pending; automated replay by same author is not second-person reproduction"
+  },
+  "admission_rule": "All required gates pass; never infer human signoff from automated checks",
+  "frozen_extension_limits": {
+    "linear_m_s": 0.12,
+    "angular_rad_s": 0.65,
+    "robot_load_n": 18,
+    "table_load_n": 8,
+    "p3_local_body_load_n": 4,
+    "unsupported_grace_s": 0.1,
+    "terminal_hold_s": 2
+  },
+  "original_protocol": "DF-01 frozen Genesis protocol retained",
+  "acceptance_policy_sha256": "516305662b92013bf220cfae386cc4a4197032bc7747d1794c8aece67cdbce42"
+}

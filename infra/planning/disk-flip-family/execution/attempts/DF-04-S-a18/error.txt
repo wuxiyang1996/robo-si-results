@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 654, in main
+    self.move('release',{'right':(self.hand_pose('right')[0]+[-.06,0,.06],R)},seconds=12)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 415, in execute
+    if self.contacts()[0]<.10:raise RuntimeError('no_measured_grasp_contact')
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 484, in edge_regrasp
+    self.pressure_control=False
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 350, in move
+    elif target is not None:self.qref=q0+u*(target-q0)
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 332, in step
+    for _ in range(8):
+                       
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 171, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

@@ -1,0 +1,98 @@
+{
+  "schema": "h1-v4-probe-independent-review/1",
+  "job_id": "8036294",
+  "status": "final_raw_records_independently_reviewed",
+  "reviewed_at_utc": "2026-10-27T22:32:08.488230+00:00",
+  "review_kind": "Post-execution evidence-reader strengthening; not a modification to or member of the frozen execution contract",
+  "reader_path": "humanoid/g1_support_retrieval/extension/verify_v4_probe.py",
+  "reader_sha256": "f777abaf1347731ccfb99bc435b5f12b8081c0f001b27e6d96d3f4f5e033faad",
+  "frozen_execution_contract_sha256": "9da6167ada3b8dca4a25e73537f94081b98eeada7b4af503398a9d3fc3e03410",
+  "frozen_acceptance_sha256": "2f0bb5c01c0ee1f880ef8c1871955e96cd4e047c92972277674756fd8eae4576",
+  "frozen_identity_unchanged": true,
+  "fail_closed_review": {
+    "two_feet_finite_nonbool_exact_length": true,
+    "current_six_safety_input_hashes_required": true,
+    "profile_snapshot_and_fixed_criteria_required": true,
+    "frozen_source_bindings_rechecked": true
+  },
+  "synthetic_tests": {
+    "command": "python -m unittest humanoid.g1_support_retrieval.extension.test_v4_probe",
+    "passed": 9,
+    "physics": false
+  },
+  "diagnostic_only": true,
+  "full_task_success": false,
+  "new_gpu_launched": false,
+  "raw_result_review": {
+    "controller_status": "exception:RuntimeError:bounded_wall_stop_signal_2",
+    "measured_duration_s": 125.84,
+    "control_commands": 6292,
+    "trace_states": 6293,
+    "physics_command_rows": 25169,
+    "actual_audited_physics_steps": 25168,
+    "expected_physics_steps": 25168,
+    "exact_physics_command_coverage_matches": false,
+    "max_actual_position_overshoot_rad": 0.0027652788162231268,
+    "max_speed_ratio": 0.09026568000381058,
+    "max_effort_ratio": 1.0,
+    "original_safety_complete": true,
+    "original_safety_passed": true,
+    "original_safety_events": [],
+    "foot_support_checked_states": 1163,
+    "minimum_best_foot_force_N": 0.0,
+    "foot_support_failed_state_indices": [
+      5208,
+      5209,
+      6292
+    ],
+    "actual_elbow_command_maxima_rad": {
+      "left": 1.9999999999999998,
+      "right": 1.9999999999999998
+    },
+    "terminal_opening_mirrored_finger_command_minima_rad": {
+      "left_index_0": 0.06,
+      "left_index_1": 0.06,
+      "left_middle_0": 0.06,
+      "left_middle_1": 0.06,
+      "right_index_0": 0.06,
+      "right_index_1": 0.06,
+      "right_middle_0": 0.06,
+      "right_middle_1": 0.06
+    },
+    "terminal_command_start_index": 5079,
+    "native_errors": [
+      "actuator_max_position_overshoot",
+      "diagnostic_or_partial_start_never_full_witness",
+      "final_released_stable_dwell_too_short",
+      "exact_physics_command_coverage_mismatch",
+      "diagnostic_or_partial_start_never_full_witness"
+    ],
+    "physical_goal_met": false,
+    "diagnostic_accepted": false,
+    "diagnostic_failed_predicates": [
+      "controller_finished_original_start_plan",
+      "all_physics_actuator_constraints",
+      "clear_and_stand_sampled_foot_support",
+      "complete_exact_physics_command_coverage",
+      "no_other_native_integrity_failures"
+    ],
+    "diagnostic_errors": [],
+    "task_success": false,
+    "full_witness": false,
+    "foot_support_failed_times_s": [
+      104.16,
+      104.18,
+      125.84
+    ],
+    "interruption_boundary_note": "The interrupted terminal row at125.84s has zero contact fields; this is not sufficient to claim physical flight. Two earlier ClearHands raw states at104.16/104.18s also have both foot forces zero. The physics command log includes one extra boundary command not matched to an audited executed interval (25169 rows vs25168 audited steps); exact coverage fails and no rows were removed."
+  },
+  "input_hashes": {
+    "outcome.json": "dc004628508edd3ce86cd8e5c93d21766c6e6ed33f2ba3a964e0a76f1deda106",
+    "execution/result.json": "018adf564368d50e39c15af0b5d12cb9b395f5860f2e18f104743d3596471753",
+    "execution/trace.json": "9cb1cbc7fc9fc124d046d5d4ed6f1c7eeb8c528bd65083392d9500992901e2f1",
+    "execution/actuator_audit.json": "1cf6c6871782d4d9c8204d2621ea976964d393572ffb43b0696b54aad5df6eb1",
+    "execution/physics_commands.npz": "8584f6dcaea61270a395b5caa2c9d8be3aadc9fee535553ccabc0f2eafeeff98",
+    "original_safety_independent.json": "a737de24bc6bc311c01eee43408c915beebf324eac07d709b48d1c4abe2569b1",
+    "diagnostic_acceptance.json": "f03837c972472efe92ab74b71f35d20b16af302251543eca15bdd796759a193e"
+  }
+}

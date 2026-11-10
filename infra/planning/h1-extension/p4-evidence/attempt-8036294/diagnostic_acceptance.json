@@ -1,0 +1,174 @@
+{
+  "schema": "h1-p4-v4-independent-diagnostic-acceptance/1",
+  "diagnostic_only": true,
+  "task_success": false,
+  "full_witness": false,
+  "formal_admission": false,
+  "human_review": "not_signed",
+  "diagnostic_accepted": false,
+  "checks": [
+    {
+      "predicate": "acceptance_document_identity",
+      "passed": true,
+      "metrics": {}
+    },
+    {
+      "predicate": "diagnostic_not_native_full",
+      "passed": true,
+      "metrics": {}
+    },
+    {
+      "predicate": "contract_bound_before_first_physics",
+      "passed": true,
+      "metrics": {}
+    },
+    {
+      "predicate": "controller_finished_original_start_plan",
+      "passed": false,
+      "metrics": {}
+    },
+    {
+      "predicate": "source_and_asset_identity",
+      "passed": true,
+      "metrics": {
+        "mismatched": [],
+        "asset_pre_post_equal": true
+      }
+    },
+    {
+      "predicate": "all_physics_actuator_constraints",
+      "passed": false,
+      "metrics": {
+        "samples": 25168,
+        "max_position_overshoot_rad": 0.0027652788162231268,
+        "position_tolerance_rad": 0.001,
+        "max_speed_ratio": 0.09026568000381058,
+        "max_effort_ratio": 1.0
+      }
+    },
+    {
+      "predicate": "independent_safety_matches_current_inputs",
+      "passed": true,
+      "metrics": {}
+    },
+    {
+      "predicate": "original_five_safety_rules",
+      "passed": true,
+      "metrics": {
+        "events": [],
+        "status": "passed"
+      }
+    },
+    {
+      "predicate": "complete_control_timeline",
+      "passed": true,
+      "metrics": {}
+    },
+    {
+      "predicate": "clear_and_stand_sampled_foot_support",
+      "passed": false,
+      "metrics": {
+        "samples_checked": 1163,
+        "failed_indices": [
+          5208,
+          5209,
+          6292
+        ],
+        "failed_times_s": [
+          104.16,
+          104.18,
+          125.84
+        ],
+        "criterion": "at least one measured floor foot force >1 N each control state"
+      }
+    },
+    {
+      "predicate": "complete_exact_physics_command_coverage",
+      "passed": false,
+      "metrics": {}
+    },
+    {
+      "predicate": "actual_elbow_command_ceiling",
+      "passed": true,
+      "metrics": {
+        "maximum_reference_rad": {
+          "left_elbow_joint": 1.9999999999999998,
+          "right_elbow_joint": 1.9999999999999998
+        },
+        "ceiling_rad": 2.0,
+        "float_encoding_tolerance_rad": 1e-06
+      }
+    },
+    {
+      "predicate": "terminal_opening_finger_interior_reference",
+      "passed": true,
+      "metrics": {
+        "minimum_inward_reference_rad": {
+          "left_hand_index_0_joint": 0.06,
+          "left_hand_index_1_joint": 0.06,
+          "left_hand_middle_0_joint": 0.06,
+          "left_hand_middle_1_joint": 0.06,
+          "right_hand_index_0_joint": 0.06,
+          "right_hand_index_1_joint": 0.06,
+          "right_hand_middle_0_joint": 0.06,
+          "right_hand_middle_1_joint": 0.06
+        },
+        "floor_rad": 0.06,
+        "float_encoding_tolerance_rad": 1e-06,
+        "command_range_half_open": [
+          5079,
+          6292
+        ],
+        "scope": "ClearHands through final StandUp/hold, initial neutral pose not included"
+      }
+    },
+    {
+      "predicate": "no_other_native_integrity_failures",
+      "passed": false,
+      "metrics": {
+        "expected_diagnostic_or_unreached_D_errors": [
+          "diagnostic_or_partial_start_never_full_witness",
+          "final_released_stable_dwell_too_short",
+          "diagnostic_or_partial_start_never_full_witness"
+        ],
+        "unexpected_errors": [
+          "actuator_max_position_overshoot",
+          "exact_physics_command_coverage_mismatch"
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "reviewer_sha256": "f777abaf1347731ccfb99bc435b5f12b8081c0f001b27e6d96d3f4f5e033faad",
+  "implementation_scope": "Independent reader of pre-execution frozen acceptance document; no physical/task threshold changes. Initial neutral finger reference is outside terminal opening scope.",
+  "frozen_acceptance_sha256": "2f0bb5c01c0ee1f880ef8c1871955e96cd4e047c92972277674756fd8eae4576",
+  "acceptance": {
+    "schema": "h1-p4-v4-probe-acceptance/1",
+    "frozen_before_launch": true,
+    "scope": "diagnostic only; never full task feasibility",
+    "conditions": [
+      "controller plan_completed from fresh original start, no reset/checkpoint",
+      "all-physics actual position overshoot <=0.001rad, speed/effort ratios<=1.001",
+      "original five safety rules complete and passed with unchanged thresholds",
+      "at least one measured foot floor force >1N at every ClearHands/StandUp control state (unchanged macro predicate)",
+      "actual control references for elbows<=2.0rad and mirrored index/middle open-reference values remain>=0.06rad inward through terminal opening",
+      "full trace/command/physics coverage and frozen source/assets identity intact"
+    ],
+    "task_goal_required": false,
+    "reason": "One cycle deliberately does not cover required ground transport; full original-start three-cycle validation remains mandatory."
+  },
+  "physical_goal_met_diagnostic_only": false,
+  "input_hashes": {
+    "profile.json": "1428195eda7fdc026807a1063b9ce5bd77b3be912c56a4b4322f5010679f9242",
+    "refinement-contract.json": "9da6167ada3b8dca4a25e73537f94081b98eeada7b4af503398a9d3fc3e03410",
+    "refinement_contract_binding.json": "36698d7b8c09e7f24d064e725a080d59be438ded11bf0000160b50f3eecbdf78",
+    "frozen_documents/v4-probe-acceptance.json": "2f0bb5c01c0ee1f880ef8c1871955e96cd4e047c92972277674756fd8eae4576",
+    "execution/trace.json": "9cb1cbc7fc9fc124d046d5d4ed6f1c7eeb8c528bd65083392d9500992901e2f1",
+    "execution/command_trace.json": "4b5ec50e914d87ad7991c6cce01456e011fb8bd712d6be8e965312032e518317",
+    "execution/physics_commands.npz": "8584f6dcaea61270a395b5caa2c9d8be3aadc9fee535553ccabc0f2eafeeff98",
+    "execution/actuator_audit.json": "1cf6c6871782d4d9c8204d2621ea976964d393572ffb43b0696b54aad5df6eb1",
+    "execution/result.json": "018adf564368d50e39c15af0b5d12cb9b395f5860f2e18f104743d3596471753",
+    "original_safety_independent.json": "a737de24bc6bc311c01eee43408c915beebf324eac07d709b48d1c4abe2569b1",
+    "outcome.json": "dc004628508edd3ce86cd8e5c93d21766c6e6ed33f2ba3a964e0a76f1deda106"
+  }
+}

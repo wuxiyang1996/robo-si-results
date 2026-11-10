@@ -1,0 +1,72 @@
+{
+  "schema": "sokoban-map-evaluation/1",
+  "alignment": "one fixed initial spawn-frame transform per robot, evaluator only",
+  "truth": "current crate center cells and fixed walls; grid-level diagnostic, not footprint clearance",
+  "query_set": "all cells of the authored board, including boundary walls",
+  "snapshots": 1,
+  "series": [
+    {
+      "time": 0.0,
+      "agents": {
+        "g1_a": {
+          "local": {
+            "query_cells": 63,
+            "known_cells": 1,
+            "coverage": 0.015873015873015872,
+            "known_occupancy_accuracy": 1.0,
+            "correct_known_fraction_of_full_board": 0.015873015873015872,
+            "free_space_precision": 1.0,
+            "free_space_recall": 0.037037037037037035,
+            "out_of_board_predictions": 0
+          }
+        },
+        "g1_b": {
+          "local": {
+            "query_cells": 63,
+            "known_cells": 1,
+            "coverage": 0.015873015873015872,
+            "known_occupancy_accuracy": 1.0,
+            "correct_known_fraction_of_full_board": 0.015873015873015872,
+            "free_space_precision": 1.0,
+            "free_space_recall": 0.037037037037037035,
+            "out_of_board_predictions": 0
+          }
+        }
+      }
+    }
+  ],
+  "final": {
+    "time": 0.0,
+    "agents": {
+      "g1_a": {
+        "local": {
+          "query_cells": 63,
+          "known_cells": 1,
+          "coverage": 0.015873015873015872,
+          "known_occupancy_accuracy": 1.0,
+          "correct_known_fraction_of_full_board": 0.015873015873015872,
+          "free_space_precision": 1.0,
+          "free_space_recall": 0.037037037037037035,
+          "out_of_board_predictions": 0
+        }
+      },
+      "g1_b": {
+        "local": {
+          "query_cells": 63,
+          "known_cells": 1,
+          "coverage": 0.015873015873015872,
+          "known_occupancy_accuracy": 1.0,
+          "correct_known_fraction_of_full_board": 0.015873015873015872,
+          "free_space_precision": 1.0,
+          "free_space_recall": 0.037037037037037035,
+          "out_of_board_predictions": 0
+        }
+      }
+    }
+  },
+  "limitations": [
+    "No claim of calibrated map uncertainty or generalization.",
+    "Cross-region connectivity and event-specific update delay are pending metrics.",
+    "A planning map is scored only when the agent actually constructed it."
+  ]
+}

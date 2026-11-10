@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="22 selected tasks. Use environmental support to change your own workspace, assess reach, load, footholds and balance, then retrieve, return safely and deliver on the ground. Intermediate transfer and other legal complete routes are accepted." name="description"/><title>H1 · Self-climbing, tools and body adaptation</title><link href="contribute.css" rel="stylesheet"/><style>video{display:block;width:100%;max-width:960px;background:#111;border-radius:12px}td{vertical-align:top}</style><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex, nofollow, noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/task-h1-zh.html">中文</a></div></header><aside class="document-notice"><div class="wrap">Historical task design and acceptance notes are retained. Videos are consolidated in the final Nyx 8× galleries; <a href="/robo-si-results/infra/archive-task-h1-en.html">archived original page</a></div></aside>
+<main id="main"><section id="retrieval-family-current"><div class="wrap"><h2>H1: 22 selected independent tasks</h2><p>20 split registrations plus two new operations: autonomous transfer and safe return, and narrow-workspace body adaptation. H1S-07/10/11 are non-scoring groups. No additional common-feasible body/hand calibration tasks. Accept every complete solution satisfying the goal and public constraints; reference routes are not hidden scoring requirements.</p><div class="table-wrap"><table><thead><tr><th>ID</th><th>Task</th><th>Evidence</th></tr></thead><tbody><tr><td>H1S-01</td><td>Frozen G1/Dex3 baseline</td><td>Historical scope</td></tr><tr><td>H1S-02</td><td>G1 five-finger handling</td><td>unknown</td></tr><tr><td>H1S-03</td><td>Wheels and movable ramp</td><td>unknown</td></tr><tr><td>H1S-04</td><td>A3 retrieval</td><td>unknown</td></tr><tr><td>H1S-05</td><td>G1 two tiers / A3 one tier</td><td>unknown</td></tr><tr><td>H1S-06</td><td>Infeasibility and physical exit</td><td>unknown</td></tr><tr><td>H1S-07.P1</td><td>Push clear and retrieve</td><td>unknown</td></tr><tr><td>H1S-07.P2</td><td>Push a support into place</td><td>unknown</td></tr><tr><td>H1S-07.P3</td><td>Turn or change pushing side</td><td>unknown</td></tr><tr><td>H1S-07.P4</td><td>Push a target that cannot be lifted</td><td>unknown</td></tr><tr><td>H1S-08</td><td>Stretch handled box</td><td>unknown</td></tr><tr><td>H1S-09</td><td>Stretch infeasibility and exit</td><td>unknown</td></tr><tr><td>H1S-10.A</td><td>G1 support selection</td><td>unknown</td></tr><tr><td>H1S-10.B</td><td>A3 support selection</td><td>unknown</td></tr><tr><td>H1S-10.C</td><td>Wheeled platform and ramp choice</td><td>unknown</td></tr><tr><td>H1S-10.D</td><td>Stretch work/transfer surface choice</td><td>unknown</td></tr><tr><td>H1S-11.A</td><td>Directly reachable retrieval</td><td>unknown</td></tr><tr><td>H1S-11.B</td><td>Tool-enabled complete retrieval</td><td>unknown</td></tr><tr><td>H1S-11.C</td><td>No feasible route including tools; exit</td><td>unknown</td></tr><tr><td>H1S-12</td><td>Same-color identification</td><td>unknown</td></tr><tr><td>H1S-13</td><td>Autonomous transfer and safe return</td><td>unknown</td></tr><tr><td>H1S-14</td><td>Body adaptation in a narrow workstation</td><td>unknown</td></tr></tbody></table></div><p>The current 2 kg ceiling is a conservative new-design load screen; components, pose and dynamics still require verification. It is not a body-mass limit or certification. Infeasible episodes permit physical Q exit by all robots, independently stable and empty-handed for 3 seconds. Correct abstention requires all-route evidence; unknown is not certified infeasible.</p><p><a href="/robo-si-results/infra/task-h1-en.html#h1-selected-scope">Full task cards</a> · <a href="/robo-si-results/infra/task-families-en.html">H1 / M1 / M3</a> · <a href="/robo-si-results/infra/planning/current-task-registry.json">JSON</a></p><p>Implementation and Gamma GPU development validation are authorized and underway. See the implementation ledger below for each attempt and detailed requirements. Historical scores and evidence retain their scope.</p></div></section><section id="h1-implementation"><div class="wrap"><h2>Implementation and Gamma GPU validation of the 22 tasks</h2><p>Implementation contracts, candidate expert plans, measured physics and formal admission are tracked separately. Historical H1 successes do not transfer to new scenes.</p><p>Implementation started for 22 tasks; candidate high/low-level contracts are compiled. 14 jobs retained, 11 with finalized measured physics records (including 3 diagnostic episodes), 0 tasks with a new scoped native-scored witness; 6 passive asset probes are tracked separately. Diagnostic episodes and asset probes cannot count as complete task witnesses. This is not completion of all tasks or formal admission.</p><p>The five shared safety rules from the original release standard also apply. Runs from v3 record and independently audit the original five-rule channels; missing early evidence is not retroactively passed. Geometry, velocity and peak-actuator checks alone do not establish compliance with every release rule.</p><div class="table-wrap"><table><thead><tr><th>Task</th><th>Job</th><th>Run kind</th><th>Execution state</th><th>Physical result</th></tr></thead><tbody><tr><td>H1S-07.P4</td><td>8034725</td><td>task_attempt</td><td>FAILED</td><td>Failed before physics startup; exception retained, no physics execution counted.</td></tr><tr><td>H1S-07.P4</td><td>8034773</td><td>task_attempt</td><td>FAILED</td><td>Measured physics retained; complete success is not established. Reasons: missing_or_invalid_evidence:FileNotFoundError:[Errno 2] No such file or directory: 'humanoid/g1_support_retrieval/extension/validation/attempt-8034773/execution_identity.json', original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.004651170rad &gt; original_standard=0.001rad Latest measured log: t=241 s, phase hold_both.</td></tr><tr><td>H1S-07.P4</td><td>8034839</td><td>task_attempt</td><td>COMPLETED</td><td>Measured physics retained; complete success is not established. Reasons: actuator_max_position_overshoot, original_five_safety_rules_unknown, original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.004584532rad &gt; original_standard=0.001rad Latest measured log: t=248 s, phase hold_both.</td></tr><tr><td>H1S-07.P4</td><td>8034905</td><td>task_attempt</td><td>COMPLETED</td><td>Measured physics retained; complete success is not established. Reasons: actuator_max_position_overshoot, original_five_safety_rules_unknown, original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.004719417rad &gt; original_standard=0.001rad Latest measured log: t=235 s, phase hold_both.</td></tr><tr><td>H1S-07.P4</td><td>8035059</td><td>task_attempt</td><td>FAILED</td><td>Measured physics retained; complete success is not established. Reasons: actuator_max_position_overshoot, original_five_safety_rules_unknown, original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.004585128rad &gt; original_standard=0.001rad Latest measured log: t=246 s, phase hold_both.</td></tr><tr><td>H1S-07.P4</td><td>8035603</td><td>diagnostic_episode</td><td>FAILED</td><td>Short controller diagnostic; never counted as a complete task witness. Measured physics retained; complete success is not established. Reasons: final_released_stable_dwell_too_short, original_five_safety_rules_unknown, original_five_rule_safety_failed_or_coverage_not_verified Latest measured log: t=19 s, phase planned_steps_both.</td></tr><tr><td>H1S-07.P4</td><td>8035684</td><td>task_attempt</td><td>CANCELLED by 17237</td><td>Cancelled while queued to include a pre-start review correction; zero physics steps.</td></tr><tr><td>H1S-07.P4</td><td>8035717</td><td>task_attempt</td><td>COMPLETED</td><td>Measured physics retained; complete success is not established. Reasons: original_five_safety_rules_failed, original_five_rule_safety_failed_or_coverage_not_verified Latest measured log: t=250 s, phase hold_both.</td></tr><tr><td>H1S-07.P4</td><td>8035839</td><td>task_attempt</td><td>COMPLETED</td><td>Measured physics retained; complete success is not established. Reasons: original_five_safety_rules_failed, original_five_rule_safety_failed_or_coverage_not_verified Latest measured log: t=262 s, phase hold_both.</td></tr><tr><td>H1S-07.P4</td><td>8035840</td><td>task_attempt</td><td>COMPLETED</td><td>Measured physics retained; complete success is not established. Reasons: actuator_max_position_overshoot, original_five_safety_rules_failed, original_five_rule_safety_failed_or_coverage_not_verified, joint_position_overshoot=0.003747418rad &gt; original_standard=0.001rad Latest measured log: t=252 s, phase hold_both.</td></tr><tr><td>H1S-07.P4</td><td>8036294</td><td>diagnostic_episode</td><td>COMPLETED</td><td>Short controller diagnostic; never counted as a complete task witness. Measured physics retained; complete success is not established. Reasons: actuator_max_position_overshoot, diagnostic_or_partial_start_never_full_witness, final_released_stable_dwell_too_short, exact_physics_command_coverage_mismatch, diagnostic_or_partial_start_never_full_witness, joint_position_overshoot=0.002765279rad &gt; original_standard=0.001rad Latest measured log: t=125 s, phase stand_up_both. Independent diagnostic report: failed.</td></tr><tr><td>H1S-07.P4</td><td>8036707</td><td>diagnostic_episode</td><td>COMPLETED</td><td>Short controller diagnostic; never counted as a complete task witness. Measured physics retained; complete success is not established. Reasons: diagnostic_or_partial_start_never_full_witness, final_released_stable_dwell_too_short, diagnostic_or_partial_start_never_full_witness Latest measured log: t=24 s, phase hold_both. Independent diagnostic report: passed.</td></tr><tr><td>H1S-07.P4</td><td>8036941</td><td>task_attempt</td><td>RUNNING</td><td>Job running or queued; no finalized physics result yet.</td></tr><tr><td>H1S-01</td><td>8034801</td><td>original_baseline_attempt</td><td>FAILED</td><td>Measured physics retained; complete success is not established. The original expert reached the contact-QP iteration limit during setdown preparation; the chain was incomplete. Latest measured log: t=434.22 s, phase walk:gate.</td></tr></tbody></table></div><p><a href="planning/h1-extension/execution-progress.json">Execution ledger JSON</a> · <a href="planning/h1-extension/implementation-status.json">Requirements JSON</a> · <a href="planning/h1-extension/implementation-contracts.json">High / low-level candidate plans</a></p><p><a href="planning/h1-extension/embodiment-selection.md">Selected embodiments: Stretch 3, Dex3 and Inspire</a> · <a href="planning/h1-extension/g1-matched-body-audit.json">G1 matched-body static audit</a></p><h3>Official assets and short physics probes</h3><p>6 development body candidates completed passive Gamma GPU loading probes. No stabilization, locomotion or manipulation controller was used; task success is null. Importer collision filtering and inertia approximations remain documented. These probes do not count as complete H1 task successes.</p><div class="table-wrap"><table><thead><tr><th>Model</th><th>Steps / simulation seconds</th><th>Final linear speed m/s</th><th>Neutral collision pairs filtered</th></tr></thead><tbody><tr><td>a3_t3d0</td><td>400 / 2</td><td>0.597261</td><td>10</td></tr><tr><td>stretch4_francis_sg4</td><td>400 / 2</td><td>0.000139</td><td>22</td></tr><tr><td>g1_inspire_DFQ</td><td>400 / 2</td><td>0.511504</td><td>2</td></tr><tr><td>galaxea_r1_v2_1_0</td><td>400 / 2</td><td>0.001478</td><td>5</td></tr><tr><td>stretch3_SE3_dw3_sg3</td><td>400 / 2</td><td>0.000000</td><td>23</td></tr><tr><td>g1_rev1_Dex3</td><td>400 / 2</td><td>1.082938</td><td>0</td></tr></tbody></table></div><p><a href="planning/h1-extension/asset-sources-en.md">Pinned sources, versions and licenses</a> · <a href="planning/h1-extension/asset-sources.json">JSON</a> · <a href="planning/h1-extension/asset-smoke-evidence/manifest.json">Raw state/log manifest</a></p><h3>Measured three/five-finger local drive response</h3><p>Each model ran 800 steps / 4 seconds. The fixture explicitly locks the body, uses zero gravity and has no floor. It checks small finger commands and mimic coupling, not grasping, balance or H1 task success.</p><div class="table-wrap"><table><thead><tr><th>Hand / job</th><th>Local criteria</th><th>Max joint overshoot, mrad</th><th>Hold tracking error, mrad</th><th>Mimic residual, mrad</th></tr></thead><tbody><tr><td>dex3 / 8036535_0</td><td>passed</td><td>0.057</td><td>0.270</td><td>N/A</td></tr><tr><td>inspire / 8036535_1</td><td>failed</td><td>0.741</td><td>10.777</td><td>0.0437</td></tr></tbody></table></div><p>All 12 Inspire followers have zero direct control force and satisfy the 1 mrad mimic bound. Thumb tracking error is 10.777 mrad against the predeclared 10 mrad limit, so this control configuration fails.</p><figure><img alt="Measured local finger commands, response and mimic residual with declared bounds" loading="lazy" src="planning/h1-extension/hand-drive-diagnostic.png" style="width:100%;height:auto"/></figure><p><a href="planning/h1-extension/hand-drive-review.md">Full local review, fixture conditions and raw state downloads</a> · <a href="planning/h1-extension/hand-drive-review.json">JSON</a> · <a href="planning/h1-extension/hand-drive-evidence/manifest.json">SHA-256 manifest</a></p><p><a href="planning/h1-extension/trajectory-viewer.html">Open the interactive evidence viewer: timeline, high/low-level phases and measured positions</a></p><p><a href="planning/h1-extension/resource-allocation.json">Gamma allocation ledger</a> · <a href="../humanoid/g1_support_retrieval/extension/expert-runtime-source-guide.json">Expert source and data-flow index</a> · <a href="../humanoid/g1_support_retrieval/extension/v3-repeat-identity-audit.json">Frozen repetition identities and GPU differences</a></p><h3>Measured expert execution: plans, trajectories and failure audit</h3><p>Job 8035717 has no compliant complete witness. Plots and video show measured motion and do not replace strict verification. Failures, missing evidence and original skill-boundary unknowns remain in the reports.</p><figure><img alt="Measured trajectory and contact forces; read the corresponding strict outcome" loading="lazy" src="planning/h1-extension/p4-evidence/attempt-8035717/trajectory_overview.png" style="width:100%;height:auto"/><figcaption>Continuous measurements: object motion, D containment margin, velocities and support forces.</figcaption></figure><p>The video is a compressed preview. Full numeric trajectories are lossless; the manifest retains the original video hash and storage path.</p><p class="current-video-link"><a href="/robo-si-results/infra/families/H1.html">View the final delivered Nyx 8× recordings →</a></p><p><a href="planning/h1-extension/p4-evidence/attempt-8035717/outcome.json">Strict outcome</a> · <a href="planning/h1-extension/p4-evidence/attempt-8035717/expert-plan.json">High / low plan</a> · <a href="planning/h1-extension/p4-evidence/attempt-8035717/plan_mapping.json">Observed plan mapping</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/infra--planning--h1-extension--p4-evidence--attempt-8035717--execution--trace.json.gz">Full state trajectory · gzip</a></p><p>The Site includes the full state trace. Complete joint, control and per-physics-step arrays are retained in the shared workspace, with paths and hashes in the evidence manifest. The Site has a 256 MiB capacity limit.</p><p><a href="planning/h1-extension/p4-evidence/manifest.json">Local evidence export and SHA-256 manifest</a> · <a href="planning/h1-extension/hosted-evidence-manifest.json">Hosted subset and local-only paths</a> · <a href="planning/h1-extension/baseline-execution-8034801.md">Frozen baseline execution report</a> · <a href="planning/h1-extension/baseline-execution-8034801.json.gz">Baseline high / low / trajectory mapping</a></p><h3 id="h1-implementation-requirement-0">H1 implementation requirements and evidence ledger</h3>
+<!-- official-asset-update -->
+<p><strong>Asset follow-up:</strong> Official pinned A3, real Stretch 4, G1 + Inspire DFQ and Galaxea R1 sources are now cached. Six independent passive probes are now complete (A3, historical Stretch 4, Inspire DFQ, R1, current Stretch 3 and official rev1 Dex3), each with 400 steps / 2 seconds / 401 states; R1 redistribution/license gaps remain; see <a href="/robo-si-results/infra/planning/h1-extension/asset-sources.md">source report</a> and <a href="/robo-si-results/infra/planning/h1-extension/asset-sources.json">JSON</a>. The current table reflects the selected embodiments; the initial binding audit is preserved separately in JSON. available models do not establish a frozen hand/sensor/controller/task configuration. Neutral-collision filtering, inertia approximations and absent stabilization control remain explicit; these probes are not task successes.</p>
+<p><strong>Two separate isolated hand-drive probes:</strong> Official Dex3-1 and Inspire DFQ each completed 800 steps / 4 seconds / 801 states. These are separate from the six passive imports and count as zero H1 task successes. The derived fixtures lock all 29 body joints, fix the root, disable gravity and omit the floor; original hand-joint XML is retained. Dex3's 14 candidate drivers pass the local response criteria. All 12 Inspire mimic equalities are measured, with maximum residual <strong>0.043744 mrad</strong> and zero direct follower control force; local coupling is no longer an unverified gap. Its current PD left-thumb hold error <strong>10.7767 mrad exceeds the predeclared 10 mrad bound</strong>. This is a controller-profile failure, not model infeasibility. Grasp/contact, whole-body balance, hardware motor mapping, sensing and full tasks remain unverified. <a href="/robo-si-results/infra/planning/h1-extension/hand-drive-review.md">Measured hand-drive review</a>, <a href="/robo-si-results/infra/planning/h1-extension/hand-drive-review.json">numerical record</a>, <a href="/robo-si-results/infra/planning/h1-extension/asset-and-hand-package.json">local asset/hand package receipt</a>.</p>
+<!-- /official-asset-update -->
+<p>2026-10-27 · Author-only development material · <a href="/robo-si-results/infra/planning/h1-extension/implementation-status.md">Detailed Chinese requirements</a> · <a href="/robo-si-results/infra/planning/h1-extension/implementation-status.json">JSON</a></p>
+<p>The user has authorized Gamma GPU execution and sub-agent implementation of the 22 selected tasks. This resumes physical development after the earlier design-only snapshot. The task count, historical H1 scoring and the existing 14-task inventory remain unchanged. Go1 with an arm and extra common-feasible calibration tasks are excluded.</p>
+<p>This ledger separates executable contracts, asset/controller readiness, candidate expert plans, actual physical evidence and formal admission. Candidate plans and historical skill traces do not count as new complete witnesses. A new scoped claim requires a continuous generated run through the permitted action interface, matching scene/assets/physics/controller/scorer identity, and checked HL_LL, LL_TRAJ and HL_TRAJ mappings. At least one success establishes scoped design feasibility; three representative repeats, three grading repeats, human review and independent reproduction are reported separately.</p>
+<h3 id="h1-implementation-requirement-1">Latest user-selected embodiments</h3>
+<p>The user now specifies G1 29DoF + Dex3-1 as the main line, prioritizes the Inspire five-finger comparison, and supplies Stretch 3 hardware references. Official A3 T3.0 remains a cached/passively probed development candidate. Official IsaacLab Dex3/Inspire and XR BrainCo support does not establish Genesis integration here.</p>
+<p>The prior Stretch 4 passive import remains exploratory and cannot validate Stretch 3. Fixed sources are audited for <code>stretch_urdf@c8c6e27e1f87db126118049f22611399253cbe2b</code> and <code>stretch_mujoco@c78d6a1cd79bb5ead1b679610299563c1a91124a</code>. Existing P4 runtime profiles and historical results keep their exact archived model identities. Current task requirements target Stretch 3. See <a href="/robo-si-results/infra/planning/h1-extension/embodiment-selection.md">selected sources</a> and <a href="/robo-si-results/infra/planning/h1-extension/g1-matched-body-audit.json">matched-body audit</a>: 29 common movable joints, 7 common fixed joints and 37 common links match structurally. Inspire DFQ has 53 movable joints including 12 mimic joints, not 53 independent motors. Legacy Menagerie G1 evidence remains separate.</p>
+<h3 id="h1-implementation-requirement-2">Current measured outcome: zero new compliant complete witnesses</h3>
+<p>The frozen baseline 8034801 ran 434.22 simulation seconds / 86844 physics steps / 21712 states, then stopped at setdown alignment because contact QP reached its iteration limit. Original score is 0.1925, non-VOID, incomplete; this does not certify infeasibility. Source identity and executed-prefix mapping are checked; the remaining work is contact-QP alignment repair, a new full original-start execution, detailed refinement and human review. <a href="/robo-si-results/infra/planning/h1-extension/baseline-execution-8034801.json.gz">Failure and mapping</a>.</p>
+<p>P4 run 8034839 ran 248.62 simulation seconds / 49724 physics steps / 12432 states. The 5 kg target entered D and remained released/stable for 6.46 seconds. However, maximum joint overshoot was <strong>4.585 mrad, exceeding the original 1 mrad allowance</strong>, so strict task success is false. The earlier checker accidentally allowed 20 mrad; its original source/verdict is retained and superseded by strict regrading. Geometric completion is not compliant completion.</p>
+<p>Original v7 semantic review retains 16 passed / 5 failed macro segments and 43 passed / 11 failed / 3 unknown leaf actions. Failures include missing raw contact at Touch exit, unsettled early Push exits, and actual touchdown one control step after nominal land-label boundaries; three internal labels are missing. V8 restores strict actuator checking without erasing these results. Whole measured foot-reposition macros do show both actual unloaded swings and landings.</p>
+<p>A separate <a href="/robo-si-results/infra/planning/h1-extension/p4-evidence/attempt-8034839/observed_macro_mapping.json.gz">post-execution macro explanation</a> groups continuous observed transport/reposition/release effects with original command ranges, raw boundary states and all leaf failures. It is explicitly retrospective and cannot upgrade the original skill contracts or actuator verdict. Semantic audit definitions were developed after jobs started; original D/profile/budgets were frozen beforehand.</p>
+<p>Independent identity audit matched 110 source and 101 asset files, pre/post asset hashes and archived verifier identity. Actual commands and measured states have continuous coverage. Assistant spot inspection decoded the two-view video and final frame; human review remains unsigned. Six passive model probes, baseline failure, startup failures, old-recorder diagnostics and subsequent controller revisions are separate evidence classes. Corrected-controller physical results remain pending; all other unexecuted scopes remain unknown. <a href="/robo-si-results/infra/planning/h1-extension/implementation-code-review.json">Code review</a>.</p>
+<p>All three v2 original-start executions are retained: 8034839 / 8034905 / 8035059 ran 248.62 / 235.40 / 246.78 seconds, with maximum joint overshoot 4.585 / 4.719 / 4.585 mrad. All reached the geometric goal; all fail the original 1 mrad rule and lack complete five-rule safety channels. Thus <strong>0/3 compliant complete witnesses</strong>. Leaf counts are 43/11/3, 45/9/3 and 43/11/3 (passed/failed/unknown). Source and asset snapshots match for all three. <a href="/robo-si-results/infra/planning/h1-extension/p4-v2-independent-review-summary.json">Independent summary</a>.</p>
+<p>V3 adds control margins and original-rule safety recording. A 20-second prefix measured 0.493 mrad maximum overshoot; this is not a full success. The three full v3 jobs subsequently completed and failed original safety rule 5; the prefix was not a full success.</p>
+<p>V3 now has complete original five-rule safety measurement, but all three full runs fail: 8035717 (A4000, 250.62 s) pushes the right elbow against its upper limit for 8.00 s; 8035839 (A5000, 262.76 s) does so for 5.14 s; 8035840 (A5000, 252.18 s) has left-elbow limit pushing and 3.747 mrad maximum position overshoot. The first two stay below the original 1 mrad position allowance, demonstrating why position-only checking was insufficient. The rule also prohibits outward torque above half its limit within .02 rad of a joint stop for two seconds.</p>
+<p>All eight declared macro effects are measured for 8035717, but its safety gate fails. The other two also have failed per-sample foot-support conditions in the final release macro. For 8035839, both feet are unloaded at 240.42/240.44 s (two samples/.04 s): shorter than the original near-fall .06 s dwell, but still a failure of the stricter predeclared author macro. No thresholds are relaxed. Source/assets/pre-post/manifest identity checks pass for all three. <strong>Zero compliant complete new witnesses.</strong> <a href="/robo-si-results/infra/planning/h1-extension/p4-v3-independent-review-summary.json">V3 independent review</a>.</p>
+<p>V4 diagnostic 8036294 stopped under the predeclared wall budget at125.84 simulated seconds before StandUp completed. Original five-rule safety passes on the recorded interval, but waist pitch overshoots2.765mrad against the unchanged1mrad tolerance; both feet lose load at104.16/104.18s, and the interrupted terminal physics-command coverage is incomplete. Elbow references≤2.0rad and terminal inward finger references≥.06rad passed only their scoped command checks. This is a failed diagnostic. <a href="/robo-si-results/infra/planning/h1-extension/p4-v4-independent-review-summary.json">Independent V4 review</a>.</p>
+<p>A separately predeclared V5 route retains intermediate stepping but ends the final Push/Retreat with supported crouch settling and a6s hold. Standing is not a public goal. Original safety,1mrad, per-sample support,D and3s dwell requirements remain unchanged. Fresh-start one-cycle diagnostic8036707 is submitted under frozen contract SHA <code>58151ac4781bb43abf65978928a692ae315f0ed7ed4f0f7830a95c18d76c60d5</code>; it can never count as a complete task witness. Full original-start three-cycle execution remains required.</p>
+<p>V4 controller repair is underway: interior elbow/finger references and slower/smoother final hand clearance and standing. A separate diagnostic may test the tail, followed by a new full original-start run; diagnostic prefixes or stitched tails cannot become full witnesses.</p>
+<p>Exact scope remains a single-seed unhandled wide box, target material friction .5 and inherited plane material friction .1; no effective contact-pair coefficient is inferred. The public 2 kg lifted-payload rule excludes lifting this 5 kg target without asserting mechanical impossibility. A4000/A5000 repeats are not same-GPU deterministic replication. Handled pairs, random scope, sensor-only execution and formal admission remain incomplete.</p>
+<p>Official Dex3 remains moving at the end of its passive probe; Stretch 3 importer filtering and inertia approximations remain explicit. Neither passive import demonstrates active control or task success; the separate hand-drive diagnostics below establish only local fixture response. <a href="/robo-si-results/infra/planning/h1-extension/stretch3-asset-review.md">Stretch 3 measured report</a>, <a href="/robo-si-results/infra/planning/h1-extension/g1-dex3-asset-review.md">official Dex3 measured report</a>.</p>
+<p>V5 one-cycle diagnostic 8036707 independently passed: 24.76 simulated seconds, 4,952 physics steps, maximum actual position overshoot 0.00786 mrad, and complete passing original five-rule safety. All three predeclared macros have measured effects and continuous shared trajectories; settling lasts 1.02 s and Hold 6.02 s. The original leaves remain 4 passed / 2 failed at their nominal contact/speed boundaries. D is not reached, so there are still <strong>zero complete task witnesses</strong>. Full three-cycle original-start run 8036941 is submitted under its separately frozen contract. <a href="/robo-si-results/infra/planning/h1-extension/p4-v5-diagnostic-independent-summary.json">Independent V5 diagnostic</a>.</p>
+<h3 id="h1-implementation-requirement-3">Readiness of all 22 registrations</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Name</th>
+<th>Implementation state</th>
+<th>New physical evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1S-01</td>
+<td>Frozen G1/Dex3 baseline</td>
+<td><code>frozen_baseline_executed_qp_failure</code></td>
+<td><code>failed_incomplete</code></td>
+</tr>
+<tr>
+<td>H1S-02</td>
+<td>G1 five-finger handling</td>
+<td><code>isolated_hand_drive_measured_task_control_pending</code></td>
+<td>Coupling measured in isolated fixture; current Inspire tracking fails; full task unknown</td>
+</tr>
+<tr>
+<td>H1S-03</td>
+<td>Wheels and movable ramp</td>
+<td><code>asset_binding_missing</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-04</td>
+<td>A3 retrieval</td>
+<td><code>asset_binding_missing</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-05</td>
+<td>G1 two tiers / A3 one tier</td>
+<td><code>paired_asset_and_scene_missing</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-06</td>
+<td>Infeasibility and physical exit</td>
+<td><code>certificate_and_exit_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-07.P1</td>
+<td>Push clear and retrieve</td>
+<td><code>scene_and_chain_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-07.P2</td>
+<td>Push a support into place</td>
+<td><code>scene_and_chain_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-07.P3</td>
+<td>Turn or change pushing side</td>
+<td><code>scene_and_chain_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-07.P4</td>
+<td>Push a target above the public lifted-payload limit</td>
+<td><code>development_diagnostic_passed_full_validation_running</code></td>
+<td>One-cycle diagnostic passed; no compliant full witness yet</td>
+</tr>
+<tr>
+<td>H1S-08</td>
+<td>Stretch 3 handled box</td>
+<td><code>stretch3_asset_selected_task_control_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-09</td>
+<td>Stretch 3 infeasibility and exit</td>
+<td><code>stretch3_asset_selected_task_control_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-10.A</td>
+<td>G1 support selection</td>
+<td><code>scene_and_chain_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-10.B</td>
+<td>A3 support selection</td>
+<td><code>asset_binding_missing</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-10.C</td>
+<td>Wheeled platform and ramp choice</td>
+<td><code>asset_binding_missing</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-10.D</td>
+<td>Stretch 3 work/transfer surface choice</td>
+<td><code>stretch3_asset_selected_task_control_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-11.A</td>
+<td>Directly reachable retrieval</td>
+<td><code>stretch3_asset_selected_task_control_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-11.B</td>
+<td>Tool-enabled complete retrieval</td>
+<td><code>stretch3_asset_selected_task_control_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-11.C</td>
+<td>No feasible route including tools; exit</td>
+<td><code>stretch3_asset_selected_task_control_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-12</td>
+<td>Same-color identification</td>
+<td><code>perception_scene_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-13</td>
+<td>Autonomous transfer and safe return</td>
+<td><code>reusable_relay_runtime_new_scope_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+<tr>
+<td>H1S-14</td>
+<td>Body adaptation in a narrow workstation</td>
+<td><code>scene_and_paired_asset_pending</code></td>
+<td><code>unknown</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>G1/Dex3 model, Agile policy, Genesis runtime and relay runtime exist locally; exact inspected file hashes are in the JSON. Official sources and passive imports exist for Inspire DFQ, A3 T3.0 and candidate R1; official Stretch 3 SE3/sg3 and official rev1 Dex3 completed independent passive jobs 8036300 and 8036343. Stretch 4 remains historical exploration. Source/license selection is no longer the main gap for Inspire/A3. Inspire local mimic coupling is now measured in a fixed-root zero-gravity fixture; improve the failed thumb tracking profile and verify grasp/contact, whole-body balance, hardware mapping, sensors/collisions and complete task chains. This is an audit of the selected repository, not a claim that external assets do not exist. A model name or local file alone does not establish usable control.</p>
+<h3 id="h1-implementation-requirement-4">First frozen physical development profile</h3>
+<p><a href="/robo-si-results/humanoid/g1_support_retrieval/extension/p4-development.json"><code>H1S-07.P4 / g1_dex3_ground_push_v1</code></a> freezes one Gamma GPU, 3600 s wall time and 600 s simulation per attempt, physics dt 0.005 s, control dt 0.02 s, 120000 physics steps / 30000 control steps, one candidate, 60 s screening, zero short probes, zero in-episode resets and three intended representative repeats. The deterministic privileged expert calls no language model; this explains the null token budget.</p>
+<p>The 5 kg ground target exceeds a public 2 kg lifted-payload limit; supported pushing is allowed. This is a public-rule distinction, not proof that the robot is physically unable to lift 5 kg. Score the full measured target AABB in D, independent ground support, released hand contact, speed bounds and a three-second dwell. The runner has executed. Run 8034839 reached the geometric delivery goal but failed original actuator compliance; no compliant complete new witness is established.</p>
+<p>For other tasks, the proposed screening budget is 60 s, three candidate routes and at most two probes of 1000 physics steps each. It is not frozen globally: bind a numerical runtime limit, budgets and identities before each executable task. Budget exhaustion remains unknown. Keep all failed attempts and prescribed draws; a later change requires a new manifest.</p>
+<p>The candidate catalog compiler is <code>python -m infra.h1_tasks compile --out infra/planning/h1-extension/implementation-contracts.json</code>; its schema is <code>h1-execution-contract-catalog/1</code>. It describes author-side subgoals, low-level actions, preconditions/effects and contact/support constraints. Trajectories stay null until actual execution. It is not a scene/controller or physical feasibility solver.</p>
+<h3 id="h1-implementation-requirement-5">Acceptance rules that affect implementation</h3>
+<ul>
+<li>Accept every complete legal solution. Intended tool identities, intermediate transfers and reference action sequences are not hidden success requirements. Revise mechanism labels when a legal alternative succeeds.</li>
+<li>H1S-03 requires autonomous placement of an initially unpositioned ramp. Prepositioned-ramp use is a separate diagnostic. H1S-07.P4 is ground delivery, not elevated retrieval.</li>
+<li>H1S-11 prioritizes a real passive hook and compatible target ring: grasp hook, engage, pull along independent support, disengage, park hook, grasp the target handle, transport and release. No hidden attachments or remote passive-tool actuation.</li>
+<li>A Q exit requires the whole robot horizontal envelope in Q, legal ground support, empty hands, no hard violation, speed at most 0.03 m/s and 0.05 rad/s continuously for three seconds. These remain draft thresholds until calibrated and frozen per body. Safe exit does not establish correct abstention.</li>
+<li>Correct abstention requires an initial-scene all-route infeasibility certificate. Failed IK, search exhaustion or one failed route is insufficient. Unknown-scene abstention correctness stays null.</li>
+<li>Preserve actions and measured states with continuous step/time, actual effort, support/contact and monitor logs. Each low-level segment must map to its high-level parent and exact executed frame interval, including failed and unexecuted segments.</li>
+<li>Keep original resets, runtime logs, videos, hashes, failed attempts and repeat results. No post-start pose writes, teleportation, hidden attachments, changed physics or checkpoint stitching.</li>
+</ul>
+<p>Formal admission and unsigned human-review gates remain unchanged. Full details, task-specific acceptance checks and reusable-source limitations are in the Chinese document and machine-readable ledger.</p></div></section><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">Full task details: scene, actions, scoring, evidence and reproduction</a></p><!-- task-detail-jump:end --><p class="wrap"><a href="#h1-selected-scope">Selected tasks and missing controls</a></p><p class="wrap"><a href="#h1-extension">H1 extension: platforms, tasks and abstention</a></p><section id="reference-closeout"><div class="wrap"><h2>Historical reference delivery status</h2><p>Scoped reference/design delivery is complete and remote materials are available. Sandbox integration, physical validity and formal admission retain separate evidence.</p><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/71ea702d485b28be849a28c894750b9538a40fe0/releases/h1-layered-reference-20261026">HF</a> · <a href="website-completion.json">JSON</a></p></div></section><div class="wrap" id="website-completion-status" style="padding-top:18px"><div class="card"><p><span class="pill warn">Historical witnesses retained · Current validation in the implementation ledger</span></p><p>Fixed full successes, repetitions and container evidence retained; C026 random63 and963 have full successes. The original three draws are2 witnessed_full and1 unknown; all attempts retained. This is the historical evidence snapshot; current Gamma execution is reported in the implementation ledger above. The scoped reference package is published on HF; relocation, remote size and SHA-256 checks passed. <a href="planning/h1/README.md">Layered evidence and screening</a> · <a href="planning/h1_release/README.md">Reference package and verification</a></p></div></div><div class="hero"><div class="wrap"><p class="evidence" data-current-formal-status="true">Unseen skill envelopes and dynamic checks remain unknown. A new controller needs affected representative regression only. Human sign-off, independent reproduction and other formal gates remain open; no full solution per random draw. <a href="planning/h1/README.md">Layered evidence and screening</a> · <a href="planning/h1_release/README.md">Reference package and verification</a></p>
+<p class="eyebrow">H1 · Layer 1 · 2026-10-25</p><h1>H1: self-climbing and tool-assisted retrieval</h1><div id="family-page-intro"><p class="lead">22 selected tasks. Use environmental support to change your own workspace, assess reach, load, footholds and balance, then retrieve, return safely and deliver on the ground. Intermediate transfer and other legal complete routes are accepted.</p><p>New scenes and capability profiles await validation; existing successes apply only to their original configuration and scorer.</p><nav aria-label="Task page navigation"><a href="#retrieval-family-current">Current cases</a> · <a href="task-families-en.html">H1 / M1 / M3</a> · <a href="#task-details">Historical reference and evidence</a></nav></div>
+<p class="reference-summary"><strong>Historical scoped reference: </strong><strong>Historical witnesses retained · Current validation in the implementation ledger</strong> Fixed full successes, repetitions and container evidence retained; C026 random63 and963 have full successes. The original three draws are2 witnessed_full and1 unknown; all attempts retained. This is the historical evidence snapshot; current Gamma execution is reported in the implementation ledger above. The scoped reference package is published on HF; relocation, remote size and SHA-256 checks passed.</p>
+<p id="reference-evidence-label"><strong>These metrics describe the historical reference, not validation of the new family.</strong></p><div class="cards"><div class="card"><h3>6 / 15</h3><p>Admission gates passed; 8 partial and 1 pending.</p></div><div class="card"><h3>1.25 m</h3><p>Original scene, including the green distractor.</p></div><div class="card"><h3>3 s</h3><p>The sustained torque-saturation threshold is unchanged.</p></div></div>
+<p><a href="website-status-evidence/h1-fixed-reference-20261025/7974de4759957a-canonical_release_status.json">Fixed reference validation</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/c552771ef6dcdb-admission.json">Admission record</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/824143e999032a-TASK_CARD.md">Task card</a></p></div></div>
+<section><div class="wrap"><h2>01 What is provided, and what must be discovered</h2>
+<p>A G1 robot, a movable folding stool, a fixed cabinet, a red target, a green distractor and a floor delivery region. The current reference_v15 scene uses the original 1.25 m target shelf, 0.90 m relay board and 0.46 m initial robot-to-stool gap.</p>
+<p>The agent must establish useful support and safely retrieve and deliver the box. The reference route carries and places the stool, climbs, retrieves the target, places it on the relay board, descends empty-handed, and collects and delivers the target. Tool necessity remains under investigation; safe alternative routes use the same rules.</p>
+<h2>02 Evidence and its scope</h2><div class="table-wrap"><table><thead><tr><th>Record</th><th>Evidence</th><th>Current conclusion</th></tr></thead><tbody>
+<tr data-cohort="371"><td>C371 / C373</td><td>Frozen C371 passes all three original-start native attempts (3/3; 1003.36, 1003.16, 1004.16 s). Matching C373 passes the actual-container LowCmd run (1003.12 s). All four score 1.0, are non-VOID and have no safety events; LowCmd has zero clipping. Frozen sources and initial scenes match.</td><td><a href="website-status-evidence/h1-fixed-reference-20261025/62bfa117619798-candidate371_cohort_summary.json">Full cohort audit</a></td></tr>
+<tr data-run="365-full01"><td>C365 original-start full-01</td><td>1003.00 s · 1.0 · non-VOID · no safety events</td><td><a href="website-status-evidence/h1-fixed-reference-20261025/a55650b96f03bd-candidate365_canonical-full-01_audit.json">Audit</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/eddc2fa2fb2e5d-motion-24x.mp4">24× video</a></td></tr>
+<tr data-candidate="365"><td>C365 reduced-speed retrieval-to-delivery diagnostic</td><td>195.60 new seconds from an on-stool checkpoint: retrieval, staging, descent, reacquisition and stable delivery pass with zero joint overshoot, safety events or sustained saturation.</td><td>Diagnostic passed; the same version subsequently achieved the original-start success above. 393 CPU tests pass. <a href="website-status-evidence/h1-fixed-reference-20261025/2075259131c915-candidate365_tail_audit.json">Audit</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/3af6552d36b98b-ground_delivery_comparison.png">Ankle evidence</a></td></tr>
+<tr data-candidate="357"><td>C357 original-start LowCmd run</td><td>Alignment passes and the stool is lowered at 639.88 s. Combined forward and lateral pelvis tilt during withdrawal triggers rule 1 at 651.96 s, despite bilateral support and low speed.</td><td>Full qualification fails; not ready for release. C359 tests roll/yaw posture constraints with unchanged safety rules. <a href="website-status-evidence/h1-fixed-reference-20261025/9031ad0551d838-candidate357_canonical-full-lowcmd-01_audit.json">Terminal audit</a></td></tr>
+<tr><td>C350 continuous original-scene carry</td><td>17 steps / about 1.014 m of carrying; setdown, release and stable standing complete at 675.6 seconds. The full 710.50-second / 142,100-step attempt has no safety event or joint overshoot; longest saturation is 1.98 seconds.</td><td>The climb-entry left-foot error is about 13.9 mm, above the retained 12 mm gate. Controller stops; score 0.2, task incomplete. C353 passes a local entry/climb checkpoint diagnostic. <a href="website-status-evidence/h1-fixed-reference-20261025/32a7721f549611-candidate350_full01_audit.json">Full-attempt audit</a></td></tr>
+<tr><td>C352 original-scene LowCmd</td><td>160 seconds / 8,000 commands / 32,000 physics steps. No safety events, joint overshoot, clipping or unsent changes; longest saturation 1.74 seconds.</td><td>Diagnostic passed through the beginning of carrying; task success is false. A separate complete container run uses the same sealed source. <a href="website-status-evidence/h1-fixed-reference-20261025/32dc197ad374b2-candidate352_lowcmd160_audit.json">Audit</a></td></tr>
+<tr><td>C353 entry and delivery diagnostics</td><td>127.76 new seconds for entry/climb and 174.98 new seconds for retrieval, staging, descent, reacquisition and delivery. Neither segment has a safety event, joint overshoot or sustained saturation.</td><td>Checkpoint continuations cannot be pooled into an original-start success. <a href="website-status-evidence/h1-fixed-reference-20261025/67f6686614a91f-candidate353_entry_climb_audit.json">Entry audit</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/8ca9a29cc23bc8-candidate353_tail_audit.json">Delivery audit</a></td></tr>
+<tr><td>Current platform checks</td><td>The frozen C371 passes 399 CPU regression tests. The earlier 36 escape probes and single-layer / three-layer no-op controls behave as expected.</td><td>The main GPU sensor pipeline now passes: nominal accuracy checks remain, and a physically commanded calibration pose supplies 1,013 floor hits against the unchanged 1,000 minimum. All original accuracy bounds remain. The full pipeline still finds missing evidence in another task. <a href="website-status-evidence/h1-fixed-reference-20261025/a6e083012be778-canonical_platform_audit.json">Negative-control audit</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/3914b724413217-canonical_sensor_twopose_validation.json">Sensor fix validation</a></td></tr>
+<tr><th colspan="3">Historical routes and development trials follow. High-shelf experiments are not a current release prerequisite.</th></tr>
+<tr><td>Historical canonical c</td><td>850.26 seconds; complete relay; rubric 2.1 score 1.0.</td><td>Fails the current sustained waist-torque rule.</td></tr>
+<tr><td>reference-full-1</td><td>Complete execution through the actual LowCmd sandbox channel.</td><td>Longest waist saturation 5.9 seconds; success=false. <a href="website-status-evidence/e2ca791a9b84f50c-verdict.json">Verdict</a></td></tr>
+<tr><td>Old-scene direct-v8</td><td>Grasps the 1.25 m target while standing on the floor.</td><td>Slips during extraction and does not deliver. The old geometry does not establish stool necessity. <a href="website-status-evidence/c182baf0b91060f7-verdict.json">Verdict</a></td></tr>
+<tr><td>New-scene candidate 02</td><td>135 seconds / 27,000 physics steps, non-VOID; zero joint-limit overshoot; longest waist saturation 1.58 seconds.</td><td>Rule 1 at 44.90 seconds: speed fluctuations during a deep lean interrupt support confirmation. Both feet remain loaded. Follow-up was blocked. <a href="website-status-evidence/a10e0679e3a458c8-candidate02_verdict.json">Verdict</a> · <a href="website-status-evidence/8e977414dfc4e980-candidate02_fall_diagnosis.json">Diagnosis</a></td></tr>
+<tr><td>Higher stance and grasp</td><td>Offline solutions retain knee flexion reserve and provide a path with fixed foot positions.</td><td>Planning evidence only; physical execution pending. <a href="website-status-evidence/63a975f86f5f79cb-high_shelf_knee_reserve.json">Static screen</a></td></tr>
+<tr><td>Candidate 04 standup and repeat</td><td>First 85.88-second diagnostic: non-VOID, no safety events, longest saturation 1.32 seconds. A repeat with identical source triggered support-confirmation timeout at 43.26 seconds.</td><td>The first pass does not establish repeatability. The repeat was operator-stopped at 78.90 seconds and officially marked VOID; setdown was not reached. <a href="website-status-evidence/f8ddee0f2692902b-candidate04_standup_verdict.json">First verdict</a> · <a href="website-status-evidence/23afee3d7bdb0539-candidate04_repeat_summary.json">Repeat diagnosis</a></td></tr>
+<tr><td>High-shelf direct-v8</td><td>52.78 seconds of valid physics, no safety events and no target movement.</td><td>Hands cannot reach the target sides; no grasp or delivery. One valid negative probe. <a href="website-status-evidence/830132e567543ffd-direct_high_v8_summary.json">Result</a></td></tr>
+<tr><td>New candidate LowCmd container validation</td><td>The 2-second startup smoke passes. The intended 90-second follow-up ended automatically at 43.58 seconds: 2,179 commands and 8,716 physics steps; non-VOID, no state writes or channel clipping.</td><td>Final result is failure due to support-confirmation timeout. Uses the old C04 compact-lift motion; not a C10 test. <a href="website-status-evidence/5582526d41841eaa-candidate08_lowcmd_prefix_summary.json">Final result</a> · <a href="website-status-evidence/a3d8012bfa9afe3a-candidate08_smoke_summary.json">Startup smoke</a></td></tr>
+<tr><td>Return from high stance before descent</td><td>Offline path retains both foot positions and checks speed, support margin, cabinet clearance and reference torque.</td><td>Planning screen on historical feet; physical execution remains pending. <a href="website-status-evidence/89d5d1cec2625388-high_stance_return_path.json">Plan record</a></td></tr>
+<tr><td>Candidate 10 compact-lift repair</td><td>Both standups pass. Transport then reaches 341.36 seconds / 68,272 steps, non-VOID with no safety events; longest saturation 1.32 seconds.</td><td>The 18th-step transfer stops at the cabinet clearance guard; no setdown. C19 completes 17 steps after stopping 7 cm earlier, then stops lowering because the right hip/knee contacts the stool. The 347.70-second run has no safety events, but setdown is incomplete. <a href="website-status-evidence/24873898d47fdd14-candidate10_setdown_summary.json">Final result</a> · <a href="website-status-evidence/ba59c7163b639ef4-candidate19_setdown_summary.json">Setdown diagnosis</a> · <a href="website-status-evidence/d15e668a69f88b20-candidate19_provenance.json">New parameter and evidence</a></td></tr>
+<tr><td>Candidate 10 real LowCmd channel</td><td>100 seconds, 5,000 commands and 20,000 physics steps; non-VOID with no safety events, state writes or channel clipping. Longest saturation 1.78 seconds.</td><td>Standup completed and the first walking swing started; no completed transport or delivery. Task success remains false and launcher exit code is 1. Passing the diagnostic checks does not alter the task verdict. <a href="website-status-evidence/aafeb29990bd724d-candidate10_lowcmd_prefix_summary.json">Channel audit</a></td></tr>
+<tr><td>Alternative ground-contact screen</td><td>C16 safer approach completes 92.62 seconds / 18,524 steps, non-VOID with no safety events or joint overshoot. Raised stance is stable.</td><td>No admissible final approach or target contact/movement. This is a safe bounded negative, not exhaustive exclusion of ground routes. The earlier unsafe approach remains recorded. <a href="website-status-evidence/e7375b2c9df0358f-candidate16_safe_aim_summary.json">Safe probe</a> · <a href="website-status-evidence/ba10dacad3580a83-candidate16_front_contact_summary.json">Earlier failure</a></td></tr>
+<tr><td>High-shelf sensor calibration</td><td>The safely achieved C10 crouch checkpoint at 25 seconds restores with zero state error. All four geometry bounds pass, with 2,935 floor hits.</td><td>Geometry at this checkpoint only; zero new physics steps. Initial and waist-adjusted coverage failures remain recorded. Target visibility and perception provenance remain unqualified. <a href="website-status-evidence/f79381f74d5f78e7-high_scene_sensors_v6.json">Passing measurements</a> · <a href="website-status-evidence/8c308e5293be9d73-high_scene_sensors_v3.json">Earlier failure</a></td></tr>
+<tr><td>Target sensor observation</td><td>Safe C10 checkpoint at 90 seconds: 20 LiDAR target returns and zero target pixels in head RGB/depth.</td><td>Exact state restoration, zero new physics steps. The target is outside the camera view at this pose; camera coverage and a sensor-only policy remain unqualified. <a href="website-status-evidence/96a13af323a6b63a-report.json">Measurement report</a> · <a href="website-status-evidence/644b4760b261b5e2-rgb.png">Actual RGB</a></td></tr>
+<tr><td>Additional whole-body ground search</td><td>A local precontact pose is found at C16’s actual measured feet after relaxing the controller’s waist, left-hand and wrist-orientation restrictions.</td><td>Static planning only; continuous motion, contact and delivery remain unvalidated. Tool necessity remains open. <a href="website-status-evidence/51b03cb1de59308b-candidate16_full_body_ground_contact.json">Planning record</a></td></tr>
+<tr><td>Complete 100-second randomized channel diagnostic</td><td>C18: 5,000 LowCmd commands / 20,000 physics steps; all 20 channel audits pass, non-VOID, no safety events, maximum saturation 1.5 seconds.</td><td>Standup completed and walking began; task incomplete. This evaluation sample has been inspected during development and is not held-out qualification. <a href="website-status-evidence/4f9e03f027975a1e-candidate18_lowcmd100_summary.json">Final result</a></td></tr>
+<tr><td>Whole-body ground contact execution</td><td>C27 completes 135.54 seconds / 27,108 steps with no safety event or joint overshoot; actual target contact peaks at 5.62 N.</td><td>Direct leg force under unchanged motor limits works in this diagnostic. The target moves 11.68 mm inward; no extraction or delivery. Tool necessity remains unresolved. <a href="website-status-evidence/83b2392df12c3b38-candidate27_motion_summary.json">Physical result</a> · <a href="website-status-evidence/68116a1d61ffc22a-candidate27_verdict.json">Final verdict</a> · <a href="website-status-evidence/41b277eeaa3e4013-candidate27_contact_diagnosis.json">Endpoint geometry</a></td></tr>
+<tr><td>Loaded setdown planning</td><td>Old descent references require about 50–51 N·m of static loaded waist torque, at the 50 N·m hardware cap. Seven C28 effort/error-handling CPU checks pass.</td><td>All continuous screens failed geometry or planning effort reserve. The latest reaches36.8s at47.523Nm. This is a planning reserve; the50Nm hardware cap and3s safety rule are unchanged. C28 has no physical run. <a href="website-status-evidence/b4bdd58efd248a16-loaded_waist_diagnosis.json">Load analysis</a> · <a href="website-status-evidence/c099868510ece257-candidate28_planning_summary.json">Planning checks</a> · <a href="website-status-evidence/e797b2a9efdd8564-candidate28_stool_clearance_diagnosis.json">Stool-frame clearance</a></td></tr>
+<tr data-candidate="29"><td>Floor relocation and action channel</td><td>C43 physically passes a6.114cm push, withdrawal and1s stable stand, ending at8.59degrees. C44 stops safely at8.767cm on the retained15N hand-force guard, with no saturation, limit overshoot or safety event.</td><td>C47 passes real LowCmd short push/stand:87.88s,4394 commands,17576 physics steps, all18 audit checks, no saturation/safety events. C48 reaches20cm then stops on withdrawal force; C52 tests slower withdrawal. C49 gait makes no footstep; C51 tests observation masking. Full retrieval/delivery remains unqualified. <a href="website-status-evidence/709c7f5f6d23fdc8-floor_motion_progress.json">Current evidence</a> · <a href="website-status-evidence/8fcd7f01aa276ffd-candidate44_motion_summary.json">C44</a> · <a href="website-status-evidence/6f7a95cc9d7da5ff-candidate47_terminal_replay_diagnosis.json">C45 / C47</a></td></tr>
+<tr><td>Closing stance before setdown</td><td>C24/C26 close the stance and stand stably, but lowering violates the waist pitch stop. Both diagnostics are stopped and VOID; both original-start followups are cancelled.</td><td>Earlier COM transfer and slower descent are insufficient; loaded waist effort remains open. No setdown or full success. <a href="website-status-evidence/339f4b87fdfdc0bc-candidate24_setdown_summary.json">C24</a> · <a href="website-status-evidence/18dfb3e5a5ac171a-candidate26_setdown_summary.json">C26</a> · <a href="website-status-evidence/0302009b7499ae32-candidate24_com_screen.json">COM model check</a></td></tr>
+<tr><td>Target visibility after a safe look-up</td><td>C21 completes 22.46 seconds / 4,492 steps of look-up, hold and return, non-VOID with no safety events or saturation. The unchanged camera sees 1,696 target RGB/depth pixels.</td><td>Exact checkpoint restoration at 13.5 seconds; zero target LiDAR returns at this pose. Camera and LiDAR visibility are established at different poses; randomized coverage and sensor-only full-task success remain open. <a href="website-status-evidence/c36c2397b58f195c-candidate21_motion_summary.json">Motion verdict</a> · <a href="website-status-evidence/f13854e9615d4ef3-report.json">Measurements</a> · <a href="website-status-evidence/9dc642b72c9e149f-rgb.png">Actual RGB</a> · <a href="website-status-evidence/h1-fixed-reference-20261025/901f5322405755-candidate21_head_scan.mp4">Video</a></td></tr>
+<tr><td>First-layer randomisation draft</td><td>Original ranges retained; 4,096 geometry-valid samples. Development seed 1158 completes native original-start grasp/standup: 95.16 seconds / 19,032 steps, no safety events and longest saturation 1.06 seconds.</td><td>Local native diagnostic only; full random tasks, boundaries and repeats remain pending. <a href="website-status-evidence/7bf06777a8f44256-candidate17_standup_summary.json">Standup result</a> · <a href="website-status-evidence/0792f0533cc88381-candidate12_coverage_plan.json">Coverage plan</a></td></tr>
+<tr><td>Randomized LowCmd adapter startup</td><td>Separately sealed adapter completes a real-container 2-second / 100-command / 400-step startup, non-VOID with no safety events, state writes or channel clipping.</td><td>The subsequent 100-second diagnostic is complete, as reported above; task success remains false. This inspected evaluation-split scene is not held-out and differs from C17 development. <a href="website-status-evidence/6fb83e0725a883f2-candidate18_lowcmd_startup_summary.json">Startup audit</a></td></tr>
+</tbody></table></div>
+<h2>03 Complete success under current rules</h2><p>The first C371 full success at 24× speed. All three native repeats and the matching channel pass; earlier failures remain preserved. Delivery includes release from the permitted height followed by settling on the floor; it is not a gentle near-floor placement.</p><p class="current-video-link"><a href="/robo-si-results/infra/families/H1.html">View the final delivered Nyx 8× recordings →</a></p>
+<h2>04 Reference release and formal admission</h2><p>The current layered reference packet is published on HF with verified remote size and SHA-256. Three frozen-source native full runs, matching zero-clipping LowCmd and keyframe review remain evidence for the original fixed 1.25 m scene; they do not establish randomized-controller repeatability. <a href="/robo-si-results/infra/planning/h1_release/DELIVERY.json">Current publication receipt</a>. <a href="website-status-evidence/h1-fixed-reference-20261025/dbf5b275a9fc1d-canonical_release_artifact.json">Archive location, hashes and verification receipt</a></p><p>Formal admission still requires randomized and multilayer coverage, independent subtask starts, tool necessity, monitor calibration, human sign-off and independent second-person reproduction. <a href="website-status-evidence/h1-fixed-reference-20261025/c460c83b4aa5c7-human_review.json">Human review form</a>: <code>admitted=false</code>.</p>
+<p>All candidate outcomes, including failures, are retained. Formal admission remains <code>false</code>; no H1 release package is provided here.</p></div></section><section id="h1-selected-scope"><div class="wrap"><h2>H1: 22 selected independent tasks</h2>
+<!-- implementation-authorization -->
+<p><strong>Implementation update · 2026-10-27:</strong> The user has authorized Gamma GPU and sub-agent implementation with physics validation. Earlier zero-run/paused statements below describe the design snapshot, not current authorization. See <a href="/robo-si-results/infra/planning/h1-extension/implementation-status-en.md">requirements</a> and the <a href="/robo-si-results/infra/planning/h1-extension/execution-progress.json">execution ledger</a> for current scope, budgets and retained failures. Candidate plans are not measured trajectories; original scores and formal admission do not change automatically.</p>
+<!-- /implementation-authorization -->
+<p>2026-10-27 · <strong>20 tasks from existing scene splits plus two new operations: 22 total.</strong> No additional easy common-feasible two-body/two-hand calibration tasks. Each task owns its scenes, episodes, scoring and acceptance. Former H1S-07/10/11 are groups and are not counted alongside their children.</p>
+<p><a href="/robo-si-results/infra/planning/h1-extension/selected-scope.md">中文</a> · <a href="/robo-si-results/infra/planning/h1-extension/selected-scope.json">JSON</a> · <a href="/robo-si-results/infra/planning/h1-extension/archive/selected-12-20261027/selected-scope.json">Historical 12 registrations</a></p>
+<p><strong>The benchmark does not require a unique solution.</strong> Judge goals and public constraints; accept every legal complete route, including direct retrieval, regrasping, tool combinations or alternative supports. Reference traces are not hidden success conditions. Retain legal success and revise tool-necessity, transfer-necessity or infeasibility labels when contradicted. Historical reference scoring retains its original scope. Zero new simulations; new scenarios remain unknown.</p>
+<h3 id="h1-selected-scope-1">1. Current 22 registrations</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Independent task</th>
+<th>Origin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1S-01</td>
+<td>Frozen G1/Dex3 baseline</td>
+<td>Retained</td>
+</tr>
+<tr>
+<td>H1S-02</td>
+<td>G1 five-finger handling</td>
+<td>Retained</td>
+</tr>
+<tr>
+<td>H1S-03</td>
+<td>Wheels and movable ramp</td>
+<td>Retained</td>
+</tr>
+<tr>
+<td>H1S-04</td>
+<td>A3 retrieval</td>
+<td>Retained</td>
+</tr>
+<tr>
+<td>H1S-05</td>
+<td>G1 two tiers / A3 one tier</td>
+<td>Retained</td>
+</tr>
+<tr>
+<td>H1S-06</td>
+<td>Infeasibility and physical exit</td>
+<td>Retained</td>
+</tr>
+<tr>
+<td>H1S-07.P1</td>
+<td>Push clear and retrieve</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-07.P2</td>
+<td>Push a support into place</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-07.P3</td>
+<td>Turn or change pushing side</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-07.P4</td>
+<td>Push a target that cannot be lifted</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-08</td>
+<td>Stretch handled box</td>
+<td>Retained</td>
+</tr>
+<tr>
+<td>H1S-09</td>
+<td>Stretch infeasibility and exit</td>
+<td>Retained</td>
+</tr>
+<tr>
+<td>H1S-10.A</td>
+<td>G1 support selection</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-10.B</td>
+<td>A3 support selection</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-10.C</td>
+<td>Wheeled platform and ramp choice</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-10.D</td>
+<td>Stretch work/transfer surface choice</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-11.A</td>
+<td>Directly reachable retrieval</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-11.B</td>
+<td>Tool-enabled complete retrieval</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-11.C</td>
+<td>No feasible route including tools; exit</td>
+<td>Promoted scene</td>
+</tr>
+<tr>
+<td>H1S-12</td>
+<td>Same-color identification</td>
+<td>Retained</td>
+</tr>
+<tr>
+<td>H1S-13</td>
+<td>Autonomous transfer and safe return</td>
+<td>New operation</td>
+</tr>
+<tr>
+<td>H1S-14</td>
+<td>Body adaptation in a narrow workstation</td>
+<td>New operation</td>
+</tr>
+</tbody>
+</table></div>
+<p>The existing directly reachable H1S-11.A remains within the accepted 20-task split; no extra common-feasible calibration tasks are added.</p>
+<h3 id="h1-selected-scope-2">2. Establishing the hand and stair comparisons</h3>
+<p>The hand candidate is grounded in the existing <a href="/robo-si-results/humanoid/g1_support_retrieval/solution/side_carry/README.md">Dex3 side-carry record</a>: eight attempts failed that experiment's complete criterion, with slip, contact loss and low/wide workspace issues. The <a href="/robo-si-results/humanoid/g1_support_retrieval/solution/underhand_lift/README.md">underhand record</a> also reports support-span and thumb-interference problems. These are local observations under particular settings/controllers, not impossibility proofs for all three-finger grasps; no five-finger result exists here.</p>
+<p>First probe grasping at a height in both hands' good arm workspace, then validate complete support placement and retrieval from the actual start. Freeze object geometry/mass/friction, body, goal, sensor access and tuning/compute budgets. Allow appropriate hand-specific controllers instead of replaying the other hand's joints. Record hand/mount inertia, collision geometry and real actuator limits; do not invent favorable friction or hidden attachments. Compare repeated success, slip, load margin, regrasp count and completion time—not one success against one failure.</p>
+<p>The <a href="https://www.unitree.com/mobile/Dex3-1/">official Dex3-1 specification</a> describes three fingers and seven degrees of freedom; the wristless <a href="https://en.inspire-robots.com/product/rh56dfx/">Inspire RH56DFX specification</a> lists five fingers and six degrees of freedom. Finger count alone therefore does not determine dexterity, load or geometric capability. RH56DFX is not selected as the final model here, and vendor load claims under different test conditions are not compared.</p>
+<p>For the stair pair, screen cabinet heights where G1's effective one-tier reach is insufficient and two tiers have a candidate solution, while A3 cannot work from the floor but has a one-tier candidate. Effective reach includes the required grasp pose and cabinet depth, not the highest fingertip point. Then validate step area, ascent entry, assembly reach, load, retrieval and descent. Screening is not a full witness. Keep the world identical; replacing the complete robot compares overall embodiment and does not isolate height as the sole cause.</p>
+<h3 id="h1-selected-scope-3">3. Four pushing subcases</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Subcase</th>
+<th>Scene and objective</th>
+<th>Embodiment checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1 Clear access</td>
+<td>Push a blocking box into a side parking region, then complete cabinet retrieval.</td>
+<td>Contact height, force/friction, usable cleared space and body-specific posture.</td>
+</tr>
+<tr>
+<td>P2 Position a platform</td>
+<td>A box is pushable but hard to lift. Position it at the cabinet; legs require validated ascent, wheels also need a ramp.</td>
+<td>Functional placement tolerance, traction, capacity and loaded return.</td>
+</tr>
+<tr>
+<td>P3 Turn or change side</td>
+<td>Straight pushing hits an obstacle; reposition contact without losing access to the next push.</td>
+<td>Swept body/arm/box clearance and an actual route to change side.</td>
+</tr>
+<tr>
+<td>P4 Cannot lift, can push</td>
+<td>A target box exceeds lifting capability but can be pushed under control to ground region D; pair handled and handleless versions.</td>
+<td>Reject the inference that inability to lift implies failure; validate propulsion and stopping with every legal delivery method allowed.</td>
+</tr>
+</tbody>
+</table></div>
+<p>P4 is an auxiliary ground-transport variant, not high-cabinet retrieval. Report identical-world comparisons separately from body-scaled geometry/mass comparisons; changed worlds cannot be described as changing only the body.</p>
+<h3 id="h1-selected-scope-4">4. Added operations and scope decisions</h3>
+<ul>
+<li><strong>H1S-13 Autonomous transfer and safe return:</strong> choose direct loaded return, intermediate placement or any other legal complete route. A transfer surface is available but its use is not instructed. Establish transfer necessity with evidence, not reference-trace imitation.</li>
+<li><strong>H1S-14 Narrow-workstation body adaptation:</strong> start with approach/turning clearance for robot, tool and target. Compare stance, orientation, support placement and withdrawal in matched worlds. No complex crouching/crawling requirement or assumed larger-body disadvantage.</li>
+<li>Route switching remains within existing tasks; no forced initial failure or duplicate generic replanning task.</li>
+<li>Do not add common-feasible hand/body calibration tasks.</li>
+<li>Go1 with an arm is deferred pending model, inertia and controller integration; outside the 22 tasks.</li>
+</ul>
+<p>Screen objects/tools against the current 2 kg manipulation ceiling, while platforms support actual robot/attachment/payload weight. For H1S-13, audit loaded pose, descent clearance and dynamic stability rather than fabricating necessity with a finely tuned whole-body capacity threshold. H1S-14 feasibility comes from actual geometry and complete routes, not robot names. Parameters, budgets and witnesses remain pending.</p>
+<h3 id="h1-selected-scope-5">5. Difficulty and readiness</h3>
+<p>Operational structure progresses from single-tool preparation to composition and route selection. Infra still uses only L1 necessary tools, L2 tools usable by another body but not the current one, and L3 distractors. Two stair tiers can be L1; five-finger performance gains do not automatically establish L2; same-color additions alone do not establish full L3. Abstention is a separate feasibility track. Distinguish candidate selection, demonstrated multiple solutions, required composition and embodiment adaptation.</p>
+<p>Only historical H1 has full witnesses within its frozen scope. New choices still need frozen assets, ranges, thresholds, budgets and representative samples; new-scene feasibility remains <code>unknown</code>. Q dwell/velocity conditions inherit the extension draft and need runtime integration/calibration. This record does not resume simulation or change existing scores/admission.</p>
+<h3 id="h1-selected-scope-6">6. H1S-10: multiple boxes and embodiment-specific scenes</h3>
+<p>The common goal is to use available objects for retrieval, return and delivery. Provide several tall and short boxes, optionally differing in top area, handles, mass and capacity. Separately assess access, useful height, ability to relocate and loaded return; the tallest box is not necessarily best. Boxes begin away from the working position and must be carried or pushed into place when needed.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Scene</th>
+<th>Body and layout</th>
+<th>Selection behavior to inspect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1S-10.A Multiple box heights</td>
+<td>G1; several boxes including accessible-but-too-low, sufficiently tall but beyond direct step access, too-narrow tops, and a candidate supporting a complete route.</td>
+<td>Select a movable, accessible, sufficiently high support with a valid return, then place it and complete retrieval. Actual usability requires calibration.</td>
+</tr>
+<tr>
+<td>H1S-10.B Same world, A3</td>
+<td>First retain A's cabinet, boxes, target and poses while changing to A3; separately identify A3-specific layouts.</td>
+<td>The same box may have different usefulness: A3 might use a lower box or face different step/clearance constraints. Record actual choices without requiring them to differ.</td>
+</tr>
+<tr>
+<td>H1S-10.C Wheeled platform selection</td>
+<td>Multiple box platforms and a movable ramp, with varying heights, platform areas, overlap and placement geometry.</td>
+<td>Select a continuous wheel-access route with sufficient base and working-pose space. Relocate boxes/ramp when needed, then complete loaded return. Do not assume wheels can climb a vertical box edge.</td>
+</tr>
+<tr>
+<td>H1S-10.D Stretch-accessible box selection</td>
+<td>Several box heights and handle locations provide candidate transfer/work surfaces; any platform-ascent variant also needs a validated ramp.</td>
+<td>Choose boxes that the gripper, single arm, lift and base can position and use for the full task. Report transfer-surface and platform-ascent episodes separately; do not require assumed box climbing by Stretch.</td>
+</tr>
+</tbody>
+</table></div>
+<p>H1S-10.A–D are independent task registrations; H1S-10 is a non-scoring group. Label identical-world body comparisons <code>matched_world</code>; separately label geometry adapted to a body <code>body_specific_scene</code>. Do not attribute results entirely to embodiment when the world also changed. The first batch does not require every body crossed with every layout.</p>
+<p>Start with height and top-area choices, then add relocation, load and return constraints. This internal complexity does not automatically assign infra L1/L2/L3. Freeze dimensions, mass, friction, capacity and usability labels only with actual body profiles and observable evidence. Accept legal combinations of boxes, grasps or routes; one unusable box does not imply global infeasibility. Establish a full route witness for an ordinary completion scene; score deliberate infeasibility pairs separately. Unverified candidates do not justify an expected Q exit.</p>
+<p>Record chosen boxes, physical placement, genuine support, correct-target delivery and a stable returned robot. Selecting an intended box ID or merely reaching its top is insufficient. Cooperation is not required here; historical M3/cooperative H1E-10 evidence does not establish this task. A–D remain design scenes with <code>unknown</code> feasibility and no new physics runs.</p>
+<h3 id="h1-selected-scope-7">7. H1S-11: tools must be physically operable</h3>
+<p>Validate tool functionality separately from whether the assigned robot can operate it. Different bodies may have different tool usability, but a candidate cannot be only a visual prop without its mechanism or support function implemented. An ordinary feasible scene needs at least one body/target-compatible tool with a complete retrieval, withdrawal, transport and release witness; other candidates need not all be usable by that body.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Required physical operation</th>
+<th>Insufficient evidence or invalid behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Short/long hook</td>
+<td>Hold the handle, engage a visible compatible ring/edge, pull under control in an effective direction, then disengage or transfer.</td>
+<td>Binding on proximity, assuming a ringless target is hookable, cabinet collision or excessive loaded wrist moment.</td>
+</tr>
+<tr>
+<td>Manual long-handled gripper</td>
+<td>Stabilize the handle while pressing/moving real controls; a physical transmission operates the remote jaws, maintains grip and permits release.</td>
+<td>Holding the shaft without operating the trigger, exceeding trigger stroke/force, or bypassing the handle with a hidden remote-jaw command.</td>
+</tr>
+<tr>
+<td>Tray/support tool</td>
+<td>Grasp usable geometry, place the tray under the target, establish real support, preserve loaded orientation and transfer/place the target.</td>
+<td>Attaching the target to the tray, unloaded-only stability, or a single arm having no hand or independent surface for the next transfer.</td>
+</tr>
+</tbody>
+</table></div>
+<p>An electric gripper must explicitly declare the device model, real actuator, power/communication and publicly permitted control interface in a separate protocol. Never silently motorize a passive tool. Declare actual sensors and observable handle stroke/force; agents do not receive hidden operability labels.</p>
+<p>Check the chain: approach/grasp handle → actuate or engage → extract under control → withdraw and maintain loaded stability → place/release. Validate closure/interference, required fingers/hands, operating force/stroke, wrist and body load, swept clearance and support after release. A single arm unable to hold a tool and receive the target simultaneously needs a real independent transfer surface or viable action sequence. Dimensions, masses, forces and tolerances remain to be calibrated.</p>
+<p>First validate a simple passive hook with a compatible target interface, then consider manual grippers after mechanism and robot-operation validation. Add trays for actual transfer needs. Keep tool-by-body evidence separate; merely picking up a tool, static IK, or directly commanding jaws from a privileged controller does not establish operability. Tool-use stages require real functional interaction. If an open task permits another legal route, score its final physical goal and record separately whether tool use occurred.</p>
+<p>These operation checks apply to the independently registered H1S-11.A–C tasks. New tool-operation capabilities remain <code>unknown</code>; no new simulations or passing claims.</p>
+<h3 id="h1-selected-scope-8">8. H1S-11: tools enable a previously infeasible task</h3>
+<p>The primary comparison keeps the robot, target and world fixed: the task is infeasible without assistive tools, but a physically operable tool enables complete retrieval and delivery. Prioritize a Stretch deep-cabinet retrieval candidate. Merely speeding up an already feasible action or lifting a tool is insufficient. This is a design hypothesis with no new physical evidence.</p>
+<p><strong>Primary Stretch scene.</strong> A box sits deep inside a cabinet with a visible hook ring and a handle for subsequent grasping. Fixed cabinetry or a barrier limits base approach, with no side or rear bypass. Its height permits grasping after retrieval, but its initial depth lies beyond direct grasp from every legal base position and arm posture. Provide a stable receiving surface at the cabinet front and a nearby tool parking surface. Calibrate mass, friction, ring/handle geometry, tool length and wrist loads against the actual model; assume no numerical Stretch capability.</p>
+<p>Sequence: acquire hook → engage ring → pull the box along the shelf into a reachable supported region → stabilize and disengage → put down the hook → grasp the box handle with the same gripper → transport and deliver. The box remains physically supported throughout; pulling it off the shelf is not success. The single arm need not hold hook and box simultaneously. A short hook may not reach, a suitable longer hook may work, and an excessive length may prevent turning or exceed wrist limits. Establish each label through geometry and dynamics.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Paired scene</th>
+<th>Expected relationship without / with tools</th>
+<th>Evaluation purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1S-11.A Direct retrieval</td>
+<td>Place the same target nearer; direct grasp succeeds.</td>
+<td>Easy control for basic execution; direct completion is allowed.</td>
+</tr>
+<tr>
+<td>H1S-11.B Tool enables completion</td>
+<td>Place the target deeper; every legal tool-free route is infeasible, while at least one operable tool enables full delivery.</td>
+<td>Primary capability-extension pair: change only tool availability between matched runs; retain world, body, target, permissions and budgets.</td>
+</tr>
+<tr>
+<td>H1S-11.C Tools still insufficient</td>
+<td>Minimally change the bottleneck, for example deepen the target beyond engagement by every available tool, and exclude all other legal routes.</td>
+<td>Genuine infeasibility control; put down tools and enter Q empty-handed and stable; report separately from B.</td>
+</tr>
+</tbody>
+</table></div>
+<p>H1S-11.A–C are now independent tasks; H1S-11 is a non-scoring group. Never count an episode again under H1S-09.</p>
+<p><strong>Evidence required.</strong> Do not manufacture tool-free failure by disabling otherwise legal actions. Audit base repositioning, bypasses, alternative grasps, pushing and other available objects. A failed attempt or exhausted search budget is not infeasibility evidence. Establish the geometric/physical bottleneck, retain a continuous tool-assisted success witness from tool acquisition through final release and delivery, and record repeat outcomes. Accept any discovered legal tool-free solution and remove the capability-extension label from that scene. Report complete task success rates for both conditions, feasibility evidence, actual tool effect and correct abstention, not merely contact or pickup. Every new scene remains <code>unknown</code> until both sides of the comparison are established.</p>
+<!-- p4-development-boundary -->
+<p><strong>First P4 development binding:</strong> Existing G1 + Dex3, a 5 kg floor-supported target and a public 2 kg lifted-payload limit; ground-supported pushing is allowed. This tests delivery when lifting is disallowed by the public rule, not an absolute physical inability to lift 5 kg. Dimensions, friction, D, budgets and three repeats are recorded in the <a href="/robo-si-results/humanoid/g1_support_retrieval/extension/p4-development.json">frozen profile</a>. Handled pairing, other masses and bodies remain unverified. Score physical goals and public constraints; do not require two-hand pushing or a particular reference phase.</p>
+<!-- /p4-development-boundary --></div></section>
+<section aria-labelledby="h1-extension-title" id="h1-extension"><div class="wrap"><p id="legacy-h1-scope-note"><strong>Historical candidate design: the eight families/four controls below are provenance. The current 22 selected tasks define the register; do not count these groups again.</strong></p>
+<!-- h1-extension-content: source=planning/h1-extension/README-en.md sha256=f9aa30f4408e320f3573961b4f0fe67d86fd13d753688bf54859653c4763965c -->
+<style>#h1-extension h3{margin-top:32px;scroll-margin-top:120px}#h1-extension .table-wrap{overflow-x:auto;max-width:100%}#h1-extension th,#h1-extension td{vertical-align:top;overflow-wrap:anywhere}#h1-extension nav{line-height:2}#h1-extension blockquote{margin:20px 0;padding:12px 20px;border-left:3px solid #526b85}</style>
+<h2 id="h1-extension-title">H1 extension: embodiment-aware tools, retrieval and deliberate abstention</h2>
+<nav aria-label="Extension contents"><a href="#h1-extension-1">1. Intended configurations</a> · <a href="#h1-extension-2">2. Shared scene and public instruction</a> · <a href="#h1-extension-3">3. Eight task families</a> · <a href="#h1-extension-4">4. Four infeasibility controls</a> · <a href="#h1-extension-5">5. Exit contract and scoring</a> · <a href="#h1-extension-6">6. Difficulty, randomization and skill contracts</a> · <a href="#h1-extension-7">7. Implementation and acceptance work</a> · <a href="#h1-extension-8">8. Current family boundaries</a></nav>
+<p>2026-10-27 · <code>h1-extension/0.1.0</code> · <strong>Design proposal; implementation and validation pending.</strong> H1 is the task ID, not the Unitree H1 robot. The intended support set contains <strong>five platforms and six configurations</strong>, eight task families and four infeasibility controls. It does not imply existing Genesis support. New simulation runs: <strong>0</strong>. All extension feasibility results are <code>unknown</code>.</p>
+<p><a href="planning/h1-extension/README.md">中文</a> · <a href="planning/h1-extension/task-design.json">Machine-readable task cards</a> · <a href="task-h1-en.html">Existing H1</a> · <a href="task-design-en.html#card">Task design rules</a> · <a href="acceptance-en.html#screening">Layered acceptance</a>. Existing H1 scores, witnesses, admission and the established 14-task inventory remain unchanged.</p>
+<h3 id="h1-extension-1">1. Intended configurations</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">ID</th>
+<th scope="col">Configuration</th>
+<th scope="col">Embodiment question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>g1_dex3</td>
+<td>G1 + Dex3-1</td>
+<td>Biped, two arms, three-finger hands; one side of the hand comparison</td>
+</tr>
+<tr>
+<td>g1_inspire</td>
+<td>G1 + Inspire five-finger hands</td>
+<td>Same body, different grasp geometry, interference and holding stability</td>
+</tr>
+<tr>
+<td>agibot_a3</td>
+<td>AgiBot A3</td>
+<td>Another biped body; exact version, hands and assets remain open</td>
+</tr>
+<tr>
+<td>galaxea_r1</td>
+<td>Galaxea R1</td>
+<td>Wheels, two arms and adjustable torso; distinct from Unitree R1</td>
+</tr>
+<tr>
+<td>stretch4</td>
+<td>Stretch 4</td>
+<td>Wheels, one telescoping arm and lift column; intended model and available assets need verification</td>
+</tr>
+<tr>
+<td>go1_arm</td>
+<td>Go1 + lightweight arm + gripper</td>
+<td>Four legs and one arm; footholds, body height/pitch and load jointly constrain manipulation</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Go1 arm model is deliberately undecided, <strong>not specified as Go1 + Z1</strong>. Include arm, gripper, mounts, power supply and carried objects in whole-body inertia and load checks. Reaching a high cabinet requires a complete retrieve, retract, descend and transport route, not just sufficient nominal arm reach or unloaded walking ability.</p>
+<p><a href="https://manipulation-locomotion.github.io/">Deep Whole-Body Control</a> and its <a href="https://github.com/MarkFzp/Deep-Whole-Body-Control">widowGo1 code assets</a> motivate leg–arm coordination. <a href="https://github.com/PuenXu/Unitree-Go1-Arm">Unitree-Go1-Arm</a> provides CAD and URDF leads. Neither establishes a validated Genesis integration. The <a href="https://shop.unitree.com/pages/faq">Unitree FAQ</a> explicitly describes Z1 pairing with AlienGo/B1; that does not establish an official Go1 integration.</p>
+<h3 id="h1-extension-2">2. Shared scene and public instruction</h3>
+<p>The room contains a fixed cabinet, target, movable boxes/stools/panels, transfer surfaces, delivery region D and exit region Q. Q has a visible outline and letter, is separate from D, spawn and ordinary transport paths, and has a clear ground route from spawn for the assigned robot. Its dimensions accommodate the complete stowed robot footprint with a margin. Randomize Q independently of feasibility; color alone must not identify it.</p>
+<blockquote>
+<p>Deliver the {color} box bearing {visible identifier/pattern} at {location description} completely into D, release it and leave it stable. Do not damage objects, exceed their publicly stated load limits or violate the robot's public operating limits. If you judge that your current body and the available objects cannot complete the task, move to Q and remain stationary and empty-handed for 3 seconds to end the episode. You need not attempt to move any object first.</p>
+</blockquote>
+<p>Instructions reveal goals and public constraints, not tool roles, routes, difficulty or feasibility labels. Same-color objects must remain distinguishable by visible identifiers/patterns and spatial relations; moving to resolve occlusion is allowed.</p>
+<p>Only configured RGB/depth, encoders, IMU and physically installed force/tactile/current sensors are available. Models, placement, rates and noise remain to be frozen; wrist force sensing is not assumed for every robot. Ground-truth identities, poses, masses, capacities, friction and feasibility labels stay trusted-side. Capacity evidence must be accessible through camera-readable physical ratings or safe probes with observable deflection, slip or motor response. Unobservable hidden differences cannot justify requiring correct abstention.</p>
+<h3 id="h1-extension-3">3. Eight task families</h3>
+<p>These are author-side route hypotheses. A legal alternative that reaches the physical goal receives success; agents are not required to follow one scripted sequence.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">ID / family</th>
+<th scope="col">Objects and candidate complete route</th>
+<th scope="col">Critical checks and negative examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1E-01 Clear a box, relocate a stool</td>
+<td>A large box blocks stool transport or cabinet access. Push it aside, carry the stool, ascend, retrieve, transfer the target, descend empty-handed and deliver. The box must not itself provide a valid height shortcut.</td>
+<td>Push capability, grasp, transport clearance, support area and return transitions. Depth and a small push provide evidence. Merely clearing the box, touching the stool or delivering the wrong object fails. Wheeled bodies require an independently valid ramp route.</td>
+</tr>
+<tr>
+<td>H1E-02 Combine multiple supports</td>
+<td>Two or three individually insufficient supports. Route A stacks compatible units with a separate ascent entry; route B creates successive steps. Validate return as well as retrieval.</td>
+<td>Height alone is insufficient: assembly reach, contact area, lower-unit total load, lateral force, tipping and ascent footholds matter. Inspect mating geometry/ratings and use safe probes. A tall but inaccessible or overloaded stack fails; ordinary stools are not assumed stackable.</td>
+</tr>
+<tr>
+<td>H1E-03 Ramp and platform</td>
+<td>Arrange a box platform and panel ramp, ascend, retrieve and return. Wheels require continuous rolling support. A separate pre-positioned-ramp variant tests use, not construction.</td>
+<td>Slope, width, wheel spacing, clearance, turning platform, overlap, traction and loaded braking. Front wheels reaching the platform while rear wheels hang, or an unloaded-only route, fails. No teleportation or assumed wheel climbing.</td>
+</tr>
+<tr>
+<td>H1E-04 Same-color target and tools</td>
+<td>At least two same-color boxes; the target has another visible identifier. Same-color supports differ in geometry, handles and ratings. Apply routes from 01/02/03.</td>
+<td>Color is independent of role/capacity. Correct identity and usable support are separate requirements. A substitute box in D, an unreadable identifier treated as certain or memorized color-to-strength mapping fails.</td>
+</tr>
+<tr>
+<td>H1E-05 Load limits and return</td>
+<td>A return step/ramp carries the unloaded robot but not robot plus target. The working platform must carry the loaded robot, with a reachable target-rated transfer surface. Retrieve, unload there, descend empty, regrasp and deliver.</td>
+<td>Include body, attachments and all supported objects, local contact forces and moments. Single-arm robots need independent support before releasing; unloading later cannot excuse overload during pickup. Retrieval without return, a weak transfer surface or overload fails.</td>
+</tr>
+<tr>
+<td>H1E-06 Same body, different hands</td>
+<td>Supports offer different handle widths, thicknesses and clearances. Compare both G1 hands in the same layout while selecting movable/pushable tools, preparing access and delivering.</td>
+<td>Do not assume five fingers outperform three. Check closure, finger interference, friction and wrist moments; inspect pushing/cradling alternatives. Reachable IK without a stable grasp, cosmetic hand swaps or hidden welds fail.</td>
+</tr>
+<tr>
+<td>H1E-07 Go1 whole-body retrieval</td>
+<td>Initial arm reach is constrained. Reposition feet, change body height/pitch, grasp, retract/recover and transport. High-cabinet variants additionally require a validated broad platform/ramp; place the target down before changing footholds where necessary.</td>
+<td>Support polygon, arm moment and total center of mass change together. Use configured perception, IMU and joint/load feedback. Fixed-base IK alone, unchanged unloaded gait after pickup or a posture with no recovery path fails.</td>
+</tr>
+<tr>
+<td>H1E-08 Multiple-route selection</td>
+<td>Box-plus-stool, multiple supports, ramp panels and transfer surfaces coexist with same-color distractors and load limits. Require two validated routes for the current configuration before calling an instance multi-solution.</td>
+<td>Compare complete access, handling, stability and loaded return. Efficiency is secondary. With only one established route, label candidate selection. A fast overloaded route, becoming stranded or unjustified immediate exit fails.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h1-extension-4">4. Four infeasibility controls</h3>
+<p>These are specifications to construct, <strong>not established infeasibility certificates</strong>. Bind labels to scene, body, hand, attachments and public rules at the initial state. Cover all legal combinations and alternatives, not one failed route.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">ID / related families</th>
+<th scope="col">Required obstruction certificate</th>
+<th scope="col">Feasible pair</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1E-I01 / 02, 07</td>
+<td>Even a conservative maximum over legal supports and body postures cannot reach the required contact height; rule out other support, pulling, tipping and catch routes.</td>
+<td>Change only support height or target shelf height and witness a full route.</td>
+</tr>
+<tr>
+<td>H1E-I02 / 05, 08</td>
+<td>Every access, grasp, transfer and return route violates at least one necessary load condition. Ratings or safe observable responses must expose the obstacle.</td>
+<td>Replace one limiting support or reduce target mass.</td>
+</tr>
+<tr>
+<td>H1E-I03 / 03</td>
+<td>A mandatory raised platform has no adequate wheeled entry: all panels/combinations fail length, width, strength or overlap. Also exclude ground reach, torso adjustment and detours.</td>
+<td>A valid ramp for the same robot; a different-body feasible comparison is a separate pairing.</td>
+</tr>
+<tr>
+<td>H1E-I04 / 06</td>
+<td>The current hand cannot handle all necessary supports/target, including alternatives through pushing, cradling, reorientation, tools and environmental contacts.</td>
+<td>Swap the hand on the same body, or change only grasp geometry; demonstrate full completion.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Direct abstention permits observing then going to Q without touching task objects; failed attempts are not required. Hidden properties may require safe probes. Missing evidence, failed finite IK search, timeout and a weak controller remain <code>unknown</code>, not physical impossibility. An agent that destroys an initially feasible route cannot earn correct-abstention credit.</p>
+<h3 id="h1-extension-5">5. Exit contract and scoring</h3>
+<p>Proposed state machine: <code>active → retreating → abstained</code>, with separate <code>delivered / timed_out / invalid</code> terminal outcomes. Entering Q expresses exit intent. The trusted worker commits one terminal event after physical completion; a language declaration is unnecessary. If connected, existing <code>declare_infeasible</code> records intent/reason only and cannot bypass movement. This proposal does not change the current H1 API.</p>
+<p>Q completion requires the full horizontal robot envelope inside Q, every load-bearing foot/wheel on legal ground, no held or suspended object, linear speed ≤0.03 m/s, angular speed ≤0.05 rad/s, stability for 3 s and no hard violation. These are draft thresholds to calibrate and freeze per configuration. Falling into Q, grazing it, reaching in with an arm, spawning there or missing logs fails. Delivery requires the correct target completely inside D, independently supported, released and stable for 3 s. Never backfill skipped stages.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">Initial trusted label</th>
+<th scope="col">Valid delivery</th>
+<th scope="col">Valid exit at Q</th>
+<th scope="col">No completed exit / timeout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>witnessed feasible</td>
+<td><code>task_success=1</code></td>
+<td><code>task_success=0, false_abstention=true</code></td>
+<td>Failure / timeout</td>
+</tr>
+<tr>
+<td>certified infeasible</td>
+<td>Certificate contradiction; retain run and review label</td>
+<td><code>task_success=0, correct_abstention=true</code></td>
+<td>Missed abstention / exit failure</td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>May establish a matching full witness after validation</td>
+<td><code>task_success=0, abstention_correctness=null</code></td>
+<td>Unknown label retained</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>screen_pass</code> is not witnessed feasibility. Certified infeasibility needs an additional necessary-condition certificate and scope; a route-level <code>rejected</code> result is insufficient. Keep the existing four-state screening ledger separate. Safe exit is an execution metric, not proof of correct impossibility judgment.</p>
+<p>Report delivery on feasible episodes, correct abstention on infeasible episodes, false abstention on feasible episodes, exit execution success, unknown count, decision/exit time, probes and violations. Unknown labels do not enter feasible/infeasible denominators. Always abstaining scores zero on feasible episodes. Do not add retrieval-stage credit to abstention rewards or turn timeout into abstention. An optional aggregate is balanced decision success over both certified classes; omit it when either class is missing.</p>
+<h3 id="h1-extension-6">6. Difficulty, randomization and skill contracts</h3>
+<p>Preserve three layers: L1 contains only the objects necessary for one route; L2 adds tools unusable by this body but usable by a specified other body; L3 adds same-color and physically weak distractors. L2 requires evidence for both bodies, not assumptions from appearance/finger count. Keep targets and necessary objects fixed for the same seed, add objects cumulatively and recheck clearance/shortcuts. Family 04 is an L3 analysis slice, not another layer.</p>
+<p>Family 08 has a separate <code>route_selection</code> track because simultaneously valid alternative tool sets do not meet strict L1 necessity. Infeasible controls have a separate <code>feasibility_decision</code> track. Report identical-world <code>matched_world</code> comparisons separately from capability-adjusted <code>body_scaled</code> comparisons. Explicit/partial/latent capability disclosure is an independent axis and never exposes scene truth.</p>
+<p>Randomize shelf/target location, tool and Q positions, dimensions, grasp geometry, mass, friction, capacity and identifiers. Numeric ranges are null until calibrated. Color must not predict role/capacity, and Q must not predict feasibility. Record geometry rejection rates/reasons, including overlap and unreachable Q. Retain all prescribed evaluation failures, unknowns and timeouts; do not replace seeds. Keep development and sealed evaluation splits separate.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">Subtask</th>
+<th scope="col">Entry → exit</th>
+<th scope="col">Low-level/contact checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observe</td>
+<td>Initial scene → unique target and candidate evidence</td>
+<td>Change view, read identifiers, safely probe; resolve ambiguity</td>
+</tr>
+<tr>
+<td>Prepare</td>
+<td>Candidate route → stable load-bearing structure</td>
+<td>Push/grasp/lift/place/release; actual contact, overlap and deflection</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>Stable ground → working pose</td>
+<td>Weight shift and footholds, or wheel ramp motion; traction, clearance, drive force</td>
+</tr>
+<tr>
+<td>Retrieve</td>
+<td>Target supported by shelf → correct target held clear</td>
+<td>Grasp/cradle, lift and retract; load and center-of-mass changes</td>
+</tr>
+<tr>
+<td>Return</td>
+<td>Working pose → ground delivery state</td>
+<td>Transfer, release, empty descent, regrasp as needed; actual state continuity</td>
+</tr>
+<tr>
+<td>Deliver</td>
+<td>Held target → released and stable in D</td>
+<td>Lower, confirm independent support, withdraw and dwell</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td>Safely mobile state → empty and stable in Q</td>
+<td>Stabilize/unload, retreat, stow, stop; no assumed safe recovery from arbitrary failures</td>
+</tr>
+</tbody>
+</table></div>
+<p>Generate physically valid standalone starts for curriculum evaluation, but never concatenate checkpoint fragments into a full witness. Draft diagnostic weights are Prepare 0.2, Retrieve 0.3 and Deliver 0.5, each credited once. Keep task success and abstention separate. A legal route bypassing tool preparation can succeed without receiving unperformed stage credit; reassess tool necessity.</p>
+<h3 id="h1-extension-7">7. Implementation and acceptance work</h3>
+<p>Target backend: Genesis. Freeze version, timestep/substeps, solver/contact settings, self-collision, each robot's source/license/hash/scale/inertia/controller and actual sensor configuration before execution. Prefer official robot and detailed object assets. Custom geometry for precise load or assembly behavior needs a recorded reason for not using higher-priority sources. Weak supports require physical deflection, instability or failure mechanisms, not a rigid prop with an arbitrary scoring penalty. Static mass ratings do not substitute for dynamic contact-force and moment checks.</p>
+<p>Control-step, observation, token, reset, wall-clock and probe budgets remain null; do not launch solvers before budgets are declared. The difficulty hypothesis is that tool composition, contact transitions, hand limits and uncertainty require substantial coding-agent iteration; the guideline's four-hour target is unmeasured.</p>
+<p>Suggested implementation order: 01/05 connect to H1; 03 adds wheels; 06 isolates hand changes; 02/04 add composition/distractors; 07 follows Go1 asset selection; 08 combines established routes. Predeclare representative configurations/routes/layers, skill checks, boundary negatives, reviewers and independent reproducers. A claimed task scope needs a generated continuous end-to-end success witness, without requiring full solutions for every random draw. Keep four-state results, check scope, budgets and evidence identity. Representative runs require at least three repeats and three scoring passes per episode; remaining sample counts/tolerances are pending.</p>
+<p>Seven attack groups must be covered: privileged truth/certificate access; world modification or teleporting into Q; penetration/welds/contact energy exploits; wrong identity, single-frame or fallen-in-region triggers; repeated exit or stage-reward farming; cross-episode seed/color memorization; and shortcuts through ground reach, tool combinations or load transfer. Reward legal alternatives and revise route labels; prohibited methods require explicit public or physical constraints. These negative cases are designed, not executed.</p>
+<p>Human review must check identity and complete region containment, actual support, loaded return, damage/overload/hidden attachments, Q movement and dwell, certificate coverage of alternatives, and matching recording/source/asset/log identities. This directory and its machine-readable cards are author-side materials and must be excluded from agent bundles.</p>
+<h3 id="h1-extension-8">8. Current family boundaries and historical cooperative proposal</h3>
+<p><a href="planning/task-families-en.md">Current H1 / M1 / M3 overview</a> · <a href="planning/m3-extension/README-en.md">Conditional M3 design</a>. H1 now prioritizes single-step ascent, foothold-sequence selection and light-payload balance/return. The former H1E-09–14 cooperative supplement is reclassified and no longer counted as active H1 tasks; the original eight entries and four controls retain their IDs. New M3 lifting requires auditing the current 2 kg constraint and a compatible lightweight partner; humanoid carrying is excluded. The <a href="planning/h1-extension/cooperative-tools-en.md">old proposal</a> is historical only.</p>
+</div></section>
+<section id="reference-designs"><div class="wrap"><h2>Reference executions and designs</h2><p>Scoped execution evidence exists; see the design, actions, support, trajectory mapping and reproduction sources.</p><p><a href="reference-designs/H1.html">Reference executions and designs</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>Task specification and evidence</h2><p class="detail-nav"><a href="#detail-scope">Scope and scene</a> · <a href="#detail-interfaces">Observations, actions and interfaces</a> · <a href="#detail-planning">High-level goals and low-level actions</a> · <a href="#detail-trajectory">Trajectory and state correspondence</a> · <a href="#detail-scoring">Scoring and success criteria</a> · <a href="#detail-evidence">Representative evidence and review</a> · <a href="#detail-sandbox">Sandbox validation</a> · <a href="#detail-reproduce">Download and reproduce</a> · <a href="#detail-limits">Acceptance limits and remaining work</a></p><article id="detail-scope"><h3>Scope and scene</h3><p>Layered evidence for the original1.25m task; four-state randomized Layer1 records</p><p>Scoped reference and design delivery complete. Fixed successes, C026 seeds 63/963 continuous successes and seed 985 failure retained. The 5.26 GB frozen packet is published on HF with verified remote size and SHA-256.</p></article><article id="detail-interfaces"><h3>Observations, actions and interfaces</h3><p>Privileged reference state and public-agent permissions are separate; this task’s SDK and instructions define the boundary.</p><p><a href="../humanoid/g1_support_retrieval/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_support_retrieval/sandbox/agent_sdk">Agent SDK (GitHub; repository access required)</a></p></article><article id="detail-planning"><h3>High-level goals and low-level actions</h3><p>The detailed action specifications below are the original Chinese source. IDs, contact requirements, recorded times and review status are retained without changing their interpretation.</p><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>布置支撑物</td>
+<td>H1.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>登上支撑物</td>
+<td>H1.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>取得目标</td>
+<td>H1.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>中转放置</td>
+<td>H1.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>空手下台</td>
+<td>H1.K05</td>
+<td>S4 → S5</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>重抓并交付</td>
+<td>H1.K06</td>
+<td>S5 → S6</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>机器人和候选支撑物在原始场景中</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>支撑物在可登踏位置稳定，手已释放</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>双足在支撑面上，机器人稳定</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>正确目标离开原支撑，受控持有</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>目标由板面稳定承重、双手释放</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>双足落地、双手空，目标仍在板上</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>目标在指定区域落地释放并稳定</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>Trajectory and state correspondence</h3><p>The detailed action specifications below are the original Chinese source. IDs, contact requirements, recorded times and review status are retained without changing their interpretation.</p><details><summary>Ordered actions, contacts and trajectory events</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>H1.K01 · 接近、抓持、搬移并落地</h5>
+<p>入口：机器人和候选支撑物在原始场景中。出口：支撑物在可登踏位置稳定，手已释放。</p>
+<p>局部检查：支撑顶面容纳足底；柜前可达；搬移负载和落地点有效。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K01.A01</td>
+<td>调整站位、双足稳定</td>
+<td>足→地面</td>
+<td>足载荷及重心余量</td>
+<td>e0000: episode [1.0, 1.0] s; e0001: episode [1.0, 1.0] s; e0002: episode [4.3, 4.3] s; 另 23 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K01.A02</td>
+<td>双手接近并坐实抓持</td>
+<td>地面→支撑物，手逐步接触</td>
+<td>左右手接触、物体姿态</td>
+<td>e0028: episode [74.28, 74.28] s; e0032: episode [79.76, 79.76] s; e0034: episode [87.5, 87.5] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K01.A03</td>
+<td>抬起、起身并逐足搬移</td>
+<td>双手→支撑物；交替足→地面</td>
+<td>持物高度、落足、接触不断开</td>
+<td>e0038: episode [88.02, 88.02] s; e0045: episode [98.4, 98.4] s; e0047: episode [108.94, 108.94] s; 另 246 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K01.A04</td>
+<td>下降、让支撑物落地、撤手</td>
+<td>双手→地面独立承重</td>
+<td>物体支撑及手分离</td>
+<td>e0280: episode [479.5, 479.5] s; e0283: episode [482.06, 482.06] s; e0284: episode [482.06, 482.06] s; 另 13 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K02 · 逐足落点与重心转移</h5>
+<p>入口：支撑物稳定且登踏面可用。出口：双足在支撑面上，机器人稳定。</p>
+<p>局部检查：台阶高度、足底完整覆盖、承重与抗滑；不能仅检查高度收益。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K02.A01</td>
+<td>收臂并调整登高入口</td>
+<td>双足→地面；支撑物已落地</td>
+<td>柜体净空及足点</td>
+<td>e0327: episode [762.6, 762.6] s; e0328: episode [762.6, 762.6] s; e0329: episode [765.74, 765.74] s; 另 24 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K02.A02</td>
+<td>重心移向支撑足、卸载摆动足</td>
+<td>单足→地面/支撑物</td>
+<td>支撑足法向力、重心</td>
+<td>e0355: episode [827.2, 827.2] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K02.A03</td>
+<td>抬腿、前摆、落足、确认承重后换脚</td>
+<td>地面单足→支撑物双足</td>
+<td>落足接触、身体高度和碰撞</td>
+<td>e0354: episode [827.2, 827.2] s; e0356: episode [888.4, 888.4] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K03 · 柜内接近、双手抓取、退出</h5>
+<p>入口：支撑面稳定且正确目标可识别。出口：正确目标离开原支撑，受控持有。</p>
+<p>局部检查：负载姿态可达、柜口扫掠无碰撞、支撑合力可行。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K03.A01</td>
+<td>整理肩部并检查柜口净空</td>
+<td>双足→支撑物；物体→柜板</td>
+<td>肩部距离、足稳定</td>
+<td>e0358: episode [888.4, 888.4] s; e0359: episode [888.4, 888.4] s; e0360: episode [891.9, 891.9] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K03.A02</td>
+<td>双手进入柜内并建立抓持</td>
+<td>柜板→柜板/双手共同承重</td>
+<td>双手接触与抓持姿态</td>
+<td>e0361: episode [913.18, 913.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K03.A03</td>
+<td>抬离柜板并退出柜口</td>
+<td>双手→目标；足→支撑物</td>
+<td>目标离板、柜口间隙</td>
+<td>e0361: episode [913.18, 913.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K04 · 将目标降到中转板并撤手</h5>
+<p>入口：目标由手承托，中转板可达。出口：目标由板面稳定承重、双手释放。</p>
+<p>局部检查：板面容纳真实物体边界，落地后仍可从地面重抓。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K04.A01</td>
+<td>规划目标到中转板的手部通道</td>
+<td>双手持目标</td>
+<td>手与板边间隙</td>
+<td>e0362: episode [913.18, 913.18] s; e0363: episode [913.18, 913.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K04.A02</td>
+<td>纠正高度、下降到中转板</td>
+<td>双手→板面承重</td>
+<td>目标支撑、姿态及残余手载荷</td>
+<td>e0364: episode [923.18, 923.18] s; e0365: episode [926.18, 926.18] s; e0366: episode [936.18, 936.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K04.A03</td>
+<td>确认板面承托后撤手收臂</td>
+<td>板面独立承重</td>
+<td>手已分离、目标稳定</td>
+<td>e0368: episode [938.68, 938.68] s; e0369: episode [942.18, 942.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K05 · 逐足下降与落地稳定</h5>
+<p>入口：目标已在中转板上独立稳定。出口：双足落地、双手空，目标仍在板上。</p>
+<p>局部检查：下降足点和重心路径有效，不允许携物下降替代该参考阶段。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K05.A01</td>
+<td>依据当前足点重排下降动作</td>
+<td>目标→中转板；足→支撑物</td>
+<td>实际足位置与地面可达性</td>
+<td>e0370: episode [942.18, 942.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K05.A02</td>
+<td>移重心、逐足卸载、抬脚并降到地面</td>
+<td>单足支撑交替切换</td>
+<td>足法向力、重心、落足误差</td>
+<td>e0371: episode [942.18, 942.18] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K05.A03</td>
+<td>双足落地并稳定</td>
+<td>双足→地面</td>
+<td>双足接触、身体稳定</td>
+<td>e0372: episode [1037.98, 1037.98] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H1.K06 · 地面重抓、携物行走、放置撤手</h5>
+<p>入口：机器人落地且目标仍可达。出口：目标在指定区域落地释放并稳定。</p>
+<p>局部检查：重抓姿态、搬运净空、目标完整容纳和原评分驻留条件。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.K06.A01</td>
+<td>接近中转板并重建双手抓持</td>
+<td>板面→双手</td>
+<td>抓取高度、双手载荷</td>
+<td>e0375: episode [1043.94, 1043.94] s; e0376: episode [1063.78, 1063.78] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K06.A02</td>
+<td>携物到目标、制动并稳定</td>
+<td>双手持物；足→地面</td>
+<td>速度、支撑及目标区几何</td>
+<td>e0377: episode [1075.9, 1075.9] s; e0378: episode [1077.6, 1077.6] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K06.A03</td>
+<td>调平并下放目标</td>
+<td>双手→目标区支撑</td>
+<td>支撑接触、姿态</td>
+<td>e0379: episode [1077.78, 1077.78] s; e0380: episode [1082.8, 1082.8] s; e0381: episode [1087.82, 1087.82] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H1.K06.A04</td>
+<td>确认落地、释放、撤手、驻留</td>
+<td>目标区独立承重</td>
+<td>手分离及持续支撑</td>
+<td>e0382: episode [1088.12, 1088.12] s; e0383: episode [1090.12, 1090.12] s; e0384: episode [1090.62, 1090.62] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>Scoring and success criteria</h3><p>Original task scoring and frozen reference verdicts remain authoritative. Plans, skill expansion and event mappings earn no additional task credit. Proposed contract scoring is not the current implementation. A full-run score cannot be transferred to feasibility screening or a sandbox smoke check.</p><p>Final key-state criterion (original source): 目标在指定区域落地释放并稳定</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_support_retrieval/task_spec.py">原任务判据源码 / Original task criteria (GitHub; repository access required)</a></p></article><article id="detail-evidence"><h3>Representative evidence and review</h3><p>见证：<strong>C026-63</strong>。范围：原始1.25米场景的分层证据交付；随机Layer1实例按四态记录。</p>
+<p>限定范围参考解与设计交付完成；固定成功、C026 seed 63/963 连续成功及 985 失败记录保留。5.26 GB 冻结包已上传 HF，远端大小与 SHA-256 核验通过。</p>
+<p><a href="planning/h1/registry.json">完整见证原始记录</a>；<a href="planning/hierarchical-evaluation/action-mappings/H1.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>Sandbox validation</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>These checks exercise startup, sensors and actions, not complete task success. WSL on the same machine is not independent-machine reproduction.</p><p><a href="sandbox-delivery/evidence/windows/H1/trusted/verdict.json">Trusted short-run verdict</a> · <a href="sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>Download and reproduce</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/71ea702d485b28be849a28c894750b9538a40fe0/releases/h1-layered-reference-20261026/h1_layered_reference_20261026.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: 300630ebf965ef40e6b8c16c231dfe7671fd84dabd70684b842b4138f6d03e03</p><p>Private repository access is required. Reference packets preserve historical configurations and entrypoints; the current sandbox workspace supplies runtime assets. Install the documented environment and run the sandbox smoke example, then use the frozen reference entrypoint for reproduction. Smoke success is not a full expert replay.</p><p>Check this task’s entrypoint without running physics, then follow the linked environment and agent-delivery instructions. Replace historical machine-specific paths in the README; the sandbox table above is the current validation status.</p><pre><code>python -m infra.sandbox.inventory check --task H1
+python -m humanoid.g1_support_retrieval.sandbox.launch --help</code></pre><p><a href="../humanoid/g1_support_retrieval/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>Acceptance limits and remaining work</h3><p>Unseen skill envelopes and dynamic checks remain unknown. A new controller needs affected representative regression only. Human sign-off, independent reproduction and other formal gates remain open; no full solution per random draw.</p><p>The joint review of the new action-to-trajectory mapping is pending. Event candidates do not certify exact skill boundaries; unresolved local clocks and summary-only spans remain visible in the table.</p><p>Random instances retain four states: complete success evidence, feasibility-screened, unknown, or failed checks. Scoped representative witnesses and mappings between representations are required, not full solutions for every random instance. Page completion does not infer formal admission, human sign-off or independent-machine validation. New physics runs in this update: 0.</p><p><a href="reference-designs/H1.html">完整参考设计 / Full reference design</a> · <a href="task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main>
+<footer><div class="wrap">robo-si · H1 layer-one validation · <a href="contribute-en.html">Home</a> · <a href="task-h1-zh.html">中文</a></div></footer>
+</body></html>

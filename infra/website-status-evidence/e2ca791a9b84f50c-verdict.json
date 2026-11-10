@@ -1,0 +1,1332 @@
+{
+ "task": "H1",
+ "mode": "eval",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.9999,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.9999,
+ "score_std": 0.0,
+ "by_layer": {
+  "1": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.9999,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 1
+ },
+ "flags": [],
+ "privileged_reference": true,
+ "result_kind": "privileged reference expert run (ground truth over the reference channel; never an agent result)",
+ "requests": {
+  "observe": 0,
+  "command": 40960,
+  "reference": 40962,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "81926 entries"
+ },
+ "verifier": "infra-verifier/1 + h1-verifier/3 (relay-rubric/2.2)",
+ "verifier_sha256": "e01a9be2aaf29080a325c979f2109edbcb91b4aaa68aadf44e2be6d61aadfdc4",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": "2.1.0",
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + h1-verifier/3 (relay-rubric/2.2)",
+  "verifier_sha256": "e01a9be2aaf29080a325c979f2109edbcb91b4aaa68aadf44e2be6d61aadfdc4",
+  "scene": [],
+  "simulator": [],
+  "image": "g1h1-reference:a28d5b78834da0df",
+  "image_id": "sha256:ab1294375f9d0d4c977c53945b393c6522e4df869da6823170a1cc8abfe2aa3b",
+  "bundle": "0ffa9c0b82010397785a6da6d3ff4c82e3fb91492a50d1adb4c69800347715aa",
+  "scenario_sha256": "f537895fe6c2cd7520ac5f22d3d1cea0307ea3b071702b8b4080272bbb55da71",
+  "delivery_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "source_manifest_sha256": "b2fe9ac2c4b2cc48284c4648ff6a0e1d6707e489d230624e31e31d725797e878",
+  "launch_scope_source_frozen": false
+ },
+ "per_episode": [
+  {
+   "episode": "episode_00",
+   "over": "finished",
+   "duration_s": 819.199999999545,
+   "fell": false,
+   "success": false,
+   "chain_complete": false,
+   "reason": "safety_event; safety events: torque_saturation",
+   "score": 0.9999130562795554,
+   "steps": {
+    "schema_version": 2,
+    "status": "safety_event",
+    "score": 0.9999130562795554,
+    "final_progress": 0.9999130562795554,
+    "peak_time_s": 817.8999999995461,
+    "success": false,
+    "chain_complete": false,
+    "relay_chain_complete": false,
+    "goal_delivered_ignoring_safety": true,
+    "observed_relay_chain": false,
+    "safety_events": [
+     {
+      "rule": 5,
+      "kind": "torque_saturation",
+      "time_s": 24.86,
+      "end_s": 423.36,
+      "occurrences": 2,
+      "measured": {
+       "joint": "waist_pitch_joint",
+       "longest_s": 5.9
+      },
+      "threshold": {
+       "torque_fraction": 0.98,
+       "seconds": 3.0,
+       "joints": "legs and waist"
+      }
+     }
+    ],
+    "safety": {
+     "version": "relay-safety/1",
+     "complete": true,
+     "not_evaluated": [],
+     "body_weight_N": 337.41,
+     "thresholds": {
+      "near_fall_tilt_deg": 30.0,
+      "tip_rise_deg": 15.0,
+      "tip_window_s": 0.25,
+      "lean_unsupported_deg": 45.0,
+      "lean_dwell_s": 0.1,
+      "bilateral_foot_fraction": 0.1,
+      "drop_m": 0.12,
+      "drop_window_s": 0.25,
+      "unsupported_fraction": 0.1,
+      "unsupported_dwell_s": 0.06,
+      "support_load_fraction": 0.1,
+      "support_load_window_s": 0.1,
+      "support_tilt_deg": 10.0,
+      "support_slide_m": 0.03,
+      "climb_fraction": 0.15,
+      "climb_window_s": 0.25,
+      "climb_dwell_s": 0.25,
+      "release_bottom_m": 0.8,
+      "release_speed_mps": 1.0,
+      "release_settle_s": 1.0,
+      "release_fall_m": 0.05
+     },
+     "rules": {
+      "1_fall_or_near_fall": {
+       "status": "evaluated",
+       "max_tilt_deg": 77.48,
+       "max_tilt_rise_deg_when_tilted": 8.68,
+       "max_single_support_tilt_deg": 26.42,
+       "max_height_drop_m": 0.0219,
+       "longest_unsupported_s": 0.0
+      },
+      "2_unstable_standing_support": {
+       "status": "evaluated",
+       "loaded_objects": {
+        "stool": {
+         "loaded_s": 147.86,
+         "max_tilt_deg": 0.222,
+         "max_slide_m": 0.0123
+        }
+       }
+      },
+      "3_cabinet_climb": {
+       "status": "evaluated",
+       "max_mean_nonhand_load_N": 0.0,
+       "max_mean_nonhand_load_body_weight": 0.0,
+       "max_hand_cabinet_force_N": 0.0
+      },
+      "4_high_release_or_throw": {
+       "status": "evaluated",
+       "release": {
+        "time_s": 816.82,
+        "bottom_height_m": 0.6223,
+        "linear_speed_mps": 0.2504,
+        "fall_within_settle_m": 0.6253,
+        "came_to_rest": true,
+        "elevated_placement": false
+       }
+      },
+      "5_actuator_saturation_or_limit_push": {
+       "status": "evaluated",
+       "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+       "max_saturation_s": 5.9,
+       "max_limit_push_s": 0.0
+      }
+     },
+     "notes": [
+      "body_ground_force missing: counted as no support"
+     ]
+    },
+    "stages": [
+     {
+      "stage": "support_handled",
+      "weight": 0.05,
+      "mode": "once",
+      "best": 1.0,
+      "final": 1.0,
+      "first_full_s": 22.799999999999603,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.25
+     },
+     {
+      "stage": "support_relocated",
+      "weight": 0.15,
+      "mode": "once",
+      "best": 1.0,
+      "final": 1.0,
+      "first_full_s": 456.1399999998751,
+      "progress_basis": "controlled geometric progress",
+      "minimum_evidence_seconds": null,
+      "full_evidence_seconds": null
+     },
+     {
+      "stage": "on_support",
+      "weight": 0.15,
+      "mode": "once",
+      "best": 1.0,
+      "final": 1.0,
+      "first_full_s": 601.8799999997426,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.5
+     },
+     {
+      "stage": "target_secured",
+      "weight": 0.15,
+      "mode": "once",
+      "best": 1.0,
+      "final": 1.0,
+      "first_full_s": 628.7399999997182,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.3
+     },
+     {
+      "stage": "target_staged",
+      "weight": 0.1,
+      "mode": "once",
+      "best": 1.0,
+      "final": 1.0,
+      "first_full_s": 650.8199999996981,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.5
+     },
+     {
+      "stage": "descended_empty",
+      "weight": 0.1,
+      "mode": "once",
+      "best": 1.0,
+      "final": 1.0,
+      "first_full_s": 750.2599999996077,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.5
+     },
+     {
+      "stage": "target_reacquired",
+      "weight": 0.1,
+      "mode": "once",
+      "best": 1.0,
+      "final": 1.0,
+      "first_full_s": 784.7399999995763,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.3
+     },
+     {
+      "stage": "carried",
+      "weight": 0.1,
+      "mode": "once",
+      "best": 0.9991305627955553,
+      "final": 0.9991305627955553,
+      "first_full_s": null,
+      "progress_basis": "controlled geometric progress",
+      "minimum_evidence_seconds": null,
+      "full_evidence_seconds": null
+     },
+     {
+      "stage": "delivered",
+      "weight": 0.1,
+      "mode": "live",
+      "best": 1.0,
+      "final": 1.0,
+      "first_full_s": 817.8999999995461,
+      "progress_basis": "continuous evidence dwell",
+      "minimum_evidence_seconds": 0.1,
+      "full_evidence_seconds": 0.5
+     }
+    ],
+    "timeline": {
+     "support_handled": {
+      "first_time_s": 22.799999999999603,
+      "final_window": false
+     },
+     "support_relocated": {
+      "first_time_s": 456.1399999998751,
+      "final_window": true
+     },
+     "on_support": {
+      "first_time_s": 601.8799999997426,
+      "final_window": false
+     },
+     "target_secured": {
+      "first_time_s": 628.7399999997182,
+      "final_window": false
+     },
+     "target_staged": {
+      "first_time_s": 650.8199999996981,
+      "final_window": false
+     },
+     "descended_empty": {
+      "first_time_s": 750.2599999996077,
+      "final_window": false
+     },
+     "target_reacquired": {
+      "first_time_s": 784.7399999995763,
+      "final_window": false
+     },
+     "carried": {
+      "first_time_s": null,
+      "final_window": false
+     },
+     "delivered": {
+      "first_time_s": 817.8999999995461,
+      "final_window": true
+     }
+    },
+    "chain_timeline": null,
+    "chain_support_id": null,
+    "integrity": {
+     "ok": true,
+     "void": false,
+     "reasons": [],
+     "excluded_frames": 0,
+     "safety_coverage": {
+      "complete": true,
+      "has_gaps": false,
+      "invalid_frames": 0
+     },
+     "max_joint_limit_overshoot": 0.000968437194824201,
+     "max_effort_ratio": 1.0,
+     "max_speed_ratio": 0.4494821071624756,
+     "physics_samples": 163840,
+     "joint_count": 43,
+     "physics_dt": 0.005
+    },
+    "rubric_checks": {
+     "source_extraction": {
+      "source": "meta.original_target_surface",
+      "surface_z_m": 1.25,
+      "clearance_m": 0.01,
+      "horizontal_extraction_enabled": true,
+      "limitations": []
+     },
+     "carrying": {
+      "normalization": "first source D0 minus one source-associated extraction credit",
+      "extraction_credit_consumed": true,
+      "events": [
+       {
+        "event": "source_origin",
+        "index": 32541,
+        "source_index": 0,
+        "original_distance_m": 2.5175571096951828,
+        "time_s": 650.8199999996981,
+        "source_id": "relay_board"
+       },
+       {
+        "event": "extraction_credit",
+        "index": 39222,
+        "source_index": 0,
+        "original_distance_m": 2.5175571096951828,
+        "extraction_credit_m": 0.0,
+        "effective_origin_m": 2.5175571096951828,
+        "actual_distance_m": 2.519255211359022,
+        "time_s": 784.4399999995766,
+        "source_id": "relay_board"
+       }
+      ],
+      "minimum_continuous_airborne_motion_m": 0.03,
+      "minimum_airborne_motion_dwell_s": 0.25,
+      "retained_goal_progress_tolerance_m": 0.02,
+      "additional_source_normalization": false
+     },
+     "reacquisition": {
+      "source": "last individually staged and empty-descended board",
+      "clearance_m": 0.01,
+      "previous_vertical_only_clearance_m": 0.025,
+      "horizontal_entire_projection_supported": true,
+      "all_recorded_surface_contacts_free": true,
+      "full_dwell_s": 0.3,
+      "first_full_source_id": "relay_board",
+      "revision": "relay-rubric/2.1: actual-source10mm-or-full-horizontal separation"
+     },
+     "continuous_progress": {
+      "minimum_evidence_seconds": 0.1,
+      "full_durations_seconds": {
+       "support_handled": 0.25,
+       "on_support": 0.5,
+       "target_secured": 0.3,
+       "target_staged": 0.5,
+       "descended_empty": 0.5,
+       "target_reacquired": 0.3,
+       "delivered": 0.5
+      },
+      "definition": "uninterrupted valid physical evidence dwell; not spatial action completion",
+      "full_milestones_unchanged": true
+     },
+     "body_handling_evidence": true,
+     "foot_only_handling": "not inferred from upward foot force; horizontal contact evidence unavailable",
+     "fall_safety": {
+      "fallen": false,
+      "first_fall_time_s": null,
+      "first_fall_reason": null,
+      "controlled_forward_lean_frames": 298,
+      "pending_frames": 0,
+      "support_load_reference": {
+       "kind": "initial_recorded_supported_load",
+       "force_N": 351.2576313018799,
+       "time_start": 0.4000000000000001,
+       "time_end": 0.9000000000000005,
+       "samples": 26,
+       "min_force_N": 344.5854244232178,
+       "max_force_N": 355.8046875,
+       "source": "same canonical stream; quiet bilateral floor stance and zero recorded hand/body object/cabinet contact",
+       "not_robot_mass": true,
+       "body_ground_channel_missing": true
+      }
+     },
+     "fall_limitations": [
+      "body_ground_force (contact of non-foot robot links with the floor, recorded from 2026-10-21) is accepted but does not enter the fall decision; safety rule 1 counts it as support (kneeling, sitting). trunk_ground_force is rejected if supplied.",
+      "Initial foot-load baseline is recorded supported load, not a measured robot mass.",
+      "Deep-forward-lean exception requires bilateral floor support; other deeply tilted supported postures are not calibrated.",
+      "Thresholds are candidate semantics pending independent physical fall/near-fall calibration."
+     ]
+    },
+    "goal": {
+     "center": [
+      0.4813953638076782,
+      1.20150887966156,
+      0.07999571412801743
+     ],
+     "bottom": -4.445207733516643e-06,
+     "tilt_deg": 7.037808990186434e-05,
+     "linear_speed": 4.705237851997995e-06,
+     "angular_speed": 5.81835337815025e-05,
+     "hand_force_N": [
+      0.0,
+      0.0
+     ],
+     "center_inside": true,
+     "center_edge_margin_m": 0.18139536380767823,
+     "footprint_inside_diagnostic": true,
+     "footprint_edge_margin_m_diagnostic": 0.07449088635713308,
+     "final_hand_release_diagnostic": {
+      "time_s": 816.8199999995471,
+      "center_height_m": 0.7158135771751404,
+      "bottom_height_m": 0.6222693546328584,
+      "linear_speed_mps": 0.2503661865129788,
+      "hand_force_N": [
+       0.0,
+       0.0
+      ],
+      "measurement": "first observed hands-free sample after final hand contact",
+      "sample_period_s": 0.02,
+      "later_hand_contact": false
+     },
+     "stable": true,
+     "criterion": "center; not whole footprint or gentle placement"
+    },
+    "scope": {
+     "from_initial_state": true,
+     "diagnostic_resume": false
+    },
+    "rubric_version": "relay-rubric/2.2",
+    "admitted": false
+   },
+   "safety_events": [
+    {
+     "rule": 5,
+     "kind": "torque_saturation",
+     "time_s": 24.86,
+     "end_s": 423.36,
+     "occurrences": 2,
+     "measured": {
+      "joint": "waist_pitch_joint",
+      "longest_s": 5.9
+     },
+     "threshold": {
+      "torque_fraction": 0.98,
+      "seconds": 3.0,
+      "joints": "legs and waist"
+     }
+    }
+   ],
+   "safety": {
+    "version": "relay-safety/1",
+    "complete": true,
+    "not_evaluated": [],
+    "body_weight_N": 337.41,
+    "thresholds": {
+     "near_fall_tilt_deg": 30.0,
+     "tip_rise_deg": 15.0,
+     "tip_window_s": 0.25,
+     "lean_unsupported_deg": 45.0,
+     "lean_dwell_s": 0.1,
+     "bilateral_foot_fraction": 0.1,
+     "drop_m": 0.12,
+     "drop_window_s": 0.25,
+     "unsupported_fraction": 0.1,
+     "unsupported_dwell_s": 0.06,
+     "support_load_fraction": 0.1,
+     "support_load_window_s": 0.1,
+     "support_tilt_deg": 10.0,
+     "support_slide_m": 0.03,
+     "climb_fraction": 0.15,
+     "climb_window_s": 0.25,
+     "climb_dwell_s": 0.25,
+     "release_bottom_m": 0.8,
+     "release_speed_mps": 1.0,
+     "release_settle_s": 1.0,
+     "release_fall_m": 0.05
+    },
+    "rules": {
+     "1_fall_or_near_fall": {
+      "status": "evaluated",
+      "max_tilt_deg": 77.48,
+      "max_tilt_rise_deg_when_tilted": 8.68,
+      "max_single_support_tilt_deg": 26.42,
+      "max_height_drop_m": 0.0219,
+      "longest_unsupported_s": 0.0
+     },
+     "2_unstable_standing_support": {
+      "status": "evaluated",
+      "loaded_objects": {
+       "stool": {
+        "loaded_s": 147.86,
+        "max_tilt_deg": 0.222,
+        "max_slide_m": 0.0123
+       }
+      }
+     },
+     "3_cabinet_climb": {
+      "status": "evaluated",
+      "max_mean_nonhand_load_N": 0.0,
+      "max_mean_nonhand_load_body_weight": 0.0,
+      "max_hand_cabinet_force_N": 0.0
+     },
+     "4_high_release_or_throw": {
+      "status": "evaluated",
+      "release": {
+       "time_s": 816.82,
+       "bottom_height_m": 0.6223,
+       "linear_speed_mps": 0.2504,
+       "fall_within_settle_m": 0.6253,
+       "came_to_rest": true,
+       "elevated_placement": false
+      }
+     },
+     "5_actuator_saturation_or_limit_push": {
+      "status": "evaluated",
+      "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+      "max_saturation_s": 5.9,
+      "max_limit_push_s": 0.0
+     }
+    },
+    "notes": [
+     "body_ground_force missing: counted as no support"
+    ]
+   },
+   "subgoals": {
+    "support_handled": {
+     "first_time_s": 22.799999999999603,
+     "final_window": false
+    },
+    "support_relocated": {
+     "first_time_s": 456.1399999998751,
+     "final_window": true
+    },
+    "on_support": {
+     "first_time_s": 601.8799999997426,
+     "final_window": false
+    },
+    "target_secured": {
+     "first_time_s": 628.7399999997182,
+     "final_window": false
+    },
+    "target_staged": {
+     "first_time_s": 650.8199999996981,
+     "final_window": false
+    },
+    "descended_empty": {
+     "first_time_s": 750.2599999996077,
+     "final_window": false
+    },
+    "target_reacquired": {
+     "first_time_s": 784.7399999995763,
+     "final_window": false
+    },
+    "carried": {
+     "first_time_s": null,
+     "final_window": false
+    },
+    "delivered": {
+     "first_time_s": 817.8999999995461,
+     "final_window": true
+    }
+   },
+   "family": "stool_relay",
+   "difficulty_layer": 1,
+   "episode_index": 0,
+   "integrity": {
+    "ok": true,
+    "void": false,
+    "reasons": [],
+    "excluded_frames": 0,
+    "safety_coverage": {
+     "complete": true,
+     "has_gaps": false,
+     "invalid_frames": 0
+    },
+    "max_joint_limit_overshoot": 0.000968437194824201,
+    "max_effort_ratio": 1.0,
+    "max_speed_ratio": 0.4494821071624756,
+    "physics_samples": 163840,
+    "joint_count": 43,
+    "physics_dt": 0.005
+   },
+   "teleports": {},
+   "alarms": [
+    {
+     "kind": "torque_saturation",
+     "question": "3_no_physics_violation",
+     "handling": "safety_event",
+     "t0": 23.86,
+     "t1": 424.36,
+     "runs": 2,
+     "joint": "waist_pitch_joint",
+     "seconds": 5.9,
+     "safety_rule": 5
+    }
+   ],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": [
+     {
+      "kind": "torque_saturation",
+      "question": "3_no_physics_violation",
+      "handling": "safety_event",
+      "t0": 23.86,
+      "t1": 424.36,
+      "runs": 2,
+      "joint": "waist_pitch_joint",
+      "seconds": 5.9,
+      "safety_rule": 5
+     }
+    ]
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "h1-monitors/2",
+    "not_applicable": {
+     "predicates": "relay-rubric/2.1 stages are continuous-evidence dwell milestones without a per-step progress series",
+     "joint_velocity": "derived from the logged joint positions (finite differences)"
+    },
+    "max_reported_speed": 3.386,
+    "max_object_speed": 3.215,
+    "max_step_speed": 3.313,
+    "max_floor_penetration": 0.003,
+    "max_energy_excess_J": 0.001,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.28,
+    "max_saturation_s": 5.9,
+    "max_limit_push_s": 0.0,
+    "commands_fall_mask": "relay_safety.FallMonitor (H1)"
+   },
+   "monitor_version": "h1-monitors/2",
+   "monitor_flags": [
+    {
+     "kind": "torque_saturation",
+     "question": "3_no_physics_violation",
+     "handling": "safety_event",
+     "t0": 23.86,
+     "t1": 424.36,
+     "runs": 2,
+     "joint": "waist_pitch_joint",
+     "seconds": 5.9,
+     "safety_rule": 5
+    }
+   ],
+   "episode_number": 0,
+   "void": false,
+   "void_reasons": [],
+   "flags": [],
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 40962,
+    "commands": 40960,
+    "reference": 40962
+   }
+  }
+ ],
+ "admission_eligible": false,
+ "scenario": "stool_relay/reference",
+ "final_episode": {
+  "episode": "episode_00",
+  "over": "finished",
+  "duration_s": 819.199999999545,
+  "fell": false,
+  "success": false,
+  "chain_complete": false,
+  "reason": "safety_event; safety events: torque_saturation",
+  "score": 0.9999130562795554,
+  "steps": {
+   "schema_version": 2,
+   "status": "safety_event",
+   "score": 0.9999130562795554,
+   "final_progress": 0.9999130562795554,
+   "peak_time_s": 817.8999999995461,
+   "success": false,
+   "chain_complete": false,
+   "relay_chain_complete": false,
+   "goal_delivered_ignoring_safety": true,
+   "observed_relay_chain": false,
+   "safety_events": [
+    {
+     "rule": 5,
+     "kind": "torque_saturation",
+     "time_s": 24.86,
+     "end_s": 423.36,
+     "occurrences": 2,
+     "measured": {
+      "joint": "waist_pitch_joint",
+      "longest_s": 5.9
+     },
+     "threshold": {
+      "torque_fraction": 0.98,
+      "seconds": 3.0,
+      "joints": "legs and waist"
+     }
+    }
+   ],
+   "safety": {
+    "version": "relay-safety/1",
+    "complete": true,
+    "not_evaluated": [],
+    "body_weight_N": 337.41,
+    "thresholds": {
+     "near_fall_tilt_deg": 30.0,
+     "tip_rise_deg": 15.0,
+     "tip_window_s": 0.25,
+     "lean_unsupported_deg": 45.0,
+     "lean_dwell_s": 0.1,
+     "bilateral_foot_fraction": 0.1,
+     "drop_m": 0.12,
+     "drop_window_s": 0.25,
+     "unsupported_fraction": 0.1,
+     "unsupported_dwell_s": 0.06,
+     "support_load_fraction": 0.1,
+     "support_load_window_s": 0.1,
+     "support_tilt_deg": 10.0,
+     "support_slide_m": 0.03,
+     "climb_fraction": 0.15,
+     "climb_window_s": 0.25,
+     "climb_dwell_s": 0.25,
+     "release_bottom_m": 0.8,
+     "release_speed_mps": 1.0,
+     "release_settle_s": 1.0,
+     "release_fall_m": 0.05
+    },
+    "rules": {
+     "1_fall_or_near_fall": {
+      "status": "evaluated",
+      "max_tilt_deg": 77.48,
+      "max_tilt_rise_deg_when_tilted": 8.68,
+      "max_single_support_tilt_deg": 26.42,
+      "max_height_drop_m": 0.0219,
+      "longest_unsupported_s": 0.0
+     },
+     "2_unstable_standing_support": {
+      "status": "evaluated",
+      "loaded_objects": {
+       "stool": {
+        "loaded_s": 147.86,
+        "max_tilt_deg": 0.222,
+        "max_slide_m": 0.0123
+       }
+      }
+     },
+     "3_cabinet_climb": {
+      "status": "evaluated",
+      "max_mean_nonhand_load_N": 0.0,
+      "max_mean_nonhand_load_body_weight": 0.0,
+      "max_hand_cabinet_force_N": 0.0
+     },
+     "4_high_release_or_throw": {
+      "status": "evaluated",
+      "release": {
+       "time_s": 816.82,
+       "bottom_height_m": 0.6223,
+       "linear_speed_mps": 0.2504,
+       "fall_within_settle_m": 0.6253,
+       "came_to_rest": true,
+       "elevated_placement": false
+      }
+     },
+     "5_actuator_saturation_or_limit_push": {
+      "status": "evaluated",
+      "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+      "max_saturation_s": 5.9,
+      "max_limit_push_s": 0.0
+     }
+    },
+    "notes": [
+     "body_ground_force missing: counted as no support"
+    ]
+   },
+   "stages": [
+    {
+     "stage": "support_handled",
+     "weight": 0.05,
+     "mode": "once",
+     "best": 1.0,
+     "final": 1.0,
+     "first_full_s": 22.799999999999603,
+     "progress_basis": "continuous evidence dwell",
+     "minimum_evidence_seconds": 0.1,
+     "full_evidence_seconds": 0.25
+    },
+    {
+     "stage": "support_relocated",
+     "weight": 0.15,
+     "mode": "once",
+     "best": 1.0,
+     "final": 1.0,
+     "first_full_s": 456.1399999998751,
+     "progress_basis": "controlled geometric progress",
+     "minimum_evidence_seconds": null,
+     "full_evidence_seconds": null
+    },
+    {
+     "stage": "on_support",
+     "weight": 0.15,
+     "mode": "once",
+     "best": 1.0,
+     "final": 1.0,
+     "first_full_s": 601.8799999997426,
+     "progress_basis": "continuous evidence dwell",
+     "minimum_evidence_seconds": 0.1,
+     "full_evidence_seconds": 0.5
+    },
+    {
+     "stage": "target_secured",
+     "weight": 0.15,
+     "mode": "once",
+     "best": 1.0,
+     "final": 1.0,
+     "first_full_s": 628.7399999997182,
+     "progress_basis": "continuous evidence dwell",
+     "minimum_evidence_seconds": 0.1,
+     "full_evidence_seconds": 0.3
+    },
+    {
+     "stage": "target_staged",
+     "weight": 0.1,
+     "mode": "once",
+     "best": 1.0,
+     "final": 1.0,
+     "first_full_s": 650.8199999996981,
+     "progress_basis": "continuous evidence dwell",
+     "minimum_evidence_seconds": 0.1,
+     "full_evidence_seconds": 0.5
+    },
+    {
+     "stage": "descended_empty",
+     "weight": 0.1,
+     "mode": "once",
+     "best": 1.0,
+     "final": 1.0,
+     "first_full_s": 750.2599999996077,
+     "progress_basis": "continuous evidence dwell",
+     "minimum_evidence_seconds": 0.1,
+     "full_evidence_seconds": 0.5
+    },
+    {
+     "stage": "target_reacquired",
+     "weight": 0.1,
+     "mode": "once",
+     "best": 1.0,
+     "final": 1.0,
+     "first_full_s": 784.7399999995763,
+     "progress_basis": "continuous evidence dwell",
+     "minimum_evidence_seconds": 0.1,
+     "full_evidence_seconds": 0.3
+    },
+    {
+     "stage": "carried",
+     "weight": 0.1,
+     "mode": "once",
+     "best": 0.9991305627955553,
+     "final": 0.9991305627955553,
+     "first_full_s": null,
+     "progress_basis": "controlled geometric progress",
+     "minimum_evidence_seconds": null,
+     "full_evidence_seconds": null
+    },
+    {
+     "stage": "delivered",
+     "weight": 0.1,
+     "mode": "live",
+     "best": 1.0,
+     "final": 1.0,
+     "first_full_s": 817.8999999995461,
+     "progress_basis": "continuous evidence dwell",
+     "minimum_evidence_seconds": 0.1,
+     "full_evidence_seconds": 0.5
+    }
+   ],
+   "timeline": {
+    "support_handled": {
+     "first_time_s": 22.799999999999603,
+     "final_window": false
+    },
+    "support_relocated": {
+     "first_time_s": 456.1399999998751,
+     "final_window": true
+    },
+    "on_support": {
+     "first_time_s": 601.8799999997426,
+     "final_window": false
+    },
+    "target_secured": {
+     "first_time_s": 628.7399999997182,
+     "final_window": false
+    },
+    "target_staged": {
+     "first_time_s": 650.8199999996981,
+     "final_window": false
+    },
+    "descended_empty": {
+     "first_time_s": 750.2599999996077,
+     "final_window": false
+    },
+    "target_reacquired": {
+     "first_time_s": 784.7399999995763,
+     "final_window": false
+    },
+    "carried": {
+     "first_time_s": null,
+     "final_window": false
+    },
+    "delivered": {
+     "first_time_s": 817.8999999995461,
+     "final_window": true
+    }
+   },
+   "chain_timeline": null,
+   "chain_support_id": null,
+   "integrity": {
+    "ok": true,
+    "void": false,
+    "reasons": [],
+    "excluded_frames": 0,
+    "safety_coverage": {
+     "complete": true,
+     "has_gaps": false,
+     "invalid_frames": 0
+    },
+    "max_joint_limit_overshoot": 0.000968437194824201,
+    "max_effort_ratio": 1.0,
+    "max_speed_ratio": 0.4494821071624756,
+    "physics_samples": 163840,
+    "joint_count": 43,
+    "physics_dt": 0.005
+   },
+   "rubric_checks": {
+    "source_extraction": {
+     "source": "meta.original_target_surface",
+     "surface_z_m": 1.25,
+     "clearance_m": 0.01,
+     "horizontal_extraction_enabled": true,
+     "limitations": []
+    },
+    "carrying": {
+     "normalization": "first source D0 minus one source-associated extraction credit",
+     "extraction_credit_consumed": true,
+     "events": [
+      {
+       "event": "source_origin",
+       "index": 32541,
+       "source_index": 0,
+       "original_distance_m": 2.5175571096951828,
+       "time_s": 650.8199999996981,
+       "source_id": "relay_board"
+      },
+      {
+       "event": "extraction_credit",
+       "index": 39222,
+       "source_index": 0,
+       "original_distance_m": 2.5175571096951828,
+       "extraction_credit_m": 0.0,
+       "effective_origin_m": 2.5175571096951828,
+       "actual_distance_m": 2.519255211359022,
+       "time_s": 784.4399999995766,
+       "source_id": "relay_board"
+      }
+     ],
+     "minimum_continuous_airborne_motion_m": 0.03,
+     "minimum_airborne_motion_dwell_s": 0.25,
+     "retained_goal_progress_tolerance_m": 0.02,
+     "additional_source_normalization": false
+    },
+    "reacquisition": {
+     "source": "last individually staged and empty-descended board",
+     "clearance_m": 0.01,
+     "previous_vertical_only_clearance_m": 0.025,
+     "horizontal_entire_projection_supported": true,
+     "all_recorded_surface_contacts_free": true,
+     "full_dwell_s": 0.3,
+     "first_full_source_id": "relay_board",
+     "revision": "relay-rubric/2.1: actual-source10mm-or-full-horizontal separation"
+    },
+    "continuous_progress": {
+     "minimum_evidence_seconds": 0.1,
+     "full_durations_seconds": {
+      "support_handled": 0.25,
+      "on_support": 0.5,
+      "target_secured": 0.3,
+      "target_staged": 0.5,
+      "descended_empty": 0.5,
+      "target_reacquired": 0.3,
+      "delivered": 0.5
+     },
+     "definition": "uninterrupted valid physical evidence dwell; not spatial action completion",
+     "full_milestones_unchanged": true
+    },
+    "body_handling_evidence": true,
+    "foot_only_handling": "not inferred from upward foot force; horizontal contact evidence unavailable",
+    "fall_safety": {
+     "fallen": false,
+     "first_fall_time_s": null,
+     "first_fall_reason": null,
+     "controlled_forward_lean_frames": 298,
+     "pending_frames": 0,
+     "support_load_reference": {
+      "kind": "initial_recorded_supported_load",
+      "force_N": 351.2576313018799,
+      "time_start": 0.4000000000000001,
+      "time_end": 0.9000000000000005,
+      "samples": 26,
+      "min_force_N": 344.5854244232178,
+      "max_force_N": 355.8046875,
+      "source": "same canonical stream; quiet bilateral floor stance and zero recorded hand/body object/cabinet contact",
+      "not_robot_mass": true,
+      "body_ground_channel_missing": true
+     }
+    },
+    "fall_limitations": [
+     "body_ground_force (contact of non-foot robot links with the floor, recorded from 2026-10-21) is accepted but does not enter the fall decision; safety rule 1 counts it as support (kneeling, sitting). trunk_ground_force is rejected if supplied.",
+     "Initial foot-load baseline is recorded supported load, not a measured robot mass.",
+     "Deep-forward-lean exception requires bilateral floor support; other deeply tilted supported postures are not calibrated.",
+     "Thresholds are candidate semantics pending independent physical fall/near-fall calibration."
+    ]
+   },
+   "goal": {
+    "center": [
+     0.4813953638076782,
+     1.20150887966156,
+     0.07999571412801743
+    ],
+    "bottom": -4.445207733516643e-06,
+    "tilt_deg": 7.037808990186434e-05,
+    "linear_speed": 4.705237851997995e-06,
+    "angular_speed": 5.81835337815025e-05,
+    "hand_force_N": [
+     0.0,
+     0.0
+    ],
+    "center_inside": true,
+    "center_edge_margin_m": 0.18139536380767823,
+    "footprint_inside_diagnostic": true,
+    "footprint_edge_margin_m_diagnostic": 0.07449088635713308,
+    "final_hand_release_diagnostic": {
+     "time_s": 816.8199999995471,
+     "center_height_m": 0.7158135771751404,
+     "bottom_height_m": 0.6222693546328584,
+     "linear_speed_mps": 0.2503661865129788,
+     "hand_force_N": [
+      0.0,
+      0.0
+     ],
+     "measurement": "first observed hands-free sample after final hand contact",
+     "sample_period_s": 0.02,
+     "later_hand_contact": false
+    },
+    "stable": true,
+    "criterion": "center; not whole footprint or gentle placement"
+   },
+   "scope": {
+    "from_initial_state": true,
+    "diagnostic_resume": false
+   },
+   "rubric_version": "relay-rubric/2.2",
+   "admitted": false
+  },
+  "safety_events": [
+   {
+    "rule": 5,
+    "kind": "torque_saturation",
+    "time_s": 24.86,
+    "end_s": 423.36,
+    "occurrences": 2,
+    "measured": {
+     "joint": "waist_pitch_joint",
+     "longest_s": 5.9
+    },
+    "threshold": {
+     "torque_fraction": 0.98,
+     "seconds": 3.0,
+     "joints": "legs and waist"
+    }
+   }
+  ],
+  "safety": {
+   "version": "relay-safety/1",
+   "complete": true,
+   "not_evaluated": [],
+   "body_weight_N": 337.41,
+   "thresholds": {
+    "near_fall_tilt_deg": 30.0,
+    "tip_rise_deg": 15.0,
+    "tip_window_s": 0.25,
+    "lean_unsupported_deg": 45.0,
+    "lean_dwell_s": 0.1,
+    "bilateral_foot_fraction": 0.1,
+    "drop_m": 0.12,
+    "drop_window_s": 0.25,
+    "unsupported_fraction": 0.1,
+    "unsupported_dwell_s": 0.06,
+    "support_load_fraction": 0.1,
+    "support_load_window_s": 0.1,
+    "support_tilt_deg": 10.0,
+    "support_slide_m": 0.03,
+    "climb_fraction": 0.15,
+    "climb_window_s": 0.25,
+    "climb_dwell_s": 0.25,
+    "release_bottom_m": 0.8,
+    "release_speed_mps": 1.0,
+    "release_settle_s": 1.0,
+    "release_fall_m": 0.05
+   },
+   "rules": {
+    "1_fall_or_near_fall": {
+     "status": "evaluated",
+     "max_tilt_deg": 77.48,
+     "max_tilt_rise_deg_when_tilted": 8.68,
+     "max_single_support_tilt_deg": 26.42,
+     "max_height_drop_m": 0.0219,
+     "longest_unsupported_s": 0.0
+    },
+    "2_unstable_standing_support": {
+     "status": "evaluated",
+     "loaded_objects": {
+      "stool": {
+       "loaded_s": 147.86,
+       "max_tilt_deg": 0.222,
+       "max_slide_m": 0.0123
+      }
+     }
+    },
+    "3_cabinet_climb": {
+     "status": "evaluated",
+     "max_mean_nonhand_load_N": 0.0,
+     "max_mean_nonhand_load_body_weight": 0.0,
+     "max_hand_cabinet_force_N": 0.0
+    },
+    "4_high_release_or_throw": {
+     "status": "evaluated",
+     "release": {
+      "time_s": 816.82,
+      "bottom_height_m": 0.6223,
+      "linear_speed_mps": 0.2504,
+      "fall_within_settle_m": 0.6253,
+      "came_to_rest": true,
+      "elevated_placement": false
+     }
+    },
+    "5_actuator_saturation_or_limit_push": {
+     "status": "evaluated",
+     "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+     "max_saturation_s": 5.9,
+     "max_limit_push_s": 0.0
+    }
+   },
+   "notes": [
+    "body_ground_force missing: counted as no support"
+   ]
+  },
+  "subgoals": {
+   "support_handled": {
+    "first_time_s": 22.799999999999603,
+    "final_window": false
+   },
+   "support_relocated": {
+    "first_time_s": 456.1399999998751,
+    "final_window": true
+   },
+   "on_support": {
+    "first_time_s": 601.8799999997426,
+    "final_window": false
+   },
+   "target_secured": {
+    "first_time_s": 628.7399999997182,
+    "final_window": false
+   },
+   "target_staged": {
+    "first_time_s": 650.8199999996981,
+    "final_window": false
+   },
+   "descended_empty": {
+    "first_time_s": 750.2599999996077,
+    "final_window": false
+   },
+   "target_reacquired": {
+    "first_time_s": 784.7399999995763,
+    "final_window": false
+   },
+   "carried": {
+    "first_time_s": null,
+    "final_window": false
+   },
+   "delivered": {
+    "first_time_s": 817.8999999995461,
+    "final_window": true
+   }
+  },
+  "family": "stool_relay",
+  "difficulty_layer": 1,
+  "episode_index": 0,
+  "integrity": {
+   "ok": true,
+   "void": false,
+   "reasons": [],
+   "excluded_frames": 0,
+   "safety_coverage": {
+    "complete": true,
+    "has_gaps": false,
+    "invalid_frames": 0
+   },
+   "max_joint_limit_overshoot": 0.000968437194824201,
+   "max_effort_ratio": 1.0,
+   "max_speed_ratio": 0.4494821071624756,
+   "physics_samples": 163840,
+   "joint_count": 43,
+   "physics_dt": 0.005
+  },
+  "teleports": {},
+  "alarms": [
+   {
+    "kind": "torque_saturation",
+    "question": "3_no_physics_violation",
+    "handling": "safety_event",
+    "t0": 23.86,
+    "t1": 424.36,
+    "runs": 2,
+    "joint": "waist_pitch_joint",
+    "seconds": 5.9,
+    "safety_rule": 5
+   }
+  ],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": [
+    {
+     "kind": "torque_saturation",
+     "question": "3_no_physics_violation",
+     "handling": "safety_event",
+     "t0": 23.86,
+     "t1": 424.36,
+     "runs": 2,
+     "joint": "waist_pitch_joint",
+     "seconds": 5.9,
+     "safety_rule": 5
+    }
+   ]
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "monitor_version": "h1-monitors/2",
+   "not_applicable": {
+    "predicates": "relay-rubric/2.1 stages are continuous-evidence dwell milestones without a per-step progress series",
+    "joint_velocity": "derived from the logged joint positions (finite differences)"
+   },
+   "max_reported_speed": 3.386,
+   "max_object_speed": 3.215,
+   "max_step_speed": 3.313,
+   "max_floor_penetration": 0.003,
+   "max_energy_excess_J": 0.001,
+   "max_reversal_rate_hand_hz": 0.0,
+   "max_arm_shake": 0.28,
+   "max_saturation_s": 5.9,
+   "max_limit_push_s": 0.0,
+   "commands_fall_mask": "relay_safety.FallMonitor (H1)"
+  },
+  "monitor_version": "h1-monitors/2",
+  "monitor_flags": [
+   {
+    "kind": "torque_saturation",
+    "question": "3_no_physics_violation",
+    "handling": "safety_event",
+    "t0": 23.86,
+    "t1": 424.36,
+    "runs": 2,
+    "joint": "waist_pitch_joint",
+    "seconds": 5.9,
+    "safety_rule": 5
+   }
+  ],
+  "episode_number": 0,
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "agent_exit": {
+   "exit_code": 0,
+   "timed_out": false
+  },
+  "requests": {
+   "connects": 1,
+   "sensor_reads": 40962,
+   "commands": 40960,
+   "reference": 40962
+  }
+ },
+ "audit": {
+  "violations": 0,
+  "violation_examples": [],
+  "world_params_changed": false,
+  "invalid_physical_evidence": {},
+  "teleports": {},
+  "sealed_before_connect": true
+ },
+ "chain_complete": false
+}

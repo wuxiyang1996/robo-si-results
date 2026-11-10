@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="机器人桌面任务的真实录像、物理验证、评分规则与人工验收材料" name="description"/><title>G1 工具辅助桌面装配 · 任务验收</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><link href="/robo-si-results/infra/tabletop-review.css" rel="stylesheet"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">跳到正文</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-tabletop-assembly-en.html">English</a></div></header><main id="main"><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">本页展示一段代表录像：layer1_nominal。其他成功、失败与分段录像保留在原发布包；本次筛选不改变原证据或评分。</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">查看完整任务说明：场景、动作、评分、证据与复现</a></p><!-- task-detail-jump:end --><section data-layered-task="Assembly" id="layered-status"><div class="wrap"><h2>当前交付范围与证据</h2><p>工具辅助装配，基础第一层</p><p>8/8 场景、14/14 发布快照检查；第一层已完成并发布。</p><p>补建撑并撤手稳定的独立短探针，以及支撑→套筒→盖帽的交接余量。 原四项人工验收关口与独立第二人复现。</p><p><a href="#task-details">完整动作、轨迹与验收边界</a></p></div></section><div class="wrap" id="website-completion-status" style="padding-top:18px"><div class="card"><p><span class="pill ok">已完成（声明范围）</span> · 已发布</p><p><strong>Assembly · 工具辅助装配，基础第一层</strong> — 8/8 场景、14/14 发布快照检查；第一层已完成并发布。</p><p class="small">正式准入待完成。需补建撑并撤手稳定的独立短探针，以及支撑→套筒→盖帽的交接余量；原四项人工验收关口与独立第二人复现仍待完成。 <a href="/robo-si-results/infra/status-zh.html#completion">全站完成情况</a></p></div></div><div class="wrap"><div class="notice"><b>2026-10-23 发布资料</b> · <a href="https://github.com/wuxiyang1996/robo-si/releases/tag/tabletop-20261023">GitHub Release 与完整离线包</a> · <a href="/robo-si-results/infra/tabletop-release/README.md">下载与复现说明</a><p>录像随离线包提供；克隆仓库后请解压发布包或运行下载脚本。两个冻结源码快照分别位于 snapshots/hanoi 与 snapshots/assembly。人工签审与第二人复现尚未完成，正式准入状态保持未通过。</p></div></div><div class="hero"><div class="wrap"><p class="eyebrow">任务验收 · ASSEMBLY · v0.3</p><h1>G1 工具辅助桌面装配<br/><span class="nm">先完成基础第一层</span></h1><p class="lead">扶稳倾斜的铰接平台，依次装入套筒和顶盖。本版仅包含基础工具与零件。</p><div class="notice"><b>用户已授权发布本页任务。</b> 自动验证已完成；人工签审与第二人复现仍待补齐。原始验收记录及 <code>admitted=false</code> 状态如实保留。</div><div class="cards"><div class="card"><h3>8 / 8</h3><p>固定输入物理覆盖</p></div><div class="card"><h3>14 / 14</h3><p>最终源码全量检查</p></div><div class="card"><h3>11 / 15</h3><p>自动证据完成；4 项待人工</p></div><div class="card"><h3>5,841</h3><p>50 Hz 训练控制步</p></div></div><ol class="toc review-toc"><li><a href="#desc">01 任务描述</a></li><li><a href="#videos">02 视频</a></li><li><a href="#scoring">03 评分标准</a></li><li><a href="#expert">04 专家解</a></li><li><a href="#shortcuts">05 已知捷径</a></li><li><a href="#gates">06 验收状态</a></li></ol></div></div><section class="tinted" id="desc"><div class="wrap"><p class="kicker">01 · 任务描述</p><h2>目标、场景与接口</h2><h3>给 agent 的指令（原文）</h3><div class="card instruction"><p>将蓝色套筒和红色顶盖依次装到铰接平台的矩形定位柱上，形成释放后仍能稳定保持的装配结构。</p><p>本版本仅包含第一层基础场景：铰接平台、基础支撑工具、套筒和顶盖。</p><p>完成条件与公开约束：</p><p>1. 插入套筒前，平台须保持水平、低速，并由桌面上的已释放物体通过真实接触持续承托，稳定 0.5 秒。支撑可以由一个或多个物体组成。
+
+2. 套筒须套在定位柱上、落座于平台，释放稳定 0.5 秒后才能插入顶盖。
+
+3. 顶盖须套在同一定位柱上并落座于套筒。工具对平台的支承必须持续存在。
+
+4. 最终所有物体都须低速、脱离机器人全部接触，结构连续保持 2 秒。</p><p>评分依据实际状态与承载关系，不限定使用哪个支撑物体、摆放点或机器人动作路线。机器人身体不能代替释放后的支撑链；两个装配零件不能同时插入。矩形孔绕竖直方向旋转 180° 可以配合，旋转 90° 不满足配合条件。</p><p>用机器人关节动作完成任务。物体必须依靠真实接触运动，不得直接改写位置、瞬移、焊接、吸附或绑定到手上，也不得伪造接触与状态数据。</p><p>只有完整成功才得 1 分，中间阶段不计分。错序装配、建立后连续 0.1 秒失去支撑资格、物体掉落或超过 120 秒会失败。再次接触或结构失稳会中断最终保持计时。</p><p>场景使用固定骨盆的 G1，控制 43 个关节，控制频率 50 Hz、物理频率 200 Hz。手臂力矩上限可能为标称值的 85%–100%，本回合的实际限值由控制接口公布；初始手臂姿态可能有小幅变化，应读取关节传感器。
+
+</p></div><h3>场景与接口（供评审）</h3><p>固定骨盆 Unitree G1，Dex3 双手，43 个绝对关节目标。控制频率 50 Hz，物理频率 200 Hz，固定增益 PD 与真实力矩上限。评测 agent 使用机器人传感器；参考专家读取开发真值，二者成绩不混用。</p><p>仅第一层：铰接平台、基础支撑工具、套筒和顶盖。无远端重块、无固定干扰块。五个固定种子、两个范围边界和一个名义场景，共 8 个输入；随机范围保持原值。grade 使用 <code>--randomized</code> 时按回合随机化。</p><p class="muted">有限场景覆盖不等于认证全部连续组合。全部物理参数与精确随机范围见 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/task.toml">任务规格</a>及下方源码。</p></div></section><section id="videos"><div class="wrap"><p class="kicker">02 · 视频</p><h2>完整录像与物理证据</h2><p>每个固定输入都提供完整 5 Hz 记录状态视频。它们用于查看封存测量；独立物理回放、重复运行和子目标录像另列在补充证据中。先独立观察并标注时刻，再展开自动时间线核对。</p><div class="filters"><label>难度 <select id="level-filter"><option value="all">全部</option><option value="1">第一层</option></select></label><label>搜索场景 <input id="case-search" placeholder="输入场景或种子" type="search"/></label><span id="visible-count" role="status"></span></div><div class="vgrid" id="video-grid"></div><div class="review-panel"><h3>本浏览器的验收笔记</h3><p>每张视频卡可填写笔记。内容只保存在本浏览器，不同步到服务器，也不自动改变任务准入状态。</p><button id="export-notes" type="button">下载我的复核笔记 JSON</button> <a download="" href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/review/manual_review_template.json">下载完整空白签审模板</a><p id="notes-status" role="status"></p></div><details class="supplement"><summary>独立回放、三次重跑、子目标和质量复核材料</summary><p>原始严格后缀结果全部保留。子目标统一允许在原回合时限内，额外保持最后关节目标最多 1 秒；不声称恢复求解器全部内部状态。</p><ul><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_physics/replay_report.json">acceptance/first_layer_20261023/followups/layer1_physics/replay_report.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/first_layer_20261023/followups/layer1_repeat1/expert/video.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_repeat1/qualification.json">acceptance/first_layer_20261023/followups/layer1_repeat1/qualification.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/first_layer_20261023/followups/layer1_repeat2/expert/video.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_repeat2/qualification.json">acceptance/first_layer_20261023/followups/layer1_repeat2/qualification.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_repetition_spread.json">acceptance/first_layer_20261023/followups/layer1_repetition_spread.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/first_layer_20261023/followups/layer1_sandbox/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_sandbox/replay.json">acceptance/first_layer_20261023/followups/layer1_sandbox/replay.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_subgoal1.json">acceptance/first_layer_20261023/followups/layer1_subgoal1.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_subgoal2.json">acceptance/first_layer_20261023/followups/layer1_subgoal2.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/summary.json">acceptance/first_layer_20261023/followups/summary.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/first_layer_20261023/shortcuts/cap_before_sleeve/replay/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/shortcuts/cap_before_sleeve/shortcut.json">acceptance/first_layer_20261023/shortcuts/cap_before_sleeve/shortcut.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/first_layer_20261023/subgoals/layer1_subgoal1/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/subgoals/layer1_subgoal1.json">acceptance/first_layer_20261023/subgoals/layer1_subgoal1.json</a></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">acceptance/first_layer_20261023/subgoals/layer1_subgoal2/motion.mp4</a> <span class="pill">视频</span></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/subgoals/layer1_subgoal2.json">acceptance/first_layer_20261023/subgoals/layer1_subgoal2.json</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/subgoals/summary.json">acceptance/first_layer_20261023/subgoals/summary.json</a></li></ul></details></div></section><section class="tinted" id="scoring"><div class="wrap"><p class="kicker">03 · 评分标准</p><h2>成功必须在物理世界中成立</h2><p><strong>仅完整物理成功得 1 分，否则为 0 分。</strong> 阶段进度用于诊断，不是最终分数。任务评分、独立终态检查和监视器必须一致通过。</p><ol class="check"><li>先稳定支撑平台 0.5 秒：桌面 → 已释放承载物体 → 平台。</li><li>套筒正确套柱并落座于平台，释放稳定 0.5 秒后才可插入顶盖。</li><li>顶盖落座于套筒，平台支撑链持续存在。</li><li>全部物体脱离机器人接触并低速稳定 2 秒；完整成功才得分。</li></ol><p>承载评分不限定工具身份或摆放点。各有效向上接触力须大于 0.05 N，全部承载分支接地且释放；手持分支、悬空循环、未知承载体与缺失测量不通过。连续 0.1 秒失去已建立的支撑资格会失败。</p><h3>验收时具体看什么</h3><ul class="check"><li>物体依靠真实接触运动；没有瞬移、绑定、吸附、伪造接触或改写评分。</li><li>阶段顺序与释放稳定条件确实发生；最终状态达到指令要求。</li><li>没有明显穿透、异常能量、抖动取巧或依靠机器人持续扶持的假成功。</li></ul><p>全量检查包含正例、零分 no-op、真实特权瞬移反例、38 项容器逃逸探针和完整性检查。</p></div></section><section id="expert"><div class="wrap"><p class="kicker">04 · 专家解</p><h2>从初始状态执行，并独立回放</h2><p>参考控制器从生成器初始状态出发，通过同一关节动作与物理接口完成任务。每个难度的名义输入都有三次新鲜执行，以及独立物理和沙箱命令回放。</p><div class="table-wrap"><table><thead><tr><th>轨迹</th><th>控制步</th><th>仿真时长</th></tr></thead><tbody><tr><td>1 层</td><td>5,841</td><td>116.820 秒</td></tr></tbody></table></div><p>训练数据是特权开发观测，采样 50 Hz，不含 RGB。<code>closed_loop:run</code> 为当前参考策略。</p><div class="resource-links"><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/dataset/manifest.json">数据集清单</a><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/automatic_audit.json">自动审计</a><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/pipeline/20261023-225403-all.json">最终全量检查</a><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/coverage/inputs.json">固定输入与源码哈希</a><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/review/automatic_materials.json">全部复核材料索引</a><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/README.md">复现说明</a></div><h3>与证据绑定的实现</h3><ul><li><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/task_spec.py">task_spec.py</a></li><li><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/randomization.py">randomization.py</a></li><li><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/sandbox/trusted/scoring.py">sandbox/trusted/scoring.py</a></li><li><a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/sandbox/trusted/verifier.py">sandbox/trusted/verifier.py</a></li><li><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/sandbox/pipeline.json">sandbox/pipeline.json</a></li></ul><p>逐场景重现命令可在视频卡的“复现命令”中查看。请在对应候选代码根目录执行，并将输出占位符替换为新的目录。</p></div></section><section class="tinted" id="shortcuts"><div class="wrap"><p class="kicker">05 · 已知捷径</p><h2>真实尝试与拒绝证据</h2><p>以下是实际达到目标条件的物理反例。拒绝结果可以复核；有限反例不证明全部策略都不可能。签名的人工捷径审查仍未完成。</p><div class="vgrid"><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/tabletop-20261023">其他录像见完整发布包</a></p><figcaption><b>顶盖先于套筒</b><p>条件实际发生；评分拒绝。</p><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/shortcuts/cap_before_sleeve/shortcut.json">查看物理反例记录</a></figcaption></figure></div></div></section><section id="gates"><div class="wrap"><p class="kicker">06 · 验收状态</p><h2>自动完成，人工待签审</h2><p>技术证据已完成；人工验收尚未签署。下表区分自动结果与待人工项目，不代填任何姓名、日期或验收结论。</p><div class="table-wrap"><table><thead><tr><th>验收关口</th><th>状态</th><th>说明</th></tr></thead><tbody><tr><td>参考专家解</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>官方轨迹与子目标</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>随机范围覆盖</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>三次重跑波动</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>评分器有效性</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>监视器校准</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>人工阶段标注</td><td><span class="pill warn">待人工</span></td><td>逐段录像独立标注阶段时刻，再与自动时间线核对。</td></tr><tr><td>捷径审查</td><td><span class="pill warn">待人工</span></td><td>检查物理反例是否真正达到声称的条件，以及公开约束是否存在遗漏。</td></tr><tr><td>人工录像签审</td><td><span class="pill warn">待人工</span></td><td>签名确认：没有绕过评分规则、任务确实完成、没有物理违规。</td></tr><tr><td>第二人独立复现</td><td><span class="pill warn">待人工</span></td><td>由第二人使用指定代码、输入和种子独立运行，保存结果与署名。</td></tr><tr><td>容器隔离</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>密封评分模式</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>静态与回归检查</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>场景随机化</td><td><span class="pill ok">自动通过</span></td><td>自动证据通过；范围限于本页所列版本与场景。</td></tr><tr><td>全量检查流水线</td><td><span class="pill ok">自动通过</span></td><td>最终源码全量检查 14/14。</td></tr></tbody></table></div><div class="notice"><b>两任务均已获用户发布授权。</b> 2026-10-23 用户确认“两个都允许发布”，此前的发布暂缓决定已被替代。人工录像、阶段标注、捷径签审和第二人复现的记录仍待补齐。</div><p><a href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/admission.json">原始准入记录</a> · <a download="" href="/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/review/manual_review_template.json">空白人工验收模板</a> · <a href="/robo-si-results/infra/tabletop-release/publication-scope.json">当前发布范围</a></p></div></section><script id="task-data" type="application/json">{"id": "assembly", "title": "Assembly · 基础第一层", "version": "0.3", "scope": "first_layer", "layers": [1], "coverage": {"total": 8, "completed": 8, "passed": 8}, "pipeline_steps": 14, "control_steps": 5841, "dataset_episodes": [{"layer": 1, "steps": 5841, "seconds": 116.82000000000001}], "runs": [{"id": "layer1_nominal", "level": 1, "video": "/robo-si-results/media/fd623a444674cb8bf23f.mp4", "report": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/coverage/layer1_nominal/run/qualification.json", "scene": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/coverage/layer1_nominal/scene.json", "duration": 116.645, "stages": {"brace_supported": 58.42, "sleeve_seated": 87.32, "cap_seated": 115.16, "assembled_released": 116.645}, "kind": "coverage", "command": ["python", "-X", "utf8", "-m", "humanoid.g1_tabletop.sandbox.qualification", "assembly", "--scene", "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_nominal\\scene.json", "--out", "<new-reviewer-output-directory>", "--video", "--policy", "closed_loop:run"]}], "supplements": [{"label": "acceptance/first_layer_20261023/followups/layer1_physics/replay_report.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_physics/replay_report.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/first_layer_20261023/followups/layer1_repeat1/qualification.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_repeat1/qualification.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/first_layer_20261023/followups/layer1_repeat2/qualification.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_repeat2/qualification.json", "video": false}, {"label": "acceptance/first_layer_20261023/followups/layer1_repetition_spread.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_repetition_spread.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/first_layer_20261023/followups/layer1_sandbox/replay.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_sandbox/replay.json", "video": false}, {"label": "acceptance/first_layer_20261023/followups/layer1_subgoal1.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_subgoal1.json", "video": false}, {"label": "acceptance/first_layer_20261023/followups/layer1_subgoal2.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/layer1_subgoal2.json", "video": false}, {"label": "acceptance/first_layer_20261023/followups/summary.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/followups/summary.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/first_layer_20261023/shortcuts/cap_before_sleeve/shortcut.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/shortcuts/cap_before_sleeve/shortcut.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/first_layer_20261023/subgoals/layer1_subgoal1.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/subgoals/layer1_subgoal1.json", "video": false}, {"label": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si", "video": true}, {"label": "acceptance/first_layer_20261023/subgoals/layer1_subgoal2.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/subgoals/layer1_subgoal2.json", "video": false}, {"label": "acceptance/first_layer_20261023/subgoals/summary.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/subgoals/summary.json", "video": false}], "shortcuts": [{"case": "cap_before_sleeve", "observed": true, "rejected": true, "report": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/shortcuts/cap_before_sleeve/shortcut.json", "videos": ["https://huggingface.co/datasets/IntelligenceLab/robo-si"]}], "quality": [], "gates": [{"key": "reference_expert", "name": "参考专家解", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "official_trajectories", "name": "官方轨迹与子目标", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "coverage", "name": "随机范围覆盖", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "reference_rerun_spread", "name": "三次重跑波动", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "verifier_validity", "name": "评分器有效性", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "monitors_calibrated", "name": "监视器校准", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "predicate_labels", "name": "人工阶段标注", "passed": false, "recorded_status": "pending", "note": "逐段录像独立标注阶段时刻，再与自动时间线核对。"}, {"key": "shortcut_audit", "name": "捷径审查", "passed": false, "recorded_status": "partial", "note": "检查物理反例是否真正达到声称的条件，以及公开约束是否存在遗漏。"}, {"key": "video_review", "name": "人工录像签审", "passed": false, "recorded_status": "pending", "note": "签名确认：没有绕过评分规则、任务确实完成、没有物理违规。"}, {"key": "independent_reproduction", "name": "第二人独立复现", "passed": false, "recorded_status": "partial", "note": "由第二人使用指定代码、输入和种子独立运行，保存结果与署名。"}, {"key": "sandbox_isolation", "name": "容器隔离", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "grading_mode", "name": "密封评分模式", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "static_checks", "name": "静态与回归检查", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "randomisation", "name": "场景随机化", "passed": true, "recorded_status": "passed", "note": "自动证据通过；范围限于本页所列版本与场景。"}, {"key": "automatic_pipeline", "name": "全量检查流水线", "passed": true, "recorded_status": "passed", "note": "最终源码全量检查 14/14。"}], "links": {"pipeline": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/pipeline/20261023-225403-all.json", "audit": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/automatic_audit.json", "dataset": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/dataset/manifest.json", "spec": "tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/task.toml", "admission": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/admission.json", "instruction": "tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/instruction.zh.md", "manual": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/review/manual_review_template.json", "materials": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/review/automatic_materials.json", "readme": "tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/README.md", "inputs": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/coverage/inputs.json", "release_check": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/release_check.json"}, "sources": [{"label": "task_spec.py", "url": "tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/task_spec.py"}, {"label": "randomization.py", "url": "tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/randomization.py"}, {"label": "sandbox/trusted/scoring.py", "url": "tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/sandbox/trusted/scoring.py"}, {"label": "sandbox/trusted/verifier.py", "url": "tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/sandbox/trusted/verifier.py"}, {"label": "sandbox/pipeline.json", "url": "/robo-si-results/infra/tabletop-release/evidence/assembly/humanoid/g1_tabletop_assembly/sandbox/pipeline.json"}], "instruction": "# G1 工具辅助桌面装配\n\n将蓝色套筒和红色顶盖依次装到铰接平台的矩形定位柱上，形成释放后仍能稳定保持的装配结构。\n\n本版本仅包含第一层基础场景：铰接平台、基础支撑工具、套筒和顶盖。\n\n完成条件与公开约束：\n\n1. 插入套筒前，平台须保持水平、低速，并由桌面上的已释放物体通过真实接触持续承托，稳定 0.5 秒。支撑可以由一个或多个物体组成。\n2. 套筒须套在定位柱上、落座于平台，释放稳定 0.5 秒后才能插入顶盖。\n3. 顶盖须套在同一定位柱上并落座于套筒。工具对平台的支承必须持续存在。\n4. 最终所有物体都须低速、脱离机器人全部接触，结构连续保持 2 秒。\n\n评分依据实际状态与承载关系，不限定使用哪个支撑物体、摆放点或机器人动作路线。机器人身体不能代替释放后的支撑链；两个装配零件不能同时插入。矩形孔绕竖直方向旋转 180° 可以配合，旋转 90° 不满足配合条件。\n\n用机器人关节动作完成任务。物体必须依靠真实接触运动，不得直接改写位置、瞬移、焊接、吸附或绑定到手上，也不得伪造接触与状态数据。\n\n只有完整成功才得 1 分，中间阶段不计分。错序装配、建立后连续 0.1 秒失去支撑资格、物体掉落或超过 120 秒会失败。再次接触或结构失稳会中断最终保持计时。\n\n场景使用固定骨盆的 G1，控制 43 个关节，控制频率 50 Hz、物理频率 200 Hz。手臂力矩上限可能为标称值的 85%–100%，本回合的实际限值由控制接口公布；初始手臂姿态可能有小幅变化，应读取关节传感器。\n", "source_digest": {"task": "fa52c8aacbd7fe0ccedaabaf675ed1898959995504182416ed4787383a4060df", "task_files": 491, "infra": "2baabd898d4f4bda4be21145ee398ef60d7524f3182f6daaa3a90ee3b1e71075", "infra_files": 37}, "admitted": false, "human_acceptance": false, "release_authorized": true, "workspace": "C:\\Users\\wuxiy\\rsi_releases\\tabletop_layer1_candidate_20261023", "manual_notes_browser_only": true, "video_scope": "one representative; all original cases remain in the full reference release"}</script><section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>已有参考执行见证；设计、动作、支撑、轨迹对应及复现来源见文档。</p><p><a href="/robo-si-results/infra/reference-designs/Assembly.html">参考解与设计文档</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>完整任务说明与证据</h2><p class="detail-nav"><a href="#detail-scope">任务范围与场景</a> · <a href="#detail-interfaces">观测、动作与接口</a> · <a href="#detail-planning">高层目标与低层动作</a> · <a href="#detail-trajectory">轨迹与关键状态对应</a> · <a href="#detail-scoring">评分与成功判据</a> · <a href="#detail-evidence">代表证据与审阅</a> · <a href="#detail-sandbox">沙盒验证</a> · <a href="#detail-reproduce">下载与复现</a> · <a href="#detail-limits">验收边界与剩余工作</a></p><article id="detail-scope"><h3>任务范围与场景</h3><p>工具辅助装配，基础第一层</p><p>8/8 场景、14/14 发布快照检查；第一层已完成并发布。</p><p>先用工具支撑装配平台，再安装套筒与盖件，最后撤手保持。支撑建立先于装配施力，末态要求手离开后仍满足装配条件。</p></article><article id="detail-interfaces"><h3>观测、动作与接口</h3><p>参考控制器的特权状态与公开代理权限分开；以本任务 SDK 和指令为准。</p><p><a href="/robo-si-results/humanoid/g1_tabletop_assembly/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_tabletop_assembly/sandbox/agent_sdk">Agent SDK</a></p></article><article id="detail-planning"><h3>高层目标与低层动作</h3><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>扶稳平台</td>
+<td>Assembly.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>安装套筒</td>
+<td>Assembly.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>安装顶盖</td>
+<td>Assembly.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>最终稳定确认</td>
+<td>Assembly.K04</td>
+<td>S3 → S4</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>基础第一层，平台初始倾斜</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>平台水平低速，工具承托且全部释放稳定 0.5 s</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>套筒正确装配并释放稳定 0.5 s</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>全部装配正确且机器人接触均释放</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>全部释放并稳定 2 s</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>轨迹与关键状态对应</h3><details><summary>动作顺序、接触与轨迹事件</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>Assembly.K01 · 取支撑工具、插入平台下并调整</h5>
+<p>入口：基础第一层，平台初始倾斜。出口：平台水平低速，工具承托且全部释放稳定 0.5 s。</p>
+<p>局部检查：工具可插入、接触反力可承重、撤手后不倒；不以机器人扶持替代工具。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly.K01.A01</td>
+<td>抬手避桌、接近工具并夹起</td>
+<td>工具→桌面→手</td>
+<td>抓持与桌面净空</td>
+<td>e0000: episode [0.0, 0.0] s; e0001: episode [5.7, 5.7] s; e0002: episode [9.700000000000001, 9.700000000000001] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K01.A02</td>
+<td>转运到支撑预备位置并下放</td>
+<td>手→工具→桌面</td>
+<td>工具接触与位置反馈</td>
+<td>e0005: episode [19.7, 19.7] s; e0006: episode [19.7, 19.7] s; e0007: episode [20.2, 20.2] s; 另 11 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K01.A03</td>
+<td>清手换姿态，按压平台并推入工具</td>
+<td>平台由机器人暂撑；工具→桌</td>
+<td>平台高度、工具对准与受力</td>
+<td>e0020: episode [27.44, 27.44] s; e0021: episode [28.94, 28.94] s; e0024: episode [33.94, 33.94] s; 另 24 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K01.A04</td>
+<td>撤离按压手，确认工具独立承托</td>
+<td>桌面→工具→平台</td>
+<td>工具支撑、机器人不代撑</td>
+<td>e0053: episode [59.620000000000005, 59.620000000000005] s; e0054: episode [62.42, 62.42] s; e0055: episode [63.92, 63.92] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>Assembly.K02 · 抓取套筒、孔柱对准、下放</h5>
+<p>入口：工具独立支撑平台且上一阶段已提交。出口：套筒正确装配并释放稳定 0.5 s。</p>
+<p>局部检查：装配轴线、孔柱间隙、插入扫掠和平台抗扰动。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly.K02.A01</td>
+<td>预成形、下降并夹住套筒外壁</td>
+<td>套筒→桌面→手</td>
+<td>指壁接触与抓持</td>
+<td>e0058: episode [68.18, 68.18] s; e0059: episode [68.68, 68.68] s; e0060: episode [71.98, 71.98] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K02.A02</td>
+<td>提起并避开柱顶、对准孔柱</td>
+<td>手持套筒；工具支撑平台</td>
+<td>柱顶净空、孔柱同轴</td>
+<td>e0063: episode [78.08, 78.08] s; e0064: episode [81.08, 81.08] s; e0065: episode [81.08, 81.08] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K02.A03</td>
+<td>下降套入、释放并检查就位</td>
+<td>手→套筒→平台→工具</td>
+<td>插入深度、释放后支撑</td>
+<td>e0067: episode [87.08, 87.08] s; e0068: episode [88.28, 88.28] s; e0069: episode [88.28, 88.28] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>Assembly.K03 · 抓取顶盖、对准套筒并下放</h5>
+<p>入口：套筒已释放稳定，支撑链有效。出口：全部装配正确且机器人接触均释放。</p>
+<p>局部检查：只在套筒阶段提交后插盖；整体支撑链与几何配合。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly.K03.A01</td>
+<td>整理手臂、接近顶盖并夹持</td>
+<td>顶盖→桌面→手</td>
+<td>手姿态与夹持</td>
+<td>e0072: episode [92.34, 92.34] s; e0073: episode [96.04, 96.04] s; e0074: episode [96.04, 96.04] s; 另 3 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K03.A02</td>
+<td>提起并移动到柱上方</td>
+<td>手持顶盖</td>
+<td>抓持、转运净空</td>
+<td>e0078: episode [106.74000000000001, 106.74000000000001] s; e0079: episode [110.74000000000001, 110.74000000000001] s; e0080: episode [110.74000000000001, 110.74000000000001] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K03.A03</td>
+<td>沿柱下放到套筒上并释放</td>
+<td>手→顶盖→套筒→平台→工具</td>
+<td>顶盖就位、支撑链</td>
+<td>e0081: episode [114.74000000000001, 114.74000000000001] s; e0082: episode [115.54, 115.54] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>Assembly.K04 · 撤离双手并观察</h5>
+<p>入口：工具和装配件均独立支撑。出口：全部释放并稳定 2 s。</p>
+<p>局部检查：阶段顺序和当前支撑同时有效；不扩展到未发布高层。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly.K04.A01</td>
+<td>释放后撤离双手</td>
+<td>桌面→工具→平台→套筒→顶盖</td>
+<td>手接触消失</td>
+<td>e0083: episode [116.8, 116.8] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K04.A02</td>
+<td>核对顶盖和套筒就位</td>
+<td>完整支撑链独立承重</td>
+<td>姿态、支撑接触</td>
+<td>e0084: episode [118.3, 118.3] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K04.A03</td>
+<td>维持独立静置至装配成功</td>
+<td>完整支撑链保持</td>
+<td>无代撑与最终驻留</td>
+<td>e0085: episode [118.395, 118.395] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>评分与成功判据</h3><p>保留本页原任务评分及冻结参考 verdict；分层计划、技能展开和事件对应不产生额外任务分数。合同中的拟议评分不是当前评分实现。完整运行的分数不能赋给筛查或沙盒短测。</p><p>本参考的最终关键状态：全部释放并稳定 2 s</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_tabletop_assembly/task_spec.py">原任务判据源码 / Original task criteria</a></p></article><article id="detail-evidence"><h3>代表证据与审阅</h3><p>见证：<strong>layer1_boundary_high</strong>。范围：工具辅助装配，基础第一层。</p>
+<p>8/8 场景、14/14 发布快照检查；第一层已完成并发布。</p>
+<p><a href="/robo-si-results/infra/planning/skill-evidence/sources/99bd9c34b2f68e1169a3007763f5bebe5862f6973c33e1ad8ce8402a8455ff1f.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/Assembly.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>沙盒验证</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>这些检查验证启动、传感器与动作接口；不计完整任务成功。同机 WSL 不是独立第二台机器复现。</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/Assembly/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>下载与复现</h3><p><a href="https://github.com/wuxiyang1996/robo-si/releases/download/tabletop-20261023/tabletop-20261023.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: a51f77d30d09898dbc08cffcacdee06e9ac807179cbbb4d487003c5db0c6e154</p><p>下载需私有仓库权限。参考包保留历史配置与运行入口；当前沙盒工作区补齐运行资产。先按沙盒 README 安装环境并执行短测，再用参考包的冻结入口复现；不能把新接口短测当作完整专家回放。</p><p>先检查本任务入口（不运行物理），再按链接中的环境与代理交付说明启动。历史 README 中的原机器路径须替换为本机路径；本页沙盒验证表是当前检查状态。</p><pre><code>python -m infra.sandbox.inventory check --task Assembly
+python -m humanoid.g1_tabletop_assembly.sandbox.launch --help</code></pre><p><a href="/robo-si-results/humanoid/g1_tabletop_assembly/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>验收边界与剩余工作</h3><p>补建撑并撤手稳定的独立短探针，以及支撑→套筒→盖帽的交接余量。 原四项人工验收关口与独立第二人复现。</p><p>工具、套筒、顶盖动作及反馈事件已关联；需在物理 trace 核对工具独立承托、松手与最终驻留。</p><p>随机实例分别记录：有完整成功证据、通过可行性筛查、未确定、检查不通过。只要求声明范围内的代表完整见证与表示间对应；不要求逐个随机实例生成完整解。正式准入、人工签审和独立机器验证不由页面完成状态推定。本次新增物理执行：0。</p><p><a href="/robo-si-results/infra/reference-designs/Assembly.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+<!-- assembly-family:start -->
+<section id="detail-family"><div class="wrap"><h2>ASM 任务族：4 个任务</h2>
+<p>10 个独立任务：Assembly 4、Gear Assembly 3、Reference Assembly 3；含 3 个原始任务和 7 个新增任务。身体与难度作为评测配置，不重复计数。五指手优先用于 Gear 工具相性；新增设计均待验证，本次新增仿真 0。</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Group</th>
+<th>Embodiment</th>
+<th>任务</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASM-01</td>
+<td>原始</td>
+<td>G1 + Dex3</td>
+<td>原版支撑后套筒、顶盖装配</td>
+<td>原范围已有见证</td>
+</tr>
+<tr>
+<td>ASM-02</td>
+<td>推理</td>
+<td>G1 + Dex3</td>
+<td>多候选支撑选择</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+<tr>
+<td>ASM-03</td>
+<td>推理</td>
+<td>G1 + Dex3</td>
+<td>组合建立支撑</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+<tr>
+<td>ASM-04</td>
+<td>相性</td>
+<td>G1 + Dex3 / Stretch 3</td>
+<td>支撑方法与身体相性</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+</tbody>
+</table></div>
+<p>相性任务优先对照 G/S；原综合任务并入 D3 配置，不单独计数。身体配置均须重新验证。</p>
+<p><a href="/robo-si-results/infra/task-assembly-family-zh.html">完整设计、难度与判据</a> · <a href="/robo-si-results/infra/planning/assembly-family/task-design.json">JSON</a></p></div></section>
+<!-- assembly-family:end --><!-- assembly-execution:start --><section id="assembly-execution"><h2>装配任务 · 执行与证据</h2><p>10 个独立任务已接入候选专家与统一记录器。这里展示实际尝试，任务得分与物理审查分开。单次失败不代表任务不可行。</p><p><a href="task-assembly-evidence-zh.html#ASM-01">查看专家、计划、轨迹、物理检查与视频</a></p></section><!-- assembly-execution:end -->
+</main><footer><div class="wrap">robo-si · 任务验收 · 2026-10-23 · 网页发布与任务准入分别记录</div></footer><script defer="" src="/robo-si-results/infra/tabletop-review.js"></script><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

@@ -1,0 +1,2061 @@
+{
+  "task": "g1_tabletop_disk_flip",
+  "controller": "privileged_candidate",
+  "purpose": "representative_validation_only",
+  "planning_mode": "rolling_local_planning",
+  "skill_probe": null,
+  "prefix": null,
+  "horizon_control_steps": 1,
+  "oracle_plan": "oracle_plan.json",
+  "config": {
+    "table_height": 0.86,
+    "table_center": [
+      0.7,
+      0.0
+    ],
+    "table_size": [
+      0.7,
+      1.15,
+      0.05
+    ],
+    "disk_radius": 0.1,
+    "disk_height": 0.012,
+    "disk_mass": 0.12,
+    "start_xy": [
+      0.5,
+      0.0
+    ],
+    "goal_xy": [
+      0.5,
+      0.0
+    ],
+    "goal_tolerance": 0.045,
+    "overhang_min": 0.055,
+    "overhang_max": 0.095,
+    "control_dt": 0.02,
+    "physics_dt": 0.0025,
+    "friction_model": "elliptic",
+    "collision_detector": "gjk",
+    "disk_collision_shape": "mesh",
+    "post_flip_handoff": "gentle_placement",
+    "max_episode_seconds": 600.0,
+    "edge_hold_seconds": 0.25,
+    "grasp_hold_seconds": 0.3,
+    "flip_hold_seconds": 0.3,
+    "final_hold_seconds": 2.0,
+    "contact_loss_grace_seconds": 0.1,
+    "joint_target_speed_max": 0.5,
+    "arm_stiffness_scale": 0.4,
+    "linear_speed_max": 0.12,
+    "angular_speed_max": 0.65,
+    "robot_force_max_n": 18.0,
+    "table_force_max_n": 8.0,
+    "release_linear_speed": 0.015,
+    "release_angular_speed": 0.08,
+    "contact_min_n": 0.05,
+    "height_tolerance": 0.004,
+    "clearance": 0.02,
+    "flat_tolerance_degrees": 8.0,
+    "object_names": [
+      "disk"
+    ]
+  },
+  "physics": {
+    "scene_step_seconds": 0.0025,
+    "integration_substeps": 1,
+    "integration_step_seconds": 0.0025,
+    "evaluator_step_seconds": 0.0025,
+    "control_step_seconds": 0.02,
+    "backend": "cpu",
+    "seed": 0,
+    "precision_bits": 64,
+    "rigid_options": {
+      "dt": null,
+      "gravity": null,
+      "enable_collision": true,
+      "enable_joint_limit": true,
+      "enable_self_collision": true,
+      "enable_neutral_collision": true,
+      "enable_adjacent_collision": false,
+      "disable_constraint": false,
+      "max_collision_pairs": 150,
+      "max_contacts": null,
+      "multiplier_collision_broad_phase": 8,
+      "integrator": 2,
+      "IK_max_targets": 6,
+      "batch_links_info": false,
+      "batch_joints_info": false,
+      "batch_dofs_info": false,
+      "constraint_solver": 1,
+      "iterations": 25,
+      "tolerance": null,
+      "ls_iterations": 50,
+      "ls_tolerance": 0.01,
+      "noslip_iterations": 0,
+      "noslip_tolerance": 1e-06,
+      "friction_cone": 1,
+      "contact_resolution": null,
+      "enable_torsional_friction": false,
+      "enable_rolling_friction": false,
+      "impratio": 100.0,
+      "contact_pruning_tolerance": 0.02,
+      "sparse_solve": null,
+      "constraint_timeconst": 0.01,
+      "box_box_detection": false,
+      "use_hibernation": false,
+      "hibernation_thresh_vel": null,
+      "max_dynamic_constraints": 8,
+      "enable_multi_contact": true,
+      "enable_mujoco_compatibility": false,
+      "use_gjk_collision": true,
+      "enable_contact_patch": null,
+      "broadphase_traversal": null
+    },
+    "arm_stiffness_scale": 0.4
+  },
+  "full_task_success": true,
+  "status": {
+    "success": true,
+    "failed": false,
+    "terminated": true,
+    "score": 1.0,
+    "reason": "",
+    "stage": 5,
+    "phase": "complete",
+    "progress": 1.0,
+    "elapsed": 478.2599999996013,
+    "stable_seconds": 0.0,
+    "conditions": {
+      "at_edge": false,
+      "bimanual_clamp": false,
+      "clear": false,
+      "inverted": true,
+      "placed": true,
+      "released": true,
+      "still": true,
+      "in_goal": true,
+      "single_pinch_support": false,
+      "table_supported_handoff": false
+    },
+    "peaks": {
+      "linear_speed_m_s": 0.03496344008637231,
+      "angular_speed_rad_s": 0.45301745945807,
+      "robot_force_n": 16.75619390510062,
+      "table_force_n": 6.229783326786229
+    }
+  },
+  "error": null,
+  "control_steps": 23913,
+  "events": [
+    {
+      "phase": "select_skill",
+      "time": 0.0,
+      "skill": "gentle_slide_to_edge",
+      "key_state": "edge",
+      "horizon_control_steps": 1
+    },
+    {
+      "phase": "settle_raised_separated_hands",
+      "time": 0.0
+    },
+    {
+      "phase": "approach_far_rim",
+      "time": 4.5
+    },
+    {
+      "phase": "lower_outside_far_rim",
+      "time": 12.5
+    },
+    {
+      "phase": "gentle_rim_contact",
+      "time": 20.5
+    },
+    {
+      "phase": "slide_to_near_edge",
+      "time": 31.88
+    },
+    {
+      "phase": "select_skill",
+      "time": 64.32000000000001,
+      "skill": "two_independent_edge_pinches",
+      "key_state": "clamped",
+      "horizon_control_steps": 1
+    },
+    {
+      "phase": "unload_rim_pusher",
+      "time": 64.32000000000001,
+      "hand": "left"
+    },
+    {
+      "phase": "clear_rim_pusher",
+      "time": 69.82000000000001
+    },
+    {
+      "phase": "retract_above_and_beside_disk",
+      "time": 75.82000000000001
+    },
+    {
+      "phase": "reconfigure_for_bimanual_approach",
+      "time": 91.82000000000001,
+      "candidates": 24,
+      "trials": 48,
+      "collision_scope": "approach_and_handoff_robot_self_collision_only"
+    },
+    {
+      "phase": "calibrate_free_finger_preshape",
+      "time": 107.82000000000001
+    },
+    {
+      "phase": "close_two_independent_edge_pinches",
+      "time": 130.88
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "close_two_independent_edge_pinches",
+      "time": 157.14000000000001,
+      "measured": {
+        "left/thumb": 0.7765502241882148,
+        "left/index": 0.0,
+        "left/middle": 0.9451352638312236,
+        "right/thumb": 0.9754278853822327,
+        "right/index": 0.48937893418453066,
+        "right/middle": 1.366649543064532
+      },
+      "targets": {
+        "left/thumb": 2.4425450574586254,
+        "left/index": 0.8010720473398808,
+        "left/middle": 0.930965852848557,
+        "right/thumb": 2.145729711239658,
+        "right/index": 0.7758024774966903,
+        "right/middle": 0.9038848536165894
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "close_two_independent_edge_pinches",
+      "time": 158.14000000000001,
+      "measured": {
+        "left/thumb": 0.8561738538103641,
+        "left/index": 0.0,
+        "left/middle": 1.0458705282638616,
+        "right/thumb": 1.2382762572524855,
+        "right/index": 0.5610764479047492,
+        "right/middle": 1.138138969814007
+      },
+      "targets": {
+        "left/thumb": 2.4549704310579217,
+        "left/index": 0.762356476535216,
+        "left/middle": 0.9475977279763451,
+        "right/thumb": 2.133350782719864,
+        "right/index": 0.7586381976085662,
+        "right/middle": 0.9430863841020868
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "close_two_independent_edge_pinches",
+      "time": 159.14000000000001,
+      "measured": {
+        "left/thumb": 0.8384885154649292,
+        "left/index": 0.0,
+        "left/middle": 1.1094112576928024,
+        "right/thumb": 1.54824915221191,
+        "right/index": 0.5421761854238263,
+        "right/middle": 1.0711293772706796
+      },
+      "targets": {
+        "left/thumb": 2.5146704472641606,
+        "left/index": 0.6936408222857442,
+        "left/middle": 0.9928605805904874,
+        "right/thumb": 2.0737024351358775,
+        "right/index": 0.7124734382513145,
+        "right/middle": 1.012652276472416
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "close_two_independent_edge_pinches",
+      "time": 160.14000000000001,
+      "measured": {
+        "left/thumb": 1.320055333354996,
+        "left/index": 0.6370000132045834,
+        "left/middle": 0.8991211365701013,
+        "right/thumb": 2.0614711204049847,
+        "right/index": 0.40780416326570407,
+        "right/middle": 1.1295631168744975
+      },
+      "targets": {
+        "left/thumb": 2.45232004920543,
+        "left/index": 0.888684510477628,
+        "left/middle": 0.9056766807369222,
+        "right/thumb": 2.1360905692457632,
+        "right/index": 0.8017605818823301,
+        "right/middle": 0.8154676084519277
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "close_two_independent_edge_pinches",
+      "time": 161.14000000000001,
+      "measured": {
+        "left/thumb": 1.5365518023312144,
+        "left/index": 0.8015663005425191,
+        "left/middle": 0.9176229338627822,
+        "right/thumb": 2.002425130553042,
+        "right/index": 0.35925288210609296,
+        "right/middle": 0.947812558348281
+      },
+      "targets": {
+        "left/thumb": 2.4894293934948957,
+        "left/index": 1.0337330053514313,
+        "left/middle": 0.8828851545164088,
+        "right/thumb": 2.0989995749410877,
+        "right/index": 0.8273332719764127,
+        "right/middle": 0.6676195997197636
+      }
+    },
+    {
+      "phase": "select_skill",
+      "time": 161.42000000000002,
+      "skill": "bimanual_lift_clear",
+      "key_state": "lifted",
+      "horizon_control_steps": 1
+    },
+    {
+      "phase": "lift_with_two_edge_pinches",
+      "time": 161.42000000000002
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 162.14000000000001,
+      "measured": {
+        "left/thumb": 1.8023673483764349,
+        "left/index": 1.2614274311851497,
+        "left/middle": 0.5259468116927337,
+        "right/thumb": 2.1581263581406707,
+        "right/index": 0.33021265740816724,
+        "right/middle": 1.0789515371791707
+      },
+      "targets": {
+        "left/thumb": 2.3674832129062757,
+        "left/index": 1.0698364851359337,
+        "left/middle": 0.830278014489208,
+        "right/thumb": 2.227945220992138,
+        "right/index": 0.8866248129913273,
+        "right/middle": 0.6315462960128502
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 163.14000000000001,
+      "measured": {
+        "left/thumb": 2.700209012360048,
+        "left/index": 1.4017809966917756,
+        "left/middle": 1.0061642358345315,
+        "right/thumb": 2.6886922021200954,
+        "right/index": 0.8911887757832107,
+        "right/middle": 0.9126912638929896
+      },
+      "targets": {
+        "left/thumb": 2.342773867710629,
+        "left/index": 1.1334046954802437,
+        "left/middle": 0.818746978472545,
+        "right/thumb": 2.3180575546290068,
+        "right/index": 0.9326438592100526,
+        "right/middle": 0.5988596634901001
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 164.14000000000001,
+      "measured": {
+        "left/thumb": 3.096970890612574,
+        "left/index": 2.169967005872152,
+        "left/middle": 0.5721221577236194,
+        "right/thumb": 3.0199649983953574,
+        "right/index": 0.9777513642922526,
+        "right/middle": 1.220554019945113
+      },
+      "targets": {
+        "left/thumb": 2.359119911531079,
+        "left/index": 1.4808239596168435,
+        "left/middle": 0.7624565223567484,
+        "right/thumb": 2.4530901325933887,
+        "right/index": 1.073576906765863,
+        "right/middle": 0.3182143993122515
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 165.14000000000001,
+      "measured": {
+        "left/thumb": 2.902482116525666,
+        "left/index": 1.8144327030270684,
+        "left/middle": 0.5081194059135224,
+        "right/thumb": 2.7075154088892517,
+        "right/index": 1.1555475434146738,
+        "right/middle": 0.9529748690397499
+      },
+      "targets": {
+        "left/thumb": 2.510444956415391,
+        "left/index": 1.4725215276981791,
+        "left/middle": 0.840290506343937,
+        "right/thumb": 2.5173589959141296,
+        "right/index": 1.1009367548658204,
+        "right/middle": 0.43691510490355834
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 166.14000000000001,
+      "measured": {
+        "left/thumb": 2.5448009929155972,
+        "left/index": 1.4982393390350421,
+        "left/middle": 0.45879670356557994,
+        "right/thumb": 2.348975944213288,
+        "right/index": 1.0432340406489136,
+        "right/middle": 0.713871453733676
+      },
+      "targets": {
+        "left/thumb": 2.672911593142422,
+        "left/index": 1.4176072484334223,
+        "left/middle": 0.9418321397949012,
+        "right/thumb": 2.585185105569994,
+        "right/index": 1.1101990242816495,
+        "right/middle": 0.61130661997722
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 167.14000000000001,
+      "measured": {
+        "left/thumb": 2.332633217004524,
+        "left/index": 1.2188815895484097,
+        "left/middle": 0.5554652841514575,
+        "right/thumb": 2.104257858025446,
+        "right/index": 0.8598010878601723,
+        "right/middle": 0.6230499852956427
+      },
+      "targets": {
+        "left/thumb": 2.8531826704907597,
+        "left/index": 1.280496822022769,
+        "left/middle": 1.062406668700501,
+        "right/thumb": 2.5946872486466024,
+        "right/index": 1.077263656336553,
+        "right/middle": 0.8505377102172689
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 168.14000000000001,
+      "measured": {
+        "left/thumb": 2.2975912356483446,
+        "left/index": 1.1189985790649084,
+        "left/middle": 0.6704743253111045,
+        "right/thumb": 2.086170538255347,
+        "right/index": 0.7165068514770815,
+        "right/middle": 0.6982112366995191
+      },
+      "targets": {
+        "left/thumb": 2.9487916206831484,
+        "left/index": 1.1636308661136427,
+        "left/middle": 1.1408173748341701,
+        "right/thumb": 2.609374293940712,
+        "right/index": 1.0484167430567526,
+        "right/middle": 1.0281269034696212
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 169.14000000000001,
+      "measured": {
+        "left/thumb": 2.313302447973756,
+        "left/index": 1.046679479999096,
+        "left/middle": 0.8118633303749423,
+        "right/thumb": 2.118971844056357,
+        "right/index": 0.624576325108272,
+        "right/middle": 0.7694844638218412
+      },
+      "targets": {
+        "left/thumb": 2.9908886408686386,
+        "left/index": 1.0584793130974264,
+        "left/middle": 1.1904417103982352,
+        "right/thumb": 2.597375378237844,
+        "right/index": 1.0094269393101016,
+        "right/middle": 1.1527344904006458
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 170.14000000000001,
+      "measured": {
+        "left/thumb": 2.321943942827584,
+        "left/index": 1.0116860463721271,
+        "left/middle": 0.8934224850478781,
+        "right/thumb": 2.1497410763850726,
+        "right/index": 0.5445036004788757,
+        "right/middle": 0.842410709044342
+      },
+      "targets": {
+        "left/thumb": 3.002591384193947,
+        "left/index": 0.9829028561796216,
+        "left/middle": 1.2178577418166732,
+        "right/thumb": 2.5860018938897396,
+        "right/index": 0.979315422283527,
+        "right/middle": 1.2313307016364923
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 171.14000000000001,
+      "measured": {
+        "left/thumb": 2.42484457147297,
+        "left/index": 1.0037751686212297,
+        "left/middle": 1.0188015786183333,
+        "right/thumb": 2.2775466680298093,
+        "right/index": 0.5381724398952255,
+        "right/middle": 0.9453470216312627
+      },
+      "targets": {
+        "left/thumb": 2.9861258882993233,
+        "left/index": 0.9453312548762312,
+        "left/middle": 1.2229444517141042,
+        "right/thumb": 2.602469036093021,
+        "right/index": 0.9732784786941042,
+        "right/middle": 1.2698508903232164
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "lift_with_two_edge_pinches",
+      "time": 172.14000000000001,
+      "measured": {
+        "left/thumb": 2.615177094875397,
+        "left/index": 1.12058848524379,
+        "left/middle": 1.175716639615801,
+        "right/thumb": 2.5850905973079303,
+        "right/index": 0.6069092833776353,
+        "right/middle": 1.0933336298058418
+      },
+      "targets": {
+        "left/thumb": 2.910629255560364,
+        "left/index": 0.9904705608812348,
+        "left/middle": 1.1817626004562034,
+        "right/thumb": 2.6779671395941733,
+        "right/index": 1.0175267942366895,
+        "right/middle": 1.221643649271336
+      }
+    },
+    {
+      "phase": "select_skill",
+      "time": 172.8,
+      "skill": "bimanual_half_turn",
+      "key_state": "inverted",
+      "horizon_control_steps": 1
+    },
+    {
+      "phase": "turn_with_two_edge_pinches",
+      "time": 172.8
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 173.14000000000001,
+      "measured": {
+        "left/thumb": 2.38279213323707,
+        "left/index": 0.6624379638572422,
+        "left/middle": 1.377551275518737,
+        "right/thumb": 2.2627679280679627,
+        "right/index": 0.4537276576851435,
+        "right/middle": 0.8834530572323782
+      },
+      "targets": {
+        "left/thumb": 2.991661398659158,
+        "left/index": 0.7733213728626328,
+        "left/middle": 1.2774727290163472,
+        "right/thumb": 2.5969375939840638,
+        "right/index": 0.913891596281819,
+        "right/middle": 1.446715309195981
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 174.14000000000001,
+      "measured": {
+        "left/thumb": 2.2511227520374133,
+        "left/index": 0.7162810114640629,
+        "left/middle": 0.9472031686360066,
+        "right/thumb": 1.928735740004814,
+        "right/index": 0.39891283136173095,
+        "right/middle": 0.7329731192882607
+      },
+      "targets": {
+        "left/thumb": 3.007422139375711,
+        "left/index": 0.856718641131686,
+        "left/middle": 1.2581511389002134,
+        "right/thumb": 2.581174070451471,
+        "right/index": 0.9350320428737985,
+        "right/middle": 1.3615019672671222
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 175.14000000000001,
+      "measured": {
+        "left/thumb": 2.4495098583078523,
+        "left/index": 0.6735510095235341,
+        "left/middle": 1.3434752549837545,
+        "right/thumb": 2.1150601452632953,
+        "right/index": 0.21300870462096838,
+        "right/middle": 0.9206376717496806
+      },
+      "targets": {
+        "left/thumb": 3.0559664025413107,
+        "left/index": 0.733437147314615,
+        "left/middle": 1.3137155655011585,
+        "right/thumb": 2.532632910504854,
+        "right/index": 0.8797005542943215,
+        "right/middle": 1.4845474198437398
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 176.14000000000001,
+      "measured": {
+        "left/thumb": 2.152286462603287,
+        "left/index": 0.7407780189770996,
+        "left/middle": 1.0470923185840988,
+        "right/thumb": 1.8819506527543985,
+        "right/index": 0.15752946265673068,
+        "right/middle": 0.772219149235436
+      },
+      "targets": {
+        "left/thumb": 3.071744211226121,
+        "left/index": 0.7901799634221904,
+        "left/middle": 1.300114108549745,
+        "right/thumb": 2.516853139206301,
+        "right/index": 0.8883615279530919,
+        "right/middle": 1.4327470496425536
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 177.14000000000001,
+      "measured": {
+        "left/thumb": 2.1550858583318124,
+        "left/index": 0.7127743629455172,
+        "left/middle": 1.1014889955244387,
+        "right/thumb": 1.9053347728092231,
+        "right/index": 0.1773764846580365,
+        "right/middle": 0.78236346328477
+      },
+      "targets": {
+        "left/thumb": 3.084103706392686,
+        "left/index": 0.746473742562809,
+        "left/middle": 1.314858881872778,
+        "right/thumb": 2.5044805990629424,
+        "right/index": 0.8723995231373325,
+        "right/middle": 1.4776835469714535
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 178.14000000000001,
+      "measured": {
+        "left/thumb": 2.2259864766394637,
+        "left/index": 0.7605034536985712,
+        "left/middle": 1.1976080280750387,
+        "right/thumb": 2.040569892601186,
+        "right/index": 0.3055906508030963,
+        "right/middle": 0.8263596133871856
+      },
+      "targets": {
+        "left/thumb": 3.089025259748787,
+        "left/index": 0.7879665065321515,
+        "left/middle": 1.3042687827829256,
+        "right/thumb": 2.499500408308269,
+        "right/index": 0.8845551933263816,
+        "right/middle": 1.4346838493014855
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 179.14000000000001,
+      "measured": {
+        "left/thumb": 2.374276425662929,
+        "left/index": 0.7505317989642503,
+        "left/middle": 1.3196493029151708,
+        "right/thumb": 2.1549530572219293,
+        "right/index": 0.342058678981468,
+        "right/middle": 0.9397621136791784
+      },
+      "targets": {
+        "left/thumb": 3.0981388137099244,
+        "left/index": 0.7489990662630934,
+        "left/middle": 1.3233527453619203,
+        "right/thumb": 2.490241195610164,
+        "right/index": 0.8639458482458526,
+        "right/middle": 1.4753223308090457
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 180.14000000000001,
+      "measured": {
+        "left/thumb": 2.5041481814328357,
+        "left/index": 0.7626205415306756,
+        "left/middle": 1.4134916693718411,
+        "right/thumb": 2.29468801745353,
+        "right/index": 0.4108653128767181,
+        "right/middle": 1.0350828183318703
+      },
+      "targets": {
+        "left/thumb": 3.0756423107574093,
+        "left/index": 0.7454487006548987,
+        "left/middle": 1.3173816775097755,
+        "right/thumb": 2.5124169091664457,
+        "right/index": 0.8704260572797655,
+        "right/middle": 1.4786843446317055
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 181.14000000000001,
+      "measured": {
+        "left/thumb": 2.6178473999047913,
+        "left/index": 0.8292853190495464,
+        "left/middle": 1.4393492501654392,
+        "right/thumb": 2.449485069803843,
+        "right/index": 0.5356248339612347,
+        "right/middle": 1.0873389957145752
+      },
+      "targets": {
+        "left/thumb": 3.0224110612255206,
+        "left/index": 0.8055702292065774,
+        "left/middle": 1.2839814598769275,
+        "right/thumb": 2.5650291837526953,
+        "right/index": 0.9070450480079202,
+        "right/middle": 1.41596301793036
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 182.14000000000001,
+      "measured": {
+        "left/thumb": 2.7293571909898975,
+        "left/index": 0.7063496297082441,
+        "left/middle": 1.5565073628665913,
+        "right/thumb": 2.543888852352726,
+        "right/index": 0.598848688439151,
+        "right/middle": 1.2380592550655407
+      },
+      "targets": {
+        "left/thumb": 3.0105501234286396,
+        "left/index": 0.7076263326972291,
+        "left/middle": 1.3115631835369777,
+        "right/thumb": 2.5758270005051687,
+        "right/index": 0.8766795261065221,
+        "right/middle": 1.5177538337254626
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 183.14000000000001,
+      "measured": {
+        "left/thumb": 2.661384760215934,
+        "left/index": 0.5927547758905107,
+        "left/middle": 1.6764034067202525,
+        "right/thumb": 2.464629678348638,
+        "right/index": 0.4689934356942636,
+        "right/middle": 1.2174351670066672
+      },
+      "targets": {
+        "left/thumb": 3.0545041463965337,
+        "left/index": 0.6153019095235472,
+        "left/middle": 1.3570740843630005,
+        "right/thumb": 2.530152688197437,
+        "right/index": 0.8276757854965537,
+        "right/middle": 1.615291386022928
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 184.14000000000001,
+      "measured": {
+        "left/thumb": 2.557003629541673,
+        "left/index": 0.6579664767062954,
+        "left/middle": 1.5128176186725504,
+        "right/thumb": 2.4018246856343892,
+        "right/index": 0.584734064844632,
+        "right/middle": 1.0379812998254416
+      },
+      "targets": {
+        "left/thumb": 3.0061444417751195,
+        "left/index": 0.7584917139347896,
+        "left/middle": 1.281994172628599,
+        "right/thumb": 2.5758135264213124,
+        "right/index": 0.9091840167104712,
+        "right/middle": 1.4683721285297067
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 185.14000000000001,
+      "measured": {
+        "left/thumb": 2.7244443988838416,
+        "left/index": 0.8242017375142806,
+        "left/middle": 1.4067813934209699,
+        "right/thumb": 2.6500324484939863,
+        "right/index": 0.751524763787679,
+        "right/middle": 1.2343457047720232
+      },
+      "targets": {
+        "left/thumb": 2.9075959241544065,
+        "left/index": 0.8241951997505674,
+        "left/middle": 1.2244547511898243,
+        "right/thumb": 2.6704556187938975,
+        "right/index": 0.9734061846394285,
+        "right/middle": 1.3998923214718768
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 186.14000000000001,
+      "measured": {
+        "left/thumb": 2.6393121086701092,
+        "left/index": 0.7859077603414969,
+        "left/middle": 1.3571450025901624,
+        "right/thumb": 2.474479949238901,
+        "right/index": 0.7404498925163422,
+        "right/middle": 1.0837280657968458
+      },
+      "targets": {
+        "left/thumb": 2.951983273813823,
+        "left/index": 0.8692344878026206,
+        "left/middle": 1.2213993090443374,
+        "right/thumb": 2.6205289289412517,
+        "right/index": 0.980554251571436,
+        "right/middle": 1.3562997488265305
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 187.14000000000001,
+      "measured": {
+        "left/thumb": 2.859229227722774,
+        "left/index": 0.9785400537500449,
+        "left/middle": 1.323394327223142,
+        "right/thumb": 2.77327176126218,
+        "right/index": 0.9368947570660067,
+        "right/middle": 1.261822379375765
+      },
+      "targets": {
+        "left/thumb": 2.863725058584652,
+        "left/index": 0.9431358238135991,
+        "left/middle": 1.1751720415182592,
+        "right/thumb": 2.7012277930387176,
+        "right/index": 1.0345766096769473,
+        "right/middle": 1.2821626733678242
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 188.14000000000001,
+      "measured": {
+        "left/thumb": 3.178936187064345,
+        "left/index": 0.95996959789448,
+        "left/middle": 1.152308272742002,
+        "right/thumb": 2.9432787025328095,
+        "right/index": 1.3858525062595062,
+        "right/middle": 1.4964802605321847
+      },
+      "targets": {
+        "left/thumb": 2.8183429567018954,
+        "left/index": 0.9291239864876389,
+        "left/middle": 1.1720956418146788,
+        "right/thumb": 2.736669774104736,
+        "right/index": 1.0422967819096438,
+        "right/middle": 1.3014708589814075
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 189.14000000000001,
+      "measured": {
+        "left/thumb": 3.0919319833105128,
+        "left/index": 1.0488846276373947,
+        "left/middle": 1.3014084230935943,
+        "right/thumb": 2.9706615636263605,
+        "right/index": 1.150448253185898,
+        "right/middle": 1.4750074928099632
+      },
+      "targets": {
+        "left/thumb": 2.8185775932379564,
+        "left/index": 0.9429357697543885,
+        "left/middle": 1.1739878208533314,
+        "right/thumb": 2.7237853041689366,
+        "right/index": 1.047020204794448,
+        "right/middle": 1.2936933071909387
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 190.14000000000001,
+      "measured": {
+        "left/thumb": 3.163293265585744,
+        "left/index": 1.03121313335499,
+        "left/middle": 1.3132417052581604,
+        "right/thumb": 3.019627544634119,
+        "right/index": 1.2337380907275692,
+        "right/middle": 1.549426799590613
+      },
+      "targets": {
+        "left/thumb": 2.803970908337139,
+        "left/index": 0.924896844883082,
+        "left/middle": 1.1815875379804217,
+        "right/thumb": 2.7225547632983322,
+        "right/index": 1.0463395552690233,
+        "right/middle": 1.320650390232001
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 191.14000000000001,
+      "measured": {
+        "left/thumb": 2.897100688330039,
+        "left/index": 0.9025105486828744,
+        "left/middle": 1.238753899646147,
+        "right/thumb": 2.7372931885272584,
+        "right/index": 1.1304655675807536,
+        "right/middle": 1.3460977226329915
+      },
+      "targets": {
+        "left/thumb": 2.821398094860762,
+        "left/index": 0.9229330206732076,
+        "left/middle": 1.1967987312422952,
+        "right/thumb": 2.6860204000301104,
+        "right/index": 1.0397533356165682,
+        "right/middle": 1.3330964175770557
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 192.14000000000001,
+      "measured": {
+        "left/thumb": 2.884272115613274,
+        "left/index": 1.0542721727310587,
+        "left/middle": 0.9436076192152816,
+        "right/thumb": 2.6230199710762125,
+        "right/index": 1.0841313241742334,
+        "right/middle": 1.4544198391178966
+      },
+      "targets": {
+        "left/thumb": 2.827731464437613,
+        "left/index": 0.9675806847735451,
+        "left/middle": 1.198034112646507,
+        "right/thumb": 2.6572487467668444,
+        "right/index": 1.0510119579060822,
+        "right/middle": 1.2983930334694072
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 193.14000000000001,
+      "measured": {
+        "left/thumb": 3.42906443984451,
+        "left/index": 1.0708849582100335,
+        "left/middle": 1.2315947273711667,
+        "right/thumb": 3.132236590626947,
+        "right/index": 1.6766510609260106,
+        "right/middle": 1.6660559409118694
+      },
+      "targets": {
+        "left/thumb": 2.7529566867813715,
+        "left/index": 1.0155921592773158,
+        "left/middle": 1.1749489884546416,
+        "right/thumb": 2.70416727726094,
+        "right/index": 1.0905380830705842,
+        "right/middle": 1.2617968051551467
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 194.14000000000001,
+      "measured": {
+        "left/thumb": 3.1560998994919975,
+        "left/index": 1.0679112932939159,
+        "left/middle": 1.2217339855785934,
+        "right/thumb": 2.87481402021968,
+        "right/index": 1.190915423683331,
+        "right/middle": 1.698436801793794
+      },
+      "targets": {
+        "left/thumb": 2.8067095832772875,
+        "left/index": 0.9072108095764602,
+        "left/middle": 1.235682269335019,
+        "right/thumb": 2.6183787533764797,
+        "right/index": 1.0394958282799895,
+        "right/middle": 1.3925227561547646
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 195.14000000000001,
+      "measured": {
+        "left/thumb": 3.168870440294752,
+        "left/index": 0.9843522559547531,
+        "left/middle": 1.1769490314791113,
+        "right/thumb": 2.8580423250266165,
+        "right/index": 1.3771500620445183,
+        "right/middle": 1.7057179667162043
+      },
+      "targets": {
+        "left/thumb": 2.768362757226057,
+        "left/index": 0.9118323036117808,
+        "left/middle": 1.236651008944729,
+        "right/thumb": 2.6257494020311936,
+        "right/index": 1.0537121956958544,
+        "right/middle": 1.403692332490385
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 196.14000000000001,
+      "measured": {
+        "left/thumb": 3.1017172483087805,
+        "left/index": 0.7508970927843939,
+        "left/middle": 1.390688896882517,
+        "right/thumb": 2.8127483858096793,
+        "right/index": 1.5998021820578483,
+        "right/middle": 1.4687524349170393
+      },
+      "targets": {
+        "left/thumb": 2.7377761425489235,
+        "left/index": 0.9252229924791291,
+        "left/middle": 1.2431864059497135,
+        "right/thumb": 2.6147783440629473,
+        "right/index": 1.0682256394723249,
+        "right/middle": 1.4108104754869615
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 197.14000000000001,
+      "measured": {
+        "left/thumb": 2.6574705754362244,
+        "left/index": 0.9893568201262855,
+        "left/middle": 0.8774113745315646,
+        "right/thumb": 2.4390370564907604,
+        "right/index": 1.3615727978280388,
+        "right/middle": 1.2547975740335091
+      },
+      "targets": {
+        "left/thumb": 2.6844919307573076,
+        "left/index": 1.0999402316114235,
+        "left/middle": 1.2014946548422203,
+        "right/thumb": 2.6241543976057775,
+        "right/index": 1.1402695242555292,
+        "right/middle": 1.2496492609277412
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 198.14000000000001,
+      "measured": {
+        "left/thumb": 2.636718241602085,
+        "left/index": 0.909936397898607,
+        "left/middle": 0.8659137400399674,
+        "right/thumb": 2.2797694441969805,
+        "right/index": 1.1791213805938092,
+        "right/middle": 1.4405066066495058
+      },
+      "targets": {
+        "left/thumb": 2.74158904537277,
+        "left/index": 0.9559092888965117,
+        "left/middle": 1.286303284633334,
+        "right/thumb": 2.5185657619303976,
+        "right/index": 1.070487912840224,
+        "right/middle": 1.4271447063267615
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 199.14000000000001,
+      "measured": {
+        "left/thumb": 2.528221290387703,
+        "left/index": 0.7986291618498523,
+        "left/middle": 1.0515795302216153,
+        "right/thumb": 2.186290813326085,
+        "right/index": 0.9627823876590368,
+        "right/middle": 1.4827487195117504
+      },
+      "targets": {
+        "left/thumb": 2.761911074380399,
+        "left/index": 0.8286017786548349,
+        "left/middle": 1.3683767825660442,
+        "right/thumb": 2.4471326806277207,
+        "right/index": 1.0058458069145355,
+        "right/middle": 1.5881318768564658
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 200.14000000000001,
+      "measured": {
+        "left/thumb": 2.5302354084173224,
+        "left/index": 0.7717489863821165,
+        "left/middle": 1.1156087538042647,
+        "right/thumb": 2.217043817886461,
+        "right/index": 1.025192806530499,
+        "right/middle": 1.5236314308575918
+      },
+      "targets": {
+        "left/thumb": 2.7154159185644464,
+        "left/index": 0.8260841133478495,
+        "left/middle": 1.3765287722411088,
+        "right/thumb": 2.439653189010707,
+        "right/index": 1.024446213367059,
+        "right/middle": 1.6178717934688294
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 201.14000000000001,
+      "measured": {
+        "left/thumb": 2.635322536285564,
+        "left/index": 0.6228380424028571,
+        "left/middle": 1.2061671848282969,
+        "right/thumb": 2.1944272961924383,
+        "right/index": 1.1135733571765645,
+        "right/middle": 1.686883478468484
+      },
+      "targets": {
+        "left/thumb": 2.7257028053420904,
+        "left/index": 0.7253633954472956,
+        "left/middle": 1.4437538141012431,
+        "right/thumb": 2.373801625121076,
+        "right/index": 0.9779979221510909,
+        "right/middle": 1.753380437837206
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 202.14000000000001,
+      "measured": {
+        "left/thumb": 2.7130639425176426,
+        "left/index": 0.5565860951204323,
+        "left/middle": 1.3098904864175653,
+        "right/thumb": 2.2169175295842605,
+        "right/index": 1.1264593336109519,
+        "right/middle": 1.8506405258891028
+      },
+      "targets": {
+        "left/thumb": 2.7161226518559434,
+        "left/index": 0.6506313697408681,
+        "left/middle": 1.4960670597825567,
+        "right/thumb": 2.3263936997634227,
+        "right/index": 0.9494705129247999,
+        "right/middle": 1.8613147059324109
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 203.14000000000001,
+      "measured": {
+        "left/thumb": 2.9886950285039693,
+        "left/index": 1.2190331426069672,
+        "left/middle": 1.412091429381396,
+        "right/thumb": 2.6999645583289777,
+        "right/index": 0.7882304880178308,
+        "right/middle": 2.2951468810825686
+      },
+      "targets": {
+        "left/thumb": 2.6307857153612195,
+        "left/index": 0.7857425180677432,
+        "left/middle": 1.4466299469490056,
+        "right/thumb": 2.355534656234986,
+        "right/index": 1.0329849792719086,
+        "right/middle": 1.7483221841151366
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 204.14000000000001,
+      "measured": {
+        "left/thumb": 3.1442790681900576,
+        "left/index": 0.5997531371895136,
+        "left/middle": 1.818209180215014,
+        "right/thumb": 2.7822220110146976,
+        "right/index": 1.4182372169113289,
+        "right/middle": 2.230732803701904
+      },
+      "targets": {
+        "left/thumb": 2.566171045415243,
+        "left/index": 0.635352716636964,
+        "left/middle": 1.4961242485883086,
+        "right/thumb": 2.3630273821882914,
+        "right/index": 1.005043641100846,
+        "right/middle": 1.934280966070349
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 205.14000000000001,
+      "measured": {
+        "left/thumb": 2.6518417808772767,
+        "left/index": 0.41276165077181676,
+        "left/middle": 1.3004912929654748,
+        "right/thumb": 2.026251144920519,
+        "right/index": 1.1434975799177893,
+        "right/middle": 2.0724807327726342
+      },
+      "targets": {
+        "left/thumb": 2.6732246572777516,
+        "left/index": 0.5266266858403077,
+        "left/middle": 1.6061884411691125,
+        "right/thumb": 2.1995502274602807,
+        "right/index": 0.9147744041354146,
+        "right/middle": 2.079635584117138
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 206.14000000000001,
+      "measured": {
+        "left/thumb": 2.0501521221477437,
+        "left/index": 0.0,
+        "left/middle": 0.5751669554306059,
+        "right/thumb": 1.2009982770768641,
+        "right/index": 1.4196083449601113,
+        "right/middle": 1.6079555570247006
+      },
+      "targets": {
+        "left/thumb": 2.668238262345736,
+        "left/index": 0.5361964469572675,
+        "left/middle": 1.6555910096197999,
+        "right/thumb": 2.1527978313356106,
+        "right/index": 0.9024550918006249,
+        "right/middle": 2.0847213579409605
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 207.14000000000001,
+      "measured": {
+        "left/thumb": 2.001516662087668,
+        "left/index": 0.0,
+        "left/middle": 1.2937717631842975,
+        "right/thumb": 1.5106185429456422,
+        "right/index": 1.0927136218496165,
+        "right/middle": 1.5477152493499093
+      },
+      "targets": {
+        "left/thumb": 2.614440142141948,
+        "left/index": 0.39077632370433224,
+        "left/middle": 1.7318329120993767,
+        "right/thumb": 2.153314825156115,
+        "right/index": 0.8668226853799481,
+        "right/middle": 2.242813111518281
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 208.14000000000001,
+      "measured": {
+        "left/thumb": 2.0988168712922657,
+        "left/index": 0.3470660863751513,
+        "left/middle": 1.0952873666365588,
+        "right/thumb": 1.6581724584125759,
+        "right/index": 0.6513192438625683,
+        "right/middle": 2.2241440995643
+      },
+      "targets": {
+        "left/thumb": 2.5728766513408936,
+        "left/index": 0.3191648754527119,
+        "left/middle": 1.755723526050176,
+        "right/thumb": 2.1460080100368057,
+        "right/index": 0.8423168677490994,
+        "right/middle": 2.363910069370308
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 209.14000000000001,
+      "measured": {
+        "left/thumb": 2.1953590683178095,
+        "left/index": 0.24745568807043436,
+        "left/middle": 1.203048908734615,
+        "right/thumb": 1.7082285062092435,
+        "right/index": 0.7653146928151662,
+        "right/middle": 2.3410665132092525
+      },
+      "targets": {
+        "left/thumb": 2.5535855327713612,
+        "left/index": 0.26540733349301115,
+        "left/middle": 1.7785591998684893,
+        "right/thumb": 2.119209530061695,
+        "right/index": 0.8316184376237947,
+        "right/middle": 2.451619966181644
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 210.14000000000001,
+      "measured": {
+        "left/thumb": 2.51385421137451,
+        "left/index": 0.24782571068253076,
+        "left/middle": 1.318014088597828,
+        "right/thumb": 1.8565143008003686,
+        "right/index": 0.8966564611394183,
+        "right/middle": 2.64335845747109
+      },
+      "targets": {
+        "left/thumb": 2.567813536604988,
+        "left/index": 0.2245302827737259,
+        "left/middle": 1.8170477788977943,
+        "right/thumb": 2.063308146276738,
+        "right/index": 0.8120137752477525,
+        "right/middle": 2.5152864801989967
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 211.14000000000001,
+      "measured": {
+        "left/thumb": 2.208050557250105,
+        "left/index": 0.0,
+        "left/middle": 1.0154799256495102,
+        "right/thumb": 1.5324146788516373,
+        "right/index": 0.9680899875139268,
+        "right/middle": 2.568285194579908
+      },
+      "targets": {
+        "left/thumb": 2.5261921346354574,
+        "left/index": 0.15,
+        "left/middle": 1.8436011991896923,
+        "right/thumb": 2.067218596568282,
+        "right/index": 0.7624397835178707,
+        "right/middle": 2.650548286088698
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 212.14000000000001,
+      "measured": {
+        "left/thumb": 2.2183524620704036,
+        "left/index": 0.0,
+        "left/middle": 0.9033846361585259,
+        "right/thumb": 1.4874012477354812,
+        "right/index": 1.0005180277361065,
+        "right/middle": 2.6803113089939545
+      },
+      "targets": {
+        "left/thumb": 2.5124398837592588,
+        "left/index": 0.15,
+        "left/middle": 1.8257279350659386,
+        "right/thumb": 2.0474802892959767,
+        "right/index": 0.7277913925571324,
+        "right/middle": 2.7365604993216905
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 213.14000000000001,
+      "measured": {
+        "left/thumb": 2.1089972548948337,
+        "left/index": 0.0,
+        "left/middle": 0.9546059632276277,
+        "right/thumb": 1.4360876121852255,
+        "right/index": 0.7974376584760654,
+        "right/middle": 2.7484927461643176
+      },
+      "targets": {
+        "left/thumb": 2.5055223782682083,
+        "left/index": 0.15,
+        "left/middle": 1.8225813584342343,
+        "right/thumb": 2.0252272049982754,
+        "right/index": 0.6298416931336408,
+        "right/middle": 2.866827365165645
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 214.14000000000001,
+      "measured": {
+        "left/thumb": 2.1395079598138516,
+        "left/index": 0.0,
+        "left/middle": 1.1492974927054633,
+        "right/thumb": 1.4467669395980975,
+        "right/index": 0.5681928395523839,
+        "right/middle": 2.874247064865423
+      },
+      "targets": {
+        "left/thumb": 2.5392455655492143,
+        "left/index": 0.15,
+        "left/middle": 1.8743779998481065,
+        "right/thumb": 1.9664248967834383,
+        "right/index": 0.4364985415383382,
+        "right/middle": 3.033452996280904
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 215.14000000000001,
+      "measured": {
+        "left/thumb": 2.074521325326159,
+        "left/index": 0.0,
+        "left/middle": 1.2597122222391324,
+        "right/thumb": 1.44364319838135,
+        "right/index": 0.4337037611914497,
+        "right/middle": 2.853973221412283
+      },
+      "targets": {
+        "left/thumb": 2.5354878873137716,
+        "left/index": 0.15,
+        "left/middle": 1.8796509515246405,
+        "right/thumb": 1.9490234120525474,
+        "right/index": 0.3449363406771937,
+        "right/middle": 3.1409014084318323
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 216.14000000000001,
+      "measured": {
+        "left/thumb": 2.080177812356334,
+        "left/index": 0.0,
+        "left/middle": 1.4037152332210936,
+        "right/thumb": 1.4582607557177332,
+        "right/index": 0.24844481597204815,
+        "right/middle": 2.950982137468375
+      },
+      "targets": {
+        "left/thumb": 2.552021230196156,
+        "left/index": 0.15,
+        "left/middle": 1.9078759538628893,
+        "right/thumb": 1.9150128718234944,
+        "right/index": 0.18439279364683392,
+        "right/middle": 3.2906971504706215
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 217.14000000000001,
+      "measured": {
+        "left/thumb": 2.087609964634327,
+        "left/index": 0.0,
+        "left/middle": 1.530253319900674,
+        "right/thumb": 1.5012400769491143,
+        "right/index": 0.1058691846595959,
+        "right/middle": 3.046186695808558
+      },
+      "targets": {
+        "left/thumb": 2.58244979674459,
+        "left/index": 0.15,
+        "left/middle": 1.758514949590864,
+        "right/thumb": 1.8704274044690345,
+        "right/index": 0.15,
+        "right/middle": 3.488607849195512
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 218.14000000000001,
+      "measured": {
+        "left/thumb": 2.110290087121111,
+        "left/index": 0.0,
+        "left/middle": 1.6417804573303858,
+        "right/thumb": 1.5550846584949194,
+        "right/index": 0.0,
+        "right/middle": 3.1410165268678565
+      },
+      "targets": {
+        "left/thumb": 2.6119578090207263,
+        "left/index": 0.15,
+        "left/middle": 1.5888733207410746,
+        "right/thumb": 1.8298711526019649,
+        "right/index": 0.15,
+        "right/middle": 3.669297717636234
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 219.14000000000001,
+      "measured": {
+        "left/thumb": 2.0509710291733807,
+        "left/index": 0.0,
+        "left/middle": 1.613338021595358,
+        "right/thumb": 1.5910664152682052,
+        "right/index": 0.0,
+        "right/middle": 3.162759857175614
+      },
+      "targets": {
+        "left/thumb": 2.556307754364651,
+        "left/index": 0.15,
+        "left/middle": 1.5741630666009319,
+        "right/thumb": 1.8772148957947656,
+        "right/index": 0.15,
+        "right/middle": 3.6923142832396483
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 220.14000000000001,
+      "measured": {
+        "left/thumb": 2.3452896761827935,
+        "left/index": 0.0,
+        "left/middle": 2.012475638617672,
+        "right/thumb": 1.8086554700562159,
+        "right/index": 0.0,
+        "right/middle": 3.2880075259215227
+      },
+      "targets": {
+        "left/thumb": 2.5991298951617536,
+        "left/index": 0.15,
+        "left/middle": 1.5283667388803786,
+        "right/thumb": 1.82754263367393,
+        "right/index": 0.15,
+        "right/middle": 3.744960732283938
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 221.14000000000001,
+      "measured": {
+        "left/thumb": 2.1064409568623583,
+        "left/index": 0.0,
+        "left/middle": 1.792984164481628,
+        "right/thumb": 1.62690885086696,
+        "right/index": 0.0,
+        "right/middle": 3.098899092767456
+      },
+      "targets": {
+        "left/thumb": 2.5576345467475297,
+        "left/index": 0.15,
+        "left/middle": 1.6954161914724084,
+        "right/thumb": 1.8642851829095068,
+        "right/index": 0.15,
+        "right/middle": 3.5826640788705566
+      }
+    },
+    {
+      "phase": "normal_wrench_allocation",
+      "control_phase": "turn_with_two_edge_pinches",
+      "time": 222.14000000000001,
+      "measured": {
+        "left/thumb": 2.332435066629996,
+        "left/index": 0.0,
+        "left/middle": 2.091058444740786,
+        "right/thumb": 1.8676925000734403,
+        "right/index": 0.0,
+        "right/middle": 3.275960180403285
+      },
+      "targets": {
+        "left/thumb": 2.548226710682163,
+        "left/index": 0.15,
+        "left/middle": 1.6025711378059342,
+        "right/thumb": 1.8701777808841293,
+        "right/index": 0.15,
+        "right/middle": 3.679024370627771
+      }
+    },
+    {
+      "phase": "select_skill",
+      "time": 222.92000000000002,
+      "skill": "edge_setdown_withdraw_slide_release",
+      "key_state": "released",
+      "horizon_control_steps": 1
+    },
+    {
+      "phase": "settle_after_bimanual_inversion",
+      "time": 222.92000000000002
+    },
+    {
+      "phase": "transfer_weight_to_one_pinch",
+      "time": 232.94,
+      "holding_hand": "right",
+      "moving_hand": "left"
+    },
+    {
+      "phase": "clear_bridge_pusher",
+      "time": 241.04
+    },
+    {
+      "phase": "carry_inverted_disk_outside_edge",
+      "time": 257.04
+    },
+    {
+      "phase": "lower_outside_holding_hand",
+      "time": 277.04
+    },
+    {
+      "phase": "align_supported_disk_with_table_height",
+      "time": 302.04
+    },
+    {
+      "phase": "approach_near_rim_above_outside_bridge",
+      "time": 305.2
+    },
+    {
+      "phase": "lower_bridge_pusher_outside_near_rim",
+      "time": 323.2
+    },
+    {
+      "phase": "establish_bridge_push_contact",
+      "time": 335.2
+    },
+    {
+      "phase": "slide_disk_from_holding_hand_onto_table",
+      "time": 344.1
+    },
+    {
+      "phase": "table_and_lower_pads_share_load_after_thumb_release",
+      "time": 417.62
+    },
+    {
+      "phase": "slide_disk_from_holding_hand_onto_table",
+      "time": 417.64
+    },
+    {
+      "phase": "withdraw_lower_pads_after_supported_centre",
+      "time": 417.64
+    },
+    {
+      "phase": "unload_bridge_pusher",
+      "time": 474.42
+    },
+    {
+      "phase": "clear_bridge_pusher_after_placement",
+      "time": 478.26
+    }
+  ],
+  "final_objects": {
+    "disk": {
+      "pos": [
+        0.4826081192959941,
+        0.007926035207449937,
+        0.8659708451386353
+      ],
+      "quat": [
+        2.023385951382967e-06,
+        0.020667351394245286,
+        0.9997864074802432,
+        -4.182696261086273e-08
+      ],
+      "linear_velocity": [
+        -1.935931735262931e-05,
+        8.007247519468294e-07,
+        1.3241027357235372e-14
+      ],
+      "angular_velocity": [
+        -0.00013381769108345812,
+        -0.0032353429100098227,
+        8.7001361165219e-19
+      ],
+      "hand_contact": false,
+      "robot_contact": false,
+      "support_contact": true,
+      "support_forces": {
+        "table": 1.1771999999999578
+      },
+      "fixture_contact": false,
+      "support_force_n": 1.1771999999999578,
+      "robot_contact_force_n": 0.0,
+      "fixture_contact_force_n": 0.0,
+      "fixture_load_n": 0.0,
+      "hand_forces_n": {
+        "left": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "hand_force_magnitudes_n": {
+        "left": 0.0,
+        "right": 0.0
+      },
+      "hand_contacts": {
+        "left": [],
+        "right": []
+      },
+      "hand_contact_positions": {
+        "left": null,
+        "right": null
+      },
+      "contact_forces_n": {
+        "table": 1.1772021630328087
+      }
+    }
+  },
+  "integrity_audit": {
+    "forbidden_state_write_attempts": [],
+    "object_pose_setters_used_after_reset": false,
+    "guarded_methods": [
+      "robot.set_pos",
+      "robot.set_quat",
+      "robot.set_qpos",
+      "robot.set_dofs_position",
+      "robot.set_dofs_velocity",
+      "robot.set_vverts",
+      "disk.set_pos",
+      "disk.set_quat",
+      "disk.set_qpos",
+      "disk.set_dofs_position",
+      "disk.set_dofs_velocity",
+      "disk.set_vverts",
+      "scene_entity_0.set_pos",
+      "scene_entity_0.set_quat",
+      "scene_entity_0.set_qpos",
+      "scene_entity_0.set_dofs_position",
+      "scene_entity_0.set_dofs_velocity",
+      "scene_entity_0.set_vverts",
+      "scene_entity_1.set_pos",
+      "scene_entity_1.set_quat",
+      "scene_entity_1.set_qpos",
+      "scene_entity_1.set_dofs_position",
+      "scene_entity_1.set_dofs_velocity",
+      "scene_entity_1.set_vverts",
+      "scene_entity_2.set_pos",
+      "scene_entity_2.set_quat",
+      "scene_entity_2.set_qpos",
+      "scene_entity_2.set_dofs_position",
+      "scene_entity_2.set_dofs_velocity",
+      "scene_entity_2.set_vverts",
+      "scene_entity_3.set_pos",
+      "scene_entity_3.set_quat",
+      "scene_entity_3.set_qpos",
+      "scene_entity_3.set_dofs_position",
+      "scene_entity_3.set_dofs_velocity",
+      "scene_entity_3.set_vverts",
+      "scene_entity_4.set_pos",
+      "scene_entity_4.set_quat",
+      "scene_entity_4.set_qpos",
+      "scene_entity_4.set_dofs_position",
+      "scene_entity_4.set_dofs_velocity",
+      "scene_entity_4.set_vverts",
+      "scene_entity_5.set_pos",
+      "scene_entity_5.set_quat",
+      "scene_entity_5.set_qpos",
+      "scene_entity_5.set_dofs_position",
+      "scene_entity_5.set_dofs_velocity",
+      "scene_entity_5.set_vverts",
+      "scene_entity_6.set_pos",
+      "scene_entity_6.set_quat",
+      "scene_entity_6.set_qpos",
+      "scene_entity_6.set_dofs_position",
+      "scene_entity_6.set_dofs_velocity",
+      "scene_entity_6.set_vverts",
+      "scene.reset",
+      "env.reset"
+    ],
+    "scope": "development API audit; not a hostile-code sandbox",
+    "fresh_declared_config_reset": true
+  },
+  "robot_pose_setters_during_policy": false,
+  "object_pose_setters_during_policy": false,
+  "independent_action_replay_verified": false,
+  "replay_checks": {},
+  "sources_sha256": {
+    "humanoid/g1_tabletop_disk_flip/task_spec.py": "1b3a425484fb8f0f3b4a8dcd599a5ee3ed1d336e7f5278fe83cfaf4b51dd0d8a",
+    "humanoid/g1_tabletop_disk_flip/assets.py": "3511ec3921faeabbb4a79ec5781515e96f13bd188a225a8afa6ea1b3a3cc9acf",
+    "humanoid/g1_tabletop_disk_flip/solution/controller.py": "ae5a9c3373c42593fbf2ddac2523b7d603f388cdc1276bb10c467d5772b3770c",
+    "humanoid/g1_tabletop_disk_flip/solution/run.py": "cea08404e5a4429a58b2bec0436e3d6a1d5d64235bb5d94c20261c7dadd750ca",
+    "humanoid/g1_tabletop_disk_flip/solution/audit.py": "a0449fbc2afdc4127859acee3e3cbac91d72a3c4d8bab502ddc122e3e61385e6",
+    "humanoid/g1_tabletop_disk_flip/solution/grasp_wrench.py": "3619f332040667260483d851a2f3401ac544bac02232e9fdf8dbec8e54c0cbb0",
+    "humanoid/g1_tabletop_disk_flip/solution/placement.py": "28bb8781b9b0c4546f8681bcbdc1d7e3e4c7dadadc578f54fcbba9191159afc9",
+    "humanoid/g1_tabletop_disk_flip/solution/ik.py": "9cb3c524b687e0e8f8f53d431fcd27b94b1749370ecc257626a709ec1803a6c0",
+    "humanoid/g1_tabletop_disk_flip/solution/oracle.py": "c52377075b8968d2ca0f4ae72c7b3dab865b1f241ba2369dc963a027eecd5a5b",
+    "humanoid/g1_tabletop/genesis_env.py": "40b209f23538f57c678e08c560c19d11badf4f2dd45451411d930a67d097f264",
+    "humanoid/g1_tabletop/assets.py": "4ca111785ff542efdb7e850e2ad169111b7ab885b34735263611db5d345bdafe",
+    "humanoid/g1_tabletop_assembly/task_spec.py": "112e391a65630254f73c56aa09c8e7470d10e394f972c73ee8855375b9d9b195",
+    "humanoid/g1_tabletop_assembly/solution/controller.py": "cfb4af3e7f5bb758a4cb810ae7cdc66972e74aebee4a7db37c08c90f08635f58",
+    "humanoid/g1_box_stair_transport/robot.py": "c28effa4f28566693c14493eb6897c847bf3f74edaade3d926c8d5de46220d56",
+    "humanoid/g1_tabletop_assembly/solution/recording.py": "176f125cebd61d9503d1b1d5b3ab6f8da312205debe84ec0fe86a0a9fa11d8c2",
+    "humanoid/g1_support_retrieval/oracle/upper_ik.py": "bc238838560f3b977265cbb6b5ed0600b2ad1d48fde634dc021dceea8cbf6ad0",
+    "infra/oracle/core.py": "a605cca7a73807f1c7275b363aa8173f9d1f9a40eac96b8a0ffca1c0564b14c6",
+    "infra/oracle/__init__.py": "f199a5d6a981b676baa04cab07f3a31a05d43c61af4d5649ea0d7feb907c7c34",
+    "humanoid/g1_support_retrieval/task_spec.py": "2aa98d9686e42cd20fdd22d4f8b63c7c239415d10008a3415593c129f029659a",
+    "humanoid/g1_support_retrieval/assets/unitree_g1/g1_with_hands.xml": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078"
+  },
+  "runtime_versions": {
+    "python": "3.12.14",
+    "genesis-world": "1.4.3",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.3",
+    "mujoco": "3.14.0",
+    "scipy": "1.18.1"
+  },
+  "actuator_checks": {
+    "effort_limits_passed": true,
+    "target_speed_limit_passed": true,
+    "target_speed_peak_rad_s": 0.4999999888241291,
+    "applied_torque_peak_nm": [
+      2.0690017060357175,
+      0.05678033155675397,
+      0.012653278890901032,
+      0.7556413675004154,
+      0.15013687503585563,
+      5.6480547949683946e-05,
+      2.069001705479293,
+      0.056780331556443964,
+      0.012653605849184714,
+      0.7556413876507682,
+      0.15013687503585846,
+      5.6480547956980986e-05,
+      2.519940232675927,
+      16.6396789325042,
+      32.124320372719225,
+      10.661284028707081,
+      6.477930995313301,
+      3.8978615303086546,
+      4.463334259704499,
+      1.2313679298091156,
+      1.4853265043691377,
+      1.106237253397914,
+      0.3200077902592342,
+      0.48379492477965064,
+      0.33456873344632204,
+      0.4634825831894832,
+      0.31262511903434936,
+      0.398836929873061,
+      0.31262514078134357,
+      10.661280823313312,
+      4.56605415810552,
+      3.8575310541800754,
+      4.463319390788369,
+      1.599982389166611,
+      1.4853200720695428,
+      1.3184054576855466,
+      0.30978788254443734,
+      0.6298933574728852,
+      0.35306877407127335,
+      0.4938856449298388,
+      0.3166564942117372,
+      0.409193379811425,
+      0.31665651398264494
+    ],
+    "effort_limit_nm": [
+      88.0,
+      139.0,
+      88.0,
+      139.0,
+      50.0,
+      50.0,
+      88.0,
+      139.0,
+      88.0,
+      139.0,
+      50.0,
+      50.0,
+      88.0,
+      50.0,
+      50.0,
+      25.0,
+      25.0,
+      25.0,
+      25.0,
+      25.0,
+      5.0,
+      5.0,
+      2.450000047683716,
+      1.399999976158142,
+      1.399999976158142,
+      1.399999976158142,
+      1.399999976158142,
+      1.399999976158142,
+      1.399999976158142,
+      25.0,
+      25.0,
+      25.0,
+      25.0,
+      25.0,
+      5.0,
+      5.0,
+      2.450000047683716,
+      1.399999976158142,
+      1.399999976158142,
+      1.399999976158142,
+      1.399999976158142,
+      1.399999976158142,
+      1.399999976158142
+    ]
+  },
+  "success_scope": "declared_configuration_fixed_pelvis_privileged_development",
+  "robot_self_contact_observations": {
+    "sampling_hz": 50,
+    "threshold_n": 0.1,
+    "scope": "control-boundary observations only; not substep collision certification",
+    "pairs": {
+      "left_hand_middle_1_link / right_hand_middle_1_link": {
+        "peak_force_n": 1.0455788057220976,
+        "observed_control_samples": 392
+      },
+      "left_hand_middle_1_link / right_hand_index_1_link": {
+        "peak_force_n": 0.20200201523951075,
+        "observed_control_samples": 109
+      },
+      "left_hand_index_1_link / right_hand_index_1_link": {
+        "peak_force_n": 2.329381744672989,
+        "observed_control_samples": 1337
+      },
+      "left_wrist_yaw_link / torso_link": {
+        "peak_force_n": 1.3033831631431145,
+        "observed_control_samples": 132
+      }
+    }
+  },
+  "robot_environment_contact_observations": {
+    "sampling_hz": 50,
+    "threshold_n": 0.1,
+    "scope": "control-boundary observations only; not substep collision certification",
+    "pairs": {
+      "right_wrist_yaw_link / table": {
+        "peak_force_n": 3.6561262780337684,
+        "observed_control_samples": 67,
+        "peak_time_s": 9.66,
+        "peak_phase": "approach_far_rim"
+      },
+      "left_hand_thumb_2_link / disk": {
+        "peak_force_n": 5.384238765816971,
+        "observed_control_samples": 11468,
+        "peak_time_s": 384.0,
+        "peak_phase": "slide_disk_from_holding_hand_onto_table"
+      },
+      "left_hand_thumb_2_link / table": {
+        "peak_force_n": 3.0416762416236693,
+        "observed_control_samples": 209,
+        "peak_time_s": 65.72,
+        "peak_phase": "unload_rim_pusher"
+      },
+      "right_hand_middle_1_link / disk": {
+        "peak_force_n": 4.7001161378034,
+        "observed_control_samples": 8369,
+        "peak_time_s": 222.04,
+        "peak_phase": "turn_with_two_edge_pinches"
+      },
+      "left_hand_middle_1_link / disk": {
+        "peak_force_n": 3.139930640791208,
+        "observed_control_samples": 4697,
+        "peak_time_s": 222.04,
+        "peak_phase": "turn_with_two_edge_pinches"
+      },
+      "right_hand_index_1_link / disk": {
+        "peak_force_n": 3.1073859318246124,
+        "observed_control_samples": 11864,
+        "peak_time_s": 414.2,
+        "peak_phase": "slide_disk_from_holding_hand_onto_table"
+      },
+      "right_hand_thumb_2_link / table": {
+        "peak_force_n": 5.8038512897127825,
+        "observed_control_samples": 1133,
+        "peak_time_s": 156.46,
+        "peak_phase": "close_two_independent_edge_pinches"
+      },
+      "right_hand_thumb_1_link / disk": {
+        "peak_force_n": 4.86986893496856,
+        "observed_control_samples": 11946,
+        "peak_time_s": 202.16,
+        "peak_phase": "turn_with_two_edge_pinches"
+      },
+      "left_hand_thumb_1_link / disk": {
+        "peak_force_n": 3.8962230780125315,
+        "observed_control_samples": 2477,
+        "peak_time_s": 194.82,
+        "peak_phase": "turn_with_two_edge_pinches"
+      },
+      "left_hand_index_1_link / disk": {
+        "peak_force_n": 2.94959582542336,
+        "observed_control_samples": 2830,
+        "peak_time_s": 164.3,
+        "peak_phase": "lift_with_two_edge_pinches"
+      },
+      "right_wrist_yaw_link / disk": {
+        "peak_force_n": 3.620562709555558,
+        "observed_control_samples": 8686,
+        "peak_time_s": 281.34000000000003,
+        "peak_phase": "lower_outside_holding_hand"
+      },
+      "torso_link / disk": {
+        "peak_force_n": 2.121820816547742,
+        "observed_control_samples": 497,
+        "peak_time_s": 282.14,
+        "peak_phase": "lower_outside_holding_hand"
+      },
+      "right_hand_thumb_2_link / disk": {
+        "peak_force_n": 2.4919761964139706,
+        "observed_control_samples": 4374,
+        "peak_time_s": 368.16,
+        "peak_phase": "slide_disk_from_holding_hand_onto_table"
+      },
+      "right_hand_middle_0_link / disk": {
+        "peak_force_n": 0.3081936661970595,
+        "observed_control_samples": 102,
+        "peak_time_s": 409.76,
+        "peak_phase": "slide_disk_from_holding_hand_onto_table"
+      }
+    }
+  }
+}

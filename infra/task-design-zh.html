@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench（robo-si）任务设计指南：十一条硬要求，以及评测框架、仿真与素材、随机化、三层难度、子任务、特殊情况、传感器、人工可行性验证、评分与防护材料和任务卡的详细说明。" name="description"/>
+<title>任务设计指南</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-design-en.html">English</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">任务设计指南</p>
+<h1>先把任务<span class="nm">设计对</span>，<br/>再写一行代码。</h1>
+<p class="lead">贡献流程的第一步：怎么设计一个新任务。下面把十一条硬要求逐条展开，最后给出设计自检和任务卡模板。参考专家解和可行性验证在<a href="/robo-si-results/infra/acceptance-zh.html">任务验收</a>页。</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>目录</h3>
+<ol class="toc">
+<li><a href="#overview">01 十一条硬要求</a></li>
+<li><a href="#scene">02 场景、目标与指令</a></li>
+<li><a href="#sim">03 仿真器与素材</a></li>
+<li><a href="#random">04 初始状态随机化</a></li>
+<li><a href="#layers">05 三层难度</a></li>
+<li><a href="#subtasks">06 子任务与课程</a></li>
+<li><a href="#corner">07 特殊情况</a></li>
+<li><a href="#sensors">08 传感器与动作</a></li>
+<li><a href="#materials">09 评分与防护材料</a></li>
+<li><a href="#checklist">10 设计自检</a></li>
+<li><a href="#card">11 任务卡模板</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="overview"><div class="wrap">
+<p class="kicker">01 · 十一条硬要求</p>
+<h2>每一条都要在任务卡里有交代</h2>
+<ol class="req">
+<li><strong>多个可交互物体，不给直接指示。</strong>场景里有多个能推、搬、放、踩、连接的物体；指令只写目标和公开的合规约束。<a href="#scene">第 02 节</a></li>
+<li><strong>分层建立可解性证据。</strong>少量完整参考证明声明配置可完成；技能验证适用条件；随机实例做预算内筛查；实际执行按需生成局部轨迹。不要求每个随机实例有完整解。代表证据由人工审阅并独立复现。<a href="/robo-si-results/infra/acceptance-zh.html#feasibility">任务验收第 03 节</a></li>
+<li><strong>最终目标至少涉及一类能力：</strong>使用工具或先达成前置条件；复杂交互、力矩或 WBC 计算；非直观的解。<a href="#scene">第 02 节</a></li>
+<li><strong>按 Terminal-Bench 的难度设计。</strong>强 coding agent 需要 4 小时以上的迭代，求解时长不设上限。<a href="#scene">第 02 节</a></li>
+<li><strong>只用机器人原生或可加装的传感器，不能作弊。</strong>不给空间坐标、物体位姿、物性、分割图或用途。<a href="#sensors">第 08 节</a></li>
+<li><strong>考虑特殊情况。</strong>绕开考点的捷径在设计时剔除；剩下的合理非常规解法按它实际达到的状态自动给分。<a href="#corner">第 07 节</a></li>
+<li><strong>严格防止绕过和 reward hacking。</strong>默认不信任；攻击清单、每个阶段的反例集、漏洞测试；评测全自动，人工只在任务验收时看录像检查任务和评分器。<a href="#materials">第 09 节</a></li>
+<li><strong>初始状态尽量随机。</strong>随机化须声明范围和筛查状态，不把生成合法几何等同于可解；检查捷径，不能让解题关键只能靠真值得知。<a href="#random">第 04 节</a></li>
+<li><strong>只分三层难度，逐层叠加。</strong>只有必要工具 → 加入换个身体才能用的工具 → 加入干扰项。<a href="#layers">第 05 节</a></li>
+<li><strong>可拆分成子任务，保留课程学习的可能。</strong>子任务用状态定义完成条件，有能单独开始的起始状态。<a href="#subtasks">第 06 节</a></li>
+<li><strong>用 Genesis / Isaac Lab 搭建，尽量用官方素材和精细素材库。</strong>机器人用官方模型，物体优先用仿真器官方素材和部件级、带物性的素材库。<a href="#sim">第 03 节</a></li>
+</ol>
+</div></section>
+<section id="hierarchical-planning"><div class="wrap"><p data-refinement-readiness-link="true"><a href="/robo-si-results/infra/status-zh.html#refinement-readiness">12 项当前还差多少：已选完整见证、待补低层动作与轨迹映射</a></p>
+<div class="callout" id="refinement-witness"><p><strong>设计可行性的最低目标：高层计划→低层动作计划→实际轨迹的转换有具体证据，并至少有一条能够生成、连续执行成功的端到端专家轨迹。</strong>例如“登上箱子”展开为重心转移、先后抬脚与建立支撑，再对应实际轨迹段。只证明声明配置中的构造性实例，不要求任意随机状态都可解、任意技能拼接或通用滚动规划器先完成。已有完整轨迹可以在核对生成来源和映射后复用；范围扩展另列。<a href="/robo-si-results/infra/planning/hierarchical-evaluation/README.md">三层转换要求</a></p></div>
+<p class="kicker">设计原则修订 · 2026-10-26</p>
+<h2>先生成分层计划，按需生成局部轨迹</h2>
+<p><strong>不把为每个随机实例生成完整解作为前置要求。</strong>主要产物是高层计划、技能选择与约束、关键状态和可行性检查结果；完整轨迹只属于部分代表性验证实例。</p>
+<div class="table-wrap"><table><thead><tr><th>层级</th><th>必须交代的内容</th><th>证据边界</th></tr></thead><tbody>
+<tr><td>任务级</td><td>少量预先选定的完整成功案例，说明声明配置下能完成任务。</td><td>样本成功不证明整个随机范围全部可解。</td></tr>
+<tr><td>技能级</td><td>进入／退出条件、距离、载荷、姿态、支撑与接触、适用范围及失效条件。</td><td>未标定的适用范围留空；失败搜索不证明不存在解。</td></tr>
+<tr><td>实例级</td><td>关键可达性、碰撞、支撑、载荷、段间衔接和预算检查；必要时只做困难片段短仿真。</td><td>缺证或预算耗尽记“未确定”；筛查通过不等于完整执行成功。</td></tr>
+<tr><td>执行级</td><td>根据当前观测生成活动阶段的短段轨迹，滚动规划和修正。</td><td>实际状态满足下一阶段条件后才推进，不能用恢复理想快照代替衔接。</td></tr>
+</tbody></table></div>
+<p>阶段之间传递实际位姿、速度、抓持状态、接触拓扑与力、支撑几何、已提交阶段、剩余任务时间及估计不确定性。轻微抖动可按功能条件接受，公开物理限值和评分条件继续有效。</p>
+<p>自建场景可优先在有证据的技能适用范围内采样；基准预定随机测试保留全部抽样、拒绝、超时和失败，不只保留容易成功的实例。范围内采样本身仍不构成完整可解证明。</p>
+<p><a href="/robo-si-results/infra/acceptance-zh.html#screening">四类实例状态及验收门槛</a> · <a href="/robo-si-results/infra/planning/README.md">12 项任务规划</a> · <a href="/robo-si-results/infra/planning/acceptance-policy.json">机器可读政策</a>。路线与特权证据只供作者和评审，不能放入 agent 可见材料。</p>
+</div></section>
+<section id="scene"><div class="wrap">
+<p class="kicker">02 · 场景、目标与指令</p>
+<h2>多个可交互物体，目标清楚，路线不说</h2>
+<p class="covers">对应 R1、R3、R4。</p>
+<h3>可交互物体（R1）</h3>
+<ul class="check">
+<li>场景里要有多个能推、搬、放、踩、连接、卡住、撬动的物体。只有一个物体、用途一目了然的场景不符合要求。</li>
+<li>物体分三种：必要工具、本机器人用不了但换个身体能用的工具、干扰项。三种怎么组合，由难度层决定（<a href="#layers">第 05 节</a>）。</li>
+<li>物体的用途要能通过实验发现：推一推、抬一抬、站上去试试，传感器上能看到结果。</li>
+</ul>
+<h3>指令怎么写（R1）</h3>
+<p>指令只写目标和公开的合规约束。物体用中性名称（颜色、编号），不说用途，不给路线和步骤，也不用“堆”“爬”“撬”“卡住”这类暗示做法的词。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>写法</th><th>例子</th><th>判断</th></tr></thead>
+<tbody>
+<tr><td>只说目标</td><td>“把红色箱子放到地上的绿色目标区。”</td><td><span class="pill ok">可以</span></td></tr>
+<tr><td>公开的合规约束</td><td>“搬运过程中箱子不能放在台阶上。”</td><td><span class="pill ok">可以</span> 约束是规则，不是提示</td></tr>
+<tr><td>说出用途和路线</td><td>“用地上的箱子垫脚，把红色箱子取下来。”</td><td><span class="pill no">不可以</span></td></tr>
+<tr><td>给出步骤</td><td>“先把门卡住，再把箱子搬过去。”</td><td><span class="pill no">不可以</span></td></tr>
+<tr><td>名称暗示用途</td><td>“台阶箱”“楔子”“杠杆”</td><td><span class="pill no">不可以</span> 改成“棕色箱子”“物体 A”</td></tr>
+</tbody>
+</table></div>
+<h3>最终目标涉及的能力（R3）</h3>
+<p>至少涉及下面一类，可以多类：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>能力</th><th>含义</th><th>现有任务里的例子</th></tr></thead>
+<tbody>
+<tr><td>工具 / 前置条件</td><td>要先用某个物体改变环境，或先达成某个状态，目标才可能完成。</td><td>H1 垫箱子取物；H2 用推车运重物；H3 双 G1 扶门协作，或用重箱独立顶门</td></tr>
+<tr><td>复杂交互 / 力矩 / WBC</td><td>需要全身协调、负载下保持平衡、算力矩或协同出力。</td><td>H6 抱箱上楼梯；H5 撬起重箱；M2 双机抬长箱</td></tr>
+<tr><td>非直观的解</td><td>最直接的做法一定失败，要换思路；或者有看似有用的陷阱。</td><td>H1 高窄干扰箱；M3 把另一台机器人当工具</td></tr>
+</tbody>
+</table></div>
+<h3>难度（R4）</h3>
+<ul class="check">
+<li>目标是让强 coding agent 需要 4 小时以上的迭代才能解出。求解时长不设上限，耗时和 token 都要记录、报告。</li>
+<li>难度来自：依赖链的深度、工具的组合、需要恢复的失败、从深度和点云里估计几何、对自身身体能力的判断。</li>
+<li>难度不应该来自：画面杂乱、重复动作、为难而难的精度要求、只有读真值才知道的信息。</li>
+<li>“长程”按依赖深度、工具组合、持久状态和失败恢复来定义，不按视频时长（v5 第 10 节）。</li>
+<li>难度试跑太快解出时，加深依赖（更多前置条件、物性变化）、扩大随机范围，或者换更难分辨的干扰项。</li>
+</ul>
+<h3>可解与不可解的回合</h3>
+<p>任务可以包含故意不可解的回合（比如 H1 的 <code>infeasible</code> 类），agent 要调用 <code>declare_infeasible</code> 声明。“不可解”必须写明验证范围（试过哪些办法、为什么不可能），不能只因为某个 agent 失败（v5 第 11 节）。对可解的回合声明不可行，会单独标记。</p>
+<h3>多机器人任务</h3>
+<p>先测单台机器人能不能完成，分清“必须协作”和“协作只是省事”。场景里有两台机器人不等于协作任务；单机能做的，就改标签，或者调整长度、质量、拖拽力让单机做不到（v5 第 9 节）。</p>
+</div></section>
+<section class="tinted" id="sim"><div class="wrap">
+<p class="kicker">03 · 仿真器与素材</p>
+<h2>Genesis / Isaac Lab，官方模型，优先用官方素材和精细素材库</h2>
+<p class="covers">对应 R11。</p>
+<h3>仿真后端</h3>
+<ul class="check">
+<li><strong>Genesis 优先。</strong>沙箱的可信 worker 跑在 Genesis 上（当前 1.4.3）。新任务至少要有 Genesis 后端。</li>
+<li><strong>推荐同时对齐 Isaac Lab</strong>（本机环境为 Isaac Sim 5.1 + Isaac Lab 2.3.2）。两个后端共用同一个任务核心（TaskCore）：同一个种子、同一个回合序号，抽出的场景完全一样。H1、H2 及历史单 G1 H3 有两个后端；当前双 G1 H3 和 H6 仅验证 Genesis。</li>
+<li><strong>对齐要有一致性检查。</strong>同一组指令在两个后端上跑，比较物体轨迹、接触和判据结果；差异和原因写进任务 README。</li>
+<li><strong>仿真设置固定写进任务卡。</strong>时间步、子步、求解器、接触参数、自碰撞开关；评测时不能改。</li>
+<li><strong>写明后端的限制。</strong>比如 Genesis 1.4.3 没有射线传感器，H1 的 MID-360 LiDAR 是用四个深度相机拼出来的，扫描图案是规则网格。</li>
+</ul>
+<h3>机器人模型：用官方模型</h3>
+<ul class="check">
+<li><strong>G1：</strong>MuJoCo Menagerie 的 <code>unitree_g1</code>（BSD-3-Clause），由 <code>setup_assets.py</code> 按固定提交下载；传感器安装位姿取自 Unitree 官方 URDF。</li>
+<li><strong>Go1 / Go2：</strong>用 Unitree 官方或 MuJoCo Menagerie 的模型；Isaac Lab 自带 Unitree 机器人的配置。</li>
+<li>不要私下改模型的质量、力矩上限或关节限位。需要变化的身体参数（力量、负载）在任务里显式随机化，并公开范围。</li>
+</ul>
+<h3>物体素材：按优先级选</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>优先级</th><th>来源</th><th>适合做什么</th><th>现有任务里的例子</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>仿真器官方素材</strong>：Isaac Sim 官方素材库、Genesis 自带素材</td><td>推车、货架、工业物件；通常自带碰撞体和物理属性</td><td>H2 的推车（NVIDIA Dolly）</td></tr>
+<tr><td>2</td><td><strong>精细素材库</strong>：部件级、带关节或实测物性的库，例如 PartNet-Mobility（SAPIEN，带关节的柜子、门、抽屉）、Google Scanned Objects、YCB 物体集</td><td>带关节的家具和器具，手能操作的日用物体</td><td>还没有任务用到</td></tr>
+<tr><td>3</td><td><strong>高质量 CC0 模型</strong>：Poly Haven</td><td>家具、木箱、地面和墙面纹理</td><td>H1 的柜子和折叠凳；H2、H3 的木箱和货架</td></tr>
+<tr><td>4</td><td><strong>自建几何体</strong></td><td>找不到合适的素材，或者尺寸必须精确受控（比如台阶高度）</td><td>H1 的地面箱</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:8px">用第 4 级时要在任务卡里说明为什么前三级不合适。各素材库的许可证不同，逐个核对、记录。</p>
+<h3>素材要求</h3>
+<ul class="check">
+<li><strong>来源和许可证：</strong>每个素材记录来源 URL、作者、许可证和改动（参照 H2 的 <code>asset_sources.json</code>）。许可证不允许再分发的，不进 git，用脚本下载。</li>
+<li><strong>可复现：</strong>下载脚本固定版本并校验哈希（H2 记录了 SHA-256；Poly Haven 下载会校验 API 给出的 MD5）。</li>
+<li><strong>真实尺度：</strong>按实物尺寸缩放，并写明缩放了什么。</li>
+<li><strong>碰撞体和视觉网格一致：</strong>碰撞体用简化的盒子或凸分解，外形要和视觉网格足够一致。agent 用 RGB-D 看到的是视觉网格，物理用的是碰撞体；两者对不上，既是给 agent 挖坑，也可能被利用。</li>
+<li><strong>物性真实：</strong>质量、摩擦、质心、转动惯量，有关节的还有阻尼、限位、回弹力，都取真实范围，并按<a href="#random">第 04 节</a>随机化。</li>
+<li><strong>两个后端同一份素材：</strong>URDF / MJCF 与 USD 互转后，核对几何、质量和关节参数。</li>
+<li><strong>外观不泄露用途：</strong>物体上不能有“STEP”“TOOL”之类的字样或特殊标记。颜色可以用来指认目标，但不能暗示用途。</li>
+<li><strong>“不可用”要在物理上真的不可用：</strong>不承重、会塌、固定在地上，都要由仿真实现（弱关节、低刚度、固定约束等），不能靠判据规定“用了也不算”。</li>
+<li><strong>渲染开销可控：</strong>纹理分辨率够 RGB 感知即可（现有任务用 1K）。</li>
+</ul>
+</div></section>
+<section id="random"><div class="wrap">
+<p class="kicker">04 · 初始状态随机化</p>
+<h2>能随机的都随机，不留固定起点和布局</h2>
+<p class="covers">对应 R8。</p>
+<p>每个回合由私有种子决定。随机化让写死布局的程序拿不到分，迫使 agent 靠感知和闭环控制，也让多回合评分有统计意义。</p>
+<h3>随机什么</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>类别</th><th>变量</th><th>H1 现在的做法</th></tr></thead>
+<tbody>
+<tr><td>机器人起点</td><td>位置、朝向</td><td>名义起点 ±0.15 m，朝向 ±0.3 rad</td></tr>
+<tr><td>物体组成</td><td>出现哪些物体、多少个</td><td>柜子上 2–4 个彩色箱子；地上的箱子按任务类型必放，其余各以 50% 概率出现</td></tr>
+<tr><td>物体位姿</td><td>位置、朝向</td><td>地面箱从 8 个候选点里选，再加 ±0.1 m 扰动，朝向 ±0.4 rad</td></tr>
+<tr><td>目标</td><td>是哪一个、放在哪里</td><td>随机目标颜色、所在层和格位</td></tr>
+<tr><td>家具</td><td>型号、尺寸、层高</td><td>3 个柜子型号，每个两套层高</td></tr>
+<tr><td>物性</td><td>质量、摩擦、质心</td><td>地面箱质量按类型在 1–15 kg 之间，摩擦 0.3–0.8；30% 的回合里中号箱又轻又滑</td></tr>
+<tr><td>身体参数</td><td>力量、负载（在公开范围内）</td><td>腿和手臂力矩上限 ×0.85–1.0，躯干加 0–5 kg</td></tr>
+<tr><td>传感器</td><td>噪声</td><td>IMU 噪声取自 MJCF</td></tr>
+</tbody>
+</table></div>
+<h3>三条约束</h3>
+<ol>
+<li><strong>按证据标记实例。</strong>每个样本符合声明层和生成规则；分别记录完整成功证据、筛查通过、未确定、检查不通过。不要求逐个生成完整解；未找到解不能标为物理不可解。</li>
+<li><strong>不打开捷径。</strong>随机范围的边角上不能冒出绕开考点的解法，比如层高抽得太低、踮脚就够得到。范围边界要用 oracle 抽样实测（<a href="/robo-si-results/infra/acceptance-zh.html#feasibility">任务验收第 03 节</a>）。</li>
+<li><strong>解题关键不能只靠真值得知。</strong>随机出来的隐藏物性，要能通过机器人传感器推断：推一下看要多大力，站上去看晃不晃，抬一下看关节力矩。</li>
+</ol>
+<h3>种子和数据划分</h3>
+<ul class="check">
+<li>用计数器式随机数，按（种子、环境编号、回合序号）取值：同一个回合在两个后端上、重跑时都完全一样。</li>
+<li>评测和评分模式下，种子由可信侧私下抽取，agent 拿不到。</li>
+<li>开发和评测用不同的种子集合；评分时按难度层（以及任务类型）分层抽样。</li>
+</ul>
+<h3>生成器怎么写</h3>
+<ul class="check">
+<li>先给所有候选物体抽好位置和物性，再按难度层决定放哪些（<a href="#layers">第 05 节</a>）。这样同一个种子下，三层的必要工具完全一样。</li>
+<li>不满足约束的样本（重叠、够不着、违反层定义）用拒绝采样丢掉，规则写进任务卡，并记录拒绝率，避免分布被悄悄扭曲。</li>
+<li>子任务的起始状态也由同一个生成器（或检查点恢复）产生，同样随机（<a href="#subtasks">第 06 节</a>）。</li>
+</ul>
+<h3>不随机什么</h3>
+<p>机器人模型和硬件上限（公开范围内的身体参数除外）、指令模板、公开的合规约束和阈值、仿真设置。</p>
+</div></section>
+<section class="tinted" id="layers"><div class="wrap">
+<p class="kicker">05 · 三层难度</p>
+<h2>只分三层，逐层叠加</h2>
+<p class="covers">对应 R9。</p>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:7.5em">层</th><th>场景里有什么</th><th>考什么</th><th>设计者要写明并验证</th></tr></thead>
+<tbody>
+<tr><td>第 1 层<br/>只有必要工具</td><td>目标，加上完成任务所需的工具和物体，没有多余的东西。</td><td>发现物体能怎么用、怎么组合，并执行出来。</td><td>每个物体为什么必要：去掉任何一个就做不成（用 oracle 验证）。</td></tr>
+<tr><td>第 2 层<br/>有用不了的工具</td><td>在第 1 层的基础上，加入本机器人用不了、但换一种身体就能用的工具或物体。</td><td>agent 对自己身体的建模：身高、腿长、步高、手的大小和抓握宽度、关节力矩、负载、足底面积。</td><td>每个物体换成哪种身体就能用（更高的人形、Go1 这样的四足、换一只手），本机器人为什么用不了，和别的物体组合也不行（组合后能用，就是另一条路线，按 R6 处理）；并用 oracle 实测本机器人确实用不了。</td></tr>
+<tr><td>第 3 层<br/>有干扰项</td><td>在第 2 层的基础上，加入干扰项：超出本机器人能力范围的物体或工具（太重、太高、太大、太窄），以及实际不可用的物体（不承重、一踩就翻、固定在地上、空心会塌、看着像把手其实是装饰）。</td><td>排除看似有用的选项：做实验收集证据，失败后换路线。</td><td>每个干扰项为什么用不了，以及机器人在投入之前能从哪个传感器读数发现这一点；不能只有读真值才知道。</td></tr>
+</tbody>
+</table></div>
+<h3>规则</h3>
+<ul class="check">
+<li><strong>逐层叠加，同一个种子。</strong>三层的目标、必要工具和它们的位置都相同，高一层只多放物体。这样成绩的差别能归到“认不认得出自己用不了的工具”和“排不排除得了干扰项”上。</li>
+<li><strong>声明层单独留证。</strong>新增物体可能挡路或引入捷径。每个声明层／变体分别选代表完整参考，配合技能与实例筛查；不要求逐个随机实例完整运行。延期层明确列出（<a href="/robo-si-results/infra/acceptance-zh.html#feasibility">任务验收第 03 节</a>）。</li>
+<li><strong>多放的物体进特殊情况清单。</strong>它们可能被用出意想不到的用法（<a href="#corner">第 07 节</a>）。</li>
+<li><strong>不告诉 agent 层号。</strong>知道是第 1 层，就等于知道每个物体都有用。成绩按层分别报告。</li>
+<li><strong>第 2 层与第 3 层的区别。</strong>第 2 层的每个物体都要指明一种能用它完成任务的身体，考的是自我建模；第 3 层的干扰项不需要这样的身体，考的是做实验、收集证据、排除选项。</li>
+<li><strong>与 v5 的关系。</strong>这三层代替 v5 原来的 L0–L2 课程：看似有用的陷阱归入第 3 层，而且要给可获取的证据；物性变化、故障和噪声归入初始状态随机化。能力披露（explicit / partial / latent）是独立的一维，不算难度层。</li>
+</ul>
+<h3>举例：H1 需要一个垫脚箱的场景</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>层</th><th>地上放什么</th></tr></thead>
+<tbody>
+<tr><td class="nowrap">第 1 层</td><td>一个高度够用的矮箱。</td></tr>
+<tr><td class="nowrap">第 2 层</td><td>再加一个高度合适、但重到 G1 推不动的箱子，放在离柜子远的地方（力量更大的机器人推得动）。</td></tr>
+<tr><td class="nowrap">第 3 层</td><td>再加高窄箱（太高爬不上、太窄站不住），和一个一踩就塌的空箱（尚未实现）。</td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="subtasks"><div class="wrap">
+<p class="kicker">06 · 子任务与课程</p>
+<h2>可拆分，能单独开始，保留课程学习的可能</h2>
+<p class="covers">对应 R10。</p>
+<p>把任务设计成一条子任务依赖链。每个子任务有两样东西：</p>
+<ul class="check">
+<li><strong>用状态描述的完成条件。</strong>比如“一个能站人的箱子静止在柜子前”，而不是“推箱子”。这样不同做法都能满足，不规定唯一路线。子任务与过程计分的阶段一一对应（<a href="#materials">第 09 节</a>）。</li>
+<li><strong>能单独开始的起始状态。</strong>即前面的子任务都完成后的状态。来源有两种：由可信侧从 oracle 录制的检查点恢复（H1 沙箱已支持：恢复世界参数和全身快照，复现结果完全一致）；或者由生成器摆出物理上合法的状态再静置（不穿插、不悬空），同样随机。</li>
+</ul>
+<h3>举例：H1 的子任务链</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>子任务</th><th>完成条件（状态）</th><th>起始状态从哪来</th><th>计分阶段</th></tr></thead>
+<tbody>
+<tr><td>1 支撑物到位</td><td>一只可用的箱子立正、静止在放置区 1 s（前沿离柜子 ≤0.15 m，与目标的横向偏差 ≤0.30 m）</td><td>任务初始状态</td><td><code>support_placed</code></td></tr>
+<tr><td>2 站上支撑物</td><td>双脚在箱顶站稳 2 s</td><td>推完箱子的状态：可从 <code>push_box</code> 录制恢复</td><td><code>on_support</code></td></tr>
+<tr><td>3 取到目标</td><td>目标比起始高 ≥3 cm 且在手边，保持 1 s</td><td>站在箱顶的状态：可从 <code>step_up</code> 录制恢复</td><td><code>target_reached</code>、<code>target_lifted</code></td></tr>
+<tr><td>4 带着目标下来</td><td>双脚回到地面，目标在手边、离地 ≥0.3 m，保持 1 s</td><td>手持目标站在箱顶：还没有录制</td><td><code>descended_holding</code></td></tr>
+<tr><td>5 送到目标区</td><td>目标静止在目标区 1 s，机器人没摔倒</td><td>手持目标站在地上：还没有录制</td><td><code>carried</code>、<code>delivered</code></td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:8px">H1 的 <code>tool_engaged</code>（动过箱子）是行为证据而不是状态，只作为过程分里的辅助阶段，不单独成为子任务。</p>
+<h3>两条课程轴</h3>
+<ul class="check">
+<li><strong>难度层：</strong>第 1 层 → 第 2 层 → 第 3 层。</li>
+<li><strong>子任务起点：</strong>从后往前，先练最后一步，再逐步拉长链条。</li>
+</ul>
+<h3>谁能用子任务场景</h3>
+<ul class="check">
+<li>子任务的起始状态本身就暴露了路线（比如“箱子已经在柜子前面”），等于给了指示。所以子任务场景只用于训练、诊断和分析，<strong>不对被评测的 agent 开放</strong>。</li>
+<li>评测始终从任务的初始状态出发；起点和难度层都由可信侧按评测计划决定，agent 不能选。</li>
+<li>以后如果开设使用子任务场景的课程赛道，成绩单独报告，不与主榜混合。</li>
+</ul>
+</div></section>
+<section class="tinted" id="corner"><div class="wrap">
+<p class="kicker">07 · 特殊情况</p>
+<h2>剔除捷径，合理的非常规解法照样给分</h2>
+<p class="covers">对应 R6。</p>
+<h3>流程</h3>
+<ol class="steps">
+<li><strong>列出所有非常规路线。</strong>包括身体更高、能力更强时的直接做法，把干扰项换个用法，利用家具，单机代替协作，随机范围边角上的情况，以及高层多放的物体能带来的新路线。</li>
+<li><strong>分类。</strong>是绕开考点的捷径（让工具、前置条件或协作变得不必要），还是合理的非常规解法。</li>
+<li><strong>剔除捷径。</strong>用几何、质量、摩擦、布局或身体参数约束不允许的路线，并给出必要条件反例或针对性物理证据。一次搜索或尝试失败不能证明所有替代路线都不可能，必须记录验证范围（<a href="/robo-si-results/infra/acceptance-zh.html#feasibility">任务验收第 03 节</a>）。</li>
+<li><strong>物理上剔除不了的，写进公开约束。</strong>比如“全程抱着箱子，不能放在台阶上”。</li>
+<li><strong>剩下的自动给分。</strong>判据只看状态、不规定路线，所以连续物理执行、遵守公开约束、通过全部完整性检查的非常规解法，达到哪些状态就自动拿哪些阶段的分；跳过的中间阶段不补发。设计时要确认合理的非常规解法也会经过这些状态。</li>
+<li><strong>漏掉的捷径。</strong>评测中被标记的回合暴露出本该剔除的捷径：记为设计缺陷，下个版本修复，所有 agent 用新版本自动重评。</li>
+</ol>
+<div class="callout warn">漏洞不算解法：穿模、瞬移、能量异常、修改状态、钻判据空子，一律判无效（<a href="#materials">第 09 节</a>）。</div>
+<h3>现有任务的特殊情况举例</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>任务</th><th>设计时应剔除的捷径（让它走不通）</th><th>保留并给分的非常规解法</th></tr></thead>
+<tbody>
+<tr><td>H1</td><td>踮脚或前倾直接够到目标（需要垫脚的任务类型，层高要超出这个极限并实测）；爬柜子的下层隔板；把高窄干扰箱放倒当台阶</td><td>两个矮箱叠成台阶；推箱代替搬箱；用凳子；摆放位置与 oracle 不同，但能站上去够到</td></tr>
+<tr><td>H2</td><td>不用推车，直接在地上把重箱拖到目标区（摩擦和路线要让拖不动）</td><td>不同的装车办法：推上斜面、分段抬起一边</td></tr>
+<tr><td>H3 · multi-robot</td><td>双方仍接触门或重箱，却把这一状态误计为独立顶门；落地推箱误计为带箱穿门</td><td>无重物版持续双机器人协作；有重物版先独立顶门再带箱穿门。路线证据与共同终点评分分开</td></tr>
+<tr><td>H5</td><td>不用杠杆，交替抬箱角把箱子“走”过去，或直接推动（质量和摩擦要让它动不了）</td><td>用滚轮代替垫片；不同的支点位置</td></tr>
+<tr><td>H6</td><td>把箱子推上或踢上台阶，而不是抱着走（写进公开约束：全程抱持，不能放在台阶上）</td><td>不同的抱箱姿势和上台阶节奏</td></tr>
+<tr><td>M2 / M4</td><td>一台机器人单独完成（长度、质量、拖拽力要超出单机能力；否则就不是协作任务，要更正标签）</td><td>放下再抓、换抓握位置；不同的连接方式和队形</td></tr>
+<tr><td>M3</td><td>—（v5 里“搭台阶”和“把机器人当工具”都是预期解）</td><td>两条路线都给分；组合使用也给分</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:8px">这张表只是举例，并不完整。每个任务的特殊情况清单由设计者写进任务卡，评审逐条核对。</p>
+</div></section>
+<section id="sensors"><div class="wrap">
+<p class="kicker">08 · 传感器与动作</p>
+<h2>只用机器人原生或可加装的传感器</h2>
+<p class="covers">对应 R5。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>机器人</th><th>原生（以 Unitree 官方规格为准）</th><th>可加装</th></tr></thead>
+<tbody>
+<tr><td>G1 + Dex3</td><td>头部 Intel RealSense D435（RGB-D）、Livox MID-360 激光雷达、IMU、关节编码器与电机状态、Dex3 手部力 / 触觉传感</td><td>腕部相机、足底力传感器等</td></tr>
+<tr><td>Go1 / Go2</td><td>机身相机（如双目深度相机）、IMU、关节编码器与电机状态、足端力传感（视型号而定）；Go2 带激光雷达</td><td>激光雷达、RGB-D 相机等</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">每个传感器都要声明型号、安装位姿、视场、分辨率、频率、量程和噪声；可加装的传感器要写明装在哪里。任务可以关掉一部分传感器，但要单独记录“缺传感器”和“信号退化”两种情况。</p>
+<p>agent 能拿到什么、绝对拿不到什么，动作通道（每个关节一条 LowCmd 式指令，按硬件上限截断），L1–L3、VLA、IK/FK 工具，以及技能接口，都由沙箱统一提供，见<a href="/robo-si-results/infra/sandbox-zh.html#iso">隔离沙箱第 03 节</a>、<a href="/robo-si-results/infra/sandbox-zh.html#env">隔离沙箱第 04 节</a>。设计任务时要在任务卡里写明：</p>
+<ul class="check">
+<li>允许 agent 使用哪些工具（L1、L2、L3、VLA、IK/FK）。</li>
+<li>提供哪些技能（可以不提供），以及为什么它们不会泄露路线；agent 自己产生的技能和 rollout 是推荐的参考来源。</li>
+<li>任务需要但缺失的执行能力（比如登箱、抓取），列为阻塞项，不能用隐藏的任务宏代替（v5 第 18 节）。</li>
+</ul>
+</div></section>
+<section class="tinted" id="materials"><div class="wrap">
+<p class="kicker">09 · 评分与防护材料</p>
+<h2>设计时要为评分定下来的东西</h2>
+<p class="covers">对应 R7。评分、自动评分规则和防绕过的机制都在<a href="/robo-si-results/infra/verifier-zh.html">评分与验证</a>；交付格式见首页的<a href="/robo-si-results/infra/contribute-zh.html#checklist">提交清单</a>。</p>
+<ul class="check">
+<li><strong>阶段判据：</strong>与子任务一一对应（<a href="#subtasks">第 06 节</a>），写法见<a href="/robo-si-results/infra/verifier-zh.html#predicates">评分与验证第 03 节</a>。</li>
+<li><strong>权重和取值：</strong>每个阶段 0–1 的连续取值和权重。</li>
+<li><strong>攻击清单和反例集：</strong>按七类攻击写本任务的攻击清单，每个判据一组必须不得分的反例（<a href="/robo-si-results/infra/verifier-zh.html#attacks">评分与验证第 08 节</a>）。</li>
+<li><strong>监视器阈值：</strong>各类告警的阈值；告警怎么处理是统一的规则（<a href="/robo-si-results/infra/verifier-zh.html#acceptance">评分与验证第 05 节</a>）。</li>
+<li><strong>人工检查清单：</strong>任务验收时人看录像用，针对三个问题写明本任务具体看什么（<a href="/robo-si-results/infra/acceptance-zh.html#humancheck">任务验收第 05 节</a>）。</li>
+</ul>
+</div></section>
+<section id="checklist"><div class="wrap">
+<p class="kicker">10 · 设计自检</p>
+<h2>提交任务卡之前，逐条回答</h2>
+<div class="two">
+<div class="card"><h3>场景和指令</h3><ul class="check">
+<li>只看目标、按最直接的做法，为什么一定会失败？</li>
+<li>去掉某个物体后还能做吗？如果能，它就不属于第 1 层，要按第 2 层或第 3 层归类。</li>
+<li>把指令念一遍：有没有哪个词暗示了物体用途或路线？</li>
+<li>最强的 agent 大概要试多少个想法、经历多少次失败？如果不到 4 小时，难度从哪里加？</li></ul></div>
+<div class="card"><h3>仿真和素材</h3><ul class="check">
+<li>每个素材的来源、许可证、哈希都记录了吗？为什么没用更高优先级的素材？</li>
+<li>碰撞体和视觉外形一致吗？物性在真实范围内吗？</li>
+<li>“不可用”的物体在物理上真的不可用吗？</li>
+<li>两个后端上同一回合的场景和结果一致吗？</li></ul></div>
+<div class="card"><h3>随机化、分层、子任务</h3><ul class="check">
+<li>边界和内部样本分别有哪些完整、技能或筛查证据？未确定范围是否明示？有没有打开捷径？</li>
+<li>第 2 层的每个物体：换成哪种身体就能用？本机器人为什么用不了，和别的物体组合也不行吗？</li>
+<li>第 3 层的每个干扰项：机器人在投入之前，能从哪个传感器读数发现它用不了？</li>
+<li>每个子任务能不能从自己的起始状态单独开始、单独判定？完成条件写的是状态还是动作？</li></ul></div>
+<div class="card"><h3>可解性、验收、防绕过</h3><ul class="check">
+<li>agent 能从哪些传感器读数推断出物体能承重、能移动、够不够高？</li>
+<li>每个声明层／变体是否有预选代表性的完整见证？技能条件和实际段间衔接是否有证据？应审阅的代表录像是否已签审？</li>
+<li>列出所有你能想到的其他解法：哪些绕开了考点、要设计成走不通？哪些合理、要给分？</li>
+<li>站在攻击者的角度看每个阶段判据：不真正完成这一步，能不能骗到分？</li>
+<li>评分器把参考专家解判为成功、把空操作判为 0 吗？</li>
+<li>人看参考解和漏洞测试的录像，能不能按你的检查清单回答那三个问题？</li></ul></div>
+</div>
+</div></section>
+<section class="tinted" id="card"><div class="wrap">
+<p class="kicker">11 · 任务卡模板</p>
+<h2>设计阶段只交任务卡，什么都不用实现</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>字段</th><th>agent 能看到吗</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td>目标和约束</td><td>能</td><td>指令文本，只写目标和合规规则。</td></tr>
+<tr><td>身体、执行器、传感器</td><td>能</td><td>机器人型号、关节限位、名义力矩；允许使用的工具（L1 / L2 / L3、VLA、IK/FK）；任务提供的技能清单；传感器型号、安装位置、视场、频率、噪声。</td></tr>
+<tr><td>能力披露档位</td><td>按档位</td><td>explicit / partial / latent。</td></tr>
+<tr><td>仿真与素材</td><td>不能</td><td>后端（Genesis，是否对齐 Isaac Lab）和固定的仿真设置；素材清单：来源、许可证、哈希、尺度、碰撞体、物性；没用更高优先级素材的理由。</td></tr>
+<tr><td>可交互物体与初始状态随机化</td><td>不能</td><td>物体清单（按层标出必要工具、换身体才能用的工具、干扰项）；随机的变量和范围、拒绝采样规则、开发与评测的划分。</td></tr>
+<tr><td>隐藏的可用性</td><td>不能</td><td>agent 需要发现什么；最终目标涉及哪几类能力。</td></tr>
+<tr><td>三层难度</td><td>不能（评测时不告诉层号）</td><td>每层多放哪些物体；第 2 层每个物体对哪种身体可用、本机器人为什么用不了；第 3 层每个干扰项为什么用不了、怎么从传感器发现。</td></tr>
+<tr><td>子任务</td><td>不能</td><td>子任务依赖链；每个子任务用状态描述的完成条件和起始状态，起始状态怎么生成；与计分阶段的对应。</td></tr>
+<tr><td>成功约定与阶段</td><td>不能</td><td>阶段判据、阈值、保持时长、权重；反例。</td></tr>
+<tr><td>人工检查清单（对任务）</td><td>不能</td><td>任务验收时人看录像用：针对三个问题（没有 reward hack、任务确实完成、没有明显违反物理规律或限制）写明本任务具体看什么，包括目标怎样才算达到、公开约束、禁止的做法、每个阶段在录像上怎么认；记录模板。</td></tr>
+<tr><td>分层规划与验证计划</td><td>不能</td><td>高层计划、技能选择与约束、关键状态和筛查结果；代表完整样本的选择理由与有限清单；技能适用证据、段间条件、筛查预算与四类账本；参考正反例判分；谁审阅、谁复现；难点与未确定范围。</td></tr>
+<tr><td>难度假设</td><td>不能</td><td>为什么需要 4 小时以上的迭代：依赖链长度、需要排除的错误路线。</td></tr>
+<tr><td>特殊情况清单</td><td>不能</td><td>每条非常规路线的处理：剔除（怎么剔除、oracle 试过的结果）、写入公开约束，或保留并按达到的状态自动给分。</td></tr>
+<tr><td>攻击清单与反例集</td><td>不能</td><td>按<a href="#materials">第 09 节</a>的类别列出可能的绕过手法；每个阶段判据的反例及其不得分的测试结果。</td></tr>
+</tbody>
+</table></div>
+<h3 style="margin-top:22px">机器可读的任务规格</h3>
+<p>任务卡同时写一份机器可读的版本（参照 Harbor 的 <code>task.toml</code>），由脚本自动检查。建议的段落：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>段落</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><code>[task]</code></td><td>名称、版本（主.次）、机器人、仿真后端和版本</td></tr>
+<tr><td><code>[instruction]</code></td><td>指令模板和公开约束</td></tr>
+<tr><td><code>[agent]</code></td><td>允许的工具、任务提供的技能、传感器配置、能力披露档位、预算（仿真步数、token、观测、reset、墙钟上限）</td></tr>
+<tr><td><code>[generator]</code></td><td>随机变量和范围、拒绝规则、开发和评测的种子集合（私有部分只写引用）</td></tr>
+<tr><td><code>[layers]</code></td><td>每层放哪些物体</td></tr>
+<tr><td><code>[[subtasks]]</code></td><td>完成条件、起始状态来源、对应的阶段</td></tr>
+<tr><td><code>[[stages]]</code></td><td>判据、阈值、保持时长、权重、模式（once / live）</td></tr>
+<tr><td><code>[monitors]</code></td><td>各类告警的阈值</td></tr>
+<tr><td><code>[evaluation]</code></td><td>评测重复次数（3）、每个回合的评分次数（3）、复现容差、每层的评分回合数</td></tr>
+<tr><td><code>[reference]</code></td><td>声明层／变体的代表参考入口、有限样本清单、录制、哈希、判分和重复结果</td></tr><tr><td><code>[planning]</code> / <code>[feasibility]</code></td><td>高层计划、技能合同与适用证据、关键状态、段间条件、筛查预算、四类状态账本和范围；字段规范见版本化政策，旧运行入口不自动实现这些检查</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">检查字段、类型、状态／技能引用、正权重、阶段反例、来源哈希及 agent 材料隔离；分别核对代表完整见证、技能适用证据与四类筛查账本。声明范围与延期层明确列出。文档定义验收要求，静态校验不自动完成物理筛查，也不自动更新准入结果。</p>
+</div></section>
+<section id="layered-rollout"><div class="wrap"><h2>本次状态落实：除 H1 外的 11 项任务</h2><p>任务级保留少量完整成功见证；技能级验进入／退出条件、距离、载荷、支撑位置与姿态；实例级只做预算内的可达、碰撞、支撑和衔接检查，困难片段可短仿真；执行级按观测滚动生成局部轨迹。交付高层计划、技能选择与约束、关键状态和检查结果，完整轨迹仅为代表性验证的附加证据。</p><p>有完整成功证据／通过可行性筛查／未确定／检查不通过必须分开。检查器缺失或预算耗尽记未确定；检查不通过需必要条件反例与原因。自生成场景可按已验证技能范围采样；基准采样及所有结果完整保留。既有人工签审、第二人复现与评分器检查继续单列，不要求第二人逐个复现随机实例。</p><p><a href="/robo-si-results/infra/status-zh.html#layered-progress">逐任务状态与剩余检查</a> · <a href="/robo-si-results/infra/planning/layered-status.json">JSON</a></p></div></section>
+<section id="inventory-additions"><div class="wrap"><h2>14 项任务统一目录 · 新增两项</h2><p>原 12 项仍是 62 个技能／193 个动作候选，映射核对待完成。新增两项使用各自已有的实测分段证据，不能与 193 个动作混算，也不代表正式准入。</p><div class="table-wrap"><table><thead><tr><th>任务</th><th>已有证据</th><th>保留限制</th></tr></thead><tbody><tr data-task="DiskFlip"><td><a href="/robo-si-results/infra/task-disk-flip-zh.html">G1 桌面轻柔翻盘</a></td><td>6/6 全程（每配置 3 次）与 2/2 独立动作回放通过；两条见证分别有 26/27 个低层轨迹段及三层映射。</td><td>人工录像签审、第二人复现、更多配置与完整自碰撞/环境接触审阅；无通用随机域或移动全身能力声明。</td></tr><tr data-task="Sokoban"><td><a href="/robo-si-results/infra/task-sokoban-zh.html">双 G1 未知地图推箱清路</a></td><td>Gamma 8011370：279.18 s、24 个高层操作、76 个低层段；两机到各自目标并保持 3 s。独立采样审阅及完整公共输入回放通过；task_success=null。</td><td>完整接触/仅推不抓有效性认证、未见地图验证、协作收益对照和人工验收；仍为实验候选。</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/planning/INVENTORY.md">14 项规划与证据总览</a> · <a href="/robo-si-results/infra/planning/catalog.json">JSON</a></p></div></section>
+<section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>14 项均有声明范围内的参考执行见证，现有 14 份统一参考设计文档。项目参考交付完成 14 项、进行中 0 项；远端资料覆盖 14 项，正式准入 0 项。沙盒运行验收单列。Sokoban 为实验见证，task_success 仍为 null。</p><p><a href="/robo-si-results/infra/reference-designs-zh.html">参考解与设计文档</a></p></div></section>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · 任务设计指南 · 2026-10-26 · <a href="/robo-si-results/infra/task-design-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/infra/contribute-zh.html">首页</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body>
+</html>

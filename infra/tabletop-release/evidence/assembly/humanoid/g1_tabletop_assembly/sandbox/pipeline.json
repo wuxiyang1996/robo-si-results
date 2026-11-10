@@ -1,0 +1,231 @@
+{
+ "schema": "infra-pipeline/1",
+ "task": "g1_tabletop_assembly",
+ "note": "First-layer release only. Fresh measured-state reference and exact sandbox action replay; CPU/runtime/task/sandbox tests, real privileged teleport exploit, all 38 container escape probes, three randomized first-layer no-op episodes and integrity checks. Physical and human gates are unchanged. Higher layers and complete main-benchmark tool-design claims are outside this version. Human video/stage labels, shortcut review and second-person reproduction remain required.",
+ "steps": [
+  {
+   "name": "runtime_tests",
+   "tier": "cpu",
+   "args": [
+    "-m",
+    "unittest",
+    "infra.sandbox.tests.test_runtime",
+    "infra.sandbox.tests.test_release_check"
+   ]
+  },
+  {
+   "name": "sandbox_tests",
+   "tier": "cpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "humanoid/g1_tabletop_assembly/sandbox/tests",
+    "-t",
+    "."
+   ]
+  },
+  {
+   "name": "task_tests",
+   "tier": "cpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_tabletop*.py"
+   ]
+  },
+  {
+   "name": "randomization_tests",
+   "tier": "cpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "unittest",
+    "tests.test_assembly_randomization",
+    "tests.test_assembly_scene_versions",
+    "tests.test_assembly_load_paths",
+    "tests.test_assembly_final_support",
+    "tests.test_assembly_design_evidence"
+   ]
+  },
+  {
+   "name": "admission_record",
+   "tier": "cpu",
+   "args": [
+    "-m",
+    "infra.sandbox.records",
+    "humanoid/g1_tabletop_assembly/admission.json"
+   ]
+  },
+  {
+   "name": "dev_smoke_process",
+   "tier": "gpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop_assembly.sandbox.launch",
+    "task",
+    "--mode",
+    "dev",
+    "--seed",
+    "1",
+    "--isolation",
+    "process",
+    "--name",
+    "pipeline-dev-hello-{stamp}",
+    "--agent-dir",
+    "humanoid/g1_tabletop_assembly/sandbox/agent_sdk/examples",
+    "--",
+    "python",
+    "hello_robot.py"
+   ],
+   "run": "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-dev-hello-{stamp}",
+   "expect": {
+    "void": false,
+    "score": 0.0
+   }
+  },
+  {
+   "name": "dev_smoke_process_integrity",
+   "tier": "gpu",
+   "args": [
+    "-m",
+    "infra.sandbox.run_checks",
+    "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-dev-hello-{stamp}",
+    "--isolation",
+    "process",
+    "--require-observe"
+   ]
+  },
+  {
+   "name": "reference_live_layer1",
+   "tier": "gpu",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop.sandbox.qualification",
+    "assembly",
+    "--scene",
+    "humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/coverage/layer1_seed0/scene.json",
+    "--out",
+    "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-live-layer1-{stamp}",
+    "--policy",
+    "closed_loop:run"
+   ]
+  },
+  {
+   "name": "reference_replay_layer1",
+   "tier": "gpu",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop.acceptance.release_20261022.replay_sandbox",
+    "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-live-layer1-{stamp}/episode_00",
+    "--scene",
+    "humanoid/g1_tabletop_assembly/acceptance/first_layer_20261023/coverage/layer1_seed0/scene.json",
+    "--out",
+    "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-replay-layer1-{stamp}"
+   ]
+  },
+  {
+   "name": "exploit_teleport_sleeve",
+   "tier": "gpu",
+   "timeout_s": 1800,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop_assembly.sandbox.trusted.record_reference",
+    "exploit",
+    "--no-video",
+    "--out",
+    "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-exploit-teleport-sleeve-{stamp}"
+   ]
+  },
+  {
+   "name": "escape_probes",
+   "tier": "container",
+   "timeout_s": 2400,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop_assembly.sandbox.launch",
+    "task",
+    "--mode",
+    "eval",
+    "--name",
+    "pipeline-escape-{stamp}",
+    "--agent-dir",
+    "humanoid/g1_tabletop_assembly/sandbox/tests/agents",
+    "--",
+    "python",
+    "escape_probes.py"
+   ],
+   "run": "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-escape-{stamp}",
+   "expect": {
+    "void": true
+   }
+  },
+  {
+   "name": "escape_probes_integrity",
+   "tier": "container",
+   "args": [
+    "-m",
+    "infra.sandbox.run_checks",
+    "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-escape-{stamp}",
+    "--isolation",
+    "container",
+    "--escape",
+    "--min-probes",
+    "38"
+   ]
+  },
+  {
+   "name": "grade_noop_first_layer",
+   "tier": "container",
+   "timeout_s": 3600,
+   "args": [
+    "-m",
+    "humanoid.g1_tabletop_assembly.sandbox.launch",
+    "task",
+    "--randomized",
+    "--mode",
+    "grade",
+    "--episodes",
+    "3",
+    "--name",
+    "pipeline-grade-noop-{stamp}",
+    "--agent-dir",
+    "humanoid/g1_tabletop_assembly/sandbox/agent_sdk/examples",
+    "--difficulty",
+    "1",
+    "--",
+    "python",
+    "noop.py"
+   ],
+   "run": "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-grade-noop-{stamp}",
+   "expect": {
+    "void": false,
+    "score": 0.0,
+    "success_rate": 0.0
+   }
+  },
+  {
+   "name": "grade_noop_first_layer_integrity",
+   "tier": "container",
+   "args": [
+    "-m",
+    "infra.sandbox.run_checks",
+    "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-grade-noop-{stamp}",
+    "--isolation",
+    "container",
+    "--episodes",
+    "3"
+   ]
+  }
+ ]
+}

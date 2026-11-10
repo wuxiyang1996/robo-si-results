@@ -1,0 +1,105 @@
+{
+  "schema": "h3-cooperative-publication/1",
+  "task": "H3-cooperative",
+  "legacy_id": "H3",
+  "category": "multi_robot",
+  "canonical_path": "multi_robot/dual_g1_self_closing_door",
+  "tag": "h3-cooperative-20261024",
+  "repo": "IntelligenceLab/robo-si",
+  "path_in_repo": "releases/H3/cooperative-20261024",
+  "shared_timeout_s": 180,
+  "scope": "two variants, fixed nominal scene, privileged native host reference",
+  "formal_admission": false,
+  "human_review": "unsigned",
+  "independent_reproduction": "unsigned",
+  "selected_references": [
+    {
+      "run": "heavy-delivery-05",
+      "variant": "heavy_prop",
+      "seconds": 172.44,
+      "task_success": true,
+      "reference_route": {
+        "passed": true,
+        "unassisted_prop_verified": true,
+        "prop_verified_time_s": 96.62,
+        "prop_before_carried_crossing": true,
+        "max_unassisted_prop_dwell_s": 57.84000000000344,
+        "crate_displacement_m": 1.6295746385029182,
+        "robot_contact_linked_path_m": 1.6536604391887302,
+        "min_passage_clearance_during_prop_m": 0.752043141967794
+      },
+      "independent_heavy_transit_prop": {
+        "transit_cycles": 38,
+        "min_crate_door_cycle_mean_N": 4.227200627326965,
+        "max_robot_door_force_N": 0.0,
+        "max_robot_crate_force_N": 0.0,
+        "passed": true
+      }
+    },
+    {
+      "run": "heavy-delivery-06",
+      "variant": "heavy_prop",
+      "seconds": 169.24,
+      "task_success": true,
+      "reference_route": {
+        "passed": true,
+        "unassisted_prop_verified": true,
+        "prop_verified_time_s": 95.72,
+        "prop_before_carried_crossing": true,
+        "max_unassisted_prop_dwell_s": 57.5600000000034,
+        "crate_displacement_m": 1.5207127974672123,
+        "robot_contact_linked_path_m": 1.5040028363485018,
+        "min_passage_clearance_during_prop_m": 0.7913257072540988
+      },
+      "independent_heavy_transit_prop": {
+        "transit_cycles": 38,
+        "min_crate_door_cycle_mean_N": 4.944509983062744,
+        "max_robot_door_force_N": 0.0,
+        "max_robot_crate_force_N": 0.0,
+        "passed": true
+      }
+    },
+    {
+      "run": "no-prop-delivery-07",
+      "variant": "no_prop",
+      "seconds": 102.22,
+      "task_success": true,
+      "reference_route": {
+        "no_crate": true,
+        "transit_control_samples": 38,
+        "min_other_robot_door_cycle_mean_N": 4.173259407281876,
+        "passed": true
+      },
+      "independent_heavy_transit_prop": null
+    }
+  ],
+  "package_checks": {
+    "cpu_tests": 27,
+    "cpu_receipt": "cpu-checks.json",
+    "native_relocation_smoke": {
+      "seconds": 2,
+      "physics_steps": 400,
+      "passed": true,
+      "task_success": false,
+      "audit": "runtime/multi_robot/dual_g1_self_closing_door/acceptance/package-standing-smoke-audit.json"
+    },
+    "scope": "author machine, separate package directory; not clean installation, isolated agent sandbox or second-person reproduction"
+  },
+  "inner_manifest_sha256": "22843c24eb329e7632000f6ebceaca4651e3efdcbcbf9c6e9abe35343790045a",
+  "all_development_attempts_retained": true,
+  "archives": {
+    "h3-cooperative-reference-20261024.zip": {
+      "bytes": 750902348,
+      "sha256": "49f3efc5fffd7e3d79ab70e6249a224631936b539188b875d6c806245bf05b3b",
+      "files": 13791,
+      "crc_verified": true
+    },
+    "h3-cooperative-review-20261024.zip": {
+      "bytes": 7475756,
+      "sha256": "45d0962ad1e7754bfb6d7d4e5c3fe24a1a1184f1f21144b7bb8ca7ee450e82e7",
+      "files": 123,
+      "crc_verified": true
+    }
+  },
+  "review_links_verified": true
+}

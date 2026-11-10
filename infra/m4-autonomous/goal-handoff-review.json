@@ -1,0 +1,34 @@
+{
+  "schema": "m4-goal-handoff-review/1",
+  "attempt": "v3j-goal-unload-a45",
+  "prior_attempt": "v3j-load85-a43",
+  "diagnosis": "a43 delivered cargo into the goal and held there, but front-right stance on go2_a lasted 5.52 s and displaced 50.011 mm during slow unloading. Its final tangential/normal force ratio was 0.221, so this is not evidence of a saturated friction cone. Both robots received approximately -0.025 m/s but barely moved backward; goal cargo remained supported and nearly stationary.",
+  "evidence": [
+    "foot-diagnosis-a43-go2-a.json",
+    "foot-diagnosis-a43-go2-b.json",
+    "../runs/v3j-load85-a43/trajectory.json"
+  ],
+  "changes": [
+    "Hand over to unloading on entry to the existing goal/slack phase, removing the extra controller-only four-second pre-release wait. The independent final released goal dwell remains unchanged.",
+    "Use -0.08 m/s body-relative reverse gait during loaded unloading/opening, within the existing 0.12 m/s command envelope. Low-load opening interlock remains unchanged.",
+    "Perform handoff after the current physical step, avoiding two walker calls in one step."
+  ],
+  "unchanged": [
+    "hardware, ground friction, integration",
+    "85 N transport feedback",
+    "frozen gait weights",
+    "all physical acceptance limits",
+    "two-second final released hold and actual goal velocity/containment checks"
+  ],
+  "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+  "source_sha256": {
+    "run.py": "11f2942d6dcad36b50432f4615a699bbd790c36b35236e3f0c1a7c4de6b45655",
+    "transport.py": "0a3881a36de61b90060bb071c43011c60c4f024e7f69a1e0b90f9bb3853a2e1a"
+  },
+  "mode": "corridor",
+  "seconds": 180,
+  "precision": "64",
+  "substeps": 8,
+  "ground_friction": 0.8,
+  "formal_admission": false
+}

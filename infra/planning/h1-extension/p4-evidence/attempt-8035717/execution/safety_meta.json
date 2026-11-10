@@ -1,0 +1,449 @@
+{
+  "schema": "h1-p4-canonical-safety/1",
+  "control_dt": 0.02,
+  "object_ids": [
+    "floor_0",
+    "floor_1",
+    "floor_2",
+    "floor_3",
+    "floor_4",
+    "top_0",
+    "top_1",
+    "top_2",
+    "top_3"
+  ],
+  "object_present": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "episode_object_present": [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    true
+  ],
+  "physical_presence_reason": "All instantiated movable entities remain collision-enabled, including parked objects; original rule 2 covers each of them.",
+  "torque_channel_semantics": "Genesis current-state clipped PD/force evaluated by get_dofs_control_force, identical to trusted logger; not an independent mechanical torque sensor or a claim about the previous substep impulse.",
+  "object_sizes_m": [
+    [
+      0.45,
+      0.5,
+      0.18
+    ],
+    [
+      0.4,
+      0.45,
+      0.18
+    ],
+    [
+      0.4,
+      0.4,
+      0.26
+    ],
+    [
+      0.45,
+      0.5,
+      0.45
+    ],
+    [
+      0.24,
+      0.24,
+      0.44
+    ],
+    [
+      0.18,
+      0.2,
+      0.16
+    ],
+    [
+      0.2,
+      0.18,
+      0.14
+    ],
+    [
+      0.16,
+      0.22,
+      0.18
+    ],
+    [
+      0.2,
+      0.2,
+      0.15
+    ]
+  ],
+  "target_index": 0,
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_yaw_joint",
+    "waist_roll_joint",
+    "waist_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "left_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "left_hand_thumb_0_joint",
+    "left_hand_thumb_1_joint",
+    "left_hand_thumb_2_joint",
+    "left_hand_middle_0_joint",
+    "left_hand_middle_1_joint",
+    "left_hand_index_0_joint",
+    "left_hand_index_1_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint",
+    "right_wrist_roll_joint",
+    "right_wrist_pitch_joint",
+    "right_wrist_yaw_joint",
+    "right_hand_thumb_0_joint",
+    "right_hand_thumb_1_joint",
+    "right_hand_thumb_2_joint",
+    "right_hand_middle_0_joint",
+    "right_hand_middle_1_joint",
+    "right_hand_index_0_joint",
+    "right_hand_index_1_joint"
+  ],
+  "joint_lower": [
+    -2.5307,
+    -0.5236,
+    -2.7576,
+    -0.0873,
+    -0.8727,
+    -0.2618,
+    -2.5307,
+    -2.9671,
+    -2.7576,
+    -0.0873,
+    -0.8727,
+    -0.2618,
+    -2.618,
+    -0.52,
+    -0.52,
+    -3.0892,
+    -1.5882,
+    -2.618,
+    -1.0472,
+    -1.9722,
+    -1.6144,
+    -1.6144,
+    -1.0472,
+    -0.7243,
+    0.0,
+    -1.5708,
+    -1.7453,
+    -1.5708,
+    -1.7453,
+    -3.0892,
+    -2.2515,
+    -2.618,
+    -1.0472,
+    -1.9722,
+    -1.6144,
+    -1.6144,
+    -1.0472,
+    -1.0472,
+    -1.7453,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "joint_upper": [
+    2.8798,
+    2.9671,
+    2.7576,
+    2.8798,
+    0.5236,
+    0.2618,
+    2.8798,
+    0.5236,
+    2.7576,
+    2.8798,
+    0.5236,
+    0.2618,
+    2.618,
+    0.52,
+    0.52,
+    2.6704,
+    2.2515,
+    2.618,
+    2.0944,
+    1.9722,
+    1.6144,
+    1.6144,
+    1.0472,
+    1.0472,
+    1.7453,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.6704,
+    1.5882,
+    2.618,
+    2.0944,
+    1.9722,
+    1.6144,
+    1.6144,
+    1.0472,
+    0.7243,
+    0.0,
+    1.5708,
+    1.7453,
+    1.5708,
+    1.7453
+  ],
+  "joint_effort_limits": [
+    88.0,
+    88.0,
+    88.0,
+    139.0,
+    50.0,
+    50.0,
+    88.0,
+    88.0,
+    88.0,
+    139.0,
+    50.0,
+    50.0,
+    88.0,
+    50.0,
+    50.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    5.0,
+    5.0,
+    2.450000047683716,
+    1.399999976158142,
+    1.399999976158142,
+    1.399999976158142,
+    1.399999976158142,
+    1.399999976158142,
+    1.399999976158142,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    5.0,
+    5.0,
+    2.450000047683716,
+    1.399999976158142,
+    1.399999976158142,
+    1.399999976158142,
+    1.399999976158142,
+    1.399999976158142,
+    1.399999976158142
+  ],
+  "robot_mass_kg": 34.394235253334045,
+  "foot_collision_geometry": {
+    "left_ankle_roll_link": [
+      {
+        "center": [
+          -0.05,
+          0.025,
+          -0.03
+        ],
+        "radius": 0.005
+      },
+      {
+        "center": [
+          -0.05,
+          -0.025,
+          -0.03
+        ],
+        "radius": 0.005
+      },
+      {
+        "center": [
+          0.12,
+          0.03,
+          -0.03
+        ],
+        "radius": 0.005
+      },
+      {
+        "center": [
+          0.12,
+          -0.03,
+          -0.03
+        ],
+        "radius": 0.005
+      }
+    ],
+    "right_ankle_roll_link": [
+      {
+        "center": [
+          -0.05,
+          0.025,
+          -0.03
+        ],
+        "radius": 0.005
+      },
+      {
+        "center": [
+          -0.05,
+          -0.025,
+          -0.03
+        ],
+        "radius": 0.005
+      },
+      {
+        "center": [
+          0.12,
+          0.03,
+          -0.03
+        ],
+        "radius": 0.005
+      },
+      {
+        "center": [
+          0.12,
+          -0.03,
+          -0.03
+        ],
+        "radius": 0.005
+      }
+    ]
+  },
+  "foot_geometry_source": "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8035717/source_snapshot/humanoid/g1_support_retrieval/assets/unitree_g1/g1_with_hands.xml",
+  "foot_geometry_source_sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078",
+  "torque_provenance": {
+    "quantity": "signed_actual_joint_force",
+    "source": "robot.get_dofs_control_force",
+    "sampling": "same_state_time_as_q"
+  },
+  "contact_mapping": {
+    "robot_links": {
+      "27": "pelvis",
+      "28": "left_hip_pitch_link",
+      "29": "left_hip_roll_link",
+      "30": "left_hip_yaw_link",
+      "31": "left_knee_link",
+      "32": "left_ankle_pitch_link",
+      "33": "left_ankle_roll_link",
+      "34": "right_hip_pitch_link",
+      "35": "right_hip_roll_link",
+      "36": "right_hip_yaw_link",
+      "37": "right_knee_link",
+      "38": "right_ankle_pitch_link",
+      "39": "right_ankle_roll_link",
+      "40": "waist_yaw_link",
+      "41": "waist_roll_link",
+      "42": "torso_link",
+      "43": "left_shoulder_pitch_link",
+      "44": "left_shoulder_roll_link",
+      "45": "left_shoulder_yaw_link",
+      "46": "left_elbow_link",
+      "47": "left_wrist_roll_link",
+      "48": "left_wrist_pitch_link",
+      "49": "left_wrist_yaw_link",
+      "50": "left_hand_thumb_0_link",
+      "51": "left_hand_thumb_1_link",
+      "52": "left_hand_thumb_2_link",
+      "53": "left_hand_middle_0_link",
+      "54": "left_hand_middle_1_link",
+      "55": "left_hand_index_0_link",
+      "56": "left_hand_index_1_link",
+      "57": "right_shoulder_pitch_link",
+      "58": "right_shoulder_roll_link",
+      "59": "right_shoulder_yaw_link",
+      "60": "right_elbow_link",
+      "61": "right_wrist_roll_link",
+      "62": "right_wrist_pitch_link",
+      "63": "right_wrist_yaw_link",
+      "64": "right_hand_thumb_0_link",
+      "65": "right_hand_thumb_1_link",
+      "66": "right_hand_thumb_2_link",
+      "67": "right_hand_middle_0_link",
+      "68": "right_hand_middle_1_link",
+      "69": "right_hand_index_0_link",
+      "70": "right_hand_index_1_link"
+    },
+    "hand_of": {
+      "47": 0,
+      "48": 0,
+      "49": 0,
+      "50": 0,
+      "51": 0,
+      "52": 0,
+      "53": 0,
+      "54": 0,
+      "55": 0,
+      "56": 0,
+      "61": 1,
+      "62": 1,
+      "63": 1,
+      "64": 1,
+      "65": 1,
+      "66": 1,
+      "67": 1,
+      "68": 1,
+      "69": 1,
+      "70": 1
+    },
+    "foot_of": {
+      "33": 0,
+      "39": 1
+    },
+    "object_of": {
+      "22": 0,
+      "23": 1,
+      "24": 2,
+      "25": 3,
+      "26": 4,
+      "18": 5,
+      "19": 6,
+      "20": 7,
+      "21": 8
+    },
+    "ground_links": [
+      0
+    ],
+    "cabinet_links": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "semantics": "RelayStateLogger._relay_contacts: sum each contact magnitude for body/hand/cabinet, signed upward force on robot for feet; zero means query had no matching contacts. All movable objects including parked entities recorded.",
+    "classifier_source_sha256": "86272084ad082f3006a8fc38c31ae05624a5d7860bf9eb2aa2443651a6263581"
+  }
+}

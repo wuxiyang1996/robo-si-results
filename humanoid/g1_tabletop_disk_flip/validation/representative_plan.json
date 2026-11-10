@@ -1,0 +1,43 @@
+{
+  "schema": "disk-representative-validation-plan/1",
+  "purpose": "few_task_level_witnesses_not_per_random_instance_solutions",
+  "selection": "nominal design plus a prospectively selected 3 mm lateral translation; exact configurations, no inferred interval",
+  "selection_timing": "nominal first run already underway; offset case and repetitions selected before their execution",
+  "cases": [
+    {
+      "id": "nominal",
+      "config": "configs/nominal.json",
+      "seed": 0,
+      "controller_repetitions": 3,
+      "run_prefix": "release-nominal",
+      "replay_run": "release-nominal-replay-002",
+      "selected_run_names": [
+        "release-nominal-007",
+        "release-nominal-008",
+        "release-nominal-009"
+      ]
+    },
+    {
+      "id": "offset_y_003",
+      "config": "configs/offset_y_003.json",
+      "seed": 1,
+      "controller_repetitions": 3,
+      "run_prefix": "release-offset",
+      "replay_run": "release-offset-replay-002",
+      "selected_run_names": [
+        "release-offset-003",
+        "release-offset-004",
+        "release-offset-005"
+      ]
+    }
+  ],
+  "independent_action_replay_per_case": 1,
+  "video_review_required": true,
+  "preserve_failed_and_unknown_attempts": true,
+  "random_screening_requires_complete_trajectory": false,
+  "admission": "pending_complete_execution_replay_audit_and_human_video_review",
+  "revision": 3,
+  "revision_reason": "Retain offset 002 angular-speed failure; revise lower-pad withdrawal and table-height rim pushing, then repeat the same two configurations with the final policy.",
+  "all_prior_attempts_retained_in": "candidate_attempts.json",
+  "replay_binding": "Applied command arrays must equal the selected current-policy witness exactly; an earlier independent replay may be reused only if configuration, seed, physics, runtime, assets and commands all match."
+}

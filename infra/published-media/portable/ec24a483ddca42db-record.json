@@ -1,0 +1,459 @@
+{
+ "scene": "platform",
+ "task_config": {
+  "difficulty_layer": 1,
+  "variant": "platform",
+  "asset_visuals": true,
+  "box_mass": 100.0,
+  "box_size": [
+   0.6,
+   0.54,
+   0.48
+  ],
+  "box_friction": 0.65,
+  "ground_friction": 0.65,
+  "dwell": 2.0,
+  "timeout": 300.0,
+  "robot_start": [
+   0.82823661,
+   0.95818274
+  ],
+  "collision_limit": 800.0,
+  "room_length": 7.0,
+  "goal": [
+   5.61130169,
+   0.05567975
+  ],
+  "goal_size": [
+   1.6,
+   1.6
+  ],
+  "skate1_dy": -0.03,
+  "skate0_dx": 0.14,
+  "skate1_deck_thickness": 0.045,
+  "lever_tip_extension": 0.06,
+  "layout_offset": [
+   -0.01117169,
+   -0.01719468
+  ],
+  "skate1_dx": 0.01662054
+ },
+ "sample_spec": {
+  "distribution": "transport-layout-v2",
+  "split": "development",
+  "seed": 71,
+  "episode": 0,
+  "corner": null,
+  "task_config": {
+   "difficulty_layer": 1,
+   "variant": "platform",
+   "asset_visuals": true,
+   "box_mass": 100.0,
+   "box_size": [
+    0.6,
+    0.54,
+    0.48
+   ],
+   "box_friction": 0.65,
+   "ground_friction": 0.65,
+   "dwell": 2.0,
+   "timeout": 300.0,
+   "robot_start": [
+    0.82823661,
+    0.95818274
+   ],
+   "collision_limit": 800.0,
+   "room_length": 7.0,
+   "goal": [
+    5.61130169,
+    0.05567975
+   ],
+   "goal_size": [
+    1.6,
+    1.6
+   ],
+   "skate1_dy": -0.03,
+   "skate0_dx": 0.14,
+   "skate1_deck_thickness": 0.045,
+   "lever_tip_extension": 0.06,
+   "layout_offset": [
+    -0.01117169,
+    -0.01719468
+   ],
+   "skate1_dx": 0.01662054
+  },
+  "robot_pose": [
+   0.82823661,
+   0.95818274,
+   -0.04557273
+  ],
+  "draws": {
+   "robot_x": 0.82823661,
+   "robot_y": 0.95818274,
+   "robot_yaw": -0.04557273,
+   "goal_x": 5.61130169,
+   "goal_y": 0.05567975,
+   "layout_x": -0.01117169,
+   "layout_y": -0.01719468,
+   "skate1_dx": 0.01662054
+  },
+  "rejected": 0
+ },
+ "command_tape": {
+  "schema": "trusted-command-tape/1",
+  "control_hz": 50,
+  "commands": 7719,
+  "sha256": "a25b4b265b1882fe96ea8a573b7541230bb272fc60ba20d9508e10cf6d572f65"
+ },
+ "geometry_sha256": "89b67d62bc2bf774dc288e1b52219d9aab59c8217909af3f21a9047d34be1c17",
+ "effort_limits": "hardware",
+ "profile": "channel",
+ "through_channel": true,
+ "backend": "cpu",
+ "expert": "solution\\skate\\run_platform.py",
+ "expert_argv": [
+  "--start",
+  "task",
+  "--out",
+  "C:\\Users\\wuxiy\\rsi_releases\\transport_release_20261023\\workspace\\humanoid\\g1_lever_assisted_transport\\sandbox\\runs\\redesign\\release-v3-transport36-layer1-seed71-20261023-1\\oracle",
+  "--leg-torque",
+  "--effort-limits",
+  "hardware"
+ ],
+ "expert_sources_sha256": {
+  "h5/solution/skate/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "h5/solution/skate/audit.py": "d5512829f9a6397ac286838109210e6bdc94c8785dbbac3fc58c675484c43c39",
+  "h5/solution/skate/env.py": "57ae59d2890d5a2b935f4d9f5113802246e021d1056d486101196ab484b5c937",
+  "h5/solution/skate/hook.py": "2480eb563a56e330bcd639e7325c55f255705fff27106cfb273f5aa1d6185fa1",
+  "h5/solution/skate/index_runs.py": "6d7e7f7d8ded7c01b7f21a7808ef020c760881457fb3d117b4fd05326d3e63f1",
+  "h5/solution/skate/lever.py": "044e5591d43395975f1031a66d926447a392df9725f84c835808b23bc4657302",
+  "h5/solution/skate/lift_platform.py": "3f250875c6a64f5f89f79180a7ed81861b86ba9ce0fecad8782ee2b821ea2766",
+  "h5/solution/skate/probe_mechanics.py": "0e197364bb402382a0c70b7c1ae4d3eed63092956c8da836818ee79255ee3d18",
+  "h5/solution/skate/run_chain.py": "6ecf367391875ef47b149a1b1843477df843d83658fb740b9cabfc6356d1dc34",
+  "h5/solution/skate/run_dev.py": "051f412c0a02e8fac1e3b5a97ef5badfc15351a5b37417d7d7f4414625131d1c",
+  "h5/solution/skate/run_platform.py": "7ec51059722d75601c6016d9cbfe81b7e96453e76f1a1e7045169fda0547eb4c",
+  "h5/solution/skate/skills.py": "ab78916b8bb4bad1047dd179da24d0bbdce32fed62b430c82e94049da3c6217b",
+  "h5/solution/skate/summarize_run.py": "9f5d67c8b0cc522c476d3344f2242b026fa95c426d13d41102666da715e674eb",
+  "h5/solution/skate/tools.py": "a305d45081be55413474495d451e2157544ed005091fc2d3a0466216048219ab",
+  "h5/solution/skate/transport.py": "a53551973698ba679c98f991c93370c03532502136f947cb680968819a19ed17",
+  "h5/solution/skate/wbc_bounds.py": "6f4baed74f823fae4c6b2491f230f5f4ea99310a43de1bf90fa2127382f34bde",
+  "humanoid/g1_support_retrieval/solution/agile.py": "ffb06f370e71a28ea715913959be04459aa6013774f6f547768653bebd0f2bb7",
+  "humanoid/g1_support_retrieval/oracle/oracle.py": "1c88c21164289bbe62cbb5707e4f55316688afb2f58c8c5f63deb36c5054f9e3",
+  "humanoid/g1_support_retrieval/oracle/navigation.py": "86bf841416f5f9f9ce98012000cca8019c2120d0ddb0d0da384ac255ad26b909",
+  "humanoid/g1_support_retrieval/oracle/upper_ik.py": "f5525862a2c042ba1e8aeeed1d2cb29f083d159bd5113f0293a2de9b1d48b6a1",
+  "humanoid/g1_support_retrieval/solution/step_up/contact_wbc.py": "86d2acf0ac0a7598f3672fb367124286242155f4b346377022d566e35e918d2e",
+  "humanoid/g1_ramp_bridge_construction/solution/shove.py": "bf674151ae16f9e5a6003a17e2f57df78280d384fde3fee35064071a328e6eef"
+ },
+ "oracle": {
+  "stages": {
+   "approach": {
+    "ok": true,
+    "reason": "",
+    "t": 8.12
+   },
+   "step_up": {
+    "ok": true,
+    "reason": "",
+    "t": 45.54
+   },
+   "push": {
+    "ok": true,
+    "reason": "",
+    "t": 67.92
+   },
+   "step_down": {
+    "ok": true,
+    "reason": "",
+    "t": 102.52
+   },
+   "to_transport": {
+    "ok": true,
+    "reason": "",
+    "t": 107.74
+   },
+   "transport": {
+    "ok": true,
+    "reason": "",
+    "t": 154.38
+   }
+  },
+  "task": {
+   "success": true,
+   "failed": false,
+   "elapsed": 154.36000061035156,
+   "hold": 0.0,
+   "peak_edge_height": 0.03849291801452637,
+   "time_out": false
+  },
+  "seconds": 154.38,
+  "wall_s": 255.2,
+  "torque_steps": 4711,
+  "qp_fallbacks": 0,
+  "torques": {
+   "effort_limits": "hardware",
+   "error": null,
+   "phases": {
+    "settle": {
+     "steps": 75,
+     "saturated": {}
+    },
+    "approach": {
+     "steps": 331,
+     "saturated": {
+      "waist_roll_joint": [
+       49.78,
+       50.0,
+       2
+      ]
+     }
+    },
+    "step_up": {
+     "steps": 1871,
+     "saturated": {}
+    },
+    "push": {
+     "steps": 1119,
+     "saturated": {
+      "waist_pitch_joint": [
+       50.0,
+       50.0,
+       3
+      ],
+      "left_hand_thumb_1_joint": [
+       1.4,
+       1.4,
+       5
+      ],
+      "left_hand_thumb_2_joint": [
+       1.4,
+       1.4,
+       4
+      ]
+     }
+    },
+    "step_down": {
+     "steps": 1730,
+     "saturated": {}
+    },
+    "to_transport": {
+     "steps": 261,
+     "saturated": {
+      "waist_pitch_joint": [
+       50.0,
+       50.0,
+       1
+      ]
+     }
+    },
+    "transport": {
+     "steps": 2332,
+     "saturated": {
+      "waist_roll_joint": [
+       50.0,
+       50.0,
+       114
+      ],
+      "waist_pitch_joint": [
+       50.0,
+       50.0,
+       12
+      ],
+      "left_wrist_yaw_joint": [
+       5.0,
+       5.0,
+       96
+      ],
+      "left_hand_thumb_1_joint": [
+       1.4,
+       1.4,
+       4
+      ],
+      "left_hand_thumb_2_joint": [
+       1.4,
+       1.4,
+       4
+      ],
+      "right_wrist_yaw_joint": [
+       5.0,
+       5.0,
+       47
+      ],
+      "right_hand_thumb_1_joint": [
+       1.4,
+       1.4,
+       4
+      ],
+      "right_hand_thumb_2_joint": [
+       1.4,
+       1.4,
+       4
+      ]
+     }
+    }
+   },
+   "peak_ratio": {
+    "hip": 0.52,
+    "knee": 0.52,
+    "ankle": 0.758,
+    "waist": 1.0,
+    "shoulder": 0.842,
+    "elbow": 0.422,
+    "wrist_roll": 0.128,
+    "wrist": 1.0,
+    "hand": 1.0
+   }
+  },
+  "target_clamp": {},
+  "events": [
+   {
+    "t": 31.44,
+    "event": "press",
+    "lift": 0.0384,
+    "bar_top": 0.0873
+   },
+   {
+    "t": 45.54,
+    "event": "on_platform",
+    "lift": 0.0367
+   },
+   {
+    "t": 102.52,
+    "event": "off_platform",
+    "skate": [
+     1.7338,
+     0.0449,
+     0.057
+    ]
+   },
+   {
+    "t": 154.38,
+    "event": "episode_end",
+    "pos": [
+     3.875,
+     0.16599999368190765,
+     0.722000002861023
+    ],
+    "contacts": {
+     "left_ankle_roll_link": 169.0,
+     "right_ankle_roll_link": 168.7
+    },
+    "success": true,
+    "failed": false,
+    "hold": 0.0,
+    "peak_edge_height": 0.03849291801452637,
+    "time_out": false
+   },
+   {
+    "t": 154.38,
+    "event": "transport",
+    "box_x": 5.83,
+    "inside": true,
+    "task_success": true
+   }
+  ],
+  "privileged_leg_torque": true,
+  "development_run": false,
+  "overrides": {},
+  "start": "task"
+ },
+ "privileged_writes_after_start": [],
+ "torque_bypass_steps": 0,
+ "channel_leg_torque_steps": 4711,
+ "channel_clipped": {},
+ "channel_clipped_steps": {},
+ "notes": [],
+ "control_steps": 7719,
+ "smoke_seconds": null,
+ "evidence_kind": "design_candidate",
+ "development_design": "lever-insertion-v3",
+ "main_task_admission_evidence": false,
+ "shortcut": null,
+ "error": null,
+ "wall_s": 277.1,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "score": 1.0,
+  "success": true,
+  "scene": "platform",
+  "variant": "platform",
+  "scene_version": "platform/89b67d62bc2b",
+  "end_reason": "finished",
+  "samples": 7720,
+  "sim_time_s": 154.38,
+  "source": "reference_recorder",
+  "observations": null,
+  "effort_limits": "hardware",
+  "simulator": {
+   "genesis-world": "1.4.3",
+   "torch": "2.11.0+cu128",
+   "numpy": "2.5.3"
+  },
+  "final_progress": 1.0,
+  "peak_time_s": 154.36,
+  "stage_best": {
+   "tool_engaged": 1.0,
+   "cargo_raised": 1.0,
+   "cargo_supported": 1.0,
+   "transported": 1.0,
+   "delivered": 1.0
+  },
+  "stage_timeline": {
+   "tool_engaged": 6.6,
+   "cargo_raised": 32.34,
+   "cargo_supported": 94.2,
+   "transported": 145.2,
+   "delivered": 154.36
+  },
+  "delivered_at_end": true,
+  "chain_complete": true,
+  "failed": false,
+  "core_success": true,
+  "core_success_time_s": 154.38,
+  "core_failed_time_s": null,
+  "max_edge_lift_m": 0.0314,
+  "min_floor_share": 0.0,
+  "max_goal_progress": 1.0,
+  "max_goal_cover": 1.0,
+  "evaluation": {
+   "success": true,
+   "success_time_s": 154.36,
+   "failed": false,
+   "failed_time_s": null,
+   "hold_s": 2.0,
+   "peak_edge_height_m": 0.0384
+  },
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "monitor_version": "h5-monitors/1",
+   "not_applicable": {
+    "box_penetration": "compound bodies: the skate decks and the lever tip sit inside the cargo's bounding box when they carry it"
+   },
+   "max_reported_speed": 0.307,
+   "max_object_speed": 0.306,
+   "max_step_speed": 0.606,
+   "max_floor_penetration": 0.001,
+   "max_out_of_bounds_m": -0.819,
+   "max_energy_excess_J": 0.024,
+   "max_reversal_rate_hand_hz": 1.0,
+   "max_arm_shake": 1.031,
+   "max_saturation_s": 0.06,
+   "max_limit_push_s": 0.0,
+   "max_progress_spike": 0.0,
+   "initial_body_offset_m": 0.0,
+   "initial_body_turn_deg": 0.0,
+   "initial_robot_offset_m": 0.0,
+   "max_robot_cargo_share": 0.0,
+   "max_applied_torque_ratio": 1.0
+  },
+  "verifier": "h5-verifier/1 (h5-monitors/1)"
+ }
+}

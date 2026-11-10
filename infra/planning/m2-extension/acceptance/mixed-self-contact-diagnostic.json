@@ -1,0 +1,38 @@
+{
+  "case": "M2-2",
+  "attempt": "b40-flat-fork-clearance",
+  "sampled_time_s": 89.99999999999064,
+  "source": "trajectory.json",
+  "source_sha256": "9af2e53ac064fd94211ce2c0a2500c843eb5c91d971d2d7d31101d8adbddac16",
+  "source_frequency_hz": 50,
+  "measured_lift_m": 0.08251653611660004,
+  "requested_lift_m": 0,
+  "measured_arm_m": 0.03662945702672005,
+  "requested_arm_m": 0.19405014105646812,
+  "self_collision_force_sum_N": 148.66849357794274,
+  "contacts": [
+    {
+      "a": "stretch",
+      "b": "stretch",
+      "link_a": "base_link",
+      "link_b": "link_wrist_pitch",
+      "force_on_b": [
+        0.10757919400930405,
+        -27.982248306274414,
+        64.32073974609375
+      ]
+    },
+    {
+      "a": "stretch",
+      "b": "stretch",
+      "link_a": "base_link",
+      "link_b": "link_wrist_pitch",
+      "force_on_b": [
+        0.11997298896312714,
+        -28.00928497314453,
+        73.35916900634766
+      ]
+    }
+  ],
+  "interpretation": "The low retracted command is blocked by real wrist/base collision. Do not remove these collision pairs. Commanded-FK clearance does not certify that the controller reaches that pose."
+}

@@ -1,0 +1,48 @@
+{
+ "schema": "infra-pipeline/1",
+ "task": "M4-autonomous-development",
+ "stamp": "20261029-204849",
+ "tier": "cpu",
+ "sources": {
+  "task": "a45b841663467b8e6b88bb214d03ec71a6f3b9753566888de79c7a8f7ea9bb13",
+  "task_files": 2769,
+  "infra": "df37b861608e9cab192ba2d3945271c00418edc7408aa63738e5b755522a895b",
+  "infra_files": 53
+ },
+ "steps": [
+  {
+   "name": "contracts_and_namespace_controls",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 4.5,
+   "output_tail": [
+    "test_dev_cannot_bypass_scratch_quota (m4_family.autonomous.test_agent_process.BoundaryTests.test_dev_cannot_bypass_scratch_quota) ... ok",
+    "test_host_files_source_mutation_and_network_are_denied (m4_family.autonomous.test_agent_process.BoundaryTests.test_host_files_source_mutation_and_network_are_denied) ... ok",
+    "test_illegal_action_voids_entire_session (m4_family.autonomous.test_agent_process.BoundaryTests.test_illegal_action_voids_entire_session) ... ok",
+    "test_memory_and_process_limits_are_effective (m4_family.autonomous.test_agent_process.BoundaryTests.test_memory_and_process_limits_are_effective) ... ok",
+    "test_persistent_agent_and_fresh_episode_workspace (m4_family.autonomous.test_agent_process.BoundaryTests.test_persistent_agent_and_fresh_episode_workspace) ... ok",
+    "test_replayed_sequence_and_nonfinite_actions_are_rejected (m4_family.autonomous.test_agent_process.BoundaryTests.test_replayed_sequence_and_nonfinite_actions_are_rejected) ... ok",
+    "test_response_flood_and_timeout_are_void (m4_family.autonomous.test_agent_process.BoundaryTests.test_response_flood_and_timeout_are_void) ... ok",
+    "test_symlink_delivery_is_rejected_before_execution (m4_family.autonomous.test_agent_process.BoundaryTests.test_symlink_delivery_is_rejected_before_execution) ... ok",
+    "test_only_actual_submitted_actions_and_untampered_exchange_pass (m4_family.autonomous.test_agent_evidence.BindingTests.test_only_actual_submitted_actions_and_untampered_exchange_pass) ... ok",
+    "----------------------------------------------------------------------",
+    "Ran 51 tests in 3.220s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "admission_record_schema",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 0.2,
+   "output_tail": [
+    "task   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14  admitted  problems",
+    "M4     ~  -  ~  ~  ~  ~  .  ~  .  .  ~  .  ~  ~  ~  False     0",
+    "gates: 0 reference_expert, 1 official_trajectories, 2 coverage, 3 reference_rerun_spread, 4 verifier_validity, 5 monitors_calibrated, 6 predicate_labels, 7 shortcut_audit, 8 video_review, 9 independent_reproduction, 10 sandbox_isolation, 11 grading_mode, 12 static_checks, 13 randomisation, 14 automatic_pipeline"
+   ],
+   "passed": true
+  }
+ ],
+ "passed": true
+}

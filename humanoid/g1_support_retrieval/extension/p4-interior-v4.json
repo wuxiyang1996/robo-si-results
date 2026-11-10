@@ -1,0 +1,95 @@
+{
+  "schema": "h1-extension-physical-development/1",
+  "task_id": "H1S-07.P4",
+  "profile": "g1_dex3_ground_push_interior_v4",
+  "created_date": "2026-10-27",
+  "development_only": true,
+  "formal_admission": false,
+  "seed": 0,
+  "robot": "existing_g1_29dof_dex3_43_actuated_joints",
+  "target": {
+    "size_m": [
+      0.45,
+      0.5,
+      0.18
+    ],
+    "mass_kg": 5.0,
+    "initial_center_m": [
+      2.3,
+      0.0,
+      0.09
+    ],
+    "friction": 0.5
+  },
+  "goal": {
+    "center_xy_m": [
+      2.66,
+      0.0
+    ],
+    "size_xy_m": [
+      0.6,
+      0.7
+    ],
+    "hold_s": 3.0,
+    "max_linear_speed_m_s": 0.03,
+    "max_angular_speed_rad_s": 0.05,
+    "max_tilt_deg": 5.0,
+    "max_ground_gap_m": 0.008
+  },
+  "public_rules": {
+    "lifted_payload_limit_kg": 2.0,
+    "ground_supported_push_allowed": true,
+    "attachment_allowed": false,
+    "runtime_pose_write_allowed": false,
+    "root_wrench_allowed": false,
+    "explanation": "5 kg exceeds the declared 2 kg lifted-payload rule. This is a public-rule boundary, not a certificate that the robot cannot physically lift 5 kg. Ground-supported push is the selected legal operation."
+  },
+  "budget": {
+    "wall_seconds_per_attempt": 3600,
+    "simulation_seconds_per_attempt": 600,
+    "physics_dt_s": 0.005,
+    "control_dt_s": 0.02,
+    "max_control_steps": 30000,
+    "max_physics_steps": 120000,
+    "candidate_plans": 1,
+    "short_probe_count": 0,
+    "short_probe_max_steps": 0,
+    "screening_wall_seconds": 60,
+    "max_resets_per_attempt": 0,
+    "representative_repeats": 3,
+    "token_budget": null,
+    "token_budget_reason": "deterministic privileged expert; no language model called",
+    "observation_budget": 30000,
+    "observation_scope": "privileged state each control step"
+  },
+  "controller": {
+    "cycles": 3,
+    "stroke_m": 0.12,
+    "max_push_per_hand_N": 45.0,
+    "final_approach_m": 0.0,
+    "final_hold_s": 4.0,
+    "video_fps": 5,
+    "waist_upper_rad": 0.44,
+    "thumb_fold_rad": -0.99,
+    "elbow_upper_rad": 2.0,
+    "finger_reference_min_rad": 0.06,
+    "clear_hands_seconds": 6.0,
+    "stand_up_seconds": 20.0,
+    "terminal_joint_step_rad": 0.005,
+    "measured_clear_start": true
+  },
+  "scope": "Bounded privileged development reference; no handle variant, no general randomized-policy or sensor-only claim. The task accepts every complete legal route. Full target AABB, ground support, no hand contact and 3 second dwell are scored from measured trace. Initial D exclusion is checked.",
+  "revision_reason": "v3 genuine failures: sustained outward elbow control force near upper hardware stop (rule5), ClearHands index/middle neutral-stop and waist transient overshoot, and 0.04s dual-foot unloading violating the predeclared macro support predicate. V4 changes only reference interior margins, measured-MCP clear start, inside-IK step bound and phase durations; physical model and all safety/skill thresholds stay unchanged.",
+  "acceptance": {
+    "position_tolerance_rad": 0.001,
+    "source": "sandbox/trusted/relay_scoring.py:31",
+    "goal_dwell_s": 3.0,
+    "no_weakening_from_historical_standard": true
+  },
+  "controller_scope_notes": [
+    "finger_reference_min_rad applies only mirrored index/middle flex/distal, including zero-open commands in StandUp; thumb2 neutral is unchanged and still physically audited",
+    "reach joint upper overrides constrain IK references, never actual simulator joint limits or actual state",
+    "ClearHands starts from fresh measured MCP and clears the reference integrator, never resets physical state",
+    "only explicit palm-only IK misses may use fallback; foot or COM constraint failures stop rather than silently accepting infeasible references"
+  ]
+}

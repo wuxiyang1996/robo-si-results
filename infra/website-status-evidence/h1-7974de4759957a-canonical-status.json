@@ -1,0 +1,358 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-10-25T13:28:08.181124+00:00",
+  "admitted": false,
+  "release_ready": true,
+  "current_focus": "Fixed 1.25 m original-scene reference archive verified and ready for scoped publication",
+  "scene": {
+    "profile": "reference_v15",
+    "seed": 2,
+    "target_shelf_m": 1.25,
+    "initial_gap_m": 0.46,
+    "original_distractor_retained": true
+  },
+  "current_native": {
+    "candidate": 371,
+    "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_371\\runs\\canonical-full-01",
+    "status": "complete_current_rule_success",
+    "success": true,
+    "physical_duration_s": 1003.36,
+    "physics_steps": 200672,
+    "score": 0.9999999999999999,
+    "integrity": {
+      "ok": true,
+      "void": false,
+      "reasons": [],
+      "excluded_frames": 0,
+      "safety_coverage": {
+        "complete": true,
+        "has_gaps": false,
+        "invalid_frames": 0
+      },
+      "max_joint_limit_overshoot": 0.0,
+      "max_effort_ratio": 1.0,
+      "max_speed_ratio": 0.31156680583953855,
+      "physics_samples": 200672,
+      "joint_count": 43,
+      "physics_dt": 0.005
+    },
+    "safety_events": [],
+    "rule5": {
+      "status": "evaluated",
+      "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+      "max_saturation_s": 1.92,
+      "max_limit_push_s": 0.0
+    },
+    "evidence": "candidate371_canonical-full-01_audit.json"
+  },
+  "current_native_repeat": {
+    "candidate": 371,
+    "status": "three_of_three_qualified",
+    "evidence": "candidate371_cohort_summary.json"
+  },
+  "current_lowcmd": {
+    "candidate": 373,
+    "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_373\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-full-lowcmd-01",
+    "status": "complete_current_rule_success",
+    "success": true,
+    "physical_duration_s": 1003.12,
+    "physics_steps": 200624,
+    "score": 1.0,
+    "integrity": {
+      "ok": true,
+      "void": false,
+      "reasons": [],
+      "excluded_frames": 0,
+      "safety_coverage": {
+        "complete": true,
+        "has_gaps": false,
+        "invalid_frames": 0
+      },
+      "max_joint_limit_overshoot": 0.0,
+      "max_effort_ratio": 1.0,
+      "max_speed_ratio": 0.29907727241516113,
+      "physics_samples": 200624,
+      "joint_count": 43,
+      "physics_dt": 0.005
+    },
+    "safety_events": [],
+    "rule5": {
+      "status": "evaluated",
+      "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+      "max_saturation_s": 2.06,
+      "max_limit_push_s": 0.04
+    },
+    "evidence": "candidate373_canonical-full-lowcmd-01_audit.json",
+    "channel_qualified": true,
+    "channel_clipped": {}
+  },
+  "native_frozen_cohort": {
+    "candidate": 371,
+    "completed_attempts": 3,
+    "successes": 3,
+    "failed_safe_incomplete": 0,
+    "repeatability_passed": true,
+    "evidence": "candidate371_cohort_summary.json",
+    "score_range": 0.0
+  },
+  "bridge_adaptation": {
+    "candidate": 367,
+    "status": "local_physical_completion_verified_with_exact_original_monitor_history",
+    "motion_executed": true,
+    "thresholds_unchanged": true,
+    "original_mismatch_m": 0.02189158202641407,
+    "corrected_mismatch_m": 0.010199861793260235,
+    "planning_evidence": "candidate367_bridge02_cpu_diagnosis.json",
+    "diagnostic_run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_367\\runs\\walk-setdown-01",
+    "physical_duration_s": 277.72,
+    "standalone_verdict_has_rule1_event": true,
+    "standalone_verdict_preserved": true,
+    "exact_history_replay_no_safety_events": true,
+    "diagnostic_evidence": "candidate367_setdown_audit.json",
+    "history_evidence": "candidate367_support_history_audit.json",
+    "full_task_qualification": false
+  },
+  "cpu": {
+    "candidate": 371,
+    "passed": true,
+    "tests": 399,
+    "evidence": "candidate371_cpu_suite.log.result.json"
+  },
+  "current_pipeline_sensor_geometry": {
+    "passed": true,
+    "evidence": "canonical_sensor_twopose_validation.json",
+    "main_record": "acceptance/pipeline/20261025-022633-gpu.json",
+    "scope": "Nominal and physically commanded calibration pose both satisfy all four original error bounds; calibration independently supplies 1,013 floor hits against unchanged 1,000 minimum. This changes calibration coverage, not task physics or production sensors."
+  },
+  "release_blockers": [],
+  "formal_admission_scope": "Randomized/higher-layer coverage and independent human acceptance remain separate and unpassed.",
+  "prior_history": "canonical_history_before_first_positive.json",
+  "review_package": "canonical_review_package.json",
+  "repeat03_guard": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_365\\repeat03_guard.json",
+  "repeat_guard_status": "Terminal prerequisite failure recorded; C365 repeat03 was not started.",
+  "active_verification": {
+    "native_candidate": 371,
+    "channel_candidate": 373,
+    "native_full01": "qualified",
+    "native_full02": "qualified",
+    "native_full03": "qualified",
+    "channel_full01": "qualified",
+    "same_controller_source_hashes": true,
+    "full_qualification": true
+  },
+  "prior_repair_native_failure": {
+    "candidate": 367,
+    "status": "failed_safe_incomplete",
+    "time_s": 95.16,
+    "reason": "standup:stable_hold:fail:unstable_hold",
+    "safety_events": [],
+    "evidence": "candidate367_canonical-full-01_audit.json",
+    "diagnosis": "candidate367_lift_hold_diagnosis.json"
+  },
+  "new_cohort_progress": {
+    "native_candidate": 371,
+    "channel_candidate": 373,
+    "native_successes": 3,
+    "native_required": 3,
+    "matching_lowcmd_success": true,
+    "lowcmd_clipping": 0,
+    "same_initial_scene_for_all_four": true,
+    "cohort_passed": true,
+    "cohort_evidence": "candidate371_cohort_summary.json"
+  },
+  "prior_baseline_results": {
+    "current_native": {
+      "candidate": 365,
+      "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_365\\runs\\canonical-full-01",
+      "status": "complete_current_rule_success",
+      "success": true,
+      "physical_duration_s": 1003.0,
+      "physics_steps": 200600,
+      "score": 0.9999999999999999,
+      "safety_events": [],
+      "max_joint_overshoot_rad": 3.125376701357263e-05,
+      "rule5": {
+        "status": "evaluated",
+        "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+        "max_saturation_s": 1.64,
+        "max_limit_push_s": 0.04
+      },
+      "evidence": "candidate365_canonical-full-01_audit.json",
+      "video": "../../media/canonical365_full01/motion-24x.mp4"
+    },
+    "current_native_repeat": {
+      "candidate": 365,
+      "status": "failed_safe_incomplete",
+      "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_365\\runs\\canonical-full-02",
+      "expert_status": "setdown:bridge_plan_failed",
+      "time_s": 451.38,
+      "reason": "lowering_template_grip_displacement_exceeds20mm",
+      "measured_grip_mismatch_m": 0.02189158202641407,
+      "evidence": "candidate365_canonical-full-02_audit.json"
+    },
+    "current_lowcmd": {
+      "candidate": 366,
+      "status": "task_success_channel_clipping_unqualified",
+      "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_366\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-full-lowcmd-01",
+      "task_success": true,
+      "channel_qualified": false,
+      "physical_duration_s": 1001.34,
+      "physics_steps": 200268,
+      "score": 1.0,
+      "integrity": {
+        "ok": true,
+        "void": false,
+        "reasons": [],
+        "excluded_frames": 0,
+        "safety_coverage": {
+          "complete": true,
+          "has_gaps": false,
+          "invalid_frames": 0
+        },
+        "max_joint_limit_overshoot": 0.0,
+        "max_effort_ratio": 1.0,
+        "max_speed_ratio": 0.3133519649505615,
+        "physics_samples": 200268,
+        "joint_count": 43,
+        "physics_dt": 0.005
+      },
+      "safety_events": [],
+      "channel_clipped": {
+        "q": 6
+      },
+      "evidence": "candidate366_canonical-full-lowcmd-01_audit.json",
+      "diagnosis": "Rounded task bounds can exceed exact physical bounds in DC-motor PD targets. Six recorded q clips; request logs lack raw joint commands, so exact clipped joints/magnitudes cannot be recovered. C367 applies existing physical margins to PD and servo dispatch alike; revalidation pending."
+    },
+    "native_frozen_cohort": {
+      "candidate": 365,
+      "completed_attempts": 2,
+      "successes": 1,
+      "failed_safe_incomplete": 1,
+      "third_started": false,
+      "repeatability_passed": false
+    }
+  },
+  "holding_control_diagnostics": {
+    "native_candidates": [
+      371,
+      372
+    ],
+    "strategies": [
+      "fixed_joint_reference",
+      "constant_load_feedforward"
+    ],
+    "cpu_tests_each": 399,
+    "original_start": true,
+    "stop_after": "lift",
+    "physics_runs": {
+      "371_initial01": "passed",
+      "371_initial02": "passed",
+      "372_initial01": "passed"
+    },
+    "full_qualification": false
+  },
+  "prior_369_370_verification": {
+    "native_candidate": 369,
+    "channel_candidate": 370,
+    "native_full01": "qualified",
+    "native_full02": "qualified",
+    "native_full03": "failed_safe_incomplete_101.16s",
+    "channel_full01": "qualified",
+    "prior_channel368_full01": "superseded_at318.30s_retained_incomplete",
+    "same_controller_source_hashes": true,
+    "full_qualification": false,
+    "repeat03_guard": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_369\\repeat03_guard.json"
+  },
+  "prior_original_start_results": {
+    "current_native": {
+      "candidate": 369,
+      "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_369\\runs\\canonical-full-01",
+      "status": "complete_current_rule_success",
+      "success": true,
+      "physical_duration_s": 1008.74,
+      "physics_steps": 201748,
+      "score": 0.9999999999999999,
+      "integrity": {
+        "ok": true,
+        "void": false,
+        "reasons": [],
+        "excluded_frames": 0,
+        "safety_coverage": {
+          "complete": true,
+          "has_gaps": false,
+          "invalid_frames": 0
+        },
+        "max_joint_limit_overshoot": 0.0,
+        "max_effort_ratio": 1.0,
+        "max_speed_ratio": 0.3185904026031494,
+        "physics_samples": 201748,
+        "joint_count": 43,
+        "physics_dt": 0.005
+      },
+      "safety_events": [],
+      "rule5": {
+        "status": "evaluated",
+        "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+        "max_saturation_s": 1.32,
+        "max_limit_push_s": 0.04
+      },
+      "evidence": "candidate369_canonical-full-01_audit.json"
+    },
+    "current_native_repeat": {
+      "candidate": 369,
+      "status": "failed_safe_incomplete",
+      "run": "canonical-full-03",
+      "time_s": 101.16,
+      "reason": "Initial lift has no continuous two-second speed-eligible window during the retained 14-second wait cap.",
+      "maximum_stool_speed_mps": 0.18999015668932534,
+      "longest_speed_eligible_window_s": 0.7,
+      "evidence": "candidate369_canonical-full-03_audit.json"
+    },
+    "current_lowcmd": {
+      "candidate": 370,
+      "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_370\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-full-lowcmd-01",
+      "status": "complete_current_rule_success",
+      "success": true,
+      "physical_duration_s": 1004.28,
+      "physics_steps": 200856,
+      "score": 1.0,
+      "integrity": {
+        "ok": true,
+        "void": false,
+        "reasons": [],
+        "excluded_frames": 0,
+        "safety_coverage": {
+          "complete": true,
+          "has_gaps": false,
+          "invalid_frames": 0
+        },
+        "max_joint_limit_overshoot": 0.0,
+        "max_effort_ratio": 1.0,
+        "max_speed_ratio": 0.3001967191696167,
+        "physics_samples": 200856,
+        "joint_count": 43,
+        "physics_dt": 0.005
+      },
+      "safety_events": [],
+      "rule5": {
+        "status": "evaluated",
+        "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+        "max_saturation_s": 1.78,
+        "max_limit_push_s": 0.02
+      },
+      "evidence": "candidate370_canonical-full-lowcmd-01_audit.json",
+      "channel_qualified": true,
+      "channel_clipped": {}
+    },
+    "native_frozen_cohort": {
+      "candidate": 369,
+      "completed_attempts": 3,
+      "successes": 2,
+      "failed_safe_incomplete": 1,
+      "repeatability_passed": false,
+      "evidence": "candidate369_cohort_summary.json"
+    }
+  },
+  "release_artifact": "canonical_release_artifact.json",
+  "remote_publication_performed": false
+}

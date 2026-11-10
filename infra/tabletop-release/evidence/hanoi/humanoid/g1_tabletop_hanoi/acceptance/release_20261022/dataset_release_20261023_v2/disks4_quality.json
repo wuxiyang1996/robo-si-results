@@ -1,0 +1,4010 @@
+{
+  "kind": "recorded_trajectory_quality",
+  "schema_version": 1,
+  "episode": "D:\\rsi_vla\\robo-si\\humanoid\\g1_tabletop_hanoi\\acceptance\\release_20261022\\sweep_swept_thumb_release_v2\\disks4\\nominal\\run\\expert",
+  "source_sha256": {
+    "metadata.json": "bc626c5aebad438c263e97ef110d0cc48c96dd5994d9b2ec69f649a90535ba31",
+    "trajectory.jsonl": "63d4288d1749d651a9d8372688198e6e31790a2778ca4dba80f58c75e8a5c192"
+  },
+  "analysis_source_sha256": "5a9bc58643209fafc02bdbb0311aece7e6772f0ccb624043b830902f1b0d015a",
+  "task_config_compatibility_defaults": {},
+  "recorded_evidence_accepted": true,
+  "recording_validation_issues": [],
+  "independent_physics_replay_verified": false,
+  "physical_task_solution_verified": false,
+  "scope": "Descriptive offline statistics of recorded 50 Hz endpoints, not physical replay or a new admission decision.",
+  "sampling": {
+    "control_dt_seconds": 0.02,
+    "environment_evaluation_dt_seconds": 0.005,
+    "absence_duration_method": "Sum each sampled-absent endpoint's preceding control interval; this is an estimate, not continuous observation.",
+    "unobserved_between_samples": true,
+    "force_source": "controller.hand_forces_n: recorded per-hand sums of actual contact-force magnitudes; annotations are not independent evidence.",
+    "force_contact_threshold_n": 0.05,
+    "stage_source": "Controller annotations only partition statistics; legality comes from the recorded environment move log and statuses."
+  },
+  "duration_seconds": 174.26500000000001,
+  "move_count": 15,
+  "moves": [
+    {
+      "move_number": 1,
+      "disk": "disk_3",
+      "source": "A",
+      "target": "B",
+      "time": 14.560000000000876,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 0,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 8.08,
+          "last_sample_time": 9.56,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.657842755317688,
+              "median_n": 3.925444483757019,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.1643099784851074,
+              "median_n": 3.915771484375,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.034624417349275904
+        },
+        "transfer": {
+          "sample_count": 128,
+          "sampled_interval_seconds": 2.5600000000000005,
+          "first_sample_time": 9.58,
+          "last_sample_time": 12.120000000000001,
+          "any_hand_contact_absence": {
+            "sample_count": 128,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.8364500999450684,
+              "median_n": 3.165953278541565,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.8183436393737793,
+              "median_n": 3.179647445678711,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.05276547977229679
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999996,
+          "first_sample_time": 12.14,
+          "last_sample_time": 13.72,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.8397555351257324,
+              "median_n": 3.1995643377304077,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.5647424459457397,
+              "median_n": 3.199535608291626,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.034800317361241256
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000003,
+          "first_sample_time": 13.74,
+          "last_sample_time": 15.540000000000001,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 74,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.4800000000000004,
+            "longest_sampled_absence_seconds_estimate": 1.4800000000000004
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 74,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.4800000000000004,
+                "longest_sampled_absence_seconds_estimate": 1.4800000000000004
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.0017113218434825952
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 283,
+        "sampled_interval_seconds": 5.66,
+        "first_sample_time": 8.08,
+        "last_sample_time": 13.72,
+        "any_hand_contact_absence": {
+          "sample_count": 283,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.8364500999450684,
+            "median_n": 3.2308173179626465,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.5647424459457397,
+            "median_n": 3.233026385307312,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.05276547977229679
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 8.540000000000001,
+        "transferring_disk": 9.06,
+        "settling_disk": 14.08
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 51,
+      "source_rod_clearance_first_sample_time": 9.06,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.4800000000000003,
+        "commit_sample_time": 14.56,
+        "commit_sample_delay_seconds": -8.757439218243235e-13,
+        "consecutive_stable_samples_through_commit": 25,
+        "sampled_stable_span_through_commit_seconds": 0.4800000000000004,
+        "commit_sample": {
+          "tilt_rad": 6.922476398124291e-07,
+          "bottom_m": 0.7649908196509267,
+          "linear_speed_m_s": 2.5001790642946884e-06,
+          "angular_speed_rad_s": 4.899250648471439e-06,
+          "xy_error_m": 0.0029185438748298704,
+          "z_error_m": 9.145736694304851e-06,
+          "expected_support": "pad_B",
+          "support_force_n": 1.177199937403202,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 2,
+      "disk": "disk_2",
+      "source": "A",
+      "target": "C",
+      "time": 26.744999999998964,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 0,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 18.96,
+          "last_sample_time": 20.44,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 4.091861248016357,
+              "median_n": 4.895325601100922,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.3575401306152344,
+              "median_n": 4.374395847320557,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.04146320098384707
+        },
+        "transfer": {
+          "sample_count": 195,
+          "sampled_interval_seconds": 3.8999999999999986,
+          "first_sample_time": 20.46,
+          "last_sample_time": 24.34,
+          "any_hand_contact_absence": {
+            "sample_count": 195,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 195,
+              "missing_samples": 0,
+              "min_n": 3.0438637733459473,
+              "median_n": 4.773821294307709,
+              "contact_absence": {
+                "sample_count": 195,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 195,
+              "missing_samples": 0,
+              "min_n": 3.04909348487854,
+              "median_n": 4.53214693069458,
+              "contact_absence": {
+                "sample_count": 195,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.05353908680000031
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.6000000000000014,
+          "first_sample_time": 24.36,
+          "last_sample_time": 25.94,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.7214324474334717,
+              "median_n": 4.48417067527771,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.2960119247436523,
+              "median_n": 4.145229250192642,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.0676731184313145
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000003,
+          "first_sample_time": 25.96,
+          "last_sample_time": 27.76,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 76,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.5199999999999996,
+            "longest_sampled_absence_seconds_estimate": 1.5199999999999996
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 77,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5400000000000027,
+                "longest_sampled_absence_seconds_estimate": 1.5400000000000027
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 76,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5199999999999996,
+                "longest_sampled_absence_seconds_estimate": 1.5199999999999996
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.017643591317530394
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 350,
+        "sampled_interval_seconds": 7.0,
+        "first_sample_time": 18.96,
+        "last_sample_time": 25.94,
+        "any_hand_contact_absence": {
+          "sample_count": 350,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 350,
+            "missing_samples": 0,
+            "min_n": 3.0438637733459473,
+            "median_n": 4.700298391282558,
+            "contact_absence": {
+              "sample_count": 350,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 350,
+            "missing_samples": 0,
+            "min_n": 2.2960119247436523,
+            "median_n": 4.38977837562561,
+            "contact_absence": {
+              "sample_count": 350,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.0676731184313145
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 19.400000000000002,
+        "transferring_disk": 20.0,
+        "settling_disk": 26.26
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 50,
+      "source_rod_clearance_first_sample_time": 20.0,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.49500000000000033,
+        "commit_sample_time": 26.76,
+        "commit_sample_delay_seconds": 0.01500000000103796,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 3.7873050941564833e-07,
+          "bottom_m": 0.7649907706723962,
+          "linear_speed_m_s": 3.9653919724133685e-06,
+          "angular_speed_rad_s": 1.869835880612843e-05,
+          "xy_error_m": 0.0032120506337647006,
+          "z_error_m": 9.205341339080242e-06,
+          "expected_support": "pad_C",
+          "support_force_n": 1.1771957501769066,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 3,
+      "disk": "disk_3",
+      "source": "B",
+      "target": "C",
+      "time": 37.6300000000008,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 1,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5000000000000036,
+          "first_sample_time": 31.18,
+          "last_sample_time": 32.660000000000004,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.379650115966797,
+              "median_n": 2.6656007766723633,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.402767539024353,
+              "median_n": 2.705463409423828,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.02706112329149511
+        },
+        "transfer": {
+          "sample_count": 128,
+          "sampled_interval_seconds": 2.559999999999995,
+          "first_sample_time": 32.68,
+          "last_sample_time": 35.22,
+          "any_hand_contact_absence": {
+            "sample_count": 128,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.7011094093322754,
+              "median_n": 3.6412554383277893,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.684748411178589,
+              "median_n": 3.8217859268188477,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.07012373285972665
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.6000000000000014,
+          "first_sample_time": 35.24,
+          "last_sample_time": 36.82,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.1393710374832153,
+              "median_n": 4.018496870994568,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.505550444126129,
+              "median_n": 3.8255457282066345,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.06350608548127858
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000003,
+          "first_sample_time": 36.84,
+          "last_sample_time": 38.64,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 76,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.5200000000000031,
+            "longest_sampled_absence_seconds_estimate": 1.5200000000000031
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 76,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5200000000000031,
+                "longest_sampled_absence_seconds_estimate": 1.5200000000000031
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 76,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5200000000000031,
+                "longest_sampled_absence_seconds_estimate": 1.5200000000000031
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.021334519942141916
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 283,
+        "sampled_interval_seconds": 5.66,
+        "first_sample_time": 31.18,
+        "last_sample_time": 36.82,
+        "any_hand_contact_absence": {
+          "sample_count": 283,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.379650115966797,
+            "median_n": 3.6168484687805176,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.402767539024353,
+            "median_n": 3.57002592086792,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.07012373285972665
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 31.560000000000002,
+        "transferring_disk": 32.24,
+        "settling_disk": 37.14
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 47,
+      "source_rod_clearance_first_sample_time": 32.24,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.4900000000000003,
+        "commit_sample_time": 37.64,
+        "commit_sample_delay_seconds": 0.009999999999202203,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 8.660260369165536e-05,
+          "bottom_m": 0.7899572344575589,
+          "linear_speed_m_s": 2.48203385639207e-06,
+          "angular_speed_rad_s": 0.00015098593814141228,
+          "xy_error_m": 0.0015019299163604922,
+          "z_error_m": 3.843545913695401e-05,
+          "expected_support": "disk_2",
+          "support_force_n": 1.177251122891903,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 4,
+      "disk": "disk_1",
+      "source": "A",
+      "target": "B",
+      "time": 48.54000000000638,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 0,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 42.06,
+          "last_sample_time": 43.54,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 4.157025337219238,
+              "median_n": 4.863696575164795,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.9828323125839233,
+              "median_n": 4.730046987533569,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.03844320459723451
+        },
+        "transfer": {
+          "sample_count": 128,
+          "sampled_interval_seconds": 2.5600000000000023,
+          "first_sample_time": 43.56,
+          "last_sample_time": 46.1,
+          "any_hand_contact_absence": {
+            "sample_count": 128,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 3.40693736076355,
+              "median_n": 3.756892740726471,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 3.4984185695648193,
+              "median_n": 3.788611888885498,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.06295242537169654
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.6000000000000014,
+          "first_sample_time": 46.12,
+          "last_sample_time": 47.7,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.3810746669769287,
+              "median_n": 3.8981558084487915,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.3682785034179688,
+              "median_n": 3.9020615220069885,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.5602453582154748
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000003,
+          "first_sample_time": 47.72,
+          "last_sample_time": 49.52,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 74,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.480000000000004,
+            "longest_sampled_absence_seconds_estimate": 1.480000000000004
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.500000000000007,
+                "longest_sampled_absence_seconds_estimate": 1.480000000000004
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.0002859860178962625
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 283,
+        "sampled_interval_seconds": 5.660000000000004,
+        "first_sample_time": 42.06,
+        "last_sample_time": 47.7,
+        "any_hand_contact_absence": {
+          "sample_count": 283,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 3.3810746669769287,
+            "median_n": 3.9128615856170654,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 3.3682785034179688,
+            "median_n": 3.9383013248443604,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.5602453582154748
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 42.480000000000004,
+        "transferring_disk": 43.1,
+        "settling_disk": 48.06
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 48,
+      "source_rod_clearance_first_sample_time": 43.1,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.4800000000000003,
+        "commit_sample_time": 48.54,
+        "commit_sample_delay_seconds": -6.3806737671257e-12,
+        "consecutive_stable_samples_through_commit": 25,
+        "sampled_stable_span_through_commit_seconds": 0.4799999999999969,
+        "commit_sample": {
+          "tilt_rad": 5.445662972795611e-07,
+          "bottom_m": 0.7649908721178694,
+          "linear_speed_m_s": 4.011961748578602e-06,
+          "angular_speed_rad_s": 1.5931313844662946e-05,
+          "xy_error_m": 0.0017277049755492757,
+          "z_error_m": 9.08613204952946e-06,
+          "expected_support": "pad_B",
+          "support_force_n": 1.1772007644176483,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 5,
+      "disk": "disk_3",
+      "source": "C",
+      "target": "A",
+      "time": 60.07000000001228,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 1,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 52.94,
+          "last_sample_time": 54.42,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.4424917697906494,
+              "median_n": 3.962385654449463,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.09138560295105,
+              "median_n": 3.825701653957367,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.05265969431155591
+        },
+        "transfer": {
+          "sample_count": 162,
+          "sampled_interval_seconds": 3.240000000000002,
+          "first_sample_time": 54.44,
+          "last_sample_time": 57.660000000000004,
+          "any_hand_contact_absence": {
+            "sample_count": 162,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 162,
+              "missing_samples": 0,
+              "min_n": 2.876293659210205,
+              "median_n": 4.104315102100372,
+              "contact_absence": {
+                "sample_count": 162,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 162,
+              "missing_samples": 0,
+              "min_n": 2.782841920852661,
+              "median_n": 4.077629834413528,
+              "contact_absence": {
+                "sample_count": 162,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.06633030863827945
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 57.68,
+          "last_sample_time": 59.26,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.961878538131714,
+              "median_n": 3.8595274686813354,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.2864028215408325,
+              "median_n": 4.465004205703735,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.07782808812274267
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000003,
+          "first_sample_time": 59.28,
+          "last_sample_time": 61.08,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 76,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.519999999999996,
+            "longest_sampled_absence_seconds_estimate": 1.519999999999996
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 76,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.519999999999996,
+                "longest_sampled_absence_seconds_estimate": 1.519999999999996
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 77,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5399999999999991,
+                "longest_sampled_absence_seconds_estimate": 1.5399999999999991
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.010396808417619178
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 317,
+        "sampled_interval_seconds": 6.339999999999996,
+        "first_sample_time": 52.94,
+        "last_sample_time": 59.26,
+        "any_hand_contact_absence": {
+          "sample_count": 317,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 317,
+            "missing_samples": 0,
+            "min_n": 2.4424917697906494,
+            "median_n": 4.0470916628837585,
+            "contact_absence": {
+              "sample_count": 317,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 317,
+            "missing_samples": 0,
+            "min_n": 2.2864028215408325,
+            "median_n": 4.034945845603943,
+            "contact_absence": {
+              "sample_count": 317,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.07782808812274267
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 53.38,
+        "transferring_disk": 54.0,
+        "settling_disk": 59.58
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 49,
+      "source_rod_clearance_first_sample_time": 54.0,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.4900000000000003,
+        "commit_sample_time": 60.08,
+        "commit_sample_delay_seconds": 0.009999999987719832,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 1.9485894834420413e-05,
+          "bottom_m": 0.7899626764110617,
+          "linear_speed_m_s": 4.713722370155039e-06,
+          "angular_speed_rad_s": 0.00016018523606700245,
+          "xy_error_m": 0.0011949552272575389,
+          "z_error_m": 3.634929656981534e-05,
+          "expected_support": "disk_0",
+          "support_force_n": 1.1772004142403603,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 6,
+      "disk": "disk_2",
+      "source": "C",
+      "target": "B",
+      "time": 70.98000000000793,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 1,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 64.5,
+          "last_sample_time": 65.98,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.9924261569976807,
+              "median_n": 3.8672510385513306,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.3522695302963257,
+              "median_n": 4.378582373261452,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.050797792376944796
+        },
+        "transfer": {
+          "sample_count": 128,
+          "sampled_interval_seconds": 2.5600000000000023,
+          "first_sample_time": 66.0,
+          "last_sample_time": 68.54,
+          "any_hand_contact_absence": {
+            "sample_count": 128,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 3.016503930091858,
+              "median_n": 3.2859702184796333,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 3.083421289920807,
+              "median_n": 3.623245656490326,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.030879295182778505
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 68.56,
+          "last_sample_time": 70.14,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.7657456398010254,
+              "median_n": 3.116848349571228,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.965609520673752,
+              "median_n": 3.3988998234272003,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.03303986199011387
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000074,
+          "first_sample_time": 70.16,
+          "last_sample_time": 71.96000000000001,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 74,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.480000000000004,
+            "longest_sampled_absence_seconds_estimate": 1.480000000000004
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 74,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.480000000000004,
+                "longest_sampled_absence_seconds_estimate": 1.480000000000004
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.00019547169610964187
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 283,
+        "sampled_interval_seconds": 5.659999999999997,
+        "first_sample_time": 64.5,
+        "last_sample_time": 70.14,
+        "any_hand_contact_absence": {
+          "sample_count": 283,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.7657456398010254,
+            "median_n": 3.375287115573883,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.965609520673752,
+            "median_n": 3.6927775144577026,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.050797792376944796
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 64.9,
+        "transferring_disk": 65.58,
+        "settling_disk": 70.5
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 46,
+      "source_rod_clearance_first_sample_time": 65.58,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.4800000000000003,
+        "commit_sample_time": 70.98,
+        "commit_sample_delay_seconds": -7.929656931082718e-12,
+        "consecutive_stable_samples_through_commit": 25,
+        "sampled_stable_span_through_commit_seconds": 0.480000000000004,
+        "commit_sample": {
+          "tilt_rad": 3.1635237336701618e-06,
+          "bottom_m": 0.789979245577855,
+          "linear_speed_m_s": 5.085547718668058e-06,
+          "angular_speed_rad_s": 4.760230640458286e-05,
+          "xy_error_m": 0.000925118849834866,
+          "z_error_m": 2.055406570433682e-05,
+          "expected_support": "disk_1",
+          "support_force_n": 1.1771971276029944,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 7,
+      "disk": "disk_3",
+      "source": "A",
+      "target": "B",
+      "time": 81.84499999999805,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 2,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 75.38,
+          "last_sample_time": 76.86,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.8588840514421463,
+              "median_n": 4.077201426029205,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.6403555870056152,
+              "median_n": 4.08629846572876,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.06766051512356447
+        },
+        "transfer": {
+          "sample_count": 128,
+          "sampled_interval_seconds": 2.5600000000000023,
+          "first_sample_time": 76.88,
+          "last_sample_time": 79.42,
+          "any_hand_contact_absence": {
+            "sample_count": 128,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.7504377365112305,
+              "median_n": 3.1047935485839844,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.6976678371429443,
+              "median_n": 3.1171505451202393,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.04433693343680565
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 79.44,
+          "last_sample_time": 81.02,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.564387559890747,
+              "median_n": 3.135469913482666,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 1.4440409988164902,
+              "median_n": 3.1357738971710205,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.030494484830485172
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000074,
+          "first_sample_time": 81.04,
+          "last_sample_time": 82.84,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 75,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.5,
+            "longest_sampled_absence_seconds_estimate": 1.5
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.000898011046434478
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 283,
+        "sampled_interval_seconds": 5.659999999999997,
+        "first_sample_time": 75.38,
+        "last_sample_time": 81.02,
+        "any_hand_contact_absence": {
+          "sample_count": 283,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.564387559890747,
+            "median_n": 3.2461812496185303,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 1.4440409988164902,
+            "median_n": 3.221295714378357,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.06766051512356447
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 75.8,
+        "transferring_disk": 76.44,
+        "settling_disk": 81.36
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 47,
+      "source_rod_clearance_first_sample_time": 76.44,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.49500000000000033,
+        "commit_sample_time": 81.86,
+        "commit_sample_delay_seconds": 0.015000000001947456,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 2.443862513961306e-05,
+          "bottom_m": 0.8149488150750395,
+          "linear_speed_m_s": 6.901420846516802e-06,
+          "angular_speed_rad_s": 0.0001970789323638413,
+          "xy_error_m": 0.001504836907387551,
+          "z_error_m": 4.996299743653676e-05,
+          "expected_support": "disk_2",
+          "support_force_n": 1.1771805762546137,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 8,
+      "disk": "disk_0",
+      "source": "A",
+      "target": "C",
+      "time": 93.42499999998752,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 0,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 86.26,
+          "last_sample_time": 87.74,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 4.391346216201782,
+              "median_n": 4.911072254180908,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 4.057004451751709,
+              "median_n": 4.773353338241577,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.032047409828632294
+        },
+        "transfer": {
+          "sample_count": 163,
+          "sampled_interval_seconds": 3.260000000000005,
+          "first_sample_time": 87.76,
+          "last_sample_time": 91.0,
+          "any_hand_contact_absence": {
+            "sample_count": 163,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 163,
+              "missing_samples": 0,
+              "min_n": 4.2138659954071045,
+              "median_n": 5.728641510009766,
+              "contact_absence": {
+                "sample_count": 163,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 163,
+              "missing_samples": 0,
+              "min_n": 4.125216126441956,
+              "median_n": 5.91000771522522,
+              "contact_absence": {
+                "sample_count": 163,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.0368108711580742
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.6000000000000085,
+          "first_sample_time": 91.02,
+          "last_sample_time": 92.60000000000001,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 4.7021143436431885,
+              "median_n": 5.543458461761475,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.9177898168563843,
+              "median_n": 5.566755473613739,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.06938806099758542
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8199999999999932,
+          "first_sample_time": 92.62,
+          "last_sample_time": 94.42,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 75,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.5,
+            "longest_sampled_absence_seconds_estimate": 1.5
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 77,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5400000000000063,
+                "longest_sampled_absence_seconds_estimate": 1.5400000000000063
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.012740701722328234
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 318,
+        "sampled_interval_seconds": 6.360000000000014,
+        "first_sample_time": 86.26,
+        "last_sample_time": 92.60000000000001,
+        "any_hand_contact_absence": {
+          "sample_count": 318,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 318,
+            "missing_samples": 0,
+            "min_n": 4.2138659954071045,
+            "median_n": 5.429582476615906,
+            "contact_absence": {
+              "sample_count": 318,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 318,
+            "missing_samples": 0,
+            "min_n": 3.9177898168563843,
+            "median_n": 5.293822169303894,
+            "contact_absence": {
+              "sample_count": 318,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.06938806099758542
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 86.66,
+        "transferring_disk": 87.32000000000001,
+        "settling_disk": 92.94
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 49,
+      "source_rod_clearance_first_sample_time": 87.32000000000001,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.49500000000000033,
+        "commit_sample_time": 93.44,
+        "commit_sample_delay_seconds": 0.015000000012477699,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 4.926348816726884e-07,
+          "bottom_m": 0.764990750321523,
+          "linear_speed_m_s": 4.973991785119524e-06,
+          "angular_speed_rad_s": 2.064356510738317e-05,
+          "xy_error_m": 0.0024903773266434846,
+          "z_error_m": 9.205341339080242e-06,
+          "expected_support": "pad_C",
+          "support_force_n": 1.1772009655833244,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 9,
+      "disk": "disk_3",
+      "source": "B",
+      "target": "C",
+      "time": 104.94499999997704,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 1,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 97.84,
+          "last_sample_time": 99.32000000000001,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.53489089012146,
+              "median_n": 2.819152593612671,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.224968910217285,
+              "median_n": 2.7603697776794434,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.031797710413140994
+        },
+        "transfer": {
+          "sample_count": 161,
+          "sampled_interval_seconds": 3.219999999999999,
+          "first_sample_time": 99.34,
+          "last_sample_time": 102.54,
+          "any_hand_contact_absence": {
+            "sample_count": 161,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 161,
+              "missing_samples": 0,
+              "min_n": 2.7890796661376953,
+              "median_n": 3.9252704977989197,
+              "contact_absence": {
+                "sample_count": 161,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 161,
+              "missing_samples": 0,
+              "min_n": 2.6935815811157227,
+              "median_n": 3.9614474773406982,
+              "contact_absence": {
+                "sample_count": 161,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.05166836373266266
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 102.56,
+          "last_sample_time": 104.14,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.460012912750244,
+              "median_n": 3.9352641701698303,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.796359956264496,
+              "median_n": 3.7302836179733276,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.05086259859453402
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000074,
+          "first_sample_time": 104.16,
+          "last_sample_time": 105.96000000000001,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 76,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.5200000000000102,
+            "longest_sampled_absence_seconds_estimate": 1.5200000000000102
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 77,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5400000000000063,
+                "longest_sampled_absence_seconds_estimate": 1.5400000000000063
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 76,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5200000000000102,
+                "longest_sampled_absence_seconds_estimate": 1.5200000000000102
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.00978550958729936
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 316,
+        "sampled_interval_seconds": 6.319999999999993,
+        "first_sample_time": 97.84,
+        "last_sample_time": 104.14,
+        "any_hand_contact_absence": {
+          "sample_count": 316,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 316,
+            "missing_samples": 0,
+            "min_n": 2.53489089012146,
+            "median_n": 3.6593921780586243,
+            "contact_absence": {
+              "sample_count": 316,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 316,
+            "missing_samples": 0,
+            "min_n": 2.224968910217285,
+            "median_n": 3.560721218585968,
+            "contact_absence": {
+              "sample_count": 316,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.05166836373266266
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 98.26,
+        "transferring_disk": 98.86,
+        "settling_disk": 104.46000000000001
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 49,
+      "source_rod_clearance_first_sample_time": 98.86,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.49500000000000033,
+        "commit_sample_time": 104.96000000000001,
+        "commit_sample_delay_seconds": 0.01500000002296531,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 5.3547061630681265e-05,
+          "bottom_m": 0.7899597216707303,
+          "linear_speed_m_s": 7.093160242598777e-05,
+          "angular_speed_rad_s": 0.0028851290638779096,
+          "xy_error_m": 0.0014156025586789295,
+          "z_error_m": 3.760099411009854e-05,
+          "expected_support": "disk_0",
+          "support_force_n": 1.1743695065379143,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 10,
+      "disk": "disk_2",
+      "source": "B",
+      "target": "A",
+      "time": 115.84499999996713,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 0,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 109.38,
+          "last_sample_time": 110.86,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.981795310974121,
+              "median_n": 3.610851913690567,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.591939926147461,
+              "median_n": 2.9999539852142334,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.024517366993475505
+        },
+        "transfer": {
+          "sample_count": 128,
+          "sampled_interval_seconds": 2.5600000000000023,
+          "first_sample_time": 110.88,
+          "last_sample_time": 113.42,
+          "any_hand_contact_absence": {
+            "sample_count": 128,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 3.1617727279663086,
+              "median_n": 4.994023561477661,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 3.2532541751861572,
+              "median_n": 4.818561792373657,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.04166400653169061
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 113.44,
+          "last_sample_time": 115.02,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.140118360519409,
+              "median_n": 4.470466107130051,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.816072702407837,
+              "median_n": 4.653053045272827,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.06303770921446268
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000074,
+          "first_sample_time": 115.04,
+          "last_sample_time": 116.84,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 75,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.5,
+            "longest_sampled_absence_seconds_estimate": 1.5
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 77,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5400000000000063,
+                "longest_sampled_absence_seconds_estimate": 1.5400000000000063
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.02520159521299358
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 283,
+        "sampled_interval_seconds": 5.659999999999997,
+        "first_sample_time": 109.38,
+        "last_sample_time": 115.02,
+        "any_hand_contact_absence": {
+          "sample_count": 283,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.981795310974121,
+            "median_n": 4.25832462310791,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.591939926147461,
+            "median_n": 4.115147590637207,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.06303770921446268
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 109.78,
+        "transferring_disk": 110.42,
+        "settling_disk": 115.36
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 48,
+      "source_rod_clearance_first_sample_time": 110.42,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.49500000000000033,
+        "commit_sample_time": 115.86,
+        "commit_sample_delay_seconds": 0.015000000032870275,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 6.669166383103857e-07,
+          "bottom_m": 0.76499075242061,
+          "linear_speed_m_s": 5.0931862720258124e-06,
+          "angular_speed_rad_s": 1.0404399226283841e-05,
+          "xy_error_m": 0.002136841050218634,
+          "z_error_m": 9.205341339080242e-06,
+          "expected_support": "pad_A",
+          "support_force_n": 1.1771984845399857,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 11,
+      "disk": "disk_3",
+      "source": "C",
+      "target": "A",
+      "time": 127.38999999995663,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 1,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 120.26,
+          "last_sample_time": 121.74000000000001,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.2324600219726562,
+              "median_n": 4.6000378131866455,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.285860776901245,
+              "median_n": 4.117086887359619,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.09231906229609756
+        },
+        "transfer": {
+          "sample_count": 162,
+          "sampled_interval_seconds": 3.239999999999995,
+          "first_sample_time": 121.76,
+          "last_sample_time": 124.98,
+          "any_hand_contact_absence": {
+            "sample_count": 162,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 162,
+              "missing_samples": 0,
+              "min_n": 2.674762487411499,
+              "median_n": 4.089235603809357,
+              "contact_absence": {
+                "sample_count": 162,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 162,
+              "missing_samples": 0,
+              "min_n": 2.7010557651519775,
+              "median_n": 4.071724981069565,
+              "contact_absence": {
+                "sample_count": 162,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.05807825376476599
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 125.0,
+          "last_sample_time": 126.58,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.0984238982200623,
+              "median_n": 3.911012887954712,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.582855463027954,
+              "median_n": 4.223762482404709,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.052528836438518835
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8200000000000074,
+          "first_sample_time": 126.60000000000001,
+          "last_sample_time": 128.4,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 76,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.519999999999996,
+            "longest_sampled_absence_seconds_estimate": 1.519999999999996
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 76,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.519999999999996,
+                "longest_sampled_absence_seconds_estimate": 1.519999999999996
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 76,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.519999999999996,
+                "longest_sampled_absence_seconds_estimate": 1.519999999999996
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.007228255576883966
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 317,
+        "sampled_interval_seconds": 6.339999999999989,
+        "first_sample_time": 120.26,
+        "last_sample_time": 126.58,
+        "any_hand_contact_absence": {
+          "sample_count": 317,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 317,
+            "missing_samples": 0,
+            "min_n": 2.674762487411499,
+            "median_n": 4.122480869293213,
+            "contact_absence": {
+              "sample_count": 317,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 317,
+            "missing_samples": 0,
+            "min_n": 2.582855463027954,
+            "median_n": 4.125080168247223,
+            "contact_absence": {
+              "sample_count": 317,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.09231906229609756
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 120.66,
+        "transferring_disk": 121.32000000000001,
+        "settling_disk": 126.9
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 49,
+      "source_rod_clearance_first_sample_time": 121.32000000000001,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.4900000000000003,
+        "commit_sample_time": 127.4,
+        "commit_sample_delay_seconds": 0.010000000043376644,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 2.6817755461857972e-05,
+          "bottom_m": 0.7899620714015732,
+          "linear_speed_m_s": 4.884864146945863e-06,
+          "angular_speed_rad_s": 0.00012894474375904971,
+          "xy_error_m": 0.0014439859348555947,
+          "z_error_m": 3.65877151489169e-05,
+          "expected_support": "disk_2",
+          "support_force_n": 1.1771874353289604,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 12,
+      "disk": "disk_1",
+      "source": "B",
+      "target": "C",
+      "time": 138.93999999994614,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 1,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 131.82,
+          "last_sample_time": 133.3,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.0575788021087646,
+              "median_n": 3.583353042602539,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.015133857727051,
+              "median_n": 3.537000060081482,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.021843182630376438
+        },
+        "transfer": {
+          "sample_count": 161,
+          "sampled_interval_seconds": 3.219999999999999,
+          "first_sample_time": 133.32,
+          "last_sample_time": 136.52,
+          "any_hand_contact_absence": {
+            "sample_count": 161,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 161,
+              "missing_samples": 0,
+              "min_n": 3.7247040271759033,
+              "median_n": 5.322941780090332,
+              "contact_absence": {
+                "sample_count": 161,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 161,
+              "missing_samples": 0,
+              "min_n": 3.6280678510665894,
+              "median_n": 5.698750019073486,
+              "contact_absence": {
+                "sample_count": 161,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.026769268449191575
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 136.54,
+          "last_sample_time": 138.12,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 4.186675548553467,
+              "median_n": 5.044736623764038,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.5881794691085815,
+              "median_n": 5.242795579135418,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.07958720194394951
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8199999999999932,
+          "first_sample_time": 138.14000000000001,
+          "last_sample_time": 139.94,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 75,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.5,
+            "longest_sampled_absence_seconds_estimate": 1.5
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 77,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5399999999999636,
+                "longest_sampled_absence_seconds_estimate": 1.5199999999999818
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.013832823924697995
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 316,
+        "sampled_interval_seconds": 6.319999999999993,
+        "first_sample_time": 131.82,
+        "last_sample_time": 138.12,
+        "any_hand_contact_absence": {
+          "sample_count": 316,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 316,
+            "missing_samples": 0,
+            "min_n": 3.0575788021087646,
+            "median_n": 4.899898529052734,
+            "contact_absence": {
+              "sample_count": 316,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 316,
+            "missing_samples": 0,
+            "min_n": 3.015133857727051,
+            "median_n": 4.98166424036026,
+            "contact_absence": {
+              "sample_count": 316,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.07958720194394951
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 132.18,
+        "transferring_disk": 132.86,
+        "settling_disk": 138.46
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 48,
+      "source_rod_clearance_first_sample_time": 132.86,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.4800000000000003,
+        "commit_sample_time": 138.94,
+        "commit_sample_delay_seconds": 5.3859139370615594e-11,
+        "consecutive_stable_samples_through_commit": 25,
+        "sampled_stable_span_through_commit_seconds": 0.47999999999998977,
+        "commit_sample": {
+          "tilt_rad": 5.734833725648082e-05,
+          "bottom_m": 0.7899571082509195,
+          "linear_speed_m_s": 2.8943155719614055e-06,
+          "angular_speed_rad_s": 1.3490697165588026e-05,
+          "xy_error_m": 0.0013134540597843655,
+          "z_error_m": 3.84950637817294e-05,
+          "expected_support": "disk_0",
+          "support_force_n": 1.1772156655788422,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 13,
+      "disk": "disk_3",
+      "source": "A",
+      "target": "B",
+      "time": 149.83999999993623,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 0,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 143.36,
+          "last_sample_time": 144.84,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.179880976676941,
+              "median_n": 4.14934629201889,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.186155140399933,
+              "median_n": 4.171712040901184,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.08932483849108935
+        },
+        "transfer": {
+          "sample_count": 128,
+          "sampled_interval_seconds": 2.5600000000000023,
+          "first_sample_time": 144.86,
+          "last_sample_time": 147.4,
+          "any_hand_contact_absence": {
+            "sample_count": 128,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.826498031616211,
+              "median_n": 3.1853983998298645,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.8561747074127197,
+              "median_n": 3.139916777610779,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.05631475546081541
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 147.42000000000002,
+          "last_sample_time": 149.0,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.606374979019165,
+              "median_n": 3.2794830799102783,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 2.637572407722473,
+              "median_n": 3.287498950958252,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.03103699656880377
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8199999999999932,
+          "first_sample_time": 149.02,
+          "last_sample_time": 150.82,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 74,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.4799999999999898,
+            "longest_sampled_absence_seconds_estimate": 1.4799999999999898
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 74,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.4799999999999898,
+                "longest_sampled_absence_seconds_estimate": 1.4799999999999898
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.0008866526223270742
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 283,
+        "sampled_interval_seconds": 5.659999999999997,
+        "first_sample_time": 143.36,
+        "last_sample_time": 149.0,
+        "any_hand_contact_absence": {
+          "sample_count": 283,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.606374979019165,
+            "median_n": 3.293602466583252,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.637572407722473,
+            "median_n": 3.2811594009399414,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.08932483849108935
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 143.76,
+        "transferring_disk": 144.42000000000002,
+        "settling_disk": 149.36
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 47,
+      "source_rod_clearance_first_sample_time": 144.42000000000002,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.4800000000000003,
+        "commit_sample_time": 149.84,
+        "commit_sample_delay_seconds": 6.377831596182659e-11,
+        "consecutive_stable_samples_through_commit": 25,
+        "sampled_stable_span_through_commit_seconds": 0.47999999999998977,
+        "commit_sample": {
+          "tilt_rad": 6.942121425079534e-07,
+          "bottom_m": 0.7649909387619911,
+          "linear_speed_m_s": 2.413662586076063e-06,
+          "angular_speed_rad_s": 1.1493530236533322e-05,
+          "xy_error_m": 0.00265679314283982,
+          "z_error_m": 9.02652740475407e-06,
+          "expected_support": "pad_B",
+          "support_force_n": 1.1772167682647705,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 14,
+      "disk": "disk_2",
+      "source": "A",
+      "target": "C",
+      "time": 161.38499999992572,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 2,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 154.24,
+          "last_sample_time": 155.72,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 3.386207401752472,
+              "median_n": 4.599337577819824,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.8097822666168213,
+              "median_n": 3.8019204139709473,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.034420576409977144
+        },
+        "transfer": {
+          "sample_count": 162,
+          "sampled_interval_seconds": 3.240000000000009,
+          "first_sample_time": 155.74,
+          "last_sample_time": 158.96,
+          "any_hand_contact_absence": {
+            "sample_count": 162,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 162,
+              "missing_samples": 0,
+              "min_n": 3.1436657905578613,
+              "median_n": 4.610691070556641,
+              "contact_absence": {
+                "sample_count": 162,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 162,
+              "missing_samples": 0,
+              "min_n": 3.133057527244091,
+              "median_n": 4.631901979446411,
+              "contact_absence": {
+                "sample_count": 162,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.058297337008789224
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 158.98,
+          "last_sample_time": 160.56,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.8319296836853027,
+              "median_n": 4.653497219085693,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.3613803386688232,
+              "median_n": 4.515497803688049,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.07249345083582785
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8199999999999932,
+          "first_sample_time": 160.58,
+          "last_sample_time": 162.38,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 75,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.5,
+            "longest_sampled_absence_seconds_estimate": 1.5
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 78,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5600000000000023,
+                "longest_sampled_absence_seconds_estimate": 1.5600000000000023
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.007630412654075029
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 317,
+        "sampled_interval_seconds": 6.340000000000003,
+        "first_sample_time": 154.24,
+        "last_sample_time": 160.56,
+        "any_hand_contact_absence": {
+          "sample_count": 317,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 317,
+            "missing_samples": 0,
+            "min_n": 3.1436657905578613,
+            "median_n": 4.616025924682617,
+            "contact_absence": {
+              "sample_count": 317,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 317,
+            "missing_samples": 0,
+            "min_n": 2.8097822666168213,
+            "median_n": 4.2452898025512695,
+            "contact_absence": {
+              "sample_count": 317,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.07249345083582785
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 154.64000000000001,
+        "transferring_disk": 155.3,
+        "settling_disk": 160.9
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 49,
+      "source_rod_clearance_first_sample_time": 155.3,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.49500000000000033,
+        "commit_sample_time": 161.4,
+        "commit_sample_delay_seconds": 0.015000000074280706,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 0.00011027777061044715,
+          "bottom_m": 0.8149074092422041,
+          "linear_speed_m_s": 6.169499282532306e-05,
+          "angular_speed_rad_s": 0.0011983193223637273,
+          "xy_error_m": 0.002234530248005616,
+          "z_error_m": 8.560657501222035e-05,
+          "expected_support": "disk_1",
+          "support_force_n": 1.17749685049057,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    },
+    {
+      "move_number": 15,
+      "disk": "disk_3",
+      "source": "B",
+      "target": "C",
+      "time": 172.26499999991583,
+      "source_was_top": true,
+      "target_was_legal": true,
+      "target_level": 3,
+      "segmentation": "controller_annotations_matched_to_environment_move",
+      "stages": {
+        "lift": {
+          "sample_count": 75,
+          "sampled_interval_seconds": 1.5,
+          "first_sample_time": 165.8,
+          "last_sample_time": 167.28,
+          "any_hand_contact_absence": {
+            "sample_count": 75,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.371725082397461,
+              "median_n": 2.7274351119995117,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 75,
+              "missing_samples": 0,
+              "min_n": 2.343503713607788,
+              "median_n": 2.713794469833374,
+              "contact_absence": {
+                "sample_count": 75,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.02682925819561688
+        },
+        "transfer": {
+          "sample_count": 128,
+          "sampled_interval_seconds": 2.5600000000000023,
+          "first_sample_time": 167.3,
+          "last_sample_time": 169.84,
+          "any_hand_contact_absence": {
+            "sample_count": 128,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.682788133621216,
+              "median_n": 3.785126030445099,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 128,
+              "missing_samples": 0,
+              "min_n": 2.6703872680664062,
+              "median_n": 3.8632947988808155,
+              "contact_absence": {
+                "sample_count": 128,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.06197304789503584
+        },
+        "placement": {
+          "sample_count": 80,
+          "sampled_interval_seconds": 1.5999999999999943,
+          "first_sample_time": 169.86,
+          "last_sample_time": 171.44,
+          "any_hand_contact_absence": {
+            "sample_count": 80,
+            "absent_samples": 0,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 0.0,
+            "longest_sampled_absence_seconds_estimate": 0.0
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.1158665604889393,
+              "median_n": 4.224771931767464,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            },
+            "right": {
+              "sample_count": 80,
+              "missing_samples": 0,
+              "min_n": 3.4156507551670074,
+              "median_n": 3.788316011428833,
+              "contact_absence": {
+                "sample_count": 80,
+                "absent_samples": 0,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 0.0,
+                "longest_sampled_absence_seconds_estimate": 0.0
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.05656481999954692
+        },
+        "release": {
+          "sample_count": 91,
+          "sampled_interval_seconds": 1.8199999999999932,
+          "first_sample_time": 171.46,
+          "last_sample_time": 173.26,
+          "any_hand_contact_absence": {
+            "sample_count": 91,
+            "absent_samples": 75,
+            "missing_samples": 0,
+            "sampled_absence_seconds_estimate": 1.5,
+            "longest_sampled_absence_seconds_estimate": 1.5
+          },
+          "hand_forces": {
+            "left": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 76,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5199999999999818,
+                "longest_sampled_absence_seconds_estimate": 1.5199999999999818
+              }
+            },
+            "right": {
+              "sample_count": 91,
+              "missing_samples": 0,
+              "min_n": 0.0,
+              "median_n": 0.0,
+              "contact_absence": {
+                "sample_count": 91,
+                "absent_samples": 75,
+                "missing_samples": 0,
+                "sampled_absence_seconds_estimate": 1.5,
+                "longest_sampled_absence_seconds_estimate": 1.5
+              }
+            }
+          },
+          "max_disk_tilt_rad": 0.014285477475155413
+        }
+      },
+      "before_commanded_release": {
+        "sample_count": 283,
+        "sampled_interval_seconds": 5.659999999999997,
+        "first_sample_time": 165.8,
+        "last_sample_time": 171.44,
+        "any_hand_contact_absence": {
+          "sample_count": 283,
+          "absent_samples": 0,
+          "missing_samples": 0,
+          "sampled_absence_seconds_estimate": 0.0,
+          "longest_sampled_absence_seconds_estimate": 0.0
+        },
+        "hand_forces": {
+          "left": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.371725082397461,
+            "median_n": 3.73625910282135,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          },
+          "right": {
+            "sample_count": 283,
+            "missing_samples": 0,
+            "min_n": 2.343503713607788,
+            "median_n": 3.6631634533405304,
+            "contact_absence": {
+              "sample_count": 283,
+              "absent_samples": 0,
+              "missing_samples": 0,
+              "sampled_absence_seconds_estimate": 0.0,
+              "longest_sampled_absence_seconds_estimate": 0.0
+            }
+          }
+        },
+        "max_disk_tilt_rad": 0.06197304789503584
+      },
+      "environment_stage_first_sample_times": {
+        "lifting_disk": 166.18,
+        "transferring_disk": 166.86,
+        "settling_disk": 171.78
+      },
+      "environment_stages_observed_in_order": true,
+      "source_rod_clearance_sample_count": 47,
+      "source_rod_clearance_first_sample_time": 166.86,
+      "hand_contact_observed_before_clearance": true,
+      "release": {
+        "environment_commitment_recorded": true,
+        "required_evaluator_hold_seconds": 0.5,
+        "largest_sampled_precommit_evaluator_hold_seconds": 0.49500000000000033,
+        "commit_sample_time": 172.28,
+        "commit_sample_delay_seconds": 0.015000000084171461,
+        "consecutive_stable_samples_through_commit": 26,
+        "sampled_stable_span_through_commit_seconds": 0.5,
+        "commit_sample": {
+          "tilt_rad": 0.00010345018154404846,
+          "bottom_m": 0.8398442280781439,
+          "linear_speed_m_s": 0.0002743374066484145,
+          "angular_speed_rad_s": 0.002013659340954101,
+          "xy_error_m": 0.0024209004034136603,
+          "z_error_m": 0.0001505994796753285,
+          "expected_support": "disk_2",
+          "support_force_n": 1.1679628118872643,
+          "checks": {
+            "position": true,
+            "tilt": true,
+            "velocity": true,
+            "released": true,
+            "correct_support": true
+          },
+          "all_conditions": true
+        },
+        "hold_evidence": "Recorded environment commitment attests its per-physics-step hold; samples alone do not reconstruct it."
+      }
+    }
+  ],
+  "final_release": {
+    "environment_success": true,
+    "goal_hold_seconds": 1.9999999999999793,
+    "required_goal_hold_seconds": 2.0,
+    "all_sampled_conditions": true,
+    "objects": {
+      "disk_0": {
+        "tilt_rad": 4.839945931373521e-05,
+        "bottom_m": 0.7649593186085922,
+        "linear_speed_m_s": 9.720471045699527e-06,
+        "angular_speed_rad_s": 0.0002065102611176128,
+        "xy_error_m": 0.006436438689105408,
+        "z_error_m": 3.6325454711882976e-05,
+        "expected_support": "pad_C",
+        "support_force_n": 4.686232477426529,
+        "checks": {
+          "position": true,
+          "tilt": true,
+          "velocity": true,
+          "released": true,
+          "correct_support": true
+        },
+        "all_conditions": true
+      },
+      "disk_1": {
+        "tilt_rad": 0.00013209330143512825,
+        "bottom_m": 0.7898952303168133,
+        "linear_speed_m_s": 0.0001474193819907825,
+        "angular_speed_rad_s": 0.0037748289593778866,
+        "xy_error_m": 0.0012528195334043023,
+        "z_error_m": 9.464263916014737e-05,
+        "expected_support": "disk_0",
+        "support_force_n": 3.5084987580776215,
+        "checks": {
+          "position": true,
+          "tilt": true,
+          "velocity": true,
+          "released": true,
+          "correct_support": true
+        },
+        "all_conditions": true
+      },
+      "disk_2": {
+        "tilt_rad": 0.00014298281930851892,
+        "bottom_m": 0.8148598000256295,
+        "linear_speed_m_s": 0.0001815300570645608,
+        "angular_speed_rad_s": 0.0034419225832758847,
+        "xy_error_m": 0.002229426182532042,
+        "z_error_m": 0.0001311445236206188,
+        "expected_support": "disk_1",
+        "support_force_n": 2.3384906351566315,
+        "checks": {
+          "position": true,
+          "tilt": true,
+          "velocity": true,
+          "released": true,
+          "correct_support": true
+        },
+        "all_conditions": true
+      },
+      "disk_3": {
+        "tilt_rad": 0.00010758818086708798,
+        "bottom_m": 0.8398439019743472,
+        "linear_speed_m_s": 0.0002575946898072998,
+        "angular_speed_rad_s": 0.0017863637752518612,
+        "xy_error_m": 0.002421015328378666,
+        "z_error_m": 0.00015071868896487928,
+        "expected_support": "disk_2",
+        "support_force_n": 1.167862243950367,
+        "checks": {
+          "position": true,
+          "tilt": true,
+          "velocity": true,
+          "released": true,
+          "correct_support": true
+        },
+        "all_conditions": true
+      }
+    }
+  },
+  "review_flags": []
+}

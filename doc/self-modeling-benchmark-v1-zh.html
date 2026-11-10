@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="面向通用物理智能体的解决方案发现与能力自我建模 benchmark 研究提案。" name="description"/><title>Self-Modeling Benchmark · 物理解决方案发现 · 中文</title><link href="/robo-si-results/doc/styles.css" rel="stylesheet"/><link href="/robo-si-results/doc/self-modeling-benchmark-v1.css" rel="stylesheet"/><meta content="noindex,nofollow,noarchive" name="robots"/></head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="hero"><p class="meta">SELF-MODELING ROBOTICS / BENCHMARK PROPOSAL 01 / 2026-10-04</p><span class="badge">研究设计 · 尚无 benchmark 实验结果</span><h1>没有人告诉它怎么做，<br/>具身 agent 能否自己找到物理任务的解法？</h1><p class="lead">给它身体、可交互的世界和目标。检验它能否发现资源、判断自身能力、改造环境，并构造一条可执行的解决路径。</p><p class="subtitle">通用物理智能体 · 解决方案发现 · 能力感知的适应</p><nav aria-label="页面导航"><a href="/robo-si-results/doc/self-modeling-benchmark-v1-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/README.md">项目索引</a> · <span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html">V3 方法提案 [external workspace]</span></nav></header>
+<main id="main">
+<nav aria-label="目录" class="card"><ol class="toc"><li><a href="#question">核心研究问题</a></li><li><a href="#self-model">Self-modeling 的作用</a></li><li><a href="#analogy">从终端到物理世界的类比</a></li><li><a href="#shelf">最小动机示例</a></li><li><a href="#composite">复合最终目标</a></li><li><a href="#contract">任务定义与信息边界</a></li><li><a href="#tracks">两条评测 track</a></li><li><a href="#taxonomy">问题求解结构分类</a></li><li><a href="#splits">泛化划分</a></li><li><a href="#evaluation">最终结果与进度评测</a></li><li><a href="#positioning">定位与相关工作</a></li><li><a href="#experiments">对照实验与因果证据</a></li><li><a href="#build">构建与发布计划</a></li><li><a href="#sources">来源与待决事项</a></li></ol></nav>
+<section class="card thesis" id="question"><div class="section-title"><span class="number">01</span><h2>从执行行为，到自主发现解决方案</h2></div>
+<p>这个 benchmark 要测的是 <strong>solution discovery</strong>：只给一个高层目标和可交互环境，不提供任务分解或指定工具，agent 能否自主找到并执行复杂物理目标的解法？</p>
+<ol class="pipeline"><li><strong>探索环境</strong><span>观察场景，定位尚不确定的信息。</span></li><li><strong>发现资源</strong><span>寻找可用物体，推断潜在 affordance。</span></li><li><strong>探测与规划</strong><span>检验能力假设，获取必要前置条件。</span></li><li><strong>改造世界</strong><span>移动、支撑、连接或重新利用物体。</span></li><li><strong>重规划与恢复</strong><span>根据执行证据调整策略。</span></li><li><strong>完成并验证</strong><span>达成目标所要求的物理结果。</span></li></ol>
+<p><strong>设计目标：</strong>让 goal-only specification、可探索环境、资源发现、潜在 affordance、长依赖链、环境重构、多种有效解法、失败恢复及隐藏结果 verifier 同时出现在一个任务中。</p>
+<p class="scope-note">“开放式”指有界环境、公开交互规则和有限预算内的解法空间。上述组合是否构成有价值的 benchmark 缺口，需要与现有工作逐项验证，目前不作优先性主张。</p></section>
+<section class="card" id="self-model"><div class="section-title"><span class="number">02</span><h2>Self-modeling 将环境机会与自身能力联系起来</h2></div>
+<div class="grid-2"><div class="mini-card"><h3>世界模型与 affordance</h3><p>资源在哪里？这个箱子能移动吗？这个表面能承重吗？这些问题描述环境及可能的交互。</p></div><div class="mini-card"><h3>能力自我模型</h3><p>当前机器人和执行器能否够到、抬起、稳定或操作这个物体？在什么条件下可以？预测依据是什么？这些问题描述 agent 与环境的交互能力。</p></div></div>
+<div class="equation">Mₜ = 能力假设 + 执行证据 + 不确定性 + 调用上下文
+最终目标 → 能力缺口 → 诊断性交互 → 更新 Mₜ → 修订计划 / harness → 执行</div>
+<p>有效的 self-model 必须改变决策：要不要直接抓取、先测试支撑物、获取工具，或放弃一条反复失败的策略。流畅的自我描述本身不构成证据。应区分回合内的世界记忆与能力记忆，也应区分环境阻碍与执行器自身的能力不足。</p>
+<p><strong>与 V3 的关系：</strong><span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html#formal">V3 [external workspace]</span> 提出围绕冻结策略更新能力记忆与 harness 的方法；本页定义可评测该方法及其他 physical agents 的任务与协议。参评系统不必显式使用 self-model，其收益由实验检验。</p>
+<p>主测试允许回合内推理和记忆更新。持久 harness 学习在单独声明的 V3 式开发集适应协议中完成；进入 held-out 评测前冻结所得系统。</p></section>
+<section class="card" id="analogy"><div class="section-title"><span class="number">03</span><h2>把终端中的自主问题求解映射到物理世界</h2></div>
+<div class="grid-2"><div class="mini-card"><h3>终端设定</h3><p>一台机器、已有工具与最终目标。agent 自己发现资源、规划、执行、debug 并检查结果。Terminal-Bench 将任务、环境与结果测试一起封装。<a href="https://www.tbench.ai/news/announcement">官方介绍</a>。</p></div><div class="mini-card"><h3>拟议物理设定</h3><p>一个机器人、场景、可交互物体与最终目标。agent 自己探索、推断 affordance、获取资源、改造环境、执行并恢复。</p></div></div>
+<p>类比针对自主问题求解和基于结果的评测。物理动作还受到 embodiment 边界、接触不确定性、持续状态变化与 reset 成本的约束；仿真器也不能被当作可无限回滚的免费 sandbox。</p></section>
+<section class="card" id="shelf"><div class="section-title"><span class="number">04</span><h2>箱子的工具角色，需要 agent 自己发现</h2></div>
+<p class="goal">目标：取下高层货架上的物体。</p>
+<ul aria-label="场景物体" class="world-items"><li>机器人</li><li>目标与高货架</li><li>两个箱子</li><li>桌子</li><li>推车</li><li>木板</li><li>干扰物</li></ul>
+<p>目标不指定工具。下面是针对具备攀爬或升高能力的 embodiment 的示意解法假设，每项物理前提都需要成立。</p>
+<ol class="chain"><li><strong>发现可达性缺口。</strong>直接取物超出当前机器人的工作范围。</li><li><strong>探索候选资源。</strong>箱子可能可移动、可能承重，但外观不能直接证明其支撑能力。</li><li><strong>检验相关假设。</strong>在公开约束下，用计入预算的交互判断可移动性或支撑性质。</li><li><strong>改变物理配置。</strong>放置并稳定支撑物；仅在 embodiment 与接口支持时攀爬或重新定位。</li><li><strong>取物并检查。</strong>完成目标，观察可见的成功证据。</li></ol>
+<details><summary>反事实变体：一个箱子不够高</summary><p>agent 可以调查第二个支撑物，或改用其他取物策略。堆叠只是候选方案：高度、稳定性、承重及机器人能否完成搭建，都需要检查。</p></details>
+<details><summary>反事实变体：预期箱子缺失或无法承重</summary><p>agent 需要发现可行替代物或另一种机制。工具箱并不天然等价于可靠支撑物。任务作者须验证修改后的实例仍存在满足规则的解法。</p></details>
+<p class="small">这是任务设计示例，不是已运行的仿真轨迹或已验证的机器人能力。</p></section>
+<section class="card benchmark" id="composite"><div class="section-title"><span class="number">05</span><h2>复合任务把资源发现与嵌套前置条件串起来</h2></div>
+<p class="goal">目标：恢复工作台供电。</p>
+<p>两个房间中分布着被堵住的门口、柜子、推车、电缆、延长线、箱子、工具箱、开关、木板与干扰物。电缆连接与供电由仿真器中的任务状态定义。</p>
+<ol class="chain"><li><strong>检查工作台。</strong>发现没有供电，并调查原因。</li><li><strong>找到电缆，发现访问障碍。</strong>柜子挡住了获取电缆的路径。</li><li><strong>获取前置条件。</strong>清空或调整推车，建立可行的障碍清除方案。</li><li><strong>取得电缆，又发现长度不足。</strong>寻找延长线，或调查其他有效连接路线。</li><li><strong>打开第二个房间的访问路径。</strong>清理入口，取得所需资源。</li><li><strong>解决开关的可达性。</strong>调整支撑物，或发现另一种有效的开关操作方式。</li><li><strong>连接、启动并验证结果。</strong>最终状态须满足工作台的供电条件。</li></ol>
+<p>这只是可能的依赖链，不向 agent 提供参考计划。最终 verifier 接受所有符合规则的解法。任务族应组合探索、资源获取、物理推理、环境重构与恢复；机械重复同一个已知技巧不足以体现设计目标。</p>
+<p class="scope-note">这个例子依赖可行的移动、操作、支撑与连接机制。如果选定仿真器无法忠实实现，应先选用其支持的子集或另一类复合目标。</p></section>
+<section class="card" id="contract"><div class="section-title"><span class="number">06</span><h2>用任务协议明确 agent 能看到什么</h2></div>
+<div class="equation">任务 τ = (E, S₀, G, A, V)
+协议 P = (O, C, B, reset 规则, adaptation 规则)</div>
+<dl class="contract"><dt>E</dt><dd>Embodiment 及明确声明的执行/控制接口。</dd><dt>S₀</dt><dd>初始物理世界及其潜在属性；agent 接收观察，不直接获得完整状态。</dd><dt>G</dt><dd>高层自然语言目标，对应定义清晰的最终结果。</dd><dt>A</dt><dd>通用参数化交互，或事先声明的底层动作接口。</dd><dt>V</dt><dd>评测方持有的隐藏 verifier；实现与私有 predicates 不向 agent 开放。</dd><dt>O, C, B</dt><dd>允许的观察、公开的有效性约束，以及交互/计算预算。</dd></dl>
+<div class="grid-2"><div class="mini-card"><h3>提供给 agent</h3><p>目标、embodiment/接口文档、传感器观察、预算与公开约束。通用 API 文档明确参数及失败返回语义。</p></div><div class="mini-card"><h3>由评测方保留</h3><p>参考计划、gold subgoals、相关物体清单、affordance 标签、任务成功轨迹、隐藏物理属性、里程碑图和 verifier 源码。</p></div></div>
+<h3>API 提供交互，不直接命名解法</h3><div class="equation">observe · navigate · grasp · release · push · pull · lift · rotate · place</div>
+<p>参数引用声明的感知协议下已观察到的位置或物体。<code>use_box_as_step()</code>、<code>build_bridge()</code>、<code>retrieve_with_hook()</code> 会提前透露策略。通用技能也须通过物理执行、如实返回失败，不能泄露 oracle 可行性或隐藏世界状态。</p>
+<p>agent 可以观察物理结果，并根据自身观察主动检查；测试回合中不能查询隐藏 V。若独立的适应设定允许 reset，必须计入预算，并限定可访问的初态分布。</p></section>
+<section class="card" id="tracks"><div class="section-title"><span class="number">07</span><h2>两条 track 明确接口，帮助定位失败来源</h2></div>
+<div class="grid-2"><div class="mini-card track"><p class="track-tag">TRACK A / PHYSICAL AGENT &amp; PLANNING</p><h3>推理 agent → 通用技能 → 物理仿真</h3><p>提供相对可靠的参数化技能，研究探索、记忆、资源发现、规划与恢复。技能可靠性应在开发任务上测量，不能假设完美。</p><p>明确观察通道；如使用结构化感知，需独立报告该变体。技能不能瞬移物体，也不能提供隐含解法的专用操作。</p></div><div class="mini-card track track-b"><p class="track-tag">TRACK B / END-TO-END VLA</p><h3>RGB + 本体感觉 → 系统 → 连续动作</h3><p>在 embodiment 和控制兼容的情况下，以相同目标语义评测完整感知到动作系统。冻结 VLA 外加推理 harness 是一种可参评系统。</p><p>明确相机输入、本体感觉、动作频率/chunk、模型权重，以及训练或开发阶段适应过程。</p></div></div>
+<p><strong>科学问题：</strong>失败来自未发现可行策略，还是来自无法执行策略？仅凭 A–B 分数差不能直接回答，因为观察质量、接口和技能可靠性也不同。需要配对实例、受控 oracle-plan 诊断及执行轨迹来归因。</p>
+<p>两条 track 分开报告。在可能时对齐物理时间与交互预算；一次 skill call 与一个连续动作 step 不能直接视为等价单位。</p></section>
+<section class="card" id="taxonomy"><div class="section-title"><span class="number">08</span><h2>按问题求解结构组织任务</h2></div>
+<ul class="taxonomy"><li><strong>可达性转换</strong>改变物理配置，使目标变得可访问。</li><li><strong>工具替代</strong>根据观察到的属性发现功能替代物。</li><li><strong>工具构造</strong>组合物体，形成可用的工具。</li><li><strong>路径构建</strong>跨越间隙或绕过阻挡，建立通路。</li><li><strong>支撑与稳定</strong>形成在受载后仍可用的配置。</li><li><strong>力的转换</strong>利用几何改变力的方向或作用效果。</li><li><strong>间接操作</strong>通过中间物体作用于目标。</li><li><strong>环境重构</strong>重新排列场景，为后续动作创造条件。</li><li><strong>资源获取</strong>发现并取得其他位置所需的资源。</li><li><strong>嵌套前置条件</strong>先解决一个访问或资源问题，再解锁下一个。</li><li><strong>恢复与替代解法</strong>在产生实际后果的失败后修订策略。</li><li><strong>协作或辅助利用</strong>与另一个 agent 协调，作为后续可选扩展。</li></ul>
+<p>每个最终任务标注多种结构、前置条件图、信息需求与已验证的替代解法。原子任务用于诊断和开发；主测试集由复合目标构成。</p></section>
+<section class="card benchmark" id="splits"><div class="section-title"><span class="number">09</span><h2>让泛化真正改变因果组合</h2></div>
+<div class="grid-3"><div class="mini-card"><h3>已见 affordance，未见组合</h3><p>开发阶段见过箱子支撑、木板搭桥、棍子取物。测试组合为：取回木板 → 稳定木板 → 跨越间隙 → 取得支撑物 → 取回目标。</p></div><div class="mini-card"><h3>未见物体的 affordance 迁移</h3><p>将箱子支撑经验迁移到物理上适合的工具箱、椅子等物体。适用性取决于任务与机器人，而不是物体类别名称。</p></div><div class="mini-card"><h3>反事实解法</h3><p>移除熟悉工具或改变关键属性，同时保留至少一条可行替代路径。检验 agent 能否修订原解法。</p></div></div>
+<p>先按任务族、依赖图模板、物体角色和关键物理属性划分，再生成场景变体。仅更换随机 seed 或纹理，不能证明结构泛化。可将外观变化作为控制组。</p>
+<p>“已见”指声明的开发/训练分布，不能据此断言基础模型预训练中见过什么。隔离测试解法模板、隐藏 predicates 与适应反馈；评测前冻结训练数据、模型和 harness 版本。</p></section>
+<section class="card" id="evaluation"><div class="section-title"><span class="number">10</span><h2>按物理结果评分，用进度解释失败</h2></div>
+<div class="metric"><h3>主指标：最终成功</h3><div class="equation">Success = 1[终止时满足目标 predicates ∧ 满足公开有效性约束]</div><p>例如 <code>target_in_goal_region</code>、<code>power_on</code> 或 <code>door_accessible</code>。提前定义容差与必要的稳定持续时间。verifier 检查仿真状态，不以轨迹是否接近参考解法作为成功判据。</p></div>
+<div class="metric"><h3>辅助指标：隐藏进度</h3><div class="equation">Progress = 已满足的隐藏结果 predicates / 隐藏结果 predicates 总数</div><p>简单比例适用于与解法路径无关的 predicates。隐藏里程碑图可以解释资源获取与前置条件完成情况，但不能强制作者偏好的路线。对路径相关里程碑，应使用预验证的替代分支，或仅作为诊断报告；任何有效最终解法都获得完整成功判定。</p></div>
+<p>明确每个检查对应终态、不可逆事件还是持续状态。已经回退的临时进展，不能继续当作保持完成。借鉴 <a href="https://zli12321.github.io/LHTB/">LHTB 的隐藏分级评测</a>，依据可验证状态/证据评分，而不采信 agent 自报完成。</p>
+<div class="grid-2"><div class="mini-card"><h3>效率与恢复</h3><p>报告动作步数、skill/VLA 调用、物理仿真时间、reset、tokens、wall time 和约束事件。对可恢复的配对扰动，测量最终恢复成功率及额外成本。</p></div><div class="mini-card"><h3>Self-model 诊断</h3><p>在受控 probes 上评测能力预测，仅在提供概率时使用 Brier score/校准指标。追踪预测如何导致 probe 与计划改变；诊断指标与主分数分开。</p></div></div>
+<p>按任务族与 split 汇总，使用重复实例/seeds，并报告样本数和不确定性区间。测试前冻结评分规则。公开训练实例可向 RL/RFT 提供奖励；隐藏测试 predicates 与进度分数不作为在线反馈。</p></section>
+<section class="card related" id="positioning"><div class="section-title"><span class="number">11</span><h2>把发现解法与长链组合放在同一评测中</h2></div>
+<figure class="landscape"><p class="axis">↑ 执行时程 / 任务复杂度</p><div class="quadrants"><div><strong>长执行链，策略已给定</strong><span>维持并恢复一条已知动作链。</span></div><div class="target"><strong>本提案的目标区域</strong><span>跨越长物理前置条件链，自主发现解决方案。</span></div><div><strong>局部执行</strong><span>完成已经指定的交互。</span></div><div><strong>局部解法发现</strong><span>为有界物理问题推断策略。</span></div></div><p class="axis">解决方案发现难度 →</p><figcaption>概念性设计图。各区域不代表实测分数，也不构成对现有 benchmark 的定量排名。</figcaption></figure>
+<div class="grid-2"><div class="mini-card"><h3>EBench</h3><p>从技能、时程、精度、移动性及受控泛化维度诊断移动操作，为能力画像提供参考。本提案重点放在资源发现与解法组合。EBench 与 EmbodiedBench 是不同项目。<a href="https://github.com/InternRobotics/EBench">来源</a>。</p></div><div class="mini-card"><h3>RoboMemArena</h3><p>研究顺序、计数、遮挡与转移等依赖记忆的操作，可用于设计回合记忆对照。本提案进一步要求发现哪些前置条件和资源与目标相关。<a href="https://robomemarena.github.io/">来源</a>。</p></div><div class="mini-card"><h3>KinDER</h3><p>将运动学与动力学推理挑战同感知、语言复杂度分离，可作为物理推理组件和可靠接口的参考；本提案把这些需求组合进更大的目标。<a href="https://arxiv.org/abs/2604.25788">论文</a>。</p></div><div class="mini-card"><h3>RoboWits</h3><p>是创造性工具使用、推理及变化条件下策略适应的重要近邻。差异须通过资源发现、环境规模和嵌套组合来证明，不能仅凭任务名称断言。<a href="https://umass-embodied-agi.github.io/RoboWits/">来源</a>。</p></div></div>
+<p>PARTNR、BEHAVIOR-1K、EmbodiedBench、HumanoidToolBench 和 RoboToolBench 同样约束 novelty 主张。应比较信息访问、动作接口、依赖深度、资源发现、替代路线与验证协议。RoboTool、iTUP、反事实推理和 VLMgineer 等见 <span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html#other-benchmarks">V3 benchmark 清单 [external workspace]</span>及<span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html#tool-use">工具使用相关工作 [external workspace]</span>。</p>
+<p class="scope-note">待验证的主张是这套组合评测协议的价值。物理问题求解、工具使用、记忆及长时程执行本身已经有丰富研究。</p></section>
+<section class="card" id="experiments"><div class="section-title"><span class="number">12</span><h2>让 solution discovery 与 self-modeling 可被证伪</h2></div>
+<ol><li><strong>Direct agent：</strong>相同推理 backbone 与执行器，采用固定 prompting/接口设定。</li><li><strong>Reflection + retry：</strong>使用普通执行记忆，并匹配上下文与推理预算。</li><li><strong>Capability-aware planning：</strong>使用显式能力记忆，不做主动诊断实验选择。</li><li><strong>完整 V3 式方法：</strong>能力记忆、目标条件化 probes，以及在声明的适应协议下开发的 harness。</li></ol>
+<p>控制 backbone、执行器、观察访问、计算与物理交互预算。分别消融能力记忆、主动探测、目标条件化和持久 harness 修订；探索与失败 probes 都计入相同预算。</p>
+<ul><li><strong>发现解法是否重要？</strong>在配对实例上比较 goal-only 测试与评测方提供计划的诊断实验；特权诊断不进入主 leaderboard。</li><li><strong>Self-model 是否有效？</strong>与容量匹配的普通记忆比较，再检验能力预测提升是否转化为最终结果改善。</li><li><strong>收益是否来自组合能力？</strong>保持原子执行难度尽量可比，改变依赖结构、资源可见性和替代路径可用性。</li></ul>
+<p>Oracle plan 和可靠技能变体帮助定位瓶颈，但不能直接证明推理/控制已被严格分离。基于可观察证据报告探索不足、affordance 误判、计划不可行、执行失效及恢复无效等失败类型。</p></section>
+<section class="card" id="build"><div class="section-title"><span class="number">13</span><h2>先构建可信的小规模评测，再扩大覆盖</h2></div>
+<ol class="chain"><li><strong>门槛 1 · 选择物理环境基础。</strong>检查接触机制、物体属性、通用技能、传感器、reset 保真度与 verifier 隔离后，选择一个仿真器和 embodiment。V3 平台候选可作起点，尚不等于本 benchmark 的实现选择。</li><li><strong>门槛 2 · 编写复合开发任务族。</strong>先做小规模 pilot，例如 3–5 个任务族。验证内部可行解、真实发现需求，以及设计要求下的多条路线。这些是计划目标，不是已完成任务。</li><li><strong>门槛 3 · 审核任务协议。</strong>排查目标/API 提示、隐藏状态泄漏、捷径、不可解实例、不稳定物理和路线偏置评分。独立回放并验证物理结果 predicates。</li><li><strong>门槛 4 · 锁定 split 并运行 baseline。</strong>先隔离任务图，再扩展 assets 与 seeds。测量技能可靠性和预算敏感性，验证评测能区分预期机制。</li><li><strong>门槛 5 · 发布可复现产物。</strong>发布环境版本、公开任务协议、开发 assets、接口 schema、指标、baseline 配置及回放工具，并维护受控的 held-out evaluator。</li></ol>
+<p>初期范围：仿真、单一 embodiment、复合单 agent 任务，以及分别报告的两条 track。多 agent 协作、真机和更广 embodiment 覆盖留作后续扩展。当前不承诺固定数据集规模、仿真器、成功率或发布日期。</p></section>
+<section class="card" id="sources"><div class="section-title"><span class="number">14</span><h2>来源与实施前的待决事项</h2></div>
+<p>本提案依据 2026-10-04 提供的 research note 及现有 V3 formulation 整理。任务示例、设计图、评分细化和实施门槛均属于拟议设计。官方来源支持对已有工作的简要介绍，不构成本 benchmark 新颖性的证明。</p>
+<ul class="refs"><li><a href="https://www.tbench.ai/news/announcement">Terminal-Bench</a> · <a href="https://zli12321.github.io/LHTB/">Long-Horizon Terminal-Bench</a><small>环境与目标驱动的评测、结果测试及隐藏分级反馈。</small></li><li><a href="https://github.com/InternRobotics/EBench">EBench</a> · <a href="https://arxiv.org/abs/2604.25788">KinDER</a> · <a href="https://robomemarena.github.io/">RoboMemArena</a> · <a href="https://umass-embodied-agi.github.io/RoboWits/">RoboWits</a><small>能力诊断、物理推理、记忆与创造性问题求解；来源核对于 2026-10-03 至 10-04。</small></li><li><span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html">V3 方法与相关工作清单 [external workspace]</span><small>冻结策略的 harness 改进，以及更完整的 benchmark / tool-use 阅读列表。</small></li></ul>
+<details open=""><summary>实施前需要确定</summary><p>Embodiment 与仿真器；Track A 的技能可靠性及观察访问；公开有效性约束与物理预算；适应规则；不偏向特定路线的进度 predicates；任务族应覆盖的多样性。</p></details>
+<p><strong>暂定名称：</strong>Self-Modeling Benchmark: Solution Discovery for General-Purpose Physical Agents。名称仍可调整。</p></section>
+</main><footer><p>Benchmark proposal v1 · 2026-10-04 · 尚未报告实现或实验结果。</p><p><a href="/robo-si-results/doc/self-modeling-benchmark-v1-en.html" lang="en">English version</a> · <a href="/robo-si-results/README.md">项目索引</a> · <span title="Historical reference; source is outside this repository: ../../problem-formulation-v3-zh.html">V3 方法 [external workspace]</span></p></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

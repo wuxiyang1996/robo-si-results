@@ -1,0 +1,144 @@
+{
+  "controller_tuning": {
+    "sg3_load_n": 4.0,
+    "deep_sg3_load_n": 8.0,
+    "sg3_grasp_x": -0.075,
+    "edge_regrasp": true,
+    "align_grasp": true,
+    "disk_collision_shape": "mesh128",
+    "sg3_insert_z_compensation": 0.008,
+    "regrasp_release_s": 24,
+    "sg3_align_compensated": true,
+    "sg3_setdown_x": 0.363,
+    "sg3_force_release": true,
+    "physics_dt": 0.0005,
+    "sg3_horizontal_withdraw": true,
+    "sg3_pad_clearance_push": true,
+    "require_sg3_grasp": true,
+    "sg3_push_stop_x": 0.46,
+    "sg3_push_horizontal_withdraw": true
+  },
+  "setting": "DF-04-S",
+  "created_before_execution": true,
+  "high_level": [
+    "prepare",
+    "grasp",
+    "lift",
+    "turn",
+    "place"
+  ],
+  "low_level": [
+    {
+      "id": "L01",
+      "phase": "settle",
+      "high_level": "prepare",
+      "action": "Stabilize the fixed body and supported plate"
+    },
+    {
+      "id": "L02",
+      "phase": "preshape",
+      "high_level": "prepare",
+      "action": "Open and orient fingers"
+    },
+    {
+      "id": "L03",
+      "phase": "orient_clear",
+      "high_level": "prepare",
+      "action": "Orient hands above and outside the disk"
+    },
+    {
+      "id": "L04",
+      "phase": "pregrasp",
+      "high_level": "grasp",
+      "action": "Approach the exposed rim from outside the table"
+    },
+    {
+      "id": "L05",
+      "phase": "insert",
+      "high_level": "grasp",
+      "action": "Insert opposing contacts around the rim"
+    },
+    {
+      "id": "L06",
+      "phase": "close",
+      "high_level": "grasp",
+      "action": "Close under measured contact loads"
+    },
+    {
+      "id": "L07",
+      "phase": "lift",
+      "high_level": "lift",
+      "action": "Raise the plate while maintaining actual grasp"
+    },
+    {
+      "id": "L08",
+      "phase": "turn",
+      "high_level": "turn",
+      "action": "Rotate the grasp through 180 degrees with clearance"
+    },
+    {
+      "id": "L09",
+      "phase": "place",
+      "high_level": "place",
+      "action": "Transfer support to the table"
+    },
+    {
+      "id": "L10",
+      "phase": "release",
+      "high_level": "place",
+      "action": "Open, withdraw and verify stable release"
+    },
+    {
+      "id": "L12",
+      "phase": "edge_slide",
+      "high_level": "grasp",
+      "action": "Move the table-supported plate toward the edge using measured contact"
+    },
+    {
+      "id": "L13",
+      "phase": "regrasp_release",
+      "high_level": "grasp",
+      "action": "Release the table-supported plate before deeper regrasp"
+    },
+    {
+      "id": "L11",
+      "phase": "slide_goal",
+      "high_level": "place",
+      "action": "Push the released inverted disk fully into the goal region"
+    }
+  ],
+  "goal": {
+    "xy": [
+      0.5,
+      0
+    ],
+    "position_tolerance_m": 0.045,
+    "normal_z_max": -0.9902680687415704,
+    "release_hold_s": 2
+  },
+  "world": {
+    "start_xy": [
+      0.4,
+      0
+    ],
+    "table_height_m": 0.86,
+    "table_edge_x_m": 0.35,
+    "initial_overhang_m": 0.05,
+    "base_motion": false
+  },
+  "limits": {
+    "linear_speed_m_s": 0.12,
+    "angular_speed_rad_s": 0.65,
+    "robot_contact_sum_n": 18,
+    "table_contact_sum_n": 8,
+    "local_contact_body_n": null
+  },
+  "engine": "MuJoCo extension development; original Genesis evidence is separate",
+  "policy": "joint targets through effort-limited actuators; no object pose/velocity/force writes or attachment",
+  "strategy": "pull to edge, release and regrasp deeper, lift and invert, release at edge and push to goal",
+  "integration": {
+    "physics_dt_s": 0.0005,
+    "control_dt_s": 0.02,
+    "status": "refined-step development candidate"
+  }
+}

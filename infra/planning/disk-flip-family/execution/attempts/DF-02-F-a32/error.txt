@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 867, in main
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 475, in execute
+    self.move('insert',goals,seconds=self.tuning.get('insert_seconds',20))
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 405, in move
+    self.step()
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 379, in step
+    self.command();mujoco.mj_step(self.m,self.d);self.records.append((self.d.time,self.d.qpos.copy(),self.d.qvel.copy(),self.d.ctrl.copy(),self.qref.copy(),self.phase));row=self.assess()
+                                                                                                                                                                             ^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 193, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: table_contact_load

@@ -1,0 +1,332 @@
+{
+  "schema": "retrieval-family-organization/0.2.0",
+  "date": "2026-10-27",
+  "status": "design_organization",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "new_simulation_runs": 0,
+  "changes_existing_14_task_inventory": false,
+  "documentation": {
+    "zh": "task-families.md",
+    "en": "task-families-en.md"
+  },
+  "load_constraint": {
+    "reported_limit_kg": 2.0,
+    "source": "user instruction in current conversation",
+    "interpretation": "conservative total external carried-load screening ceiling for new designs",
+    "hardware_scope": "unresolved; verify platform, per-arm/combined convention, lever arm and dynamics",
+    "verified_capability": false,
+    "sum_arm_limits": false,
+    "x5_compatibility": "unknown",
+    "support_capacity_includes_full_robot_mass": true
+  },
+  "families": [
+    {
+      "id": "H1",
+      "core": "change own workspace through environmental support and own weight shifts",
+      "design": "h1-extension/task-design.json",
+      "near_term_cases": [
+        {
+          "id": "H1-C01",
+          "parent": "H1E-01",
+          "name_zh": "单级踏台登高",
+          "feasibility": "unknown"
+        },
+        {
+          "id": "H1-C02",
+          "parent": "H1E-02",
+          "name_zh": "多级踏面选择",
+          "feasibility": "unknown"
+        },
+        {
+          "id": "H1-C03",
+          "parent": "H1E-05",
+          "name_zh": "轻载取物与重心调整后返回",
+          "feasibility": "unknown"
+        }
+      ],
+      "comparison_axes": [
+        "hand/end-effector swap",
+        "humanoid embodiment",
+        "capability profile",
+        "tool layer",
+        "distractors",
+        "route selection"
+      ],
+      "infeasibility_control_ids": [
+        "H1E-I01",
+        "H1E-I02",
+        "H1E-I03",
+        "H1E-I04"
+      ],
+      "selected_scope": "h1-extension/selected-scope.json",
+      "selected_task_ids": [
+        "H1S-01",
+        "H1S-02",
+        "H1S-03",
+        "H1S-04",
+        "H1S-05",
+        "H1S-06",
+        "H1S-07.P1",
+        "H1S-07.P2",
+        "H1S-07.P3",
+        "H1S-07.P4",
+        "H1S-08",
+        "H1S-09",
+        "H1S-10.A",
+        "H1S-10.B",
+        "H1S-10.C",
+        "H1S-10.D",
+        "H1S-11.A",
+        "H1S-11.B",
+        "H1S-11.C",
+        "H1S-12",
+        "H1S-13",
+        "H1S-14"
+      ],
+      "near_term_cases_role": "Research focuses only; current registration is 20 split tasks plus two operations",
+      "independent_task_count": 22,
+      "count_breakdown": {
+        "retained_tasks": 9,
+        "promoted_subscene_tasks": 11,
+        "existing_split_total": 20,
+        "new_operation_tasks": 2,
+        "active_total": 22
+      },
+      "new_operations": [
+        "H1S-13",
+        "H1S-14"
+      ],
+      "extra_common_feasible_calibration_tasks": false
+    },
+    {
+      "id": "M1",
+      "core": "container/target transfer and supported deep-cabinet delivery",
+      "design": "m1-extension/task-design.json",
+      "family_count": 1,
+      "candidate_cell_count": 12,
+      "validated_cell_count": 0,
+      "primary_axes": {
+        "retrieval_mode": [
+          "direct",
+          "help"
+        ],
+        "embodiment": [
+          "dexterous_hand",
+          "three_finger",
+          "wheeled"
+        ],
+        "task_requirement": [
+          "N",
+          "Y"
+        ]
+      },
+      "candidate_cell_ids": [
+        "M1E-direct-dexterous_hand-N",
+        "M1E-direct-dexterous_hand-Y",
+        "M1E-direct-three_finger-N",
+        "M1E-direct-three_finger-Y",
+        "M1E-direct-wheeled-N",
+        "M1E-direct-wheeled-Y",
+        "M1E-help-dexterous_hand-N",
+        "M1E-help-dexterous_hand-Y",
+        "M1E-help-three_finger-N",
+        "M1E-help-three_finger-Y",
+        "M1E-help-wheeled-N",
+        "M1E-help-wheeled-Y"
+      ],
+      "first_batch_cells": [
+        "M1E-direct-three_finger-N",
+        "M1E-direct-three_finger-Y",
+        "M1E-help-three_finger-N",
+        "M1E-help-three_finger-Y"
+      ],
+      "first_batch_controls": [
+        "M1E-I01",
+        "M1E-I03"
+      ],
+      "scene_recipe_ids": [
+        "M1E-01",
+        "M1E-02",
+        "M1E-03",
+        "M1E-04",
+        "M1E-05",
+        "M1E-06",
+        "M1E-07",
+        "M1E-08"
+      ],
+      "deferred": [
+        "M1E-04"
+      ],
+      "paired_variant": [
+        "M1E-02",
+        "M1E-08"
+      ],
+      "body_priority": "three-finger instances of four operations first; five-finger and wheeled later",
+      "N_allows_help": true,
+      "Y_requires_designated_manipulator_transfer_and_delivery": true,
+      "route_scope": "retrieval phase only; subsequent mandatory transfer is not retrieval help",
+      "difficulty": "per-instance annotation; not another matrix multiplier",
+      "operation_task_count": 4,
+      "selected_operation_ids": [
+        "M1E-01",
+        "M1E-03",
+        "M1E-05",
+        "M1E-06"
+      ],
+      "selected_control_count": 2,
+      "selected_control_ids": [
+        "M1E-I01",
+        "M1E-I03"
+      ],
+      "embedded_variant_ids": [],
+      "coverage_matrix_role": "Historical projection only; independent variants are counted in case-catalog.json",
+      "case_catalog": "m1-extension/case-catalog.json",
+      "case_count": 9,
+      "operation_case_count": 7,
+      "control_case_count": 2,
+      "independent_case_ids": [
+        "M1C-ORIG",
+        "M1C-B01",
+        "M1C-B02",
+        "M1C-B03",
+        "M1C-B04",
+        "M1C-B05",
+        "M1C-B06",
+        "M1C-I01",
+        "M1C-I02"
+      ],
+      "parent_groups_counted": false,
+      "promoted_variant_parent_ids": [
+        "M1E-02",
+        "M1E-07",
+        "M1E-08"
+      ],
+      "case_definition": "Observable capability bottleneck and tool/partner operation that can change complete-task feasibility; not a Cartesian product of robot names and rules",
+      "body_rule_products_counted": false,
+      "original_case_count": 1,
+      "extension_case_count": 8
+    },
+    {
+      "id": "M3",
+      "core": "change a lightweight partner robot workspace and support",
+      "design": "m3-extension/task-design.json",
+      "conditional_cases": [
+        "M3E-01",
+        "M3E-02",
+        "M3E-03"
+      ],
+      "conditional_controls": [
+        "M3E-I01"
+      ],
+      "development_gate": "compatible asset and capability audit under current load constraint",
+      "all_new_feasibility": "unknown",
+      "case_catalog": "m3-extension/case-catalog.json",
+      "case_count": 6,
+      "operation_case_count": 5,
+      "control_case_count": 1,
+      "independent_case_ids": [
+        "M3C-ORIG",
+        "M3C-B01",
+        "M3C-B02",
+        "M3C-B03",
+        "M3C-B04",
+        "M3C-I01"
+      ],
+      "parent_groups_counted": false,
+      "case_definition": "Observable capability bottleneck and tool/partner operation that can change complete-task feasibility; not a Cartesian product of robot names and rules",
+      "body_rule_products_counted": false,
+      "original_case_count": 1,
+      "extension_case_count": 5
+    }
+  ],
+  "legacy_disposition": {
+    "H1E-09": "M3E-01",
+    "H1E-10": "M3E-02; self-climbing variants belong to H1",
+    "H1E-11": "M3E-03",
+    "H1E-12": "merge generic tool selection into relevant H1/M1 scenes",
+    "H1E-13": "H1 self-climbing composition; humanoid partner-support variant withdrawn",
+    "H1E-14": "cross-case embodiment/capability evaluation axis",
+    "H1E-I05": "historical specification; no active H1 count",
+    "H1E-I06": "historical specification; current conditional control is M3E-I01",
+    "H1E-I07": "historical specification; no active H1 count"
+  },
+  "removed_standalone_case": "return-posture adjustment",
+  "withdrawn": [
+    "humanoid carrying humanoid",
+    "partner-supported humanoid ascent",
+    "partner-supported humanoid balancing"
+  ],
+  "evaluation_axes": [
+    "family",
+    "case",
+    "embodiment",
+    "capability profile",
+    "seed",
+    "tool layer",
+    "disclosure",
+    "route label"
+  ],
+  "previous_9_or_11_case_and_27_cell_commitment": "superseded",
+  "counts_are_separate_not_validated_task_totals": true,
+  "current_task_registry": "current-task-registry.json",
+  "assembly_suite": {
+    "updated": "2026-10-28",
+    "count": 10,
+    "original_count": 3,
+    "extension_count": 7,
+    "family_counts": {
+      "ASM": 4,
+      "GEAR": 3,
+      "REF": 3
+    },
+    "counting": "independent_manipulation_problem",
+    "planned_body_configuration_count": 13,
+    "status": "design_registration",
+    "design": "assembly-family/task-design.json",
+    "documentation": {
+      "zh": "assembly-family/README.md",
+      "en": "assembly-family/README-en.md"
+    }
+  },
+  "disk_flip_family": {
+    "updated": "2026-10-29",
+    "variant_count": 4,
+    "setting_count": 6,
+    "embodiment_count": 3,
+    "object_profile_count": 3,
+    "status": "implementation_in_progress",
+    "new_simulation_runs": 140,
+    "design": "disk-flip-family/task-design.json",
+    "documentation": {
+      "zh": "disk-flip-family/README.md",
+      "en": "disk-flip-family/README-en.md"
+    },
+    "complete_witness_settings": 5,
+    "implementation": "disk-flip-family/implementation.json"
+  },
+  "disk_rotation_family": {
+    "updated": "2026-10-28",
+    "status": "implementation_and_scoped_evidence",
+    "count": 9,
+    "original_count": 1,
+    "extension_count": 8,
+    "conditional_control_count": 1,
+    "counting": "independent_manipulation_problem",
+    "design": "disk-rotation-family/task-design.json",
+    "task_ids": [
+      "DR-01",
+      "DR-02",
+      "DR-03",
+      "DR-04",
+      "DR-05",
+      "DR-06",
+      "DR-07",
+      "DR-08",
+      "DR-09"
+    ],
+    "conditional_control_ids": [
+      "DR-I01"
+    ]
+  }
+}

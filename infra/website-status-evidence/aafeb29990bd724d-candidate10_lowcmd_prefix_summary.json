@@ -1,0 +1,48 @@
+{
+  "schema": "h1-layer1-channel-diagnostic/2",
+  "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_10\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\layer1-compact10-lowcmd-prefix-01",
+  "profile": "layer1_high_fixed",
+  "controller": "candidate_10",
+  "requested_seconds": 100.0,
+  "actual_seconds": 100.0,
+  "commands": 5000,
+  "physical_steps": 20000,
+  "diagnostic_passed": true,
+  "checks": {
+    "requested_prefix_reached": true,
+    "reference_finished_cleanly": true,
+    "nonvoid": true,
+    "safety_complete": true,
+    "no_safety_events": true,
+    "no_initial_state_writes": true,
+    "no_channel_clipping": true,
+    "no_hardware_excess": true,
+    "no_expert_effort_excess": true,
+    "no_unsent_substep_changes": true,
+    "source_frozen": true,
+    "request_chain_valid": true,
+    "requests_clean": true,
+    "container": true,
+    "worker_finished": true,
+    "agent_finished": true,
+    "commands_accounted": true,
+    "physical_steps_accounted": true
+  },
+  "void": false,
+  "success": false,
+  "safety_events": [],
+  "actuator_rule": {
+    "status": "evaluated",
+    "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+    "max_saturation_s": 1.78,
+    "max_limit_push_s": 0.02
+  },
+  "joint_steps": {
+    "servo": 210128,
+    "torque": 4872,
+    "dc_motor_pd": 0
+  },
+  "launcher_exit_code": 1,
+  "launcher_exit_reason": "Launcher returns 1 for an incomplete task (success=false). The requested diagnostic ends normally at 100 s; agent and worker exit 0. Diagnostic checks do not change the task verdict.",
+  "scope": "Original-start 100-second privileged reference diagnostic only. No full-task success or full-channel-equivalence qualification."
+}

@@ -1,0 +1,76 @@
+{
+  "created_at": "2026-10-30T00:03:25.281870+00:00",
+  "setting": "DF-04-G",
+  "cohort": "cohort-v1",
+  "baseline": "DF-04-G-a27",
+  "jobs": [
+    {
+      "job": 8069048,
+      "label": "df-DF-04-G-q1",
+      "args": [
+        "DF-04-G",
+        "cohort-v1",
+        "1"
+      ],
+      "dependency": null
+    },
+    {
+      "job": 8069049,
+      "label": "df-DF-04-G-q2",
+      "args": [
+        "DF-04-G",
+        "cohort-v1",
+        "2"
+      ],
+      "dependency": null
+    },
+    {
+      "job": 8069050,
+      "label": "df-DF-04-G-q3",
+      "args": [
+        "DF-04-G",
+        "cohort-v1",
+        "3"
+      ],
+      "dependency": null
+    },
+    {
+      "job": 8069051,
+      "label": "df-DF-04-G-a27-evidence",
+      "args": [
+        "/fs/gamma-projects/vlm-robot/robo-si/df_family/runs/DF-04-G-a27",
+        "/fs/gamma-projects/vlm-robot/robo-si/df_family/acceptance/portable-DF-04-G-a27"
+      ],
+      "dependency": "afterany:8068922"
+    },
+    {
+      "job": 8069052,
+      "label": "df-DF-04-G-a27-isolated",
+      "args": [
+        "/fs/gamma-projects/vlm-robot/robo-si/df_family/runs/DF-04-G-a27",
+        "/fs/gamma-projects/vlm-robot/robo-si/df_family/isolated/DF-04-G-a27-recorded"
+      ],
+      "dependency": "afterok:8069051"
+    },
+    {
+      "job": 8069053,
+      "label": "df-DF-04-G-a27-portable",
+      "args": [
+        "/fs/gamma-projects/vlm-robot/robo-si/df_family/acceptance/portable-DF-04-G-a27",
+        "/fs/gamma-projects/vlm-robot/robo-si/df_family/portable-validation/DF-04-G-a27-fresh"
+      ],
+      "dependency": "afterok:8069051"
+    },
+    {
+      "job": 8069054,
+      "label": "df-DF-04-G-a27-collect",
+      "args": [
+        "DF-04-G",
+        "cohort-v1",
+        "DF-04-G-a27"
+      ],
+      "dependency": "afterany:8069048:8069049:8069050:8069051:8069052:8069053"
+    }
+  ],
+  "scope": "Submitted automated checks; no passed gate or external signoff implied"
+}

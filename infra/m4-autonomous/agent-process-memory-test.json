@@ -1,0 +1,19 @@
+{
+  "schema": "m4-agent-process-resource-test/1",
+  "passed": true,
+  "command": "python -m unittest m4_family.autonomous.test_agent_process.BoundaryTests.test_memory_and_process_limits_are_effective -v",
+  "tests": 1,
+  "elapsed_s": 0.092,
+  "observed": [
+    "600 MiB allocation rejected with MemoryError under 512 MiB address-space limit",
+    "fork attempts rejected with EAGAIN before 32 children",
+    "all created children killed and reaped before returning a valid action"
+  ],
+  "source_sha256": {
+    "agent_process.py": "fc909986ce7ff190b4201d2dd08fecc71c2acbcabebed9c1ac0e72c4eec3a92a",
+    "agent_scratch.py": "1f6c5fe7c5478de1b6da23ba8bcb3a2f8c3091fe878c0ec5b0988d6b79653a46",
+    "test_agent_process.py": "b61cc19883e116edf1aba2d1c5a45ed2dea1721ddd253e6358606c7d9831d760"
+  },
+  "scope": "Local per-process/resource controls only; aggregate process-tree CPU/memory accounting remains incomplete.",
+  "formal_admission": false
+}

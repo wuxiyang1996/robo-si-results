@@ -1,0 +1,37 @@
+{
+  "schema": "h3-extension-cohort/1",
+  "declared_utc": "2026-10-29T22:26:24.089145+00:00",
+  "runtime": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h3-author-runtimes/d517651c047a7d8d1d6c1603e23ef702a0df7bfdc85f088e2a7a7d633c316380",
+  "source_identity": "d517651c047a7d8d1d6c1603e23ef702a0df7bfdc85f088e2a7a7d633c316380",
+  "source_files": 556,
+  "cases": [
+    {
+      "experiment": "tool_route",
+      "case": "b_room_route"
+    },
+    {
+      "experiment": "tool_placement",
+      "case": "crate_load_fault_settle"
+    },
+    {
+      "experiment": "tool_placement",
+      "case": "crate_load_fault_settle_no_recovery"
+    }
+  ],
+  "purpose": "Native-clock navigation dwell and stationary re-probing after physical support repositioning",
+  "recovery_contract": "recovery-stationary-contract-v2.json",
+  "changes": [
+    "Count all four 200 Hz physics samples in each navigation quiet cycle; thresholds unchanged",
+    "Brake at a measured new support pose, then test its drift rather than counting intentional repositioning as slip",
+    "Keep full helper-body clearance and task delivery separate"
+  ],
+  "formal_admission": false,
+  "route_job_id": "8067135",
+  "route_run": "tool-placement-8067135",
+  "pair_job_id": "8067136",
+  "pair_runs": [
+    "tool-recovery-active-8067136",
+    "tool-recovery-control-8067136"
+  ],
+  "same_gpu_pair": true
+}

@@ -1,0 +1,119 @@
+{
+  "task": "assembly",
+  "status": "complete",
+  "accepted": true,
+  "steps": [
+    {
+      "name": "layer1_sandbox",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 136.8,
+      "command": [
+        "-m",
+        "humanoid.g1_tabletop.acceptance.release_20261022.replay_sandbox",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_seed0\\run\\episode_00",
+        "--scene",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_seed0\\scene.json",
+        "--out",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\followups\\layer1_sandbox",
+        "--video"
+      ]
+    },
+    {
+      "name": "layer1_physics",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 89.77,
+      "command": [
+        "-m",
+        "humanoid.g1_tabletop_assembly.solution.recording",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_seed0\\run\\expert\\trajectory.npz",
+        "--output",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\followups\\layer1_physics"
+      ]
+    },
+    {
+      "name": "layer1_subgoal1",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 59.12,
+      "command": [
+        "-m",
+        "humanoid.g1_tabletop.sandbox.verify_subgoal",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_seed0\\run\\episode_00",
+        "--snapshot",
+        "293",
+        "--out",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\followups\\layer1_subgoal1.json"
+      ]
+    },
+    {
+      "name": "layer1_subgoal2",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 58.62,
+      "command": [
+        "-m",
+        "humanoid.g1_tabletop.sandbox.verify_subgoal",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_seed0\\run\\episode_00",
+        "--snapshot",
+        "438",
+        "--out",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\followups\\layer1_subgoal2.json"
+      ]
+    },
+    {
+      "name": "layer1_repeat1",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 135.17,
+      "command": [
+        "-m",
+        "humanoid.g1_tabletop.sandbox.qualification",
+        "assembly",
+        "--scene",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_seed0\\scene.json",
+        "--out",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\followups\\layer1_repeat1",
+        "--video",
+        "--policy",
+        "closed_loop:run"
+      ]
+    },
+    {
+      "name": "layer1_repeat2",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 114.61,
+      "command": [
+        "-m",
+        "humanoid.g1_tabletop.sandbox.qualification",
+        "assembly",
+        "--scene",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_seed0\\scene.json",
+        "--out",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\followups\\layer1_repeat2",
+        "--video",
+        "--policy",
+        "closed_loop:run"
+      ]
+    },
+    {
+      "name": "layer1_repetition_spread",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.84,
+      "command": [
+        "-m",
+        "humanoid.g1_tabletop.acceptance.release_20261022.verify_repetitions",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_seed0\\run\\qualification.json",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\followups\\layer1_repeat1\\qualification.json",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\followups\\layer1_repeat2\\qualification.json",
+        "--out",
+        "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\followups\\layer1_repetition_spread.json"
+      ]
+    }
+  ],
+  "provisional_until_entire_sweep_passes": false,
+  "complete_sweep_passed": true
+}

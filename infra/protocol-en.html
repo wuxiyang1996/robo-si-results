@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Evaluation protocol of Embodied Terminal-Bench (robo-si): simulated steps and tokens as the primary budgets, delivery snapshots scored at budget points, normalising, layering and aggregating scores, episode counts, repeated sessions and confidence intervals, baselines, versions and reproducibility, leakage prevention and what is published." name="description"/>
+<title>Evaluation Protocol</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/protocol-zh.html">中文</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">Task infrastructure · Evaluation protocol</p>
+<h1>Results must be <span class="nm">comparable</span>,<br/>reproducible and leak-free.</h1>
+<p class="lead">This page fixes how evaluations are run and how results are reported: budgets, scoring delivery snapshots at budget points, normalising and aggregating scores, statistics, baselines, versions and reproducibility, leakage prevention and what is published. The verifier itself is on the <a href="/robo-si-results/infra/verifier-en.html">scoring and verification</a> page; the feedback an agent gets during a session is in <a href="/robo-si-results/infra/sandbox-en.html#feedback">section 05 of the isolated sandbox</a>.</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>Contents</h3>
+<ol class="toc">
+<li><a href="#budget">01 Budgets</a></li>
+<li><a href="#snapshots">02 Delivery snapshots scored at budget points</a></li>
+<li><a href="#reporting">03 How results are reported</a></li>
+<li><a href="#stats">04 Statistics</a></li>
+<li><a href="#baselines">05 Baselines</a></li>
+<li><a href="#versions">06 Versions and reproducibility</a></li>
+<li><a href="#leakage">07 Leakage and publication</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="budget"><div class="wrap">
+<p class="kicker">01 · Budgets</p>
+<h2>Simulated steps and tokens are the primary budgets; wall-clock time is only a cap</h2>
+<p>"More than 4 hours, no upper limit" describes task difficulty; evaluation also needs a budget that can be compared. Wall-clock time depends heavily on hardware and load: with the GPU busy with other work, H1 takes 0.67 s per control step, so the same agent on another machine or at another time can run several times fewer experiments. Therefore:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Budget</th><th>How it is counted</th><th>Role</th></tr></thead>
+<tbody>
+<tr><td>Simulated steps</td><td>Counted on the environment side: control steps advanced by <code>command</code>, before and after resets</td><td><strong>Primary</strong>: how many physical experiments the agent can run</td></tr>
+<tr><td>Tokens</td><td>LLM input and output tokens metered independently by the trusted proxy, plus their cost</td><td><strong>Primary</strong>: how much the agent can think</td></tr>
+<tr><td>Observations</td><td>Counted on the environment side</td><td>Prevents unlimited sensor reads</td></tr>
+<tr><td>Resets</td><td>A cap in development mode</td><td>Prevents trial and error from replacing understanding</td></tr>
+<tr><td>Wall clock</td><td>Timed by the launcher</td><td>A cap only, against hangs; never used for comparison</td></tr>
+</tbody>
+</table></div>
+<ul class="check" style="margin-top:12px">
+<li>The development session ends when either primary budget is used up.</li>
+<li>Every budget is metered by the environment side or the trusted proxy; nothing the agent reports counts.</li>
+<li>Each task card states the amounts and roughly what wall-clock time they correspond to on the reference hardware.</li>
+</ul>
+</div></section>
+<section id="snapshots"><div class="wrap">
+<p class="kicker">02 · Delivery snapshots scored at budget points</p>
+<h2>Report how the score grows with budget, not just one final score</h2>
+<ul class="check">
+<li>During the development session, the trusted side snapshots the workspace at several budget points and records the budget used so far. Budget points are defined in simulated steps and tokens, for example the amounts that correspond to about 4, 12 and 24 hours on the reference hardware.</li>
+<li>Every snapshot is scored automatically in grading mode on sealed new episodes (3 grading runs per episode, <a href="#stats">section 04</a>), so one evaluation yields a score-versus-budget curve, and the 3 evaluations yield three.</li>
+<li>The agent does not know when snapshots are taken; it simply keeps its current best program at the agreed entry point (see <a href="/robo-si-results/infra/sandbox-en.html#agent">section 06 of the isolated sandbox</a>).</li>
+<li>EmbodiedSWE also stamps each submission snapshot with wall-clock time and transcript position; here the budgets metered on the environment side are used instead.</li>
+</ul>
+</div></section>
+<section class="tinted" id="reporting"><div class="wrap">
+<p class="kicker">03 · How results are reported</p>
+<h2>Per task and per layer first, then aggregated</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>How it is computed</th></tr></thead>
+<tbody>
+<tr><td>Raw score</td><td>Each graded episode's process score (peak progress, averaged over its 3 grading runs), averaged over episodes</td></tr>
+<tr><td>Success rate</td><td>The mean of each graded episode's success (0 / 1, averaged over its 3 grading runs)</td></tr>
+<tr><td>Normalised score</td><td>Raw score divided by the reference expert's score (a no-op is 0). Tasks whose reference does not cover every stage report raw scores only</td></tr>
+<tr><td>Layers</td><td>Layers 1, 2 and 3 reported separately, plus their equally weighted mean</td></tr>
+<tr><td>Across tasks</td><td>Every task weighted equally: the mean normalised score (raw score where there is none) and the mean success rate; never weighted by episode count</td></tr>
+<tr><td>Stages</td><td>The mean best value per stage, showing where agents get stuck</td></tr>
+<tr><td>Repeats</td><td>Each of the 3 evaluations' scores, their mean and range; the largest spread across the 3 grading runs; the number of non-reproducible episodes</td></tr>
+<tr><td>Cost</td><td>Simulated steps, tokens and their cost, observations, resets, wall clock</td></tr>
+<tr><td>Flags and voids</td><td>Number of flagged episodes and why; number of void episodes</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">Every number comes from automatic scoring; every report states the task and verifier versions (<a href="#versions">section 06</a>).</p>
+</div></section>
+<div class="wrap"><div class="card" id="feasibility-reporting"><h3>Separate screening from execution scores</h3><p>Report counts for <code>witnessed_full</code>, <code>screen_pass</code>, <code>unknown</code> and <code>rejected</code>, total draws, budget exhaustion and rejection reasons. Skill probes and full executions have separate denominators. Screening passes earn no task success or full reference score. Self-generated candidates may be filtered by predeclared rules; retain every prescribed benchmark sample, without silently removing unknowns/failures or replacing seeds. Any subset report must include the full sampling ledger, predeclared selection rules and state counts. Existing agent-evaluation and grading repeats remain; they do not require solving each random instance with a complete reference first.</p><p><a href="/robo-si-results/infra/acceptance-en.html#screening">Acceptance state definitions</a> · <a href="/robo-si-results/infra/planning/instance-template.json">Record template</a></p></div></div>
+<section id="stats"><div class="wrap">
+<p class="kicker">04 · Statistics</p>
+<h2>Episode counts, three repeats and confidence intervals</h2>
+<ul class="check">
+<li><strong>Graded episodes:</strong> we suggest at least 10 sealed episodes per layer, stratified by family. With too few episodes scores swing widely (the H1 sandbox documentation notes this too).</li>
+<li><strong>Evaluation repeated 3 times (required):</strong> every agent runs 3 independent evaluations per task, each starting from a new development session. An agent's own randomness is often larger than the episodes', so a single evaluation does not represent its ability. All three scores are reported, with their mean and range.</li>
+<li><strong>Grading re-run 3 times (required):</strong> every delivery snapshot is scored automatically 3 times on the same sealed episodes. GPU physics is not bitwise repeatable, and the re-runs test whether the evaluation output reproduces: success must agree across the three, and per-episode scores must stay within the tolerance (for example ≤0.05, fixed in the task card). The episode score is the mean of the three.</li>
+<li><strong>When it does not reproduce:</strong> an episode whose three scores differ beyond the tolerance is flagged as not reproducible and still scored as their mean; the task or verifier is not robust to physics noise, and the maintainers fix it, with automatic re-grading in the next version.</li>
+<li><strong>Confidence intervals:</strong> bootstrap over episodes and sessions for 95% intervals; agents whose intervals overlap are not ranked against each other.</li>
+<li><strong>No best-of:</strong> grading runs are averaged and every evaluation counts; nothing is re-run to pick the best.</li>
+</ul>
+<p class="muted" style="margin-top:8px">Episode counts and tolerances are suggestions that each task fixes in its task card according to its variance; the three repeats are required. All are frozen before evaluation.</p>
+</div></section>
+<section class="tinted" id="baselines"><div class="wrap">
+<p class="kicker">05 · Baselines</p>
+<h2>Besides the no-op and the reference, standard agent baselines</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Baseline</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>No-op</td><td>Lower anchor; must score 0</td></tr>
+<tr><td>Reference expert</td><td>Upper anchor; proves solvability and validates the verifier</td></tr>
+<tr><td>Standard agent configurations</td><td>Pinned coding agents (for example the version-pinned Claude Code the agent image can install) with a default prompt, run under the same budgets. They give a reference for difficulty and discrimination, and test the assumption that a strong agent needs more than 4 hours</td></tr>
+<tr><td>Simple scripted baseline (optional)</td><td>A fixed script that uses only the task-provided skills and no perception. It tests whether a fixed routine can already score</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">Baseline results are published with each task version and re-run after revisions. The difficulty pilot of the contribution process uses the standard agent configurations.</p>
+</div></section>
+<section id="versions"><div class="wrap">
+<p class="kicker">06 · Versions and reproducibility</p>
+<h2>Every result traces back to fixed versions</h2>
+<h3>Version numbers and hashes</h3>
+<ul class="check">
+<li>Task version <code>major.minor</code>: changes that can alter scores (scene, predicates, thresholds, weights, monitor rules, simulation settings, actuation and sensing delays) bump the major version; documentation-only changes bump the minor version.</li>
+<li>Every scored result records the task version, the verifier code hash, the simulator version (such as Genesis 1.4.3), asset hashes, the agent image's content hash, the hardware, and (on the trusted side only) the seeds.</li>
+</ul>
+<h3>Physics non-determinism on the GPU</h3>
+<p>GPU physics is not bitwise repeatable. Re-runs during evaluation are in <a href="#stats">section 04</a>; re-runs at task acceptance in <a href="/robo-si-results/infra/acceptance-en.html#feasibility">section 03 of task acceptance</a>.</p>
+<h3>Automatic re-grading after revisions</h3>
+<ul class="check">
+<li>The trusted side keeps every delivery snapshot. After a major version bump, all snapshots are re-graded automatically on the new version; old results are kept and labelled with their version.</li>
+<li>Every task keeps a change log: what changed, why (for example which flagged episode revealed which problem) and how results were affected.</li>
+</ul>
+</div></section>
+<section class="tinted" id="leakage"><div class="wrap">
+<p class="kicker">07 · Leakage and publication</p>
+<h2>Private material never leaves the trusted side; only aggregates are published</h2>
+<h3>Public and private</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Material</th><th>Public development tasks</th><th>Private evaluation tasks</th></tr></thead>
+<tbody>
+<tr><td>Instruction, robot and sensor specifications, SDK</td><td>Public</td><td>Public (the agent gets them anyway)</td></tr>
+<tr><td>Task descriptions, design documents</td><td>Public</td><td>Only the goal and category; never what must be discovered</td></tr>
+<tr><td>Reference expert solution, official trajectories</td><td>May be public</td><td>Private</td></tr>
+<tr><td>Verifier code, predicate thresholds, weights, negative cases, monitor thresholds</td><td>May be public</td><td>Private</td></tr>
+<tr><td>Sealed seeds</td><td>Private</td><td>Private, changed every evaluation round</td></tr>
+<tr><td>Task check records, flagged episodes</td><td>Maintainers only</td><td>Maintainers only</td></tr>
+</tbody>
+</table></div>
+<h3>Keeping it out of training data</h3>
+<ul class="check">
+<li>Private material lives only in private repositories or on the trusted side, never in a public repository, web page or paper appendix. robo-si is currently a private repository.</li>
+<li>Every task file carries a canary string to detect training-data contamination; Terminal-Bench's task files carry such a string, the local Harbor task does not yet.</li>
+<li>The agent's network reaches only the LLM API (<a href="/robo-si-results/infra/sandbox-en.html#iso">section 03 of the isolated sandbox</a>), so it cannot search for task material during evaluation.</li>
+</ul>
+<h3>What is published after an evaluation</h3>
+<ul class="check">
+<li>Published: per task and layer, raw and normalised scores, success rates, confidence intervals and cost; mean best value per stage; numbers of flagged and void episodes; task and verifier versions.</li>
+<li>Not published (private tasks): per-episode videos and logs, predicate details, sealed seeds, delivered programs and transcripts. Publishing them would let the next round overfit the verifier.</li>
+<li>Public development tasks may publish per-episode videos and logs.</li>
+<li>Which feedback the agent gets during a session and which stays on the trusted side is in <a href="/robo-si-results/infra/sandbox-en.html#feedback">section 05 of the isolated sandbox</a>.</li>
+</ul>
+</div></section>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · Evaluation protocol · 2026-10-26 · <a href="/robo-si-results/infra/protocol-zh.html" hreflang="zh-CN" lang="zh-CN">中文</a> · <a href="/robo-si-results/infra/contribute-en.html">Home</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body>
+</html>

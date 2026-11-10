@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench (robo-si) task design guide: the eleven hard requirements, and detailed guidance on the evaluation framework, simulators and assets, randomisation, difficulty layers, subtasks, corner cases, sensors, manual feasibility verification (the human check of the task), the scoring and protection material, anti-bypass measures and the task card." name="description"/>
+<title>Task Design Guide</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/task-design-zh.html">中文</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">Task design guide</p>
+<h1>Get the <span class="nm">task design</span> right<br/>before writing any code.</h1>
+<p class="lead">The first step of contributing: how to design a new task. The eleven hard requirements are expanded one by one, ending with a design self-check and the task card template. The reference expert solution and feasibility verification are on the <a href="/robo-si-results/infra/acceptance-en.html">task acceptance</a> page.</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>Contents</h3>
+<ol class="toc">
+<li><a href="#overview">01 Eleven hard requirements</a></li>
+<li><a href="#scene">02 Scene, goal and instruction</a></li>
+<li><a href="#sim">03 Simulators and assets</a></li>
+<li><a href="#random">04 Initial-state randomisation</a></li>
+<li><a href="#layers">05 Three difficulty layers</a></li>
+<li><a href="#subtasks">06 Subtasks and curriculum</a></li>
+<li><a href="#corner">07 Corner cases</a></li>
+<li><a href="#sensors">08 Sensors and actions</a></li>
+<li><a href="#materials">09 Scoring and protection material</a></li>
+<li><a href="#checklist">10 Design self-check</a></li>
+<li><a href="#card">11 Task card template</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="overview"><div class="wrap">
+<p class="kicker">01 · Eleven hard requirements</p>
+<h2>The task card must address every one</h2>
+<ol class="req">
+<li><strong>Several interactive objects, no direct instruction.</strong> The scene has several objects that can be pushed, carried, placed, stood on or connected; the instruction gives only the goal and the public validity constraints. <a href="#scene">Section 02</a></li>
+<li><strong>Establish feasibility evidence in layers.</strong> A few complete references witness declared configurations; validate skill conditions, screen random instances within budgets and generate local trajectories only for execution. No full solution per random instance is required. Review and independently reproduce representative evidence. <a href="/robo-si-results/infra/acceptance-en.html#feasibility">Section 03 of task acceptance</a></li>
+<li><strong>The final goal involves at least one capability class:</strong> tool use or reaching a precondition; complex interaction, torque or WBC computation; a non-intuitive solution. <a href="#scene">Section 02</a></li>
+<li><strong>Terminal-Bench-style difficulty.</strong> A strong coding agent needs more than 4 hours of iteration; solving time has no upper limit. <a href="#scene">Section 02</a></li>
+<li><strong>Only sensors native to or mountable on the robot; no cheating.</strong> No spatial coordinates, object poses, physical properties, segmentation or purposes. <a href="#sensors">Section 08</a></li>
+<li><strong>Consider corner cases.</strong> Shortcuts around the point of the task are ruled out at design time; remaining reasonable unconventional solutions are scored automatically by the states they reach. <a href="#corner">Section 07</a></li>
+<li><strong>Strictly prevent bypasses and reward hacking.</strong> Distrust by default; an attack list, negative cases for every stage, exploit tests; grading is automatic, and people check the task and its verifier on video at admission. <a href="#materials">Section 09</a></li>
+<li><strong>Initial states as random as possible.</strong> Declare random ranges and screening states; valid generated geometry is not a solvability claim. Check shortcuts and ensure the solution is not knowable only from ground truth. <a href="#random">Section 04</a></li>
+<li><strong>Exactly three difficulty layers, each building on the one below.</strong> Necessary tools only → plus tools only another body could use → plus distractors. <a href="#layers">Section 05</a></li>
+<li><strong>Decomposable into subtasks, keeping curriculum learning possible.</strong> Subtasks have completion conditions stated as states, and start states from which they can run on their own. <a href="#subtasks">Section 06</a></li>
+<li><strong>Built on Genesis / Isaac Lab, preferring official and fine-grained asset libraries.</strong> Official robot models; for objects, simulator-official assets and part-level asset libraries with physical properties first. <a href="#sim">Section 03</a></li>
+</ol>
+</div></section>
+<section id="hierarchical-planning"><div class="wrap"><p data-refinement-readiness-link="true"><a href="/robo-si-results/infra/status-en.html#refinement-readiness">Remaining work for 12 tasks: selected full witnesses, low-level actions and trajectory mappings</a></p>
+<div class="callout" id="refinement-witness"><p><strong>Minimum design-feasibility evidence: demonstrated high-level plan → low-level action plan → actual trajectory mappings, plus at least one generated, continuously successful end-to-end expert trajectory.</strong> For example, refine getting onto a box into weight transfer, successive foot lifts and support establishment, then bind actions to trajectory segments. This is an existential witness in a declared configuration, not a guarantee over arbitrary random states, arbitrary skill composition or a requirement to finish a general rolling planner. Existing full trajectories may be reused after checking provenance and mappings; broader applicability is separate. <a href="/robo-si-results/infra/planning/hierarchical-evaluation/README.md">Representation refinement requirements</a></p></div>
+<p class="kicker">Design policy revision · 2026-10-26</p>
+<h2>Plan in layers; generate local trajectories on demand</h2>
+<p><strong>A complete solution for every random instance is not a prerequisite.</strong>Deliver a high-level plan, selected skills and constraints, key states and feasibility-check results. Full trajectories are additional evidence for selected representative instances.</p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Required material</th><th>Evidence boundary</th></tr></thead><tbody>
+<tr><td>Task</td><td>A small, predeclared set of complete successful references for the declared configurations.</td><td>Sample successes do not establish solvability throughout a random range.</td></tr>
+<tr><td>Skill</td><td>Entry/exit conditions, distance, load, pose, support/contact conditions, applicability and failure conditions.</td><td>Leave uncalibrated envelopes unset. Search failure is not proof of impossibility.</td></tr>
+<tr><td>Instance</td><td>Key reachability, collision, support, load, transition and budget checks; short difficult-segment probes only when needed.</td><td>Missing evidence or exhausted budget means unknown. Screening is not complete execution.</td></tr>
+<tr><td>Execution</td><td>Generate a short active segment from current observations; replan as needed.</td><td>Advance only when the actual state meets the next entry conditions; ideal checkpoint restores do not establish continuity.</td></tr>
+</tbody></table></div>
+<p>Transfer actual poses, velocities, grasp state, contact topology and forces, support geometry, committed stage, remaining task time and estimation uncertainty between skills. Minor motion may be acceptable under functional criteria; public physical limits and scoring conditions still apply.</p>
+<p>Self-generated scenes may preferentially sample evidenced skill envelopes. For prescribed benchmark random tests, retain every draw, rejection, timeout and failure instead of retaining only easy successes. Sampling inside an envelope alone does not prove full-task feasibility.</p>
+<p><a href="/robo-si-results/infra/acceptance-en.html#screening">Four instance states and acceptance gates</a> · <a href="/robo-si-results/infra/planning/README.md">Plans for all 12 tasks (Chinese)</a> · <a href="/robo-si-results/infra/planning/acceptance-policy.json">Machine-readable policy</a>. Routes and privileged evidence are author/reviewer material, excluded from agent-visible bundles.</p>
+</div></section>
+<section id="scene"><div class="wrap">
+<p class="kicker">02 · Scene, goal and instruction</p>
+<h2>Several interactive objects, a clear goal, no route</h2>
+<p class="covers">Covers R1, R3, R4.</p>
+<h3>Interactive objects (R1)</h3>
+<ul class="check">
+<li>The scene has several objects that can be pushed, carried, placed, stood on, connected, wedged or levered. A scene with one object whose use is obvious does not qualify.</li>
+<li>Objects are of three kinds: necessary tools, tools this robot cannot use but another body could, and distractors. The difficulty layer decides which appear (<a href="#layers">section 05</a>).</li>
+<li>What an object can do must be discoverable by experiment: push it, lift it, try standing on it, and see the result in the sensors.</li>
+</ul>
+<h3>Writing the instruction (R1)</h3>
+<p>The instruction gives the goal and the public validity constraints only. Objects get neutral names (colour, number); no purpose, no route or steps, and no verbs that imply a method ("stack", "climb", "pry", "wedge").</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Style</th><th>Example</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>Goal only</td><td>"Put the red box in the green goal area on the floor."</td><td><span class="pill ok">Fine</span></td></tr>
+<tr><td>Public validity constraint</td><td>"The box must never rest on a step while being carried."</td><td><span class="pill ok">Fine</span> a constraint is a rule, not a hint</td></tr>
+<tr><td>Purpose and route</td><td>"Stand on a floor box to take the red box down."</td><td><span class="pill no">Not allowed</span></td></tr>
+<tr><td>Steps</td><td>"First wedge the door, then carry the box through."</td><td><span class="pill no">Not allowed</span></td></tr>
+<tr><td>Names that imply use</td><td>"step box", "wedge", "lever"</td><td><span class="pill no">Not allowed</span> use "brown box", "object A"</td></tr>
+</tbody>
+</table></div>
+<h3>Capability classes of the final goal (R3)</h3>
+<p>At least one, possibly several:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Class</th><th>Meaning</th><th>Examples in the current tasks</th></tr></thead>
+<tbody>
+<tr><td>Tools / preconditions</td><td>An object must first change the environment, or a state must first be reached, before the goal is possible.</td><td>H1 standing on a box; H2 moving a heavy load with a cart; H3 dual-robot door holding or independent heavy-crate support</td></tr>
+<tr><td>Complex interaction / torque / WBC</td><td>Whole-body coordination, balance under load, torque computation or cooperative force.</td><td>H6 carrying a box upstairs; H5 levering a heavy box; M2 two robots carrying a long box</td></tr>
+<tr><td>Non-intuitive solution</td><td>The direct approach must fail and a change of approach is needed, or there are apparently useful traps.</td><td>H1's tall narrow distractor; M3 using the other robot as a tool</td></tr>
+</tbody>
+</table></div>
+<h3>Difficulty (R4)</h3>
+<ul class="check">
+<li>Aim for a task a strong coding agent needs more than 4 hours of iteration to solve. Solving time has no upper limit; time and tokens are recorded and reported.</li>
+<li>Difficulty comes from: dependency depth, tool composition, failures that need recovery, estimating geometry from depth and point clouds, and judging the robot's own capability.</li>
+<li>Difficulty should not come from: visual clutter, repetition, precision for its own sake, or information available only as ground truth.</li>
+<li>"Long horizon" means dependency depth, tool composition, persistent state and recovery, not video length (v5 section 10).</li>
+<li>If the difficulty pilot solves it too quickly, deepen dependencies (more preconditions, property changes), widen the random ranges, or use distractors that are harder to tell apart.</li>
+</ul>
+<h3>Solvable and infeasible episodes</h3>
+<p>A task may include deliberately infeasible episodes (such as H1's <code>infeasible</code> family), in which the agent must call <code>declare_infeasible</code>. "Infeasible" needs a declared validation scope (which approaches were tried and why none can work), never one agent's failure (v5 section 11). Declaring a solvable episode infeasible is flagged.</p>
+<h3>Multi-robot tasks</h3>
+<p>First test whether one robot can do it alone, and separate "cooperation required" from "cooperation only saves effort". Two robots in a scene do not make a cooperation task; if one robot can do it, change the label or adjust length, mass or towing force until it cannot (v5 section 9).</p>
+</div></section>
+<section class="tinted" id="sim"><div class="wrap">
+<p class="kicker">03 · Simulators and assets</p>
+<h2>Genesis / Isaac Lab, official robot models, official and fine-grained asset libraries first</h2>
+<p class="covers">Covers R11.</p>
+<h3>Simulator backends</h3>
+<ul class="check">
+<li><strong>Genesis first.</strong> The sandbox's trusted worker runs Genesis (currently 1.4.3). Every new task needs at least a Genesis backend.</li>
+<li><strong>Isaac Lab parity is recommended</strong> (the local setup is Isaac Sim 5.1 + Isaac Lab 2.3.2). Both backends share one task core (TaskCore): the same seed and episode index give exactly the same scene. H1, H2 and historical single-G1 H3 have both backends; current dual-G1 H3 and H6 are verified in Genesis only.</li>
+<li><strong>Parity needs consistency checks.</strong> Run the same commands in both backends and compare object trajectories, contacts and predicate results; record differences and their causes in the task README.</li>
+<li><strong>Fix the simulation settings in the task card.</strong> Time step, substeps, solver, contact parameters, self-collision; none can change in evaluation.</li>
+<li><strong>State backend limitations.</strong> For example, Genesis 1.4.3 has no ray sensor, so H1's MID-360 LiDAR is assembled from four depth cameras and scans a regular grid.</li>
+</ul>
+<h3>Robot models: use the official ones</h3>
+<ul class="check">
+<li><strong>G1:</strong> MuJoCo Menagerie's <code>unitree_g1</code> (BSD-3-Clause), downloaded at a pinned commit by <code>setup_assets.py</code>; sensor mounts come from Unitree's official URDF.</li>
+<li><strong>Go1 / Go2:</strong> Unitree's official or MuJoCo Menagerie's models; Isaac Lab ships configurations for Unitree robots.</li>
+<li>Do not quietly change the model's masses, torque limits or joint limits. Body parameters that should vary (strength, payload) are randomised explicitly in the task, with public ranges.</li>
+</ul>
+<h3>Object assets: choose by priority</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Priority</th><th>Source</th><th>Good for</th><th>Examples in the current tasks</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>Simulator-official assets</strong>: the Isaac Sim asset library, Genesis's built-in assets</td><td>Carts, shelving, industrial objects; usually with collision and physics properties</td><td>H2's cart (NVIDIA Dolly)</td></tr>
+<tr><td>2</td><td><strong>Fine-grained asset libraries</strong>: part-level libraries with joints or measured properties, such as PartNet-Mobility (SAPIEN; articulated cabinets, doors, drawers), Google Scanned Objects, the YCB object set</td><td>Articulated furniture and appliances, everyday objects the hands can manipulate</td><td>Not used by any task yet</td></tr>
+<tr><td>3</td><td><strong>High-quality CC0 models</strong>: Poly Haven</td><td>Furniture, crates, floor and wall textures</td><td>H1's cabinets and folding stool; H2's and H3's crates and shelving</td></tr>
+<tr><td>4</td><td><strong>Self-built geometry</strong></td><td>When no suitable asset exists, or dimensions must be controlled exactly (such as step heights)</td><td>H1's floor boxes</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:8px">Using level 4 needs a reason in the task card for why levels 1–3 do not fit. Licences differ between libraries; check and record each one.</p>
+<h3>Asset requirements</h3>
+<ul class="check">
+<li><strong>Source and licence:</strong> record each asset's source URL, author, licence and modifications (see H2's <code>asset_sources.json</code>). Assets whose licence forbids redistribution stay out of git and are downloaded by script.</li>
+<li><strong>Reproducible:</strong> download scripts pin versions and check hashes (H2 records SHA-256; Poly Haven downloads check the MD5 the API provides).</li>
+<li><strong>Real-world scale:</strong> scale to real dimensions and record what was scaled.</li>
+<li><strong>Collision matches visuals:</strong> collision proxies are simplified boxes or convex decompositions that match the visual mesh closely enough. The agent sees the visual mesh through RGB-D while physics uses the collision proxy; a mismatch is a trap for the agent and a possible exploit.</li>
+<li><strong>Realistic physics:</strong> mass, friction, centre of mass, inertia, and for articulated objects damping, limits and spring force, all within real ranges and randomised per section 05.</li>
+<li><strong>One asset for both backends:</strong> after URDF / MJCF ↔ USD conversion, check geometry, masses and joint parameters.</li>
+<li><strong>Appearance reveals no purpose:</strong> no "STEP" or "TOOL" lettering or special marks. Colours may identify the target but must not hint at uses.</li>
+<li><strong>"Unusable" must be physically unusable:</strong> not load-bearing, collapsing, fixed to the floor: all implemented in simulation (weak joints, low stiffness, fixed constraints and so on), never by a predicate that says "using it does not count".</li>
+<li><strong>Affordable rendering:</strong> texture resolution sufficient for RGB perception (current tasks use 1K).</li>
+</ul>
+</div></section>
+<section id="random"><div class="wrap">
+<p class="kicker">04 · Initial-state randomisation</p>
+<h2>Randomise everything that can be; no fixed start or layout</h2>
+<p class="covers">Covers R8.</p>
+<p>A private seed decides every episode. Randomisation makes hard-coded layouts worthless, forces the agent to rely on perception and closed-loop control, and gives multi-episode grading statistical meaning.</p>
+<h3>What to randomise</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Category</th><th>Variables</th><th>What H1 does now</th></tr></thead>
+<tbody>
+<tr><td>Robot start</td><td>Position, heading</td><td>Nominal start ±0.15 m, heading ±0.3 rad</td></tr>
+<tr><td>Object set</td><td>Which objects appear, how many</td><td>2–4 coloured boxes on the cabinet; floor boxes required by the family, the others each present with 50% probability</td></tr>
+<tr><td>Object poses</td><td>Positions, orientations</td><td>Floor boxes on 8 candidate spots with ±0.1 m jitter, yaw ±0.4 rad</td></tr>
+<tr><td>Target</td><td>Which object, where</td><td>Random target colour, level and slot</td></tr>
+<tr><td>Furniture</td><td>Model, size, shelf heights</td><td>3 cabinet models, two shelf layouts each</td></tr>
+<tr><td>Physical properties</td><td>Mass, friction, centre of mass</td><td>Floor-box masses 1–15 kg depending on the box, friction 0.3–0.8; in 30% of episodes the medium box is light and slippery</td></tr>
+<tr><td>Body parameters</td><td>Strength, payload (within public ranges)</td><td>Leg and arm torque limits ×0.85–1.0, 0–5 kg on the torso</td></tr>
+<tr><td>Sensors</td><td>Noise</td><td>IMU noise taken from the MJCF</td></tr>
+</tbody>
+</table></div>
+<h3>Three constraints</h3>
+<ol>
+<li><strong>Label instances by evidence.</strong> Samples follow the declared layer and generation rules. Distinguish complete witnesses, screening passes, unknowns and failed checks. No full solution per draw is required; failure to find a solution is not proof of physical infeasibility.</li>
+<li><strong>Open no shortcut.</strong> No corner of the random ranges may allow a solution that bypasses the point of the task, such as a shelf drawn so low that it can be reached on tiptoe. Test the edges of the ranges with oracle samples (<a href="/robo-si-results/infra/acceptance-en.html#feasibility">section 03 of task acceptance</a>).</li>
+<li><strong>Nothing essential known only from ground truth.</strong> Randomised hidden properties must be inferable from robot sensors: how hard a push is, whether a box wobbles when stood on, joint torques while lifting.</li>
+</ol>
+<h3>Seeds and splits</h3>
+<ul class="check">
+<li>Counter-based random numbers keyed by (seed, environment index, episode index): an episode is identical in both backends and on every re-run.</li>
+<li>In evaluation and grading, seeds are drawn privately on the trusted side; the agent never sees them.</li>
+<li>Development and evaluation use different seed sets; grading is stratified by difficulty layer (and family).</li>
+</ul>
+<h3>Writing the generator</h3>
+<ul class="check">
+<li>Draw positions and properties for every candidate object first, then let the difficulty layer decide which are present (<a href="#layers">section 05</a>). The necessary tools are then identical across the three layers for one seed.</li>
+<li>Samples that violate the constraints (overlaps, unreachable, outside the layer definition) are rejected; the rules go into the task card and the rejection rate is recorded, so the distribution is not silently skewed.</li>
+<li>Subtask start states come from the same generator (or checkpoint restore) and are randomised as well (<a href="#subtasks">section 06</a>).</li>
+</ul>
+<h3>What not to randomise</h3>
+<p>The robot model and hardware limits (apart from body parameters within public ranges), the instruction template, the public validity constraints and thresholds, and the simulation settings.</p>
+</div></section>
+<section class="tinted" id="layers"><div class="wrap">
+<p class="kicker">05 · Three difficulty layers</p>
+<h2>Exactly three layers, each building on the one below</h2>
+<p class="covers">Covers R9.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Layer</th><th>What the scene contains</th><th>What it tests</th><th>What the designer states and verifies</th></tr></thead>
+<tbody>
+<tr><td>Layer 1<br/>Necessary tools only</td><td>The goal, plus the tools and objects the task needs, and nothing else.</td><td>Discovering what the objects can do and how they combine, and executing it.</td><td>Why each object is necessary: without any one of them the task cannot be done (verified with the oracle).</td></tr>
+<tr><td>Layer 2<br/>Tools this robot cannot use</td><td>Layer 1, plus tools or objects this robot cannot use but a different body could.</td><td>The agent's model of its own body: height, leg length, step height, hand size and grasp width, joint torques, payload, foot area.</td><td>For each object, which body could use it (a taller humanoid, a quadruped such as Go1, a different hand) and why this robot cannot, even combined with other objects (if a combination works, it is another route, handled under R6); the oracle confirms this robot really cannot use it.</td></tr>
+<tr><td>Layer 3<br/>Distractors</td><td>Layer 2, plus distractors: objects or tools beyond this robot's capability (too heavy, too tall, too large, too narrow), and objects that do not actually work (not load-bearing, tipping when stepped on, fixed to the floor, hollow and collapsing, a handle that is only decoration).</td><td>Ruling out apparently useful options: experimenting to collect evidence, and changing route after failure.</td><td>Why each distractor cannot be used, and from which sensor reading the robot can find this out before committing to it; never knowable only from ground truth.</td></tr>
+</tbody>
+</table></div>
+<h3>Rules</h3>
+<ul class="check">
+<li><strong>Cumulative, one seed.</strong> The goal, the necessary tools and their positions are the same in all three layers; a higher layer only adds objects. Score differences can then be attributed to recognising tools the robot cannot use and to ruling out distractors.</li>
+<li><strong>Evidence for each declared layer.</strong> Added objects may obstruct routes or introduce shortcuts. Select complete representative references for each declared layer/variant, alongside skill and instance screening; do not require full execution of every random draw. List deferred layers explicitly (<a href="/robo-si-results/infra/acceptance-en.html#feasibility">acceptance section 03</a>).</li>
+<li><strong>Added objects go into the corner-case list.</strong> They may be put to unexpected uses (<a href="#corner">section 07</a>).</li>
+<li><strong>The agent is not told the layer.</strong> Knowing it is layer 1 means knowing every object is useful. Results are reported per layer.</li>
+<li><strong>Layer 2 versus layer 3.</strong> Every layer-2 object names a body that could complete the task with it, and tests self-modelling; layer-3 distractors need no such body, and test experimenting, collecting evidence and ruling options out.</li>
+<li><strong>Relation to v5.</strong> These three layers replace the v5 L0–L2 curriculum: apparently useful traps belong to layer 3 and need obtainable evidence; property changes, faults and noise belong to the initial-state randomisation. Capability disclosure (explicit / partial / latent) is an independent axis, not a difficulty layer.</li>
+</ul>
+<h3>Example: H1 scenes that need one support</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Layer</th><th>What stands on the floor</th></tr></thead>
+<tbody>
+<tr><td class="nowrap">Layer 1</td><td>A single low box that is high enough.</td></tr>
+<tr><td class="nowrap">Layer 2</td><td>Plus a box of the right height that is too heavy for the G1 to push, placed far from the cabinet (a stronger robot could move it).</td></tr>
+<tr><td class="nowrap">Layer 3</td><td>Plus the tall narrow box (too tall to climb, too narrow to stand on) and a hollow box that collapses when stepped on (not implemented).</td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="subtasks"><div class="wrap">
+<p class="kicker">06 · Subtasks and curriculum</p>
+<h2>Decomposable, runnable on their own, keeping curriculum learning possible</h2>
+<p class="covers">Covers R10.</p>
+<p>Design the task as a dependency chain of subtasks. Each subtask has two things:</p>
+<ul class="check">
+<li><strong>A completion condition stated as a state.</strong> For example "a box that can be stood on rests in front of the cabinet", not "push the box". Different methods can then satisfy it, and no single route is prescribed. Subtasks map one to one onto the process-scoring stages (<a href="#materials">section 09</a>).</li>
+<li><strong>Start states from which it can run on its own:</strong> the states after all earlier subtasks are complete. Either the trusted side restores them from checkpoints recorded in oracle runs (the H1 sandbox supports this: world parameters and a full-body snapshot are restored, and the replay matches exactly), or the generator places a physically valid state and lets it settle (no interpenetration, nothing floating), randomised as well.</li>
+</ul>
+<h3>Example: H1's subtask chain</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Subtask</th><th>Completion condition (a state)</th><th>Where the start state comes from</th><th>Scoring stages</th></tr></thead>
+<tbody>
+<tr><td>1 Support in place</td><td>A usable box stands upright and at rest in the placement zone for 1 s (front face ≤0.15 m from the cabinet, lateral offset from the target ≤0.30 m)</td><td>The task's initial state</td><td><code>support_placed</code></td></tr>
+<tr><td>2 On the support</td><td>Both feet steady on the box top for 2 s</td><td>After the push: restorable from the <code>push_box</code> recording</td><td><code>on_support</code></td></tr>
+<tr><td>3 Target retrieved</td><td>The target ≥3 cm above its start and in hand, for 1 s</td><td>Standing on the box: restorable from the <code>step_up</code> recording</td><td><code>target_reached</code>, <code>target_lifted</code></td></tr>
+<tr><td>4 Down with the target</td><td>Both feet back on the floor, the target in hand and ≥0.3 m above the floor, for 1 s</td><td>Standing on the box holding the target: no recording yet</td><td><code>descended_holding</code></td></tr>
+<tr><td>5 Delivered</td><td>The target at rest in the goal area for 1 s, the robot upright</td><td>Standing on the floor holding the target: no recording yet</td><td><code>carried</code>, <code>delivered</code></td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:8px">H1's <code>tool_engaged</code> (a box was handled) is behavioural evidence rather than a state; it is an auxiliary process stage, not a subtask of its own.</p>
+<h3>Two curriculum axes</h3>
+<ul class="check">
+<li><strong>Difficulty layer:</strong> layer 1 → layer 2 → layer 3.</li>
+<li><strong>Subtask start:</strong> from last to first; practise the last step, then lengthen the chain.</li>
+</ul>
+<h3>Who may use subtask scenarios</h3>
+<ul class="check">
+<li>A subtask start state reveals the route (for example "the box already stands in front of the cabinet"), which amounts to an instruction. Subtask scenarios are therefore for training, diagnosis and analysis only, and <strong>never offered to the agent under evaluation</strong>.</li>
+<li>Evaluation always starts from the task's initial state; the trusted side alone decides start states and layers by the evaluation plan.</li>
+<li>A future curriculum track that uses subtask scenarios is reported separately, never mixed into the main leaderboard.</li>
+</ul>
+</div></section>
+<section class="tinted" id="corner"><div class="wrap">
+<p class="kicker">07 · Corner cases</p>
+<h2>Rule out shortcuts; credit reasonable unconventional solutions</h2>
+<p class="covers">Covers R6.</p>
+<h3>Procedure</h3>
+<ol class="steps">
+<li><strong>List every unconventional route.</strong> Including the direct approach a taller or stronger body would take, other uses of distractors, using furniture, one robot instead of cooperation, corners of the random ranges, and new routes the objects added in higher layers allow.</li>
+<li><strong>Classify.</strong> A shortcut around the point of the task (making the tool, the precondition or the cooperation unnecessary), or a reasonable unconventional solution.</li>
+<li><strong>Rule out shortcuts.</strong> Constrain disallowed routes through geometry, mass, friction, layout or body parameters, with necessary-condition counterexamples or targeted physical evidence. One failed search or attempt does not prove every alternative impossible; state the validation scope (<a href="/robo-si-results/infra/acceptance-en.html#feasibility">acceptance section 03</a>).</li>
+<li><strong>What cannot be ruled out physically goes into the public constraints.</strong> For example "keep holding the box; never rest it on a step".</li>
+<li><strong>The rest are scored automatically.</strong> Predicates read states and prescribe no route, so an unconventional solution that executes continuously in physics, obeys the public constraints and passes every integrity check earns the stages whose states it reaches; skipped intermediate stages are never back-filled. The design must make sure reasonable unconventional solutions pass through these states.</li>
+<li><strong>A shortcut that slipped through.</strong> If flagged episodes in evaluation reveal a shortcut that should have been ruled out, it is recorded as a design defect and fixed in the next version, and every agent is re-graded automatically on that version.</li>
+</ol>
+<div class="callout warn">Exploits are not solutions: penetration, teleporting, energy anomalies, state edits and predicate gaming are invalid (<a href="#materials">section 09</a>).</div>
+<h3>Corner cases in the current tasks (examples)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Task</th><th>Shortcuts to rule out at design time</th><th>Unconventional solutions kept and credited</th></tr></thead>
+<tbody>
+<tr><td>H1</td><td>Reaching the target on tiptoe or by leaning (in families that need a support, shelf heights must exceed this limit, measured); climbing the cabinet's lower shelf; laying the tall narrow distractor flat as a step</td><td>Two low boxes stacked into a step; pushing instead of carrying the support; using a stool; a placement different from the oracle's that still lets the robot stand and reach</td></tr>
+<tr><td>H2</td><td>Dragging the heavy box to the goal without the cart (friction and route must make this impossible)</td><td>Different loading methods: pushing it up a ramp, raising one edge in stages</td></tr>
+<tr><td>H3 · multi-robot</td><td>Crediting unassisted support while either robot still touches the door or crate; counting floor pushing as carried passage</td><td>Continuous two-robot coordination in no_prop; independent crate support before carried passage in heavy_prop. Route evidence is separate from the common delivery score</td></tr>
+<tr><td>H5</td><td>"Walking" the box by alternately lifting its corners, or pushing it directly, without a lever (mass and friction must prevent this)</td><td>Rollers instead of shims; different fulcrum positions</td></tr>
+<tr><td>H6</td><td>Pushing or kicking the box up the stairs instead of carrying it (a public constraint: held throughout, never rested on a step)</td><td>Different carrying postures and stepping rhythms</td></tr>
+<tr><td>M2 / M4</td><td>One robot doing it alone (length, mass and towing force must exceed one robot; otherwise it is not a cooperation task and the label is corrected)</td><td>Setting down and regrasping, changing grasp points; different connections and formations</td></tr>
+<tr><td>M3</td><td>— (in v5, building a step and using the robot as a tool are both intended solutions)</td><td>Both routes, and their combination, earn credit</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:8px">Examples only, not complete. Each task's corner-case list is written by its designer in the task card and checked item by item in review.</p>
+</div></section>
+<section id="sensors"><div class="wrap">
+<p class="kicker">08 · Sensors and actions</p>
+<h2>Only sensors native to or mountable on the robot</h2>
+<p class="covers">Covers R5.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Robot</th><th>Native (per Unitree's specifications)</th><th>Mountable</th></tr></thead>
+<tbody>
+<tr><td>G1 + Dex3</td><td>Head Intel RealSense D435 (RGB-D), Livox MID-360 LiDAR, IMU, joint encoders and motor state, Dex3 hand force / tactile sensing</td><td>Wrist cameras, foot force sensors, etc.</td></tr>
+<tr><td>Go1 / Go2</td><td>Body cameras (e.g. stereo depth), IMU, joint encoders and motor state, foot force sensing (model-dependent); Go2 carries a LiDAR</td><td>LiDAR, RGB-D cameras, etc.</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">Declare every sensor's model, mount pose, field of view, resolution, rate, range and noise; for mountable sensors, where they are mounted. A task may disable sensors, but missing sensors and degraded signals are recorded separately.</p>
+<p>What the agent gets and never gets, the action channel (one LowCmd-style command per joint, clipped to hardware limits), the L1–L3, VLA and IK/FK tools, and the skill interface are provided by the sandbox for every task; see <a href="/robo-si-results/infra/sandbox-en.html#iso">section 03 of the isolated sandbox</a> and <a href="/robo-si-results/infra/sandbox-en.html#env">section 04 of the isolated sandbox</a>. The task card states:</p>
+<ul class="check">
+<li>Which tools the agent may use (L1, L2, L3, VLA, IK/FK).</li>
+<li>Which skills are provided (possibly none) and why they do not give away the route; skills and rollouts the agent produces itself are the preferred references.</li>
+<li>Capabilities the task needs but no executor provides (stepping up, grasping) are blockers, never filled by a hidden task macro (v5 section 18).</li>
+</ul>
+</div></section>
+<section class="tinted" id="materials"><div class="wrap">
+<p class="kicker">09 · Scoring and protection material</p>
+<h2>What the design fixes for scoring</h2>
+<p class="covers">Covers R7. The scoring, automatic scoring rules and bypass defences are described in <a href="/robo-si-results/infra/verifier-en.html">scoring and verification</a>; the delivery format is the <a href="/robo-si-results/infra/contribute-en.html#checklist">submission checklist</a> on the home page.</p>
+<ul class="check">
+<li><strong>Stage predicates:</strong> one per subtask (<a href="#subtasks">section 06</a>), written as described in <a href="/robo-si-results/infra/verifier-en.html#predicates">section 03 of scoring and verification</a>.</li>
+<li><strong>Weights and values:</strong> a continuous 0–1 value and a weight per stage.</li>
+<li><strong>Attack list and negative cases:</strong> the task's attack list by the seven attack categories, and a set of must-not-score negative cases per predicate (<a href="/robo-si-results/infra/verifier-en.html#attacks">section 08 of scoring and verification</a>).</li>
+<li><strong>Monitor thresholds:</strong> thresholds for each kind of alarm; how alarms are handled is a common rule (<a href="/robo-si-results/infra/verifier-en.html#acceptance">section 05 of scoring and verification</a>).</li>
+<li><strong>Human check list:</strong> what the three questions mean for this task, used when a person watches videos at task acceptance (<a href="/robo-si-results/infra/acceptance-en.html#humancheck">section 05 of task acceptance</a>).</li>
+</ul>
+</div></section>
+<section id="checklist"><div class="wrap">
+<p class="kicker">10 · Design self-check</p>
+<h2>Answer every question before submitting the task card</h2>
+<div class="two">
+<div class="card"><h3>Scene and instruction</h3><ul class="check">
+<li>Given only the goal, why does the most direct approach certainly fail?</li>
+<li>Is the task still solvable without each object? If so, it does not belong to layer 1; classify it as layer 2 or layer 3.</li>
+<li>Read the instruction aloud: does any word hint at an object's use or a route?</li>
+<li>How many ideas and failures would the strongest agent go through? If it would take less than 4 hours, where does more difficulty come from?</li></ul></div>
+<div class="card"><h3>Simulation and assets</h3><ul class="check">
+<li>Is every asset's source, licence and hash recorded? Why was no higher-priority asset used?</li>
+<li>Do collision shapes match the visuals? Are physical properties within real ranges?</li>
+<li>Are "unusable" objects really physically unusable?</li>
+<li>Do both backends produce the same scene and results for the same episode?</li></ul></div>
+<div class="card"><h3>Randomisation, layers, subtasks</h3><ul class="check">
+<li>What full, skill or screening evidence covers boundary and interior samples? Are unknown ranges explicit? Does any corner open a shortcut?</li>
+<li>For each layer-2 object: which body could use it? Why can this robot not, even combined with other objects?</li>
+<li>For each layer-3 distractor: from which sensor reading can the robot tell it is unusable before committing to it?</li>
+<li>Can every subtask start from its own start states and be judged on its own? Is its completion condition a state or an action?</li></ul></div>
+<div class="card"><h3>Solvability, acceptance, bypasses</h3><ul class="check">
+<li>From which sensor readings can the agent infer that an object bears load, moves, or is tall enough?</li>
+<li>Does each declared layer/variant have preselected complete representative witnesses? Are skill conditions and actual transitions evidenced? Have the required representative videos been reviewed?</li>
+<li>List every alternative solution you can think of: which bypass the point of the task and must be made impossible, and which are reasonable and earn credit?</li>
+<li>Read every stage predicate as an attacker: can it be scored without really completing that step?</li>
+<li>Does the verifier judge the reference expert successful and a no-op 0?</li>
+<li>Can a person watching the reference and exploit-test videos answer the three questions with your check list?</li></ul></div>
+</div>
+</div></section>
+<section class="tinted" id="card"><div class="wrap">
+<p class="kicker">11 · Task card template</p>
+<h2>At the design stage, deliver only the task card; implement nothing</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Visible to the agent?</th><th>Content</th></tr></thead>
+<tbody>
+<tr><td>Goal and constraints</td><td>Yes</td><td>Instruction text: the goal and validity rules only.</td></tr>
+<tr><td>Body, executors, sensors</td><td>Yes</td><td>Robot model, joint limits, nominal torques; the tools the agent may use (L1 / L2 / L3, VLA, IK/FK); the task-provided skills; sensor models, mounts, fields of view, rates, noise.</td></tr>
+<tr><td>Capability disclosure tier</td><td>Per tier</td><td>Explicit / partial / latent.</td></tr>
+<tr><td>Simulation and assets</td><td>No</td><td>Backends (Genesis; Isaac Lab parity or not) and the fixed simulation settings; asset list: source, licence, hash, scale, collision proxy, physical properties; reasons for not using a higher-priority asset.</td></tr>
+<tr><td>Objects and initial-state randomisation</td><td>No</td><td>Object list, marked by layer (necessary tools, tools only another body could use, distractors); randomised variables and ranges, rejection rules, development and evaluation splits.</td></tr>
+<tr><td>Hidden affordances</td><td>No</td><td>What the agent must discover; which capability classes the goal involves.</td></tr>
+<tr><td>Difficulty layers</td><td>No (the layer is not disclosed in evaluation)</td><td>What each layer adds; for each layer-2 object, which body could use it and why this robot cannot; for each layer-3 distractor, why it is unusable and how sensors reveal it.</td></tr>
+<tr><td>Subtasks</td><td>No</td><td>The subtask dependency chain; each subtask's completion condition (a state) and start states, and how they are generated; the mapping onto scoring stages.</td></tr>
+<tr><td>Success contract and stages</td><td>No</td><td>Stage predicates, thresholds, dwell times, weights; negative cases.</td></tr>
+<tr><td>Human check list (for the task)</td><td>No</td><td>Used when a person watches videos at task admission: what each of the three questions (no reward hacking, task really completed, no obvious violation of physics or limits) means for this task, including when the goal counts as reached, the public constraints, forbidden methods and how each stage is recognised on video; the record template.</td></tr>
+<tr><td>Layered planning and verification plan</td><td>No</td><td>High-level plans, skills/constraints, key states and screening results; rationale and finite complete-reference list; skill applicability evidence, transitions, screening budgets and four-state ledger; positive/negative verdicts; reviewers/reproducers; bottlenecks and unresolved ranges.</td></tr>
+<tr><td>Difficulty hypothesis</td><td>No</td><td>Why it should take more than 4 hours: dependency chain length, wrong routes to rule out.</td></tr>
+<tr><td>Corner-case list</td><td>No</td><td>How each unconventional route is handled: ruled out (how, and the oracle attempt's result), put into the public constraints, or kept and scored automatically by the states it reaches.</td></tr>
+<tr><td>Attack list and negative cases</td><td>No</td><td>Possible bypasses by the categories of <a href="#materials">section 09</a>; negative cases for every stage predicate and the tests showing they score nothing.</td></tr>
+</tbody>
+</table></div>
+<h3 style="margin-top:22px">Machine-readable task spec</h3>
+<p>The task card also exists in machine-readable form (after Harbor's <code>task.toml</code>), checked automatically by a script. Suggested sections:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Content</th></tr></thead>
+<tbody>
+<tr><td><code>[task]</code></td><td>Name, version (major.minor), robot, simulator backend and version</td></tr>
+<tr><td><code>[instruction]</code></td><td>Instruction template and public constraints</td></tr>
+<tr><td><code>[agent]</code></td><td>Allowed tools, task-provided skills, sensor configuration, capability disclosure tier, budgets (simulated steps, tokens, observations, resets, wall-clock cap)</td></tr>
+<tr><td><code>[generator]</code></td><td>Randomised variables and ranges, rejection rules, development and evaluation seed sets (private parts by reference only)</td></tr>
+<tr><td><code>[layers]</code></td><td>Which objects each layer adds</td></tr>
+<tr><td><code>[[subtasks]]</code></td><td>Completion condition, start-state source, matching stage</td></tr>
+<tr><td><code>[[stages]]</code></td><td>Predicate, thresholds, dwell time, weight, mode (once / live)</td></tr>
+<tr><td><code>[monitors]</code></td><td>Thresholds for each kind of alarm</td></tr>
+<tr><td><code>[evaluation]</code></td><td>Repeated evaluations (3), grading runs per episode (3), reproducibility tolerance, graded episodes per layer</td></tr>
+<tr><td><code>[reference]</code></td><td>Representative reference entry, finite sample list, recordings, hashes, verdicts and repeats for declared layers/variants</td></tr><tr><td><code>[planning]</code> / <code>[feasibility]</code></td><td>High-level plan, skill contracts and applicability evidence, key states, transitions, screening budgets and four-state ledger/scope; see the versioned policy. Legacy runtime entries do not automatically implement these checks.</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">Check fields, types, state/skill references, positive weights, stage negatives, source hashes and agent-bundle isolation. Review representative complete witnesses, skill applicability and four-state screening separately. Declare scope and deferred layers. These documents define requirements; static validation neither performs physical screening nor updates admission automatically.</p>
+</div></section>
+<section id="layered-rollout"><div class="wrap"><h2>Status rollout: 11 tasks, excluding H1</h2><p>Keep finite complete witnesses at task level; validate skill entry/exit, distance, load, support and pose conditions; screen reachability, collision, support and transitions within instance budgets, using short difficult-segment probes when needed; generate local trajectories from observations during execution. Deliver the plan, selected skills and constraints, key states and check results; full trajectories are additional representative evidence.</p><p>Keep witnessed_full, screen_pass, unknown and rejected separate. Missing checkers or exhausted budgets are unknown; rejection needs a necessary-condition counterexample and reason. Self-generated scenes may use validated skill envelopes; retain all prescribed benchmark samples and outcomes. Human sign-off, second-person reproduction and verifier checks remain separate, without reproducing every random instance.</p><p><a href="/robo-si-results/infra/status-en.html#layered-progress">Per-task status and remaining checks</a> · <a href="/robo-si-results/infra/planning/layered-status.json">JSON</a></p></div></section>
+<section id="inventory-additions"><div class="wrap"><h2>Unified 14-task inventory · two additions</h2><p>The original 12 tasks retain 62 skills / 193 candidate actions and pending mapping reviews. The two additions use their existing measured segment evidence; these counts are not summed and do not grant formal admission.</p><div class="table-wrap"><table><thead><tr><th>Task</th><th>Evidence</th><th>Remaining limits</th></tr></thead><tbody><tr data-task="DiskFlip"><td><a href="/robo-si-results/infra/task-disk-flip-en.html">G1 gentle tabletop disk flip</a></td><td>6/6 complete runs (three per configuration) and 2/2 independent action replays pass; the two witnesses have 26/27 low-level segments with representation mappings.</td><td>Human video sign-off, second-person reproduction, broader configurations and full self/environment-contact review; no general random-domain or whole-body locomotion claim.</td></tr><tr data-task="Sokoban"><td><a href="/robo-si-results/infra/task-sokoban-en.html">Two-G1 hidden-map box clearing</a></td><td>Gamma 8011370: 279.18 s, 24 high-level operations and 76 low-level segments; both robots dwell at their own goals for 3 s. Independent sampled review and complete public-input replay pass; task_success=null.</td><td>Complete contact/push-only validity certification, unseen-map evaluation, cooperation-benefit comparisons and human acceptance; remains an experimental candidate.</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/planning/INVENTORY.md">All 14 plans and evidence</a> · <a href="/robo-si-results/infra/planning/catalog.json">JSON</a></p></div></section>
+<section id="reference-designs"><div class="wrap"><h2>Reference executions and designs</h2><p>All 14 tasks have scoped reference execution evidence and design documents. Reference delivery: 14 complete, 0 in progress; remote materials: 14 tasks; formal admissions: 0. Sandbox runtime acceptance is separate. Sokoban remains experimental with task_success = null.</p><p><a href="/robo-si-results/infra/reference-designs-en.html">Reference executions and designs</a></p></div></section>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · Task design guide · 2026-10-26 · <a href="/robo-si-results/infra/task-design-zh.html" hreflang="zh-CN" lang="zh-CN">中文</a> · <a href="/robo-si-results/infra/contribute-en.html">Home</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body>
+</html>

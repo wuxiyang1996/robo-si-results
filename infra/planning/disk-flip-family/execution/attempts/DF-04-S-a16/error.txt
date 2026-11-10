@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 536, in main
+    self.move('slide_goal',{'right':(disk+[-.14,0,.002],R)},seconds=15)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 384, in execute
+    for n,j in self.joints.items():
+                                    
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 458, in edge_regrasp
+    poses={s:self.nominal_hand_pose(s) for s in goals};travel=0.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 328, in move
+    for i in range(round(seconds/.02)):
+     ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 310, in step
+    if self.body=='G':
+                       
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 166, in assess
+    if not np.isfinite(self.d.qpos).all() or not np.isfinite(self.d.qvel).all():raise RuntimeError('nonfinite_physics')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

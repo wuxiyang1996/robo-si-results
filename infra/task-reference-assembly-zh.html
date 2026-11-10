@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><meta content="环境、机械流程和静止接口记录已验证；完整八件机器人装配专家仍待完成。" name="description"/><title>按图分阶段装配三层置物架 · robo-si</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>html{scroll-padding-top:100px}.hero{padding:64px 0}.hero .tags{justify-content:center}.jump,.evidence-links{display:flex;flex-wrap:wrap;gap:12px 24px}.evidence-links{padding-left:20px}.status-facts{display:grid;grid-template-columns:180px minmax(0,1fr);gap:12px 24px}.status-facts dt{font-weight:650}.status-facts dd{margin:0}section{padding:38px 0}p,dd,a{overflow-wrap:anywhere}.small{font-size:14px;color:var(--ink3)}@media(max-width:600px){.status-facts{grid-template-columns:1fr;gap:6px}.status-facts dd{margin-bottom:12px}.hero{padding:38px 0}.nav .wrap{flex-wrap:wrap}.nav nav{order:3;width:100%}}</style><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">跳到正文</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-reference-assembly-en.html">English</a></div></header><main id="main"><div class="hero"><div class="wrap"><p class="eyebrow">TASK STATUS · 2026-10-27</p><h1>按图分阶段装配三层置物架</h1><p class="lead">环境、机械流程和静止接口记录已验证；完整八件机器人装配专家仍待完成。</p><div class="tags"><span class="pill warn">开发中 · 完整专家待验证</span><span class="pill">正式准入未完成</span></div><p class="jump"><a href="#task">任务与接口</a><a href="#evidence">验证报告</a><a href="#limits">证据范围</a><a href="#release">发布状态</a></p></div></div><section id="task"><div class="wrap"><h2>任务与接口</h2><p>G1 根据成品图与步骤，把两个侧框、三个横梁承托框和三块层板装成三层置物架。提供自下而上、自上而下两套八步流程；每步要求松手稳定，最后检查整体承托关系。</p><p>环境使用固定骨盆 G1、双 Dex3 手和 43 维关节目标角。公开接口包含随躯干运动的 RGB、本体状态、时间和图文指令；当前同进程适配器不构成隔离沙箱。</p></div></section><section id="evidence"><div class="wrap"><h2>已保存的验证结果</h2><dl class="status-facts"><dt>机械诊断</dt><dd>成品与缺梁检查通过；成品位置由诊断程序初始化</dd><dt>流程诊断</dt><dd>自下而上、自上而下各八步通过；新增零件由程序逐步初始化</dd><dt>静止接口记录</dt><dd>3 秒、150 个动作与 RGB 帧；只保持初始姿态</dd><dt>独立回放</dt><dd>150 个动作回放一致；原记录和回放的任务成功均为 false，得分为 0</dd></dl><ul class="evidence-links"><li><a href="/robo-si-results/infra/task-status-evidence/reference-assembly/mechanism-report.json">成品与缺梁机械报告</a></li><li><a href="/robo-si-results/infra/task-status-evidence/reference-assembly/sequence-report.json">两套八步机械流程报告</a></li><li><a href="/robo-si-results/infra/task-status-evidence/reference-assembly/idle-interface-report.json">静止公开接口记录</a></li><li><a href="/robo-si-results/infra/task-status-evidence/reference-assembly/idle-replay-report.json">静止动作回放报告</a></li><li><a href="/robo-si-results/infra/task-status-evidence/reference-assembly/task-status.json">当前状态、来源与 SHA-256</a></li></ul><p class="small">两套机械流程各含八个阶段，但它们使用初始化设置器。报告保留 robot_expert_verified=false；静止回放也明确 recorded_task_success=false、replayed_task_success=false。</p></div></section><section id="limits"><div class="wrap"><h2>证据范围</h2><p>机械诊断检验支撑链和放置顺序，包含直接初始化零件位置；静止回放检验输入、动作和记录管线。它们都不包含完整的机器人取件与装配动作，不能作为专家解或任务成功率。</p></div></section><section id="release"><div class="wrap"><h2>发布与验收状态</h2><p>完整八件 G1 装配专家、视觉策略、多种子成功率与自由站立控制尚未验证。此页公开状态与紧凑报告，不代表完成参考发布或正式准入。原套筒与顶盖 Assembly 任务是另一个任务，其成功证据不转移到本任务。</p></div></section><!-- assembly-family:start -->
+<section id="detail-family"><div class="wrap"><h2>REF 任务族：3 个任务</h2>
+<p>10 个独立任务：Assembly 4、Gear Assembly 3、Reference Assembly 3；含 3 个原始任务和 7 个新增任务。身体与难度作为评测配置，不重复计数。五指手优先用于 Gear 工具相性；新增设计均待验证，本次新增仿真 0。</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Group</th>
+<th>Embodiment</th>
+<th>任务</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REF-01</td>
+<td>原始</td>
+<td>G1 + Dex3</td>
+<td>原版八件置物架装配</td>
+<td>机械诊断；完整机器人装配未验证</td>
+</tr>
+<tr>
+<td>REF-02</td>
+<td>推理</td>
+<td>G1 + Dex3</td>
+<td>有限临时夹具的调度与复用</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+<tr>
+<td>REF-03</td>
+<td>相性</td>
+<td>G1 + Dex3 / Stretch 3</td>
+<td>受限工作区下的身体适配</td>
+<td>已尝试；完整见证未通过</td>
+</tr>
+</tbody>
+</table></div>
+<p>相性任务优先对照 G/S；原综合任务并入 D3 配置，不单独计数。身体配置均须重新验证。</p>
+<p><a href="/robo-si-results/infra/task-assembly-family-zh.html">完整设计、难度与判据</a> · <a href="/robo-si-results/infra/planning/assembly-family/task-design.json">JSON</a></p></div></section>
+<!-- assembly-family:end --><!-- assembly-execution:start --><section id="assembly-execution"><h2>装配任务 · 执行与证据</h2><p>10 个独立任务已接入候选专家与统一记录器。这里展示实际尝试，任务得分与物理审查分开。单次失败不代表任务不可行。</p><p><a href="task-assembly-evidence-zh.html#REF-01">查看专家、计划、轨迹、物理检查与视频</a></p></section><!-- assembly-execution:end -->
+</main><footer class="wrap"><p><a href="/robo-si-results/infra/contribute-zh.html#reference-assembly">返回全部任务</a></p></footer></body></html>

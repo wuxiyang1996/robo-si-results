@@ -1,0 +1,70 @@
+/* Independent proposal styling; earlier formulation pages retain their CSS. */
+body { max-width: 1160px; }
+.skip-link { position: absolute; top: -60px; left: 20px; background: var(--surface); padding: 10px; z-index: 10; }
+.skip-link:focus { top: 10px; }
+.hero { background: #132b46; color: #f1f6ff; padding: 32px; border-radius: 18px; border: 0; }
+.hero .meta, .hero .subtitle { color: #c0d2e7; }
+.hero h1 { max-width: 880px; font-size: clamp(1.8rem, 4vw, 2.65rem); line-height: 1.25; margin: 16px 0; }
+.hero a { color: #b7d8ff; }
+.hero .lead { font-size: 1.12rem; max-width: 870px; }
+.hero .badge { display: inline-block; border: 1px solid #547291; border-radius: 20px; padding: 3px 12px; font-size: .8rem; }
+.hero nav { margin-top: 22px; }
+.section-title { display: flex; gap: 12px; align-items: baseline; margin-bottom: 8px; }
+.section-title .number { color: var(--accent); font: 700 .85rem ui-monospace, monospace; }
+.section-title h2 { margin: 0; }
+.section-intro { color: var(--muted); }
+.pipeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0; list-style: none; padding: 0; counter-reset: step; }
+.pipeline li { background: var(--soft); padding: 14px; border-radius: 10px; margin: 0; counter-increment: step; }
+.pipeline li::before { content: counter(step, decimal-leading-zero); display: block; color: var(--accent); font-size: .8rem; font-weight: 700; }
+.pipeline strong, .pipeline span { display: block; }
+.pipeline span { font-size: .9rem; color: var(--muted); margin-top: 4px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+.goal { font-size: 1.2rem; font-weight: 650; padding: 16px 20px; background: var(--soft); border-radius: 10px; }
+.chain { padding-left: 25px; border-left: 2px solid var(--line); margin-left: 8px; }
+.chain li { padding: 5px 0 8px 6px; }
+.chain li::marker { color: var(--accent); font-weight: bold; }
+.chain strong { display: block; }
+.world-items { display: flex; flex-wrap: wrap; gap: 7px; padding: 0; list-style: none; }
+.world-items li { border: 1px solid var(--line); border-radius: 6px; padding: 3px 9px; font-size: .9rem; }
+.contract { display: grid; grid-template-columns: 100px 1fr; gap: 8px 16px; }
+.contract dt { font-weight: 700; color: var(--accent); }
+.contract dd { margin: 0; }
+.track { border-top: 4px solid var(--accent); }
+.track-b { border-top-color: var(--green); }
+.track-tag { color: var(--muted); font-size: .85rem; letter-spacing: .06em; }
+.taxonomy { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 26px; }
+.taxonomy li { padding: 4px 0; }
+.taxonomy strong { display: block; }
+.landscape { margin: 18px 0; padding: 0 0 0 14px; }
+.landscape .axis { font-size: .85rem; color: var(--muted); margin: 8px 0; }
+.quadrants { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-left: 2px solid var(--muted); border-bottom: 2px solid var(--muted); background: var(--line); }
+.quadrants > div { padding: 20px; background: var(--surface); min-height: 125px; }
+.quadrants > .target { background: var(--soft); border: 2px solid var(--accent); }
+.quadrants strong, .quadrants span { display: block; }
+.quadrants span { font-size: .9rem; color: var(--muted); margin-top: 5px; }
+figcaption { font-size: .85rem; color: var(--muted); margin-top: 10px; }
+details { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; margin: 10px 0; }
+summary { cursor: pointer; font-weight: 650; }
+summary:hover { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.metric { border-left: 3px solid var(--green); padding: 4px 0 4px 16px; margin: 16px 0; }
+.metric h3 { margin-top: 0; }
+.refs li { margin-bottom: 12px; }
+.refs small { display: block; color: var(--muted); }
+.scope-note { border-left: 3px solid var(--amber); padding-left: 14px; }
+@media (max-width: 760px) {
+  .hero { padding: 22px 18px; }
+  .pipeline, .grid-3, .taxonomy { grid-template-columns: 1fr; }
+  .quadrants > div { padding: 12px; min-height: 140px; }
+  .contract { grid-template-columns: 65px 1fr; gap: 10px; }
+  .section-title { gap: 8px; }
+}
+@media print {
+  body { max-width: none; color: #111; background: white; font-size: 10pt; padding: 0; }
+  .hero { background: white; color: #111; border: 1px solid #999; padding: 16px; }
+  .hero .meta, .hero .subtitle, .hero a { color: #333; }
+  .card { box-shadow: none; border-radius: 0; padding: 12px; }
+  .mini-card, .metric, .chain li { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  .skip-link { display: none; }
+}

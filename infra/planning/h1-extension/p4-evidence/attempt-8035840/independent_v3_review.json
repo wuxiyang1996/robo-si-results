@@ -1,0 +1,58 @@
+{
+  "source_hashes.json": {
+    "entries": 122,
+    "mismatched": []
+  },
+  "asset_hashes.json": {
+    "entries": 203,
+    "mismatched": []
+  },
+  "asset_pre_post_equal": true,
+  "manifest_mismatched": [],
+  "commands": [
+    {
+      "command": [
+        "humanoid.g1_support_retrieval.extension.verify_p4_safety",
+        "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8035840",
+        "--out",
+        "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8035840/original_safety_independent.json"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"status\": \"failed\", \"complete\": true, \"safety_passed\": false, \"errors\": []}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "humanoid.g1_support_retrieval.extension.verify_skill_refinement",
+        "review",
+        "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8035840",
+        "--contract",
+        "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/skill-refinement-contract-margin-v3.json",
+        "--out",
+        "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8035840/skill_refinement-margin-v3.json"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"status\": \"partial_measured_refinement\", \"errors\": []}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "humanoid.g1_support_retrieval.extension.map_observed_macros",
+        "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8035840",
+        "--semantic",
+        "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8035840/skill_refinement-margin-v3.json",
+        "--contract",
+        "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8035840/refinement-contract.json",
+        "--out",
+        "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/extension/validation/attempt-8035840/prospective_macro_mapping.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{'all_macro_effects_measured': False, 'command_coverage_complete': True, 'compliant_complete_refinement': False, 'original_leaf_counts': {'passed': 43, 'failed': 11, 'unknown': 3}}\n",
+      "stderr": ""
+    }
+  ],
+  "human_review": "not_signed",
+  "formal_admission": false,
+  "checked_manifest_sha256": "eb8646c8a05e2d21c3c4690ce7257f868217002694c73f3f581e5fee302f3bab",
+  "manifest_recheck_reason": "Bind read-only audit to exact native manifest bytes before adding independent failure detail; native manifest not modified."
+}

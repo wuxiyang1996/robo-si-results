@@ -1,0 +1,63 @@
+{
+  "controller_tuning": {
+    "inspire_index_only": false,
+    "inspire_thumb_yaw": 1.05,
+    "inspire_hand_yaw": 0.26,
+    "inspire_offset": [
+      0.03,
+      0.02,
+      0
+    ],
+    "inspire_thumb_n": 2.8,
+    "inspire_fingers_n": 2.1,
+    "inspire_close_s": 100,
+    "collision_profile": "inspire-palms-v2",
+    "align_grasp": true,
+    "prepush": true,
+    "inspire_absolute_x": 0.36,
+    "inspire_push_z": 0.866,
+    "inspire_push_finger_kp": 6.0,
+    "inspire_push_feedback": 0.02,
+    "inspire_push_speed": 0.001,
+    "inspire_push_load_n": 1.2,
+    "inspire_index_push": true,
+    "inspire_push_pitch": -0.2,
+    "inspire_table_clearance": false,
+    "inspire_vertical_withdraw": true,
+    "inspire_edge_x": 0.378,
+    "inspire_park_left": true,
+    "inspire_bimanual": true,
+    "inspire_total_target_cap": 14,
+    "inspire_fingers": [
+      "middle",
+      "ring"
+    ],
+    "wrist_clearance": true,
+    "turn_feedback": true,
+    "physics_dt": 0.0005,
+    "inspire_unused_fold": 0.0,
+    "insert_seconds": 40,
+    "inspire_bimanual_y": 0.17,
+    "inspire_left_x": 0.355,
+    "inspire_right_x": 0.335,
+    "require_inspire_grasp": true,
+    "inspire_grasp_z": 0.034,
+    "inspire_insert_pose_tolerance_m": 0.035,
+    "inspire_grasp_yaw": 0.26,
+    "inspire_orient_before_insert": true
+  },
+  "format": "held-reference-replay/1",
+  "physics_hz": 2000,
+  "control_hz": 50,
+  "body": "F",
+  "physics_steps": 703993,
+  "full_array_sha256": {
+    "qpos": "e69bf21ad36abb6d06f641bb9458d3514168602076a31762ca7e3d3a35a92747",
+    "qvel": "54802169bec5af1abd541b58bb545542e519b6b75da6b38b17fc528334efa5e9",
+    "ctrl": "7c25a717a79577d1efb35087616e8c451950542f173eb26337586a75a9caf9ab"
+  },
+  "source_trajectory_npz_sha256": "723253b9a22ea10cbc6739db4ad4752518b9cfc67b54d62d9cd78c40626adf96",
+  "replay": "python compact_evidence.py --replay PATH_TO_RUN",
+  "requirements": "MuJoCo 3.14.0, NumPy, same official meshes, scene.xml and initial_state.json. Remap external mesh paths when needed.",
+  "storage": "References stored once per control interval; partial final interval retained. Object states shown at control endpoints; full physics-step states/controls are deterministically reconstructed and checked by array SHA-256."
+}

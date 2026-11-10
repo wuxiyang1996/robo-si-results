@@ -1,0 +1,846 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>装配任务 · 执行与证据</title><link rel="stylesheet" href="assembly-family-evidence/evidence.css"></head><body><main>
+<nav><a href="task-assembly-family-zh.html">任务设计</a> · <a href="task-assembly-evidence-en.html">English</a></nav>
+<p class="eyebrow">EMBODIED TERMINAL-BENCH / EXECUTION</p><h1>装配任务 · 执行与证据</h1><p class="lead">10 个独立任务已接入候选专家与统一记录器。这里展示实际尝试，任务得分与物理审查分开。单次失败不代表任务不可行。</p>
+<div class="metrics"><div><b>10</b><span>候选专家</span></div><div><b>6</b><span>任务评分通过</span></div><div><b>6</b><span>全部检查通过</span></div><div><b>13</b><span>计划身体配置</span></div></div>
+<aside>当前执行身体为历史固定骨盆 G1 三指模型。相性任务当前只有场景探针；正式 G1 Dex3 / Inspire 五指与 Stretch 3 配对实验尚未实现，不能据此比较身体强弱。</aside><p class="muted">记录快照: 2026-10-30T06:17:08.657787+00:00 · <a href="assembly-family-evidence/status.json">JSON</a> · <a href="assembly-family-evidence/implementation-source.tar.gz">实现源码</a> · <a href="assembly-family-evidence/artifact-index.json.gz">SHA-256 (gzip)</a> · <a href="assembly-family-evidence/release-readiness.json">发布证据检查</a></p>
+<label for="family">Family </label><select id="family"><option value="all">All / 全部</option><option>ASM</option><option>GEAR</option><option>REF</option></select>
+<article id="ASM-01" data-family="ASM"><div class="heading"><h2>ASM-01 · 原版支撑后套筒、顶盖装配</h2><span class="badge">witnessed_full</span></div>
+<p class="muted">最新尝试 a11 · asm_01 · witnessed_full · 117.8 s · cap_verify_seated</p>
+<p class="muted">展示运行的专家入口: <code>asm_01</code></p>
+<p>reference-body candidate expert</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Select, acquire and deploy a released load-bearing support</strong><br><small>inspect_candidates → approach → grasp_or_push → deploy → release_and_check_load_path</small></li>
+<li><strong>Grasp sleeve, align its bore, insert and release</strong><br><small>approach → pinch → lift → align → insert → release</small></li>
+<li><strong>Grasp cap, insert above sleeve and withdraw both hands</strong><br><small>approach → pinch → lift → align → insert → release → final_dwell</small></li>
+</ol></details>
+<p class="verdict">任务: 通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/ASM-01/a11/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/ASM-01/a11/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00086 rad · v / limit 0.797 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 100% · 展示尝试: a11</p>
+<p class="links"><a href="assembly-family-evidence/ASM-01/a11/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/ASM-01/a11/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/ASM-01/a11/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/ASM-01/a11/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/ASM-01/a11/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/ASM-01/a01/outcome.json.gz">a01 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a02/outcome.json.gz">a02 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a03/outcome.json.gz">a03 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a04/outcome.json.gz">a04 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a05/outcome.json.gz">a05 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a06/outcome.json.gz">a06 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a07/outcome.json.gz">a07 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a08/outcome.json.gz">a08 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a09/outcome.json.gz">a09 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a10/outcome.json.gz">a10 · witnessed_full</a></li>
+<li><a href="assembly-family-evidence/ASM-01/a11/outcome.json.gz">a11 · witnessed_full</a></li>
+</ul></details></article>
+<article id="ASM-02" data-family="ASM"><div class="heading"><h2>ASM-02 · 多候选支撑选择</h2><span class="badge">witnessed_full</span></div>
+<p class="muted">最新尝试 a05 · asm_02 · witnessed_full · 118.6 s · cap_retract_after_release</p>
+<p class="muted">展示运行的专家入口: <code>asm_02</code></p>
+<p>reference-body candidate expert</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Select, acquire and deploy a released load-bearing support</strong><br><small>inspect_candidates → approach → grasp_or_push → deploy → release_and_check_load_path</small></li>
+<li><strong>Grasp sleeve, align its bore, insert and release</strong><br><small>approach → pinch → lift → align → insert → release</small></li>
+<li><strong>Grasp cap, insert above sleeve and withdraw both hands</strong><br><small>approach → pinch → lift → align → insert → release → final_dwell</small></li>
+</ol></details>
+<p class="verdict">任务: 通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/ASM-02/a05/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/ASM-02/a05/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00086 rad · v / limit 0.797 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 100% · 展示尝试: a05</p>
+<p class="links"><a href="assembly-family-evidence/ASM-02/a05/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/ASM-02/a05/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/ASM-02/a05/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/ASM-02/a05/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/ASM-02/a05/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/ASM-02/a01/outcome.json.gz">a01 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-02/a02/outcome.json.gz">a02 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-02/a03/outcome.json.gz">a03 · witnessed_full</a></li>
+<li><a href="assembly-family-evidence/ASM-02/a05/outcome.json.gz">a05 · witnessed_full</a></li>
+</ul></details></article>
+<article id="ASM-03" data-family="ASM"><div class="heading"><h2>ASM-03 · 组合建立支撑</h2><span class="badge">witnessed_full</span></div>
+<details><summary>历史诊断记录（非当前验收结论）</summary><p class="muted">阶段进展：a49 在完整轨迹中记录了垫片释放后的真实支撑块承重，整段物理检查通过；后续抓取没有接触到支撑块，任务失败。a53 恢复规划范围后仍有约 7 cm 接近误差，后续候选改为从接触位姿反推可达路径。上述早期尝试均未完成两件支撑的搬运或完整装配；较新检查点见下方。</p><p class="muted">a55：反推路径已实际执行并接近接触位姿，但仍未夹起支撑块；独立物理检查通过，任务未通过。</p></details>
+<p class="muted">最新尝试 a134 · asm_cleared_fast_stack · witnessed_full · 174.6 s · cap_verify_seated</p>
+<p class="muted">展示运行的专家入口: <code>asm_cleared_fast_stack</code></p>
+<p>reference-body candidate expert</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Move the empty stand beside the jig, then physically stack and release the shim there</strong><br><small>raise_unloaded_hands → slide_sleeve_forward_with_table_support → verify_released_upright_sleeve_and_untouched_support_parts → stage_and_release_empty_stand → push_shim_front_without_turning → high_park_left → protected_right_front_undergrasp → measured_lift_check → collision_checked_level_carry_without_yaw_change → open_and_withdraw → verify_released_stack</small></li>
+<li><strong>Select, acquire and deploy a released load-bearing support</strong><br><small>verify_staged_composition → press_fixture → index_side_preshape → screen_dual_hand_approach → increase_wrist_height_during_push → measured_table_supported_push → release_and_check_original_load_path</small></li>
+<li><strong>Grasp sleeve, align its bore, insert and release</strong><br><small>screen_continuous_grasp_lift_and_insertion_branch → collision_checked_unloaded_approach → approach → pinch → lift → align → insert → release</small></li>
+<li><strong>Grasp cap, insert above sleeve and withdraw both hands</strong><br><small>approach → pinch → lift → align → insert → release → final_dwell</small></li>
+</ol></details>
+<p class="verdict">任务: 通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/ASM-03/a134/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/ASM-03/a134/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00001 rad · v / limit 0.797 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 100% · 展示尝试: a134</p>
+<p class="links"><a href="assembly-family-evidence/ASM-03/a134/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/ASM-03/a134/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/ASM-03/a134/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/ASM-03/a134/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/ASM-03/a134/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<details><summary>其它已通过的部件诊断 · 不计入完整任务</summary>
+<p><strong>a124 · asm_sleeve_slide_probe</strong><br><small>sleeve_table_slide_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/ASM-03/a124/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/ASM-03/a124/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/ASM-03/a124/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/ASM-03/a124/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/ASM-03/a124/recorded-source.tar.gz">Recorded source</a></p>
+</details>
+<p class="muted">进行中 / 排队：a51 (incomplete), a54 (incomplete), a66 (infrastructure_interrupted)</p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/ASM-03/a01/outcome.json.gz">a01 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a02/outcome.json.gz">a02 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a03/outcome.json.gz">a03 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a04/outcome.json.gz">a04 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a05/outcome.json.gz">a05 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a06/outcome.json.gz">a06 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a07/outcome.json.gz">a07 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a08/outcome.json.gz">a08 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a09/outcome.json.gz">a09 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a10/outcome.json.gz">a10 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a11/outcome.json.gz">a11 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a12/outcome.json.gz">a12 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a13/outcome.json.gz">a13 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a14/outcome.json.gz">a14 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a15/outcome.json.gz">a15 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a16/outcome.json.gz">a16 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a17/outcome.json.gz">a17 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a18/outcome.json.gz">a18 · setup_failed</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a19/outcome.json.gz">a19 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a20/outcome.json.gz">a20 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a21/outcome.json.gz">a21 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a22/outcome.json.gz">a22 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a23/outcome.json.gz">a23 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a24/outcome.json.gz">a24 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a25/outcome.json.gz">a25 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a26/outcome.json.gz">a26 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a27/outcome.json.gz">a27 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a28/outcome.json.gz">a28 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a29/outcome.json.gz">a29 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a30/outcome.json.gz">a30 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a31/outcome.json.gz">a31 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a32/outcome.json.gz">a32 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a33/outcome.json.gz">a33 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a34/outcome.json.gz">a34 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a35/outcome.json.gz">a35 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a36/outcome.json.gz">a36 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a37/outcome.json.gz">a37 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a38/outcome.json.gz">a38 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a39/outcome.json.gz">a39 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a40/outcome.json.gz">a40 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a41/outcome.json.gz">a41 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a42/outcome.json.gz">a42 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a43/outcome.json.gz">a43 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a44/outcome.json.gz">a44 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a45/outcome.json.gz">a45 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a46/outcome.json.gz">a46 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a47/outcome.json.gz">a47 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a48/outcome.json.gz">a48 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a49/outcome.json.gz">a49 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a50/outcome.json.gz">a50 · failed_with_evidence</a></li>
+<li>a51 · incomplete</li>
+<li><a href="assembly-family-evidence/ASM-03/a52/outcome.json.gz">a52 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a53/outcome.json.gz">a53 · failed_with_evidence</a></li>
+<li>a54 · incomplete</li>
+<li><a href="assembly-family-evidence/ASM-03/a55/outcome.json.gz">a55 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a56/outcome.json.gz">a56 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a57/outcome.json.gz">a57 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a58/outcome.json.gz">a58 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a59/outcome.json.gz">a59 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a60/outcome.json.gz">a60 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a61/outcome.json.gz">a61 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a62/outcome.json.gz">a62 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a63/outcome.json.gz">a63 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a64/outcome.json.gz">a64 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a65/outcome.json.gz">a65 · failed_with_evidence</a></li>
+<li>a66 · infrastructure_interrupted</li>
+<li><a href="assembly-family-evidence/ASM-03/a67/outcome.json.gz">a67 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a68/outcome.json.gz">a68 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a69/outcome.json.gz">a69 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a70/outcome.json.gz">a70 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a71/outcome.json.gz">a71 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a72/outcome.json.gz">a72 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a73/outcome.json.gz">a73 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a74/outcome.json.gz">a74 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a75/outcome.json.gz">a75 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a76/outcome.json.gz">a76 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a77/outcome.json.gz">a77 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a78/outcome.json.gz">a78 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a79/outcome.json.gz">a79 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a80/outcome.json.gz">a80 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a81/outcome.json.gz">a81 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a82/outcome.json.gz">a82 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a83/outcome.json.gz">a83 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a84/outcome.json.gz">a84 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a85/outcome.json.gz">a85 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a86/outcome.json.gz">a86 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a87/outcome.json.gz">a87 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a88/outcome.json.gz">a88 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a89/outcome.json.gz">a89 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a90/outcome.json.gz">a90 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a91/outcome.json.gz">a91 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a92/outcome.json.gz">a92 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a93/outcome.json.gz">a93 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a94/outcome.json.gz">a94 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a95/outcome.json.gz">a95 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a96/outcome.json.gz">a96 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a97/outcome.json.gz">a97 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a98/outcome.json.gz">a98 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a99/outcome.json.gz">a99 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a100/outcome.json.gz">a100 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a101/outcome.json.gz">a101 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a102/outcome.json.gz">a102 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a103/outcome.json.gz">a103 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a104/outcome.json.gz">a104 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a105/outcome.json.gz">a105 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a106/outcome.json.gz">a106 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a107/outcome.json.gz">a107 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a108/outcome.json.gz">a108 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a109/outcome.json.gz">a109 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a110/outcome.json.gz">a110 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a111/outcome.json.gz">a111 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a112/outcome.json.gz">a112 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a113/outcome.json.gz">a113 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a114/outcome.json.gz">a114 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a115/outcome.json.gz">a115 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a116/outcome.json.gz">a116 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a117/outcome.json.gz">a117 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a118/outcome.json.gz">a118 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a119/outcome.json.gz">a119 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a120/outcome.json.gz">a120 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a121/outcome.json.gz">a121 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a122/outcome.json.gz">a122 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a123/outcome.json.gz">a123 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a124/outcome.json.gz">a124 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a125/outcome.json.gz">a125 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a126/outcome.json.gz">a126 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a127/outcome.json.gz">a127 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a128/outcome.json.gz">a128 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a129/outcome.json.gz">a129 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a130/outcome.json.gz">a130 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a131/outcome.json.gz">a131 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a132/outcome.json.gz">a132 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a133/outcome.json.gz">a133 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-03/a134/outcome.json.gz">a134 · witnessed_full</a></li>
+</ul></details></article>
+<article id="ASM-04" data-family="ASM"><div class="heading"><h2>ASM-04 · 支撑方法与身体相性</h2><span class="badge">witnessed_full</span></div>
+<p class="muted">最新尝试 a05 · asm_04 · witnessed_full · 117.6 s · cap_retract_after_release</p>
+<p class="muted">展示运行的专家入口: <code>asm_04</code></p>
+<p>reference-body scene probe</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Screen grasp/place, push-in wedge and composed-support methods</strong><br><small>measure_geometry → check_grasp_and_access → choose_deployment</small></li>
+<li><strong>Select, acquire and deploy a released load-bearing support</strong><br><small>inspect_candidates → approach → grasp_or_push → deploy → release_and_check_load_path</small></li>
+<li><strong>Grasp sleeve, align its bore, insert and release</strong><br><small>approach → pinch → lift → align → insert → release</small></li>
+<li><strong>Grasp cap, insert above sleeve and withdraw both hands</strong><br><small>approach → pinch → lift → align → insert → release → final_dwell</small></li>
+</ol></details>
+<p class="verdict">任务: 通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/ASM-04/a05/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/ASM-04/a05/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00085 rad · v / limit 0.797 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 100% · 展示尝试: a05</p>
+<p class="links"><a href="assembly-family-evidence/ASM-04/a05/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/ASM-04/a05/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/ASM-04/a05/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/ASM-04/a05/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/ASM-04/a05/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/ASM-04/a01/outcome.json.gz">a01 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-04/a02/outcome.json.gz">a02 · witnessed_full</a></li>
+<li><a href="assembly-family-evidence/ASM-04/a04/outcome.json.gz">a04 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/ASM-04/a05/outcome.json.gz">a05 · witnessed_full</a></li>
+</ul></details></article>
+<article id="GEAR-01" data-family="GEAR"><div class="heading"><h2>GEAR-01 · 原版按图装配与验转</h2><span class="badge">witnessed_full</span></div>
+<p class="muted">最新尝试 a09 · gear_01 · witnessed_full · 222.2 s · turning_tool_pinch_release</p>
+<p class="muted">展示运行的专家入口: <code>gear_01</code></p>
+<p>reference-body candidate expert</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Assemble and verify base</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Assemble and verify large_gear</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Assemble and verify medium_gear</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Assemble and verify small_gear</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Assemble and verify cover</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Acquire physical tool and test contact transmission</strong><br><small>approach_tool → grasp → engage_teeth → sweep → retract → repeat_until_measured_angle</small></li>
+<li><strong>Park tool and release all contacts</strong><br><small>park_tool → open_hand → withdraw → final_dwell</small></li>
+</ol></details>
+<p class="verdict">任务: 通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/GEAR-01/a09/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/GEAR-01/a09/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00088 rad · v / limit 0.469 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 100% · 展示尝试: a09</p>
+<p class="links"><a href="assembly-family-evidence/GEAR-01/a09/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/GEAR-01/a09/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/GEAR-01/a09/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/GEAR-01/a09/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/GEAR-01/a09/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/GEAR-01/a01/outcome.json.gz">a01 · setup_failed</a></li>
+<li><a href="assembly-family-evidence/GEAR-01/a02/outcome.json.gz">a02 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-01/a03/outcome.json.gz">a03 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-01/a04/outcome.json.gz">a04 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-01/a05/outcome.json.gz">a05 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-01/a06/outcome.json.gz">a06 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-01/a07/outcome.json.gz">a07 · witnessed_full</a></li>
+<li><a href="assembly-family-evidence/GEAR-01/a09/outcome.json.gz">a09 · witnessed_full</a></li>
+</ul></details></article>
+<article id="GEAR-02" data-family="GEAR"><div class="heading"><h2>GEAR-02 · 故障诊断、拆装修复与重新验转</h2><span class="badge">failed_with_evidence</span></div>
+<p class="muted">评分版本：用户已确认从新运行 original_grace_v1 起，与原始齿轮任务统一采用 0.3 s 支撑丢失宽限。中断期间不计传动角，持续失支撑撤销进度；提离、工具接触、齿比、释放和全部物理限制不变。历史尝试仍按 immediate_v0 保留原判定，新规则必须从初态重新运行验收。 · <a href="assembly-family-evidence/repair-support-rule-audit.json">规则与回归审计</a></p>
+<p class="muted">最新尝试 a81 · gear_pitched_regrasp_drive · RUNNING · 41.2 s · medium_gear_centre_bore</p>
+<p class="muted">展示运行的专家入口: <code>gear_pitched_regrasp_drive</code></p>
+<p>reference-body candidate expert</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Locate misseating from observed pose and contacts</strong><br><small>inspect_each_gear → compare_axis_and_height</small></li>
+<li><strong>Extract, flip and reseat the diagnosed inverted gear</strong><br><small>rim_grasp → axis_aligned_extraction → explicit_quarter_turn → lower_rim_to_clear_table → verify_actual_table_support → tip_five_degrees_past_vertical → release_and_withdraw → verify_upright_released_gear → regrasp_hub → reseat_and_verify_original_repair</small></li>
+<li><strong>Assemble and verify cover</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Acquire physical tool and test contact transmission</strong><br><small>center_three_pad_tool_grasp → verify_actual_lift → screen_full_authored_geometry_for_each_carried_tool_waypoint → incline_tool_above_assembly → descend_outside_cover → enter_measured_tooth_gap → screen_and_execute_tangential_sweep → retract_and_repeat_until_original_transmission_check → after_two_strokes_physically_park_release_and_reacquire_tool → park_and_release</small></li>
+<li><strong>Park tool and release all contacts</strong><br><small>park_tool → open_hand → withdraw → final_dwell</small></li>
+</ol></details>
+<p class="verdict">任务: 未通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/GEAR-02/a80/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/GEAR-02/a80/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00087 rad · v / limit 0.473 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 71% · 展示尝试: a80</p>
+<p class="failure">RuntimeError: tool: regrasp requires a genuinely released table-supported tool</p>
+<p class="links"><a href="assembly-family-evidence/GEAR-02/a80/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/GEAR-02/a80/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/GEAR-02/a80/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/GEAR-02/a80/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/GEAR-02/a80/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<p class="muted">进行中 / 排队：a33 (incomplete), a34 (infrastructure_interrupted), a39 (infrastructure_interrupted), a81 (RUNNING)</p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/GEAR-02/a01/outcome.json.gz">a01 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a02/outcome.json.gz">a02 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a03/outcome.json.gz">a03 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a04/outcome.json.gz">a04 · cancelled_incomplete_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a05/outcome.json.gz">a05 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a06/outcome.json.gz">a06 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a07/outcome.json.gz">a07 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a08/outcome.json.gz">a08 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a09/outcome.json.gz">a09 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a10/outcome.json.gz">a10 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a11/outcome.json.gz">a11 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a12/outcome.json.gz">a12 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a13/outcome.json.gz">a13 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a14/outcome.json.gz">a14 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a15/outcome.json.gz">a15 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a16/outcome.json.gz">a16 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a17/outcome.json.gz">a17 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a18/outcome.json.gz">a18 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a19/outcome.json.gz">a19 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a20/outcome.json.gz">a20 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a21/outcome.json.gz">a21 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a22/outcome.json.gz">a22 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a23/outcome.json.gz">a23 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a24/outcome.json.gz">a24 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a25/outcome.json.gz">a25 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a26/outcome.json.gz">a26 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a27/outcome.json.gz">a27 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a28/outcome.json.gz">a28 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a29/outcome.json.gz">a29 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a30/outcome.json.gz">a30 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a31/outcome.json.gz">a31 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a32/outcome.json.gz">a32 · failed_with_evidence</a></li>
+<li>a33 · incomplete</li>
+<li>a34 · infrastructure_interrupted</li>
+<li><a href="assembly-family-evidence/GEAR-02/a35/outcome.json.gz">a35 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a36/outcome.json.gz">a36 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a37/outcome.json.gz">a37 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a38/outcome.json.gz">a38 · failed_with_evidence</a></li>
+<li>a39 · infrastructure_interrupted</li>
+<li><a href="assembly-family-evidence/GEAR-02/a40/outcome.json.gz">a40 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a41/outcome.json.gz">a41 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a42/outcome.json.gz">a42 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a43/outcome.json.gz">a43 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a44/outcome.json.gz">a44 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a45/outcome.json.gz">a45 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a46/outcome.json.gz">a46 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a48/outcome.json.gz">a48 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a49/outcome.json.gz">a49 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a50/outcome.json.gz">a50 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a51/outcome.json.gz">a51 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a52/outcome.json.gz">a52 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a53/outcome.json.gz">a53 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a54/outcome.json.gz">a54 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a55/outcome.json.gz">a55 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a56/outcome.json.gz">a56 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a57/outcome.json.gz">a57 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a58/outcome.json.gz">a58 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a59/outcome.json.gz">a59 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a60/outcome.json.gz">a60 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a61/outcome.json.gz">a61 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a62/outcome.json.gz">a62 · infrastructure_interrupted</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a63/outcome.json.gz">a63 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a64/outcome.json.gz">a64 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a65/outcome.json.gz">a65 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a66/outcome.json.gz">a66 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a67/outcome.json.gz">a67 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a68/outcome.json.gz">a68 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a69/outcome.json.gz">a69 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a70/outcome.json.gz">a70 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a71/outcome.json.gz">a71 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a72/outcome.json.gz">a72 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a73/outcome.json.gz">a73 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a74/outcome.json.gz">a74 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a75/outcome.json.gz">a75 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a76/outcome.json.gz">a76 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a77/outcome.json.gz">a77 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a78/outcome.json.gz">a78 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a79/outcome.json.gz">a79 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-02/a80/outcome.json.gz">a80 · failed_with_evidence</a></li>
+<li>a81 · RUNNING</li>
+</ul></details></article>
+<article id="GEAR-03" data-family="GEAR"><div class="heading"><h2>GEAR-03 · 夹持、导向与拨杆工具相性</h2><span class="badge">witnessed_full</span></div>
+<p class="muted">最新尝试 a12 · gear_regrasp · witnessed_full · 289.4 s · turning_tool_pinch_release</p>
+<p class="muted">展示运行的专家入口: <code>gear_regrasp</code></p>
+<p>reference-body scene probe</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Choose from physical drive tools</strong><br><small>measure_handle → check_tip_and_clearance → grasp_probe</small></li>
+<li><strong>Assemble and verify base</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Assemble and verify large_gear</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Assemble and verify medium_gear</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Assemble and verify small_gear</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Assemble and verify cover</strong><br><small>approach → grasp → lift → align → seat → release_and_verify</small></li>
+<li><strong>Acquire physical tool and test contact transmission</strong><br><small>park_idle_arm → grasp_tool → two_drive_strokes → park_and_release_tool → regrasp → repeat_up_to_four_cycles → verify_original_transmission_predicate</small></li>
+<li><strong>Park tool and release all contacts</strong><br><small>park_tool → open_hand → withdraw → final_dwell</small></li>
+</ol></details>
+<p class="verdict">任务: 通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/GEAR-03/a12/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/GEAR-03/a12/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00016 rad · v / limit 0.448 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 100% · 展示尝试: a12</p>
+<p class="links"><a href="assembly-family-evidence/GEAR-03/a12/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/GEAR-03/a12/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/GEAR-03/a12/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/GEAR-03/a12/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/GEAR-03/a12/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/GEAR-03/a01/outcome.json.gz">a01 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a02/outcome.json.gz">a02 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a03/outcome.json.gz">a03 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a04/outcome.json.gz">a04 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a05/outcome.json.gz">a05 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a06/outcome.json.gz">a06 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a07/outcome.json.gz">a07 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a08/outcome.json.gz">a08 · witnessed_full</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a10/outcome.json.gz">a10 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a11/outcome.json.gz">a11 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/GEAR-03/a12/outcome.json.gz">a12 · witnessed_full</a></li>
+</ul></details></article>
+<article id="REF-01" data-family="REF"><div class="heading"><h2>REF-01 · 原版八件置物架装配</h2><span class="badge">failed_with_evidence</span></div>
+<details><summary>历史诊断记录（非当前验收结论）</summary><p class="muted">复现检查：a58 在原 GPU 节点再次完成右框架交接、直立与落位，物理检查通过，但因先放右框架触发原评分 wrong_order；a57 在另一节点交接前滑脱。尚未证明跨节点稳定性或八件连续装配。</p><p class="muted">连续子序列：a61 已按左框架 → 右框架的原任务顺序完成装配与松手，原评分到达 stage 2，独立物理检查通过。其冻结高层计划仍有右框架先行的旧文字；实际动作与轨迹记录为左先右后。其余六件尚未完成，不计入完整任务通过数。</p></details>
+<p class="muted">最新尝试 a200 · ref_carrier_receiver_pivot_probe · RUNNING · 部件或子序列诊断，不是完整任务见证 · 76.4 s · goto</p>
+<p class="muted">展示运行的专家入口: <code>ref_frames_replay</code></p>
+<p>reference-body candidate expert</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Assemble and release the required first frame</strong><br><small>grasp → lift → reorient → align_feet → insert → release</small></li>
+<li><strong>Assemble right frame after the original left-frame predicate</strong><br><small>push_to_overhang → partial_pivot → upper_rail_handoff → park_idle_arm → reorient → align_feet → insert → release</small></li>
+</ol></details>
+<p class="verdict">任务: 未通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/REF-01/a125/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/REF-01/a125/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00001 rad · v / limit 0.711 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 22% · 展示尝试: a125</p>
+<p class="links"><a href="assembly-family-evidence/REF-01/a125/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/REF-01/a125/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/REF-01/a125/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/REF-01/a125/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/REF-01/a125/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<details><summary>其它已通过的部件诊断 · 不计入完整任务</summary>
+<p><strong>a36 · ref_frame_pivot_probe</strong><br><small>right_frame_pivot_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-01/a36/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-01/a36/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-01/a36/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-01/a36/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-01/a36/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a38 · ref_board_place_probe</strong><br><small>board_place_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-01/a38/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-01/a38/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-01/a38/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-01/a38/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-01/a38/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a82 · ref_crossbar_top_probe</strong><br><small>crossbar_top_grasp_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-01/a82/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-01/a82/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-01/a82/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-01/a82/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-01/a82/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a83 · ref_crossbar_vertical_probe</strong><br><small>crossbar_top_grasp_probe_success · crossbar_vertical_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-01/a83/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-01/a83/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-01/a83/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-01/a83/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-01/a83/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a92 · ref_idle_high_probe</strong><br><small>idle_high_clearance_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-01/a92/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-01/a92/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-01/a92/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-01/a92/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-01/a92/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a124 · ref_frame_hang_probe</strong><br><small>frame_gravity_hang_probe_success · frame_gravity_install_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-01/a124/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-01/a124/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-01/a124/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-01/a124/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-01/a124/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a199 · ref_carrier_rack_hanging_probe</strong><br><small>carrier_rack_hanging_lift_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-01/a199/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-01/a199/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-01/a199/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-01/a199/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-01/a199/recorded-source.tar.gz">Recorded source</a></p>
+</details>
+<p class="muted">进行中 / 排队：a77 (infrastructure_interrupted), a200 (RUNNING)</p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/REF-01/a01/outcome.json.gz">a01 · setup_failed</a></li>
+<li><a href="assembly-family-evidence/REF-01/a02/outcome.json.gz">a02 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a03/outcome.json.gz">a03 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a04/outcome.json.gz">a04 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a05/outcome.json.gz">a05 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a06/outcome.json.gz">a06 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a07/outcome.json.gz">a07 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a08/outcome.json.gz">a08 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a09/outcome.json.gz">a09 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a10/outcome.json.gz">a10 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a11/outcome.json.gz">a11 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a12/outcome.json.gz">a12 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a13/outcome.json.gz">a13 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a14/outcome.json.gz">a14 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a15/outcome.json.gz">a15 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a16/outcome.json.gz">a16 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a17/outcome.json.gz">a17 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a18/outcome.json.gz">a18 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a19/outcome.json.gz">a19 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a20/outcome.json.gz">a20 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a21/outcome.json.gz">a21 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a22/outcome.json.gz">a22 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a23/outcome.json.gz">a23 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a24/outcome.json.gz">a24 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a25/outcome.json.gz">a25 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a26/outcome.json.gz">a26 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a27/outcome.json.gz">a27 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a28/outcome.json.gz">a28 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a29/outcome.json.gz">a29 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a30/outcome.json.gz">a30 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a31/outcome.json.gz">a31 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a32/outcome.json.gz">a32 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a33/outcome.json.gz">a33 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a34/outcome.json.gz">a34 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a35/outcome.json.gz">a35 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a36/outcome.json.gz">a36 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a37/outcome.json.gz">a37 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a38/outcome.json.gz">a38 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a39/outcome.json.gz">a39 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a40/outcome.json.gz">a40 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a41/outcome.json.gz">a41 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a42/outcome.json.gz">a42 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a43/outcome.json.gz">a43 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a44/outcome.json.gz">a44 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a45/outcome.json.gz">a45 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a46/outcome.json.gz">a46 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a47/outcome.json.gz">a47 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a48/outcome.json.gz">a48 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a49/outcome.json.gz">a49 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a50/outcome.json.gz">a50 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a51/outcome.json.gz">a51 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a52/outcome.json.gz">a52 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a53/outcome.json.gz">a53 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a54/outcome.json.gz">a54 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a55/outcome.json.gz">a55 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a56/outcome.json.gz">a56 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a57/outcome.json.gz">a57 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a58/outcome.json.gz">a58 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a59/outcome.json.gz">a59 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a60/outcome.json.gz">a60 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a61/outcome.json.gz">a61 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a62/outcome.json.gz">a62 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a63/outcome.json.gz">a63 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a64/outcome.json.gz">a64 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a65/outcome.json.gz">a65 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a66/outcome.json.gz">a66 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a67/outcome.json.gz">a67 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a68/outcome.json.gz">a68 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a69/outcome.json.gz">a69 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a70/outcome.json.gz">a70 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a71/outcome.json.gz">a71 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a72/outcome.json.gz">a72 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a73/outcome.json.gz">a73 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a74/outcome.json.gz">a74 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a75/outcome.json.gz">a75 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a76/outcome.json.gz">a76 · failed_with_evidence</a></li>
+<li>a77 · infrastructure_interrupted</li>
+<li><a href="assembly-family-evidence/REF-01/a78/outcome.json.gz">a78 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a79/outcome.json.gz">a79 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a80/outcome.json.gz">a80 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a81/outcome.json.gz">a81 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a82/outcome.json.gz">a82 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a83/outcome.json.gz">a83 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a84/outcome.json.gz">a84 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a85/outcome.json.gz">a85 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a86/outcome.json.gz">a86 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a87/outcome.json.gz">a87 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a88/outcome.json.gz">a88 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a89/outcome.json.gz">a89 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a90/outcome.json.gz">a90 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a91/outcome.json.gz">a91 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a92/outcome.json.gz">a92 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a93/outcome.json.gz">a93 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a94/outcome.json.gz">a94 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a95/outcome.json.gz">a95 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a96/outcome.json.gz">a96 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a97/outcome.json.gz">a97 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a98/outcome.json.gz">a98 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a99/outcome.json.gz">a99 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a100/outcome.json.gz">a100 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a101/outcome.json.gz">a101 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a102/outcome.json.gz">a102 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a103/outcome.json.gz">a103 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a104/outcome.json.gz">a104 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a105/outcome.json.gz">a105 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a106/outcome.json.gz">a106 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a107/outcome.json.gz">a107 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a108/outcome.json.gz">a108 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a109/outcome.json.gz">a109 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a110/outcome.json.gz">a110 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a111/outcome.json.gz">a111 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a112/outcome.json.gz">a112 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a113/outcome.json.gz">a113 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a114/outcome.json.gz">a114 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a115/outcome.json.gz">a115 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a116/outcome.json.gz">a116 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a117/outcome.json.gz">a117 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a118/outcome.json.gz">a118 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a119/outcome.json.gz">a119 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a120/outcome.json.gz">a120 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a121/outcome.json.gz">a121 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a122/outcome.json.gz">a122 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a123/outcome.json.gz">a123 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a124/outcome.json.gz">a124 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a125/outcome.json.gz">a125 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a126/outcome.json.gz">a126 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a127/outcome.json.gz">a127 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a128/outcome.json.gz">a128 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a129/outcome.json.gz">a129 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a130/outcome.json.gz">a130 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a131/outcome.json.gz">a131 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a132/outcome.json.gz">a132 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a133/outcome.json.gz">a133 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a134/outcome.json.gz">a134 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a135/outcome.json.gz">a135 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a136/outcome.json.gz">a136 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a137/outcome.json.gz">a137 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a138/outcome.json.gz">a138 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a139/outcome.json.gz">a139 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a140/outcome.json.gz">a140 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a141/outcome.json.gz">a141 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a142/outcome.json.gz">a142 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a143/outcome.json.gz">a143 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a144/outcome.json.gz">a144 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a145/outcome.json.gz">a145 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a146/outcome.json.gz">a146 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a147/outcome.json.gz">a147 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a148/outcome.json.gz">a148 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a149/outcome.json.gz">a149 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a150/outcome.json.gz">a150 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a151/outcome.json.gz">a151 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a152/outcome.json.gz">a152 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a153/outcome.json.gz">a153 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a154/outcome.json.gz">a154 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a155/outcome.json.gz">a155 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a156/outcome.json.gz">a156 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a157/outcome.json.gz">a157 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a158/outcome.json.gz">a158 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a159/outcome.json.gz">a159 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a160/outcome.json.gz">a160 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a161/outcome.json.gz">a161 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a162/outcome.json.gz">a162 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a163/outcome.json.gz">a163 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a164/outcome.json.gz">a164 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a165/outcome.json.gz">a165 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a166/outcome.json.gz">a166 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a167/outcome.json.gz">a167 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a168/outcome.json.gz">a168 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a169/outcome.json.gz">a169 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a170/outcome.json.gz">a170 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a171/outcome.json.gz">a171 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a172/outcome.json.gz">a172 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a173/outcome.json.gz">a173 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a174/outcome.json.gz">a174 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a175/outcome.json.gz">a175 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a176/outcome.json.gz">a176 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a177/outcome.json.gz">a177 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a178/outcome.json.gz">a178 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a179/outcome.json.gz">a179 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a180/outcome.json.gz">a180 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a181/outcome.json.gz">a181 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a182/outcome.json.gz">a182 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a183/outcome.json.gz">a183 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a184/outcome.json.gz">a184 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a185/outcome.json.gz">a185 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a186/outcome.json.gz">a186 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a187/outcome.json.gz">a187 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a188/outcome.json.gz">a188 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a189/outcome.json.gz">a189 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a190/outcome.json.gz">a190 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a191/outcome.json.gz">a191 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a192/outcome.json.gz">a192 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a193/outcome.json.gz">a193 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a194/outcome.json.gz">a194 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a195/outcome.json.gz">a195 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a196/outcome.json.gz">a196 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a197/outcome.json.gz">a197 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a198/outcome.json.gz">a198 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-01/a199/outcome.json.gz">a199 · failed_with_evidence</a></li>
+<li>a200 · RUNNING</li>
+</ul></details></article>
+<article id="REF-02" data-family="REF"><div class="heading"><h2>REF-02 · 有限临时夹具的调度与复用</h2><span class="badge">failed_with_evidence</span></div>
+<p class="muted">最新尝试 a79 · ref_fixture_adaptive_recovery_probe · RUNNING · 部件或子序列诊断，不是完整任务见证 · 205.8 s · right_frame_paired_receiver_preshape</p>
+<p class="muted">展示运行的专家入口: <code>ref_fixture_upper_handoff_probe</code></p>
+<p>reference-body candidate expert</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Use the same support at two distinct positions</strong><br><small>left_frame_fixture_use → install_left_frame → relocate_same_fixture</small></li>
+<li><strong>Install the first frame after real support use</strong><br><small>reacquire → align → insert → release</small></li>
+<li><strong>Use the moved fixture and install the second frame</strong><br><small>witnessed_unloaded_approach → raise_hooked_post → screen_receiver_overhead_detour → measured_contact_closure → post_pivot → upper_rail_handoff → reorient → lower_one_foot_onto_fixture → verify_real_contact → tilt_about_supported_foot_to_direct_fall_away_from_installed_frame → open_hooks_lower_and_withdraw_before_rising → release_and_verify_second_use → screen_and_park_empty_left_arm_high_before_regrasp → measure_released_frame_orientation → choose_right_hand_upward_lower_rail_face → screen_both_arms_and_continuous_regrasp_descent → close_fixed_world_palm_on_real_contact → guard_both_arms_during_fixed_wrist_lower_rail_lift → acquire_opposite_upper_rail_with_left_receiver → raise_both_actual_grasps_150_millimetres → release_lower_rail_donor → plan_carried_scene_clearance → install_and_release</small></li>
+<li><strong>Return the released support to its original parking region</strong><br><small>grasp_fixture → table_slide → release_check</small></li>
+</ol></details>
+<p class="verdict">任务: 未通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/REF-02/a78/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/REF-02/a78/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00051 rad · v / limit 0.568 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 11% · 展示尝试: a78</p>
+<p class="failure">RuntimeError: right_frame: paired receiver endpoint is not jointly reachable</p>
+<p class="links"><a href="assembly-family-evidence/REF-02/a78/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/REF-02/a78/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/REF-02/a78/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/REF-02/a78/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/REF-02/a78/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<details><summary>其它已通过的部件诊断 · 不计入完整任务</summary>
+<p><strong>a08 · ref_fixture_slide_probe</strong><br><small>fixture_slide_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-02/a08/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-02/a08/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-02/a08/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-02/a08/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-02/a08/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a12 · ref_fixture_use_probe</strong><br><small>fixture_slide_probe_success · fixture_use_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-02/a12/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-02/a12/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-02/a12/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-02/a12/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-02/a12/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a19 · ref_fixture_recover_probe</strong><br><small>fixture_slide_probe_success · fixture_use_probe_success · fixture_use_left_frame_integrated_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-02/a19/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-02/a19/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-02/a19/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-02/a19/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-02/a19/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a23 · ref_fixture_fast_probe</strong><br><small>fixture_slide_probe_success · fixture_use_probe_success · fixture_use_left_frame_integrated_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-02/a23/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-02/a23/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-02/a23/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-02/a23/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-02/a23/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a66 · ref_board_place_probe</strong><br><small>board_place_probe_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-02/a66/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-02/a66/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-02/a66/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-02/a66/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-02/a66/recorded-source.tar.gz">Recorded source</a></p>
+</details>
+<p class="muted">进行中 / 排队：a16 (infrastructure_interrupted), a79 (RUNNING)</p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/REF-02/a01/outcome.json.gz">a01 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a02/outcome.json.gz">a02 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a03/outcome.json.gz">a03 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a04/outcome.json.gz">a04 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a05/outcome.json.gz">a05 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a06/outcome.json.gz">a06 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a07/outcome.json.gz">a07 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a08/outcome.json.gz">a08 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a09/outcome.json.gz">a09 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a10/outcome.json.gz">a10 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a11/outcome.json.gz">a11 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a12/outcome.json.gz">a12 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a13/outcome.json.gz">a13 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a14/outcome.json.gz">a14 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a15/outcome.json.gz">a15 · failed_with_evidence</a></li>
+<li>a16 · infrastructure_interrupted</li>
+<li><a href="assembly-family-evidence/REF-02/a17/outcome.json.gz">a17 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a18/outcome.json.gz">a18 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a19/outcome.json.gz">a19 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a20/outcome.json.gz">a20 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a21/outcome.json.gz">a21 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a22/outcome.json.gz">a22 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a23/outcome.json.gz">a23 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a24/outcome.json.gz">a24 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a25/outcome.json.gz">a25 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a26/outcome.json.gz">a26 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a27/outcome.json.gz">a27 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a28/outcome.json.gz">a28 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a29/outcome.json.gz">a29 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a30/outcome.json.gz">a30 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a31/outcome.json.gz">a31 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a32/outcome.json.gz">a32 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a33/outcome.json.gz">a33 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a34/outcome.json.gz">a34 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a35/outcome.json.gz">a35 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a36/outcome.json.gz">a36 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a37/outcome.json.gz">a37 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a38/outcome.json.gz">a38 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a39/outcome.json.gz">a39 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a40/outcome.json.gz">a40 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a41/outcome.json.gz">a41 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a42/outcome.json.gz">a42 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a43/outcome.json.gz">a43 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a44/outcome.json.gz">a44 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a45/outcome.json.gz">a45 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a46/outcome.json.gz">a46 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a47/outcome.json.gz">a47 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a48/outcome.json.gz">a48 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a49/outcome.json.gz">a49 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a50/outcome.json.gz">a50 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a51/outcome.json.gz">a51 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a52/outcome.json.gz">a52 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a53/outcome.json.gz">a53 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a54/outcome.json.gz">a54 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a55/outcome.json.gz">a55 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a56/outcome.json.gz">a56 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a57/outcome.json.gz">a57 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a58/outcome.json.gz">a58 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a59/outcome.json.gz">a59 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a60/outcome.json.gz">a60 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a61/outcome.json.gz">a61 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a62/outcome.json.gz">a62 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a63/outcome.json.gz">a63 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a64/outcome.json.gz">a64 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a65/outcome.json.gz">a65 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a66/outcome.json.gz">a66 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a67/outcome.json.gz">a67 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a68/outcome.json.gz">a68 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a69/outcome.json.gz">a69 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a70/outcome.json.gz">a70 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a71/outcome.json.gz">a71 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a72/outcome.json.gz">a72 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a73/outcome.json.gz">a73 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a74/outcome.json.gz">a74 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a75/outcome.json.gz">a75 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a76/outcome.json.gz">a76 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a77/outcome.json.gz">a77 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-02/a78/outcome.json.gz">a78 · failed_with_evidence</a></li>
+<li>a79 · RUNNING</li>
+</ul></details></article>
+<article id="REF-03" data-family="REF"><div class="heading"><h2>REF-03 · 受限工作区下的身体适配</h2><span class="badge">failed_with_evidence</span></div>
+<p class="muted">最新尝试 a64 · ref_frames_scaled_seating_probe · failed_with_evidence · 部件或子序列诊断，不是完整任务见证 · 206.6 s · hook_release</p>
+<p class="muted">展示运行的专家入口: <code>ref_frames_scaled_seating_probe</code></p>
+<p>reference-body scene probe</p><details><summary>High / low planning · 高低层计划</summary><ol>
+<li><strong>Assemble and release the required first frame</strong><br><small>grasp → lift → reorient → align_feet → insert → release</small></li>
+<li><strong>Assemble right frame after the original left-frame predicate</strong><br><small>push_to_front_overhang → near_post_grasp → partial_pivot → settle_real_post_hook → raise_hooked_post_with_fixed_wrist → verify_receiver_rail_above_table → screen_full_scene_receiver_path → measured_rail_handoff → reorient → seat → release → screen_receiver_overhead_detour → hold_converged_receiver_world_pose_during_closure → stop_finger_closure_after_three_samples_above_target_force → settle_actual_contact_before_donor_release</small></li>
+</ol></details>
+<p class="verdict">任务: 未通过 · 物理: 通过 · 本地证据: 通过</p>
+<video controls preload="none" src="assembly-family-evidence/REF-03/a64/video.mp4"></video><p class="muted">连续物理执行的压缩预览，240 px / 5 fps；完整录制保存在工作区。</p>
+<label>跳转计划段 <select class="segment" data-timeline="assembly-family-evidence/REF-03/a64/timeline.json"><option value="0">0 s</option>
+</select></label>
+<p class="numbers">Δq 0.00001 rad · v / limit 0.564 · τcmd / limit 1.000 · scorer mismatches 0</p>
+<p>场景进度: 22% · 展示尝试: a64</p>
+<p class="links"><a href="assembly-family-evidence/REF-03/a64/plan.json.gz">Run plan (gzip)</a> · <a href="assembly-family-evidence/REF-03/a64/timeline.json">Plan ↔ trajectory</a> · <a href="assembly-family-evidence/REF-03/a64/trajectory-control.npz">Trajectory preview · 1 Hz / 1 mrad</a> · <a href="assembly-family-evidence/REF-03/a64/outcome.json.gz">Result + physics checks (gzip)</a> · <a href="assembly-family-evidence/REF-03/a64/recorded-source.tar.gz">Recorded source snapshot</a></p>
+<details><summary>其它已通过的部件诊断 · 不计入完整任务</summary>
+<p><strong>a32 · ref_frames_replay</strong><br><small>right_frame_pivot_probe_success · two_frames_replay_integrated_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-03/a32/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-03/a32/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-03/a32/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-03/a32/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-03/a32/recorded-source.tar.gz">Recorded source</a></p>
+<p><strong>a59 · ref_frames_firm_receiver_probe</strong><br><small>right_frame_pivot_probe_success · two_frames_replay_integrated_success</small></p>
+<video controls preload="none" src="assembly-family-evidence/REF-03/a59/video.mp4"></video>
+<p class="links"><a href="assembly-family-evidence/REF-03/a59/plan.json.gz">Plan</a> · <a href="assembly-family-evidence/REF-03/a59/trajectory-control.npz">Trajectory preview</a> · <a href="assembly-family-evidence/REF-03/a59/outcome.json.gz">Physics verdict</a> · <a href="assembly-family-evidence/REF-03/a59/recorded-source.tar.gz">Recorded source</a></p>
+</details>
+<p class="muted">进行中 / 排队：a55 (infrastructure_interrupted)</p>
+<details><summary>所有尝试</summary><ul>
+<li><a href="assembly-family-evidence/REF-03/a01/outcome.json.gz">a01 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a03/outcome.json.gz">a03 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a04/outcome.json.gz">a04 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a05/outcome.json.gz">a05 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a06/outcome.json.gz">a06 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a07/outcome.json.gz">a07 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a08/outcome.json.gz">a08 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a09/outcome.json.gz">a09 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a10/outcome.json.gz">a10 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a11/outcome.json.gz">a11 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a12/outcome.json.gz">a12 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a13/outcome.json.gz">a13 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a14/outcome.json.gz">a14 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a15/outcome.json.gz">a15 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a16/outcome.json.gz">a16 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a17/outcome.json.gz">a17 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a18/outcome.json.gz">a18 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a19/outcome.json.gz">a19 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a20/outcome.json.gz">a20 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a21/outcome.json.gz">a21 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a22/outcome.json.gz">a22 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a23/outcome.json.gz">a23 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a24/outcome.json.gz">a24 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a25/outcome.json.gz">a25 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a26/outcome.json.gz">a26 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a27/outcome.json.gz">a27 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a28/outcome.json.gz">a28 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a29/outcome.json.gz">a29 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a30/outcome.json.gz">a30 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a31/outcome.json.gz">a31 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a32/outcome.json.gz">a32 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a33/outcome.json.gz">a33 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a34/outcome.json.gz">a34 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a35/outcome.json.gz">a35 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a36/outcome.json.gz">a36 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a37/outcome.json.gz">a37 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a38/outcome.json.gz">a38 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a39/outcome.json.gz">a39 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a40/outcome.json.gz">a40 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a41/outcome.json.gz">a41 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a42/outcome.json.gz">a42 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a43/outcome.json.gz">a43 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a44/outcome.json.gz">a44 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a45/outcome.json.gz">a45 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a46/outcome.json.gz">a46 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a47/outcome.json.gz">a47 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a48/outcome.json.gz">a48 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a49/outcome.json.gz">a49 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a50/outcome.json.gz">a50 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a51/outcome.json.gz">a51 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a52/outcome.json.gz">a52 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a53/outcome.json.gz">a53 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a54/outcome.json.gz">a54 · failed_with_evidence</a></li>
+<li>a55 · infrastructure_interrupted</li>
+<li><a href="assembly-family-evidence/REF-03/a56/outcome.json.gz">a56 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a57/outcome.json.gz">a57 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a58/outcome.json.gz">a58 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a59/outcome.json.gz">a59 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a60/outcome.json.gz">a60 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a61/outcome.json.gz">a61 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a62/outcome.json.gz">a62 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a63/outcome.json.gz">a63 · failed_with_evidence</a></li>
+<li><a href="assembly-family-evidence/REF-03/a64/outcome.json.gz">a64 · failed_with_evidence</a></li>
+</ul></details></article>
+<footer>物理审查：逐物理步实测关节位置、速度，检查受限力矩命令与接触；禁止执行中位姿写入、绑定和参数修改。网页下载为 1 Hz 轨迹预览副本（q 与目标 q，1 mrad 量化，解码乘 0.001）及视频；逐物理步原始轨迹、接触和对应源码快照完整保存在仓库 assembly_family/runs/。独立评分是对记录状态的重算，尚不是第二次独立动力学回放。控制器使用特权测量，不是仅视觉策略。每个展示视频附有对应录制时的源码快照；页首实现源码为当前候选。新录制按碰撞体区分手掌与腕部，并从逐步接触记录重算；历史 link 级记录不追溯改判。</footer></main><script src="assembly-family-evidence/evidence.js"></script></body></html>

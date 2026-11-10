@@ -1,0 +1,445 @@
+{
+ "schema": "transport-tool-necessity-probe/1",
+ "task": "H2",
+ "setup": {
+  "kind": "tool_ablation_local_direct_drag",
+  "removed_from_route": "both",
+  "controller_variant": "local curled-finger drag at solid push blocks; backward walking; original 180 s budget and physical guards; not a full delivery planner",
+  "cart_initial_position": [
+   0.9,
+   1.7,
+   0.057
+  ],
+  "rails_initial_position": [
+   2.1,
+   1.7,
+   0.0
+  ],
+  "push_height_m": 0.6,
+  "retained": "cargo mass, geometry and friction; passages; physical/hardware thresholds",
+  "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof"
+ },
+ "sample_spec": {
+  "distribution": "transport-pose-v1",
+  "split": "development",
+  "seed": 23,
+  "episode": 0,
+  "corner": null,
+  "task_config": {
+   "difficulty_layer": 1,
+   "asset_visuals": true,
+   "dock": "rails",
+   "rail_frictionloss": 0.02,
+   "deck_roller_frictionloss": 0.02,
+   "lane_guides": true,
+   "guide_north_x": 6.3,
+   "box_mass": 20.0,
+   "box_size": [
+    0.7,
+    0.7,
+    0.9
+   ],
+   "box_friction": 0.5,
+   "box_handholds": false,
+   "box_handles": true,
+   "box_handle_shape": "block",
+   "cart_mass": 12.0,
+   "cart_handle_mass": 1.0,
+   "wheel_mass": 0.5,
+   "wheel_friction": 0.055,
+   "wheel_damping": 0.002,
+   "wheel_frictionloss": 0.06,
+   "wheel_armature": 1e-05,
+   "deck_friction": 0.12,
+   "ground_friction": 0.03,
+   "passage_width": 1.5,
+   "dwell": 2.0,
+   "timeout": 180.0,
+   "collision_limit": 800.0,
+   "cart_payload_limit": 40.0,
+   "cart_pos": [
+    3.81,
+    -0.8,
+    0.015
+   ],
+   "cart_size": [
+    0.8,
+    0.8,
+    0.01
+   ],
+   "room_length": 10.5,
+   "goal": [
+    9.56758839,
+    0.78092559
+   ],
+   "goal_size": [
+    1.4,
+    1.4
+   ],
+   "box_xy": [
+    2.02092773,
+    -0.8
+   ],
+   "box_on_floor": true
+  },
+  "robot_pose": [
+   0.77396032,
+   0.02652693,
+   0.09278798
+  ],
+  "draws": {
+   "robot_x": 0.77396032,
+   "robot_y": 0.02652693,
+   "robot_yaw": 0.09278798,
+   "box_x": 2.02092773,
+   "goal_x": 9.56758839,
+   "goal_y": 0.78092559
+  },
+  "rejected": 0
+ },
+ "effort_limits": "hardware",
+ "main_task_admission_evidence": false,
+ "necessity_proven": false,
+ "raw_goal_reached": false,
+ "raw_goal_hold_s": 0.0,
+ "minimum_goal_distance_m": 7.710474292646031,
+ "reason": "task_failed",
+ "error": null,
+ "expert_sources_sha256": {
+  "h2/solution/floor_push/run_grasp_push.py": "ac42a07f5174ee47a1fbe582ddd979f4a0d676d910672f1e6e02ff455b4e85e0",
+  "h2/solution/floor_push/run_cart_push.py": "f99c86ac5568d33e1c11faa95e0a1783dc3d973e18300b917e6bbe6a6e0c3724",
+  "h2/solution/floor_push/run_floor_push.py": "506a499d63b837c376b20af3073d10506b3f36eaacb7bcc7ac0dfdddfeaadf80",
+  "humanoid/g1_support_retrieval/solution/agile.py": "ffb06f370e71a28ea715913959be04459aa6013774f6f547768653bebd0f2bb7",
+  "humanoid/g1_support_retrieval/oracle/upper_ik.py": "f5525862a2c042ba1e8aeeed1d2cb29f083d159bd5113f0293a2de9b1d48b6a1",
+  "humanoid/g1_support_retrieval/oracle/oracle.py": "1c88c21164289bbe62cbb5707e4f55316688afb2f58c8c5f63deb36c5054f9e3",
+  "tool_probe.py": "6eeb94c80387ea8b2b0f6f5875bb2b7dc40ee40cd52f8ea2f90bdd85a9fb7f4f",
+  "direct_drag_probe_controller.py": "df94f3f8bc0e0f75d43158031ef6a97776000f3676742ce983f0366150736225"
+ },
+ "privileged_writes_after_start": [],
+ "control_steps": 406,
+ "trace": [
+  {
+   "t": 0.0,
+   "phase": "stand",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.4505475163459778
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 1.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 2.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.5682490221306754,
+    "yaw_err": -0.07364393686452164,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 3.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.3792031836252311,
+    "yaw_err": 0.017046159221147494,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 4.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 1,
+    "dist": 0.19210803605167637,
+    "yaw_err": -0.027232616736583726,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 5.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 1,
+    "dist": 0.10063315893977799,
+    "yaw_err": -0.014362173322427285,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 6.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 1,
+    "dist": 0.08433364404982858,
+    "yaw_err": 0.00018888964370189498,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 7.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 1,
+    "dist": 0.08108336191343288,
+    "yaw_err": -0.00046581298912018454,
+    "box_on_cart": false
+   }
+  },
+  {
+   "t": 8.0,
+   "phase": "push",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.44999566674232483
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "gp": "approach",
+    "theta": 0.0,
+    "e_t": -1.1920928910669204e-08,
+    "D": 0.6440788745880126,
+    "vx": 0.22,
+    "robot_lat": 0.0031339526176452637,
+    "head_err": -0.11946275983853294,
+    "ik_err": {
+     "left": 0.2646865856416239,
+     "right": 0.38142244979000384
+    },
+    "curl": 1.0,
+    "box_v": -8.682109892133028e-11,
+    "push_N": 0.0,
+    "approach_restart": false,
+    "box_on_cart": false,
+    "requested_hip_height_m": 0.6808
+   }
+  }
+ ],
+ "wall_s": 48.339773178100586,
+ "max_robot_tilt_deg": 22.39914321899414,
+ "max_cargo_tilt_deg": 0.0,
+ "max_push_N": 0.0,
+ "first_failure": {
+  "time": 8.1,
+  "robot": [
+   1.0588767528533936,
+   -0.7992727756500244,
+   0.7163267731666565,
+   0.9837348461151123,
+   -0.010459204204380512,
+   0.16235600411891937,
+   0.07613798975944519,
+   0.31734776496887207,
+   -0.030979037284851074,
+   -0.029926272109150887,
+   0.1321757286787033,
+   0.7761430144309998,
+   0.5841659307479858
+  ],
+  "cargo": [
+   2.020927667617798,
+   -0.800000011920929,
+   0.44999566674232483,
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   1.1684180532822719e-11,
+   -3.767492220974056e-11,
+   2.4532664610887878e-06,
+   4.976059841954594e-11,
+   1.2502002211256524e-10,
+   -6.147882203322297e-11
+  ],
+  "cart": [
+   0.8999999761581421,
+   1.7000000476837158,
+   0.05699988454580307,
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   4.3997513188287485e-08,
+   -3.569900997035802e-08,
+   3.6843482575932285e-07,
+   6.263391014726949e-07,
+   8.984263786260271e-07,
+   -5.180130196319466e-12
+  ],
+  "contacts": [
+   [
+    "torso_link",
+    "left_shoulder_yaw_link",
+    380
+   ],
+   [
+    "right_hip_pitch_link",
+    "right_wrist_yaw_link",
+    206
+   ],
+   [
+    "ground",
+    "right_ankle_roll_link",
+    118
+   ],
+   [
+    "ground",
+    "right_ankle_roll_link",
+    101
+   ],
+   [
+    "ground",
+    "right_ankle_roll_link",
+    57
+   ]
+  ]
+ },
+ "local_traction_only": true,
+ "complete_delivery_planner": false,
+ "human_review": null,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "score": 0.0,
+  "success": false,
+  "scene": "default",
+  "dock": "rails",
+  "scene_version": "default/ae3124afdef5",
+  "end_reason": "failed",
+  "samples": 407,
+  "sim_time_s": 8.12,
+  "source": "tool_necessity_probe",
+  "observations": null,
+  "effort_limits": "hardware",
+  "simulator": {
+   "genesis-world": "1.4.3",
+   "torch": "2.11.0+cu128",
+   "numpy": "2.5.3"
+  },
+  "final_progress": 0.0,
+  "peak_time_s": 0.0,
+  "stage_best": {
+   "crate_pushed": 0.0,
+   "cargo_loaded": 0.0,
+   "through_passage_1": 0.0,
+   "through_passage_2": 0.0,
+   "delivered": 0.0
+  },
+  "stage_timeline": {
+   "crate_pushed": null,
+   "cargo_loaded": null,
+   "through_passage_1": null,
+   "through_passage_2": null,
+   "delivered": null
+  },
+  "delivered_at_end": false,
+  "chain_complete": false,
+  "failed": true,
+  "core_success": false,
+  "core_success_time_s": null,
+  "core_loaded_time_s": null,
+  "core_failed_time_s": 8.12,
+  "max_deck_cover": 0.0,
+  "max_goal_cover": 0.0,
+  "evaluation": {
+   "loaded": false,
+   "loaded_time_s": null,
+   "success": false,
+   "success_time_s": null,
+   "failed": true,
+   "failed_time_s": 8.11,
+   "sampling": "physics_substeps",
+   "hold_s": 0.0
+  },
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "monitor_version": "h2-monitors/2",
+   "not_applicable": {},
+   "max_reported_speed": 0.196,
+   "max_object_speed": 0.123,
+   "max_step_speed": 0.711,
+   "max_floor_penetration": 0.0003,
+   "max_box_penetration": 0.0,
+   "max_out_of_bounds_m": -0.74,
+   "max_energy_excess_J": 0.007,
+   "max_reversal_rate_hand_hz": 0.0,
+   "max_arm_shake": 1.439,
+   "max_saturation_s": 0.28,
+   "max_limit_push_s": 0.0,
+   "max_progress_spike": 0.0
+  },
+  "verifier": "h2-verifier/2 (h2-monitors/2)"
+ }
+}

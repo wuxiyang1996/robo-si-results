@@ -1,0 +1,209 @@
+{
+  "accepted": true,
+  "source": "humanoid\\g1_tabletop_assembly\\acceptance\\first_layer_20261023\\coverage\\layer1_seed0\\run\\episode_00",
+  "source_manifest_sha256": "dc073c0395952fffa0b7b12d54d8e53f03496c0d590f412e65f360eba17948cd",
+  "expected_outcome": "success",
+  "command_channel": "SandboxWorld.command_sequence: absolute joint targets",
+  "comparison": {
+    "rows_compared": 5841,
+    "rows_sandbox": 5841,
+    "rows_recording": 5841,
+    "max_object_position_diff_m": 0.0,
+    "max_time_diff_s": 1.4210854715202004e-14,
+    "exact_fields": {
+      "obj_pos": true,
+      "obj_quat": true,
+      "obj_vel": true,
+      "obj_ang": true,
+      "joint_pos": true,
+      "joint_vel": true
+    },
+    "raw_time_bitwise_equal": false,
+    "same_physics_clock": true,
+    "verdict_matches": true,
+    "world_parameters_match": true
+  },
+  "run": {
+    "targets": 5841,
+    "control_steps": 5841,
+    "status": {
+      "time_s": 116.82,
+      "steps": 5841,
+      "over": true,
+      "reason": "task_ended",
+      "sim_time_left_s": 3.18,
+      "observations_left": 20000,
+      "resets_left": 0,
+      "episode": 0
+    },
+    "clipped": {},
+    "wall_s": 114.4,
+    "privileged_writes": [],
+    "gain_writes": []
+  },
+  "verdict": {
+    "episode": "episode_00",
+    "void": false,
+    "void_reasons": [],
+    "flags": [],
+    "score": 1.0,
+    "success": true,
+    "end_reason": "task_ended",
+    "samples": 5842,
+    "sim_time_s": 116.82,
+    "source": "reference_replay",
+    "observations": 0,
+    "simulator": {
+      "genesis-world": "1.4.3",
+      "torch": "2.11.0+cu128",
+      "numpy": "2.5.3"
+    },
+    "episode_spec": {
+      "sim_time_limit_s": 120.0,
+      "scene": {
+        "distractor_layout": "mounted_v1",
+        "tool_layout": "remote_v1",
+        "brace_start_xy": [
+          0.422993850389046,
+          0.41703320892412643
+        ],
+        "sleeve_start_xy": [
+          0.4328211610818223,
+          0.22361298440230604
+        ],
+        "cap_start_xy": [
+          0.4306526591945294,
+          -0.2445261950669128
+        ],
+        "part_yaws": [
+          -0.02584206420453897,
+          0.024480235503275022,
+          -0.021640369835552398
+        ],
+        "fixture_pivot_xy": [
+          0.4640579776389056,
+          0.0024675494315668667
+        ],
+        "brace_goal_xy": [
+          0.5940579776389057,
+          0.0024675494315668667
+        ],
+        "fixture_initial_pitch": 0.2838131520263779,
+        "fixture_pivot_height": 0.07436174772658685,
+        "brace_size": [
+          0.06832249295716968,
+          0.1847308065241458,
+          0.061861747726586855
+        ],
+        "sleeve_outer_size": [
+          0.12352886236116681,
+          0.09887768534184871
+        ],
+        "cap_outer_size": [
+          0.0983698060802516,
+          0.0823816479382829
+        ],
+        "sleeve_height": 0.04546050343107137,
+        "cap_height": 0.024513998435451892,
+        "part_masses": [
+          0.34840123949222396,
+          0.198725563149551,
+          0.11470234276575388
+        ],
+        "part_frictions": [
+          0.6620256523454583,
+          0.7970016764757123,
+          0.6845817438705738
+        ],
+        "fixture_mass": 1.146192803690885,
+        "fixture_hinge_damping": 0.05482488822674761
+      },
+      "variant": "randomized"
+    },
+    "layer": "nominal",
+    "process_score": 1.0,
+    "final_progress": 1.0,
+    "peak_time_s": 116.82,
+    "stage_best": {
+      "brace_supported": 1.0,
+      "sleeve_seated": 1.0,
+      "cap_seated": 1.0,
+      "assembled_released": 1.0
+    },
+    "stage_timeline": {
+      "brace_supported": 58.5,
+      "sleeve_seated": 87.56,
+      "cap_seated": 115.32,
+      "assembled_released": 116.82
+    },
+    "completed_at_end": true,
+    "evaluator_stage": 3,
+    "evaluator_stage_times": {
+      "support_fixture": 58.5,
+      "insert_sleeve": 87.56,
+      "complete": 116.82
+    },
+    "evaluation": {
+      "replay": {
+        "success": true,
+        "failed": false,
+        "reason": "assembled_and_released",
+        "elapsed": 116.81999999996624,
+        "latched_row": 5841
+      },
+      "live": {
+        "success": true,
+        "failed": false,
+        "reason": "assembled_and_released",
+        "elapsed": 116.81999999996624,
+        "latched_row": 5841,
+        "recorded": true
+      },
+      "replay_matches_live": true,
+      "mismatch": null,
+      "stage_times": {
+        "support_fixture": 58.5,
+        "insert_sleeve": 87.56,
+        "complete": 116.82
+      },
+      "conditions": {
+        "brace_supported": true,
+        "sleeve_seated": true,
+        "cap_seated": true
+      }
+    },
+    "final_state": {
+      "fixture": true,
+      "sleeve": true,
+      "cap": true,
+      "brace": true,
+      "support_chain": true
+    },
+    "alarms": [],
+    "alarms_by_question": {
+      "1_no_reward_hacking": [],
+      "2_task_really_completed": [],
+      "3_no_physics_violation": []
+    },
+    "credit_windows": [],
+    "monitor_metrics": {
+      "monitor_version": "g1-tabletop-assembly-monitors/1",
+      "not_applicable": {
+        "object_out_of_bounds": "no walls: an object knocked off the table lands on the floor, which the task's evaluator fails as a drop",
+        "fall": "the pelvis is bolted to a stand",
+        "command_patterns_short_episode": "not judged on episodes of one second or less (infra.sandbox.monitors.commands needs a full 1 s window)"
+      },
+      "max_reported_speed": 0.595,
+      "max_object_speed": 0.582,
+      "max_step_speed": 0.643,
+      "max_support_penetration": 0.0014,
+      "max_energy_excess_J": 0.001,
+      "max_reversal_rate_hand_hz": 1.0,
+      "max_arm_shake": 0.695,
+      "max_saturation_s": 0.0,
+      "max_limit_push_s": 0.0,
+      "max_progress_spike": 0.0
+    },
+    "verifier": "g1-tabletop-assembly-verifier/1 (g1-tabletop-assembly-monitors/1)"
+  }
+}

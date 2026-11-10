@@ -1,0 +1,337 @@
+{
+ "task": "H6",
+ "mode": "eval",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.0,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.0,
+ "score_std": 0.0,
+ "by_layer": {
+  "None": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.0,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 0
+ },
+ "flags": [],
+ "privileged_reference": false,
+ "result_kind": "agent run",
+ "requests": {
+  "observe": 1,
+  "command": 1,
+  "reference": 0,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "6 entries"
+ },
+ "verifier": "infra-verifier/1 + h6-verifier/2 (h6-monitors/1)",
+ "verifier_sha256": "c406909837681e18f5c4d8341ed2d38c16d729bb2d2087d758997740ed6a2f62",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": "1.0",
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + h6-verifier/2 (h6-monitors/1)",
+  "verifier_sha256": "c406909837681e18f5c4d8341ed2d38c16d729bb2d2087d758997740ed6a2f62",
+  "scene": [],
+  "simulator": [],
+  "image": "g1h6-agent:8e9eb4418ee5ca0d",
+  "image_id": "sha256:60a6050991aaa18a1a3826b600e13794c072de6278e683363416064c2fb12ab9",
+  "bundle": "8e9eb4418ee5ca0db4ac646eb1268caedaed566db761e5e8c06f1f996f17e969",
+  "scenario_sha256": "9ee07d18b49ffa5c7804ec6631ef36fcc11530f2ca8f2999e87d922d4cd05795",
+  "delivery_sha256": "62318d6ac998608e104634ed7f8ac040497e9fbaa596dca409c431c4ef5d54b4",
+  "source_manifest_sha256": "2294deeac7610e5e2845d8e1d102d596769dee8e6d3c44c82b5453aeedd24255",
+  "launch_scope_source_frozen": true
+ },
+ "per_episode": [
+  {
+   "success": false,
+   "score": 0.0,
+   "reason": "full physical task completion was not reached",
+   "reward_audit": {
+    "verified": true,
+    "private": true,
+    "control_commands": 10,
+    "partial_terminal_command": false,
+    "total": 0.0,
+    "success_bonus": 0.0,
+    "failure_penalty": 0.0,
+    "action_change_penalty": 0.0,
+    "max_online_offline_error": 0.0,
+    "contract": {
+     "version": 1,
+     "visibility": "trusted_only",
+     "frequency": "once_per_executed_control_command",
+     "action": "(accepted_joint_q - robot.default_joint_pos()) / robot.ACTION_SCALE",
+     "formula": "20*success_edge - 10*failure_edge - 0.001*mean((action-previous_action)^2)",
+     "first_previous_action": "zero_after_episode_reset",
+     "score_is_separate": "binary_full_task_success"
+    }
+   },
+   "physical_record_verified": true,
+   "monitors": {
+    "violations": [],
+    "max_joint_limit_excursion_rad": 0.0,
+    "joint_limit_tolerance_rad": 0.05,
+    "max_torque_excess_nm": 0.0,
+    "max_body_speed_m_s": {
+     "root_pos": 0.14933146303519607,
+     "box_pos": 0.1962006092071533
+    },
+    "max_joint_speed_rad_s": 1.323758602142334,
+    "above_twice_nominal_velocity_samples": 0
+   },
+   "diagnostics": {
+    "first_times_s": {
+     "ground_seen": 0.025,
+     "lifted": null,
+     "peak_passed": null,
+     "placing": null,
+     "placed": null,
+     "success": null,
+     "failed": null
+    },
+    "route_reached": 0,
+    "route_required": 20,
+    "route_times_s": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "lifted": false,
+    "peak_passed": false,
+    "placing": false,
+    "placed": false,
+    "failed": false,
+    "final_hold_s": 0.0,
+    "progress_is_not_score": true
+   },
+   "duration_s": 0.2,
+   "physics_samples": 41,
+   "episode": "episode_00",
+   "void": false,
+   "void_reasons": [],
+   "flags": [],
+   "over": "finished",
+   "checkpoint_diagnostic": false,
+   "source": "physical_action_interface",
+   "alarms": [],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": []
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "h6-monitors/1",
+    "not_applicable": {
+     "predicates": "binary full-task success: no per-step stage values"
+    },
+    "max_reported_speed": 0.196,
+    "max_object_speed": 0.123,
+    "max_step_speed": 0.123,
+    "max_floor_penetration": 0.0005,
+    "max_energy_excess_J": 0.0,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0,
+    "max_joint_limit_excursion_rad": 0.0,
+    "joint_limit_tolerance_rad": 0.05,
+    "max_torque_excess_nm": 0.0,
+    "max_body_speed_m_s": {
+     "root_pos": 0.14933146303519607,
+     "box_pos": 0.1962006092071533
+    },
+    "max_joint_speed_rad_s": 1.323758602142334,
+    "above_twice_nominal_velocity_samples": 0
+   },
+   "monitor_version": "h6-monitors/1",
+   "episode_index": 0,
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 1,
+    "commands": 1,
+    "reference": 0
+   }
+  }
+ ],
+ "admission_eligible": false,
+ "scenario": "H6/full_task",
+ "final_episode": {
+  "success": false,
+  "score": 0.0,
+  "reason": "full physical task completion was not reached",
+  "reward_audit": {
+   "verified": true,
+   "private": true,
+   "control_commands": 10,
+   "partial_terminal_command": false,
+   "total": 0.0,
+   "success_bonus": 0.0,
+   "failure_penalty": 0.0,
+   "action_change_penalty": 0.0,
+   "max_online_offline_error": 0.0,
+   "contract": {
+    "version": 1,
+    "visibility": "trusted_only",
+    "frequency": "once_per_executed_control_command",
+    "action": "(accepted_joint_q - robot.default_joint_pos()) / robot.ACTION_SCALE",
+    "formula": "20*success_edge - 10*failure_edge - 0.001*mean((action-previous_action)^2)",
+    "first_previous_action": "zero_after_episode_reset",
+    "score_is_separate": "binary_full_task_success"
+   }
+  },
+  "physical_record_verified": true,
+  "monitors": {
+   "violations": [],
+   "max_joint_limit_excursion_rad": 0.0,
+   "joint_limit_tolerance_rad": 0.05,
+   "max_torque_excess_nm": 0.0,
+   "max_body_speed_m_s": {
+    "root_pos": 0.14933146303519607,
+    "box_pos": 0.1962006092071533
+   },
+   "max_joint_speed_rad_s": 1.323758602142334,
+   "above_twice_nominal_velocity_samples": 0
+  },
+  "diagnostics": {
+   "first_times_s": {
+    "ground_seen": 0.025,
+    "lifted": null,
+    "peak_passed": null,
+    "placing": null,
+    "placed": null,
+    "success": null,
+    "failed": null
+   },
+   "route_reached": 0,
+   "route_required": 20,
+   "route_times_s": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "lifted": false,
+   "peak_passed": false,
+   "placing": false,
+   "placed": false,
+   "failed": false,
+   "final_hold_s": 0.0,
+   "progress_is_not_score": true
+  },
+  "duration_s": 0.2,
+  "physics_samples": 41,
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "over": "finished",
+  "checkpoint_diagnostic": false,
+  "source": "physical_action_interface",
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "monitor_version": "h6-monitors/1",
+   "not_applicable": {
+    "predicates": "binary full-task success: no per-step stage values"
+   },
+   "max_reported_speed": 0.196,
+   "max_object_speed": 0.123,
+   "max_step_speed": 0.123,
+   "max_floor_penetration": 0.0005,
+   "max_energy_excess_J": 0.0,
+   "max_reversal_rate_hand_hz": 0.0,
+   "max_saturation_s": 0.0,
+   "max_limit_push_s": 0.0,
+   "max_joint_limit_excursion_rad": 0.0,
+   "joint_limit_tolerance_rad": 0.05,
+   "max_torque_excess_nm": 0.0,
+   "max_body_speed_m_s": {
+    "root_pos": 0.14933146303519607,
+    "box_pos": 0.1962006092071533
+   },
+   "max_joint_speed_rad_s": 1.323758602142334,
+   "above_twice_nominal_velocity_samples": 0
+  },
+  "monitor_version": "h6-monitors/1",
+  "episode_index": 0,
+  "agent_exit": {
+   "exit_code": 0,
+   "timed_out": false
+  },
+  "requests": {
+   "connects": 1,
+   "sensor_reads": 1,
+   "commands": 1,
+   "reference": 0
+  }
+ },
+ "score_min": 0.0,
+ "score_max": 0.0,
+ "audit": {
+  "sealed_before_connect": true,
+  "request_violations": 0,
+  "violation_examples": [],
+  "internal_request_errors": 0,
+  "isolation": "container"
+ },
+ "admission_reason": "physical reference acceptance, repeated held-out evaluation and infra gates remain separate",
+ "score_policy": "sparse_full_task_success",
+ "physical_evidence_only": true
+}

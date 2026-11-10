@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>M2 · 双 G1 长物搬运 · 参考设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main.wrap{padding-block:40px;overflow-wrap:anywhere}h2{margin-top:44px}h3{margin-top:30px}pre{overflow:auto;background:var(--panel);padding:18px;border-radius:10px}th,td{min-width:100px}h1{font-size:clamp(28px,5vw,44px)}</style><meta content="M2 · 双 G1 长物搬运 · 参考设计 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><main class="wrap"><nav><a href="/robo-si-results/infra/reference-designs-zh.html">14 项参考解设计</a> · <a href="/robo-si-results/infra/reference-designs/M2.md">Markdown 源文档</a> · <a href="/robo-si-results/infra/task-m2-zh.html">任务页面</a></nav><h1 id="m2-g1">M2 · 双 G1 长物搬运：参考解设计</h1>
+<p>已有声明范围内的参考执行见证；本文补齐统一设计说明。本次新增物理运行：0。</p>
+<h2 id="_1">设计思路</h2>
+<p>两台 G1 在长箱两端建立四手接触，合抬、转向、搬运、下放并释放。箱体两端姿态与扫掠空间共同约束转弯；本参考为 0.25 kg，不外推到原始 9 kg。</p>
+<h2 id="_2">选定参考与范围</h2>
+<p>见证：<strong>bounded-reference-09</strong>。范围：第一层固定 0.25 kg / 1.8 m 通道。</p>
+<p>09/10/11 特权参考 3/3，09d 普通开环回放成功；均 1.0、175.28 s、六阶段完成，已发布。</p>
+<p><a href="/robo-si-results/multi_robot/dual_g1_long_object_transport/acceptance/layer1-20261024/presentation/evidence/verdict09.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/M2.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p>
+<h2 id="_3">高层计划与关键状态</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>两端同步抓持</td>
+<td>M2.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>同步抬升</td>
+<td>M2.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>协同转弯</td>
+<td>M2.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>通过通道</td>
+<td>M2.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>下放并释放</td>
+<td>M2.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>0.25 kg、1.8 m 通道发布配置</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>两端抓持达到原持续条件</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>长箱稳定离地并满足原驻留</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>箱体和两机均完成转弯</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>整个长箱及双机到达目标附近</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>整箱在目标内受支撑、释放稳定 2 s</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_4">低层动作、接触支撑与轨迹对应</h2>
+<p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h3 id="m2k01">M2.K01 · 双机接近、下蹲、四手建立接触</h3>
+<p>入口：0.25 kg、1.8 m 通道发布配置。出口：两端抓持达到原持续条件。</p>
+<p>局部检查：两机站位与四手 IK 同时可行，抓点及自/互碰撞检查。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M2.K01.A01</td>
+<td>两机在箱体两端稳定站位</td>
+<td>箱→地面；双机足→地面</td>
+<td>相对站位、足支撑</td>
+<td>e0009: episode [0.0, 0.9800000000000008] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K01.A02</td>
+<td>同步下蹲并对齐四手</td>
+<td>箱仍由地面承重</td>
+<td>手与把手误差、身体净空</td>
+<td>e0000: episode [1.0000000000000007, 1.0000000000000007] s; e0010: episode [1.0000000000000007, 12.98000000000063] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K01.A03</td>
+<td>四手建立接触并稳定抓持</td>
+<td>地面/四手共同承重</td>
+<td>左右及两端载荷、箱姿态</td>
+<td>e0001: episode [13.000000000000632, 13.000000000000632] s; e0011: episode [13.000000000000632, 18.82000000000054] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m2k02">M2.K02 · 协调载荷分配与起身</h3>
+<p>入口：两端抓持有效，双方确认可起身。出口：长箱稳定离地并满足原驻留。</p>
+<p>局部检查：实测两端载荷、姿态同步、足部稳定和力矩限制。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M2.K02.A01</td>
+<td>同步起身并将载荷转到四手</td>
+<td>地面→四手</td>
+<td>箱离地、四手载荷</td>
+<td>e0002: episode [18.840000000000536, 18.840000000000536] s; e0012: episode [18.840000000000536, 36.840000000000394] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K02.A02</td>
+<td>保持箱体近水平并修正两端高度</td>
+<td>四手持箱；足→地面</td>
+<td>箱倾角、两机相对高度</td>
+<td>e0002: episode [18.840000000000536, 18.840000000000536] s; e0012: episode [18.840000000000536, 36.840000000000394] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K02.A03</td>
+<td>在抬升高度短暂停稳</td>
+<td>四手持续承托</td>
+<td>低速度、接触连续</td>
+<td>e0003: episode [36.860000000000404, 36.860000000000404] s; e0005: episode [150.3199999999358, 150.3199999999358] s; e0013: episode [36.860000000000404, 38.84000000000142] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m2k03">M2.K03 · 长箱姿态与双机足步联合规划</h3>
+<p>入口：稳定离地，拐角入口可达。出口：箱体和两机均完成转弯。</p>
+<p>局部检查：箱体端点扫掠和两机包络同时避墙，不仅检查箱中心。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M2.K03.A01</td>
+<td>携箱进入转向段</td>
+<td>四手持箱；交替足→地面</td>
+<td>箱包络与转角空间</td>
+<td>e0004: episode [38.86000000000143, 38.86000000000143] s; e0014: episode [38.86000000000143, 150.2999999999358] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K03.A02</td>
+<td>内外侧协调速度，随箱姿态逐足转向</td>
+<td>四手持续承托</td>
+<td>偏航、足步及两端相对位置</td>
+<td>e0004: episode [38.86000000000143, 38.86000000000143] s; e0014: episode [38.86000000000143, 150.2999999999358] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K03.A03</td>
+<td>转向后恢复直行姿态</td>
+<td>四手持箱</td>
+<td>箱偏航稳定与通道余量</td>
+<td>e0004: episode [38.86000000000143, 38.86000000000143] s; e0014: episode [38.86000000000143, 150.2999999999358] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m2k04">M2.K04 · 同步短段搬运与相对位姿修正</h3>
+<p>入口：转弯完成且四手承托持续。出口：整个长箱及双机到达目标附近。</p>
+<p>局部检查：相对误差、净空、载荷和剩余时间。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M2.K04.A01</td>
+<td>按共同路径同步短段搬运</td>
+<td>四手持箱；双机交替足支撑</td>
+<td>两端进度差及夹持力</td>
+<td>e0004: episode [38.86000000000143, 38.86000000000143] s; e0014: episode [38.86000000000143, 150.2999999999358] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K04.A02</td>
+<td>在途中修正相对位姿与载荷</td>
+<td>四手持续承托</td>
+<td>箱倾角、接触、关节限值</td>
+<td>e0004: episode [38.86000000000143, 38.86000000000143] s; e0014: episode [38.86000000000143, 150.2999999999358] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K04.A03</td>
+<td>抵达目标后制动并保持</td>
+<td>四手持箱；双机双足→地面</td>
+<td>速度、目标包含</td>
+<td>e0005: episode [150.3199999999358, 150.3199999999358] s; e0015: episode [150.3199999999358, 155.2599999999313] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m2k05">M2.K05 · 同步下蹲、支撑转移、四手撤离</h3>
+<p>入口：目标可容纳长箱，双方可下放。出口：整箱在目标内受支撑、释放稳定 2 s。</p>
+<p>局部检查：不能单端先放任其跌落；执行原 lower/place 判定。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M2.K05.A01</td>
+<td>同步下蹲并下放箱体</td>
+<td>四手持箱</td>
+<td>箱倾角、手载荷</td>
+<td>e0006: episode [155.27999999993128, 155.27999999993128] s; e0016: episode [155.27999999993128, 172.65999999991547] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K05.A02</td>
+<td>箱体接地后逐步卸载四手</td>
+<td>四手→地面</td>
+<td>地面支撑与手力下降</td>
+<td>e0007: episode [172.67999999991545, 172.67999999991545] s; e0017: episode [172.67999999991545, 175.2599999999131] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M2.K05.A03</td>
+<td>四手退出并确认独立放置</td>
+<td>箱→地面</td>
+<td>手分离、低速度及驻留</td>
+<td>e0007: episode [172.67999999991545, 172.67999999991545] s; e0008: episode [175.2799999999131, 175.2799999999131] s; e0017: episode [172.67999999991545, 175.2599999999131] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_5">尚需核对</h2>
+<p>仅 0.25 kg 特权参考；转角/直行共享 carry=38.86–150.32 s，需依据路径和偏航分段，不能用评分 turn 时间充当边界。</p>
+<p>补两端同步抓持、合抬负载分配、转弯扫掠及下放释放的技能条件与交接。9 kg 搬运仍未完成。 人工签审、第二人复现及代表性流水线检查；9 kg 与更高层另计。</p>
+<h2 id="_6">复现与生成入口</h2>
+<ul>
+<li><a href="/robo-si-results/multi_robot/dual_g1_long_object_transport/README.md">multi_robot/dual_g1_long_object_transport/README.md</a></li>
+</ul>
+<p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/3893479bf13bcea799d39a614845ce46e63e705a/releases/M2/layer1-20261024/m2-layer1-20261024.zip">完整参考包</a>。使用包内冻结配置、依赖说明与生成／回放入口；审阅包不替代完整包。</p>
+<p>历史源码说明只提供设计上下文；若与冻结见证冲突，以见证的配置、控制器身份和发布清单为准。设计动作表不等同于已绑定的通用控制器。</p>
+<h2 id="_7">验收与执行边界</h2>
+<p>本文件说明已有参考的设计与证据，不修改旧评分。任务级要求至少一个声明配置内的连续端到端生成见证；高层计划→低层动作、低层动作→轨迹、高层目标→实测终态分别核对。这里的“两两转换”是表示之间的对应，不是任意随机状态下技能可无条件拼接。</p>
+<p>随机实例保留四种结果：有完整成功证据、通过可行性筛查、未确定、检查不通过；筛查通过不写成已证明可解。只在需要执行时生成当前局部轨迹；通用滚动规划和全随机域鲁棒性另列，不是本参考文档的完成前提。</p>
+<p>若接触、支撑或守卫条件不满足，不推进下一动作；保留已有安全支撑并记录失败，仅在已知安全状态下重新观察与局部规划。不得凭事件名推断接触合格，不得将不同检查点的成功片段拼接成连续成功。</p>
+<h2 id="_8">来源与版本</h2>
+<p>来源内容哈希见 <a href="/robo-si-results/infra/reference-designs/catalog.json">catalog.json</a>，对应生成器为 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tools/build_reference_designs.py">build_reference_designs.py</a>。本次只整理设计与证据，不将待审事件关联计作验收通过。</p></main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

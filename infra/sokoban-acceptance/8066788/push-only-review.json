@@ -1,0 +1,79 @@
+{
+  "schema": "sokoban-push-only-review/1",
+  "checks": {
+    "complete_substep_and_command_coverage": true,
+    "open_index_middle_commands": true,
+    "no_loaded_far_side_contact": true,
+    "no_force_driven_motion_toward_robot": false,
+    "contact_direction_defined": true
+  },
+  "operational_checks_passed": false,
+  "thresholds": {
+    "active_contact_N": 1.0,
+    "far_side_margin_m": 0.02,
+    "reverse_force_N": 1.0,
+    "motion_noise_m_per_substep": 1e-06
+  },
+  "flag_counts": {
+    "force_and_motion_toward_robot": 1
+  },
+  "flagged_samples": [
+    {
+      "substep": 158349,
+      "time_s": 395.8725,
+      "robot": "g1_b",
+      "crate": "crate_c",
+      "flags": [
+        "force_and_motion_toward_robot"
+      ],
+      "metrics": {
+        "active_points": 1,
+        "net_force_away_N": -1.0464271804889036,
+        "motion_toward_robot_m": 4.464707645923263e-06,
+        "reverse_impulse_Ns": 0.002616067951222259
+      },
+      "points": [
+        {
+          "robot_link": "right_hand_thumb_2_link",
+          "position": [
+            -2.506627321243286,
+            1.0105385780334473,
+            0.5494939684867859
+          ],
+          "force_on_crate": [
+            0.5622066259384155,
+            22.04066276550293,
+            -43.55734634399414
+          ],
+          "hand": true
+        }
+      ]
+    }
+  ],
+  "reverse_contact_impulse_Ns": 0.8332921433014671,
+  "nonhand_contact_samples_by_link": {
+    "g1_a/crate_a/left_wrist_pitch_link": 14,
+    "g1_a/crate_a/right_wrist_pitch_link": 9,
+    "g1_b/crate_b/left_wrist_pitch_link": 8,
+    "g1_a/crate_c/right_wrist_pitch_link": 33,
+    "g1_a/crate_c/left_wrist_pitch_link": 42,
+    "g1_b/crate_c/right_wrist_pitch_link": 141,
+    "g1_b/crate_c/left_wrist_pitch_link": 45
+  },
+  "max_index_middle_command_rad": 0.0,
+  "substeps": 169264,
+  "controls": 21158,
+  "sha256": {
+    "trace.jsonl": "1fa6919a15450a663a68164c910654da52b726177d8698b6455bfc0ea7b8df3c",
+    "physics-substeps.jsonl": "5acabc2d47155bf8a801d125a60bb92608df3dac986930fcdeb366eb2e238db0",
+    "physics-metadata.json": "8cf360e28995a7b32c9ab4f6d744a8c903b896a1c4f370dd023a753eb5d2e604"
+  },
+  "scope": "Conservative operational checks plus existing opposed-face/support/actuator audit. Human review still required.",
+  "limitations": [
+    "Subthreshold contact and force-closure modes are not universally excluded by these tests.",
+    "Non-hand contacts are classified by link; applicable clips need human review.",
+    "This result does not certify isolation, runtime integrity or formal admission."
+  ],
+  "formal_admission": false,
+  "task_success": null
+}

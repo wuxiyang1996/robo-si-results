@@ -1,0 +1,74 @@
+schema_version = "1.0"
+schema_kind = "robo-si-physical-task"
+
+[task]
+id = "g1_table_tennis"
+name = "Free-standing G1 single-return table tennis"
+version = "0.1.0-rc1"
+category = "Dynamic interception"
+robot = "Unitree G1, 29 actuated joints, six unactuated floating-base coordinates"
+backend = "MuJoCo"
+admitted = false
+readme = "README.md"
+
+[instruction]
+english = "instruction.en.md"
+chinese = "instruction.zh.md"
+
+[simulation]
+entrypoint = "humanoid.g1_table_tennis.run"
+environment = "humanoid.g1_table_tennis.environment:Environment"
+base_mode = "floating"
+action_dimensions = 29
+action_type = "bounded_motor_torques"
+physics_hz = 2000
+reference_hz = 500
+servo_hz = 500
+episode_seconds = 3.0
+observation_scope = "privileged_current_simulator_state"
+physics_device = "cpu"
+planner_device = "cuda"
+render_device = "egl_gpu"
+real_time_claim = false
+
+[solution]
+implemented = true
+expert = "expert.py"
+high_level = "one_bounce_prediction_and_cuda_outgoing_candidate_search"
+low_level = "scratch_7dof_ik_quintic_trajectory_contact_constrained_whole_body_qp"
+contract = "expert_contract.json"
+physical_solution_verified = true
+verification_scope = "nominal,left,right,fast: three resets each; no arbitrary-state guarantee"
+
+[scoring]
+version = "stage-scoring/1"
+implementation = "scoring.py"
+rubric = "stage-rubric.json"
+range = [0, 1]
+stage_score_range = [0, 100]
+full_success_is_separate = true
+controller_labels_award_points = false
+unexecuted_prescribed_episode_score = 0
+integrity_failure_is_void = true
+
+[evidence]
+directory = "acceptance/reference-v1"
+continuous_normal_start_required = true
+high_low_trajectory_mapping = "verify.py"
+fresh_torque_replay_required = true
+full_trajectory_required_per_random_instance = false
+all_prescribed_attempts_retained = true
+
+[release]
+kind = "scoped_reference"
+publication_status = "published_scoped_reference"
+formal_admission = false
+human_review = "approved_by_user"
+independent_person_reproduction = "pending"
+isolated_agent_sandbox = "not_integrated"
+package_entrypoint = "humanoid.g1_table_tennis.package"
+
+[publication_approval]
+release_tag = "table-tennis-0.1.0"
+release_url = "https://github.com/wuxiyang1996/robo-si/releases/tag/table-tennis-0.1.0"
+user_approved = true

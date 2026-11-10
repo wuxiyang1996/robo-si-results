@@ -1,0 +1,350 @@
+{
+  "task": {
+    "schema": "hanoi-tool-task/1",
+    "task_id": "Hanoi-04",
+    "embodiment": "parallel",
+    "disclosure": "latent",
+    "disks": 3,
+    "capability_profile": "nominal",
+    "tools": [
+      "T1_tongs",
+      "T2_fork"
+    ],
+    "pelvis_fixed": true,
+    "timestep": 0.005,
+    "control_dt": 0.02,
+    "release_hold": 0.5,
+    "final_hold": 2.0,
+    "runtime_status": "experimental_not_admitted",
+    "boundary_calibrated": null,
+    "observation_scope": "privileged_physical_reference_not_agent_evaluation"
+  },
+  "source_model": "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/assets/unitree_g1/g1_with_hands.xml",
+  "source_model_sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078",
+  "mimic_followers": [],
+  "mesh_hashes": {},
+  "source_hand_velocity_limits": {},
+  "runtime_state_writes": false,
+  "tool_attachment_constraints": false,
+  "body_calibration": "experimental",
+  "wrist_inertia_policy": "original wrist assembly inertia retained; replacement hand mass added; hardware mass calibration pending",
+  "robot_joints": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_yaw_joint",
+    "waist_roll_joint",
+    "waist_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "left_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "left_parallel_slide_-1",
+    "left_parallel_slide_1",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint",
+    "right_wrist_roll_joint",
+    "right_wrist_pitch_joint",
+    "right_wrist_yaw_joint",
+    "right_parallel_slide_-1",
+    "right_parallel_slide_1"
+  ],
+  "limits": {
+    "left_hip_pitch_joint": {
+      "lower": -2.5307,
+      "upper": 2.8798,
+      "effort": 88.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_hip_roll_joint": {
+      "lower": -0.5236,
+      "upper": 2.9671,
+      "effort": 139.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_hip_yaw_joint": {
+      "lower": -2.7576,
+      "upper": 2.7576,
+      "effort": 88.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_knee_joint": {
+      "lower": -0.087267,
+      "upper": 2.8798,
+      "effort": 139.0,
+      "kp": 160.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_ankle_pitch_joint": {
+      "lower": -0.87267,
+      "upper": 0.5236,
+      "effort": 50.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_ankle_roll_joint": {
+      "lower": -0.2618,
+      "upper": 0.2618,
+      "effort": 50.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_hip_pitch_joint": {
+      "lower": -2.5307,
+      "upper": 2.8798,
+      "effort": 88.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_hip_roll_joint": {
+      "lower": -2.9671,
+      "upper": 0.5236,
+      "effort": 139.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_hip_yaw_joint": {
+      "lower": -2.7576,
+      "upper": 2.7576,
+      "effort": 88.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_knee_joint": {
+      "lower": -0.087267,
+      "upper": 2.8798,
+      "effort": 139.0,
+      "kp": 160.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_ankle_pitch_joint": {
+      "lower": -0.87267,
+      "upper": 0.5236,
+      "effort": 50.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_ankle_roll_joint": {
+      "lower": -0.2618,
+      "upper": 0.2618,
+      "effort": 50.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "waist_yaw_joint": {
+      "lower": -2.618,
+      "upper": 2.618,
+      "effort": 88.0,
+      "kp": 150.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "waist_roll_joint": {
+      "lower": -0.52,
+      "upper": 0.52,
+      "effort": 50.0,
+      "kp": 150.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "waist_pitch_joint": {
+      "lower": -0.52,
+      "upper": 0.52,
+      "effort": 50.0,
+      "kp": 150.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_shoulder_pitch_joint": {
+      "lower": -3.0892,
+      "upper": 2.6704,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_shoulder_roll_joint": {
+      "lower": -1.5882,
+      "upper": 2.2515,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_shoulder_yaw_joint": {
+      "lower": -2.618,
+      "upper": 2.618,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_elbow_joint": {
+      "lower": -1.0472,
+      "upper": 2.0944,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_wrist_roll_joint": {
+      "lower": -1.97222,
+      "upper": 1.97222,
+      "effort": 25.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "left_wrist_pitch_joint": {
+      "lower": -1.61443,
+      "upper": 1.61443,
+      "effort": 5.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "left_wrist_yaw_joint": {
+      "lower": -1.61443,
+      "upper": 1.61443,
+      "effort": 5.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "left_parallel_slide_-1": {
+      "lower": 0.0,
+      "upper": 0.035,
+      "effort": 25.0,
+      "kp": 800.0,
+      "kd": 8.0,
+      "velocity": 0.06
+    },
+    "left_parallel_slide_1": {
+      "lower": 0.0,
+      "upper": 0.035,
+      "effort": 25.0,
+      "kp": 800.0,
+      "kd": 8.0,
+      "velocity": 0.06
+    },
+    "right_shoulder_pitch_joint": {
+      "lower": -3.0892,
+      "upper": 2.6704,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_shoulder_roll_joint": {
+      "lower": -2.2515,
+      "upper": 1.5882,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_shoulder_yaw_joint": {
+      "lower": -2.618,
+      "upper": 2.618,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_elbow_joint": {
+      "lower": -1.0472,
+      "upper": 2.0944,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_wrist_roll_joint": {
+      "lower": -1.97222,
+      "upper": 1.97222,
+      "effort": 25.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "right_wrist_pitch_joint": {
+      "lower": -1.61443,
+      "upper": 1.61443,
+      "effort": 5.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "right_wrist_yaw_joint": {
+      "lower": -1.61443,
+      "upper": 1.61443,
+      "effort": 5.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "right_parallel_slide_-1": {
+      "lower": 0.0,
+      "upper": 0.035,
+      "effort": 25.0,
+      "kp": 800.0,
+      "kd": 8.0,
+      "velocity": 0.06
+    },
+    "right_parallel_slide_1": {
+      "lower": 0.0,
+      "upper": 0.035,
+      "effort": 25.0,
+      "kp": 800.0,
+      "kd": 8.0,
+      "velocity": 0.06
+    }
+  },
+  "scene_sha256": "b1c30be8161f57744e1a7459bb0d594c9936bfd629c11a81d70124eb464015d2",
+  "nq": 70,
+  "nv": 65,
+  "source_inspire_sha256": null,
+  "tools_initial": {
+    "T1_tongs": [
+      0.42,
+      0.4,
+      0.775
+    ],
+    "T2_fork": [
+      0.42,
+      -0.4,
+      0.775
+    ]
+  },
+  "disk_geometry": "12-segment annulus; 16mm plate over 9mm inner support foot",
+  "E2_parameters": "synthetic parallel gripper; two independent 35mm slides, 25N each; no commercial calibration"
+}

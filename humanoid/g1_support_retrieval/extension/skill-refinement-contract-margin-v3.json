@@ -1,0 +1,137 @@
+{
+  "schema": "h1-p4-measured-skill-contract/1",
+  "version": "2026-10-27.v8-strict-actuator",
+  "task_id": "H1S-07.P4",
+  "role": "author-side development/post-job-start measured refinement audit; not prospectively predeclared benchmark acceptance or success requirements",
+  "timing_scope": "Developed after physical jobs started, with partial progress logs visible; original task D/profile/budgets remain unchanged. Revisions and hashes are retained. No claim these semantic audit rules were declared before the three runs.",
+  "thresholds": {
+    "actuator_position_tolerance_rad": 0.001,
+    "touch_normal_N": 1.0,
+    "ground_contact_N": 1.0,
+    "hand_release_net_force_N": 0.5,
+    "foot_lift_above_initial_m": 0.006,
+    "numeric_position_epsilon_m": 1e-06,
+    "joint_difference_epsilon_rad": 1e-06,
+    "max_body_collision_N": 10.0
+  },
+  "threshold_provenance": {
+    "actuator_position_tolerance_rad": "Original H1 sandbox/trusted/relay_scoring.py POSITION_TOLERANCE=0.001; corrects erroneous v7 0.02 allowance, not a relaxation. Earlier results retained.",
+    "touch_normal_N": "run_push.Touch.step uses >1 N filtered contact threshold; reviewer requires current raw force and contact identity at the same threshold to avoid filter residue",
+    "ground_contact_N": "P4 terminal verifier uses foot ground fz >1 N; same contact detection threshold",
+    "hand_release_net_force_N": "P4 physical goal verifier; also requires zero robot-target contact links",
+    "foot_lift_above_initial_m": "existing StepFoot landing tolerance 0.006 m; used to distinguish measured swing from ground-level dragging, not expected 0.05 m lift",
+    "numeric_position_epsilon_m": "numerical resolution only; no nominal stroke percentage chosen from outcomes",
+    "joint_difference_epsilon_rad": "floating point tolerance on necessary delta-q <= frozen velocity limit * dt",
+    "max_body_collision_N": "existing expert-controller collision diagnostic threshold; author reference skill only, not a hand-only public task rule"
+  },
+  "predicate_definitions": {
+    "touch": "Measured raw both-side contact force projected onto rear normal >1 N with matching contact links at least once each, simultaneous contact at exit, target ground contact and ground-height bound, both feet ground-supported at exit.",
+    "push": "Positive measured target displacement toward declared D, real hand-target contact during transport, target continuously grounded within profile gap, foot support, endpoint target speed <=0.02 m/s as existing Push completion condition. Nominal stroke and contact cap are diagnostics, not hidden goal rules.",
+    "retreat": "No target contact links and low contact force at exit; measured hand-to-box relative displacement retained. Both feet supported at entry/exit.",
+    "planned_steps": "Both feet have measured forward displacement, each has an observed >6 mm rise with unloaded swing foot and supported opposite foot; endpoint has both feet grounded. Entire segment has at least one measured ground-supported foot.",
+    "return_hands": "Exit has released hands and two-foot support. For a middle cycle, subsequent measured Touch in the same continuous run establishes next-contact reachability. For final release preparation, check actual MCP points behind the box rear plane and released supported posture; do not require unused future contact capability. Truncated/unknown continuation remains unknown. Measured command tracking residual remains diagnostic without an invented tolerance.",
+    "approach": "Measured end posture has two-foot support and no hard body collision. Sensor target identification is not established by this privileged expert.",
+    "clear_hands": "Measured upward/backward movement of both hands relative to target and no target contact at exit.",
+    "stand_up": "Measured pelvis rise, end two-foot support and released hands. Whole-body collision/COM margins require separate evidence.",
+    "hold": "Measured base speeds satisfy profile terminal limits and hands remain released; target terminal success separately recomputed by physical goal verifier.",
+    "recenter": "Planner bookkeeping only; not credited as a separate physical skill. Shared measured boundary recorded, COM recentering not observable in current trace.",
+    "planned_steps_internal_actions": "Split only observed step_label runs. Lift/advance/land/rise/lower get measured displacement and real support/contact checks. transfer/center use measured support load distribution and the next actual swing/lowering as the executed-skill witness; exact controller COM target remains an explicitly non-gating unknown because trace lacks COM. Missing labels remain unknown. Each interval keeps actual shared boundary and issued-command range.",
+    "joint_continuity": "Actual full qpos joint order read from frozen MJCF, finite per-step differences bounded by frozen actuator velocity limits times control_dt; actual actuator summary covers every physics step and stays within declared limits.",
+    "transitions": "Adjacent segments share the exact recorded boundary index/state/qpos; measured base velocity, support and contact topology retained. No arbitrary-start composition claim.",
+    "terminal_field_provenance": "v2 terminal row inherits mcp_meas, mcp_cmd, push_normal and several controller fields from the previous control sample. These are not fresh terminal measurements. Any predicate requiring terminal MCP is unknown; original raw row is retained with field-level provenance. Root/box pose, velocity, support/contact and feet were remeasured.",
+    "terminal": "Independently recompute P4 whole-target-D, release, support, stable dwell and actuator predicates through verify_p4.evaluate; preserve runtime identity verdict separately."
+  },
+  "unmeasured_not_certified": [
+    "center-of-mass/support-polygon stability margin",
+    "all-body clearance and penetration depth",
+    "continuous contact force between control-rate samples",
+    "sensor-only target identification",
+    "arbitrary-start skill applicability"
+  ],
+  "frozen_at_utc": "2026-10-27T21:00:32.562706+00:00",
+  "reviewer_source_sha256": "5a6fc7754051e7483bc699f8293d3110d2716d933fdf272f0624b2d14f0e6522",
+  "profile_sha256": "c322b7d65edcd2de076d2c6439620049275469224563ee02019429ab5e5b8225",
+  "profile_snapshot": {
+    "schema": "h1-extension-physical-development/1",
+    "task_id": "H1S-07.P4",
+    "profile": "g1_dex3_ground_push_margin_v3",
+    "created_date": "2026-10-27",
+    "development_only": true,
+    "formal_admission": false,
+    "seed": 0,
+    "robot": "existing_g1_29dof_dex3_43_actuated_joints",
+    "target": {
+      "size_m": [
+        0.45,
+        0.5,
+        0.18
+      ],
+      "mass_kg": 5.0,
+      "initial_center_m": [
+        2.3,
+        0.0,
+        0.09
+      ],
+      "friction": 0.5
+    },
+    "goal": {
+      "center_xy_m": [
+        2.66,
+        0.0
+      ],
+      "size_xy_m": [
+        0.6,
+        0.7
+      ],
+      "hold_s": 3.0,
+      "max_linear_speed_m_s": 0.03,
+      "max_angular_speed_rad_s": 0.05,
+      "max_tilt_deg": 5.0,
+      "max_ground_gap_m": 0.008
+    },
+    "public_rules": {
+      "lifted_payload_limit_kg": 2.0,
+      "ground_supported_push_allowed": true,
+      "attachment_allowed": false,
+      "runtime_pose_write_allowed": false,
+      "root_wrench_allowed": false,
+      "explanation": "5 kg exceeds the declared 2 kg lifted-payload rule. This is a public-rule boundary, not a certificate that the robot cannot physically lift 5 kg. Ground-supported push is the selected legal operation."
+    },
+    "budget": {
+      "wall_seconds_per_attempt": 3600,
+      "simulation_seconds_per_attempt": 600,
+      "physics_dt_s": 0.005,
+      "control_dt_s": 0.02,
+      "max_control_steps": 30000,
+      "max_physics_steps": 120000,
+      "candidate_plans": 1,
+      "short_probe_count": 0,
+      "short_probe_max_steps": 0,
+      "screening_wall_seconds": 60,
+      "max_resets_per_attempt": 0,
+      "representative_repeats": 3,
+      "token_budget": null,
+      "token_budget_reason": "deterministic privileged expert; no language model called",
+      "observation_budget": 30000,
+      "observation_scope": "privileged state each control step"
+    },
+    "controller": {
+      "cycles": 3,
+      "stroke_m": 0.12,
+      "max_push_per_hand_N": 45.0,
+      "final_approach_m": 0.0,
+      "final_hold_s": 4.0,
+      "video_fps": 5,
+      "waist_upper_rad": 0.44,
+      "thumb_fold_rad": -0.99
+    },
+    "scope": "Bounded privileged development reference; no handle variant, no general randomized-policy or sensor-only claim. The task accepts every complete legal route. Full target AABB, ground support, no hand contact and 3 second dwell are scored from measured trace. Initial D exclusion is checked.",
+    "revision_reason": "Strict 1 mrad check invalidated v2: waist pitch and both thumb1 joints exceeded bounds during first push/step transition. Increase reference margins only; no hardware or actual-state modification.",
+    "acceptance": {
+      "position_tolerance_rad": 0.001,
+      "source": "sandbox/trusted/relay_scoring.py:31",
+      "goal_dwell_s": 3.0,
+      "no_weakening_from_historical_standard": true
+    }
+  }
+}

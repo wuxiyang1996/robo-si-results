@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 894, in main
+    write(self.out/'summary.json',summary);print(json.dumps(summary),flush=True)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 523, in execute
+    if self.body=='G' and self.tuning.get('align_inversion',False) and (i+1)*.02>=self.tuning.get('inversion_alignment_after_s',0.) and self.d.xmat[self.obj].reshape(3,3)[2,2]<self.tuning.get('inversion_alignment_switch',-.90):break
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 660, in finish_dex3_bridge
+    self.handoff_progress=smooth(min(1.,(i+1)/1000))
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 646, in apply_goals
+    def apply_goals(self,goals):
+     ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 383, in step
+    checked=self.action_interface.accept(self.action_interface.encode(self.qref))
+                                                                                  
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 193, in assess
+    for k,val in [('speed',speed),('angular',ang),('robot',robot),('table',table),('local',local),('self_contact',selfc),('robot_table',rt)]:self.peaks[k]=max(self.peaks[k],val)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

@@ -1,0 +1,83 @@
+{
+  "schema": "h1-high-scene-sensors/3",
+  "profile": "layer1_high_fixed",
+  "seed": 2,
+  "mode": "dev",
+  "scope": "Sensor geometry only. No target visibility, perception provenance, or task-success claim.",
+  "simulation_seconds": 4.699999999999988,
+  "world_record": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_10\\high_scene_sensors_v3_world",
+  "sources": {
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\check_high_scene_sensors_v3.py": "2c0cc2909694df877b40417d4237d6a879ff2447e80acac4e995f0cdf61d35e5",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_10\\workspace\\infra\\sandbox\\sensors.py": "89b8512de013ea6576a0df463854c2f5f5c50e6bb121fc386933a083a4942ff4",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_10\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\tests\\check_sensors_gate.py": "aa7d648e2876d977535fc0f9b47c9094a8ca8c2eafb05ea33f39ef2fcecf8e96",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_10\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\trusted\\statelog.py": "df49b5f8a43315f151396da876a1d8cbd5e1256ae50cf5180a9e478ca04a5bf8"
+  },
+  "source_unchanged": true,
+  "calibration_pose": {
+    "waist_pitch_increment_rad": 0.2,
+    "ramp_seconds": 4.0,
+    "settle_seconds": 0.5,
+    "channel": "LowCmd"
+  },
+  "physical_motion": {
+    "nonvoid": true,
+    "safety_complete": true,
+    "safety_events": [],
+    "physical_steps": 940
+  },
+  "checks": [
+    {
+      "check": "head_depth.vs_genesis_pointcloud_m.median",
+      "value": 0.0007673256856309883,
+      "bound": 0.003,
+      "passed": true
+    },
+    {
+      "check": "head_depth.vs_genesis_pointcloud_m.p99",
+      "value": 0.00190415430764959,
+      "bound": 0.01,
+      "passed": true
+    },
+    {
+      "check": "head_depth.floor_abs_z_m.median",
+      "value": 0.0006216568194828964,
+      "bound": 0.003,
+      "passed": true
+    },
+    {
+      "check": "lidar.floor_abs_z_m.median",
+      "value": 0.0003923849460840123,
+      "bound": 0.003,
+      "passed": true
+    },
+    {
+      "check": "lidar.floor_hits",
+      "value": 374,
+      "bound": ">= 1000",
+      "passed": false
+    }
+  ],
+  "measurements": {
+    "lidar": {
+      "returns": 1842,
+      "rays": 10800,
+      "floor_hits": 374,
+      "floor_abs_z_m": {
+        "median": 0.0003923849460840123,
+        "p99": 0.16398617156667056
+      }
+    },
+    "head_depth": {
+      "valid_fraction": 1.0,
+      "vs_genesis_pointcloud_m": {
+        "median": 0.0007673256856309883,
+        "p99": 0.00190415430764959
+      },
+      "floor_abs_z_m": {
+        "median": 0.0006216568194828964,
+        "p99": 0.0008822663034708022
+      }
+    }
+  },
+  "passed": false
+}

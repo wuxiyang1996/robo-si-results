@@ -1,0 +1,51 @@
+{
+  "schema": "sokoban-trajectory/1",
+  "source": "trace.jsonl",
+  "source_sha256": "68418599a8d34a1b4823d00215cb55ba86b13224528345c69f42f3f1e4d51f94",
+  "file": "trajectory.npz",
+  "sha256": "a6f9790ef6c7d9d3badc75fa1841cc66148819ec474f4447f73c67b68e5f3f20",
+  "robots": [
+    "g1_a",
+    "g1_b"
+  ],
+  "crates": [
+    "crate_a",
+    "crate_b",
+    "crate_c",
+    "crate_d"
+  ],
+  "samples": 32500,
+  "control_dt": 0.02,
+  "arrays": {
+    "time_s": [
+      32500
+    ],
+    "joint_targets": [
+      32500,
+      2,
+      43
+    ],
+    "robot_positions": [
+      32500,
+      2,
+      3
+    ],
+    "robot_quaternions_wxyz": [
+      32500,
+      2,
+      4
+    ],
+    "measured_joint_positions": [
+      32500,
+      2,
+      43
+    ],
+    "crate_pose_xyz_wxyz": [
+      32500,
+      4,
+      7
+    ]
+  },
+  "scope": "All control-boundary joint targets, measured joints, robot poses and crate poses; no resampling.",
+  "substep_contacts": "Retained separately in physics-substeps.jsonl; see substep-review.json for hash and coverage."
+}

@@ -1,0 +1,177 @@
+{
+  "reason": "The same pin-speed violation persists at 2 substeps after a lower, slew-limited towing command. Separate numerical integration error from mechanism/actuator limitations before changing hardware.",
+  "frozen_source": "v3e-f64-corridor-a26",
+  "declared_attempts": [
+    {
+      "name": "v3e-f64-sub4-a34",
+      "substeps": 4
+    },
+    {
+      "name": "v3e-f64-sub8-a35",
+      "substeps": 8
+    },
+    {
+      "name": "v3e-f64-sub8-ground03-a37",
+      "substeps": 8,
+      "ground_friction": 0.3
+    },
+    {
+      "name": "v3i-damped-a38",
+      "substeps": 8,
+      "ground_friction": 0.3,
+      "frozen_source": null,
+      "geometry_sha256": "522936d04b09571b1dca74ca079f247669a03e01e6a768f1f9bfdb294159e830",
+      "hardware_review": "v3i-hardware-review.json"
+    },
+    {
+      "name": "v3i-load-feedback-a39",
+      "substeps": 8,
+      "ground_friction": 0.3,
+      "frozen_source": null,
+      "geometry_sha256": "522936d04b09571b1dca74ca079f247669a03e01e6a768f1f9bfdb294159e830",
+      "controller_review": "v3i-load-feedback-review.json"
+    },
+    {
+      "name": "v3i-load-feedback-ground08-a40",
+      "substeps": 8,
+      "ground_friction": 0.8,
+      "frozen_source": null,
+      "geometry_sha256": "522936d04b09571b1dca74ca079f247669a03e01e6a768f1f9bfdb294159e830",
+      "scene_review": "v3i-original-friction-review.json"
+    },
+    {
+      "name": "v3i-noslip5-a41",
+      "substeps": 8,
+      "ground_friction": 0.8,
+      "noslip_iterations": 5,
+      "frozen_source": "v3i-load-feedback-ground08-a40",
+      "geometry_sha256": "522936d04b09571b1dca74ca079f247669a03e01e6a768f1f9bfdb294159e830"
+    },
+    {
+      "name": "v3j-overhead-a42",
+      "substeps": 8,
+      "ground_friction": 0.8,
+      "frozen_source": null,
+      "geometry_sha256": "c737dcf82b50df792709802363eaff5aa90e82976d19fccd6eab441961026c94",
+      "layout_review": "v3j-layout-review.json"
+    },
+    {
+      "name": "v3j-load85-a43",
+      "substeps": 8,
+      "ground_friction": 0.8,
+      "frozen_source": null,
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "controller_review": "v3j-load85-review.json"
+    },
+    {
+      "name": "v3j-continuous-tools-a44",
+      "substeps": 8,
+      "ground_friction": 0.3,
+      "frozen_source": null,
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "scene_review": "continuous-discovery-plan.json"
+    },
+    {
+      "name": "v3j-goal-unload-a45",
+      "substeps": 8,
+      "ground_friction": 0.8,
+      "frozen_source": null,
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "controller_review": "goal-handoff-review.json"
+    },
+    {
+      "name": "v3j-continuous-budget-a46",
+      "substeps": 8,
+      "ground_friction": 0.3,
+      "frozen_source": null,
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "controller_review": "probe-timing-review.json"
+    },
+    {
+      "name": "v3j-rope-heading-a47",
+      "substeps": 8,
+      "ground_friction": 0.8,
+      "frozen_source": null,
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "retry_review": "v3j-rope-heading-review.json"
+    },
+    {
+      "name": "v3j-corridor-repeat-a48",
+      "substeps": 8,
+      "ground_friction": 0.8,
+      "frozen_source": "v3j-rope-heading-a47",
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "retry_review": "v3j-corridor-repeat-a48-review.json"
+    },
+    {
+      "name": "v3j-corridor-repeat-a49",
+      "substeps": 8,
+      "ground_friction": 0.8,
+      "frozen_source": "v3j-rope-heading-a47",
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "retry_review": "v3j-corridor-repeat-a49-review.json"
+    },
+    {
+      "name": "v3j-tools-repeat-a50",
+      "substeps": 8,
+      "ground_friction": 0.3,
+      "frozen_source": "v3j-continuous-budget-a46",
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "scene_review": "continuous-discovery-repeat-plan.json"
+    },
+    {
+      "name": "v3j-tools-repeat-a51",
+      "substeps": 8,
+      "ground_friction": 0.3,
+      "frozen_source": "v3j-continuous-budget-a46",
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "scene_review": "continuous-discovery-repeat-plan.json"
+    },
+    {
+      "name": "v3j-integrated-delivery-a52",
+      "substeps": 8,
+      "ground_friction": 0.3,
+      "frozen_source": null,
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "scene_review": "integrated-delivery-plan.json"
+    },
+    {
+      "name": "v3j-sealed-noop-a53",
+      "substeps": 8,
+      "ground_friction": 0.8,
+      "frozen_source": null,
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "scene_review": "sealed-noop-plan.json"
+    },
+    {
+      "name": "v3j-integrated-repeat-a54",
+      "substeps": 8,
+      "ground_friction": 0.3,
+      "frozen_source": "v3j-integrated-delivery-a52",
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "scene_review": "integrated-repeat-plan.json"
+    },
+    {
+      "name": "v3j-integrated-repeat-a55",
+      "substeps": 8,
+      "ground_friction": 0.3,
+      "frozen_source": "v3j-integrated-delivery-a52",
+      "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+      "scene_review": "integrated-repeat-plan.json"
+    }
+  ],
+  "unchanged": [
+    "geometry",
+    "mass",
+    "friction",
+    "collision masks",
+    "pin gains and force cap",
+    "controller",
+    "50 mm stance slip",
+    "40 mm/s pin speed",
+    "all task acceptance limits"
+  ],
+  "interpretation": "Time-resolution diagnostics only. A single pass is not convergence, repeated reliability, or formal admission. Original 2-substep failures retained.",
+  "formal_admission": false,
+  "factorial_completion": "Complete the missing combined cell: substeps=8 alone passed pin-speed checks until the 150 N service alarm; friction=0.3 alone kept contact load low but failed pin speed. The combined condition is a separate declared scene/numerics diagnostic, not a relabel of the 0.8-friction task."
+}

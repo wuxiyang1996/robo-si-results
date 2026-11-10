@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 894, in main
+    for n,j in self.joints.items():
+      ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 497, in execute
+    if self.tuning.get('align_grasp',False):self.align_grasp(goals)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 409, in move
+    bridge_feedback=self.body=='G' and phase=='place' and self.tuning.get('bridge_transport_feedback',False) and getattr(self,'handoff_progress',0.)>=.99 and goals and 'right' in goals
+     ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 383, in step
+    solution,_=self.solve(targets,seed=self.qref)
+                                                  
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 193, in assess
+    for k,val in [('speed',speed),('angular',ang),('robot',robot),('table',table),('local',local),('self_contact',selfc),('robot_table',rt)]:self.peaks[k]=max(self.peaks[k],val)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

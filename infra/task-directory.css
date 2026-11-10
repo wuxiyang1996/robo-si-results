@@ -1,0 +1,113 @@
+/* Scoped additions for the bilingual task directory. Load after contribute.css. */
+.directory-page { --directory-offset: 106px; }
+.directory-page .wrap { max-width: 1184px; }
+.directory-page [hidden] { display: none !important; }
+.directory-page main { overflow-wrap: anywhere; }
+.directory-page main > section { padding-block: 44px; }
+.directory-page section, .directory-page [id] { scroll-margin-top: var(--directory-offset); }
+.directory-page .nav .wrap { max-width: 1280px; gap: 12px 24px; }
+.directory-page .nav nav { gap: 20px; letter-spacing: .04em; }
+.directory-page .nav .brand { font-size: 19px; }
+.directory-page .directory-hero { padding-block: 48px 36px; text-align: left; }
+.directory-page .directory-hero h1 { margin: 0; max-width: 24ch; font-size: clamp(30px, 4.1vw, 46px); line-height: 1.24; }
+.directory-page .directory-hero .lead { max-width: 74ch; margin: 16px 0 0; }
+.directory-page .directory-hero .buttons { justify-content: flex-start; margin-top: 22px; }
+.directory-page .updated-at { font: 12px/1.6 var(--mono); color: var(--ink3); margin: 16px 0 0; }
+.directory-page .summary-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 28px; }
+.directory-page .summary-item { min-width: 0; background: var(--card); padding: 20px 22px; }
+.directory-page .summary-item strong, .directory-page .summary-item b { display: block; font: 600 32px/1.2 var(--serif); color: var(--accent-deep); font-variant-numeric: tabular-nums; }
+.directory-page .summary-item p { margin: 5px 0 0; font-size: 13px; color: var(--ink3); }
+.directory-page .summary-item span { display: block; margin-top: 6px; font-size: 13px; color: var(--ink3); }
+.directory-page .directory-intro { max-width: 80ch; font-size: 15px; }
+.directory-page .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; margin-bottom: 14px; }
+.directory-page .section-heading h2 { margin: 0; }
+.directory-page .section-heading > p { margin: 0; font-size: 13px; color: var(--ink3); }
+.directory-page .status-key { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 14px 0 20px; font-size: 13px; color: var(--ink3); }
+.directory-page .status-key > * { min-width: 0; }
+.directory-page .directory-tools { display: grid; grid-template-columns: minmax(220px, 1.7fr) minmax(140px, 1fr) minmax(140px, 1fr) auto; align-items: end; gap: 12px; padding: 18px; margin: 22px 0 14px; border: 1px solid var(--line); background: var(--panel); border-radius: 12px; }
+.directory-page .filter-field { min-width: 0; display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 600; color: var(--ink3); }
+.directory-page .filter-field label { display: block; }
+.directory-page input[type="search"], .directory-page select { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 7px; background: var(--card); color: var(--ink); font: 400 14px/1.4 var(--sans); }
+.directory-page input[type="search"]::placeholder { color: var(--ink4); }
+.directory-page select { padding-right: 24px; }
+.directory-page #reset-filters { min-height: 44px; padding: 9px 15px; border: 1px solid var(--line); border-radius: 7px; background: var(--card); color: var(--ink2); font: 500 13px/1.4 var(--sans); cursor: pointer; }
+.directory-page #reset-filters:hover { border-color: var(--accent); color: var(--accent-deep); }
+.directory-page :is(input, select, button):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.directory-page .category-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; font-size: 13px; }
+.directory-page .category-links a, .directory-page .category-links button { color: var(--ink2); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 6px 11px; font: inherit; text-decoration: none; cursor: pointer; }
+.directory-page .category-links :is(a, button):hover { color: var(--accent-deep); border-color: var(--accent-line); }
+.directory-page #task-count { margin: 10px 0 18px; color: var(--ink3); font-size: 13px; font-variant-numeric: tabular-nums; }
+.directory-page #task-empty { padding: 32px 20px; text-align: center; background: var(--panel); border: 1px dashed var(--line); border-radius: 12px; color: var(--ink3); }
+.directory-page .task-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.directory-page .task-entry { position: relative; min-width: 0; display: flex; flex-direction: column; padding: 22px 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+.directory-page .task-entry:target { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-bg); }
+.directory-page .task-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 10px; }
+.directory-page .task-code { font: 600 11px/1.7 var(--mono); letter-spacing: .03em; color: var(--ink3); overflow-wrap: anywhere; }
+.directory-page .task-state { display: inline-block; padding: 2px 9px; border-radius: 5px; background: var(--ok-soft); color: var(--ok); font-size: 11px; font-weight: 600; line-height: 1.6; }
+.directory-page .task-entry[data-state="experimental"] .task-state { background: var(--warn-soft); color: var(--warn); }
+.directory-page .task-entry[data-state="prototype"] .task-state, .directory-page .task-entry[data-state="design"] .task-state { background: var(--panel); color: var(--ink3); }
+.directory-page .task-entry h3 { margin: 0 0 6px; font-size: 20px; line-height: 1.4; font-weight: 600; text-wrap: pretty; }
+.directory-page .task-entry h3 a { text-decoration: none; }
+.directory-page .task-entry h3 a:hover { text-decoration: underline; }
+.directory-page .task-body { margin: 0 0 14px; font: 12px/1.65 var(--mono); color: var(--ink3); }
+.directory-page .task-summary { font-size: 14px; line-height: 1.75; margin: 0 0 12px; }
+.directory-page .task-proof { padding: 10px 12px; margin: 0 0 12px; border-left: 3px solid var(--accent-line); background: var(--panel2); color: var(--ink); font-size: 13px; line-height: 1.7; }
+.directory-page .task-boundary { margin: 0 0 14px; color: var(--ink3); font-size: 12.5px; line-height: 1.7; }
+.directory-page .task-links { display: flex; flex-wrap: wrap; gap: 7px 16px; margin: auto 0 0; padding-top: 13px; border-top: 1px solid var(--line2); font-size: 13px; }
+.directory-page .task-entry .pill { white-space: normal; }
+.directory-page .anchor-alias { display: block; width: 0; height: 0; padding: 0; margin: 0; overflow: hidden; }
+.directory-page .resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.directory-page .resource-link { display: block; min-width: 0; padding: 18px 20px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink2); }
+.directory-page .resource-link:hover { border-color: var(--accent-line); }
+.directory-page .resource-link strong, .directory-page .resource-link b { display: block; margin-bottom: 5px; color: var(--ink); font-size: 15px; }
+.directory-page .resource-link p, .directory-page .resource-link span { display: block; font-size: 13px; line-height: 1.65; color: var(--ink3); margin: 0; }
+.directory-page .workflow-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 20px; counter-reset: workflow; }
+.directory-page .workflow-step { counter-increment: workflow; padding: 18px; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+.directory-page .workflow-step h3 { margin: 0 0 8px; font-size: 16px; }
+.directory-page .workflow-step p { font-size: 13px; line-height: 1.7; margin: 0; }
+.directory-page .guide-details { border: 1px solid var(--line); border-radius: 10px; background: var(--card); padding: 0 20px; margin: 14px 0; }
+.directory-page .guide-details > summary { cursor: pointer; padding: 16px 0; color: var(--ink); font-size: 15px; font-weight: 600; }
+.directory-page .guide-details[open] > summary { border-bottom: 1px solid var(--line2); margin-bottom: 14px; }
+.directory-page .guide-details > :last-child { margin-bottom: 18px; }
+.directory-page .guide-details .table-wrap { margin-bottom: 18px; }
+.directory-page footer { color: var(--ink3); font-size: 12px; padding-block: 24px; }
+@media (min-width: 1120px) {
+  .directory-page .nav nav { order: initial; flex: initial; margin-left: auto; overflow-x: visible; }
+}
+@media (max-width: 1119px) {
+  .directory-page { --directory-offset: 126px; }
+  .directory-page .nav nav { gap: 20px; }
+}
+@media (max-width: 860px) {
+  .directory-page .directory-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .directory-page .directory-tools .filter-field:first-child { grid-column: 1 / -1; }
+  .directory-page #reset-filters { grid-column: 1 / -1; }
+  .directory-page .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .directory-page .workflow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .directory-page .directory-hero { padding-block: 32px 28px; }
+  .directory-page main > section { padding-block: 34px; }
+  .directory-page .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 22px; }
+  .directory-page .summary-item { padding: 16px 18px; }
+  .directory-page .summary-item strong, .directory-page .summary-item b { font-size: 28px; }
+  .directory-page .task-grid { grid-template-columns: 1fr; gap: 12px; }
+  .directory-page .task-entry { padding: 20px; }
+  .directory-page .task-entry h3 { font-size: 19px; }
+  .directory-page .directory-tools { padding: 14px; gap: 10px; }
+  .directory-page .resource-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 380px) {
+  .directory-page .nav .brand { font-size: 16px; }
+  .directory-page .nav .wrap { gap: 10px; }
+  .directory-page .workflow-grid { grid-template-columns: 1fr; }
+  .directory-page .task-entry { padding: 18px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .directory-page *, .directory-page *::before, .directory-page *::after { scroll-behavior: auto !important; transition-duration: 0s !important; }
+}
+
+/* Eight contribution deliverables, including difficulty and embodiment. */
+.directory-page .deliverables-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width:1000px) { .directory-page .deliverables-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:600px) { .directory-page .deliverables-grid { grid-template-columns:1fr; } }

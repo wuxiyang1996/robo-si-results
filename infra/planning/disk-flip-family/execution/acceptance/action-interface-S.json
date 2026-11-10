@@ -1,0 +1,37 @@
+{
+  "schema": "disk-flip-action-interface-probes/1",
+  "model": "df_family/runs/DF-04-S-a17/scene.xml",
+  "body": "S",
+  "valid_noop_accepted": true,
+  "negative_cases": {
+    "object_pose": {
+      "rejected": true,
+      "state_unchanged": true
+    },
+    "model_edit": {
+      "rejected": true,
+      "state_unchanged": true
+    },
+    "unknown_joint": {
+      "rejected": true,
+      "state_unchanged": true
+    },
+    "nan": {
+      "rejected": true,
+      "state_unchanged": true
+    },
+    "joint_limit": {
+      "rejected": true,
+      "state_unchanged": true
+    },
+    "slew_limit": {
+      "rejected": true,
+      "state_unchanged": true
+    },
+    "partial_commit": {
+      "rejected": true,
+      "state_unchanged": true
+    }
+  },
+  "scope": "Action parser and atomic reference state only; not a physics success, process isolation or whole-task integrity certificate"
+}

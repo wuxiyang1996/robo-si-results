@@ -1,0 +1,3037 @@
+{
+  "schema": "ordered-action-mapping/1",
+  "task": "H4",
+  "selected_witness": "v42-L1-s101",
+  "generated_by": [
+    {
+      "path": "infra/planning/hierarchical-evaluation/build_action_mappings.py",
+      "sha256": "09ff4513817b52c8db8b46a07ba29a0e5f32ea6c88f148cf41d0169705827842"
+    },
+    {
+      "path": "infra/planning/hierarchical-evaluation/action_expansions.py",
+      "sha256": "1e88a0ef8b99d555bcef66edd58e3d18bf4a5ab2260fe5f8b17cbb7aa77bdb8c"
+    }
+  ],
+  "scope": {
+    "zh": "已授权的第一层参考资料",
+    "en": "Authorized layer 1 reference materials"
+  },
+  "plan": {
+    "path": "infra/planning/tasks/H4.json",
+    "sha256": "e5b2d9b2112faf6870056c5870bd358dcfbbe032f26d463a550830850f6430f6"
+  },
+  "full_success_record": {
+    "path": "infra/website-status-evidence/a8546201cf67a83b-record.json",
+    "sha256": "a8546201cf67a83b5db1930155124c7f8e0bbda243b3c1158c20fdf9638f71b8"
+  },
+  "source_files": [
+    {
+      "id": "s0",
+      "path": "humanoid/g1_ramp_bridge_construction/sandbox/runs/reference/v42-L1-s101/oracle/result.json",
+      "sha256": "0634d8b2cdfc6acb9732694ac70e96ecdfb62d8ad07d70d4515e8ea2dc96106c"
+    }
+  ],
+  "generation_provenance_status": "existing_provenance_not_replaced; full identity audit still pending",
+  "interpretation": {
+    "actions": "Ordered decomposition reviewed against available controller/event descriptions; not a newly executable planner.",
+    "event_matching": "Locates review candidates only; it does not prove the stated contact/guard nor exact micro-action interval.",
+    "timing": "Observed sample spans remain in their named clock. Point events are not expanded into invented intervals. No scoring milestone is used as an action boundary.",
+    "loops": "Hanoi repeats K01-K04 for each committed legal move; footfall and gait actions repeat. Numerical order is within a skill, not a universal serial schedule.",
+    "branches": "H3 heavy_prop only; asynchronous A/B operations may overlap.",
+    "portable_evidence": "Small excerpts below are portable; original absolute paths are provenance references, not deployment entrypoints. Raw full records still require the reference packages."
+  },
+  "skills": [
+    {
+      "skill": "H4.K01",
+      "high_level_steps": [
+        "P1"
+      ],
+      "entry_conditions": [
+        "长板可操作且缺口边缘可观测"
+      ],
+      "exit_conditions": [
+        "桥板跨越缺口并独立稳定"
+      ],
+      "actions": [
+        {
+          "id": "H4.K01.A01",
+          "order": 1,
+          "action_zh": "接近板尾并预成形手部",
+          "required_support_contact_zh": "板→原支撑；足→地面",
+          "check_observable_zh": "手与板尾距离",
+          "event_selector": "preshape|reach",
+          "evidence_ids": [
+            "e0000",
+            "e0001"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K01.A02",
+          "order": 2,
+          "action_zh": "双手推转长板",
+          "required_support_contact_zh": "手→板；板端受支撑",
+          "check_observable_zh": "板倾角、双手力与板端位置",
+          "event_selector": "arm_push|push",
+          "evidence_ids": [
+            "e0002",
+            "e0003"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K01.A03",
+          "order": 3,
+          "action_zh": "收臂、释放并检查两端搭接",
+          "required_support_contact_zh": "板→近远平台",
+          "check_observable_zh": "双端接触、桥面姿态",
+          "event_selector": "tuck|release",
+          "evidence_ids": [
+            "e0004",
+            "e0005"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H4.K02",
+      "high_level_steps": [
+        "P2"
+      ],
+      "entry_conditions": [
+        "两端支撑成立且桥面可用"
+      ],
+      "exit_conditions": [
+        "双足到远平台且稳定"
+      ],
+      "actions": [
+        {
+          "id": "H4.K02.A01",
+          "order": 1,
+          "action_zh": "对齐桥前站位并选足点",
+          "required_support_contact_zh": "足→近平台；板两端受支撑",
+          "check_observable_zh": "足点与板边距离",
+          "event_selector": "cross_approach",
+          "evidence_ids": [
+            "e0006"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K02.A02",
+          "order": 2,
+          "action_zh": "依次移重心、抬脚、落在桥面",
+          "required_support_contact_zh": "单足→平台/桥板",
+          "check_observable_zh": "足接触、板端支撑、碰撞",
+          "event_selector": "cross",
+          "evidence_ids": [
+            "e0006",
+            "e0007"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K02.A03",
+          "order": 3,
+          "action_zh": "跨到远平台并稳定",
+          "required_support_contact_zh": "双足→远平台",
+          "check_observable_zh": "脚已离桥、身体稳定",
+          "event_selector": "cross",
+          "evidence_ids": [
+            "e0006",
+            "e0007"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H4.K03",
+      "high_level_steps": [
+        "P3"
+      ],
+      "entry_conditions": [
+        "机器人在远平台，目标可达"
+      ],
+      "exit_conditions": [
+        "目标离开原支撑且受控"
+      ],
+      "actions": [
+        {
+          "id": "H4.K03.A01",
+          "order": 1,
+          "action_zh": "接近目标、摆臂到抓取上方",
+          "required_support_contact_zh": "目标→原支撑",
+          "check_observable_zh": "手与把手间隙",
+          "event_selector": "swing|above",
+          "evidence_ids": [
+            "e0012",
+            "e0013"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K03.A02",
+          "order": 2,
+          "action_zh": "屈指、下探并滑入抓持位置",
+          "required_support_contact_zh": "目标→原支撑；手接触",
+          "check_observable_zh": "手指与把手接触",
+          "event_selector": "curl|down|slide|close",
+          "evidence_ids": [
+            "e0014",
+            "e0015",
+            "e0016",
+            "e0017"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K03.A03",
+          "order": 3,
+          "action_zh": "提起、转手并稳定持物姿态",
+          "required_support_contact_zh": "原支撑→双手",
+          "check_observable_zh": "目标离地、持续抓持",
+          "event_selector": "lift|to_side|turn_hand|settle",
+          "evidence_ids": [
+            "e0018",
+            "e0019",
+            "e0020",
+            "e0021",
+            "e0022"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H4.K04",
+      "high_level_steps": [
+        "P4"
+      ],
+      "entry_conditions": [
+        "目标受控、桥板支撑仍有效"
+      ],
+      "exit_conditions": [
+        "机器人与目标回到近平台"
+      ],
+      "actions": [
+        {
+          "id": "H4.K04.A01",
+          "order": 1,
+          "action_zh": "负载后退并转向桥口",
+          "required_support_contact_zh": "双手持物；足→远平台",
+          "check_observable_zh": "物体与桥口净空",
+          "event_selector": "return_backoff|return_turn",
+          "evidence_ids": [
+            "e0008",
+            "e0009"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K04.A02",
+          "order": 2,
+          "action_zh": "持物逐足过桥",
+          "required_support_contact_zh": "足→桥板；板端受支撑",
+          "check_observable_zh": "桥板形变、落足与抓持",
+          "event_selector": "return",
+          "evidence_ids": [
+            "e0008",
+            "e0009",
+            "e0010"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K04.A03",
+          "order": 3,
+          "action_zh": "离桥进入目标区并停稳",
+          "required_support_contact_zh": "足→近平台/地面；手持物",
+          "check_observable_zh": "目标区位置与速度",
+          "event_selector": "to_goal",
+          "evidence_ids": [
+            "e0011"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H4.K05",
+      "high_level_steps": [
+        "P5"
+      ],
+      "entry_conditions": [
+        "目标区可达且近平台稳定"
+      ],
+      "exit_conditions": [
+        "真实目标边界在目标区、释放且稳定"
+      ],
+      "actions": [
+        {
+          "id": "H4.K05.A01",
+          "order": 1,
+          "action_zh": "稳住负载后下蹲",
+          "required_support_contact_zh": "双手持物",
+          "check_observable_zh": "姿态与足载荷",
+          "event_selector": "settle|crouch",
+          "evidence_ids": [
+            "e0023",
+            "e0024"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K05.A02",
+          "order": 2,
+          "action_zh": "微调目标并让支撑面承重",
+          "required_support_contact_zh": "双手→目标区支撑",
+          "check_observable_zh": "支撑和手载荷",
+          "event_selector": "nudge|still",
+          "evidence_ids": [
+            "e0025",
+            "e0026"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H4.K05.A03",
+          "order": 3,
+          "action_zh": "张手、起身并驻留",
+          "required_support_contact_zh": "目标区独立承重",
+          "check_observable_zh": "手分离、物体稳定",
+          "event_selector": "open|stand_up|rest",
+          "evidence_ids": [
+            "e0027",
+            "e0028",
+            "e0029"
+          ],
+          "mapping_status": "local_clock_or_summary_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    }
+  ],
+  "event_evidence": [
+    {
+      "id": "e0000",
+      "source": "s0",
+      "pointer_first": "/stages/0/metrics/push/phases/0",
+      "pointer_last": "/stages/0/metrics/push/phases/0",
+      "stream": "/stages/0/metrics/push/phases",
+      "label": "preshape",
+      "clock": "local:push; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        3.6,
+        3.6
+      ],
+      "rows": 1,
+      "first": {
+        "phase": "preshape",
+        "t": 3.6,
+        "palms": {
+          "left": [
+            -0.728,
+            -0.841,
+            0.912
+          ],
+          "right": [
+            -0.738,
+            -1.145,
+            0.911
+          ]
+        },
+        "targets": {
+          "left": [
+            -0.803,
+            -0.816,
+            1.021
+          ],
+          "right": [
+            -0.803,
+            -1.116,
+            1.021
+          ]
+        },
+        "links": [],
+        "theta": 42.5,
+        "theta_c": 42.84,
+        "psi": -0.0,
+        "base": [
+          0.408,
+          -0.966,
+          0.015
+        ],
+        "tail_z": 1.13,
+        "force": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "delta": -0.06,
+        "delta_mod": 0.0,
+        "diff": 0.0,
+        "lat_corr": 0.0,
+        "a": 1.105,
+        "pelvis": [
+          -1.125,
+          -0.9789999723434448,
+          0.7250000238418579
+        ],
+        "yaw": -0.06,
+        "pitch": 0.35,
+        "cmd": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "legs_held": false,
+        "fold": 0.057,
+        "standing": false,
+        "f_filt": 0.0,
+        "following": false,
+        "th_ratchet": 42.94,
+        "props": {
+          "support_a": 0.2,
+          "support_b": 0.2
+        }
+      },
+      "last": {
+        "phase": "preshape",
+        "t": 3.6,
+        "palms": {
+          "left": [
+            -0.728,
+            -0.841,
+            0.912
+          ],
+          "right": [
+            -0.738,
+            -1.145,
+            0.911
+          ]
+        },
+        "targets": {
+          "left": [
+            -0.803,
+            -0.816,
+            1.021
+          ],
+          "right": [
+            -0.803,
+            -1.116,
+            1.021
+          ]
+        },
+        "links": [],
+        "theta": 42.5,
+        "theta_c": 42.84,
+        "psi": -0.0,
+        "base": [
+          0.408,
+          -0.966,
+          0.015
+        ],
+        "tail_z": 1.13,
+        "force": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "delta": -0.06,
+        "delta_mod": 0.0,
+        "diff": 0.0,
+        "lat_corr": 0.0,
+        "a": 1.105,
+        "pelvis": [
+          -1.125,
+          -0.9789999723434448,
+          0.7250000238418579
+        ],
+        "yaw": -0.06,
+        "pitch": 0.35,
+        "cmd": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "legs_held": false,
+        "fold": 0.057,
+        "standing": false,
+        "f_filt": 0.0,
+        "following": false,
+        "th_ratchet": 42.94,
+        "props": {
+          "support_a": 0.2,
+          "support_b": 0.2
+        }
+      }
+    },
+    {
+      "id": "e0001",
+      "source": "s0",
+      "pointer_first": "/stages/0/metrics/push/phases/1",
+      "pointer_last": "/stages/0/metrics/push/phases/21",
+      "stream": "/stages/0/metrics/push/phases",
+      "label": "reach",
+      "clock": "local:push; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        3.6,
+        7.6
+      ],
+      "rows": 21,
+      "first": {
+        "phase": "reach",
+        "t": 3.6,
+        "palms": {
+          "left": [
+            -0.728,
+            -0.841,
+            0.912
+          ],
+          "right": [
+            -0.738,
+            -1.145,
+            0.911
+          ]
+        },
+        "targets": {
+          "left": [
+            -0.814,
+            -0.816,
+            1.021
+          ],
+          "right": [
+            -0.814,
+            -1.116,
+            1.021
+          ]
+        },
+        "links": [],
+        "theta": 42.5,
+        "theta_c": 42.53,
+        "psi": -0.0,
+        "base": [
+          0.408,
+          -0.966,
+          0.015
+        ],
+        "tail_z": 1.13,
+        "force": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "delta": -0.0597,
+        "delta_mod": 0.0,
+        "diff": 0.0,
+        "lat_corr": 0.0,
+        "a": 1.105,
+        "pelvis": [
+          -1.125,
+          -0.9789999723434448,
+          0.7250000238418579
+        ],
+        "yaw": -0.06,
+        "pitch": 0.35,
+        "cmd": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "legs_held": false,
+        "fold": 0.069,
+        "standing": false,
+        "f_filt": 0.0,
+        "following": false,
+        "th_ratchet": 42.94,
+        "props": {
+          "support_a": 0.2,
+          "support_b": 0.2
+        }
+      },
+      "last": {
+        "phase": "reach",
+        "t": 7.6,
+        "palms": {
+          "left": [
+            -0.728,
+            -0.825,
+            0.954
+          ],
+          "right": [
+            -0.734,
+            -1.136,
+            0.957
+          ]
+        },
+        "targets": {
+          "left": [
+            -0.759,
+            -0.815,
+            1.084
+          ],
+          "right": [
+            -0.754,
+            -1.115,
+            1.089
+          ]
+        },
+        "links": [
+          "left_hand_thumb_1_link",
+          "right_hand_thumb_1_link"
+        ],
+        "theta": 42.1,
+        "theta_c": 42.07,
+        "psi": -0.01,
+        "base": [
+          0.417,
+          -0.966,
+          0.015
+        ],
+        "tail_z": 1.121,
+        "force": {
+          "left": 13.5,
+          "right": 10.8
+        },
+        "delta": 0.0288,
+        "delta_mod": 0.0,
+        "diff": -0.0031,
+        "lat_corr": 0.001,
+        "a": 1.132,
+        "pelvis": [
+          -1.1349999904632568,
+          -0.9819999933242798,
+          0.7239999771118164
+        ],
+        "yaw": -0.101,
+        "pitch": 0.339,
+        "cmd": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "legs_held": false,
+        "fold": 0.061,
+        "standing": false,
+        "f_filt": 8.9,
+        "following": false,
+        "th_ratchet": 42.07,
+        "props": {
+          "support_a": 0.3,
+          "support_b": 0.3
+        }
+      }
+    },
+    {
+      "id": "e0002",
+      "source": "s0",
+      "pointer_first": "/stages/0/metrics/push/phases/22",
+      "pointer_last": "/stages/0/metrics/push/phases/27",
+      "stream": "/stages/0/metrics/push/phases",
+      "label": "arm_push",
+      "clock": "local:push; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        7.62,
+        8.62
+      ],
+      "rows": 6,
+      "first": {
+        "phase": "arm_push",
+        "t": 7.62,
+        "palms": {
+          "left": [
+            -0.728,
+            -0.824,
+            0.956
+          ],
+          "right": [
+            -0.734,
+            -1.136,
+            0.959
+          ]
+        },
+        "targets": {
+          "left": [
+            -0.759,
+            -0.815,
+            1.084
+          ],
+          "right": [
+            -0.754,
+            -1.115,
+            1.089
+          ]
+        },
+        "links": [
+          "left_hand_thumb_1_link",
+          "right_hand_thumb_1_link"
+        ],
+        "theta": 42.1,
+        "theta_c": 42.07,
+        "psi": -0.01,
+        "base": [
+          0.418,
+          -0.966,
+          0.015
+        ],
+        "tail_z": 1.122,
+        "force": {
+          "left": 13.2,
+          "right": 9.7
+        },
+        "delta": 0.0288,
+        "delta_mod": 0.0,
+        "diff": -0.0035,
+        "lat_corr": 0.001,
+        "a": 1.133,
+        "pelvis": [
+          -1.1360000371932983,
+          -0.9819999933242798,
+          0.7229999899864197
+        ],
+        "yaw": -0.108,
+        "pitch": 0.341,
+        "cmd": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "legs_held": false,
+        "fold": 0.06,
+        "standing": false,
+        "f_filt": 11.7,
+        "following": false,
+        "th_ratchet": 42.07,
+        "props": {
+          "support_a": 0.3,
+          "support_b": 0.3
+        }
+      },
+      "last": {
+        "phase": "arm_push",
+        "t": 8.62,
+        "palms": {
+          "left": [
+            -0.722,
+            -0.816,
+            0.995
+          ],
+          "right": [
+            -0.724,
+            -1.12,
+            0.994
+          ]
+        },
+        "targets": {
+          "left": [
+            -0.759,
+            -0.808,
+            1.084
+          ],
+          "right": [
+            -0.755,
+            -1.108,
+            1.088
+          ]
+        },
+        "links": [
+          "left_hand_thumb_1_link",
+          "right_hand_thumb_1_link"
+        ],
+        "theta": 43.5,
+        "theta_c": 42.07,
+        "psi": -0.53,
+        "base": [
+          0.416,
+          -0.966,
+          0.014
+        ],
+        "tail_z": 1.15,
+        "force": {
+          "left": 10.2,
+          "right": 10.4
+        },
+        "delta": 0.0288,
+        "delta_mod": 0.0,
+        "diff": -0.0031,
+        "lat_corr": 0.008,
+        "a": 1.148,
+        "pelvis": [
+          -1.1519999504089355,
+          -0.9850000143051147,
+          0.7210000157356262
+        ],
+        "yaw": -0.139,
+        "pitch": 0.395,
+        "cmd": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "legs_held": false,
+        "fold": 0.045,
+        "standing": false,
+        "f_filt": 20.6,
+        "following": false,
+        "th_ratchet": 42.07,
+        "props": {
+          "support_a": 0.3,
+          "support_b": 0.3
+        }
+      }
+    },
+    {
+      "id": "e0003",
+      "source": "s0",
+      "pointer_first": "/stages/0/metrics/push/phases/28",
+      "pointer_last": "/stages/0/metrics/push/phases/67",
+      "stream": "/stages/0/metrics/push/phases",
+      "label": "push",
+      "clock": "local:push; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        8.64,
+        16.44
+      ],
+      "rows": 40,
+      "first": {
+        "phase": "push",
+        "t": 8.64,
+        "palms": {
+          "left": [
+            -0.722,
+            -0.815,
+            0.995
+          ],
+          "right": [
+            -0.724,
+            -1.12,
+            0.994
+          ]
+        },
+        "targets": {
+          "left": [
+            -0.702,
+            -0.808,
+            1.083
+          ],
+          "right": [
+            -0.698,
+            -1.108,
+            1.087
+          ]
+        },
+        "links": [
+          "left_hand_thumb_1_link",
+          "right_hand_thumb_1_link"
+        ],
+        "theta": 43.5,
+        "theta_c": 43.49,
+        "psi": -0.54,
+        "base": [
+          0.417,
+          -0.966,
+          0.014
+        ],
+        "tail_z": 1.15,
+        "force": {
+          "left": 10.0,
+          "right": 10.2
+        },
+        "delta": 0.0288,
+        "delta_mod": 0.0,
+        "diff": -0.0031,
+        "lat_corr": 0.008,
+        "a": 1.148,
+        "pelvis": [
+          -1.1519999504089355,
+          -0.9850000143051147,
+          0.7210000157356262
+        ],
+        "yaw": -0.139,
+        "pitch": 0.395,
+        "cmd": [
+          0.251,
+          0.0,
+          0.45
+        ],
+        "legs_held": false,
+        "fold": -0.012,
+        "standing": false,
+        "f_filt": 20.5,
+        "following": false,
+        "th_ratchet": 43.49,
+        "props": {
+          "support_a": 0.3,
+          "support_b": 0.3
+        }
+      },
+      "last": {
+        "phase": "push",
+        "t": 16.44,
+        "palms": {
+          "left": [
+            0.201,
+            -0.801,
+            0.932
+          ],
+          "right": [
+            0.203,
+            -1.102,
+            0.936
+          ]
+        },
+        "targets": {
+          "left": [
+            0.247,
+            -0.81,
+            0.853
+          ],
+          "right": [
+            0.244,
+            -1.11,
+            0.853
+          ]
+        },
+        "links": [],
+        "theta": 84.8,
+        "theta_c": 82.82,
+        "psi": -0.48,
+        "base": [
+          0.369,
+          -0.963,
+          0.002
+        ],
+        "tail_z": 1.645,
+        "force": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "delta": 0.0288,
+        "delta_mod": 0.0,
+        "diff": 0.0013,
+        "lat_corr": 0.004,
+        "a": 0.406,
+        "pelvis": [
+          -0.27399998903274536,
+          -0.9900000095367432,
+          0.7229999899864197
+        ],
+        "yaw": -0.186,
+        "pitch": 0.268,
+        "cmd": [
+          0.262,
+          0.0,
+          0.45
+        ],
+        "legs_held": false,
+        "fold": -0.232,
+        "standing": false,
+        "f_filt": 3.9,
+        "following": false,
+        "th_ratchet": 82.82,
+        "props": {
+          "support_a": 0.3,
+          "support_b": 0.3
+        }
+      }
+    },
+    {
+      "id": "e0004",
+      "source": "s0",
+      "pointer_first": "/stages/0/metrics/push/phases/68",
+      "pointer_last": "/stages/0/metrics/push/phases/79",
+      "stream": "/stages/0/metrics/push/phases",
+      "label": "tuck",
+      "clock": "local:push; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        16.52,
+        18.72
+      ],
+      "rows": 12,
+      "first": {
+        "phase": "tuck",
+        "t": 16.52,
+        "palms": {
+          "left": [
+            0.222,
+            -0.793,
+            0.909
+          ],
+          "right": [
+            0.226,
+            -1.087,
+            0.908
+          ]
+        },
+        "targets": {
+          "left": [
+            0.265,
+            -0.81,
+            0.835
+          ],
+          "right": [
+            0.262,
+            -1.11,
+            0.835
+          ]
+        },
+        "links": [],
+        "theta": 86.3,
+        "theta_c": 83.94,
+        "psi": -0.48,
+        "base": [
+          0.369,
+          -0.963,
+          0.001
+        ],
+        "tail_z": 1.648,
+        "force": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "delta": 0.0288,
+        "delta_mod": 0.0,
+        "diff": 0.0013,
+        "lat_corr": 0.004,
+        "a": 0.399,
+        "pelvis": [
+          -0.2540000081062317,
+          -0.9900000095367432,
+          0.7229999899864197
+        ],
+        "yaw": -0.152,
+        "pitch": 0.3,
+        "cmd": [
+          0.0,
+          -0.3,
+          0.45
+        ],
+        "legs_held": false,
+        "fold": -0.239,
+        "standing": false,
+        "f_filt": 2.0,
+        "following": false,
+        "th_ratchet": 83.94,
+        "props": {
+          "support_a": 0.3,
+          "support_b": 0.3
+        }
+      },
+      "last": {
+        "phase": "tuck",
+        "t": 18.72,
+        "palms": {
+          "left": [
+            0.17,
+            -1.327,
+            0.63
+          ],
+          "right": [
+            0.151,
+            -1.834,
+            0.624
+          ]
+        },
+        "targets": {
+          "left": [
+            0.265,
+            -0.81,
+            0.835
+          ],
+          "right": [
+            0.262,
+            -1.11,
+            0.835
+          ]
+        },
+        "links": [],
+        "theta": 180.0,
+        "theta_c": 83.94,
+        "psi": -0.44,
+        "base": [
+          0.451,
+          -0.965,
+          0.02
+        ],
+        "tail_z": 0.02,
+        "force": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "delta": 0.0288,
+        "delta_mod": 0.0,
+        "diff": 0.0013,
+        "lat_corr": 0.004,
+        "a": 0.399,
+        "pelvis": [
+          0.12999999523162842,
+          -1.5809999704360962,
+          0.7229999899864197
+        ],
+        "yaw": -0.009,
+        "pitch": -0.038,
+        "cmd": [
+          0.0,
+          -0.3,
+          0.026
+        ],
+        "legs_held": false,
+        "fold": 0.145,
+        "standing": false,
+        "f_filt": 2.0,
+        "following": false,
+        "th_ratchet": 83.94,
+        "props": {
+          "support_a": 0.3,
+          "support_b": 0.3
+        }
+      }
+    },
+    {
+      "id": "e0005",
+      "source": "s0",
+      "pointer_first": "/stages/0/metrics/push/phases/80",
+      "pointer_last": "/stages/0/metrics/push/phases/90",
+      "stream": "/stages/0/metrics/push/phases",
+      "label": "release",
+      "clock": "local:push; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        18.82,
+        20.82
+      ],
+      "rows": 11,
+      "first": {
+        "phase": "release",
+        "t": 18.82,
+        "palms": {
+          "left": [
+            0.067,
+            -1.357,
+            0.574
+          ],
+          "right": [
+            0.057,
+            -1.873,
+            0.601
+          ]
+        },
+        "targets": {
+          "left": [
+            0.265,
+            -0.81,
+            0.835
+          ],
+          "right": [
+            0.262,
+            -1.11,
+            0.835
+          ]
+        },
+        "links": [],
+        "theta": 180.0,
+        "theta_c": 83.94,
+        "psi": -0.44,
+        "base": [
+          0.451,
+          -0.965,
+          0.02
+        ],
+        "tail_z": 0.02,
+        "force": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "delta": 0.0288,
+        "delta_mod": 0.0,
+        "diff": 0.0013,
+        "lat_corr": 0.004,
+        "a": 0.399,
+        "pelvis": [
+          0.1340000033378601,
+          -1.6089999675750732,
+          0.722000002861023
+        ],
+        "yaw": 0.002,
+        "pitch": -0.022,
+        "cmd": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "legs_held": false,
+        "fold": 0.149,
+        "standing": false,
+        "f_filt": 2.0,
+        "following": false,
+        "th_ratchet": 83.94,
+        "props": {
+          "support_a": 0.3,
+          "support_b": 0.3
+        }
+      },
+      "last": {
+        "phase": "release",
+        "t": 20.82,
+        "palms": {
+          "left": [
+            0.063,
+            -1.364,
+            0.596
+          ],
+          "right": [
+            0.061,
+            -1.88,
+            0.595
+          ]
+        },
+        "targets": {
+          "left": [
+            0.265,
+            -0.81,
+            0.835
+          ],
+          "right": [
+            0.262,
+            -1.11,
+            0.835
+          ]
+        },
+        "links": [],
+        "theta": 180.0,
+        "theta_c": 83.94,
+        "psi": -0.44,
+        "base": [
+          0.451,
+          -0.965,
+          0.02
+        ],
+        "tail_z": 0.02,
+        "force": {
+          "left": 0.0,
+          "right": 0.0
+        },
+        "delta": 0.0288,
+        "delta_mod": 0.0,
+        "diff": 0.0013,
+        "lat_corr": 0.004,
+        "a": 0.399,
+        "pelvis": [
+          0.13300000131130219,
+          -1.621999979019165,
+          0.7229999899864197
+        ],
+        "yaw": -0.003,
+        "pitch": 0.056,
+        "cmd": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "legs_held": false,
+        "fold": 0.148,
+        "standing": false,
+        "f_filt": 2.0,
+        "following": false,
+        "th_ratchet": 83.94,
+        "props": {
+          "support_a": 0.3,
+          "support_b": 0.3
+        }
+      }
+    },
+    {
+      "id": "e0006",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/cross_approach",
+      "pointer_last": "/stages/1/metrics/cross_approach",
+      "stream": "/stages/1/metrics/cross_approach",
+      "label": "cross_approach",
+      "clock": "untimed_summary",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": null,
+      "rows": 1,
+      "first": {
+        "seconds": 4.04,
+        "pos_error": 0.036,
+        "yaw_error": 0.005,
+        "path": [
+          [
+            0.11,
+            -1.62
+          ],
+          [
+            -0.01,
+            -0.97
+          ]
+        ],
+        "ok": true,
+        "reason": ""
+      },
+      "last": {
+        "seconds": 4.04,
+        "pos_error": 0.036,
+        "yaw_error": 0.005,
+        "path": [
+          [
+            0.11,
+            -1.62
+          ],
+          [
+            -0.01,
+            -0.97
+          ]
+        ],
+        "ok": true,
+        "reason": ""
+      }
+    },
+    {
+      "id": "e0007",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/cross",
+      "pointer_last": "/stages/1/metrics/cross",
+      "stream": "/stages/1/metrics/cross",
+      "label": "cross",
+      "clock": "untimed_summary",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": null,
+      "rows": 1,
+      "first": {
+        "seconds": 12.32,
+        "pos_error": 0.035,
+        "yaw_error": 0.02,
+        "path": [
+          [
+            -0.0,
+            -1.01
+          ],
+          [
+            2.55,
+            -0.97
+          ],
+          [
+            3.39,
+            -0.98
+          ]
+        ],
+        "ok": true,
+        "reason": "",
+        "plank_moved": [
+          0.0237,
+          0.0043,
+          0.0
+        ],
+        "plank_tilt": 180.0
+      },
+      "last": {
+        "seconds": 12.32,
+        "pos_error": 0.035,
+        "yaw_error": 0.02,
+        "path": [
+          [
+            -0.0,
+            -1.01
+          ],
+          [
+            2.55,
+            -0.97
+          ],
+          [
+            3.39,
+            -0.98
+          ]
+        ],
+        "ok": true,
+        "reason": "",
+        "plank_moved": [
+          0.0237,
+          0.0043,
+          0.0
+        ],
+        "plank_tilt": 180.0
+      }
+    },
+    {
+      "id": "e0008",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/return_backoff",
+      "pointer_last": "/stages/1/metrics/return_backoff",
+      "stream": "/stages/1/metrics/return_backoff",
+      "label": "return_backoff",
+      "clock": "untimed_summary",
+      "timing_semantics": "untimed_summary",
+      "observed_span_s": null,
+      "rows": 1,
+      "first": 0.706,
+      "last": 0.706
+    },
+    {
+      "id": "e0009",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/return_turn",
+      "pointer_last": "/stages/1/metrics/return_turn",
+      "stream": "/stages/1/metrics/return_turn",
+      "label": "return_turn",
+      "clock": "untimed_summary",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": null,
+      "rows": 1,
+      "first": {
+        "seconds": 3.22,
+        "yaw_error": -0.119,
+        "total_seconds": 17.3,
+        "mode": "cw",
+        "ok": true,
+        "reason": "",
+        "pos": [
+          2.944000005722046,
+          -0.9279999732971191,
+          0.7210000157356262
+        ],
+        "held": true,
+        "runup": 0.819
+      },
+      "last": {
+        "seconds": 3.22,
+        "yaw_error": -0.119,
+        "total_seconds": 17.3,
+        "mode": "cw",
+        "ok": true,
+        "reason": "",
+        "pos": [
+          2.944000005722046,
+          -0.9279999732971191,
+          0.7210000157356262
+        ],
+        "held": true,
+        "runup": 0.819
+      }
+    },
+    {
+      "id": "e0010",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/return",
+      "pointer_last": "/stages/1/metrics/return",
+      "stream": "/stages/1/metrics/return",
+      "label": "return",
+      "clock": "untimed_summary",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": null,
+      "rows": 1,
+      "first": {
+        "seconds": 16.62,
+        "pos_error": 0.043,
+        "yaw_error": 0.007,
+        "path": [
+          [
+            2.95,
+            -0.93
+          ],
+          [
+            2.65,
+            -0.97
+          ],
+          [
+            0.35,
+            -0.97
+          ],
+          [
+            -0.05,
+            -0.05
+          ],
+          [
+            -0.1,
+            0.0
+          ],
+          [
+            -0.49,
+            0.04
+          ],
+          [
+            -1.8,
+            -0.2
+          ],
+          [
+            -2.09,
+            -0.36
+          ]
+        ],
+        "ok": true,
+        "reason": "",
+        "plank_tilt": 180.0,
+        "box_offset": [
+          -0.007,
+          0.359
+        ],
+        "end": [
+          -2.093,
+          -0.359
+        ],
+        "held": true
+      },
+      "last": {
+        "seconds": 16.62,
+        "pos_error": 0.043,
+        "yaw_error": 0.007,
+        "path": [
+          [
+            2.95,
+            -0.93
+          ],
+          [
+            2.65,
+            -0.97
+          ],
+          [
+            0.35,
+            -0.97
+          ],
+          [
+            -0.05,
+            -0.05
+          ],
+          [
+            -0.1,
+            0.0
+          ],
+          [
+            -0.49,
+            0.04
+          ],
+          [
+            -1.8,
+            -0.2
+          ],
+          [
+            -2.09,
+            -0.36
+          ]
+        ],
+        "ok": true,
+        "reason": "",
+        "plank_tilt": 180.0,
+        "box_offset": [
+          -0.007,
+          0.359
+        ],
+        "end": [
+          -2.093,
+          -0.359
+        ],
+        "held": true
+      }
+    },
+    {
+      "id": "e0011",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/to_goal",
+      "pointer_last": "/stages/1/metrics/to_goal",
+      "stream": "/stages/1/metrics/to_goal",
+      "label": "to_goal",
+      "clock": "untimed_summary",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": null,
+      "rows": 1,
+      "first": {
+        "seconds": 0.0,
+        "pos": [
+          -2.0510001182556152,
+          -0.35600000619888306,
+          0.7210000157356262
+        ],
+        "box": [
+          -2.048,
+          0.003,
+          0.54
+        ],
+        "ok": true,
+        "reason": "box over the goal",
+        "held": true,
+        "off_before": [
+          -0.221,
+          -0.356
+        ]
+      },
+      "last": {
+        "seconds": 0.0,
+        "pos": [
+          -2.0510001182556152,
+          -0.35600000619888306,
+          0.7210000157356262
+        ],
+        "box": [
+          -2.048,
+          0.003,
+          0.54
+        ],
+        "ok": true,
+        "reason": "box over the goal",
+        "held": true,
+        "off_before": [
+          -0.221,
+          -0.356
+        ]
+      }
+    },
+    {
+      "id": "e0012",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/0",
+      "pointer_last": "/stages/1/metrics/pickup/trace/13",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "swing",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        0.8,
+        3.4
+      ],
+      "rows": 14,
+      "first": {
+        "t": 0.8,
+        "phase": "swing",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.204,
+          0.301,
+          0.242
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3420000076293945,
+          -0.9769999980926514,
+          0.7319999933242798
+        ],
+        "pitch": 5.9,
+        "yaw": 2.8,
+        "mcp": [
+          0.124,
+          0.154,
+          0.299
+        ]
+      },
+      "last": {
+        "t": 3.4,
+        "phase": "swing",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.303,
+          0.242
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9750000238418579,
+          0.7319999933242798
+        ],
+        "pitch": 5.2,
+        "yaw": 3.1,
+        "mcp": [
+          -0.016,
+          0.138,
+          0.236
+        ]
+      }
+    },
+    {
+      "id": "e0013",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/14",
+      "pointer_last": "/stages/1/metrics/pickup/trace/18",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "above",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        3.6,
+        4.4
+      ],
+      "rows": 5,
+      "first": {
+        "t": 3.6,
+        "phase": "above",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.242
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 5.2,
+        "yaw": 2.9,
+        "mcp": [
+          -0.017,
+          0.133,
+          0.236
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 4.4,
+        "phase": "above",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.242
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 5.1,
+        "yaw": 2.7,
+        "mcp": [
+          -0.017,
+          0.132,
+          0.237
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0014",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/19",
+      "pointer_last": "/stages/1/metrics/pickup/trace/23",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "curl",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        4.6,
+        5.4
+      ],
+      "rows": 5,
+      "first": {
+        "t": 4.6,
+        "phase": "curl",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.242
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 5.1,
+        "yaw": 2.7,
+        "mcp": [
+          -0.017,
+          0.132,
+          0.237
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 5.4,
+        "phase": "curl",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.242
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 5.2,
+        "yaw": 2.7,
+        "mcp": [
+          -0.017,
+          0.132,
+          0.237
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0015",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/24",
+      "pointer_last": "/stages/1/metrics/pickup/trace/36",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "down",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        5.6,
+        8.0
+      ],
+      "rows": 13,
+      "first": {
+        "t": 5.6,
+        "phase": "down",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.242
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 5.2,
+        "yaw": 2.7,
+        "mcp": [
+          -0.017,
+          0.132,
+          0.237
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 8.0,
+        "phase": "down",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.242
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 4.7,
+        "yaw": 2.6,
+        "mcp": [
+          -0.014,
+          0.131,
+          0.121
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0016",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/37",
+      "pointer_last": "/stages/1/metrics/pickup/trace/48",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "slide",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        8.2,
+        10.4
+      ],
+      "rows": 12,
+      "first": {
+        "t": 8.2,
+        "phase": "slide",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.242
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7310000061988831
+        ],
+        "pitch": 4.7,
+        "yaw": 2.7,
+        "mcp": [
+          -0.014,
+          0.131,
+          0.12
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 10.4,
+        "phase": "slide",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.241
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7310000061988831
+        ],
+        "pitch": 4.7,
+        "yaw": 2.8,
+        "mcp": [
+          -0.014,
+          0.055,
+          0.119
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0017",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/49",
+      "pointer_last": "/stages/1/metrics/pickup/trace/52",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "close",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        10.6,
+        11.2
+      ],
+      "rows": 4,
+      "first": {
+        "t": 10.6,
+        "phase": "close",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.241
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7310000061988831
+        ],
+        "pitch": 4.7,
+        "yaw": 2.7,
+        "mcp": [
+          -0.014,
+          0.053,
+          0.119
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 11.2,
+        "phase": "close",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.241
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7310000061988831
+        ],
+        "pitch": 4.7,
+        "yaw": 2.7,
+        "mcp": [
+          -0.014,
+          0.053,
+          0.119
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0018",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/53",
+      "pointer_last": "/stages/1/metrics/pickup/trace/62",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "lift",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        11.4,
+        13.2
+      ],
+      "rows": 10,
+      "first": {
+        "t": 11.4,
+        "phase": "lift",
+        "box": [
+          3.555,
+          -1.272,
+          0.49
+        ],
+        "tilt": 0.0,
+        "lift": 0.0,
+        "robot_in_box": [
+          -0.217,
+          0.302,
+          0.241
+        ],
+        "force": 0.0,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7310000061988831
+        ],
+        "pitch": 4.7,
+        "yaw": 2.7,
+        "mcp": [
+          -0.014,
+          0.053,
+          0.119
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 13.2,
+        "phase": "lift",
+        "box": [
+          3.549,
+          -1.266,
+          0.564
+        ],
+        "tilt": 1.5,
+        "lift": 0.074,
+        "robot_in_box": [
+          -0.217,
+          0.295,
+          0.163
+        ],
+        "force": 9.6,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7310000061988831
+        ],
+        "pitch": 5.6,
+        "yaw": 3.1,
+        "mcp": [
+          -0.016,
+          0.049,
+          0.135
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0019",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/63",
+      "pointer_last": "/stages/1/metrics/pickup/trace/65",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "lifted",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        13.4,
+        13.8
+      ],
+      "rows": 3,
+      "first": {
+        "t": 13.4,
+        "phase": "lifted",
+        "box": [
+          3.548,
+          -1.265,
+          0.568
+        ],
+        "tilt": 1.4,
+        "lift": 0.078,
+        "robot_in_box": [
+          -0.218,
+          0.294,
+          0.156
+        ],
+        "force": 11.2,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7310000061988831
+        ],
+        "pitch": 5.4,
+        "yaw": 2.9,
+        "mcp": [
+          -0.016,
+          0.049,
+          0.134
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 13.8,
+        "phase": "lifted",
+        "box": [
+          3.548,
+          -1.268,
+          0.57
+        ],
+        "tilt": 1.2,
+        "lift": 0.08,
+        "robot_in_box": [
+          -0.218,
+          0.294,
+          0.159
+        ],
+        "force": 10.4,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 5.2,
+        "yaw": 2.8,
+        "mcp": [
+          -0.016,
+          0.049,
+          0.135
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0020",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/66",
+      "pointer_last": "/stages/1/metrics/pickup/trace/77",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "to_side",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        14.0,
+        16.2
+      ],
+      "rows": 12,
+      "first": {
+        "t": 14.0,
+        "phase": "to_side",
+        "box": [
+          3.548,
+          -1.267,
+          0.57
+        ],
+        "tilt": 1.1,
+        "lift": 0.08,
+        "robot_in_box": [
+          -0.216,
+          0.295,
+          0.158
+        ],
+        "force": 10.3,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 5.2,
+        "yaw": 2.9,
+        "mcp": [
+          -0.016,
+          0.049,
+          0.134
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 16.2,
+        "phase": "to_side",
+        "box": [
+          3.389,
+          -1.337,
+          0.558
+        ],
+        "tilt": 0.6,
+        "lift": 0.068,
+        "robot_in_box": [
+          -0.057,
+          0.361,
+          0.175
+        ],
+        "force": 10.6,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.3289999961853027,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 5.1,
+        "yaw": 3.1,
+        "mcp": [
+          -0.017,
+          0.049,
+          0.135
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0021",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/78",
+      "pointer_last": "/stages/1/metrics/pickup/trace/85",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "turn_hand",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        16.4,
+        17.8
+      ],
+      "rows": 8,
+      "first": {
+        "t": 16.4,
+        "phase": "turn_hand",
+        "box": [
+          3.385,
+          -1.338,
+          0.558
+        ],
+        "tilt": 0.6,
+        "lift": 0.068,
+        "robot_in_box": [
+          -0.055,
+          0.361,
+          0.176
+        ],
+        "force": 10.4,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.328000068664551,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 5.0,
+        "yaw": 2.9,
+        "mcp": [
+          -0.017,
+          0.049,
+          0.135
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 17.8,
+        "phase": "turn_hand",
+        "box": [
+          3.36,
+          -1.339,
+          0.557
+        ],
+        "tilt": 0.8,
+        "lift": 0.067,
+        "robot_in_box": [
+          -0.202,
+          0.305,
+          0.173
+        ],
+        "force": 10.2,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.328000068664551,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 4.9,
+        "yaw": 3.0,
+        "mcp": [
+          -0.017,
+          0.049,
+          0.135
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0022",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/pickup/trace/86",
+      "pointer_last": "/stages/1/metrics/pickup/trace/92",
+      "stream": "/stages/1/metrics/pickup/trace",
+      "label": "settle",
+      "clock": "local:pickup; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        18.0,
+        19.2
+      ],
+      "rows": 7,
+      "first": {
+        "t": 18.0,
+        "phase": "settle",
+        "box": [
+          3.359,
+          -1.339,
+          0.557
+        ],
+        "tilt": 0.8,
+        "lift": 0.067,
+        "robot_in_box": [
+          -0.202,
+          0.304,
+          0.173
+        ],
+        "force": 10.5,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.328000068664551,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 4.9,
+        "yaw": 2.8,
+        "mcp": [
+          -0.017,
+          0.05,
+          0.135
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 19.2,
+        "phase": "settle",
+        "box": [
+          3.358,
+          -1.339,
+          0.557
+        ],
+        "tilt": 0.8,
+        "lift": 0.067,
+        "robot_in_box": [
+          -0.202,
+          0.305,
+          0.172
+        ],
+        "force": 10.5,
+        "palm": 0.0,
+        "body": [],
+        "pelvis": [
+          3.328000068664551,
+          -0.9760000109672546,
+          0.7319999933242798
+        ],
+        "pitch": 4.9,
+        "yaw": 2.7,
+        "mcp": [
+          -0.017,
+          0.049,
+          0.135
+        ],
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0023",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/place/trace/0",
+      "pointer_last": "/stages/1/metrics/place/trace/4",
+      "stream": "/stages/1/metrics/place/trace",
+      "label": "settle",
+      "clock": "local:place; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        0.2,
+        1.0
+      ],
+      "rows": 5,
+      "first": {
+        "t": 0.2,
+        "phase": "settle",
+        "box": [
+          -2.048,
+          -0.0,
+          0.546
+        ],
+        "tilt": 0.4,
+        "bottom": 0.456,
+        "force": 10.4,
+        "pelvis": [
+          -2.0510001182556152,
+          -0.3569999933242798,
+          0.7279999852180481
+        ],
+        "pitch": 4.5
+      },
+      "last": {
+        "t": 1.0,
+        "phase": "settle",
+        "box": [
+          -2.045,
+          -0.002,
+          0.552
+        ],
+        "tilt": 0.6,
+        "bottom": 0.462,
+        "force": 10.4,
+        "pelvis": [
+          -2.0450000762939453,
+          -0.36000001430511475,
+          0.7329999804496765
+        ],
+        "pitch": 3.6
+      }
+    },
+    {
+      "id": "e0024",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/place/trace/5",
+      "pointer_last": "/stages/1/metrics/place/trace/19",
+      "stream": "/stages/1/metrics/place/trace",
+      "label": "crouch",
+      "clock": "local:place; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        1.2,
+        4.0
+      ],
+      "rows": 15,
+      "first": {
+        "t": 1.2,
+        "phase": "crouch",
+        "box": [
+          -2.045,
+          -0.002,
+          0.561
+        ],
+        "tilt": 0.7,
+        "bottom": 0.471,
+        "force": 10.1,
+        "pelvis": [
+          -2.0460000038146973,
+          -0.36000001430511475,
+          0.7390000224113464
+        ],
+        "pitch": 3.4
+      },
+      "last": {
+        "t": 4.0,
+        "phase": "crouch",
+        "box": [
+          -1.977,
+          -0.008,
+          0.392
+        ],
+        "tilt": 4.2,
+        "bottom": 0.302,
+        "force": 10.4,
+        "pelvis": [
+          -1.9880000352859497,
+          -0.36000001430511475,
+          0.5659999847412109
+        ],
+        "pitch": 10.8
+      }
+    },
+    {
+      "id": "e0025",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/place/trace/20",
+      "pointer_last": "/stages/1/metrics/place/trace/29",
+      "stream": "/stages/1/metrics/place/trace",
+      "label": "nudge",
+      "clock": "local:place; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        4.2,
+        6.0
+      ],
+      "rows": 10,
+      "first": {
+        "t": 4.2,
+        "phase": "nudge",
+        "box": [
+          -1.978,
+          -0.008,
+          0.391
+        ],
+        "tilt": 4.2,
+        "bottom": 0.301,
+        "force": 10.5,
+        "pelvis": [
+          -1.9880000352859497,
+          -0.3610000014305115,
+          0.5659999847412109
+        ],
+        "pitch": 10.8,
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 6.0,
+        "phase": "nudge",
+        "box": [
+          -2.081,
+          0.002,
+          0.317
+        ],
+        "tilt": 3.3,
+        "bottom": 0.227,
+        "force": 10.7,
+        "pelvis": [
+          -1.9880000352859497,
+          -0.36000001430511475,
+          0.5659999847412109
+        ],
+        "pitch": 9.7,
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0026",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/place/trace/30",
+      "pointer_last": "/stages/1/metrics/place/trace/36",
+      "stream": "/stages/1/metrics/place/trace",
+      "label": "still",
+      "clock": "local:place; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        6.2,
+        7.4
+      ],
+      "rows": 7,
+      "first": {
+        "t": 6.2,
+        "phase": "still",
+        "box": [
+          -2.081,
+          0.001,
+          0.314
+        ],
+        "tilt": 3.8,
+        "bottom": 0.224,
+        "force": 10.5,
+        "pelvis": [
+          -1.9889999628067017,
+          -0.36000001430511475,
+          0.5649999976158142
+        ],
+        "pitch": 10.1,
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      },
+      "last": {
+        "t": 7.4,
+        "phase": "still",
+        "box": [
+          -2.081,
+          0.002,
+          0.313
+        ],
+        "tilt": 4.0,
+        "bottom": 0.223,
+        "force": 10.3,
+        "pelvis": [
+          -1.9889999628067017,
+          -0.36000001430511475,
+          0.5649999976158142
+        ],
+        "pitch": 10.3,
+        "ik": {
+          "right": 0.0
+        },
+        "lag": {
+          "right": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0027",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/place/trace/37",
+      "pointer_last": "/stages/1/metrics/place/trace/44",
+      "stream": "/stages/1/metrics/place/trace",
+      "label": "open",
+      "clock": "local:place; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        7.6,
+        9.0
+      ],
+      "rows": 8,
+      "first": {
+        "t": 7.6,
+        "phase": "open",
+        "box": [
+          -2.081,
+          0.002,
+          0.302
+        ],
+        "tilt": 4.1,
+        "bottom": 0.213,
+        "force": 3.0,
+        "pelvis": [
+          -1.9889999628067017,
+          -0.36000001430511475,
+          0.5649999976158142
+        ],
+        "pitch": 10.3
+      },
+      "last": {
+        "t": 9.0,
+        "phase": "open",
+        "box": [
+          -2.086,
+          -0.029,
+          0.09
+        ],
+        "tilt": 0.0,
+        "bottom": -0.0,
+        "force": 0.0,
+        "pelvis": [
+          -1.9889999628067017,
+          -0.36000001430511475,
+          0.5649999976158142
+        ],
+        "pitch": 10.3
+      }
+    },
+    {
+      "id": "e0028",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/place/trace/45",
+      "pointer_last": "/stages/1/metrics/place/trace/54",
+      "stream": "/stages/1/metrics/place/trace",
+      "label": "stand_up",
+      "clock": "local:place; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        9.2,
+        11.0
+      ],
+      "rows": 10,
+      "first": {
+        "t": 9.2,
+        "phase": "stand_up",
+        "box": [
+          -2.086,
+          -0.029,
+          0.09
+        ],
+        "tilt": 0.0,
+        "bottom": -0.0,
+        "force": 0.0,
+        "pelvis": [
+          -1.9900000095367432,
+          -0.36000001430511475,
+          0.5730000138282776
+        ],
+        "pitch": 9.7
+      },
+      "last": {
+        "t": 11.0,
+        "phase": "stand_up",
+        "box": [
+          -2.086,
+          -0.029,
+          0.09
+        ],
+        "tilt": 0.0,
+        "bottom": -0.0,
+        "force": 0.0,
+        "pelvis": [
+          -1.9880000352859497,
+          -0.367000013589859,
+          0.7250000238418579
+        ],
+        "pitch": -0.4
+      }
+    },
+    {
+      "id": "e0029",
+      "source": "s0",
+      "pointer_first": "/stages/1/metrics/place/trace/55",
+      "pointer_last": "/stages/1/metrics/place/trace/66",
+      "stream": "/stages/1/metrics/place/trace",
+      "label": "rest",
+      "clock": "local:place; global_offset_unresolved",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        11.2,
+        13.4
+      ],
+      "rows": 12,
+      "first": {
+        "t": 11.2,
+        "phase": "rest",
+        "box": [
+          -2.086,
+          -0.029,
+          0.09
+        ],
+        "tilt": 0.0,
+        "bottom": -0.0,
+        "force": 0.0,
+        "pelvis": [
+          -1.9880000352859497,
+          -0.367000013589859,
+          0.7300000190734863
+        ],
+        "pitch": -0.7
+      },
+      "last": {
+        "t": 13.4,
+        "phase": "rest",
+        "box": [
+          -2.086,
+          -0.029,
+          0.09
+        ],
+        "tilt": 0.0,
+        "bottom": -0.0,
+        "force": 0.0,
+        "pelvis": [
+          -1.9869999885559082,
+          -0.367000013589859,
+          0.7319999933242798
+        ],
+        "pitch": 0.1
+      }
+    }
+  ],
+  "source_clock_checks": [
+    {
+      "source": "s0",
+      "pointer": "/stages/0/metrics/push/phases",
+      "timed_rows": 91,
+      "clock": "local:push; global_offset_unresolved",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/stages/1/metrics/cross_approach",
+      "timed_rows": 0,
+      "clock": "untimed_summary",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/stages/1/metrics/cross",
+      "timed_rows": 0,
+      "clock": "untimed_summary",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/stages/1/metrics/return_turn",
+      "timed_rows": 0,
+      "clock": "untimed_summary",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/stages/1/metrics/return",
+      "timed_rows": 0,
+      "clock": "untimed_summary",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/stages/1/metrics/to_goal",
+      "timed_rows": 0,
+      "clock": "untimed_summary",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/stages/1/metrics/pickup/trace",
+      "timed_rows": 93,
+      "clock": "local:pickup; global_offset_unresolved",
+      "nondecreasing": true
+    },
+    {
+      "source": "s0",
+      "pointer": "/stages/1/metrics/place/trace",
+      "timed_rows": 67,
+      "clock": "local:place; global_offset_unresolved",
+      "nondecreasing": true
+    }
+  ],
+  "physical_observations": {
+    "interpretation": "Descriptive checks recomputed from recorded samples. These are not a new simulation, formal acceptance or a full-rate independent contact audit.",
+    "status": "Event excerpts extracted; further numerical contact/support checks pending."
+  },
+  "review": {
+    "task": "H4",
+    "skills": 5,
+    "ordered_actions": 15,
+    "event_groups": 30,
+    "source_files": 1,
+    "action_mapping_counts": {
+      "local_clock_or_summary_candidates": 15
+    },
+    "joint_mapping_review": "pending_physical_constraints_and_provenance_review",
+    "remaining_zh": "搭板、抓取、放置局部 trace 已提取；跨桥足步与全程时钟待映射，历史源码身份缺口仍保留。"
+  },
+  "design_gate_complete": false,
+  "physics_runs": 0,
+  "legacy_scores_changed": false,
+  "h1_status_changed": false
+}

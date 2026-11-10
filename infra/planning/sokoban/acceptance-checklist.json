@@ -1,0 +1,86 @@
+{
+  "schema": "sokoban-formal-review-checklist/1",
+  "status": "development_in_progress",
+  "policy": "../acceptance-policy.json",
+  "scope": "Six current Sokoban configurations; readiness for formal review is separate from signed admission.",
+  "gates": [
+    {
+      "id": "SK-A01",
+      "name": "Frozen observation, action, physics and budget contract",
+      "required": "One final policy/scorer/source/assets manifest; original goal and validity rules; C+/C- tools and time budgets matched",
+      "status": "pending_final_policy_freeze"
+    },
+    {
+      "id": "SK-A02",
+      "name": "Continuous physical witnesses",
+      "required": "All six current configurations have complete high/low/trajectory mappings, independent substep checks, full trajectory and recorded video",
+      "status": "development_retries_running"
+    },
+    {
+      "id": "SK-A03",
+      "name": "Push-only and physical integrity review",
+      "required": "Opposed contact, directional force/motion, support, actuator and non-hand link/phase review; meaningful positive and negative checks; runtime mutations denied",
+      "status": "directional_and_integrity_checks_implemented_continuous_witness_pending"
+    },
+    {
+      "id": "SK-A04",
+      "name": "Dynamic mapping evaluation",
+      "required": "Fixed-frame occupancy plus predeclared connectivity queries and crate-update latency; unknown/censored observations remain explicit",
+      "status": "implemented_tests_passed"
+    },
+    {
+      "id": "SK-A05",
+      "name": "OS isolation and complete expert execution",
+      "required": "Private filesystem/PID/network namespaces per robot, readonly public bundle, no privileged files, strict packets; full representative run",
+      "status": "full_isolated_arrival_checked_directional_contact_pending",
+      "evidence": {
+        "job_id": "8056919",
+        "controls": 21881,
+        "verified_rgb_frames": 5055,
+        "isolation_review_passed": true,
+        "physical_outcome": "physical_goals_observed",
+        "directional_contact_flags": 196,
+        "complete_witness": false
+      }
+    },
+    {
+      "id": "SK-A06",
+      "name": "Frozen repeatability cohort",
+      "required": "L1 seed 0 three full physics runs; L1 seeds 1 and 2; declared second physical host; all outcomes retained",
+      "status": "awaiting_final_policy_freeze"
+    },
+    {
+      "id": "SK-A07",
+      "name": "Communication comparison",
+      "required": "Six paired seed-0 configurations; matched physical skills/budget/tool permissions; differences and uncertainty reported; no success required in C-",
+      "status": "awaiting_final_policy_freeze"
+    },
+    {
+      "id": "SK-A08",
+      "name": "Unseen topology cohort",
+      "required": "Two predeclared layouts, retained symbolic screening and representative full execution after policy freeze; no tuning on test outcomes",
+      "status": "layouts_predeclared_not_executed"
+    },
+    {
+      "id": "SK-A09",
+      "name": "Human review and independent reproduction",
+      "required": "Authorized reviewer inspects applicable full videos and critical positive/negative clips; independent reproduction record with actual identity and outcome",
+      "status": "unsigned",
+      "signed_by": null
+    },
+    {
+      "id": "SK-A10",
+      "name": "Formal admission",
+      "required": "All applicable gates complete and authorized admission record; never infer signature from automated checks",
+      "status": "unsigned",
+      "signed_by": null
+    }
+  ],
+  "optional_extensions": [
+    "Autonomous tool construction analysis",
+    "Physical tool use",
+    "Heterogeneous robot morphology"
+  ],
+  "formal_admission": false,
+  "task_success": null
+}

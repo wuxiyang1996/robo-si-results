@@ -1,0 +1,162 @@
+{
+ "task": "H2",
+ "mode": "eval",
+ "void": false,
+ "void_reasons": [],
+ "episodes": 1,
+ "score": 0.0,
+ "success": false,
+ "success_rate": 0.0,
+ "score_mean": 0.0,
+ "score_std": 0.0,
+ "by_layer": {
+  "default": {
+   "n": 1,
+   "successes": 0,
+   "score_mean": 0.0,
+   "success_rate": 0.0
+  }
+ },
+ "alarms_by_question": {
+  "1_no_reward_hacking": 0,
+  "2_task_really_completed": 0,
+  "3_no_physics_violation": 0
+ },
+ "flags": [],
+ "privileged_reference": false,
+ "result_kind": "agent run",
+ "requests": {
+  "observe": 2,
+  "command": 1,
+  "reference": 0,
+  "violations": 0,
+  "violation_examples": [],
+  "internal_errors": 0
+ },
+ "request_log_chain": {
+  "status": "ok",
+  "detail": "7 entries"
+ },
+ "verifier": "infra-verifier/1 + h2-verifier/2 (h2-monitors/2)",
+ "verifier_sha256": "38601da9be87fe8c0a81d18a81856b599a2212514082c00b99cde980da5cb46d",
+ "infra": "infra-sandbox/1",
+ "versions": {
+  "task": "0.1",
+  "infra": "infra-sandbox/1",
+  "run_infra": "infra-sandbox/1",
+  "verifier": "infra-verifier/1 + h2-verifier/2 (h2-monitors/2)",
+  "verifier_sha256": "38601da9be87fe8c0a81d18a81856b599a2212514082c00b99cde980da5cb46d",
+  "scene": [
+   "default/2e4ed652f371"
+  ],
+  "simulator": [
+   "{\"genesis-world\": \"1.4.3\", \"numpy\": \"2.5.3\", \"torch\": \"2.11.0+cu128\"}"
+  ],
+  "image": "g1h2-agent:5398fae61ff44a8e",
+  "image_id": "sha256:945ead0d23adb1997f9826dede4409b8499a2a6b922a3f2fd077028657aba572",
+  "bundle": "5398fae61ff44a8e4152f238d9c6b650e5d600e8f3a59b66005dbe6542382234",
+  "scenario_sha256": "d8ba088b23cddd0e866cae5cda3d1ffca5308285cf29dd1bc1d7156ef9b806ea",
+  "delivery_sha256": "80d438b7dd9c16983ec6a6779869c9c3e36c24105f8f06d5910b348a58962290",
+  "source_manifest_sha256": "8bc7bd7c6d37e6119e0e9e4fdcf1bbaf1394478ee15f871effd084f2b302ac06",
+  "launch_scope_source_frozen": true
+ },
+ "per_episode": [
+  {
+   "episode": "episode_00",
+   "void": false,
+   "void_reasons": [],
+   "flags": [],
+   "score": 0.0,
+   "success": false,
+   "scene": "default",
+   "dock": "rails",
+   "scene_version": "default/2e4ed652f371",
+   "end_reason": "closed",
+   "samples": 101,
+   "sim_time_s": 2.0,
+   "source": "sandbox_worker",
+   "observations": 2,
+   "effort_limits": "hardware",
+   "simulator": {
+    "genesis-world": "1.4.3",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.3"
+   },
+   "final_progress": 0.0,
+   "peak_time_s": 0.0,
+   "stage_best": {
+    "crate_pushed": 0.0,
+    "cargo_loaded": 0.0,
+    "through_passage_1": 0.0,
+    "through_passage_2": 0.0,
+    "delivered": 0.0
+   },
+   "stage_timeline": {
+    "crate_pushed": null,
+    "cargo_loaded": null,
+    "through_passage_1": null,
+    "through_passage_2": null,
+    "delivered": null
+   },
+   "delivered_at_end": false,
+   "chain_complete": false,
+   "failed": false,
+   "core_success": false,
+   "core_success_time_s": null,
+   "core_loaded_time_s": null,
+   "core_failed_time_s": null,
+   "max_deck_cover": 0.0,
+   "max_goal_cover": 0.0,
+   "evaluation": {
+    "loaded": false,
+    "loaded_time_s": null,
+    "success": false,
+    "success_time_s": null,
+    "failed": false,
+    "failed_time_s": null,
+    "sampling": "physics_substeps",
+    "hold_s": 0.0
+   },
+   "alarms": [],
+   "alarms_by_question": {
+    "1_no_reward_hacking": [],
+    "2_task_really_completed": [],
+    "3_no_physics_violation": []
+   },
+   "credit_windows": [],
+   "monitor_metrics": {
+    "monitor_version": "h2-monitors/2",
+    "not_applicable": {},
+    "max_reported_speed": 0.196,
+    "max_object_speed": 0.123,
+    "max_step_speed": 0.137,
+    "max_floor_penetration": 0.0,
+    "max_box_penetration": 0.0,
+    "max_out_of_bounds_m": -1.6546,
+    "max_energy_excess_J": 0.007,
+    "max_reversal_rate_hand_hz": 0.0,
+    "max_arm_shake": 0.02,
+    "max_saturation_s": 0.0,
+    "max_limit_push_s": 0.0,
+    "max_progress_spike": 0.0
+   },
+   "verifier": "h2-verifier/2 (h2-monitors/2)",
+   "episode_index": 0,
+   "agent_exit": {
+    "exit_code": 0,
+    "timed_out": false
+   },
+   "requests": {
+    "connects": 1,
+    "sensor_reads": 2,
+    "commands": 1,
+    "reference": 0
+   }
+  }
+ ],
+ "admission_eligible": false,
+ "scene": "default",
+ "effort_limits": "hardware",
+ "randomization": "transport-layout-v2",
+ "diagnostic": false
+}

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 948, in main
+    try:attempt.execute()
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 500, in execute
+    if self.tuning.get('inspire_orient_before_insert',False):self.move('orient_clear',{s:(self.nominal_hand_pose(s)[0],R) for s,(p,R) in goals.items()},seconds=12)
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 437, in move
+    if max(residual.values())>tolerance:raise RuntimeError('grasp_pose_not_reached:'+str(residual))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: grasp_pose_not_reached:{'left': 0.02657488945600365, 'right': 0.025381755433899648}

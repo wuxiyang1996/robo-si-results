@@ -1,0 +1,1613 @@
+{
+  "schema": "h1-implementation-status/1",
+  "date": "2026-10-27",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "status": "physical_development_started_zero_new_compliant_full_witnesses",
+  "scope": "22 selected independent task registrations; development requirements snapshot, not physical completion report",
+  "authorization": {
+    "source": "current user instruction",
+    "gamma_gpu": true,
+    "sub_agents": true,
+    "physical_work_resumed": true,
+    "previous_design_only_pause_superseded_for_current_work": true
+  },
+  "selection_source": {
+    "path": "selected-scope.json",
+    "sha256": "3107c05742578dd1b526cce0bca6c5e15d0ae2d6cb10a0f5af3220a7b2046d98"
+  },
+  "independent_task_count": 22,
+  "counts_toward_existing_14_task_inventory": false,
+  "historical_results_unchanged": true,
+  "formal_admission": false,
+  "new_runs_in_this_document": [
+    {
+      "task_id": "H1S-01",
+      "job_id": "8034801",
+      "status": "failed_incomplete_qp_iterations",
+      "report": "baseline-execution-8034801.json",
+      "task_success": false,
+      "simulated_seconds": 434.22,
+      "original_score": 0.1925
+    },
+    {
+      "task_id": "H1S-07.P4",
+      "job_id": "8034839",
+      "status": "physical_goal_met_actuator_violation",
+      "report": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/outcome.json",
+      "task_success": false,
+      "physical_goal_met": true,
+      "simulated_seconds": 248.62,
+      "max_position_overshoot_rad": 0.004584531784,
+      "position_tolerance_rad": 0.001
+    }
+  ],
+  "new_witness_count_in_this_document": 0,
+  "evidence_snapshot_rule": "Current physical failures and passive probes are explicitly linked; original local asset table is retained as dated initial audit. Pending attempts cannot upgrade evidence until strict review.",
+  "assets": [
+    {
+      "configuration": "g1_dex3",
+      "status": "local_files_present",
+      "files": [
+        {
+          "path": "setup_assets.py",
+          "sha256": "55ecbb17868e6f4ae900fc71ec0f040705e269c3bcdc1c07df34b6710aad11f7"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/assets/unitree_g1/g1_with_hands.xml",
+          "sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/assets/policies/agile_locomotion.pt",
+          "sha256": "f04a58b834057eb1c9f38350dc12feaf929ff2cc7d5b75d2871e23811b775dde"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/genesis_env.py",
+          "sha256": "da3fa7e8fb6b74f30a7e7e92ee030e1102f0955e512a1df68ec53d560f26a516"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/relay_env.py",
+          "sha256": "807c9389102a2faf17dc77d34e7c22ca5b8cc1f6a7d0f7eb7102d45d0ed2ec3d"
+        }
+      ],
+      "gap_zh": "实际任务启动前仍须冻结全部递归 mesh/物性/控制器/仿真器及依赖身份；文件存在不是新任务通过。",
+      "asset_binding_path": "humanoid/g1_support_retrieval/assets/unitree_g1/g1_with_hands.xml",
+      "binding_missing": false,
+      "inspected_roots": [
+        "humanoid/g1_support_retrieval/assets",
+        "controllers",
+        "setup_assets.py"
+      ]
+    },
+    {
+      "configuration": "wheeled_model_pending",
+      "status": "unbound",
+      "files": [],
+      "gap_zh": "当前注册故意未冻结轮式型号，Galaxea R1 仅历史候选。",
+      "asset_binding_path": null,
+      "binding_missing": true,
+      "inspected_roots": [
+        "humanoid/g1_support_retrieval/assets",
+        "controllers",
+        "setup_assets.py"
+      ]
+    },
+    {
+      "configuration": "g1_rev1_dex3_1",
+      "status": "official_local_hand_drive_passed_task_control_pending",
+      "asset_binding_path": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/unitree_ros/robots/g1_description/g1_29dof_with_hand_rev_1_0.urdf",
+      "binding_missing": false,
+      "task_control_binding_missing": true,
+      "files": [
+        {
+          "path": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/unitree_ros/robots/g1_description/g1_29dof_with_hand_rev_1_0.urdf",
+          "exists": true,
+          "sha256": "97da67732d067c3147fc5fb7b7bafc8982718f4e7f8c92ff82266a4d9c07200d"
+        }
+      ],
+      "gap_zh": "官方rev1.0＋Dex3-1已完成被动导入与独立手部局部驱动诊断；14候选独立驱动在锁身固定根零重力fixture的预声明响应指标通过。整体稳定、接触抓取、传感器及任务未验证；旧Menagerie证据另记。",
+      "selection_source": "embodiment-selection.json",
+      "passive_probe_report": "g1-dex3-asset-review.json",
+      "isolated_hand_drive_report": "hand-drive-review.json"
+    },
+    {
+      "configuration": "g1_inspire",
+      "status": "official_local_mimic_measured_driver_tracking_failed_task_pending",
+      "asset_binding_path": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/unitree_ros/robots/g1_description/g1_29dof_rev_1_0_with_inspire_hand_DFQ.urdf",
+      "binding_missing": false,
+      "task_control_binding_missing": true,
+      "files": [
+        {
+          "path": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/unitree_ros/robots/g1_description/g1_29dof_rev_1_0_with_inspire_hand_DFQ.urdf",
+          "exists": true,
+          "sha256": "e2b2d6bfe58f6b8d57b9f28df9ad9e5e5d0ea728f562e925b8b1482a902b6ff3"
+        }
+      ],
+      "gap_zh": "官方DFQ来源/许可固定；53活动关节中12 mimic，不等于53电机。锁身零重力fixture内12耦合已实测，最大残差0.043744mrad、followers直接控制力为0；当前PD拇指hold误差10.7767mrad超过预声明10mrad，需单独预算/预声明控制修订。抓取接触、全身平衡、硬件驱动映射、传感器与完整任务仍待，不是模型不可行结论。",
+      "selection_source": "embodiment-selection.json",
+      "isolated_hand_drive_report": "hand-drive-review.json"
+    },
+    {
+      "configuration": "agibot_a3",
+      "status": "official_asset_selected_task_control_pending",
+      "asset_binding_path": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/A3-A3U-robot-model/a3_t3d0/urdf/model.urdf",
+      "binding_missing": false,
+      "task_control_binding_missing": true,
+      "files": [
+        {
+          "path": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/A3-A3U-robot-model/a3_t3d0/urdf/model.urdf",
+          "exists": true,
+          "sha256": "7e967467e9dc1cad1738177ad38ded1dc4e2155adce3e3ed85c56c993544b8ec"
+        }
+      ],
+      "gap_zh": "官方T3.0和MulanPSL-2.0来源固定、被动导入已做；独立SONIC参考存在，Genesis控制移植和完整任务未做。",
+      "selection_source": "embodiment-selection.json"
+    },
+    {
+      "configuration": "stretch3",
+      "status": "official_asset_selected_task_control_pending",
+      "asset_binding_path": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch_urdf/stretch_urdf/SE3/stretch_description_SE3_eoa_wrist_dw3_tool_sg3.urdf",
+      "binding_missing": false,
+      "task_control_binding_missing": true,
+      "files": [
+        {
+          "path": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch_urdf/stretch_urdf/SE3/stretch_description_SE3_eoa_wrist_dw3_tool_sg3.urdf",
+          "exists": true,
+          "sha256": "14ef56041efaa5cae405ce2ae4aa7a6ac45c98cc0bdc0c3ff2a873c6241627f1"
+        }
+      ],
+      "gap_zh": "官方SE3/sg3未标定URDF已缓存，Clear BSD许可已记；8036300完成400步被动导入。23对中性碰撞过滤与1条惯量近似保留；实际控制/传感器及完整任务未验证。",
+      "selection_source": "embodiment-selection.json",
+      "passive_probe_report": "stretch3-asset-review.json"
+    }
+  ],
+  "budget_policy": {
+    "status": "proposal_until_bound_to_run_manifest",
+    "screen_wall_seconds": 60,
+    "max_route_candidates": 3,
+    "max_short_physics_probes": 2,
+    "max_steps_per_short_probe": 1000,
+    "max_full_runs_per_declared_configuration": 3,
+    "grading_repeats": 3,
+    "execution_sim_seconds": "retain selected runtime task limit; must be numeric and frozen in run manifest",
+    "execution_wall_seconds": 3600,
+    "reset_policy": "one original generated reset per full attempt; new attempt gets new run_id",
+    "token_observation_control_budgets": "freeze in runnable task manifest; no agent benchmark run until all required fields are numeric",
+    "budget_exhaustion": "unknown; never certified infeasible",
+    "mutation_policy": "Any budget or parameter revision creates a new manifest before next attempt; preserve earlier attempt"
+  },
+  "shared_acceptance": {
+    "all_legal_complete_solutions": true,
+    "minimum_design_witnesses_per_declared_scope": 1,
+    "representative_repeat_runs": 3,
+    "same_trace_grading_repeats": 3,
+    "continuous_run": true,
+    "start": "original generator sample; no checkpoint stitching",
+    "privileged_expert_state_allowed": true,
+    "agent_physics_and_action_limits_required": true,
+    "post_start_state_writes": 0,
+    "object_attachment_allowed": false,
+    "trajectory_required_fields": [
+      "run_id",
+      "step",
+      "sim_time",
+      "issued_action",
+      "measured_joint_position",
+      "measured_joint_velocity",
+      "base_pose",
+      "base_velocity",
+      "target_pose_velocity",
+      "contact_and_support",
+      "actual_effort",
+      "monitors"
+    ],
+    "identity_required": [
+      "scene",
+      "asset_recursive_manifest",
+      "physics",
+      "controller_source",
+      "scorer",
+      "generator_sample",
+      "budget",
+      "environment_versions",
+      "GPU_device_and_job"
+    ],
+    "mapping_checks": [
+      "HL_LL",
+      "LL_TRAJ",
+      "HL_TRAJ"
+    ],
+    "mapping_rule": "Every executed low-level segment links its high-level parent, exact action/state frame interval, measured entry/exit and pass/fail evidence; planned but unexecuted segments remain unexecuted.",
+    "delivery": "Correct target whole envelope in D, independent support, released, stable for 3 s; task-specific frozen original H1 scoring preserved.",
+    "q_exit": {
+      "dwell_seconds": 3,
+      "linear_speed_m_s_max": 0.03,
+      "angular_speed_rad_s_max": 0.05,
+      "threshold_status": "draft until per-body calibration and task-manifest freeze",
+      "whole_robot_horizontal_envelope_in_q": true,
+      "legal_ground_support": true,
+      "empty_handed": true,
+      "no_hard_violation": true,
+      "correctness_requires_initial_infeasibility_certificate": true,
+      "unknown_correctness": null
+    },
+    "forbidden_inferences": [
+      "asset presence => usable controller",
+      "static IK => physical success",
+      "skill probe => full witness",
+      "Q exit => certified infeasible",
+      "failed search => infeasible",
+      "historical witness => new scene success",
+      "successful run => human review or formal admission"
+    ]
+  },
+  "tasks": [
+    {
+      "task_id": "H1S-01",
+      "name_zh": "原版",
+      "track": "frozen_reference",
+      "execution_configuration": "G1 + Dex3",
+      "scene_requirement_zh": "先复核原配置；独立生成本轮全程，不将旧发布数字重复记为新增。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "布置支撑",
+          "登高",
+          "取物",
+          "返回",
+          "交付"
+        ],
+        "low_level_requirements_zh": "接触抓/推、足步与 WBC、抓取抬离、载荷姿态、中转/下降、释放驻留",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "绑定原场景、旧评分及公开限制；新运行有独立 run_id；任何扩展新规则不得追溯改变原成绩。",
+      "remaining_gaps_zh": "原冻结源身份与已执行段映射已核查；剩余为放凳对齐 QP 控制修复、从原始起点重新完成全链、细粒度语义复核与人工审阅。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/relay_env.py",
+        "humanoid/g1_support_retrieval/relay_spec.py",
+        "humanoid/g1_support_retrieval/oracle"
+      ],
+      "new_physical_run_ids": [
+        "8034801"
+      ],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "frozen_baseline_executed_qp_failure",
+      "evidence_state": "failed_incomplete",
+      "blockers": [
+        "Frozen-source identity and executed-prefix mapping verified; repair setdown contact QP alignment and produce a new full original-start chain.",
+        "Fine-grained refinement and human review incomplete."
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/relay_env.py",
+          "exists": true,
+          "sha256": "807c9389102a2faf17dc77d34e7c22ca5b8cc1f6a7d0f7eb7102d45d0ed2ec3d",
+          "kind": "reference_source_not_complete_asset_manifest"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/relay_spec.py",
+          "exists": true,
+          "sha256": "0f90e11c6fd916f9190dd819be6434866d1267728779b6da2ddd0ae9bae4ff62",
+          "kind": "reference_source_not_complete_asset_manifest"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/oracle",
+          "exists": true,
+          "sha256": null,
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ],
+      "physical_evidence_report": "baseline-execution-8034801.json"
+    },
+    {
+      "task_id": "H1S-02",
+      "name_zh": "G1 五指灵巧手",
+      "track": "hand_comparison",
+      "execution_configuration": "官方G1 rev1.0 29DoF，Dex3-1 vs Inspire DFQ",
+      "scene_requirement_zh": "同世界、相同宽箱/载荷和预算；允许各手适配控制器。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察抓持几何",
+          "选抓法",
+          "搬/推支撑",
+          "取物",
+          "返回交付"
+        ],
+        "low_level_requirements_zh": "手指闭合/接触、腕矩限制、双手载荷分配、重抓和放置",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "五指优势是待检假设；Dex3 局部滑移不是全局不可解证书；每种手均记录完整重复结果。",
+      "remaining_gaps_zh": "Dex3局部响应指标通过；Inspire12个mimic等式已在锁身固定根零重力fixture实测，最大残差0.043744mrad、followers直接控制力为0，耦合导入不再是本fixture缺口。当前PD左拇指hold跟踪10.7767mrad>预声明10mrad，需新的预声明控制修订。抓取/接触、全身平衡、真实硬件驱动映射、碰撞/传感器及同身体完整任务对照仍未验；不称模型不可行。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/solution/side_carry/README.md",
+        "humanoid/g1_support_retrieval/solution/underhand_lift/README.md"
+      ],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "isolated_hand_drive_measured_task_control_pending",
+      "evidence_state": "isolated_coupling_measured_driver_tracking_partial_task_unknown",
+      "blockers": [
+        "Inspire12 mimic equalities are measured with <=0.043744mrad residual and zero direct follower force in the isolated fixture; this is no longer an unmeasured local coupling blocker.",
+        "The current PD left-thumb hold tracking error10.7767mrad exceeds the predeclared10mrad bound; a separately frozen control revision is required, not a model-infeasibility conclusion.",
+        "Grasp/contact, whole-body balance, real hardware motor mapping, sensing/collision and matched-body complete task execution remain unvalidated.",
+        "Legacy Menagerie G1 evidence is not transferable to official rev1.0 matched-body models."
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/solution/side_carry/README.md",
+          "exists": true,
+          "sha256": "e7036a348fa781e6cc68921b7e6b5436aa1611a06bf0634073858ad4e7c0a991",
+          "kind": "reference_source_not_complete_asset_manifest"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/solution/underhand_lift/README.md",
+          "exists": true,
+          "sha256": "0a3a084c67e081be16dacfc385912af9a4220e411b44d7de1b077352e928391d",
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ],
+      "asset_progress_zh": "官方Dex3/Inspire同身体源已固定：29活动关节、7固定关节和37共用links结构相同。6项模型被动检查与2项独立手部驱动诊断分别计数；驱动fixture保留原手部XML，但锁身/固定根/零重力，不计H1任务成功。",
+      "current_user_selected_body": "G1 29DoF, prioritize Inspire five-finger comparison to Dex3-1 main line",
+      "isolated_diagnostic_run_ids": [
+        "8036535_0",
+        "8036535_1"
+      ],
+      "isolated_hand_drive_report": "hand-drive-review.json"
+    },
+    {
+      "task_id": "H1S-03",
+      "name_zh": "轮式＋斜坡",
+      "track": "ramp_access",
+      "execution_configuration": "轮式型号待选",
+      "scene_requirement_zh": "斜坡初始未就位；机器人自主搬/推、搭接，再上台取物并带载返回。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "选择坡道/平台",
+          "布置",
+          "登坡",
+          "取物",
+          "下坡",
+          "交付"
+        ],
+        "low_level_requirements_zh": "夹持/推移板件、板端搭接与稳定、轮接触驱动、坡面制动、转向和下放",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "需连续轮地/轮坡支撑、离地间隙、板端/平台足够面积与真实承载；预置坡道只能另记 use-only 诊断。",
+      "remaining_gaps_zh": "Galaxea R1候选 官方来源固定与 400 步/2 秒被动导入已完成；任务机体选择、传动/稳定/末端控制、传感器和完整任务绑定未完成。 轮式整机型号/驱动、坡道动态模型、搬推控制及带载坡道证据缺失。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "asset_binding_missing",
+      "evidence_state": "unknown",
+      "blockers": [
+        "轮式整机型号/驱动、坡道动态模型、搬推控制及带载坡道证据缺失。"
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "Galaxea R1候选 官方来源固定与 400 步/2 秒被动导入已完成；任务机体选择、传动/稳定/末端控制、传感器和完整任务绑定未完成。"
+    },
+    {
+      "task_id": "H1S-04",
+      "name_zh": "A3",
+      "track": "body_comparison",
+      "execution_configuration": "A3 T3.0 官方候选",
+      "scene_requirement_zh": "独立 A3 高柜取物；matched_world 与专用场景分别报告。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "支撑选择/布置",
+          "登高",
+          "取物",
+          "返回交付"
+        ],
+        "low_level_requirements_zh": "全身接触控制、A3 末端抓取、登阶、负载返回",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "不得把 G1 资产缩放或改显示名称当 A3；不根据身高宣称可解。",
+      "remaining_gaps_zh": "官方T3.0和MulanPSL-2.0来源固定、被动导入已做；独立SONIC参考存在，Genesis控制移植和完整任务未做。 还需本项场景/全程控制与同世界配对。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "asset_binding_missing",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official A3 T3.0 asset/version/license selected and passive probe retained; integrate controller/sensors and complete this task-specific physical chain."
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "A3 官方来源固定与 400 步/2 秒被动导入已完成；任务机体选择、传动/稳定/末端控制、传感器和完整任务绑定未完成。"
+    },
+    {
+      "task_id": "H1S-05",
+      "name_zh": "G1 两层阶梯，A3 一层",
+      "track": "body_comparison",
+      "execution_configuration": "G1 + Dex3 / A3",
+      "scene_requirement_zh": "同世界检查 G1 两级与 A3 一级；层级可达包含柜深和抓取姿态。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "选择/布置阶梯",
+          "逐级登高",
+          "取物",
+          "下降",
+          "交付"
+        ],
+        "low_level_requirements_zh": "搬放上层支撑、足步落点、接触切换、负载重心与逐级下降",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "几何高度和静态 IK 不足；每级入口/踏面/载荷/返回都须验证；合法一级 G1 解出现即修订机制标签。",
+      "remaining_gaps_zh": "官方T3.0和MulanPSL-2.0来源固定、被动导入已做；独立SONIC参考存在，Genesis控制移植和完整任务未做。 还需本项场景/全程控制与同世界配对。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/solution/carry_climb_retrieve/layout.py",
+        "humanoid/g1_support_retrieval/solution/carry_climb_retrieve/README.md"
+      ],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "paired_asset_and_scene_missing",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official A3 T3.0 asset/version/license selected and passive probe retained; integrate controller/sensors and complete this task-specific physical chain."
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/solution/carry_climb_retrieve/layout.py",
+          "exists": true,
+          "sha256": "090598347096b604fea88bcbe55449d89374a6527adb0d9f41dc0c1d47f85190",
+          "kind": "reference_source_not_complete_asset_manifest"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/solution/carry_climb_retrieve/README.md",
+          "exists": true,
+          "sha256": "04dd27eb66e7daa2936573840f100735a4939fd69dd81e03a1789b0aff72a0c1",
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ],
+      "asset_progress_zh": "A3 官方来源固定与 400 步/2 秒被动导入已完成；任务机体选择、传动/稳定/末端控制、传感器和完整任务绑定未完成。"
+    },
+    {
+      "task_id": "H1S-06",
+      "name_zh": "完成不了的 case",
+      "track": "feasibility_decision",
+      "execution_configuration": "首版优先已绑定 G1",
+      "scene_requirement_zh": "以最小改动配对可解场景；检查全部合法替代路线后判断。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察/安全探测",
+          "评估路线",
+          "安全收拢",
+          "前往 Q",
+          "停稳"
+        ],
+        "low_level_requirements_zh": "卸载/撤臂、避障行走、全包络入 Q、足地接触、速度驻留检查",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "物理 safe_exit 与 correct_abstention 分开；没有证书时正确性为 null；预算耗尽不证明无解。",
+      "remaining_gaps_zh": "全路线必要条件证书、配对成功、Q 场景/传感器/物理验证未冻结。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "certificate_and_exit_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "全路线必要条件证书、配对成功、Q 场景/传感器/物理验证未冻结。"
+      ],
+      "source_assets": []
+    },
+    {
+      "task_id": "H1S-07.P1",
+      "name_zh": "推箱清路后取物",
+      "track": "pushing_variants",
+      "execution_configuration": "首版 G1，其他身体分别绑定",
+      "scene_requirement_zh": "障碍箱挡工作位；清路后从同一次运行继续高柜取物。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "推障碍停车",
+          "布置/接近",
+          "取物",
+          "返回交付"
+        ],
+        "low_level_requirements_zh": "双手贴合、推力/摩擦反馈、移步、撤手、清空扫掠空间、接续抓取",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "只推开障碍不算任务成功；停车区需不阻塞返程；合法绕行完成仍接受。",
+      "remaining_gaps_zh": "旧推箱技能可复用，但障碍/停车布局、全链衔接和新物理见证缺失。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/solution/push_box/README.md"
+      ],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "scene_and_chain_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "旧推箱技能可复用，但障碍/停车布局、全链衔接和新物理见证缺失。"
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/solution/push_box/README.md",
+          "exists": true,
+          "sha256": "bcae5d922fdc45025951d3a8f6dc5eab457f62f16a69a32a83e44d94c99a74e6",
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ]
+    },
+    {
+      "task_id": "H1S-07.P2",
+      "name_zh": "推箱到位作平台",
+      "track": "pushing_variants",
+      "execution_configuration": "首版 G1，轮式须另有坡道",
+      "scene_requirement_zh": "支撑箱起始未到工作位；实际推到位后登高取物。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "推支撑到位",
+          "验稳定",
+          "登高",
+          "取物",
+          "返回交付"
+        ],
+        "low_level_requirements_zh": "接触推移、落脚接近、支撑静置、登阶、抓取、下降",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "位置容差由可达/支撑需求决定；旧推箱+登箱成功不包含取物返回；合法组合支撑接受。",
+      "remaining_gaps_zh": "完整取物/下降/交付连续链，以及新场景初态和评分绑定。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/solution/push_box/README.md"
+      ],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "scene_and_chain_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "完整取物/下降/交付连续链，以及新场景初态和评分绑定。"
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/solution/push_box/README.md",
+          "exists": true,
+          "sha256": "bcae5d922fdc45025951d3a8f6dc5eab457f62f16a69a32a83e44d94c99a74e6",
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ]
+    },
+    {
+      "task_id": "H1S-07.P3",
+      "name_zh": "转角或换侧推箱",
+      "track": "pushing_variants",
+      "execution_configuration": "首版 G1，其他身体单独验证",
+      "scene_requirement_zh": "障碍限制直线推；保留换侧入口及下一段扫掠空间。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "第一推段",
+          "脱离换侧/转向",
+          "第二推段",
+          "完成取物/交付"
+        ],
+        "low_level_requirements_zh": "手箱接触、退步/转向、重新接触、箱体偏航控制、停止",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "检查整机/手臂/箱扫掠；转角前后姿态速度真实连续；未执行换侧不假记技能完成。",
+      "remaining_gaps_zh": "转角场景、换侧足步控制及整段连续物理证据。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/solution/push_box/README.md"
+      ],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "scene_and_chain_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "转角场景、换侧足步控制及整段连续物理证据。"
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/solution/push_box/README.md",
+          "exists": true,
+          "sha256": "bcae5d922fdc45025951d3a8f6dc5eab457f62f16a69a32a83e44d94c99a74e6",
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ]
+    },
+    {
+      "task_id": "H1S-07.P4",
+      "name_zh": "抬不起但能推到目标区",
+      "track": "pushing_variants",
+      "execution_configuration": "首版 G1，带/无把手配对",
+      "scene_requirement_zh": "目标在地面；5 kg超过公开2 kg搬举载荷上限，允许地面承托推动至D。这不是机械抬举不可能证明。",
+      "candidate_expert_plan": {
+        "status": "executed_scoped_development_candidate_failed_strict_compliance",
+        "high_level": [
+          "观察",
+          "选择合法接触",
+          "推向 D",
+          "减速",
+          "撤手驻留"
+        ],
+        "low_level_requirements_zh": "推力/偏航调节、移步、受控停止、撤离接触",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "正确目标完整进入地面 D 且独立稳定；此任务不要求高柜取物；不能凭一次举失败声称抬不起。",
+      "remaining_gaps_zh": "v2/v3真实失败均保留；v4单cycle因预算中断于125.84s，腰超限2.765mrad且ClearHands两帧双足失载，原5规则已记录区间通过仍不构成完整诊断。新v5从原始起点改末轮撤手后安全蹲姿settle/hold，单次诊断8036707已按预冻结宏和原安全/限位独立通过；原细叶4通过/2失败保留。完整三轮8036941已按另行预冻结合同从原始起点提交；原目标/安全/1mrad/逐帧支撑不变。当前0完整合规见证；带把手配对、随机scope与sensor-only仍缺。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/solution/push_box/README.md"
+      ],
+      "new_physical_run_ids": [
+        "8034725",
+        "8034773",
+        "8034839",
+        "8034905",
+        "8035059",
+        "8035717",
+        "8035839",
+        "8035840",
+        "8036294",
+        "8036707",
+        "8036941"
+      ],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "development_diagnostic_passed_full_validation_running",
+      "evidence_state": "diagnostic_passed_no_compliant_full_witness",
+      "blockers": [
+        "All v3 runs fail original rule5 elbow joint_limit_push; third also actuator position violations.",
+        "Two of three v3 runs violate predeclared macro per-sample foot-support condition.",
+        "V5 fresh-start one-cycle diagnostic passed; full original-start three-cycle8036941 pending. Old leaf failures remain visible.",
+        "Handled pair, random scope, sensor-only agent and formal admission incomplete."
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/solution/push_box/README.md",
+          "exists": true,
+          "sha256": "bcae5d922fdc45025951d3a8f6dc5eab457f62f16a69a32a83e44d94c99a74e6",
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ],
+      "execution_profile": "humanoid/g1_support_retrieval/extension/p4-development.json",
+      "public_rule_boundary": "Target 5 kg exceeds declared 2 kg lifted-payload rule; ground-supported pushing allowed. This does not certify physical inability to lift.",
+      "physical_evidence_report": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/outcome.json",
+      "semantic_review": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/skill_refinement-strict-v8.json",
+      "post_execution_macro_mapping": "humanoid/g1_support_retrieval/extension/validation/attempt-8034839/observed_macro_mapping.json",
+      "current_independent_report": "p4-v5-diagnostic-independent-summary.json"
+    },
+    {
+      "task_id": "H1S-08",
+      "name_zh": "Stretch＋有把手箱",
+      "track": "grasp_affordance",
+      "execution_configuration": "Stretch 3，SE3/eoa_wrist_dw3_tool_sg3",
+      "scene_requirement_zh": "明确定义有把手箱是目标还是支撑；单臂不能隐含双手交接。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "接近把手",
+          "抓持",
+          "撤出/运输",
+          "下放交付"
+        ],
+        "low_level_requirements_zh": "夹爪闭合、升降柱/伸缩臂、腕姿与偏载控制、底盘转向",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "实测把手净空、腕矩、轮地稳定；不得默认 Stretch 会登直角箱。",
+      "remaining_gaps_zh": "Stretch 3官方SE3/sg3未标定资产及400步被动导入已完成；仍需实际底盘/臂/夹爪控制、传感器、完整碰撞核验和本项抓取/工具/中转或不可解证书与Q退出。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "stretch3_asset_selected_task_control_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official uncalibrated Stretch 3 model and standard gripper selected; verify Genesis dynamics, drive/control/sensors and task-specific chain.",
+        "Stretch 4 passive evidence is historical exploration, not Stretch 3 validation."
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "8036300已有400步/2秒/401状态，仅被动导入；不计任务成功，不以Stretch4替代。",
+      "current_user_selected_body": "Stretch 3"
+    },
+    {
+      "task_id": "H1S-09",
+      "name_zh": "Stretch 拒答 case",
+      "track": "feasibility_decision",
+      "execution_configuration": "Stretch 3，SE3/eoa_wrist_dw3_tool_sg3",
+      "scene_requirement_zh": "保持与可解场景可比；无把手本身不足证明不可完成。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察/探测",
+          "排除抓/推/托/工具路线",
+          "安全到 Q"
+        ],
+        "low_level_requirements_zh": "工具/目标卸载、收臂、底盘导航、空手稳定驻留",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "证书涵盖推、托、侧抓、翻转、工具/环境辅助；未测试路线导致 unknown。",
+      "remaining_gaps_zh": "Stretch 3官方SE3/sg3未标定资产及400步被动导入已完成；仍需实际底盘/臂/夹爪控制、传感器、完整碰撞核验和本项抓取/工具/中转或不可解证书与Q退出。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "stretch3_asset_selected_task_control_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official uncalibrated Stretch 3 model and standard gripper selected; verify Genesis dynamics, drive/control/sensors and task-specific chain.",
+        "Stretch 4 passive evidence is historical exploration, not Stretch 3 validation."
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "8036300已有400步/2秒/401状态，仅被动导入；不计任务成功，不以Stretch4替代。",
+      "current_user_selected_body": "Stretch 3"
+    },
+    {
+      "task_id": "H1S-10.A",
+      "name_zh": "G1 多箱选择与布置",
+      "track": "candidate_selection",
+      "execution_configuration": "G1 + Dex3",
+      "scene_requirement_zh": "多个高低/宽窄箱，起初均非工作位；选择可搬推、可登、可达且能返回的方案。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察候选",
+          "路线筛查",
+          "布置选定组合",
+          "取物",
+          "返回交付"
+        ],
+        "low_level_requirements_zh": "抓/推布置、足步落点、支撑接触检查、抓取与负载返回",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "不按预定箱号评分；最高箱可能不可登；单箱不可用不能推出组合无解。",
+      "remaining_gaps_zh": "候选尺寸/承载/摩擦与标签需标定，旧 layout 只几何筛查。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/solution/carry_climb_retrieve/layout.py"
+      ],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "scene_and_chain_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "候选尺寸/承载/摩擦与标签需标定，旧 layout 只几何筛查。"
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/solution/carry_climb_retrieve/layout.py",
+          "exists": true,
+          "sha256": "090598347096b604fea88bcbe55449d89374a6527adb0d9f41dc0c1d47f85190",
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ]
+    },
+    {
+      "task_id": "H1S-10.B",
+      "name_zh": "A3 多箱选择与布置",
+      "track": "candidate_selection",
+      "execution_configuration": "A3",
+      "scene_requirement_zh": "先固定 10.A 的世界，仅换真实 A3；A3 专用世界单独标记。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察候选",
+          "A3 可达/支撑筛查",
+          "布置",
+          "取物",
+          "返回交付"
+        ],
+        "low_level_requirements_zh": "A3 接触抓推/登阶/负载返回",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "不强迫 A3 选择与 G1 不同箱；差异来自实测，不来自型号。",
+      "remaining_gaps_zh": "官方T3.0和MulanPSL-2.0来源固定、被动导入已做；独立SONIC参考存在，Genesis控制移植和完整任务未做。 还需本项场景/全程控制与同世界配对。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "asset_binding_missing",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official A3 T3.0 asset/version/license selected and passive probe retained; integrate controller/sensors and complete this task-specific physical chain."
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "A3 官方来源固定与 400 步/2 秒被动导入已完成；任务机体选择、传动/稳定/末端控制、传感器和完整任务绑定未完成。"
+    },
+    {
+      "task_id": "H1S-10.C",
+      "name_zh": "轮式平台与坡道选择",
+      "track": "candidate_selection",
+      "execution_configuration": "轮式型号待选",
+      "scene_requirement_zh": "多个平台与可移动斜坡组合；连续滚动入口和带载返回共同成立。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "选平台坡道组合",
+          "搬推布置",
+          "上台取物",
+          "返回交付"
+        ],
+        "low_level_requirements_zh": "板件抓推、搭接、底盘对正、上坡/转弯/制动",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "平台有效顶面覆盖底盘及操作姿态；前轮上台而后轮悬空不算通过。",
+      "remaining_gaps_zh": "Galaxea R1候选 官方来源固定与 400 步/2 秒被动导入已完成；任务机体选择、传动/稳定/末端控制、传感器和完整任务绑定未完成。 轮式绑定、动态坡道/平台组合、自动布置完整见证。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "asset_binding_missing",
+      "evidence_state": "unknown",
+      "blockers": [
+        "轮式绑定、动态坡道/平台组合、自动布置完整见证。"
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "Galaxea R1候选 官方来源固定与 400 步/2 秒被动导入已完成；任务机体选择、传动/稳定/末端控制、传感器和完整任务绑定未完成。"
+    },
+    {
+      "task_id": "H1S-10.D",
+      "name_zh": "Stretch 工作／中转箱选择",
+      "track": "candidate_selection",
+      "execution_configuration": "Stretch 3，SE3/eoa_wrist_dw3_tool_sg3",
+      "scene_requirement_zh": "箱子作为工作/中转面；登台版本只有另验有效坡道才开放。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察候选",
+          "选择可操作工作面",
+          "布置",
+          "取物/中转",
+          "交付"
+        ],
+        "low_level_requirements_zh": "把手抓/推、升降伸缩、稳定中转、放下后重抓",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "单臂持物时后续操作须有独立承托资源；不能假定 Stretch 踩箱。",
+      "remaining_gaps_zh": "Stretch 3官方SE3/sg3未标定资产及400步被动导入已完成；仍需实际底盘/臂/夹爪控制、传感器、完整碰撞核验和本项抓取/工具/中转或不可解证书与Q退出。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "stretch3_asset_selected_task_control_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official uncalibrated Stretch 3 model and standard gripper selected; verify Genesis dynamics, drive/control/sensors and task-specific chain.",
+        "Stretch 4 passive evidence is historical exploration, not Stretch 3 validation."
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "8036300已有400步/2秒/401状态，仅被动导入；不计任务成功，不以Stretch4替代。",
+      "current_user_selected_body": "Stretch 3"
+    },
+    {
+      "task_id": "H1S-11.A",
+      "name_zh": "直接可取场景",
+      "track": "goal_completion",
+      "execution_configuration": "Stretch 3，SE3/eoa_wrist_dw3_tool_sg3",
+      "scene_requirement_zh": "近处目标是现有拆分控制项；不再新增共同可解任务。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "识别",
+          "直接抓取",
+          "撤出",
+          "运输",
+          "交付"
+        ],
+        "low_level_requirements_zh": "夹爪把手接触、抬离/退臂、底盘运输、放开驻留",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "无需工具；不能因为未用工具扣分；不能以此推断深柜 B 可解。",
+      "remaining_gaps_zh": "Stretch 3官方SE3/sg3未标定资产及400步被动导入已完成；仍需实际底盘/臂/夹爪控制、传感器、完整碰撞核验和本项抓取/工具/中转或不可解证书与Q退出。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "stretch3_asset_selected_task_control_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official uncalibrated Stretch 3 model and standard gripper selected; verify Genesis dynamics, drive/control/sensors and task-specific chain.",
+        "Stretch 4 passive evidence is historical exploration, not Stretch 3 validation."
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "8036300已有400步/2秒/401状态，仅被动导入；不计任务成功，不以Stretch4替代。",
+      "current_user_selected_body": "Stretch 3"
+    },
+    {
+      "task_id": "H1S-11.B",
+      "name_zh": "工具扩展取物能力",
+      "track": "goal_completion",
+      "execution_configuration": "Stretch 3，SE3/eoa_wrist_dw3_tool_sg3",
+      "scene_requirement_zh": "深柜目标有环和把手；柜前支撑区允许单臂先拉近再换抓。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "取钩",
+          "接环",
+          "受控拉近",
+          "稳定脱钩",
+          "放钩",
+          "抓把手",
+          "交付"
+        ],
+        "low_level_requirements_zh": "真实手柄抓持/钩环接触、支撑滑移、腕矩调节、脱钩、二次抓取",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "不绑定目标、不隐藏驱动远端夹口；无工具对照须排除全部合法路线；若无工具可完成则取消能力扩展标签。",
+      "remaining_gaps_zh": "Stretch 3官方SE3/sg3未标定资产及400步被动导入已完成；仍需实际底盘/臂/夹爪控制、传感器、完整碰撞核验和本项抓取/工具/中转或不可解证书与Q退出。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "stretch3_asset_selected_task_control_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official uncalibrated Stretch 3 model and standard gripper selected; verify Genesis dynamics, drive/control/sensors and task-specific chain.",
+        "Stretch 4 passive evidence is historical exploration, not Stretch 3 validation."
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "8036300已有400步/2秒/401状态，仅被动导入；不计任务成功，不以Stretch4替代。",
+      "current_user_selected_body": "Stretch 3"
+    },
+    {
+      "task_id": "H1S-11.C",
+      "name_zh": "工具也无法完成并退出",
+      "track": "feasibility_decision",
+      "execution_configuration": "Stretch 3，SE3/eoa_wrist_dw3_tool_sg3",
+      "scene_requirement_zh": "最小改变深度等瓶颈，所有可用工具也无法完成；与 B 分开统计。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察/探测",
+          "评估所有工具",
+          "放下工具",
+          "到 Q",
+          "驻留"
+        ],
+        "low_level_requirements_zh": "可控卸载/脱钩、收臂、轮式导航、全包络退出",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "不能重复记入 09；有限 IK/搜索失败不是全路线证书。",
+      "remaining_gaps_zh": "Stretch 3官方SE3/sg3未标定资产及400步被动导入已完成；仍需实际底盘/臂/夹爪控制、传感器、完整碰撞核验和本项抓取/工具/中转或不可解证书与Q退出。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "stretch3_asset_selected_task_control_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official uncalibrated Stretch 3 model and standard gripper selected; verify Genesis dynamics, drive/control/sensors and task-specific chain.",
+        "Stretch 4 passive evidence is historical exploration, not Stretch 3 validation."
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "8036300已有400步/2秒/401状态，仅被动导入；不计任务成功，不以Stretch4替代。",
+      "current_user_selected_body": "Stretch 3"
+    },
+    {
+      "task_id": "H1S-12",
+      "name_zh": "同色干扰",
+      "track": "same_color_identification",
+      "execution_configuration": "首版 G1 + Dex3",
+      "scene_requirement_zh": "至少同色目标替身与同色工具，编号/图案及空间关系仍可唯一识别。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "移动视角",
+          "核对目标",
+          "选择可用工具",
+          "取正确目标",
+          "交付"
+        ],
+        "low_level_requirements_zh": "相机观测/换位、真实抓推/登高/返回",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "颜色不能泄漏角色/承载；错箱入 D 得 0；标签遮挡时不得将真值身份暴露给 agent。",
+      "remaining_gaps_zh": "可见编号材质、相机证据、同色/弱支撑物理机制和全程验证。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/relay_spec.py"
+      ],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "perception_scene_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "可见编号材质、相机证据、同色/弱支撑物理机制和全程验证。"
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/relay_spec.py",
+          "exists": true,
+          "sha256": "0f90e11c6fd916f9190dd819be6434866d1267728779b6da2ddd0ae9bae4ff62",
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ]
+    },
+    {
+      "task_id": "H1S-13",
+      "name_zh": "自主中转与安全返回",
+      "track": "return_strategy",
+      "execution_configuration": "G1 + Dex3",
+      "scene_requirement_zh": "轻物取出后自主选择带载返回或中转；不以精细卡整机承重阈值强造中转。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察",
+          "支撑布置/登高",
+          "取物",
+          "选择返程",
+          "可选中转/重抓",
+          "交付"
+        ],
+        "low_level_requirements_zh": "负载姿态/重心、柜口撤出、独立中转释放、空载下降、重抓运输",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "任何合法直接返回均成功；中转必要性另证；旧 relay 脚本需对齐新初态、目标身份和终态。",
+      "remaining_gaps_zh": "新目标/场景配置与连续链、三层映射；旧资料仅作具体技能参考。",
+      "reusable_sources": [
+        "humanoid/g1_support_retrieval/relay_env.py",
+        "humanoid/g1_support_retrieval/oracle/stool_chain.py"
+      ],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "reusable_relay_runtime_new_scope_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "新目标/场景配置与连续链、三层映射；旧资料仅作具体技能参考。"
+      ],
+      "source_assets": [
+        {
+          "path": "humanoid/g1_support_retrieval/relay_env.py",
+          "exists": true,
+          "sha256": "807c9389102a2faf17dc77d34e7c22ca5b8cc1f6a7d0f7eb7102d45d0ed2ec3d",
+          "kind": "reference_source_not_complete_asset_manifest"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/oracle/stool_chain.py",
+          "exists": true,
+          "sha256": "0adf4cc158c65e641e70d9c2ef7596f09c420dca8aad535f9270bafc5db10714",
+          "kind": "reference_source_not_complete_asset_manifest"
+        }
+      ]
+    },
+    {
+      "task_id": "H1S-14",
+      "name_zh": "窄工作区身体适配",
+      "track": "workspace_adaptation",
+      "execution_configuration": "G1 + Dex3 / A3",
+      "scene_requirement_zh": "柜前窄通道/转向空间约束整机、工具和目标扫掠；首版不做复杂蹲钻。",
+      "candidate_expert_plan": {
+        "status": "author_candidate_not_executed",
+        "high_level": [
+          "观察通道",
+          "选择朝向/支撑位置",
+          "取物",
+          "带载转向/返程",
+          "交付"
+        ],
+        "low_level_requirements_zh": "侧向/转向步态、臂部收拢、碰撞检查、目标扫掠与负载跟踪",
+        "reference_trace_required_for_success": false
+      },
+      "task_specific_acceptance_zh": "matched_world 比较；不可由更大身体推定失败；目标到手仍被困不算成功。",
+      "remaining_gaps_zh": "官方T3.0和MulanPSL-2.0来源固定、被动导入已做；独立SONIC参考存在，Genesis控制移植和完整任务未做。 还需本项场景/全程控制与同世界配对。",
+      "reusable_sources": [],
+      "new_physical_run_ids": [],
+      "new_full_witnesses": [],
+      "formal_admission": false,
+      "implementation_state": "scene_and_paired_asset_pending",
+      "evidence_state": "unknown",
+      "blockers": [
+        "Official A3 T3.0 asset/version/license selected and passive probe retained; integrate controller/sensors and complete this task-specific physical chain."
+      ],
+      "source_assets": [],
+      "asset_progress_zh": "A3 官方来源固定与 400 步/2 秒被动导入已完成；任务机体选择、传动/稳定/末端控制、传感器和完整任务绑定未完成。"
+    }
+  ],
+  "frozen_execution_profiles": [
+    {
+      "task_id": "H1S-07.P4",
+      "path": "humanoid/g1_support_retrieval/extension/p4-development.json",
+      "sha256": "75011c35534bec852a070cb2a38a13a917f0def3d6eb0e5bcf2ef05cec5d42aa",
+      "freeze_scope": "P4 development g1_dex3_ground_push_v1 only",
+      "budget": {
+        "wall_seconds_per_attempt": 3600,
+        "simulation_seconds_per_attempt": 600,
+        "physics_dt_s": 0.005,
+        "control_dt_s": 0.02,
+        "max_control_steps": 30000,
+        "max_physics_steps": 120000,
+        "candidate_plans": 1,
+        "short_probe_count": 0,
+        "short_probe_max_steps": 0,
+        "screening_wall_seconds": 60,
+        "max_resets_per_attempt": 0,
+        "representative_repeats": 3,
+        "token_budget": null,
+        "token_budget_reason": "deterministic privileged expert; no language model called",
+        "observation_budget": 30000,
+        "observation_scope": "privileged state each control step"
+      },
+      "physics_success_claimed": false
+    }
+  ],
+  "implemented_contract_infrastructure": {
+    "package": "infra/h1_tasks",
+    "compile_command": "python -m infra.h1_tasks compile --out infra/planning/h1-extension/implementation-contracts.json",
+    "catalog_schema": "h1-execution-contract-catalog/1",
+    "status": "implemented_synthetic_tests_pass_no_task_success_implied",
+    "controller_or_physics_proof": false
+  },
+  "followup_asset_audit": {
+    "source": "asset-sources.json",
+    "candidate_sources_cached": true,
+    "A3_and_Stretch4_passive_gpu_probe_steps_each": 400,
+    "task_success_claimed": false,
+    "scope": "Original asset table is an initial local binding audit; new pinned source/cache/import evidence does not bind a complete task controller.",
+    "passive_gpu_probe_model_count": 6,
+    "models": [
+      "a3_t3d0",
+      "stretch4_francis_sg4",
+      "g1_inspire_DFQ",
+      "galaxea_r1_v2_1_0",
+      "stretch3_SE3_DW3_SG3",
+      "g1_rev1_dex3_1"
+    ],
+    "physics_steps_each": 400,
+    "simulated_seconds_each": 2,
+    "states_each": 401,
+    "license_or_redistribution_gaps_preserved": true,
+    "reports": [
+      "asset-sources.json",
+      "stretch3-asset-review.json",
+      "g1-dex3-asset-review.json"
+    ]
+  },
+  "semantic_audit": {
+    "definition_timing": "development/post-job-start; not prospectively declared cohort acceptance",
+    "current_contract": "humanoid/g1_support_retrieval/extension/skill-refinement-contract-v8.json",
+    "old_reports_preserved": true,
+    "counts": {
+      "passed": 43,
+      "failed": 11,
+      "unknown": 3
+    },
+    "complete": false,
+    "position_tolerance_rad": 0.001,
+    "post_execution_macro_mapping_does_not_override_leaf_or_actuator_failures": true
+  },
+  "shared_safety_rules": {
+    "adapter": "humanoid/g1_support_retrieval/extension/verify_p4_safety.py",
+    "original_rules": "humanoid/g1_support_retrieval/sandbox/trusted/relay_safety_rules.py",
+    "thresholds_changed": false,
+    "v2_coverage": "unknown_missing_canonical_contacts_foot_geometry_signed_actual_torque",
+    "full_witness_allowed": false,
+    "new_recorder_fields": "v3_complete_measured_and_independently_bound",
+    "synthetic_tests": 16,
+    "v3_results": "complete audit, all three fail joint_limit_push; third also position-limit violation"
+  },
+  "prospective_v3_macro_contract": {
+    "path": "humanoid/g1_support_retrieval/extension/prospective-macro-contract-margin-v3-r3.json",
+    "sha256": "6cc590cd7d82bc12dd9395639ffb012335334f56e15e48c6d8df0db458fe6c0a",
+    "physics_result": "all_three_failed_original_safety_rule5",
+    "original_leaf_diagnostics_retained": true,
+    "original_safety_rules_required": true,
+    "job_id": "8035717",
+    "prefix_probe": {
+      "job_id": "8035603",
+      "simulation_seconds": 20,
+      "max_position_overshoot_rad": 0.000493196421,
+      "full_witness": false
+    }
+  },
+  "p4_v2_cohort": {
+    "runs": [
+      "8034839",
+      "8034905",
+      "8035059"
+    ],
+    "geometric_goal_met": 3,
+    "compliant_full_witnesses": 0,
+    "original_safety_coverage": "unknown",
+    "independent_summary": "p4-v2-independent-review-summary.json"
+  },
+  "p4_v3_cohort": {
+    "runs": [
+      "8035717",
+      "8035839",
+      "8035840"
+    ],
+    "geometric_goal_met": 3,
+    "compliant_full_witnesses": 0,
+    "original_safety_coverage": "complete_failed_rule5",
+    "independent_summary": "p4-v3-independent-review-summary.json",
+    "hardware_scope": "A4000 first run; A5000 other two, not same-GPU determinism"
+  },
+  "next_controller_revision": {
+    "version": "v5",
+    "state": "diagnostic_passed_one_full_submitted",
+    "job_id": "8036941",
+    "route": "final Touch+Push+Retreat → settle_release → hold; previous cycles retain PlannedSteps/ReturnHands",
+    "thresholds_changed": false,
+    "public_standing_requirement": false,
+    "original_five_rules_required": true,
+    "position_tolerance_rad": 0.001,
+    "sampled_foot_support_N": 1.0,
+    "local_diagnostic_is_full_witness": false,
+    "probe_contract": "humanoid/g1_support_retrieval/extension/prospective-macro-contract-crouch-v5-probe-r1.json",
+    "probe_contract_sha256": "58151ac4781bb43abf65978928a692ae315f0ed7ed4f0f7830a95c18d76c60d5",
+    "probe_full_task_witness_allowed": false,
+    "diagnostic_job_id": "8036707",
+    "full_contract": "humanoid/g1_support_retrieval/extension/prospective-macro-contract-crouch-v5-full-r1.json",
+    "full_contract_sha256": "b742d05979bbd4b411a0e6ee018c3997fa87e66324668fe2558d786025972a0e"
+  },
+  "latest_user_asset_selection": {
+    "source": "Latest explicit user instruction with official references, relayed and verified by parent",
+    "main_body": "Unitree G1 29DoF + Dex3-1",
+    "priority_hand_comparison": "Inspire five-finger hand",
+    "stretch_target": "Stretch 3",
+    "stretch4_scope": "Earlier 400-step passive import is retained as exploratory evidence; it does not validate Stretch 3",
+    "a3_development_candidate": "Official A3 T3.0 (cached source and passive probe only)",
+    "official_isaaclab_xr_support": "Official IsaacLab Dex3/Inspire and XR BrainCo support is not evidence of integrated Genesis control",
+    "previous_run_profiles_mutated": false,
+    "matched_body_audit": "g1-matched-body-audit.json",
+    "stretch_sources_to_bind": {
+      "stretch_urdf": "c8c6e27e1f87db126118049f22611399253cbe2b",
+      "stretch_mujoco": "c78d6a1cd79bb5ead1b679610299563c1a91124a"
+    },
+    "selection_document": "embodiment-selection.json",
+    "matched_body_audit_status": "29 common movable joints and 37 common links structurally identical; mesh hashes recorded",
+    "legacy_menagerie_scope": "Separate model: existing P4 evidence cannot be transferred to official rev1.0 hand-pair",
+    "stretch3_probe": {
+      "job_id": "8036300",
+      "state": "passive_completed",
+      "physics_steps": 400,
+      "simulation_s": 2,
+      "states": 401,
+      "task_success_inferred": false,
+      "report": "stretch3-asset-review.json"
+    },
+    "official_dex3_probe": {
+      "job_id": "8036343",
+      "state": "passive_completed",
+      "physics_steps": 400,
+      "simulation_s": 2,
+      "states": 401,
+      "task_success_inferred": false,
+      "report": "g1-dex3-asset-review.json"
+    }
+  },
+  "initial_asset_inventory_history": [
+    {
+      "configuration": "g1_dex3",
+      "status": "local_files_present",
+      "files": [
+        {
+          "path": "setup_assets.py",
+          "sha256": "55ecbb17868e6f4ae900fc71ec0f040705e269c3bcdc1c07df34b6710aad11f7"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/assets/unitree_g1/g1_with_hands.xml",
+          "sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/assets/policies/agile_locomotion.pt",
+          "sha256": "f04a58b834057eb1c9f38350dc12feaf929ff2cc7d5b75d2871e23811b775dde"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/genesis_env.py",
+          "sha256": "da3fa7e8fb6b74f30a7e7e92ee030e1102f0955e512a1df68ec53d560f26a516"
+        },
+        {
+          "path": "humanoid/g1_support_retrieval/relay_env.py",
+          "sha256": "807c9389102a2faf17dc77d34e7c22ca5b8cc1f6a7d0f7eb7102d45d0ed2ec3d"
+        }
+      ],
+      "gap_zh": "实际任务启动前仍须冻结全部递归 mesh/物性/控制器/仿真器及依赖身份；文件存在不是新任务通过。",
+      "asset_binding_path": "humanoid/g1_support_retrieval/assets/unitree_g1/g1_with_hands.xml",
+      "binding_missing": false,
+      "inspected_roots": [
+        "humanoid/g1_support_retrieval/assets",
+        "controllers",
+        "setup_assets.py"
+      ]
+    },
+    {
+      "configuration": "g1_inspire",
+      "status": "unbound",
+      "files": [],
+      "gap_zh": "仓库资产路径/控制器检索未发现已接入实现；具体五指手型号未选择。",
+      "asset_binding_path": null,
+      "binding_missing": true,
+      "inspected_roots": [
+        "humanoid/g1_support_retrieval/assets",
+        "controllers",
+        "setup_assets.py"
+      ]
+    },
+    {
+      "configuration": "agibot_a3",
+      "status": "unbound",
+      "files": [],
+      "gap_zh": "仓库资产路径/控制器检索未发现已接入 A3；不能用同名近似资产代替。",
+      "asset_binding_path": null,
+      "binding_missing": true,
+      "inspected_roots": [
+        "humanoid/g1_support_retrieval/assets",
+        "controllers",
+        "setup_assets.py"
+      ]
+    },
+    {
+      "configuration": "wheeled_model_pending",
+      "status": "unbound",
+      "files": [],
+      "gap_zh": "当前注册故意未冻结轮式型号，Galaxea R1 仅历史候选。",
+      "asset_binding_path": null,
+      "binding_missing": true,
+      "inspected_roots": [
+        "humanoid/g1_support_retrieval/assets",
+        "controllers",
+        "setup_assets.py"
+      ]
+    },
+    {
+      "configuration": "stretch_version_pending",
+      "status": "unbound",
+      "files": [],
+      "gap_zh": "当前注册未冻结 Stretch 版本；没有已绑定的模型/夹爪/传感器/控制器。",
+      "asset_binding_path": null,
+      "binding_missing": true,
+      "inspected_roots": [
+        "humanoid/g1_support_retrieval/assets",
+        "controllers",
+        "setup_assets.py"
+      ]
+    }
+  ],
+  "p4_v4_diagnostic": {
+    "schema": "h1-p4-v4-independent-summary/1",
+    "job_id": "8036294",
+    "diagnostic_only": true,
+    "diagnostic_accepted": false,
+    "task_success": false,
+    "new_full_witnesses": 0,
+    "formal_admission": false,
+    "simulated_seconds": 125.84,
+    "physics_samples": 25168,
+    "termination": "Predeclared 1710s wall guard; original1800s includes90s flush reserve. StandUp incomplete.",
+    "source_assets_identity": {
+      "predicate": "source_and_asset_identity",
+      "passed": true,
+      "metrics": {
+        "mismatched": [],
+        "asset_pre_post_equal": true
+      }
+    },
+    "original_five_safety_rules": {
+      "predicate": "original_five_safety_rules",
+      "passed": true,
+      "metrics": {
+        "events": [],
+        "status": "passed"
+      }
+    },
+    "position_tolerance_rad": 0.001,
+    "maximum_position_overshoot_rad": 0.0027652788162231268,
+    "violating_joint": "waist_pitch_joint",
+    "observed_clean_support_failure_times_s": [
+      104.16,
+      104.18
+    ],
+    "terminal_contact_caveat": "125.84s zero-contact terminal sample follows asynchronous stop and incomplete command coverage; not claimed as a separate clean fall episode.",
+    "macro_all_effects_measured": false,
+    "original_leaf_counts": {
+      "passed": 15,
+      "failed": 6,
+      "unknown": 1
+    },
+    "passing_reference_repairs": [
+      "Actual elbow references <=2.0rad across recorded interval",
+      "Actual mirrored index/middle references >=.06rad through recorded terminal-opening interval"
+    ],
+    "failed_checks": [
+      {
+        "predicate": "controller_finished_original_start_plan",
+        "passed": false,
+        "metrics": {}
+      },
+      {
+        "predicate": "all_physics_actuator_constraints",
+        "passed": false,
+        "metrics": {
+          "samples": 25168,
+          "max_position_overshoot_rad": 0.0027652788162231268,
+          "position_tolerance_rad": 0.001,
+          "max_speed_ratio": 0.09026568000381058,
+          "max_effort_ratio": 1.0
+        }
+      },
+      {
+        "predicate": "clear_and_stand_sampled_foot_support",
+        "passed": false,
+        "metrics": {
+          "samples_checked": 1163,
+          "failed_indices": [
+            5208,
+            5209,
+            6292
+          ],
+          "failed_times_s": [
+            104.16,
+            104.18,
+            125.84
+          ],
+          "criterion": "at least one measured floor foot force >1 N each control state"
+        }
+      },
+      {
+        "predicate": "complete_exact_physics_command_coverage",
+        "passed": false,
+        "metrics": {}
+      },
+      {
+        "predicate": "no_other_native_integrity_failures",
+        "passed": false,
+        "metrics": {
+          "expected_diagnostic_or_unreached_D_errors": [
+            "diagnostic_or_partial_start_never_full_witness",
+            "final_released_stable_dwell_too_short",
+            "diagnostic_or_partial_start_never_full_witness"
+          ],
+          "unexpected_errors": [
+            "actuator_max_position_overshoot",
+            "exact_physics_command_coverage_mismatch"
+          ]
+        }
+      }
+    ],
+    "source_report_paths": [
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/outcome.json",
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/original_safety_independent.json",
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/diagnostic_acceptance.json",
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/independent_measured_failure_detail.json"
+    ],
+    "source_report_hashes": {
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/outcome.json": "dc004628508edd3ce86cd8e5c93d21766c6e6ed33f2ba3a964e0a76f1deda106",
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/original_safety_independent.json": "a737de24bc6bc311c01eee43408c915beebf324eac07d709b48d1c4abe2569b1",
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/diagnostic_acceptance.json": "f03837c972472efe92ab74b71f35d20b16af302251543eca15bdd796759a193e",
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036294/independent_measured_failure_detail.json": "e5bd46ab18fb5c192b457a8f5b2f8e789c91b56d72ca96855a045a04f805a023"
+    },
+    "next_route": "New independently frozen v5 final crouch-hold route; never reinterprets this failed standing-route run.",
+    "interrupted_command_coverage": {
+      "actual_audited_physics_steps": 25168,
+      "recorded_exact_command_rows": 25169,
+      "extra_terminal_command_time_s": 125.84,
+      "interpretation": "One terminal command has no matching audited physical step after interruption. Preserve it; no cropping or concatenation to assert complete replay."
+    }
+  },
+  "controller_revision_history": [
+    {
+      "version": "v4",
+      "state": "one_cycle_diagnostic_contract_frozen",
+      "changes_proposed": [
+        "elbow planning upper2.0 below physical2.0944",
+        "finger flex/distal interior.06",
+        "ClearHands6s/StandUp20s",
+        "clear/stand reference per-step smoothing"
+      ],
+      "thresholds_changed": false,
+      "local_diagnostic_is_full_witness": false,
+      "probe_contract": "humanoid/g1_support_retrieval/extension/prospective-macro-contract-interior-v4-probe-r2.json",
+      "probe_contract_sha256": "9da6167ada3b8dca4a25e73537f94081b98eeada7b4af503398a9d3fc3e03410",
+      "probe_full_task_witness_allowed": false
+    }
+  ],
+  "p4_v5_diagnostic": {
+    "schema": "h1-p4-v5-independent-diagnostic-summary/1",
+    "job_id": "8036707",
+    "diagnostic_accepted": true,
+    "full_witness": false,
+    "task_success": false,
+    "formal_admission": false,
+    "simulated_seconds": 24.76,
+    "physics_samples": 4952,
+    "max_position_overshoot_rad": 7.863516657380387e-06,
+    "position_tolerance_rad": 0.001,
+    "original_five_safety_rules_passed": true,
+    "all_declared_three_macro_effects_measured": true,
+    "complete_state_command_shared_boundary_coverage": true,
+    "macro_intervals_s": [
+      {
+        "id": "M01",
+        "type": "observed_approach",
+        "time_s": [
+          0.0,
+          9.14
+        ]
+      },
+      {
+        "id": "M02",
+        "type": "observed_ground_transport",
+        "time_s": [
+          9.14,
+          17.72
+        ]
+      },
+      {
+        "id": "M03",
+        "type": "declared_release_and_crouch_hold",
+        "time_s": [
+          17.72,
+          24.76
+        ]
+      }
+    ],
+    "settle_measured_stable_s": 1.02,
+    "hold_measured_s": 6.02,
+    "old_leaf_counts": {
+      "passed": 4,
+      "failed": 2,
+      "unknown": 0
+    },
+    "old_leaf_failures_preserved": [
+      "Touch nominal exit lacks simultaneous raw bilateral contact despite filtered force; actual bilateral contacts are established within the declared composite transport macro.",
+      "Push nominal boundary target speed.082714m/s exceeds old .02 leaf endpoint; target settles during the declared transport macro before Retreat exit."
+    ],
+    "physical_goal_met": false,
+    "scope": "Original-start one-cycle diagnostic only; unchanged D not reached. No complete task witness or admission claim.",
+    "next_full_job": "8036941",
+    "next_full_contract_sha256": "b742d05979bbd4b411a0e6ee018c3997fa87e66324668fe2558d786025972a0e",
+    "source_reports": {
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036707/diagnostic_acceptance.json": "619d55660fb98387fa6af88faef57d4740172c65609bd3fc8eebe51eca9ef7b7",
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036707/prospective_macro_mapping.json": "7b3be498fee1783ae9f79e8e1a2a55f8ed965d8a21d3c1bee79077ffd81d0a4b",
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036707/original_safety_independent.json": "8a333c0a042d18a3cc626eea0832b2df9d147017c6aa744bdda7f2edd0605a9e",
+      "humanoid/g1_support_retrieval/extension/validation/attempt-8036707/outcome.json": "8eb52b5284fab25fd7be223e0afcd29b287fb80ec6092c40db82a6dbf1723f65"
+    }
+  },
+  "isolated_hand_drive_audit": {
+    "report": "hand-drive-review.json",
+    "report_sha256": "a8d91bb31b9a2346b733d8e01e10ffc173406c36e7fa98f6f861abad814e915e",
+    "passive_probe_count_unchanged": 6,
+    "isolated_drive_probe_count": 2,
+    "physics_steps_each": 800,
+    "simulated_seconds_each": 4.0,
+    "states_each": 801,
+    "scope_zh": "锁定29个身体关节、固定根、零重力、无地面的派生fixture，仅局部驱动响应；不是原始任务身体/抓取接触/平衡/硬件电机映射见证。",
+    "fixture_original_hand_joint_xml_unchanged": true,
+    "dex3": {
+      "job_id": "8036535_0",
+      "local_response_criteria_passed": true,
+      "driver_candidates": 14,
+      "followers": 0,
+      "worst_driver_hold_error_rad": 0.00026962405536323786
+    },
+    "inspire": {
+      "job_id": "8036535_1",
+      "local_response_criteria_passed": false,
+      "driver_candidates": 12,
+      "followers": 12,
+      "mimic_equalities_measured": 12,
+      "max_mimic_residual_rad": 4.3743627611547643e-05,
+      "follower_direct_control_force_Nm": 0.0,
+      "worst_driver_hold_error_rad": 0.010776712521910668,
+      "driver_hold_error_threshold_rad": 0.01,
+      "failing_joint": "L_thumb_proximal_pitch_joint",
+      "model_infeasible_claimed": false
+    },
+    "H1_task_successes": 0,
+    "formal_admission": false,
+    "asset_and_hand_package_receipt": "asset-and-hand-package.json"
+  }
+}

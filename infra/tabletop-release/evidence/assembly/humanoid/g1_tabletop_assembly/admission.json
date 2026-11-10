@@ -1,0 +1,160 @@
+{
+  "schema": "infra-admission/1",
+  "task_id": "g1_tabletop_assembly",
+  "title": "G1 base tabletop assembly (first layer)",
+  "version": "0.3",
+  "updated": "2026-10-23",
+  "admitted": false,
+  "status": "deferred_pending_human_acceptance",
+  "sandbox": "sandbox",
+  "release": {
+    "scope": "first_layer",
+    "main_benchmark_included": false,
+    "released_layers": [
+      1
+    ],
+    "decision_record": "acceptance/first_layer_20261023/scope_decision.json"
+  },
+  "scene": "First layer only; Base objects only, 120 seconds.",
+  "gates": {
+    "reference_expert": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/automatic_audit.json",
+        "acceptance/first_layer_20261023/coverage/summary.json"
+      ],
+      "note": "All frozen first-layer inputs pass from generator initial states. Privileged physical reference; no human acceptance implied."
+    },
+    "official_trajectories": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/dataset/manifest.json",
+        "acceptance/first_layer_20261023/subgoals/summary.json"
+      ],
+      "note": "One first-layer demonstration and two released subgoal continuations. Original strict suffix outcomes retained; bounded final-target hold is at most one second within the original deadline."
+    },
+    "coverage": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/coverage/inputs.json",
+        "acceptance/first_layer_20261023/automatic_audit.json"
+      ],
+      "note": "All 8 preselected first-layer cases pass with frozen sources and complete measured-state videos. Finite coverage only."
+    },
+    "reference_rerun_spread": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/followups/layer1_repetition_spread.json"
+      ],
+      "note": "Three fresh reference executions on the same nominal input pass the recorded stage-time and score tolerance."
+    },
+    "verifier_validity": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/final_pipeline_evidence.json",
+        "sandbox/pipeline.json",
+        "acceptance/first_layer_20261023/automatic_audit.json",
+        "acceptance/first_layer_20261023/preflight_evidence.json"
+      ],
+      "note": "Final pipeline checks first-layer positives, clean zero-score no-ops, negatives and a physical privileged teleport exploit. All first-layer checks passed; final-source replay is recorded separately."
+    },
+    "monitors_calibrated": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/final_pipeline_evidence.json",
+        "sandbox/pipeline.json",
+        "acceptance/first_layer_20261023/automatic_audit.json",
+        "acceptance/first_layer_20261023/preflight_evidence.json"
+      ],
+      "note": "First-layer positives have no monitor flags; synthetic and physical exploit checks require rejection. All first-layer checks passed; final-source replay is recorded separately."
+    },
+    "predicate_labels": {
+      "status": "pending",
+      "evidence": [
+        "acceptance/first_layer_20261023/review/manual_review_template.json"
+      ],
+      "note": "Human video timestamps and agreement with automatic predicates remain blank."
+    },
+    "shortcut_audit": {
+      "status": "partial",
+      "evidence": [
+        "acceptance/first_layer_20261023/shortcuts/cap_before_sleeve/shortcut.json",
+        "acceptance/first_layer_20261023/review/manual_review_template.json"
+      ],
+      "note": "First-layer physical negative witnesses are recorded. Signed human shortcut review remains pending; finite negatives do not prove all policies impossible."
+    },
+    "video_review": {
+      "status": "pending",
+      "evidence": [
+        "acceptance/first_layer_20261023/review/index.html",
+        "acceptance/first_layer_20261023/review/manual_review_template.json"
+      ],
+      "note": "Complete videos and evidence are supplied. Human answers, names, signatures and times remain blank."
+    },
+    "independent_reproduction": {
+      "status": "partial",
+      "evidence": [
+        "acceptance/first_layer_20261023/review/automatic_materials.json"
+      ],
+      "note": "Fresh automatic execution and independent action replay pass. A second person has not yet reproduced the supplied first-layer commands."
+    },
+    "sandbox_isolation": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/final_pipeline_evidence.json",
+        "sandbox/pipeline.json",
+        "acceptance/first_layer_20261023/preflight_evidence.json"
+      ],
+      "note": "Final all-tier pipeline must pass container escape probes and integrity checks. All first-layer checks passed; final-source replay is recorded separately."
+    },
+    "grading_mode": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/final_pipeline_evidence.json",
+        "sandbox/pipeline.json",
+        "acceptance/first_layer_20261023/preflight_evidence.json"
+      ],
+      "note": "Three fresh randomized first-layer grading episodes must yield clean zero scores for no-op. All first-layer checks passed; final-source replay is recorded separately."
+    },
+    "static_checks": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/final_pipeline_evidence.json",
+        "sandbox/pipeline.json",
+        "acceptance/first_layer_20261023/preflight_evidence.json"
+      ],
+      "note": "Task, runtime, sandbox and first-layer boundary regression suites are included in the final pipeline. All first-layer checks passed; final-source replay is recorded separately."
+    },
+    "randomisation": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/coverage/inputs.json",
+        "acceptance/first_layer_20261023/coverage/summary.json",
+        "randomization.py"
+      ],
+      "note": "Released first-layer randomization remains active. Original input selection is preserved without success-based seed filtering."
+    },
+    "automatic_pipeline": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/first_layer_20261023/final_pipeline_evidence.json",
+        "sandbox/pipeline.json",
+        "acceptance/first_layer_20261023/preflight_evidence.json"
+      ],
+      "note": "The final evidence record reports the actual complete all-tier result and source digest. Release checker independently requires it to match current sources. All first-layer checks passed; final-source replay is recorded separately."
+    }
+  },
+  "task_items": {
+    "tool_layer_design": {
+      "status": "not_applicable",
+      "evidence": [
+        "acceptance/first_layer_20261023/scope_decision.json"
+      ],
+      "note": "User selected first layer only. This version does not certify complete three-layer main-benchmark design or R9."
+    }
+  },
+  "pending_decisions": [
+    "Signed human video, stage-label and first-layer shortcut review.",
+    "Second-person independent reproduction."
+  ]
+}

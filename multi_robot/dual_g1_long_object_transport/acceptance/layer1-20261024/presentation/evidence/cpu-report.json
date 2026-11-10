@@ -1,0 +1,112 @@
+{
+  "schema": "m2-layer1-existing-cpu-checks/1",
+  "created_utc": "2026-10-24T13:32:44.034460+00:00",
+  "scope": "Fixed 0.25 kg / 2.25 m box, 1.8 m corridor; existing CPU checks only",
+  "cwd": "D:\\rsi_vla\\robo-si",
+  "python": "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+  "script_sha256": "bbefabe5c31a92b6ba12f66782f6c38a19f6235a43e3cd4d2af082d812ca68a9",
+  "admitted": false,
+  "simulation_started": false,
+  "historical_records_modified": false,
+  "checks": [
+    {
+      "name": "shared_runtime",
+      "command": [
+        "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "infra.sandbox.tests.test_runtime"
+      ],
+      "exit_code": 1,
+      "passed": false,
+      "duration_s": 18.48499999998603,
+      "tests_run": 17,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "raw_output": "shared_runtime.log",
+      "raw_output_sha256": "4de61f92efdddfe9e695eca75659d214b8980e3949dc8bad8d1fc85e111e62b8"
+    },
+    {
+      "name": "m2_sandbox",
+      "command": [
+        "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_infra",
+        "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_grading",
+        "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_audit_tools",
+        "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_bounded_reference",
+        "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_public_channel",
+        "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_reference_video",
+        "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_regrasp",
+        "multi_robot.dual_g1_long_object_transport.sandbox.tests.test_endings"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "duration_s": 49.06299999996554,
+      "tests_run": 58,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "raw_output": "m2_sandbox.log",
+      "raw_output_sha256": "e1793d31e4e7709e5f3200faf9453088c2263d816ec284c42f825fac7855be21"
+    },
+    {
+      "name": "m2_task",
+      "command": [
+        "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "multi_robot.test_evaluate",
+        "multi_robot.dual_g1_long_object_transport.test_floor_transport",
+        "multi_robot.dual_g1_long_object_transport.test_cooperative_trial"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "duration_s": 5.609000000054948,
+      "tests_run": 27,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "raw_output": "m2_task.log",
+      "raw_output_sha256": "493c5ee4778893f97c08b23c549d7fed61808859123ef366c9e80e32504176b9"
+    },
+    {
+      "name": "m2_admission",
+      "command": [
+        "D:\\rsi_vla\\genesis_env\\Scripts\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "infra.sandbox.records",
+        "multi_robot/dual_g1_long_object_transport/admission.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "duration_s": 1.5309999999590218,
+      "tests_run": null,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "raw_output": "m2_admission.log",
+      "raw_output_sha256": "84a23c9af7bf6bc477367bf0c98bff398f82b3bffba23c2c8a50df723280673e"
+    }
+  ],
+  "limitations": [
+    "Existing shared runtime suite scans all task admission records; unrelated missing paths remain failures.",
+    "Admission schema validity is not a physical or human acceptance decision.",
+    "These checks do not establish random ranges, R9, original 9 kg, human signoff or independent reproduction."
+  ],
+  "all_passed": false
+}

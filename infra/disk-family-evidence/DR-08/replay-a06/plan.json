@@ -1,0 +1,94 @@
+{
+  "schema": "dr-pre-execution-plan/1",
+  "case_id": "DR-08",
+  "body": "G",
+  "contact_acquisition_threshold": 0.2,
+  "timing": "written before scene build and first physics step",
+  "privileged_state_expert": true,
+  "hypothesis": "Evaluate physical contact aids; direct manipulation remains legal when the end effector suffices.",
+  "goal": "Rotate freely resting disc, keep centre bounded, withdraw and settle for 2 s",
+  "high_level": [
+    {
+      "id": "H0",
+      "goal": "Observe and stabilize the initial scene"
+    },
+    {
+      "id": "H1",
+      "goal": "Establish reachable approach poses"
+    },
+    {
+      "id": "H2",
+      "goal": "Acquire bounded contact forces"
+    },
+    {
+      "id": "H3",
+      "goal": "Rotate using measured heading and contact response"
+    },
+    {
+      "id": "H4",
+      "goal": "If needed unload, relocate and establish another contact"
+    },
+    {
+      "id": "H5",
+      "goal": "Withdraw and satisfy independent stable-release criteria"
+    }
+  ],
+  "low_level": [
+    {
+      "id": "stabilize",
+      "parent": "H0",
+      "entry": "normal reset",
+      "exit": "table support and settled disc"
+    },
+    {
+      "id": "approach",
+      "parent": "H1",
+      "entry": "released disc",
+      "exit": "selected approach reached; intended touch up to 2 N allowed; no unintended collision"
+    },
+    {
+      "id": "preload",
+      "parent": "H2",
+      "entry": "near rim",
+      "exit": "measured intended contact above acquisition threshold"
+    },
+    {
+      "id": "rotate",
+      "parent": "H3",
+      "entry": "acquired contact",
+      "exit": "local progress, measured slip, or working-sector boundary"
+    },
+    {
+      "id": "recenter",
+      "parent": "H3",
+      "entry": "measured rim contact",
+      "exit": "disc centre within 6 mm"
+    },
+    {
+      "id": "unload",
+      "parent": "H4",
+      "entry": "contacted disc",
+      "exit": "measured force below release threshold"
+    },
+    {
+      "id": "reposition",
+      "parent": "H4",
+      "entry": "released disc",
+      "exit": "next measured approach pose reachable and clear"
+    },
+    {
+      "id": "release",
+      "parent": "H5",
+      "entry": "heading within tolerance",
+      "exit": "all robot and aid contact unloaded"
+    },
+    {
+      "id": "settle",
+      "parent": "H5",
+      "entry": "released",
+      "exit": "full evaluator success"
+    }
+  ],
+  "action_interface": "bounded robot joint effort only; no object pose/velocity/force writes after reset",
+  "failure_policy": "Stop on physical violation; retain failed and truncated attempts; failure is not global infeasibility"
+}

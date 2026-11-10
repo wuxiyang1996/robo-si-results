@@ -1,56 +1,28 @@
-# robo-si: accepted embodied tasks
+﻿# Embodied Terminal-Bench · robo-si
 
-Website: https://wuxiyang1996.github.io/robo-si-results/
+Public site: https://wuxiyang1996.github.io/robo-si-results/
 
-This repository hosts the public results site of **robo-si**, a robotics benchmark for self-modeling, tool
-discovery, loaded locomotion and multi-robot cooperation. The site lists the tasks and task families that the
-author has accepted, as of the acceptance snapshot of 2026-11-04: 30 families and 251 configurations,
-with 237 public configuration videos and evidence backed up for 251 of 251. For every accepted configuration it gives:
+The gallery organizes 246 unique completed-reference recordings, covering 247 public configurations, into six categories and 30 research task families. Twenty-nine families have delivered videos; F3 remains paused. All active gallery videos are rendered at 8× and play at the browser's normal rate.
 
-- an available reference video, with its speed shown in the badge (earlier short clips may use 4x, 2x or 1x),
-- conditions, task design, tools and embodiment,
-- whether the correct behaviour is refusal: the task is infeasible, so the robot should exit empty-handed into
-  the exit zone and stand still.
+| Category | Families |
+| --- | --- |
+| Access and retrieval | H1, H4, M1, M3, FRG, SLR |
+| Loads and transport | H2, H5, H6, M2, M4, F5 |
+| Fine manipulation and assembly | ASM, GEAR, JNG, DF, DR, FT |
+| Deformable materials | F1, F2, F3, F4, F6, F7 |
+| Multistep planning and procedures | SK, Hanoi, MTC, SC, PC |
+| Dynamic response and timing | TT |
 
-Scope notes:
+The homepage presents one demo per category. Category pages present one representative per family. Family pages contain the complete delivered collection and task-specific scope notes. The original v6 research template is retained.
 
-- "Accepted" means the author signed off the reference-delivery scope. It is not formal benchmark admission and
-  not independent second-person reproduction.
-- Videos show privileged-state reference experts in physics simulation (Genesis / MuJoCo).
-  Their labels distinguish complete feasibility, correct exits and incomplete research snapshots. They are not results of a learned agent.
-- The SC/PC release adds 10 cooking successes and 2 correct-exit controls. Its 12 videos and compilation
-  use a common camera at 960×720, 24 fps and 8x speed. These are presentation renders of recorded measured
-  trajectories; original same-run videos and independent physical replays are retained in the evidence archive.
-  SC-05 barriers and the PC-I01 room and partition are transparent only in the presentation render.
-  Individual clips also offer playback at 4x or the original time scale.
-- Complete SC/PC evidence is backed up in the private Hugging Face dataset `IntelligenceLab/robo-si`,
-  release `cooking-sc-pc-acceptance-20261104-v1`, pinned to commit
-  `f35de6f630ab31f3b43931546bab767aa0069e0b`. All 50 release files were verified by size and SHA-256.
-  The full evidence links require dataset access; public videos are hosted in this repository.
-- Families still in development are listed on the home page without videos.
+- [Installation, environment restoration and agent testing](https://github.com/wuxiyang1996/robo-si/blob/main/doc/hf-246/README-zh.md) — repository access required.
+- [Pinned HF runtime and evidence release](https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/9dbaa30876fe4b2140af61dcb836d4d9ad32d646/releases/benchmark-246-runtime-and-evidence-20261109-v1) — dataset access required.
+- [Current video manifest](data/video-gallery.json): video/poster URLs, hashes, frame rates, scope and provenance.
+- [Publication validation](data/gallery-validation.json): gallery checks, preserved evidence and historical link limitations.
+- [Historical acceptance notes](README-acceptance-20261104.md).
 
-The site is static HTML (`index.html`, one page per family). `data/accepted-tasks.json` holds the same task data
-in machine-readable form. Source code, simulators and full evidence live in the private robo-si repository and
-dataset.
+Videos are Nyx presentation renders of recorded physical executions. They retain each task's accepted scope, including correct exits. They are not learned-agent benchmark scores. Display asset updates do not establish a new physical run, new task success or a different collision model. Historical references, privileged experts and ordinary-interface runs remain separately identified.
 
-GEAR was accepted on 2026-11-04: 7 records across 3 independent task designs, with 3 historical references
-and 4 formal-body configurations shown separately. The GEAR page includes 8x previews, full 1x downloads,
-a matched-world G/F comparison, the author acceptance record, and a private full-evidence archive link.
+This is a static GitHub Pages project site, published from main at the repository root with .nojekyll. Paths use the /robo-si-results/ project prefix. Public video binaries are versioned in the robo-si-review-assets releases; the 2026-11-09 H1 fine-grained revision preserves the prior video hashes in the manifest.
 
-ASM / JNG was signed off on 2026-11-04: 4 ASM and 15 JNG successes. ASM-04.S and JNG-06.B remain incomplete diagnostics and are excluded from accepted counts. Videos are unified-angle measured-state presentation renders at 8x, with original recordings linked separately; this does not change the physical results. Full evidence, sources and models are privately backed up with a pinned recovery index.
-
-M4 contains six accepted preconnected towing references using ground-supported cargo.
-
-H4 was accepted on 2026-11-04 within its existing reference-delivery scope: 9 bridge constructions, 1 direct crossing and 7 explicit-refusal cases (17 total). Seven same-body feasible controls are shown separately and are not extra tasks. All seven new pairs meet 240 seconds; five historical retrieval references retain declared budget exceptions. Original recordings, source, models and development failures are privately archived with a pinned recovery index.
-
-F5/F6/F7 were accepted on 2026-11-04: 6 transport/installation, 6 routing/reel and 5 fastening/recovery configurations (17 total). Eight have this-round declared revisions; all retain their specific scope. The 17 public videos use a common camera direction and 8x physical-time speed at 1280x720/24 fps. Full raw records, source, models, presentation provenance and development history are privately backed up with a pinned restore index.
-
-F2 (garment tidying and packing) was added on 2026-11-04 with 1 of 6 declared configurations accepted: F2-01-L1, one continuous native dual-Stretch 3 run with a free 2D towel and a passive flip board (29,751 physics steps, 9 low-level actions, zero action-replay error, matching static negative control). The other five configurations are not accepted and are listed on the F2 page with their measured status at the 2026-11-04 15:39 pause. The public clip is an 8x kinematic re-render with the F5/F6/F7 camera contract; new F2 runs use the task_outcome_v1 precision profile while the accepted L1 record keeps the legacy profile.
-
-M1 was author-accepted on 2026-11-04: seven independently reviewed frozen configurations (four complete deliveries and three certified safe exits). B03 remains paused incomplete; B04/B05 are deferred. Six same-run original recordings are shown at 8x and offered at 1x; I01 has no original recording. Remote M1 backup verification passed. No full eight-configuration completion or capability-boundary certification is claimed.
-
-MTC update 2026-11-04: 3 author-accepted scopes; L1/L2 have complete independently verified experts, while L3 reconfiguration and second retrieval remain incomplete and development is paused. All working evidence is backed up at https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/e00a254d78fe1d6c422e9cc03cde92128aa2a452/releases/mtc-pause-backup-20261104-v1. The 3 public MTC videos include one explicitly labelled partial run.
-
-F3/F4: the author accepted four paused research-delivery representatives on 2026-11-04. This is author-designated acceptance, separate from measured original-task success. Only F4-01-L1 has the full original goal independently verified: three fresh expert runs and one independent action replay. Strict numeric reproduction failed; the complete 100 s no-op physics audit was interrupted and remains pending. The jacket, apron and irregular-cover original goals remain incomplete. Historical incomplete videos and the measured R30 contact window are explicitly labelled. Fixed-pelvis evidence does not establish free walking or other difficulty levels.
-
-F3/F4 complete private backup: [d14fbba2e56ea53e23c27f74cb913e5296c9d957](https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/d14fbba2e56ea53e23c27f74cb913e5296c9d957/archives/workspace-20261104/f34-user-accepted). All declared remote files were verified by size and SHA-256; restore testing and local cleanup completed. The complete backup covers 84,697 original paths (686.068 GiB logical size; 431.182 GiB across 270 archive volumes). Actual remote download and restore covered nine files across ten evidence categories. Cleanup then removed 626 backed-up local files with zero skips, releasing an estimated 645.380 GiB of allocated space. Source code, receipts and restore indexes are retained.
+The importer tools/import_gallery.py preserves evidence JSON bytes. tools/apply_h1_media.py applies verified render receipts. tools/check_gallery.py verifies the 246 records, six categories, thirty families, links and original evidence. Browser visual QA is separately reported and must not be inferred from static checks.

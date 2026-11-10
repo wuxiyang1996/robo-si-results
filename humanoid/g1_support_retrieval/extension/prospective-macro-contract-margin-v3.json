@@ -1,0 +1,142 @@
+{
+  "schema": "h1-p4-prospective-macro-contract/1",
+  "frozen_at_utc": "2026-10-27T21:00:33.031200+00:00",
+  "task_id": "H1S-07.P4",
+  "origin": "Rules developed after v2 outcomes; prospectively declared only for later run IDs started after this freeze.",
+  "reviewer_source_sha256": "61e9018d81cf11d59c118ea8e222e598c975ba65d88adcad0d67ada216a30d67",
+  "profile_sha256": "c322b7d65edcd2de076d2c6439620049275469224563ee02019429ab5e5b8225",
+  "profile_snapshot": {
+    "schema": "h1-extension-physical-development/1",
+    "task_id": "H1S-07.P4",
+    "profile": "g1_dex3_ground_push_margin_v3",
+    "created_date": "2026-10-27",
+    "development_only": true,
+    "formal_admission": false,
+    "seed": 0,
+    "robot": "existing_g1_29dof_dex3_43_actuated_joints",
+    "target": {
+      "size_m": [
+        0.45,
+        0.5,
+        0.18
+      ],
+      "mass_kg": 5.0,
+      "initial_center_m": [
+        2.3,
+        0.0,
+        0.09
+      ],
+      "friction": 0.5
+    },
+    "goal": {
+      "center_xy_m": [
+        2.66,
+        0.0
+      ],
+      "size_xy_m": [
+        0.6,
+        0.7
+      ],
+      "hold_s": 3.0,
+      "max_linear_speed_m_s": 0.03,
+      "max_angular_speed_rad_s": 0.05,
+      "max_tilt_deg": 5.0,
+      "max_ground_gap_m": 0.008
+    },
+    "public_rules": {
+      "lifted_payload_limit_kg": 2.0,
+      "ground_supported_push_allowed": true,
+      "attachment_allowed": false,
+      "runtime_pose_write_allowed": false,
+      "root_wrench_allowed": false,
+      "explanation": "5 kg exceeds the declared 2 kg lifted-payload rule. This is a public-rule boundary, not a certificate that the robot cannot physically lift 5 kg. Ground-supported push is the selected legal operation."
+    },
+    "budget": {
+      "wall_seconds_per_attempt": 3600,
+      "simulation_seconds_per_attempt": 600,
+      "physics_dt_s": 0.005,
+      "control_dt_s": 0.02,
+      "max_control_steps": 30000,
+      "max_physics_steps": 120000,
+      "candidate_plans": 1,
+      "short_probe_count": 0,
+      "short_probe_max_steps": 0,
+      "screening_wall_seconds": 60,
+      "max_resets_per_attempt": 0,
+      "representative_repeats": 3,
+      "token_budget": null,
+      "token_budget_reason": "deterministic privileged expert; no language model called",
+      "observation_budget": 30000,
+      "observation_scope": "privileged state each control step"
+    },
+    "controller": {
+      "cycles": 3,
+      "stroke_m": 0.12,
+      "max_push_per_hand_N": 45.0,
+      "final_approach_m": 0.0,
+      "final_hold_s": 4.0,
+      "video_fps": 5,
+      "waist_upper_rad": 0.44,
+      "thumb_fold_rad": -0.99
+    },
+    "scope": "Bounded privileged development reference; no handle variant, no general randomized-policy or sensor-only claim. The task accepts every complete legal route. Full target AABB, ground support, no hand contact and 3 second dwell are scored from measured trace. Initial D exclusion is checked.",
+    "revision_reason": "Strict 1 mrad check invalidated v2: waist pitch and both thumb1 joints exceeded bounds during first push/step transition. Increase reference margins only; no hardware or actual-state modification.",
+    "acceptance": {
+      "position_tolerance_rad": 0.001,
+      "source": "sandbox/trusted/relay_scoring.py:31",
+      "goal_dwell_s": 3.0,
+      "no_weakening_from_historical_standard": true
+    }
+  },
+  "definition": {
+    "schema": "h1-p4-observed-macro-definition/1",
+    "version": "2026-10-27.post-execution.v1",
+    "timing": "Defined after 8034839 outcome, original leaf failures and actuator violation were inspected. Post-execution description, not prospectively declared skill acceptance.",
+    "scope": "Observed effects of this continuous physical trace only. Does not validate arbitrary skill starts, independent low-level leaf contracts, actuator compliance, sensor-only execution, or formal admission.",
+    "transport": "Adjacent Touch+Push+Retreat interval: both raw hand contacts occur, target progresses toward D on ground with two feet planted, exits released and target speed <.02 m/s. No claim of simultaneous raw contact at nominal Touch exit.",
+    "reposition": "PlannedSteps and following intermediate ReturnHands: measured bilateral unloaded swings, supported landing and forward displacement, hands released, real following Touch establishes executed contact reachability. Final ReturnHands instead joins final release macro.",
+    "release": "Final ReturnHands/Retreat/ClearHands/Hold/Recenter/StandUp/Hold: preserve individual measured physical checks; recenter is nonphysical bookkeeping, final geometric goal separated from strict actuator verdict.",
+    "preservation": "Every original command interval, raw boundary and leaf fail/unknown is referenced without relabeling its success. No command or physics state is changed."
+  },
+  "definition_role_override": "Prospective executable macro skill contract for future matching-profile runs; old leaf predicates retained as diagnostic, not exact leaf-boundary acceptance.",
+  "thresholds": {
+    "actuator_position_tolerance_rad": 0.001,
+    "touch_normal_N": 1.0,
+    "ground_contact_N": 1.0,
+    "hand_release_net_force_N": 0.5,
+    "foot_lift_above_initial_m": 0.006,
+    "numeric_position_epsilon_m": 1e-06,
+    "joint_difference_epsilon_rad": 1e-06,
+    "max_body_collision_N": 10.0
+  },
+  "plan": [
+    {
+      "high_level": "H1",
+      "macro": "observed_approach"
+    },
+    {
+      "high_level": "H2/H3",
+      "repeat": 3,
+      "sequence": [
+        "observed_ground_transport",
+        "observed_foot_reposition"
+      ]
+    },
+    {
+      "high_level": "H4",
+      "macro": "observed_release_and_stand"
+    }
+  ],
+  "success": "All measured macro effects, complete command/shared-boundary coverage, original 1 mrad actuator compliance and strict native goal/identity verdict. Original fine-grained leaf statuses remain separately visible. No human or formal admission claim. Original shared five-rule safety review must be complete with no events; missing fields mean unknown.",
+  "source_bindings": {
+    "humanoid/g1_support_retrieval/extension/safety_recording.py": "4b27977b59c536f2f34ea5b52becdf7ed6695b301d7061bb56f2eb38c5eca0b0",
+    "humanoid/g1_support_retrieval/sandbox/trusted/statelog.py": "86272084ad082f3006a8fc38c31ae05624a5d7860bf9eb2aa2443651a6263581",
+    "humanoid/g1_support_retrieval/extension/run_p4.py": "d97e0be611759bd061f7d5e124658b1c2c5cfe670e6be0e16bef7af744315334",
+    "humanoid/g1_support_retrieval/solution/push_box/run_push.py": "a842016caed0c1d8698127392ddb3a0b016c01ac18aba290cfa02e676506ccb2",
+    "humanoid/g1_support_retrieval/extension/verify_skill_refinement.py": "5a6fc7754051e7483bc699f8293d3110d2716d933fdf272f0624b2d14f0e6522",
+    "humanoid/g1_support_retrieval/extension/verify_p4_safety.py": "b1e055e4060304d1c87dd85ea8202f31f037ac27c9cd972ff01a769956d68929",
+    "humanoid/g1_support_retrieval/sandbox/trusted/relay_safety.py": "2d65c3f8ee11a32e223efd67625247a38dddc7585b21d9a10f0d4bb4ecb59b16",
+    "humanoid/g1_support_retrieval/sandbox/trusted/relay_safety_rules.py": "3edf54de88ef1350360077213e0248ba9ea8be03f6aa454aa4935d8bb4a55bfb",
+    "infra/sandbox/monitors.py": "432680b21d784367a3742321dedcc1272b617021765b00eb8d5750442dadfb0c"
+  }
+}

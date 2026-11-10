@@ -1,0 +1,1499 @@
+{
+  "schema": "ordered-action-mapping/1",
+  "task": "M1",
+  "selected_witness": "seed3-01",
+  "generated_by": [
+    {
+      "path": "infra/planning/hierarchical-evaluation/build_action_mappings.py",
+      "sha256": "09ff4513817b52c8db8b46a07ba29a0e5f32ea6c88f148cf41d0169705827842"
+    },
+    {
+      "path": "infra/planning/hierarchical-evaluation/action_expansions.py",
+      "sha256": "1e88a0ef8b99d555bcef66edd58e3d18bf4a5ab2260fe5f8b17cbb7aa77bdb8c"
+    }
+  ],
+  "scope": {
+    "zh": "第一层 v0.3 / V4，CPU 特权参考",
+    "en": "Layer 1 v0.3 / V4, privileged CPU reference"
+  },
+  "plan": {
+    "path": "infra/planning/tasks/M1.json",
+    "sha256": "ab6d397c55e5c163b517fee08f904be24da97dcef7e69927d078f81f85c4cbde"
+  },
+  "full_success_record": {
+    "path": "multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/seed3-01/verdict.json",
+    "sha256": "86a71afdf2caccc5b84bf5de6b4fa59a7d3a4e36f4261cdcb88ef221704f5c44"
+  },
+  "source_files": [
+    {
+      "id": "s0",
+      "path": "C:/Users/wuxiy/AppData/Local/Temp/m1-release-feedback-v4-20261024/repo/multi_robot/g1_mobile_gripper_retrieval/sandbox/runs/release-feedback-v4-seed3-01/workspace_00/expert_result.json",
+      "sha256": "8d1b09f78c0ca84776982d7b02ca72d904f359f5dbfc853a1b81a66cc9ecb078"
+    }
+  ],
+  "generation_provenance_status": "existing_provenance_not_replaced; full identity audit still pending",
+  "interpretation": {
+    "actions": "Ordered decomposition reviewed against available controller/event descriptions; not a newly executable planner.",
+    "event_matching": "Locates review candidates only; it does not prove the stated contact/guard nor exact micro-action interval.",
+    "timing": "Observed sample spans remain in their named clock. Point events are not expanded into invented intervals. No scoring milestone is used as an action boundary.",
+    "loops": "Hanoi repeats K01-K04 for each committed legal move; footfall and gait actions repeat. Numerical order is within a skill, not a universal serial schedule.",
+    "branches": "H3 heavy_prop only; asynchronous A/B operations may overlap.",
+    "portable_evidence": "Small excerpts below are portable; original absolute paths are provenance references, not deployment entrypoints. Raw full records still require the reference packages."
+  },
+  "skills": [
+    {
+      "skill": "M1.K01",
+      "high_level_steps": [
+        "P1"
+      ],
+      "entry_conditions": [
+        "正确立方体在货架容器内，双机未相撞"
+      ],
+      "exit_conditions": [
+        "立方体和容器在货架外可供交接"
+      ],
+      "actions": [
+        {
+          "id": "M1.K01.A01",
+          "order": 1,
+          "action_zh": "G1 对齐货架并预成形双手",
+          "required_support_contact_zh": "容器→货架；足→地面",
+          "check_observable_zh": "站位、手部误差",
+          "event_selector": "g1_to_shelf|g1_stance|g1_pre|g1_lined",
+          "evidence_ids": [
+            "e0000",
+            "e0001",
+            "e0002",
+            "e0003"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K01.A02",
+          "order": 2,
+          "action_zh": "挤紧容器并抬离货架",
+          "required_support_contact_zh": "货架→双手",
+          "check_observable_zh": "双手力、容器抬升",
+          "event_selector": "g1_squeeze|g1_lifted",
+          "evidence_ids": [
+            "e0004",
+            "e0005"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K01.A03",
+          "order": 3,
+          "action_zh": "后退并搬到低支架上方",
+          "required_support_contact_zh": "双手持容器",
+          "check_observable_zh": "柜口净空与容器姿态",
+          "event_selector": "g1_backed|g1_to_stand|g1_at_stand",
+          "evidence_ids": [
+            "e0006",
+            "e0007",
+            "e0008"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K01.A04",
+          "order": 4,
+          "action_zh": "下放、释放容器并撤开",
+          "required_support_contact_zh": "双手→支架",
+          "check_observable_zh": "支架接触、容器高度",
+          "event_selector": "g1_lowered|g1_released|g1_frozen",
+          "evidence_ids": [
+            "e0009",
+            "e0010",
+            "e0011"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M1.K02",
+      "high_level_steps": [
+        "P2"
+      ],
+      "entry_conditions": [
+        "目标可达且原支撑保持至夹持成立"
+      ],
+      "exit_conditions": [
+        "目标由 X5 独立夹持"
+      ],
+      "actions": [
+        {
+          "id": "M1.K02.A01",
+          "order": 1,
+          "action_zh": "X5 选择可达抓取轴并绕行",
+          "required_support_contact_zh": "目标→容器；轮→地面",
+          "check_observable_zh": "容器沿口间隙及路线",
+          "event_selector": "x5_axes|x5_approaches|x5_approach",
+          "evidence_ids": [
+            "e0012",
+            "e0013",
+            "e0014"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K02.A02",
+          "order": 2,
+          "action_zh": "伸臂对准并闭合双指",
+          "required_support_contact_zh": "目标→容器/双指",
+          "check_observable_zh": "手指距离及持物状态",
+          "event_selector": "x5_grasp",
+          "evidence_ids": [
+            "e0016"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K02.A03",
+          "order": 3,
+          "action_zh": "抬出容器并收拢持物姿态",
+          "required_support_contact_zh": "目标→双指",
+          "check_observable_zh": "目标脱离容器与持物偏移",
+          "event_selector": "x5_carry",
+          "evidence_ids": [
+            "e0017"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M1.K03",
+      "high_level_steps": [
+        "P3"
+      ],
+      "entry_conditions": [
+        "独立夹持稳定，G1 已让开路线"
+      ],
+      "exit_conditions": [
+        "目标在柜口外的可插入姿态"
+      ],
+      "actions": [
+        {
+          "id": "M1.K03.A01",
+          "order": 1,
+          "action_zh": "规划到柜前的绕行路线",
+          "required_support_contact_zh": "双指持目标；轮→地面",
+          "check_observable_zh": "障碍物及柜前站位",
+          "event_selector": "x5_to_cabinet|x5_route",
+          "evidence_ids": [
+            "e0018",
+            "e0019"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K03.A02",
+          "order": 2,
+          "action_zh": "持物行驶到柜前并对齐",
+          "required_support_contact_zh": "双指持续夹持",
+          "check_observable_zh": "持物偏移、轮地接触",
+          "event_selector": "x5_to_cabinet",
+          "evidence_ids": [
+            "e0018"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K03.A03",
+          "order": 3,
+          "action_zh": "将物体移到柜内托盘上方",
+          "required_support_contact_zh": "双指持物",
+          "check_observable_zh": "柜口净空、托盘包含",
+          "event_selector": "x5_over_tray",
+          "evidence_ids": [
+            "e0020"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M1.K04",
+      "high_level_steps": [
+        "P4"
+      ],
+      "entry_conditions": [
+        "柜口姿态可行且托盘可达"
+      ],
+      "exit_conditions": [
+        "立方体在托盘内且已获得柜体支撑"
+      ],
+      "actions": [
+        {
+          "id": "M1.K04.A01",
+          "order": 1,
+          "action_zh": "保持夹持伸入柜口",
+          "required_support_contact_zh": "双指持物",
+          "check_observable_zh": "目标包络与柜体间隙",
+          "event_selector": "x5_over_tray",
+          "evidence_ids": [
+            "e0020"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K04.A02",
+          "order": 2,
+          "action_zh": "下降直至托盘有实际支撑",
+          "required_support_contact_zh": "双指→托盘共同承重",
+          "check_observable_zh": "托盘支撑力与手载荷",
+          "event_selector": "x5_opening_started",
+          "evidence_ids": [
+            "e0021"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K04.A03",
+          "order": 3,
+          "action_zh": "在支撑持续时开始张指",
+          "required_support_contact_zh": "托盘逐步承担重量",
+          "check_observable_zh": "持续支撑而非只看一次触碰",
+          "event_selector": "x5_release_observed",
+          "evidence_ids": [
+            "e0022",
+            "e0025"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "M1.K05",
+      "high_level_steps": [
+        "P5"
+      ],
+      "entry_conditions": [
+        "托盘承重成立，撤臂路线可行"
+      ],
+      "exit_conditions": [
+        "在低柜目标内释放稳定 2 s"
+      ],
+      "actions": [
+        {
+          "id": "M1.K05.A01",
+          "order": 1,
+          "action_zh": "监视弱再接触并继续受控张指",
+          "required_support_contact_zh": "托盘承重；手接触递减",
+          "check_observable_zh": "手力、支撑力、连续采样",
+          "event_selector": "x5_weak_recontact|x5_release_observed",
+          "evidence_ids": [
+            "e0022",
+            "e0023",
+            "e0024",
+            "e0025"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K05.A02",
+          "order": 2,
+          "action_zh": "确认托盘独立承重后完全张开",
+          "required_support_contact_zh": "托盘独立承重",
+          "check_observable_zh": "手力为零、支撑保持",
+          "event_selector": "x5_supported_open",
+          "evidence_ids": [
+            "e0026"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "M1.K05.A03",
+          "order": 3,
+          "action_zh": "撤臂并等待交付驻留",
+          "required_support_contact_zh": "目标→柜内托盘",
+          "check_observable_zh": "无机器人代撑与目标稳定",
+          "event_selector": "x5_released",
+          "evidence_ids": [
+            "e0027"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    }
+  ],
+  "event_evidence": [
+    {
+      "id": "e0000",
+      "source": "s0",
+      "pointer_first": "/log/0",
+      "pointer_last": "/log/0",
+      "stream": "/log",
+      "label": "g1_to_shelf",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        0.5,
+        0.5
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_to_shelf",
+        "stance": [
+          -0.003,
+          1.25
+        ],
+        "yaw_deg": 90.0,
+        "t": 0.5
+      },
+      "last": {
+        "skill": "g1_to_shelf",
+        "stance": [
+          -0.003,
+          1.25
+        ],
+        "yaw_deg": 90.0,
+        "t": 0.5
+      }
+    },
+    {
+      "id": "e0001",
+      "source": "s0",
+      "pointer_first": "/log/1",
+      "pointer_last": "/log/1",
+      "stream": "/log",
+      "label": "g1_stance",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        9.2,
+        9.2
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_stance",
+        "short": 0.125,
+        "lean": 0.25,
+        "roll": 0.0,
+        "ik_err": 0.006,
+        "lateral": -0.007,
+        "t": 9.2
+      },
+      "last": {
+        "skill": "g1_stance",
+        "short": 0.125,
+        "lean": 0.25,
+        "roll": 0.0,
+        "ik_err": 0.006,
+        "lateral": -0.007,
+        "t": 9.2
+      }
+    },
+    {
+      "id": "e0002",
+      "source": "s0",
+      "pointer_first": "/log/2",
+      "pointer_last": "/log/2",
+      "stream": "/log",
+      "label": "g1_pre",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        11.98,
+        11.98
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_pre",
+        "ik_err": 0.0,
+        "stop": null,
+        "t": 11.98
+      },
+      "last": {
+        "skill": "g1_pre",
+        "ik_err": 0.0,
+        "stop": null,
+        "t": 11.98
+      }
+    },
+    {
+      "id": "e0003",
+      "source": "s0",
+      "pointer_first": "/log/3",
+      "pointer_last": "/log/3",
+      "stream": "/log",
+      "label": "g1_lined",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        15.56,
+        15.56
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_lined",
+        "ik_err": 0.001,
+        "stop": null,
+        "t": 15.56
+      },
+      "last": {
+        "skill": "g1_lined",
+        "ik_err": 0.001,
+        "stop": null,
+        "t": 15.56
+      }
+    },
+    {
+      "id": "e0004",
+      "source": "s0",
+      "pointer_first": "/log/4",
+      "pointer_last": "/log/4",
+      "stream": "/log",
+      "label": "g1_squeeze",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        19.56,
+        19.56
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_squeeze",
+        "gap": {
+          "left": -0.01,
+          "right": -0.01
+        },
+        "forces": [
+          17.2,
+          17.6
+        ],
+        "crate_shift": 0.0,
+        "t": 19.56
+      },
+      "last": {
+        "skill": "g1_squeeze",
+        "gap": {
+          "left": -0.01,
+          "right": -0.01
+        },
+        "forces": [
+          17.2,
+          17.6
+        ],
+        "crate_shift": 0.0,
+        "t": 19.56
+      }
+    },
+    {
+      "id": "e0005",
+      "source": "s0",
+      "pointer_first": "/log/5",
+      "pointer_last": "/log/5",
+      "stream": "/log",
+      "label": "g1_lifted",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        22.92,
+        22.92
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_lifted",
+        "crate": [
+          -0.003,
+          1.591,
+          1.03
+        ],
+        "rise": 0.03,
+        "forces": [
+          32.4,
+          32.3
+        ],
+        "t": 22.92
+      },
+      "last": {
+        "skill": "g1_lifted",
+        "crate": [
+          -0.003,
+          1.591,
+          1.03
+        ],
+        "rise": 0.03,
+        "forces": [
+          32.4,
+          32.3
+        ],
+        "t": 22.92
+      }
+    },
+    {
+      "id": "e0006",
+      "source": "s0",
+      "pointer_first": "/log/6",
+      "pointer_last": "/log/6",
+      "stream": "/log",
+      "label": "g1_backed",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        25.82,
+        25.82
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_backed",
+        "crate": [
+          0.019,
+          1.274,
+          1.033
+        ],
+        "forces": [
+          28.6,
+          28.6
+        ],
+        "tilt_deg": 4.8,
+        "t": 25.82
+      },
+      "last": {
+        "skill": "g1_backed",
+        "crate": [
+          0.019,
+          1.274,
+          1.033
+        ],
+        "forces": [
+          28.6,
+          28.6
+        ],
+        "tilt_deg": 4.8,
+        "t": 25.82
+      }
+    },
+    {
+      "id": "e0007",
+      "source": "s0",
+      "pointer_first": "/log/7",
+      "pointer_last": "/log/7",
+      "stream": "/log",
+      "label": "g1_to_stand",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        25.82,
+        25.82
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_to_stand",
+        "crate_offset": [
+          0.471,
+          -0.007,
+          0.28
+        ],
+        "stance": [
+          0.695,
+          0.791
+        ],
+        "yaw_deg": -1.6,
+        "t": 25.82
+      },
+      "last": {
+        "skill": "g1_to_stand",
+        "crate_offset": [
+          0.471,
+          -0.007,
+          0.28
+        ],
+        "stance": [
+          0.695,
+          0.791
+        ],
+        "yaw_deg": -1.6,
+        "t": 25.82
+      }
+    },
+    {
+      "id": "e0008",
+      "source": "s0",
+      "pointer_first": "/log/8",
+      "pointer_last": "/log/8",
+      "stream": "/log",
+      "label": "g1_at_stand",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        30.12,
+        30.12
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_at_stand",
+        "crate": [
+          1.146,
+          0.809,
+          1.028
+        ],
+        "over_stand": [
+          0.02,
+          0.037
+        ],
+        "forces": [
+          30.0,
+          28.1
+        ],
+        "t": 30.12
+      },
+      "last": {
+        "skill": "g1_at_stand",
+        "crate": [
+          1.146,
+          0.809,
+          1.028
+        ],
+        "over_stand": [
+          0.02,
+          0.037
+        ],
+        "forces": [
+          30.0,
+          28.1
+        ],
+        "t": 30.12
+      }
+    },
+    {
+      "id": "e0009",
+      "source": "s0",
+      "pointer_first": "/log/9",
+      "pointer_last": "/log/9",
+      "stream": "/log",
+      "label": "g1_lowered",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        37.52,
+        37.52
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_lowered",
+        "crate": [
+          1.096,
+          0.813,
+          0.422
+        ],
+        "bottom_over_top": 0.003,
+        "over_stand": [
+          -0.03,
+          0.042
+        ],
+        "ik_err": 0.089,
+        "forces": [
+          21.3,
+          21.1
+        ],
+        "t": 37.52
+      },
+      "last": {
+        "skill": "g1_lowered",
+        "crate": [
+          1.096,
+          0.813,
+          0.422
+        ],
+        "bottom_over_top": 0.003,
+        "over_stand": [
+          -0.03,
+          0.042
+        ],
+        "ik_err": 0.089,
+        "forces": [
+          21.3,
+          21.1
+        ],
+        "t": 37.52
+      }
+    },
+    {
+      "id": "e0010",
+      "source": "s0",
+      "pointer_first": "/log/10",
+      "pointer_last": "/log/10",
+      "stream": "/log",
+      "label": "g1_released",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        83.1,
+        83.1
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_released",
+        "crate": [
+          1.099,
+          0.812,
+          0.418
+        ],
+        "on_stand": -0.0,
+        "t": 83.1
+      },
+      "last": {
+        "skill": "g1_released",
+        "crate": [
+          1.099,
+          0.812,
+          0.418
+        ],
+        "on_stand": -0.0,
+        "t": 83.1
+      }
+    },
+    {
+      "id": "e0011",
+      "source": "s0",
+      "pointer_first": "/log/11",
+      "pointer_last": "/log/11",
+      "stream": "/log",
+      "label": "g1_frozen",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        84.6,
+        84.6
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "g1_frozen",
+        "pelvis": [
+          0.362,
+          0.816,
+          0.749
+        ],
+        "t": 84.6
+      },
+      "last": {
+        "skill": "g1_frozen",
+        "pelvis": [
+          0.362,
+          0.816,
+          0.749
+        ],
+        "t": 84.6
+      }
+    },
+    {
+      "id": "e0012",
+      "source": "s0",
+      "pointer_first": "/log/12",
+      "pointer_last": "/log/12",
+      "stream": "/log",
+      "label": "x5_axes",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        84.6,
+        84.6
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_axes",
+        "clearance": [
+          0.067,
+          0.05
+        ],
+        "axes_deg": [
+          -95.6,
+          -5.6
+        ],
+        "t": 84.6
+      },
+      "last": {
+        "skill": "x5_axes",
+        "clearance": [
+          0.067,
+          0.05
+        ],
+        "axes_deg": [
+          -95.6,
+          -5.6
+        ],
+        "t": 84.6
+      }
+    },
+    {
+      "id": "e0013",
+      "source": "s0",
+      "pointer_first": "/log/13",
+      "pointer_last": "/log/13",
+      "stream": "/log",
+      "label": "x5_approaches",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        84.6,
+        84.6
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_approaches",
+        "order": [
+          [
+            -185.6,
+            true,
+            1.04
+          ],
+          [
+            84.4,
+            true,
+            0.77
+          ],
+          [
+            -95.6,
+            true,
+            0.83
+          ],
+          [
+            -5.6,
+            false,
+            0.12
+          ]
+        ],
+        "t": 84.6
+      },
+      "last": {
+        "skill": "x5_approaches",
+        "order": [
+          [
+            -185.6,
+            true,
+            1.04
+          ],
+          [
+            84.4,
+            true,
+            0.77
+          ],
+          [
+            -95.6,
+            true,
+            0.83
+          ],
+          [
+            -5.6,
+            false,
+            0.12
+          ]
+        ],
+        "t": 84.6
+      }
+    },
+    {
+      "id": "e0014",
+      "source": "s0",
+      "pointer_first": "/log/14",
+      "pointer_last": "/log/14",
+      "stream": "/log",
+      "label": "x5_approach",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        84.6,
+        84.6
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_approach",
+        "cube": [
+          1.101,
+          0.822,
+          0.353
+        ],
+        "heading_deg": -185.6,
+        "rim": 0.518,
+        "t": 84.6
+      },
+      "last": {
+        "skill": "x5_approach",
+        "cube": [
+          1.101,
+          0.822,
+          0.353
+        ],
+        "heading_deg": -185.6,
+        "rim": 0.518,
+        "t": 84.6
+      }
+    },
+    {
+      "id": "e0015",
+      "source": "s0",
+      "pointer_first": "/log/15",
+      "pointer_last": "/log/15",
+      "stream": "/log",
+      "label": "x5_route",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        84.6,
+        84.6
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_route",
+        "waypoints": [
+          [
+            1.53,
+            -1.02
+          ],
+          [
+            1.75,
+            0.76
+          ]
+        ],
+        "t": 84.6
+      },
+      "last": {
+        "skill": "x5_route",
+        "waypoints": [
+          [
+            1.53,
+            -1.02
+          ],
+          [
+            1.75,
+            0.76
+          ]
+        ],
+        "t": 84.6
+      }
+    },
+    {
+      "id": "e0016",
+      "source": "s0",
+      "pointer_first": "/log/16",
+      "pointer_last": "/log/16",
+      "stream": "/log",
+      "label": "x5_grasp",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        107.64,
+        107.64
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_grasp",
+        "ik_err_mm": 2.5,
+        "fingers": [
+          0.0241,
+          0.0248
+        ],
+        "holding": "True",
+        "t": 107.64
+      },
+      "last": {
+        "skill": "x5_grasp",
+        "ik_err_mm": 2.5,
+        "fingers": [
+          0.0241,
+          0.0248
+        ],
+        "holding": "True",
+        "t": 107.64
+      }
+    },
+    {
+      "id": "e0017",
+      "source": "s0",
+      "pointer_first": "/log/17",
+      "pointer_last": "/log/17",
+      "stream": "/log",
+      "label": "x5_carry",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        120.84,
+        120.84
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_carry",
+        "cube_past_tcp": 0.0288,
+        "t": 120.84
+      },
+      "last": {
+        "skill": "x5_carry",
+        "cube_past_tcp": 0.0288,
+        "t": 120.84
+      }
+    },
+    {
+      "id": "e0018",
+      "source": "s0",
+      "pointer_first": "/log/18",
+      "pointer_last": "/log/18",
+      "stream": "/log",
+      "label": "[-0.55, 0.185]:x5_to_cabinet",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        120.84,
+        120.84
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_to_cabinet",
+        "stage": [
+          -0.55,
+          0.185
+        ],
+        "goal": [
+          -2.1,
+          0.185,
+          0.038
+        ],
+        "t": 120.84
+      },
+      "last": {
+        "skill": "x5_to_cabinet",
+        "stage": [
+          -0.55,
+          0.185
+        ],
+        "goal": [
+          -2.1,
+          0.185,
+          0.038
+        ],
+        "t": 120.84
+      }
+    },
+    {
+      "id": "e0019",
+      "source": "s0",
+      "pointer_first": "/log/19",
+      "pointer_last": "/log/19",
+      "stream": "/log",
+      "label": "x5_route",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        120.84,
+        120.84
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_route",
+        "waypoints": [
+          [
+            1.96,
+            0.73
+          ],
+          [
+            1.6,
+            0.3
+          ],
+          [
+            0.6,
+            -0.1
+          ],
+          [
+            0.1,
+            -0.1
+          ],
+          [
+            -0.55,
+            0.19
+          ]
+        ],
+        "t": 120.84
+      },
+      "last": {
+        "skill": "x5_route",
+        "waypoints": [
+          [
+            1.96,
+            0.73
+          ],
+          [
+            1.6,
+            0.3
+          ],
+          [
+            0.6,
+            -0.1
+          ],
+          [
+            0.1,
+            -0.1
+          ],
+          [
+            -0.55,
+            0.19
+          ]
+        ],
+        "t": 120.84
+      }
+    },
+    {
+      "id": "e0020",
+      "source": "s0",
+      "pointer_first": "/log/20",
+      "pointer_last": "/log/20",
+      "stream": "/log",
+      "label": "x5_over_tray",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        147.84,
+        147.84
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_over_tray",
+        "cube_past_tcp": 0.034,
+        "t": 147.84
+      },
+      "last": {
+        "skill": "x5_over_tray",
+        "cube_past_tcp": 0.034,
+        "t": 147.84
+      }
+    },
+    {
+      "id": "e0021",
+      "source": "s0",
+      "pointer_first": "/log/21",
+      "pointer_last": "/log/21",
+      "stream": "/log",
+      "label": "x5_opening_started",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        149.82,
+        149.82
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_opening_started",
+        "support_N": 2.800485670566559,
+        "hand_N": 38.56838035583496,
+        "controller_support_target_N": 0.49363920000000006,
+        "strong_grasp_boundary_N": 2.0,
+        "t": 149.82
+      },
+      "last": {
+        "skill": "x5_opening_started",
+        "support_N": 2.800485670566559,
+        "hand_N": 38.56838035583496,
+        "controller_support_target_N": 0.49363920000000006,
+        "strong_grasp_boundary_N": 2.0,
+        "t": 149.82
+      }
+    },
+    {
+      "id": "e0022",
+      "source": "s0",
+      "pointer_first": "/log/22",
+      "pointer_last": "/log/22",
+      "stream": "/log",
+      "label": "x5_release_observed",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        158.76,
+        158.76
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_release_observed",
+        "last_support_N": 0.5103825330734253,
+        "support_N": 0.511435866355896,
+        "hand_N": 0.2948305420577526,
+        "lower_moves": 0,
+        "t": 158.76
+      },
+      "last": {
+        "skill": "x5_release_observed",
+        "last_support_N": 0.5103825330734253,
+        "support_N": 0.511435866355896,
+        "hand_N": 0.2948305420577526,
+        "lower_moves": 0,
+        "t": 158.76
+      }
+    },
+    {
+      "id": "e0023",
+      "source": "s0",
+      "pointer_first": "/log/23",
+      "pointer_last": "/log/23",
+      "stream": "/log",
+      "label": "x5_weak_recontact",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        158.82,
+        158.82
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_weak_recontact",
+        "support_N": 0.6779356896877289,
+        "hand_N": 0.5468612611293793,
+        "finger_target_m": 0.02250000000000013,
+        "sample_count": 1,
+        "t": 158.82
+      },
+      "last": {
+        "skill": "x5_weak_recontact",
+        "support_N": 0.6779356896877289,
+        "hand_N": 0.5468612611293793,
+        "finger_target_m": 0.02250000000000013,
+        "sample_count": 1,
+        "t": 158.82
+      }
+    },
+    {
+      "id": "e0024",
+      "source": "s0",
+      "pointer_first": "/log/24",
+      "pointer_last": "/log/24",
+      "stream": "/log",
+      "label": "x5_weak_recontact",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        158.84,
+        158.84
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_weak_recontact",
+        "support_N": 0.5010146647691727,
+        "hand_N": 0.3050769604742527,
+        "finger_target_m": 0.022550000000000132,
+        "sample_count": 2,
+        "t": 158.84
+      },
+      "last": {
+        "skill": "x5_weak_recontact",
+        "support_N": 0.5010146647691727,
+        "hand_N": 0.3050769604742527,
+        "finger_target_m": 0.022550000000000132,
+        "sample_count": 2,
+        "t": 158.84
+      }
+    },
+    {
+      "id": "e0025",
+      "source": "s0",
+      "pointer_first": "/log/25",
+      "pointer_last": "/log/25",
+      "stream": "/log",
+      "label": "x5_release_observed",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        158.86,
+        158.86
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_release_observed",
+        "last_support_N": 0.5010146647691727,
+        "support_N": 0.5616856813430786,
+        "hand_N": 0.27386391907930374,
+        "lower_moves": 0,
+        "t": 158.86
+      },
+      "last": {
+        "skill": "x5_release_observed",
+        "last_support_N": 0.5010146647691727,
+        "support_N": 0.5616856813430786,
+        "hand_N": 0.27386391907930374,
+        "lower_moves": 0,
+        "t": 158.86
+      }
+    },
+    {
+      "id": "e0026",
+      "source": "s0",
+      "pointer_first": "/log/26",
+      "pointer_last": "/log/26",
+      "stream": "/log",
+      "label": "x5_supported_open",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        162.66,
+        162.66
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_supported_open",
+        "support_N": 0.6170490086078644,
+        "hand_N": 0.0,
+        "controller_support_target_N": 0.49363920000000006,
+        "fresh_samples": 189,
+        "lower_moves": 0,
+        "commanded_lower_m": 0.0,
+        "opening_steps": 640,
+        "control_ticks": 651,
+        "weak_recontact_samples": 2,
+        "support_checked_through_release": true,
+        "t": 162.66
+      },
+      "last": {
+        "skill": "x5_supported_open",
+        "support_N": 0.6170490086078644,
+        "hand_N": 0.0,
+        "controller_support_target_N": 0.49363920000000006,
+        "fresh_samples": 189,
+        "lower_moves": 0,
+        "commanded_lower_m": 0.0,
+        "opening_steps": 640,
+        "control_ticks": 651,
+        "weak_recontact_samples": 2,
+        "support_checked_through_release": true,
+        "t": 162.66
+      }
+    },
+    {
+      "id": "e0027",
+      "source": "s0",
+      "pointer_first": "/log/27",
+      "pointer_last": "/log/27",
+      "stream": "/log",
+      "label": "x5_released",
+      "clock": "episode",
+      "timing_semantics": "mixed_start_and_completion_events",
+      "observed_span_s": [
+        164.46,
+        164.46
+      ],
+      "rows": 1,
+      "first": {
+        "skill": "x5_released",
+        "cube": [
+          -2.084,
+          0.172,
+          0.03
+        ],
+        "t": 164.46
+      },
+      "last": {
+        "skill": "x5_released",
+        "cube": [
+          -2.084,
+          0.172,
+          0.03
+        ],
+        "t": 164.46
+      }
+    }
+  ],
+  "source_clock_checks": [
+    {
+      "source": "s0",
+      "pointer": "/log",
+      "timed_rows": 28,
+      "clock": "episode",
+      "nondecreasing": true
+    }
+  ],
+  "physical_observations": {
+    "interpretation": "Descriptive checks recomputed from recorded samples. These are not a new simulation, formal acceptance or a full-rate independent contact audit.",
+    "source": {
+      "path": "C:/Users/wuxiy/AppData/Local/Temp/m1-release-feedback-v4-20261024/repo/multi_robot/g1_mobile_gripper_retrieval/sandbox/runs/release-feedback-v4-seed3-01/workspace_00/expert_result.json",
+      "sha256": "8d1b09f78c0ca84776982d7b02ca72d904f359f5dbfc853a1b81a66cc9ecb078"
+    },
+    "release_events": [
+      {
+        "skill": "x5_opening_started",
+        "support_N": 2.800485670566559,
+        "hand_N": 38.56838035583496,
+        "controller_support_target_N": 0.49363920000000006,
+        "strong_grasp_boundary_N": 2.0,
+        "t": 149.82
+      },
+      {
+        "skill": "x5_weak_recontact",
+        "support_N": 0.6779356896877289,
+        "hand_N": 0.5468612611293793,
+        "finger_target_m": 0.02250000000000013,
+        "sample_count": 1,
+        "t": 158.82
+      },
+      {
+        "skill": "x5_weak_recontact",
+        "support_N": 0.5010146647691727,
+        "hand_N": 0.3050769604742527,
+        "finger_target_m": 0.022550000000000132,
+        "sample_count": 2,
+        "t": 158.84
+      },
+      {
+        "skill": "x5_supported_open",
+        "support_N": 0.6170490086078644,
+        "hand_N": 0.0,
+        "controller_support_target_N": 0.49363920000000006,
+        "fresh_samples": 189,
+        "lower_moves": 0,
+        "commanded_lower_m": 0.0,
+        "opening_steps": 640,
+        "control_ticks": 651,
+        "weak_recontact_samples": 2,
+        "support_checked_through_release": true,
+        "t": 162.66
+      }
+    ],
+    "finding": "Opening begins with measured tray support; supported_open later records zero hand force. Two weak recontacts remain visible. Event snapshots alone do not verify every intervening physics step."
+  },
+  "review": {
+    "task": "M1",
+    "skills": 5,
+    "ordered_actions": 16,
+    "event_groups": 28,
+    "source_files": 1,
+    "action_mapping_counts": {
+      "episode_event_candidates": 16
+    },
+    "joint_mapping_review": "pending_physical_constraints_and_provenance_review",
+    "remaining_zh": "已定位容器下放、抓持和释放支撑；G1/X5 部分事件是动作完成点，需用原始状态补实际动作起点及连续接触检查。"
+  },
+  "design_gate_complete": false,
+  "physics_runs": 0,
+  "legacy_scores_changed": false,
+  "h1_status_changed": false
+}

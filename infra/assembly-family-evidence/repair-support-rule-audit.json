@@ -1,0 +1,123 @@
+{
+  "schema": "repair-support-rule-audit/1",
+  "recorded_utc": "2026-10-30T04:10:58.513301+00:00",
+  "authorization": "User explicitly selected: 统一原始规则，新增回归并从初态重跑（建议）",
+  "new_rule": "original_grace_v1",
+  "legacy_rule": "immediate_v0",
+  "support_grace_seconds": 0.3,
+  "physical_thresholds_unchanged": true,
+  "original_artifacts_modified": false,
+  "diagnostic_is_not_acceptance": true,
+  "original_gear_support_observation": {
+    "GEAR-01/a09": {
+      "small_gear_interrupted_samples": 251,
+      "longest_continuous_interruption_seconds": 0.0025
+    },
+    "GEAR-03/a12": {
+      "small_gear_interrupted_samples": 276,
+      "longest_continuous_interruption_seconds": 0.0125
+    }
+  },
+  "diagnostic_replay": [
+    {
+      "attempt": "a77",
+      "diagnostic_only": true,
+      "original_outcome_unchanged": true,
+      "rule": "original_grace_v1",
+      "stage": 5,
+      "credited": {
+        "large_gear": 0.18860856252021646,
+        "medium_gear": -0.29817201831166995,
+        "small_gear": 0.5930749695199401
+      },
+      "peak_small_angle_rad": 0.6056548009270741,
+      "resets": [
+        10.335,
+        19.9975,
+        49.5775,
+        50.845,
+        74.9575
+      ],
+      "reason": "in_progress"
+    },
+    {
+      "attempt": "a78",
+      "diagnostic_only": true,
+      "original_outcome_unchanged": true,
+      "rule": "original_grace_v1",
+      "stage": 5,
+      "credited": {
+        "large_gear": -7.428264464787171e-07,
+        "medium_gear": -0.0004746247736082676,
+        "small_gear": 0.0009537720930145044
+      },
+      "peak_small_angle_rad": 0.0011229290367816558,
+      "resets": [
+        10.335,
+        19.9975,
+        51.050000000000004
+      ],
+      "reason": "in_progress"
+    }
+  ],
+  "legacy_replay": {
+    "attempt": "GEAR-02/a77",
+    "steps": 56424,
+    "scorer_mismatches": 0,
+    "original_artifacts_modified": false
+  },
+  "regression": {
+    "tests_passed": 34,
+    "log": "/tmp/assembly-grace-clearance-regression.log"
+  },
+  "sources": [
+    {
+      "task": "GEAR-01",
+      "attempt": "a09",
+      "physics_sha256": "d1f59a194f55085b0da3cd7f59bdaa2eab410f15941f0004c8fe6a29691746de",
+      "outcome_sha256": "3a1db790059469d8c813d1448d477fcfa84daca75b5b0af6212960d0cdc1ac56"
+    },
+    {
+      "task": "GEAR-03",
+      "attempt": "a12",
+      "physics_sha256": "63bfb635e6cade8c14c7dce91c2ca525667755dc722b97d2f4f62e723c92b069",
+      "outcome_sha256": "47e5f74235e6992894dff91d03e03fc5a7a432016b488866c20a5858612d73d1"
+    },
+    {
+      "task": "GEAR-02",
+      "attempt": "a77",
+      "physics_sha256": "b519e997bb7e0c71212a64ac904a24f54918d485789da12a2910606d3fd9e96a",
+      "outcome_sha256": "e69fce49f474ad58a6ef0bd270f41ea0b0f0cd0635072b423200fae760d44061"
+    },
+    {
+      "task": "GEAR-02",
+      "attempt": "a78",
+      "physics_sha256": "5f13b298b590737c9268386d8aa570444157dbed269f66d376e3da217e2d4726",
+      "outcome_sha256": "70c50272128f6ac462362c3b18dd39f2f76f865690dbf4776b295e0afe3893b2"
+    }
+  ],
+  "fresh_attempt": "GEAR-02/a79",
+  "full_task_acceptance": "not_passed",
+  "fresh_attempt_result": {
+    "state": "failed_with_evidence",
+    "goal_met": false,
+    "physical_goal_met": false,
+    "physical_checks_pass": true,
+    "complete_artifacts": true,
+    "credited_small_angle_rad": 1.1438715864854527,
+    "failure": "Tool retreat did not converge after four strokes; no full-task acceptance"
+  },
+  "next_fresh_attempt": "a81",
+  "next_fresh_policy": "gear_pitched_regrasp_drive",
+  "updated_utc": "2026-10-30T06:16:14.848895+00:00",
+  "fresh_a80_result": {
+    "state": "failed_with_evidence",
+    "physical_checks_pass": true,
+    "complete_artifacts": true,
+    "physics_steps": 61888,
+    "scorer_mismatches": 0,
+    "credited_small_gear_rad": 0.5930749695199401,
+    "failure": "Tool remained physically held after parking and opening; measured robot force 1.8014 N with no table support",
+    "next_change": "Extra 0.18 rad parallel finger opening before physical release; rerun from original initial state"
+  }
+}

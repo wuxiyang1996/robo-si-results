@@ -1,0 +1,45 @@
+{
+  "schema": "h1-layer1-channel-diagnostic/1",
+  "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_08\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\layer1-high-lowcmd-prefix-01",
+  "profile": "layer1_high_fixed",
+  "controller": "candidate_08 (C04 compact-lift motion, not C10)",
+  "requested_seconds": 90.0,
+  "actual_seconds": 43.58000000000121,
+  "commands": 2179,
+  "physical_steps": 8716,
+  "void": false,
+  "success": false,
+  "termination": "fallen",
+  "smoke_stop": false,
+  "safety_complete": true,
+  "safety_events": [
+    {
+      "rule": 1,
+      "kind": "fall",
+      "time_s": 43.58,
+      "end_s": 43.58,
+      "occurrences": 1,
+      "measured": {
+        "reason": "tilt_support_confirmation_timeout",
+        "pelvis_height_m": 0.6105,
+        "pelvis_up_projection": 0.128,
+        "pelvis_tilt_deg": 82.64
+      },
+      "threshold": {
+        "pelvis_height_m": 0.4,
+        "pelvis_up_projection": 0.3,
+        "exception": "slow, bilaterally supported forward bend (relay_safety)"
+      }
+    }
+  ],
+  "initial_state_writes": [],
+  "channel_clipped": {},
+  "source_frozen": true,
+  "actuator_rule": {
+    "status": "evaluated",
+    "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+    "max_saturation_s": 1.5,
+    "max_limit_push_s": 0.0
+  },
+  "scope": "Complete recorded negative: trusted world terminated at its current-rule failure; not an operator STOP, not a completed 90 s prefix and not a full-task success."
+}

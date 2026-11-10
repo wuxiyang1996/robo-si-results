@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="zh-CN"><head><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/>
+<meta content="Hanoi 十项独立任务设计：Dex3、平行夹爪、五指灵巧手，能力边界与 self-modeling，以及四／五盘 reasoning。新增设计待物理验证。" name="description"/>
+<title>Hanoi · 10 项跨身体工具相性与 Self-modeling 设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style>html{scroll-padding-top:30px}main.wrap{padding-block:32px;overflow-wrap:anywhere}h1{font-size:clamp(28px,5vw,44px)}h2{margin-top:42px}.table-wrap{overflow-x:auto;margin-block:20px}th,td{min-width:110px}main p,main li{max-width:100ch;line-height:1.8}nav{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:26px}.design-status{border-left:4px solid #b7791f;padding:14px 20px;background:var(--panel)}a:focus-visible{outline:2px solid currentColor;outline-offset:3px}</style>
+</head><body><a class="skip-link" href="#main">跳到正文</a><main class="wrap" id="main"><!-- hanoi-implementation:start --><section id="hanoi-implementation"><div class="wrap"><h2>实现与物理尝试</h2><p>10 个 task；已完成物理尝试 10/10，完整专家成功 0/10。已执行步骤按日志映射，未执行计划不计为完成。</p><p><a href="/robo-si-results/archive-hanoi-20261104.html">已验收配置与参考录像（历史结果页）</a></p></div></section><!-- hanoi-implementation:end -->
+<nav aria-label="Hanoi 文档"><a href="/robo-si-results/infra/task-hanoi-zh.html">Hanoi 任务与已有证据</a><a href="/robo-si-results/humanoid/g1_tabletop_hanoi/CROSS_EMBODIMENT_DESIGN.md">下载设计文档</a><a href="/robo-si-results/infra/task-hanoi-en.html#hanoi-task-design">English task list</a></nav>
+<p class="design-status"><strong>设计范围已整理 · 新增配置待物理验证</strong><br/>10 个独立 task；原有直接操作参考的完成状态与新增设计分别记录。</p>
+<h1 id="hanoi-self-modeling">Hanoi：跨身体工具相性与 Self-modeling 任务设计</h1>
+<p>更新：2026-10-28。设计范围：10 个独立 task，按 embodiment、能力条件和场景分别配置、分别报告。新增设计均待物理标定与完整执行验证；本次新增物理运行为 0。原有直接操作三／四／五盘参考及其发布、验收状态保留，不能作为新增工具任务已通过的证据。</p>
+<h2 id="_1">目标与范围</h2>
+<p>重点测试 cross-embodiment 工具相性、能力边界判断和 self-modeling。核心场景固定三盘；四／五盘仅作为 Dex3 的 reasoning 评测。可达、脱杆、放置和工具退出是完整执行约束，不另扩任务族。</p>
+<p>工具配置指场景提供的候选工具集合，agent 的选择是评测结果。不同随机种子属于同一 task 的实例；不做所有身体、盘数和能力条件的全组合。这里的“公开／隐藏／边界”是能力评测条件，不替代项目原有 R9 工具三层，也不代表已获得该项认证。</p>
+<h2 id="embodiment">Embodiment 与工具</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>设计与控制变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1：G1 + Dex3</td>
+<td>复用现有本体与末端，作为 anchor embodiment。</td>
+</tr>
+<tr>
+<td>E2：同一 G1 + 平行夹爪</td>
+<td>保持躯干、机械臂和固定骨盆设置，改变末端接触几何、开口与工具驱动能力。具体夹爪、安装与控制适配待确认。</td>
+</tr>
+<tr>
+<td>E3：同一 G1 + 五指灵巧手</td>
+<td>保持身体设置，测试多指接触分配、握持与工具驱动差异。具体五指手型号、碰撞模型与控制适配待确认。</td>
+</tr>
+<tr>
+<td>T1：侧夹工具</td>
+<td>薄夹口接近圆盘边缘，通过夹持力和摩擦搬运；受握柄相性、驱动行程、有效夹持力和抗滑能力限制。</td>
+</tr>
+<tr>
+<td>T2：底部托具</td>
+<td>从盘下建立支撑，减少侧向夹持力需求；受插入空间、工具自重、腕部力矩、抗倾覆和撤出路径限制。</td>
+</tr>
+</tbody>
+</table></div>
+<p>10 个 task 均提供 T1 + T2。不增加无关干扰工具。盘和底座应提供真实可用的工具接近空间，例如供托具进入的浅槽；几何尺寸需标定，不能靠禁止直接手抓来制造必要性。</p>
+<p>跨身体相性是“身体 × 工具 × 完整操作”的关系。能握住工具或提起圆盘，不等于能完成脱杆、搬运、套杆、释放和撤出。相性记录分为已验证可用、有证据支持不可用、未确定；单个控制器失败不能证明身体不可用。</p>
+<p>至少构造一组换身体后可行工具、握持方式或协作路线发生变化的配对实例，同时保留无需改变选择的实例。不预设五指手一定更强。E3 必须展示相对 E1/E2 的可验证差异，才具备正式纳入评测的依据。</p>
+<h2 id="10-task">10 个独立 task</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task ID</th>
+<th>Embodiment</th>
+<th>难度／能力条件</th>
+<th>场景</th>
+<th>具体任务与主要考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hanoi-01</td>
+<td>E1：G1 + Dex3</td>
+<td>能力公开</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>提供当前有效夹持与力矩能力信息，选择工具、握点及单双手方式完成任务。测已知身体条件下的工具相性。</td>
+</tr>
+<tr>
+<td>Hanoi-02</td>
+<td>E2：G1 + 平行夹爪</td>
+<td>能力公开</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 01 使用相同盘、杆和工具，只换末端及对应能力信息。测跨身体后是否正确调整工具或操作路线。</td>
+</tr>
+<tr>
+<td>Hanoi-03</td>
+<td>E1：G1 + Dex3</td>
+<td>能力隐藏</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 01 物理实例配对，隐藏选定的有效能力参数；有限探测后预测并完成操作。测自身能力估计。</td>
+</tr>
+<tr>
+<td>Hanoi-04</td>
+<td>E2：G1 + 平行夹爪</td>
+<td>能力隐藏</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 02 配对，采用相同探测与预测协议。测平行夹爪下的 self-modeling 与工具选择。</td>
+</tr>
+<tr>
+<td>Hanoi-05</td>
+<td>E1：G1 + Dex3</td>
+<td>能力隐藏、夹持边界</td>
+<td>三盘、有效夹持能力下降；T1 + T2</td>
+<td>标定至原侧夹路线失效、承托路线仍可执行。通过探测发现边界并调整方案；不公开“夹持下降”标签。</td>
+</tr>
+<tr>
+<td>Hanoi-06</td>
+<td>E2：G1 + 平行夹爪</td>
+<td>能力隐藏、力矩边界</td>
+<td>三盘、腕部力矩余量下降；T1 + T2</td>
+<td>标定至原工具／握点组合失效，但轻工具、短力臂或双手分担中至少一条路线仍可执行。测边界判断与策略调整。</td>
+</tr>
+<tr>
+<td>Hanoi-07</td>
+<td>E1：G1 + Dex3</td>
+<td>能力公开、长序列</td>
+<td>四盘、操作余量充足；T1 + T2</td>
+<td>自主完成合法规划、状态跟踪及物理执行。经典最少 15 次移动；与 01 对照序列长度影响。</td>
+</tr>
+<tr>
+<td>Hanoi-08</td>
+<td>E1：G1 + Dex3</td>
+<td>能力公开、更长序列</td>
+<td>五盘、操作余量充足；T1 + T2</td>
+<td>测更深的递归依赖、持续规划和执行后状态更新。经典最少 31 次移动；与 01、07 对照。</td>
+</tr>
+<tr>
+<td>Hanoi-09</td>
+<td>E3：G1 + 五指灵巧手</td>
+<td>能力公开</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 01、02 配对，检验五指手带来的握持、驱动和工具路线差异。</td>
+</tr>
+<tr>
+<td>Hanoi-10</td>
+<td>E3：G1 + 五指灵巧手</td>
+<td>能力隐藏</td>
+<td>三盘、标称能力；T1 + T2</td>
+<td>与 09 物理实例配对；有限探测有效握持与驱动能力，再预测和执行任务。</td>
+</tr>
+</tbody>
+</table></div>
+<p>每一行是独立 task。所有新增 task 的当前状态均为设计待验证，数值边界、工具资产、末端适配和运行预算尚未冻结。五指手不增加边界专项或四／五盘任务。</p>
+<h2 id="_2">共同执行与观测协议</h2>
+<p>目标是将整叠圆盘从起始杆搬到目标杆，第三杆用于周转。一次仅搬运一个顶盘，大盘不能压小盘；整盘必须实际越过源杆顶端，之后搬到合法目标杆并套杆放置。允许合法额外移动，不以最少移动数作为成功门槛。</p>
+<p>每次提交须正确物理支撑、完全释放并稳定 0.5 秒；全部完成后再稳定 2 秒。工具在提交时必须撤离圆盘，不得继续承托。掉盘、非法多盘操作、非法堆叠或超时按任务规则失败。</p>
+<p>当前直接操作评分器以手接触建立抓取证据。工具版需实现并验证“机器人—工具—圆盘”的真实接触与受力链，独立检查工具撤离、正确支撑和移动合法性；不能用工具名称或 agent 声明替代物理证据。移动身体、换工具和探测的时间预算需重新标定，不能直接套用旧参考时限；本设计默认固定骨盆。</p>
+<p>公开名义模型、硬件上限、传感器接口、目标与规则；agent 仅使用允许的自身传感器和关节动作。公开条件另提供本实例所选有效能力参数，隐藏条件不提供其真实值或边界类别。裁判参数、成功标签和工具相性答案不暴露。</p>
+<p>标称能力实例也应在经验证的非临界范围内抽样，不让“标称”成为唯一可记忆数值。01/03、02/04、09/10 使用同一物理实例，只改变信息披露。05/06 在回合开始前设置能力参数，回合内保持固定；各自只改变一个主要因素，并保留实际可行替代路线。</p>
+<h2 id="self-modeling">Self-modeling 探测与预测</h2>
+<p>允许小幅试夹、试提、握点调整和工具姿态探测；所有条件使用相同的预算规则。记录探测次数、仿真时间和消耗。具体上限待参考执行标定后统一冻结，不让 agent 无限重置或读取真值搜索答案。</p>
+<p>证据来自模型实际支持的传感器，例如关节跟踪误差、可见滑移、姿态变化及已实现的力／触觉。探测必须有可辨识反馈；不能只能在不可恢复掉盘后发现不适配。测试区或校准件若采用，须所有配对条件一致，不提供额外特权信息。</p>
+<p>首次正式搬运前提交对相关工具／操作的可行性预测、置信度、关键限制与拟用方案；探测后允许更新。用后续实际执行验证，重点考察探测结论能否迁移到尚未执行的盘或转移方向。不按解释长度评分，不要求为了证伪而执行已判断不可行的动作。</p>
+<p>05/06 的主要边界实例要求调整路线；另保留能力变化但原路线仍可行的对照实例，防止“遇到变化就换工具”的固定策略。隐藏条件的真实参数范围与评测种子按可信侧配置封存。</p>
+<h2 id="reasoning-eval">四／五盘 reasoning eval</h2>
+<p>07/08 保持已知能力和足够的操作余量，盘数以外的物理条件尽量配对；随盘数产生的几何变化应记录并检查，不把物理难度增加归因于推理。三／四／五盘经典最少移动数分别为 7/15/31。</p>
+<p>对每个 reasoning task 运行两种诊断模式：自主生成与更新符号计划；提供合法符号移动序列后仍由 agent 完成物理执行。报告两种模式的成功率差异、合法性错误和额外移动。后者仍失败时，结合状态估计与接触日志分析执行原因。该对照属于同一 task 的评测模式，不增加 task 数量。</p>
+<h2 id="_3">配对关系与指标</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>对照</th>
+<th>主要解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01 / 02 / 09</td>
+<td>同场景、同工具、能力公开，比较跨身体相性。</td>
+</tr>
+<tr>
+<td>01 ↔ 03；02 ↔ 04；09 ↔ 10</td>
+<td>同物理实例，仅改变能力信息披露，分析探测与 self-modeling。</td>
+</tr>
+<tr>
+<td>03 ↔ 05；04 ↔ 06</td>
+<td>同身体、同披露协议，改变关键能力参数，分析边界与策略适应。</td>
+</tr>
+<tr>
+<td>01 ↔ 07 ↔ 08</td>
+<td>已知能力下比较三／四／五盘规划与执行。</td>
+</tr>
+</tbody>
+</table></div>
+<p>主指标为完整任务成功率，按每个 task 独立报告样本数和结果。辅助指标包括：工具／操作可行性预测准确率及置信度校准、能力高估与低估、探测前后预测改善、探测成本、边界变化后的有效策略调整、非法与额外合法移动，以及滑移、脱杆、放置、撤出等失败阶段。</p>
+<p>相性标签未确定的样本不强行计入预测准确率。替代工具、环境借力和双手协作只要符合物理与任务规则均应接受；有效新路线出现时更新相性标签。</p>
+<h2 id="_4">实现与验收清单</h2>
+<ol>
+<li>完成 E2/E3 末端资产、碰撞、传感器和控制适配；各末端按实际关节与硬件限制运行，不继承 Dex3 的固定动作维度假设。</li>
+<li>构建 T1/T2 与盘／底座接近几何，验证握持、驱动、脱杆、转移、套杆和退出完整链。</li>
+<li>标定跨身体相性差异与 05/06 边界，验证至少一条替代路线；明确不可用结论的实验与几何／力学依据。</li>
+<li>实现工具接触链判定、信息披露隔离、探测记录及预算；开发与评测种子分离，能力与工具相性不能通过 ID 泄漏。</li>
+<li>每个声明可行配置取得完整端到端物理见证，检查代表性边界和替代路线；不把子段成功拼成整局成功。</li>
+<li>为 07/08 标定长序列预算并完成提供计划的诊断对照。保留原有直接操作参考为历史基线，新增工具版结果独立记录。</li>
+</ol>
+<h2 id="_5">相关材料</h2>
+<ul>
+<li><a href="/robo-si-results/humanoid/g1_tabletop_hanoi/README.md">现有直接操作任务与证据</a></li>
+<li><a href="/robo-si-results/infra/task-hanoi-zh.html">Hanoi 任务网页</a></li>
+<li><a href="/robo-si-results/infra/reference-designs/Hanoi.html">已有参考动作与轨迹设计</a></li>
+</ul>
+<h2 id="_6">实现入口与执行进度</h2>
+<p>实验实现位于主源码仓库的 <code>hanoi_family/</code>，覆盖十项合同、高／低层计划、三种末端场景、工具接触链判定、受力限制、逐步轨迹与视频记录。当前为特权物理专家候选，不代表 agent 已通过隐藏能力评测。</p>
+<p>每项完整成功、失败尝试和局部场景检查分别记录。最新证据见 <a href="/robo-si-results/archive-hanoi-20261104.html">已验收配置与参考录像（历史结果页）</a>。本节只说明实现入口，具体结果以该页对应运行记录为准。</p>
+<p>本轮执行（2026-10-28）：10/10 task 已独立尝试并保存视频，完整成功专家解为 0/10。Hanoi-02 全闭合诊断通过取工具，但在源盘接近阶段停止；其余任务尚未通过取工具。每项已有完整 high/low 计划和实际执行轨迹映射，未执行的搬盘计划不计为完成。能力边界、隔离 agent self-modeling 与四／五盘 reasoning 的物理评测仍待打通。</p>
+</main></body></html>

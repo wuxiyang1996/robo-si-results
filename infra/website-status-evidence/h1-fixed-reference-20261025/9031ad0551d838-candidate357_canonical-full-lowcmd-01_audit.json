@@ -1,0 +1,75 @@
+{
+  "updated_at": "2026-10-25T06:35:11.032852+00:00",
+  "candidate": 357,
+  "channel": true,
+  "run": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_357\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-full-lowcmd-01",
+  "recording_valid_and_safe": false,
+  "complete_current_rule_success": false,
+  "task_success": false,
+  "checks": {
+    "actual_container": true,
+    "source_frozen": true,
+    "normal_exit": false,
+    "channel_no_clipping": true,
+    "no_lost_changes": true,
+    "torque_envelope": true,
+    "protocol": true,
+    "integrity": true,
+    "safety_coverage": true,
+    "no_safety_events": false
+  },
+  "expert_status": "error:EpisodeOver:the trusted world ended the episode (fallen) at 651.96 s",
+  "score": 0.0,
+  "physics_steps": 130392,
+  "physical_duration_s": 651.96,
+  "integrity": {
+    "ok": true,
+    "void": false,
+    "reasons": [],
+    "excluded_frames": 5,
+    "safety_coverage": {
+      "complete": true,
+      "has_gaps": false,
+      "invalid_frames": 0
+    },
+    "max_joint_limit_overshoot": 0.0,
+    "max_effort_ratio": 1.0,
+    "max_speed_ratio": 0.0752616822719574,
+    "physics_samples": 130392,
+    "joint_count": 43,
+    "physics_dt": 0.005
+  },
+  "safety_events": [
+    {
+      "rule": 1,
+      "kind": "fall",
+      "time_s": 651.96,
+      "end_s": 651.96,
+      "occurrences": 1,
+      "measured": {
+        "reason": "tilted_without_confirmed_floor_support_or_low_motion",
+        "pelvis_height_m": 0.4948,
+        "pelvis_up_projection": 0.2931,
+        "pelvis_tilt_deg": 72.96
+      },
+      "threshold": {
+        "pelvis_height_m": 0.4,
+        "pelvis_up_projection": 0.3,
+        "exception": "slow, bilaterally supported forward bend (relay_safety)"
+      }
+    }
+  ],
+  "rule5": {
+    "status": "evaluated",
+    "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+    "max_saturation_s": 1.44,
+    "max_limit_push_s": 0.0
+  },
+  "original_start": true,
+  "scope": "One full original-start attempted episode only; repeatability, random coverage and human acceptance are separate.",
+  "evidence": {
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_357\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-full-lowcmd-01\\trusted\\verdict.json": "4298f567d6cb5c783aee5d86dc602f57e67983d9dbfda308803be73c35cc9732",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_357\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-full-lowcmd-01\\trusted\\run.json": "bf0e369c0c31a0b8e9165ce02125c34af4845a1cc413faf2ba9460bb60f8d17c",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_357\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\runs\\canonical-full-lowcmd-01\\workspace_00\\reference_out\\reference_result.json": "adade7dcd354a6c8d0cc2eeca141737d86f64d977b7e536ec75f3db9ad1e92f7"
+  }
+}

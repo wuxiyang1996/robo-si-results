@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 561, in main
+    try:attempt.execute()
+        ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 353, in execute
+    if self.tuning.get('prepush',False):self.prepush_disk()
+                                        ^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 439, in prepush_disk
+    self.move('edge_slide',{'left':(tip,R)},seconds=16)
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 343, in move
+    if max(residual.values())>.025:raise RuntimeError('grasp_pose_not_reached:'+str(residual))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: grasp_pose_not_reached:{'left': 0.08914711611912178}

@@ -1,0 +1,708 @@
+{
+  "schema": "refinement-readiness/1",
+  "checked_utc": "2026-10-26T18:01:30.947965+00:00",
+  "policy": {
+    "path": "infra/planning/hierarchical-evaluation/refinement-policy.json",
+    "sha256": "20e6e2134265acf1a5683ecdcb99b4afd5ebd15a539b4239c4d818993418dc61"
+  },
+  "summary": {
+    "tasks": 12,
+    "existing_success_record_candidates": 12,
+    "high_level_plans": 12,
+    "coarse_skill_contracts": 62,
+    "new_refinement_mapping_audits_completed": 0,
+    "new_refinement_mapping_audits_pending": 12,
+    "new_physics_runs": 0,
+    "new_full_trajectory_generation_attempts": 0,
+    "expanded_skill_contracts": 62,
+    "ordered_low_level_actions": 193,
+    "action_mapping_counts": {
+      "episode_event_candidates": 156,
+      "local_clock_or_summary_candidates": 28,
+      "needs_action_label_or_source_mapping": 9
+    }
+  },
+  "count_interpretation": "Pending means not audited under the new three-representation gate; it does not mean the existing task or expert failed.",
+  "remaining_work_units": [
+    "Verify generation identity for each selected full witness; preserve H4 historical-source gaps.",
+    "Resolve missing action labels, local clocks and within-carry/tow boundaries in action-mappings/catalog.json.",
+    "Jointly review physical contact/support constraints and the three representation mappings for 12 cases."
+  ],
+  "not_prerequisites": [
+    "all-random-instance solutions",
+    "arbitrary skill composition",
+    "continuous applicability envelopes",
+    "general rolling planner"
+  ],
+  "wall_time_estimate": null,
+  "estimate_reason": "Source/trajectory extraction and review effort has not been measured; no invented percentage or date.",
+  "h1_status_or_runtime_changed": false,
+  "legacy_scores_changed": false,
+  "rows": [
+    {
+      "task": "H1",
+      "scope": {
+        "zh": "原始1.25米场景的分层证据交付；随机Layer1实例按四态记录",
+        "en": "Layered evidence for the original1.25m task; four-state randomized Layer1 records"
+      },
+      "selected_existing_witness": "C026-63",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "existing_full_witness_registry",
+      "record": {
+        "path": "infra/planning/h1/registry.json",
+        "sha256": "b818db1d6688ece752aeee83b22020d6abc0c30fe3925853c59c168023d0d312"
+      },
+      "additional_sources": [
+        {
+          "path": "infra/planning/h1/key_states/C026-63.json",
+          "sha256": "f12cbf5d30785618ec3a1426e27a4d9f93e2d1c6c1f38ad7409a00003f899587"
+        }
+      ],
+      "existing_stage_or_state_anchors": [
+        {
+          "state": "S0",
+          "time_s": 0.0
+        },
+        {
+          "state": "S1",
+          "time_s": 750.5600000000001
+        },
+        {
+          "state": "S2",
+          "time_s": 876.08
+        },
+        {
+          "state": "S3",
+          "time_s": 913.1800000000001
+        },
+        {
+          "state": "S4",
+          "time_s": 936.1800000000001
+        },
+        {
+          "state": "S5",
+          "time_s": 1037.98
+        },
+        {
+          "state": "S6",
+          "time_s": 1090.6
+        }
+      ],
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/H1.json",
+        "sha256": "1f2362379e75cd02e621181adaf544ae1192a3d05248f87ec83392b6212a05bb"
+      },
+      "coarse_skill_contracts": 6,
+      "existing_material_zh": "已有实际关键状态与连续成功来源；已展开 20 个有序动作并关联事件候选",
+      "remaining_zh": "登高/下降内部足步尚需从控制 trace 展开；评分 S2=876.08 s 不是登高结束，控制事件 on_stool=888.40 s。H1 原状态与运行不改。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/H1.json",
+        "sha256": "5511b5c9c3c7c6d96d82789d9c0f561fbd738f0715f2ba52625999a3353ff660"
+      },
+      "ordered_actions": 20,
+      "action_mapping_counts": {
+        "episode_event_candidates": 20
+      }
+    },
+    {
+      "task": "H2",
+      "scope": {
+        "zh": "第一层，20 kg，transport-layout-v2",
+        "en": "Layer 1, 20 kg, transport-layout-v2"
+      },
+      "selected_existing_witness": "corner0",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "environment_verdict",
+      "record": {
+        "path": "infra/planning/skill-evidence/sources/94bd6033965124d6599e443b0f02c2f5cd2fd7ff6cffeb92147cb255b69dfdc2.json",
+        "sha256": "94bd6033965124d6599e443b0f02c2f5cd2fd7ff6cffeb92147cb255b69dfdc2"
+      },
+      "additional_sources": [
+        {
+          "path": "infra/planning/skill-evidence/H2.json",
+          "sha256": "69af3e9585b1b532cdf75da88857eb20f122f6900f760fe80851b71a325b2f45"
+        }
+      ],
+      "existing_stage_or_state_anchors": {
+        "crate_pushed": 7.88,
+        "cargo_loaded": 16.32,
+        "through_passage_1": 22.6,
+        "through_passage_2": 76.58,
+        "delivered": 87.58
+      },
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/H2.json",
+        "sha256": "3b7efc87d49ea8092b73f05c1dd25dee1d1980f1239d4bb1b2ea3b2d9a6910a4"
+      },
+      "coarse_skill_contracts": 5,
+      "existing_material_zh": "已有 20 个反馈阶段探针；已展开 15 个有序动作并关联事件候选",
+      "remaining_zh": "动作已定位到同一全程事件；还需将接触、装载支撑与换侧站位约束逐段对照物理记录。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/H2.json",
+        "sha256": "a5a1ff08f234cf669f49c71cc8d9e251245cb514e1596d327d5ef6d1b46d0581"
+      },
+      "ordered_actions": 15,
+      "action_mapping_counts": {
+        "episode_event_candidates": 15
+      }
+    },
+    {
+      "task": "H3",
+      "scope": {
+        "en": "Multi-robot; heavy_prop / no_prop; fixed nominal scene; 180 s; privileged native reference",
+        "zh": "多机器人；有重物／无重物；固定名义场景；180 秒；特权原生参考"
+      },
+      "selected_existing_witness": "heavy-delivery-05",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "independent_delivery_audit",
+      "record": {
+        "path": "infra/h3-release/heavy-delivery-05-audit.json",
+        "sha256": "8c718533b631548cf88f10a78e7e0e10505f2dae36ea2b23784c13fac94c8d4c"
+      },
+      "additional_sources": [],
+      "existing_stage_or_state_anchors": [
+        {
+          "t": 133.755,
+          "event": "lifted",
+          "carrier": "g1_a"
+        },
+        {
+          "t": 151.315,
+          "event": "carried_crossing",
+          "carrier": "g1_a"
+        },
+        {
+          "t": 166.98,
+          "event": "released_table_dwell"
+        }
+      ],
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/H3.json",
+        "sha256": "4b798166e9ab49d10e7148c6348991d34ace93d6ad5887532a777e42d987fb00"
+      },
+      "coarse_skill_contracts": 5,
+      "existing_material_zh": "已有独立交付与箱撑门审计；已展开 16 个有序动作并关联事件候选",
+      "remaining_zh": "仅 heavy_prop；抓取和推箱 trace 使用局部时钟，尚未建立到全程 trace 的唯一偏移。carry/place 摘要不能充当细动作边界。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/H3.json",
+        "sha256": "b573417c050c2527adad17b897203df308e0bca328af549bdb6a2f7483d134f3"
+      },
+      "ordered_actions": 16,
+      "action_mapping_counts": {
+        "episode_event_candidates": 6,
+        "local_clock_or_summary_candidates": 10
+      }
+    },
+    {
+      "task": "H4",
+      "scope": {
+        "zh": "已授权的第一层参考资料",
+        "en": "Authorized layer 1 reference materials"
+      },
+      "selected_existing_witness": "v42-L1-s101",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "environment_verdict",
+      "record": {
+        "path": "infra/website-status-evidence/a8546201cf67a83b-record.json",
+        "sha256": "a8546201cf67a83b5db1930155124c7f8e0bbda243b3c1158c20fdf9638f71b8"
+      },
+      "additional_sources": [],
+      "existing_stage_or_state_anchors": {
+        "plank_engaged": 20.72,
+        "bridge_built": 30.44,
+        "crossed": 47.72,
+        "target_reached": 63.66,
+        "target_lifted": 65.16,
+        "returned_holding": 101.84,
+        "delivered": 121.0
+      },
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/H4.json",
+        "sha256": "e5b2d9b2112faf6870056c5870bd358dcfbbe032f26d463a550830850f6430f6"
+      },
+      "coarse_skill_contracts": 5,
+      "existing_material_zh": "已有全阶段时间与完整成功；已展开 15 个有序动作并关联事件候选",
+      "remaining_zh": "搭板、抓取、放置局部 trace 已提取；跨桥足步与全程时钟待映射，历史源码身份缺口仍保留。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/H4.json",
+        "sha256": "00524c2c35713e2cfac86337c0873a3de236c3e4d7005ffcdfd56c2c8bc43cac"
+      },
+      "ordered_actions": 15,
+      "action_mapping_counts": {
+        "local_clock_or_summary_candidates": 15
+      }
+    },
+    {
+      "task": "H5",
+      "scope": {
+        "zh": "第一层 v3 / 100 kg 参考候选",
+        "en": "Layer 1 v3 / 100 kg reference candidate"
+      },
+      "selected_existing_witness": "transport36-layer1-seed23",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "environment_verdict",
+      "record": {
+        "path": "infra/planning/skill-evidence/sources/26511a55caa8e2b772c7f51491eef79ac9db1dfe75903fb1db837c81870c9ec7.json",
+        "sha256": "26511a55caa8e2b772c7f51491eef79ac9db1dfe75903fb1db837c81870c9ec7"
+      },
+      "additional_sources": [
+        {
+          "path": "infra/planning/skill-evidence/H5.json",
+          "sha256": "80754442ac88ded0efb8f92ad326e61a9e8a679209179c61c8fe64d700b964bc"
+        }
+      ],
+      "existing_stage_or_state_anchors": {
+        "tool_engaged": 6.52,
+        "cargo_raised": 31.9,
+        "cargo_supported": 92.38,
+        "transported": 141.86,
+        "delivered": 150.96
+      },
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/H5.json",
+        "sha256": "afa58650df4410abb1f1770c1d5760b15d0203ed31de54013ea043b09577a826"
+      },
+      "coarse_skill_contracts": 5,
+      "existing_material_zh": "已有 20 个阶段探针，含反馈与回放；已展开 16 个有序动作并关联事件候选",
+      "remaining_zh": "踩压→另一脚上平台→插托架→逐足下平台已展开；推托架 trace 为局部时钟，接触/支撑转移需逐段核对。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/H5.json",
+        "sha256": "bfa0918bb2bfa810e31db985ee6c2ce86a4594509cf67737d38f31d29ba7160a"
+      },
+      "ordered_actions": 16,
+      "action_mapping_counts": {
+        "episode_event_candidates": 16
+      }
+    },
+    {
+      "task": "H6",
+      "scope": {
+        "zh": "第一层固定 seed 0、2 kg 素材库提手箱参考",
+        "en": "Layer 1 fixed seed 0, 2 kg library-crate reference"
+      },
+      "selected_existing_witness": "library-crate-seed0",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "environment_verdict",
+      "record": {
+        "path": "infra/h6-release/record.json",
+        "sha256": "2d09f8dcc00890a5272b95dda7c112dc82b187d136b362cf1ee2841616508960"
+      },
+      "additional_sources": [],
+      "existing_stage_or_state_anchors": [
+        {
+          "t": 0.0,
+          "kind": "stage",
+          "name": "settle"
+        },
+        {
+          "t": 15.86,
+          "kind": "stage",
+          "name": "pickup"
+        },
+        {
+          "t": 51.62,
+          "kind": "stage",
+          "name": "to_stairs"
+        },
+        {
+          "t": 80.98,
+          "kind": "stage",
+          "name": "stairs"
+        },
+        {
+          "t": 511.94,
+          "kind": "stage",
+          "name": "to_goal"
+        },
+        {
+          "t": 536.04,
+          "kind": "stage",
+          "name": "place"
+        }
+      ],
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/H6.json",
+        "sha256": "99ead88f5cbae1294d9da5090bd6895e4aa527cd5839fa73e2ed2c4c793cff12"
+      },
+      "coarse_skill_contracts": 5,
+      "existing_material_zh": "已有 stage/keyframe 控制事件与源文件哈希；已展开 16 个有序动作并关联事件候选",
+      "remaining_zh": "已定位 57 次 footfall；单个足步内部重心转移、卸载和落足仍需物理 trace 核对。保留 96.58 s gate_timeout，不能写成全程无警告。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/H6.json",
+        "sha256": "d93fcd72ccee3a41a1647c64a9232f0bf2683a5cafdce8579fdb9e7a464f4b3f"
+      },
+      "ordered_actions": 16,
+      "action_mapping_counts": {
+        "episode_event_candidates": 16
+      }
+    },
+    {
+      "task": "M1",
+      "scope": {
+        "zh": "第一层 v0.3 / V4，CPU 特权参考",
+        "en": "Layer 1 v0.3 / V4, privileged CPU reference"
+      },
+      "selected_existing_witness": "seed3-01",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "offline_environment_rejudgment",
+      "record": {
+        "path": "multi_robot/g1_mobile_gripper_retrieval/acceptance/layer1-20261024/recheck/seed3-01/verdict.json",
+        "sha256": "86a71afdf2caccc5b84bf5de6b4fa59a7d3a4e36f4261cdcb88ef221704f5c44"
+      },
+      "additional_sources": [],
+      "existing_stage_or_state_anchors": {
+        "container_handled": 20.6,
+        "off_shelf": 24.74,
+        "mobile_grasp": 109.62,
+        "in_cabinet": 142.92,
+        "delivered": 161.02
+      },
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/M1.json",
+        "sha256": "ab6d397c55e5c163b517fee08f904be24da97dcef7e69927d078f81f85c4cbde"
+      },
+      "coarse_skill_contracts": 5,
+      "existing_material_zh": "已有离线重评、阶段时间和运行审计；已展开 16 个有序动作并关联事件候选",
+      "remaining_zh": "已定位容器下放、抓持和释放支撑；G1/X5 部分事件是动作完成点，需用原始状态补实际动作起点及连续接触检查。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/M1.json",
+        "sha256": "2955c2f8fda4e1ec22e1b6fc89cd9359a5f0499f9e4fcf3b9d09b46cbd99b4cb"
+      },
+      "ordered_actions": 16,
+      "action_mapping_counts": {
+        "episode_event_candidates": 16
+      }
+    },
+    {
+      "task": "M2",
+      "scope": {
+        "zh": "第一层固定 0.25 kg / 1.8 m 通道",
+        "en": "Fixed layer 1, 0.25 kg / 1.8 m corridor"
+      },
+      "selected_existing_witness": "bounded-reference-09",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "environment_verdict",
+      "record": {
+        "path": "multi_robot/dual_g1_long_object_transport/acceptance/layer1-20261024/presentation/evidence/verdict09.json",
+        "sha256": "b9a3335f38d4014069abc5671b6fb3dde9457fbc0ef6cf866f912774d90c04d1"
+      },
+      "additional_sources": [],
+      "existing_stage_or_state_anchors": {
+        "grasp": 18.595000000000585,
+        "lift": 33.01499999999844,
+        "turn": 120.25499999996312,
+        "transport": 154.84499999993167,
+        "lower": 173.14999999991502,
+        "place": 175.1699999999132
+      },
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/M2.json",
+        "sha256": "9146a0841daab5dc3a79e0b6fe460e4e2a8a1b0ffa245032e1688515612ef355"
+      },
+      "coarse_skill_contracts": 5,
+      "existing_material_zh": "已有六阶段时间、控制与限值证据；已展开 15 个有序动作并关联事件候选",
+      "remaining_zh": "仅 0.25 kg 特权参考；转角/直行共享 carry=38.86–150.32 s，需依据路径和偏航分段，不能用评分 turn 时间充当边界。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/M2.json",
+        "sha256": "ccf533d7ce3e6f10f87c9be82f0af2c815427665429cbb464469a954fd58d2b6"
+      },
+      "ordered_actions": 15,
+      "action_mapping_counts": {
+        "episode_event_candidates": 15
+      }
+    },
+    {
+      "task": "M3",
+      "scope": {
+        "zh": "固定 hooks-v0.1；箱体支撑取物；CPU 特权参考",
+        "en": "Fixed hooks-v0.1; box-supported picking; privileged CPU reference"
+      },
+      "selected_existing_witness": "fullstart-474",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "author_reference_evaluation",
+      "record": {
+        "path": "infra/m3-release/evidence/fullstart-474-verdict.json",
+        "sha256": "cc471581941a972f639887f5116be0fdaec331a90873ecd2ef398be1c9fb7130"
+      },
+      "additional_sources": [],
+      "existing_stage_or_state_anchors": {
+        "ball_touched": 136.86,
+        "out_of_container": 139.92,
+        "off_shelf": 147.52,
+        "delivered": 403.42
+      },
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/M3.json",
+        "sha256": "48e957d97423cba880b836118b612366436baac5aa53040d503845e96dcda64a"
+      },
+      "coarse_skill_contracts": 8,
+      "existing_material_zh": "已有连续全程、四个评分里程碑；已展开 24 个有序动作并关联事件候选",
+      "remaining_zh": "前 222 s 为原始 LowCmd 回放，缺细动作标签；后段已提取连续样本。保留探索性接触深度及实际力矩仅控制采样频率审计限制。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/M3.json",
+        "sha256": "328d4a3e3d47df8f223e3813b60b2a48e03c94c7f45b0836744b9958c6e228f3"
+      },
+      "ordered_actions": 24,
+      "action_mapping_counts": {
+        "needs_action_label_or_source_mapping": 9,
+        "episode_event_candidates": 12,
+        "local_clock_or_summary_candidates": 3
+      }
+    },
+    {
+      "task": "M4",
+      "scope": {
+        "zh": "固定 base / hard 预连接拖运，CPU 特权参考",
+        "en": "Fixed base / hard preconnected towing, privileged CPU reference"
+      },
+      "selected_existing_witness": "base-v1",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "published_rejudgment_record",
+      "record": {
+        "path": "infra/m4-current-evidence.json",
+        "sha256": "6bbc3952a71c86b1e40a65c1da1f711936116632bac83788cdaa3b7c57cd8d40"
+      },
+      "additional_sources": [],
+      "existing_stage_or_state_anchors": {
+        "tensioned": 2.16,
+        "straight_tow": 10.34,
+        "corner": 24.5,
+        "in_goal": 30.38,
+        "released_settled": 33.38
+      },
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/M4.json",
+        "sha256": "4213e1e5953ee287dce8e376c8a3caf5d6ac1b756fb371ec95d1b48861752e88"
+      },
+      "coarse_skill_contracts": 4,
+      "existing_material_zh": "已有完整拖运、阶段时间与物理检查；已展开 12 个有序动作并关联事件候选",
+      "remaining_zh": "仅预连接 base；tow 内直行/转角与足步待按路径分段。15–17 s 松绳事件保留；不要求两绳始终张紧，不加入自主对接或解绳。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/M4.json",
+        "sha256": "02b63a8bd041b9a455378ae0a127038bf902d387fae32125da0b3d83192d0d55"
+      },
+      "ordered_actions": 12,
+      "action_mapping_counts": {
+        "episode_event_candidates": 12
+      }
+    },
+    {
+      "task": "Hanoi",
+      "scope": {
+        "zh": "独立顺序操作任务，三／四／五盘",
+        "en": "Standalone sequencing task, 3/4/5 disks"
+      },
+      "selected_existing_witness": "3/corner_far_forward",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "environment_verdict",
+      "record": {
+        "path": "infra/planning/skill-evidence/sources/d420f3f1489194ad5d59b40bbd1db699f5a2a0cc66fe660f77878f544aebda3d.json",
+        "sha256": "d420f3f1489194ad5d59b40bbd1db699f5a2a0cc66fe660f77878f544aebda3d"
+      },
+      "additional_sources": [
+        {
+          "path": "infra/planning/skill-evidence/Hanoi.json",
+          "sha256": "365af0c9659d64997d201ee400b3788372432800e5a5c76d3302242f0fccc343"
+        }
+      ],
+      "existing_stage_or_state_anchors": {
+        "disk_lifted_clear": 9.24,
+        "first_move": 15.26,
+        "tower_progress": 83.3,
+        "goal_hold": 85.285
+      },
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/Hanoi.json",
+        "sha256": "9db77a333921a0beec8b2f22da3759c61ad4dbb502d9c8066ec36ffb3369efd1"
+      },
+      "coarse_skill_contracts": 5,
+      "existing_material_zh": "已有合法移动历史、接触探针和检查点后缀；已展开 15 个有序动作并关联事件候选",
+      "remaining_zh": "七次合法移动循环已展开；顶盘选择为离散决策，不能当作独立连续运动。逐步支撑及提交栈状态仍待联合核对。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/Hanoi.json",
+        "sha256": "cff9c6b6f23c7b450e9cd096460dbf860843e83495994c523ffc20542a110682"
+      },
+      "ordered_actions": 15,
+      "action_mapping_counts": {
+        "episode_event_candidates": 15
+      }
+    },
+    {
+      "task": "Assembly",
+      "scope": {
+        "zh": "工具辅助装配，基础第一层",
+        "en": "Tool-assisted assembly, basic layer 1"
+      },
+      "selected_existing_witness": "layer1_boundary_high",
+      "selection_purpose": "First mapping-audit candidate only; not representative coverage of every variant or an independent reproduction.",
+      "full_success_record_available": true,
+      "record_type": "environment_verdict",
+      "record": {
+        "path": "infra/planning/skill-evidence/sources/99bd9c34b2f68e1169a3007763f5bebe5862f6973c33e1ad8ce8402a8455ff1f.json",
+        "sha256": "99bd9c34b2f68e1169a3007763f5bebe5862f6973c33e1ad8ce8402a8455ff1f"
+      },
+      "additional_sources": [
+        {
+          "path": "infra/planning/skill-evidence/Assembly.json",
+          "sha256": "d1f9955872907ca0e097117650f0f6a08b75c6bc27b188a9d05c154b1435323e"
+        }
+      ],
+      "existing_stage_or_state_anchors": {
+        "brace_supported": 60.58,
+        "sleeve_seated": 89.12,
+        "cap_seated": 116.9,
+        "assembled_released": 118.395
+      },
+      "anchors_are_low_level_mapping_proof": false,
+      "high_level_plan": {
+        "path": "infra/planning/tasks/Assembly.json",
+        "sha256": "37eceee01bd181b6acc142594a92c699b29fceba6d3925606e265c233ebaff84"
+      },
+      "coarse_skill_contracts": 4,
+      "existing_material_zh": "已有阶段时间与两个检查点后缀；已展开 13 个有序动作并关联事件候选",
+      "remaining_zh": "工具、套筒、顶盖动作及反馈事件已关联；需在物理 trace 核对工具独立承托、松手与最终驻留。",
+      "design_mapping_audit": {
+        "HL_LL": "pending",
+        "LL_TRAJ": "pending",
+        "HL_TRAJ": "pending"
+      },
+      "end_to_end_generation_provenance": "existing_material_to_be_bound_and_checked_with_mapping",
+      "new_full_run_required_now": false,
+      "rerun_trigger": "Only if the chosen evidence lacks required provenance/physical records, fails mapping checks, or the claimed controller is changed.",
+      "design_gate_complete": false,
+      "ordered_action_mapping": {
+        "path": "infra/planning/hierarchical-evaluation/action-mappings/Assembly.json",
+        "sha256": "b6a2dd6a12b77d22f7cb22ba650dce0ca8cf9fab125c816803c22368c2a8f751"
+      },
+      "ordered_actions": 13,
+      "action_mapping_counts": {
+        "episode_event_candidates": 13
+      }
+    }
+  ],
+  "action_evidence_catalog": {
+    "path": "infra/planning/hierarchical-evaluation/action-mappings/catalog.json",
+    "sha256": "0ff3bb85e85d0129100ca9d5eed53556b3e671e158f44685f7e687c951269d16"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "m2-release-readiness/1",
+  "updated_utc": "2026-10-30T05:53:39.215259+00:00",
+  "publication_scope": "Engineering progress and review evidence; not formal admission of all six configurations",
+  "complete_physical_configurations": [
+    "M2-1",
+    "M2-3",
+    "M2-5",
+    "M2-6"
+  ],
+  "incomplete_configurations": {
+    "M2-2": "b88 passes10cm shortcarry: actual103.0mm,2.00s terminaldwell,107.74s total. 21549sealed-state recordchecks pluscontact/selfcontact/source provenance and independent measuredmobility reviews pass. Complete delivery/release remain false. Extensionb89 to30cm loses sharedcontact110.44s; Curveb90 losescontact112.24s. Stop-and-go andfaster boundedarmtracking candidates pending.",
+    "M2-4": "b33 passes supportedstand90.84s,18169state recordchecks,torso0N. Native15body b46 moves~12cm but loses grasp afterarrival at105.08s. Orientation-following grasp b47 losescontact92.88s beforewalking, rejected. Faster boundedarmtracking candidate pending. Complete route/release andoptional toolbranch remain unverified."
+  },
+  "repeat_evidence": {
+    "M2-1": {
+      "passed": 3,
+      "total": 3
+    },
+    "M2-3": {
+      "passed": 3,
+      "total": 3
+    },
+    "M2-6": {
+      "passed": 3,
+      "total": 6,
+      "followup_environment_group_passed": 3,
+      "followup_environment_group_total": 3
+    },
+    "M2-5": {
+      "passed": 3,
+      "total": 3,
+      "planned_total": 3,
+      "pending": 0
+    }
+  },
+  "tests": {
+    "family_verifier_passed": 78,
+    "frozen_sandbox_executed_passed": 46,
+    "frozen_sandbox_skipped": 12
+  },
+  "formal_admission": false,
+  "human_video_review": null,
+  "independent_second_person_reproduction": null,
+  "policy_path": "infra/planning/acceptance-policy.json",
+  "policy_sha256": "516305662b92013bf220cfae386cc4a4197032bc7747d1794c8aece67cdbce42",
+  "limitations": [
+    "Complete dual/three-G1 references use CPU physics; early mixed probes use GPU, newer comparisons CPU. Identical frozen-source M2-6 trials are not robust across all observed environments.",
+    "M2-5 and M2-6 now have complete witnesses, but controller differences prevent a matched extra-robot benefit claim.",
+    "No hardware deployment or isolated visual-agent capability claim",
+    "Segment planning pauses simulator stepping (~16s stand/~60s gait computation); no state reset or real-time control claim. Frozen planning inputs are not complete reproduction kits."
+  ],
+  "mixed_full_gate_requires": [
+    "heterogeneous-state-audit passed and record_checks_passed",
+    "probe-contact-audit passed",
+    "self-contact-review passed",
+    "continuous complete task_success"
+  ],
+  "short_mobility_evidence": {
+    "M2-2": {
+      "attempt": "b88-cargo-arrival-balance-stop",
+      "actual_translation_m": 0.1030266284942627,
+      "terminal_dwell_s": 2.0,
+      "complete_task": false
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "version": "0.1.0-rc1",
+  "track": "privileged preloaded/preconnected expert references",
+  "main_variants": [
+    "M4-01",
+    "M4-02",
+    "M4-03",
+    "M4-04",
+    "M4-05",
+    "M4-06"
+  ],
+  "observation": {
+    "robot": "joint names, joint position/velocity, root pose and velocities",
+    "scene": "ground-truth cargo/platform poses and velocities",
+    "tools": "rope load-cell tensions",
+    "restriction": "No claim of vision-only, hidden-parameter or sandbox-isolated ordinary-agent evaluation"
+  },
+  "action": {
+    "type": "per-robot absolute joint targets",
+    "rate_hz": 200,
+    "policy_rate_hz": 50,
+    "execution": "joint projection and fixed effort-limited motors; no root/object or attachment writes"
+  },
+  "reference_pass": "Correct cargo fully in goal for >=2 s; every required physical check true; continuous dense trajectory; no runtime error; unchanged source; complete evidence passes offline rejudgment",
+  "physical_limits": {
+    "rope_rating_n": 400,
+    "stance_slide_m": 0.05,
+    "weld_drift_m": 0.01,
+    "robot_tilt_deg": 45,
+    "dynamic_penetration_m": 0.02,
+    "rope_penetration_m": 0.01
+  },
+  "score_scope": "Binary reference pass; process exit code only reports execution error, and does not mean task success. Formal admission is independent and false.",
+  "prospective_test": {
+    "seed": 29,
+    "robot_xy_uniform_m": 0.02,
+    "seconds": 120,
+    "freeze": "runtime-v3/SOURCE_MANIFEST.json",
+    "source_manifest_sha256": "efc4cd571303d16c22a0488e22ab4b7014c7f598328c8c216105352974558d07",
+    "note": "Seed 17 exposed M4-06 slip; M4-06 controller was retuned on nominal and seed 17. Revision 3 freezes those changes before seed 29. All outcomes are retained. Seed 29 is one prospective check, not statistical certification."
+  },
+  "comparisons": {
+    "team_sizes": [
+      1,
+      2,
+      3
+    ],
+    "cargo_kg": 15,
+    "ground_friction": 0.3,
+    "corridor_m": 2.6,
+    "shared_controller": "M4-03 AnchorTow parameters",
+    "scope": "Team and declared formation comparison; one failed controller cannot prove physical infeasibility."
+  },
+  "negative_baseline": {
+    "agent": "standstill",
+    "seconds": 10,
+    "expected_goal_observed": false
+  },
+  "limitations": [
+    "Same infrastructure, independently extracted directory; not second-person reproduction",
+    "Limited perturbation sample, not broad robustness certification",
+    "G1 pelvis harness, no hand grasp",
+    "No autonomous coupling/uncoupling, loading, tool discovery or learned agent self-modeling",
+    "M4 ground-supported towing excludes M2 lifted carrying"
+  ],
+  "formal_admission": false
+}

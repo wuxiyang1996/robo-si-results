@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Glossary, common questions and the comparison with Terminal-Bench (Harbor) and EmbodiedSWE for Embodied Terminal-Bench (robo-si)." name="description"/>
+<title>Glossary and References</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/glossary-zh.html">中文</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">Task infrastructure · Glossary and references</p>
+<h1><span class="nm">Terms</span>, common questions<br/>and where the design comes from.</h1>
+<p class="lead">Terms and answers get one sentence each, with a link to the section that explains them.</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>Contents</h3>
+<ol class="toc">
+<li><a href="#glossary">01 Glossary</a></li>
+<li><a href="#faq">02 Questions</a></li>
+<li><a href="#refs">03 What we took from where</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="glossary"><div class="wrap">
+<p class="kicker">01 · Glossary</p>
+<h2>Terms used across the pages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th><th>Details</th></tr></thead>
+<tbody>
+<tr><td>Reference expert solution (oracle)</td><td>The existing expert solution: may read simulator ground truth and plan with IK/FK, starts from random initial states and drives the robot only through the action interface; proves solvability and validates the verifier; not an oracle in the Terminal-Bench sense</td><td><a href="/robo-si-results/infra/acceptance-en.html#expert">Acceptance §01</a></td></tr>
+<tr><td>Official trajectories</td><td>The official scripts in <code>solution/</code> and <code>verified/</code>: they place objects at the start and read ground truth every step; used only as privileged reference trajectories and subgoal start points</td><td><a href="/robo-si-results/infra/acceptance-en.html#expert">Acceptance §01</a></td></tr>
+<tr><td>L1 / L2 / L3</td><td>GR00T WBC / target-point trajectory planning / intermediate points with brute-force IK/FK; all on the agent side, fed only by its own sensors</td><td><a href="/robo-si-results/infra/sandbox-en.html#iso">Sandbox §03</a></td></tr>
+<tr><td>Skill interface</td><td>Skills the agent may use: provided by the task, or produced and registered by the agent itself (preferred)</td><td><a href="/robo-si-results/infra/sandbox-en.html#iso">Sandbox §03</a></td></tr>
+<tr><td>Difficulty layer</td><td>Layer 1 necessary tools only; layer 2 adds tools only another body could use; layer 3 adds distractors</td><td><a href="/robo-si-results/infra/task-design-en.html#layers">Design guide §05</a></td></tr>
+<tr><td>Subtask / stage</td><td>A subtask with a completion condition stated as a state; each subtask maps to one scoring stage</td><td><a href="/robo-si-results/infra/task-design-en.html#subtasks">Design guide §06</a></td></tr>
+<tr><td>Predicate</td><td>A rule that judges a stage's progress from the trusted state log</td><td><a href="/robo-si-results/infra/verifier-en.html#predicates">Scoring §03</a></td></tr>
+<tr><td>Process score / success</td><td>The peak of weighted continuous stage progress / whether the task was completed (0 / 1)</td><td><a href="/robo-si-results/infra/verifier-en.html#rules">Scoring §04</a></td></tr>
+<tr><td>VOID</td><td>A failed integrity check: the whole run is void and scores 0</td><td><a href="/robo-si-results/infra/verifier-en.html#acceptance">Scoring §05</a></td></tr>
+<tr><td>Flagged episode</td><td>An episode with an ambiguous alarm, handled automatically by the conservative rule and recorded for the task maintainers</td><td><a href="/robo-si-results/infra/verifier-en.html#acceptance">Scoring §05</a></td></tr>
+<tr><td>Human check (of the task)</td><td>At task admission and on revisions, a person watches videos and answers three questions: no reward hacking, task really completed, no obvious violation of physics or limits</td><td><a href="/robo-si-results/infra/verifier-en.html#acceptance">Scoring §05</a></td></tr>
+<tr><td>Development / evaluation / grading mode</td><td>One episode with limited resets / one interactive episode / the delivered program re-run on N sealed new episodes</td><td><a href="/robo-si-results/infra/sandbox-en.html#arch">Sandbox §02</a></td></tr>
+<tr><td>Sealed episode</td><td>An episode drawn from a private seed, built and sealed before the agent connects</td><td><a href="/robo-si-results/infra/sandbox-en.html#env">Sandbox §04</a></td></tr>
+<tr><td>Capability disclosure tier</td><td>Explicit / partial / latent: how much of its own capability the agent is told; not a difficulty layer</td><td><a href="/robo-si-results/infra/task-design-en.html#layers">Design guide §05</a></td></tr>
+<tr><td>Trusted side / environment side</td><td>The boundary holding the simulator, sensors, recorder, monitors and verifier, out of the agent's reach</td><td><a href="/robo-si-results/infra/sandbox-en.html#arch">Sandbox §02</a></td></tr>
+<tr><td>Delivery snapshot</td><td>A snapshot of the agent's workspace taken at a budget point, each scored separately</td><td><a href="/robo-si-results/infra/protocol-en.html#snapshots">Protocol §02</a></td></tr>
+<tr><td>Repeated evaluation / grading re-runs</td><td>3 independent evaluations per agent and task; every delivery scored 3 times on the same sealed episodes and averaged, with episodes beyond the tolerance flagged as not reproducible</td><td><a href="/robo-si-results/infra/protocol-en.html#stats">Protocol §04</a></td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="faq"><div class="wrap">
+<p class="kicker">02 · Questions</p>
+<h2>Common questions</h2>
+<details><summary>May the reference expert read ground truth and brute-force the solution?</summary><p>Yes. It only proves solvability and validates the verifier; the agent never uses it. <a href="/robo-si-results/infra/acceptance-en.html#expert">Details</a></p></details>
+<details><summary>Which tools and skills may the agent call?</summary><p>The L1–L3, VLA and IK/FK tools and designated skills the task card allows, fed only by its own sensor results; it may also write its own. <a href="/robo-si-results/infra/sandbox-en.html#iso">Details</a></p></details>
+<details><summary>How is "more than 4 hours" judged?</summary><p>With the difficulty pilot: standard agent configurations work without a time limit, and time and sticking points are logged per layer. <a href="/robo-si-results/infra/contribute-en.html#process">Details</a></p></details>
+<details><summary>Does anyone watch videos when agents are evaluated?</summary><p>No, evaluation is fully automatic; people check only the task and its verifier at acceptance. <a href="/robo-si-results/infra/acceptance-en.html#humancheck">Details</a></p></details>
+<details><summary>Why is every evaluation repeated 3 times?</summary><p>Agents are random and GPU physics is not bitwise repeatable: each agent runs 3 evaluations, and every delivery is scored 3 times and averaged. <a href="/robo-si-results/infra/protocol-en.html#stats">Details</a></p></details>
+<details><summary>The agent used a method I did not anticipate. How is it scored?</summary><p>Automatically, by the states it reaches; skipped stages are never back-filled; a revealed hole or shortcut leads to a new version and automatic re-grading. <a href="/robo-si-results/infra/task-design-en.html#corner">Details</a></p></details>
+<details><summary>What is the difference between layer 2 and layer 3?</summary><p>Layer-2 objects would work for another body and test self-modelling; layer-3 distractors test experimenting and ruling options out. <a href="/robo-si-results/infra/task-design-en.html#layers">Details</a></p></details>
+<details><summary>Why are subtask scenarios not given to the agent under evaluation?</summary><p>A subtask's start state reveals the route. <a href="/robo-si-results/infra/task-design-en.html#subtasks">Details</a></p></details>
+<details><summary>Is Genesis alone enough?</summary><p>Yes; Isaac Lab parity is recommended. <a href="/robo-si-results/infra/task-design-en.html#sim">Details</a></p></details>
+<details><summary>I want to use Go1, but the sandbox has no Go1 sensors yet.</summary><p>Adding Go1 sensor simulation is then part of your task. <a href="/robo-si-results/infra/sandbox-en.html#realism">Details</a></p></details>
+<details><summary>What if the oracle cannot do the full chain?</summary><p>Without a representative complete witness for the declared scope, screening or segment successes cannot replace full acceptance; plans and local evidence may be submitted first. An unresolved random instance is unknown, not a declaration that the task or instance is impossible. <a href="/robo-si-results/infra/acceptance-en.html#screening">Details</a></p></details>
+</div></section>
+<section class="tinted" id="refs"><div class="wrap">
+<p class="kicker">03 · What we took from where</p>
+<h2>Terminal-Bench (Harbor) and EmbodiedSWE</h2>
+<p>The table compares both with ours. The Terminal-Bench column follows the local Harbor-format task (<code>Benchmark/tasks/g1_support_augmented_retrieval</code>); the EmbodiedSWE column follows the local repository (<code>EmbodiedSWE/eval</code> and <code>robobench</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspect</th><th>Terminal-Bench / Harbor</th><th>EmbodiedSWE</th><th>Ours</th></tr></thead>
+<tbody>
+<tr><td>Where the agent runs</td><td>In the task's environment container; the agent phase can be offline (<code>network_mode = "no-network"</code>)</td><td>A Docker container, non-root user <code>agent</code>, only <code>/workspace</code> writable; on the isolated network, out only through a squid allowlist</td><td>A Linux container: uid 1000, read-only root, all capabilities dropped, no-new-privileges, process, memory and CPU limits; internal network whose only exit is the RPC port to the environment (optionally a squid allowlist to the LLM API)</td></tr>
+<tr><td>What the agent sees</td><td>The instruction and the environment image; tests are not in the image</td><td>Read-only mounts <code>/bench</code> and <code>/task</code>; graders are "never in an agent-facing tree", and the build scans for leaks</td><td>Only robot sensor readings, the instruction, the robot model and the SDK; simulator, scoring and logs are on the other side</td></tr>
+<tr><td>Protecting the environment</td><td>— (terminal tasks have no physical world)</td><td>A wrapper makes <code>reset</code> and <code>set_states</code> raise, and the build freezes the control mode; every other attribute is still delegated to the raw environment</td><td>The agent never holds the environment object, only 8 RPC methods; none of them changes the world</td></tr>
+<tr><td>Deliverable</td><td>A designated artifact directory (such as <code>/app/methods</code>)</td><td>A <code>solve.py</code> submitted to <code>/submissions</code></td><td>A control program that only calls the SDK (the workspace)</td></tr>
+<tr><td>Where the verifier runs</td><td>A separate verifier image (<code>environment_mode = "separate"</code>), tests directory mode 700, offline</td><td>A later, separate container with graders mounted read-only and no credentials</td><td>The environment side: inside the same trusted boundary as the simulator, recorder and monitors</td></tr>
+<tr><td>Where the delivered program runs at grading</td><td>On the verifier container's filesystem, one child process per episode (user nobody, rlimits, seccomp blocking network and ptrace); the simulator stays in the parent</td><td>Imported into the grader's own Python process, running through the wrapped environment</td><td>A fresh agent container and a fresh copy of the workspace per episode, talking to the environment only over RPC; it never enters the environment side</td></tr>
+<tr><td>Sealed test set</td><td>A sealed episode file whose sha256 is checked, then deleted before submitted code runs</td><td>Re-randomised from <code>--seed</code> and the number of environments; the default seed is 0</td><td>Seeds drawn privately on the trusted side, stratified by family; development and evaluation do not use separate seed sets yet</td></tr>
+<tr><td>Score</td><td><code>reward.json</code>, forced to 0 on any error (fail-closed), old reward files deleted first</td><td>Rubric: stages in <code>once</code> / <code>live</code> / <code>final</code> modes, score = peak progress, <code>success</code> separate; some suites add a VLM final gate</td><td>The EmbodiedSWE rubric idea: continuous stage values, peak progress, separate success; fully automatic</td></tr>
+<tr><td>How the verifier is validated</td><td>The oracle must reach its expected reward (0.6 for the local task) and a no-op must score 0; escape tests (reading answers, patching scoring, searching the disk, network) all score 0</td><td>—</td><td>The reference expert and official trajectories are judged successful and match the manual labels; no-ops, negative cases and exploit runs score 0 or are void</td></tr>
+<tr><td>Anti-cheating</td><td>Hidden tests, a sealed set, escape tests (reading answers, patching scoring, searching the disk, network) all scoring 0</td><td>Access control plus rules; no monitors or transcript audit in the repository</td><td>Escape probes, violations void the run, world-parameter hashes, teleport checks; monitors and fabrication checks on the <a href="/robo-si-results/infra/verifier-en.html">scoring and verification</a> page</td></tr>
+<tr><td>Anchors</td><td>The oracle solution must reach its expected reward (0.6 for the local task) and a no-op must score 0 (<code>--agent oracle</code> / <code>nop</code>), proving both solvability and that grading works; a separate privileged planner that reads ground truth labels feasibility and reference times and is never shipped to the agent</td><td>—</td><td>The reference expert solution and the official trajectories set the upper anchor and validate the verifier; a no-op scores 0</td></tr>
+</tbody>
+</table></div>
+<div class="two" style="margin-top:14px">
+<div class="card"><h3>What we adopted</h3><ul class="check">
+<li>Terminal-Bench: a verifier separate from the agent, hidden tests, sealed held-out episodes, fail-closed rewards, using the oracle and a no-op to show both solvability and that grading works, escape tests.</li>
+<li>EmbodiedSWE: rubric graders (<code>once</code> / <code>live</code>, peak progress, separate success); graders never in the agent's tree; re-running the delivered program on new episodes; an internal network with an allowlist proxy; a non-root agent.</li></ul></div>
+<div class="card"><h3>What we deliberately avoided</h3><ul class="check cross">
+<li>EmbodiedSWE imports the delivered <code>solve.py</code> into the grader process, and its wrapper blocks only <code>reset</code> and <code>set_states</code>, leaving the raw environment reachable. Here the delivered program shares neither a process nor a container with the environment or the verifier.</li>
+<li>EmbodiedSWE writes the transcript into the agent-writable workspace. Here the launcher records the agent's output outside the container.</li>
+<li>EmbodiedSWE grades with seed 0 by default, which may match the development start. Here grading seeds are drawn privately on the trusted side.</li>
+<li>EmbodiedSWE's documentation says that not cheating is enforced "by prompt, not by access control". Here everything is enforced by access control.</li>
+<li>Harbor runs submitted code on the verifier's filesystem and relies on deleting the sealed file, user nobody and seccomp. Here the delivered program never enters the environment side.</li></ul></div>
+</div>
+</div></section>
+<div class="wrap"><details><summary>Does every random instance need a complete trajectory?</summary><p>No. Use representative full witnesses, validate skill conditions, screen instances within budgets and generate local trajectories during execution. Screening passes, unknowns, failed checks and complete witnesses are distinct. <a href="/robo-si-results/infra/acceptance-en.html#screening">Acceptance standard</a></p></details></div>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · Glossary and references · 2026-10-26 · <a href="/robo-si-results/infra/glossary-zh.html" hreflang="zh-CN" lang="zh-CN">中文</a> · <a href="/robo-si-results/infra/contribute-en.html">Home</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body>
+</html>

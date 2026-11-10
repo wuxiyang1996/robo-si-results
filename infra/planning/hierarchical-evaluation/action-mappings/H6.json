@@ -1,0 +1,4904 @@
+{
+  "schema": "ordered-action-mapping/1",
+  "task": "H6",
+  "selected_witness": "library-crate-seed0",
+  "generated_by": [
+    {
+      "path": "infra/planning/hierarchical-evaluation/build_action_mappings.py",
+      "sha256": "09ff4513817b52c8db8b46a07ba29a0e5f32ea6c88f148cf41d0169705827842"
+    },
+    {
+      "path": "infra/planning/hierarchical-evaluation/action_expansions.py",
+      "sha256": "1e88a0ef8b99d555bcef66edd58e3d18bf4a5ab2260fe5f8b17cbb7aa77bdb8c"
+    }
+  ],
+  "scope": {
+    "zh": "第一层固定 seed 0、2 kg 素材库提手箱参考",
+    "en": "Layer 1 fixed seed 0, 2 kg library-crate reference"
+  },
+  "plan": {
+    "path": "infra/planning/tasks/H6.json",
+    "sha256": "99ead88f5cbae1294d9da5090bd6895e4aa527cd5839fa73e2ed2c4c793cff12"
+  },
+  "full_success_record": {
+    "path": "infra/h6-release/record.json",
+    "sha256": "2d09f8dcc00890a5272b95dda7c112dc82b187d136b362cf1ee2841616508960"
+  },
+  "source_files": [
+    {
+      "id": "s0",
+      "path": "C:/Users/wuxiy/rsi_releases/h6_baseline_layer1_assets_candidate_20261024/reproduction/library-full-01/record.json",
+      "sha256": "2d09f8dcc00890a5272b95dda7c112dc82b187d136b362cf1ee2841616508960"
+    }
+  ],
+  "generation_provenance_status": "existing_provenance_not_replaced; full identity audit still pending",
+  "interpretation": {
+    "actions": "Ordered decomposition reviewed against available controller/event descriptions; not a newly executable planner.",
+    "event_matching": "Locates review candidates only; it does not prove the stated contact/guard nor exact micro-action interval.",
+    "timing": "Observed sample spans remain in their named clock. Point events are not expanded into invented intervals. No scoring milestone is used as an action boundary.",
+    "loops": "Hanoi repeats K01-K04 for each committed legal move; footfall and gait actions repeat. Numerical order is within a skill, not a universal serial schedule.",
+    "branches": "H3 heavy_prop only; asynchronous A/B operations may overlap.",
+    "portable_evidence": "Small excerpts below are portable; original absolute paths are provenance references, not deployment entrypoints. Raw full records still require the reference packages."
+  },
+  "skills": [
+    {
+      "skill": "H6.K01",
+      "high_level_steps": [
+        "P1"
+      ],
+      "entry_conditions": [
+        "固定 seed 0、2 kg 提手箱在地面"
+      ],
+      "exit_conditions": [
+        "箱体离地且双手持续承托"
+      ],
+      "actions": [
+        {
+          "id": "H6.K01.A01",
+          "order": 1,
+          "action_zh": "站稳、下蹲并让双手接近箱体",
+          "required_support_contact_zh": "箱→地面；足→地面",
+          "check_observable_zh": "手脚误差、重心及箱体净空",
+          "event_selector": "pickup|reach_clearance",
+          "evidence_ids": [
+            "e0001",
+            "e0004",
+            "e0026"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K01.A02",
+          "order": 2,
+          "action_zh": "建立双手抓持后抬箱",
+          "required_support_contact_zh": "地面→双手",
+          "check_observable_zh": "左右手载荷、箱高",
+          "event_selector": "lifted",
+          "evidence_ids": [
+            "e0008"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K01.A03",
+          "order": 3,
+          "action_zh": "持续持箱起身并走向楼梯",
+          "required_support_contact_zh": "双手持箱；交替足→地面",
+          "check_observable_zh": "抓持、足点与重心",
+          "event_selector": "pickup_templates|to_stairs",
+          "evidence_ids": [
+            "e0026",
+            "e0027",
+            "e0028",
+            "e0029",
+            "e0030",
+            "e0031",
+            "e0032"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H6.K02",
+      "high_level_steps": [
+        "P2"
+      ],
+      "entry_conditions": [
+        "箱体受双手承托且楼梯可进入"
+      ],
+      "exit_conditions": [
+        "按顺序到达峰顶"
+      ],
+      "actions": [
+        {
+          "id": "H6.K02.A01",
+          "order": 1,
+          "action_zh": "先移重心使摆动足卸载",
+          "required_support_contact_zh": "单足→当前踏面；双手持箱",
+          "check_observable_zh": "支撑足载荷与重心",
+          "event_selector": "up.*lead|up.*follow",
+          "evidence_ids": [
+            "e0034",
+            "e0035",
+            "e0037",
+            "e0038",
+            "e0039",
+            "e0040",
+            "e0041",
+            "e0042",
+            "e0043",
+            "e0044",
+            "e0045",
+            "e0046",
+            "e0047",
+            "e0048",
+            "e0049",
+            "e0050",
+            "e0051",
+            "e0052",
+            "e0053",
+            "e0054"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K02.A02",
+          "order": 2,
+          "action_zh": "领先脚抬高、前摆、落到上一级",
+          "required_support_contact_zh": "支撑足→旧踏面，摆动足→新踏面",
+          "check_observable_zh": "踏面净空、落足力",
+          "event_selector": "up.*lead",
+          "evidence_ids": [
+            "e0034",
+            "e0037",
+            "e0039",
+            "e0041",
+            "e0043",
+            "e0045",
+            "e0047",
+            "e0049",
+            "e0051",
+            "e0053"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K02.A03",
+          "order": 3,
+          "action_zh": "承重转移后跟随脚上阶，重复至顶前",
+          "required_support_contact_zh": "双足逐阶上移；双手持箱",
+          "check_observable_zh": "落足误差与箱姿态",
+          "event_selector": "up.*follow|gate_timeout",
+          "evidence_ids": [
+            "e0035",
+            "e0036",
+            "e0038",
+            "e0040",
+            "e0042",
+            "e0044",
+            "e0046",
+            "e0048",
+            "e0050",
+            "e0052",
+            "e0054"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H6.K03",
+      "high_level_steps": [
+        "P3"
+      ],
+      "entry_conditions": [
+        "最后上行踏面已通过"
+      ],
+      "exit_conditions": [
+        "双足完整支撑于峰顶"
+      ],
+      "actions": [
+        {
+          "id": "H6.K03.A01",
+          "order": 1,
+          "action_zh": "领先脚进入峰顶，确认接触",
+          "required_support_contact_zh": "另一足→末级踏面；手持箱",
+          "check_observable_zh": "峰顶足点与载荷",
+          "event_selector": "peak_lead",
+          "evidence_ids": [
+            "e0055"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K03.A02",
+          "order": 2,
+          "action_zh": "跟随脚进入峰顶并居中",
+          "required_support_contact_zh": "双足→峰顶",
+          "check_observable_zh": "双足载荷及重心",
+          "event_selector": "peak_follow",
+          "evidence_ids": [
+            "e0056"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K03.A03",
+          "order": 3,
+          "action_zh": "交替移步穿过顶部平台",
+          "required_support_contact_zh": "足→峰顶平台；手持箱",
+          "check_observable_zh": "落足顺序与下行入口净空",
+          "event_selector": "platform",
+          "evidence_ids": [
+            "e0057",
+            "e0058",
+            "e0059",
+            "e0060",
+            "e0061",
+            "e0062"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H6.K04",
+      "high_level_steps": [
+        "P4"
+      ],
+      "entry_conditions": [
+        "峰顶双足稳定且箱体持续受控"
+      ],
+      "exit_conditions": [
+        "全部下降踏面按序通过并到达地面"
+      ],
+      "actions": [
+        {
+          "id": "H6.K04.A01",
+          "order": 1,
+          "action_zh": "重心移向支撑足后下探领先脚",
+          "required_support_contact_zh": "支撑足→当前踏面；手持箱",
+          "check_observable_zh": "重心、下一级高度",
+          "event_selector": "down.*lead",
+          "evidence_ids": [
+            "e0063",
+            "e0065",
+            "e0067",
+            "e0069",
+            "e0071",
+            "e0073",
+            "e0075",
+            "e0077",
+            "e0079"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K04.A02",
+          "order": 2,
+          "action_zh": "领先脚着地承重后跟随脚下降",
+          "required_support_contact_zh": "交替足→有序踏面",
+          "check_observable_zh": "足载荷与箱姿态",
+          "event_selector": "down.*follow",
+          "evidence_ids": [
+            "e0064",
+            "e0066",
+            "e0068",
+            "e0070",
+            "e0072",
+            "e0074",
+            "e0076",
+            "e0078",
+            "e0080"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K04.A03",
+          "order": 3,
+          "action_zh": "逐级下降，最后双足进入地面",
+          "required_support_contact_zh": "踏面→地面",
+          "check_observable_zh": "末级落足和双足稳定",
+          "event_selector": "ground_lead|ground_follow",
+          "evidence_ids": [
+            "e0081",
+            "e0082"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H6.K05",
+      "high_level_steps": [
+        "P5"
+      ],
+      "entry_conditions": [
+        "机器人在地面目标附近"
+      ],
+      "exit_conditions": [
+        "箱体在目标落地释放，机器人直立稳定 2 s"
+      ],
+      "actions": [
+        {
+          "id": "H6.K05.A01",
+          "order": 1,
+          "action_zh": "携箱到目标，整理手臂并保持箱体净空",
+          "required_support_contact_zh": "双手持箱；足→地面",
+          "check_observable_zh": "手臂净空与抓持位置",
+          "event_selector": "to_goal|placement_departure|shoulder_departure|placement_grip",
+          "evidence_ids": [
+            "e0083",
+            "e0084",
+            "e0085",
+            "e0086",
+            "e0087",
+            "e0091",
+            "e0093",
+            "e0094",
+            "e0095"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K05.A02",
+          "order": 2,
+          "action_zh": "沿连续整身计划下降",
+          "required_support_contact_zh": "双手持箱",
+          "check_observable_zh": "双手相对误差、重心加速度",
+          "event_selector": "continuous_placement_plan|lower",
+          "evidence_ids": [
+            "e0097",
+            "e0098"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K05.A03",
+          "order": 3,
+          "action_zh": "触地并确认箱体卸载",
+          "required_support_contact_zh": "双手→地面",
+          "check_observable_zh": "手载荷与箱体高度",
+          "event_selector": "touch|box_down",
+          "evidence_ids": [
+            "e0099",
+            "e0100"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H6.K05.A04",
+          "order": 4,
+          "action_zh": "滑出双手、抬臂并驻留",
+          "required_support_contact_zh": "地面独立承重",
+          "check_observable_zh": "手分离及箱体稳定",
+          "event_selector": "slide_out|hands_up",
+          "evidence_ids": [
+            "e0101",
+            "e0102"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    }
+  ],
+  "event_evidence": [
+    {
+      "id": "e0000",
+      "source": "s0",
+      "pointer_first": "/events/0",
+      "pointer_last": "/events/0",
+      "stream": "/events",
+      "label": "stage:settle",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        0.0,
+        0.0
+      ],
+      "rows": 1,
+      "first": {
+        "t": 0.0,
+        "kind": "stage",
+        "name": "settle"
+      },
+      "last": {
+        "t": 0.0,
+        "kind": "stage",
+        "name": "settle"
+      }
+    },
+    {
+      "id": "e0001",
+      "source": "s0",
+      "pointer_first": "/events/1",
+      "pointer_last": "/events/1",
+      "stream": "/events",
+      "label": "stage:pickup",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        15.86,
+        15.86
+      ],
+      "rows": 1,
+      "first": {
+        "t": 15.86,
+        "kind": "stage",
+        "name": "pickup"
+      },
+      "last": {
+        "t": 15.86,
+        "kind": "stage",
+        "name": "pickup"
+      }
+    },
+    {
+      "id": "e0002",
+      "source": "s0",
+      "pointer_first": "/events/2",
+      "pointer_last": "/events/2",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        16.86,
+        16.86
+      ],
+      "rows": 1,
+      "first": {
+        "t": 16.86,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.004775793370634164,
+          "feet": 0.00026340362275046984,
+          "com": 0.0025297618107196587,
+          "waist": [
+            -0.016,
+            0.005,
+            -0.601
+          ],
+          "clear": 0.09443112200890816,
+          "pelvis_z": 0.6572424173570985,
+          "solver_nfev": 102,
+          "solver_status": 2,
+          "solver_cost": 172.9231112330734,
+          "solver_optimality": 0.030289383121581283
+        }
+      },
+      "last": {
+        "t": 16.86,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.004775793370634164,
+          "feet": 0.00026340362275046984,
+          "com": 0.0025297618107196587,
+          "waist": [
+            -0.016,
+            0.005,
+            -0.601
+          ],
+          "clear": 0.09443112200890816,
+          "pelvis_z": 0.6572424173570985,
+          "solver_nfev": 102,
+          "solver_status": 2,
+          "solver_cost": 172.9231112330734,
+          "solver_optimality": 0.030289383121581283
+        }
+      }
+    },
+    {
+      "id": "e0003",
+      "source": "s0",
+      "pointer_first": "/events/3",
+      "pointer_last": "/events/3",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        21.86,
+        21.86
+      ],
+      "rows": 1,
+      "first": {
+        "t": 21.86,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.00461781695010951,
+          "feet": 0.0001728277407671472,
+          "com": 0.0024208893956086607,
+          "waist": [
+            -0.007,
+            -0.008,
+            -0.711
+          ],
+          "clear": 0.08570270358901545,
+          "pelvis_z": 0.5808466012190561,
+          "solver_nfev": 28,
+          "solver_status": 2,
+          "solver_cost": 240.67025786668023,
+          "solver_optimality": 0.009288379993501865
+        }
+      },
+      "last": {
+        "t": 21.86,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.00461781695010951,
+          "feet": 0.0001728277407671472,
+          "com": 0.0024208893956086607,
+          "waist": [
+            -0.007,
+            -0.008,
+            -0.711
+          ],
+          "clear": 0.08570270358901545,
+          "pelvis_z": 0.5808466012190561,
+          "solver_nfev": 28,
+          "solver_status": 2,
+          "solver_cost": 240.67025786668023,
+          "solver_optimality": 0.009288379993501865
+        }
+      }
+    },
+    {
+      "id": "e0004",
+      "source": "s0",
+      "pointer_first": "/events/4",
+      "pointer_last": "/events/4",
+      "stream": "/events",
+      "label": "reach_clearance",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        24.86,
+        24.86
+      ],
+      "rows": 1,
+      "first": {
+        "t": 24.86,
+        "kind": "reach_clearance",
+        "box_clear": [
+          0.0324,
+          [
+            "right_hand_thumb_2_link",
+            "box_bar0"
+          ],
+          "reach_down"
+        ]
+      },
+      "last": {
+        "t": 24.86,
+        "kind": "reach_clearance",
+        "box_clear": [
+          0.0324,
+          [
+            "right_hand_thumb_2_link",
+            "box_bar0"
+          ],
+          "reach_down"
+        ]
+      }
+    },
+    {
+      "id": "e0005",
+      "source": "s0",
+      "pointer_first": "/events/5",
+      "pointer_last": "/events/5",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        25.26,
+        25.26
+      ],
+      "rows": 1,
+      "first": {
+        "t": 25.26,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.003911292468377388,
+          "feet": 0.00014072243722454452,
+          "com": 0.002013970478361898,
+          "waist": [
+            0.011,
+            0.012,
+            -0.81
+          ],
+          "clear": 0.09147220112198476,
+          "pelvis_z": 0.5809355810577602,
+          "solver_nfev": 147,
+          "solver_status": 2,
+          "solver_cost": 305.5947826752101,
+          "solver_optimality": 0.01333079524161909
+        }
+      },
+      "last": {
+        "t": 25.26,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.003911292468377388,
+          "feet": 0.00014072243722454452,
+          "com": 0.002013970478361898,
+          "waist": [
+            0.011,
+            0.012,
+            -0.81
+          ],
+          "clear": 0.09147220112198476,
+          "pelvis_z": 0.5809355810577602,
+          "solver_nfev": 147,
+          "solver_status": 2,
+          "solver_cost": 305.5947826752101,
+          "solver_optimality": 0.01333079524161909
+        }
+      }
+    },
+    {
+      "id": "e0006",
+      "source": "s0",
+      "pointer_first": "/events/6",
+      "pointer_last": "/events/6",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        27.26,
+        27.26
+      ],
+      "rows": 1,
+      "first": {
+        "t": 27.26,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.003931817703219148,
+          "feet": 0.00014580664001552843,
+          "com": 0.002071091403669926,
+          "waist": [
+            0.01,
+            0.041,
+            -0.788
+          ],
+          "clear": 0.0922375643850187,
+          "pelvis_z": 0.5792519859013951,
+          "solver_nfev": 45,
+          "solver_status": 2,
+          "solver_cost": 291.51807041315897,
+          "solver_optimality": 0.054285150026418746
+        }
+      },
+      "last": {
+        "t": 27.26,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.003931817703219148,
+          "feet": 0.00014580664001552843,
+          "com": 0.002071091403669926,
+          "waist": [
+            0.01,
+            0.041,
+            -0.788
+          ],
+          "clear": 0.0922375643850187,
+          "pelvis_z": 0.5792519859013951,
+          "solver_nfev": 45,
+          "solver_status": 2,
+          "solver_cost": 291.51807041315897,
+          "solver_optimality": 0.054285150026418746
+        }
+      }
+    },
+    {
+      "id": "e0007",
+      "source": "s0",
+      "pointer_first": "/events/7",
+      "pointer_last": "/events/7",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        31.76,
+        31.76
+      ],
+      "rows": 1,
+      "first": {
+        "t": 31.76,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.006770473932308672,
+          "feet": 0.0002549604720525521,
+          "com": 0.0036334091111660193,
+          "waist": [
+            0.017,
+            0.011,
+            -0.965
+          ],
+          "clear": 0.09980331472381092,
+          "pelvis_z": 0.588810176211903,
+          "solver_nfev": 255,
+          "solver_status": 2,
+          "solver_cost": 443.9537969611437,
+          "solver_optimality": 0.02392201406812647
+        }
+      },
+      "last": {
+        "t": 31.76,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.006770473932308672,
+          "feet": 0.0002549604720525521,
+          "com": 0.0036334091111660193,
+          "waist": [
+            0.017,
+            0.011,
+            -0.965
+          ],
+          "clear": 0.09980331472381092,
+          "pelvis_z": 0.588810176211903,
+          "solver_nfev": 255,
+          "solver_status": 2,
+          "solver_cost": 443.9537969611437,
+          "solver_optimality": 0.02392201406812647
+        }
+      }
+    },
+    {
+      "id": "e0008",
+      "source": "s0",
+      "pointer_first": "/events/8",
+      "pointer_last": "/events/8",
+      "stream": "/events",
+      "label": "lifted",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        35.56,
+        35.56
+      ],
+      "rows": 1,
+      "first": {
+        "t": 35.56,
+        "kind": "lifted",
+        "box": [
+          1.146,
+          0.024,
+          0.161
+        ],
+        "off": [
+          0.002,
+          0.006,
+          -0.335
+        ],
+        "hand_mag": [
+          20.0,
+          8.4
+        ]
+      },
+      "last": {
+        "t": 35.56,
+        "kind": "lifted",
+        "box": [
+          1.146,
+          0.024,
+          0.161
+        ],
+        "off": [
+          0.002,
+          0.006,
+          -0.335
+        ],
+        "hand_mag": [
+          20.0,
+          8.4
+        ]
+      }
+    },
+    {
+      "id": "e0009",
+      "source": "s0",
+      "pointer_first": "/events/9",
+      "pointer_last": "/events/9",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        35.56,
+        35.56
+      ],
+      "rows": 1,
+      "first": {
+        "t": 35.56,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.006965837762905099,
+          "feet": 0.00025733339160385546,
+          "com": 0.0036936259649037917,
+          "waist": [
+            0.008,
+            -0.174,
+            -0.892
+          ],
+          "clear": 0.07383254808420184,
+          "pelvis_z": 0.576034026374253,
+          "solver_nfev": 94,
+          "solver_status": 2,
+          "solver_cost": 396.2927453612016,
+          "solver_optimality": 0.05244395730540934
+        }
+      },
+      "last": {
+        "t": 35.56,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.006965837762905099,
+          "feet": 0.00025733339160385546,
+          "com": 0.0036936259649037917,
+          "waist": [
+            0.008,
+            -0.174,
+            -0.892
+          ],
+          "clear": 0.07383254808420184,
+          "pelvis_z": 0.576034026374253,
+          "solver_nfev": 94,
+          "solver_status": 2,
+          "solver_cost": 396.2927453612016,
+          "solver_optimality": 0.05244395730540934
+        }
+      }
+    },
+    {
+      "id": "e0010",
+      "source": "s0",
+      "pointer_first": "/events/10",
+      "pointer_last": "/events/10",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        36.16,
+        36.16
+      ],
+      "rows": 1,
+      "first": {
+        "t": 36.16,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.00701010589869827,
+          "feet": 0.00027153831278277243,
+          "com": 0.0037454219898778373,
+          "waist": [
+            0.013,
+            -0.156,
+            -0.88
+          ],
+          "clear": 0.05581348127252226,
+          "pelvis_z": 0.585635762077617,
+          "solver_nfev": 54,
+          "solver_status": 2,
+          "solver_cost": 384.564827129883,
+          "solver_optimality": 0.022703553644897508
+        }
+      },
+      "last": {
+        "t": 36.16,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.00701010589869827,
+          "feet": 0.00027153831278277243,
+          "com": 0.0037454219898778373,
+          "waist": [
+            0.013,
+            -0.156,
+            -0.88
+          ],
+          "clear": 0.05581348127252226,
+          "pelvis_z": 0.585635762077617,
+          "solver_nfev": 54,
+          "solver_status": 2,
+          "solver_cost": 384.564827129883,
+          "solver_optimality": 0.022703553644897508
+        }
+      }
+    },
+    {
+      "id": "e0011",
+      "source": "s0",
+      "pointer_first": "/events/11",
+      "pointer_last": "/events/11",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        36.76,
+        36.76
+      ],
+      "rows": 1,
+      "first": {
+        "t": 36.76,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.007034517587209856,
+          "feet": 0.0002865615453129133,
+          "com": 0.003783001055908928,
+          "waist": [
+            0.016,
+            -0.143,
+            -0.868
+          ],
+          "clear": 0.05249068008784746,
+          "pelvis_z": 0.5956624766348365,
+          "solver_nfev": 64,
+          "solver_status": 2,
+          "solver_cost": 372.7643521320623,
+          "solver_optimality": 0.014807648560119667
+        }
+      },
+      "last": {
+        "t": 36.76,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.007034517587209856,
+          "feet": 0.0002865615453129133,
+          "com": 0.003783001055908928,
+          "waist": [
+            0.016,
+            -0.143,
+            -0.868
+          ],
+          "clear": 0.05249068008784746,
+          "pelvis_z": 0.5956624766348365,
+          "solver_nfev": 64,
+          "solver_status": 2,
+          "solver_cost": 372.7643521320623,
+          "solver_optimality": 0.014807648560119667
+        }
+      }
+    },
+    {
+      "id": "e0012",
+      "source": "s0",
+      "pointer_first": "/events/12",
+      "pointer_last": "/events/12",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        37.36,
+        37.36
+      ],
+      "rows": 1,
+      "first": {
+        "t": 37.36,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.007045200735336801,
+          "feet": 0.00030289288499545363,
+          "com": 0.0038096750119079505,
+          "waist": [
+            0.018,
+            -0.133,
+            -0.855
+          ],
+          "clear": 0.05662232175445013,
+          "pelvis_z": 0.606027041172993,
+          "solver_nfev": 56,
+          "solver_status": 2,
+          "solver_cost": 360.93419587558225,
+          "solver_optimality": 0.00578385707827483
+        }
+      },
+      "last": {
+        "t": 37.36,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.007045200735336801,
+          "feet": 0.00030289288499545363,
+          "com": 0.0038096750119079505,
+          "waist": [
+            0.018,
+            -0.133,
+            -0.855
+          ],
+          "clear": 0.05662232175445013,
+          "pelvis_z": 0.606027041172993,
+          "solver_nfev": 56,
+          "solver_status": 2,
+          "solver_cost": 360.93419587558225,
+          "solver_optimality": 0.00578385707827483
+        }
+      }
+    },
+    {
+      "id": "e0013",
+      "source": "s0",
+      "pointer_first": "/events/13",
+      "pointer_last": "/events/13",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        37.96,
+        37.96
+      ],
+      "rows": 1,
+      "first": {
+        "t": 37.96,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.007041922608894593,
+          "feet": 0.00032112330671961215,
+          "com": 0.003826131523879856,
+          "waist": [
+            0.019,
+            -0.125,
+            -0.841
+          ],
+          "clear": 0.06021442497183912,
+          "pelvis_z": 0.6166965871519562,
+          "solver_nfev": 63,
+          "solver_status": 2,
+          "solver_cost": 349.0115236124155,
+          "solver_optimality": 0.004556141070293441
+        }
+      },
+      "last": {
+        "t": 37.96,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.007041922608894593,
+          "feet": 0.00032112330671961215,
+          "com": 0.003826131523879856,
+          "waist": [
+            0.019,
+            -0.125,
+            -0.841
+          ],
+          "clear": 0.06021442497183912,
+          "pelvis_z": 0.6166965871519562,
+          "solver_nfev": 63,
+          "solver_status": 2,
+          "solver_cost": 349.0115236124155,
+          "solver_optimality": 0.004556141070293441
+        }
+      }
+    },
+    {
+      "id": "e0014",
+      "source": "s0",
+      "pointer_first": "/events/14",
+      "pointer_last": "/events/14",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        38.56,
+        38.56
+      ],
+      "rows": 1,
+      "first": {
+        "t": 38.56,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.007024861106009029,
+          "feet": 0.000342145526998781,
+          "com": 0.0038322003283421838,
+          "waist": [
+            0.02,
+            -0.119,
+            -0.827
+          ],
+          "clear": 0.06330329470528631,
+          "pelvis_z": 0.627683578944388,
+          "solver_nfev": 66,
+          "solver_status": 2,
+          "solver_cost": 337.0812743872866,
+          "solver_optimality": 0.015450521010832248
+        }
+      },
+      "last": {
+        "t": 38.56,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.007024861106009029,
+          "feet": 0.000342145526998781,
+          "com": 0.0038322003283421838,
+          "waist": [
+            0.02,
+            -0.119,
+            -0.827
+          ],
+          "clear": 0.06330329470528631,
+          "pelvis_z": 0.627683578944388,
+          "solver_nfev": 66,
+          "solver_status": 2,
+          "solver_cost": 337.0812743872866,
+          "solver_optimality": 0.015450521010832248
+        }
+      }
+    },
+    {
+      "id": "e0015",
+      "source": "s0",
+      "pointer_first": "/events/15",
+      "pointer_last": "/events/15",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        39.16,
+        39.16
+      ],
+      "rows": 1,
+      "first": {
+        "t": 39.16,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.00699240877028369,
+          "feet": 0.00036739148398946407,
+          "com": 0.003826467522667588,
+          "waist": [
+            0.02,
+            -0.113,
+            -0.813
+          ],
+          "clear": 0.06790900217350125,
+          "pelvis_z": 0.6390356085952837,
+          "solver_nfev": 63,
+          "solver_status": 2,
+          "solver_cost": 325.07581264374744,
+          "solver_optimality": 0.028824589387183932
+        }
+      },
+      "last": {
+        "t": 39.16,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.00699240877028369,
+          "feet": 0.00036739148398946407,
+          "com": 0.003826467522667588,
+          "waist": [
+            0.02,
+            -0.113,
+            -0.813
+          ],
+          "clear": 0.06790900217350125,
+          "pelvis_z": 0.6390356085952837,
+          "solver_nfev": 63,
+          "solver_status": 2,
+          "solver_cost": 325.07581264374744,
+          "solver_optimality": 0.028824589387183932
+        }
+      }
+    },
+    {
+      "id": "e0016",
+      "source": "s0",
+      "pointer_first": "/events/16",
+      "pointer_last": "/events/16",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        39.76,
+        39.76
+      ],
+      "rows": 1,
+      "first": {
+        "t": 39.76,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.006941159989003775,
+          "feet": 0.00039957123744236117,
+          "com": 0.0038061547854711737,
+          "waist": [
+            0.02,
+            -0.108,
+            -0.797
+          ],
+          "clear": 0.07275124791247577,
+          "pelvis_z": 0.6508640802237826,
+          "solver_nfev": 68,
+          "solver_status": 2,
+          "solver_cost": 312.95643472696787,
+          "solver_optimality": 0.012235171986451108
+        }
+      },
+      "last": {
+        "t": 39.76,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.006941159989003775,
+          "feet": 0.00039957123744236117,
+          "com": 0.0038061547854711737,
+          "waist": [
+            0.02,
+            -0.108,
+            -0.797
+          ],
+          "clear": 0.07275124791247577,
+          "pelvis_z": 0.6508640802237826,
+          "solver_nfev": 68,
+          "solver_status": 2,
+          "solver_cost": 312.95643472696787,
+          "solver_optimality": 0.012235171986451108
+        }
+      }
+    },
+    {
+      "id": "e0017",
+      "source": "s0",
+      "pointer_first": "/events/17",
+      "pointer_last": "/events/17",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        40.36,
+        40.36
+      ],
+      "rows": 1,
+      "first": {
+        "t": 40.36,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.00686425249211572,
+          "feet": 0.0004446016707173663,
+          "com": 0.0037649446499119785,
+          "waist": [
+            0.02,
+            -0.104,
+            -0.781
+          ],
+          "clear": 0.07856592673023759,
+          "pelvis_z": 0.663422517008343,
+          "solver_nfev": 51,
+          "solver_status": 2,
+          "solver_cost": 300.62443348647383,
+          "solver_optimality": 0.014369000816067313
+        }
+      },
+      "last": {
+        "t": 40.36,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.00686425249211572,
+          "feet": 0.0004446016707173663,
+          "com": 0.0037649446499119785,
+          "waist": [
+            0.02,
+            -0.104,
+            -0.781
+          ],
+          "clear": 0.07856592673023759,
+          "pelvis_z": 0.663422517008343,
+          "solver_nfev": 51,
+          "solver_status": 2,
+          "solver_cost": 300.62443348647383,
+          "solver_optimality": 0.014369000816067313
+        }
+      }
+    },
+    {
+      "id": "e0018",
+      "source": "s0",
+      "pointer_first": "/events/18",
+      "pointer_last": "/events/18",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        41.46,
+        41.46
+      ],
+      "rows": 1,
+      "first": {
+        "t": 41.46,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.004704163009451813,
+          "feet": 0.0003394669263280446,
+          "com": 0.0024937173849833762,
+          "waist": [
+            0.017,
+            -0.033,
+            -0.69
+          ],
+          "clear": 0.07368099889719797,
+          "pelvis_z": 0.6849870576365636,
+          "solver_nfev": 208,
+          "solver_status": 2,
+          "solver_cost": 226.28383173520473,
+          "solver_optimality": 0.06986374854017156
+        }
+      },
+      "last": {
+        "t": 41.46,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.004704163009451813,
+          "feet": 0.0003394669263280446,
+          "com": 0.0024937173849833762,
+          "waist": [
+            0.017,
+            -0.033,
+            -0.69
+          ],
+          "clear": 0.07368099889719797,
+          "pelvis_z": 0.6849870576365636,
+          "solver_nfev": 208,
+          "solver_status": 2,
+          "solver_cost": 226.28383173520473,
+          "solver_optimality": 0.06986374854017156
+        }
+      }
+    },
+    {
+      "id": "e0019",
+      "source": "s0",
+      "pointer_first": "/events/19",
+      "pointer_last": "/events/19",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        42.1,
+        42.1
+      ],
+      "rows": 1,
+      "first": {
+        "t": 42.1,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.004546009026238978,
+          "feet": 0.00037264647981809446,
+          "com": 0.0023727582663184772,
+          "waist": [
+            0.017,
+            -0.042,
+            -0.638
+          ],
+          "clear": 0.06175931761464934,
+          "pelvis_z": 0.7005565026789482,
+          "solver_nfev": 70,
+          "solver_status": 2,
+          "solver_cost": 198.38470652414745,
+          "solver_optimality": 0.10850308955599754
+        }
+      },
+      "last": {
+        "t": 42.1,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.004546009026238978,
+          "feet": 0.00037264647981809446,
+          "com": 0.0023727582663184772,
+          "waist": [
+            0.017,
+            -0.042,
+            -0.638
+          ],
+          "clear": 0.06175931761464934,
+          "pelvis_z": 0.7005565026789482,
+          "solver_nfev": 70,
+          "solver_status": 2,
+          "solver_cost": 198.38470652414745,
+          "solver_optimality": 0.10850308955599754
+        }
+      }
+    },
+    {
+      "id": "e0020",
+      "source": "s0",
+      "pointer_first": "/events/20",
+      "pointer_last": "/events/20",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        43.28,
+        43.28
+      ],
+      "rows": 1,
+      "first": {
+        "t": 43.28,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.004057195024668276,
+          "feet": 0.00044020500329716483,
+          "com": 0.002195763667089122,
+          "waist": [
+            0.022,
+            -0.034,
+            -0.595
+          ],
+          "clear": 0.07526323487425456,
+          "pelvis_z": 0.7159973078675137,
+          "solver_nfev": 90,
+          "solver_status": 2,
+          "solver_cost": 178.21379429894853,
+          "solver_optimality": 0.031184627010149388
+        }
+      },
+      "last": {
+        "t": 43.28,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.004057195024668276,
+          "feet": 0.00044020500329716483,
+          "com": 0.002195763667089122,
+          "waist": [
+            0.022,
+            -0.034,
+            -0.595
+          ],
+          "clear": 0.07526323487425456,
+          "pelvis_z": 0.7159973078675137,
+          "solver_nfev": 90,
+          "solver_status": 2,
+          "solver_cost": 178.21379429894853,
+          "solver_optimality": 0.031184627010149388
+        }
+      }
+    },
+    {
+      "id": "e0021",
+      "source": "s0",
+      "pointer_first": "/events/21",
+      "pointer_last": "/events/21",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        44.52,
+        44.52
+      ],
+      "rows": 1,
+      "first": {
+        "t": 44.52,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.0034806267371967473,
+          "feet": 0.0007094822544800533,
+          "com": 0.0017900236280228472,
+          "waist": [
+            0.027,
+            -0.032,
+            -0.545
+          ],
+          "clear": 0.07202816501347396,
+          "pelvis_z": 0.7369127438701902,
+          "solver_nfev": 54,
+          "solver_status": 2,
+          "solver_cost": 162.4041812152945,
+          "solver_optimality": 0.01266276291552483
+        }
+      },
+      "last": {
+        "t": 44.52,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.0034806267371967473,
+          "feet": 0.0007094822544800533,
+          "com": 0.0017900236280228472,
+          "waist": [
+            0.027,
+            -0.032,
+            -0.545
+          ],
+          "clear": 0.07202816501347396,
+          "pelvis_z": 0.7369127438701902,
+          "solver_nfev": 54,
+          "solver_status": 2,
+          "solver_cost": 162.4041812152945,
+          "solver_optimality": 0.01266276291552483
+        }
+      }
+    },
+    {
+      "id": "e0022",
+      "source": "s0",
+      "pointer_first": "/events/22",
+      "pointer_last": "/events/22",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        45.16,
+        45.16
+      ],
+      "rows": 1,
+      "first": {
+        "t": 45.16,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.0037590118407222913,
+          "feet": 0.00039444322350192293,
+          "com": 0.0020321229636700603,
+          "waist": [
+            0.02,
+            0.023,
+            -0.518
+          ],
+          "clear": 0.07700120339041416,
+          "pelvis_z": 0.7499306108249114,
+          "solver_nfev": 123,
+          "solver_status": 2,
+          "solver_cost": 157.1265730700255,
+          "solver_optimality": 0.010366217252538668
+        }
+      },
+      "last": {
+        "t": 45.16,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.0037590118407222913,
+          "feet": 0.00039444322350192293,
+          "com": 0.0020321229636700603,
+          "waist": [
+            0.02,
+            0.023,
+            -0.518
+          ],
+          "clear": 0.07700120339041416,
+          "pelvis_z": 0.7499306108249114,
+          "solver_nfev": 123,
+          "solver_status": 2,
+          "solver_cost": 157.1265730700255,
+          "solver_optimality": 0.010366217252538668
+        }
+      }
+    },
+    {
+      "id": "e0023",
+      "source": "s0",
+      "pointer_first": "/events/23",
+      "pointer_last": "/events/23",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        46.34,
+        46.34
+      ],
+      "rows": 1,
+      "first": {
+        "t": 46.34,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.010168080779452263,
+          "feet": 0.0017771387661819648,
+          "com": 0.004269001494379263,
+          "waist": [
+            0.031,
+            0.156,
+            -0.448
+          ],
+          "clear": 0.04871523862084336,
+          "pelvis_z": 0.7693722884377602,
+          "solver_nfev": 48,
+          "solver_status": 2,
+          "solver_cost": 193.02033940088074,
+          "solver_optimality": 0.06337816249740726
+        }
+      },
+      "last": {
+        "t": 46.34,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.010168080779452263,
+          "feet": 0.0017771387661819648,
+          "com": 0.004269001494379263,
+          "waist": [
+            0.031,
+            0.156,
+            -0.448
+          ],
+          "clear": 0.04871523862084336,
+          "pelvis_z": 0.7693722884377602,
+          "solver_nfev": 48,
+          "solver_status": 2,
+          "solver_cost": 193.02033940088074,
+          "solver_optimality": 0.06337816249740726
+        }
+      }
+    },
+    {
+      "id": "e0024",
+      "source": "s0",
+      "pointer_first": "/events/24",
+      "pointer_last": "/events/24",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        46.98,
+        46.98
+      ],
+      "rows": 1,
+      "first": {
+        "t": 46.98,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.0032745730262533097,
+          "feet": 0.0003495917069021074,
+          "com": 0.0018551130816264836,
+          "waist": [
+            -0.008,
+            0.044,
+            -0.488
+          ],
+          "clear": 0.019955461794096272,
+          "pelvis_z": 0.7321464223495637,
+          "solver_nfev": 169,
+          "solver_status": 2,
+          "solver_cost": 117.42865215715273,
+          "solver_optimality": 0.06210936947415261
+        }
+      },
+      "last": {
+        "t": 46.98,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.0032745730262533097,
+          "feet": 0.0003495917069021074,
+          "com": 0.0018551130816264836,
+          "waist": [
+            -0.008,
+            0.044,
+            -0.488
+          ],
+          "clear": 0.019955461794096272,
+          "pelvis_z": 0.7321464223495637,
+          "solver_nfev": 169,
+          "solver_status": 2,
+          "solver_cost": 117.42865215715273,
+          "solver_optimality": 0.06210936947415261
+        }
+      }
+    },
+    {
+      "id": "e0025",
+      "source": "s0",
+      "pointer_first": "/events/25",
+      "pointer_last": "/events/25",
+      "stream": "/events",
+      "label": "keyframe",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        48.88,
+        48.88
+      ],
+      "rows": 1,
+      "first": {
+        "t": 48.88,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.0028754145278774455,
+          "feet": 0.0004200220509724457,
+          "com": 0.001644349900600907,
+          "waist": [
+            -0.004,
+            0.065,
+            -0.435
+          ],
+          "clear": 0.019958201664279317,
+          "pelvis_z": 0.7459739348328288,
+          "solver_nfev": 400,
+          "solver_status": 0,
+          "solver_cost": 98.27795489033953,
+          "solver_optimality": 22.368982203107453
+        }
+      },
+      "last": {
+        "t": 48.88,
+        "kind": "keyframe",
+        "info": {
+          "hands": 0.0028754145278774455,
+          "feet": 0.0004200220509724457,
+          "com": 0.001644349900600907,
+          "waist": [
+            -0.004,
+            0.065,
+            -0.435
+          ],
+          "clear": 0.019958201664279317,
+          "pelvis_z": 0.7459739348328288,
+          "solver_nfev": 400,
+          "solver_status": 0,
+          "solver_cost": 98.27795489033953,
+          "solver_optimality": 22.368982203107453
+        }
+      }
+    },
+    {
+      "id": "e0026",
+      "source": "s0",
+      "pointer_first": "/events/26",
+      "pointer_last": "/events/26",
+      "stream": "/events",
+      "label": "pickup_templates",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        50.62,
+        50.62
+      ],
+      "rows": 1,
+      "first": {
+        "t": 50.62,
+        "kind": "pickup_templates",
+        "count": 943,
+        "use": "same_run_IK_initial_guesses"
+      },
+      "last": {
+        "t": 50.62,
+        "kind": "pickup_templates",
+        "count": 943,
+        "use": "same_run_IK_initial_guesses"
+      }
+    },
+    {
+      "id": "e0027",
+      "source": "s0",
+      "pointer_first": "/events/27",
+      "pointer_last": "/events/27",
+      "stream": "/events",
+      "label": "stage:to_stairs",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        51.62,
+        51.62
+      ],
+      "rows": 1,
+      "first": {
+        "t": 51.62,
+        "kind": "stage",
+        "name": "to_stairs"
+      },
+      "last": {
+        "t": 51.62,
+        "kind": "stage",
+        "name": "to_stairs"
+      }
+    },
+    {
+      "id": "e0028",
+      "source": "s0",
+      "pointer_first": "/events/28",
+      "pointer_last": "/events/28",
+      "stream": "/events",
+      "label": "footfall:to_stairs0",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        51.62,
+        51.62
+      ],
+      "rows": 1,
+      "first": {
+        "t": 51.62,
+        "kind": "footfall",
+        "name": "to_stairs0",
+        "swing": 1,
+        "target": [
+          1.006,
+          -0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 51.62,
+        "kind": "footfall",
+        "name": "to_stairs0",
+        "swing": 1,
+        "target": [
+          1.006,
+          -0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0029",
+      "source": "s0",
+      "pointer_first": "/events/29",
+      "pointer_last": "/events/29",
+      "stream": "/events",
+      "label": "footfall:to_stairs1",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        56.68,
+        56.68
+      ],
+      "rows": 1,
+      "first": {
+        "t": 56.68,
+        "kind": "footfall",
+        "name": "to_stairs1",
+        "swing": 0,
+        "target": [
+          1.225,
+          0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 56.68,
+        "kind": "footfall",
+        "name": "to_stairs1",
+        "swing": 0,
+        "target": [
+          1.225,
+          0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0030",
+      "source": "s0",
+      "pointer_first": "/events/30",
+      "pointer_last": "/events/30",
+      "stream": "/events",
+      "label": "footfall:to_stairs2",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        62.9,
+        62.9
+      ],
+      "rows": 1,
+      "first": {
+        "t": 62.9,
+        "kind": "footfall",
+        "name": "to_stairs2",
+        "swing": 1,
+        "target": [
+          1.444,
+          -0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 62.9,
+        "kind": "footfall",
+        "name": "to_stairs2",
+        "swing": 1,
+        "target": [
+          1.444,
+          -0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0031",
+      "source": "s0",
+      "pointer_first": "/events/31",
+      "pointer_last": "/events/31",
+      "stream": "/events",
+      "label": "footfall:to_stairs3",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        69.2,
+        69.2
+      ],
+      "rows": 1,
+      "first": {
+        "t": 69.2,
+        "kind": "footfall",
+        "name": "to_stairs3",
+        "swing": 0,
+        "target": [
+          1.485,
+          0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 69.2,
+        "kind": "footfall",
+        "name": "to_stairs3",
+        "swing": 0,
+        "target": [
+          1.485,
+          0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0032",
+      "source": "s0",
+      "pointer_first": "/events/32",
+      "pointer_last": "/events/32",
+      "stream": "/events",
+      "label": "footfall:to_stairs4",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        75.46,
+        75.46
+      ],
+      "rows": 1,
+      "first": {
+        "t": 75.46,
+        "kind": "footfall",
+        "name": "to_stairs4",
+        "swing": 1,
+        "target": [
+          1.645,
+          -0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 75.46,
+        "kind": "footfall",
+        "name": "to_stairs4",
+        "swing": 1,
+        "target": [
+          1.645,
+          -0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0033",
+      "source": "s0",
+      "pointer_first": "/events/33",
+      "pointer_last": "/events/33",
+      "stream": "/events",
+      "label": "stage:stairs",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        80.98,
+        80.98
+      ],
+      "rows": 1,
+      "first": {
+        "t": 80.98,
+        "kind": "stage",
+        "name": "stairs"
+      },
+      "last": {
+        "t": 80.98,
+        "kind": "stage",
+        "name": "stairs"
+      }
+    },
+    {
+      "id": "e0034",
+      "source": "s0",
+      "pointer_first": "/events/34",
+      "pointer_last": "/events/34",
+      "stream": "/events",
+      "label": "footfall:up0_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        80.98,
+        80.98
+      ],
+      "rows": 1,
+      "first": {
+        "t": 80.98,
+        "kind": "footfall",
+        "i": 0,
+        "name": "up0_lead",
+        "swing": 0,
+        "target": [
+          1.885,
+          0.08,
+          0.155
+        ]
+      },
+      "last": {
+        "t": 80.98,
+        "kind": "footfall",
+        "i": 0,
+        "name": "up0_lead",
+        "swing": 0,
+        "target": [
+          1.885,
+          0.08,
+          0.155
+        ]
+      }
+    },
+    {
+      "id": "e0035",
+      "source": "s0",
+      "pointer_first": "/events/35",
+      "pointer_last": "/events/35",
+      "stream": "/events",
+      "label": "footfall:up0_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        88.62,
+        88.62
+      ],
+      "rows": 1,
+      "first": {
+        "t": 88.62,
+        "kind": "footfall",
+        "i": 1,
+        "name": "up0_follow",
+        "swing": 1,
+        "target": [
+          2.045,
+          -0.08,
+          0.155
+        ]
+      },
+      "last": {
+        "t": 88.62,
+        "kind": "footfall",
+        "i": 1,
+        "name": "up0_follow",
+        "swing": 1,
+        "target": [
+          2.045,
+          -0.08,
+          0.155
+        ]
+      }
+    },
+    {
+      "id": "e0036",
+      "source": "s0",
+      "pointer_first": "/events/36",
+      "pointer_last": "/events/36",
+      "stream": "/events",
+      "label": "gate_timeout",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        96.58,
+        96.58
+      ],
+      "rows": 1,
+      "first": {
+        "t": 96.58,
+        "kind": "gate_timeout",
+        "step": "1:up0_follow:",
+        "fz": [
+          299.9,
+          57.2
+        ]
+      },
+      "last": {
+        "t": 96.58,
+        "kind": "gate_timeout",
+        "step": "1:up0_follow:",
+        "fz": [
+          299.9,
+          57.2
+        ]
+      }
+    },
+    {
+      "id": "e0037",
+      "source": "s0",
+      "pointer_first": "/events/37",
+      "pointer_last": "/events/37",
+      "stream": "/events",
+      "label": "footfall:up1_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        102.16,
+        102.16
+      ],
+      "rows": 1,
+      "first": {
+        "t": 102.16,
+        "kind": "footfall",
+        "i": 2,
+        "name": "up1_lead",
+        "swing": 0,
+        "target": [
+          2.285,
+          0.08,
+          0.275
+        ]
+      },
+      "last": {
+        "t": 102.16,
+        "kind": "footfall",
+        "i": 2,
+        "name": "up1_lead",
+        "swing": 0,
+        "target": [
+          2.285,
+          0.08,
+          0.275
+        ]
+      }
+    },
+    {
+      "id": "e0038",
+      "source": "s0",
+      "pointer_first": "/events/38",
+      "pointer_last": "/events/38",
+      "stream": "/events",
+      "label": "footfall:up1_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        109.78,
+        109.78
+      ],
+      "rows": 1,
+      "first": {
+        "t": 109.78,
+        "kind": "footfall",
+        "i": 3,
+        "name": "up1_follow",
+        "swing": 1,
+        "target": [
+          2.445,
+          -0.08,
+          0.275
+        ]
+      },
+      "last": {
+        "t": 109.78,
+        "kind": "footfall",
+        "i": 3,
+        "name": "up1_follow",
+        "swing": 1,
+        "target": [
+          2.445,
+          -0.08,
+          0.275
+        ]
+      }
+    },
+    {
+      "id": "e0039",
+      "source": "s0",
+      "pointer_first": "/events/39",
+      "pointer_last": "/events/39",
+      "stream": "/events",
+      "label": "footfall:up2_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        121.56,
+        121.56
+      ],
+      "rows": 1,
+      "first": {
+        "t": 121.56,
+        "kind": "footfall",
+        "i": 4,
+        "name": "up2_lead",
+        "swing": 0,
+        "target": [
+          2.685,
+          0.08,
+          0.395
+        ]
+      },
+      "last": {
+        "t": 121.56,
+        "kind": "footfall",
+        "i": 4,
+        "name": "up2_lead",
+        "swing": 0,
+        "target": [
+          2.685,
+          0.08,
+          0.395
+        ]
+      }
+    },
+    {
+      "id": "e0040",
+      "source": "s0",
+      "pointer_first": "/events/40",
+      "pointer_last": "/events/40",
+      "stream": "/events",
+      "label": "footfall:up2_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        129.3,
+        129.3
+      ],
+      "rows": 1,
+      "first": {
+        "t": 129.3,
+        "kind": "footfall",
+        "i": 5,
+        "name": "up2_follow",
+        "swing": 1,
+        "target": [
+          2.845,
+          -0.08,
+          0.395
+        ]
+      },
+      "last": {
+        "t": 129.3,
+        "kind": "footfall",
+        "i": 5,
+        "name": "up2_follow",
+        "swing": 1,
+        "target": [
+          2.845,
+          -0.08,
+          0.395
+        ]
+      }
+    },
+    {
+      "id": "e0041",
+      "source": "s0",
+      "pointer_first": "/events/41",
+      "pointer_last": "/events/41",
+      "stream": "/events",
+      "label": "footfall:up3_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        142.0,
+        142.0
+      ],
+      "rows": 1,
+      "first": {
+        "t": 142.0,
+        "kind": "footfall",
+        "i": 6,
+        "name": "up3_lead",
+        "swing": 0,
+        "target": [
+          3.085,
+          0.08,
+          0.515
+        ]
+      },
+      "last": {
+        "t": 142.0,
+        "kind": "footfall",
+        "i": 6,
+        "name": "up3_lead",
+        "swing": 0,
+        "target": [
+          3.085,
+          0.08,
+          0.515
+        ]
+      }
+    },
+    {
+      "id": "e0042",
+      "source": "s0",
+      "pointer_first": "/events/42",
+      "pointer_last": "/events/42",
+      "stream": "/events",
+      "label": "footfall:up3_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        149.68,
+        149.68
+      ],
+      "rows": 1,
+      "first": {
+        "t": 149.68,
+        "kind": "footfall",
+        "i": 7,
+        "name": "up3_follow",
+        "swing": 1,
+        "target": [
+          3.245,
+          -0.08,
+          0.515
+        ]
+      },
+      "last": {
+        "t": 149.68,
+        "kind": "footfall",
+        "i": 7,
+        "name": "up3_follow",
+        "swing": 1,
+        "target": [
+          3.245,
+          -0.08,
+          0.515
+        ]
+      }
+    },
+    {
+      "id": "e0043",
+      "source": "s0",
+      "pointer_first": "/events/43",
+      "pointer_last": "/events/43",
+      "stream": "/events",
+      "label": "footfall:up4_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        161.98,
+        161.98
+      ],
+      "rows": 1,
+      "first": {
+        "t": 161.98,
+        "kind": "footfall",
+        "i": 8,
+        "name": "up4_lead",
+        "swing": 0,
+        "target": [
+          3.485,
+          0.08,
+          0.635
+        ]
+      },
+      "last": {
+        "t": 161.98,
+        "kind": "footfall",
+        "i": 8,
+        "name": "up4_lead",
+        "swing": 0,
+        "target": [
+          3.485,
+          0.08,
+          0.635
+        ]
+      }
+    },
+    {
+      "id": "e0044",
+      "source": "s0",
+      "pointer_first": "/events/44",
+      "pointer_last": "/events/44",
+      "stream": "/events",
+      "label": "footfall:up4_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        169.68,
+        169.68
+      ],
+      "rows": 1,
+      "first": {
+        "t": 169.68,
+        "kind": "footfall",
+        "i": 9,
+        "name": "up4_follow",
+        "swing": 1,
+        "target": [
+          3.645,
+          -0.08,
+          0.635
+        ]
+      },
+      "last": {
+        "t": 169.68,
+        "kind": "footfall",
+        "i": 9,
+        "name": "up4_follow",
+        "swing": 1,
+        "target": [
+          3.645,
+          -0.08,
+          0.635
+        ]
+      }
+    },
+    {
+      "id": "e0045",
+      "source": "s0",
+      "pointer_first": "/events/45",
+      "pointer_last": "/events/45",
+      "stream": "/events",
+      "label": "footfall:up5_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        182.2,
+        182.2
+      ],
+      "rows": 1,
+      "first": {
+        "t": 182.2,
+        "kind": "footfall",
+        "i": 10,
+        "name": "up5_lead",
+        "swing": 0,
+        "target": [
+          3.885,
+          0.08,
+          0.755
+        ]
+      },
+      "last": {
+        "t": 182.2,
+        "kind": "footfall",
+        "i": 10,
+        "name": "up5_lead",
+        "swing": 0,
+        "target": [
+          3.885,
+          0.08,
+          0.755
+        ]
+      }
+    },
+    {
+      "id": "e0046",
+      "source": "s0",
+      "pointer_first": "/events/46",
+      "pointer_last": "/events/46",
+      "stream": "/events",
+      "label": "footfall:up5_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        189.9,
+        189.9
+      ],
+      "rows": 1,
+      "first": {
+        "t": 189.9,
+        "kind": "footfall",
+        "i": 11,
+        "name": "up5_follow",
+        "swing": 1,
+        "target": [
+          4.045,
+          -0.08,
+          0.755
+        ]
+      },
+      "last": {
+        "t": 189.9,
+        "kind": "footfall",
+        "i": 11,
+        "name": "up5_follow",
+        "swing": 1,
+        "target": [
+          4.045,
+          -0.08,
+          0.755
+        ]
+      }
+    },
+    {
+      "id": "e0047",
+      "source": "s0",
+      "pointer_first": "/events/47",
+      "pointer_last": "/events/47",
+      "stream": "/events",
+      "label": "footfall:up6_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        202.34,
+        202.34
+      ],
+      "rows": 1,
+      "first": {
+        "t": 202.34,
+        "kind": "footfall",
+        "i": 12,
+        "name": "up6_lead",
+        "swing": 0,
+        "target": [
+          4.285,
+          0.08,
+          0.875
+        ]
+      },
+      "last": {
+        "t": 202.34,
+        "kind": "footfall",
+        "i": 12,
+        "name": "up6_lead",
+        "swing": 0,
+        "target": [
+          4.285,
+          0.08,
+          0.875
+        ]
+      }
+    },
+    {
+      "id": "e0048",
+      "source": "s0",
+      "pointer_first": "/events/48",
+      "pointer_last": "/events/48",
+      "stream": "/events",
+      "label": "footfall:up6_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        210.04,
+        210.04
+      ],
+      "rows": 1,
+      "first": {
+        "t": 210.04,
+        "kind": "footfall",
+        "i": 13,
+        "name": "up6_follow",
+        "swing": 1,
+        "target": [
+          4.445,
+          -0.08,
+          0.875
+        ]
+      },
+      "last": {
+        "t": 210.04,
+        "kind": "footfall",
+        "i": 13,
+        "name": "up6_follow",
+        "swing": 1,
+        "target": [
+          4.445,
+          -0.08,
+          0.875
+        ]
+      }
+    },
+    {
+      "id": "e0049",
+      "source": "s0",
+      "pointer_first": "/events/49",
+      "pointer_last": "/events/49",
+      "stream": "/events",
+      "label": "footfall:up7_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        222.5,
+        222.5
+      ],
+      "rows": 1,
+      "first": {
+        "t": 222.5,
+        "kind": "footfall",
+        "i": 14,
+        "name": "up7_lead",
+        "swing": 0,
+        "target": [
+          4.685,
+          0.08,
+          0.995
+        ]
+      },
+      "last": {
+        "t": 222.5,
+        "kind": "footfall",
+        "i": 14,
+        "name": "up7_lead",
+        "swing": 0,
+        "target": [
+          4.685,
+          0.08,
+          0.995
+        ]
+      }
+    },
+    {
+      "id": "e0050",
+      "source": "s0",
+      "pointer_first": "/events/50",
+      "pointer_last": "/events/50",
+      "stream": "/events",
+      "label": "footfall:up7_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        230.2,
+        230.2
+      ],
+      "rows": 1,
+      "first": {
+        "t": 230.2,
+        "kind": "footfall",
+        "i": 15,
+        "name": "up7_follow",
+        "swing": 1,
+        "target": [
+          4.845,
+          -0.08,
+          0.995
+        ]
+      },
+      "last": {
+        "t": 230.2,
+        "kind": "footfall",
+        "i": 15,
+        "name": "up7_follow",
+        "swing": 1,
+        "target": [
+          4.845,
+          -0.08,
+          0.995
+        ]
+      }
+    },
+    {
+      "id": "e0051",
+      "source": "s0",
+      "pointer_first": "/events/51",
+      "pointer_last": "/events/51",
+      "stream": "/events",
+      "label": "footfall:up8_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        242.7,
+        242.7
+      ],
+      "rows": 1,
+      "first": {
+        "t": 242.7,
+        "kind": "footfall",
+        "i": 16,
+        "name": "up8_lead",
+        "swing": 0,
+        "target": [
+          5.085,
+          0.08,
+          1.115
+        ]
+      },
+      "last": {
+        "t": 242.7,
+        "kind": "footfall",
+        "i": 16,
+        "name": "up8_lead",
+        "swing": 0,
+        "target": [
+          5.085,
+          0.08,
+          1.115
+        ]
+      }
+    },
+    {
+      "id": "e0052",
+      "source": "s0",
+      "pointer_first": "/events/52",
+      "pointer_last": "/events/52",
+      "stream": "/events",
+      "label": "footfall:up8_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        250.4,
+        250.4
+      ],
+      "rows": 1,
+      "first": {
+        "t": 250.4,
+        "kind": "footfall",
+        "i": 17,
+        "name": "up8_follow",
+        "swing": 1,
+        "target": [
+          5.245,
+          -0.08,
+          1.115
+        ]
+      },
+      "last": {
+        "t": 250.4,
+        "kind": "footfall",
+        "i": 17,
+        "name": "up8_follow",
+        "swing": 1,
+        "target": [
+          5.245,
+          -0.08,
+          1.115
+        ]
+      }
+    },
+    {
+      "id": "e0053",
+      "source": "s0",
+      "pointer_first": "/events/53",
+      "pointer_last": "/events/53",
+      "stream": "/events",
+      "label": "footfall:up9_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        262.84,
+        262.84
+      ],
+      "rows": 1,
+      "first": {
+        "t": 262.84,
+        "kind": "footfall",
+        "i": 18,
+        "name": "up9_lead",
+        "swing": 0,
+        "target": [
+          5.485,
+          0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 262.84,
+        "kind": "footfall",
+        "i": 18,
+        "name": "up9_lead",
+        "swing": 0,
+        "target": [
+          5.485,
+          0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0054",
+      "source": "s0",
+      "pointer_first": "/events/54",
+      "pointer_last": "/events/54",
+      "stream": "/events",
+      "label": "footfall:up9_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        270.54,
+        270.54
+      ],
+      "rows": 1,
+      "first": {
+        "t": 270.54,
+        "kind": "footfall",
+        "i": 19,
+        "name": "up9_follow",
+        "swing": 1,
+        "target": [
+          5.645,
+          -0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 270.54,
+        "kind": "footfall",
+        "i": 19,
+        "name": "up9_follow",
+        "swing": 1,
+        "target": [
+          5.645,
+          -0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0055",
+      "source": "s0",
+      "pointer_first": "/events/55",
+      "pointer_last": "/events/55",
+      "stream": "/events",
+      "label": "footfall:peak_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        283.02,
+        283.02
+      ],
+      "rows": 1,
+      "first": {
+        "t": 283.02,
+        "kind": "footfall",
+        "i": 20,
+        "name": "peak_lead",
+        "swing": 0,
+        "target": [
+          5.925,
+          0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 283.02,
+        "kind": "footfall",
+        "i": 20,
+        "name": "peak_lead",
+        "swing": 0,
+        "target": [
+          5.925,
+          0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0056",
+      "source": "s0",
+      "pointer_first": "/events/56",
+      "pointer_last": "/events/56",
+      "stream": "/events",
+      "label": "footfall:peak_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        288.96,
+        288.96
+      ],
+      "rows": 1,
+      "first": {
+        "t": 288.96,
+        "kind": "footfall",
+        "i": 21,
+        "name": "peak_follow",
+        "swing": 1,
+        "target": [
+          6.085,
+          -0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 288.96,
+        "kind": "footfall",
+        "i": 21,
+        "name": "peak_follow",
+        "swing": 1,
+        "target": [
+          6.085,
+          -0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0057",
+      "source": "s0",
+      "pointer_first": "/events/57",
+      "pointer_last": "/events/57",
+      "stream": "/events",
+      "label": "footfall:platform",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        295.96,
+        295.96
+      ],
+      "rows": 1,
+      "first": {
+        "t": 295.96,
+        "kind": "footfall",
+        "i": 22,
+        "name": "platform",
+        "swing": 0,
+        "target": [
+          6.285,
+          0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 295.96,
+        "kind": "footfall",
+        "i": 22,
+        "name": "platform",
+        "swing": 0,
+        "target": [
+          6.285,
+          0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0058",
+      "source": "s0",
+      "pointer_first": "/events/58",
+      "pointer_last": "/events/58",
+      "stream": "/events",
+      "label": "footfall:platform",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        301.88,
+        301.88
+      ],
+      "rows": 1,
+      "first": {
+        "t": 301.88,
+        "kind": "footfall",
+        "i": 23,
+        "name": "platform",
+        "swing": 1,
+        "target": [
+          6.445,
+          -0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 301.88,
+        "kind": "footfall",
+        "i": 23,
+        "name": "platform",
+        "swing": 1,
+        "target": [
+          6.445,
+          -0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0059",
+      "source": "s0",
+      "pointer_first": "/events/59",
+      "pointer_last": "/events/59",
+      "stream": "/events",
+      "label": "footfall:platform",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        308.04,
+        308.04
+      ],
+      "rows": 1,
+      "first": {
+        "t": 308.04,
+        "kind": "footfall",
+        "i": 24,
+        "name": "platform",
+        "swing": 0,
+        "target": [
+          6.645,
+          0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 308.04,
+        "kind": "footfall",
+        "i": 24,
+        "name": "platform",
+        "swing": 0,
+        "target": [
+          6.645,
+          0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0060",
+      "source": "s0",
+      "pointer_first": "/events/60",
+      "pointer_last": "/events/60",
+      "stream": "/events",
+      "label": "footfall:platform",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        313.94,
+        313.94
+      ],
+      "rows": 1,
+      "first": {
+        "t": 313.94,
+        "kind": "footfall",
+        "i": 25,
+        "name": "platform",
+        "swing": 1,
+        "target": [
+          6.805,
+          -0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 313.94,
+        "kind": "footfall",
+        "i": 25,
+        "name": "platform",
+        "swing": 1,
+        "target": [
+          6.805,
+          -0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0061",
+      "source": "s0",
+      "pointer_first": "/events/61",
+      "pointer_last": "/events/61",
+      "stream": "/events",
+      "label": "footfall:platform",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        320.1,
+        320.1
+      ],
+      "rows": 1,
+      "first": {
+        "t": 320.1,
+        "kind": "footfall",
+        "i": 26,
+        "name": "platform",
+        "swing": 0,
+        "target": [
+          6.685,
+          0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 320.1,
+        "kind": "footfall",
+        "i": 26,
+        "name": "platform",
+        "swing": 0,
+        "target": [
+          6.685,
+          0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0062",
+      "source": "s0",
+      "pointer_first": "/events/62",
+      "pointer_last": "/events/62",
+      "stream": "/events",
+      "label": "footfall:platform",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        326.0,
+        326.0
+      ],
+      "rows": 1,
+      "first": {
+        "t": 326.0,
+        "kind": "footfall",
+        "i": 27,
+        "name": "platform",
+        "swing": 1,
+        "target": [
+          6.845,
+          -0.08,
+          1.235
+        ]
+      },
+      "last": {
+        "t": 326.0,
+        "kind": "footfall",
+        "i": 27,
+        "name": "platform",
+        "swing": 1,
+        "target": [
+          6.845,
+          -0.08,
+          1.235
+        ]
+      }
+    },
+    {
+      "id": "e0063",
+      "source": "s0",
+      "pointer_first": "/events/63",
+      "pointer_last": "/events/63",
+      "stream": "/events",
+      "label": "footfall:down0_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        331.74,
+        331.74
+      ],
+      "rows": 1,
+      "first": {
+        "t": 331.74,
+        "kind": "footfall",
+        "i": 28,
+        "name": "down0_lead",
+        "swing": 0,
+        "target": [
+          7.085,
+          0.08,
+          1.115
+        ]
+      },
+      "last": {
+        "t": 331.74,
+        "kind": "footfall",
+        "i": 28,
+        "name": "down0_lead",
+        "swing": 0,
+        "target": [
+          7.085,
+          0.08,
+          1.115
+        ]
+      }
+    },
+    {
+      "id": "e0064",
+      "source": "s0",
+      "pointer_first": "/events/64",
+      "pointer_last": "/events/64",
+      "stream": "/events",
+      "label": "footfall:down0_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        338.3,
+        338.3
+      ],
+      "rows": 1,
+      "first": {
+        "t": 338.3,
+        "kind": "footfall",
+        "i": 29,
+        "name": "down0_follow",
+        "swing": 1,
+        "target": [
+          7.245,
+          -0.08,
+          1.115
+        ]
+      },
+      "last": {
+        "t": 338.3,
+        "kind": "footfall",
+        "i": 29,
+        "name": "down0_follow",
+        "swing": 1,
+        "target": [
+          7.245,
+          -0.08,
+          1.115
+        ]
+      }
+    },
+    {
+      "id": "e0065",
+      "source": "s0",
+      "pointer_first": "/events/65",
+      "pointer_last": "/events/65",
+      "stream": "/events",
+      "label": "footfall:down1_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        349.52,
+        349.52
+      ],
+      "rows": 1,
+      "first": {
+        "t": 349.52,
+        "kind": "footfall",
+        "i": 30,
+        "name": "down1_lead",
+        "swing": 0,
+        "target": [
+          7.485,
+          0.08,
+          0.995
+        ]
+      },
+      "last": {
+        "t": 349.52,
+        "kind": "footfall",
+        "i": 30,
+        "name": "down1_lead",
+        "swing": 0,
+        "target": [
+          7.485,
+          0.08,
+          0.995
+        ]
+      }
+    },
+    {
+      "id": "e0066",
+      "source": "s0",
+      "pointer_first": "/events/66",
+      "pointer_last": "/events/66",
+      "stream": "/events",
+      "label": "footfall:down1_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        356.36,
+        356.36
+      ],
+      "rows": 1,
+      "first": {
+        "t": 356.36,
+        "kind": "footfall",
+        "i": 31,
+        "name": "down1_follow",
+        "swing": 1,
+        "target": [
+          7.645,
+          -0.08,
+          0.995
+        ]
+      },
+      "last": {
+        "t": 356.36,
+        "kind": "footfall",
+        "i": 31,
+        "name": "down1_follow",
+        "swing": 1,
+        "target": [
+          7.645,
+          -0.08,
+          0.995
+        ]
+      }
+    },
+    {
+      "id": "e0067",
+      "source": "s0",
+      "pointer_first": "/events/67",
+      "pointer_last": "/events/67",
+      "stream": "/events",
+      "label": "footfall:down2_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        367.52,
+        367.52
+      ],
+      "rows": 1,
+      "first": {
+        "t": 367.52,
+        "kind": "footfall",
+        "i": 32,
+        "name": "down2_lead",
+        "swing": 0,
+        "target": [
+          7.885,
+          0.08,
+          0.875
+        ]
+      },
+      "last": {
+        "t": 367.52,
+        "kind": "footfall",
+        "i": 32,
+        "name": "down2_lead",
+        "swing": 0,
+        "target": [
+          7.885,
+          0.08,
+          0.875
+        ]
+      }
+    },
+    {
+      "id": "e0068",
+      "source": "s0",
+      "pointer_first": "/events/68",
+      "pointer_last": "/events/68",
+      "stream": "/events",
+      "label": "footfall:down2_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        374.3,
+        374.3
+      ],
+      "rows": 1,
+      "first": {
+        "t": 374.3,
+        "kind": "footfall",
+        "i": 33,
+        "name": "down2_follow",
+        "swing": 1,
+        "target": [
+          8.045,
+          -0.08,
+          0.875
+        ]
+      },
+      "last": {
+        "t": 374.3,
+        "kind": "footfall",
+        "i": 33,
+        "name": "down2_follow",
+        "swing": 1,
+        "target": [
+          8.045,
+          -0.08,
+          0.875
+        ]
+      }
+    },
+    {
+      "id": "e0069",
+      "source": "s0",
+      "pointer_first": "/events/69",
+      "pointer_last": "/events/69",
+      "stream": "/events",
+      "label": "footfall:down3_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        385.6,
+        385.6
+      ],
+      "rows": 1,
+      "first": {
+        "t": 385.6,
+        "kind": "footfall",
+        "i": 34,
+        "name": "down3_lead",
+        "swing": 0,
+        "target": [
+          8.285,
+          0.08,
+          0.755
+        ]
+      },
+      "last": {
+        "t": 385.6,
+        "kind": "footfall",
+        "i": 34,
+        "name": "down3_lead",
+        "swing": 0,
+        "target": [
+          8.285,
+          0.08,
+          0.755
+        ]
+      }
+    },
+    {
+      "id": "e0070",
+      "source": "s0",
+      "pointer_first": "/events/70",
+      "pointer_last": "/events/70",
+      "stream": "/events",
+      "label": "footfall:down3_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        392.36,
+        392.36
+      ],
+      "rows": 1,
+      "first": {
+        "t": 392.36,
+        "kind": "footfall",
+        "i": 35,
+        "name": "down3_follow",
+        "swing": 1,
+        "target": [
+          8.445,
+          -0.08,
+          0.755
+        ]
+      },
+      "last": {
+        "t": 392.36,
+        "kind": "footfall",
+        "i": 35,
+        "name": "down3_follow",
+        "swing": 1,
+        "target": [
+          8.445,
+          -0.08,
+          0.755
+        ]
+      }
+    },
+    {
+      "id": "e0071",
+      "source": "s0",
+      "pointer_first": "/events/71",
+      "pointer_last": "/events/71",
+      "stream": "/events",
+      "label": "footfall:down4_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        403.64,
+        403.64
+      ],
+      "rows": 1,
+      "first": {
+        "t": 403.64,
+        "kind": "footfall",
+        "i": 36,
+        "name": "down4_lead",
+        "swing": 0,
+        "target": [
+          8.685,
+          0.08,
+          0.635
+        ]
+      },
+      "last": {
+        "t": 403.64,
+        "kind": "footfall",
+        "i": 36,
+        "name": "down4_lead",
+        "swing": 0,
+        "target": [
+          8.685,
+          0.08,
+          0.635
+        ]
+      }
+    },
+    {
+      "id": "e0072",
+      "source": "s0",
+      "pointer_first": "/events/72",
+      "pointer_last": "/events/72",
+      "stream": "/events",
+      "label": "footfall:down4_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        410.4,
+        410.4
+      ],
+      "rows": 1,
+      "first": {
+        "t": 410.4,
+        "kind": "footfall",
+        "i": 37,
+        "name": "down4_follow",
+        "swing": 1,
+        "target": [
+          8.845,
+          -0.08,
+          0.635
+        ]
+      },
+      "last": {
+        "t": 410.4,
+        "kind": "footfall",
+        "i": 37,
+        "name": "down4_follow",
+        "swing": 1,
+        "target": [
+          8.845,
+          -0.08,
+          0.635
+        ]
+      }
+    },
+    {
+      "id": "e0073",
+      "source": "s0",
+      "pointer_first": "/events/73",
+      "pointer_last": "/events/73",
+      "stream": "/events",
+      "label": "footfall:down5_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        421.7,
+        421.7
+      ],
+      "rows": 1,
+      "first": {
+        "t": 421.7,
+        "kind": "footfall",
+        "i": 38,
+        "name": "down5_lead",
+        "swing": 0,
+        "target": [
+          9.085,
+          0.08,
+          0.515
+        ]
+      },
+      "last": {
+        "t": 421.7,
+        "kind": "footfall",
+        "i": 38,
+        "name": "down5_lead",
+        "swing": 0,
+        "target": [
+          9.085,
+          0.08,
+          0.515
+        ]
+      }
+    },
+    {
+      "id": "e0074",
+      "source": "s0",
+      "pointer_first": "/events/74",
+      "pointer_last": "/events/74",
+      "stream": "/events",
+      "label": "footfall:down5_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        428.46,
+        428.46
+      ],
+      "rows": 1,
+      "first": {
+        "t": 428.46,
+        "kind": "footfall",
+        "i": 39,
+        "name": "down5_follow",
+        "swing": 1,
+        "target": [
+          9.245,
+          -0.08,
+          0.515
+        ]
+      },
+      "last": {
+        "t": 428.46,
+        "kind": "footfall",
+        "i": 39,
+        "name": "down5_follow",
+        "swing": 1,
+        "target": [
+          9.245,
+          -0.08,
+          0.515
+        ]
+      }
+    },
+    {
+      "id": "e0075",
+      "source": "s0",
+      "pointer_first": "/events/75",
+      "pointer_last": "/events/75",
+      "stream": "/events",
+      "label": "footfall:down6_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        439.76,
+        439.76
+      ],
+      "rows": 1,
+      "first": {
+        "t": 439.76,
+        "kind": "footfall",
+        "i": 40,
+        "name": "down6_lead",
+        "swing": 0,
+        "target": [
+          9.485,
+          0.08,
+          0.395
+        ]
+      },
+      "last": {
+        "t": 439.76,
+        "kind": "footfall",
+        "i": 40,
+        "name": "down6_lead",
+        "swing": 0,
+        "target": [
+          9.485,
+          0.08,
+          0.395
+        ]
+      }
+    },
+    {
+      "id": "e0076",
+      "source": "s0",
+      "pointer_first": "/events/76",
+      "pointer_last": "/events/76",
+      "stream": "/events",
+      "label": "footfall:down6_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        446.5,
+        446.5
+      ],
+      "rows": 1,
+      "first": {
+        "t": 446.5,
+        "kind": "footfall",
+        "i": 41,
+        "name": "down6_follow",
+        "swing": 1,
+        "target": [
+          9.645,
+          -0.08,
+          0.395
+        ]
+      },
+      "last": {
+        "t": 446.5,
+        "kind": "footfall",
+        "i": 41,
+        "name": "down6_follow",
+        "swing": 1,
+        "target": [
+          9.645,
+          -0.08,
+          0.395
+        ]
+      }
+    },
+    {
+      "id": "e0077",
+      "source": "s0",
+      "pointer_first": "/events/77",
+      "pointer_last": "/events/77",
+      "stream": "/events",
+      "label": "footfall:down7_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        457.8,
+        457.8
+      ],
+      "rows": 1,
+      "first": {
+        "t": 457.8,
+        "kind": "footfall",
+        "i": 42,
+        "name": "down7_lead",
+        "swing": 0,
+        "target": [
+          9.885,
+          0.08,
+          0.275
+        ]
+      },
+      "last": {
+        "t": 457.8,
+        "kind": "footfall",
+        "i": 42,
+        "name": "down7_lead",
+        "swing": 0,
+        "target": [
+          9.885,
+          0.08,
+          0.275
+        ]
+      }
+    },
+    {
+      "id": "e0078",
+      "source": "s0",
+      "pointer_first": "/events/78",
+      "pointer_last": "/events/78",
+      "stream": "/events",
+      "label": "footfall:down7_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        464.56,
+        464.56
+      ],
+      "rows": 1,
+      "first": {
+        "t": 464.56,
+        "kind": "footfall",
+        "i": 43,
+        "name": "down7_follow",
+        "swing": 1,
+        "target": [
+          10.045,
+          -0.08,
+          0.275
+        ]
+      },
+      "last": {
+        "t": 464.56,
+        "kind": "footfall",
+        "i": 43,
+        "name": "down7_follow",
+        "swing": 1,
+        "target": [
+          10.045,
+          -0.08,
+          0.275
+        ]
+      }
+    },
+    {
+      "id": "e0079",
+      "source": "s0",
+      "pointer_first": "/events/79",
+      "pointer_last": "/events/79",
+      "stream": "/events",
+      "label": "footfall:down8_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        475.84,
+        475.84
+      ],
+      "rows": 1,
+      "first": {
+        "t": 475.84,
+        "kind": "footfall",
+        "i": 44,
+        "name": "down8_lead",
+        "swing": 0,
+        "target": [
+          10.285,
+          0.08,
+          0.155
+        ]
+      },
+      "last": {
+        "t": 475.84,
+        "kind": "footfall",
+        "i": 44,
+        "name": "down8_lead",
+        "swing": 0,
+        "target": [
+          10.285,
+          0.08,
+          0.155
+        ]
+      }
+    },
+    {
+      "id": "e0080",
+      "source": "s0",
+      "pointer_first": "/events/80",
+      "pointer_last": "/events/80",
+      "stream": "/events",
+      "label": "footfall:down8_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        482.58,
+        482.58
+      ],
+      "rows": 1,
+      "first": {
+        "t": 482.58,
+        "kind": "footfall",
+        "i": 45,
+        "name": "down8_follow",
+        "swing": 1,
+        "target": [
+          10.445,
+          -0.08,
+          0.155
+        ]
+      },
+      "last": {
+        "t": 482.58,
+        "kind": "footfall",
+        "i": 45,
+        "name": "down8_follow",
+        "swing": 1,
+        "target": [
+          10.445,
+          -0.08,
+          0.155
+        ]
+      }
+    },
+    {
+      "id": "e0081",
+      "source": "s0",
+      "pointer_first": "/events/81",
+      "pointer_last": "/events/81",
+      "stream": "/events",
+      "label": "footfall:ground_lead",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        493.88,
+        493.88
+      ],
+      "rows": 1,
+      "first": {
+        "t": 493.88,
+        "kind": "footfall",
+        "i": 46,
+        "name": "ground_lead",
+        "swing": 0,
+        "target": [
+          10.685,
+          0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 493.88,
+        "kind": "footfall",
+        "i": 46,
+        "name": "ground_lead",
+        "swing": 0,
+        "target": [
+          10.685,
+          0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0082",
+      "source": "s0",
+      "pointer_first": "/events/82",
+      "pointer_last": "/events/82",
+      "stream": "/events",
+      "label": "footfall:ground_follow",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        500.64,
+        500.64
+      ],
+      "rows": 1,
+      "first": {
+        "t": 500.64,
+        "kind": "footfall",
+        "i": 47,
+        "name": "ground_follow",
+        "swing": 1,
+        "target": [
+          10.845,
+          -0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 500.64,
+        "kind": "footfall",
+        "i": 47,
+        "name": "ground_follow",
+        "swing": 1,
+        "target": [
+          10.845,
+          -0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0083",
+      "source": "s0",
+      "pointer_first": "/events/83",
+      "pointer_last": "/events/83",
+      "stream": "/events",
+      "label": "stage:to_goal",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        511.94,
+        511.94
+      ],
+      "rows": 1,
+      "first": {
+        "t": 511.94,
+        "kind": "stage",
+        "name": "to_goal"
+      },
+      "last": {
+        "t": 511.94,
+        "kind": "stage",
+        "name": "to_goal"
+      }
+    },
+    {
+      "id": "e0084",
+      "source": "s0",
+      "pointer_first": "/events/84",
+      "pointer_last": "/events/84",
+      "stream": "/events",
+      "label": "footfall:to_goal0",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        511.94,
+        511.94
+      ],
+      "rows": 1,
+      "first": {
+        "t": 511.94,
+        "kind": "footfall",
+        "name": "to_goal0",
+        "swing": 0,
+        "target": [
+          11.07,
+          0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 511.94,
+        "kind": "footfall",
+        "name": "to_goal0",
+        "swing": 0,
+        "target": [
+          11.07,
+          0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0085",
+      "source": "s0",
+      "pointer_first": "/events/85",
+      "pointer_last": "/events/85",
+      "stream": "/events",
+      "label": "footfall:to_goal1",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        517.96,
+        517.96
+      ],
+      "rows": 1,
+      "first": {
+        "t": 517.96,
+        "kind": "footfall",
+        "name": "to_goal1",
+        "swing": 1,
+        "target": [
+          11.287,
+          -0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 517.96,
+        "kind": "footfall",
+        "name": "to_goal1",
+        "swing": 1,
+        "target": [
+          11.287,
+          -0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0086",
+      "source": "s0",
+      "pointer_first": "/events/86",
+      "pointer_last": "/events/86",
+      "stream": "/events",
+      "label": "footfall:to_goal2",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        524.22,
+        524.22
+      ],
+      "rows": 1,
+      "first": {
+        "t": 524.22,
+        "kind": "footfall",
+        "name": "to_goal2",
+        "swing": 0,
+        "target": [
+          11.365,
+          0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 524.22,
+        "kind": "footfall",
+        "name": "to_goal2",
+        "swing": 0,
+        "target": [
+          11.365,
+          0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0087",
+      "source": "s0",
+      "pointer_first": "/events/87",
+      "pointer_last": "/events/87",
+      "stream": "/events",
+      "label": "footfall:to_goal3",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        530.46,
+        530.46
+      ],
+      "rows": 1,
+      "first": {
+        "t": 530.46,
+        "kind": "footfall",
+        "name": "to_goal3",
+        "swing": 1,
+        "target": [
+          11.365,
+          -0.08,
+          0.035
+        ]
+      },
+      "last": {
+        "t": 530.46,
+        "kind": "footfall",
+        "name": "to_goal3",
+        "swing": 1,
+        "target": [
+          11.365,
+          -0.08,
+          0.035
+        ]
+      }
+    },
+    {
+      "id": "e0088",
+      "source": "s0",
+      "pointer_first": "/events/88",
+      "pointer_last": "/events/88",
+      "stream": "/events",
+      "label": "stage:place",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        536.04,
+        536.04
+      ],
+      "rows": 1,
+      "first": {
+        "t": 536.04,
+        "kind": "stage",
+        "name": "place"
+      },
+      "last": {
+        "t": 536.04,
+        "kind": "stage",
+        "name": "place"
+      }
+    },
+    {
+      "id": "e0089",
+      "source": "s0",
+      "pointer_first": "/events/89",
+      "pointer_last": "/events/89",
+      "stream": "/events",
+      "label": "placement_reference_grasp",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        536.04,
+        536.04
+      ],
+      "rows": 1,
+      "first": {
+        "t": 536.04,
+        "kind": "placement_reference_grasp",
+        "local_correction_m": [
+          0.009771544765285215,
+          0.006022720735825733
+        ],
+        "actual_local": [
+          [
+            0.08800994326775838,
+            -0.038349804536774855,
+            -0.01212740552902423
+          ],
+          [
+            0.08110963805823979,
+            0.05501368795557997,
+            -0.008731175516715648
+          ]
+        ],
+        "reference_local": [
+          [
+            0.07913866609791702,
+            -0.04106758280775824,
+            -0.009061918659765949
+          ],
+          [
+            0.07818268194363442,
+            0.053893820644915325,
+            -0.00358802568694943
+          ]
+        ]
+      },
+      "last": {
+        "t": 536.04,
+        "kind": "placement_reference_grasp",
+        "local_correction_m": [
+          0.009771544765285215,
+          0.006022720735825733
+        ],
+        "actual_local": [
+          [
+            0.08800994326775838,
+            -0.038349804536774855,
+            -0.01212740552902423
+          ],
+          [
+            0.08110963805823979,
+            0.05501368795557997,
+            -0.008731175516715648
+          ]
+        ],
+        "reference_local": [
+          [
+            0.07913866609791702,
+            -0.04106758280775824,
+            -0.009061918659765949
+          ],
+          [
+            0.07818268194363442,
+            0.053893820644915325,
+            -0.00358802568694943
+          ]
+        ]
+      }
+    },
+    {
+      "id": "e0090",
+      "source": "s0",
+      "pointer_first": "/events/90",
+      "pointer_last": "/events/90",
+      "stream": "/events",
+      "label": "body_local_timing:place_clear_torso",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        536.04,
+        536.04
+      ],
+      "rows": 1,
+      "first": {
+        "t": 536.04,
+        "kind": "body_local_timing",
+        "phase": "place_clear_torso",
+        "metrics": {
+          "joint_velocity": 0.33422316229868315,
+          "joint_acceleration": 11.997600359952004,
+          "com_acceleration": 0.0
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      },
+      "last": {
+        "t": 536.04,
+        "kind": "body_local_timing",
+        "phase": "place_clear_torso",
+        "metrics": {
+          "joint_velocity": 0.33422316229868315,
+          "joint_acceleration": 11.997600359952004,
+          "com_acceleration": 0.0
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      }
+    },
+    {
+      "id": "e0091",
+      "source": "s0",
+      "pointer_first": "/events/91",
+      "pointer_last": "/events/91",
+      "stream": "/events",
+      "label": "placement_departure_plan",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        536.04,
+        536.04
+      ],
+      "rows": 1,
+      "first": {
+        "t": 536.04,
+        "kind": "placement_departure_plan",
+        "initial_clearance_m": -0.0007269376852102425,
+        "final_clearance_m": 0.004521667117492031,
+        "minimum_clearance_m": -0.0007269376852102425,
+        "max_separation_error_m": 3.4483618199798727e-07,
+        "max_joint_delta": 0.004655311014934549
+      },
+      "last": {
+        "t": 536.04,
+        "kind": "placement_departure_plan",
+        "initial_clearance_m": -0.0007269376852102425,
+        "final_clearance_m": 0.004521667117492031,
+        "minimum_clearance_m": -0.0007269376852102425,
+        "max_separation_error_m": 3.4483618199798727e-07,
+        "max_joint_delta": 0.004655311014934549
+      }
+    },
+    {
+      "id": "e0092",
+      "source": "s0",
+      "pointer_first": "/events/92",
+      "pointer_last": "/events/92",
+      "stream": "/events",
+      "label": "placement_reference_grasp",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        538.06,
+        538.06
+      ],
+      "rows": 1,
+      "first": {
+        "t": 538.06,
+        "kind": "placement_reference_grasp",
+        "local_correction_m": [
+          0.008222087943854248,
+          0.004704106110542605
+        ],
+        "actual_local": [
+          [
+            0.08796335049220488,
+            -0.038359159881504803,
+            -0.008876272088265311
+          ],
+          [
+            0.08114468994591234,
+            0.05466550763104683,
+            -0.0041592298684668145
+          ]
+        ],
+        "reference_local": [
+          [
+            0.08037408000434139,
+            -0.038301646555152356,
+            -0.00571361563588079
+          ],
+          [
+            0.07731708248284672,
+            0.05686242822429346,
+            -0.002530864026618771
+          ]
+        ]
+      },
+      "last": {
+        "t": 538.06,
+        "kind": "placement_reference_grasp",
+        "local_correction_m": [
+          0.008222087943854248,
+          0.004704106110542605
+        ],
+        "actual_local": [
+          [
+            0.08796335049220488,
+            -0.038359159881504803,
+            -0.008876272088265311
+          ],
+          [
+            0.08114468994591234,
+            0.05466550763104683,
+            -0.0041592298684668145
+          ]
+        ],
+        "reference_local": [
+          [
+            0.08037408000434139,
+            -0.038301646555152356,
+            -0.00571361563588079
+          ],
+          [
+            0.07731708248284672,
+            0.05686242822429346,
+            -0.002530864026618771
+          ]
+        ]
+      }
+    },
+    {
+      "id": "e0093",
+      "source": "s0",
+      "pointer_first": "/events/93",
+      "pointer_last": "/events/93",
+      "stream": "/events",
+      "label": "shoulder_departure_plan",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        538.06,
+        538.06
+      ],
+      "rows": 1,
+      "first": {
+        "t": 538.06,
+        "kind": "shoulder_departure_plan",
+        "initial_clearance_m": 0.00024070116343455816,
+        "final_clearance_m": 0.02499869842543389,
+        "max_joint_delta": 0.09780183678810195,
+        "max_separation_error_m": 2.223950040658451e-05,
+        "timing": {
+          "joint_velocity": 0.42853409210224847,
+          "joint_acceleration": 8.802621506193375,
+          "com_acceleration": 0.010977616803529254
+        }
+      },
+      "last": {
+        "t": 538.06,
+        "kind": "shoulder_departure_plan",
+        "initial_clearance_m": 0.00024070116343455816,
+        "final_clearance_m": 0.02499869842543389,
+        "max_joint_delta": 0.09780183678810195,
+        "max_separation_error_m": 2.223950040658451e-05,
+        "timing": {
+          "joint_velocity": 0.42853409210224847,
+          "joint_acceleration": 8.802621506193375,
+          "com_acceleration": 0.010977616803529254
+        }
+      }
+    },
+    {
+      "id": "e0094",
+      "source": "s0",
+      "pointer_first": "/events/94",
+      "pointer_last": "/events/94",
+      "stream": "/events",
+      "label": "shoulder_departure_measured",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        542.66,
+        542.66
+      ],
+      "rows": 1,
+      "first": {
+        "t": 542.66,
+        "kind": "shoulder_departure_measured",
+        "clearance_m": 0.0158895374081951
+      },
+      "last": {
+        "t": 542.66,
+        "kind": "shoulder_departure_measured",
+        "clearance_m": 0.0158895374081951
+      }
+    },
+    {
+      "id": "e0095",
+      "source": "s0",
+      "pointer_first": "/events/95",
+      "pointer_last": "/events/95",
+      "stream": "/events",
+      "label": "placement_grip_closure",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        542.66,
+        542.66
+      ],
+      "rows": 1,
+      "first": {
+        "t": 542.66,
+        "kind": "placement_grip_closure",
+        "distal_rad": 0.95,
+        "reason": "close the fingertip opening before the hook rolls under load"
+      },
+      "last": {
+        "t": 542.66,
+        "kind": "placement_grip_closure",
+        "distal_rad": 0.95,
+        "reason": "close the fingertip opening before the hook rolls under load"
+      }
+    },
+    {
+      "id": "e0096",
+      "source": "s0",
+      "pointer_first": "/events/96",
+      "pointer_last": "/events/96",
+      "stream": "/events",
+      "label": "placement_reference_grasp",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        544.46,
+        544.46
+      ],
+      "rows": 1,
+      "first": {
+        "t": 544.46,
+        "kind": "placement_reference_grasp",
+        "local_correction_m": [
+          0.01018871641529595,
+          0.005794078896909114
+        ],
+        "actual_local": [
+          [
+            0.08559161315713205,
+            -0.03762855364595431,
+            -0.0034583523041980054
+          ],
+          [
+            0.08376382647840026,
+            0.051417552069353244,
+            -0.016258366659429188
+          ]
+        ],
+        "reference_local": [
+          [
+            0.07749740750896035,
+            -0.04249527158227122,
+            0.0003637980911629341
+          ],
+          [
+            0.07931665722817091,
+            0.05278852812694049,
+            -0.0128066336783102
+          ]
+        ]
+      },
+      "last": {
+        "t": 544.46,
+        "kind": "placement_reference_grasp",
+        "local_correction_m": [
+          0.01018871641529595,
+          0.005794078896909114
+        ],
+        "actual_local": [
+          [
+            0.08559161315713205,
+            -0.03762855364595431,
+            -0.0034583523041980054
+          ],
+          [
+            0.08376382647840026,
+            0.051417552069353244,
+            -0.016258366659429188
+          ]
+        ],
+        "reference_local": [
+          [
+            0.07749740750896035,
+            -0.04249527158227122,
+            0.0003637980911629341
+          ],
+          [
+            0.07931665722817091,
+            0.05278852812694049,
+            -0.0128066336783102
+          ]
+        ]
+      }
+    },
+    {
+      "id": "e0097",
+      "source": "s0",
+      "pointer_first": "/events/97",
+      "pointer_last": "/events/97",
+      "stream": "/events",
+      "label": "continuous_placement_plan",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        544.46,
+        544.46
+      ],
+      "rows": 1,
+      "first": {
+        "t": 544.46,
+        "kind": "continuous_placement_plan",
+        "samples": 753,
+        "duration": 20.295293062728987,
+        "max_separation_error_m": 0.0006695715829671545,
+        "min_clearance_m": 0.02045606979456615,
+        "timing": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 11.997600359952012,
+          "com_acceleration": 0.21995600659912015
+        },
+        "source": "same_run_measured_pickup_geometry",
+        "grasp_model": "constant_bar_point_with_same_run_wrist_orientation"
+      },
+      "last": {
+        "t": 544.46,
+        "kind": "continuous_placement_plan",
+        "samples": 753,
+        "duration": 20.295293062728987,
+        "max_separation_error_m": 0.0006695715829671545,
+        "min_clearance_m": 0.02045606979456615,
+        "timing": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 11.997600359952012,
+          "com_acceleration": 0.21995600659912015
+        },
+        "source": "same_run_measured_pickup_geometry",
+        "grasp_model": "constant_bar_point_with_same_run_wrist_orientation"
+      }
+    },
+    {
+      "id": "e0098",
+      "source": "s0",
+      "pointer_first": "/events/98",
+      "pointer_last": "/events/98",
+      "stream": "/events",
+      "label": "body_local_timing:lower",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        565.36,
+        565.36
+      ],
+      "rows": 1,
+      "first": {
+        "t": 565.36,
+        "kind": "body_local_timing",
+        "phase": "lower",
+        "metrics": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 7.582232549027523,
+          "com_acceleration": 7.493640802603957e-05
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      },
+      "last": {
+        "t": 565.36,
+        "kind": "body_local_timing",
+        "phase": "lower",
+        "metrics": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 7.582232549027523,
+          "com_acceleration": 7.493640802603957e-05
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      }
+    },
+    {
+      "id": "e0099",
+      "source": "s0",
+      "pointer_first": "/events/99",
+      "pointer_last": "/events/99",
+      "stream": "/events",
+      "label": "body_local_timing:touch",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        570.5,
+        570.5
+      ],
+      "rows": 1,
+      "first": {
+        "t": 570.5,
+        "kind": "body_local_timing",
+        "phase": "touch",
+        "metrics": {
+          "joint_velocity": 0.5258927353699022,
+          "joint_acceleration": 11.997600359952003,
+          "com_acceleration": 0.002382521636631915
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      },
+      "last": {
+        "t": 570.5,
+        "kind": "body_local_timing",
+        "phase": "touch",
+        "metrics": {
+          "joint_velocity": 0.5258927353699022,
+          "joint_acceleration": 11.997600359952003,
+          "com_acceleration": 0.002382521636631915
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      }
+    },
+    {
+      "id": "e0100",
+      "source": "s0",
+      "pointer_first": "/events/100",
+      "pointer_last": "/events/100",
+      "stream": "/events",
+      "label": "box_down",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        573.12,
+        573.12
+      ],
+      "rows": 1,
+      "first": {
+        "t": 573.12,
+        "kind": "box_down",
+        "box": [
+          11.716,
+          -0.046,
+          0.12
+        ],
+        "hand_load": [
+          0.0,
+          0.0
+        ],
+        "core": {
+          "success": false,
+          "failed": false,
+          "lifted": true,
+          "route": 20,
+          "hold": 0.0,
+          "elapsed": 573.52392578125,
+          "peak_passed": true,
+          "placing": true,
+          "placed": false,
+          "score": 0.0
+        }
+      },
+      "last": {
+        "t": 573.12,
+        "kind": "box_down",
+        "box": [
+          11.716,
+          -0.046,
+          0.12
+        ],
+        "hand_load": [
+          0.0,
+          0.0
+        ],
+        "core": {
+          "success": false,
+          "failed": false,
+          "lifted": true,
+          "route": 20,
+          "hold": 0.0,
+          "elapsed": 573.52392578125,
+          "peak_passed": true,
+          "placing": true,
+          "placed": false,
+          "score": 0.0
+        }
+      }
+    },
+    {
+      "id": "e0101",
+      "source": "s0",
+      "pointer_first": "/events/101",
+      "pointer_last": "/events/101",
+      "stream": "/events",
+      "label": "body_local_timing:slide_out",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        574.32,
+        574.32
+      ],
+      "rows": 1,
+      "first": {
+        "t": 574.32,
+        "kind": "body_local_timing",
+        "phase": "slide_out",
+        "metrics": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 11.997600359952003,
+          "com_acceleration": 1.405453549616985e-07
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      },
+      "last": {
+        "t": 574.32,
+        "kind": "body_local_timing",
+        "phase": "slide_out",
+        "metrics": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 11.997600359952003,
+          "com_acceleration": 1.405453549616985e-07
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      }
+    },
+    {
+      "id": "e0102",
+      "source": "s0",
+      "pointer_first": "/events/102",
+      "pointer_last": "/events/102",
+      "stream": "/events",
+      "label": "body_local_timing:hands_up",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        578.72,
+        578.72
+      ],
+      "rows": 1,
+      "first": {
+        "t": 578.72,
+        "kind": "body_local_timing",
+        "phase": "hands_up",
+        "metrics": {
+          "joint_velocity": 0.30654755844485854,
+          "joint_acceleration": 11.997600359952003,
+          "com_acceleration": 2.6939382045383584e-05
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      },
+      "last": {
+        "t": 578.72,
+        "kind": "body_local_timing",
+        "phase": "hands_up",
+        "metrics": {
+          "joint_velocity": 0.30654755844485854,
+          "joint_acceleration": 11.997600359952003,
+          "com_acceleration": 2.6939382045383584e-05
+        },
+        "limits": {
+          "joint_velocity": 0.6,
+          "joint_acceleration": 12.0,
+          "com_acceleration": 0.22
+        }
+      }
+    }
+  ],
+  "source_clock_checks": [
+    {
+      "source": "s0",
+      "pointer": "/events",
+      "timed_rows": 103,
+      "clock": "episode",
+      "nondecreasing": true
+    }
+  ],
+  "physical_observations": {
+    "interpretation": "Descriptive checks recomputed from recorded samples. These are not a new simulation, formal acceptance or a full-rate independent contact audit.",
+    "source": {
+      "path": "C:/Users/wuxiy/rsi_releases/h6_baseline_layer1_assets_candidate_20261024/reproduction/library-full-01/record.json",
+      "sha256": "2d09f8dcc00890a5272b95dda7c112dc82b187d136b362cf1ee2841616508960"
+    },
+    "footfall_events": 57,
+    "retained_gate_timeouts": [
+      {
+        "t": 96.58,
+        "kind": "gate_timeout",
+        "step": "1:up0_follow:",
+        "fz": [
+          299.9,
+          57.2
+        ]
+      }
+    ],
+    "box_down_events": [
+      {
+        "t": 573.12,
+        "kind": "box_down",
+        "box": [
+          11.716,
+          -0.046,
+          0.12
+        ],
+        "hand_load": [
+          0.0,
+          0.0
+        ],
+        "core": {
+          "success": false,
+          "failed": false,
+          "lifted": true,
+          "route": 20,
+          "hold": 0.0,
+          "elapsed": 573.52392578125,
+          "peak_passed": true,
+          "placing": true,
+          "placed": false,
+          "score": 0.0
+        }
+      }
+    ]
+  },
+  "review": {
+    "task": "H6",
+    "skills": 5,
+    "ordered_actions": 16,
+    "event_groups": 103,
+    "source_files": 1,
+    "action_mapping_counts": {
+      "episode_event_candidates": 16
+    },
+    "joint_mapping_review": "pending_physical_constraints_and_provenance_review",
+    "remaining_zh": "已定位 57 次 footfall；单个足步内部重心转移、卸载和落足仍需物理 trace 核对。保留 96.58 s gate_timeout，不能写成全程无警告。"
+  },
+  "design_gate_complete": false,
+  "physics_runs": 0,
+  "legacy_scores_changed": false,
+  "h1_status_changed": false
+}

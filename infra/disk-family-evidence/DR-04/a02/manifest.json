@@ -1,0 +1,163 @@
+{
+  "schema": "dr-continuous-run/1",
+  "case_id": "DR-04",
+  "configuration": {
+    "body": "DP",
+    "task": {
+      "goal_yaw": 1.0471975511965976
+    },
+    "materials": {
+      "rim_friction": [
+        1.2,
+        1.2,
+        1.2,
+        1.2,
+        1.2,
+        1.2,
+        1.2,
+        1.2
+      ],
+      "bottom_friction": 0.25,
+      "table_friction": 0.25,
+      "pad_friction": 0.01,
+      "phase": 0.0
+    },
+    "policy": "sector",
+    "scene": {
+      "extra_boxes": [
+        {
+          "size": [
+            0.035,
+            0.025,
+            0.035
+          ],
+          "pos": [
+            -0.11,
+            -0.058,
+            0.3675
+          ]
+        },
+        {
+          "size": [
+            0.035,
+            0.025,
+            0.035
+          ],
+          "pos": [
+            0.11,
+            0.058,
+            0.3675
+          ]
+        }
+      ]
+    },
+    "hypothesis": "Physical posts block the continuing rim arc; withdraw radially and recontact. Necessity is not assumed."
+  },
+  "config": {
+    "initial_yaw": 0.0,
+    "goal_yaw": 1.0471975511965976,
+    "seed": 0,
+    "center_radius": 0.03,
+    "final_center_error": 0.01,
+    "heading_tolerance": 0.05235987755982989,
+    "table_height": 0.35,
+    "disk_half_height": 0.01,
+    "disk_mass": 0.2,
+    "tilt_max": 0.08726646259971647,
+    "height_tolerance": 0.003,
+    "linear_speed_max": 0.12,
+    "angular_speed_max": 0.65,
+    "contact_force_max": 20.0,
+    "joint_speed_max": 1.5,
+    "target_speed_max": 0.5,
+    "settle_linear_speed": 0.01,
+    "settle_angular_speed": 0.05,
+    "settle_duration": 2.0,
+    "release_force": 0.02,
+    "support_loss_duration": 0.05,
+    "time_limit": 120.0
+  },
+  "source_hashes": {
+    "disk_family/policies.py": "d58272eeb94840a52bf49451e5a4842ca9e095ca961b7f1e565883fd5566a3ee",
+    "disk_family/submit.py": "47e745aa92787e992c1c5ef06119f823aaf1801684d6f555b8ca5bbf1596e3f6",
+    "disk_family/verify.py": "0bf6b2ecf98420240f5f99ad65fb82f2e7700a81ee1ab76250f4ecf5a4b67113",
+    "disk_family/cases.py": "388419fa2735922017f2e693b98b5afb08a04c53265900f7e90d862b25acbaa6",
+    "disk_family/__init__.py": "9a84f68a147c1bc45dc89c48d2173c20df7221faf48c8e1032973373315d1bcc",
+    "disk_family/run.py": "9df66ac9ae77a18f0f4815c0f0e8e2be06a3e9c28e1af87333e2cf5340873d5d",
+    "multi_robot/dual_arm_disk_rotation/LICENSES.md": "26e987aba9b79d2898ff1ef87cc89eb6cd634770d6cf0aedcf092efeadc28b1b",
+    "multi_robot/dual_arm_disk_rotation/ASSET_NOTICE.md": "4227ef2014f1bf6aeb6b1e64c578e22e0d34331d313c0515206f3a3e2caf4996",
+    "multi_robot/dual_arm_disk_rotation/agent_api.py": "63969c650003334b7d2195007dc515aea056fe6274e7864278bf02778d99e406",
+    "multi_robot/dual_arm_disk_rotation/assets.py": "534e7707c888e70bb6aa9f4d5f149d6b8c14176dc88a024387688cb1a81b7461",
+    "multi_robot/dual_arm_disk_rotation/requirements.txt": "fdd7ed5a9d9e8eb838d694b8bca9986dd43d91512e5988e5a15743a95019381b",
+    "multi_robot/dual_arm_disk_rotation/RELEASE.md": "2ac12b7621d96f6d39ea0f6b0da27b760ffdceb6bd4f816b48144b3e210ad01c",
+    "multi_robot/dual_arm_disk_rotation/task.toml": "0da39e6ec44e02fc0c5eff8e66552d5bcd0aefbd78840764b775332c316332d0",
+    "multi_robot/dual_arm_disk_rotation/README.md": "1e914356c65c9e50b781a97b526355cc0deb71a61a06f3c0672dfbbd1837fe20",
+    "multi_robot/dual_arm_disk_rotation/delivery.json": "e32a3f6714cba61039467a1b1e21e1155bad9e745df98085923d5c7ae8cde002",
+    "multi_robot/dual_arm_disk_rotation/DATA_CARD.md": "69a62658bd76f1c3887d77b834c633a8bba8bfdbffa5c5f579e0ac1b2fcc91f5",
+    "multi_robot/dual_arm_disk_rotation/task_spec.py": "f5b3876296c56dd633ec4387f4c80b0bf6e2d0bef5f2185bc1d4853a22783e0b",
+    "multi_robot/dual_arm_disk_rotation/instruction.zh.md": "5afcdb2b77be911d63b35f1c2628a309eb003a6559ee80b9d99eff07ace4c04a",
+    "multi_robot/dual_arm_disk_rotation/__init__.py": "b90f539abd35649547f35235e0aa007843b8a68f668cb20bacc569a3f1a60447",
+    "multi_robot/dual_arm_disk_rotation/.gitignore": "82e22f0b32412eb69fbc16e7d0349ce74cc9070a602516e3739f01da607a53ae",
+    "multi_robot/dual_arm_disk_rotation/env.py": "778020ef06e6a934045317e73731a5f02b0888365b42b45dbf459f957ad1de00",
+    "multi_robot/dual_arm_disk_rotation/assets/disk.obj": "224836e1ee16bd30faaa2b3af62edc8e032cdebf1c0e9a7a56296d2b00ce5f23",
+    "multi_robot/dual_arm_disk_rotation/assets/disk.urdf": "6fd054db2f014826bdd271a40dc17993f66dec12b041406ac33d0d8318439832",
+    "multi_robot/dual_arm_disk_rotation/solution/gamma_replay.sbatch": "f373376c7f83639b6d80875e8c74ac984f505a1f16840000abfce76250fceaeb",
+    "multi_robot/dual_arm_disk_rotation/solution/smoke_native.py": "5b7298d9acdebfbd2925f57ebb00a46558ad5b00503e1a564c6d8000a802db10",
+    "multi_robot/dual_arm_disk_rotation/solution/probe.py": "b8defd951a4de2a40a21840c6818ece7b08186d8113fd5f6292ea7070647f2b5",
+    "multi_robot/dual_arm_disk_rotation/solution/gamma_release.sbatch": "daa3157bee4b4a527dba0a098937a78545296f01d65a70a0fe9082be14971f53",
+    "multi_robot/dual_arm_disk_rotation/solution/oracle.py": "195c03dc24e074096cb46cc1aa8b0b77dc183e8a8f652d42b44fc4090b15c568",
+    "multi_robot/dual_arm_disk_rotation/solution/controller.py": "b58b84a7040a6c6e97cd6047070bea2092a460696819dfbc765b6c804d6ee8e5",
+    "multi_robot/dual_arm_disk_rotation/solution/verify.py": "64f21b1c55324c9ffbcd4bbcf59757190e29efc3d66bc1faa41f5a1a2d3d1b1f",
+    "multi_robot/dual_arm_disk_rotation/solution/build_page.py": "82254bcc670754b5ab86be7843b7dc7bc1cdb104c3ebc7170c39672bec5f2ef7",
+    "multi_robot/dual_arm_disk_rotation/solution/__init__.py": "59ee1a44773f59f75baf10ccc8f554660a4e5d111f11f50ba9bceca41521658a",
+    "multi_robot/dual_arm_disk_rotation/solution/prepare_release.py": "37034edc48093a3a5c57eda7f7a514d7a85f3e4c36501d05462f78cf06152013",
+    "multi_robot/dual_arm_disk_rotation/solution/run.py": "7fc61d5f713293af51dfa9a39e20a3cc692ca36ec7fa425c2f6972121152aeae",
+    "multi_robot/dual_arm_disk_rotation/solution/package_release.py": "f60ab73acb19eeff329dc26e84bb7549b9019fdc15338094eca8728ed91c7f4c",
+    "multi_robot/dual_arm_disk_rotation/l2/materials.py": "0a682df6061df2f7434be92b588d192ff09108452828c94ae08040217059a9f8",
+    "multi_robot/dual_arm_disk_rotation/l2/gamma.sbatch": "1b0ac606c9aa8c8567aad724eaac4d5cb9760faaff691219e653c3a2ef47d30a",
+    "multi_robot/dual_arm_disk_rotation/l2/controller.py": "2737643250fb2dd0b5f63764fe5f7ddb528163e681a0f236f42daab8fbca6e04",
+    "multi_robot/dual_arm_disk_rotation/l2/__init__.py": "b5fcc4004386d6db5a8fc8ee89425fa6e9d0cc7a935032ea975954b64ace770d",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/pusher.urdf": "5f1b7951017974d44a4c4cc10c11ceab257c2f70e4231f7d02284bb6f4223f12",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/original.urdf": "8a78827252ceee4987fe7bffae8edb60d7ec64478785f7d1c0a4e33acb27f2f5",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/LICENSE.txt": "59899c6091b540582ed617e8eeaac4919dc985ccfc35459ee9752b699be5205b",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/link0.obj": "d29233f03537b6ee92a6861d4139290960325c2bacf9a640ab7935a5539c653f",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/finger.obj": "c05dee2e2770ac3d45a097cec4a9d758e279ebdb7dc550eb249571c4690a6476",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/hand.obj": "a216bedc742a736f2c6cab010c6014475fe5f7b5ed53e371509adf885df618a2",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/link1.obj": "0879335b20930eccccdc7d2565553895589f9125d4c8c0d462ad0f74f17e7472",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/link4.obj": "64b5914ef159149f87b767ff0eae4db41b9c267aecdddf2816ff25726fa0e6f2",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/link2.obj": "cfca62e5846d3ba6db8be3740fc2219454401f1048db11a78bd9ec8f30cdc128",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/link5.obj": "ff8d4bb5ab506b8cf621f44b928be7714dff86b669a92909b8d4f71c5b01597e",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/link6.obj": "e1dc8bbca8690944e6331f5a108d49c363eeec179b56a9f913541a541e6a2cfc",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/link7.obj": "675a784e949b2b47894f1965016bd56b992b136bd90e1a62e832f49b4a55b240",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/link3.obj": "22235fb3676b5cb45a2f512065fab94fecf052a767cddfaed62cbb6d1efcf1f8",
+    "multi_robot/dual_arm_disk_rotation/assets/panda/meshes/link6.mtl": "569f88e12d5672c190e2aa14526fcc16b609c25bd5ade907ddb83106ac61e78c"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "genesis-world": "1.4.3",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.3",
+    "mujoco": "3.14.0"
+  },
+  "host": "gammagpu04.umiacs.umd.edu",
+  "job_id": "8050403",
+  "physics_dt": 0.0025,
+  "control_dt": 0.02,
+  "start": "normal_reset",
+  "state_splicing": false,
+  "privileged_expert": true,
+  "video_fps": 10,
+  "generated_asset_hashes": {
+    "rim_0.obj": "9f6d95d898b336f293b11123b289c7e617e6fcc26ff9e228fe58d5f05e73cd3c",
+    "rim_4.obj": "3c4614176e92782494f1a573ebca79d52fc7dae67b2ec64c9d1dcff4a410894a",
+    "rim_3.obj": "af6c2b8fa8fefd2c5fd447d59f2fd7faca9540196de73e17d1df5572b3aed882",
+    "rim_6.obj": "5504c11921cf988215e73335f3d3350ca9a22155d3a962826a4d0e0ea9e4f445",
+    "rim_7.obj": "c7013b4e49efae0e680ae37864228cf439423a87e701b8619614b667f7d22c40",
+    "bottom.obj": "cbcd0f7de7a7893f972587b9ccbe5f10c69021ed5d6b76abd39b737c7be019a9",
+    "disk.urdf": "33fab9f434fcf2e510ee235011a7acca5623d0dae38ba03169ab37deacabbf4b",
+    "rim_5.obj": "31606b5bcd49e7f96605112e84986b4aa1111bc481ab4362ded200531cb3e8b1",
+    "materials.json": "dbbb7807904b6297eebb4bd52452a8ba0a7e62022df955456e18fdf611fe3285",
+    "rim_1.obj": "8db6a55d163390f5064339af570cf0c83f1f31eb179a75338aedbc2ac7189a1f",
+    "rim_2.obj": "cef27a044ab3da1ca644c2bd76cdd03b7ab16bf1e6be0aea342818339378e7f1"
+  }
+}

@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/hanoi_family/run.py", line 146, in main
+    else:expert.run();reason='task_completed' if env.status['success'] else 'candidate_returned_without_success'
+         ^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/hanoi_family/controller.py", line 153, in run
+    self.grasp()
+  File "/fs/gamma-projects/vlm-robot/robo-si/hanoi_family/controller.py", line 144, in grasp
+    raise GuardFailure('tool_acquisition_failed_after_three_physical_grasp_candidates')
+hanoi_family.controller.GuardFailure: tool_acquisition_failed_after_three_physical_grasp_candidates

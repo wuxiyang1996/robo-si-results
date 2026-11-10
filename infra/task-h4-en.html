@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench task H4 (G1 retrieval across a gap): task description, 22 reference recordings and exploit runs, scoring, the reference expert, known shortcuts and admission status." name="description"/>
+<title>H4 Bridge Across a Gap</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style>
+
+.vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 14px; }
+
+.vcard { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; min-width: 0; }
+
+.vcard video { display: block; width: 100%; height: auto; background: #000; }
+
+.vcard figcaption { padding: 10px 12px 12px; font-size: 13.5px; line-height: 1.5; }
+
+.vrow { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+
+.vsub { color: var(--ink2); margin-top: 2px; }
+
+.vmeta { color: var(--ink3); margin-top: 4px; }
+
+.sheet { margin: 18px 0 0; max-width: 560px; }
+
+.sheet img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+
+.sheet figcaption { margin-top: 8px; font-size: 13.5px; }
+
+</style>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/task-h4-zh.html">中文</a></div></header><aside class="document-notice"><div class="wrap">Historical task design and acceptance notes are retained. Videos are consolidated in the final Nyx 8× galleries; <a href="/robo-si-results/infra/archive-task-h4-en.html">archived original page</a></div></aside>
+<main id="main"><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">One representative video is shown. Additional successes, failures and segment videos remain in the original release; this display selection does not change evidence or scores.</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">Full task details: scene, actions, scoring, evidence and reproduction</a></p><!-- task-detail-jump:end --><section data-layered-task="H4" id="layered-status"><div class="wrap"><h2>Current delivery scope and evidence</h2><p>Authorized layer 1 reference materials</p><p>Layer 1 is 11/14; all three failures were accepted by the author and retained. The scoped delivery is complete and published. Historical layers 2/3 remain a separate appendix.</p><p>Check board-end support, footholds, slip resistance and loaded-return transitions with targeted short probes; preserve source-version differences. Human sign-off, second-person reproduction and source identity review; the existing R9 deferral is retained.</p><p><a href="#task-details">Full actions, trajectory and acceptance limits</a></p></div></section><div class="wrap" id="website-completion-status" style="padding-top:18px"><div class="card"><p><span class="pill ok">Complete (declared scope)</span> · Published</p><p><strong>H4 · Authorized layer 1 reference materials</strong> — Layer 1 is 11/14; all three failures were accepted by the author and retained. The scoped delivery is complete and published. Historical layers 2/3 remain a separate appendix.</p><p class="small">Formal admission pending. Check board-end support, footholds, slip resistance and loaded-return transitions with targeted short probes; preserve source-version differences. Human sign-off, second-person reproduction and source identity review; the existing R9 deferral is retained. <a href="/robo-si-results/infra/status-en.html#completion">All-task completion status</a></p></div></div>
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow"><a href="/robo-si-results/infra/status-en.html#tasks">Status</a> · Task page · H4</p>
+<h1>G1 retrieval across a gap:<br/><span class="nm">topple the plank into a bridge first</span></h1>
+<p class="lead">A long plank leans on two props. The G1 has to push it past the vertical so that it falls across a 1.10 m gap, cross, hook the handled box off its pedestal on the far side with one hand, and bring it back to rest inside the green square. Current version v4.2, <strong>not admitted</strong>.</p>
+<div class="cards">
+<div class="card"><h3>19 / 22</h3><p>historical reference successes across three layers</p></div>
+<div class="card"><h3>6 / 15</h3><p>acceptance gates passed</p></div>
+<div class="card"><h3>240 s</h3><p>simulated time per episode</p></div>
+<div class="card"><h3>3</h3><p>difficulty layers</p></div>
+</div>
+<div class="card" id="release"><h2>Layer 1 delivery complete · published · 2026-10-24</h2><p id="accepted-failures"><strong>The author explicitly accepted the layer 1 result of 11/14 and its three failures on 2026-10-24; repairing these failures is not a prerequisite for this publication.</strong> <a href="/robo-si-results/infra/website-status-evidence/h4-b768581955d9e8-author-partial-failure-acceptance.json">Author decision</a></p><p>Layer 1: 11/14, with all three failures retained. Existing layer 2/3 videos remain a historical appendix (4/4 each); they do not certify R9 for this release. Standalone subtasks, human sign-off and second-person reproduction remain pending; not admitted to the benchmark.</p><p>Original evidence is unchanged. Bundled source is a publication-time snapshot; some runtime hashes differ from historical records, as documented in the source audit.</p><p><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">GitHub Release / Download</a> · <a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/acceptance/release-layer1-20261024/evidence.json">Evidence JSON</a> · <a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/acceptance/release-layer1-20261024/source-provenance.json">Source audit</a> · <a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/acceptance/release-layer1-20261024/offline-rejudge.json">2026-10-24 offline verification</a></p></div>
+<div class="card" id="toc" style="margin-top:18px"><h3>Contents</h3>
+<ol class="toc">
+<li><a href="#desc">01 Task description</a></li>
+<li><a href="#videos">02 Videos</a></li>
+<li><a href="#scoring">03 Scoring</a></li>
+<li><a href="#expert">04 Reference expert</a></li>
+<li><a href="#shortcuts">05 Known shortcuts</a></li>
+<li><a href="#gates">06 Admission status</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="desc"><div class="wrap">
+<p class="kicker">01 · Task description</p>
+<h2>What the agent sees, and what the scene hides</h2>
+<p class="muted">Parts marked "not visible" are for designers and reviewers only and must never appear in the agent's instruction.</p>
+<h3>Instruction given to the agent (verbatim)</h3>
+<div class="card"><p>A box rests on a pedestal on the far side of a gap in the floor. Bring the box back to this side and leave it at rest inside the green square marked on the floor, and keep it there for at least 2 seconds. You may interact with any object in the room.</p><p>The episode ends when you call <code>finish()</code>, when the simulated time budget runs out, or when the robot falls (pelvis below 0.35 m or tilted more than 50 degrees from upright). Falling into the gap is a fall. The box must not end up in the gap.</p><p>Use the robot-mounted observations and the supplied joint command interface. Your own code, perception, planning, IK/FK and the provided robot skills may help; they must execute through that same physical interface. You may not change world or robot state, attach objects to the robot, alter physical properties, read private scenario or scoring files, or inject observations or contacts. A private robot model for planning does not change the simulated world.</p><p>Call <code>info()</code> for the enabled sensors, actuator limits and episode budgets; <code>observe()</code> reads sensors. Send joint targets with <code>command()</code> or <code>command_sequence()</code>, and call <code>finish()</code> when done. Development resets are budgeted; evaluation and grading allow no resets. Grading runs your delivered program in fresh episodes whose layout differs from the development episode. Credit is given for physical progress along the task, judged from what happened in the simulator; the interface does not reveal progress or the score while you run.</p></div>
+<h3 style="margin-top:22px">Robot and interface (visible)</h3>
+<ul class="check">
+<li>Unitree G1 with two Dex3-1 hands, 43 joints (MuJoCo Menagerie model, BSD-3-Clause). Torque limits are the real robot's: legs 88-139 N m, waist 88/50/50, shoulders, elbows and wrist roll 25, wrist pitch and yaw 5, Dex3 fingers 1.4-2.45 N m; the leg motors follow a DC torque-speed envelope. Silicone pads on the hands (friction 2.0).</li>
+<li>Command channel as Unitree LowCmd: mode 0 motor (feed-forward plus PD every physics step) or mode 1 servo (implicit PD), clipped to joint, velocity, gain and torque limits.</li>
+<li>Sensors (mounts from the G1 URDF): head D435 RGB-D, head MID-360 LiDAR, pelvis and torso IMUs, joint proprioception with applied effort, Dex3 link contact forces, foot forces.</li>
+<li>Tools: L1 GR00T WBC (stand, walk), L2 <code>MotionSolver.solve</code>, L3 <code>solve_waypoints</code>, execution helpers (hold, move_joints, track). No task-specific skills.</li>
+<li>Simulation: Genesis 1.4.3, 200 Hz physics, 50 Hz control, self-collision on, rigid bodies only.</li>
+</ul>
+<h3 style="margin-top:22px">Scene and randomisation (not visible)</h3>
+<p>The gap spans x 0.9-2.0 m, 1.10 m wide and 0.82 m deep; the goal is a 0.65 m green square on the near side at (-2.1, 0). The robot starts at x -0.70..-0.40, y -0.10..0.25, yaw +-0.25 rad. Every variable is drawn from (seed, episode index) before the layer decides which optional objects exist, so the necessary tools are identical across layers for one seed. A start check rejects interpenetrating layouts (0 rejections in 900 samples). Development seeds are small integers; evaluation and grading seeds are drawn privately on the trusted side.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Object</th><th>Layer</th><th>Role</th><th>Randomised</th></tr></thead>
+<tbody>
+<tr><td>long plank 1.65 x 0.62 x 0.04 m (v4.1; task.json 0.06 m)</td><td>1</td><td>necessary tool (the bridge)</td><td>angle 43-45 deg, base end x 0.35-0.39, lane y -1.04..-0.96, mass 4.8-5.2 kg</td></tr>
+<tr><td>two props (support blocks stood on end)</td><td>1</td><td>hold the plank</td><td>follow the plank</td></tr>
+<tr><td>pedestal 0.26 x 0.14 x 0.40 m, 6 kg</td><td>1</td><td>holds the target</td><td>follows the target</td></tr>
+<tr><td>box with a bar handle 0.30 x 0.18 x 0.18 m (0.26 m tall overall)</td><td>1</td><td>the object to retrieve</td><td>x 3.50-3.65, y -1.33..-1.27, yaw +-0.08 rad, mass 0.8-1.2 kg, friction 0.5-0.7</td></tr>
+<tr><td>heavy board 1.6 x 0.6 x 0.08 m, 45 kg</td><td>2</td><td>a bridge only a stronger body could move</td><td>x -1.90..-1.55, y 1.60-1.65</td></tr>
+<tr><td>short plank 0.85 x 0.52 x 0.06 m</td><td>3</td><td>distractor: cannot span the 1.10 m gap</td><td>x -1.35..-1.15, y 0.92-1.00</td></tr>
+<tr><td>crate 0.6 x 0.4 x 0.3 m, 3 kg</td><td>3</td><td>distractor on the far platform</td><td>x 2.80-3.20, y 1.10-1.50</td></tr>
+</tbody>
+</table></div>
+<h3 style="margin-top:22px">Difficulty layers (the layer is not disclosed)</h3>
+<ul class="check">
+<li><strong>Layer 1:</strong> necessary tools only.</li>
+<li><strong>Layer 2:</strong> plus a 45 kg heavy board. It is long enough to bridge the gap, but on friction 0.9 it needs about 400 N to slide; a G1 pushes 60-100 N.</li>
+<li><strong>Layer 3:</strong> plus distractors. The 0.85 m short plank cannot span the 1.10 m gap, which depth or LiDAR can measure before committing; the crate on the far platform is irrelevant.</li>
+</ul>
+<h3 style="margin-top:22px">To be discovered (not visible)</h3>
+<ul class="check">
+<li>The gap cannot be stepped across; falling in is a fall.</li>
+<li>The propped plank can be pushed over its base edge past the vertical; it then falls by itself and lies flat on both platform edges as a bridge, and the four cleats drop into the gap and stop it sliding.</li>
+<li>The push has a force window: about 19 N holds the plank at 44 degrees, and above about 30 N its base end slides away.</li>
+<li>The bridge has to carry two crossings, the second with the box hanging from one hand while stepping onto the 4 cm plank end.</li>
+<li>Capability classes: tool composition (plank plus props), structural mechanics, whole-body control, non-intuitive solution (the bridge is made by toppling, not carrying).</li>
+</ul>
+<h3 style="margin-top:22px">Version history</h3>
+<ul class="check">
+<li><strong>v2</strong> (approved by the author, 2026-10-19..20): the plank propped on two props stood on end, plank friction 1.2, four 5 cm cleats, hand pads, 240 s budget.</li>
+<li><strong>v2.1</strong>: goal height range -0.05..0.32 m instead of 0..0.32 m (with the lower bound on the floor, a box resting on the floor had a margin of exactly 0). A defect fix.</li>
+<li><strong>v4</strong> (the author's choice, 2026-10-20): the target is a box with a handle, carried hanging from one hand. The earlier two-hand box and the H1 folding stool could not be brought back reliably.</li>
+<li><strong>v4.1</strong>: the plank 4 cm thick instead of 6 cm. At 6 cm the G1 with the box fell or ran off the plank end in 11 of 20 step-ups; at 4 cm in none of 4.</li>
+<li><strong>v4.2</strong>: fixes the layer-3 short plank and heavy board starting 6 cm inside each other (found by the energy monitor).</li>
+<li><strong>2026-10-21</strong>: the author confirmed the v4.1 plank thickness, the one-hand hold rule, the v4.2 fix, and the monitor rules and thresholds (<code>h4-monitors/2</code>).</li>
+</ul>
+</div></section>
+<section id="videos"><div class="wrap">
+<p class="kicker">02 · Videos</p>
+<h2>22 reference recordings and 3 exploit runs</h2>
+<p>v4.2 scenes, random seeds, the real G1 torque limits; recorded by the sandbox recorder and judged by the current verifier (<code>h4-verifier/2</code>). The camera is a fixed overview. The video files live in the local repository: open this page in a browser (VS Code's preview cannot play H.264). Successful episodes link a keyframe sheet: each stage at its completion time and 1 s before and after.</p>
+<h3 style="margin-top:22px">Layer 1 · 11/14</h3>
+<div class="vgrid">
+<figure class="vcard"><p class="current-video-link"><a href="/robo-si-results/infra/families/H4.html">View the final delivered Nyx 8× recordings →</a></p><figcaption><div class="vrow"><b>v42-L1-s101</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 121.0 s</div><div class="vmeta"><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/media--cb29d3145c456654710e.mp4">Video</a> · <a href="/robo-si-results/media/f9dbcdca23f92948ddb3.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/a8546201cf67a83b-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s102</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 124.0 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/f636af6be1fe81615550.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/e631a5e395a917e6-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s103</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 117.1 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/564085da7eb804f15539.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/cc9172303d0cbfff-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s104</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 123.4 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/c249895d12b75858856e.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/1a8bf62ecc92dd86-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s105</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 120.7 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/6491da3bc79262c0854a.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/c5300e94327f3429-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s106</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 116.5 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/b6cd1cf35d1ed21bb052.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/a816137d87b7806a-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s107</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 125.8 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/f95362ebf57a37c0255d.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/9d6ee0d1c4c87290-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s108</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 122.2 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/ab1b4e8e5b39c263d162.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/eafb8392e404ac82-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s109</b><span class="pill no">Failed 0.15</span></div><div class="vmeta">fell as the plank fell</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/infra/website-status-evidence/474cb5e6e84deef8-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s110</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 121.6 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/b24f48d0a9ae02353d16.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/9cd3836d297c0cd1-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s111</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 123.7 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/d19ab7811fb921dd33c3.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/aa464eee88377ace-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s112</b><span class="pill no">Failed 0.15</span></div><div class="vmeta">the plank landed short of the far edge (its base end did not slide)</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/infra/website-status-evidence/82e9b7ee1f104f58-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s113</b><span class="pill no">Failed 0.15</span></div><div class="vmeta">fell tucking the arms after the push</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/infra/website-status-evidence/7286691be4bc13f0-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L1-s114</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 126.1 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/f1513ce0bb5b8fc87bd4.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/306563a3f0ee0d2f-record.json">Record</a></div></figcaption></figure>
+</div>
+<h3 style="margin-top:22px">Layer 2 · 4/4</h3>
+<div class="vgrid">
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L2-s201</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 117.8 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/cb0a2cb747ab798f9c11.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/65dbb9fde1fcfd21-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L2-s202</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 119.5 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/1af1447d8f5e8d42e450.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/2fd64c094b5030da-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L2-s203</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 115.5 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/26cea2fe14c1cb966de0.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/2b915bb44e6c3b5a-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L2-s204</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 118.8 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/a4bc55daa69297eabf7e.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/d4a1a6ebe39fb83d-record.json">Record</a></div></figcaption></figure>
+</div>
+<h3 style="margin-top:22px">Layer 3 · 4/4</h3>
+<div class="vgrid">
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L3-s301</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 116.9 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/bef317b971cd0dedb0c3.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/b0f2f307b4382896-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L3-s302</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 118.7 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/f7a34b3fc7c0ad9533ca.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/ac17296f36936441-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L3-s303</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 125.7 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/d15cbedc1b3792360385.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/b27a8597b4a835a9-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>v42-L3-s304</b><span class="pill ok">Success 1</span></div><div class="vmeta">Delivered at 121.2 s</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/media/cd54074df311cacea0a6.png">Keyframes</a> · <a href="/robo-si-results/infra/website-status-evidence/47b4459066b68245-record.json">Record</a></div></figcaption></figure>
+</div>
+<h3 style="margin-top:22px">Exploit runs</h3>
+<div class="vgrid">
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>Energy by shaking</b><span class="pill warn">Window 0.076</span></div><div class="vsub"><code>jitter-v1</code></div><div class="vmeta">Arms against the plank, shoulders and elbows in a +-0.25 rad square wave every 2 control steps for 4 s. arm_shaking window 12.4-16.04 s: credit gained while shaking is withheld; the 0.076 earned by the smooth push before it is kept</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/infra/website-status-evidence/875c6ad5fce8bb5f-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>Changed physics</b><span class="pill no">VOID 0</span></div><div class="vsub"><code>mass-v1</code></div><div class="vmeta">Sets the plank's mass to 0.5 kg after 2 s: world parameters changed, privileged write, run void</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/infra/website-status-evidence/38c1a869c8662c4a-record.json">Record</a></div></figcaption></figure>
+<figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h4-layer1-20261024">Additional videos in the complete release</a></p><figcaption><div class="vrow"><b>Teleport</b><span class="pill no">VOID 0</span></div><div class="vsub"><code>teleport-v1</code></div><div class="vmeta">set_pos of the box above the goal after 2 s: teleport, severe object speed, privileged write, run void</div><div class="vmeta"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si">Video</a> · <a href="/robo-si-results/infra/website-status-evidence/149d44598088e776-record.json">Record</a></div></figcaption></figure>
+</div>
+</div></section>
+<section class="tinted" id="scoring"><div class="wrap">
+<p class="kicker">03 · Scoring</p>
+<h2>Seven stages; the score is the peak progress</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Stage</th><th>Mode</th><th>Weight</th><th>Condition</th></tr></thead>
+<tbody>
+<tr><td style="white-space:nowrap">plank engaged<br/><code>plank_engaged</code></td><td>once</td><td>0.05</td><td>Hand contact force on the plank &gt;= 5 N for &gt;= 0.5 s in total, and the plank moved &gt;= 5 cm or turned &gt;= 5 deg</td></tr>
+<tr><td style="white-space:nowrap">bridge built<br/><code>bridge_built</code></td><td>once</td><td>0.20</td><td>After the robot has touched the plank, 0.5x by the fraction it has turned toward the vertical; full when the plank lies flat across the gap (both ends 8 cm past the edges, level within 5 deg, at rest) for 1 s</td></tr>
+<tr><td style="white-space:nowrap">crossed<br/><code>crossed</code></td><td>once</td><td>0.10</td><td>After the bridge, 0.5x by progress across the gap; full when the robot stands on the far platform (pelvis 0.25 m past the edge, both feet on it) for 1 s</td></tr>
+<tr><td style="white-space:nowrap">target reached<br/><code>target_reached</code></td><td>once</td><td>0.05</td><td>Hand contact force on the box &gt;= 2 N for 0.2 s in total</td></tr>
+<tr><td style="white-space:nowrap">target lifted<br/><code>target_lifted</code></td><td>once</td><td>0.15</td><td>The box's <strong>lowest point</strong> &gt;= 3 cm above its start while held (box with a handle: either hand in contact; plain box: both hands), for 1 s</td></tr>
+<tr><td style="white-space:nowrap">returned holding<br/><code>returned_holding</code></td><td>once</td><td>0.15</td><td>While holding, 0.5x by progress back toward the near side; full when the robot stands on the near platform still holding it for 1 s</td></tr>
+<tr><td style="white-space:nowrap">delivered<br/><code>delivered</code></td><td>live</td><td>0.30</td><td>The box at rest inside the goal (0.65 m square, z -0.05..0.32 m, with its real size and orientation), the robot upright, for 2 s</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:10px">once: kept once reached; live: counts only while true, so a box knocked out of the goal drops the current progress (the score still takes the peak).</p>
+<p>The <strong>score</strong> is the peak progress. <strong>success</strong> requires delivery at the end of the episode, the route to the far side and back observed, and no violation from the task's own evaluator (<code>task_spec.Evaluator</code>, fed the same log); disagreements are flagged. Scoring reads only the trusted environment-side log; the agent sees neither progress nor score while it runs. Stage thresholds are initial settings, not yet calibrated on agent runs.</p>
+<h3 style="margin-top:22px">Alarms and handling (<code>h4-monitors/2</code>, frozen thresholds)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:6em">Handling</th><th>Triggers</th></tr></thead>
+<tbody>
+<tr><td><span class="pill no">Void</span></td><td>The whole run scores 0: interface violations, changed world parameters, a teleport (over 20 m/s), privileged writes or gain writes above the command bounds in a recording, a broken request-log hash chain; severe physical anomalies: an object over 15 m/s, penetration over 10 cm, over 60 J of object energy not supplied by robot contact</td></tr>
+<tr><td><span class="pill warn">Window</span></td><td>Stage credit gained in the window, and any stage level first reached in it, never counts; the episode is flagged: an object over 9 m/s, penetration over 3 cm for 0.1 s, over 6 J without work within 0.2 s, arm shaking, finger jitter, sustained leg or waist torque saturation, pushing against joint limits, progress spikes</td></tr>
+<tr><td><span class="pill ok">Flag</span></td><td>Flag only: stages out of order, an infeasibility declaration, stage predicates disagreeing with the task's evaluator</td></tr>
+<tr><td>Score 0</td><td>A positive score without any <code>observe()</code> call is discarded; an unrun episode, a missing or damaged record, a verifier error, or a score that is not finite within [0, 1] scores 0</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">Thresholds are set so that no recorded legitimate run triggers them. Legitimate maxima: object speed 5.5 m/s (threshold 9), energy without work 2.5 J (threshold 6), arm shaking 2.47 (threshold 3.0).</p>
+<h3 style="margin-top:22px">Human check list (video review at admission)</h3>
+<ol>
+<li><strong>No reward hacking:</strong> every stage credit matches a physical event in the video: the plank toppled by the robot, the robot on the far side, the box hanging from the hand, the box carried back, the box let go and left. Partial bridge credit only after robot contact with the plank.</li>
+<li><strong>Task really completed:</strong> at the end the whole box (0.30 x 0.18 m) rests inside the 0.65 m green square, and the robot went to the far side and came back over the bridge.</li>
+<li><strong>No violation of physics or limits:</strong> no interpenetration of the plank and the platforms, no launched objects, joint torques within the real G1 limits (the trusted log records the applied effort of every joint at every control step).</li>
+</ol>
+</div></section>
+<section id="expert"><div class="wrap">
+<p class="kicker">04 · Reference expert</p>
+<h2>A privileged reference: topple the plank, then a one-hand round trip</h2>
+<p><code>solution/run_oracle.py</code> reads simulator truth (object poses, contacts). It is a feasibility witness and the verifier's positive control, not an agent baseline. It runs under the agent's physics and the real G1 torque limits; the softened arm gains it uses for pick and place (kp 500, wrists 300) are inside the command channel's bounds; the recordings contain no privileged writes.</p>
+<ol class="steps">
+<li><strong>Build the bridge.</strong> <code>push_plank.py</code>: walk up to the plank, soften the arms (shoulder and elbow kp 100), palms on the plank, and push it about its base edge toward the vertical by walking; the planned angle follows the body and never leads the measured one by more than 0.5 deg. Stop pushing at 86 deg and tuck the arms while side-stepping out of the lane at 0.3 m/s; the plank passes the vertical by itself, falls flat across the gap and its cleats drop into it.<span class="out">Median completion: plank engaged 19.7 s, bridge built 29.6 s</span></li>
+<li><strong>Cross.</strong> <code>run_oracle.cross</code>: path following along the lane; after a run-up, step onto the plank end at 0.3 m/s and walk to the far platform.<span class="out">Median completion: crossed 46.9 s</span></li>
+<li><strong>Take the box.</strong> <code>handle_grasp.py</code>: the contact QP takes the stance; the right hand makes a reverse hook (fingers down, palm out), slides index and middle finger under the bar and curls them round it, lifts 0.10 m, then brings the box to the robot's side by translating first and turning the wrist afterwards (a straight joint-space swing once flipped the box 147 deg round the bar).<span class="out">Median completion: target reached 63.1 s, target lifted 64.6 s</span></li>
+<li><strong>Return.</strong> <code>run_oracle.handle_return</code>: back toward the plank until its end is about 0.5 m away, turn 180 deg clockwise on the spot, cross along the lane, pass the near props on their north side (between them the box hanging out would hit a prop) and stop with the box above the goal. While walking the gait policy sees the default upper-body pose.<span class="out">Median completion: returned holding 101.8 s</span></li>
+<li><strong>Put it down.</strong> <code>place_handle</code>: the contact QP takes the legs, crouches to a 0.55 m pelvis with 0.2 rad lean, nudges the hand over the goal centre and lowers it 8 cm, waits 1.5 s for the swing to settle, straightens the fingers and lets the bar slide off; the box drops about 0.2 m.<span class="out">Median completion: delivered 121.0 s</span></li>
+</ol>
+<h3 style="margin-top:22px">Results</h3>
+<p>19 of 22 randomised episodes succeeded (layer 1 11/14, layer 2 4/4, layer 3 4/4), mean score 0.88, delivered at 116-126 s (budget 240 s). All 19 episodes that built the bridge finished; the 3 failures are all in the plank build: s109 fell as the plank fell; s112 the plank landed short of the far edge (its base end did not slide); s113 fell tucking the arms after the push. The verifier and the task's own evaluator agree on all 22, with no alarm.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Stage</th><th>Median completion</th><th>Range</th></tr></thead>
+<tbody>
+<tr><td>plank engaged</td><td>19.7 s</td><td>19.0–20.7 s</td></tr>
+<tr><td>bridge built</td><td>29.6 s</td><td>28.7–30.7 s</td></tr>
+<tr><td>crossed</td><td>46.9 s</td><td>45.4–47.7 s</td></tr>
+<tr><td>target reached</td><td>63.1 s</td><td>61.5–63.9 s</td></tr>
+<tr><td>target lifted</td><td>64.6 s</td><td>63.0–65.4 s</td></tr>
+<tr><td>returned holding</td><td>101.8 s</td><td>96.6–106.9 s</td></tr>
+<tr><td>delivered</td><td>121.0 s</td><td>115.5–126.1 s</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">The simulation is not bitwise reproducible on this GPU: the same scene diverges within the first seconds. The same 14 layer-1 scenes run once on v4.1 and once on v4.2 changed outcome 5 times, 2 of them because of the plank-build guard change and 3 purely from non-reproducibility. A single seed's outcome is therefore a sample of a rate, and grading needs 3 runs per episode.</p>
+<figure class="sheet"><a href="/robo-si-results/media/f9dbcdca23f92948ddb3.png"><img alt="Keyframe sheet (v42-L1-s101): one row per stage, columns 1 s before, at, and 1 s after its completion. Click for the full image." decoding="async" loading="lazy" src="/robo-si-results/media/f9dbcdca23f92948ddb3.png"/></a><figcaption class="muted">Keyframe sheet (v42-L1-s101): one row per stage, columns 1 s before, at, and 1 s after its completion. Click for the full image.</figcaption></figure>
+<h3 style="margin-top:22px">What is hard</h3>
+<ul class="check">
+<li>The moment the plank passes the vertical carries most of the risk: with the arms out, any pause of the gait can pitch the torso into a run; tucking while side-stepping was the steadiest of a dozen endings tried (20 of 22 in that family).</li>
+<li>The plank's base end slides 3-6 cm during the push and another 17-24 cm as it falls, so where the base starts decides whether it spans the gap.</li>
+<li>Stepping onto the plank end with the box hanging at the side failed more than half the time at 6 cm, which is why v4.1 made the plank 4 cm thick.</li>
+</ul>
+</div></section>
+<section class="tinted" id="shortcuts"><div class="wrap">
+<p class="kicker">05 · Known shortcuts</p>
+<h2>Known shortcuts, alternative routes and their handling</h2>
+<p>The formal shortcut audit (trying each route with oracle means) has not been done; that gate is pending. The table lists the routes known so far and the defences already tested. Principle: the contract judges <strong>states</strong>, so compliant unexpected solutions still score; credit from changing the world, fabrication or predicate loopholes does not.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Route</th><th>Finding</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>Jumping or stepping across the gap</td><td>Physically impossible for the G1; falling in is a fall and ends the episode</td><td>task contract</td></tr>
+<tr><td>Carrying the plank across instead of toppling it</td><td>A valid alternative route</td><td>scored by the states it reaches</td></tr>
+<tr><td>Sliding a flat plank over the edge</td><td>Statically it tips into the gap</td><td><code>solution/feasibility.py</code>; allowed, scored by states</td></tr>
+<tr><td>Using the props as a pier in the gap</td><td>Not tried</td><td>scored by states if it works</td></tr>
+<tr><td>Throwing the box across</td><td>The Dex3 cannot; it would also have to land at rest in the square</td><td>task contract</td></tr>
+<tr><td>Dropping the box over the square, or a box that falls and is kicked or pushed into it</td><td>Counts: the contract is the state "box at rest in the square after the round trip". Seen once by accident during expert development (<code>fetch2-soft22-b</code>)</td><td>the reviewer notes such runs</td></tr>
+<tr><td>Moving the 45 kg board in layer 2 with a lever or props</td><td>Only a static estimate (about 400 N to slide, the G1 pushes 60-100 N); the expert did not try</td><td><strong>not audited</strong></td></tr>
+<tr><td>Bridging with the short plank in layer 3</td><td>0.85 m cannot span 1.10 m</td><td>geometry</td></tr>
+<tr><td>Standing on the bridge without reaching the far side</td><td>Not crossed; 0.5x progress credit only</td><td>unit test</td></tr>
+<tr><td>Letting go on the far side and walking back empty</td><td>Not returned holding</td><td>unit test</td></tr>
+<tr><td>Standing the box on its end on the pedestal as a fake lift</td><td>Its centre rises 6 cm but its lowest point does not: not lifted</td><td>unit test</td></tr>
+<tr><td>The box passing through the goal for one frame</td><td>Does not count; it must rest there for 2 s</td><td>unit test</td></tr>
+<tr><td>Letting the plank turn without touching it</td><td>Partial bridge credit needs robot contact with the plank first</td><td>unit test</td></tr>
+<tr><td>Reporting a score without calling <code>observe()</code></td><td>Score discarded and flagged</td><td>unit test</td></tr>
+<tr><td>Teleporting the box, changing the plank's mass</td><td>Run void</td><td>exploit runs (section 02)</td></tr>
+<tr><td>Shaking the arms against the plank to inject energy</td><td>Window alarm: credit gained while shaking is withheld</td><td>exploit run (section 02)</td></tr>
+<tr><td>Breaking out: container escape, file edits, fake observations</td><td>37 probes all as expected, run void</td><td><code>escape-container-v42</code></td></tr>
+</tbody>
+</table></div>
+<h3 style="margin-top:22px">Not yet closed</h3>
+<ul class="check">
+<li>Whether a lever or props can move the layer-2 heavy board has not been tried with the oracle.</li>
+<li>Gentler shaking may stay under the arm-shaking threshold (legitimate maximum 2.47, threshold 3.0, the exploit 5.4); it can inject correspondingly less energy, which the energy-without-work monitor catches.</li>
+<li>Robot-link penetration into objects is not monitored (the log has no link geometry); only the video review covers it.</li>
+<li>Observation digests are not yet handed to the agent, so the rollout provenance check cannot run; LLM requests are not metered on the trusted side.</li>
+<li>Three grading runs per episode and their reproducibility tolerance are not set, and H4 needs them because its simulation is not bitwise reproducible.</li>
+</ul>
+</div></section>
+<section id="gates"><div class="wrap">
+<p class="kicker">06 · Admission status</p>
+<h2>15 gates: 6 passed, 5 partial, 3 pending, 1 not applicable</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Gate</th><th style="min-width:6em">Status</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Reference expert</td><td><span class="pill ok">Passed</span></td><td>19/22 on randomised v4.2 scenes, judged by the sandbox verifier</td></tr>
+<tr><td>Official trajectories</td><td>N/A</td><td>H4 has none; the expert's runs are recorded by the sandbox recorder</td></tr>
+<tr><td>Coverage</td><td><span class="pill warn">Partial</span></td><td>Random samples in all three layers, range edges not targeted; starting from intermediate states not implemented</td></tr>
+<tr><td>Re-run spread</td><td><span class="pill warn">Partial</span></td><td>Not bitwise reproducible on the GPU; 3 re-runs per seed and a tolerance not done</td></tr>
+<tr><td>Verifier validity</td><td><span class="pill ok">Passed</span></td><td>Positives 22/22, negatives 4/4, exploits 4/4</td></tr>
+<tr><td>Monitors calibrated</td><td><span class="pill ok">Passed</span></td><td>The shared monitors match h4-monitors/2 alarm for alarm on 99 runs; thresholds frozen and confirmed by the author</td></tr>
+<tr><td>Stage labels</td><td><span class="pill warn">Partial</span></td><td>19 keyframe sheets checked by the developer; no signed manual labels</td></tr>
+<tr><td>Shortcut audit</td><td><span class="pill no">Pending</span></td><td>Not done; see section 05</td></tr>
+<tr><td>Video review</td><td><span class="pill no">Pending</span></td><td>Needs a signature; the videos in section 02 can be used</td></tr>
+<tr><td>Independent reproduction</td><td><span class="pill no">Pending</span></td><td>No second person has reproduced it</td></tr>
+<tr><td>Sandbox isolation</td><td><span class="pill ok">Passed</span></td><td>37 escape probes all as expected, run void</td></tr>
+<tr><td>Grading mode</td><td><span class="pill ok">Passed</span></td><td>One sealed episode per layer, a fresh container each; a no-op scores 0, not void</td></tr>
+<tr><td>Static checks</td><td><span class="pill ok">Passed</span></td><td>56 unit tests</td></tr>
+<tr><td>Randomisation</td><td><span class="pill warn">Partial</span></td><td>Sealed v4.2 generator with three layers; range edges not targeted by the expert</td></tr>
+<tr><td>Automatic pipeline</td><td><span class="pill warn">Partial</span></td><td>Chained in sandbox/pipeline.json; on 2026-10-21 the cpu tier passed 4/4 (49 s) and the container tier 2/2 (about 6.5 min); nothing triggers it automatically yet</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px"><a href="/robo-si-results/infra/status-en.html#tasks">Back to task acceptance</a></p>
+</div></section>
+<section id="reference-designs"><div class="wrap"><h2>Reference executions and designs</h2><p>Scoped execution evidence exists; see the design, actions, support, trajectory mapping and reproduction sources.</p><p><a href="/robo-si-results/infra/reference-designs/H4.html">Reference executions and designs</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>Task specification and evidence</h2><p class="detail-nav"><a href="#detail-scope">Scope and scene</a> · <a href="#detail-interfaces">Observations, actions and interfaces</a> · <a href="#detail-planning">High-level goals and low-level actions</a> · <a href="#detail-trajectory">Trajectory and state correspondence</a> · <a href="#detail-scoring">Scoring and success criteria</a> · <a href="#detail-evidence">Representative evidence and review</a> · <a href="#detail-sandbox">Sandbox validation</a> · <a href="#detail-reproduce">Download and reproduce</a> · <a href="#detail-limits">Acceptance limits and remaining work</a></p><article id="detail-scope"><h3>Scope and scene</h3><p>Authorized layer 1 reference materials</p><p>Layer 1 is 11/14; all three failures were accepted by the author and retained. The scoped delivery is complete and published. Historical layers 2/3 remain a separate appendix.</p></article><article id="detail-interfaces"><h3>Observations, actions and interfaces</h3><p>Privileged reference state and public-agent permissions are separate; this task’s SDK and instructions define the boundary.</p><p><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_ramp_bridge_construction/sandbox/agent_sdk">Agent SDK</a></p></article><article id="detail-planning"><h3>High-level goals and low-level actions</h3><p>The detailed action specifications below are the original Chinese source. IDs, contact requirements, recorded times and review status are retained without changing their interpretation.</p><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>布桥</td>
+<td>H4.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>空载过桥</td>
+<td>H4.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>取得目标</td>
+<td>H4.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>负载返回</td>
+<td>H4.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>放置交付</td>
+<td>H4.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>长板可操作且缺口边缘可观测</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>桥板跨越缺口并独立稳定</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>双足到远平台且稳定</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>目标离开原支撑且受控</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>机器人与目标回到近平台</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>真实目标边界在目标区、释放且稳定</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>Trajectory and state correspondence</h3><p>The detailed action specifications below are the original Chinese source. IDs, contact requirements, recorded times and review status are retained without changing their interpretation.</p><details><summary>Ordered actions, contacts and trajectory events</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>H4.K01 · 接近长板、接触翻转并放平</h5>
+<p>入口：长板可操作且缺口边缘可观测。出口：桥板跨越缺口并独立稳定。</p>
+<p>局部检查：板端搭接、水平、摩擦抗滑与机器人操板能力。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K01.A01</td>
+<td>接近板尾并预成形手部</td>
+<td>板→原支撑；足→地面</td>
+<td>手与板尾距离</td>
+<td>e0000: local:push; global_offset_unresolved [3.6, 3.6] s; e0001: local:push; global_offset_unresolved [3.6, 7.6] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K01.A02</td>
+<td>双手推转长板</td>
+<td>手→板；板端受支撑</td>
+<td>板倾角、双手力与板端位置</td>
+<td>e0002: local:push; global_offset_unresolved [7.62, 8.62] s; e0003: local:push; global_offset_unresolved [8.64, 16.44] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K01.A03</td>
+<td>收臂、释放并检查两端搭接</td>
+<td>板→近远平台</td>
+<td>双端接触、桥面姿态</td>
+<td>e0004: local:push; global_offset_unresolved [16.52, 18.72] s; e0005: local:push; global_offset_unresolved [18.82, 20.82] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H4.K02 · 选足点、依次踏板和上远平台</h5>
+<p>入口：两端支撑成立且桥面可用。出口：双足到远平台且稳定。</p>
+<p>局部检查：足底包络、桥板受载响应和跌落边界。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K02.A01</td>
+<td>对齐桥前站位并选足点</td>
+<td>足→近平台；板两端受支撑</td>
+<td>足点与板边距离</td>
+<td>e0006: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K02.A02</td>
+<td>依次移重心、抬脚、落在桥面</td>
+<td>单足→平台/桥板</td>
+<td>足接触、板端支撑、碰撞</td>
+<td>e0006: untimed_summary None s; e0007: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K02.A03</td>
+<td>跨到远平台并稳定</td>
+<td>双足→远平台</td>
+<td>脚已离桥、身体稳定</td>
+<td>e0006: untimed_summary None s; e0007: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H4.K03 · 接近把手或有效抓持面并提起</h5>
+<p>入口：机器人在远平台，目标可达。出口：目标离开原支撑且受控。</p>
+<p>局部检查：所选发布资产的真实抓持面、负载与平衡。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K03.A01</td>
+<td>接近目标、摆臂到抓取上方</td>
+<td>目标→原支撑</td>
+<td>手与把手间隙</td>
+<td>e0012: local:pickup; global_offset_unresolved [0.8, 3.4] s; e0013: local:pickup; global_offset_unresolved [3.6, 4.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K03.A02</td>
+<td>屈指、下探并滑入抓持位置</td>
+<td>目标→原支撑；手接触</td>
+<td>手指与把手接触</td>
+<td>e0014: local:pickup; global_offset_unresolved [4.6, 5.4] s; e0015: local:pickup; global_offset_unresolved [5.6, 8.0] s; e0016: local:pickup; global_offset_unresolved [8.2, 10.4] s; 另 1 组见 JSON</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K03.A03</td>
+<td>提起、转手并稳定持物姿态</td>
+<td>原支撑→双手</td>
+<td>目标离地、持续抓持</td>
+<td>e0018: local:pickup; global_offset_unresolved [11.4, 13.2] s; e0019: local:pickup; global_offset_unresolved [13.4, 13.8] s; e0020: local:pickup; global_offset_unresolved [14.0, 16.2] s; 另 2 组见 JSON</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H4.K04 · 负载足步规划与姿态保持</h5>
+<p>入口：目标受控、桥板支撑仍有效。出口：机器人与目标回到近平台。</p>
+<p>局部检查：负载后的重心、板端反力和组合净空重新检查。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K04.A01</td>
+<td>负载后退并转向桥口</td>
+<td>双手持物；足→远平台</td>
+<td>物体与桥口净空</td>
+<td>e0008: untimed_summary None s; e0009: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K04.A02</td>
+<td>持物逐足过桥</td>
+<td>足→桥板；板端受支撑</td>
+<td>桥板形变、落足与抓持</td>
+<td>e0008: untimed_summary None s; e0009: untimed_summary None s; e0010: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K04.A03</td>
+<td>离桥进入目标区并停稳</td>
+<td>足→近平台/地面；手持物</td>
+<td>目标区位置与速度</td>
+<td>e0011: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H4.K05 · 受控落地、撤手和驻留</h5>
+<p>入口：目标区可达且近平台稳定。出口：真实目标边界在目标区、释放且稳定。</p>
+<p>局部检查：采用原尺寸/姿态判定；保留历史失败，不外推全范围。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H4.K05.A01</td>
+<td>稳住负载后下蹲</td>
+<td>双手持物</td>
+<td>姿态与足载荷</td>
+<td>e0023: local:place; global_offset_unresolved [0.2, 1.0] s; e0024: local:place; global_offset_unresolved [1.2, 4.0] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K05.A02</td>
+<td>微调目标并让支撑面承重</td>
+<td>双手→目标区支撑</td>
+<td>支撑和手载荷</td>
+<td>e0025: local:place; global_offset_unresolved [4.2, 6.0] s; e0026: local:place; global_offset_unresolved [6.2, 7.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H4.K05.A03</td>
+<td>张手、起身并驻留</td>
+<td>目标区独立承重</td>
+<td>手分离、物体稳定</td>
+<td>e0027: local:place; global_offset_unresolved [7.6, 9.0] s; e0028: local:place; global_offset_unresolved [9.2, 11.0] s; e0029: local:place; global_offset_unresolved [11.2, 13.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>Scoring and success criteria</h3><p>Original task scoring and frozen reference verdicts remain authoritative. Plans, skill expansion and event mappings earn no additional task credit. Proposed contract scoring is not the current implementation. A full-run score cannot be transferred to feasibility screening or a sandbox smoke check.</p><p>Final key-state criterion (original source): 真实目标边界在目标区、释放且稳定</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_ramp_bridge_construction/task_spec.py">原任务判据源码 / Original task criteria</a></p></article><article id="detail-evidence"><h3>Representative evidence and review</h3><p>见证：<strong>v42-L1-s101</strong>。范围：已授权的第一层参考资料。</p>
+<p>第一层 11/14，三次失败已获作者接受并保留。已完成本次交付并发布；历史第二、三层结果单独留作附录。</p>
+<p><a href="/robo-si-results/infra/website-status-evidence/a8546201cf67a83b-record.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/H4.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>Sandbox validation</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>These checks exercise startup, sensors and actions, not complete task success. WSL on the same machine is not independent-machine reproduction.</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/H4/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>Download and reproduce</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/1ff8b0cbaceab25389daf00b83ff970ab0250cba/releases/H4/layer1-20261024/h4-layer1-20261024.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: d547ae7342b471326bcf7926c43fb0f3e83a7629a7ad0b770ba3cb245bee9ca3</p><p>Private repository access is required. Reference packets preserve historical configurations and entrypoints; the current sandbox workspace supplies runtime assets. Install the documented environment and run the sandbox smoke example, then use the frozen reference entrypoint for reproduction. Smoke success is not a full expert replay.</p><p>Check this task’s entrypoint without running physics, then follow the linked environment and agent-delivery instructions. Replace historical machine-specific paths in the README; the sandbox table above is the current validation status.</p><pre><code>python -m infra.sandbox.inventory check --task H4
+python -m humanoid.g1_ramp_bridge_construction.sandbox.launch --help</code></pre><p><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>Acceptance limits and remaining work</h3><p>Check board-end support, footholds, slip resistance and loaded-return transitions with targeted short probes; preserve source-version differences. Human sign-off, second-person reproduction and source identity review; the existing R9 deferral is retained.</p><p>The joint review of the new action-to-trajectory mapping is pending. Event candidates do not certify exact skill boundaries; unresolved local clocks and summary-only spans remain visible in the table.</p><p>Random instances retain four states: complete success evidence, feasibility-screened, unknown, or failed checks. Scoped representative witnesses and mappings between representations are required, not full solutions for every random instance. Page completion does not infer formal admission, human sign-off or independent-machine validation. New physics runs in this update: 0.</p><p><a href="/robo-si-results/infra/reference-designs/H4.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · Task page H4 · 2026-10-21 · <a href="/robo-si-results/infra/task-h4-zh.html" hreflang="zh-CN" lang="zh-CN">中文</a> · <a href="/robo-si-results/infra/contribute-en.html">Home</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body>
+</html>

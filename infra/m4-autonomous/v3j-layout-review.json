@@ -1,0 +1,142 @@
+{
+  "schema": "m4-dock-layout-review/1",
+  "geometry": "m4-eye-pin-v3j-overhead-dock",
+  "evidence_attempt": "v3i-load-feedback-ground08-a40",
+  "contact_time_s": 40.82000000000243,
+  "unintended_centre_rope_guide_contacts": [
+    {
+      "pair": [
+        "rope_centre_seg1",
+        "cradle_centre"
+      ],
+      "force_n": [
+        0.03149996944335928,
+        0.060191727153031026,
+        -0.004783997092522982
+      ],
+      "norm_n": 0.06810417550179115
+    },
+    {
+      "pair": [
+        "rope_centre_seg1",
+        "cradle_centre"
+      ],
+      "force_n": [
+        0.07764435932049157,
+        0.11290485109681099,
+        -0.004788796720170091
+      ],
+      "norm_n": 0.13710975351706303
+    },
+    {
+      "pair": [
+        "rope_centre_seg1",
+        "cradle_centre"
+      ],
+      "force_n": [
+        0.035377219979613836,
+        0.06794585411413047,
+        -0.004808108191990698
+      ],
+      "norm_n": 0.07675483495631123
+    },
+    {
+      "pair": [
+        "rope_centre_seg2",
+        "cradle_centre"
+      ],
+      "force_n": [
+        53.873528894795,
+        -0.373237372531821,
+        0.01959829751150366
+      ],
+      "norm_n": 53.874825343641085
+    },
+    {
+      "pair": [
+        "rope_centre_seg2",
+        "cradle_centre"
+      ],
+      "force_n": [
+        51.29715110061664,
+        -0.3437530345027725,
+        0.021152730500451966
+      ],
+      "norm_n": 51.29830722963705
+    },
+    {
+      "pair": [
+        "rope_centre_seg4",
+        "cradle_centre"
+      ],
+      "force_n": [
+        -0.017437740898139098,
+        0.054865517951015144,
+        -0.010946145533967569
+      ],
+      "norm_n": 0.05860134784895819
+    },
+    {
+      "pair": [
+        "cradle_centre",
+        "rope_centre_eye"
+      ],
+      "force_n": [
+        -0.03737218363648409,
+        -0.006044095271956133,
+        1.0921038239583902
+      ],
+      "norm_n": 1.0927597967998064
+    },
+    {
+      "pair": [
+        "cradle_centre",
+        "rope_centre_eye"
+      ],
+      "force_n": [
+        -0.037288090890889976,
+        0.0014201050220194484,
+        0.2817663883659293
+      ],
+      "norm_n": 0.2842265223960293
+    },
+    {
+      "pair": [
+        "cradle_centre",
+        "rope_centre_eye"
+      ],
+      "force_n": [
+        -0.041255249336884015,
+        -0.006044082541401879,
+        1.10075420833956
+      ],
+      "norm_n": 1.1015436231529223
+    },
+    {
+      "pair": [
+        "cradle_centre",
+        "rope_centre_eye"
+      ],
+      "force_n": [
+        -0.04117301093216708,
+        0.001419970377082842,
+        0.30686637249112514
+      ],
+      "norm_n": 0.30961944982664463
+    }
+  ],
+  "foot_postmortem": "foot-diagnosis-a40.json",
+  "finding": "Unused centre chain snagged at its floor-supported guide while platform advanced. Floor guide supports also intersect the prospective payload route. Earlier interpretation as only towing gait weakness was incomplete.",
+  "changes": [
+    "Two-Go2 default scene instantiates only its two working ropes; explicit tool catalogs retain every declared candidate.",
+    "Replace in-lane floor stands with colliding hangers on an overhead frame supported outside the payload lane.",
+    "Raise docking eye and receiver mounting height by 30 mm to clear the payload.",
+    "No runtime deletion, collision masking, attachment edits, external forces, or relaxed evaluator limits."
+  ],
+  "static_evidence": [
+    "v3j-preflight.json",
+    "v3j-payload-clearance.json"
+  ],
+  "first_trial": "v3j-overhead-a42",
+  "formal_admission": false
+}

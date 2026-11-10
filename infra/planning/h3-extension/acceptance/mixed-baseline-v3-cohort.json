@@ -1,0 +1,46 @@
+{
+  "schema": "h3-mixed-baseline-cohort/1",
+  "declared_utc": "2026-10-29T05:02:22.981841+00:00",
+  "runtime": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h3-author-runtimes/cce1549a589c8c662bcd54afaa34a6cf2f4c3df1b32bcc03e36ba963e01299fe",
+  "runtime_identity": "cce1549a589c8c662bcd54afaa34a6cf2f4c3df1b32bcc03e36ba963e01299fe",
+  "planned_repeats": 3,
+  "seed": 0,
+  "timeout_s": 180,
+  "pilot_excluded": "mixed-8055689",
+  "prior_cohort": "mixed-baseline-v2-cohort.json",
+  "job_ids": [
+    "8055981",
+    "8055982",
+    "8055983"
+  ],
+  "scope": "L1 physical prerequisite; not H3-03 L2 discovery",
+  "changes_after_v2": [
+    "Generate unchanged scene geometry into each run directory to prevent concurrent URDF write/read races.",
+    "Seal generated door, table and parcel URDFs as part of each run."
+  ],
+  "formal_admission": false,
+  "results": [
+    {
+      "job_id": "8055981",
+      "task_success": false,
+      "seconds": 30.98,
+      "error": "opening: measured walking geometry refused after command",
+      "environment_failure": false
+    },
+    {
+      "job_id": "8055982",
+      "task_success": true,
+      "seconds": 160.20000000000002,
+      "error": null,
+      "environment_failure": false
+    },
+    {
+      "job_id": "8055983",
+      "task_success": false,
+      "seconds": 90.68,
+      "error": "delivery: to_box: episode ended while walking",
+      "environment_failure": false
+    }
+  ],
+  "successes": 1
+}

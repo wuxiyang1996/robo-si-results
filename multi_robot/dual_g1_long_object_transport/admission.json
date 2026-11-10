@@ -1,0 +1,328 @@
+{
+  "schema": "infra-admission/1",
+  "task_id": "M2",
+  "title": "Dual G1 cooperative long-object transport",
+  "version": "1.0",
+  "updated": "2026-10-24",
+  "admitted": false,
+  "status": "layer1_fixed_reference_and_rpc_verified_not_admitted",
+  "sandbox": "sandbox",
+  "gates": {
+    "reference_expert": {
+      "status": "passed",
+      "evidence": [
+        "sandbox/runs/bounded-reference-09/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-10/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-11/trusted/verdict.json",
+        "acceptance/layer1-20261024/offline09/reference09_10_11_comparison.json",
+        "acceptance/layer1-20261024/README.md",
+        "sandbox/runs/fixed-armature-01",
+        "sandbox/runs/fixed-armature-02",
+        "sandbox/runs/fixed-armature-03",
+        "sandbox/runs/infra2-expert-fixed-armature",
+        "sandbox/VALIDATION.md",
+        "sandbox/RELEASE_CANDIDATE.md",
+        "sandbox/runs/bounded-reference-01/capture.json",
+        "acceptance/release_candidate/bounded_reference_comparison.json",
+        "sandbox/runs/bounded-reference-03/capture.json",
+        "sandbox/runs/bounded-reference-03/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-03/adapter_events.json",
+        "acceptance/release_candidate/bounded_reference_comparison_03.json",
+        "sandbox/runs/bounded-rpc-replay-03/trusted/verdict.json"
+      ],
+      "note": "Scoped to the implemented fixed first layer only: bounded privileged references09/10/11 each complete all six stages, score1.0/success/non-VOID/no alarms in175.28s. Each has35057 sealed200Hz samples,8764 bounded LowCmd frames,71 unchanged-parameter checks and878 fully decoded video frames. All exported commands and recorded actual effort remain within public limits, with no runtime state writes. This meets fixed-scene physical-reference evidence, not sensor-feedback solvability, randomised coverage, human acceptance or original9kg validation. Historical kd60 references and earlier bounded failures are retained separately."
+    },
+    "official_trajectories": {
+      "status": "not_applicable",
+      "evidence": [],
+      "note": "M2 has no official trajectory set."
+    },
+    "coverage": {
+      "status": "partial",
+      "evidence": [
+        "acceptance/layer1-20261024/offline09/reference09_10_11_comparison.json",
+        "acceptance/layer1-20261024/README.md",
+        "acceptance/layer1-20261024/scope.json",
+        "sandbox/RANDOMISATION_PROPOSAL.md"
+      ],
+      "note": "One implemented fixed scene has complete reference execution3/3 and ordinary container replay1/1. No adopted randomisation range, boundary/interaction coverage or validated independent subtask starts. User requested the implemented first layer only; higher-layer/R9 and separate original9kg work are deferred without marking them passed."
+    },
+    "reference_rerun_spread": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/layer1-20261024/offline09/reference09_10_11_comparison.json",
+        "acceptance/layer1-20261024/README.md",
+        "sandbox/runs/bounded-reference-09/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-10/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-11/trusted/verdict.json",
+        "sandbox/validation.json",
+        "sandbox/runs/infra2-expert-fixed-armature",
+        "sandbox/RELEASE_CANDIDATE.md",
+        "sandbox/runs/bounded-reference-01/capture.json",
+        "acceptance/release_candidate/bounded_reference_comparison.json",
+        "sandbox/runs/bounded-reference-03/capture.json",
+        "sandbox/runs/bounded-reference-03/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-03/adapter_events.json",
+        "acceptance/release_candidate/bounded_reference_comparison_03.json",
+        "sandbox/runs/bounded-rpc-replay-03/trusted/verdict.json"
+      ],
+      "note": "Three separately executed frozen-source references09/10/11 on the same fixed scene and seed: scores1/1/1, spread0, all stage times identical. Current read-only comparison finds exact state arrays, solver snapshots, world parameters, commands, task configuration and recorded runtime source/asset hashes. This is same-seed reference repeatability, not independent human reproduction or a statistical robustness estimate."
+    },
+    "verifier_validity": {
+      "status": "partial",
+      "evidence": [
+        "sandbox/calibration.json",
+        "sandbox/VALIDATION.md",
+        "acceptance/shortcut_audit/report.json",
+        "sandbox/ACCEPTANCE_2026-10-22.md",
+        "sandbox/RELEASE_CANDIDATE.md",
+        "TASK_CARD.md"
+      ],
+      "note": "G2/E2 are authorized and implemented in scorer2.0-g2-e2. Versioned19-record regrades preserve all original verdicts; one-hand recovery now succeeds, the old moving set-down remains a failure, normal time limits retain legal progress, and trusted errors remainVOID. Gate stays partial for physical alternate-strategy, interface/monitor and broader task evidence; no unresolved G2/E2 policy remains. Synthetic rewrites do not demonstrate physical feasibility."
+    },
+    "monitors_calibrated": {
+      "status": "partial",
+      "evidence": [
+        "sandbox/trusted/monitors.py",
+        "sandbox/runs/infra2-expert-fixed-armature",
+        "acceptance/shortcut_audit/report.json"
+      ],
+      "note": "Shared monitor suite raises no alarms on the recorded positives and the ten audit cases, including synthetic over-wall success. Forbidden RPC probes void via isolation; they do not establish monitor sensitivity. M2 exploit-trigger calibration remains incomplete; no thresholds changed."
+    },
+    "predicate_labels": {
+      "status": "partial",
+      "evidence": [
+        "acceptance/layer1-20261024/review",
+        "acceptance/layer1-20261024/offline09/reference09-v2/report.json",
+        "acceptance/predicate_labels/keyframes/expert-01.jpg",
+        "acceptance/predicate_labels/keyframes/fixed-armature-02.jpg",
+        "acceptance/predicate_labels/review_record.json",
+        "acceptance/predicate_labels/visual_check.json",
+        "sandbox/trusted/validity.py",
+        "sandbox/ACCEPTANCE_2026-10-22.md"
+      ],
+      "note": "Current source-matching reference videos and six-stage review images are available. Automated full decode and time mapping pass; human stage labels, answers and signature remain empty. Historical repeated end tiles do not add dwell evidence. See the current raw video and actual terminal timestamp."
+    },
+    "shortcut_audit": {
+      "status": "partial",
+      "evidence": [
+        "acceptance/shortcut_audit/report.json",
+        "acceptance/shortcut_audit/recovered_evidence.json",
+        "acceptance/shortcut_audit/reach.json",
+        "sandbox/runs/shortcuts",
+        "sandbox/ACCEPTANCE_2026-10-22.md"
+      ],
+      "note": "Two physical probes and eight synthetic state-level cases rejudged. Half-expert stalls before lifting; RPC solo push moves cargo +0.4825 m then earns 0 after non-hand contact. Synthetic solo drag/carry 0, pair drag .10, tilt/low carry .30. Flat over-wall synthetic trajectory gets 1.0 success with no alarms (conditionally permitted by author; physical feasibility unproven). That historical contract conflict is resolved by authorized G2: supported one-hand recovery is legal, while the old nonstationary set-down fixture still fails. Synthetic acceptance is not physical exploit feasibility; full solo and over-wall physical routes remain unverified. G2/E2 authorized2026-10-23; earlier unresolved-policy statements are historical. Versioned implementation/tests do not establish physical regrasp feasibility."
+    },
+    "video_review": {
+      "status": "pending",
+      "evidence": [
+        "acceptance/layer1-20261024/review",
+        "acceptance/layer1-20261024/offline09/reference09-v2/report.json"
+      ],
+      "note": "Current09/10/11 videos each decode878 frames with exact recorded frame-time mapping. Machine validation and any AI inspection are unsigned; no human video review is inferred."
+    },
+    "independent_reproduction": {
+      "status": "pending",
+      "evidence": [],
+      "note": "No second-person reproduction."
+    },
+    "sandbox_isolation": {
+      "status": "passed",
+      "evidence": [
+        "sandbox/runs/infra1-isolation",
+        "sandbox/runs/infra1-forbidden",
+        "sandbox/runs/infra2-isolation",
+        "sandbox/runs/infra2-forbidden"
+      ],
+      "note": "Container checks 11/11 (non-root, read-only bundle, no Docker socket, no private code, external network blocked, no privileged observation, model readable, RGB-D shapes, limits visible, mixed control torque bounded, bundle allowlist); a forbidden setter voids the run; re-run on the shared runtime and again on the shared multi-robot command channel 2026-10-21 (infra2-*)."
+    },
+    "grading_mode": {
+      "status": "passed",
+      "evidence": [
+        "sandbox/trusted/scenarios.py",
+        "sandbox/trusted/world.py",
+        "sandbox/tests/test_grading.py",
+        "sandbox/runs/pipeline-grade-noop-20261021-184903/trusted/run.json",
+        "sandbox/runs/pipeline-grade-noop-20261021-184903/trusted/verdict.json",
+        "sandbox/ACCEPTANCE_2026-10-22.md"
+      ],
+      "note": "Narrow fixed-scene grading mechanics verified on recorded source: sealed 2 episodes, fresh workspace/container each, one connection and 1 s default hold per episode; each 0, no success, non-VOID, no alarm, valid request chain. Dev and pre-admission grade open, eval closed and admission_eligible=false. Not a randomiser or successful agent reference. Immediate finish, time-limit and disconnect semantics remain open task items; see recorded-source/initialization compatibility limitation."
+    },
+    "static_checks": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/layer1-20261024/cpu/report.json",
+        "sandbox/tests",
+        "acceptance/pipeline/20261022-211602-cpu.json",
+        "acceptance/pipeline/20261022-220625-cpu.json",
+        "sandbox/RELEASE_CANDIDATE.md",
+        "acceptance/release_candidate/bounded_reference_comparison.json",
+        "acceptance/pipeline/20261022-222512-cpu.json",
+        "acceptance/release_candidate/bounded_reference_comparison_03.json",
+        "sandbox/runs/bounded-rpc-replay-03/trusted/verdict.json"
+      ],
+      "note": "M2-specific checks on2026-10-24:58 sandbox tests and27 task/evaluator/controller tests pass; M2 admission schema independently has0 problems. The shared runtime suite has16/17 passing: its all-repository Records test fails on17 missing g1_tabletop_assembly evidence paths. That unrelated failure is retained and prevents a claim that the full shared pipeline passes."
+    },
+    "randomisation": {
+      "status": "pending",
+      "evidence": [
+        "acceptance/layer1-20261024/scope.json",
+        "sandbox/RANDOMISATION_PROPOSAL.md"
+      ],
+      "note": "The implemented first layer remains a single fixed0.25kg/1.8m scene. Noise seed is not geometric randomisation. Proposed ranges are not adopted or validated; higher layers/R9 are deferred for the current continuation."
+    },
+    "automatic_pipeline": {
+      "status": "partial",
+      "evidence": [
+        "acceptance/layer1-20261024/cpu/report.json",
+        "acceptance/layer1-20261024/rpc09d/audit.json",
+        "sandbox/pipeline.json",
+        "acceptance/pipeline/20261021-154951-cpu.json",
+        "acceptance/pipeline/20261021-184728-gpu.json",
+        "acceptance/pipeline/20261021-184903-container.json",
+        "sandbox/ACCEPTANCE_2026-10-22.md",
+        "acceptance/pipeline/20261022-211602-cpu.json",
+        "acceptance/pipeline/20261022-220625-cpu.json",
+        "sandbox/RELEASE_CANDIDATE.md",
+        "acceptance/release_candidate/bounded_reference_comparison.json",
+        "acceptance/pipeline/20261022-222512-cpu.json",
+        "acceptance/release_candidate/bounded_reference_comparison_03.json",
+        "sandbox/runs/bounded-rpc-replay-03/trusted/verdict.json"
+      ],
+      "note": "Current M2 scoped CPU tests and first-layer physical-record/RPC audits pass; historical pipeline evidence remains available. The current all-repository runtime check has an unrelated tabletop-assembly missing-evidence failure, and change-triggered/all-tier current-source execution is not established. This continuation audited and archived existing09/10/11/09d results; it did not run new physics or certify all pipeline tiers."
+    }
+  },
+  "task_items": {
+    "corridor_containment_gap": {
+      "status": "not_applicable",
+      "evidence": [
+        "TASK_CARD.md",
+        "acceptance/shortcut_audit/report.json",
+        "sandbox/RELEASE_CANDIDATE.md"
+      ],
+      "note": "Author clarification 2026-10-22 permits wall-contact-free alternatives under existing constraints. No planar containment rule is required. Synthetic over-wall success is not proof of a forbidden physical route; numerical score unchanged."
+    },
+    "alternative_strategy_contract": {
+      "status": "partial",
+      "evidence": [
+        "sandbox/runs/shortcuts/syn-set-down-regrasp",
+        "sandbox/runs/shortcuts/syn-regrasp-one-hand",
+        "sandbox/ACCEPTANCE_2026-10-22.md",
+        "sandbox/AUTHOR_RULES_2026-10-23.md",
+        "sandbox/tests/test_regrasp.py",
+        "acceptance/release_candidate/g2e2_regrades_v2.json",
+        "acceptance/release_candidate/candidate07_preflight_tests.json"
+      ],
+      "note": "Author authorized G2 2026-10-23. Scorer2.0-g2-e2 implements supported in-air regrasp and stationary temporary placement within0.10m, followed by full grasp and fresh stable lift. Focused synthetic predicate regressions pass; physical temporary-placement feasibility is not established. Historical verdicts retained; versioned regrades separate. Versioned19-record regrade: one-hand synthetic1.0/success; old moving set-down remains0.30/failure. 01?05 unchanged and06 remainsVOID. No old verdict was rewritten. Additional pre-execution regression clears reacquired grasp after a second ground release;9 G2 and10 E2 tests pass. Initial queued07 withdrawn before any execution; new frozen snapshot prepared."
+    },
+    "grading_termination_semantics": {
+      "status": "partial",
+      "evidence": [
+        "sandbox/runs/time-limit-demo-01",
+        "sandbox/runs/pipeline-grade-noop-20261021-183233",
+        "sandbox/ACCEPTANCE_2026-10-22.md",
+        "sandbox/AUTHOR_RULES_2026-10-23.md",
+        "sandbox/tests/test_endings.py",
+        "acceptance/release_candidate/g2e2_regrades_v2.json",
+        "acceptance/release_candidate/candidate07_preflight_tests.json"
+      ],
+      "note": "Author authorized E2 2026-10-23. Normal time limit/finish preserve legal progress; attributable agent failure or wall budget scores episode zero only with complete sealed/request/launcher evidence. Unknown/trusted errors and integrity failures remain VOID. Zero-step finish validates a single sealed initial state. Ten copied-fixture regressions pass including two-episode aggregation; originals retained. Real historical time-limit-demo now0/non-VOID in separate regrade; forbidden request staysVOID; no-op and isolation preserve0/non-VOID."
+    },
+    "rpc_initial_state_compatibility": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/layer1-20261024/rpc09d/audit.json",
+        "sandbox/runs/bounded-rpc-replay-09d/trusted/verdict.json",
+        "acceptance/shortcut_audit/recovered_evidence.json",
+        "sandbox/trusted/world.py",
+        "sandbox/ACCEPTANCE_2026-10-22.md",
+        "acceptance/release_candidate/initial_compatibility.json"
+      ],
+      "note": "For the fixed09/09d pair, initial and all subsequent recorded states, solver snapshots and world parameter arrays match exactly through175.28s. Actual RPC delivery payloads/request chain are verified. This is source-specific recorded equivalence; it does not assert equality of unlogged solver caches or all future executions."
+    },
+    "bounded_reference_interface": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/layer1-20261024/offline09/reference09_10_11_comparison.json",
+        "acceptance/layer1-20261024/README.md",
+        "sandbox/runs/bounded-reference-09/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-10/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-11/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-02/capture.json",
+        "sandbox/runs/bounded-rpc-replay-02/trusted/verdict.json",
+        "acceptance/release_candidate/bounded_reference_comparison.json",
+        "sandbox/RELEASE_CANDIDATE.md",
+        "sandbox/runs/bounded-reference-03/capture.json",
+        "sandbox/runs/bounded-reference-03/trusted/verdict.json",
+        "sandbox/runs/bounded-reference-03/adapter_events.json",
+        "acceptance/release_candidate/bounded_reference_comparison_03.json",
+        "sandbox/runs/bounded-reference-04/capture.json",
+        "acceptance/release_candidate/bounded-reference-04_audit.json",
+        "acceptance/release_candidate/candidate04_arrival_diagnostics.json",
+        "acceptance/release_candidate/candidate04_dependencies_end.json",
+        "acceptance/release_candidate/candidate04_source_archive.zip",
+        "sandbox/runs/bounded-reference-05/capture.json",
+        "acceptance/release_candidate/bounded-reference-05_audit.json",
+        "acceptance/release_candidate/candidate05_video_audit.json",
+        "acceptance/release_candidate/bounded-reference-06_failure_audit.json",
+        "acceptance/release_candidate/candidate06_source_archive.zip",
+        "acceptance/release_candidate/bounded-reference-07_audit.json",
+        "acceptance/release_candidate/candidate07_video_audit.json",
+        "acceptance/release_candidate/candidate07_arrival_diagnostics.json",
+        "acceptance/release_candidate/candidate07_frozen_execution.json",
+        "acceptance/release_candidate/candidate07_source_archive.zip",
+        "acceptance/release_candidate/original9kg01_audit.json",
+        "acceptance/release_candidate/bounded-reference-08_audit.json",
+        "acceptance/release_candidate/candidate08_source_archive.zip",
+        "acceptance/release_candidate/candidate08_video_audit.json",
+        "acceptance/release_candidate/m2-policy08-diagnosis.json",
+        "acceptance/release_candidate/original9kg02_audit.json"
+      ],
+      "note": "Fixed L1 references09/10/11 complete successfully using bounded public LowCmd actions and privileged feedback. Independent offline audits check q/dq/kp/kd/tau and recorded actual effort; all violation counts are zero. Native requested gains and raw targets can be clipped before export/application; the public bounds are unchanged. No denied setter, runtime state write or parameter drift is present. Earlier02 adapter limitation and03-08 failures remain historical evidence."
+    },
+    "ordinary_open_loop_reproduction": {
+      "status": "passed",
+      "evidence": [
+        "acceptance/layer1-20261024/rpc09d/audit.json",
+        "sandbox/runs/bounded-rpc-replay-09d/trusted/verdict.json",
+        "sandbox/runs/bounded-rpc-replay-03/trusted/verdict.json",
+        "acceptance/release_candidate/bounded_reference_comparison_03.json",
+        "sandbox/runs/bounded-rpc-replay-03/trusted/source_manifest_end.json"
+      ],
+      "note": "Ordinary dev/container replay09d succeeds at1.0/non-VOID, with88 command payload digests,181 request-chain entries,8764 executed frames,35057 samples, no clipping/rejection/alarm, agent/worker exits0 and no timeout. It matches09 recorded states/snapshots/parameters exactly. It is fixed command replay, not a sensor-feedback solution. Attempts09/09b/09c remain in the immutable RPC archive, including mount-read and disk-full failures."
+    },
+    "original_9kg_validation": {
+      "status": "partial",
+      "evidence": [
+        "task.json",
+        "sandbox/AUTHOR_RULES_2026-10-23.md",
+        "original_reference.py",
+        "acceptance/release_candidate/candidate07_boundary_followup.json"
+      ],
+      "note": "Original9kg validation explicitly required. Ordinary-command software adaptation preserving original scene physics authorized. No original-scene physical success yet; scratch kinematic necessary-condition screen is not load/physics validation. Original actuator model does not establish real hardware capability. Exact-task bounded balance/initial-settling diagnostic implemented, with original prototype force ranges read from actual scene and post-construction physical/state setters denied. Still no original-scene physical result."
+    }
+  },
+  "pending_decisions": [
+    "random ranges and layers",
+    "physical necessity of cooperation versus rule-required cooperation for the light box",
+    "human interpretation of lift stability while still rising",
+    "three-layer/R9 design and main-benchmark scope",
+    "Original9kg resting cargo bottom final-14.36micrometres versus unchanged1micrometre goal-containment tolerance; measured initial-rest compatibility concern, full transport still pending"
+  ],
+  "detailed_record": "sandbox/VALIDATION.md",
+  "resolved_author_decisions_2026_10_23": {
+    "G2": "Supported airborne regrasp and stationary temporary placement, implemented with versioned evidence",
+    "E2": "Normal limit preserves progress; attributable agent failure episode0; trusted/integrity failuresVOID",
+    "original9kg": "Validation required, ordinary-command adaptation authorized, full physical validation pending"
+  },
+  "current_work_scope": {
+    "scope": "implemented_fixed_first_layer_only",
+    "record": "acceptance/layer1-20261024/scope.json",
+    "date": "2026-10-24",
+    "higher_layers_R9_deferred": true,
+    "original9kg_deferred": true,
+    "formal_admission_complete": false
+  },
+  "scope_note": "Higher-layer/R9 and separate original9kg requirements are deferred from the requested fixed-L1 continuation, not revoked or marked passed. Outstanding broader scope proposals remain listed for future work."
+}

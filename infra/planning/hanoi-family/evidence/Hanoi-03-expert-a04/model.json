@@ -1,0 +1,439 @@
+{
+  "task": {
+    "schema": "hanoi-tool-task/1",
+    "task_id": "Hanoi-03",
+    "embodiment": "dex3",
+    "disclosure": "latent",
+    "disks": 3,
+    "capability_profile": "nominal",
+    "tools": [
+      "T1_tongs",
+      "T2_fork"
+    ],
+    "pelvis_fixed": true,
+    "timestep": 0.005,
+    "control_dt": 0.02,
+    "release_hold": 0.5,
+    "final_hold": 2.0,
+    "runtime_status": "experimental_not_admitted",
+    "boundary_calibrated": null,
+    "observation_scope": "privileged_physical_reference_not_agent_evaluation"
+  },
+  "source_model": "/fs/gamma-projects/vlm-robot/robo-si/humanoid/g1_support_retrieval/assets/unitree_g1/g1_with_hands.xml",
+  "source_model_sha256": "2d41a3c6783fbf9e17349608d9c2222d970163b1db315ce9f30c4a97631fc078",
+  "mimic_followers": [],
+  "mesh_hashes": {},
+  "source_hand_velocity_limits": {},
+  "runtime_state_writes": false,
+  "tool_attachment_constraints": false,
+  "body_calibration": "experimental",
+  "robot_joints": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_yaw_joint",
+    "waist_roll_joint",
+    "waist_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "left_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "left_hand_thumb_0_joint",
+    "left_hand_thumb_1_joint",
+    "left_hand_thumb_2_joint",
+    "left_hand_middle_0_joint",
+    "left_hand_middle_1_joint",
+    "left_hand_index_0_joint",
+    "left_hand_index_1_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint",
+    "right_wrist_roll_joint",
+    "right_wrist_pitch_joint",
+    "right_wrist_yaw_joint",
+    "right_hand_thumb_0_joint",
+    "right_hand_thumb_1_joint",
+    "right_hand_thumb_2_joint",
+    "right_hand_middle_0_joint",
+    "right_hand_middle_1_joint",
+    "right_hand_index_0_joint",
+    "right_hand_index_1_joint"
+  ],
+  "limits": {
+    "left_hip_pitch_joint": {
+      "lower": -2.5307,
+      "upper": 2.8798,
+      "effort": 88.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_hip_roll_joint": {
+      "lower": -0.5236,
+      "upper": 2.9671,
+      "effort": 139.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_hip_yaw_joint": {
+      "lower": -2.7576,
+      "upper": 2.7576,
+      "effort": 88.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_knee_joint": {
+      "lower": -0.087267,
+      "upper": 2.8798,
+      "effort": 139.0,
+      "kp": 160.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_ankle_pitch_joint": {
+      "lower": -0.87267,
+      "upper": 0.5236,
+      "effort": 50.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_ankle_roll_joint": {
+      "lower": -0.2618,
+      "upper": 0.2618,
+      "effort": 50.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_hip_pitch_joint": {
+      "lower": -2.5307,
+      "upper": 2.8798,
+      "effort": 88.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_hip_roll_joint": {
+      "lower": -2.9671,
+      "upper": 0.5236,
+      "effort": 139.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_hip_yaw_joint": {
+      "lower": -2.7576,
+      "upper": 2.7576,
+      "effort": 88.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_knee_joint": {
+      "lower": -0.087267,
+      "upper": 2.8798,
+      "effort": 139.0,
+      "kp": 160.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_ankle_pitch_joint": {
+      "lower": -0.87267,
+      "upper": 0.5236,
+      "effort": 50.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_ankle_roll_joint": {
+      "lower": -0.2618,
+      "upper": 0.2618,
+      "effort": 50.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "waist_yaw_joint": {
+      "lower": -2.618,
+      "upper": 2.618,
+      "effort": 88.0,
+      "kp": 150.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "waist_roll_joint": {
+      "lower": -0.52,
+      "upper": 0.52,
+      "effort": 50.0,
+      "kp": 150.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "waist_pitch_joint": {
+      "lower": -0.52,
+      "upper": 0.52,
+      "effort": 50.0,
+      "kp": 150.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_shoulder_pitch_joint": {
+      "lower": -3.0892,
+      "upper": 2.6704,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_shoulder_roll_joint": {
+      "lower": -1.5882,
+      "upper": 2.2515,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_shoulder_yaw_joint": {
+      "lower": -2.618,
+      "upper": 2.618,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_elbow_joint": {
+      "lower": -1.0472,
+      "upper": 2.0944,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "left_wrist_roll_joint": {
+      "lower": -1.97222,
+      "upper": 1.97222,
+      "effort": 25.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "left_wrist_pitch_joint": {
+      "lower": -1.61443,
+      "upper": 1.61443,
+      "effort": 5.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "left_wrist_yaw_joint": {
+      "lower": -1.61443,
+      "upper": 1.61443,
+      "effort": 5.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "left_hand_thumb_0_joint": {
+      "lower": -1.0472,
+      "upper": 1.0472,
+      "effort": 2.45,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "left_hand_thumb_1_joint": {
+      "lower": -0.724312,
+      "upper": 1.0472,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "left_hand_thumb_2_joint": {
+      "lower": 0.0,
+      "upper": 1.74533,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "left_hand_middle_0_joint": {
+      "lower": -1.5708,
+      "upper": 0.0,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "left_hand_middle_1_joint": {
+      "lower": -1.74533,
+      "upper": 0.0,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "left_hand_index_0_joint": {
+      "lower": -1.5708,
+      "upper": 0.0,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "left_hand_index_1_joint": {
+      "lower": -1.74533,
+      "upper": 0.0,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "right_shoulder_pitch_joint": {
+      "lower": -3.0892,
+      "upper": 2.6704,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_shoulder_roll_joint": {
+      "lower": -2.2515,
+      "upper": 1.5882,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_shoulder_yaw_joint": {
+      "lower": -2.618,
+      "upper": 2.618,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_elbow_joint": {
+      "lower": -1.0472,
+      "upper": 2.0944,
+      "effort": 25.0,
+      "kp": 100.0,
+      "kd": 5.0,
+      "velocity": 1.2
+    },
+    "right_wrist_roll_joint": {
+      "lower": -1.97222,
+      "upper": 1.97222,
+      "effort": 25.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "right_wrist_pitch_joint": {
+      "lower": -1.61443,
+      "upper": 1.61443,
+      "effort": 5.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "right_wrist_yaw_joint": {
+      "lower": -1.61443,
+      "upper": 1.61443,
+      "effort": 5.0,
+      "kp": 35.0,
+      "kd": 1.5,
+      "velocity": 1.2
+    },
+    "right_hand_thumb_0_joint": {
+      "lower": -1.0472,
+      "upper": 1.0472,
+      "effort": 2.45,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "right_hand_thumb_1_joint": {
+      "lower": -1.0472,
+      "upper": 0.724312,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "right_hand_thumb_2_joint": {
+      "lower": -1.74533,
+      "upper": 0.0,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "right_hand_middle_0_joint": {
+      "lower": 0.0,
+      "upper": 1.5708,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "right_hand_middle_1_joint": {
+      "lower": 0.0,
+      "upper": 1.74533,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "right_hand_index_0_joint": {
+      "lower": 0.0,
+      "upper": 1.5708,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    },
+    "right_hand_index_1_joint": {
+      "lower": 0.0,
+      "upper": 1.74533,
+      "effort": 1.4,
+      "kp": 6.0,
+      "kd": 0.25,
+      "velocity": 1.2
+    }
+  },
+  "scene_sha256": "8f96b58d62169e5bc107aa979457011ea008857c5ad1a12baccd1c32def9d399",
+  "nq": 80,
+  "nv": 75,
+  "source_inspire_sha256": null,
+  "tools_initial": {
+    "T1_tongs": [
+      0.42,
+      0.4,
+      0.775
+    ],
+    "T2_fork": [
+      0.42,
+      -0.4,
+      0.775
+    ]
+  },
+  "disk_geometry": "12-segment annulus; 16mm plate over 9mm inner support foot",
+  "E2_parameters": "synthetic parallel gripper; two independent 35mm slides, 25N each; no commercial calibration"
+}

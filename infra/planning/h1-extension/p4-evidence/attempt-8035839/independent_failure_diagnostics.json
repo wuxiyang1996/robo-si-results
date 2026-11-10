@@ -1,0 +1,81 @@
+{
+  "schema": "h1-p4-v3-failure-diagnostics/1",
+  "does_not_change_frozen_contract": true,
+  "right_elbow_rule5": {
+    "interval_s": [
+      241.38,
+      246.52
+    ],
+    "joint_index": 32,
+    "lower": -1.0472,
+    "upper": 2.0944,
+    "effort_Nm": 25.0,
+    "q_min": 2.074510097503662,
+    "q_max": 2.0801548957824707,
+    "tau_min": 12.510394096374512,
+    "tau_max": 20.074377059936523,
+    "observed_phases": [
+      "clear_hands_both",
+      "hold_both",
+      "recenter_both",
+      "stand_up_both"
+    ],
+    "upper_distance_range_rad": [
+      0.014245104217529114,
+      0.019889902496337708
+    ],
+    "outward_upper_torque_fraction_range": [
+      0.5004157638549804,
+      0.802975082397461
+    ]
+  },
+  "macro_foot_support_failures": [
+    {
+      "index": 12021,
+      "t": 240.42000000000002,
+      "phase": "clear_hands_both",
+      "foot_fz": [
+        0.0,
+        0.0
+      ],
+      "body_ground": 0.0,
+      "root": [
+        1.990883231163025,
+        0.0034531697165220976,
+        0.46921730041503906
+      ],
+      "root_v": [
+        -0.003023948520421982,
+        0.006823176518082619,
+        0.08322884142398834
+      ]
+    },
+    {
+      "index": 12022,
+      "t": 240.44,
+      "phase": "clear_hands_both",
+      "foot_fz": [
+        0.0,
+        0.0
+      ],
+      "body_ground": 0.0,
+      "root": [
+        1.9907090663909912,
+        0.003513513831421733,
+        0.46778106689453125
+      ],
+      "root_v": [
+        -0.012742463499307632,
+        0.008749902248382568,
+        -0.1552235186100006
+      ]
+    }
+  ],
+  "interpretation": "Original five-rule safety is complete and failed due to rule5. Separately, the predeclared r3 author macro requires a >1 N foot contact at every sampled state; any failed sample remains failed even if the original dwell-based near-fall rule does not trigger.",
+  "macro_foot_support_sample_count": 2,
+  "macro_foot_support_sample_interval_s": [
+    240.42,
+    240.44
+  ],
+  "macro_foot_support_dwell_by_original_sample_count_s": 0.04
+}

@@ -1,0 +1,44 @@
+{
+  "version": "stage-scoring/1",
+  "task_id": "g1_table_tennis",
+  "score_range": [
+    0,
+    1
+  ],
+  "stage_score_range": [
+    0,
+    100
+  ],
+  "success_is_separate": true,
+  "stages": [
+    {
+      "name": "legal_racket_contact",
+      "mode": "once",
+      "weight": 0.25
+    },
+    {
+      "name": "net_clearance",
+      "mode": "once",
+      "weight": 0.25
+    },
+    {
+      "name": "opponent_table_landing",
+      "mode": "once",
+      "weight": 0.2
+    },
+    {
+      "name": "target_landing",
+      "mode": "once",
+      "weight": 0.15
+    },
+    {
+      "name": "recovered_ready",
+      "mode": "live",
+      "weight": 0.15
+    }
+  ],
+  "integrity_failure": "clear_all_points",
+  "physical_failure": "retain_previously_valid_milestones; success=false",
+  "controller_labels_award_points": false,
+  "source": "scoring.py"
+}

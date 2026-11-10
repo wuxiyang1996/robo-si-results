@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Scoring and verification in Embodied Terminal-Bench (robo-si): the verifier is isolated from the agent, reads only environment-side records and fails closed; it is validated from both sides with the reference expert solution and a no-op; stages are scored continuously; grading of agents is fully automatic, and people check the task and its verifier on video at admission; monitors guard against reward hacking and fabricated outputs, inputs and rollouts." name="description"/>
+<title>Scoring and Verification</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/verifier-zh.html">中文</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">Task infrastructure · Scoring and verification</p>
+<h1>Scores come only from<br/><span class="nm">environment-side records</span>.</h1>
+<p class="lead">This page covers where the verifier lives and what it reads, stage predicates and scoring rules, the automatic scoring rules, monitors, and defences against reward hacking and fabricated inputs and outputs. Grading agents is fully automatic; people check the task and its verifier only during <a href="/robo-si-results/infra/acceptance-en.html">task acceptance</a>.</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>Contents</h3>
+<ol class="toc">
+<li><a href="#reqs">01 Requirements</a></li>
+<li><a href="#placement">02 Where the verifier lives and what it reads</a></li>
+<li><a href="#predicates">03 Stage predicates</a></li>
+<li><a href="#rules">04 Scoring and grading mode</a></li>
+<li><a href="#acceptance">05 Automatic scoring rules</a></li>
+<li><a href="#monitors">06 Monitors against reward hacking</a></li>
+<li><a href="#fabrication">07 Against fabricated outputs and inputs</a></li>
+<li><a href="#attacks">08 Attack categories and defences</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="reqs"><div class="wrap">
+<p class="kicker">01 · Requirements</p>
+<h2>What scoring must guarantee</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Requirement</th><th>Details</th></tr></thead>
+<tbody>
+<tr><td><strong>The verifier is isolated from the agent and cannot be hacked</strong></td><td><a href="#placement">Section 02</a></td></tr>
+<tr><td><strong>The verifier itself must be valid</strong></td><td><a href="/robo-si-results/infra/acceptance-en.html#validity">Section 04 of task acceptance</a></td></tr>
+<tr><td><strong>Scoring by stage</strong></td><td><a href="#predicates">Section 03</a> and <a href="#rules">section 04</a></td></tr>
+<tr><td><strong>Grading as automatic as possible; people check only the task</strong></td><td><a href="#acceptance">Section 05</a></td></tr>
+<tr><td><strong>Monitors against reward hacking</strong></td><td><a href="#monitors">Section 06</a></td></tr>
+<tr><td><strong>No fabricated outputs or inputs</strong></td><td><a href="#fabrication">Section 07</a></td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="placement"><div class="wrap">
+<p class="kicker">02 · Where the verifier lives and what it reads</p>
+<h2>The floor: verification and scoring are isolated from the agent</h2>
+<h3>How far the isolation goes</h3>
+<ul class="check">
+<li>The floor: verification and scoring are isolated from the agent, which cannot read, change or influence them. This sandbox puts them on the environment side.</li>
+<li>The verifier, stage predicates, scoring code, sealed episode seeds, anchors, reference solutions and recordings exist only on the environment side, never in the agent's bundle, image or workspace.</li>
+<li>The delivered program always runs in an agent container and talks to the environment only over RPC; it never enters the environment side. This is stricter than Harbor (submitted code runs on the verifier's filesystem) and EmbodiedSWE (submitted code shares the grader's process).</li>
+<li>Results (<code>verdict.json</code>) are written to the trusted directory on the environment side; the agent gets no score during the session, and <code>finish()</code> does not report success.</li>
+</ul>
+<h3>What the verifier reads</h3>
+<p>Only records written by the environment side: the sealed scene file, the privileged state log (every control step, including contact forces per object split into hand, foot and other), full-body snapshots, episode events, the request log and monitor alarms. Anything the agent writes can show up only through these records; the verifier never reads the agent's workspace, output or claims.</p>
+<h3>Fail closed</h3>
+<ul class="check">
+<li>An episode that never ran (crash, no connection, timeout) scores 0.</li>
+<li>A verifier error, missing or corrupt records, or a result that is not finite or outside [0, 1]: the episode scores 0 with the reason recorded, following Harbor's <code>test.sh</code>.</li>
+<li>Any failed integrity check: the whole run is void (VOID) and scores 0.</li>
+</ul>
+<p class="muted" style="margin-top:8px">The two deployments (a host process on this machine / a separate env container on Linux) are described in <a href="/robo-si-results/infra/sandbox-en.html#arch">section 02 of the isolated sandbox</a>.</p>
+</div></section>
+<section class="tinted" id="predicates"><div class="wrap">
+<p class="kicker">03 · Stage predicates</p>
+<h2>Predicates read only physical state, never a single frame</h2>
+<h3>Stage predicates</h3>
+<ul class="check">
+<li>Stages map one to one onto subtasks (see <a href="/robo-si-results/infra/task-design-en.html#subtasks">section 06 of the task design guide</a>); predicates read only the trusted state log, never what the agent says or which method it used.</li>
+<li>Every predicate requires contact evidence, object identity, a dwell time and rest conditions; no single-frame triggers.</li>
+<li>Distance-only predicates are paired with contact or motion evidence. (H1's <code>target_reached</code> currently accepts "hand within 0.15 m of the target centre" and does not meet this rule; it needs fixing.)</li>
+<li>Every predicate has a set of negative cases (<a href="#attacks">section 08</a>), all of which must score nothing.</li>
+<li>Thresholds are calibrated on the reference timeline and the manual labels (see <a href="/robo-si-results/infra/acceptance-en.html#feasibility">section 03 of task acceptance</a>), and frozen before evaluation.</li>
+</ul>
+</div></section>
+<section id="rules"><div class="wrap">
+<p class="kicker">04 · Scoring and grading mode</p>
+<h2>Continuous stage credit, re-run on sealed new episodes</h2>
+<h3>Scoring rules</h3>
+<ul class="check">
+<li>Each stage has a continuous 0–1 value at every control step: how much of it has been done.</li>
+<li>Two modes: <code>once</code> milestones keep their best value so far; <code>live</code> stages count their current value (the score drops if the target is knocked out of the goal).</li>
+<li>progress(t) = Σ weight × value(t) / Σ weight; the episode score is the peak of progress over the episode.</li>
+<li>Success (0/1) is reported separately, as in Terminal-Bench.</li>
+<li>Stages that cannot be earned in this episode (judged from the initial state only) are dropped and the weights renormalised.</li>
+<li>A fall or a declaration ends the episode and earlier progress is kept; declaring a solvable episode infeasible is flagged.</li>
+<li>A void run (VOID) scores 0.</li>
+</ul>
+<h3>Grading mode and reporting</h3>
+<ul class="check">
+<li>Official results come from re-running the delivered program on N sealed new episodes, not from the development session; every episode is scored 3 times and averaged, and the whole evaluation is repeated 3 times (see <a href="/robo-si-results/infra/protocol-en.html#stats">section 04 of the evaluation protocol</a>).</li>
+<li>What is reported and how it is aggregated: <a href="/robo-si-results/infra/protocol-en.html#reporting">section 03 of the evaluation protocol</a>.</li>
+</ul>
+<p class="muted" style="margin-top:8px">H1's stages, weights and values are in sections 5.3–5.6 of the <a href="/robo-si-results/humanoid/g1_support_retrieval/sandbox/README.md">H1 sandbox README</a>; the weights have not yet been calibrated on real agent results.</p>
+</div></section>
+<section class="tinted" id="acceptance"><div class="wrap">
+<p class="kicker">05 · Automatic scoring rules</p>
+<h2>Grading agents is fully automatic; alarms follow fixed rules</h2>
+<p>When agents are evaluated, nobody watches videos or edits scores: the verifier's verdict is the score, and every kind of alarm is handled by the table below. The human check is only for the task, at acceptance (<a href="/robo-si-results/infra/acceptance-en.html#humancheck">section 05 of task acceptance</a>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Situation</th><th>Automatic handling</th></tr></thead>
+<tbody>
+<tr><td>Integrity alarms: out-of-bounds requests, changed world parameters, teleports, connecting before the scene is sealed</td><td>The whole run is void (VOID) and scores 0</td></tr>
+<tr><td>Physical anomalies: deep penetration, jumps in object speed or kinetic energy, objects leaving bounds or falling through the floor</td><td>Stage credit gained within the anomaly window does not count; above a severe threshold the whole run is void</td></tr>
+<tr><td>Command-pattern and predicate anomalies: high-frequency jitter, sustained torque saturation, stage values jumping to full in one frame, stage values without contact evidence</td><td>Stage credit within the window does not count, and the episode is flagged</td></tr>
+<tr><td>Fabrication: rollouts whose provenance does not check out; scoring without ever reading sensors</td><td>The first voids the run; the second has its score discarded and is flagged</td></tr>
+<tr><td>Never ran, verifier error, a result that is not finite or outside [0, 1]</td><td>The episode scores 0, with the reason recorded</td></tr>
+<tr><td>The 3 grading runs of an episode differ beyond the tolerance</td><td>Scored as the mean of the three, flagged as not reproducible, and passed to the maintainers to fix the task</td></tr>
+<tr><td>Reasonable unconventional solutions</td><td>Credit for the states reached, no back-filling of skipped stages (<a href="/robo-si-results/infra/task-design-en.html#corner">section 07 of the task design guide</a>)</td></tr>
+<tr><td>Anything uncertain</td><td>Handled automatically on the side less favourable to the agent, and flagged; never decided by a person case by case</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:12px">Rules and thresholds are frozen before evaluation. Flagged episodes are collected for the task maintainers: if they reveal a hole in the verifier, a simulator problem or a missed shortcut, the task is fixed and released as a new version, and every agent is re-graded automatically on it; no individual episode's score is edited by hand.</p>
+<h3>What changes in the verifier and scoring</h3>
+<ul class="check">
+<li>Alarms are output grouped by the three questions, with timestamps and trusted-log excerpts: in evaluation they drive automatic handling and flags; in task checks they let a person jump straight to them.</li>
+<li>Every kind of alarm has a fixed automatic handling rule (table above), frozen before evaluation; anything uncertain is handled conservatively.</li>
+<li>Reports give the automatic score and the flagged episodes with reasons; there is no manual re-scoring step.</li>
+<li>After a revision of the task or its verifier, every agent is re-graded automatically on the new version.</li>
+</ul>
+</div></section>
+<section id="monitors"><div class="wrap">
+<p class="kicker">06 · Monitors against reward hacking</p>
+<h2>Watching online, from the environment side</h2>
+<p>All monitors run on the environment side; their alarms go to the trusted directory and are read by the verifier. Unambiguous alarms void a run directly; alarms that could come from legitimate control are handled by frozen rules: stage credit within the alarm window does not count, and the episode is flagged (<a href="#acceptance">section 05</a>). Thresholds are frozen before evaluation. Every monitor needs two test sets: exploit runs that must trigger it and oracle runs that must not.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Monitor</th><th>What it watches</th></tr></thead>
+<tbody>
+<tr><td>Interface</td><td>Unknown methods, wrong tokens, malformed frames, <code>reset</code> outside development mode</td></tr>
+<tr><td>World integrity</td><td>Scene sealed before the agent connects; masses and friction hash-checked every 500 steps; teleports (&gt;20 m/s)</td></tr>
+<tr><td>Physical anomalies</td><td>Penetration depth; maximum object speed; kinetic-energy jumps not matched by the robot's work; objects leaving the room or falling through the floor</td></tr>
+<tr><td>Command patterns</td><td>High-frequency jitter (the usual way to pump energy into an object), sustained torque saturation, sustained pushing against joint limits</td></tr>
+<tr><td>Predicate anomalies</td><td>A stage value jumping to full in one frame; stage credit without contact evidence; progress spiking and immediately falling back</td></tr>
+<tr><td>Resources and time</td><td>Wall-clock budget, simulated time, observation count; the container's processes, memory and CPU</td></tr>
+<tr><td>Network</td><td>Connection attempts outside the internal network; requests the proxy refused</td></tr>
+<tr><td>Video</td><td>The environment's top-down video (onboard camera views later)</td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section class="tinted" id="fabrication"><div class="wrap">
+<p class="kicker">07 · Against fabricated outputs and inputs</p>
+<h2>Trust only what the environment recorded</h2>
+<p>The principle: what the agent says and what files it writes are not evidence; the only evidence is what the environment side recorded itself. The table covers fabricated outputs and fabricated inputs.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fabrication</th><th>Example</th><th>Defence</th></tr></thead>
+<tbody>
+<tr><td>Fabricated results</td><td>Claiming success in a final report, or reporting false stage times</td><td>Scores come only from environment records, never from anything the agent says. If the agent must submit a report, the trusted side checks it line by line against the records and reports contradictions as fabrication</td></tr>
+<tr><td>Forged files</td><td>Writing a fake verdict, log, video or score into the workspace</td><td>The verifier reads only the trusted directory; the agent container mounts only its workspace; task checks use only the environment's video</td></tr>
+<tr><td>Forged transcript or cost</td><td>Rewriting its own transcript, under-reporting token use</td><td>The launcher records the agent's stdout outside the container; LLM requests and token counts should be metered independently by a trusted proxy, not taken from the agent's own statistics</td></tr>
+<tr><td>Forged RPC requests</td><td>Hijacking the session, forging frames, replaying old requests</td><td>Session token (constant-time comparison), length-prefixed JSON, no pickle, one session at a time. Upgrade the request log to a hash chain (each entry carries the previous entry's hash) with a digest of every observation, so any later claim about what was seen or done can be checked</td></tr>
+<tr><td>Forged observations</td><td>A delivered program that never reads sensors and replays observations recorded in development or a hard-coded trajectory (open loop)</td><td>Random initial states and separate seeds for grading and development make open-loop programs score nothing. A monitor counts <code>observe</code> calls per episode; an episode that scores without reading sensors has that score discarded and is flagged</td></tr>
+<tr><td>Forged rollouts or skill provenance</td><td>Passing off reference, official or outside trajectories as its own rollouts; using skills not on the manifest</td><td>Skills count only if they are in the task card or the agent's registered manifest; rollouts reference observation digests issued by the environment and are checked against the request log before scoring; network isolation blocks downloads</td></tr>
+<tr><td>Forged verifier inputs</td><td>Writing into files the verifier reads</td><td>The verifier reads only files written by the environment side, in a directory the agent cannot reach</td></tr>
+<tr><td>Impersonating the launcher</td><td>Sending "next episode" or "shut down"</td><td>The control pipe is the worker's stdin, held only by the launcher and not on the network</td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="attacks"><div class="wrap">
+<p class="kicker">08 · Attack categories and defences</p>
+<h2>Distrust by default: credit only on firm evidence</h2>
+<p class="covers">Corresponds to R7 of the task design guide: designers write their attack list by these categories and deliver negative cases and exploit tests (see <a href="/robo-si-results/infra/task-design-en.html#materials">section 09 of the task design guide</a>).</p>
+<p>Valid success = goal reached ∧ contract satisfied ∧ integrity passed (v5 section 15). Thresholds, windows, tolerances and anomaly handling are frozen before evaluation. Every category below needs a defence in the task design and evidence at acceptance. Grading is automatic; people check only when a task is admitted (<a href="/robo-si-results/infra/acceptance-en.html#humancheck">section 05 of task acceptance</a>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Attack</th><th>Examples</th><th>Required defence in the design</th><th>Acceptance evidence</th></tr></thead>
+<tbody>
+<tr><td>Reading what it should not</td><td>Trusted-side files, seeds, the difficulty layer, reference solutions, scoring code; fetching the repository history over the network; object poses from observation vectors; learning success from error messages or status; passing off reference or official trajectories as its own rollouts</td><td>The agent runs only in the container and the bundle holds nothing trusted; the network reaches only the simulator port and the LLM API; observations are robot sensors only and do not reveal the layer; no score or success test is returned to the agent; skills only from designated sources, rollouts checked against observation digests in the request log</td><td>Static bundle check, container escape probes, request log</td></tr>
+<tr><td>Editing the world</td><td>Setter calls, teleporting, changing mass, friction or physics options, resets outside development mode, attaching objects to the hands; choosing a subtask start or a layer in evaluation</td><td>Whitelisted calls only; start states and layers are decided by the trusted side alone, by the evaluation plan; the world is sealed at start; commands reach only the joints and are clipped to hardware limits; world parameters are hash-checked</td><td>Escape probes refused and recorded as violations; unchanged parameter hash; no teleports</td></tr>
+<tr><td>Simulator exploits</td><td>Penetration, passing through walls, pumping energy into an object by jittering joints to launch it, climbing by sinking into an object through contact-solver errors, self-collision off; holes where collision and visual shapes differ</td><td>Physics options fixed; collision shapes checked against visuals; the verifier checks teleports, penetration depth, maximum object speed and energy jumps; the designer tries the common exploit techniques (high-frequency jitter, pushing into walls, pressing into objects) and confirms they are voided</td><td>Exploit test runs voided; a person watches the video in task checks</td></tr>
+<tr><td>Gaming stage predicates</td><td>A hand waved near the target counts as "reached"; the target thrown through the goal region for one frame; the target knocked into the air counts as "lifted"; the wrong object in the goal; a foot brushing a box counts as "tool use"</td><td>Every predicate requires contact evidence, object identity, a dwell time and rest conditions, never a single frame; distance-only predicates are paired with contact or motion evidence; peak progress uses only held values</td><td>A negative-case set per stage (synthetic logs and recorded runs), all scoring nothing; manual labels versus predicates</td></tr>
+<tr><td>Gaming the rubric</td><td>Banking a few stages and then declaring infeasible; re-triggering a stage; back-filling earlier stages from a gamed goal stage</td><td>A declaration ends the episode and a wrong one is flagged; each stage counts once; skipped intermediate stages are never back-filled; dropped stages depend only on the initial state, which the agent cannot influence</td><td>Scoring unit tests covering these cases</td></tr>
+<tr><td>Gaming the grading mode</td><td>Hard-coding development layouts; carrying information to the next graded episode in files; detecting that it is being graded</td><td>Initial states randomised over wide ranges; graded episodes use private seeds from a split different from development, stratified by layer; every episode gets a fresh copy of the program with no state left; the interface and observations are the same in development and grading</td><td>Graded layouts differ from development ones; no files survive between episodes</td></tr>
+<tr><td>Shortcuts around the point of the task</td><td>See <a href="/robo-si-results/infra/task-design-en.html#corner">section 07 of the task design guide</a>: reaching on tiptoe, climbing furniture, one robot doing a cooperation task; shortcuts that appear at the edges of the random ranges; objects added in higher layers used to get around the point of the task</td><td>Made physically impossible in the design or written into the public constraints; each tried with oracle means, covering the edges of the random ranges and every layer</td><td>Manually confirmed shortcut audit</td></tr>
+</tbody>
+</table></div>
+<div class="two" style="margin-top:14px">
+<div class="card"><h3>Handling suspicious runs</h3><ul class="check">
+<li>Any integrity alarm: the whole run is voided automatically (VOID) and scores 0.</li>
+<li>Other alarms are handled by the rules of <a href="#acceptance">section 05</a>: the affected stage credit does not count, and the episode is flagged.</li>
+<li>Flagged episodes are collected for the task maintainers; a confirmed hole or missed shortcut joins the negative cases or fixes the predicates or monitors in a new version, and every agent is re-graded automatically.</li>
+<li>No individual episode is re-scored by hand.</li></ul></div>
+</div>
+</div></section>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · Scoring and verification · 2026-10-19 · <a href="/robo-si-results/infra/verifier-zh.html" hreflang="zh-CN" lang="zh-CN">中文</a> · <a href="/robo-si-results/infra/contribute-en.html">Home</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body>
+</html>

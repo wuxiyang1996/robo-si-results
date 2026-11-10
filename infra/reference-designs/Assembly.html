@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Assembly · 桌面套筒装配 · 参考设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main.wrap{padding-block:40px;overflow-wrap:anywhere}h2{margin-top:44px}h3{margin-top:30px}pre{overflow:auto;background:var(--panel);padding:18px;border-radius:10px}th,td{min-width:100px}h1{font-size:clamp(28px,5vw,44px)}</style><meta content="Assembly · 桌面套筒装配 · 参考设计 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><main class="wrap"><nav><a href="/robo-si-results/infra/reference-designs-zh.html">14 项参考解设计</a> · <a href="/robo-si-results/infra/reference-designs/Assembly.md">Markdown 源文档</a> · <a href="/robo-si-results/infra/task-tabletop-assembly-zh.html">任务页面</a></nav><h1 id="assembly">Assembly · 桌面套筒装配：参考解设计</h1>
+<p>已有声明范围内的参考执行见证；本文补齐统一设计说明。本次新增物理运行：0。</p>
+<h2 id="_1">设计思路</h2>
+<p>先用工具支撑装配平台，再安装套筒与盖件，最后撤手保持。支撑建立先于装配施力，末态要求手离开后仍满足装配条件。</p>
+<h2 id="_2">选定参考与范围</h2>
+<p>见证：<strong>layer1_boundary_high</strong>。范围：工具辅助装配，基础第一层。</p>
+<p>8/8 场景、14/14 发布快照检查；第一层已完成并发布。</p>
+<p><a href="/robo-si-results/infra/planning/skill-evidence/sources/99bd9c34b2f68e1169a3007763f5bebe5862f6973c33e1ad8ce8402a8455ff1f.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/Assembly.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p>
+<h2 id="_3">高层计划与关键状态</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>扶稳平台</td>
+<td>Assembly.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>安装套筒</td>
+<td>Assembly.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>安装顶盖</td>
+<td>Assembly.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>最终稳定确认</td>
+<td>Assembly.K04</td>
+<td>S3 → S4</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>基础第一层，平台初始倾斜</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>平台水平低速，工具承托且全部释放稳定 0.5 s</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>套筒正确装配并释放稳定 0.5 s</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>全部装配正确且机器人接触均释放</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>全部释放并稳定 2 s</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_4">低层动作、接触支撑与轨迹对应</h2>
+<p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h3 id="assemblyk01">Assembly.K01 · 取支撑工具、插入平台下并调整</h3>
+<p>入口：基础第一层，平台初始倾斜。出口：平台水平低速，工具承托且全部释放稳定 0.5 s。</p>
+<p>局部检查：工具可插入、接触反力可承重、撤手后不倒；不以机器人扶持替代工具。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly.K01.A01</td>
+<td>抬手避桌、接近工具并夹起</td>
+<td>工具→桌面→手</td>
+<td>抓持与桌面净空</td>
+<td>e0000: episode [0.0, 0.0] s; e0001: episode [5.7, 5.7] s; e0002: episode [9.700000000000001, 9.700000000000001] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K01.A02</td>
+<td>转运到支撑预备位置并下放</td>
+<td>手→工具→桌面</td>
+<td>工具接触与位置反馈</td>
+<td>e0005: episode [19.7, 19.7] s; e0006: episode [19.7, 19.7] s; e0007: episode [20.2, 20.2] s; 另 11 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K01.A03</td>
+<td>清手换姿态，按压平台并推入工具</td>
+<td>平台由机器人暂撑；工具→桌</td>
+<td>平台高度、工具对准与受力</td>
+<td>e0020: episode [27.44, 27.44] s; e0021: episode [28.94, 28.94] s; e0024: episode [33.94, 33.94] s; 另 24 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K01.A04</td>
+<td>撤离按压手，确认工具独立承托</td>
+<td>桌面→工具→平台</td>
+<td>工具支撑、机器人不代撑</td>
+<td>e0053: episode [59.620000000000005, 59.620000000000005] s; e0054: episode [62.42, 62.42] s; e0055: episode [63.92, 63.92] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="assemblyk02">Assembly.K02 · 抓取套筒、孔柱对准、下放</h3>
+<p>入口：工具独立支撑平台且上一阶段已提交。出口：套筒正确装配并释放稳定 0.5 s。</p>
+<p>局部检查：装配轴线、孔柱间隙、插入扫掠和平台抗扰动。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly.K02.A01</td>
+<td>预成形、下降并夹住套筒外壁</td>
+<td>套筒→桌面→手</td>
+<td>指壁接触与抓持</td>
+<td>e0058: episode [68.18, 68.18] s; e0059: episode [68.68, 68.68] s; e0060: episode [71.98, 71.98] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K02.A02</td>
+<td>提起并避开柱顶、对准孔柱</td>
+<td>手持套筒；工具支撑平台</td>
+<td>柱顶净空、孔柱同轴</td>
+<td>e0063: episode [78.08, 78.08] s; e0064: episode [81.08, 81.08] s; e0065: episode [81.08, 81.08] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K02.A03</td>
+<td>下降套入、释放并检查就位</td>
+<td>手→套筒→平台→工具</td>
+<td>插入深度、释放后支撑</td>
+<td>e0067: episode [87.08, 87.08] s; e0068: episode [88.28, 88.28] s; e0069: episode [88.28, 88.28] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="assemblyk03">Assembly.K03 · 抓取顶盖、对准套筒并下放</h3>
+<p>入口：套筒已释放稳定，支撑链有效。出口：全部装配正确且机器人接触均释放。</p>
+<p>局部检查：只在套筒阶段提交后插盖；整体支撑链与几何配合。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly.K03.A01</td>
+<td>整理手臂、接近顶盖并夹持</td>
+<td>顶盖→桌面→手</td>
+<td>手姿态与夹持</td>
+<td>e0072: episode [92.34, 92.34] s; e0073: episode [96.04, 96.04] s; e0074: episode [96.04, 96.04] s; 另 3 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K03.A02</td>
+<td>提起并移动到柱上方</td>
+<td>手持顶盖</td>
+<td>抓持、转运净空</td>
+<td>e0078: episode [106.74000000000001, 106.74000000000001] s; e0079: episode [110.74000000000001, 110.74000000000001] s; e0080: episode [110.74000000000001, 110.74000000000001] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K03.A03</td>
+<td>沿柱下放到套筒上并释放</td>
+<td>手→顶盖→套筒→平台→工具</td>
+<td>顶盖就位、支撑链</td>
+<td>e0081: episode [114.74000000000001, 114.74000000000001] s; e0082: episode [115.54, 115.54] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="assemblyk04">Assembly.K04 · 撤离双手并观察</h3>
+<p>入口：工具和装配件均独立支撑。出口：全部释放并稳定 2 s。</p>
+<p>局部检查：阶段顺序和当前支撑同时有效；不扩展到未发布高层。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly.K04.A01</td>
+<td>释放后撤离双手</td>
+<td>桌面→工具→平台→套筒→顶盖</td>
+<td>手接触消失</td>
+<td>e0083: episode [116.8, 116.8] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K04.A02</td>
+<td>核对顶盖和套筒就位</td>
+<td>完整支撑链独立承重</td>
+<td>姿态、支撑接触</td>
+<td>e0084: episode [118.3, 118.3] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>Assembly.K04.A03</td>
+<td>维持独立静置至装配成功</td>
+<td>完整支撑链保持</td>
+<td>无代撑与最终驻留</td>
+<td>e0085: episode [118.395, 118.395] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_5">尚需核对</h2>
+<p>工具、套筒、顶盖动作及反馈事件已关联；需在物理 trace 核对工具独立承托、松手与最终驻留。</p>
+<p>补建撑并撤手稳定的独立短探针，以及支撑→套筒→盖帽的交接余量。 原四项人工验收关口与独立第二人复现。</p>
+<h2 id="_6">复现与生成入口</h2>
+<ul>
+<li><a href="/robo-si-results/humanoid/g1_tabletop_assembly/README.md">humanoid/g1_tabletop_assembly/README.md</a></li>
+<li><a href="/robo-si-results/humanoid/g1_tabletop_assembly/solution/README.md">humanoid/g1_tabletop_assembly/solution/README.md</a></li>
+</ul>
+<p><a href="https://github.com/wuxiyang1996/robo-si/releases/download/tabletop-20261023/tabletop-20261023.zip">完整参考包</a>。使用包内冻结配置、依赖说明与生成／回放入口；审阅包不替代完整包。</p>
+<p>历史源码说明只提供设计上下文；若与冻结见证冲突，以见证的配置、控制器身份和发布清单为准。设计动作表不等同于已绑定的通用控制器。</p>
+<h2 id="_7">验收与执行边界</h2>
+<p>本文件说明已有参考的设计与证据，不修改旧评分。任务级要求至少一个声明配置内的连续端到端生成见证；高层计划→低层动作、低层动作→轨迹、高层目标→实测终态分别核对。这里的“两两转换”是表示之间的对应，不是任意随机状态下技能可无条件拼接。</p>
+<p>随机实例保留四种结果：有完整成功证据、通过可行性筛查、未确定、检查不通过；筛查通过不写成已证明可解。只在需要执行时生成当前局部轨迹；通用滚动规划和全随机域鲁棒性另列，不是本参考文档的完成前提。</p>
+<p>若接触、支撑或守卫条件不满足，不推进下一动作；保留已有安全支撑并记录失败，仅在已知安全状态下重新观察与局部规划。不得凭事件名推断接触合格，不得将不同检查点的成功片段拼接成连续成功。</p>
+<h2 id="_8">来源与版本</h2>
+<p>来源内容哈希见 <a href="/robo-si-results/infra/reference-designs/catalog.json">catalog.json</a>，对应生成器为 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tools/build_reference_designs.py">build_reference_designs.py</a>。本次只整理设计与证据，不将待审事件关联计作验收通过。</p></main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

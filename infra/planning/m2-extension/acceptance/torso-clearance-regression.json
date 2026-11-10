@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "label": "old-rejected",
+      "source_sha256": "89a19b4494e9909197fd59085ffc09be0ea7a1089d8030537b305838c59270a8",
+      "samples": 105,
+      "min_torso_clearance_m": -0.10889324690232077,
+      "screen_accepted": false,
+      "expected": false
+    },
+    {
+      "label": "light-cleared",
+      "source_sha256": "7fee66fc0e285107d70b55369c05ca6c436b468bcaf451ee99c2da96f82ee70e",
+      "samples": 49,
+      "min_torso_clearance_m": 0.011999911000083428,
+      "screen_accepted": true,
+      "expected": true
+    },
+    {
+      "label": "heavy-cleared",
+      "source_sha256": "24bf95ec09317db623c3e1e45b21176d993cc00ca60827d1dec4488912a51bb3",
+      "samples": 49,
+      "min_torso_clearance_m": 0.011999664375990723,
+      "screen_accepted": true,
+      "expected": true
+    }
+  ],
+  "scope": "Frozen-model sampled kinematics; complements physical contact review, no continuous-sweep guarantee."
+}

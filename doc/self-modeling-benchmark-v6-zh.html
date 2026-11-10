@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embodied Terminal-Bench 研究提案第六版：研究问题、评测 track、执行器与技能沉淀、三层难度、任务进度、实验设计与路线图。" name="description"/>
+<title>研究提案 v6</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a aria-current="page" href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html">English</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">研究提案 · v6</p>
+<h1>coding agent 能不能让机器人<br/><span class="nm">自己想出办法</span>？</h1>
+<p class="lead">Embodied Terminal-Bench 给 agent 一个目标、一具或多具机器人和一个可以交互的物理世界。agent 只凭机器人自己的传感器写代码、做实验、发现物体能怎么用，经过数小时的迭代完成长程任务。v6 保留 v5 的研究框架，吸收了任务设计、验收、沙箱、评分和评测规程的定稿，并更新了各任务和执行器的实际进度。</p>
+<div class="buttons">
+<a class="btn primary" href="#changes">相对 v5 的变化</a>
+<a class="btn" href="#tasks">任务与进度</a>
+<a class="btn" href="/robo-si-results/infra/contribute-zh.html">贡献任务</a>
+<a class="btn" href="/robo-si-results/doc/self-modeling-benchmark-v5-zh.html">v5</a>
+</div>
+<div class="card" id="toc" style="margin-top:18px"><h3>目录</h3>
+<ol class="toc">
+<li><a href="#changes">01 相对 v5 的变化</a></li>
+<li><a href="#thesis">02 问题与范围</a></li>
+<li><a href="#questions">03 三个研究问题</a></li>
+<li><a href="#tracks">04 评测 track</a></li>
+<li><a href="#harness">05 agent、harness 与执行器</a></li>
+<li><a href="#solver">06 执行回退与技能沉淀</a></li>
+<li><a href="#discovery">07 观察与工具用途</a></li>
+<li><a href="#difficulty">08 难度与随机化</a></li>
+<li><a href="#tasks">09 任务与进度</a></li>
+<li><a href="#self-model">10 跨身体与 self-modeling</a></li>
+<li><a href="#verification">11 评分与验证</a></li>
+<li><a href="#budget">12 预算、成本与速度</a></li>
+<li><a href="#experiments">13 实验与基线</a></li>
+<li><a href="#curriculum">14 课程与扩展</a></li>
+<li><a href="#related">15 相关工作</a></li>
+<li><a href="#roadmap">16 路线图与交付边界</a></li>
+</ol></div>
+</div></div>
+<section class="tinted" id="changes"><div class="wrap">
+<p class="kicker">01 · 相对 v5 的变化</p>
+<h2>v6 改了什么</h2>
+<p>左列是 v5 的写法，右列是 v6 的定稿。两者冲突时以 v6 为准；规范细节在各页，本页只链接。</p>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:6.5em">主题</th><th>v5</th><th>v6</th><th style="min-width:9em">详见</th></tr></thead>
+<tbody>
+<tr><td>难度分级</td><td>L0、L0.5、L1、L1.5、L2 五档</td><td>只分三层，逐层叠加、同一种子：只有必要工具 → 加入换个身体才能用的工具 → 加入干扰项</td><td><a href="/robo-si-results/infra/task-design-zh.html#layers">任务设计第 05 节</a></td></tr>
+<tr><td>求解时长与预算</td><td>试跑预算 5 / 15 / 30 分钟；把“快”做成评测指标</td><td>强 agent 要 4 小时以上，不设上限；主预算是仿真步数和 token，墙钟只作上限；耗时作为次要指标报告</td><td><a href="/robo-si-results/infra/protocol-zh.html#budget">评测规程第 01 节</a></td></tr>
+<tr><td>计分</td><td>二值的 ValidSuccess</td><td>按阶段给过程分，回合取峰值；成功 0/1 单独报告</td><td><a href="/robo-si-results/infra/verifier-zh.html#rules">评分与验证第 04 节</a></td></tr>
+<tr><td>人工</td><td>评测时人看视频复核，两位盲评标注异常和新颖解</td><td>评测 agent 全自动；人工只在任务验收时看录像，回答三个问题</td><td><a href="/robo-si-results/infra/acceptance-zh.html#humancheck">任务验收第 05 节</a></td></tr>
+<tr><td>异常处理</td><td>标为待审查</td><td>事先冻结的监视器规则：完整性报警判 VOID；物理异常时该窗口内的阶段分不算；拿不准的保守处理并标记，改版后自动重评</td><td><a href="/robo-si-results/infra/verifier-zh.html#monitors">评分与验证第 06 节</a></td></tr>
+<tr><td>agent 接口</td><td><code>execute(robot, skill, args)</code> 加一组公共原子技能</td><td>8 个 RPC 方法，agent 发自己的关节指令；L1–L3、VLA、IK/FK 只能用自身传感器结果；技能接口可选，只用指定的技能，优先用 agent 自己产生的</td><td><a href="/robo-si-results/infra/sandbox-zh.html#iso">隔离沙箱第 03 节</a></td></tr>
+<tr><td>评分器位置</td><td>Harbor 的隔离 verifier 容器</td><td>至少和 agent 隔离；本机的环境一侧是宿主上的可信 worker，因为 WSL2 容器里只有 llvmpipe 软件渲染</td><td><a href="/robo-si-results/infra/verifier-zh.html#placement">评分与验证第 02 节</a></td></tr>
+<tr><td>重复与统计</td><td>种子数按方差预注册</td><td>每个 agent × 任务独立评测 3 次；每份交付在同一批密封回合上评分 3 次取平均，超出容差标“不可复现”</td><td><a href="/robo-si-results/infra/protocol-zh.html#stats">评测规程第 04 节</a></td></tr>
+<tr><td>新增规范</td><td>只有任务包草案</td><td>十一条硬要求和任务卡；素材策略；初始状态随机化；子任务；任务验收（参考专家解、人工可行性验证、评分器正反验证）；反馈分级；防编造；交付快照；版本与防泄露</td><td><a href="/robo-si-results/infra/task-design-zh.html">任务设计</a>、<a href="/robo-si-results/infra/acceptance-zh.html">任务验收</a>、<a href="/robo-si-results/infra/protocol-zh.html">评测规程</a></td></tr>
+<tr><td>进度</td><td>控制器只在 WSL 的 MuJoCo 里跑过；除 H1 外只有规格</td><td>控制器已在 Genesis 和 Isaac Lab 里运行；9 个任务有了仿真环境或原型；H1 的专家解跑通了两类链路</td><td><a href="#harness">第 05 节</a>、<a href="#tasks">第 09 节</a></td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="thesis"><div class="wrap">
+<p class="kicker">02 · 问题与范围</p>
+<h2>把 Terminal-Bench 搬进物理世界</h2>
+<p>VLA、全身控制器和原子技能提供执行能力；coding agent 负责观察、物理推理、做实验、组合程序和从失败中恢复。目标覆盖人形、机械臂、四足和多机器人；首批任务以人形和多机器人为主。</p>
+<div class="callout"><p><strong>核心假设：</strong>在相同的执行器、观察和预算下，能写和调试程序的 agent 比直接 VLA 或只调用固定技能的 agent 更擅长多步物理问题；可复用的 harness 能把探索成本摊到后续任务上。两点都要实验验证。</p></div>
+<h3>本页和其他各页的分工</h3>
+<ul class="check">
+<li><strong>本页：</strong>研究问题、评测 track、实验设计、任务分类与进度、路线图。</li>
+<li><strong>规范：</strong>任务怎么设计、怎么验收、沙箱怎么隔离、怎么评分、评测怎么组织，各在一页：<a href="/robo-si-results/infra/task-design-zh.html">任务设计</a>、<a href="/robo-si-results/infra/acceptance-zh.html">任务验收</a>、<a href="/robo-si-results/infra/sandbox-zh.html">隔离沙箱</a>、<a href="/robo-si-results/infra/verifier-zh.html">评分与验证</a>、<a href="/robo-si-results/infra/protocol-zh.html">评测规程</a>。</li>
+<li><strong>进度细节：</strong>在<a href="/robo-si-results/infra/status-zh.html">实现状态</a>页。</li>
+<li><strong>边界：</strong>这是研究与工程提案。还没有跑过 LLM agent，也没有正式实验结果。</li>
+</ul>
+</div></section>
+<section class="tinted" id="questions"><div class="wrap">
+<p class="kicker">03 · 三个研究问题</p>
+<h2>三个研究问题，各自怎么证伪</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:9em">问题</th><th>怎么比</th><th>什么结果算否定</th></tr></thead>
+<tbody>
+<tr><td>RQ1 · coding agent 是否帮助复杂机器人任务？</td><td>直接 VLA、同一推理模型的固定技能调用、可编程 agent、能持久修订 harness 的 agent；匹配执行器、传感器、任务和预算，比较有效成功率、恢复率和耗时</td><td>收益只出现在更强的执行器、更多重试或更长的预算下；技能覆盖匹配后，代码组的成功—成本曲线没有改善</td></tr>
+<tr><td>RQ2 · 怎么在沙箱里检验物理推理？</td><td>把决策写成“假设 → 预测 → 探测 → 更新 → 执行”的闭环；比较纯观察、同预算随机探测、有信息量的探测和移除反馈；行动前记录成功概率和约束预测</td><td>解释更完整，但预测校准、探测效率或最终成功没有提升；推理结果依赖隐藏状态泄漏</td></tr>
+<tr><td>RQ3 · self-modeling 是否带来跨身体收益？</td><td>固定世界，改变 reach、夹爪、力矩或移动能力；比较无记忆、等容量一般记忆、显式能力记忆和完整能力信息上界；第 2 层难度在场景里考同一件事</td><td>等容量一般记忆解释了全部收益；self-model 只记住了机器人名称</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:12px">直接 VLA 是系统对照；“代码是否有用”的因果证据来自同模型、同接口的调用—编程消融。</p>
+</div></section>
+<section id="tracks"><div class="wrap">
+<p class="kicker">04 · 评测 track</p>
+<h2>三条 track：求解、复用、轻训练</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:8em">track</th><th>允许什么</th><th>怎么评</th></tr></thead>
+<tbody>
+<tr><td>A · 回合内求解</td><td>固定执行器和任务提供的工具；agent 写代码、做实验，不改权重；每个测试实例清空跨任务记忆</td><td>主 track。开发会话结束后，交付程序在新的密封回合上重跑评分，见<a href="/robo-si-results/infra/protocol-zh.html#snapshots">评测规程第 02 节</a></td></tr>
+<tr><td>B · 构建 harness 后冻结复用</td><td>在开发任务上积累感知封装、技能、参数估计和调度代码；技能只用指定来源，优先 agent 自己产生的 rollout</td><td>隐藏测试前冻结；开发成本和测试成本分开报告，摊销成本 =（开发成本 + N 次测试成本）/ N，注明 N</td></tr>
+<tr><td>C · 轻训练</td><td>预先声明的小型 adapter、校准器或技能微调；公布可训练参数、数据量、更新步数和 GPU 时间</td><td>和零更新对照匹配总预算；单独排名，不和零训练结果混排</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:14px">“零训练”指在本 benchmark 内不更新权重，不表示预训练控制器没有训练成本。持久的代码和技能库变化也算学习，要记版本。不能把完整解法包装成公共技能。</p>
+</div></section>
+<section class="tinted" id="harness"><div class="wrap">
+<p class="kicker">05 · agent、harness 与执行器</p>
+<h2>agent 只看传感器、只发关节指令</h2>
+<p>结构和 v5 一致：agent → 可编辑的 harness → 冻结的执行器 → 可信仿真 → 评分器。v6 把它落成了 H1 的隔离沙箱。</p>
+<ul class="check">
+<li><strong>隔离：</strong>agent 在 Linux 容器里（uid 1000、只读根文件系统、<code>--cap-drop ALL</code>、内部网络），只能通过带令牌的 RPC 和环境一侧通信。8 个方法：<code>info</code>、<code>status</code>、<code>observe</code>、<code>command</code>、<code>command_sequence</code>、<code>declare_infeasible</code>、<code>finish</code>，以及只在开发模式开放的 <code>reset</code>。</li>
+<li><strong>传感器：</strong>只有机载的相机（RGB 和深度）、LiDAR、IMU 和关节读数。Genesis 1.4.3 没有射线传感器，LiDAR 用四个深度相机拼出来。不给坐标、物体位姿、物性、分割图或用途。</li>
+<li><strong>工具：</strong>L1 是 GR00T WBC 的站立和行走；L2 是目标点轨迹规划；L3 是中间点加 IK/FK 求解；任务提供时还有 VLA。输入只能是 agent 自己的传感器结果，agent 也可以全部自己写。</li>
+<li><strong>技能：</strong>技能接口可选。只能用任务指定的技能，以及 agent 自己在开发会话里产生的技能和 rollout；环境一侧按观测摘要核对来源。</li>
+</ul>
+<p>详见<a href="/robo-si-results/infra/sandbox-zh.html#iso">隔离沙箱第 03 节</a>；agent 能拿到哪些反馈见<a href="/robo-si-results/infra/sandbox-zh.html#feedback">隔离沙箱第 05 节</a>。</p>
+<h3>执行器进度（2026-10-16 至 10-19）</h3>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:9em">执行器</th><th>已验证</th><th>未验证</th></tr></thead>
+<tbody>
+<tr><td>GR00T Decoupled WBC、HANDOFF、ULTRA</td><td>从 WSL 的 MuJoCo 迁到 Windows 本机，在 H1 的 Genesis 和 Isaac Lab 场景里做过短时运动测试（<a href="/robo-si-results/controllers/g1_wbc/README.md">控制器说明</a>）</td><td>任务级操作和负载；Isaac 的录像在 Kit/Hydra 初始化时崩溃</td></tr>
+<tr><td>SONIC、GR00T N1.7</td><td>SONIC 站立在 Genesis 和 Isaac Lab 都跑满 5 秒；N1.7 + SONIC 在 Genesis 跑通一次 5 秒的语言蹲起</td><td>搬箱子</td></tr>
+<tr><td>Arena GR00T + Decoupled WBC</td><td>官方搬箱示例完整通过，各 1 个回合：箱子抬起约 16–18 cm，搬约 1.9 m</td><td>稳健的成功率；这是官方微调示例，不是 H1</td></tr>
+<tr><td>L2 / L3 求解器</td><td>在 MuJoCo 运动学副本上做位置 IK、带碰撞检查的 RRT 和中间点拼接，含 G1 双臂规划的冒烟测试（<a href="/robo-si-results/solvers/README.md">求解器说明</a>）</td><td>物理执行：结果里 <code>execution_verified</code> 恒为 false</td></tr>
+<tr><td>Agile 下肢策略</td><td>在两个仿真器里都能行走，H1 的专家解用它走路</td><td>抱着凳子行走会失控</td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section id="solver"><div class="wrap">
+<p class="kicker">06 · 执行回退与技能沉淀</p>
+<h2>技能不够时逐级求解，再把成功的程序沉淀成技能</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:8em">层级</th><th>做什么</th><th>失败时</th></tr></thead>
+<tbody>
+<tr><td>L1 · 调用已有技能</td><td>从冻结的技能库选已验证的技能，检查前置条件、目标范围和终止条件</td><td>在剩余预算内升到 L2</td></tr>
+<tr><td>L2 · 直接求解轨迹</td><td>输入当前状态、目标位姿和自己估计的障碍几何，由求解器搜索轨迹</td><td>返回可观察的诊断，转 L3</td></tr>
+<tr><td>L3 · 编写中间状态</td><td>agent 给出中间点、接触阶段和约束，逐段 IK/FK 求解再拼接</td><td>修改中间点或约束；预算用完就停</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:10px">这里的 L1–L3 是执行回退的层级，和难度的三层是两条独立的轴。</p>
+<h3>沉淀闭环</h3>
+<ol class="steps">
+<li><strong>保存。</strong>成功执行后保存求解代码、参数、状态、动作、接触事件和结果。<span class="out">原任务成功只是候选技能的起点。</span></li>
+<li><strong>参数化。</strong>优先提取求解程序，例如 <code>lift_box(box_pose, box_size, lift_height)</code>，按新参数重新生成运动；只有轨迹时，按接触事件分段成模板。</li>
+<li><strong>验证。</strong>在留出的初始状态、目标位置、箱体尺寸和物性变化上重放，并加扰动。</li>
+<li><strong>注册。</strong>通过验证才按版本登记，写明适用身体、参数范围、前置和终止条件；之后由 L1 直接复用。</li>
+</ol>
+<h3>怎么证明是技能，而不是缓存的轨迹</h3>
+<ul class="check">
+<li>比较固定 L1、L1+L2、L1+L2+L3，以及开、关技能沉淀；加原始轨迹缓存作对照，固定控制器、观测和总预算。</li>
+<li>报告候选技能通过率、未见参数上的成功率、后续复用次数、回退频率和摊销耗时。</li>
+<li>评分回合的初始状态是随机的，单纯回放 rollout 拿不到分。</li>
+</ul>
+<p><strong>进度：</strong>L2/L3 在 MuJoCo 运动学副本上已实现，还没接到物理执行，也还没有技能注册。下一步是 Genesis 原生 planner 或 cuRobo 后端、带姿态和接触约束的求解，以及轨迹跟踪执行器。</p>
+</div></section>
+<section class="tinted" id="discovery"><div class="wrap">
+<p class="kicker">07 · 观察与工具用途</p>
+<h2>不告诉用途，只给机载传感器</h2>
+<p>区分 API 调用和物理工具使用。接口的语义公开；场景里哪些物体能当工具、怎么组合、哪条路线能成，都不告诉 agent。物体用中性 ID，指令只写目标和公开的合规约束，见<a href="/robo-si-results/infra/task-design-zh.html#scene">任务设计第 02 节</a>。</p>
+<ul class="check">
+<li>传感器只用机器人原生或可加装的，型号、安装位姿和噪声写进任务卡，见<a href="/robo-si-results/infra/task-design-zh.html#sensors">任务设计第 08 节</a>。</li>
+<li>接触、力/力矩或触觉是可选扩展，要声明部位和噪声。</li>
+<li>用真值生成的文字描述只能进单列的诊断条件，不进主比较。</li>
+</ul>
+<h3>能力信息轴</h3>
+<p>沿用 v3 和 v5 的 Explicit / Partial / Latent 三种能力信息设置。它是独立的实验轴，和难度三层、传感器组合分开报告：主比较用 Partial，Latent 用于发现诊断，Explicit 给出信息上界。H1 的 Harbor CPU 版已经按这三档实现（<a href="/robo-si-results/benchmarks/harbor/README.md">Harbor 版说明</a>）。</p>
+</div></section>
+<section id="difficulty"><div class="wrap">
+<p class="kicker">08 · 难度与随机化</p>
+<h2>只分三层，逐层叠加</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:5em">层</th><th>场景里有什么</th><th>考什么</th><th>对应 v5</th></tr></thead>
+<tbody>
+<tr><td>第 1 层</td><td>只有必要的工具和物体</td><td>发现用途、安排顺序、执行</td><td>L0</td></tr>
+<tr><td>第 2 层</td><td>再加入这台机器人用不了、换个身体就能用的工具或物体</td><td>自我建模：知道自己能做什么、不能做什么</td><td>新增，对应 RQ3</td></tr>
+<tr><td>第 3 层</td><td>再加入干扰项：超出能力范围的、实际不可用的、看着有用但会失败的</td><td>做实验、排除选项</td><td>L0.5、L1、L1.5</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:14px">v5 的 L2（夹爪弱化、传感器退化、动作噪声）不再单独成层：噪声和物性变化并入初始状态随机化，故障作为单独标注的鲁棒性变体。</p>
+<ul class="check">
+<li><strong>随机化：</strong>能随机的都随机，但不能破坏可解性、不能打开捷径、不能让解题关键只能靠真值得知，见<a href="/robo-si-results/infra/task-design-zh.html#random">任务设计第 04 节</a>。</li>
+<li><strong>子任务：</strong>用状态定义完成条件，有能单独开始的起始状态，供课程学习和诊断；子任务场景不给被评测的 agent，见<a href="/robo-si-results/infra/task-design-zh.html#subtasks">任务设计第 06 节</a>。</li>
+<li><strong>难度目标：</strong>强 coding agent 要 4 小时以上的迭代。难度试跑时如果第 3 层 4 小时内就被解出，就加深依赖、扩大随机范围或换更难分辨的干扰项。</li>
+</ul>
+</div></section>
+<section class="tinted" id="tasks"><div class="wrap">
+<p class="kicker">09 · 任务与进度</p>
+<h2>10 个任务定义，5 个目标类别</h2>
+<p>主分类按任务目标；机制、身体和实现状态是独立的标签。v5 的 Version 字母不再使用，对应关系是：A = M1、B = M2、C = H2、D = H3、E = H4、F = M3、G = H5、H = M4。每个任务的目标、可交互物体和“要发现什么”见<a href="/robo-si-results/infra/contribute-zh.html#tasks">首页第 02 节</a>。</p>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:6em">目标类别</th><th style="min-width:9em">任务</th><th>身体</th><th>仿真环境</th><th>解法进度</th></tr></thead>
+<tbody>
+<tr><td>高处取物</td><td><a href="/robo-si-results/humanoid/g1_support_retrieval/README.md">H1 借助支撑物取物</a></td><td>G1</td><td>Genesis + Isaac Lab，已接入沙箱</td><td><span class="pill warn">部分跑通</span> 专家解 direct 类 10/10；借助凳子的整条链路跑通 3 次（凳子事先摆在柜前，箱子先放到下层再从地上取起）；凳子从别处搬来还没解决；都还没交给评分器判分</td></tr>
+<tr><td>高处取物</td><td>M1 人形 + 移动抓取</td><td>G1 + 移动抓取机器人</td><td>无</td><td><span class="pill no">提案</span></td></tr>
+<tr><td>高处取物</td><td><a href="/robo-si-results/multi_robot/g1_improvised_robot_tool_use/README.md">M3 把机器人当工具</a></td><td>G1 + 带臂轮式机器人</td><td>Genesis 场景原型和评分接口</td><td><span class="pill no">未验证</span></td></tr>
+<tr><td>重物 / 长物运输</td><td><a href="/robo-si-results/humanoid/g1_cart_assisted_transport/README.md">H2 借助推车搬重物</a></td><td>G1</td><td>Genesis + Isaac Lab</td><td><span class="pill no">未验证</span> 有物理候选 rollout，不是成功示范</td></tr>
+<tr><td>重物 / 长物运输</td><td><a href="/robo-si-results/humanoid/g1_lever_assisted_transport/README.md">H5 借助杠杆搬重物</a></td><td>G1</td><td>Genesis + Isaac Lab</td><td><span class="pill no">未验证</span> 有候选实验</td></tr>
+<tr><td>重物 / 长物运输</td><td><a href="/robo-si-results/multi_robot/dual_g1_long_object_transport/README.md">M2 双 G1 搬长箱</a></td><td>2 × G1</td><td>Genesis（CPU）</td><td><span class="pill warn">轻量配置跑通</span> 0.25 kg、2.25 m 的长箱：地面起箱、L 形走廊搬运和协同放下已验证；原规格的重箱未验证</td></tr>
+<tr><td>重物 / 长物运输</td><td><a href="/robo-si-results/multi_robot/dual_quadruped_cooperative_transport/README.md">M4 四足协同拖运</a></td><td>2 × Go1 / Go2</td><td>Genesis 场景原型和评分接口</td><td><span class="pill no">未验证</span></td></tr>
+<tr><td>动态障碍</td><td><a href="/robo-si-results/humanoid/g1_self_closing_door/README.md">H3 自动回弹门</a></td><td>G1</td><td>Genesis + Isaac Lab</td><td><span class="pill no">未验证</span></td></tr>
+<tr><td>通路搭建</td><td><a href="/robo-si-results/humanoid/g1_ramp_bridge_construction/README.md">H4 斜坡 / 桥</a></td><td>G1</td><td>Genesis 场景配置和轨迹检查</td><td><span class="pill no">未验证</span></td></tr>
+<tr><td>负重上下楼</td><td><a href="/robo-si-results/humanoid/g1_box_stair_transport/README.md">H6 上下楼梯并在地面放箱</a></td><td>G1</td><td>Genesis 任务包、密封生成器、传感器/动作沙箱与离线复核</td><td><span class="pill no">未验证</span> 有完整 IK/FK 几何参考；完整动力学执行与验收待完成</td></tr>
+</tbody>
+</table></div>
+<p class="muted" style="margin-top:12px">状态以 2026-10-19 各任务目录的 README 和运行记录为准。按验收标准（三层全链路、人工可行性验证、评分器正反验证）可以入库的任务还没有。H1 的 Harbor CPU 版是技能层模型，不另计物理任务；控制器也不计作任务。</p>
+</div></section>
+<section id="self-model"><div class="wrap">
+<p class="kicker">10 · 跨身体与 self-modeling</p>
+<h2>固定世界，改变能力</h2>
+<p>目标、世界、资源和预算固定，只干预身体、末端执行器或已验证的控制器能力。看 agent 能否从证据形成对自身和世界的判断，再据此选资源、选策略。</p>
+<ul class="check">
+<li>能力记忆记录“在什么条件下能做什么”，包括预测、置信度、证据来源和失效条件。一次失败不能直接判为身体极限：质量、摩擦、感知和控制误差都是竞争的解释。</li>
+<li>干净干预：一次只改 reach、夹爪开口、力矩或移动能力之一，真实修改几何、动力学或控制配置并重新验证，不只改描述字段。</li>
+<li>四类对照：必须换路线、只改变效率偏好、同一路线仍然有效、没有可行解（应声明不可行）。</li>
+<li>第 2 层难度是同一思路的场景版：身体不变，场景里放入换个身体才能用的工具，考 agent 是否知道自己用不了。</li>
+<li>泛化按身体家族、物体几何、机制和布局分组留出；同时保留只改世界的干预，检验 agent 把失败归因给自身还是环境。</li>
+</ul>
+</div></section>
+<section class="tinted" id="verification"><div class="wrap">
+<p class="kicker">11 · 评分与验证</p>
+<h2>分数只来自环境一侧的记录</h2>
+<ul class="check">
+<li>评分器在环境一侧，读可信的状态日志，不读 agent 的自述；agent 拿不到分数，见<a href="/robo-si-results/infra/verifier-zh.html#placement">评分与验证第 02 节</a>。</li>
+<li>阶段判据要有接触证据、物体身份、保持时长和静止条件；按阶段给过程分，回合取峰值，成功 0/1 单独报告，见<a href="/robo-si-results/infra/verifier-zh.html#predicates">评分与验证第 03 节</a>和<a href="/robo-si-results/infra/verifier-zh.html#rules">评分与验证第 04 节</a>。</li>
+<li>成功仍定义为 ValidSuccess = 达到目标 ∧ 满足合约 ∧ 完整性通过；完整性报警直接判 VOID。</li>
+<li>监视器规则事先冻结，评测全自动；人工只在任务验收时看录像，检查任务和评分器本身，见<a href="/robo-si-results/infra/acceptance-zh.html#humancheck">任务验收第 05 节</a>。</li>
+<li>工具理解不从最终成功反推：在诊断回合记录用途和属性预测，再移走工具、交换物性或改变身体，看计划和执行是否跟着变。诊断只用于研究分析，不进主分。</li>
+</ul>
+</div></section>
+<section id="budget"><div class="wrap">
+<p class="kicker">12 · 预算、成本与速度</p>
+<h2>预算按仿真步数和 token 计，耗时只报告</h2>
+<ul class="check">
+<li><strong>主预算：</strong>仿真步数由环境一侧计数，token 由可信代理计量；观测次数和 reset 次数另有上限；墙钟只用来防卡死，见<a href="/robo-si-results/infra/protocol-zh.html#budget">评测规程第 01 节</a>。</li>
+<li><strong>预算曲线：</strong>按预算点给交付快照评分，画成功—预算曲线；不在每个预算档重新挑最好的种子，见<a href="/robo-si-results/infra/protocol-zh.html#snapshots">评测规程第 02 节</a>。</li>
+<li><strong>速度：</strong>作为次要指标报告冷启动时间、预热后求解时间、仿真时间和总计算成本；Track B 报摊销成本并注明 N；多机器人并行省下的墙钟和增加的总工作量一起报。</li>
+<li><strong>先测底座：</strong>先测执行器闭环上限、仿真吞吐、模型调用等待和重置成本，再决定可负担的任务规模。H1 在 GPU 被占用时每个控制步约 0.67 s，这也是墙钟不适合做主预算的原因。</li>
+</ul>
+</div></section>
+<section class="tinted" id="experiments"><div class="wrap">
+<p class="kicker">13 · 实验与基线</p>
+<h2>先验证 coding 的收益，再扩展</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:9em">条件</th><th>是什么</th><th>回答什么</th></tr></thead>
+<tbody>
+<tr><td>B0 · Direct VLA</td><td>同一冻结 VLA，输入目标，正常反馈</td><td>端到端系统对照；不支持的身体单列</td></tr>
+<tr><td>B1 · 固定技能 agent</td><td>同一推理模型、感知和技能，只逐步调用，不写任意程序</td><td>RQ1 的消融对照</td></tr>
+<tr><td>B2 · coding agent</td><td>相同接口，允许代码、循环、分支和调试</td><td>Track A 的回合内收益</td></tr>
+<tr><td>B3 · 可复用 harness</td><td>B2 加上开发阶段的跨任务技能积累，然后冻结</td><td>Track B 的开发收益和摊销收益</td></tr>
+<tr><td>空操作</td><td>什么都不做</td><td>下锚点，必须得 0</td></tr>
+<tr><td>参考专家解</td><td>读真值的专家解</td><td>上锚点；证明可解、验证评分器</td></tr>
+<tr><td>简单脚本（可选）</td><td>只用任务提供的技能、不做感知的固定脚本</td><td>任务是不是靠固定套路就能拿分</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:14px">标准 agent 配置（版本固定的 coding agent 加默认提示词）就是 B2 的一个实例，也是贡献流程里难度试跑用的配置，见<a href="/robo-si-results/infra/protocol-zh.html#baselines">评测规程第 05 节</a>。</p>
+<ul class="check">
+<li><strong>重复：</strong>每个 agent × 任务独立评测 3 次；每份交付在同一批密封回合上评分 3 次取平均；按任务和场景簇给配对的 bootstrap 置信区间，见<a href="/robo-si-results/infra/protocol-zh.html#stats">评测规程第 04 节</a>。</li>
+<li><strong>消融：</strong>RQ2 在 B2 上做纯观察、随机探测、有信息量的探测和移除反馈；RQ3 比较无记忆、一般记忆和 self-model，限制同样的存储、token 和试验预算。</li>
+<li><strong>决策规则：</strong>脚本都不能稳定执行，先修执行器；coding 在匹配预算下没有改善有效成功，先分析失败和代价，不靠增加任务数量撑主张；收益只来自见过的路线，就加机制和身体的留出，而不是扩大同分布变体。</li>
+</ul>
+</div></section>
+<section id="curriculum"><div class="wrap">
+<p class="kicker">14 · 课程与扩展</p>
+<h2>子任务支撑课程，新任务必须过验收</h2>
+<ul class="check">
+<li><strong>课程：</strong>原子技能基线 → 单个用途（支撑、推、延伸 reach）→ 组合前置条件 → 冻结后完成最终目标 → 下一轮开发。子任务的起始场景让每一步都能单独练、单独测。</li>
+<li><strong>RSI-WM：</strong>把“选实验 → 拿物理证据 → 修订 harness → 改善最终任务”作为课程闭环；世界模型可以是结构化信念或有界预测器，不强制训练视频世界模型。</li>
+<li><strong>数据飞轮：</strong>要测收益，包括有效轨迹率、行为多样性、每条有效轨迹的成本，以及同等数据量下的下游成功率；扩增的轨迹全部重新验证。</li>
+<li><strong>自动生成任务：</strong>可以提候选，但必须走完<a href="/robo-si-results/infra/acceptance-zh.html">任务验收</a>才能入库。</li>
+<li><strong>扩展项：</strong>可变形物体（布、袋、绳）需要匹配的仿真、控制器和判据，首批不依赖。</li>
+</ul>
+</div></section>
+<section class="tinted" id="related"><div class="wrap">
+<p class="kicker">15 · 相关工作</p>
+<h2>承认重叠，贡献待验证</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="min-width:8em">工作</th><th>本项目借鉴或比较</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.tbench.ai/">Terminal-Bench</a></td><td>借鉴目标驱动的 agent 评测形式、隔离容器、oracle 与空操作锚点；这里由物理执行决定成败，另计身体和控制器的限制</td></tr>
+<tr><td><a href="https://embodiedswe.github.io/">EmbodiedSWE</a></td><td>已覆盖长程机器人 coding-agent 求解、跨身体迁移、数据扩增与任务生成；本项目重点在预算受限的技能 harness、不标用途的工具组合和能力干预</td></tr>
+<tr><td><a href="https://github.com/RLE-Bench/RLE-Bench">RLE-Bench</a></td><td>九个任务族，已有 reusable harness 任务；本项目限定零训练或轻训练、对齐执行器，并检查工具发现、身体干预和成本曲线</td></tr>
+<tr><td><a href="https://arxiv.org/abs/2310.13065">RoboTool</a></td><td>用语言模型生成控制代码做创造性工具使用；本项目系统地隐藏用途，加入干扰项、物性变化和跨身体配对</td></tr>
+<tr><td><a href="https://github.com/UMass-Embodied-AGI/RoboWits">RoboWits</a></td><td>双臂创造性问题求解与工具使用；本项目单独测 coding 和可复用 harness 的作用</td></tr>
+<tr><td><a href="https://enpire-research.github.io/">ENPIRE</a></td><td>reset、rollout、验证、策略改进的迭代闭环；本项目聚焦冻结执行器和受限的开发成本</td></tr>
+<tr><td><a href="https://research.nvidia.com/labs/gear/aspire/">ASPIRE</a></td><td>从执行轨迹诊断并修复控制程序，积累技能库；本项目检验课程和技能记忆在未见身体和物性上的收益，并计入全部开发和推理成本</td></tr>
+</tbody>
+</table></div>
+<p style="margin-top:14px">和 Terminal-Bench、EmbodiedSWE 的逐项对照见<a href="/robo-si-results/infra/glossary-zh.html#refs">术语与参考第 03 节</a>。拟议贡献：匹配执行器下的 coding 效果；不提示用途的物理工具发现；受控身体和世界变化中的自我建模；可审计的有效解与漏洞区分；预算明确的课程与复用。每一项都要实证，不作“首次”的主张。</p>
+</div></section>
+<section id="roadmap"><div class="wrap">
+<p class="kicker">16 · 路线图与交付边界</p>
+<h2>做到哪了，下一步做什么</h2>
+<ol class="steps">
+<li><strong>G0 · 复现与选型。</strong>三套 WBC、SONIC 和 N1.7 在本机仿真里跑通短测；L2/L3 求解器已实现。<span class="out">未完成：搬箱级的操作能力还只有官方示例。</span></li>
+<li><strong>G1 · 可信桥接。</strong>H1 的隔离沙箱已实现：逃逸探针、传感器几何、检查点恢复和评分模式都用脚本 agent 验证过。<span class="out">未完成：还没有跑过 LLM agent；评分和监视的待办见实现状态页。</span></li>
+<li><strong>G2 · 可执行任务。</strong>H1 优先：direct 类专家解 10/10，借助凳子的链路跑通 3 次；M2 轻量配置跑通。<span class="out">下一步：H1 按三层重组场景、解决搬凳子、走完验收；其余任务先做参考专家解。</span></li>
+<li><strong>G3 · 最小对照。</strong>跑 B0–B3 和基线，给出预算曲线、失败归因和执行器覆盖；先回答 RQ1，再做 RQ2 和 RQ3。</li>
+<li><strong>G4 · 课程与泛化。</strong>加入身体和末端执行器的变化、冻结的技能库和机制留出，检验数据收益；更多身体、可变形物体随后逐项加入。</li>
+</ol>
+<p style="margin-top:18px">v6 交付的是这份中英文提案和各页的规范。还没有训练模型，也没有运行本 benchmark 的正式实验；公开材料要区分设计目标、实现覆盖和测得结果。</p>
+</div></section>
+<!-- m2-six-configurations:start --><section id="m2-six-configurations"><h2>M2 · 长物协作搬运 · 六个核心配置</h2><p>保留一个 M2 任务族：M2-1 双 G1 轻载、M2-2 G1 + Stretch 轻载、M2-3 双 G1 重载、M2-4 G1 + Stretch 重载机制选择、M2-5 双 G1 清障搬运、M2-6 同场景三台 G1 分工。原固定配置参考属于 M2-1；新运行单独记录在任务页。当前实现绑定 Stretch 3 SE3/DW3/SG3，重载分界仍待筛查。</p><p><a href="m2-task-family.html">完整任务描述与验收条件</a> · <a href="../infra/task-m2-zh.html#m2-family">任务网页</a></p></section><!-- m2-six-configurations:end --></main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · 研究提案 v6 · 2026-10-19 · <a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html" hreflang="en" lang="en">English</a> · <a href="/robo-si-results/doc/self-modeling-benchmark-v5-zh.html">v5</a> · <a href="/robo-si-results/infra/contribute-zh.html">首页</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body>
+</html>

@@ -1,0 +1,85 @@
+{
+  "schema": "h1-high-scene-sensors/6",
+  "profile": "layer1_high_fixed",
+  "seed": 2,
+  "mode": "dev",
+  "scope": "Geometry only at a physically achieved development checkpoint. No new task run, nominal-pose coverage, target-visibility or perception-provenance claim.",
+  "restoration": {
+    "source": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_10\\runs\\compact10-standup-02\\trusted_recording",
+    "snapshot_time_s": 25.0,
+    "max_qpos_error": 0.0,
+    "max_qvel_error": 0.0,
+    "source_safe": true,
+    "new_physics_steps": 0
+  },
+  "simulation_seconds": 0.0,
+  "world_record": "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_15\\high_scene_sensors_v6_world",
+  "sources": {
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\check_high_scene_sensors_v6.py": "53cc1ec4e68315cf971ff65d3be74a045c693e07602f3c21c9ad3f105ba98d74",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_15\\workspace\\infra\\sandbox\\sensors.py": "89b8512de013ea6576a0df463854c2f5f5c50e6bb121fc386933a083a4942ff4",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_15\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\trusted\\world.py": "efbd1dc4d3e02c81053fbd3e8813f967e4bb23ad10dff6c322a8aebb300c65ef",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_15\\workspace\\humanoid\\g1_support_retrieval\\relay_env.py": "fa112dae53d24d5bee5c385b3ccf4d4b93112747b7c7455e084cd31db74b1606",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_15\\workspace\\humanoid\\g1_support_retrieval\\relay_spec.py": "0f90e11c6fd916f9190dd819be6434866d1267728779b6da2ddd0ae9bae4ff62",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_15\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\tests\\check_sensors_gate.py": "aa7d648e2876d977535fc0f9b47c9094a8ca8c2eafb05ea33f39ef2fcecf8e96",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_15\\workspace\\humanoid\\g1_support_retrieval\\sandbox\\trusted\\statelog.py": "e09f7780e017f18c983a232be4a1ec2ba1b7ae20869aa69fbb0c1bd7aa21799f",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_10\\runs\\compact10-standup-02\\trusted_recording\\verdict.json": "e2a1ab76b0ed74714e2eea8c5b64d750eae432ff8f743c28aa79eff4e0541f8e",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_10\\runs\\compact10-standup-02\\trusted_recording\\recording.json": "cac74c0fdf216f08653e34136544c53b5207953ad2be740e9cd2502ff6e08dcc",
+    "C:\\Users\\wuxiy\\rsi_releases\\h1_layer1_20261024\\candidate_10\\runs\\compact10-standup-02\\trusted_recording\\world_params.npz": "1cf4bd7532d6c7e7f6e50f5e3e8150437d2065b1e4c030df78b066852fa672f1"
+  },
+  "source_unchanged": true,
+  "checks": [
+    {
+      "check": "head_depth.vs_genesis_pointcloud_m.median",
+      "value": 0.00024016876718996777,
+      "bound": 0.003,
+      "passed": true
+    },
+    {
+      "check": "head_depth.vs_genesis_pointcloud_m.p99",
+      "value": 0.0023143275809084417,
+      "bound": 0.01,
+      "passed": true
+    },
+    {
+      "check": "head_depth.floor_abs_z_m.median",
+      "value": 0.0003590860586532296,
+      "bound": 0.003,
+      "passed": true
+    },
+    {
+      "check": "lidar.floor_abs_z_m.median",
+      "value": 0.00013188621865789507,
+      "bound": 0.003,
+      "passed": true
+    },
+    {
+      "check": "lidar.floor_hits",
+      "value": 2935,
+      "bound": ">= 1000",
+      "passed": true
+    }
+  ],
+  "measurements": {
+    "lidar": {
+      "returns": 5707,
+      "rays": 10800,
+      "floor_hits": 2935,
+      "floor_abs_z_m": {
+        "median": 0.00013188621865789507,
+        "p99": 0.009768284086749865
+      }
+    },
+    "head_depth": {
+      "valid_fraction": 1.0,
+      "vs_genesis_pointcloud_m": {
+        "median": 0.00024016876718996777,
+        "p99": 0.0023143275809084417
+      },
+      "floor_abs_z_m": {
+        "median": 0.0003590860586532296,
+        "p99": 0.0030392588862400757
+      }
+    }
+  },
+  "passed": true
+}

@@ -1,0 +1,38 @@
+{
+  "status": "resolved_for_retest",
+  "resolved_violations": [
+    "coupler_overload"
+  ],
+  "evidence": "v2-contact-phase-retest-resolution.json",
+  "failed_case": "centre300-v1-13",
+  "original_failure_retained": true,
+  "scope": "Uses user previously authorized second hardware geometry version; permits only bounded v2 retest, not a claim that overload is physically solved.",
+  "old_geometry_sha256": "cfb7d91e039d0ea67d1f85dbf2ec2f8628281ead9823b2f3c463bc5d7588bd9a",
+  "retest_geometry_sha256": "f2bdd69b9b4e70b4e984fb4f7daa63a1907a156bcc55684895d228339c011aa6",
+  "cause": "Two +/-11.25 degree contact normals amplify conservative norm-sum load; actual295 N fixture caused300.775831 N norm sum at14.105s.",
+  "change": "Ring capsule phase +pi/16 gives a centred flat segment normal aligned with tension; all nominal dimensions/masses/friction/limits unchanged.",
+  "static_evidence": [
+    "cases/centre300-v1-13/overload-diagnosis.json",
+    "design-scratch/ring-phase-static.json",
+    "design-scratch/v2-source-static-validation.json"
+  ],
+  "cpu_tests_passed": 85,
+  "hardware_cpu_tests_passed": 20,
+  "full_task_test_duration_s": 36.507,
+  "mandatory_limits_unchanged": true,
+  "old_300n_case_stays_failed": true,
+  "no_stage_b": true,
+  "allowed_next_cases": [
+    "centre50-v2-14",
+    "centre150-v2-15",
+    "centre300-v2-16"
+  ],
+  "limitations": [
+    "Collinear centred static pattern has no headroom above300 N; transients may still fail.",
+    "At +/-6mm lateral offset, conditional v2 single-contact norm amplification is about1.08239; no universal300 N axial capacity claim.",
+    "Only three Stage A slots remain, so offset/recapture and other missing checks cannot be presumed complete."
+  ],
+  "human_review": "pending",
+  "independent_reproduction": "pending",
+  "admitted": false
+}

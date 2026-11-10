@@ -1,0 +1,86 @@
+{
+  "setting": "DF-04-S",
+  "task_success": true,
+  "status": "full_witness_candidate",
+  "failure": null,
+  "simulated_seconds": 544.9999999905684,
+  "wall_seconds": 3522.9381557970773,
+  "physics_hz": 2000,
+  "trace_hz": 50,
+  "video_fps": 10,
+  "physics_records": 1090000,
+  "video_frames": 5452,
+  "peaks": {
+    "speed": 0.008897857736196826,
+    "angular": 0.2730338631180879,
+    "robot": 8.19646364149088,
+    "table": 3.0882616430840133,
+    "local": 4.665671929874261,
+    "self_contact": 12.78564338430915,
+    "robot_table": 3.8845557565408466
+  },
+  "seen_lift": true,
+  "seen_flip": true,
+  "independent_verification": {
+    "report": "verification.json",
+    "replay_matches": true,
+    "task_success": true
+  },
+  "binding": {
+    "body": "S",
+    "simulation_engine": "MuJoCo",
+    "base": "fixed during episode",
+    "adaptations": [
+      "fixed base at declared placement",
+      "original tendon, finger mimic equality and collision exclusions",
+      "original position actuators; explicit effort caps applied at runtime",
+      "MuJoCo 3.14 compatibility: visual mesh shellinertia moved to mesh inertia=shell"
+    ],
+    "source": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/asset-cache/stretch_mujoco/stretch_mujoco/models/stretch.xml",
+    "source_sha256": "e68303cd05f3fabbe5be4a6c873d076b146b320b40cc56ff2ba32306f6359290",
+    "effort_caps": {
+      "left_wheel_vel": 4.0,
+      "right_wheel_vel": 4.0,
+      "lift": 70.0,
+      "arm": 56.0,
+      "wrist_yaw": 1.9,
+      "wrist_pitch": 10.6,
+      "wrist_roll": 4.1,
+      "gripper": 80.0,
+      "head_pan": 1.5,
+      "head_tilt": 1.9
+    },
+    "degenerate_mesh_shell_inertia": [
+      "link_lift_1"
+    ],
+    "disk_collision_shape": "mesh128",
+    "object_profile": "P1",
+    "geometry": "solid cylinder",
+    "physics_dt": 0.0005,
+    "object_mass": 0.12,
+    "object_com": [
+      -7.902165904554482e-19,
+      -4.776420280086264e-18,
+      1.3170276507590803e-20
+    ],
+    "mujoco": "3.14.0"
+  },
+  "policy_state_writes": 0,
+  "object_attachment": false,
+  "source_hashes": {
+    "run.py": "fdbb1c2e52263c229c51653299cfc9b1b25278568ffc22c51e549e48abce4649",
+    "model.py": "6872189c700db2176a2c75cd9f4fdcf0bca25023afb2d5f99d4f9ff22fcc3f94",
+    "wrench.py": "3619f332040667260483d851a2f3401ac544bac02232e9fdf8dbec8e54c0cbb0",
+    "reference_interface.py": "cabf18c44a0bd87ba174ff2243075132bbcc02979addf527f106b0e1d72445e2",
+    "plan.json": "edb3d2727dadf88347fc3b94bb042f792c823246f31d9c46bcafbf0b06a474e5",
+    "scene.xml": "e5602b402ad3f4df1c2150f89f7e112102fd56c8ddee985b79f2de65948a634a",
+    "sg3-expert-prefix-v1.npz": "69daf57113c41f51af63ddbd25a02a250b5ae5e1b0df84725e505d22fa14b85d",
+    "sg3-expert-prefix-v1.json": "5af10e475f87cd3a010e1c8ea34bf0df183c67c6b8bc530482a9267637fc51d3"
+  },
+  "limitations": [
+    "Privileged development expert; no public-agent score",
+    "MuJoCo extension protocol; original Genesis evidence is separate",
+    "No comparison success inferred from a failed or single-body attempt"
+  ],
+  "policy_scope": "Fixed nominal reference prefix plus online terminal withdrawal; not a generalizing closed-loop policy"
+}

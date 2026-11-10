@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>M4 多机器人牵引任务族 · 执行证据</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>
+
+.wrap{max-width:1160px}.hero h1{font-size:clamp(32px,5vw,60px)}.hero{text-align:left}.hero .lead{margin-left:0;max-width:900px}.cards{grid-template-columns:repeat(4,1fr)}
+
+.vgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.stages{grid-template-columns:repeat(3,minmax(0,1fr))}.vcard{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+
+.vcard img,.vcard video{display:block;width:100%;height:auto;background:#152330}.vcard figcaption{padding:15px 18px;font-weight:600}.vcard figcaption span{display:block;color:var(--ink3);font-size:13px;font-weight:400;margin-top:5px}
+
+.heroimage{display:block;width:100%;border-radius:16px;margin-top:30px}.badge{display:inline-block;border-radius:24px;padding:6px 12px;background:var(--ok-soft);color:var(--ok);font-size:13px}.pass{color:var(--ok);white-space:nowrap}.note{border-left:3px solid var(--accent);padding:16px 22px;background:var(--panel);margin:22px 0}.toc{display:flex;flex-wrap:wrap;gap:12px 24px;list-style:none;padding:0}.small{font-size:13px;color:var(--ink3)}summary{cursor:pointer}details p{font-size:13px;overflow-wrap:anywhere}td{vertical-align:top}button.seek{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:9px 13px;cursor:pointer;font:inherit}button.seek:hover{border-color:var(--accent)}.seekbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.nav .wrap{justify-content:space-between}.nav a{white-space:normal}
+
+@media(max-width:720px){.vgrid,.stages{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.nav{position:static}.nav .wrap{flex-wrap:wrap}.hero{padding-top:32px}th,td{min-width:95px}.heroimage{margin-top:18px}}
+
+@media print{.nav,.seekbar,video{display:none}.vcard{break-inside:avoid}.hero{padding:20px 0}section{padding:25px 0}details p{display:block}}
+
+small code{overflow-wrap:anywhere;word-break:break-word}</style><meta content="M4 双四足搬运 · 预连接参考版本 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><a class="skip-link" href="#main">跳到正文</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/index.html">Embodied Terminal-Bench</a><nav><a href="#m4-autonomous">自主连接进度</a><a href="#videos">录像</a><a href="#evidence">证据</a><a href="#limits">范围与待办</a><a href="/robo-si-results/infra/task-m4-en.html">English</a></nav></div></header>
+<main id="main"><!-- m4-autonomous:start --><section id="m4-autonomous"><div class="wrap"><h2>自主连接与工具发现：物理验证进度</h2><p>已保留 55 次开发尝试，完整机械循环通过 16 次。<strong>正式 benchmark 尚未准入。</strong></p><table><thead><tr><th>验证范围</th><th>结果</th><th>边界</th></tr></thead><tbody><tr><td>双 Go2：自主连接、转角运输、解锁与驻留</td><td>3 次通过；a47–a49 为 3/3</td><td>同起点冻结重复，152.29–153.20 秒</td></tr><tr><td>单 Go2：拒绝小孔工具、换位、实测选择、继续使用与释放</td><td>3 次通过</td><td>连续场景组件，冻结重复结果见证据页</td></tr><tr><td>发现工具后直接完成配送</td><td>3 次整合见证</td><td>单机机制试验单独验证；两项独立成功不能合并计分</td></tr></tbody></table><p>a52 首次完成整合运输用时 171.175 秒，最大脚端滑移 49.52 mm，接近 50 mm 上限；冻结重复结果单列。保留 400 N 绳索额定值及独立连接器限制。所有成功均经逐步物理记录复核；失败、规划、轨迹和实际仿真录像全部保留。</p><p>仍需完成整合任务的代表性验证、其他 embodiment 的自主参考、完整智能体隔离评分、人工视频签审和第二人复现。<strong>六个主任务不变：M4 为平台／地面承重牵引，M2 为手部承重抬运。</strong></p><p><a href="/robo-si-results/infra/m4-autonomous/review.html">验收复核入口 / Review</a> · <a href="/robo-si-results/infra/m4-autonomous/index.html">执行录像、规划、轨迹与全部失败记录</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-b3291b67181f6818f2131d89-progress.json">JSON</a> · <a href="/robo-si-results/doc/m4-autonomous-progress.md">Doc</a></p></div></section><!-- m4-autonomous:end --><!-- m4-release:start -->
+<section id="m4-release"><div class="wrap"><h2>M4 六变体 · 预连接参考发布 0.1.0-rc1</h2><p>六个变体在最终源码冻结后均通过 seed 29、初始机器人 XY ±0.02 m 的完整物理重跑与离线复核；17 项回归测试通过。每项具备专家解、高／低层计划、计划—轨迹对应、物理监测与实际仿真录像。</p><p><strong>发布范围：预装载、预连接、特权状态反馈；formal_admission=false。M4 是地面／平台承重牵引，与 M2 的手部承重抬运区分。</strong></p><p>所有实例 15 kg、2.6 m 通道；M4-01 地面 μ=0.8，其余 μ=0.3。G1 使用骨盆固定牵引点。下表是最终冻结版的新执行；下方开发记录保留历史配置。</p><table><thead><tr><th>Task</th><th>Embodiment</th><th>Result</th><th>Time (s)</th><th>Slip (mm / 50)</th><th>本次证据</th></tr></thead><tbody><tr><td>M4-01</td><td>2 Go2</td><td>PASS</td><td>45.41</td><td>44.71</td><td><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-ca8d2f7371bf0e363e8bd0b0-motion.mp4">录像</a> · <a href="m4-family/release/M4-01/high-plan.json">高层</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-c698986d49d9ec6c22e96852-low-plan.json">低层</a> · <a href="m4-family/release/M4-01/plan-trajectory.json">阶段对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-8f8d43c8cde4b643d53aac54-trajectory-review.png">轨迹图</a> · <a href="m4-family/release/M4-01/monitor.json">物理检查</a> · <a href="m4-family/release/M4-01/verification.json">复核</a></td></tr><tr><td>M4-02</td><td>1 G1</td><td>PASS</td><td>89.75</td><td>21.79</td><td><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-d53d5cbbf68ffa13a883e725-motion.mp4">录像</a> · <a href="m4-family/release/M4-02/high-plan.json">高层</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层</a> · <a href="m4-family/release/M4-02/plan-trajectory.json">阶段对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-48f652b192c27100e701c76c-trajectory-review.png">轨迹图</a> · <a href="m4-family/release/M4-02/monitor.json">物理检查</a> · <a href="m4-family/release/M4-02/verification.json">复核</a></td></tr><tr><td>M4-03</td><td>3 Go2</td><td>PASS</td><td>54.85</td><td>30.74</td><td><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-03784e3fcbc395582f690cd9-motion.mp4">录像</a> · <a href="m4-family/release/M4-03/high-plan.json">高层</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层</a> · <a href="m4-family/release/M4-03/plan-trajectory.json">阶段对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-7b64717c6136c72bd8442ea7-trajectory-review.png">轨迹图</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-5171d0814fc3524c79acfa70-monitor.json">物理检查</a> · <a href="m4-family/release/M4-03/verification.json">复核</a></td></tr><tr><td>M4-04</td><td>2 G1</td><td>PASS</td><td>42.81</td><td>11.49</td><td><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-bffafe74cee9263877e9982d-motion.mp4">录像</a> · <a href="m4-family/release/M4-04/high-plan.json">高层</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层</a> · <a href="m4-family/release/M4-04/plan-trajectory.json">阶段对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-2edae903df2c8b11deb410af-trajectory-review.png">轨迹图</a> · <a href="m4-family/release/M4-04/monitor.json">物理检查</a> · <a href="m4-family/release/M4-04/verification.json">复核</a></td></tr><tr><td>M4-05</td><td>G1 + 2 Go2</td><td>PASS</td><td>73.99</td><td>20.36</td><td><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-964ee191ffd46126fc24ff80-motion.mp4">录像</a> · <a href="m4-family/release/M4-05/high-plan.json">高层</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层</a> · <a href="m4-family/release/M4-05/plan-trajectory.json">阶段对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-59eb38bf6ad29ce2823d1e8d-trajectory-review.png">轨迹图</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-afff473566fa17eaa573abbe-monitor.json">物理检查</a> · <a href="m4-family/release/M4-05/verification.json">复核</a></td></tr><tr><td>M4-06</td><td>4 Go2</td><td>PASS</td><td>82.61</td><td>33.35</td><td><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-5d989e08268d5a15830d10b8-motion.mp4">录像</a> · <a href="m4-family/release/M4-06/high-plan.json">高层</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层</a> · <a href="m4-family/release/M4-06/plan-trajectory.json">阶段对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-f87e467eefd6224141b303b2-trajectory-review.png">轨迹图</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-23ff0aed9e65a51cf8c29612-monitor.json">物理检查</a> · <a href="m4-family/release/M4-06/verification.json">复核</a></td></tr></tbody></table><p>四 Go2 旧控制器的 seed 17 超过 50 mm 滑移上限；失败已保留。最终版降低平移／转弯速度，在原始初态及 seed 1、2、17、29 通过，物理阈值不变。单个冻结后 seed 和有限调试样本不代表泛化成功率。</p><p>匹配条件下，1、2、3 Go2 均成功：当前 15 kg 实例不能证明多机必要性。静止负例未到目标且未被误判成功。完整历史含初始化失败和物理失败。</p><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/m4-family-runtime.zip">运行源码／资源包</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/m4-release-evidence.zip">本次全部执行证据</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/m4-development-history.zip">完整开发历史</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/SHA256SUMS.json">SHA-256 清单</a></p><p>下载沿用私有数据集权限；网页可公开查看。</p><pre><code>python verify_package.py
+python -m unittest m4_family.test_family -v
+PYOPENGL_PLATFORM=egl python -m m4_family.release_run --task M4-06 --out outputs/M4-06 --video --seed 29 --jitter .02
+python -m m4_family.verify outputs/M4-06</code></pre><p>先解压运行包并进入 m4-family-runtime；使用 ENVIRONMENT.json 记录的环境。过程退出正常不代表任务成功，须检查 reference_success。完整轨迹在证据包中。独立目录使用同一已安装环境，不是第二人复现；手抓、工具发现、自主连接和正式准入仍未验证。</p><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-76beed4e70db9fe1136c25c2-release-report.json">完整发布检查与失败清单</a> · <a href="m4-family/release-protocol.json">接口与评测协议</a> · <a href="../doc/m4-family-release-0.1.0-rc1.md">发布文档</a></p></div></section>
+<!-- m4-release:end --><!-- m4-family:start -->
+<section id="m4-family"><div class="wrap">
+<h2>M4 任务族：6 个主变体</h2>
+<p>2026-10-28 设计更新。统一场景为“起步 → 直道 → L 形转角 → 目标停稳”，每种 embodiment 一个主变体。负载、摩擦、通道宽度、工具配置和随机种子作为实例参数，不重复计数。</p>
+<p><strong>本轮已实现 6 个变体的专家候选与执行监测；其中 6/6 已有固定配置完整见证并通过离线复核。原双 Go2 发布证据保留；当前结果、负载范围及失败记录见开发执行区。所有变体均未正式准入。</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">编号</th><th scope="col">Embodiment</th><th scope="col">场景与机制</th><th scope="col">核心测试</th><th scope="col">优先级与状态</th></tr></thead>
+<tbody>
+<tr data-m4-variant="M4-01"><td>M4-01</td><td>2× Go2</td><td>双绳预连接货台，通过 L 通道；沿用 base/hard</td><td>双机张力协调、内外侧转弯</td><td>基线；已实现；15 kg / 2.6 m 固定参考通过 · <a href="#m4-01-execution">执行证据</a></td></tr>
+<tr data-m4-variant="M4-02"><td>M4-02</td><td>1× G1</td><td>通过躯干接口或手部牵引接口拖运货台，通过 L 通道</td><td>自身牵引能力、受拉平衡、接口选择</td><td>P0；已实现；15.0 kg / 2.6 m 固定参考通过 · <a href="#m4-02-execution">执行证据</a></td></tr>
+<tr data-m4-variant="M4-03"><td>M4-03</td><td>3× Go2</td><td>三点牵引通过 L 通道，第三台可辅助转向</td><td>第三台的牵引／转向收益与协作成本</td><td>P0；已实现；15 kg / 2.6 m 固定参考通过 · <a href="#m4-03-execution">执行证据</a></td></tr>
+<tr data-m4-variant="M4-04"><td>M4-04</td><td>2× G1</td><td>双人形共同牵引地面支撑的货台，通过 L 通道</td><td>非均匀受力分配、同步行走和转向</td><td>P1；已实现；15.0 kg / 2.6 m 固定参考通过 · <a href="#m4-04-execution">执行证据</a></td></tr>
+<tr data-m4-variant="M4-05"><td>M4-05</td><td>G1 + 2× Go2</td><td>Go2 主牵引，G1 辅助转向或操作经过验证的牵引接口</td><td>异构角色分配、团队选择与受阻恢复</td><td>P1；已实现；15 kg / 2.6 m 固定参考通过 · <a href="#m4-05-execution">执行证据</a></td></tr>
+<tr data-m4-variant="M4-06"><td>M4-06</td><td>4× Go2</td><td>四点牵引通过受限 L 通道</td><td>多机队形、绳索干涉与规模扩展</td><td>P2；已实现；15 kg / 2.6 m 固定参考通过 · <a href="#m4-06-execution">执行证据</a></td></tr>
+</tbody></table></div>
+<h3>与 M2 的边界</h3>
+<p><a href="task-m2-zh.html">M2</a> 由机器人通过手部接触承托货物，重点是合抬、抓持保持、载荷分配与同步下放；M4 由地面通过货台等支撑货物，机器人提供牵引或转向作用，重点是张力、滑移和牵引几何。双 G1 抬箱或抬支架运输归 M2；双 G1 拉动地面支撑的货台归 M4。</p>
+<h3>合并规则与开发顺序</h3>
+<ul><li>直线牵引与启动阻力测试并入能力探针；单 Go2 作为 M4-01／03 的能力对照，不新增主变体。</li><li>原 base/hard 保留各自配置与结果，合计归入 M4-01。工具选择、团队选择、能力不对称和受阻恢复作为配置或评测条件。</li><li>首批推进 M4-01 回归、M4-02 单 G1 与 M4-03 三 Go2；M4-04／05 为 P1，M4-06 为 P2。</li><li>首版采用预装载、预连接。手部真实抓握、工具操作、自主连接与解绑分别验证；固定绑定不能算抓握成功，改变连接状态不能替代物理操作。</li></ul>
+<p>单机尝试失败不能证明协作必需；三机某种队形失败不能证明所有三机策略不可行。第三台可闲置时，评测是否值得调用。表中角色是作者侧候选设计，不向评测 agent 预告最优分工。</p>
+<p>保留原配置的 400 N 绳索额定值、50 mm 滑移约束与目标驻留判据；G1 接口和双足监测另验，150 N 自主连接器台架结果不与原牵引参考混用。</p>
+<p><a href="../doc/m4-task-family.md">完整任务清单与验收待办</a> · <a href="../doc/self-modeling-benchmark-v6-zh.html#m4-family">v6 提案中的任务族说明</a></p>
+</div></section>
+<!-- m4-family:end --><!-- m4-execution:start -->
+<section id="m4-execution"><div class="wrap"><h2>开发阶段参考与历史证据</h2><p>2026-10-28：6 个主变体中，6 个已有本轮固定配置的完整参考见证并通过离线复核。其余保留部分执行或失败记录；均未正式准入。</p><p>监测 v2 显式记录限幅前／后关节目标，并在首个完整 0.5 秒窗口判定平均支撑力；几何支撑从第一步检查。早期监测记录不改判。50 mm 滑移、400 N 绳索额定值和 10 mm 连接漂移限制保持。</p><p>高层流程：稳定与张紧 → 直道牵引 → 转角 → 目标区 → 松绳与驻留。低层使用逐机器人路径／张力反馈和冻结权重的行走策略／声明的关节目标补偿；轨迹文件对应各阶段的实际时间区间。当前人形使用骨盆固定接口，尚未验证真实手部抓握或工具操作；多机成功不构成团队必要性证据。</p><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-66441a7573e1772cf4f6ac02-manifest.json">全部尝试与配置清单</a> · <a href="../m4_family/README.md">实现、复现与监测说明</a></p><h3>初始位置扰动物理重跑</h3><p>每次都重新运行仿真并复核。下表含失败尝试；只覆盖声明的初始位置扰动，不能外推为随机域鲁棒性。</p><p>M4-01: 2/2 · M4-02: 4/4 · M4-03: 3/4 · M4-04: 2/2 · M4-05: 2/2 · M4-06: 2/2 · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-569686a3bcce13e27921bb69-validation-campaign.json">重跑清单</a></p><p>当前选定配置（含原始初态，通过／尝试）：M4-01: 3/5 · M4-02: 3/3 · M4-03: 3/3 · M4-04: 3/3 · M4-05: 3/3 · M4-06: 3/3</p><p>调试后验收组（原始初态＋seed 1／2，非留出集成功率）：M4-01: 3/3 · M4-02: 3/3 · M4-03: 3/3 · M4-04: 3/3 · M4-05: 3/3 · M4-06: 3/3</p><article id="m4-01-execution"><h3>M4-01 · 完整参考见证（固定配置）</h3><p>go2 + go2 · 15 kg · μ=0.8 · corridor 2.6 m · 46.05 s · M4-01-family-a03</p><table><thead><tr><th>物理量</th><th>本次峰值</th><th>限制</th></tr></thead><tbody><tr><td>最大绳索张力</td><td>147 N</td><td>400 N</td></tr><tr><td>最大支撑期滑移</td><td>33 mm</td><td>50 mm</td></tr><tr><td>最大连接漂移</td><td>3.64 mm</td><td>10 mm</td></tr><tr><td>最大身体倾角</td><td>25.7 °</td><td>45 °</td></tr></tbody></table><p>最终连续驻留: 4.93 s</p><video controls preload="none" playsinline poster="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-a5716f445b67554a40e08cab-contact-sheet.jpg" style="width:100%;max-width:960px"><source src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-26331e4c871ef834a606d39b-motion.mp4" type="video/mp4"></video><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-2c8c86c2991fe1d06487685c-trajectory-review.png">轨迹与监测图</a> · <a href="m4-family/M4-01/high-plan.json">高层计划</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-4c718b7c6afc545cdc886db7-low-plan.json">低层计划</a> · <a href="m4-family/M4-01/plan-trajectory.json">计划与轨迹对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-305d9be031c47e40647ef934-monitor.json">物理监测</a> · <a href="m4-family/M4-01/verification.json">独立复核</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/M4-01-development-evidence.zip">轨迹与代码证据包</a></p></article><article id="m4-02-execution"><h3>M4-02 · 完整参考见证（固定配置）</h3><p>g1 · 15.0 kg · μ=0.3 · corridor 2.6 m · 90.31 s · M4-02-load15-a10</p><table><thead><tr><th>物理量</th><th>本次峰值</th><th>限制</th></tr></thead><tbody><tr><td>最大绳索张力</td><td>136 N</td><td>400 N</td></tr><tr><td>最大支撑期滑移</td><td>22.3 mm</td><td>50 mm</td></tr><tr><td>最大连接漂移</td><td>3.28 mm</td><td>10 mm</td></tr><tr><td>最大身体倾角</td><td>17.7 °</td><td>45 °</td></tr></tbody></table><p>最终连续驻留: 5.47 s</p><video controls preload="none" playsinline poster="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-9c9d38b2422f74bbf8cf6cb8-contact-sheet.jpg" style="width:100%;max-width:960px"><source src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-de09c715c5b8436247686d18-motion.mp4" type="video/mp4"></video><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-1a574cc9a1c12da643660571-trajectory-review.png">轨迹与监测图</a> · <a href="m4-family/M4-02/high-plan.json">高层计划</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层计划</a> · <a href="m4-family/M4-02/plan-trajectory.json">计划与轨迹对应</a> · <a href="m4-family/M4-02/monitor.json">物理监测</a> · <a href="m4-family/M4-02/verification.json">独立复核</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/M4-02-development-evidence.zip">轨迹与代码证据包</a></p></article><article id="m4-03-execution"><h3>M4-03 · 完整参考见证（固定配置）</h3><p>go2 + go2 + go2 · 15 kg · μ=0.3 · corridor 2.6 m · 55.09 s · M4-03-robust-a04</p><table><thead><tr><th>物理量</th><th>本次峰值</th><th>限制</th></tr></thead><tbody><tr><td>最大绳索张力</td><td>69 N</td><td>400 N</td></tr><tr><td>最大支撑期滑移</td><td>29.9 mm</td><td>50 mm</td></tr><tr><td>最大连接漂移</td><td>1.92 mm</td><td>10 mm</td></tr><tr><td>最大身体倾角</td><td>5.6 °</td><td>45 °</td></tr></tbody></table><p>最终连续驻留: 5.29 s</p><video controls preload="none" playsinline poster="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-f9782be1e80b326dda8952c3-contact-sheet.jpg" style="width:100%;max-width:960px"><source src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-13e2001ef040494d36c41362-motion.mp4" type="video/mp4"></video><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-979746e680bde5efaa4b338b-trajectory-review.png">轨迹与监测图</a> · <a href="m4-family/M4-03/high-plan.json">高层计划</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层计划</a> · <a href="m4-family/M4-03/plan-trajectory.json">计划与轨迹对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-449b13b42f029f9a6d87d2d2-monitor.json">物理监测</a> · <a href="m4-family/M4-03/verification.json">独立复核</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/M4-03-development-evidence.zip">轨迹与代码证据包</a></p></article><article id="m4-04-execution"><h3>M4-04 · 完整参考见证（固定配置）</h3><p>g1 + g1 · 15.0 kg · μ=0.3 · corridor 2.6 m · 42.99 s · M4-04-load15-a04</p><table><thead><tr><th>物理量</th><th>本次峰值</th><th>限制</th></tr></thead><tbody><tr><td>最大绳索张力</td><td>89.5 N</td><td>400 N</td></tr><tr><td>最大支撑期滑移</td><td>9.95 mm</td><td>50 mm</td></tr><tr><td>最大连接漂移</td><td>2.21 mm</td><td>10 mm</td></tr><tr><td>最大身体倾角</td><td>10.5 °</td><td>45 °</td></tr></tbody></table><p>最终连续驻留: 4.91 s</p><video controls preload="none" playsinline poster="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-b219761fa29102c3a71e8b29-contact-sheet.jpg" style="width:100%;max-width:960px"><source src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-7b3304f0b798f9135ed2b8ae-motion.mp4" type="video/mp4"></video><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-d85b53c0e29f00f90a64482c-trajectory-review.png">轨迹与监测图</a> · <a href="m4-family/M4-04/high-plan.json">高层计划</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层计划</a> · <a href="m4-family/M4-04/plan-trajectory.json">计划与轨迹对应</a> · <a href="m4-family/M4-04/monitor.json">物理监测</a> · <a href="m4-family/M4-04/verification.json">独立复核</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/M4-04-development-evidence.zip">轨迹与代码证据包</a></p></article><article id="m4-05-execution"><h3>M4-05 · 完整参考见证（固定配置）</h3><p>go2 + go2 + g1 · 15 kg · μ=0.3 · corridor 2.6 m · 76.81 s · M4-05-a02</p><table><thead><tr><th>物理量</th><th>本次峰值</th><th>限制</th></tr></thead><tbody><tr><td>最大绳索张力</td><td>52.2 N</td><td>400 N</td></tr><tr><td>最大支撑期滑移</td><td>21 mm</td><td>50 mm</td></tr><tr><td>最大连接漂移</td><td>1.42 mm</td><td>10 mm</td></tr><tr><td>最大身体倾角</td><td>9.75 °</td><td>45 °</td></tr></tbody></table><p>最终连续驻留: 5.37 s</p><video controls preload="none" playsinline poster="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-f5d3fba5696421c7fd37fd3e-contact-sheet.jpg" style="width:100%;max-width:960px"><source src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-22f0c7928941ef664ef6547f-motion.mp4" type="video/mp4"></video><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-e39b36886c5a524f3bd6e24f-trajectory-review.png">轨迹与监测图</a> · <a href="m4-family/M4-05/high-plan.json">高层计划</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层计划</a> · <a href="m4-family/M4-05/plan-trajectory.json">计划与轨迹对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-6d60c5a3edcec8331214ce09-monitor.json">物理监测</a> · <a href="m4-family/M4-05/verification.json">独立复核</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/M4-05-development-evidence.zip">轨迹与代码证据包</a></p></article><article id="m4-06-execution"><h3>M4-06 · 完整参考见证（固定配置）</h3><p>go2 + go2 + go2 + go2 · 15 kg · μ=0.3 · corridor 2.6 m · 71.53 s · M4-06-narrow-a09</p><table><thead><tr><th>物理量</th><th>本次峰值</th><th>限制</th></tr></thead><tbody><tr><td>最大绳索张力</td><td>44 N</td><td>400 N</td></tr><tr><td>最大支撑期滑移</td><td>45.1 mm</td><td>50 mm</td></tr><tr><td>最大连接漂移</td><td>1.14 mm</td><td>10 mm</td></tr><tr><td>最大身体倾角</td><td>8.44 °</td><td>45 °</td></tr></tbody></table><p>最终连续驻留: 5.21 s</p><video controls preload="none" playsinline poster="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-09069f0e49de87c5bdf02a9a-contact-sheet.jpg" style="width:100%;max-width:960px"><source src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-e27997bab2cbc21065711121-motion.mp4" type="video/mp4"></video><p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-3fa76b4a41c21c094eca5a53-trajectory-review.png">轨迹与监测图</a> · <a href="m4-family/M4-06/high-plan.json">高层计划</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-72da30b6f6dc52e34abadb10-low-plan.json">低层计划</a> · <a href="m4-family/M4-06/plan-trajectory.json">计划与轨迹对应</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/m4-autonomous-20261029/m4-de95d31554f9516f32f00406-monitor.json">物理监测</a> · <a href="m4-family/M4-06/verification.json">独立复核</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/506374bb344c17de5c4fe1e030797e31d85c46b0/releases/m4-family-0.1.0-rc1/M4-06-development-evidence.zip">轨迹与代码证据包</a></p></article></div></section>
+<!-- m4-execution:end --><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">本页展示一段代表录像：base · 15 kg · 预连接。其他成功、失败与分段录像保留在原发布包；本次筛选不改变原证据或评分。</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">查看完整任务说明：场景、动作、评分、证据与复现</a></p><!-- task-detail-jump:end --><section data-layered-task="M4" id="layered-status"><div class="wrap"><h2>当前交付范围与证据</h2><p>固定 base / hard 预连接拖运，CPU 特权参考</p><p>预连接参考已完成并发布：历史 6/6、新目录复现 2/2 成功；当前重评 28/28 符合预期，扰动 base 4/6、hard 10/12。自主对接、装载与解绑定释放未完成。</p><p>补张紧、张力分配、滑移、转角整体扫掠和目标停稳的技能条件与交接。自主对接、装载和解绑另立任务；v2 停止记录保留。 人工录像／阶段签审、第二人复现和代表性覆盖验收。</p><p><a href="#task-details">完整动作、轨迹与验收边界</a></p></div></section><section class="hero" id="top"><div class="wrap"><span class="badge" data-publication-badge="">预连接参考 · 已发布</span><h1>M4 多机器人牵引任务族<br/><span>六个主任务与自主连接验证</span></h1><p class="lead">本次发布已有完整成功的预连接拖运参考：货物从一开始就在平台上，绳索从一开始就连接好。验证了张紧、牵引、通过转角、进入目标区和停稳。<strong>没有完成机器人自主对接、装载或解绑释放。</strong></p><p class="small">固定 base / hard 场景 · CPU · 特权状态反馈参考 · 正式准入未通过</p><img alt="双 Go2 牵引木箱平台通过完整 L 形围墙" class="heroimage" decoding="async" loading="lazy" src="/robo-si-results/media/a9891845a4d22025072b.jpg"/></div></section>
+<section><div class="wrap"><div class="cards"><article class="card"><h2>6 / 6</h2><p>历史同参成功；base、hard 各 3 条</p></article><article class="card"><h2>4/6 · 10/12</h2><p>base / hard 稳定等待时间扰动成功</p></article><article class="card"><h2>28 / 28</h2><p>当前验证器重评预期一致</p></article><article class="card"><h2>未完成</h2><p>自主对接 → 搬运 → 解绑释放</p></article></div><div class="note">“停稳”不等于“解绑”。评分阶段 released_settled 在这个版本中表示货物在目标区静止满 2 秒，绳索可以继续连接并承受张力。base 也不能作为“双机器人必不可少”的证明。</div></div></section>
+<section id="videos"><div class="wrap"><h2>原始录像与阶段定位</h2><p>沿用官方 Go2 模型及仓库已有地面、墙体、货箱和平台素材。完整围墙保留；以下画面来自原始物理记录。</p><div class="vgrid"><figure class="vcard"><video controls="" id="base" playsinline="" poster="/robo-si-results/media/a9891845a4d22025072b.jpg" preload="none"><source src="/robo-si-results/media/8d9d988b26cf506060ca.mp4" type="video/mp4"/></video><figcaption>base · 15 kg<span>原始物理录像；永久预连接绳索，非新连接器演示。</span></figcaption><div class="seekbar"><button class="seek" data-time="2.16" data-video="base">tensioned · 2.16s</button><button class="seek" data-time="10.34" data-video="base">straight_tow · 10.34s</button><button class="seek" data-time="24.5" data-video="base">corner · 24.50s</button><button class="seek" data-time="30.38" data-video="base">in_goal · 30.38s</button><button class="seek" data-time="33.38" data-video="base">released_settled · 33.38s</button></div></figure><figure class="vcard"><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/m4-preconnected-20261024">其他录像见完整发布包</a></p><figcaption>hard · 50 kg<span>原始物理录像；永久预连接绳索，非新连接器演示。</span></figcaption><div class="seekbar"><button class="seek" data-time="1.66" data-video="hard">tensioned · 1.66s</button><button class="seek" data-time="16.84" data-video="hard">straight_tow · 16.84s</button><button class="seek" data-time="22.34" data-video="hard">corner · 22.34s</button><button class="seek" data-time="31.24" data-video="hard">in_goal · 31.24s</button><button class="seek" data-time="34.52" data-video="hard">released_settled · 34.52s</button></div></figure></div></div></section>
+<section id="evidence"><div class="wrap"><div class="note" id="fresh-reproduction"><p>本轮作者机器新目录复现 2/2 成功：base 1.0／36.30 s，hard 1.0／38.18 s；均无监视告警，状态／增益改写及控制周期违规为 0。与对应历史记录逐数组一致。此项不是第二人复现。</p><p><a href="/robo-si-results/infra/m4-release/evidence/fresh-reproduction-summary.json">2/2 JSON</a> · <a href="https://github.com/wuxiyang1996/robo-si/releases/download/m4-preconnected-20261024/m4-preconnected-fresh-reproduction-20261024.zip">原始复现补充包 · 16.96 MB</a> · <a href="/robo-si-results/infra/m4-release/evidence/fresh-reproduction-package.json">SHA-256</a></p></div><h2>完整成功记录</h2><p>六条历史参考均由当前验证器重新评分。相同场景、相同参数的重录为逐数组一致，不能当作六个独立物理种子。</p><div class="table-wrap"><table><thead><tr><th>记录</th><th>货物</th><th>得分</th><th>全程</th><th>最终停稳</th><th>判定</th><th>记录</th></tr></thead><tbody><tr><td>base-v1</td><td>15 kg</td><td>1.0</td><td>36.30 s</td><td>4.92 s</td><td class="pass">成功 · 非 VOID · 无告警</td><td><a href="/robo-si-results/infra/m4-release/evidence/base-v1-record.json">JSON</a></td></tr><tr><td>base-v2</td><td>15 kg</td><td>1.0</td><td>36.30 s</td><td>4.92 s</td><td class="pass">成功 · 非 VOID · 无告警</td><td><a href="/robo-si-results/infra/m4-release/evidence/base-v2-record.json">JSON</a></td></tr><tr><td>base-v3</td><td>15 kg</td><td>1.0</td><td>36.30 s</td><td>4.92 s</td><td class="pass">成功 · 非 VOID · 无告警</td><td><a href="/robo-si-results/infra/m4-release/evidence/base-v3-record.json">JSON</a></td></tr><tr><td>hard-v1</td><td>50 kg</td><td>1.0</td><td>38.18 s</td><td>5.66 s</td><td class="pass">成功 · 非 VOID · 无告警</td><td><a href="/robo-si-results/infra/m4-release/evidence/hard-v1-record.json">JSON</a></td></tr><tr><td>hard-v2</td><td>50 kg</td><td>1.0</td><td>38.18 s</td><td>5.66 s</td><td class="pass">成功 · 非 VOID · 无告警</td><td><a href="/robo-si-results/infra/m4-release/evidence/hard-v2-record.json">JSON</a></td></tr><tr><td>hard-v3</td><td>50 kg</td><td>1.0</td><td>38.18 s</td><td>5.66 s</td><td class="pass">成功 · 非 VOID · 无告警</td><td><a href="/robo-si-results/infra/m4-release/evidence/hard-v3-record.json">JSON</a></td></tr></tbody></table></div><p><a href="/robo-si-results/infra/m4-release/evidence/current-rejudgment.json">当前重评：6 成功 / 10 捷径 / 8 负例 / 4 违规测试</a> · <a href="/robo-si-results/infra/m4-release/evidence/historical-expert-restoration.json">历史控制器 11 文件哈希核对</a></p><p>扰动仍有失败：base 2/6、hard 2/12 未通过。原 50 mm 脚端滑移约束保留，未放宽；固定 hard 场景不代表随机第二层覆盖。</p><p><a href="/robo-si-results/infra/m4-release/evidence/rerun-spread-report.md">扰动与重复完整表</a></p></div></section>
+<section id="limits"><div class="wrap"><h2>范围、限制与验收状态</h2><ul><li>预连接系统原绳索额定张力为 400 N；这与新连接器的 150 N 台架工作范围是两套不同证据。</li><li>参考控制器读取平台姿态和绳索张力等特权状态。它不是普通智能体成绩，也不是工具必要性的完整证明。</li><li>历史记录含 50 Hz 关节位置、速度、裁剪后目标和采样施加力矩；缺少裁剪前原始目标及逐物理步完整命令审计。按机器人检查力矩饱和、关节越界推力和躯干跳变；另保留状态改写、增益改写与控制周期检查。封存包中“缺少关节／力矩序列”的表述过宽，以<a href="/robo-si-results/infra/m4-release/evidence/record-fields-correction.json">字段核查更正</a>为准。</li><li>录像与阶段人工签审、第二人复现、随机／子任务覆盖及完整准入仍待完成。admitted=false。</li></ul><p><a href="/robo-si-results/infra/m4-release/evidence/unsigned-human-review.json">待签人工审阅表</a> · <a href="/robo-si-results/infra/m4-release/evidence/author-authorization.json">本次发布范围授权</a></p></div></section>
+<section id="connector"><div class="wrap"><h2>自主连接器：停止 v2，另立设计任务</h2><p>v2 的 150 N 台架范围保留；机器人无载插销已有分段证据，但 B08、B09 两次居中低载拉出失败。B09 脚端滑移 50.151 mm 超过 50 mm，吊环只移动约 6 mm，未完成拉出或搬运。按原设计停止该版本。</p><p>300 N 硬上限和 300.00177 N 失败记录保留。新机构只建立独立设计任务，本次不追加第三版硬件试验，也不把台架结果计作自主任务成功。</p><p><a href="/robo-si-results/infra/m4-release/evidence/v2-stop-after-b09.json">v2 停止记录</a> · <a href="/robo-si-results/infra/m4-release/evidence/b09-failure.json">B09</a> · <a href="/robo-si-results/infra/m4-release/evidence/autonomous-coupler-next-design.json">M4-AUTONOMOUS-COUPLER-NEXT</a></p></div></section>
+<section id="reproduce"><div class="wrap"><h2>下载与复现</h2><div data-downloads=""><p><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/m4-preconnected-20261024">GitHub Release</a> · <a href="/robo-si-results/infra/m4-release/evidence/published-huggingface.json">远端校验回执</a></p><ul><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/77a690ac1d35b3f25c92b66dca48f93d8d407327/releases/m4-preconnected-20261024-v2/m4-preconnected-reference-20261024.zip">完整证据包 · 303.65 MB</a><br/><small>SHA-256: <code>cc35bda74a6e0e529ab15a7478fe19dca2d5ca5aa32ff0cc27551b5f424c8fc4</code></small></li><li><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/77a690ac1d35b3f25c92b66dca48f93d8d407327/releases/m4-preconnected-20261024-v2/m4-preconnected-review-20261024.zip">轻量审阅包 · 3.32 MB</a><br/><small>SHA-256: <code>f18cafa3be48f33299f03c15dea61d0c289676f5ac1027f8f16b2506e6a165d7</code></small></li></ul><p>沿用现有私有 GitHub / Hugging Face 权限，GitHub Pages 未启用。两包解压后打开 index.html；完整包用于复现，审阅包不含运行源码和完整轨迹。包内页面为发布前封存快照，以本页下载回执为准。</p></div><p>完整包解压后，先运行 verify_package.py 核对清单，再在 workspace 目录使用匹配的 Python / Genesis / PyTorch 环境。以下为原参数 CPU 参考入口；在共享机器上通过既有队列串行运行。</p><pre><code>python -m multi_robot.dual_quadruped_cooperative_transport.sandbox.trusted.record_reference --variant base --out new-base-run
+
+python -m multi_robot.dual_quadruped_cooperative_transport.sandbox.trusted.record_reference --variant hard --out new-hard-run</code></pre><p><a href="/robo-si-results/infra/m4-release/evidence/source-manifest.json">冻结源码清单</a> · <a href="/robo-si-results/infra/m4-release/evidence/release-summary.json">机器可读发布范围</a></p></div></section><section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>已有参考执行见证；设计、动作、支撑、轨迹对应及复现来源见文档。</p><p><a href="/robo-si-results/infra/reference-designs/M4.html">参考解与设计文档</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>完整任务说明与证据</h2><p class="detail-nav"><a href="#detail-scope">任务范围与场景</a> · <a href="#detail-interfaces">观测、动作与接口</a> · <a href="#detail-planning">高层目标与低层动作</a> · <a href="#detail-trajectory">轨迹与关键状态对应</a> · <a href="#detail-scoring">评分与成功判据</a> · <a href="#detail-evidence">代表证据与审阅</a> · <a href="#detail-sandbox">沙盒验证</a> · <a href="#detail-reproduce">下载与复现</a> · <a href="#detail-limits">验收边界与剩余工作</a></p><article id="detail-scope"><h3>任务范围与场景</h3><p>固定 base / hard 预连接拖运，CPU 特权参考</p><p>预连接参考已完成并发布：历史 6/6、新目录复现 2/2 成功；当前重评 28/28 符合预期，扰动 base 4/6、hard 10/12。自主对接、装载与解绑定释放未完成。</p><p>两台四足通过预连接装置协同拖运，协调方向和牵引力以避免载物偏转。参考只覆盖预连接版本；新连接器自主对接、搬运、释放链不包含在成功声明内。</p></article><article id="detail-interfaces"><h3>观测、动作与接口</h3><p>参考控制器的特权状态与公开代理权限分开；以本任务 SDK 和指令为准。</p><p><a href="/robo-si-results/multi_robot/dual_quadruped_cooperative_transport/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/multi_robot/dual_quadruped_cooperative_transport/sandbox/agent_sdk">Agent SDK</a></p></article><article id="detail-planning"><h3>高层目标与低层动作</h3><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>检查并建立张力</td>
+<td>M4.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>直线拖运</td>
+<td>M4.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>协同转角</td>
+<td>M4.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>目标停稳</td>
+<td>M4.K04</td>
+<td>S3 → S4</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>base/hard 发布的预连接且预装载初态</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>双侧受力进入可拖运状态</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>货台完成规定直线段</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>双机/货台/绳扫掠均通过转角</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>载荷在目标内满足原稳定驻留</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>轨迹与关键状态对应</h3><details><summary>动作顺序、接触与轨迹事件</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>M4.K01 · 两机低速移位、调节间距</h5>
+<p>入口：base/hard 发布的预连接且预装载初态。出口：双侧受力进入可拖运状态。</p>
+<p>局部检查：连接拓扑与初始绳长匹配；脚接触、张力和倾覆限制。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M4.K01.A01</td>
+<td>预连接状态下站稳并检查连接几何</td>
+<td>足→地面；绳已连接；载荷→货台</td>
+<td>连接点、绳长、支撑</td>
+<td>e0000: episode [0.0, 0.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K01.A02</td>
+<td>低速前移消除绳松弛</td>
+<td>足地牵引→绳→货台</td>
+<td>张力、脚端滑移</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K01.A03</td>
+<td>调整双机间距形成牵引队形</td>
+<td>双机足→地面；货台承重</td>
+<td>横向间距与各绳张力</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>M4.K02 · 协调步态、速度与张力</h5>
+<p>入口：两侧受力稳定且前方通道可行。出口：货台完成规定直线段。</p>
+<p>局部检查：可实现牵引力、滑移、张力不均与载荷保持。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M4.K02.A01</td>
+<td>交替步态沿直道牵引</td>
+<td>足地牵引→绳→货台</td>
+<td>足滑移、张力及货物支撑</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K02.A02</td>
+<td>按队形进度差修正双机速度</td>
+<td>绳保持物理连接</td>
+<td>前后差与牵引张力</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K02.A03</td>
+<td>保持货台平稳接近转角</td>
+<td>载荷→货台</td>
+<td>货物速度、支撑比例</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>M4.K03 · 内外侧速度调整及队形修正</h5>
+<p>入口：货台到转角入口，双机可调整间距。出口：双机/货台/绳扫掠均通过转角。</p>
+<p>局部检查：整体包络、脚端滑移和角部绳路径；Linux base 已用公开 v_arc=0.10。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M4.K03.A01</td>
+<td>按转角路径调整内外侧速度</td>
+<td>脚地牵引→绳→货台</td>
+<td>角速度、净空与张力</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K03.A02</td>
+<td>容许瞬时松绳并调整队形</td>
+<td>绳连接保持；货台承重</td>
+<td>松弛长度、足滑移与货台姿态</td>
+<td>e0002: episode [15.0, 15.0] s; e0003: episode [16.0, 16.0] s; e0004: episode [17.0, 17.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K03.A03</td>
+<td>完成转角后继续向目标牵引</td>
+<td>脚地牵引→绳→货台</td>
+<td>货台转向及目标包含</td>
+<td>e0001: episode [1.0, 1.0] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>M4.K04 · 同步减速并稳定货台</h5>
+<p>入口：组合体已进入目标区。出口：载荷在目标内满足原稳定驻留。</p>
+<p>局部检查：旧 released_settled 指稳定驻留，不代表绳已机械脱开。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M4.K04.A01</td>
+<td>货台进入目标后停止前进</td>
+<td>货台承重；绳仍连接</td>
+<td>目标包含、速度</td>
+<td>e0002: episode [15.0, 15.0] s; e0003: episode [16.0, 16.0] s; e0004: episode [17.0, 17.0] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K04.A02</td>
+<td>两机小幅后退释放绳张力</td>
+<td>货台→地面；连接保持</td>
+<td>绳张力与货台漂移</td>
+<td>e0002: episode [15.0, 15.0] s; e0003: episode [16.0, 16.0] s; e0004: episode [17.0, 17.0] s; 另 1 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>M4.K04.A03</td>
+<td>保持静止并确认驻留</td>
+<td>预连接保留；货台独立支撑</td>
+<td>低张力、货物稳定</td>
+<td>e0006: episode [32.28, 32.28] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>评分与成功判据</h3><p>保留本页原任务评分及冻结参考 verdict；分层计划、技能展开和事件对应不产生额外任务分数。合同中的拟议评分不是当前评分实现。完整运行的分数不能赋给筛查或沙盒短测。</p><p>本参考的最终关键状态：载荷在目标内满足原稳定驻留</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/dual_quadruped_cooperative_transport/sandbox/trusted/scoring.py">原任务判据源码 / Original task criteria</a></p></article><article id="detail-evidence"><h3>代表证据与审阅</h3><p>见证：<strong>base-v1</strong>。范围：固定 base / hard 预连接拖运，CPU 特权参考。</p>
+<p>预连接参考已完成并发布：历史 6/6、新目录复现 2/2 成功；当前重评 28/28 符合预期，扰动 base 4/6、hard 10/12。自主对接、装载与解绑定释放未完成。</p>
+<p><a href="/robo-si-results/infra/m4-current-evidence.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/M4.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>沙盒验证</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>这些检查验证启动、传感器与动作接口；不计完整任务成功。同机 WSL 不是独立第二台机器复现。</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/M4/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>下载与复现</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/77a690ac1d35b3f25c92b66dca48f93d8d407327/releases/m4-preconnected-20261024-v2/m4-preconnected-reference-20261024.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: cc35bda74a6e0e529ab15a7478fe19dca2d5ca5aa32ff0cc27551b5f424c8fc4</p><p>下载需私有仓库权限。参考包保留历史配置与运行入口；当前沙盒工作区补齐运行资产。先按沙盒 README 安装环境并执行短测，再用参考包的冻结入口复现；不能把新接口短测当作完整专家回放。</p><p>先检查本任务入口（不运行物理），再按链接中的环境与代理交付说明启动。历史 README 中的原机器路径须替换为本机路径；本页沙盒验证表是当前检查状态。</p><pre><code>python -m infra.sandbox.inventory check --task M4
+python -m multi_robot.dual_quadruped_cooperative_transport.sandbox.launch --help</code></pre><p><a href="/robo-si-results/multi_robot/dual_quadruped_cooperative_transport/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p></article><article id="detail-limits"><h3>验收边界与剩余工作</h3><p>补张紧、张力分配、滑移、转角整体扫掠和目标停稳的技能条件与交接。自主对接、装载和解绑另立任务；v2 停止记录保留。 人工录像／阶段签审、第二人复现和代表性覆盖验收。</p><p>仅预连接 base；tow 内直行/转角与足步待按路径分段。15–17 s 松绳事件保留；不要求两绳始终张紧，不加入自主对接或解绳。</p><p>随机实例分别记录：有完整成功证据、通过可行性筛查、未确定、检查不通过。只要求声明范围内的代表完整见证与表示间对应；不要求逐个随机实例生成完整解。正式准入、人工签审和独立机器验证不由页面完成状态推定。自主扩展的实际物理执行与保留的尝试账本见页面上方。</p><p><a href="/robo-si-results/infra/reference-designs/M4.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main><footer><div class="wrap"><p>2026-10-24 · 预连接参考资料。自主对接未完成；正式准入未通过。</p></div></footer><script>document.querySelectorAll('button[data-video]').forEach(b=>b.addEventListener('click',()=>{const v=document.getElementById(b.dataset.video);v.currentTime=Number(b.dataset.time);v.play();}));</script><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

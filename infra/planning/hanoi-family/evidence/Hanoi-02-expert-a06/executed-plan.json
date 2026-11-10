@@ -1,0 +1,63 @@
+{
+  "schema": "hanoi-executed-plan/1",
+  "segments": [
+    {
+      "high_id": "P00",
+      "low_id": "P00.L01",
+      "action": "settle and inspect physical tool geometry",
+      "physics_start": 0,
+      "physics_end_exclusive": 100,
+      "control_start": 0
+    },
+    {
+      "high_id": "P01",
+      "low_id": "P01.L01",
+      "action": "park unused left hand above the rod workspace",
+      "physics_start": 100,
+      "physics_end_exclusive": 580,
+      "control_start": 25
+    },
+    {
+      "high_id": "P01",
+      "low_id": "P01.L01",
+      "action": "approach fork handle, grasp candidate 1",
+      "physics_start": 580,
+      "physics_end_exclusive": 1792,
+      "control_start": 145
+    },
+    {
+      "high_id": "P01",
+      "low_id": "P01.L02",
+      "action": "descend and close hand on tool handle",
+      "physics_start": 1792,
+      "physics_end_exclusive": 2480,
+      "control_start": 448
+    },
+    {
+      "high_id": "P01",
+      "low_id": "P01.L03",
+      "action": "physical 40 mm lift probe",
+      "physics_start": 2480,
+      "physics_end_exclusive": 2720,
+      "control_start": 620
+    },
+    {
+      "high_id": "P01",
+      "low_id": "P01.L03",
+      "action": "raise acquired tool outside the rod workspace",
+      "physics_start": 2720,
+      "physics_end_exclusive": 3196,
+      "control_start": 680
+    },
+    {
+      "high_id": "M01",
+      "low_id": "M01.L01",
+      "action": "approach source top disk with held fork",
+      "physics_start": 3196,
+      "physics_end_exclusive": 3196,
+      "control_start": 799
+    }
+  ],
+  "only_executed_ranges": true,
+  "physics_index_convention": "commands/segments: zero-based start inclusive and end exclusive; physics records: 1-based completed-step number"
+}

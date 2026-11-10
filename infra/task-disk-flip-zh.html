@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>G1 轻柔翻圆盘 · robo-si</title><meta content="轻推到桌边、双手夹持翻面、放回释放：具体案例的完整执行与分层轨迹证据。 " name="description"/><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>video{width:100%;background:#111;border-radius:8px}.disk-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}.table-wrap{overflow-x:auto}code{overflow-wrap:anywhere}.disk-links a{display:inline-block;margin:4px 12px 4px 0}</style><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body><a class="skip-link" href="#main">跳到正文</a><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html#categories"><span data-en="Tasks" data-zh="任务视频">任务视频</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-zh.html"><span data-en="Research" data-zh="研究提案">研究提案</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html"><span data-en="Guide" data-zh="使用与规范">使用与规范</span></a><a href="/robo-si-results/infra/guide-zh.html#download"><span data-en="Download" data-zh="下载">下载</span></a></nav><a class="lang" href="/robo-si-results/infra/task-disk-flip-en.html">English</a></div></header><aside class="document-notice"><div class="wrap">本页保留历史任务设计与验收说明。视频统一移至最终交付的 Nyx 8× 任务页；<a href="/robo-si-results/infra/archive-task-disk-flip-zh.html">历史原页存档</a></div></aside>
+<main id="main"><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">本页展示一段代表录像：nominal · 457.305 s。其他成功、失败与分段录像保留在原发布包；本次筛选不改变原证据或评分。</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">查看完整任务说明：场景、动作、评分、证据与复现</a></p><!-- task-detail-jump:end --><!-- disk-flip-family-jump:start -->
+<p class="wrap"><a href="#disk-flip-family">新任务族：4 个 variants · 6 个配置与盘体设计</a></p><p class="wrap"><a href="#disk-flip-implementation">专家实现进展：计划 · 轨迹 · 物理验证 · 视频</a></p>
+<!-- disk-flip-family-jump:end -->
+<div class="hero"><div class="wrap"><p class="eyebrow">REFERENCE · 0.1.0-rc1 · HIERARCHICAL ADDENDUM</p><h1>G1 轻柔翻圆盘</h1><p class="lead">先轻推到桌边，再双手夹住翻面，最后放回桌内并松手稳定。 </p><p>现已纳入 14 项统一目录，计为限定范围参考完成；原 12 项历史批次单列。固定骨盆；仅声明两个配置；正式准入保持 false。</p><div class="cards"><div class="card"><h3>6 / 6</h3><p>完整执行成功，两个配置各三次</p></div><div class="card"><h3>2 / 2</h3><p>独立动作回放通过</p></div><div class="card"><h3>26 / 27</h3><p>两条完整见证的低层动作段</p></div><div class="card"><h3>61</h3><p>任务、Oracle 与映射测试通过</p></div></div><p class="disk-links"><a href="#task">任务与约束</a><a href="#videos">完整录像</a><a href="#mapping">计划到轨迹</a><a href="#download">下载与验收</a></p></div></div>
+<!-- disk-flip-implementation:start -->
+<section id="disk-flip-implementation"><div class="wrap"><h2>Disk Flip：专家实现与逐项执行证据</h2>
+<p>2026-10-29 · 4 variants · 3 embodiments · 6 settings</p>
+<p><strong>已为 6 个配置实现候选专家与执行记录；完整成功见证目前为 5/6。</strong> 本轮共 140 次有物理轨迹的专家执行、3 次启动失败；另有 2 次原版独立动作回放和 4 次静态支撑探针。只把完整成功且独立验证通过的执行称作成功解。失败录像展示真实问题，不证明该配置不可行。</p>
+<p>原版 DF-01-G 修订执行 a03 为 478.26 s，23,913 个控制步、5 个高层目标、26 个低层动作段，独立回放通过。新证据单列，不改写历史 6/6 执行、2/2 回放的统计。正式准入仍为 false。</p>
+<p>Inspire 导入修正：<a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/inspire-mimic-import-check.json">核对记录</a>。保留官方 12 条 mimic 联动约束，去掉导入器重复添加的 12 条；惯量、几何、关节限位和执行器数组不变。历史 F 失败尝试保留旧模型，新模型必须重新完成完整运行与回放。</p>
+<h2>正式验收进度</h2>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/plan-v1.json">固定验收方案</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/status.json">实时导出状态</a></p>
+<p>全部开发尝试与正式重复队列分开。每个配置须先完成全流程见证，再冻结控制器、连续执行 3 次新运行并独立回放；失败重复不能替换。还需反例与非法动作检查、便携资产、隔离动作接口、视频复核和第二人复现。DF-01-G 的 cohort-v1 三次闭环执行成功，但独立回放失败（稳定时间 1.99 s，且末态偏差超出容差），该队列保留为未通过。修订专家 a03 继续推至目标区内部后再释放，完整执行与独立回放均通过；其 cohort-v2 的三次新运行与独立回放均已通过。扩展配置的冻结队列与通过数量见下表；没有人工签字。</p>
+<p>冻结原版评分器的 <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/original-frozen-scorer-checks.json">38 项反例与回归检查</a>通过；这些是评分器与几何检查，不是物理成功执行。</p>
+<p>新增<a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/integration-convergence-audit.json">积分步长诊断</a>：同一 Stretch 撤手检查点在 400 Hz 下出现角速度超限，在更小步长下完成卸载。已启动 2,000 Hz 的完整开发重跑；该局部诊断不计作全任务成功，旧 400 Hz 失败记录不改写。</p>
+<p>G/F/S 动作接口已分别通过 7 类拒绝与原子提交探针；此外，三种手型均通过独立 Python 进程发送的 7 类非法动作测试，拒绝后物理状态与参考保持不变，3 s 无动作测试不会误报成功。这些仍是边界探针，不是完整任务的隔离执行或操作系统安全沙箱。Inspire 手掌碰撞体已按官方网格分解，消除了单凸包填满拇指关节槽导致的假碰撞，质量与惯性保持不变。</p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-01-G/cohort-v1/status.json">原版 cohort-v1</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-01-G/cohort-v2/status.json">原版 cohort-v2</a> · 独立进程探针：<a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/isolated-boundary-G.json">Dex3</a> / <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/isolated-boundary-F.json">Inspire</a> / <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/isolated-boundary-S.json">SG3</a></p>
+<p>当前冻结队列 cohort-v2：新运行 3/3 通过；独立回放 passed。</p>
+<p>DF-02-G <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-02-G/cohort-v1/status.json">cohort-v1</a>：新运行 3/3 通过；独立回放 passed。</p>
+<p>DF-03-G <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-03-G/cohort-v1/status.json">cohort-v1</a>：新运行 3/3 通过；独立回放 passed。</p>
+<p>DF-04-G <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-04-G/cohort-v1/status.json">cohort-v1</a>：新运行 3/3 通过；独立回放 passed。</p>
+<p>DF-04-S <a href="/robo-si-results/infra/planning/disk-flip-family/execution/qualification/DF-04-S/cohort-v1/status.json">cohort-v1</a>：新运行 3/3 通过；独立回放 passed。</p>
+<p>另有 4 次运行因共享存储写满而未完成，另记为基础设施中断，不计为任务物理失败或成功；<a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/storage-incident-20261029.json">事故记录</a>保留最后可读状态。替代输出目录中的新尝试从初态重跑。</p>
+<p>原版闭环专家已在独立 Python 进程中完成全任务：通过 JSON 接收只读状态，在线产生 23,312 次关节目标；物理与评分由父进程持有，无共享仿真内存。该执行的独立回放：通过。<a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/original-isolated-closed-loop.json">执行与边界探针报告</a>。这仍是特权专家验证，不是公开智能体成绩或操作系统安全沙箱。</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-original-expert-v2-b86c81b65bd4.tar.gz">下载原版专家复现包</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/original-portable-download.json">大小、SHA-256 与范围</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/original-portable-validation.json">便携源码全流程运行验证</a>。包内含机器人资产及许可证、冻结专家与评分器、三次重复、独立回放、隔离执行、轨迹、视频和复现命令。</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>自动验收门槛</th>
+<th>人工视频复核</th>
+<th>第二人复现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DF-01-G</td>
+<td>10/10</td>
+<td>待完成</td>
+<td>待完成</td>
+</tr>
+<tr>
+<td>DF-02-G</td>
+<td>10/10</td>
+<td>待完成</td>
+<td>待完成</td>
+</tr>
+<tr>
+<td>DF-02-F</td>
+<td>0/10</td>
+<td>待完成</td>
+<td>待完成</td>
+</tr>
+<tr>
+<td>DF-03-G</td>
+<td>10/10</td>
+<td>待完成</td>
+<td>待完成</td>
+</tr>
+<tr>
+<td>DF-04-G</td>
+<td>10/10</td>
+<td>待完成</td>
+<td>待完成</td>
+</tr>
+<tr>
+<td>DF-04-S</td>
+<td>10/10</td>
+<td>待完成</td>
+<td>待完成</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/site-evidence-20261028/disk-flip-development-scenes-557d1b1372ec.tar.gz">Historical portable development scenes</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-download.json">SHA-256 / scope</a></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>选定执行</th>
+<th>结果 / 中止原因</th>
+<th>时长</th>
+<th>Hz</th>
+<th>独立回放</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#df-01-g">DF-01-G</a></td>
+<td>DF-01-G-a03</td>
+<td>完整成功</td>
+<td>478.26 s</td>
+<td>400</td>
+<td>通过</td>
+</tr>
+<tr>
+<td><a href="#df-02-g">DF-02-G</a></td>
+<td>DF-02-G-a33</td>
+<td>完整成功</td>
+<td>581.22 s</td>
+<td>2000</td>
+<td>通过</td>
+</tr>
+<tr>
+<td><a href="#df-02-f">DF-02-F</a></td>
+<td>DF-02-F-a38</td>
+<td>disk_angular_speed</td>
+<td>352.00 s</td>
+<td>2000</td>
+<td>通过</td>
+</tr>
+<tr>
+<td><a href="#df-03-g">DF-03-G</a></td>
+<td>DF-03-G-a23</td>
+<td>完整成功</td>
+<td>573.56 s</td>
+<td>2000</td>
+<td>通过</td>
+</tr>
+<tr>
+<td><a href="#df-04-g">DF-04-G</a></td>
+<td>DF-04-G-a27</td>
+<td>完整成功</td>
+<td>538.00 s</td>
+<td>2000</td>
+<td>通过</td>
+</tr>
+<tr>
+<td><a href="#df-04-s">DF-04-S</a></td>
+<td>DF-04-S-a28</td>
+<td>完整成功</td>
+<td>545.00 s</td>
+<td>2000</td>
+<td>通过</td>
+</tr>
+</tbody>
+</table></div>
+<h2>实现与物理边界</h2>
+<p>原版从已有发布证据冻结源码，保持 Genesis 原评分器、资产与限制；专家修订另存冻结版本。扩展使用 MuJoCo 3.14.0，扩展证据包含历史 400 Hz 与新 2,000 Hz 执行，逐条频率见上表；均为 50 Hz 控制/状态记录、10 fps 视频。独立验证器从初始状态重放记录的执行器控制，逐步比较 qpos/qvel，检查载荷、速度、执行器限制和高低层轨迹覆盖；回放匹配不代表任务成功。</p>
+<p>G/F 使用官方同一 G1 29-DOF 身体、分别绑定 Dex3 / Inspire DFQ 手。Inspire 关节耦合保留；Stretch 使用官方 Stretch 3 + SG3 资产、原传动及手指耦合。基座固定。扩展身体使用有界执行器；仅初始化设置状态，策略执行不写盘体位置/速度、不开对象焊接、不施加外部搬运力。转换适配与固定骨盆相邻外壳的碰撞排除写入各 run 的 model-binding.json。此证据不支持自由站立或硬件可行性的结论。</p>
+<p>新场景共同使用 0.86 m 高桌面、近边 x=0.35 m、盘中心起点 (0.40, 0)、目标 (0.50, 0)。这是已有 50 mm 悬伸的开发场景；原版仍从 (0.50, 0) 推到边缘。G/F 的场景与物体保持相同；控制器可因手型调整。Stretch 起始站位迭代过，逐次 scene.xml 留档。当前结果不是统一策略的身体性能排名。</p>
+<p>扩展阈值在各次 plan.json 中声明：盘线速度 ≤0.12 m/s、角速度 ≤0.65 rad/s、机器人总接触载荷 ≤18 N、桌面总载荷 ≤8 N；P3 每个接触刚体对盘的载荷模长之和 ≤4 N。机器人自接触与桌碰总载荷各 ≤20 N；失去全部支撑 &gt;0.10 s 即失败。目标面偏差 ≤8°、目标平面误差 ≤45 mm、全盘位于桌面、无手接触、稳定 2 s。P3 的 4 N 是待完整见证校准的刚体损伤代理，不是材料断裂模型。</p>
+<p>当前执行候选采用“抓持—抬升—翻转—放回”路径。最终开发评分器允许受控桌面翻转，lift 标志只作为诊断；本轮存档候选仍要求先抬升，Dex3 与 Stretch 的开发执行已观察到完整翻面，Stretch 进一步做到倒扣落桌；支撑交接、撤手及最终目标按配置单独验证，完整成功状态见上表。已增加桌边重抓、切向柔顺和按载荷交接的控制分支，失败阈值保持不变。</p>
+<h2>盘体设计已落实到碰撞几何</h2>
+<p><img alt="盘体径向剖面" src="/robo-si-results/infra/planning/disk-flip-family/execution/plate-design/plate-cross-section.png"/></p>
+<ul>
+<li>P1：直径 200 mm、厚 12 mm、质量 120 g。</li>
+<li>P2/P3：外径 200 mm、总高 20 mm、质量 120 g；盘底厚 4 mm；薄沿厚 6 mm，径向范围 79–100 mm；盘腔深 10 mm。底部支撑圈半径 53–60 mm、高 6 mm，形成 14 mm 沿下净空。</li>
+<li>浅盘由底面与 32 段壁/沿/支撑圈凸体组合，保留凹腔和间隙；惯性为组合几何近似，局部重叠不代表精确实体 CAD。盘/桌的滑动摩擦系数设为 0.7，实际手接触还受官方手几何的接触混合参数影响，见 scene.xml。</li>
+<li>P1/P2 正放、倒扣各进行 5 s 无抓持支撑测试，末 2 s 稳定：4/4 通过。P3 复用 P2 几何。该探针仅验证支撑姿态；抓持、翻转和撤手仍须完成全流程验证。</li>
+</ul>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/plate-design/support-probes.json">静态探针数值</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/implementation.json">全部尝试台账</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/run.py">源代码：控制器</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/model.py">模型</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/verify.py">独立验证器</a></p>
+<h2>每个配置：计划、轨迹、物理与视频</h2>
+<h3 id="df-01-g">DF-01-G · 原版轻柔翻圆盘</h3>
+<p>完整成功；独立动作回放通过。</p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">查看最终交付的 Nyx 8× 录像 →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/plan.json">计划</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/verification.json">独立验证</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-01-G-a03-video-c6ee07dd6d2a.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-01-G-a03-trajectory-25b975cde9db.npz">trajectory.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/trajectory-download.json">SHA-256 / replay</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-01-G-a03-trace-ad560cf63a8a.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-01-G-a03-sources-412ba7ab4917.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-01-G trajectory" src="/robo-si-results/infra/planning/disk-flip-family/execution/DF-01-G-a03/trajectory.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slide</td>
+<td>L01 · settle_raised_separated_hands</td>
+<td>0.00–4.50</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>slide</td>
+<td>L02 · approach_far_rim</td>
+<td>4.50–12.50</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>slide</td>
+<td>L03 · lower_outside_far_rim</td>
+<td>12.50–20.50</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>slide</td>
+<td>L04 · gentle_rim_contact</td>
+<td>20.50–31.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>slide</td>
+<td>L05 · slide_to_near_edge</td>
+<td>31.88–64.32</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L06 · unload_rim_pusher</td>
+<td>64.32–69.82</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L07 · clear_rim_pusher</td>
+<td>69.82–75.82</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L08 · retract_above_and_beside_disk</td>
+<td>75.82–91.82</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L09 · reconfigure_for_bimanual_approach</td>
+<td>91.82–107.82</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L10 · calibrate_free_finger_preshape</td>
+<td>107.82–130.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>clamp</td>
+<td>L11 · close_two_independent_edge_pinches</td>
+<td>130.88–161.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L12 · lift_with_two_edge_pinches</td>
+<td>161.42–172.80</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L13 · turn_with_two_edge_pinches</td>
+<td>172.80–222.92</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L14 · settle_after_bimanual_inversion</td>
+<td>222.92–232.94</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L15 · transfer_weight_to_one_pinch</td>
+<td>232.94–241.04</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L16 · clear_bridge_pusher</td>
+<td>241.04–257.04</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L17 · carry_inverted_disk_outside_edge</td>
+<td>257.04–277.04</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L18 · lower_outside_holding_hand</td>
+<td>277.04–302.04</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L19 · align_supported_disk_with_table_height</td>
+<td>302.04–305.20</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L20 · approach_near_rim_above_outside_bridge</td>
+<td>305.20–323.20</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L21 · lower_bridge_pusher_outside_near_rim</td>
+<td>323.20–335.20</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L22 · establish_bridge_push_contact</td>
+<td>335.20–344.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L23 · slide_disk_from_holding_hand_onto_table</td>
+<td>344.10–417.62</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L24 · table_and_lower_pads_share_load_after_thumb_release</td>
+<td>417.62–417.64</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L25 · withdraw_lower_pads_after_supported_centre</td>
+<td>417.64–474.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L26 · unload_bridge_pusher</td>
+<td>474.42–478.26</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="df-02-g">DF-02-G · 带沿浅盘 · Dex3</h3>
+<p>完整成功；独立动作回放通过。</p>
+<p>策略范围：固定标称关节参考前缀，再根据实测状态完成撤手；每个物理步重新执行并评分。这是标称物理见证，不是可泛化的闭环策略。</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-portable-expert-32985ed3d933.tar.gz">Portable frozen expert</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-DF-02-G-download.json">SHA-256 / scope</a></p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">查看最终交付的 Nyx 8× 录像 →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/plan.json">计划</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/verification.json">独立验证</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-video-7b3a5dfd523b.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-trajectory-865012b431a1.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-trace-2e19e89ef621.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-sources-a55b72937fab.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-G-a33/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-02-G trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-G-a33-trajectory-db3444d98e3b.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>2.00–87.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>87.58–91.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>91.58–107.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>107.58–111.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>111.58–139.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>139.58–189.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>189.58–229.58</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>229.58–302.12</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>302.12–313.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>313.42–329.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>329.42–344.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>344.42–384.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>384.42–394.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>394.42–424.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>424.42–449.42</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>449.42–450.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>450.26–460.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>460.26–466.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>466.26–486.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>486.26–498.26</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>498.26–528.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>528.34–532.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>532.34–535.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>535.34–543.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>543.34–548.34</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>548.34–570.72</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>570.72–574.72</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>574.72–578.72</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>578.72–581.22</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="df-02-f">DF-02-F · 带沿浅盘 · Inspire</h3>
+<p>候选失败：<code>disk_angular_speed</code>，停止于 352.00 s。尚无完整物理可行性见证。</p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">查看最终交付的 Nyx 8× 录像 →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/plan.json">计划</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/verification.json">独立验证</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-video-dcfbb299e847.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-trajectory-212d1a874cd2.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-trace-c91b5e977f0d.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-sources-84a2e1745840.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-02-F-a38/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-02-F trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-02-F-a38-trajectory-8fb9027f08c0.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>2.00–8.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>8.00–18.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>18.00–34.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>34.00–46.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>46.00–54.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>54.00–90.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>90.60–100.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>100.60–112.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>112.60–126.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>126.60–130.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>130.60–146.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>146.60–150.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>150.60–162.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>162.60–202.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>202.60–210.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>210.60–310.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>310.60–310.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>310.88–350.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>350.88–352.00</td>
+<td>interrupted</td>
+</tr>
+</tbody>
+</table></div>
+<p>尚未执行的计划段不显示为已完成；全部预期动作见 plan.json。优先展示独立验证的完整成功、其次翻面与抬盘阶段证据、再取较新版本；历史修订见执行台账。</p>
+<h3 id="df-03-g">DF-03-G · 受力敏感浅盘</h3>
+<p>完整成功；独立动作回放通过。</p>
+<p>策略范围：固定标称关节参考前缀，再根据实测状态完成撤手；每个物理步重新执行并评分。这是标称物理见证，不是可泛化的闭环策略。</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-portable-expert-8b56fc7eeb32.tar.gz">Portable frozen expert</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-DF-03-G-download.json">SHA-256 / scope</a></p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">查看最终交付的 Nyx 8× 录像 →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/plan.json">计划</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/verification.json">独立验证</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-video-b1bc5ca37fdf.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-trajectory-5dffc1b818f8.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-trace-83e2874bf423.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-sources-07de2c36228a.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-03-G-a23/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-03-G trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-03-G-a23-trajectory-41d0e3c5d0f0.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>2.00–87.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>87.60–91.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>91.60–107.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>107.60–111.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>111.60–139.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>139.60–189.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>189.60–229.60</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>229.60–292.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>292.00–332.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>332.10–348.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>348.10–363.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>363.10–403.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>403.10–413.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>413.10–443.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>443.10–444.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>444.10–450.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>450.10–459.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>459.06–469.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>469.06–475.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>475.06–495.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>495.06–507.06</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>507.06–533.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>533.70–537.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>537.70–541.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>541.70–560.56</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>560.56–565.56</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>565.56–570.56</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>570.56–573.56</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="df-04-g">DF-04-G · 开放策略 · 双臂</h3>
+<p>完整成功；独立动作回放通过。</p>
+<p>策略范围：固定标称关节参考前缀，再根据实测状态完成撤手；每个物理步重新执行并评分。这是标称物理见证，不是可泛化的闭环策略。</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-portable-expert-6e89b83a31ed.tar.gz">Portable frozen expert</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-DF-04-G-download.json">SHA-256 / scope</a></p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">查看最终交付的 Nyx 8× 录像 →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/plan.json">计划</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/verification.json">独立验证</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-video-92398ea55486.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-trajectory-ceab2a2d6303.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-trace-1163a063c250.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-sources-c618e98bc92b.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-G-a27/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-04-G trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-G-a27-trajectory-d419c4ce5f1b.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>2.00–88.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>88.10–92.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>92.10–108.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>108.10–112.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>112.10–140.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>140.10–190.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>190.10–230.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>230.10–290.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>290.10–321.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>321.88–361.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>361.88–367.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>367.88–422.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>422.88–430.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>430.88–440.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>440.88–446.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>446.88–466.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>466.88–478.88</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>478.88–525.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>525.00–530.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>530.00–535.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>535.00–538.00</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="df-04-s">DF-04-S · 开放策略 · 单臂</h3>
+<p>完整成功；独立动作回放通过。</p>
+<p>策略范围：固定标称关节参考前缀，再根据实测状态完成撤手；每个物理步重新执行并评分。这是标称物理见证，不是可泛化的闭环策略。</p>
+<p>补充完整见证：<strong>DF-04-S-a27 · 在线专家 · 546.06 s</strong>。独立物理回放与紧凑参考回放均通过；当前冻结验收队列保持独立记录。</p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a27-video-f9a2112d1847.mp4">Video</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/plan.json">Plan</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/verification.json">Verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/reference-replay-verification.json">Reference replay</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a27-trajectory-4eecd0659823.npz">Trajectory</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a27-sources-d01a031f02cb.tar.gz">Frozen sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/attempts/DF-04-S-a27/external-media.json">SHA-256</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-portable-expert-aa5e669826c2.tar.gz">Portable frozen expert</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/acceptance/portable-DF-04-S-download.json">SHA-256 / scope</a></p>
+<p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">查看最终交付的 Nyx 8× 录像 →</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/plan.json">计划</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/high-low-trajectory.json">High/low → trajectory</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/verification.json">独立验证</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/summary.json">Summary</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/trace-scope.json">50 Hz trace / scope</a> · <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-video-652723adcfaf.mp4">Video</a></p>
+<p>Trajectory: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-trajectory-7ee2381c5767.npz">trajectory-reference.npz</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/trajectory-reference.json">SHA-256 / replay</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/reference-replay-verification.json">Reference replay verification</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/source/compact_evidence.py">Replay script</a></p>
+<p>Trace: <a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-trace-1758b592c579.jsonl.gz">trace-compact.jsonl.gz</a></p>
+<p><a href="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-sources-0c0aaa3ff792.tar.gz">Frozen execution sources</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/execution/DF-04-S-a28/external-media.json">External artifact hashes</a></p>
+<p><img alt="DF-04-S trajectory" src="https://github.com/wuxiyang1996/robo-si-review-assets/releases/download/disk-flip-evidence-20261029/disk-flip-DF-04-S-a28-trajectory-2c9b76409636.png"/></p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>High level</th>
+<th>Low level</th>
+<th>Time (s)</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prepare</td>
+<td>L01 · settle</td>
+<td>0.00–2.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L02 · preshape</td>
+<td>2.00–6.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>prepare</td>
+<td>L03 · orient_clear</td>
+<td>6.00–18.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>18.00–32.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>32.00–60.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>60.00–105.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L12 · edge_slide</td>
+<td>105.00–131.96</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L13 · regrasp_release</td>
+<td>131.96–155.96</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L04 · pregrasp</td>
+<td>155.96–181.96</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L05 · insert</td>
+<td>181.96–205.96</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>grasp</td>
+<td>L06 · close</td>
+<td>205.96–246.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>lift</td>
+<td>L07 · lift</td>
+<td>246.70–286.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>L08 · turn</td>
+<td>286.70–346.70</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L09 · place</td>
+<td>346.70–378.74</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>378.74–412.10</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L11 · slide_goal</td>
+<td>412.10–520.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>520.00–536.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>536.00–542.00</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>place</td>
+<td>L10 · release</td>
+<td>542.00–545.00</td>
+<td>completed</td>
+</tr>
+</tbody>
+</table></div>
+<h2>尚需解决</h2>
+<ul>
+<li>五指手需要结合实际指长与耦合重新设计接近/夹持，避免双手相撞；单手候选也必须证明受力闭合。</li>
+<li>P2/P3 需同时控制盘沿夹持、底面与支撑圈接触，建立可保持的安全载荷余量。静态支撑通过不能证明可抓取。</li>
+<li>逐配置核对稳定抓持、支撑交接、撤手与完整目标；只有连续执行和独立回放均通过才计入完整见证。</li>
+<li>完整见证建立后，才能冻结扩展协议、开展配对比较与不同初始条件测试。所有 privileged expert 代码、初态和轨迹只供作者验证，不进入 agent bundle。</li>
+</ul>
+<h2>复现限制</h2>
+<p>每条证据提供源码、场景、初态、控制参考序列、物体轨迹、验证报告与哈希。受托管包大小限制，扩展下载包保存每个 50 Hz 控制周期的保持参考和端点物体状态；回放脚本按对应场景的 400 / 2,000 Hz 步长重建全部关节状态与执行器控制，逐数组 SHA-256 与原始执行完全一致（逐条链接验证报告）。原版仍提供原生控制轨迹。网页 trace 保留 50 Hz 物体状态与聚合载荷，省略重复的逐接触明细。完整原始 NPZ/JSONL 继续保存在本地 <code>df_family/runs/</code>，没有被覆盖。已额外构建 5 个扩展开发场景的便携资产包：299 个去重资产、相对路径、上游许可证，编译后的物理数组与原场景逐项相同。它用于复现开发场景，不是通过验收的专家包；网页中的逐 run 原始 scene.xml 仍保留当时路径。</p></div></section>
+<!-- disk-flip-implementation:end -->
+<!-- disk-flip-family:start -->
+<section class="tinted" id="disk-flip-family"><div class="wrap"><h2>Disk Flip 任务族：精简任务清单与盘体设计</h2>
+<p>2026-10-29 · 4 个 task variants、3 种 embodiment、6 个选定 settings，使用 3 类盘体（2 套主要几何）。6 个配置均有候选专家与物理执行；5 个完整成功见证，1 个仍待完成。</p>
+<p>独立操作问题计作 variant；setting 指任务＋身体＋场景的选定配置。参数取值、信息公开条件、消融及 seed 不另计任务，不铺满笛卡尔积。</p>
+<h2>任务清单</h2>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Setting ID</th>
+<th>Variant</th>
+<th>盘体</th>
+<th>Embodiment</th>
+<th>任务与核心考察</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DF-01-G</td>
+<td>DF-01</td>
+<td>P1</td>
+<td>G1 + Dex3</td>
+<td>原版轻柔翻圆盘：推到桌边、双手夹持翻面、放回并释放；保留原协议。</td>
+<td>新执行＋独立回放通过</td>
+</tr>
+<tr>
+<td>DF-02-G</td>
+<td>DF-02</td>
+<td>P2</td>
+<td>G1 + Dex3</td>
+<td>带沿浅盘：三指抓取适配：根据盘沿净空与手指几何，选择夹沿、托底或上下夹持。</td>
+<td>完整见证＋独立回放通过；验收另列</td>
+</tr>
+<tr>
+<td>DF-02-F</td>
+<td>DF-02</td>
+<td>P2</td>
+<td>G1 + Inspire five-finger hand</td>
+<td>带沿浅盘：五指抓取适配：与 DF-02-G 同场景，只更换手及必要控制映射；检验抓取策略是否改变。</td>
+<td>已运行；尚无完整见证</td>
+</tr>
+<tr>
+<td>DF-03-G</td>
+<td>DF-03</td>
+<td>P3</td>
+<td>G1 + Dex3</td>
+<td>受力敏感浅盘翻面：在抗滑与局部载荷限制之间选择安全抓法，必要时分担载荷或利用桌面。</td>
+<td>完整见证＋独立回放通过；验收另列</td>
+</tr>
+<tr>
+<td>DF-04-G</td>
+<td>DF-04</td>
+<td>P1</td>
+<td>G1 + Dex3</td>
+<td>自主翻面：双臂配置：自主选择单／双手抓持、重抓与支撑交接，不强制沿用原版动作顺序。</td>
+<td>完整见证＋独立回放通过；验收另列</td>
+</tr>
+<tr>
+<td>DF-04-S</td>
+<td>DF-04</td>
+<td>P1</td>
+<td>Stretch 3 + specified gripper</td>
+<td>自主翻面：单臂配置：与 DF-04-G 同物体、同桌面；按单臂与腕部能力选择完整翻面及释放策略。</td>
+<td>完整见证＋独立回放通过；验收另列</td>
+</tr>
+</tbody>
+</table></div>
+<h2>盘体设计</h2>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>盘体</th>
+<th>结构与物性</th>
+<th>任务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>标准实心圆盘</td>
+<td>直径 200 mm、厚 12 mm、质量 120 g；两面平整、质量均匀。</td>
+<td>DF-01 / DF-04</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>带盘沿浅盘</td>
+<td>浅凹盘面、薄外沿、底部支撑圈；明确盘沿下方净空与倒扣支撑面。开发几何为外径 200 mm、总高 20 mm、120 g；14 mm 沿下净空，正放／倒扣静态支撑探针已通过。</td>
+<td>DF-02</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>受力敏感浅盘</td>
+<td>复用 P2 几何，增加局部接触载荷限制；首版固定摩擦与质量，保留安全可行抓法。刚体损伤代理，不模拟真实破碎。</td>
+<td>DF-03</td>
+</tr>
+</tbody>
+</table></div>
+<p>需要冻结：盘径、盘体与盘沿厚度、盘沿宽度和下方净空、凹面深度、支撑圈尺寸、质量／质心／惯性、盘—手与盘—桌摩擦，以及适用的局部载荷限值。P2/P3 不沿用平圆盘的高度或接触判据，必须验证倒扣后稳定支撑和完整撤手。接触网格必须保留盘沿、凹面和可插入间隙，不能用填平凹面的碰撞体代替。</p>
+<h2>协议与配对</h2>
+<ul>
+<li>共同目标：目标面朝上，完整放入目标区域，释放后稳定；全过程满足公开安全约束。</li>
+<li>DF-01 保留原版双手夹持、动作顺序、评分器与阈值。6/6 完整执行和 2/2 回放只属于固定骨盆、双 Dex3、两个声明初始配置；正式准入仍为 false。</li>
+<li>DF-02～04 使用独立扩展协议，接受所有满足目标和公开约束的合法策略；明确允许重抓、桌面支撑和受控交接。具体容差、接触丢失、速度、载荷与稳定保持阈值须在实现前公开冻结；禁止依靠终态掩盖跌落或超限。</li>
+<li>DF-02-G/F 保持同一 G1 身体和相同基座约束，只更换手及必要映射。先验证实际抓持差异，不预设五指更强；若同一策略即可覆盖两者，取消额外手型配置。</li>
+<li>DF-04-G/S 保持物体、桌面、目标和扩展评分一致，分别设置经过验证的起始站位；执行中基座固定。必须先建立 Stretch 的完整翻面与释放见证。单臂筛查失败不等于物理不可行。</li>
+<li>DF-03 的损伤代理使用明确的局部载荷指标，不能以相互抵消后的接触合力代替夹持挤压力。阈值必须保留安全可行解，不能把视觉材质当成真实脆性。</li>
+</ul>
+<h2>范围与验证状态</h2>
+<p>三种 embodiment 为 G1＋Dex3、G1＋Inspire 五指手、Stretch 3＋指定夹爪。复用现有任务族的 Stretch 3 资产；夹爪与控制接口须绑定具体资产。A3、双臂轮式和 Stretch 4 暂不另列。</p>
+<p>椭圆／方盘、摩擦／质量／质心变化、已知／未知参数和主动探测消融均暂作任务内配置或储备，不新增主任务。探测允许使用的传感器需单独声明，跨身体成功本身不等于已证明 self-modeling。</p>
+<p>当前登记为 4 个 variants、6 个 settings（1 个原始＋5 个扩展）、3 类盘体、2 套主要几何。已实现并实际运行全部 6 个配置的候选专家；完整见证 5/6，未验证扩展不得继承原成绩。不修改原 14 项基准目录数量、原控制器、评分器、证据或正式准入状态。</p>
+<p><a href="/robo-si-results/infra/task-disk-flip-zh.html#task">原任务与参考证据</a> · <a href="/robo-si-results/infra/task-families-zh.html#disk-flip-family">任务族总览</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/README-en.md">English</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/task-design.json">结构化清单</a></p>
+<p><a href="/robo-si-results/infra/planning/disk-flip-family/IMPLEMENTATION.md">逐项专家实现、计划、轨迹与视频</a> · <a href="/robo-si-results/infra/planning/disk-flip-family/implementation.json">执行台账</a></p></div></section>
+<!-- disk-flip-family:end -->
+<section id="task"><div class="wrap"><h2>任务、场景与评分</h2><p>G1 搭载两只 Dex3 手，通过 43 维关节目标操作直径 200 mm、厚 12 mm、质量 120 g 的圆盘。桌面高 0.86 m，近侧桌沿 x = 0.35 m；初始橙面朝上，目标蓝面朝上。</p><p>必须先形成 55–95 mm 悬伸，再建立两手各自的双盘面夹持，抬起并在双手夹持下翻面。翻面后允许受控支撑交接。最终盘体完整位于桌内、中心距目标不超过 45 mm、倾斜不超过 8°，机器人完全脱离接触并静止两秒。</p>
+<div class="table-wrap"><table><thead><tr><th>检查量</th><th>公开限值</th></tr></thead><tbody><tr><td>关节目标速度</td><td>0.50 rad/s</td></tr><tr><td>圆盘平移 / 转动速度</td><td>0.12 m/s / 0.65 rad/s</td></tr><tr><td>机器人 / 桌面对盘合接触力幅值</td><td>18 N / 8 N</td></tr><tr><td>最终静止速度</td><td>0.015 m/s / 0.08 rad/s</td></tr><tr><td>释放保持 / 回合预算</td><td>2 s / 600 s</td></tr></tbody></table></div><p>完整完成记 1，否则记 0；阶段进度仅用于诊断。圆盘约束按 400 Hz 检查，控制为 50 Hz。 <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/instruction.zh.md">完整公开指令</a> · <a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_tabletop_disk_flip/task.toml">任务清单</a></p></div></section>
+<section class="tinted" id="videos"><div class="wrap"><h2>完整执行与独立回放</h2><p>每个配置三次全新连续执行成功，下面是对应命令在新场景中的独立回放。记录保留版本、种子、资产与源码哈希。录像为 10 fps，20 ms 交接段须以原记录核对。</p><div class="disk-videos"><article class="card"><h3>标准配置 · 457.305 s</h3><p class="current-video-link"><a href="/robo-si-results/infra/families/DF.html">查看最终交付的 Nyx 8× 录像 →</a></p><p>XY = (0.50, 0); seed = 0. <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/release/nominal/replay/summary.json">回放与审计</a></p></article><article class="card"><h3>横向偏移配置 · 478.925 s</h3><p class="archived-video-note"><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/main/releases/g1-disk-flip/0.1.0-rc1-hierarchical">其他录像见完整发布包</a></p><p>XY = (0.50, 0.003); seed = 1. <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/release/offset_y_003/replay/summary.json">回放与审计</a></p></article></div><p>本地克隆缺少录像时，请下载下方完整离线包。 <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/release/coverage.json">完整覆盖记录</a> · <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/candidate_attempts.json">保留的失败与开发尝试</a></p></div></section>
+<section id="mapping"><div class="wrap"><h2>具体案例：高层 → 低层 → 实际轨迹</h2><p>复用两条已有专家完整成功轨迹，追溯补齐 26 / 27 段低层动作，没有拼接检查点。每段绑定生成源码、约束、命令索引、时间和实际边界状态，连续覆盖 22,866 / 23,947 条命令。</p><div class="table-wrap"><table><thead><tr><th>高层目标</th><th>低层展开</th><th>实测完成时间：标准 / 偏移（s）</th></tr></thead><tbody><tr><td>轻推到桌边</td><td>稳定双手 → 接近盘沿 → 轻触 → 推至桌边</td><td>55.580 / 55.580</td></tr><tr><td>建立双手夹持</td><td>卸力 → 撤手 → 调整腕姿 → 手指预整形 → 闭合夹持</td><td>156.480 / 156.620</td></tr><tr><td>抬起建立净空</td><td>双手保持夹持，共同抬盘</td><td>172.800 / 173.240</td></tr><tr><td>双手翻面</td><td>同步转腕，按姿态与载荷反馈调整</td><td>222.820 / 223.280</td></tr><tr><td>放回并释放</td><td>稳定 → 支撑交接 → 桌外降低 → 推上桌 → 撤指 → 松手静置</td><td>457.305 / 478.925</td></tr></tbody></table></div><p>完成时刻来自环境评分器；控制器可在完成后继续稳定再切换动作。文字约束说明生成意图，证据覆盖范围以实测状态、物理限值检查和接触审计为准。</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/humanoid/g1_tabletop_disk_flip/validation/hierarchical/index.html">逐动作段播放与核对 →</a> · <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/hierarchical/README.md">完整分层映射表</a> · <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/hierarchical_checks.json">自动核对结果</a></p></div></section>
+<section class="tinted" id="scope"><div class="wrap"><h2>筛查、约束与证据边界</h2><p>Oracle 输出高层计划、技能与约束、关键状态和预算内检查。四状态区分完整成功证据、筛查通过、未确定、必要检查失败。10 个开发抽样仅标记筛查通过，全部保留；不要求逐实例求完整解。</p><p>通用滚动规划、任意技能衔接、随机鲁棒性与连续适用区间另列。当前只有固定骨盆的两个配置证据；机器人接触审计为 50 Hz，不等于逐物理子步的全身无碰撞证明。</p><p>控制器仅输出关节目标；状态写入有审计，没有焊接或物体瞬移。真实速度和受力约束始终生效。空操作得 0，评分反例有测试；人工捷径核对和新隔离沙箱的完整专家回放仍待完成。</p></div></section>
+<section id="download"><div class="wrap"><h2>发布资料与验收状态</h2><p class="disk-links"><a class="btn" href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/39845e9f4f8bfd300059b49cffa1b8bddc667ddc/releases/g1-disk-flip/0.1.0-rc1-hierarchical/g1-disk-flip-0.1.0-rc1-hierarchical.tar.gz">下载完整离线包（私有 HF）</a><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/publication.json">上传回执、大小与 SHA-256</a><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/RELEASE.md">复现说明</a></p><p>解压后打开 workspace/infra/task-disk-flip-zh.html；在解压目录运行 sha256sum -c SHA256SUMS 核对文件。GitHub 文件页展示 HTML 源码，网页应在克隆仓库或离线包中打开。</p><p><strong>人工录像签审、阶段时间核对、第二人复现及新隔离沙箱的完整专家回放尚未完成。正式准入 admitted=false。</strong></p><p><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/release/human_review.json">待签名复核记录</a> · <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/planning/hierarchical-evaluation/README.md">分层验收口径</a></p></div></section><section id="inventory-additions"><div class="wrap"><h2>14 项任务统一目录 · 新增两项</h2><p>原 12 项仍是 62 个技能／193 个动作候选，映射核对待完成。新增两项使用各自已有的实测分段证据，不能与 193 个动作混算，也不代表正式准入。</p><div class="table-wrap"><table><thead><tr><th>任务</th><th>已有证据</th><th>保留限制</th></tr></thead><tbody><tr data-task="DiskFlip"><td><a href="/robo-si-results/infra/task-disk-flip-zh.html">G1 桌面轻柔翻盘</a></td><td>6/6 全程（每配置 3 次）与 2/2 独立动作回放通过；两条见证分别有 26/27 个低层轨迹段及三层映射。</td><td>人工录像签审、第二人复现、更多配置与完整自碰撞/环境接触审阅；无通用随机域或移动全身能力声明。</td></tr><tr data-task="Sokoban"><td><a href="/robo-si-results/infra/task-sokoban-zh.html">双 G1 未知地图推箱清路</a></td><td>Gamma 8011370：279.18 s、24 个高层操作、76 个低层段；两机到各自目标并保持 3 s。独立采样审阅及完整公共输入回放通过；task_success=null。</td><td>完整接触/仅推不抓有效性认证、未见地图验证、协作收益对照和人工验收；仍为实验候选。</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/planning/INVENTORY.md">14 项规划与证据总览</a> · <a href="/robo-si-results/infra/planning/catalog.json">JSON</a></p></div></section>
+<section id="reference-designs"><div class="wrap"><h2>参考解与设计文档</h2><p>已有参考执行见证；设计、动作、支撑、轨迹对应及复现来源见文档。</p><p><a href="/robo-si-results/infra/reference-designs/DiskFlip.html">参考解与设计文档</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>完整任务说明与证据</h2><p class="detail-nav"><a href="#detail-scope">任务范围与场景</a> · <a href="#detail-interfaces">观测、动作与接口</a> · <a href="#detail-planning">高层目标与低层动作</a> · <a href="#detail-trajectory">轨迹与关键状态对应</a> · <a href="#detail-scoring">评分与成功判据</a> · <a href="#detail-evidence">代表证据与审阅</a> · <a href="#detail-sandbox">沙盒验证</a> · <a href="#detail-reproduce">下载与复现</a> · <a href="#detail-limits">验收边界与剩余工作</a></p><article id="detail-scope"><h3>任务范围与场景</h3><p>固定骨盆、双 Dex3；名义与横向偏移两个声明配置</p><p>6/6 全程（每配置 3 次）与 2/2 独立动作回放通过；两条见证分别有 26/27 个低层轨迹段及三层映射。</p><p>固定骨盆 G1 与双 Dex3 手：先把圆盘推至桌边，夹起翻面，再放回目标区域并释放。桌高 0.86 m，桌面 0.70 × 1.15 m；盘直径 0.20 m、厚 0.012 m、质量 0.12 kg。nominal 与 offset_y_003 仅相差 3 mm 横向位置，是两个已验证配置，不代表连续适用区间。</p></article><article id="detail-interfaces"><h3>观测、动作与接口</h3><p>参考控制器的特权状态与公开代理权限分开；以本任务 SDK 和指令为准。</p><p><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/humanoid/g1_tabletop_disk_flip/sandbox/agent_sdk">Agent SDK</a></p><p>原生参考使用特权状态反馈；公开代理只能经 SDK 获取允许的传感器并提交 43 个关节目标。控制频率 50 Hz，物理步长 0.0025 s；禁止通过非零附加力矩／速度或增益覆写改变冻结执行器。骨盆固定，所以此见证不评价行走或整身平衡。</p></article><article id="detail-planning"><h3>高层目标与低层动作</h3><h4>nominal</h4><div class="detail-table"><table><thead><tr><th>ID</th><th>目标 / Goal</th><th>低层段 / Segments</th><th>完成条件 / Predicate</th><th>观测完成 / Observed s</th></tr></thead><tbody><tr><td>slide</td><td>轻推到桌边</td><td>L01, L02, L03, L04, L05</td><td>at_edge</td><td>55.58</td></tr><tr><td>clamp</td><td>建立双手独立夹持</td><td>L06, L07, L08, L09, L10, L11</td><td>bimanual_clamp</td><td>156.48</td></tr><tr><td>lift</td><td>双手抬起并建立翻转净空</td><td>L12</td><td>bimanual_clamp, clear</td><td>172.8</td></tr><tr><td>turn</td><td>双手翻面至蓝面朝上</td><td>L13</td><td>bimanual_clamp, clear, inverted</td><td>222.82</td></tr><tr><td>place</td><td>放回桌面并释放稳定</td><td>L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26</td><td>inverted, placed, released, still, in_goal</td><td>457.305</td></tr></tbody></table></div><h4>offset_y_003</h4><div class="detail-table"><table><thead><tr><th>ID</th><th>目标 / Goal</th><th>低层段 / Segments</th><th>完成条件 / Predicate</th><th>观测完成 / Observed s</th></tr></thead><tbody><tr><td>slide</td><td>轻推到桌边</td><td>L01, L02, L03, L04, L05</td><td>at_edge</td><td>55.58</td></tr><tr><td>clamp</td><td>建立双手独立夹持</td><td>L06, L07, L08, L09, L10, L11</td><td>bimanual_clamp</td><td>156.62</td></tr><tr><td>lift</td><td>双手抬起并建立翻转净空</td><td>L12</td><td>bimanual_clamp, clear</td><td>173.24</td></tr><tr><td>turn</td><td>双手翻面至蓝面朝上</td><td>L13, L14</td><td>bimanual_clamp, clear, inverted</td><td>223.28</td></tr><tr><td>place</td><td>放回桌面并释放稳定</td><td>L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27</td><td>inverted, placed, released, still, in_goal</td><td>478.925</td></tr></tbody></table></div></article><article id="detail-trajectory"><h3>轨迹与关键状态对应</h3><p>动作表来自原连续记录的事后关联；保留准备和等待段，不是新执行。各时间保留原记录定义。</p><details><summary>nominal · 26 个低层动作段</summary><div class="detail-table"><table><thead><tr><th>ID</th><th>高层 / Goal</th><th>动作 / Action</th><th>接触约束 / Contact constraint</th><th>时间 / Time s</th><th>命令切片 / Command slice</th></tr></thead><tbody><tr><td>L01</td><td>slide</td><td>稳定抬起且分开的双手</td><td>盘由桌面支撑；双手先稳定</td><td>[0.0, 4.5]</td><td>[0, 225]</td></tr><tr><td>L02</td><td>slide</td><td>拇指从上方接近远侧盘沿</td><td>接近阶段避免提前碰盘</td><td>[4.5, 12.5]</td><td>[225, 625]</td></tr><tr><td>L03</td><td>slide</td><td>在远侧盘沿外降低拇指</td><td>沿盘外侧下降，保留桌面支撑</td><td>[12.5, 20.5]</td><td>[625, 1025]</td></tr><tr><td>L04</td><td>slide</td><td>低速建立拇指推盘接触</td><td>以测得接触建立推力，限制速度与受力</td><td>[20.5, 31.88]</td><td>[1025, 1594]</td></tr><tr><td>L05</td><td>slide</td><td>沿桌面轻推至近侧桌沿</td><td>按实测悬伸量停止，盘心仍在支撑侧</td><td>[31.88, 64.32000000000001]</td><td>[1594, 3216]</td></tr><tr><td>L06</td><td>clamp</td><td>卸掉原推盘拇指的载荷</td><td>先卸力，再撤离；桌面继续承载</td><td>[64.32000000000001, 69.82000000000001]</td><td>[3216, 3491]</td></tr><tr><td>L07</td><td>clamp</td><td>撤开推盘拇指</td><td>从盘沿退出，避免带动圆盘</td><td>[69.82000000000001, 75.82000000000001]</td><td>[3491, 3791]</td></tr><tr><td>L08</td><td>clamp</td><td>双手撤至盘上方和侧方</td><td>为改变手型预留几何空间</td><td>[75.82000000000001, 91.82000000000001]</td><td>[3791, 4591]</td></tr><tr><td>L09</td><td>clamp</td><td>调整腕部姿态以双手接近</td><td>局部 IK 使用关节范围和腕部间隙约束</td><td>[91.82000000000001, 107.82000000000001]</td><td>[4591, 5391]</td></tr><tr><td>L10</td><td>clamp</td><td>预张开并调整空载手指</td><td>空载预整形后再建立盘面接触</td><td>[107.82000000000001, 130.88]</td><td>[5391, 6544]</td></tr><tr><td>L11</td><td>clamp</td><td>分别闭合两手的拇指与下侧手指</td><td>每只手建立两盘面的独立夹持；按接触力臂分配载荷</td><td>[130.88, 161.42000000000002]</td><td>[6544, 8071]</td></tr><tr><td>L12</td><td>lift</td><td>保持双手夹持共同抬盘</td><td>保持双手支撑；夹持丢失不得超过 0.1 s；建立旋转净空</td><td>[161.42000000000002, 172.8]</td><td>[8071, 8640]</td></tr><tr><td>L13</td><td>turn</td><td>同步旋转两手以翻转圆盘</td><td>双手夹持，腕部间隙、姿态和切向载荷反馈；保留全局限值</td><td>[172.8, 222.82]</td><td>[8640, 11141]</td></tr><tr><td>L14</td><td>place</td><td>翻面后先稳定双手夹持</td><td>蓝面朝上，准备受控支撑交接</td><td>[222.82, 232.84]</td><td>[11141, 11642]</td></tr><tr><td>L15</td><td>place</td><td>将载荷移交右手夹持并释放左手</td><td>此交接只发生在双手翻面完成后；保持圆盘受支撑</td><td>[232.84, 241.16]</td><td>[11642, 12058]</td></tr><tr><td>L16</td><td>place</td><td>移开左手并准备再次推盘</td><td>右手承载，左手从盘体附近移开</td><td>[241.16, 257.16]</td><td>[12058, 12858]</td></tr><tr><td>L17</td><td>place</td><td>右手将反面朝上的盘移至桌沿外侧</td><td>保持姿态与右手支撑，避免下侧手指被桌沿夹住</td><td>[257.16, 277.16]</td><td>[12858, 13858]</td></tr><tr><td>L18</td><td>place</td><td>在桌沿外降低右手及圆盘</td><td>盘与承载手在桌沿外下降</td><td>[277.16, 302.16]</td><td>[13858, 15108]</td></tr><tr><td>L19</td><td>place</td><td>对齐圆盘与桌面高度</td><td>按测量高度调整，继续由右手支撑</td><td>[302.16, 305.36]</td><td>[15108, 15268]</td></tr><tr><td>L20</td><td>place</td><td>左手拇指从上方接近近侧盘沿</td><td>右手承载期间保持推盘手净空</td><td>[305.36, 323.36]</td><td>[15268, 16168]</td></tr><tr><td>L21</td><td>place</td><td>在近侧盘沿外降低左手拇指</td><td>沿盘外侧下降至推盘高度</td><td>[323.36, 335.36]</td><td>[16168, 16768]</td></tr><tr><td>L22</td><td>place</td><td>建立左手拇指与盘沿的轻柔接触</td><td>右手继续承载，左手低速寻找接触</td><td>[335.36, 344.2]</td><td>[16768, 17210]</td></tr><tr><td>L23</td><td>place</td><td>将圆盘从承载手推向桌面</td><td>逐渐建立桌面支撑并打开右拇指；控制合力和姿态</td><td>[344.2, 407.76]</td><td>[17210, 20388]</td></tr><tr><td>L24</td><td>place</td><td>核对桌面与下侧指垫共同承载</td><td>明确记录支撑交接控制步，不将它省略成瞬时跳转</td><td>[407.76, 407.78000000000003]</td><td>[20388, 20389]</td></tr><tr><td>L25</td><td>place</td><td>盘心获得桌面支撑后撤出下侧指垫并继续推盘</td><td>撤指时暂停推进；左拇指维持桌面盘沿高度，避免撬起圆盘</td><td>[407.78000000000003, 453.98]</td><td>[20389, 22699]</td></tr><tr><td>L26</td><td>place</td><td>卸去左拇指推力并松手稳定</td><td>完整位于桌内、蓝面朝上、目标内、无机器人接触并静止两秒</td><td>[453.98, 457.305]</td><td>[22699, 22866]</td></tr></tbody></table></div></details><details><summary>offset_y_003 · 27 个低层动作段</summary><div class="detail-table"><table><thead><tr><th>ID</th><th>高层 / Goal</th><th>动作 / Action</th><th>接触约束 / Contact constraint</th><th>时间 / Time s</th><th>命令切片 / Command slice</th></tr></thead><tbody><tr><td>L01</td><td>slide</td><td>稳定抬起且分开的双手</td><td>盘由桌面支撑；双手先稳定</td><td>[0.0, 4.5]</td><td>[0, 225]</td></tr><tr><td>L02</td><td>slide</td><td>拇指从上方接近远侧盘沿</td><td>接近阶段避免提前碰盘</td><td>[4.5, 12.5]</td><td>[225, 625]</td></tr><tr><td>L03</td><td>slide</td><td>在远侧盘沿外降低拇指</td><td>沿盘外侧下降，保留桌面支撑</td><td>[12.5, 20.5]</td><td>[625, 1025]</td></tr><tr><td>L04</td><td>slide</td><td>低速建立拇指推盘接触</td><td>以测得接触建立推力，限制速度与受力</td><td>[20.5, 31.88]</td><td>[1025, 1594]</td></tr><tr><td>L05</td><td>slide</td><td>沿桌面轻推至近侧桌沿</td><td>按实测悬伸量停止，盘心仍在支撑侧</td><td>[31.88, 64.34]</td><td>[1594, 3217]</td></tr><tr><td>L06</td><td>clamp</td><td>卸掉原推盘拇指的载荷</td><td>先卸力，再撤离；桌面继续承载</td><td>[64.34, 69.84]</td><td>[3217, 3492]</td></tr><tr><td>L07</td><td>clamp</td><td>撤开推盘拇指</td><td>从盘沿退出，避免带动圆盘</td><td>[69.84, 75.84]</td><td>[3492, 3792]</td></tr><tr><td>L08</td><td>clamp</td><td>双手撤至盘上方和侧方</td><td>为改变手型预留几何空间</td><td>[75.84, 91.84]</td><td>[3792, 4592]</td></tr><tr><td>L09</td><td>clamp</td><td>调整腕部姿态以双手接近</td><td>局部 IK 使用关节范围和腕部间隙约束</td><td>[91.84, 107.84]</td><td>[4592, 5392]</td></tr><tr><td>L10</td><td>clamp</td><td>预张开并调整空载手指</td><td>空载预整形后再建立盘面接触</td><td>[107.84, 130.9]</td><td>[5392, 6545]</td></tr><tr><td>L11</td><td>clamp</td><td>分别闭合两手的拇指与下侧手指</td><td>每只手建立两盘面的独立夹持；按接触力臂分配载荷</td><td>[130.9, 161.88]</td><td>[6545, 8094]</td></tr><tr><td>L12</td><td>lift</td><td>保持双手夹持共同抬盘</td><td>保持双手支撑；夹持丢失不得超过 0.1 s；建立旋转净空</td><td>[161.88, 173.24]</td><td>[8094, 8662]</td></tr><tr><td>L13</td><td>turn</td><td>同步旋转两手以翻转圆盘</td><td>双手夹持，腕部间隙、姿态和切向载荷反馈；保留全局限值</td><td>[173.24, 222.84]</td><td>[8662, 11142]</td></tr><tr><td>L14</td><td>turn</td><td>接近翻面完成时改用实测压力反馈</td><td>仅在已接近反面朝上且双手夹持有效时触发；原物理约束不变</td><td>[222.84, 223.28]</td><td>[11142, 11164]</td></tr><tr><td>L15</td><td>place</td><td>翻面后先稳定双手夹持</td><td>蓝面朝上，准备受控支撑交接</td><td>[223.28, 233.3]</td><td>[11164, 11665]</td></tr><tr><td>L16</td><td>place</td><td>将载荷移交右手夹持并释放左手</td><td>此交接只发生在双手翻面完成后；保持圆盘受支撑</td><td>[233.3, 241.92000000000002]</td><td>[11665, 12096]</td></tr><tr><td>L17</td><td>place</td><td>移开左手并准备再次推盘</td><td>右手承载，左手从盘体附近移开</td><td>[241.92000000000002, 257.92]</td><td>[12096, 12896]</td></tr><tr><td>L18</td><td>place</td><td>右手将反面朝上的盘移至桌沿外侧</td><td>保持姿态与右手支撑，避免下侧手指被桌沿夹住</td><td>[257.92, 277.92]</td><td>[12896, 13896]</td></tr><tr><td>L19</td><td>place</td><td>在桌沿外降低右手及圆盘</td><td>盘与承载手在桌沿外下降</td><td>[277.92, 302.92]</td><td>[13896, 15146]</td></tr><tr><td>L20</td><td>place</td><td>对齐圆盘与桌面高度</td><td>按测量高度调整，继续由右手支撑</td><td>[302.92, 307.26]</td><td>[15146, 15363]</td></tr><tr><td>L21</td><td>place</td><td>左手拇指从上方接近近侧盘沿</td><td>右手承载期间保持推盘手净空</td><td>[307.26, 325.26]</td><td>[15363, 16263]</td></tr><tr><td>L22</td><td>place</td><td>在近侧盘沿外降低左手拇指</td><td>沿盘外侧下降至推盘高度</td><td>[325.26, 337.26]</td><td>[16263, 16863]</td></tr><tr><td>L23</td><td>place</td><td>建立左手拇指与盘沿的轻柔接触</td><td>右手继续承载，左手低速寻找接触</td><td>[337.26, 347.26]</td><td>[16863, 17363]</td></tr><tr><td>L24</td><td>place</td><td>将圆盘从承载手推向桌面</td><td>逐渐建立桌面支撑并打开右拇指；控制合力和姿态</td><td>[347.26, 420.44]</td><td>[17363, 21022]</td></tr><tr><td>L25</td><td>place</td><td>核对桌面与下侧指垫共同承载</td><td>明确记录支撑交接控制步，不将它省略成瞬时跳转</td><td>[420.44, 420.46000000000004]</td><td>[21022, 21023]</td></tr><tr><td>L26</td><td>place</td><td>盘心获得桌面支撑后撤出下侧指垫并继续推盘</td><td>撤指时暂停推进；左拇指维持桌面盘沿高度，避免撬起圆盘</td><td>[420.46000000000004, 475.66]</td><td>[21023, 23783]</td></tr><tr><td>L27</td><td>place</td><td>卸去左拇指推力并松手稳定</td><td>完整位于桌内、蓝面朝上、目标内、无机器人接触并静止两秒</td><td>[475.66, 478.925]</td><td>[23783, 23947]</td></tr></tbody></table></div></details></article><article id="detail-scoring"><h3>评分与成功判据</h3><p>原生 score = float(success)，阶段进度仅为诊断。必须依次通过桌边定位、双手夹持、离桌、翻面、放置释放，不能仅凭最后姿态得分。桌边驻留 0.25 s，夹持与翻面各 0.30 s，最终稳定 2 s；目标位置容差 45 mm、平放角度 8°。接触丢失宽限 0.10 s；600 s 超时。力与速度门槛是保守任务参数，不是材料损伤标定。</p><div class="detail-table"><table><thead><tr><th>量 / Quantity</th><th>硬上限 / Limit</th><th>nominal 实测峰值 / Peak</th></tr></thead><tbody><tr><td>Disk linear speed (m/s)</td><td>0.12</td><td>0.02991245</td></tr><tr><td>Disk angular speed (rad/s)</td><td>0.65</td><td>0.39503132</td></tr><tr><td>Robot force (N)</td><td>18</td><td>16.7604427</td></tr><tr><td>Table force (N)</td><td>8</td><td>3.39983333</td></tr><tr><td>Joint target speed (rad/s)</td><td>0.5</td><td>0.499999989</td></tr></tbody></table></div></article><article id="detail-evidence"><h3>代表证据与审阅</h3><p>发布代表组为两配置各 3 次，共 6/6 完整成功；另有 2/2 独立物理动作回放。选定连续见证分别为 457.305 s、478.925 s，对应 26/27 段。开发尝试记录与发布代表组分开计数；检查点片段不计完整成功。400 Hz 原生评分监测与 50 Hz 机器人接触审阅不是同一种检查：后者不证明每个物理子步无碰撞。</p><p><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/representative_plan.json">Representative selection</a> · <a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/validation/candidate_attempts.json">Retained development attempts</a></p></article><article id="detail-sandbox"><h3>沙盒验证</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr><tr><td>Linux / WSL (same machine)</td><td>—</td><td>—</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>这些检查验证启动、传感器与动作接口；不计完整任务成功。同机 WSL 不是独立第二台机器复现。</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/DiskFlip/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>下载与复现</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/39845e9f4f8bfd300059b49cffa1b8bddc667ddc/releases/g1-disk-flip/0.1.0-rc1-hierarchical/g1-disk-flip-0.1.0-rc1-hierarchical.tar.gz">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: 485b48059f8053267babe6e123607904610fc0459a60b4bbca730082b2779c04</p><p>下载需私有仓库权限。参考包保留历史配置与运行入口；当前沙盒工作区补齐运行资产。先按沙盒 README 安装环境并执行短测，再用参考包的冻结入口复现；不能把新接口短测当作完整专家回放。</p><p>先检查本任务入口（不运行物理），再按链接中的环境与代理交付说明启动。历史 README 中的原机器路径须替换为本机路径；本页沙盒验证表是当前检查状态。</p><pre><code>python -m infra.sandbox.inventory check --task DiskFlip
+python -m humanoid.g1_tabletop_disk_flip.sandbox.launch --help</code></pre><p><a href="/robo-si-results/humanoid/g1_tabletop_disk_flip/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p><details><summary>新接口短测示例（非完整专家）</summary><pre><code>python -m humanoid.g1_tabletop_disk_flip.sandbox.launch --mode dev --isolation process --seed 0 --sim-time 1 --sensors proprio --no-video --agent-dir humanoid/g1_tabletop_disk_flip/sandbox/agent_sdk/examples -- python hello_robot.py
+python -m humanoid.g1_tabletop_disk_flip.sandbox.launch --mode eval --sim-time 1 --sensors proprio --no-video --agent-dir humanoid/g1_tabletop_disk_flip/sandbox/agent_sdk/examples -- python hello_robot.py
+</code></pre></details></article><article id="detail-limits"><h3>验收边界与剩余工作</h3><p>双手夹持要求不能被单手托住替代；翻面后的轻柔放置允许特定单手承托交接。偏移配置增加闭环接触调节段，仍使用原限制。人工录像签审、第二人复现和更广配置的接触审阅仍待完成。新隔离接口已短测，完整专家通过新接口重放仍未验证。</p><p>随机实例分别记录：有完整成功证据、通过可行性筛查、未确定、检查不通过。只要求声明范围内的代表完整见证与表示间对应；不要求逐个随机实例生成完整解。正式准入、人工签审和独立机器验证不由页面完成状态推定。本次新增物理执行：0。</p><p><a href="/robo-si-results/infra/reference-designs/DiskFlip.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

@@ -1,0 +1,39 @@
+{
+  "schema": "m4-reviewed-controller-retry/1",
+  "attempt": "v3j-rope-heading-a47",
+  "reviewed_failures": [
+    "v3j-load85-a43",
+    "v3j-goal-unload-a45"
+  ],
+  "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+  "transport_sha256": "1fe76191f8c68b2ec3f448bb8e1bd8d79c5d99d85da6c66f01ae38582e5230f8",
+  "hardware_review": "The same overhead dock and finite pin mechanism retained capture and stayed within pin/contact/service checks in both failed runs. No geometry or acceptance-limit change is proposed. a42 used equivalent physical geometry but a different source hash and also remains a failed reference.",
+  "diagnosis": "a45 failed during transport before its changed goal handoff. Shared legacy controller/policy hashes match a43, but floating-point trajectories diverged; a43 reaching the goal therefore does not establish robust transport. At a45 termination the pursuit controller still requested turning toward the path heading while measured ropes pointed significantly behind/right in body coordinates.",
+  "terminal_rope_angle_body_deg": {
+    "go2_a": -43.06078456023263,
+    "go2_b": -28.73528713644047
+  },
+  "change": "Use measured outgoing rope direction as body yaw reference (gain 1.5, unchanged 0.2 rad/s cap and 0.10 rad/s^2 slew). Preserve the existing world-frame pursuit translation, 85 N feedback, hardware, and goal handoff correction.",
+  "hypothesis": "Reducing sideways pull on the rear receiver may reduce yaw/stance conflict; this is not yet a causal or feasibility proof.",
+  "limits": "All physical acceptance limits unchanged; no external forces, state writes, collision masking or foot-contact resets.",
+  "budget": {
+    "seconds": 180,
+    "one_attempt": true,
+    "substeps": 8,
+    "precision": "64",
+    "ground_friction": 0.8
+  },
+  "formal_admission": false,
+  "failure_foot": {
+    "robot": "go2_b",
+    "leg": "FR",
+    "stance_start_s": 80.535,
+    "failed_s": 83.455,
+    "slide_m": 0.05007378428246211,
+    "tangent_normal_ratio": 0.4245956268948858
+  },
+  "evidence": [
+    "foot-diagnosis-a45-go2-b.json",
+    "../runs/v3j-goal-unload-a45/trajectory.json"
+  ]
+}

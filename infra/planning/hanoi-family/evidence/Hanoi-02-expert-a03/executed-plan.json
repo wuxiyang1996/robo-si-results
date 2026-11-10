@@ -1,0 +1,31 @@
+{
+  "schema": "hanoi-executed-plan/1",
+  "segments": [
+    {
+      "high_id": "P00",
+      "low_id": "P00.L01",
+      "action": "settle and inspect physical tool geometry",
+      "physics_start": 0,
+      "physics_end_exclusive": 100,
+      "control_start": 0
+    },
+    {
+      "high_id": "P01",
+      "low_id": "P01.L01",
+      "action": "park unused left hand above the rod workspace",
+      "physics_start": 100,
+      "physics_end_exclusive": 580,
+      "control_start": 25
+    },
+    {
+      "high_id": "P01",
+      "low_id": "P01.L01",
+      "action": "approach fork handle, grasp candidate 1",
+      "physics_start": 580,
+      "physics_end_exclusive": 800,
+      "control_start": 145
+    }
+  ],
+  "only_executed_ranges": true,
+  "physics_index_convention": "commands/segments: zero-based start inclusive and end exclusive; physics records: 1-based completed-step number"
+}

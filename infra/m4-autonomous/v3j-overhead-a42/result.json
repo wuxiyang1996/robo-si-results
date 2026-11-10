@@ -1,0 +1,80 @@
+{
+  "status": "finished",
+  "passed": false,
+  "mode": "corridor",
+  "full_transport_requested": true,
+  "full_transport_success": false,
+  "error": "RuntimeError: physical monitor failed: ['traction_and_slip'][]",
+  "phase": "corridor_tow",
+  "sim_time_s": 145.19999999994045,
+  "steps": 29040,
+  "frames": 1452,
+  "source_unchanged": true,
+  "proof_dwell_s": {
+    "go2_a": 0.5349999999998936,
+    "go2_b": 0.5049999999998995
+  },
+  "events": [
+    {
+      "time_s": 15.840000000001076,
+      "robot": "go2_a",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.001054191845708985,
+        0.0006377654007204137,
+        -0.0013283456572002472
+      ]
+    },
+    {
+      "time_s": 15.840000000001076,
+      "robot": "go2_b",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        0.0009363388728531596,
+        0.0003087821075038466,
+        -0.0013127201578178038
+      ]
+    },
+    {
+      "time_s": 19.5300000000004,
+      "event": "BEGIN_EXTRACTION"
+    },
+    {
+      "time_s": 23.069999999999695,
+      "event": "EXTRACTED_LOADED_RETENTION_PROVED"
+    }
+  ],
+  "failures": {
+    "traction_and_slip": {
+      "first_time": 145.2,
+      "count": 1,
+      "detail": {
+        "pen_dynamic": 0.0005014839087448056,
+        "pen_rope": 0.0,
+        "impulse": 0.0,
+        "support": 0.9979858263459495,
+        "robot_cargo": 0.0,
+        "slide": 0.05001194148607591,
+        "drift": 0.0001489607037530695,
+        "tension": {
+          "rope_left": 53.78806705263643,
+          "rope_right": 13.94210332457021
+        },
+        "heights": {
+          "go2_a": 0.30734157193866285,
+          "go2_b": 0.32433068425774925
+        },
+        "tilts": {
+          "go2_a": 12.874848691540315,
+          "go2_b": 2.8617015165560287
+        },
+        "calls": [],
+        "steps": 1,
+        "gap": 0.0049999999999954525
+      }
+    }
+  },
+  "wall_time_s": 799.3845553398132,
+  "scope": "Privileged physical coupling, corridor delivery and release candidate; no tool-discovery or admission credit",
+  "formal_admission": false
+}

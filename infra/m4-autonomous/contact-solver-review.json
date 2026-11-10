@@ -1,0 +1,28 @@
+{
+  "schema": "m4-contact-solver-review/1",
+  "attempt": "v3i-noslip5-a41",
+  "source": "v3i-load-feedback-ground08-a40",
+  "hypothesis": "Quantify numerical tangential drift versus locomotion failure before changing the controller. Genesis noslip pass refines bounded friction-pyramid forces and updates logged contacts after the pass.",
+  "option": {
+    "noslip_iterations": 5
+  },
+  "reference": {
+    "noslip_iterations": 0,
+    "attempt": "v3i-load-feedback-ground08-a40"
+  },
+  "unchanged": [
+    "friction coefficients",
+    "masses/geometries",
+    "8 integration substeps / 64-bit",
+    "frozen controller and motor gains",
+    "50 mm stance-slip acceptance",
+    "all pin/rope/service limits"
+  ],
+  "evidence": [
+    "Genesis options/solvers.py noslip_iterations documentation",
+    "Genesis engine/solvers/rigid/constraint/solver.py func_resolve_post updates contact forces after func_noslip",
+    "Genesis engine/solvers/rigid/constraint/noslip.py bounded friction-pyramid pair update"
+  ],
+  "interpretation": "Diagnostic only. A pass requires subsequent convergence/calibration and physical reruns; no retrospective relabel of earlier failures.",
+  "formal_admission": false
+}

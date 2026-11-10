@@ -1,0 +1,212 @@
+{
+  "schema": "m3-extension-design/0.1.0",
+  "date": "2026-10-27",
+  "parent_task": "M3",
+  "status": "conditional_design_proposal",
+  "author_only": true,
+  "agent_bundle_allowed": false,
+  "new_simulation_runs": 0,
+  "formal_admission": false,
+  "changes_historical_scoring": false,
+  "load_constraint": {
+    "reported_limit_kg": 2.0,
+    "source": "user instruction in current conversation",
+    "interpretation": "conservative total external carried-load screening ceiling for new designs",
+    "hardware_scope": "unresolved; verify platform, per-arm/combined convention, lever arm and dynamics",
+    "verified_capability": false,
+    "sum_arm_limits": false,
+    "x5_compatibility": "unknown",
+    "support_capacity_includes_full_robot_mass": true
+  },
+  "documentation": {
+    "zh": "README.md",
+    "en": "README-en.md"
+  },
+  "policy_sources": [
+    "../../task-design-zh.html",
+    "../../acceptance-zh.html",
+    "../acceptance-policy.json"
+  ],
+  "family_overview": "../task-families.json",
+  "tasks": [
+    {
+      "id": "M3E-01",
+      "name_zh": "轻量伙伴预布置抬升与交付",
+      "name_en": "Prepared lightweight-partner lift and delivery",
+      "feasibility": "unknown",
+      "status": "conditional_pending_asset_and_capability_audit",
+      "legacy_id": "H1E-09",
+      "route": [
+        "lift partner",
+        "independent platform support",
+        "retrieve",
+        "lower",
+        "ground load transfer",
+        "withdraw",
+        "deliver"
+      ],
+      "necessary_checks": [
+        "total carried load and moment within verified current profile",
+        "real support interface without weld",
+        "independent box support before manipulation",
+        "ground load transfer before hand withdrawal",
+        "partner remains stable through retrieval and return"
+      ],
+      "reference_witnesses": [],
+      "scene_parameters": null,
+      "budgets": null,
+      "counts_as_independent_task": false,
+      "record_kind": "case_parent_group",
+      "child_case_ids": [
+        "M3C-B01"
+      ]
+    },
+    {
+      "id": "M3E-02",
+      "name_zh": "为轻量伙伴选择并布置支撑台",
+      "name_en": "Select and place a lightweight-partner workstation",
+      "feasibility": "unknown",
+      "status": "conditional_pending_asset_and_capability_audit",
+      "legacy_id": "H1E-10",
+      "route": [
+        "inspect candidate supports",
+        "select and place support",
+        "verify independent stability",
+        "execute complete M3E-01 chain"
+      ],
+      "necessary_checks": [
+        "candidate supports observable geometry and load evidence",
+        "handling support within current capability",
+        "partner footprint and extended-arm stability",
+        "work and return clearance",
+        "complete placement-to-delivery chain"
+      ],
+      "reference_witnesses": [],
+      "scene_parameters": null,
+      "budgets": null,
+      "counts_as_independent_task": false,
+      "record_kind": "case_parent_group",
+      "child_case_ids": [
+        "M3C-B02"
+      ]
+    },
+    {
+      "id": "M3E-03",
+      "name_zh": "抬升或坡道路线选择",
+      "name_en": "Lift or ramp route choice",
+      "feasibility": "unknown",
+      "status": "conditional_pending_asset_and_capability_audit",
+      "legacy_id": "H1E-11",
+      "route": [
+        "inspect capability and tools",
+        "choose complete route",
+        "retrieve",
+        "return",
+        "deliver"
+      ],
+      "single_robot_solution": "reward legal completion and record as no-cooperation control",
+      "necessary_checks": [
+        "direct and ramp alternatives audited",
+        "ramp approach traction overlap and loaded return",
+        "at least one scoped full route before feasible label",
+        "single-robot solution accepted and relabeled",
+        "cooperation necessity separately evidenced"
+      ],
+      "reference_witnesses": [],
+      "scene_parameters": null,
+      "budgets": null,
+      "counts_as_independent_task": false,
+      "record_kind": "case_parent_group",
+      "child_case_ids": [
+        "M3C-B03",
+        "M3C-B04"
+      ]
+    }
+  ],
+  "infeasibility_controls": [
+    {
+      "id": "M3E-I01",
+      "name_zh": "负载不适配且所有替代路线不可行",
+      "feasibility": "unknown",
+      "certificate_status": "not_constructed",
+      "parents": [
+        "M3E-01",
+        "M3E-02",
+        "M3E-03"
+      ],
+      "must_exclude": [
+        "direct retrieval",
+        "ramp route",
+        "alternative support arrangements",
+        "tool-assisted retrieval",
+        "other legal combinations"
+      ],
+      "overload_alone_proves_infeasible": false,
+      "paired_feasible_witness_required": true,
+      "child_case_ids": [
+        "M3C-I01"
+      ],
+      "counts_as_independent_case": false
+    }
+  ],
+  "removed_standalone_case": "return-posture adjustment; necessary safe return remains a completion condition",
+  "withdrawn": [
+    "humanoid carrying humanoid",
+    "partner-supported humanoid ascent",
+    "partner-supported humanoid balancing"
+  ],
+  "completion": {
+    "correct_target_independently_supported_in_ground_D": true,
+    "all_robots_independently_stable_on_ground": true,
+    "no_mutual_carrying_support": true,
+    "dwell_s": 3,
+    "threshold_status": "draft_requires_calibration",
+    "historical_M3_rules_unchanged": true
+  },
+  "exit_contract": {
+    "region": "Q",
+    "all_participants_in_assigned_bays": true,
+    "empty_handed": true,
+    "no_mutual_carrying_support": true,
+    "independent_ground_support": true,
+    "simultaneous_dwell_s": 3,
+    "prior_failed_attempt_required": false,
+    "moved_objects_independently_stable": true,
+    "unknown_correctness": null,
+    "feasible_exit_is_false_abstention": true,
+    "timeout_is_abstention": false
+  },
+  "reference_witnesses": [],
+  "historical_reference": {
+    "path": "../../m3-current-evidence.json",
+    "sha256": "5c3788fab22e9c4a7639e274548dad469fc5dc7233f82c4dfa90e900df95c587",
+    "proves_current_2kg_compatibility": false
+  },
+  "pending": [
+    "compatible lightweight robot asset",
+    "carrying interfaces and dynamics",
+    "simulator and controller hashes",
+    "sensors",
+    "ranges and per-case budgets",
+    "witnesses",
+    "infeasibility certificates",
+    "human review"
+  ],
+  "start_solver_with_unset_budgets": false,
+  "embodiment_matrix_status": "Candidate bodies are bound by measured capability boundaries; no G/H/W Cartesian expansion. X5 lifting compatibility remains unknown.",
+  "family_organization": "../task-families.json",
+  "current_task_registry": "../current-task-registry.json",
+  "family_boundary": "Change a lightweight partner robot workspace/support; no humanoid carrying or assisted humanoid ascent.",
+  "instruction": {
+    "zh": "将高处容器内带指定可见标记的目标完整放入地面托盘 D，释放并保持稳定。所有机器人最终须在合法地面独立稳定、解除相互承托。遵守公开运行限制；如果判断当前身体组合与现场物品无法完成本回合，可不先尝试搬运，直接让全员空手进入各自 Q 位并停稳 3 秒。",
+    "en": "Place the visibly identified target from the elevated container wholly in ground tray D, release it and leave it stable. Every robot must finish independently stable on legal ground without mutual carrying support. Respect public operating limits. If the current bodies and available objects cannot complete the episode, all robots may proceed directly to their Q bays, empty-handed, and remain stationary for 3 seconds without prior manipulation attempts."
+  },
+  "case_catalog": "case-catalog.json",
+  "case_count": 6,
+  "operation_case_count": 5,
+  "control_case_count": 1,
+  "case_counting": "Observable capability bottleneck and tool/partner operation that can change complete-task feasibility; not a Cartesian product of robot names and rules",
+  "original_case_count": 1,
+  "extension_case_count": 5,
+  "original_case_id": "M3C-ORIG"
+}

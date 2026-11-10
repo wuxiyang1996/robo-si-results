@@ -1,0 +1,32 @@
+{
+  "schema": "m4-contact-solver-review/2",
+  "attempt": "v3j-noslip5-a48",
+  "status": "deferred_reference_a47_passed",
+  "condition": "Only after a47 finishes without a full physical corridor/release success; otherwise defer this diagnostic.",
+  "frozen_source": "v3j-goal-unload-a45",
+  "geometry_sha256": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad",
+  "transport_sha256": "0a3881a36de61b90060bb071c43011c60c4f024e7f69a1e0b90f9bb3853a2e1a",
+  "noslip_iterations": 5,
+  "reference_noslip_iterations": 0,
+  "evidence": [
+    "friction-combination-audit.json",
+    "contact-kinematics-a45.json",
+    "contact-solver-review.json"
+  ],
+  "hypothesis": "Measured terminal contact-point tangential drift is about 15 mm/s while tangent/normal force ratio is 0.425 and effective friction is 1.0. Test the installed bounded-friction post-solver with exactly the failed a45 frozen controller. This does not yet identify solver drift as the cause.",
+  "source_sha256": {
+    "options/solvers.py": "207f12b6ca35f5c9ce4347dc2a56210c0573d724124b2433b84768054bd574a4",
+    "engine/solvers/rigid/constraint/noslip.py": "c5a910b31d655f53da06a8df281e6a94aca6adc349f9ee549853169347479ed1",
+    "engine/solvers/rigid/constraint/solver.py": "ce89945b19a406851e605229b2dfb09377eb244c4b6abf2e6cc8872af80d8b4a"
+  },
+  "unchanged": [
+    "hardware and dock layout",
+    "all masses and friction coefficients",
+    "8 substeps and 64-bit precision",
+    "frozen a45 controller, gains and motion commands",
+    "50 mm stance slip and all other limits",
+    "no runtime pose, wrench, attachment or mask edits"
+  ],
+  "interpretation": "Diagnostic only; retain a45 zero-iteration failure. A positive requires calibration/convergence and representative reruns before formal acceptance.",
+  "formal_admission": false
+}

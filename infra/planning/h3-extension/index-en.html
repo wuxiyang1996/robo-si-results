@@ -1,0 +1,354 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>H3 · Cooperative self-closing door delivery: tasks and requirements</title><style>body{margin:0;background:#f7f9fb;font-family:system-ui,sans-serif}main{max-width:1100px;margin:0 auto;padding:28px 24px 72px;background:white}h1{font-size:clamp(26px,4vw,38px);line-height:1.3}
+.h3-plan{color:#182b3a;line-height:1.75;overflow-wrap:anywhere}
+.h3-plan *{box-sizing:border-box}.h3-plan a{color:#075e72;text-decoration:underline;text-underline-offset:3px}
+.h3-plan .h3-eyebrow{font-size:13px;font-weight:750;letter-spacing:.06em;color:#71520e}
+.h3-plan h2{font-size:clamp(25px,4vw,36px);line-height:1.3;margin:14px 0}
+.h3-plan h3{margin:28px 0 12px}.h3-plan .h3-notice{padding:18px 22px;border-left:5px solid #b57a0e;background:#fff5dd;border-radius:6px}
+.h3-plan .h3-gate{padding:20px 24px;background:#e6f3f1;border:1px solid #8fbdb6;border-radius:10px;margin:20px 0}
+.h3-plan .h3-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.h3-plan .h3-rule{padding:17px 19px;border:1px solid #ddc58e;border-top:4px solid #b57a0e;border-radius:8px;background:#fffaf0}
+.h3-plan .h3-rule p{margin:8px 0 0}.h3-plan .h3-rule strong{font-size:17px;color:#583b05}
+.h3-plan .h3-label{display:block;font-size:12px;font-weight:800;letter-spacing:.04em;color:#7a4f00}
+.h3-plan .h3-table{overflow-x:auto;max-width:100%;border:1px solid #d8e1e7;border-radius:8px;margin:18px 0}
+.h3-plan table{width:100%;border-collapse:collapse;font-size:14px;display:table!important}
+.h3-plan th,.h3-plan td{padding:12px 14px;vertical-align:top;text-align:left;border-bottom:1px solid #d8e1e7;min-width:95px}
+.h3-plan th{background:#edf3f6;color:#263e50}.h3-plan td:nth-child(3){min-width:250px}.h3-plan td:nth-child(4){min-width:210px}
+.h3-plan tbody tr:nth-child(even){background:#f7fafb}.h3-plan .h3-status{font-size:12px;color:#6e4a10;display:block}
+.h3-plan details{border:1px solid #d8e1e7;padding:14px 18px;border-radius:8px;margin:18px 0}
+.h3-plan summary{cursor:pointer;font-weight:700}.h3-plan :focus-visible{outline:3px solid #b57a0e;outline-offset:3px}
+@media(max-width:650px){.h3-plan .h3-grid{grid-template-columns:1fr}.h3-plan .h3-notice,.h3-plan .h3-gate{padding:16px}.h3-plan th,.h3-plan td{padding:10px}}
+@media print{.h3-plan .h3-table{overflow:visible}.h3-plan table{font-size:10px}.h3-plan th,.h3-plan td{min-width:0!important}.h3-plan .h3-rule{break-inside:avoid}}
+</style></head><body><main class="h3-plan"><h1>H3 · Cooperative self-closing door delivery: tasks and requirements</h1>
+<p>2026-10-30 · In progress · <strong>95</strong> logged attempts · <strong>22</strong> full native task successes · Formal admission <strong>false</strong>.</p>
+<p><a href="implementation.html">实施与六配置证据 / Implementation and six case evidence</a> · <a href="implementation.json">状态 JSON / Status JSON</a></p>
+<p><strong>L2 single-candidate closed-door delivery passed in 413.92 s; autonomous multi-tool discovery remains pending. Fixed repeats: 0/3 completed, 0/3 passed; pilot excluded. L3 support switching passed 3/3 fixed repeats. Recovery-to-parcel delivery after a local fixture passed in 211.48 s; closed-door fault delivery remains pending. Actual fault recovery from a closed-door start without a fixture is also verified; the subsequent support switch failed. Formal admission remains pending.</strong></p>
+<p><a href="README.md">中文</a> · <a href="README-en.md">English</a> · <a href="task-list.json">JSON</a> · <a href="../../task-h3-en.html#h3-extension">H3 website</a></p>
+<h2>1. Goal and first delivery</h2>
+<p><strong>Carry the 0.4 kg parcel through the self-closing door, place it on table B and release it stably.</strong></p>
+<p>Given the same goal and physical mechanism, can an agent discover tools, infer its own and its partner’s capabilities, and choose and execute effective cooperation?</p>
+<p><strong>G1 carries the original parcel; Stretch supports the door or places tools. Complete native L1 witnesses exist. L2/L3 extensions proceed separately, as requested, without blocking separate L1 acceptance.</strong></p>
+<p>P0/P1/P2 are implementation priorities; L1/L2/L3 are evaluation levels. Work-item and configuration IDs differ. See the acceptance board for measured evidence, frozen versions and remaining gates.</p>
+<h2>2. Mandatory requirements</h2>
+<h3>R01 · Separate mechanism and difficulty</h3>
+<p><strong>heavy_prop and no_prop are parallel mechanisms. Define L1/L2/L3 by physical constraints, information uncertainty and decision demands.</strong></p>
+<h3>R02 · Keep comparisons matched</h3>
+<p><strong>Apply parcel, handle or scene revisions to every paired robot. Merely replacing a robot model does not demonstrate self-modeling.</strong></p>
+<h3>R03 · Verify the full physical process</h3>
+<p><strong>Synchronize door angle/velocity, support contacts, parcel and robot states. Check clearance and support from combined-envelope entry until full exit; final contact force is insufficient.</strong></p>
+<h3>R04 · Make capability predictions testable</h3>
+<p><strong>Record reach, force or grasp predictions before acting and compare with outcomes; insufficient evidence remains undetermined. Compare fixed roles, probing and no-update controls.</strong></p>
+<h3>R05 · Define information boundaries</h3>
+<p><strong>Expose nominal specifications and legal controls; hide actual capability perturbations, tool physics and fault ground truth. Privileged references establish feasibility, not public-sensor agent performance.</strong></p>
+<h3>R06 · Validate before fixing budgets</h3>
+<p><strong>Establish feasibility before freezing new budgets; do not automatically reuse 180 seconds. Record and budget probing, communication, execution and recovery costs.</strong></p>
+<h3>R07 · Separate evidence levels</h3>
+<p><strong>Retain complete witness / feasibility-screen passed / undetermined / check failed. Separate asset loading, local checks, task success and formal admission; a full expert solution is not required for every seed.</strong></p>
+<h3>R08 · Retain all failures</h3>
+<p><strong>Frozen reference counts are not randomized success rates. Do not pool versions or mark unvalidated configurations complete.</strong></p>
+<h3>R09 · Specify the coordination model</h3>
+<p><strong>Use centralized control of two robots initially. Independent-agent experiments additionally freeze each agent’s observations, communication permissions, latency and synchronization.</strong></p>
+<h3>R10 · Use physical execution and legitimate faults</h3>
+<p><strong>Do not manufacture success with pose resets, hidden attachments or physics edits. L3 permits only predeclared trusted-side faults with raw records.</strong></p>
+<h2>3. Three evaluation levels</h2>
+<div aria-label="Scrollable data table" class="h3-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">Level</th>
+<th scope="col">Question</th>
+<th scope="col">Acceptance focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1 · Known Coordination</td>
+<td>Coordinate with known door mechanics and capabilities</td>
+<td>Complete delivery using robot holding or crate support; mapped to the frozen dual-G1 references.</td>
+</tr>
+<tr>
+<td>L2 · Tool &amp; Role Discovery</td>
+<td>Discover tools and assign roles</td>
+<td>Measure tool effectiveness, verify support and resolve single-arm resource competition.</td>
+</tr>
+<tr>
+<td>L3 · Capability-Aware Adaptive Cooperation</td>
+<td>Hidden capabilities and online faults</td>
+<td>Pre-action predictions, capability updates, role changes and recovery.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>4. Implementation checklist</h2>
+<h3>P0</h3>
+<div aria-label="Scrollable data table" class="h3-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ID / status</th>
+<th scope="col">Task</th>
+<th scope="col">Mandatory requirement</th>
+<th scope="col">Acceptance</th>
+<th scope="col">Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0-1 · Contract recorded; admission pending</td>
+<td>Freeze the task and experiment contract</td>
+<td><strong>Specify robots, grippers, scene, parcel, observation permissions and centralized versus independent-agent control; retain the original L1 baseline.</strong></td>
+<td>Versioned specification, public/hidden parameter list and asset inventory. Contract recorded; admission pending; see the acceptance board for individual evidence.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>P0-2 · Navigation and drives measured</td>
+<td>Integrate Stretch 4</td>
+<td><strong>Use pinned, actual Stretch 4 assets, without substituting Stretch 3; verify translation, strafing, rotation, stopping, lift and extension.</strong></td>
+<td>Measured single-robot controls, actuator limits and raw trajectories. Navigation and drives measured; see the acceptance board for individual evidence.</td>
+<td>P0-1</td>
+</tr>
+<tr>
+<td>P0-3 · G1 carry measured; Stretch grasp unproven</td>
+<td>Verify parcel grasp and release</td>
+<td><strong>Physically grasp, transport and release the 20 × 18 × 16 cm, 0.4 kg parcel; rated payload alone does not establish graspability.</strong></td>
+<td>Stable manipulation witness; any parcel revision is shared by every paired embodiment. G1 carry measured; Stretch grasp unproven; see the acceptance board for individual evidence.</td>
+<td>P0-2</td>
+</tr>
+<tr>
+<td>P0-4 · Shared heterogeneous interface implemented</td>
+<td>Implement embodiment adapters</td>
+<td><strong>Configure action dimensions, drives, grasp contacts, collision envelopes and stability checks per embodiment; do not apply the G1 root-height fall threshold to a wheeled robot.</strong></td>
+<td>G1 and Stretch operate on a shared clock through bounded actuators. Shared heterogeneous interface implemented; see the acceptance board for individual evidence.</td>
+<td>P0-1, P0-2</td>
+</tr>
+<tr>
+<td>P0-5 · Continuous scoring implemented; isolation pending</td>
+<td>Extend scoring and the sandbox</td>
+<td><strong>Support single-arm grasping, evaluate the entire crossing interval, and prevent hidden actual parameters leaking through metadata or privileged reference interfaces.</strong></td>
+<td>Scoring and isolation checks, synchronized records and independent replay; preserve the legacy scorer. Continuous scoring implemented; isolation pending; see the acceptance board for individual evidence.</td>
+<td>P0-4</td>
+</tr>
+<tr>
+<td>P0-6 · Complete L1 witnesses; admission pending</td>
+<td>Complete the heterogeneous baseline</td>
+<td><strong>Use the user-confirmed route: G1 carries the original parcel and Stretch supports the door or places tools. Verify real contact throughout, without runtime pose resets or hidden attachment.</strong></td>
+<td>At least one complete delivery witness and independent audit; the reference does not prescribe the agent’s role allocation. Complete L1 witnesses; admission pending; see the acceptance board for individual evidence.</td>
+<td>P0-3, P0-5</td>
+</tr>
+</tbody>
+</table></div>
+<h3>P1</h3>
+<div aria-label="Scrollable data table" class="h3-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ID / status</th>
+<th scope="col">Task</th>
+<th scope="col">Mandatory requirement</th>
+<th scope="col">Acceptance</th>
+<th scope="col">Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1-1 · Local tool screening and placement measured</td>
+<td>Introduce candidate tools</td>
+<td><strong>Start with a physical wedge, heavy crate and one distractor; check support after assistance is removed and passage occupancy; defer the brace rod.</strong></td>
+<td>Verified tool collision geometry, stability, slip and passage clearance. Local tool screening and placement measured; see the acceptance board for individual evidence.</td>
+<td>P0-6</td>
+</tr>
+<tr>
+<td>P1-2 · Local physical counterfactuals measured</td>
+<td>Build counterfactual tool pairs</td>
+<td><strong>Keep appearance and geometry matched, changing only the specified friction or closer parameter; account for contact-material combination and measure the resulting difference.</strong></td>
+<td>The same placement produces reproducible stable/failing outcomes, with evidence for a feasible route. Local physical counterfactuals measured; see the acceptance board for individual evidence.</td>
+<td>P1-1</td>
+</tr>
+<tr>
+<td>P1-3 · Single-candidate delivery passed; autonomous choice pending</td>
+<td>Discover tools and allocate roles</td>
+<td><strong>Do not label effective tools; predict, probe and verify affordances through feedback; include instances where a tool is necessary or has a defined cost benefit.</strong></td>
+<td>Traces of probing, selection, withdrawal checks, support handoff and role reassignment. Closed-door delivery passed in 413.92 s with an independent audit; three fixed repeats are running. Autonomous multi-tool choice remains missing.</td>
+<td>P1-2</td>
+</tr>
+<tr>
+<td>P1-4 · Planned</td>
+<td>Run capability pairs and ablations</td>
+<td><strong>Compare dual G1 and G1 + Stretch 4 in matched scenes with matched sensing, interfaces and budgets; record capability predictions before actions.</strong></td>
+<td>Fixed-role, active-probing and no-probe/no-update controls; distinguish role adaptation from path-planning gains.</td>
+<td>P0-6, P1-3</td>
+</tr>
+</tbody>
+</table></div>
+<h3>P2</h3>
+<div aria-label="Scrollable data table" class="h3-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ID / status</th>
+<th scope="col">Task</th>
+<th scope="col">Mandatory requirement</th>
+<th scope="col">Acceptance</th>
+<th scope="col">Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P2-1 · Trusted faults implemented and audited</td>
+<td>Implement trusted fault events</td>
+<td><strong>Predeclare fault triggers, magnitude and allowed changes; execute and record on the trusted side, separately from unauthorized physics changes.</strong></td>
+<td>Replayable events; legitimate faults are not misclassified as VOID and unauthorized changes remain rejected. Trusted faults implemented and audited; see the acceptance board for individual evidence.</td>
+<td>P0-5</td>
+</tr>
+<tr>
+<td>P2-2 · Local recovery measured; full delivery pending</td>
+<td>Verify online recovery</td>
+<td><strong>Introduce one fault type at a time, first establish recoverability, and record capability updates and role changes.</strong></td>
+<td>Complete fault-to-delivery traces, recovery success and additional cost. Local recovery measured; full delivery pending; see the acceptance board for individual evidence.</td>
+<td>P1-4, P2-1</td>
+</tr>
+<tr>
+<td>P2-3 · Planned</td>
+<td>Expand robot pairings</td>
+<td><strong>Validate individual capabilities and scene feasibility before dual Stretch 4 or G1 + Go2/Z1 tasks; retain A3 as a later candidate.</strong></td>
+<td>Separate evidence and budget for each pairing; no transfer of success claims between embodiments.</td>
+<td>P0-6</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Six evaluation configurations</h2>
+<div aria-label="Scrollable data table" class="h3-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">Configuration</th>
+<th scope="col">Robots</th>
+<th scope="col">Level</th>
+<th scope="col">Mechanism</th>
+<th scope="col">Evidence</th>
+<th scope="col">Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3-01</td>
+<td>G1 + G1</td>
+<td>L1</td>
+<td><code>no_prop</code></td>
+<td>Complete witness: frozen 1/1, 102.22 s</td>
+<td>180 s</td>
+</tr>
+<tr>
+<td>H3-02</td>
+<td>G1 + G1</td>
+<td>L1</td>
+<td><code>heavy_prop</code></td>
+<td>Complete witnesses: frozen 2/2, 172.44 / 169.24 s</td>
+<td>180 s</td>
+</tr>
+<tr>
+<td>H3-03</td>
+<td>G1 + Stretch 4</td>
+<td>L2</td>
+<td><code>tool_discovery</code></td>
+<td>Single-candidate closed-door native delivery passed in 413.92 s with independent audit; fixed repeats are pending. Autonomous multi-tool discovery remains incomplete.</td>
+<td>Freeze after physical validation</td>
+</tr>
+<tr>
+<td>H3-04</td>
+<td>Stretch 4 + Stretch 4</td>
+<td>L2</td>
+<td><code>single_arm_resource_allocation</code></td>
+<td>Dual Stretch has no independently verified implementation; mixed-pair results do not transfer.</td>
+<td>Freeze after physical validation</td>
+</tr>
+<tr>
+<td>H3-05</td>
+<td>G1 + Stretch 4</td>
+<td>L3</td>
+<td><code>hidden_capability_and_recovery</code></td>
+<td>Local support switching passed 3/3 fixed repeats; local recovery-to-delivery passed in 211.48 s. Closed-door actual fault recovery is now verified, but the later switch failed; an angle-reserve revision is being tested.</td>
+<td>Freeze after physical validation</td>
+</tr>
+<tr>
+<td>H3-06</td>
+<td>G1 + Go2/Z1</td>
+<td>L3</td>
+<td><code>heterogeneous_contact_and_reallocation</code></td>
+<td>Composite asset preflight incomplete; no physics run.</td>
+<td>Freeze after physical validation</td>
+</tr>
+</tbody>
+</table></div>
+<p>H3-01/02 map the existing frozen variants and add no task successes. H3-03 through H3-06 are new designs with no completion claim. G1 + A3 remains a later candidate outside these six configurations.</p>
+<h2>6. Diagnostics and event traces</h2>
+<div aria-label="Scrollable data table" class="h3-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">Metric</th>
+<th scope="col">Definition and recording</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tool Discovery Success</td>
+<td>Whether the selected tool maintains support after assistance is removed and permits actual passage; continuous robot holding is recorded separately.</td>
+</tr>
+<tr>
+<td>Capability Prediction Accuracy</td>
+<td>Agreement between pre-action predictions and outcomes, including confidence and undetermined cases; post-hoc explanation is not a prediction.</td>
+</tr>
+<tr>
+<td>Role Allocation Quality</td>
+<td>Feasible roles, failed reassignments and cost against a matched reference; do not claim optimality without a cost definition.</td>
+</tr>
+<tr>
+<td>Support Continuity</td>
+<td>Minimum clearance, unsupported duration, support source and handoff events throughout crossing; freeze thresholds after physical validation.</td>
+</tr>
+<tr>
+<td>Recovery Success</td>
+<td>Restore safe support and complete delivery under predeclared recoverable faults; report unrecoverable cases separately.</td>
+</tr>
+<tr>
+<td>Probe / Execution Cost</td>
+<td>Probe actions, simulation time, observation/communication counts and robot occupancy; separate additional recovery cost.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use the existing 200 Hz physics trace as a starting point. Align raw state, commands, support sources, crossing intervals, fault events and scorer versions for independent review. Local gates are recorded in each frozen plan and audit; full evaluation budgets for new configurations remain pending.</p>
+<h2>7. Existing foundations and implementation changes</h2>
+<p>Historical frozen dual-G1 witnesses: heavy_prop 2/2 and no_prop 1/1. A dual-robot sandbox adapter exists; isolated expert execution, independent reproduction and formal admission remain pending. Stretch 4 has measured navigation, tool placement and local recovery evidence. The current acceptance board records full-task results and remaining L2/L3 gates.</p>
+<div aria-label="Scrollable data table" class="h3-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">Module</th>
+<th scope="col">Observed limitation / required change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>multi_robot/dual_g1_self_closing_door/task_spec.py</code></td>
+<td>Fixed dual G1 and two inventories; explicitly define embodiments, tools and hidden parameters in the new version.</td>
+</tr>
+<tr>
+<td><code>genesis_env.py</code></td>
+<td>Fixed robots and joint parameters; non-parcel objects use Box geometry; introduce real wedge collisions and per-embodiment stability checks.</td>
+</tr>
+<tr>
+<td><code>scoring.py</code></td>
+<td>The bilateral-hand contact rule does not apply to a single arm; extend parcel-center crossing to the full combined-envelope passage interval.</td>
+</tr>
+<tr>
+<td><code>guard.py</code> / <code>reference.py</code></td>
+<td>Peer envelopes and control assume G1; privileged mass/friction access is for reference feasibility only.</td>
+</tr>
+<tr>
+<td><code>infra/sandbox/native_reference.py</code></td>
+<td>Currently 43 position targets per robot; adapt heterogeneous drives, per-robot parameters and trusted fault replay.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The heterogeneous implementation is in <code>multi_robot/cooperative_door/</code>, including the shared clock, bounded drives, tool probes, recovery controls and independent audits. Frozen runtimes and failed trials are retained.</p>
+<h2>8. Sources and evidence boundaries</h2>
+<ul>
+<li><a href="../../../multi_robot/dual_g1_self_closing_door/README.md">H3 reference README</a></li>
+<li><a href="../../../multi_robot/dual_g1_self_closing_door/sandbox/README.md">H3 sandbox README</a></li>
+<li><a href="../../sandbox-delivery/validation.json">Sandbox validation ledger</a></li>
+<li><a href="../h1-extension/asset-smoke-evidence/8035305_1/result.json">Stretch 4 passive import result</a></li>
+<li><a href="https://hello-robot.com/stretch-4/">Official Stretch 4 specifications</a></li>
+</ul>
+<p>Official payload ratings are 2.5 kg extended and 4 kg retracted; they guide asset review but do not replace grasp, push or transport measurements for the selected model. This update implements drivers and prerequisite probes; measured runs are listed in the implementation dashboard. Historical success counts and formal admission remain unchanged.</p></main></body></html>

@@ -1,0 +1,40 @@
+{
+  "controller_tuning": {
+    "inspire_index_only": true,
+    "inspire_thumb_yaw": 1.05,
+    "inspire_hand_yaw": 0.26,
+    "inspire_offset": [
+      0.03,
+      0.02,
+      0
+    ],
+    "inspire_thumb_n": 4.4,
+    "inspire_fingers_n": 3.2,
+    "inspire_close_s": 80,
+    "collision_profile": "inspire-palms-v2",
+    "align_grasp": true,
+    "prepush": true,
+    "inspire_absolute_x": 0.36,
+    "inspire_push_z": 0.866,
+    "inspire_push_finger_kp": 6.0,
+    "inspire_push_feedback": 0.02,
+    "inspire_push_speed": 0.001,
+    "inspire_push_load_n": 1.2,
+    "inspire_index_push": true,
+    "inspire_push_pitch": -0.2
+  },
+  "format": "held-reference-replay/1",
+  "physics_hz": 400,
+  "control_hz": 50,
+  "body": "F",
+  "physics_steps": 72560,
+  "full_array_sha256": {
+    "qpos": "751728dce6c8df0d019eb776dd7d4c245d66375358a2b456f54f78f917e57dfc",
+    "qvel": "5154a6716e677e63a88740d3548c3076e096d10216f48930fd8e6a243c87571e",
+    "ctrl": "6f25a356cdfa6a4b15fe9041c8af26613512e2be20f3b2d19a28e735a85276b3"
+  },
+  "source_trajectory_npz_sha256": "929a972e2675375948fcb48f471170d4d24fae0a60761ac76a37f52d17c16ce6",
+  "replay": "python compact_evidence.py --replay PATH_TO_RUN",
+  "requirements": "MuJoCo 3.14.0, NumPy, same official meshes, scene.xml and initial_state.json. Remap external mesh paths when needed.",
+  "storage": "References stored once per control interval; partial final interval retained. Object states shown at control endpoints; full 400 Hz states/controls are deterministically reconstructed and checked by array SHA-256."
+}

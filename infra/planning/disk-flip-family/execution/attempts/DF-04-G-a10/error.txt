@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 535, in main
+    self.move('release',seconds=3)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 396, in execute
+    if self.tuning.get('edge_regrasp',False):goals=self.edge_regrasp(goals)
+     ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 310, in step
+    if getattr(self,'deep_grasp',False) and self.tuning.get('wrench_control',False):self.regulate_six_contacts()
+                                                                                                                 
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 166, in assess
+    for value,limit,reason in [(speed,.12,'disk_linear_speed'),(ang,.65,'disk_angular_speed'),(robot,18,'robot_contact_load'),(table,8,'table_contact_load'),(local,4 if self.profile=='P3' else 18,'local_damage_proxy')]:
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

@@ -1,0 +1,49 @@
+{
+  "schema": "h1-p4-video-sampling/1",
+  "video_sha256": "5baa24a748277644e94b190ee325c9ff8aad848af88d834f33f9f10498d7b6ff",
+  "frame_count": 126,
+  "frame_mapping_verified": true,
+  "video_fps": 5.0,
+  "video_size": [
+    2560,
+    720
+  ],
+  "frame_time_semantics": "Frozen writer: initial t0, post-control state t+.02 at scheduled frame, final fresh state. Encoded display time differs slightly; physics times here are reconstructed and frame-count checked.",
+  "selected_frames": [
+    {
+      "frame_index": 0,
+      "physics_time_s": 0.0,
+      "nearest_state_index": 0,
+      "phase": "approach"
+    },
+    {
+      "frame_index": 68,
+      "physics_time_s": 13.42,
+      "nearest_state_index": 671,
+      "phase": "push_both"
+    },
+    {
+      "frame_index": 125,
+      "physics_time_s": 24.76,
+      "nearest_state_index": 1238,
+      "phase": "terminal"
+    }
+  ],
+  "ai_visual_review": "selected_frames_reviewed",
+  "human_review": "pending",
+  "scope": "Selected-frame visual consistency only. No visual inference of 1mrad limits, complete safety or trajectory continuity; numerical state audits remain authoritative.",
+  "artifacts": [
+    "independent_video_final.png",
+    "independent_video_samples.png"
+  ],
+  "reviewer": "Codex AI visual inspection, not human signoff",
+  "visual_observations": [
+    "Three sampled two-view frames show the original standing approach, box pushing from a crouch, and the terminal crouch with feet visually on the floor.",
+    "The box visibly moves along the floor; terminal hands are behind the box. Exact release forces and stability are established by numerical channels, not images.",
+    "The target is not wholly inside the green destination patch after this one-stroke diagnostic. This is expected and is not a full task witness."
+  ],
+  "limitations": [
+    "Only selected frames and the raw final frame were inspected, not every video frame.",
+    "The initial upper body is cropped in the two views; these images cannot certify milliradian limits, torque, full trajectory safety or continuity."
+  ]
+}

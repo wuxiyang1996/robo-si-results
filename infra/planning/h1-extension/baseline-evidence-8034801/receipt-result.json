@@ -1,0 +1,342 @@
+{
+  "status": "process_complete",
+  "exit_code": 1,
+  "wall_seconds": 2618.183163681999,
+  "new_physics_success": false,
+  "original_verdict": {
+    "schema_version": 2,
+    "status": "incomplete",
+    "score": 0.1925,
+    "final_progress": 0.1925,
+    "peak_time_s": 340.34000000000003,
+    "success": false,
+    "chain_complete": false,
+    "relay_chain_complete": false,
+    "goal_delivered_ignoring_safety": false,
+    "observed_relay_chain": false,
+    "safety_events": [],
+    "safety": {
+      "version": "relay-safety/1",
+      "complete": true,
+      "not_evaluated": [],
+      "body_weight_N": 337.41,
+      "thresholds": {
+        "near_fall_tilt_deg": 30.0,
+        "tip_rise_deg": 15.0,
+        "tip_window_s": 0.25,
+        "lean_unsupported_deg": 45.0,
+        "lean_dwell_s": 0.1,
+        "bilateral_foot_fraction": 0.1,
+        "drop_m": 0.12,
+        "drop_window_s": 0.25,
+        "unsupported_fraction": 0.1,
+        "unsupported_dwell_s": 0.06,
+        "support_load_fraction": 0.1,
+        "support_load_window_s": 0.1,
+        "support_tilt_deg": 10.0,
+        "support_slide_m": 0.03,
+        "climb_fraction": 0.15,
+        "climb_window_s": 0.25,
+        "climb_dwell_s": 0.25,
+        "release_bottom_m": 0.8,
+        "release_speed_mps": 1.0,
+        "release_settle_s": 1.0,
+        "release_fall_m": 0.05
+      },
+      "rules": {
+        "1_fall_or_near_fall": {
+          "status": "evaluated",
+          "max_tilt_deg": 83.2,
+          "max_tilt_rise_deg_when_tilted": 6.88,
+          "max_single_support_tilt_deg": 11.83,
+          "max_height_drop_m": 0.0168,
+          "longest_unsupported_s": 0.0
+        },
+        "2_unstable_standing_support": {
+          "status": "evaluated",
+          "loaded_objects": {}
+        },
+        "3_cabinet_climb": {
+          "status": "evaluated",
+          "max_mean_nonhand_load_N": 0.0,
+          "max_mean_nonhand_load_body_weight": 0.0,
+          "max_hand_cabinet_force_N": 0.0
+        },
+        "4_high_release_or_throw": {
+          "status": "evaluated",
+          "release": null
+        },
+        "5_actuator_saturation_or_limit_push": {
+          "status": "evaluated",
+          "monitor": "infra.sandbox.monitors.commands (default thresholds, H1 fall mask)",
+          "max_saturation_s": 1.8,
+          "max_limit_push_s": 0.02
+        }
+      },
+      "notes": []
+    },
+    "stages": [
+      {
+        "stage": "support_handled",
+        "weight": 0.05,
+        "mode": "once",
+        "best": 1.0,
+        "final": 1.0,
+        "first_full_s": 82.44,
+        "progress_basis": "continuous evidence dwell",
+        "minimum_evidence_seconds": 0.1,
+        "full_evidence_seconds": 0.25
+      },
+      {
+        "stage": "support_relocated",
+        "weight": 0.15,
+        "mode": "once",
+        "best": 0.95,
+        "final": 0.95,
+        "first_full_s": null,
+        "progress_basis": "controlled geometric progress",
+        "minimum_evidence_seconds": null,
+        "full_evidence_seconds": null
+      },
+      {
+        "stage": "on_support",
+        "weight": 0.15,
+        "mode": "once",
+        "best": 0.0,
+        "final": 0.0,
+        "first_full_s": null,
+        "progress_basis": "continuous evidence dwell",
+        "minimum_evidence_seconds": 0.1,
+        "full_evidence_seconds": 0.5
+      },
+      {
+        "stage": "target_secured",
+        "weight": 0.15,
+        "mode": "once",
+        "best": 0.0,
+        "final": 0.0,
+        "first_full_s": null,
+        "progress_basis": "continuous evidence dwell",
+        "minimum_evidence_seconds": 0.1,
+        "full_evidence_seconds": 0.3
+      },
+      {
+        "stage": "target_staged",
+        "weight": 0.1,
+        "mode": "once",
+        "best": 0.0,
+        "final": 0.0,
+        "first_full_s": null,
+        "progress_basis": "continuous evidence dwell",
+        "minimum_evidence_seconds": 0.1,
+        "full_evidence_seconds": 0.5
+      },
+      {
+        "stage": "descended_empty",
+        "weight": 0.1,
+        "mode": "once",
+        "best": 0.0,
+        "final": 0.0,
+        "first_full_s": null,
+        "progress_basis": "continuous evidence dwell",
+        "minimum_evidence_seconds": 0.1,
+        "full_evidence_seconds": 0.5
+      },
+      {
+        "stage": "target_reacquired",
+        "weight": 0.1,
+        "mode": "once",
+        "best": 0.0,
+        "final": 0.0,
+        "first_full_s": null,
+        "progress_basis": "continuous evidence dwell",
+        "minimum_evidence_seconds": 0.1,
+        "full_evidence_seconds": 0.3
+      },
+      {
+        "stage": "carried",
+        "weight": 0.1,
+        "mode": "once",
+        "best": 0.0,
+        "final": 0.0,
+        "first_full_s": null,
+        "progress_basis": "controlled geometric progress",
+        "minimum_evidence_seconds": null,
+        "full_evidence_seconds": null
+      },
+      {
+        "stage": "delivered",
+        "weight": 0.1,
+        "mode": "live",
+        "best": 0.0,
+        "final": 0.0,
+        "first_full_s": null,
+        "progress_basis": "continuous evidence dwell",
+        "minimum_evidence_seconds": 0.1,
+        "full_evidence_seconds": 0.5
+      }
+    ],
+    "timeline": {
+      "support_handled": {
+        "first_time_s": 82.44,
+        "final_window": true
+      },
+      "support_relocated": {
+        "first_time_s": null,
+        "final_window": false
+      },
+      "on_support": {
+        "first_time_s": null,
+        "final_window": false
+      },
+      "target_secured": {
+        "first_time_s": null,
+        "final_window": false
+      },
+      "target_staged": {
+        "first_time_s": null,
+        "final_window": false
+      },
+      "descended_empty": {
+        "first_time_s": null,
+        "final_window": false
+      },
+      "target_reacquired": {
+        "first_time_s": null,
+        "final_window": false
+      },
+      "carried": {
+        "first_time_s": null,
+        "final_window": false
+      },
+      "delivered": {
+        "first_time_s": null,
+        "final_window": false
+      }
+    },
+    "chain_timeline": null,
+    "chain_support_id": null,
+    "integrity": {
+      "ok": true,
+      "void": false,
+      "reasons": [],
+      "excluded_frames": 0,
+      "safety_coverage": {
+        "complete": true,
+        "has_gaps": false,
+        "invalid_frames": 0
+      },
+      "max_joint_limit_overshoot": 0.0,
+      "max_effort_ratio": 1.0,
+      "max_speed_ratio": 0.06892860680818558,
+      "physics_samples": 86844,
+      "joint_count": 43,
+      "physics_dt": 0.005
+    },
+    "rubric_checks": {
+      "source_extraction": {
+        "source": "meta.original_target_surface",
+        "surface_z_m": 1.25,
+        "clearance_m": 0.01,
+        "horizontal_extraction_enabled": true,
+        "limitations": []
+      },
+      "carrying": {
+        "normalization": "first source D0 minus one source-associated extraction credit",
+        "extraction_credit_consumed": false,
+        "events": [],
+        "minimum_continuous_airborne_motion_m": 0.03,
+        "minimum_airborne_motion_dwell_s": 0.25,
+        "retained_goal_progress_tolerance_m": 0.02,
+        "additional_source_normalization": false
+      },
+      "reacquisition": {
+        "source": "last individually staged and empty-descended board",
+        "clearance_m": 0.01,
+        "previous_vertical_only_clearance_m": 0.025,
+        "horizontal_entire_projection_supported": true,
+        "all_recorded_surface_contacts_free": true,
+        "full_dwell_s": 0.3,
+        "first_full_source_id": null,
+        "revision": "relay-rubric/2.1: actual-source10mm-or-full-horizontal separation"
+      },
+      "continuous_progress": {
+        "minimum_evidence_seconds": 0.1,
+        "full_durations_seconds": {
+          "support_handled": 0.25,
+          "on_support": 0.5,
+          "target_secured": 0.3,
+          "target_staged": 0.5,
+          "descended_empty": 0.5,
+          "target_reacquired": 0.3,
+          "delivered": 0.5
+        },
+        "definition": "uninterrupted valid physical evidence dwell; not spatial action completion",
+        "full_milestones_unchanged": true
+      },
+      "body_handling_evidence": true,
+      "foot_only_handling": "not inferred from upward foot force; horizontal contact evidence unavailable",
+      "fall_safety": {
+        "fallen": false,
+        "first_fall_time_s": null,
+        "first_fall_reason": null,
+        "controlled_forward_lean_frames": 861,
+        "pending_frames": 0,
+        "support_load_reference": {
+          "kind": "initial_recorded_supported_load",
+          "force_N": 337.39078402519226,
+          "time_start": 0.18,
+          "time_end": 0.68,
+          "samples": 26,
+          "min_force_N": 337.0072937011719,
+          "max_force_N": 338.95820713043213,
+          "source": "same canonical stream; quiet bilateral floor stance and zero recorded hand/body object/cabinet contact",
+          "not_robot_mass": true,
+          "body_ground_channel_missing": true
+        }
+      },
+      "fall_limitations": [
+        "body_ground_force (contact of non-foot robot links with the floor, recorded from 2026-10-21) is accepted but does not enter the fall decision; safety rule 1 counts it as support (kneeling, sitting). trunk_ground_force is rejected if supplied.",
+        "Initial foot-load baseline is recorded supported load, not a measured robot mass.",
+        "Deep-forward-lean exception requires bilateral floor support; other deeply tilted supported postures are not calibrated.",
+        "Thresholds are candidate semantics pending independent physical fall/near-fall calibration."
+      ]
+    },
+    "goal": {
+      "center": [
+        3.407087802886963,
+        -1.0051616072814795e-06,
+        1.3299955129623413
+      ],
+      "bottom": 1.2499955129623412,
+      "tilt_deg": 0.0,
+      "linear_speed": 6.544315319786281e-06,
+      "angular_speed": 1.1227686136550443e-05,
+      "hand_force_N": [
+        0.0,
+        0.0
+      ],
+      "center_inside": false,
+      "center_edge_margin_m": -2.507087802886963,
+      "footprint_inside_diagnostic": false,
+      "footprint_edge_margin_m_diagnostic": -2.597087802886963,
+      "final_hand_release_diagnostic": null,
+      "stable": false,
+      "criterion": "center; not whole footprint or gentle placement"
+    },
+    "scope": {
+      "from_initial_state": true,
+      "diagnostic_resume": false
+    },
+    "rubric_version": "relay-rubric/2.3",
+    "admitted": false,
+    "reference_scope": {
+      "privileged": true,
+      "diagnostic_only": false,
+      "same_lowcmd_channel_verified": false,
+      "formal_admission_passed": false,
+      "expert_status": "setdown:alignment:center:qp_failed:contact QP maximum iterations reached"
+    }
+  },
+  "output": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h1-implementation-20261027/baseline-packet/reproductions/gamma-fixed-8034801"
+}

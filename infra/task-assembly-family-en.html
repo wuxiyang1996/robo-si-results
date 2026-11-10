@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><title>Assembly suite · 10 independent tasks</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main{padding:36px 0 64px}h2{margin-top:36px}td,th{vertical-align:top;overflow-wrap:anywhere}p{line-height:1.8}.table-wrap{overflow-x:auto;margin:18px 0}table{min-width:640px}nav{display:flex;gap:20px;flex-wrap:wrap}</style><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head><body><header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/task-assembly-family-zh.html">中文</a></div></header><main class="wrap"><h1>Assembly suite: 10 independent tasks</h1>
+<p>2026-10-28 · 10 independent tasks: Assembly 4, Gear Assembly 3, Reference Assembly 3; three originals and seven new tasks. Embodiment and difficulty are evaluation configurations, not extra tasks. Five-finger evaluation starts with Gear tool compatibility. New designs remain unverified; this update runs no simulation.</p>
+<p><a href="/robo-si-results/infra/planning/assembly-family/README.md">中文</a> · <a href="/robo-si-results/infra/planning/assembly-family/README-en.md">English</a> · <a href="/robo-si-results/infra/planning/assembly-family/task-design.json">JSON</a></p>
+<h2>Counting and bodies</h2>
+<p>Count independent manipulation problems as tasks. Body, difficulty, disclosure, seeds, probes and ablations are configurations. This explicitly replaces the earlier 25-entry scene × embodiment convention. The three combined scenes become D3 configurations within their compatibility tasks; retain the experiments without counting extra tasks. R1, A3, Go2 with arm and infeasibility-exit tasks are not counted.</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Original</th>
+<th>Reasoning</th>
+<th>Compatibility</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assembly</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Gear Assembly</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Reference Assembly</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>10</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Embodiment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G</td>
+<td>G1 + Dex3</td>
+</tr>
+<tr>
+<td>F</td>
+<td>G1 + Inspire five-finger hand</td>
+</tr>
+<tr>
+<td>S</td>
+<td>Stretch 3</td>
+</tr>
+</tbody>
+</table></div>
+<p>Priority pairs: G/S for support establishment in ASM-04; G/F for grasping and actuation in GEAR-03; G/S for workspace, sequence and fixture adaptation in REF-03. Other tasks start with G. The current plan lists 13 body configurations, including three originals; this is a development count, not verified coverage. Add other five-finger or Stretch configurations only after probes establish their value, without a Cartesian expansion.</p>
+<p>For G/F comparisons, use the same official G1 body and base constraints, changing only the hand and necessary control mapping; calibrate each hand independently. Historical G1 models and 43-dimensional trajectories do not validate the new bodies. Freeze base constraints, asset hashes and controller versions before execution. S uses the existing Stretch 3, not Stretch 4 or R1 Pro specifications. G/S changes arm count, end effector, workspace and base together, so it measures whole-body adaptation.</p>
+<h2>Difficulty and information</h2>
+<p>D1 executes a known feasible method; D2 selects among candidates; D3 composes methods, repairs an assembly or changes intermediate constraints. Preserve original L1–L3 definitions. Difficulty does not rank part counts or robot models; the listed D values are design targets.</p>
+<p>Record disclosure separately: known capabilities, unknown compatibility, or partly hidden physical parameters with low-risk probes and observable feedback. Composition or one successful run alone does not establish self-modeling. Software-tool discovery is a separate interface condition, not another physical task.</p>
+<h2>Complete task list</h2>
+<h3>ASM · 4</h3>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Group</th>
+<th>Body</th>
+<th>Difficulty</th>
+<th>Task</th>
+<th>Scene and purpose</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASM-01</td>
+<td>Original</td>
+<td>G</td>
+<td>Original</td>
+<td>Original support-assisted sleeve and cap assembly</td>
+<td>Retain the original configuration and scorer: independent support, assembly and stable release.</td>
+<td>Historical scoped witness</td>
+</tr>
+<tr>
+<td>ASM-02</td>
+<td>Reasoning</td>
+<td>G</td>
+<td>D2</td>
+<td>Select among candidate supports</td>
+<td>Fixed body; vary support height, insertion access and load capacity, checking actual load transfer.</td>
+<td>Full checks passed</td>
+</tr>
+<tr>
+<td>ASM-03</td>
+<td>Reasoning</td>
+<td>G</td>
+<td>D3</td>
+<td>Compose a support</td>
+<td>Individual pieces are insufficient; a stand and shims are candidates. Exclude other single-piece routes before claiming composition is necessary.</td>
+<td>Attempted; full witness pending</td>
+</tr>
+<tr>
+<td>ASM-04</td>
+<td>Compatibility</td>
+<td>G/S</td>
+<td>D2/D3</td>
+<td>Body compatibility of support methods</td>
+<td>One shared world with a push-in wedge, grasp-and-place stand and shims; methods are physically effective, while deployment and release depend on the body. D3: vary load-bearing usefulness and body operability together, requiring a nonempty feasible intersection.</td>
+<td>Full checks passed</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GEAR · 3</h3>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Group</th>
+<th>Body</th>
+<th>Difficulty</th>
+<th>Task</th>
+<th>Scene and purpose</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GEAR-01</td>
+<td>Original</td>
+<td>G</td>
+<td>Original</td>
+<td>Original illustrated assembly and drive test</td>
+<td>Retain the original seven stages, contact-driven transmission, tool placement and final release.</td>
+<td>Saved v6 witness; current-source revalidation pending</td>
+</tr>
+<tr>
+<td>GEAR-02</td>
+<td>Reasoning</td>
+<td>G</td>
+<td>D3</td>
+<td>Diagnose, repair and retest</td>
+<td>Use observable evidence to distinguish incomplete seating, interference or failed transmission. New rules explicitly permit rework; hidden fault labels are unavailable.</td>
+<td>Attempted; full witness pending</td>
+</tr>
+<tr>
+<td>GEAR-03</td>
+<td>Compatibility</td>
+<td>G/F</td>
+<td>D2/D3</td>
+<td>Grasp, guide and drive-tool compatibility</td>
+<td>Shared handles, guides and drive tools test acquisition, alignment, torque transfer and withdrawal; five fingers are not assumed superior. D3: grippable tools face workspace clearance limits, requiring regrasping, another tool or base refixturing.</td>
+<td>Attempted; full witness pending</td>
+</tr>
+</tbody>
+</table></div>
+<h3>REF · 3</h3>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Group</th>
+<th>Body</th>
+<th>Difficulty</th>
+<th>Task</th>
+<th>Scene and purpose</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REF-01</td>
+<td>Original</td>
+<td>G</td>
+<td>Original</td>
+<td>Original eight-part shelf assembly</td>
+<td>Retain the specified sequence, stage releases and support-chain criteria; initialized mechanism checks are not robot witnesses.</td>
+<td>Mechanism diagnostics; full robot assembly unverified</td>
+</tr>
+<tr>
+<td>REF-02</td>
+<td>Reasoning</td>
+<td>G</td>
+<td>D3</td>
+<td>Schedule and reuse limited temporary fixtures</td>
+<td>Limited fixtures make ordering affect access and withdrawal; the open-planning variant explicitly permits legal sequence changes.</td>
+<td>Attempted; full witness pending</td>
+</tr>
+<tr>
+<td>REF-03</td>
+<td>Compatibility</td>
+<td>G/S</td>
+<td>D2/D3</td>
+<td>Body adaptation in a constrained workspace</td>
+<td>Compare simultaneous manipulation, grasp envelopes and release in one world with active holding and passive fixtures; environmental support remains legal for a single arm. D3: a usable fixture blocks later parts or withdrawal, requiring constraint transfer to complete the eight-part structure.</td>
+<td>Attempted; full witness pending</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Compatibility and success</h2>
+<p>Measure physical usefulness and body operability separately, then intersect their feasible sets. The complete use chain covers reach, acquisition, holding and actuation, effective work, support transfer, and release or withdrawal. Tool pickup alone is insufficient. Record feasible, excluded or unknown with evidence for each body × method; one failure does not certify infeasibility.</p>
+<p>D2 compatibility configurations share the world and tools; D3 combined configurations vary usefulness and operability together. Body-specific table or layout changes are conditioned scenes, not same-world comparisons. Five fingers may reduce tool dependence or introduce envelope/control limitations; both are hypotheses. There is no prescribed best tool or model-name capability ranking.</p>
+<p>Distinct scope: ASM-02 fixes the body and isolates support usefulness; ASM-04 D2 starts with physically effective methods and isolates operability. REF-02 fixes the body with ample workspace to test limited-fixture dependencies and reuse; REF-03 starts with enough fixtures and tests body/workspace fit, adding obstruction at D3. Gear compatibility must test alignment, torque transfer and functional verification rather than repeat load-bearing support selection.</p>
+<p>Assembly requires independent final support, with no continuing hand support. Gear requires real tooth-contact transmission and tool release; repair is a new variant, not a change to the original seven-stage scorer. Reference retains eight parts and real support chains. Open-order extensions explicitly disclose their rules, preserving the original prescribed recipes. Each variant publicly states whether temporary fixtures must be withdrawn; do not silently change the original permission to retain its fixture. Accept every legal complete route.</p>
+<p>The primary metric is complete physical success; historical scoring versions are preserved. Report method selection, capability calibration, probe cost, recovery and execution cost separately. Pair known/unknown capability, matched/mismatched tools, with/without tools and capability changes on the same physical seed. These ablations add no tasks. Do not reward a prescribed tool choice as success.</p>
+<h2>Implementation and evidence</h2>
+<p>Start with four Assembly tasks and ASM-04 G/S probes, then three Gear tasks with priority Dex3/five-finger comparison in GEAR-03, followed by three Reference tasks. Task counts progress 4 → 7 → 10; body configurations are reported separately. A complete eight-part Reference robot expert remains a prerequisite.</p>
+<p>Each new scored configuration needs a full physical witness matching assets and rules: freeze scene and high/low plans before execution; start normally and run continuously; save commands, contacts, trajectories, segment mappings, video and independent verification. No runtime pose writes, artificial attachment or hidden binding. Probes and static mechanism diagnostics do not substitute for complete witnesses. Retain failures and unknowns; a failed route is not a certificate excluding every route.</p>
+<p>Implementation and physical attempts have started after design registration; see <a href="/robo-si-results/infra/task-assembly-evidence-en.html">execution progress</a> for current runs, failures and evidence. Original ASM retains its released scope. Original GEAR retains only the saved v6 scope, with current-source revalidation and portable publication pending. Original REF has mechanism and idle-interface checks, without a full robot assembly witness. Three originals do not mean three verified successes. All seven new tasks and new body configurations are unverified; the established 14-task inventory and admission status are unchanged.</p>
+<h2>Legacy IDs</h2>
+<p>The <a href="/robo-si-results/infra/planning/assembly-family/history/proposal-25-task-design.json">historical 25-entry JSON</a> is superseded for current counting. All <code>.G/.F/.S</code> suffixes identify body configurations, not independent tasks. These merges retain the original experimental questions:</p>
+<div class="table-wrap" style="overflow-x:auto"><table>
+<thead>
+<tr>
+<th>Old scene</th>
+<th>Current task</th>
+<th>Disposition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASM-05</td>
+<td>ASM-04</td>
+<td>D3 configuration; not separately counted</td>
+</tr>
+<tr>
+<td>GEAR-04</td>
+<td>GEAR-03</td>
+<td>D3 configuration; not separately counted</td>
+</tr>
+<tr>
+<td>REF-04</td>
+<td>REF-03</td>
+<td>D3 configuration; not separately counted</td>
+</tr>
+</tbody>
+</table></div><!-- assembly-execution:start --><section id="assembly-execution"><h2>Assembly tasks · execution and evidence</h2><p>Ten independent tasks have candidate experts and one recording pipeline. Actual attempts are shown with separate task and physics verdicts. One failed route does not prove infeasibility.</p><p><a href="task-assembly-evidence-en.html">View experts, plans, trajectories, physics checks and videos</a></p></section><!-- assembly-execution:end --></main></body></html>

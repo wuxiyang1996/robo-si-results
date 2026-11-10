@@ -1,0 +1,159 @@
+{
+ "scene_meta": {
+  "version": "H4-v4.2",
+  "seed": 101,
+  "episode": 0,
+  "layer": 1,
+  "randomize": true,
+  "params": {
+   "robot_x": -0.41694,
+   "robot_y": 0.0258,
+   "robot_yaw": 0.1424,
+   "plank_theta_deg": 44.18256,
+   "plank_base_x": 0.36177,
+   "plank_lane_y": -0.96618,
+   "plank_mass": 5.14773,
+   "target_x": 3.55462,
+   "target_y": -1.27161,
+   "target_mass": 0.88981,
+   "target_friction": 0.6611,
+   "target_yaw": 0.02894,
+   "heavy_board_x": -1.73513,
+   "heavy_board_y": 1.60154,
+   "short_plank_x": -1.17104,
+   "short_plank_y": 0.96589,
+   "crate_x": 2.95612,
+   "crate_y": 1.24187
+  }
+ },
+ "scene_sha256": "b06e84af951613f404cb979921286f4f1191bd4690371c640fab01bc83b5acff",
+ "oracle_argv": [
+  "--scene",
+  "humanoid\\g1_ramp_bridge_construction\\sandbox\\runs\\exploits\\jitter-v1\\scene.json",
+  "--out",
+  "humanoid\\g1_ramp_bridge_construction\\sandbox\\runs\\exploits\\jitter-v1\\oracle",
+  "--stage",
+  "build",
+  "retrieve",
+  "--leg-torque",
+  "--crouch-height",
+  "0.60",
+  "--crouch-pitch",
+  "0.40",
+  "--pick-standoff",
+  "0.40",
+  "--grip-force",
+  "22",
+  "--max-seconds",
+  "240",
+  "--stage",
+  "exploit_jitter"
+ ],
+ "oracle": {
+  "stages": [
+   [
+    "exploit_jitter",
+    true,
+    "exploit executed"
+   ]
+  ],
+  "task_evaluation": {
+   "goal_reached": false,
+   "dwell_seconds": 0.0,
+   "retrieval_route_observed": false,
+   "candidate_success": false,
+   "violations": [
+    "robot_fall"
+   ],
+   "benchmark_admitted": false,
+   "validation_status": "Requires contact, load, construction and controller validation"
+  },
+  "sim_seconds": 16.06
+ },
+ "privileged_writes_after_start": [],
+ "gain_writes": [
+  {
+   "t": 14.06,
+   "method": "set_dofs_kp",
+   "max": 3000.0,
+   "over_bounds": []
+  },
+  {
+   "t": 14.06,
+   "method": "set_dofs_kv",
+   "max": 10.0,
+   "over_bounds": []
+  }
+ ],
+ "error": null,
+ "wall_s": 65.9,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "score": 0.1264,
+  "success": false,
+  "layer": 1,
+  "end_reason": "fallen",
+  "samples": 804,
+  "sim_time_s": 16.06000000000109,
+  "source": "reference_recorder",
+  "observations": null,
+  "final_progress": 0.1264,
+  "peak_time_s": 16.06,
+  "stage_best": {
+   "plank_engaged": 1.0,
+   "bridge_built": 0.3822,
+   "crossed": 0.0,
+   "target_reached": 0.0,
+   "target_lifted": 0.0,
+   "returned_holding": 0.0,
+   "delivered": 0.0
+  },
+  "stage_timeline": {
+   "plank_engaged": 13.36,
+   "bridge_built": null,
+   "crossed": null,
+   "target_reached": null,
+   "target_lifted": null,
+   "returned_holding": null,
+   "delivered": null
+  },
+  "delivered_at_end": false,
+  "route_observed": false,
+  "fallen": true,
+  "plank_theta_max_deg": 79.2,
+  "evaluation": {
+   "goal_reached": false,
+   "dwell_seconds": 0.0,
+   "retrieval_route_observed": false,
+   "candidate_success": false,
+   "violations": [
+    "robot_fall"
+   ]
+  },
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "max_reported_speed": 1.089,
+   "max_object_speed": 1.055,
+   "max_step_speed": 1.077,
+   "max_floor_penetration": 0.0008,
+   "max_wall_penetration": 0.0,
+   "max_box_penetration": 0.0032,
+   "max_energy_excess_J": 0.0,
+   "max_reversal_rate_arm_hz": 10.0,
+   "max_reversal_rate_hand_hz": 4.0,
+   "max_saturation_s": 0.9,
+   "max_limit_push_s": 0.02,
+   "max_progress_spike": 0.0
+  },
+  "verifier": "h4-verifier/2 (h4-monitors/1)"
+ }
+}

@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 805, in main
+    if any(k in n for k in ['wrist','joint_arm','joint_lift']):self.qref[self.m.jnt_qposadr[j]]=solution[self.m.jnt_qposadr[j]]
+     ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 475, in execute
+    if self.tuning.get('prepush',False):self.deep_grasp=True
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 390, in move
+    for s,(p,R) in goals.items():
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 364, in step
+    else:self.regulate_pinch()
+                               
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 181, in assess
+    local=max(bybody.values(),default=0)
+                         ^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

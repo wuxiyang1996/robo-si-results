@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 851, in main
+    self.step()
+      ^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 509, in execute
+    if any(k in n for k in ['shoulder','elbow','wrist','waist','joint_arm','joint_lift']):self.qref[self.m.jnt_qposadr[j]]=solution[self.m.jnt_qposadr[j]]
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 529, in align_inverted_grasp
+    for _ in range(2000):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 619, in apply_goals
+    return goals
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 375, in step
+    checked=self.action_interface.accept(self.action_interface.encode(self.qref))
+                                                                                  
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 189, in assess
+    speed=float(np.linalg.norm(v[3:]));ang=float(np.linalg.norm(v[:3]));robot,table,local,rt,selfc,pairs=self.contacts()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

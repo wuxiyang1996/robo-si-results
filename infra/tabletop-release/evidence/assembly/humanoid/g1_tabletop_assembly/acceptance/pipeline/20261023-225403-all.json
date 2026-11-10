@@ -1,0 +1,212 @@
+{
+ "schema": "infra-pipeline/1",
+ "task": "g1_tabletop_assembly",
+ "stamp": "20261023-225403",
+ "tier": "all",
+ "sources": {
+  "task": "fa52c8aacbd7fe0ccedaabaf675ed1898959995504182416ed4787383a4060df",
+  "task_files": 491,
+  "infra": "2baabd898d4f4bda4be21145ee398ef60d7524f3182f6daaa3a90ee3b1e71075",
+  "infra_files": 37
+ },
+ "steps": [
+  {
+   "name": "runtime_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 5.1,
+   "output_tail": [
+    ".................................",
+    "----------------------------------------------------------------------",
+    "Ran 33 tests in 3.806s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "sandbox_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 23.7,
+   "output_tail": [
+    "......................................",
+    "----------------------------------------------------------------------",
+    "Ran 38 tests in 14.652s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "task_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 10.9,
+   "output_tail": [
+    ".................................................................................................................................",
+    "----------------------------------------------------------------------",
+    "Ran 129 tests in 2.433s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "randomization_tests",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 5.2,
+   "output_tail": [
+    "...........................",
+    "----------------------------------------------------------------------",
+    "Ran 27 tests in 2.168s",
+    "OK"
+   ],
+   "passed": true
+  },
+  {
+   "name": "admission_record",
+   "tier": "cpu",
+   "exit_code": 0,
+   "seconds": 0.7,
+   "output_tail": [
+    "task   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14  admitted  problems",
+    "g1_tabletop_assembly  P  P  P  P  P  P  .  ~  .  ~  P  P  P  P  P  False     0",
+    "gates: 0 reference_expert, 1 official_trajectories, 2 coverage, 3 reference_rerun_spread, 4 verifier_validity, 5 monitors_calibrated, 6 predicate_labels, 7 shortcut_audit, 8 video_review, 9 independent_reproduction, 10 sandbox_isolation, 11 grading_mode, 12 static_checks, 13 randomisation, 14 automatic_pipeline"
+   ],
+   "passed": true
+  },
+  {
+   "name": "dev_smoke_process",
+   "tier": "gpu",
+   "exit_code": 1,
+   "seconds": 39.0,
+   "output_tail": [
+    "[g1_tabletop_assembly] run: C:\\Users\\wuxiy\\rsi_releases\\tabletop_layer1_candidate_20261023\\humanoid\\g1_tabletop_assembly\\sandbox\\runs\\pipeline-dev-hello-20261023-225403",
+    "[g1_tabletop_assembly] building the world (dev) ...",
+    "[g1_tabletop_assembly] trusted worker ready; 1 episode run(s), process isolation",
+    "[g1_tabletop_assembly] episode 0: exit=0 timed_out=False",
+    "[g1_tabletop_assembly] {\"privileged_reference\": false, \"void\": false, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 1} -> C:\\Users\\wuxiy\\rsi_releases\\tabletop_layer1_candidate_20261023\\humanoid\\g1_tabletop_assembly\\sandbox\\runs\\pipeline-dev-hello-20261023-225403\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-dev-hello-20261023-225403",
+   "expect": {
+    "void": false,
+    "score": 0.0
+   },
+   "got": {
+    "void": false,
+    "score": 0.0
+   },
+   "passed": true
+  },
+  {
+   "name": "dev_smoke_process_integrity",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 0.7,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_tabletop_assembly\\\\sandbox\\\\runs\\\\pipeline-dev-hello-20261023-225403\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "reference_live_layer1",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 78.6,
+   "output_tail": [
+    "{\"task\": \"assembly\", \"accepted\": true, \"error\": null, \"seconds\": 73.09}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "reference_replay_layer1",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 66.9,
+   "output_tail": [
+    "{\"accepted\": true, \"comparison\": {\"rows_compared\": 5841, \"rows_sandbox\": 5841, \"rows_recording\": 5841, \"max_object_position_diff_m\": 0.0, \"max_time_diff_s\": 1.4210854715202004e-14, \"exact_fields\": {\"obj_pos\": true, \"obj_quat\": true, \"obj_vel\": true, \"obj_ang\": true, \"joint_pos\": true, \"joint_vel\": true}, \"raw_time_bitwise_equal\": false, \"same_physics_clock\": true, \"verdict_matches\": true, \"world_parameters_match\": true}}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "exploit_teleport_sleeve",
+   "tier": "gpu",
+   "exit_code": 0,
+   "seconds": 19.6,
+   "output_tail": [
+    "{\"void\": true, \"void_reasons\": [\"object_speed_severe (3_no_physics_violation)\", \"teleport (1_no_reward_hacking)\", \"energy_without_work_severe (3_no_physics_violation)\", \"privileged_writes (1_no_reward_hacking)\"], \"score\": 0.0, \"success\": false}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "escape_probes",
+   "tier": "container",
+   "exit_code": 1,
+   "seconds": 37.3,
+   "output_tail": [
+    "[g1_tabletop_assembly] run: C:\\Users\\wuxiy\\rsi_releases\\tabletop_layer1_candidate_20261023\\humanoid\\g1_tabletop_assembly\\sandbox\\runs\\pipeline-escape-20261023-225403",
+    "[g1_tabletop_assembly] preparing the agent image",
+    "[g1_tabletop_assembly] building the world (eval) ...",
+    "[g1_tabletop_assembly] trusted worker ready; 1 episode run(s), container isolation",
+    "[g1_tabletop_assembly] episode 0: exit=0 timed_out=False",
+    "[g1_tabletop_assembly] {\"privileged_reference\": false, \"void\": true, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 1} -> C:\\Users\\wuxiy\\rsi_releases\\tabletop_layer1_candidate_20261023\\humanoid\\g1_tabletop_assembly\\sandbox\\runs\\pipeline-escape-20261023-225403\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-escape-20261023-225403",
+   "expect": {
+    "void": true
+   },
+   "got": {
+    "void": true
+   },
+   "passed": true
+  },
+  {
+   "name": "escape_probes_integrity",
+   "tier": "container",
+   "exit_code": 0,
+   "seconds": 0.7,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_tabletop_assembly\\\\sandbox\\\\runs\\\\pipeline-escape-20261023-225403\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  },
+  {
+   "name": "grade_noop_first_layer",
+   "tier": "container",
+   "exit_code": 1,
+   "seconds": 48.9,
+   "output_tail": [
+    "[g1_tabletop_assembly] run: C:\\Users\\wuxiy\\rsi_releases\\tabletop_layer1_candidate_20261023\\humanoid\\g1_tabletop_assembly\\sandbox\\runs\\pipeline-grade-noop-20261023-225403",
+    "[g1_tabletop_assembly] preparing the agent image",
+    "[g1_tabletop_assembly] building the world (grade) ...",
+    "[g1_tabletop_assembly] trusted worker ready; 3 episode run(s), container isolation",
+    "[g1_tabletop_assembly] episode 0: exit=0 timed_out=False",
+    "[g1_tabletop_assembly] episode 1: exit=0 timed_out=False",
+    "[g1_tabletop_assembly] episode 2: exit=0 timed_out=False",
+    "[g1_tabletop_assembly] {\"privileged_reference\": false, \"void\": false, \"score\": 0.0, \"success\": false, \"success_rate\": 0.0, \"episodes\": 3} -> C:\\Users\\wuxiy\\rsi_releases\\tabletop_layer1_candidate_20261023\\humanoid\\g1_tabletop_assembly\\sandbox\\runs\\pipeline-grade-noop-20261023-225403\\trusted\\verdict.json"
+   ],
+   "run": "humanoid/g1_tabletop_assembly/sandbox/runs/pipeline-grade-noop-20261023-225403",
+   "expect": {
+    "void": false,
+    "score": 0.0,
+    "success_rate": 0.0
+   },
+   "got": {
+    "void": false,
+    "score": 0.0,
+    "success_rate": 0.0
+   },
+   "passed": true
+  },
+  {
+   "name": "grade_noop_first_layer_integrity",
+   "tier": "container",
+   "exit_code": 0,
+   "seconds": 0.7,
+   "output_tail": [
+    "{\"run\": \"humanoid\\\\g1_tabletop_assembly\\\\sandbox\\\\runs\\\\pipeline-grade-noop-20261023-225403\", \"passed\": true, \"problems\": []}"
+   ],
+   "passed": true
+  }
+ ],
+ "passed": true
+}

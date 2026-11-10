@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 429, in main
+    # Hold the far rim on the table while rotating the gripped near rim upward.
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 318, in execute
+    pre={s:(p+[-.12,(.06 if s=='left' else -.06) if self.body!='S' else 0,.015],R) for s,(p,R) in goals.items()}
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 355, in edge_regrasp
+    if self.contacts()[0]<.10:raise RuntimeError('no_measured_grasp_contact')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 266, in move
+    if n in targets:v=targets[n]
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 248, in step
+    if self.contacts()[0]>11:speed=min(speed,-.02)
+                                                   
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 156, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: robot_contact_load

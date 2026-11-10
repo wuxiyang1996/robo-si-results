@@ -1,0 +1,77 @@
+{
+  "schema": "h1-p4-video-sampling/1",
+  "video_sha256": "0cd34945a8cf2658873cf4e192fbee6cce660ad739c9d103bb1ccda241294bee",
+  "frame_count": 1256,
+  "frame_mapping_verified": true,
+  "video_fps": 5.0,
+  "video_size": [
+    2560,
+    720
+  ],
+  "frame_time_semantics": "Frozen writer: initial t0, post-control state t+.02 at scheduled frame, final fresh state. Encoded display time differs slightly; physics times here are reconstructed and frame-count checked.",
+  "selected_frames": [
+    {
+      "frame_index": 0,
+      "physics_time_s": 0.0,
+      "nearest_state_index": 0,
+      "phase": "approach"
+    },
+    {
+      "frame_index": 68,
+      "physics_time_s": 13.42,
+      "nearest_state_index": 671,
+      "phase": "push_both"
+    },
+    {
+      "frame_index": 274,
+      "physics_time_s": 54.64000000000001,
+      "nearest_state_index": 2732,
+      "phase": "planned_steps_both"
+    },
+    {
+      "frame_index": 526,
+      "physics_time_s": 105.03999999999999,
+      "nearest_state_index": 5252,
+      "phase": "push_both"
+    },
+    {
+      "frame_index": 672,
+      "physics_time_s": 134.24,
+      "nearest_state_index": 6712,
+      "phase": "planned_steps_both"
+    },
+    {
+      "frame_index": 863,
+      "physics_time_s": 172.42000000000002,
+      "nearest_state_index": 8621,
+      "phase": "push_both"
+    },
+    {
+      "frame_index": 988,
+      "physics_time_s": 197.42000000000002,
+      "nearest_state_index": 9871,
+      "phase": "planned_steps_both"
+    },
+    {
+      "frame_index": 1254,
+      "physics_time_s": 250.62,
+      "nearest_state_index": 12531,
+      "phase": "terminal"
+    }
+  ],
+  "ai_visual_review": "selected_frames_reviewed",
+  "human_review": "pending",
+  "scope": "Selected-frame visual consistency only. No visual inference of 1mrad limits, complete safety or trajectory continuity; numerical state audits remain authoritative.",
+  "artifacts": [
+    "independent_video_final.png",
+    "independent_video_samples.png"
+  ],
+  "reviewer": "Codex AI visual inspection, not human signoff",
+  "observations": [
+    "Eight source-timed two-view samples show crouched ground pushing and physical foot repositioning.",
+    "Final raw frame shows the box on the green delivery area with hands visibly separated and the robot on its feet.",
+    "The camera crops the upper body/head in some standing views.",
+    "Sampled images cannot establish joint torque or milliradian limit compliance: this run remains failed under original rule5 sustained elbow limit pushing."
+  ],
+  "task_success_modified": false
+}

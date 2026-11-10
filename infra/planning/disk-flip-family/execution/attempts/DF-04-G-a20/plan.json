@@ -1,0 +1,210 @@
+{
+  "controller_tuning": {
+    "disk_collision_shape": "mesh128",
+    "reference_controller": "frozen_original_joint_targets"
+  },
+  "setting": "DF-04-G",
+  "created_before_execution": true,
+  "high_level": [
+    "slide",
+    "clamp",
+    "lift",
+    "turn",
+    "place"
+  ],
+  "low_level": [
+    {
+      "id": "L01",
+      "phase": "settle_raised_separated_hands",
+      "high_level": "slide",
+      "action": "稳定抬起且分开的双手"
+    },
+    {
+      "id": "L02",
+      "phase": "approach_far_rim",
+      "high_level": "slide",
+      "action": "拇指从上方接近远侧盘沿"
+    },
+    {
+      "id": "L03",
+      "phase": "lower_outside_far_rim",
+      "high_level": "slide",
+      "action": "在远侧盘沿外降低拇指"
+    },
+    {
+      "id": "L04",
+      "phase": "gentle_rim_contact",
+      "high_level": "slide",
+      "action": "低速建立拇指推盘接触"
+    },
+    {
+      "id": "L05",
+      "phase": "slide_to_near_edge",
+      "high_level": "slide",
+      "action": "沿桌面轻推至近侧桌沿"
+    },
+    {
+      "id": "L06",
+      "phase": "unload_rim_pusher",
+      "high_level": "clamp",
+      "action": "卸掉原推盘拇指的载荷"
+    },
+    {
+      "id": "L07",
+      "phase": "clear_rim_pusher",
+      "high_level": "clamp",
+      "action": "撤开推盘拇指"
+    },
+    {
+      "id": "L08",
+      "phase": "retract_above_and_beside_disk",
+      "high_level": "clamp",
+      "action": "双手撤至盘上方和侧方"
+    },
+    {
+      "id": "L09",
+      "phase": "reconfigure_for_bimanual_approach",
+      "high_level": "clamp",
+      "action": "调整腕部姿态以双手接近"
+    },
+    {
+      "id": "L10",
+      "phase": "calibrate_free_finger_preshape",
+      "high_level": "clamp",
+      "action": "预张开并调整空载手指"
+    },
+    {
+      "id": "L11",
+      "phase": "close_two_independent_edge_pinches",
+      "high_level": "clamp",
+      "action": "分别闭合两手的拇指与下侧手指"
+    },
+    {
+      "id": "L12",
+      "phase": "lift_with_two_edge_pinches",
+      "high_level": "lift",
+      "action": "保持双手夹持共同抬盘"
+    },
+    {
+      "id": "L13",
+      "phase": "turn_with_two_edge_pinches",
+      "high_level": "turn",
+      "action": "同步旋转两手以翻转圆盘"
+    },
+    {
+      "id": "L14",
+      "phase": "settle_after_bimanual_inversion",
+      "high_level": "place",
+      "action": "翻面后先稳定双手夹持"
+    },
+    {
+      "id": "L15",
+      "phase": "transfer_weight_to_one_pinch",
+      "high_level": "place",
+      "action": "将载荷移交右手夹持并释放左手"
+    },
+    {
+      "id": "L16",
+      "phase": "clear_bridge_pusher",
+      "high_level": "place",
+      "action": "移开左手并准备再次推盘"
+    },
+    {
+      "id": "L17",
+      "phase": "carry_inverted_disk_outside_edge",
+      "high_level": "place",
+      "action": "右手将反面朝上的盘移至桌沿外侧"
+    },
+    {
+      "id": "L18",
+      "phase": "lower_outside_holding_hand",
+      "high_level": "place",
+      "action": "在桌沿外降低右手及圆盘"
+    },
+    {
+      "id": "L19",
+      "phase": "align_supported_disk_with_table_height",
+      "high_level": "place",
+      "action": "对齐圆盘与桌面高度"
+    },
+    {
+      "id": "L20",
+      "phase": "approach_near_rim_above_outside_bridge",
+      "high_level": "place",
+      "action": "左手拇指从上方接近近侧盘沿"
+    },
+    {
+      "id": "L21",
+      "phase": "lower_bridge_pusher_outside_near_rim",
+      "high_level": "place",
+      "action": "在近侧盘沿外降低左手拇指"
+    },
+    {
+      "id": "L22",
+      "phase": "establish_bridge_push_contact",
+      "high_level": "place",
+      "action": "建立左手拇指与盘沿的轻柔接触"
+    },
+    {
+      "id": "L23",
+      "phase": "slide_disk_from_holding_hand_onto_table",
+      "high_level": "place",
+      "action": "将圆盘从承载手推向桌面"
+    },
+    {
+      "id": "L24",
+      "phase": "table_and_lower_pads_share_load_after_thumb_release",
+      "high_level": "place",
+      "action": "核对桌面与下侧指垫共同承载"
+    },
+    {
+      "id": "L25",
+      "phase": "withdraw_lower_pads_after_supported_centre",
+      "high_level": "place",
+      "action": "盘心获得桌面支撑后撤出下侧指垫并继续推盘"
+    },
+    {
+      "id": "L26",
+      "phase": "unload_bridge_pusher",
+      "high_level": "place",
+      "action": "卸去左拇指推力并松手稳定"
+    }
+  ],
+  "goal": {
+    "xy": [
+      0.5,
+      0
+    ],
+    "position_tolerance_m": 0.045,
+    "normal_z_max": -0.9902680687415704,
+    "release_hold_s": 2
+  },
+  "world": {
+    "start_xy": [
+      0.4,
+      0
+    ],
+    "table_height_m": 0.86,
+    "table_edge_x_m": 0.35,
+    "initial_overhang_m": 0.05,
+    "base_motion": false
+  },
+  "limits": {
+    "linear_speed_m_s": 0.12,
+    "angular_speed_rad_s": 0.65,
+    "robot_contact_sum_n": 18,
+    "table_contact_sum_n": 8,
+    "local_contact_body_n": null
+  },
+  "engine": "MuJoCo extension development; original Genesis evidence is separate",
+  "policy": "joint targets through effort-limited actuators; no object pose/velocity/force writes or attachment",
+  "strategy": "Execute frozen original expert joint references as a NEW physical candidate under the extension scene and scorer. This is a reference program, not online replanning or a transferred success claim.",
+  "reference_source": {
+    "run": "DF-01-G-a02",
+    "trajectory_sha256": "2da5bb55bb57515adbd4046882b08f65b159be68ad25e0e3f80605bcf20b0c98",
+    "original_engine": "Genesis",
+    "execution_engine": "MuJoCo",
+    "extension_generated_start_unchanged": true,
+    "pd": "original stiffness/damping schedule, bounded torques, no added gravity force"
+  }
+}

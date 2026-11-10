@@ -1,0 +1,41 @@
+{
+  "schema": "m4-integrated-delivery-plan/1",
+  "attempt": "v3j-integrated-delivery-a52",
+  "status": "declared_before_launch",
+  "robots": [
+    "go2_a"
+  ],
+  "scene_seed": 0,
+  "tool_catalog_seed": 101,
+  "precision": "64",
+  "substeps": 8,
+  "ground_friction": 0.3,
+  "time_limit_s": 240,
+  "scope": "Single Go2 continuous rejection/selection followed by the original full L-corridor goal and release in the same scene. Not a new main task or a two-Go2 certificate.",
+  "controller": "CapturedSingleTransport with original platform route and bounded rope-heading/load feedback",
+  "unchanged": [
+    "hardware geometry",
+    "mass",
+    "friction from the continuous component",
+    "all contact masks",
+    "pin motor limits",
+    "50 mm stance slip",
+    "400 N ropes",
+    "150 N pin-eye service",
+    "goal volume/speed and released dwell"
+  ],
+  "risks": [
+    "Unused tool chains stay in the physical scene and may snag.",
+    "Single robot corridor dynamics are newly tested, not inherited from two-Go2 references."
+  ],
+  "acceptance": "Enclosing dense physics + continuous discovery + uninterrupted selected-tool delivery + terminal released goal dwell; no task credit from partial progress.",
+  "source_sha256": {
+    "run.py": "4e201b9131650ec01f98ce3baa022c31ba6db8d000aa2874719270245401fe51",
+    "single_transport.py": "7c1d1cf0419f25694f32fdc35b28a6cdc2d8a5d1f86f69042e828a01fafc73af",
+    "transport.py": "1fe76191f8c68b2ec3f448bb8e1bd8d79c5d99d85da6c66f01ae38582e5230f8",
+    "verify.py": "cbec7c6722cc6b3b912ec14fc0a8b174ac3d41b97215fcb8621ecf2080388a89",
+    "integrated_evidence.py": "d8d1feebc8412309afa802f052032c9e5e2a248ccdea5f0750f55140fa1e7db1",
+    "geometry.py": "66e1380d99ba17c70e70ea2f0f003848e668395d5fa40aa0ed63068e6b5639ad"
+  },
+  "formal_admission": false
+}

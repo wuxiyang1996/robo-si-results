@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 535, in main
+    disk=self.d.xpos[self.obj].copy();R=self.hand_pose('right')[1]
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 396, in execute
+    if self.tuning.get('prepush',False):self.deep_grasp=True
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 310, in step
+    if self.body=='G':
+                       
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 166, in assess
+    if not np.isfinite(self.d.qpos).all() or not np.isfinite(self.d.qvel).all():raise RuntimeError('nonfinite_physics')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

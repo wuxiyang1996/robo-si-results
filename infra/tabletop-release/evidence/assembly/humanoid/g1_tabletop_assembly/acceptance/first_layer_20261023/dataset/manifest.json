@@ -1,0 +1,151 @@
+{
+  "schema": "assembly-demonstrations/1",
+  "task": "g1_tabletop_assembly",
+  "status": "completed",
+  "created_at_utc": "2026-10-24T02:46:19.681313+00:00",
+  "accepted_count": 1,
+  "all_passed": true,
+  "format": "NPZ with separate initial observation, 43 absolute joint targets and post-step observations",
+  "sample_hz": 50,
+  "physics_hz": 200,
+  "observation_mode": "privileged_development",
+  "rgb_frames_included": false,
+  "episode_path_base": "manifest_directory",
+  "training_episodes": [
+    "layer1_seed0.npz"
+  ],
+  "episodes": [
+    {
+      "layer": 1,
+      "seed": 0,
+      "archive": "layer1_seed0.npz",
+      "archive_sha256": "6a3164e81ff159a80a4eb347b39d27f9e4901a647e10c3525830c71cd411b8e1",
+      "accepted": true,
+      "control_steps": 5841,
+      "duration_seconds": 116.82000000000001,
+      "source_episode": "../coverage/layer1_seed0/run/episode_00",
+      "source_expert": "../coverage/layer1_seed0/run/expert",
+      "source_manifest_sha256": "dc073c0395952fffa0b7b12d54d8e53f03496c0d590f412e65f360eba17948cd",
+      "source_summary_sha256": "8949a3e8b6578aa82687c40699020e5e831d5f06d6b875f6b2c84d492eae04ba",
+      "independent_physics_report": "../followups/layer1_physics/replay_report.json",
+      "physics_report_sha256": "9d5f434585df229f5d3099e41386edffdd3fc15f207e4c322a275daf8a6a0f99",
+      "independent_sandbox_report": "../followups/layer1_sandbox/replay.json",
+      "sandbox_report_sha256": "ed1251db9603ec450c4d694b3cef619433fc95539cb519c4008e86893753b3a1",
+      "observations_match_sealed_source_exactly": true,
+      "targets_match_sealed_source_after_exact_float32_conversion": true,
+      "maximum_target_float32_rounding_rad": 1.191274310308188e-07,
+      "arrays": {
+        "schema_version": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "joint_names": {
+          "shape": [
+            43
+          ],
+          "dtype": "<U26"
+        },
+        "object_names": {
+          "shape": [
+            4
+          ],
+          "dtype": "<U7"
+        },
+        "metadata_json": {
+          "shape": [],
+          "dtype": "<U10126"
+        },
+        "initial_observation_json": {
+          "shape": [],
+          "dtype": "<U3595"
+        },
+        "time_start": {
+          "shape": [
+            5841
+          ],
+          "dtype": "float64"
+        },
+        "time": {
+          "shape": [
+            5841
+          ],
+          "dtype": "float64"
+        },
+        "physics_ticks": {
+          "shape": [
+            5841
+          ],
+          "dtype": "int32"
+        },
+        "target_q": {
+          "shape": [
+            5841,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "joint_position": {
+          "shape": [
+            5841,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "joint_velocity": {
+          "shape": [
+            5841,
+            43
+          ],
+          "dtype": "float64"
+        },
+        "object_pose": {
+          "shape": [
+            5841,
+            4,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "object_velocity": {
+          "shape": [
+            5841,
+            4,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "reward": {
+          "shape": [
+            5841
+          ],
+          "dtype": "float64"
+        },
+        "stage": {
+          "shape": [
+            5841
+          ],
+          "dtype": "int32"
+        },
+        "status_json": {
+          "shape": [
+            5841
+          ],
+          "dtype": "<U450"
+        },
+        "object_states_json": {
+          "shape": [
+            5841
+          ],
+          "dtype": "<U2500"
+        },
+        "physics_evidence_json": {
+          "shape": [
+            5841
+          ],
+          "dtype": "<U1020"
+        }
+      }
+    }
+  ],
+  "scope": "Fresh physical demonstrations; no admission or human review implied"
+}

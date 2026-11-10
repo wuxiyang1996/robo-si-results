@@ -1,0 +1,61 @@
+{
+  "controller_tuning": {
+    "inspire_index_only": false,
+    "inspire_thumb_yaw": 1.05,
+    "inspire_hand_yaw": 0.26,
+    "inspire_offset": [
+      0.03,
+      0.02,
+      0
+    ],
+    "inspire_thumb_n": 2.8,
+    "inspire_fingers_n": 2.1,
+    "inspire_close_s": 100,
+    "collision_profile": "inspire-palms-v2",
+    "align_grasp": false,
+    "prepush": true,
+    "inspire_absolute_x": 0.36,
+    "inspire_push_z": 0.866,
+    "inspire_push_finger_kp": 6.0,
+    "inspire_push_feedback": 0.02,
+    "inspire_push_speed": 0.001,
+    "inspire_push_load_n": 1.2,
+    "inspire_index_push": true,
+    "inspire_push_pitch": -0.2,
+    "inspire_table_clearance": false,
+    "inspire_vertical_withdraw": true,
+    "inspire_edge_x": 0.378,
+    "inspire_park_left": true,
+    "inspire_bimanual": true,
+    "inspire_total_target_cap": 14,
+    "inspire_fingers": [
+      "middle",
+      "ring"
+    ],
+    "wrist_clearance": true,
+    "turn_feedback": true,
+    "physics_dt": 0.0005,
+    "inspire_unused_fold": 0.0,
+    "insert_seconds": 40,
+    "inspire_bimanual_y": 0.15,
+    "inspire_left_x": 0.395,
+    "inspire_right_x": 0.375,
+    "require_inspire_grasp": true,
+    "inspire_grasp_z": 0.034,
+    "inspire_insert_pose_tolerance_m": 0.035
+  },
+  "format": "held-reference-replay/1",
+  "physics_hz": 2000,
+  "control_hz": 50,
+  "body": "F",
+  "physics_steps": 661760,
+  "full_array_sha256": {
+    "qpos": "9edaec02662624916e49ac7063e65f2bc9d7cb446236c8051482ca23c4b49261",
+    "qvel": "67c013ce9d5261e9c73ba404957331b19221aefd3a4c0b445542a0da156d72e8",
+    "ctrl": "5bbf266fae65465823ceccc61785c72a00b407bb72d26976561d59ae9b1a41b0"
+  },
+  "source_trajectory_npz_sha256": "fb0b56fafb8c4275a88d16167a1566df109056beb413f1720971ba14eb126837",
+  "replay": "python compact_evidence.py --replay PATH_TO_RUN",
+  "requirements": "MuJoCo 3.14.0, NumPy, same official meshes, scene.xml and initial_state.json. Remap external mesh paths when needed.",
+  "storage": "References stored once per control interval; partial final interval retained. Object states shown at control endpoints; full physics-step states/controls are deterministically reconstructed and checked by array SHA-256."
+}

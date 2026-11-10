@@ -1,0 +1,84 @@
+{
+  "status": "finished",
+  "passed": false,
+  "mode": "cycle",
+  "full_transport_requested": false,
+  "full_transport_success": false,
+  "error": "RuntimeError: physical monitor failed: ['target_supported', 'finite_state'][{'time_s': 32.77999999999832, 'robot': 'go2_b', 'violations': ['nonfinite', 'coupler_overload']}]",
+  "phase": "extract_and_prove_load",
+  "sim_time_s": 32.77999999999832,
+  "steps": 6556,
+  "frames": 327,
+  "source_unchanged": true,
+  "proof_dwell_s": {
+    "go2_a": 0.0,
+    "go2_b": 0.0
+  },
+  "events": [
+    {
+      "time_s": 23.59999999999959,
+      "robot": "go2_a",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        -0.0015678218126349286,
+        0.0005415726375192498,
+        -0.0020668191386844503
+      ]
+    },
+    {
+      "time_s": 24.219999999999466,
+      "robot": "go2_b",
+      "event": "PIN_CLOSE_REQUEST",
+      "alignment_m": [
+        -0.0017560044540296804,
+        -3.972868296486798e-05,
+        -0.0022459749999688694
+      ]
+    },
+    {
+      "time_s": 26.734999999998966,
+      "event": "BEGIN_EXTRACTION"
+    }
+  ],
+  "failures": {
+    "target_supported": {
+      "first_time": 32.78,
+      "count": 1,
+      "detail": {
+        "pen_dynamic": 0.0005314797163009644,
+        "pen_rope": 7.251827628351748e-05,
+        "impulse": 0.0,
+        "support": NaN,
+        "robot_cargo": 0.0,
+        "slide": 0.0,
+        "drift": 9.898555745419247e-05,
+        "tension": {
+          "rope_left": 0.7042453464237042,
+          "rope_right": 0.5688354201993207,
+          "rope_centre": 0.44303653830866097
+        },
+        "heights": {
+          "go2_a": 0.32821929454803467,
+          "go2_b": 0.33140918612480164
+        },
+        "tilts": {
+          "go2_a": 3.7782381147700974,
+          "go2_b": 4.310045360358959
+        },
+        "calls": [],
+        "steps": 1,
+        "gap": 0.005000000000002558
+      }
+    },
+    "finite_state": {
+      "first_time": 32.78,
+      "count": 1,
+      "detail": {
+        "reason": "nonfinite native contact or robot state"
+      }
+    }
+  },
+  "wall_time_s": 144.26389980316162,
+  "scope": "Privileged physical coupling/extraction/release subtask; no full corridor, tool discovery or admission credit",
+  "formal_admission": false
+}

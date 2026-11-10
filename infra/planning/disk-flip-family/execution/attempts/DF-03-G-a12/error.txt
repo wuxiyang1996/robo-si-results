@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 698, in main
+    write(self.out/'segments.json',self.events)
+       ^^^^^^^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 452, in execute
+    targets={s:(centre+getattr(self,'turn_xy_offset',np.zeros(3))+[0,0,getattr(self,'turn_height_offset',0.)]+correction@R@(p-centre),correction@R@rot) for s,(p,rot) in poses.items()}
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 349, in step
+    self.last_ref=self.qref.copy()
+                                   
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 176, in assess
+    if value>limit+1e-6:raise RuntimeError(reason)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: local_damage_proxy

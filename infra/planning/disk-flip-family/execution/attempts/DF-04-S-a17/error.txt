@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 562, in main
+    else:
+      ^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 405, in execute
+    if self.body=='G':
+                       
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 471, in edge_regrasp
+    for _ in range(4000):
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 340, in move
+    u=smooth((i+1)/round(seconds/.02))
+    ^^^^^^^^^^^
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 322, in step
+    if getattr(self,'deep_grasp',False) and self.tuning.get('wrench_control',False):self.regulate_six_contacts()
+                                                                                                                 
+  File "/fs/gamma-projects/vlm-robot/robo-si/df_family/run.py", line 169, in assess
+    if not np.isfinite(self.d.qpos).all() or not np.isfinite(self.d.qvel).all():raise RuntimeError('nonfinite_physics')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: disk_angular_speed

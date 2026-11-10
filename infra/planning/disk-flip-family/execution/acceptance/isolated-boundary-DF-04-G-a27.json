@@ -1,0 +1,65 @@
+{
+  "schema": "disk-flip-isolated-boundary-probe/1",
+  "setting": "DF-04-G-a27",
+  "body": "G",
+  "separate_python_process": true,
+  "policy_python_isolated_mode": true,
+  "shared_simulator_memory": false,
+  "transport": "JSON lines over anonymous pipes",
+  "negative_cases": [
+    {
+      "case": "object_pose",
+      "rejected": true,
+      "physics_and_reference_unchanged": true
+    },
+    {
+      "case": "model_edit",
+      "rejected": true,
+      "physics_and_reference_unchanged": true
+    },
+    {
+      "case": "stage_write",
+      "rejected": true,
+      "physics_and_reference_unchanged": true
+    },
+    {
+      "case": "unknown_joint",
+      "rejected": true,
+      "physics_and_reference_unchanged": true
+    },
+    {
+      "case": "nonfinite",
+      "rejected": true,
+      "physics_and_reference_unchanged": true
+    },
+    {
+      "case": "slew",
+      "rejected": true,
+      "physics_and_reference_unchanged": true
+    },
+    {
+      "case": "partial",
+      "rejected": true,
+      "physics_and_reference_unchanged": true
+    }
+  ],
+  "no_op": {
+    "simulated_seconds": 3.000000000000169,
+    "task_success": false,
+    "physical_violation": null,
+    "peaks": {
+      "speed": 0.002076926191144744,
+      "angular": 0.007421040619406092,
+      "robot": 0.0,
+      "table": 1.181684629903648,
+      "local": 0.0,
+      "self_contact": 0.0,
+      "robot_table": 0.0
+    }
+  },
+  "passed": true,
+  "scope": "Process-separated malformed-action and physical no-op tests only. Not a complete task execution, OS sandbox, or hostile-code security certificate.",
+  "complete_isolated_execution": false,
+  "scene_sha256": "f38f10f431299de87f0fd192f523e5d59f3ba22c77c8ace949de5ffeac27d597",
+  "source_sha256": "1ff250523ffb4aaf9486fd5c887c827bb7becfbc5a687e3aab49bc887a9ebb4f"
+}

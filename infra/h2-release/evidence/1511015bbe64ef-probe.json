@@ -1,0 +1,741 @@
+{
+ "schema": "transport-tool-necessity-probe/1",
+ "task": "H2",
+ "setup": {
+  "kind": "tool_ablation_direct_push",
+  "removed_from_route": "cart",
+  "cart_initial_position": [
+   0.9,
+   1.7,
+   0.057
+  ],
+  "rails_initial_position": [
+   2.1,
+   1.7,
+   0.0
+  ],
+  "push_height_m": 0.64,
+  "retained": "cargo mass, geometry and friction; passages; physical/hardware thresholds",
+  "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof"
+ },
+ "sample_spec": {
+  "distribution": "transport-pose-v1",
+  "split": "development",
+  "seed": 23,
+  "episode": 0,
+  "corner": null,
+  "task_config": {
+   "difficulty_layer": 1,
+   "asset_visuals": true,
+   "dock": "rails",
+   "rail_frictionloss": 0.02,
+   "deck_roller_frictionloss": 0.02,
+   "lane_guides": true,
+   "guide_north_x": 6.3,
+   "box_mass": 20.0,
+   "box_size": [
+    0.7,
+    0.7,
+    0.9
+   ],
+   "box_friction": 0.5,
+   "box_handholds": false,
+   "box_handles": true,
+   "box_handle_shape": "block",
+   "cart_mass": 12.0,
+   "cart_handle_mass": 1.0,
+   "wheel_mass": 0.5,
+   "wheel_friction": 0.055,
+   "wheel_damping": 0.002,
+   "wheel_frictionloss": 0.06,
+   "wheel_armature": 1e-05,
+   "deck_friction": 0.12,
+   "ground_friction": 0.03,
+   "passage_width": 1.5,
+   "dwell": 2.0,
+   "timeout": 180.0,
+   "collision_limit": 800.0,
+   "cart_payload_limit": 40.0,
+   "cart_pos": [
+    3.81,
+    -0.8,
+    0.015
+   ],
+   "cart_size": [
+    0.8,
+    0.8,
+    0.01
+   ],
+   "room_length": 10.5,
+   "goal": [
+    9.56758839,
+    0.78092559
+   ],
+   "goal_size": [
+    1.4,
+    1.4
+   ],
+   "box_xy": [
+    2.02092773,
+    -0.8
+   ],
+   "box_on_floor": true
+  },
+  "robot_pose": [
+   0.77396032,
+   0.02652693,
+   0.09278798
+  ],
+  "draws": {
+   "robot_x": 0.77396032,
+   "robot_y": 0.02652693,
+   "robot_yaw": 0.09278798,
+   "box_x": 2.02092773,
+   "goal_x": 9.56758839,
+   "goal_y": 0.78092559
+  },
+  "rejected": 0
+ },
+ "effort_limits": "hardware",
+ "main_task_admission_evidence": false,
+ "necessity_proven": false,
+ "raw_goal_reached": false,
+ "raw_goal_hold_s": 0.0,
+ "minimum_goal_distance_m": 6.274540099254324,
+ "reason": "controller_exception",
+ "error": "RuntimeError('cargo stuck while pushing')",
+ "expert_sources_sha256": {
+  "h2/solution/floor_push/run_grasp_push.py": "ac42a07f5174ee47a1fbe582ddd979f4a0d676d910672f1e6e02ff455b4e85e0",
+  "h2/solution/floor_push/run_cart_push.py": "f99c86ac5568d33e1c11faa95e0a1783dc3d973e18300b917e6bbe6a6e0c3724",
+  "h2/solution/floor_push/run_floor_push.py": "506a499d63b837c376b20af3073d10506b3f36eaacb7bcc7ac0dfdddfeaadf80",
+  "humanoid/g1_support_retrieval/solution/agile.py": "ffb06f370e71a28ea715913959be04459aa6013774f6f547768653bebd0f2bb7",
+  "humanoid/g1_support_retrieval/oracle/upper_ik.py": "f5525862a2c042ba1e8aeeed1d2cb29f083d159bd5113f0293a2de9b1d48b6a1",
+  "humanoid/g1_support_retrieval/oracle/oracle.py": "1c88c21164289bbe62cbb5707e4f55316688afb2f58c8c5f63deb36c5054f9e3",
+  "tool_probe.py": "86d51aae031ab3b044d37c4532dc32760d19f8ff25ee1a99e3f85b883c64d165"
+ },
+ "privileged_writes_after_start": [],
+ "control_steps": 875,
+ "trace": [
+  {
+   "t": 0.0,
+   "phase": "stand",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.515547513961792
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {}
+  },
+  {
+   "t": 1.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.5149989128112793
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {}
+  },
+  {
+   "t": 2.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.5149989128112793
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.5818342028027896,
+    "yaw_err": -0.05039630521059335
+   }
+  },
+  {
+   "t": 3.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.5149989128112793
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.3687602363465026,
+    "yaw_err": 0.012246060818803972
+   }
+  },
+  {
+   "t": 4.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.5149989128112793
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 0,
+    "dist": 0.18587569580780977,
+    "yaw_err": -0.0008366384735376542
+   }
+  },
+  {
+   "t": 5.0,
+   "phase": "walk",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.5149989724159241
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "waypoint": 1,
+    "dist": 0.16047254977225742,
+    "yaw_err": 0.0027751483067892657
+   }
+  },
+  {
+   "t": 6.0,
+   "phase": "push",
+   "cargo": [
+    2.020927667617798,
+    -0.800000011920929,
+    0.5149989724159241
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": 0.0,
+    "e_t": -1.1920928910669204e-08,
+    "d": 0.0,
+    "u": 5.364418009801141e-10,
+    "D": 0.49529566764831534,
+    "vx": 0.16,
+    "head_err": 0.0002834550630486099,
+    "robot_lat": 0.031710803508758545,
+    "approaching": true,
+    "aligning": false,
+    "press": 0.0,
+    "left_N": 0.0,
+    "right_N": 0.0,
+    "f_star": 0.0,
+    "push_N": 0.0,
+    "hand_push_N": 0.0,
+    "contact_links": {},
+    "box_v": -8.844330636748055e-07,
+    "tilt": 0.0,
+    "ik_err": {
+     "left": 4.04745184402796e-13,
+     "right": 3.7660016921135385e-13
+    }
+   }
+  },
+  {
+   "t": 7.0,
+   "phase": "push",
+   "cargo": [
+    2.1616947650909424,
+    -0.8023154139518738,
+    0.5149699449539185
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": 0.007523215623269408,
+    "e_t": -0.00244815349578853,
+    "d": 0.0,
+    "u": -0.0010183154361799274,
+    "D": 0.4420447691642728,
+    "vx": 0.34,
+    "head_err": 0.011747963984206411,
+    "robot_lat": 0.050032502294336534,
+    "approaching": false,
+    "aligning": false,
+    "press": 0.00752804608756304,
+    "left_N": 0.0,
+    "right_N": 0.0,
+    "f_star": 96.8051916718483,
+    "push_N": 0.0,
+    "hand_push_N": 0.0,
+    "contact_links": {},
+    "box_v": 0.24316027760505676,
+    "tilt": 3.466054989663543e-05,
+    "ik_err": {
+     "left": 3.3939992891104333e-12,
+     "right": 1.8901631670975643e-12
+    }
+   }
+  },
+  {
+   "t": 8.0,
+   "phase": "push",
+   "cargo": [
+    2.538957357406616,
+    -0.8027984499931335,
+    0.5151562094688416
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": 0.0032626466417804423,
+    "e_t": -0.002339255809783891,
+    "d": 0.0,
+    "u": -0.00038413048482679123,
+    "D": 0.4220262559310566,
+    "vx": 0.34,
+    "head_err": -0.03953555793254537,
+    "robot_lat": 0.04279090825406595,
+    "approaching": false,
+    "aligning": false,
+    "press": 0.02,
+    "left_N": 5.146561145782471,
+    "right_N": -22.121944427490234,
+    "f_star": 89.63789198398591,
+    "push_N": -16.975383281707764,
+    "hand_push_N": -16.975383281707764,
+    "contact_links": {
+     "right_wrist_pitch_link": 100.36425860153082,
+     "left_wrist_pitch_link": 23.671764580377893
+    },
+    "box_v": 0.48207026720046997,
+    "tilt": 0.0010732439658962306,
+    "ik_err": {
+     "left": 2.9226040701753055e-13,
+     "right": 8.444693574717259e-13
+    }
+   }
+  },
+  {
+   "t": 9.0,
+   "phase": "push",
+   "cargo": [
+    2.8206121921539307,
+    -0.8008065223693848,
+    0.5149969458580017
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": -0.004367355725332089,
+    "e_t": -0.0008024096488952193,
+    "d": 0.0,
+    "u": 0.0006912117930000982,
+    "D": 0.4482361317169836,
+    "vx": 0.34,
+    "head_err": 0.004553679675352029,
+    "robot_lat": 0.052897325569496334,
+    "approaching": false,
+    "aligning": false,
+    "press": 0.02,
+    "left_N": 7.058712005615234,
+    "right_N": 0.0,
+    "f_star": 97.28985342979432,
+    "push_N": 7.058712005615234,
+    "hand_push_N": 7.058712005615234,
+    "contact_links": {
+     "left_wrist_pitch_link": 10.026548278198485
+    },
+    "box_v": 0.22700488567352295,
+    "tilt": 5.7542640983524754e-05,
+    "ik_err": {
+     "left": 0.018119851496053222,
+     "right": 0.015835851944707335
+    }
+   }
+  },
+  {
+   "t": 10.0,
+   "phase": "push",
+   "cargo": [
+    3.109377145767212,
+    -0.7917166948318481,
+    0.5149639844894409
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": -0.03549342000863609,
+    "e_t": 0.008790838718414351,
+    "d": 0.0,
+    "u": 0.0049284252589667675,
+    "D": 0.428521677871307,
+    "vx": 0.34,
+    "head_err": -0.00011185021660597982,
+    "robot_lat": 0.0478195838103157,
+    "approaching": false,
+    "aligning": false,
+    "press": 0.02,
+    "left_N": 8.528929948806763,
+    "right_N": 10.755358695983887,
+    "f_star": 93.54006979465485,
+    "push_N": 19.28428864479065,
+    "hand_push_N": 19.28428864479065,
+    "contact_links": {
+     "right_wrist_pitch_link": 24.27866458779781,
+     "left_wrist_pitch_link": 25.64823730823101
+    },
+    "box_v": 0.3519976735115051,
+    "tilt": 0.00044514967508502086,
+    "ik_err": {
+     "left": 2.3733703790942446e-12,
+     "right": 1.219136393695186e-12
+    }
+   }
+  },
+  {
+   "t": 11.0,
+   "phase": "push",
+   "cargo": [
+    3.3598461151123047,
+    -0.7941337823867798,
+    0.5148962140083313
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": -2.633984999445005e-06,
+    "e_t": 0.0058249115943909135,
+    "d": 0.0,
+    "u": -0.00026172592399767436,
+    "D": 0.41472306251647284,
+    "vx": 0.3345845937747093,
+    "head_err": 0.09930857157638595,
+    "robot_lat": 0.05857172806099975,
+    "approaching": false,
+    "aligning": false,
+    "press": 0.02,
+    "left_N": 0.0,
+    "right_N": 0.0,
+    "f_star": 94.30404338836671,
+    "push_N": 0.0,
+    "hand_push_N": 0.0,
+    "contact_links": {},
+    "box_v": 0.32653188705444336,
+    "tilt": 0.013986855468323206,
+    "ik_err": {
+     "left": 0.013068368084541636,
+     "right": 0.014024412233392056
+    }
+   }
+  },
+  {
+   "t": 12.0,
+   "phase": "push",
+   "cargo": [
+    3.46561861038208,
+    -0.7910848259925842,
+    0.5021137595176697
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": -0.003091075791773701,
+    "e_t": 0.008683073520660445,
+    "d": 0.0,
+    "u": 7.292306033633512e-05,
+    "D": 0.26633825617102636,
+    "vx": 0.11200738425653953,
+    "head_err": 0.047061155375526464,
+    "robot_lat": 0.05109108404658225,
+    "approaching": false,
+    "aligning": false,
+    "press": 0.009449428389966492,
+    "left_N": 0.0,
+    "right_N": 25.907001495361328,
+    "f_star": 0.0,
+    "push_N": 25.907001495361328,
+    "hand_push_N": 25.907001495361328,
+    "contact_links": {
+     "right_wrist_roll_link": 103.9244113627182
+    },
+    "box_v": -0.035325828939676285,
+    "tilt": 0.16835381523051887,
+    "ik_err": {
+     "left": 0.0005284256070071943,
+     "right": 0.0004904829074290795
+    }
+   }
+  },
+  {
+   "t": 13.0,
+   "phase": "push",
+   "cargo": [
+    3.4682223796844482,
+    -0.790947437286377,
+    0.5017107129096985
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": 2.9323309302053957e-05,
+    "e_t": 0.009053695201873824,
+    "d": 0.0,
+    "u": -0.00041181478047963013,
+    "D": 0.2879780770852891,
+    "vx": 0.14446711562793366,
+    "head_err": 0.07132813011478856,
+    "robot_lat": 0.054134201241902935,
+    "approaching": false,
+    "aligning": false,
+    "press": -0.003275321093499658,
+    "left_N": 0.0,
+    "right_N": 0.0,
+    "f_star": 0.0,
+    "push_N": 0.0,
+    "hand_push_N": 0.0,
+    "contact_links": {},
+    "box_v": -0.013191191479563713,
+    "tilt": 0.16617374919342853,
+    "ik_err": {
+     "left": 0.0015954400059572768,
+     "right": 0.0016220599359311272
+    }
+   }
+  },
+  {
+   "t": 14.0,
+   "phase": "push",
+   "cargo": [
+    3.4698755741119385,
+    -0.7909286618232727,
+    0.5014626979827881
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": -9.736925851422384e-05,
+    "e_t": 0.009098160266876265,
+    "d": 0.0,
+    "u": -0.0003948118232322983,
+    "D": 0.30662598775837857,
+    "vx": 0.17243898163756785,
+    "head_err": 0.06358454336666641,
+    "robot_lat": 0.05772884161604974,
+    "approaching": false,
+    "aligning": false,
+    "press": -0.010703122502267359,
+    "left_N": 0.0,
+    "right_N": 0.0,
+    "f_star": 0.0,
+    "push_N": 0.0,
+    "hand_push_N": 0.0,
+    "contact_links": {},
+    "box_v": 0.0002696869196370244,
+    "tilt": 0.1655458597895662,
+    "ik_err": {
+     "left": 0.007152913997498,
+     "right": 0.007924528845303317
+    }
+   }
+  },
+  {
+   "t": 15.0,
+   "phase": "push",
+   "cargo": [
+    3.472059965133667,
+    -0.7909113168716431,
+    0.5011758208274841
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": 9.097572679639399e-05,
+    "e_t": 0.009088504314422652,
+    "d": 0.0,
+    "u": -0.0004226290531684784,
+    "D": 0.2500225558459852,
+    "vx": 0.0,
+    "head_err": 0.13007024138815293,
+    "robot_lat": 0.05673689912533708,
+    "approaching": false,
+    "aligning": false,
+    "press": -0.023489913598000994,
+    "left_N": 0.0,
+    "right_N": 0.0,
+    "f_star": 0.0,
+    "push_N": 61.46714401245117,
+    "hand_push_N": 0.0,
+    "contact_links": {
+     "right_shoulder_yaw_link": 67.36629900822345
+    },
+    "box_v": 0.0017433876637369394,
+    "tilt": 0.16428651682365933,
+    "ik_err": {
+     "left": 0.006146709781944575,
+     "right": 0.007685738839542042
+    }
+   }
+  },
+  {
+   "t": 16.0,
+   "phase": "push",
+   "cargo": [
+    3.4752197265625,
+    -0.7913058400154114,
+    0.5007339119911194
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": -2.3596094435696102e-05,
+    "e_t": 0.008694398403167769,
+    "d": 0.0,
+    "u": -0.0003877085139771952,
+    "D": 0.30518045435158614,
+    "vx": 0.1702706815273792,
+    "head_err": 0.055533292830267644,
+    "robot_lat": 0.05177464742239868,
+    "approaching": false,
+    "aligning": false,
+    "press": -0.030374745274484142,
+    "left_N": 0.0,
+    "right_N": 0.0,
+    "f_star": 0.0,
+    "push_N": 0.0,
+    "hand_push_N": 0.0,
+    "contact_links": {},
+    "box_v": 0.00041034453897736967,
+    "tilt": 0.16264884206095168,
+    "ik_err": {
+     "left": 0.0007676066785264475,
+     "right": 0.0007687381844711522
+    }
+   }
+  },
+  {
+   "t": 17.0,
+   "phase": "push",
+   "cargo": [
+    3.4779980182647705,
+    -0.7922248244285583,
+    0.500378429889679
+   ],
+   "raw_goal_hold_s": 0.0,
+   "task_failed": false,
+   "controller": {
+    "theta": 0.0008818444223503974,
+    "e_t": 0.007786202430725142,
+    "d": 0.0,
+    "u": -0.00048265577273519096,
+    "D": 0.25717500944071947,
+    "vx": 0.0,
+    "head_err": 0.12667008254350343,
+    "robot_lat": 0.05413527562332865,
+    "approaching": false,
+    "aligning": false,
+    "press": -0.03675504328817127,
+    "left_N": 0.0,
+    "right_N": 0.0,
+    "f_star": 0.0,
+    "push_N": 35.91460609436035,
+    "hand_push_N": 0.0,
+    "contact_links": {
+     "right_shoulder_yaw_link": 41.03599022571279
+    },
+    "box_v": 0.00821603648364544,
+    "tilt": 0.16146404942465642,
+    "ik_err": {
+     "left": 0.00014463253665651605,
+     "right": 0.00017198639538008195
+    }
+   }
+  }
+ ],
+ "wall_s": 49.89845061302185,
+ "max_robot_tilt_deg": 20.687122344970703,
+ "max_cargo_tilt_deg": 12.561622619628906,
+ "max_push_N": 134.9795684814453,
+ "first_failure": null,
+ "human_review": null,
+ "verdict": {
+  "episode": "episode_00",
+  "void": false,
+  "void_reasons": [],
+  "flags": [],
+  "score": 0.05,
+  "success": false,
+  "scene": "default",
+  "dock": "rails",
+  "scene_version": "default/ae3124afdef5",
+  "end_reason": "finished",
+  "samples": 876,
+  "sim_time_s": 17.5,
+  "source": "tool_necessity_probe",
+  "observations": null,
+  "effort_limits": "hardware",
+  "simulator": {
+   "genesis-world": "1.4.3",
+   "torch": "2.11.0+cu128",
+   "numpy": "2.5.3"
+  },
+  "final_progress": 0.05,
+  "peak_time_s": 7.34,
+  "stage_best": {
+   "crate_pushed": 1.0,
+   "cargo_loaded": 0.0,
+   "through_passage_1": 0.0,
+   "through_passage_2": 0.0,
+   "delivered": 0.0
+  },
+  "stage_timeline": {
+   "crate_pushed": 7.34,
+   "cargo_loaded": null,
+   "through_passage_1": null,
+   "through_passage_2": null,
+   "delivered": null
+  },
+  "delivered_at_end": false,
+  "chain_complete": false,
+  "failed": false,
+  "core_success": false,
+  "core_success_time_s": null,
+  "core_loaded_time_s": null,
+  "core_failed_time_s": null,
+  "max_deck_cover": 0.0,
+  "max_goal_cover": 0.0,
+  "evaluation": {
+   "loaded": false,
+   "loaded_time_s": null,
+   "success": false,
+   "success_time_s": null,
+   "failed": false,
+   "failed_time_s": null,
+   "sampling": "physics_substeps",
+   "hold_s": 0.0
+  },
+  "alarms": [],
+  "alarms_by_question": {
+   "1_no_reward_hacking": [],
+   "2_task_really_completed": [],
+   "3_no_physics_violation": []
+  },
+  "credit_windows": [],
+  "monitor_metrics": {
+   "monitor_version": "h2-monitors/2",
+   "not_applicable": {},
+   "max_reported_speed": 0.497,
+   "max_object_speed": 0.492,
+   "max_step_speed": 0.579,
+   "max_floor_penetration": 0.0008,
+   "max_box_penetration": 0.0,
+   "max_out_of_bounds_m": -0.74,
+   "max_energy_excess_J": 0.007,
+   "max_reversal_rate_hand_hz": 2.0,
+   "max_arm_shake": 0.827,
+   "max_saturation_s": 0.32,
+   "max_limit_push_s": 0.0,
+   "max_progress_spike": 0.0
+  },
+  "verifier": "h2-verifier/2 (h2-monitors/2)"
+ }
+}

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>H2 · 推车运货 · 参考设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main.wrap{padding-block:40px;overflow-wrap:anywhere}h2{margin-top:44px}h3{margin-top:30px}pre{overflow:auto;background:var(--panel);padding:18px;border-radius:10px}th,td{min-width:100px}h1{font-size:clamp(28px,5vw,44px)}</style><meta content="H2 · 推车运货 · 参考设计 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><main class="wrap"><nav><a href="/robo-si-results/infra/reference-designs-zh.html">14 项参考解设计</a> · <a href="/robo-si-results/infra/reference-designs/H2.md">Markdown 源文档</a> · <a href="/robo-si-results/infra/task-h2-zh.html">任务页面</a></nav><h1 id="h2">H2 · 推车运货：参考解设计</h1>
+<p>已有声明范围内的参考执行见证；本文补齐统一设计说明。本次新增物理运行：0。</p>
+<h2 id="_1">设计思路</h2>
+<p>用小车承担重物载荷，在狭窄通道前后改变推行位置。低层控制同时保持货物支撑、车体方向和机器人站位；通道可通过不等于载货组合体可通过。</p>
+<h2 id="_2">选定参考与范围</h2>
+<p>见证：<strong>corner0</strong>。范围：第一层，20 kg，transport-layout-v2。</p>
+<p>第一层工程收尾已完成：主批次 5/5、独立子任务 20/20、全部重复 14/15，集成检查 11/11；保留一次失败。参考资料已发布。</p>
+<p><a href="/robo-si-results/infra/planning/skill-evidence/sources/94bd6033965124d6599e443b0f02c2f5cd2fd7ff6cffeb92147cb255b69dfdc2.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/H2.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p>
+<h2 id="_3">高层计划与关键状态</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>对准装载入口</td>
+<td>H2.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>装载货箱</td>
+<td>H2.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>通过第一通道</td>
+<td>H2.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>转向并通过第二通道</td>
+<td>H2.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>停放交付</td>
+<td>H2.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>20 kg 发布配置的箱、轨道和车存在</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>推力方向与装载轨道对齐</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>货箱稳定在车上</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>机器人、车和货箱完全通过第一通道</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>组合体完全通过第二通道</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>货箱在目标内受车支撑、释放稳定</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_4">低层动作、接触支撑与轨迹对应</h2>
+<p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h3 id="h2k01">H2.K01 · 站位与货箱接触面选择</h3>
+<p>入口：20 kg 发布配置的箱、轨道和车存在。出口：推力方向与装载轨道对齐。</p>
+<p>局部检查：机器人可达推点、脚不跨入危险轨缘、可实现推力。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K01.A01</td>
+<td>站稳并绕到装载推点</td>
+<td>双足→地面；箱→原支撑</td>
+<td>机器人与货箱距离</td>
+<td>e0001: episode [1.0199992656707764, 1.0199992656707764] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K01.A02</td>
+<td>面对把手接近</td>
+<td>足→地面；箱仍受支撑</td>
+<td>推向、站位和间隙</td>
+<td>e0002: episode [5.480077743530273, 5.480077743530273] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K01.A03</td>
+<td>将双拳接触把手</td>
+<td>手→箱把手</td>
+<td>接触距离与受力</td>
+<td>e0003: episode [7.120115280151367, 7.120115280151367] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h2k02">H2.K02 · 接触推送和车体对准</h3>
+<p>入口：箱体对准轨道，车具备承接位置。出口：货箱稳定在车上。</p>
+<p>局部检查：轨道到车面的高度连续、货箱重心与车体支撑有效。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K02.A01</td>
+<td>沿装载方向建立推力</td>
+<td>手→箱；原支撑承重</td>
+<td>箱位移、姿态与接触</td>
+<td>e0002: episode [5.480077743530273, 5.480077743530273] s; e0003: episode [7.120115280151367, 7.120115280151367] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K02.A02</td>
+<td>持续推动箱体进入车面</td>
+<td>原支撑→车面</td>
+<td>箱与车相对位置、支撑力</td>
+<td>e0004: episode [16.22028160095215, 16.22028160095215] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K02.A03</td>
+<td>保持接触并转入第一通道</td>
+<td>车面持续承重</td>
+<td>装载完成后的控制连续性</td>
+<td>e0005: episode [16.22028160095215, 16.22028160095215] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h2k03">H2.K03 · 短段推车与转向</h3>
+<p>入口：货箱受车支撑、推点可保持。出口：机器人、车和货箱完全通过第一通道。</p>
+<p>局部检查：组合扫掠体与通道边界、轮接触、箱体滑移。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K03.A01</td>
+<td>保持推点沿第一通道推进</td>
+<td>箱→车面→轮地</td>
+<td>货箱高度及通道间隙</td>
+<td>e0005: episode [16.22028160095215, 16.22028160095215] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K03.A02</td>
+<td>监视车箱相对姿态并修正推向</td>
+<td>手推箱；轮地滚动</td>
+<td>偏航、车箱位姿</td>
+<td>e0006: episode [27.078458786010742, 27.078458786010742] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K03.A03</td>
+<td>结束该直段、准备换侧站位</td>
+<td>车面独立承重</td>
+<td>停车和换侧净空</td>
+<td>e0007: episode [27.078458786010742, 27.078458786010742] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h2k04">H2.K04 · 重选站位、分段转弯和修正</h3>
+<p>入口：组合体通过第一通道且仍稳定。出口：组合体完全通过第二通道。</p>
+<p>局部检查：转角配置空间及轨尾足部净空；路线连通不只看中心线。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K04.A01</td>
+<td>退出推点并绕到侧面</td>
+<td>车面承重；足→地面</td>
+<td>绕行路径及避碰</td>
+<td>e0007: episode [27.078458786010742, 27.078458786010742] s; e0011: episode [49.6814079284668, 49.6814079284668] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K04.A02</td>
+<td>重新对准把手后沿中间通道推动</td>
+<td>手→把手；车面承重</td>
+<td>推点距离、箱姿态</td>
+<td>e0008: episode [39.19916915893555, 39.19916915893555] s; e0009: episode [40.59946823120117, 40.59946823120117] s; e0010: episode [49.6814079284668, 49.6814079284668] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K04.A03</td>
+<td>再次换侧、对准第二通道并推进</td>
+<td>车面承重、轮地滚动</td>
+<td>转向后路径与箱体稳定</td>
+<td>e0007: episode [27.078458786010742, 27.078458786010742] s; e0011: episode [49.6814079284668, 49.6814079284668] s; e0014: episode [84.07343292236328, 84.07343292236328] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h2k05">H2.K05 · 减速、对准、停止接触</h3>
+<p>入口：车载货物已进入目标附近。出口：货箱在目标内受车支撑、释放稳定。</p>
+<p>局部检查：按原判定检查完整边界和驻留；不额外要求卸货。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2.K05.A01</td>
+<td>推进至目标区并减速</td>
+<td>手推箱；车面承重</td>
+<td>目标包含、箱速度</td>
+<td>e0014: episode [84.07343292236328, 84.07343292236328] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K05.A02</td>
+<td>后退并侧移退出接触</td>
+<td>车面独立承重</td>
+<td>机器人与货箱分离</td>
+<td>e0015: episode [84.07343292236328, 84.07343292236328] s; e0016: episode [84.6930923461914, 84.6930923461914] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H2.K05.A03</td>
+<td>在释放状态保持并确认交付</td>
+<td>车面→车轮→地面</td>
+<td>目标内驻留与稳定</td>
+<td>e0015: episode [84.07343292236328, 84.07343292236328] s; e0024: episode [84.07343292236328, 87.55152130126953] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_5">尚需核对</h2>
+<p>动作已定位到同一全程事件；还需将接触、装载支撑与换侧站位约束逐段对照物理记录。</p>
+<p>补装载对准的独立条件、转弯接触余量及第二通道交接检查。 人工录像／阶段签审、工具必要性审阅和第二人复现。</p>
+<h2 id="_6">复现与生成入口</h2>
+<ul>
+<li><a href="/robo-si-results/humanoid/g1_cart_assisted_transport/README.md">humanoid/g1_cart_assisted_transport/README.md</a></li>
+<li><a href="/robo-si-results/humanoid/g1_cart_assisted_transport/solution/README.md">humanoid/g1_cart_assisted_transport/solution/README.md</a></li>
+</ul>
+<p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/51a01f83404dc4afae5e21d4f528ff5dc4b03af1/releases/H2/layer1-20261024/h2-layer1-20261024.zip">完整参考包</a>。使用包内冻结配置、依赖说明与生成／回放入口；审阅包不替代完整包。</p>
+<p>历史源码说明只提供设计上下文；若与冻结见证冲突，以见证的配置、控制器身份和发布清单为准。设计动作表不等同于已绑定的通用控制器。</p>
+<h2 id="_7">验收与执行边界</h2>
+<p>本文件说明已有参考的设计与证据，不修改旧评分。任务级要求至少一个声明配置内的连续端到端生成见证；高层计划→低层动作、低层动作→轨迹、高层目标→实测终态分别核对。这里的“两两转换”是表示之间的对应，不是任意随机状态下技能可无条件拼接。</p>
+<p>随机实例保留四种结果：有完整成功证据、通过可行性筛查、未确定、检查不通过；筛查通过不写成已证明可解。只在需要执行时生成当前局部轨迹；通用滚动规划和全随机域鲁棒性另列，不是本参考文档的完成前提。</p>
+<p>若接触、支撑或守卫条件不满足，不推进下一动作；保留已有安全支撑并记录失败，仅在已知安全状态下重新观察与局部规划。不得凭事件名推断接触合格，不得将不同检查点的成功片段拼接成连续成功。</p>
+<h2 id="_8">来源与版本</h2>
+<p>来源内容哈希见 <a href="/robo-si-results/infra/reference-designs/catalog.json">catalog.json</a>，对应生成器为 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tools/build_reference_designs.py">build_reference_designs.py</a>。本次只整理设计与证据，不将待审事件关联计作验收通过。</p></main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

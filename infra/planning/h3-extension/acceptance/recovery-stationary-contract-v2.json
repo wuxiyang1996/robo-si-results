@@ -1,0 +1,26 @@
+{
+  "schema": "h3-local-recovery-contract/2",
+  "declared_utc": "2026-10-29T22:24:48.800597+00:00",
+  "scope": "Stationary validation of an intentionally repositioned support; not full L3 delivery",
+  "sequence": [
+    "Verify passive support before fault",
+    "Detect loss from native measurements",
+    "Apply real wheel motion to reposition support",
+    "When measured angle >= 1.18 rad, tool-only width >= .70 m and native contacts exist, freeze the measured candidate pose before verification",
+    "Command zero wheel twist and verify stationary active support for 2 continuous seconds"
+  ],
+  "unchanged_gates": {
+    "min_angle_rad": 1.05,
+    "min_tool_door_force_N": 1.0,
+    "min_robot_tool_force_N": 2.0,
+    "max_drift_m": 0.03,
+    "max_speed_m_s": 0.03,
+    "min_tool_only_width_m": 0.65,
+    "dwell_s": 2.0,
+    "fixture_torque_Nm": 0.0
+  },
+  "stability_reference": "Measured post-action candidate pose, recorded before the first stationary validation sample",
+  "previous_contract": "Earlier trials used displacement from the pre-fault pose; preserve their failed verdicts and do not retroactively rescore them",
+  "whole_robot_passage_verified": false,
+  "formal_admission": false
+}

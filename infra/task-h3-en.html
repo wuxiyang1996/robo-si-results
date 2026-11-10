@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en"><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>H3 · Dual G1 self-closing door delivery</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main{max-width:1050px;margin:36px auto;padding:0 24px}video{width:100%;max-height:550px}td,th{padding:12px;text-align:left}table{width:100%}p{line-height:1.7}</style><main><p class="wrap" id="single-video-notice" style="padding-block:12px;line-height:1.8">One representative video is shown. Additional successes, failures and segment videos remain in the original release; this display selection does not change evidence or scores.</p><!-- task-detail-jump:start --><p class="wrap" style="padding-top:20px"><a href="#task-details">Full task details: scene, actions, scoring, evidence and reproduction</a></p><!-- task-detail-jump:end --><!-- h3-execution:start --><section class="h3-plan" id="h3-execution"><h2>H3 · Implementation &amp; acceptance</h2><div class="h3-notice"><strong>Formal acceptance remains pending. Native no_prop repeats: 3/3; heavy_prop v3: two completed successes and one interrupted attempt. G1+Stretch completed a 159.26 s L1 baseline; repeatability, L2/L3 and isolated closed-loop execution remain pending.</strong><p>Expert solution · high/low planning · synchronized trajectories · continuous physical feasibility · native video</p></div><p><a href="planning/h3-extension/implementation.html"><strong>Acceptance requirements, tasks and new evidence</strong></a> · <a href="planning/h3-extension/acceptance/campaign.json">JSON</a></p><p><a href="planning/h3-extension/implementation.html#l2-l3"><strong>L2/L3 work items, measured tool trials and robot placement evidence</strong></a></p><p><strong>L2 single-candidate closed-door delivery passed in 413.92 s; autonomous multi-tool discovery remains pending. Fixed repeats: 0/3 completed, 0/3 passed; pilot excluded. L3 support switching passed 3/3 fixed repeats. Recovery-to-parcel delivery after a local fixture passed in 211.48 s; closed-door fault delivery remains pending. Actual fault recovery from a closed-door start without a fixture is also verified; the subsequent support switch failed. Formal admission remains pending.</strong></p></section><!-- h3-execution:end --><!-- h3-extension:start -->
+<style>
+.h3-plan{color:#182b3a;line-height:1.75;overflow-wrap:anywhere}
+.h3-plan *{box-sizing:border-box}.h3-plan a{color:#075e72;text-decoration:underline;text-underline-offset:3px}
+.h3-plan .h3-eyebrow{font-size:13px;font-weight:750;letter-spacing:.06em;color:#71520e}
+.h3-plan h2{font-size:clamp(25px,4vw,36px);line-height:1.3;margin:14px 0}
+.h3-plan h3{margin:28px 0 12px}.h3-plan .h3-notice{padding:18px 22px;border-left:5px solid #b57a0e;background:#fff5dd;border-radius:6px}
+.h3-plan .h3-gate{padding:20px 24px;background:#e6f3f1;border:1px solid #8fbdb6;border-radius:10px;margin:20px 0}
+.h3-plan .h3-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.h3-plan .h3-rule{padding:17px 19px;border:1px solid #ddc58e;border-top:4px solid #b57a0e;border-radius:8px;background:#fffaf0}
+.h3-plan .h3-rule p{margin:8px 0 0}.h3-plan .h3-rule strong{font-size:17px;color:#583b05}
+.h3-plan .h3-label{display:block;font-size:12px;font-weight:800;letter-spacing:.04em;color:#7a4f00}
+.h3-plan .h3-table{overflow-x:auto;max-width:100%;border:1px solid #d8e1e7;border-radius:8px;margin:18px 0}
+.h3-plan table{width:100%;border-collapse:collapse;font-size:14px;display:table!important}
+.h3-plan th,.h3-plan td{padding:12px 14px;vertical-align:top;text-align:left;border-bottom:1px solid #d8e1e7;min-width:95px}
+.h3-plan th{background:#edf3f6;color:#263e50}.h3-plan td:nth-child(3){min-width:250px}.h3-plan td:nth-child(4){min-width:210px}
+.h3-plan tbody tr:nth-child(even){background:#f7fafb}.h3-plan .h3-status{font-size:12px;color:#6e4a10;display:block}
+.h3-plan details{border:1px solid #d8e1e7;padding:14px 18px;border-radius:8px;margin:18px 0}
+.h3-plan summary{cursor:pointer;font-weight:700}.h3-plan :focus-visible{outline:3px solid #b57a0e;outline-offset:3px}
+@media(max-width:650px){.h3-plan .h3-grid{grid-template-columns:1fr}.h3-plan .h3-notice,.h3-plan .h3-gate{padding:16px}.h3-plan th,.h3-plan td{padding:10px}}
+@media print{.h3-plan .h3-table{overflow:visible}.h3-plan table{font-size:10px}.h3-plan th,.h3-plan td{min-width:0!important}.h3-plan .h3-rule{break-inside:avoid}}
+</style><section class="h3-plan" id="h3-extension" aria-labelledby="h3-extension-title">
+<p class="h3-eyebrow">H3 · CROSS-EMBODIMENT · 2026-10-30</p>
+<h2 id="h3-extension-title">Three levels and cross-embodiment: tasks and requirements</h2>
+<div class="h3-notice"><strong>In progress · 95 logged attempts · 22 full native successes</strong><p>Existing frozen dual-G1 witnesses: heavy_prop 2/2, no_prop 1/1. The 13 items below are extension work, not additional successes; formal admission remains false.</p></div>
+<p><a href="planning/h3-extension/implementation.html"><strong>View six-case implementation, plans, trajectories, physics checks and videos</strong></a></p><p><strong>Carry the 0.4 kg parcel through the self-closing door, place it on table B and release it stably.</strong></p><p>Given the same goal and physical mechanism, can an agent discover tools, infer its own and its partner’s capabilities, and choose and execute effective cooperation?</p>
+<p><a href="planning/h3-extension/index-en.html">Full specification</a> · <a href="planning/h3-extension/README-en.md" download>Download Markdown</a> · <a href="planning/h3-extension/task-list.json" download>Tasks and requirements JSON</a> · <a href="#h3-work-items">Jump to work items</a></p>
+<div class="h3-gate"><strong>First acceptance gate: P0-1 → P0-6</strong><p>Complete native G1 + Stretch 4 L1 witnesses exist. L2 tool discovery and L3 recovery are separately assessed extensions. P0/P1/P2 denote implementation priority; L1/L2/L3 denote evaluation difficulty.</p></div>
+<h3>10 mandatory requirements</h3><div class="h3-grid"><article class="h3-rule"><span class="h3-label">R01 · REQUIRED</span><strong>Separate mechanism and difficulty</strong><p>heavy_prop and no_prop are parallel mechanisms. Define L1/L2/L3 by physical constraints, information uncertainty and decision demands.</p></article><article class="h3-rule"><span class="h3-label">R02 · REQUIRED</span><strong>Keep comparisons matched</strong><p>Apply parcel, handle or scene revisions to every paired robot. Merely replacing a robot model does not demonstrate self-modeling.</p></article><article class="h3-rule"><span class="h3-label">R03 · REQUIRED</span><strong>Verify the full physical process</strong><p>Synchronize door angle/velocity, support contacts, parcel and robot states. Check clearance and support from combined-envelope entry until full exit; final contact force is insufficient.</p></article><article class="h3-rule"><span class="h3-label">R04 · REQUIRED</span><strong>Make capability predictions testable</strong><p>Record reach, force or grasp predictions before acting and compare with outcomes; insufficient evidence remains undetermined. Compare fixed roles, probing and no-update controls.</p></article><article class="h3-rule"><span class="h3-label">R05 · REQUIRED</span><strong>Define information boundaries</strong><p>Expose nominal specifications and legal controls; hide actual capability perturbations, tool physics and fault ground truth. Privileged references establish feasibility, not public-sensor agent performance.</p></article><article class="h3-rule"><span class="h3-label">R06 · REQUIRED</span><strong>Validate before fixing budgets</strong><p>Establish feasibility before freezing new budgets; do not automatically reuse 180 seconds. Record and budget probing, communication, execution and recovery costs.</p></article><article class="h3-rule"><span class="h3-label">R07 · REQUIRED</span><strong>Separate evidence levels</strong><p>Retain complete witness / feasibility-screen passed / undetermined / check failed. Separate asset loading, local checks, task success and formal admission; a full expert solution is not required for every seed.</p></article><article class="h3-rule"><span class="h3-label">R08 · REQUIRED</span><strong>Retain all failures</strong><p>Frozen reference counts are not randomized success rates. Do not pool versions or mark unvalidated configurations complete.</p></article><article class="h3-rule"><span class="h3-label">R09 · REQUIRED</span><strong>Specify the coordination model</strong><p>Use centralized control of two robots initially. Independent-agent experiments additionally freeze each agent’s observations, communication permissions, latency and synchronization.</p></article><article class="h3-rule"><span class="h3-label">R10 · REQUIRED</span><strong>Use physical execution and legitimate faults</strong><p>Do not manufacture success with pose resets, hidden attachments or physics edits. L3 permits only predeclared trusted-side faults with raw records.</p></article></div>
+<h3 id="h3-work-items">Implementation and acceptance checklist · 13 items, local evidence separate from admission</h3>
+<div class="h3-table" role="region" aria-label="Implementation tasks, horizontally scrollable" tabindex="0"><table><thead><tr><th scope="col">ID / status</th><th scope="col">Task</th><th scope="col">Mandatory requirement</th><th scope="col">Acceptance</th><th scope="col">Dependencies</th></tr></thead><tbody><tr><th scope="row">P0-1<span class="h3-status">Contract recorded; admission pending</span></th><td>Freeze the task and experiment contract</td><td><strong>Specify robots, grippers, scene, parcel, observation permissions and centralized versus independent-agent control; retain the original L1 baseline.</strong></td><td>Versioned specification, public/hidden parameter list and asset inventory.</td><td>—</td></tr><tr><th scope="row">P0-2<span class="h3-status">Navigation and drives measured</span></th><td>Integrate Stretch 4</td><td><strong>Use pinned, actual Stretch 4 assets, without substituting Stretch 3; verify translation, strafing, rotation, stopping, lift and extension.</strong></td><td>Measured single-robot controls, actuator limits and raw trajectories.</td><td>P0-1</td></tr><tr><th scope="row">P0-3<span class="h3-status">G1 carry measured; Stretch grasp unproven</span></th><td>Verify parcel grasp and release</td><td><strong>Physically grasp, transport and release the 20 × 18 × 16 cm, 0.4 kg parcel; rated payload alone does not establish graspability.</strong></td><td>Stable manipulation witness; any parcel revision is shared by every paired embodiment.</td><td>P0-2</td></tr><tr><th scope="row">P0-4<span class="h3-status">Shared heterogeneous interface implemented</span></th><td>Implement embodiment adapters</td><td><strong>Configure action dimensions, drives, grasp contacts, collision envelopes and stability checks per embodiment; do not apply the G1 root-height fall threshold to a wheeled robot.</strong></td><td>G1 and Stretch operate on a shared clock through bounded actuators.</td><td>P0-1, P0-2</td></tr><tr><th scope="row">P0-5<span class="h3-status">Continuous scoring implemented; isolation pending</span></th><td>Extend scoring and the sandbox</td><td><strong>Support single-arm grasping, evaluate the entire crossing interval, and prevent hidden actual parameters leaking through metadata or privileged reference interfaces.</strong></td><td>Scoring and isolation checks, synchronized records and independent replay; preserve the legacy scorer.</td><td>P0-4</td></tr><tr><th scope="row">P0-6<span class="h3-status">Complete L1 witnesses; admission pending</span></th><td>Complete the heterogeneous baseline</td><td><strong>Use the user-confirmed route: G1 carries the original parcel and Stretch supports the door or places tools. Verify real contact throughout, without runtime pose resets or hidden attachment.</strong></td><td>At least one complete delivery witness and independent audit; the reference does not prescribe the agent’s role allocation.</td><td>P0-3, P0-5</td></tr><tr><th scope="row">P1-1<span class="h3-status">Local tool screening and placement measured</span></th><td>Introduce candidate tools</td><td><strong>Start with a physical wedge, heavy crate and one distractor; check support after assistance is removed and passage occupancy; defer the brace rod.</strong></td><td>Verified tool collision geometry, stability, slip and passage clearance.</td><td>P0-6</td></tr><tr><th scope="row">P1-2<span class="h3-status">Local physical counterfactuals measured</span></th><td>Build counterfactual tool pairs</td><td><strong>Keep appearance and geometry matched, changing only the specified friction or closer parameter; account for contact-material combination and measure the resulting difference.</strong></td><td>The same placement produces reproducible stable/failing outcomes, with evidence for a feasible route.</td><td>P1-1</td></tr><tr><th scope="row">P1-3<span class="h3-status">Single-candidate delivery passed; autonomous choice pending</span></th><td>Discover tools and allocate roles</td><td><strong>Do not label effective tools; predict, probe and verify affordances through feedback; include instances where a tool is necessary or has a defined cost benefit.</strong></td><td>Traces of probing, selection, withdrawal checks, support handoff and role reassignment.</td><td>P1-2</td></tr><tr><th scope="row">P1-4<span class="h3-status">Planned</span></th><td>Run capability pairs and ablations</td><td><strong>Compare dual G1 and G1 + Stretch 4 in matched scenes with matched sensing, interfaces and budgets; record capability predictions before actions.</strong></td><td>Fixed-role, active-probing and no-probe/no-update controls; distinguish role adaptation from path-planning gains.</td><td>P0-6, P1-3</td></tr><tr><th scope="row">P2-1<span class="h3-status">Trusted faults implemented and audited</span></th><td>Implement trusted fault events</td><td><strong>Predeclare fault triggers, magnitude and allowed changes; execute and record on the trusted side, separately from unauthorized physics changes.</strong></td><td>Replayable events; legitimate faults are not misclassified as VOID and unauthorized changes remain rejected.</td><td>P0-5</td></tr><tr><th scope="row">P2-2<span class="h3-status">Local recovery measured; full delivery pending</span></th><td>Verify online recovery</td><td><strong>Introduce one fault type at a time, first establish recoverability, and record capability updates and role changes.</strong></td><td>Complete fault-to-delivery traces, recovery success and additional cost.</td><td>P1-4, P2-1</td></tr><tr><th scope="row">P2-3<span class="h3-status">Planned</span></th><td>Expand robot pairings</td><td><strong>Validate individual capabilities and scene feasibility before dual Stretch 4 or G1 + Go2/Z1 tasks; retain A3 as a later candidate.</strong></td><td>Separate evidence and budget for each pairing; no transfer of success claims between embodiments.</td><td>P0-6</td></tr></tbody></table></div>
+<details><summary>Three levels, six configurations and diagnostics</summary><p>L1: coordination with known capabilities; L2: tool and role discovery; L3: hidden capabilities, online updates and recovery.</p>
+<p>H3-01/02 map the existing dual-G1 variants; H3-03 is G1 + Stretch 4 L2; H3-04 is dual Stretch 4 L2; H3-05 is G1 + Stretch 4 L3; H3-06 is G1 + Go2/Z1 L3. Configurations 03–06 are new designs with budgets pending validation.</p>
+<p>Tool Discovery Success · Capability Prediction Accuracy · Role Allocation Quality · Support Continuity · Recovery Success · Probe / Execution Cost</p><p><a href="planning/h3-extension/index-en.html">Read metric definitions, code mapping and evidence sources</a></p></details>
+</section><!-- h3-extension:end --><section data-layered-task="H3" id="layered-status"><div class="wrap"><h2>Current layered status · 2026-10-26</h2><p data-refinement-minimum="true">The minimum design gate is checked representation mappings plus one scoped generated end-to-end witness. Broader skill envelopes, general planning and formal-admission follow-ups below are separate from that minimum. <a href="/robo-si-results/infra/status-en.html#refinement-readiness">Current remaining work</a></p><p><strong>The declared scope has complete witnesses and published references; skill boundaries and new-instance screening still need evidence. Full solutions are not required for every random instance.</strong></p><p>Multi-robot; heavy_prop / no_prop; fixed nominal scene; 180 s; privileged native reference</p><div class="table-wrap"><table><tbody><tr><th scope="row">Task</th><td>Dual G1 native reference: heavy_prop 2/2 (172.44, 169.24 s), no_prop 1/1 (102.22 s), all within 180 s with independent delivery and support-route verification. Failed development attempts remain available.</td></tr><tr><th scope="row">Skill</th><td>Full runs evidence cooperation and support routes. Heavy-prop and no-prop support modes remain separate; no general skill envelope is established.</td></tr><tr><th scope="row">Instance</th><td>New-instance screening is not implemented here: default unknown. Full witnesses apply only to identity-matched records; no new screening passes are added.</td></tr><tr><th scope="row">Execution</th><td>On-demand local trajectories and receding-horizon replanning are design requirements; existing references do not validate a general online planner.</td></tr></tbody></table></div><p><strong>Extensions and formal acceptance: </strong>Check entry conditions for opening, box/robot door support and loaded passage, including continuous support handoff. The isolated dual-robot interface has short-run records; full expert replay through it, representative repeats, human sign-off and second-person reproduction remain pending.</p><p><a href="/robo-si-results/infra/planning/tasks/H3.md">Plan, skills, constraints and key states</a> · <a href="/robo-si-results/infra/planning/layered-status.json">Machine-readable status</a> · <a href="/robo-si-results/infra/acceptance-en.html#screening">Four-state rules and acceptance</a></p></div></section><nav><a href="/robo-si-results/infra/contribute-en.html">Task overview</a> · <a href="/robo-si-results/infra/task-h3-en.html">English</a> · <a href="/robo-si-results/infra/task-h3-zh.html">中文</a></nav><p>H3-cooperative · multi_robot · 2 × G1 · 180 s</p><h1>H3 · Dual G1 self-closing door delivery</h1><p>Both G1 robots start in A and deliver the 0.4 kg parcel through the self-closing door onto the B table, then release it stably.</p><p>heavy_prop adds a 12 kg crate in B; no_prop has only the target parcel. Neither contains a wedge or light distractor.</p><p>heavy_prop: A opens and holds, B pushes the crate into place, both release, B clears the route, A delivers. no_prop: A holds continuously while B delivers.</p><p><strong>Dual G1 native reference: heavy_prop 2/2 (172.44, 169.24 s), no_prop 1/1 (102.22 s), all within 180 s with independent delivery and support-route verification. Failed development attempts remain available.</strong></p><p>Check entry conditions for opening, box/robot door support and loaded passage, including continuous support handoff. The isolated dual-robot interface has short-run records; full expert replay through it, representative repeats, human sign-off and second-person reproduction remain pending.</p><p>These are parallel variants of one task, not difficulty layers. The H3 identifier is retained for continuity; the single-G1 version is historical.</p><table><tr><th>Variant</th><th>Run</th><th>Seconds</th><th>Audit</th></tr><tr><td>heavy_prop</td><td>heavy-delivery-05</td><td>172.44 / 180</td><td><a href="/robo-si-results/infra/h3-release/heavy-delivery-05-audit.json">Independent audit</a></td></tr><tr><td>heavy_prop</td><td>heavy-delivery-06</td><td>169.24 / 180</td><td><a href="/robo-si-results/infra/h3-release/heavy-delivery-06-audit.json">Independent audit</a></td></tr><tr><td>no_prop</td><td>no-prop-delivery-07</td><td>102.22 / 180</td><td><a href="/robo-si-results/infra/h3-release/no-prop-delivery-07-audit.json">Independent audit</a></td></tr></table><p>During both final heavy carried crossings, the crate supports the door while both robots have zero door/crate contact. All three final runs have zero inter-robot contact.</p><p>Cumulative development successes are heavy 3 and no_prop 5 across versions; three earlier no_prop successes retain 120 s. These totals are not the success rate over all attempts.</p><h2>Recordings and downloads</h2><p>heavy-delivery-05 · 172.44 s</p><video controls="" preload="none" src="/robo-si-results/media/cbc8353a8fa2a7a4b62e.mp4"></video><p>no-prop-delivery-07 · 102.22 s</p><p class="archived-video-note"><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h3-cooperative-20261024">Additional videos in the complete release</a></p><p><a href="https://github.com/wuxiyang1996/robo-si/releases/tag/h3-cooperative-20261024">GitHub reference release</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/2cf4ebc452aeb859d9003104718c920dd99b0bc9/releases/H3/cooperative-20261024/h3-cooperative-reference-20261024.zip">Full packet · 750.9 MB</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/2cf4ebc452aeb859d9003104718c920dd99b0bc9/releases/H3/cooperative-20261024/h3-cooperative-review-20261024.zip">Review packet · 7.5 MB</a></p><p>Extract and open index.html (English) or index-zh.html (Chinese). Use reference/runtime in the full packet for reproduction. The review packet omits the full runtime and raw traces.</p><p>27/27 CPU checks; native relocation smoke 2 s / 400 physics steps. Author machine only; no additional full-task or second-person reproduction claim.</p><p><a href="/robo-si-results/infra/h3-release/publication.json">Publication scope and hashes</a> · <a href="/robo-si-results/infra/h3-release/build-validation.json">Packet validation</a> · <a href="/robo-si-results/infra/h3-release/published-huggingface.json">Verified dataset receipt</a> · <a href="/robo-si-results/multi_robot/dual_g1_self_closing_door/README.md">Current task</a> · <a href="/robo-si-results/humanoid/g1_self_closing_door/README.md">Historical single-G1 task</a></p><section id="reference-designs"><div class="wrap"><h2>Reference executions and designs</h2><p>Scoped execution evidence exists; see the design, actions, support, trajectory mapping and reproduction sources.</p><p><a href="/robo-si-results/infra/reference-designs/H3.html">Reference executions and designs</a></p></div></section>
+<!-- task-detail-standard:start -->
+<style>.task-details{padding-block:36px}.task-details h3{margin-top:32px}.task-details h4{margin-top:22px}.task-details p,.task-details td{overflow-wrap:anywhere}.task-details .detail-table{overflow-x:auto;margin:16px 0;max-width:100%}.task-details table{width:100%;font-size:14px;border-collapse:collapse}.task-details th,.task-details td{padding:10px;vertical-align:top;border-bottom:1px solid #dce2e8;min-width:100px}.task-details summary{cursor:pointer;font-weight:650;padding:14px 0}.task-details details{border-top:1px solid #dce2e8}.task-details pre{overflow:auto;max-width:100%;white-space:pre-wrap}.task-details .detail-nav{line-height:2}.task-details code{overflow-wrap:anywhere}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}} article[id^="detail-"]{scroll-margin-top:160px}</style>
+<section class="task-details" id="task-details"><div class="wrap"><h2>Task specification and evidence</h2><p class="detail-nav"><a href="#detail-scope">Scope and scene</a> · <a href="#detail-interfaces">Observations, actions and interfaces</a> · <a href="#detail-planning">High-level goals and low-level actions</a> · <a href="#detail-trajectory">Trajectory and state correspondence</a> · <a href="#detail-scoring">Scoring and success criteria</a> · <a href="#detail-evidence">Representative evidence and review</a> · <a href="#detail-sandbox">Sandbox validation</a> · <a href="#detail-reproduce">Download and reproduce</a> · <a href="#detail-limits">Acceptance limits and remaining work</a></p><article id="detail-scope"><h3>Scope and scene</h3><p>Multi-robot; heavy_prop / no_prop; fixed nominal scene; 180 s; privileged native reference</p><p>Dual G1 native reference: heavy_prop 2/2 (172.44, 169.24 s), no_prop 1/1 (102.22 s), all within 180 s with independent delivery and support-route verification. Failed development attempts remain available.</p></article><article id="detail-interfaces"><h3>Observations, actions and interfaces</h3><p>Privileged reference state and public-agent permissions are separate; this task’s SDK and instructions define the boundary.</p><p><a href="/robo-si-results/multi_robot/dual_g1_self_closing_door/sandbox/README.md">Sandbox README</a> · <a href="https://github.com/wuxiyang1996/robo-si/tree/main/multi_robot/dual_g1_self_closing_door/sandbox/agent_sdk">Agent SDK</a></p></article><article id="detail-planning"><h3>High-level goals and low-level actions</h3><p>The detailed action specifications below are the original Chinese source. IDs, contact requirements, recorded times and review status are retained without changing their interpretation.</p><div class="detail-table"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>打开并控制门</td>
+<td>H3.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>建立通行支撑</td>
+<td>H3.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>取得货物</td>
+<td>H3.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>携物穿门</td>
+<td>H3.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>台面交付</td>
+<td>H3.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>两台 G1 在 A 房间；选择发布变体</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>门打开，B 的路径可用</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>选定分支的撑门条件持续成立</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>0.4 kg 包裹受控离开台面</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>搬运者及包裹完全进入 B 房间</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>目标台面支撑、机器人释放并满足原判定</td>
+</tr>
+</tbody>
+</table></div></article><article id="detail-trajectory"><h3>Trajectory and state correspondence</h3><p>The detailed action specifications below are the original Chinese source. IDs, contact requirements, recorded times and review status are retained without changing their interpretation.</p><details><summary>Ordered actions, contacts and trajectory events</summary><p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h5>H3.K01 · A 接近门板、开门并保持接触</h5>
+<p>入口：两台 G1 在 A 房间；选择发布变体。出口：门打开，B 的路径可用。</p>
+<p>局部检查：开门接触力矩与 A 站姿可行；不假设装饰把手可抓。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K01.A01</td>
+<td>A 调整站位并让手接近门把部位</td>
+<td>A 双足→地面</td>
+<td>手门净空与双足载荷</td>
+<td>e0000: episode [9.94, 10.92] s; e0001: episode [10.94, 11.120000000000001] s; e0002: episode [11.14, 13.120000000000001] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H3.K01.A02</td>
+<td>A 建立手门接触并拉开门</td>
+<td>A→门；足→地面</td>
+<td>门角、角速度及接触力</td>
+<td>e0004: episode [13.780000000000001, 16.76] s; e0005: episode [16.78, 18.76] s; e0006: episode [18.78, 20.26] s; 另 2 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H3.K01.A03</td>
+<td>A 捕获稳定撑门姿态，B 同时预定位</td>
+<td>A→门持续支撑</td>
+<td>门保持角和 B 路径</td>
+<td>e0009: episode [33.1, 33.78] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H3.K02 · heavy_prop：B 推 12 kg 箱撑门；no_prop：A 持续撑门</h5>
+<p>入口：门受 A 控制，B 可到达其工作区。出口：选定分支的撑门条件持续成立。</p>
+<p>局部检查：heavy_prop 检查独立箱门接触与抗滑；no_prop 检查 A 接触可持续。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K02.A01</td>
+<td>B 绕行到重箱后方并接触箱体</td>
+<td>A→门；箱→地面</td>
+<td>B 站位、双拳接触</td>
+<td>e0012: local:prop_push; global_offset_unresolved [2.2, 5.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K02.A02</td>
+<td>B 推箱进入撑门位置并停稳</td>
+<td>A→门；B→箱→地面</td>
+<td>箱姿态、门箱相对位置</td>
+<td>e0013: local:prop_push; global_offset_unresolved [5.6, 20.0] s; e0014: local:prop_push; global_offset_unresolved [20.2, 21.8] s; e0017: local:prop_push; global_offset_unresolved [24.6, 26.4] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K02.A03</td>
+<td>将门载荷移到箱体，A 依序撤指撤臂</td>
+<td>箱→门；机器人卸载</td>
+<td>门箱受力、手分离</td>
+<td>e0019: episode [95.10000000000001, 95.26] s; e0020: episode [95.28, 96.06] s; e0021: episode [96.08, 96.46000000000001] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H3.K02.A04</td>
+<td>双机离开后观察箱独立撑门</td>
+<td>箱→门；双机无代撑</td>
+<td>持续开门角与无机器人接触</td>
+<td>e0026: episode [99.9, 100.88] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H3.K03 · heavy_prop：A 取件；no_prop：B 取件</h5>
+<p>入口：撑门条件成立且搬运者可接近包裹。出口：0.4 kg 包裹受控离开台面。</p>
+<p>局部检查：搬运者抓取姿态与另一机器人/工具净空。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K03.A01</td>
+<td>A 接近取件桌并下蹲</td>
+<td>箱继续撑门；件→桌</td>
+<td>站位、足支撑</td>
+<td>e0027: local:pickup; global_offset_unresolved [1.2, 6.0] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K03.A02</td>
+<td>双手从上方接近、下探并重平衡</td>
+<td>件→桌；手逐步接触</td>
+<td>避碰与双手相对位姿</td>
+<td>e0028: local:pickup; global_offset_unresolved [6.2, 6.6] s; e0029: local:pickup; global_offset_unresolved [6.8, 7.2] s; e0030: local:pickup; global_offset_unresolved [7.4, 9.2] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K03.A03</td>
+<td>夹紧后提起并站稳</td>
+<td>桌→双手；箱→门</td>
+<td>接触力、离桌高度与箱撑门状态</td>
+<td>e0031: local:pickup; global_offset_unresolved [9.4, 11.0] s; e0032: local:pickup; global_offset_unresolved [11.2, 14.2] s; e0033: local:pickup; global_offset_unresolved [14.4, 19.6] s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H3.K04 · 搬运者短段通过，支撑者监视</h5>
+<p>入口：包裹受控且通行支撑有效。出口：搬运者及包裹完全进入 B 房间。</p>
+<p>局部检查：整个组合包络穿过门；门净空及撑门负载不中断。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K04.A01</td>
+<td>持件规划穿门净空</td>
+<td>双手持件；箱→门</td>
+<td>物体包络、门宽和门角</td>
+<td>e0034: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K04.A02</td>
+<td>沿通道搬运并修正身体朝向</td>
+<td>足→地面；双手持件</td>
+<td>人、件、门的碰撞间隙</td>
+<td>e0034: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K04.A03</td>
+<td>抵达交付桌前并减速</td>
+<td>双手持件</td>
+<td>目标桌可达性与姿态</td>
+<td>e0034: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h5>H3.K05 · 降到目标台面、撤手并稳定</h5>
+<p>入口：包裹位于 B 房间且目标台面可达。出口：目标台面支撑、机器人释放并满足原判定。</p>
+<p>局部检查：真实支撑与最终静止；180 s 原任务预算不改变。</p>
+<div class="detail-table"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3.K05.A01</td>
+<td>双手将件调平到交付桌上方</td>
+<td>双手持件</td>
+<td>件与桌的水平对准</td>
+<td>e0035: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K05.A02</td>
+<td>下降至桌面承重后松手</td>
+<td>双手→桌面</td>
+<td>桌支撑力、手载荷下降</td>
+<td>e0035: untimed_summary None s</td>
+<td>local_clock_or_summary_candidates</td>
+</tr>
+<tr>
+<td>H3.K05.A03</td>
+<td>撤手并观察独立支撑驻留</td>
+<td>件→目标桌</td>
+<td>无手接触、稳定驻留</td>
+<td>e0035: untimed_summary None s; e0036: episode [172.44, 172.44] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div></details></article><article id="detail-scoring"><h3>Scoring and success criteria</h3><p>Original task scoring and frozen reference verdicts remain authoritative. Plans, skill expansion and event mappings earn no additional task credit. Proposed contract scoring is not the current implementation. A full-run score cannot be transferred to feasibility screening or a sandbox smoke check.</p><p>Final key-state criterion (original source): 目标台面支撑、机器人释放并满足原判定</p><p><a href="https://github.com/wuxiyang1996/robo-si/blob/main/multi_robot/dual_g1_self_closing_door/task_spec.py">原任务判据源码 / Original task criteria</a></p></article><article id="detail-evidence"><h3>Representative evidence and review</h3><p>见证：<strong>heavy-delivery-05</strong>。范围：多机器人；有重物／无重物；固定名义场景；180 秒；特权原生参考。</p>
+<p>双 G1 原生参考：有重物版 2/2（172.44、169.24 秒），无重物版 1/1（102.22 秒），均在 180 秒内完成交付与支撑路线独立复核；开发失败全部保留。</p>
+<p><a href="/robo-si-results/infra/h3-release/heavy-delivery-05-audit.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/H3.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p></article><article id="detail-sandbox"><h3>Sandbox validation</h3><div class="detail-table"><table><thead><tr><th>平台 / Platform</th><th>单元 / Unit</th><th>入口 / Entry</th><th>容器短测 / Container smoke</th><th>任务分 / Task score</th></tr></thead><tbody><tr><td>Windows</td><td>True</td><td>True</td><td>True</td><td>0.0</td></tr><tr><td>Linux / WSL (same machine)</td><td>—</td><td>—</td><td>True</td><td>0.0</td></tr></tbody></table></div><p>These checks exercise startup, sensors and actions, not complete task success. WSL on the same machine is not independent-machine reproduction.</p><p><a href="/robo-si-results/infra/sandbox-delivery/evidence/windows/H3/trusted/verdict.json">Trusted short-run verdict</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">All checks and limits</a></p></article><article id="detail-reproduce"><h3>Download and reproduce</h3><p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/2cf4ebc452aeb859d9003104718c920dd99b0bc9/releases/H3/cooperative-20261024/h3-cooperative-reference-20261024.zip">完整冻结参考包 / Complete frozen reference packet</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">14-task sandbox workspace</a></p><p>Reference SHA-256: 49f3efc5fffd7e3d79ab70e6249a224631936b539188b875d6c806245bf05b3b</p><p>Private repository access is required. Reference packets preserve historical configurations and entrypoints; the current sandbox workspace supplies runtime assets. Install the documented environment and run the sandbox smoke example, then use the frozen reference entrypoint for reproduction. Smoke success is not a full expert replay.</p><p>Check this task’s entrypoint without running physics, then follow the linked environment and agent-delivery instructions. Replace historical machine-specific paths in the README; the sandbox table above is the current validation status.</p><pre><code>python -m infra.sandbox.inventory check --task H3
+python -m multi_robot.dual_g1_self_closing_door.sandbox.launch --help</code></pre><p><a href="/robo-si-results/multi_robot/dual_g1_self_closing_door/sandbox/README.md">本任务启动与环境说明 / Task launch and environment guide</a></p><details><summary>New-interface smoke example (not a complete expert)</summary><pre><code>python -m multi_robot.dual_g1_self_closing_door.sandbox.launch --mode dev --isolation process --seed 0 --sim-time 1 --sensors proprio --no-video --agent-dir multi_robot/dual_g1_self_closing_door/sandbox/agent_sdk/examples -- python hello_robot.py
+python -m multi_robot.dual_g1_self_closing_door.sandbox.launch --mode eval --sim-time 1 --sensors proprio --no-video --agent-dir multi_robot/dual_g1_self_closing_door/sandbox/agent_sdk/examples -- python hello_robot.py
+</code></pre></details></article><article id="detail-limits"><h3>Acceptance limits and remaining work</h3><p>Check entry conditions for opening, box/robot door support and loaded passage, including continuous support handoff. The isolated dual-robot interface has short-run records; full expert replay through it, representative repeats, human sign-off and second-person reproduction remain pending.</p><p>The joint review of the new action-to-trajectory mapping is pending. Event candidates do not certify exact skill boundaries; unresolved local clocks and summary-only spans remain visible in the table.</p><p>Random instances retain four states: complete success evidence, feasibility-screened, unknown, or failed checks. Scoped representative witnesses and mappings between representations are required, not full solutions for every random instance. Page completion does not infer formal admission, human sign-off or independent-machine validation. New physics runs in this update: 0.</p><p><a href="/robo-si-results/infra/reference-designs/H3.html">完整参考设计 / Full reference design</a> · <a href="/robo-si-results/infra/task-detail-coverage.json">Detail coverage and source hashes</a></p></article></div></section>
+<!-- task-detail-standard:end -->
+</main></html>

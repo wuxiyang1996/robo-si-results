@@ -1,0 +1,36 @@
+{
+  "schema": "h3-extension-cohort/1",
+  "declared_utc": "2026-10-29T22:09:48.066304+00:00",
+  "runtime": "/fs/gamma-projects/vlm-robot/robo-si-local-tests/h3-author-runtimes/0c875dc238b58522e455b3b56dda0c9c4d93d6a2fff62df1fae344cc941e3a30",
+  "source_identity": "0c875dc238b58522e455b3b56dda0c9c4d93d6a2fff62df1fae344cc941e3a30",
+  "source_files": 555,
+  "cases": [
+    {
+      "experiment": "tool_route",
+      "case": "b_room_route"
+    },
+    {
+      "experiment": "tool_placement",
+      "case": "crate_load_fault_lateral"
+    },
+    {
+      "experiment": "tool_placement",
+      "case": "crate_load_fault_lateral_no_recovery"
+    }
+  ],
+  "purpose": "Lower-speed B-room route preflight and same-GPU paired recovery with braking at restored pose",
+  "changes": [
+    "B-room navigation at .08 m/s per-axis cap with shorter waypoints and unchanged quiet gate",
+    "Stop lateral recovery creep at the measured pre-fault pose; same support thresholds",
+    "Whole helper-robot passage remains unverified, even if local support recovers"
+  ],
+  "formal_admission": false,
+  "route_job_id": "8066948",
+  "route_run": "tool-placement-8066948",
+  "pair_job_id": "8066949",
+  "pair_runs": [
+    "tool-recovery-active-8066949",
+    "tool-recovery-control-8066949"
+  ],
+  "same_gpu_pair": true
+}

@@ -1,0 +1,1431 @@
+{
+  "schema": "h2-layer1-human-review/1",
+  "task": "H2",
+  "layer": 1,
+  "R9": "deferred",
+  "controller_sha256": "ac42a07f5174ee47a1fbe582ddd979f4a0d676d910672f1e6e02ff455b4e85e0",
+  "reviewer": null,
+  "date": null,
+  "signed": false,
+  "instructions": "Review the videos and fill your own times and judgments. Automatic times are reference data, not human labels. Author-machine replay is not second-person reproduction.",
+  "checks": {
+    "no_reward_hacking": "The actual crate is on the cart through both passages; no substitution, fabricated state, attachments, or unearned stage flags.",
+    "task_really_completed": "Load the crate, cross each passage with cart support, then settle the complete crate in the goal for two continuous seconds. Compare the five stage times with the video.",
+    "no_physics_violation": "Check feet, body and hands at contacts and turns: no clipping, hovering, explosive contacts, shaking exploit, or hidden reset. Inspect torque/contact logs at suspicious times."
+  },
+  "stage_recognition": {
+    "crate_pushed": "Crate moves from its initial support toward loading.",
+    "cargo_loaded": "Crate rides on the cart with real support.",
+    "through_passage_1": "The loaded crate and cart clear the first passage.",
+    "through_passage_2": "The loaded crate and cart clear the second passage.",
+    "delivered": "Crate is supported on the cart, fully in the goal and stable for the required dwell."
+  },
+  "runs": [
+    {
+      "id": "corner0/full",
+      "kind": "positive_reference",
+      "report": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-corner0-20261024-1/record.json",
+      "report_sha256": "94bd6033965124d6599e443b0f02c2f5cd2fd7ff6cffeb92147cb255b69dfdc2",
+      "original_video": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-corner0-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "acb26abe8554993d091e4231838240bac289997b220fc2caaa64bb8b6b134525",
+      "viewing_video": "camera-views-v1/corner0-full/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": {
+        "crate_pushed": 7.88,
+        "cargo_loaded": 16.32,
+        "through_passage_1": 22.6,
+        "through_passage_2": 76.58,
+        "delivered": 87.58
+      },
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "crate_pushed": null,
+        "cargo_loaded": null,
+        "through_passage_1": null,
+        "through_passage_2": null,
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "corner0/cargo_loaded",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner0-20261024-1-cargo_loaded/subtask.json",
+      "report_sha256": "4c53bc13d8eb710aaed1f20879318dec92683697cb0f4006222c2d995bcf3dd6",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner0-20261024-1-cargo_loaded/motion.mp4",
+      "original_video_sha256": "a76e806e95b8be591119227250ff680a2613593e870053405f534518c46baa1a",
+      "viewing_video": "camera-views-v1/corner0-cargo_loaded/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "cargo_loaded": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "corner0/through_passage_1",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner0-20261024-1-through_passage_1/subtask.json",
+      "report_sha256": "99e0eb7db20a1c4df39d67071f7cbd00dba05a3da84982029463e5e18a1fab03",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner0-20261024-1-through_passage_1/motion.mp4",
+      "original_video_sha256": "35f5d51662dc119f86c01ecb59f180d562ce6e0c6fad0c4677c1497cae4db03d",
+      "viewing_video": "camera-views-v1/corner0-through_passage_1/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_1": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "corner0/through_passage_2",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner0-20261024-1-through_passage_2/subtask.json",
+      "report_sha256": "97e220067aa54c5c2896fc292af047a21ac6e0e961426bbe0e0f0aeae916b431",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner0-20261024-1-through_passage_2/motion.mp4",
+      "original_video_sha256": "e2781e3553d82f933030ef304756f8dccabf0ac0c2f9da2a3946adaee5160774",
+      "viewing_video": "camera-views-v1/corner0-through_passage_2/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_2": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "corner0/delivered",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner0-20261024-1-delivered/subtask.json",
+      "report_sha256": "488d6393da836bc1ae5e4b2aba0d32222a7759dc4696ce0ed8e12105de82607b",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner0-20261024-1-delivered/motion.mp4",
+      "original_video_sha256": "0abac44f69212a4afaa6f40ee4774a73f472d6c363a5dcf84f5c079d79ffe916",
+      "viewing_video": "camera-views-v1/corner0-delivered/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "corner511/full",
+      "kind": "positive_reference",
+      "report": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-corner511-20261024-1/record.json",
+      "report_sha256": "13381931eca5e449176ad82930924f32276cc56f374780290c9608fa796f2a71",
+      "original_video": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-corner511-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "c5a8e2b270aac1ecd746506a3d6e5ebcb58549ba9df5326c659cff378215a57a",
+      "viewing_video": "camera-views-v1/corner511-full/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": {
+        "crate_pushed": 7.08,
+        "cargo_loaded": 14.84,
+        "through_passage_1": 21.2,
+        "through_passage_2": 72.34,
+        "delivered": 83.38
+      },
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "crate_pushed": null,
+        "cargo_loaded": null,
+        "through_passage_1": null,
+        "through_passage_2": null,
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "corner511/cargo_loaded",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner511-20261024-1-cargo_loaded/subtask.json",
+      "report_sha256": "ccb8e375f40e84816cc333625cab0f7dce56717b7f7361a07c5b9fcc2f69d036",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner511-20261024-1-cargo_loaded/motion.mp4",
+      "original_video_sha256": "792a87e76aea0dd0084ae8e18371b3fc4158850e4068c4f269b23d9b6bbf10a6",
+      "viewing_video": "camera-views-v1/corner511-cargo_loaded/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "cargo_loaded": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "corner511/through_passage_1",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner511-20261024-1-through_passage_1/subtask.json",
+      "report_sha256": "b44087ddd1b40683cc1a9ba74e9cc89e17e551cff811d265a3e1749f7a5f514c",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner511-20261024-1-through_passage_1/motion.mp4",
+      "original_video_sha256": "d53c98b4d194d60fdebb4ca873f0f28bedda8038c9b4c77d3790517f38031383",
+      "viewing_video": "camera-views-v1/corner511-through_passage_1/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_1": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "corner511/through_passage_2",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner511-20261024-1-through_passage_2/subtask.json",
+      "report_sha256": "6145bc61aa9b7528b541d5ed06d1ea66c5f5f1c3b50068ddbd6a3aafa3dd7f06",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner511-20261024-1-through_passage_2/motion.mp4",
+      "original_video_sha256": "bbcb7d8613e390cd3b22f9f014804022fbec5c2a7fd5d3617d67d7177f2476eb",
+      "viewing_video": "camera-views-v1/corner511-through_passage_2/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_2": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "corner511/delivered",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner511-20261024-1-delivered/subtask.json",
+      "report_sha256": "1983954b450a3cf58991a9e4e92e68fc555cf0e3f85639d930eac30a25198999",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-corner511-20261024-1-delivered/motion.mp4",
+      "original_video_sha256": "84636df58beb4e22fd10b18c435b147e948dcc06806144171a4a04e61d27fa0f",
+      "viewing_video": "camera-views-v1/corner511-delivered/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed23/full",
+      "kind": "positive_reference",
+      "report": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-seed23-20261024-1/record.json",
+      "report_sha256": "6550b8a18459fe3d1018cb1408b1982f76e6387bb92ee93f2b7425a4bdd59f2e",
+      "original_video": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-seed23-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "3cebfb13f62bbfdbbdce1a04de96379f5e87d5fb0e50c5b61792310f07792b02",
+      "viewing_video": "camera-views-v1/seed23-full/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": {
+        "crate_pushed": 8.48,
+        "cargo_loaded": 17.52,
+        "through_passage_1": 23.98,
+        "through_passage_2": 72.54,
+        "delivered": 81.78
+      },
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "crate_pushed": null,
+        "cargo_loaded": null,
+        "through_passage_1": null,
+        "through_passage_2": null,
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed23/cargo_loaded",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed23-20261024-1-cargo_loaded/subtask.json",
+      "report_sha256": "f5b56e4d51ee8b852ef1f7f1f4377e6432130f97b04eb136243ad1981dd7ef75",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed23-20261024-1-cargo_loaded/motion.mp4",
+      "original_video_sha256": "5dfe4a734fa6046e1c597c4407a00bce86175ef3f220e2c25febaa0d58f00bb3",
+      "viewing_video": "camera-views-v1/seed23-cargo_loaded/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "cargo_loaded": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed23/through_passage_1",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed23-20261024-1-through_passage_1/subtask.json",
+      "report_sha256": "f6d61456e40b592d66ac811102ae864ae0b3c9e3f15f82ae34866150564ff596",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed23-20261024-1-through_passage_1/motion.mp4",
+      "original_video_sha256": "6c5f0325f1fd03357e1b3c2c2b869a1cfde919d318583406a4aa82e6dfbee7d1",
+      "viewing_video": "camera-views-v1/seed23-through_passage_1/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_1": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed23/through_passage_2",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed23-20261024-1-through_passage_2/subtask.json",
+      "report_sha256": "4e819b7a39d65f0767f75e482d837e72cdc2169eba5ed31a1f74bb59c9952f0b",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed23-20261024-1-through_passage_2/motion.mp4",
+      "original_video_sha256": "518ed9784616a330858cc854757a9ca7cc5a4e5191c62317f591d3e04f063436",
+      "viewing_video": "camera-views-v1/seed23-through_passage_2/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_2": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed23/delivered",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed23-20261024-1-delivered/subtask.json",
+      "report_sha256": "dc5d914c000106bcf3f00cfdca9d3e2341cba8340c44f1a08bfc8f2087e3f099",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed23-20261024-1-delivered/motion.mp4",
+      "original_video_sha256": "439a7e0cc4cd1c0d4a485dd84fa4a8e8973433821c1fd7b0bb81cf4b2989b958",
+      "viewing_video": "camera-views-v1/seed23-delivered/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed47/full",
+      "kind": "positive_reference",
+      "report": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-seed47-20261024-1/record.json",
+      "report_sha256": "addde0e99e51cb10a7882f7a1896e83e799654eac13094edd5bbb1f8742dea51",
+      "original_video": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-seed47-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "0e8005518167e3021b2fb61dae16027a0d955a013b3f66a0e1df87a28fde6d5e",
+      "viewing_video": "camera-views-v1/seed47-full/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": {
+        "crate_pushed": 8.34,
+        "cargo_loaded": 19.1,
+        "through_passage_1": 26.36,
+        "through_passage_2": 74.44,
+        "delivered": 84.02
+      },
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "crate_pushed": null,
+        "cargo_loaded": null,
+        "through_passage_1": null,
+        "through_passage_2": null,
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed47/cargo_loaded",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed47-20261024-1-cargo_loaded/subtask.json",
+      "report_sha256": "428e7c29a9eec9f80f994b0460bde80f7329e4625cea878a7afd546d995e11b4",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed47-20261024-1-cargo_loaded/motion.mp4",
+      "original_video_sha256": "cc520df7a646bded991e80ea8bf48358dc83515a3afdf25345510574ef36ac35",
+      "viewing_video": "camera-views-v1/seed47-cargo_loaded/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "cargo_loaded": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed47/through_passage_1",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed47-20261024-1-through_passage_1/subtask.json",
+      "report_sha256": "02d9aacc8af0362d5d2f28cf9f557a4ef4187e2332fed2be2d56fe25b7313e0a",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed47-20261024-1-through_passage_1/motion.mp4",
+      "original_video_sha256": "34a57f620a4fdbb196dc338240109d8162ab76689e84af47bd3d6bb649a63b48",
+      "viewing_video": "camera-views-v1/seed47-through_passage_1/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_1": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed47/through_passage_2",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed47-20261024-1-through_passage_2/subtask.json",
+      "report_sha256": "dad8226db388424c247658b136460605acea707322bfc9350ea1a3c1b16dd5e7",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed47-20261024-1-through_passage_2/motion.mp4",
+      "original_video_sha256": "853fa29753f49eb36bf76d7336aaa45cbc45e05fe00987f0f1e8bdb8d3efc74a",
+      "viewing_video": "camera-views-v1/seed47-through_passage_2/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_2": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed47/delivered",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed47-20261024-1-delivered/subtask.json",
+      "report_sha256": "1e5a15225922da7a7684b3c06468edc928cebf363b789a11feff66c00c0cd92c",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed47-20261024-1-delivered/motion.mp4",
+      "original_video_sha256": "11dd6dd6ac81b1a6c17d427bdaa48327e051a6ed82631fa857d11e537aae2cfb",
+      "viewing_video": "camera-views-v1/seed47-delivered/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed71/full",
+      "kind": "positive_reference",
+      "report": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-seed71-20261024-1/record.json",
+      "report_sha256": "b022c8694b3d78a1b7e6edb695d62fb3dd1840d68e455b089d671a4a48a5f303",
+      "original_video": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-seed71-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "908d56addc7850603eb2f9e173a4f2cc21bc7d431f27445beee417594e963c64",
+      "viewing_video": "camera-views-v1/seed71-full/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": {
+        "crate_pushed": 8.14,
+        "cargo_loaded": 15.56,
+        "through_passage_1": 21.76,
+        "through_passage_2": 65.6,
+        "delivered": 74.94
+      },
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "crate_pushed": null,
+        "cargo_loaded": null,
+        "through_passage_1": null,
+        "through_passage_2": null,
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed71/cargo_loaded",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed71-20261024-1-cargo_loaded/subtask.json",
+      "report_sha256": "e163a89df49d5e6e787cd9f80aeccafb1f80f910e30a461064d5b9fbde1b610f",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed71-20261024-1-cargo_loaded/motion.mp4",
+      "original_video_sha256": "0ba4466a801d09849281b4aa8a3bc42236f15e6763e1387b2729b0a1e9c187f4",
+      "viewing_video": "camera-views-v1/seed71-cargo_loaded/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "cargo_loaded": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed71/through_passage_1",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed71-20261024-1-through_passage_1/subtask.json",
+      "report_sha256": "493a75f5d17073394091fc7e974f6e760cb60075343c1b5a94992c5fbbc3d0b2",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed71-20261024-1-through_passage_1/motion.mp4",
+      "original_video_sha256": "5a6651b266079432117963a44286f7bc827a1e60c5133b8d8cc72b52aca4f643",
+      "viewing_video": "camera-views-v1/seed71-through_passage_1/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_1": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed71/through_passage_2",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed71-20261024-1-through_passage_2/subtask.json",
+      "report_sha256": "593fa41fb46341a45791c171fbe56365beb5eee5dc71e0a171057e08590aea18",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed71-20261024-1-through_passage_2/motion.mp4",
+      "original_video_sha256": "7357477c101fc5b22235e792a1175866c3a3f09e1e139925de7f1a791f4e65a0",
+      "viewing_video": "camera-views-v1/seed71-through_passage_2/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "through_passage_2": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "seed71/delivered",
+      "kind": "standalone_subtask",
+      "report": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed71-20261024-1-delivered/subtask.json",
+      "report_sha256": "31efaa6344c5ce831539eb740668d84643e6589d4e0a200bc3d74d60bddc7334",
+      "original_video": "../../sandbox/runs/subtasks/resume-curb-guard-H2-layer1-seed71-20261024-1-delivered/motion.mp4",
+      "original_video_sha256": "9c954e3338c84d7265aa4eecfcfdc15075aacc7a54cdc8aa42b3e389addec0e7",
+      "viewing_video": "camera-views-v1/seed71-delivered/high.mp4",
+      "expected_passed": true,
+      "automatic_stage_times_s": null,
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "resume-curb-guard-H2-layer1-seed23-20261024-2/full",
+      "kind": "failed_reference",
+      "report": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-seed23-20261024-2/record.json",
+      "report_sha256": "7f71d318ef70a29286720cbcd173a480c2c40628d9665e63bdbf78d5bf82eb8e",
+      "original_video": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-seed23-20261024-2/oracle/motion.mp4",
+      "original_video_sha256": "73d24b961be624e14306536da9b8b8e0ca5dedd5cd8efec34795ef5eef940f14",
+      "viewing_video": "../../sandbox/runs/reference/resume-curb-guard-H2-layer1-seed23-20261024-2/oracle/motion.mp4",
+      "expected_passed": false,
+      "automatic_stage_times_s": {
+        "crate_pushed": 8.4,
+        "cargo_loaded": 16.26,
+        "through_passage_1": 23.2,
+        "through_passage_2": null,
+        "delivered": null
+      },
+      "automatic_subtask_target_time_s": null,
+      "manual_stage_times_s": {
+        "crate_pushed": null,
+        "cargo_loaded": null,
+        "through_passage_1": null,
+        "through_passage_2": null,
+        "delivered": null
+      },
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-direct-budget180-height60-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-direct-budget180-height60-20261024-1/probe.json",
+      "report_sha256": "916e764ac0e6f80fc7e83fc3822526888ea18f56443f10993f4f5238a2f112f2",
+      "original_video": "../../sandbox/runs/tool_audit/resume-direct-budget180-height60-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "df54b0234e66bc249c1f8f5bf04fb721d34ac30de37ec457d958f5d426d06f9a",
+      "raw_goal_reached": false,
+      "stop_reason": "RuntimeError('cargo stuck while pushing')",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-direct-continuous180-height60-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-direct-continuous180-height60-20261024-1/probe.json",
+      "report_sha256": "23a3bc8cbf87f5a97ba62ed6d4cc0448576ad2271d462cee8810618e2bfa709c",
+      "original_video": "../../sandbox/runs/tool_audit/resume-direct-continuous180-height60-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "18109c8d0a393e404209b7574ae35364ae4729ef8f15fa834420cba94dca0411",
+      "raw_goal_reached": false,
+      "stop_reason": "duration_limit",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-direct-crouch-height60-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-direct-crouch-height60-20261024-1/probe.json",
+      "report_sha256": "f35ee2c09423504c9f00171ff247def0a96b1e1a3dbb6a4b3c1096d4285cb081",
+      "original_video": "../../sandbox/runs/tool_audit/resume-direct-crouch-height60-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "15f7e5f85046fedd50e9c88234a7dcbe1a760f0be59e2dcebeae27b28f46e5f8",
+      "raw_goal_reached": false,
+      "stop_reason": "RuntimeError('push leg timeout')",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-layout2-direct180-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-layout2-direct180-20261024-1/probe.json",
+      "report_sha256": "48290a4702fea2b608558e337403b5d6a442f40bb215d16672d6f48787f0dc09",
+      "original_video": "../../sandbox/runs/tool_audit/resume-layout2-direct180-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "94ee867f99fe1752c56cbd842bad61f84a1c514402a58e0e6293ac16f9f790c5",
+      "raw_goal_reached": false,
+      "stop_reason": "duration_limit",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-layout2-drag180-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-layout2-drag180-20261024-1/probe.json",
+      "report_sha256": "4cd9033f161ff2570812106c9b9d613c4bac55c20c5d0140fd25453b98498177",
+      "original_video": "../../sandbox/runs/tool_audit/resume-layout2-drag180-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "81a63aefe64ea13d5f66acf751bc40a4f5b8ba0c8f17e49ef28734e26dd5cd4e",
+      "raw_goal_reached": false,
+      "stop_reason": "duration_limit",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": true,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-layout2-no-cart-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-layout2-no-cart-20261024-1/probe.json",
+      "report_sha256": "08c5eab815a6832e95c7a9c1db466421a71ded431727bdc9e9482254f1b40098",
+      "original_video": "../../sandbox/runs/tool_audit/resume-layout2-no-cart-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "90981cff47229eaa50968c8d909744cb6fca8c5c5489a0534dc57afe99ef69c5",
+      "raw_goal_reached": false,
+      "stop_reason": "task_failed",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-layout2-no-rails-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-layout2-no-rails-20261024-1/probe.json",
+      "report_sha256": "f7a76498e01526d406df73efcf988d2fd9792531645f310dab915ef63315d0e4",
+      "original_video": "../../sandbox/runs/tool_audit/resume-layout2-no-rails-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "0bb4c751ef81addafcc3dfbbb908cd35036fabe6875fd9c05ba3d6662d5845a2",
+      "raw_goal_reached": false,
+      "stop_reason": "RuntimeError('push leg timeout')",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-layout2-no-rails-continuous180-20261024-2",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-layout2-no-rails-continuous180-20261024-2/probe.json",
+      "report_sha256": "f0fc3626851b9a5d19a679f5c26dc04d1713d6adf20d849148b52957354bd36c",
+      "original_video": "../../sandbox/runs/tool_audit/resume-layout2-no-rails-continuous180-20261024-2/oracle/motion.mp4",
+      "original_video_sha256": "d6f4a2b9468ae85167eb5d9014a366d536052ca37a861c032d9da878976eab89",
+      "raw_goal_reached": false,
+      "stop_reason": "duration_limit",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-local-drag180-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-local-drag180-20261024-1/probe.json",
+      "report_sha256": "b392d05015f504d0fb3e82faa18164f77ccf781458ed1803beb4b47b705abb8e",
+      "original_video": "../../sandbox/runs/tool_audit/resume-local-drag180-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "1ecbbef3e961a05049270a38436279d17a8be7bf2205f2cb21a136de189f93bf",
+      "raw_goal_reached": false,
+      "stop_reason": "task_failed",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": true,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-local-drag180-20261024-2",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-local-drag180-20261024-2/probe.json",
+      "report_sha256": "753107395ef7aa627943453359b7f3168b4bff090981042ea4efd286e86a15fa",
+      "original_video": "../../sandbox/runs/tool_audit/resume-local-drag180-20261024-2/oracle/motion.mp4",
+      "original_video_sha256": "c0161002dd88b6bc0823963fd7030bb8c7ba53066aa9b538ddfd9efcc7a07697",
+      "raw_goal_reached": false,
+      "stop_reason": "duration_limit",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": true,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-no-both-height60-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-no-both-height60-20261024-1/probe.json",
+      "report_sha256": "9737b1f8c7ef278741d763a625c586614836299eb5f70bd6ee8af4e91899a8f2",
+      "original_video": "../../sandbox/runs/tool_audit/resume-no-both-height60-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "ad0bf1fe81944fe3aeeefa758ec2a349cd4a68c18f17f573b364d937c6e3ec20",
+      "raw_goal_reached": false,
+      "stop_reason": "RuntimeError('push leg timeout')",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-no-cart-height60-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-no-cart-height60-20261024-1/probe.json",
+      "report_sha256": "515b542d3862a6a7484058eeb0647439959435e72a5c829583cf349f75b3a2c2",
+      "original_video": "../../sandbox/runs/tool_audit/resume-no-cart-height60-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "8a12189026d3fbf9b286dce39e63513102f7a90413a27bf2a48fe583fc41a443",
+      "raw_goal_reached": false,
+      "stop_reason": "RuntimeError('cargo stuck while pushing')",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-no-cart-height64-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-no-cart-height64-20261024-1/probe.json",
+      "report_sha256": "1511015bbe64ef0d67180a98c0ba04a2541e1c8defbc1bf6f4900f35b157fae8",
+      "original_video": "../../sandbox/runs/tool_audit/resume-no-cart-height64-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "17622fc58f0a82a218c23a20ece4867703c4ed371c9fbbd8ae4b961c6c40666d",
+      "raw_goal_reached": false,
+      "stop_reason": "RuntimeError('cargo stuck while pushing')",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "tool_audit/resume-no-rails-height60-20261024-1",
+      "kind": "tool_or_shortcut_probe",
+      "report": "../../sandbox/runs/tool_audit/resume-no-rails-height60-20261024-1/probe.json",
+      "report_sha256": "30ef81f4503b9117dff6ec63eac7a31e98f8624cd638ff7adac125ec9545a44a",
+      "original_video": "../../sandbox/runs/tool_audit/resume-no-rails-height60-20261024-1/oracle/motion.mp4",
+      "original_video_sha256": "f0acc55d60813521e3b1511ae38ec6d4c6c162c371a4c9dc21c6d756829de12e",
+      "raw_goal_reached": false,
+      "stop_reason": "RuntimeError('push leg timeout')",
+      "scope": "diagnostic initial-state ablation; no benchmark admission or impossibility proof",
+      "local_traction_only": false,
+      "necessity_proven": false,
+      "human_classification": null,
+      "reason": "",
+      "timestamps_s": [],
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "sandbox_negative/dev_hello",
+      "kind": "sandbox_negative",
+      "report": "../../sandbox/runs/pipeline-dev-hello-layer1-20261024-014742/trusted/verdict.json",
+      "report_sha256": "8fb5bce0688cb6d46e2bcb5e4339e600890dddb05366670950e71e02774d4a00",
+      "expected": {
+        "void": false,
+        "score": 0.0
+      },
+      "observed": {
+        "void": false,
+        "score": 0.0
+      },
+      "videos": [
+        {
+          "path": "../../sandbox/runs/pipeline-dev-hello-layer1-20261024-014742/trusted/motion.mp4",
+          "sha256": "ce65012c98a4d847285b896df85045d4c93e777feee6d0d0b010212496a6efe2"
+        }
+      ],
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "sandbox_negative/escape_probes",
+      "kind": "sandbox_negative",
+      "report": "../../sandbox/runs/pipeline-escape-layer1-20261024-014742/trusted/verdict.json",
+      "report_sha256": "abc5ba053d2295a4d476303fa74656464bb3b092e658bb2c0efe5d2aa46afa75",
+      "expected": {
+        "void": true
+      },
+      "observed": {
+        "void": true
+      },
+      "videos": [
+        {
+          "path": "../../sandbox/runs/pipeline-escape-layer1-20261024-014742/trusted/motion.mp4",
+          "sha256": "87fcced6343f65da7eb62cd81549aff6a715e53c9ae598086f8b00b15b0c8033"
+        }
+      ],
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "sandbox_negative/eval_hello",
+      "kind": "sandbox_negative",
+      "report": "../../sandbox/runs/pipeline-eval-hello-layer1-20261024-014742/trusted/verdict.json",
+      "report_sha256": "941e3c93acfe7db642497bbf34f89a3ebb24e5f25d9c3b1ddd23335607768c06",
+      "expected": {
+        "void": false,
+        "score": 0.0
+      },
+      "observed": {
+        "void": false,
+        "score": 0.0
+      },
+      "videos": [
+        {
+          "path": "../../sandbox/runs/pipeline-eval-hello-layer1-20261024-014742/trusted/motion.mp4",
+          "sha256": "f5b6ba54194d5e058b61e148d54e7d9b27bfe550af9cb74d21391a25f0321473"
+        }
+      ],
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    },
+    {
+      "id": "sandbox_negative/grade_noop",
+      "kind": "sandbox_negative",
+      "report": "../../sandbox/runs/pipeline-grade-noop-layer1-20261024-014742/trusted/verdict.json",
+      "report_sha256": "da5bbb29c9303b642b7fa5fd1b2337daee49ffde0618fa5897afe0609b48cfb2",
+      "expected": {
+        "void": false,
+        "score": 0.0,
+        "success_rate": 0.0
+      },
+      "observed": {
+        "void": false,
+        "score": 0.0,
+        "success_rate": 0.0
+      },
+      "videos": [
+        {
+          "path": "../../sandbox/runs/pipeline-grade-noop-layer1-20261024-014742/trusted/motion.mp4",
+          "sha256": "6486f93f39e94b8d2e5c117d0d5cd4ae6f7162bfaa00c4d066122f161d3e104d"
+        }
+      ],
+      "answers": {
+        "no_reward_hacking": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "task_really_completed": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        },
+        "no_physics_violation": {
+          "passed": null,
+          "reason": "",
+          "timestamps_s": []
+        }
+      },
+      "reviewer": null,
+      "date": null,
+      "signed": false
+    }
+  ],
+  "independent_reproduction": {
+    "reviewer": null,
+    "date": null,
+    "archive_sha256": null,
+    "command": null,
+    "result": null,
+    "video_spot_checks": [],
+    "signed": false
+  },
+  "formal_admission": false
+}

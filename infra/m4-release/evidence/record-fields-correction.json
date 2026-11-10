@@ -1,0 +1,307 @@
+{
+  "schema": "m4-record-fields-correction/1",
+  "correction": "Historical records DO contain joint positions, velocities, post-clipping targets and sampled applied effort at50Hz. The missing evidence is pre-clipping raw targets and a complete per-physics-step raw command audit. The bundled pre-publication report wording about missing joint/effort streams was too broad; this correction supersedes it. No scores, physics, failure records or admission status change.",
+  "source": "sandbox/trusted/record_reference.py step() clips targets before logging; tau_of() calls statelog.applied_effort. statelog.py records joint_pos/joint_vel/joint_target/tau/joint_mode after each control step.",
+  "records": [
+    {
+      "run": "base-v1",
+      "fields": {
+        "joint_pos": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -2.278874635696411,
+          "max": 1.7207293510437012
+        },
+        "joint_vel": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -12.693415641784668,
+          "max": 7.692966938018799
+        },
+        "joint_target": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -2.7227001190185547,
+          "max": 1.988542079925537
+        },
+        "tau": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -35.54999923706055,
+          "max": 35.54999923706055
+        },
+        "joint_mode": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": 1.0,
+          "max": 1.0
+        }
+      }
+    },
+    {
+      "run": "base-v2",
+      "fields": {
+        "joint_pos": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -2.278874635696411,
+          "max": 1.7207293510437012
+        },
+        "joint_vel": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -12.693415641784668,
+          "max": 7.692966938018799
+        },
+        "joint_target": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -2.7227001190185547,
+          "max": 1.988542079925537
+        },
+        "tau": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -35.54999923706055,
+          "max": 35.54999923706055
+        },
+        "joint_mode": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": 1.0,
+          "max": 1.0
+        }
+      }
+    },
+    {
+      "run": "base-v3",
+      "fields": {
+        "joint_pos": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -2.278874635696411,
+          "max": 1.7207293510437012
+        },
+        "joint_vel": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -12.693415641784668,
+          "max": 7.692966938018799
+        },
+        "joint_target": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -2.7227001190185547,
+          "max": 1.988542079925537
+        },
+        "tau": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": -35.54999923706055,
+          "max": 35.54999923706055
+        },
+        "joint_mode": {
+          "shape": [
+            1816,
+            2,
+            12
+          ],
+          "min": 1.0,
+          "max": 1.0
+        }
+      }
+    },
+    {
+      "run": "hard-v1",
+      "fields": {
+        "joint_pos": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -1.9626529216766357,
+          "max": 1.5304598808288574
+        },
+        "joint_vel": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -8.23392105102539,
+          "max": 4.058022975921631
+        },
+        "joint_target": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -1.9961520433425903,
+          "max": 1.5945971012115479
+        },
+        "tau": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -22.165117263793945,
+          "max": 29.978479385375977
+        },
+        "joint_mode": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": 1.0,
+          "max": 1.0
+        }
+      }
+    },
+    {
+      "run": "hard-v2",
+      "fields": {
+        "joint_pos": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -1.9626529216766357,
+          "max": 1.5304598808288574
+        },
+        "joint_vel": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -8.23392105102539,
+          "max": 4.058022975921631
+        },
+        "joint_target": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -1.9961520433425903,
+          "max": 1.5945971012115479
+        },
+        "tau": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -22.165117263793945,
+          "max": 29.978479385375977
+        },
+        "joint_mode": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": 1.0,
+          "max": 1.0
+        }
+      }
+    },
+    {
+      "run": "hard-v3",
+      "fields": {
+        "joint_pos": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -1.9626529216766357,
+          "max": 1.5304598808288574
+        },
+        "joint_vel": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -8.23392105102539,
+          "max": 4.058022975921631
+        },
+        "joint_target": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -1.9961520433425903,
+          "max": 1.5945971012115479
+        },
+        "tau": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": -22.165117263793945,
+          "max": 29.978479385375977
+        },
+        "joint_mode": {
+          "shape": [
+            1910,
+            2,
+            12
+          ],
+          "min": 1.0,
+          "max": 1.0
+        }
+      }
+    }
+  ]
+}

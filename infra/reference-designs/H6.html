@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>H6 · 负重上下楼 · 参考设计</title><link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/><style>main.wrap{padding-block:40px;overflow-wrap:anywhere}h2{margin-top:44px}h3{margin-top:30px}pre{overflow:auto;background:var(--panel);padding:18px;border-radius:10px}th,td{min-width:100px}h1{font-size:clamp(28px,5vw,44px)}</style><meta content="H6 · 负重上下楼 · 参考设计 · 任务设计、参考执行与验收证据。" name="description"/><style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/></head><body><main class="wrap"><nav><a href="/robo-si-results/infra/reference-designs-zh.html">14 项参考解设计</a> · <a href="/robo-si-results/infra/reference-designs/H6.md">Markdown 源文档</a> · <a href="/robo-si-results/infra/task-h6-zh.html">任务页面</a></nav><h1 id="h6">H6 · 负重上下楼：参考解设计</h1>
+<p>已有声明范围内的参考执行见证；本文补齐统一设计说明。本次新增物理运行：0。</p>
+<h2 id="_1">设计思路</h2>
+<p>抱持货箱逐级上楼，经顶部平台再下楼并交付。足步支撑切换和手部载荷同时约束运动；足步超时记录保留，历史 solution README 的未完成描述不覆盖后续冻结成功记录。</p>
+<h2 id="_2">选定参考与范围</h2>
+<p>见证：<strong>library-crate-seed0</strong>。范围：第一层固定 seed 0、2 kg 素材库提手箱参考。</p>
+<p>用户验收通过并发布。素材库箱子全程 1/1，587.74 s、得分 1.0、非 VOID、无报警；旧素材版本全程 3/3 和子任务 6/6 单列。</p>
+<p><a href="/robo-si-results/infra/h6-release/record.json">完整见证原始记录</a>；<a href="/robo-si-results/infra/planning/hierarchical-evaluation/action-mappings/H6.json">动作／事件与轨迹来源索引</a>。生成来源状态：<code>existing_provenance_not_replaced; full identity audit still pending</code>。完整见证可用；新口径的联合映射审阅尚未完成。</p>
+<h2 id="_3">高层计划与关键状态</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>目标</th>
+<th>低层技能</th>
+<th>状态转换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>地面取箱</td>
+<td>H6.K01</td>
+<td>S0 → S1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>逐级上楼</td>
+<td>H6.K02</td>
+<td>S1 → S2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>峰顶稳定</td>
+<td>H6.K03</td>
+<td>S2 → S3</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>逐级下降</td>
+<td>H6.K04</td>
+<td>S3 → S4</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>放箱并站稳</td>
+<td>H6.K05</td>
+<td>S4 → S5</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>固定 seed 0、2 kg 提手箱在地面</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>箱体离地且双手持续承托</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>按顺序到达峰顶</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>双足完整支撑于峰顶</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>全部下降踏面按序通过并到达地面</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>箱体在目标落地释放，机器人直立稳定 2 s</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_4">低层动作、接触支撑与轨迹对应</h2>
+<p>下表时间是已记录事件的观测跨度，保留其原时钟；不是新认证的微动作起止边界。精确事件指针和全部候选见 JSON。</p>
+<h3 id="h6k01">H6.K01 · 蹲身双手抓持并起身</h3>
+<p>入口：固定 seed 0、2 kg 提手箱在地面。出口：箱体离地且双手持续承托。</p>
+<p>局部检查：把手真实接触、关节力矩、起身平衡。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H6.K01.A01</td>
+<td>站稳、下蹲并让双手接近箱体</td>
+<td>箱→地面；足→地面</td>
+<td>手脚误差、重心及箱体净空</td>
+<td>e0001: episode [15.86, 15.86] s; e0004: episode [24.86, 24.86] s; e0026: episode [50.62, 50.62] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K01.A02</td>
+<td>建立双手抓持后抬箱</td>
+<td>地面→双手</td>
+<td>左右手载荷、箱高</td>
+<td>e0008: episode [35.56, 35.56] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K01.A03</td>
+<td>持续持箱起身并走向楼梯</td>
+<td>双手持箱；交替足→地面</td>
+<td>抓持、足点与重心</td>
+<td>e0026: episode [50.62, 50.62] s; e0027: episode [51.62, 51.62] s; e0028: episode [51.62, 51.62] s; 另 4 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h6k02">H6.K02 · 逐足落点与负载步态</h3>
+<p>入口：箱体受双手承托且楼梯可进入。出口：按顺序到达峰顶。</p>
+<p>局部检查：足底完整支撑、台阶净空、箱体不碰撞且不失握。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H6.K02.A01</td>
+<td>先移重心使摆动足卸载</td>
+<td>单足→当前踏面；双手持箱</td>
+<td>支撑足载荷与重心</td>
+<td>e0034: episode [80.98, 80.98] s; e0035: episode [88.62, 88.62] s; e0037: episode [102.16, 102.16] s; 另 17 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K02.A02</td>
+<td>领先脚抬高、前摆、落到上一级</td>
+<td>支撑足→旧踏面，摆动足→新踏面</td>
+<td>踏面净空、落足力</td>
+<td>e0034: episode [80.98, 80.98] s; e0037: episode [102.16, 102.16] s; e0039: episode [121.56, 121.56] s; 另 7 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K02.A03</td>
+<td>承重转移后跟随脚上阶，重复至顶前</td>
+<td>双足逐阶上移；双手持箱</td>
+<td>落足误差与箱姿态</td>
+<td>e0035: episode [88.62, 88.62] s; e0036: episode [96.58, 96.58] s; e0038: episode [109.78, 109.78] s; 另 8 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h6k03">H6.K03 · 双足落到平台并整理姿态</h3>
+<p>入口：最后上行踏面已通过。出口：双足完整支撑于峰顶。</p>
+<p>局部检查：负载重心和下一下降落点可行。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H6.K03.A01</td>
+<td>领先脚进入峰顶，确认接触</td>
+<td>另一足→末级踏面；手持箱</td>
+<td>峰顶足点与载荷</td>
+<td>e0055: episode [283.02, 283.02] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K03.A02</td>
+<td>跟随脚进入峰顶并居中</td>
+<td>双足→峰顶</td>
+<td>双足载荷及重心</td>
+<td>e0056: episode [288.96, 288.96] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K03.A03</td>
+<td>交替移步穿过顶部平台</td>
+<td>足→峰顶平台；手持箱</td>
+<td>落足顺序与下行入口净空</td>
+<td>e0057: episode [295.96, 295.96] s; e0058: episode [301.88, 301.88] s; e0059: episode [308.04, 308.04] s; 另 3 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h6k04">H6.K04 · 负载下降与接触切换</h3>
+<p>入口：峰顶双足稳定且箱体持续受控。出口：全部下降踏面按序通过并到达地面。</p>
+<p>局部检查：下降支撑冲击、脚跟/脚尖净空和箱体稳定。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H6.K04.A01</td>
+<td>重心移向支撑足后下探领先脚</td>
+<td>支撑足→当前踏面；手持箱</td>
+<td>重心、下一级高度</td>
+<td>e0063: episode [331.74, 331.74] s; e0065: episode [349.52, 349.52] s; e0067: episode [367.52, 367.52] s; 另 6 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K04.A02</td>
+<td>领先脚着地承重后跟随脚下降</td>
+<td>交替足→有序踏面</td>
+<td>足载荷与箱姿态</td>
+<td>e0064: episode [338.3, 338.3] s; e0066: episode [356.36, 356.36] s; e0068: episode [374.3, 374.3] s; 另 6 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K04.A03</td>
+<td>逐级下降，最后双足进入地面</td>
+<td>踏面→地面</td>
+<td>末级落足和双足稳定</td>
+<td>e0081: episode [493.88, 493.88] s; e0082: episode [500.64, 500.64] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h6k05">H6.K05 · 受控双手下放、撤手、起身</h3>
+<p>入口：机器人在地面目标附近。出口：箱体在目标落地释放，机器人直立稳定 2 s。</p>
+<p>局部检查：落地前保持双手承托；释放后完整驻留。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>顺序展开</th>
+<th>接触／支撑</th>
+<th>检查量</th>
+<th>轨迹事件定位</th>
+<th>映射状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H6.K05.A01</td>
+<td>携箱到目标，整理手臂并保持箱体净空</td>
+<td>双手持箱；足→地面</td>
+<td>手臂净空与抓持位置</td>
+<td>e0083: episode [511.94, 511.94] s; e0084: episode [511.94, 511.94] s; e0085: episode [517.96, 517.96] s; 另 6 组见 JSON</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K05.A02</td>
+<td>沿连续整身计划下降</td>
+<td>双手持箱</td>
+<td>双手相对误差、重心加速度</td>
+<td>e0097: episode [544.46, 544.46] s; e0098: episode [565.36, 565.36] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K05.A03</td>
+<td>触地并确认箱体卸载</td>
+<td>双手→地面</td>
+<td>手载荷与箱体高度</td>
+<td>e0099: episode [570.5, 570.5] s; e0100: episode [573.12, 573.12] s</td>
+<td>episode_event_candidates</td>
+</tr>
+<tr>
+<td>H6.K05.A04</td>
+<td>滑出双手、抬臂并驻留</td>
+<td>地面独立承重</td>
+<td>手分离及箱体稳定</td>
+<td>e0101: episode [574.32, 574.32] s; e0102: episode [578.72, 578.72] s</td>
+<td>episode_event_candidates</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_5">尚需核对</h2>
+<p>已定位 57 次 footfall；单个足步内部重心转移、卸载和落足仍需物理 trace 核对。保留 96.58 s gate_timeout，不能写成全程无警告。</p>
+<p>补当前资产下双手承托、上下踏面、峰顶换向和放箱的技能条件与交接检查。 保留用户验收；第二人复现与正式准入待完成，更高层及连续工具任务另计。</p>
+<h2 id="_6">复现与生成入口</h2>
+<ul>
+<li><a href="/robo-si-results/humanoid/g1_box_stair_transport/README.md">humanoid/g1_box_stair_transport/README.md</a></li>
+<li><a href="/robo-si-results/humanoid/g1_box_stair_transport/solution/README.md">humanoid/g1_box_stair_transport/solution/README.md</a></li>
+<li><a href="/robo-si-results/humanoid/g1_box_stair_transport/instruction.md">humanoid/g1_box_stair_transport/instruction.md</a></li>
+</ul>
+<p><a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/1652ab0885878926050905f557cba754121b6b37/releases/H6/layer1-20261024/h6-layer1-20261024.zip">完整参考包</a>。使用包内冻结配置、依赖说明与生成／回放入口；审阅包不替代完整包。</p>
+<p>历史源码说明只提供设计上下文；若与冻结见证冲突，以见证的配置、控制器身份和发布清单为准。设计动作表不等同于已绑定的通用控制器。</p>
+<h2 id="_7">验收与执行边界</h2>
+<p>本文件说明已有参考的设计与证据，不修改旧评分。任务级要求至少一个声明配置内的连续端到端生成见证；高层计划→低层动作、低层动作→轨迹、高层目标→实测终态分别核对。这里的“两两转换”是表示之间的对应，不是任意随机状态下技能可无条件拼接。</p>
+<p>随机实例保留四种结果：有完整成功证据、通过可行性筛查、未确定、检查不通过；筛查通过不写成已证明可解。只在需要执行时生成当前局部轨迹；通用滚动规划和全随机域鲁棒性另列，不是本参考文档的完成前提。</p>
+<p>若接触、支撑或守卫条件不满足，不推进下一动作；保留已有安全支撑并记录失败，仅在已知安全状态下重新观察与局部规划。不得凭事件名推断接触合格，不得将不同检查点的成功片段拼接成连续成功。</p>
+<h2 id="_8">来源与版本</h2>
+<p>来源内容哈希见 <a href="/robo-si-results/infra/reference-designs/catalog.json">catalog.json</a>，对应生成器为 <a href="https://github.com/wuxiyang1996/robo-si/blob/main/infra/tools/build_reference_designs.py">build_reference_designs.py</a>。本次只整理设计与证据，不将待审事件关联计作验收通过。</p></main><footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">链接分享版 · 已设置不索引；任何持链接者均可访问。完整参考包／源码链接仍需 GitHub 或 HF 权限。网页中的笔记只保存在你的浏览器，不构成正式签审。</footer></body></html>

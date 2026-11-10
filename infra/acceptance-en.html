@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Task acceptance in Embodied Terminal-Bench (robo-si): the reference expert solution, official trajectories and subgoal scenarios, manual feasibility verification, verifier validity, the human check of the task and the automatic check pipeline." name="description"/>
+<title>Task Acceptance</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="/robo-si-results/infra/contribute.css" rel="stylesheet"/>
+<style id="website-cleanup-style">html{scroll-padding-top:120px}main p,main dd{overflow-wrap:anywhere}main img,main video{max-width:100%}main pre{overflow-x:auto}main .table-wrap{overflow-x:auto}main details>summary{cursor:pointer}@media(max-width:700px){main table{display:block;overflow-x:auto;min-width:0!important;max-width:100%}main .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}</style><meta content="noindex,nofollow,noarchive" name="robots"/><link href="/robo-si-results/infra/gallery.css" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="/robo-si-results/infra/contribute-zh.html?lang=en">Embodied Terminal-Bench</a><nav aria-label="主导航 / Main navigation"><a href="/robo-si-results/infra/contribute-zh.html?lang=en#categories"><span data-en="Tasks" data-zh="任务视频">Tasks</span></a><a href="/robo-si-results/doc/self-modeling-benchmark-v6-en.html"><span data-en="Research" data-zh="研究提案">Research</span></a><a aria-current="page" href="/robo-si-results/infra/guide-zh.html?lang=en"><span data-en="Guide" data-zh="使用与规范">Guide</span></a><a href="/robo-si-results/infra/guide-zh.html?lang=en#download"><span data-en="Download" data-zh="下载">Download</span></a></nav><a class="lang" href="/robo-si-results/infra/acceptance-zh.html">中文</a></div></header>
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+<p class="eyebrow">Task infrastructure · Task acceptance</p>
+<h1>Before a task is admitted, prove it<br/><span class="nm">solvable</span> and its verifier trustworthy.</h1>
+<p class="lead">This page covers how a task is accepted: the reference expert solution, official trajectories and subgoal scenarios, manual feasibility verification, verifier validity, the human check of the task and the automatic check pipeline. Grading agents is fully automatic; human checks appear only on this page.</p>
+<div class="card" id="toc" style="margin-top:18px"><h3>Contents</h3>
+<ol class="toc">
+<li><a href="#expert">01 Reference expert solution</a></li>
+<li><a href="#official">02 Official trajectories and subgoal scenarios</a></li>
+<li><a href="#feasibility">03 Representative validation and human review</a></li>
+<li><a href="#validity">04 Verifier validity</a></li>
+<li><a href="#humancheck">05 The human check of the task</a></li>
+<li><a href="#ci">06 Automatic check pipeline</a></li>
+</ol></div>
+</div></div><section id="sandbox-delivery"><div class="wrap"><h2>14-task sandbox delivery and checks</h2><p>14/14 provide launchers, SDKs, isolated execution, trusted records and verification. Unit checks: 14/14; Windows container sensor/action smokes: 14/14. The current dual-G1 H3, DiskFlip and Sokoban also pass 3/3 short runs on Ubuntu 22.04 under WSL2 on the same machine; added escape checks: 5/5.</p><p>Short runs intentionally score zero and validate the interface/execution path, not task success. Existing complete reference witnesses remain separate. Full expert replay through the new adapters, a second physical machine and formal admission are not inferred. Sokoban full push-only validity remains uncertified, task_success=null.</p><p><a href="/robo-si-results/infra/sandbox/DELIVERY-14.md">Setup and usage</a> · <a href="/robo-si-results/infra/sandbox-delivery/validation.json">Per-task checks</a> · <a href="/robo-si-results/infra/sandbox-delivery/reference-packages.json">14 full reference packages</a> · <a href="https://huggingface.co/datasets/IntelligenceLab/robo-si/resolve/38e5f4d97e2c28921f75f89d8bb494a0ca52d739/releases/infra14-sandboxes-20261026/robo-si-sandbox-workspace-14-20261026-r2.zip">Download complete sandbox workspace</a></p></div></section>
+<section id="screening"><div class="wrap"><p data-refinement-readiness-link="true"><a href="/robo-si-results/infra/status-en.html#refinement-readiness">Remaining work for 12 tasks: selected full witnesses, low-level actions and trajectory mappings</a></p>
+<div class="callout" id="refinement-gate"><p><strong>Design-feasibility gate: evidence the high-level-to-low-level, low-level-to-trajectory and high-level-to-trajectory mappings, with at least one generated, continuously successful end-to-end witness in a declared configuration.</strong> The third mapping may compose the first two and independently check the goals; no third planner is required. Existing full witnesses may be reused; a changed controller needs its own evidence. General rolling planning, continuous skill envelopes and arbitrary random-start composition are not prerequisites. Repeatability, random robustness, human review and second-person reproduction are reported separately; existing scores and admission states are not automatically changed. <a href="/robo-si-results/infra/planning/hierarchical-evaluation/refinement-policy.json">Machine-readable requirements</a></p></div>
+<p class="kicker">Layered evidence and instance states · 2026-10-26</p>
+<h2>Record complete witnesses, screening and admission separately</h2>
+<div class="table-wrap"><table><thead><tr><th>Instance state</th><th>Code</th><th>Acceptance meaning</th></tr></thead><tbody>
+<tr><td>Complete success witnessed</td><td><code>witnessed_full</code></td><td>A continuous full run succeeded with matching scene, asset, physics, controller and scorer identities. No whole-family proof.</td></tr>
+<tr><td>Feasibility screening passed</td><td><code>screen_pass</code></td><td>All predeclared necessary checks and required evidence passed. Complete execution is unverified; do not assign success or a full reference score.</td></tr>
+<tr><td>Undetermined</td><td><code>unknown</code></td><td>Missing checker/evidence, uncalibrated applicability, unsuccessful search or exhausted budget. Neither success nor proof of physical infeasibility.</td></tr>
+<tr><td>Check failed</td><td><code>rejected</code></td><td>An evidenced necessary condition failed, with reason and scope. A route failure rejects that route only; whole-instance rejection requires a route-independent necessary-condition counterexample.</td></tr>
+</tbody></table></div>
+<h3>Acceptance deliverables</h3>
+<ul class="check">
+<li>Task: predeclared representative scenes, selection rationale, complete runs and retained failures, versions and hashes. No complete solution for every random instance is required.</li>
+<li>Skill: entry/exit and contact contracts, tested configurations/applicability, and critical short-segment evidence. Untested ranges remain unset.</li>
+<li>Instance: high-level plan, selected skills and constraints, key states, check list and four-state result. Transitions check pose, velocity, support, grasp, remaining budget and uncertainty.</li>
+<li>Budget: declare screening wall time, candidate count and short-probe count/steps before screening. Stop with unknown on exhaustion; do not automatically start a full simulation. Original execution time limits remain separate.</li>
+<li>Report representative full runs, skill probes and static screening separately. Formal admission still requires verifier positives/negatives, physics/interface integrity and applicable human review and independent reproduction; screening cannot replace them.</li>
+</ul>
+<p>Use the <a href="/robo-si-results/infra/planning/instance-template.json">instance record template</a> and <a href="/robo-si-results/infra/planning/acceptance-policy.json">versioned acceptance policy</a>. The existing 15 admission gates and their status enum are unchanged; these four instance evidence states are distinct from passed/partial/pending/failed gate states.</p>
+<p>Retain historical successes, failures, videos and review states. This revision grants no retrospective signatures or automatic admission. Existing explicitly agreed finite representative cohorts remain in place; scope changes require a separate record.</p>
+</div></section>
+<section class="tinted" id="expert"><div class="wrap">
+<p class="kicker">01 · Reference expert solution</p>
+<h2>Proving solvability and validating the verifier</h2>
+<ul class="check">
+<li>The existing expert solution is enough: it reads simulator ground truth (object poses, contact forces) and plans with IK/FK and similar methods; it starts from random initial states drawn by the generator and drives the robot only through the action interface, under the same physics and torque limits as the agent; no teleporting, no editing properties, no attaching objects to the hands. It need not use the agent's tools.</li>
+<li><strong>Purpose one: a scoped complete witness.</strong> Demonstrate completion for the recorded configurations and provide reference times and score anchors; this is not a proof for every random instance. Plans and screening records remain separate.</li>
+<li><strong>Job two: validate the verifier.</strong> The reference expert's runs are recorded by the sandbox's own recorder and scored by the same verifier: they must be judged successful, stage completion times must match the manual labels on the video, and no monitor may raise a false alarm. Together with no-ops scoring 0 and negative cases and exploit runs scoring 0 or void, this validates the verifier from both sides (see <a href="#validity">section 04</a>), as in Terminal-Bench, where the oracle must reach its expected reward and a no-op must score 0.</li>
+<li>Representative acceptance videos are reviewed by a person; a second person reproduces the selected representative solutions. Static screening requires no video (<a href="#feasibility">section 03</a>).</li>
+</ul>
+<h3>Conditions for the reference expert (oracle)</h3>
+<div class="two">
+<div class="card"><h3>Allowed</h3><ul class="check">
+<li>Reading simulator ground truth: object poses, contacts, properties.</li>
+<li>Brute-forcing intermediate points (keyframes) with IK/FK and interpolating them into trajectories.</li>
+<li>Tracking with torque control or WBC.</li>
+<li>Choosing and adjusting keyframes by hand.</li>
+<li>The existing expert solution is enough; it need not use the agent's tools.</li></ul></div>
+<div class="card"><h3>Not allowed</h3><ul class="check cross">
+<li>Starting from a hand-placed state: start from an initial state drawn by the generator (or a subtask start state).</li>
+<li>Changing physics settings or relaxing torque limits.</li>
+<li>Teleporting, editing properties, attaching objects to the hands.</li>
+<li>Skipping a segment by placing things directly.</li>
+<li>Bypassing the action interface to write joint or object state directly.</li></ul></div>
+</div>
+<h3>What a reference proves</h3>
+<div class="two">
+<div class="card"><h3>It proves</h3><ul class="check">
+<li>The recorded initial configuration can be completed under the same physics, torque limits and action interface; this does not establish every random instance.</li>
+<li>The upper anchor of the process score and reference completion times.</li>
+<li>That the verifier works: the reference is judged successful, no-ops and exploits score 0.</li></ul></div>
+<div class="card"><h3>It does not prove</h3><ul class="check cross">
+<li>That it can be done from the agent's sensors alone.</li>
+<li>Whether a step every agent fails is too hard or impossible from sensors alone.</li></ul></div>
+</div>
+<p style="margin-top:12px">A reference is therefore not an oracle in the Terminal-Bench sense, where the oracle uses the agent's interface and information and must score full marks.</p>
+</div></section>
+<section id="official"><div class="wrap">
+<p class="kicker">02 · Official trajectories and subgoal scenarios</p>
+<h2>Retain existing representative trajectories; cut diagnostic subgoals when needed</h2>
+<h3>Official trajectories</h3>
+<ul class="check">
+<li>The official scripts in <code>solution/</code> and <code>verified/</code> are kept unchanged. They place things with methods such as <code>set_pos</code> at the start, call the simulator directly at 200 Hz substeps and read ground truth at every step, so they serve only as privileged reference trajectories: proof that single skills are physically possible, and start points for subgoals.</li>
+<li>For recording they run as black boxes; the recorder hooks in from outside and records constructor arguments, constants the script changed, physics switches, any privileged writes after the first physics step (expected to be none), the masses and friction of all rigid bodies, a privileged state log in the sandbox's format, 10 Hz full-body snapshots and the script's own phase timeline.</li>
+<li>The verifier applies the same predicates as for agents to mark when the official trajectory reaches each stage.</li>
+</ul>
+<h3>Splitting into subgoals</h3>
+<ul class="check">
+<li>World parameters and a full-body snapshot from any moment of an official recording (later also of reference expert runs) are restored as the start of a subgoal scenario (verified on H1: the restore matches the recording exactly).</li>
+<li>After the start, the agent has only sensors and joint commands, as in the full task; the references' ground-truth reads and placements are not available to it.</li>
+<li>Subgoal scenarios are for training, diagnosis and analysis only, reported separately and never mixed into the main evaluation, which always starts from the task's initial state (a subgoal's start state reveals the route).</li>
+<li>Limitation: entities added outside the task environment (such as H1's stool) cannot yet be rebuilt from a checkpoint and are not supported.</li>
+</ul>
+</div></section>
+<section class="tinted" id="feasibility"><div class="wrap">
+<p class="kicker">03 · Representative validation and human review</p>
+<h2>Validate representative solutions and skill boundaries, not a full solution for every draw</h2>
+<p class="covers">Covers R2. Admission is scoped. Without a corresponding complete witness, static plans or separate segment successes cannot establish complete-task success.</p>
+<ol class="steps">
+<li><strong>Freeze the plan and representative cohort.</strong>Declare layers/variants, routes, critical skills, selection rationale, screening budgets and a finite full-run list. Address boundary/interior cases and risky contact changes without requiring the Cartesian product of layers, samples and subtasks to run in full.<span class="out">Output: layered plan and predeclared coverage table.</span></li>
+<li><strong>Execute a small set of complete references.</strong>Run continuously from original starts through the action interface under the declared physics, torque limits and scoring. Claims across backends need separate evidence for each.<span class="out">Output: full-run logs, seeds, hashes, verdicts and acceptance videos.</span></li>
+<li><strong>Validate skill conditions.</strong>Check key reachability, collision, load, support and entry/exit conditions; use short difficult-action probes when needed. Snapshot starts support local claims only; composition needs actual handover-state checks.<span class="out">Output: skill evidence, applicability and unresolved ranges.</span></li>
+<li><strong>Record random screening.</strong>Apply predeclared checks and budgets, assign one of four states, and retain all draws, rejections, failures and timeouts. A full solution is not an input requirement for each instance.<span class="out">Output: screening ledger.</span></li>
+<li><strong>Review representative evidence.</strong>Review declared full runs and critical contact/negative clips against the three questions in section 05 and the stage timeline. Headless runs may be separate physics evidence, never a signed video review; static screening needs no video.<span class="out">Output: signed reviews and stage comparisons.</span></li>
+<li><strong>Validate scoring and shortcut claims.</strong>Use the same verifier for full and stage positives, no-ops, negative cases and exploits. Screening passes are not complete positives. Unsuccessful shortcut search establishes only its tested scope, not impossibility of every alternative.<span class="out">Output: positive/negative and shortcut evidence.</span></li>
+<li><strong>Repeat and reproduce.</strong>Repeat preselected representative seeds at least three times and report spread. A second person reproduces the declared representative solutions, not every screened random sample.<span class="out">Output: repeat and independent reproduction records.</span></li>
+<li><strong>Accept by evidence level.</strong>Report full runs, skill probes and screening separately, retaining all failure causes and costs. Unknown and rejected results never count as successes.<span class="out">Output: scoped acceptance report.</span></li>
+</ol>
+<p>Choose representative counts and rationale before execution according to risk and scope; there is no universal minimum of five full seeds per layer. Existing agreed finite cohorts are not automatically cancelled. Never replace failed seeds after observing results; narrow claims or add targeted evidence when needed.</p>
+</div></section>
+<section id="validity"><div class="wrap">
+<p class="kicker">04 · Verifier validity</p>
+<h2>Positive runs must be judged right; negative runs must score 0</h2>
+<p>The verifier has to be validated before its scores mean anything. As in Terminal-Bench, runs known to succeed must get their expected score, and runs that do nothing or cheat must score 0. Positive runs come from the reference expert solution: the existing expert, which plans from ground truth; its main job is proving the problem solvable, and its other job is validating the verifier here (see <a href="#expert">section 01</a>). The videos of these positive and negative runs are also checked by a person when the task is admitted (<a href="/robo-si-results/infra/verifier-en.html#acceptance">section 05 of scoring and verification</a>).</p>
+<ul class="check">
+<li>Positive runs: the reference expert's and official trajectories' runs must be judged successful (or reach their expected stages), with stage timelines matching the manual labels and no monitor false alarms.</li>
+<li>Negative runs: a no-op scores 0; each stage's negative cases score nothing; escape probes and exploit runs are VOID or score 0.</li>
+<li>Only when both pass is the verifier used for evaluation; rerun both after any change to predicates, thresholds or weights.</li>
+</ul>
+</div></section>
+<section class="tinted" id="humancheck"><div class="wrap">
+<p class="kicker">05 · The human check of the task</p>
+<h2>At acceptance and on revisions, a person answers three questions on video</h2>
+<p>At admission and relevant revisions, review the predeclared representative full runs, critical skills and positive/negative videos. Static screening requires no video. Headless physics evidence is separate and cannot receive a video signature. For each selected video, three questions:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Human check</th><th>What to look for</th><th>Matching automatic checks</th><th>If it fails</th></tr></thead>
+<tbody>
+<tr><td><strong>1 No reward hacking</strong></td><td>Whether the scores of the reference and the pilot came from real actions; whether negative cases and exploit tests were all scored 0 or voided; any credit in the pilot obtained by gaming</td><td>Interface and world-integrity monitors, predicate-anomaly monitor, negative cases, rollout provenance check</td><td>Fix predicates, add negative cases or monitors, and check again; the task is not admitted until fixed</td></tr>
+<tr><td><strong>2 The task was really completed</strong></td><td>Whether the reference expert really reached the goal and met the contract; whether the stage times the verifier reports match the video (manual labels)</td><td>Stage predicates (contact evidence, object identity, dwell time, rest conditions) and the success test</td><td>Fix predicates or thresholds; if the reference cannot do it, the task is labelled unready</td></tr>
+<tr><td><strong>3 No obvious violation of physics or limits</strong></td><td>Any penetration, launching, floating or energy from nowhere in the simulation; whether the reference exceeded joint or torque limits or broke the public constraints</td><td>Physical-anomaly monitor, command-pattern monitor, teleport check, world-parameter hashes</td><td>Fix simulation settings, assets (collision proxies) or monitor thresholds; a reference run that breaks physics does not count as proof of solvability</td></tr>
+</tbody>
+</table></div>
+<h3>Procedure</h3>
+<ol class="steps">
+<li><strong>Run.</strong> The reference expert, a no-op, negative cases, exploit tests and the difficulty pilot, all scored automatically by the verifier.<span class="out">Output: verdict.json and videos.</span></li>
+<li><strong>A person watches.</strong> Each video gets an answer to the three questions, with reasons and timestamps, paying particular attention to alarm locations.<span class="out">Output: task check record.</span></li>
+<li><strong>Fix the verifier.</strong> Wherever human and automatic judgements disagree, change the predicates, thresholds, negative cases or monitors, then rerun the validity checks of section 04.<span class="out">Output: revision record.</span></li>
+<li><strong>Freeze.</strong> Once all three questions pass, the verifier and the automatic handling rules are frozen; from then on agents are graded automatically only.<span class="out">Output: a frozen verifier version.</span></li>
+</ol>
+<p style="margin-top:12px">Every task provides a human check list for its admission that spells out what the three questions mean for this task (when the goal counts as reached, the public constraints, which methods are violations) and how each stage is recognised on video (a task card field; see <a href="/robo-si-results/infra/task-design-en.html#card">section 11 of the task design guide</a>).</p>
+</div></section>
+<section id="ci"><div class="wrap">
+<p class="kicker">06 · Automatic check pipeline</p>
+<h2>Every change is checked automatically; a person looks only at what changed</h2>
+<p>The human check of a task happens only at admission and on revisions; every other change is checked automatically by the pipeline, and a person looks only at what changed.</p>
+<ul class="check">
+<li>Static checks: nothing trusted in the bundle; the machine-readable task spec is well formed (<a href="/robo-si-results/infra/task-design-en.html#card">section 11 of the task design guide</a>).</li>
+<li>A no-op scores 0; affected preselected representative references reach their expected outcomes and match manual stage labels. Screening passes are not full-run positives.</li>
+<li>Every stage's negative cases score nothing; exploit tests are voided; escape probes are all refused.</li>
+<li>When physical regression is needed, repeat predeclared representative seeds three times within the reproduction tolerance (<a href="/robo-si-results/infra/protocol-en.html#versions">protocol section 06</a>).</li>
+<li>Grading mode executes N sealed episodes under the existing protocol; author screening does not require a complete reference solution for each episode.</li>
+</ul>
+</div></section>
+<section id="layered-rollout"><div class="wrap"><h2>Status rollout: 11 tasks, excluding H1</h2><p>Keep finite complete witnesses at task level; validate skill entry/exit, distance, load, support and pose conditions; screen reachability, collision, support and transitions within instance budgets, using short difficult-segment probes when needed; generate local trajectories from observations during execution. Deliver the plan, selected skills and constraints, key states and check results; full trajectories are additional representative evidence.</p><p>Keep witnessed_full, screen_pass, unknown and rejected separate. Missing checkers or exhausted budgets are unknown; rejection needs a necessary-condition counterexample and reason. Self-generated scenes may use validated skill envelopes; retain all prescribed benchmark samples and outcomes. Human sign-off, second-person reproduction and verifier checks remain separate, without reproducing every random instance.</p><p><a href="/robo-si-results/infra/status-en.html#layered-progress">Per-task status and remaining checks</a> · <a href="/robo-si-results/infra/planning/layered-status.json">JSON</a></p></div></section>
+<section id="inventory-additions"><div class="wrap"><h2>Unified 14-task inventory · two additions</h2><p>The original 12 tasks retain 62 skills / 193 candidate actions and pending mapping reviews. The two additions use their existing measured segment evidence; these counts are not summed and do not grant formal admission.</p><div class="table-wrap"><table><thead><tr><th>Task</th><th>Evidence</th><th>Remaining limits</th></tr></thead><tbody><tr data-task="DiskFlip"><td><a href="/robo-si-results/infra/task-disk-flip-en.html">G1 gentle tabletop disk flip</a></td><td>6/6 complete runs (three per configuration) and 2/2 independent action replays pass; the two witnesses have 26/27 low-level segments with representation mappings.</td><td>Human video sign-off, second-person reproduction, broader configurations and full self/environment-contact review; no general random-domain or whole-body locomotion claim.</td></tr><tr data-task="Sokoban"><td><a href="/robo-si-results/infra/task-sokoban-en.html">Two-G1 hidden-map box clearing</a></td><td>Gamma 8011370: 279.18 s, 24 high-level operations and 76 low-level segments; both robots dwell at their own goals for 3 s. Independent sampled review and complete public-input replay pass; task_success=null.</td><td>Complete contact/push-only validity certification, unseen-map evaluation, cooperation-benefit comparisons and human acceptance; remains an experimental candidate.</td></tr></tbody></table></div><p><a href="/robo-si-results/infra/planning/INVENTORY.md">All 14 plans and evidence</a> · <a href="/robo-si-results/infra/planning/catalog.json">JSON</a></p></div></section>
+<section id="reference-designs"><div class="wrap"><h2>Reference executions and designs</h2><p>All 14 tasks have scoped reference execution evidence and design documents. Reference delivery: 14 complete, 0 in progress; remote materials: 14 tasks; formal admissions: 0. Sandbox runtime acceptance is separate. Sokoban remains experimental with task_success = null.</p><p><a href="/robo-si-results/infra/reference-designs-en.html">Reference executions and designs</a></p></div></section>
+</main>
+<footer><div class="wrap">robo-si · Embodied Terminal-Bench · Task acceptance · 2026-10-26 · <a href="/robo-si-results/infra/acceptance-zh.html" hreflang="zh-CN" lang="zh-CN">中文</a> · <a href="/robo-si-results/infra/contribute-en.html">Home</a></div></footer>
+<footer class="sites-sharing-note" style="padding:18px 24px;border-top:1px solid #ddd;font-size:13px;line-height:1.8">Link-shared review site; indexing discouraged. Anyone with the link can view it. Full reference/source downloads still require GitHub or HF access. Browser notes are local and do not constitute formal sign-off.</footer></body>
+</html>

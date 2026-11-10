@@ -1,0 +1,53 @@
+{
+  "schema": "m4-agent-resource-audit/1",
+  "tests_passed": 50,
+  "elapsed_s": 5.903,
+  "scratch": {
+    "bytes": 16777216,
+    "inodes": 256,
+    "shared_paths": [
+      "/tmp",
+      "/workspace"
+    ],
+    "private_mount_namespace": true,
+    "nonroot_agent": true,
+    "agent_capabilities_zero": true,
+    "byte_exhaustion_enospc": true,
+    "inode_exhaustion_enospc": true,
+    "device_directory_read_only": true,
+    "agent_remount_denied": true
+  },
+  "source_sha256": {
+    "agent_process.py": "fc909986ce7ff190b4201d2dd08fecc71c2acbcabebed9c1ac0e72c4eec3a92a",
+    "agent_scratch.py": "1f6c5fe7c5478de1b6da23ba8bcb3a2f8c3091fe878c0ec5b0988d6b79653a46",
+    "test_agent_process.py": "6bd91d614dad249e33f364431fa3409ffd83deae6063114a9d8987246b381e7d"
+  },
+  "scope": "Local executed namespace boundary and quota controls; a53 predates this implementation. No GPU physical rerun or aggregate CPU/memory cgroup certificate claimed.",
+  "remaining": [
+    "aggregate process-tree CPU and memory accounting",
+    "complete public sensor contract",
+    "positive isolated policy",
+    "full-duration sealed grading",
+    "native image lock"
+  ],
+  "formal_admission": false,
+  "compute_node_validation": {
+    "schema": "m4-resource-compute-result/1",
+    "passed": true,
+    "returncode": 0,
+    "source_unchanged": true,
+    "source_sha256": {
+      "agent_process.py": "fc909986ce7ff190b4201d2dd08fecc71c2acbcabebed9c1ac0e72c4eec3a92a",
+      "agent_scratch.py": "1f6c5fe7c5478de1b6da23ba8bcb3a2f8c3091fe878c0ec5b0988d6b79653a46",
+      "agent_evidence.py": "955ce617c63a50b59d250edb8d1d9207edd926c07c7c294b6eea9a9eacf369dd",
+      "test_agent_process.py": "6bd91d614dad249e33f364431fa3409ffd83deae6063114a9d8987246b381e7d",
+      "test_agent_evidence.py": "2886a19bc2fdc71546f587c3fe39f4d18647a4e04408630aea5e4f1ba0590c8e"
+    },
+    "wall_time_s": 4.845926545094699,
+    "hostname": "legacy47.umiacs.umd.edu",
+    "kernel": "5.14.0-687.56.1.el9_8.x86_64",
+    "job_id": "8069078",
+    "scope": "Scheduled compute-node namespace, scratch byte/inode exhaustion, escape and action-binding tests only. Not a physical replay or full grading run.",
+    "formal_admission": false
+  }
+}

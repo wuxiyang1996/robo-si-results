@@ -1,0 +1,115 @@
+{
+  "schema": "h1-high-low-trajectory-mapping/1",
+  "generated_from": "actual continuous execution phase transitions",
+  "scope": "privileged finite expert; no replayed checkpoint stitching; semantic review separate",
+  "segments": [
+    {
+      "id": "L001",
+      "high_level_id": "H1_observe_and_establish_push_posture",
+      "phase": "approach",
+      "start_state_index": 0,
+      "end_state_index": 457,
+      "command_range_half_open": [
+        0,
+        457
+      ],
+      "start_s": 0.0,
+      "end_s": 9.14,
+      "measured_trajectory": "execution/joint_trace.npz:measured",
+      "commands": "execution/command_trace.json",
+      "physical_state": "execution/trace.json"
+    },
+    {
+      "id": "L002",
+      "high_level_id": "H2_ground_supported_transport",
+      "phase": "touch_both",
+      "start_state_index": 457,
+      "end_state_index": 543,
+      "command_range_half_open": [
+        457,
+        543
+      ],
+      "start_s": 9.14,
+      "end_s": 10.86,
+      "measured_trajectory": "execution/joint_trace.npz:measured",
+      "commands": "execution/command_trace.json",
+      "physical_state": "execution/trace.json"
+    },
+    {
+      "id": "L003",
+      "high_level_id": "H2_ground_supported_transport",
+      "phase": "push_both",
+      "start_state_index": 543,
+      "end_state_index": 794,
+      "command_range_half_open": [
+        543,
+        794
+      ],
+      "start_s": 10.86,
+      "end_s": 15.88,
+      "measured_trajectory": "execution/joint_trace.npz:measured",
+      "commands": "execution/command_trace.json",
+      "physical_state": "execution/trace.json"
+    },
+    {
+      "id": "L004",
+      "high_level_id": "H2_ground_supported_transport",
+      "phase": "retreat_both",
+      "start_state_index": 794,
+      "end_state_index": 886,
+      "command_range_half_open": [
+        794,
+        886
+      ],
+      "start_s": 15.88,
+      "end_s": 17.72,
+      "measured_trajectory": "execution/joint_trace.npz:measured",
+      "commands": "execution/command_trace.json",
+      "physical_state": "execution/trace.json"
+    },
+    {
+      "id": "L005",
+      "high_level_id": "H3_reposition_for_next_contact",
+      "phase": "planned_steps_both",
+      "start_state_index": 886,
+      "end_state_index": 1000,
+      "command_range_half_open": [
+        886,
+        1000
+      ],
+      "start_s": 17.72,
+      "end_s": 20.0,
+      "measured_trajectory": "execution/joint_trace.npz:measured",
+      "commands": "execution/command_trace.json",
+      "physical_state": "execution/trace.json"
+    }
+  ],
+  "high_level_plan": [
+    {
+      "id": "H1_observe_and_establish_push_posture",
+      "low_level_ids": [
+        "L001"
+      ],
+      "start_state_index": 0,
+      "end_state_index": 457
+    },
+    {
+      "id": "H2_ground_supported_transport",
+      "low_level_ids": [
+        "L002",
+        "L003",
+        "L004"
+      ],
+      "start_state_index": 457,
+      "end_state_index": 886
+    },
+    {
+      "id": "H3_reposition_for_next_contact",
+      "low_level_ids": [
+        "L005"
+      ],
+      "start_state_index": 886,
+      "end_state_index": 1000
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "h1-publication-code-review/1",
+  "reviewed_utc": "2026-10-27T20:59:25.412431+00:00",
+  "physics_executed_by_review": false,
+  "counts_as_task_attempt": false,
+  "files": {
+    "collect_h1_execution.py": "0f9e41801f1ade2967b5c732a94113bda486b6f2652469801a7fde2a810db030",
+    "export_h1_evidence.py": "7d99117b68c91de12cb18ba584857860ccbff957ce8670b7009a1e4c4d92b28d",
+    "render_h1_implementation.py": "3dfc1148b5496b342cf3afb68532aebfabf3024f939dcc30cc2b916b537a2cef"
+  },
+  "checks": {
+    "synthetic_package_tests_passed": 30,
+    "P4_exported_files_byte_identity_verified": 68,
+    "first_v2_all_7_raw_artifacts_losslessly_exported": true,
+    "current_zh_en_local_href_src_poster_links_exist": true,
+    "ledger_finalized_physics_attempts": 4,
+    "ledger_task_witnesses": 0,
+    "asset_probes_excluded_from_task_attempt_count": true,
+    "baseline_original_failure_not_promoted": true,
+    "baseline_expert_result_lossless_transport": {
+      "source_sha256": "9ca6331153016058c31e00176d333213f9825129563eed3c8e2e0b758b101f13",
+      "gzip_sha256": "13a151182977021af51be9201f6d3e1f1d2130a4b8611b1eee8dcf9e0fd15c3b",
+      "decompressed_bytes_equal_original": true,
+      "original_local_file_retained": true
+    }
+  },
+  "fixes": [
+    "Strict 1 mrad gate recomputes extrema overshoot, rejects malformed/negative/NaN/bool summaries and stale aggregate values",
+    "Only finalized native outcomes count P4 physics attempts",
+    "Baseline witness also requires original success, chain_complete and non-VOID verdict",
+    "Full raw export claim requires all declared trajectory artifacts and decompressed source byte identity",
+    "Renderer fails on missing local artifact href/src/poster targets",
+    "Witness requires full original five-rule safety report with zero events/errors, full coverage, signed actual torque declaration, six input hashes and current adapter/original monitor hashes; missing or stale reports cannot promote native success"
+  ],
+  "limitations": [
+    "This is publication and evidence-integrity review, not an additional physics run or task witness",
+    "Ledger still relies on retained trusted native verdicts for non-position predicates; formal admission remains separate",
+    "Full raw trajectories are exported for selected first v2 attempt; subsequent attempts retain local paths and hashes",
+    "Safety adapter reviewed for coverage/identity and failure handling; future v3 recorder actual-torque acquisition still under implementation and is not certified by this publication review"
+  ]
+}

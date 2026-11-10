@@ -1,0 +1,15 @@
+{
+  "schema": "h1-p4-v4-probe-acceptance/1",
+  "frozen_before_launch": true,
+  "scope": "diagnostic only; never full task feasibility",
+  "conditions": [
+    "controller plan_completed from fresh original start, no reset/checkpoint",
+    "all-physics actual position overshoot <=0.001rad, speed/effort ratios<=1.001",
+    "original five safety rules complete and passed with unchanged thresholds",
+    "at least one measured foot floor force >1N at every ClearHands/StandUp control state (unchanged macro predicate)",
+    "actual control references for elbows<=2.0rad and mirrored index/middle open-reference values remain>=0.06rad inward through terminal opening",
+    "full trace/command/physics coverage and frozen source/assets identity intact"
+  ],
+  "task_goal_required": false,
+  "reason": "One cycle deliberately does not cover required ground transport; full original-start three-cycle validation remains mandatory."
+}

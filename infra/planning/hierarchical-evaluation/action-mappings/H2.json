@@ -1,0 +1,2048 @@
+{
+  "schema": "ordered-action-mapping/1",
+  "task": "H2",
+  "selected_witness": "corner0",
+  "generated_by": [
+    {
+      "path": "infra/planning/hierarchical-evaluation/build_action_mappings.py",
+      "sha256": "09ff4513817b52c8db8b46a07ba29a0e5f32ea6c88f148cf41d0169705827842"
+    },
+    {
+      "path": "infra/planning/hierarchical-evaluation/action_expansions.py",
+      "sha256": "1e88a0ef8b99d555bcef66edd58e3d18bf4a5ab2260fe5f8b17cbb7aa77bdb8c"
+    }
+  ],
+  "scope": {
+    "zh": "第一层，20 kg，transport-layout-v2",
+    "en": "Layer 1, 20 kg, transport-layout-v2"
+  },
+  "plan": {
+    "path": "infra/planning/tasks/H2.json",
+    "sha256": "3b7efc87d49ea8092b73f05c1dd25dee1d1980f1239d4bb1b2ea3b2d9a6910a4"
+  },
+  "full_success_record": {
+    "path": "infra/planning/skill-evidence/sources/94bd6033965124d6599e443b0f02c2f5cd2fd7ff6cffeb92147cb255b69dfdc2.json",
+    "sha256": "94bd6033965124d6599e443b0f02c2f5cd2fd7ff6cffeb92147cb255b69dfdc2"
+  },
+  "source_files": [
+    {
+      "id": "s0",
+      "path": "C:/Users/wuxiy/rsi_releases/transport_release_20261023/workspace/humanoid/g1_cart_assisted_transport/sandbox/runs/reference/resume-curb-guard-H2-layer1-corner0-20261024-1/record.json",
+      "sha256": "94bd6033965124d6599e443b0f02c2f5cd2fd7ff6cffeb92147cb255b69dfdc2"
+    },
+    {
+      "id": "s1",
+      "path": "C:/Users/wuxiy/rsi_releases/transport_release_20261023/workspace/humanoid/g1_cart_assisted_transport/sandbox/runs/reference/resume-curb-guard-H2-layer1-corner0-20261024-1/oracle/trace.json",
+      "sha256": "981e9f5cb4c174fc1e0c150ccefacd1e8a498988d7fd07ef87e651237ad393ea"
+    }
+  ],
+  "generation_provenance_status": "existing_provenance_not_replaced; full identity audit still pending",
+  "interpretation": {
+    "actions": "Ordered decomposition reviewed against available controller/event descriptions; not a newly executable planner.",
+    "event_matching": "Locates review candidates only; it does not prove the stated contact/guard nor exact micro-action interval.",
+    "timing": "Observed sample spans remain in their named clock. Point events are not expanded into invented intervals. No scoring milestone is used as an action boundary.",
+    "loops": "Hanoi repeats K01-K04 for each committed legal move; footfall and gait actions repeat. Numerical order is within a skill, not a universal serial schedule.",
+    "branches": "H3 heavy_prop only; asynchronous A/B operations may overlap.",
+    "portable_evidence": "Small excerpts below are portable; original absolute paths are provenance references, not deployment entrypoints. Raw full records still require the reference packages."
+  },
+  "skills": [
+    {
+      "skill": "H2.K01",
+      "high_level_steps": [
+        "P1"
+      ],
+      "entry_conditions": [
+        "20 kg 发布配置的箱、轨道和车存在"
+      ],
+      "exit_conditions": [
+        "推力方向与装载轨道对齐"
+      ],
+      "actions": [
+        {
+          "id": "H2.K01.A01",
+          "order": 1,
+          "action_zh": "站稳并绕到装载推点",
+          "required_support_contact_zh": "双足→地面；箱→原支撑",
+          "check_observable_zh": "机器人与货箱距离",
+          "event_selector": "stand->walk",
+          "evidence_ids": [
+            "e0001"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K01.A02",
+          "order": 2,
+          "action_zh": "面对把手接近",
+          "required_support_contact_zh": "足→地面；箱仍受支撑",
+          "check_observable_zh": "推向、站位和间隙",
+          "event_selector": "walk->push",
+          "evidence_ids": [
+            "e0002"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K01.A03",
+          "order": 3,
+          "action_zh": "将双拳接触把手",
+          "required_support_contact_zh": "手→箱把手",
+          "check_observable_zh": "接触距离与受力",
+          "event_selector": "fists on the handles",
+          "evidence_ids": [
+            "e0003"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H2.K02",
+      "high_level_steps": [
+        "P2"
+      ],
+      "entry_conditions": [
+        "箱体对准轨道，车具备承接位置"
+      ],
+      "exit_conditions": [
+        "货箱稳定在车上"
+      ],
+      "actions": [
+        {
+          "id": "H2.K02.A01",
+          "order": 1,
+          "action_zh": "沿装载方向建立推力",
+          "required_support_contact_zh": "手→箱；原支撑承重",
+          "check_observable_zh": "箱位移、姿态与接触",
+          "event_selector": "walk->push|fists on the handles",
+          "evidence_ids": [
+            "e0002",
+            "e0003"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K02.A02",
+          "order": 2,
+          "action_zh": "持续推动箱体进入车面",
+          "required_support_contact_zh": "原支撑→车面",
+          "check_observable_zh": "箱与车相对位置、支撑力",
+          "event_selector": "leg 0 load_east complete",
+          "evidence_ids": [
+            "e0004"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K02.A03",
+          "order": 3,
+          "action_zh": "保持接触并转入第一通道",
+          "required_support_contact_zh": "车面持续承重",
+          "check_observable_zh": "装载完成后的控制连续性",
+          "event_selector": "continue into leg 1",
+          "evidence_ids": [
+            "e0005"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H2.K03",
+      "high_level_steps": [
+        "P3"
+      ],
+      "entry_conditions": [
+        "货箱受车支撑、推点可保持"
+      ],
+      "exit_conditions": [
+        "机器人、车和货箱完全通过第一通道"
+      ],
+      "actions": [
+        {
+          "id": "H2.K03.A01",
+          "order": 1,
+          "action_zh": "保持推点沿第一通道推进",
+          "required_support_contact_zh": "箱→车面→轮地",
+          "check_observable_zh": "货箱高度及通道间隙",
+          "event_selector": "continue into leg 1",
+          "evidence_ids": [
+            "e0005"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K03.A02",
+          "order": 2,
+          "action_zh": "监视车箱相对姿态并修正推向",
+          "required_support_contact_zh": "手推箱；轮地滚动",
+          "check_observable_zh": "偏航、车箱位姿",
+          "event_selector": "leg 1 east_through_1 complete",
+          "evidence_ids": [
+            "e0006"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K03.A03",
+          "order": 3,
+          "action_zh": "结束该直段、准备换侧站位",
+          "required_support_contact_zh": "车面独立承重",
+          "check_observable_zh": "停车和换侧净空",
+          "event_selector": "push->walk",
+          "evidence_ids": [
+            "e0007"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H2.K04",
+      "high_level_steps": [
+        "P4"
+      ],
+      "entry_conditions": [
+        "组合体通过第一通道且仍稳定"
+      ],
+      "exit_conditions": [
+        "组合体完全通过第二通道"
+      ],
+      "actions": [
+        {
+          "id": "H2.K04.A01",
+          "order": 1,
+          "action_zh": "退出推点并绕到侧面",
+          "required_support_contact_zh": "车面承重；足→地面",
+          "check_observable_zh": "绕行路径及避碰",
+          "event_selector": "push->walk",
+          "evidence_ids": [
+            "e0007",
+            "e0011"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K04.A02",
+          "order": 2,
+          "action_zh": "重新对准把手后沿中间通道推动",
+          "required_support_contact_zh": "手→把手；车面承重",
+          "check_observable_zh": "推点距离、箱姿态",
+          "event_selector": "walk->push|fists on the handles|north_between",
+          "evidence_ids": [
+            "e0008",
+            "e0009",
+            "e0010",
+            "e0012",
+            "e0013"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K04.A03",
+          "order": 3,
+          "action_zh": "再次换侧、对准第二通道并推进",
+          "required_support_contact_zh": "车面承重、轮地滚动",
+          "check_observable_zh": "转向后路径与箱体稳定",
+          "event_selector": "east_to_goal|push->walk",
+          "evidence_ids": [
+            "e0007",
+            "e0011",
+            "e0014"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    },
+    {
+      "skill": "H2.K05",
+      "high_level_steps": [
+        "P5"
+      ],
+      "entry_conditions": [
+        "车载货物已进入目标附近"
+      ],
+      "exit_conditions": [
+        "货箱在目标内受车支撑、释放稳定"
+      ],
+      "actions": [
+        {
+          "id": "H2.K05.A01",
+          "order": 1,
+          "action_zh": "推进至目标区并减速",
+          "required_support_contact_zh": "手推箱；车面承重",
+          "check_observable_zh": "目标包含、箱速度",
+          "event_selector": "east_to_goal complete",
+          "evidence_ids": [
+            "e0014"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K05.A02",
+          "order": 2,
+          "action_zh": "后退并侧移退出接触",
+          "required_support_contact_zh": "车面独立承重",
+          "check_observable_zh": "机器人与货箱分离",
+          "event_selector": "push->back_off|finish strafe",
+          "evidence_ids": [
+            "e0015",
+            "e0016"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        },
+        {
+          "id": "H2.K05.A03",
+          "order": 3,
+          "action_zh": "在释放状态保持并确认交付",
+          "required_support_contact_zh": "车面→车轮→地面",
+          "check_observable_zh": "目标内驻留与稳定",
+          "event_selector": "back_off",
+          "evidence_ids": [
+            "e0015",
+            "e0024"
+          ],
+          "mapping_status": "episode_event_candidates",
+          "contact_support_check": "required_not_certified_by_event_match",
+          "failure_action": "Do not advance. Preserve available support; reobserve and replan locally only if a safe supported state exists. Otherwise terminate and record the failure; no unvalidated automatic recovery."
+        }
+      ]
+    }
+  ],
+  "event_evidence": [
+    {
+      "id": "e0000",
+      "source": "s0",
+      "pointer_first": "/oracle/events/0",
+      "pointer_last": "/oracle/events/0",
+      "stream": "/oracle/events",
+      "label": "arm gains limited",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        0.0,
+        0.0
+      ],
+      "rows": 1,
+      "first": {
+        "time": 0.0,
+        "event": "arm gains limited",
+        "gains": {
+          "left_shoulder_pitch_joint": [
+            500.0,
+            6.0
+          ],
+          "left_shoulder_roll_joint": [
+            500.0,
+            6.0
+          ],
+          "left_shoulder_yaw_joint": [
+            500.0,
+            6.0
+          ],
+          "left_elbow_joint": [
+            500.0,
+            6.0
+          ],
+          "left_wrist_roll_joint": [
+            300.0,
+            2.0
+          ],
+          "left_wrist_pitch_joint": [
+            300.0,
+            2.0
+          ],
+          "left_wrist_yaw_joint": [
+            300.0,
+            2.0
+          ],
+          "right_shoulder_pitch_joint": [
+            500.0,
+            6.0
+          ],
+          "right_shoulder_roll_joint": [
+            500.0,
+            6.0
+          ],
+          "right_shoulder_yaw_joint": [
+            500.0,
+            6.0
+          ],
+          "right_elbow_joint": [
+            500.0,
+            6.0
+          ],
+          "right_wrist_roll_joint": [
+            300.0,
+            2.0
+          ],
+          "right_wrist_pitch_joint": [
+            300.0,
+            2.0
+          ],
+          "right_wrist_yaw_joint": [
+            300.0,
+            2.0
+          ]
+        }
+      },
+      "last": {
+        "time": 0.0,
+        "event": "arm gains limited",
+        "gains": {
+          "left_shoulder_pitch_joint": [
+            500.0,
+            6.0
+          ],
+          "left_shoulder_roll_joint": [
+            500.0,
+            6.0
+          ],
+          "left_shoulder_yaw_joint": [
+            500.0,
+            6.0
+          ],
+          "left_elbow_joint": [
+            500.0,
+            6.0
+          ],
+          "left_wrist_roll_joint": [
+            300.0,
+            2.0
+          ],
+          "left_wrist_pitch_joint": [
+            300.0,
+            2.0
+          ],
+          "left_wrist_yaw_joint": [
+            300.0,
+            2.0
+          ],
+          "right_shoulder_pitch_joint": [
+            500.0,
+            6.0
+          ],
+          "right_shoulder_roll_joint": [
+            500.0,
+            6.0
+          ],
+          "right_shoulder_yaw_joint": [
+            500.0,
+            6.0
+          ],
+          "right_elbow_joint": [
+            500.0,
+            6.0
+          ],
+          "right_wrist_roll_joint": [
+            300.0,
+            2.0
+          ],
+          "right_wrist_pitch_joint": [
+            300.0,
+            2.0
+          ],
+          "right_wrist_yaw_joint": [
+            300.0,
+            2.0
+          ]
+        }
+      }
+    },
+    {
+      "id": "e0001",
+      "source": "s0",
+      "pointer_first": "/oracle/events/1",
+      "pointer_last": "/oracle/events/1",
+      "stream": "/oracle/events",
+      "label": "stand->walk",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        1.0199992656707764,
+        1.0199992656707764
+      ],
+      "rows": 1,
+      "first": {
+        "time": 1.0199992656707764,
+        "event": "stand->walk",
+        "leg": 0,
+        "robot": [
+          0.5849288105964661,
+          -0.08907726407051086,
+          0.7784338593482971
+        ],
+        "box": [
+          1.8799999952316284,
+          -0.8400000333786011,
+          0.5149989724159241
+        ],
+        "waypoints": [
+          [
+            0.43,
+            -0.84,
+            0.0
+          ],
+          [
+            0.7,
+            -0.84,
+            0.0
+          ]
+        ]
+      },
+      "last": {
+        "time": 1.0199992656707764,
+        "event": "stand->walk",
+        "leg": 0,
+        "robot": [
+          0.5849288105964661,
+          -0.08907726407051086,
+          0.7784338593482971
+        ],
+        "box": [
+          1.8799999952316284,
+          -0.8400000333786011,
+          0.5149989724159241
+        ],
+        "waypoints": [
+          [
+            0.43,
+            -0.84,
+            0.0
+          ],
+          [
+            0.7,
+            -0.84,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "e0002",
+      "source": "s0",
+      "pointer_first": "/oracle/events/2",
+      "pointer_last": "/oracle/events/2",
+      "stream": "/oracle/events",
+      "label": "walk->push",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        5.480077743530273,
+        5.480077743530273
+      ],
+      "rows": 1,
+      "first": {
+        "time": 5.480077743530273,
+        "event": "walk->push",
+        "leg": 0,
+        "robot": [
+          0.7528602480888367,
+          -0.7662410140037537,
+          0.736155092716217
+        ],
+        "box": [
+          1.8799999952316284,
+          -0.8400000333786011,
+          0.5149989724159241
+        ]
+      },
+      "last": {
+        "time": 5.480077743530273,
+        "event": "walk->push",
+        "leg": 0,
+        "robot": [
+          0.7528602480888367,
+          -0.7662410140037537,
+          0.736155092716217
+        ],
+        "box": [
+          1.8799999952316284,
+          -0.8400000333786011,
+          0.5149989724159241
+        ]
+      }
+    },
+    {
+      "id": "e0003",
+      "source": "s0",
+      "pointer_first": "/oracle/events/3",
+      "pointer_last": "/oracle/events/3",
+      "stream": "/oracle/events",
+      "label": "fists on the handles",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        7.120115280151367,
+        7.120115280151367
+      ],
+      "rows": 1,
+      "first": {
+        "time": 7.120115280151367,
+        "event": "fists on the handles",
+        "D": 0.43645408153533927
+      },
+      "last": {
+        "time": 7.120115280151367,
+        "event": "fists on the handles",
+        "D": 0.43645408153533927
+      }
+    },
+    {
+      "id": "e0004",
+      "source": "s0",
+      "pointer_first": "/oracle/events/4",
+      "pointer_last": "/oracle/events/4",
+      "stream": "/oracle/events",
+      "label": "leg 0 load_east complete",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        16.22028160095215,
+        16.22028160095215
+      ],
+      "rows": 1,
+      "first": {
+        "time": 16.22028160095215,
+        "event": "leg 0 load_east complete",
+        "box": [
+          3.835547685623169,
+          -0.8514295220375061,
+          0.511887788772583
+        ],
+        "box_yaw": -0.043240242732239025
+      },
+      "last": {
+        "time": 16.22028160095215,
+        "event": "leg 0 load_east complete",
+        "box": [
+          3.835547685623169,
+          -0.8514295220375061,
+          0.511887788772583
+        ],
+        "box_yaw": -0.043240242732239025
+      }
+    },
+    {
+      "id": "e0005",
+      "source": "s0",
+      "pointer_first": "/oracle/events/5",
+      "pointer_last": "/oracle/events/5",
+      "stream": "/oracle/events",
+      "label": "continue into leg 1 east_through_1",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        16.22028160095215,
+        16.22028160095215
+      ],
+      "rows": 1,
+      "first": {
+        "time": 16.22028160095215,
+        "event": "continue into leg 1 east_through_1",
+        "box": [
+          3.835547685623169,
+          -0.8514295220375061,
+          0.511887788772583
+        ]
+      },
+      "last": {
+        "time": 16.22028160095215,
+        "event": "continue into leg 1 east_through_1",
+        "box": [
+          3.835547685623169,
+          -0.8514295220375061,
+          0.511887788772583
+        ]
+      }
+    },
+    {
+      "id": "e0006",
+      "source": "s0",
+      "pointer_first": "/oracle/events/6",
+      "pointer_last": "/oracle/events/6",
+      "stream": "/oracle/events",
+      "label": "leg 1 east_through_1 complete",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        27.078458786010742,
+        27.078458786010742
+      ],
+      "rows": 1,
+      "first": {
+        "time": 27.078458786010742,
+        "event": "leg 1 east_through_1 complete",
+        "box": [
+          6.1705546379089355,
+          -0.8623670339584351,
+          0.511364221572876
+        ],
+        "box_yaw": 0.0282738636611448
+      },
+      "last": {
+        "time": 27.078458786010742,
+        "event": "leg 1 east_through_1 complete",
+        "box": [
+          6.1705546379089355,
+          -0.8623670339584351,
+          0.511364221572876
+        ],
+        "box_yaw": 0.0282738636611448
+      }
+    },
+    {
+      "id": "e0007",
+      "source": "s0",
+      "pointer_first": "/oracle/events/7",
+      "pointer_last": "/oracle/events/7",
+      "stream": "/oracle/events",
+      "label": "push->walk",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        27.078458786010742,
+        27.078458786010742
+      ],
+      "rows": 1,
+      "first": {
+        "time": 27.078458786010742,
+        "event": "push->walk",
+        "leg": 2,
+        "robot": [
+          5.292545795440674,
+          -0.7961675524711609,
+          0.7269460558891296
+        ],
+        "box": [
+          6.1705546379089355,
+          -0.8623670339584351,
+          0.511364221572876
+        ],
+        "waypoints": [
+          [
+            5.32,
+            -2.0,
+            0.02
+          ],
+          [
+            6.18,
+            -1.94,
+            1.57
+          ],
+          [
+            6.18,
+            -1.94,
+            1.57
+          ]
+        ]
+      },
+      "last": {
+        "time": 27.078458786010742,
+        "event": "push->walk",
+        "leg": 2,
+        "robot": [
+          5.292545795440674,
+          -0.7961675524711609,
+          0.7269460558891296
+        ],
+        "box": [
+          6.1705546379089355,
+          -0.8623670339584351,
+          0.511364221572876
+        ],
+        "waypoints": [
+          [
+            5.32,
+            -2.0,
+            0.02
+          ],
+          [
+            6.18,
+            -1.94,
+            1.57
+          ],
+          [
+            6.18,
+            -1.94,
+            1.57
+          ]
+        ]
+      }
+    },
+    {
+      "id": "e0008",
+      "source": "s0",
+      "pointer_first": "/oracle/events/8",
+      "pointer_last": "/oracle/events/8",
+      "stream": "/oracle/events",
+      "label": "walk->push",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        39.19916915893555,
+        39.19916915893555
+      ],
+      "rows": 1,
+      "first": {
+        "time": 39.19916915893555,
+        "event": "walk->push",
+        "leg": 2,
+        "robot": [
+          6.173704147338867,
+          -1.973102331161499,
+          0.7247719764709473
+        ],
+        "box": [
+          6.2519941329956055,
+          -0.8594632148742676,
+          0.5119959115982056
+        ]
+      },
+      "last": {
+        "time": 39.19916915893555,
+        "event": "walk->push",
+        "leg": 2,
+        "robot": [
+          6.173704147338867,
+          -1.973102331161499,
+          0.7247719764709473
+        ],
+        "box": [
+          6.2519941329956055,
+          -0.8594632148742676,
+          0.5119959115982056
+        ]
+      }
+    },
+    {
+      "id": "e0009",
+      "source": "s0",
+      "pointer_first": "/oracle/events/9",
+      "pointer_last": "/oracle/events/9",
+      "stream": "/oracle/events",
+      "label": "fists on the handles",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        40.59946823120117,
+        40.59946823120117
+      ],
+      "rows": 1,
+      "first": {
+        "time": 40.59946823120117,
+        "event": "fists on the handles",
+        "D": 0.4372906574908284
+      },
+      "last": {
+        "time": 40.59946823120117,
+        "event": "fists on the handles",
+        "D": 0.4372906574908284
+      }
+    },
+    {
+      "id": "e0010",
+      "source": "s0",
+      "pointer_first": "/oracle/events/10",
+      "pointer_last": "/oracle/events/10",
+      "stream": "/oracle/events",
+      "label": "leg 2 north_between complete",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        49.6814079284668,
+        49.6814079284668
+      ],
+      "rows": 1,
+      "first": {
+        "time": 49.6814079284668,
+        "event": "leg 2 north_between complete",
+        "box": [
+          6.239129543304443,
+          0.5005115270614624,
+          0.5119293928146362
+        ],
+        "box_yaw": -0.004177841428925584
+      },
+      "last": {
+        "time": 49.6814079284668,
+        "event": "leg 2 north_between complete",
+        "box": [
+          6.239129543304443,
+          0.5005115270614624,
+          0.5119293928146362
+        ],
+        "box_yaw": -0.004177841428925584
+      }
+    },
+    {
+      "id": "e0011",
+      "source": "s0",
+      "pointer_first": "/oracle/events/11",
+      "pointer_last": "/oracle/events/11",
+      "stream": "/oracle/events",
+      "label": "push->walk",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        49.6814079284668,
+        49.6814079284668
+      ],
+      "rows": 1,
+      "first": {
+        "time": 49.6814079284668,
+        "event": "push->walk",
+        "leg": 3,
+        "robot": [
+          6.259064197540283,
+          -0.3687685430049896,
+          0.7313429713249207
+        ],
+        "box": [
+          6.239129543304443,
+          0.5005115270614624,
+          0.5119293928146362
+        ],
+        "waypoints": [
+          [
+            5.15,
+            -0.09,
+            1.52
+          ],
+          [
+            5.16,
+            0.5,
+            0.0
+          ],
+          [
+            5.16,
+            0.5,
+            0.0
+          ]
+        ]
+      },
+      "last": {
+        "time": 49.6814079284668,
+        "event": "push->walk",
+        "leg": 3,
+        "robot": [
+          6.259064197540283,
+          -0.3687685430049896,
+          0.7313429713249207
+        ],
+        "box": [
+          6.239129543304443,
+          0.5005115270614624,
+          0.5119293928146362
+        ],
+        "waypoints": [
+          [
+            5.15,
+            -0.09,
+            1.52
+          ],
+          [
+            5.16,
+            0.5,
+            0.0
+          ],
+          [
+            5.16,
+            0.5,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "e0012",
+      "source": "s0",
+      "pointer_first": "/oracle/events/12",
+      "pointer_last": "/oracle/events/12",
+      "stream": "/oracle/events",
+      "label": "walk->push",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        61.16386032104492,
+        61.16386032104492
+      ],
+      "rows": 1,
+      "first": {
+        "time": 61.16386032104492,
+        "event": "walk->push",
+        "leg": 3,
+        "robot": [
+          5.185235023498535,
+          0.6396883130073547,
+          0.7253445982933044
+        ],
+        "box": [
+          6.235255241394043,
+          0.5377283692359924,
+          0.5119956731796265
+        ]
+      },
+      "last": {
+        "time": 61.16386032104492,
+        "event": "walk->push",
+        "leg": 3,
+        "robot": [
+          5.185235023498535,
+          0.6396883130073547,
+          0.7253445982933044
+        ],
+        "box": [
+          6.235255241394043,
+          0.5377283692359924,
+          0.5119956731796265
+        ]
+      }
+    },
+    {
+      "id": "e0013",
+      "source": "s0",
+      "pointer_first": "/oracle/events/13",
+      "pointer_last": "/oracle/events/13",
+      "stream": "/oracle/events",
+      "label": "fists on the handles",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        62.88422775268555,
+        62.88422775268555
+      ],
+      "rows": 1,
+      "first": {
+        "time": 62.88422775268555,
+        "event": "fists on the handles",
+        "D": 0.43775881520297927
+      },
+      "last": {
+        "time": 62.88422775268555,
+        "event": "fists on the handles",
+        "D": 0.43775881520297927
+      }
+    },
+    {
+      "id": "e0014",
+      "source": "s0",
+      "pointer_first": "/oracle/events/14",
+      "pointer_last": "/oracle/events/14",
+      "stream": "/oracle/events",
+      "label": "leg 3 east_to_goal complete",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        84.07343292236328,
+        84.07343292236328
+      ],
+      "rows": 1,
+      "first": {
+        "time": 84.07343292236328,
+        "event": "leg 3 east_to_goal complete",
+        "box": [
+          9.123729705810547,
+          0.589793860912323,
+          0.5120041370391846
+        ],
+        "box_yaw": -0.07348275796259554
+      },
+      "last": {
+        "time": 84.07343292236328,
+        "event": "leg 3 east_to_goal complete",
+        "box": [
+          9.123729705810547,
+          0.589793860912323,
+          0.5120041370391846
+        ],
+        "box_yaw": -0.07348275796259554
+      }
+    },
+    {
+      "id": "e0015",
+      "source": "s0",
+      "pointer_first": "/oracle/events/15",
+      "pointer_last": "/oracle/events/15",
+      "stream": "/oracle/events",
+      "label": "push->back_off",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        84.07343292236328,
+        84.07343292236328
+      ],
+      "rows": 1,
+      "first": {
+        "time": 84.07343292236328,
+        "event": "push->back_off",
+        "leg": 4,
+        "robot": [
+          8.211616516113281,
+          0.7153046727180481,
+          0.7262061834335327
+        ],
+        "box": [
+          9.123729705810547,
+          0.589793860912323,
+          0.5120041370391846
+        ]
+      },
+      "last": {
+        "time": 84.07343292236328,
+        "event": "push->back_off",
+        "leg": 4,
+        "robot": [
+          8.211616516113281,
+          0.7153046727180481,
+          0.7262061834335327
+        ],
+        "box": [
+          9.123729705810547,
+          0.589793860912323,
+          0.5120041370391846
+        ]
+      }
+    },
+    {
+      "id": "e0016",
+      "source": "s0",
+      "pointer_first": "/oracle/events/16",
+      "pointer_last": "/oracle/events/16",
+      "stream": "/oracle/events",
+      "label": "finish strafe right (guide curb on the left)",
+      "clock": "episode",
+      "timing_semantics": "controller_event_points",
+      "observed_span_s": [
+        84.6930923461914,
+        84.6930923461914
+      ],
+      "rows": 1,
+      "first": {
+        "time": 84.6930923461914,
+        "event": "finish strafe right (guide curb on the left)"
+      },
+      "last": {
+        "time": 84.6930923461914,
+        "event": "finish strafe right (guide curb on the left)"
+      }
+    },
+    {
+      "id": "e0017",
+      "source": "s1",
+      "pointer_first": "/0",
+      "pointer_last": "/50",
+      "stream": "",
+      "label": "stand",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        0.0,
+        0.9999992251396179
+      ],
+      "rows": 51,
+      "first": {
+        "time": 0.0,
+        "phase": "stand",
+        "leg": 0,
+        "command": [
+          0.0,
+          0.0,
+          0.0,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": 0.0,
+        "impact": 0.0,
+        "ground": 0.0,
+        "support": 0.0,
+        "info": {
+          "box_on_cart": false
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": false,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      },
+      "last": {
+        "time": 0.9999992251396179,
+        "phase": "stand",
+        "leg": 0,
+        "command": [
+          0.0,
+          0.0,
+          0.0,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": 0.0,
+        "impact": 6.262477397918701,
+        "ground": 0.0,
+        "support": 0.0,
+        "info": {
+          "box_on_cart": false
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": false,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      }
+    },
+    {
+      "id": "e0018",
+      "source": "s1",
+      "pointer_first": "/51",
+      "pointer_last": "/273",
+      "stream": "",
+      "label": "walk",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        1.0199992656707764,
+        5.460077285766602
+      ],
+      "rows": 223,
+      "first": {
+        "time": 1.0199992656707764,
+        "phase": "walk",
+        "leg": 0,
+        "command": [
+          0.0,
+          0.0,
+          0.0,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": 0.0,
+        "impact": 5.5960869789123535,
+        "ground": 0.0,
+        "support": 0.0,
+        "info": {
+          "box_on_cart": false
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": false,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      },
+      "last": {
+        "time": 5.460077285766602,
+        "phase": "walk",
+        "leg": 0,
+        "command": [
+          0.0,
+          0.0,
+          -0.0057225098905689725,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": 0.0,
+        "impact": 5.569701194763184,
+        "ground": 0.0,
+        "support": 0.0,
+        "info": {
+          "waypoint": 1,
+          "dist": 0.08707118407529771,
+          "yaw_err": -0.0035765686816056075,
+          "box_on_cart": false
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": false,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      }
+    },
+    {
+      "id": "e0019",
+      "source": "s1",
+      "pointer_first": "/274",
+      "pointer_last": "/1353",
+      "stream": "",
+      "label": "push",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        5.480077743530273,
+        27.058462142944336
+      ],
+      "rows": 1080,
+      "first": {
+        "time": 5.480077743530273,
+        "phase": "push",
+        "leg": 0,
+        "command": [
+          0.0,
+          0.0,
+          -0.017791607874321613,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": 0.0,
+        "impact": 5.659101486206055,
+        "ground": 0.0,
+        "support": 0.0,
+        "info": {
+          "waypoint": 1,
+          "dist": 0.08959440975774266,
+          "yaw_err": -0.011119754921451008,
+          "box_on_cart": false
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": false,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      },
+      "last": {
+        "time": 27.058462142944336,
+        "phase": "push",
+        "leg": 1,
+        "command": [
+          0.27995034838824384,
+          -0.005272801655752266,
+          0.09882920978561471,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": 0.02980429000056456,
+        "impact": 24.154788970947266,
+        "ground": 0.0,
+        "support": 85.80819702148438,
+        "info": {
+          "gp": "hold",
+          "theta": 0.032412862115624996,
+          "e_t": -0.01890948772430423,
+          "D": 0.5217598944751054,
+          "vx": 0.28,
+          "robot_lat": 0.07385812072090625,
+          "head_err": 0.039531683914245885,
+          "ik_err": {
+            "left": 0.013933992231919086,
+            "right": 0.015852688089159114
+          },
+          "curl": 1.0,
+          "box_v": 0.3082762625530977,
+          "push_N": 19.305694580078125,
+          "approach_restart": false,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      }
+    },
+    {
+      "id": "e0020",
+      "source": "s1",
+      "pointer_first": "/1354",
+      "pointer_last": "/1959",
+      "stream": "",
+      "label": "walk",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        27.078458786010742,
+        39.17916488647461
+      ],
+      "rows": 606,
+      "first": {
+        "time": 27.078458786010742,
+        "phase": "walk",
+        "leg": 2,
+        "command": [
+          0.16,
+          0.0,
+          0.0,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": 0.0282738636611448,
+        "impact": 27.400136947631836,
+        "ground": 0.0,
+        "support": 92.70347595214844,
+        "info": {
+          "gp": "hold",
+          "theta": 0.030743623157680755,
+          "e_t": -0.01962587594985965,
+          "D": 0.5257864549769743,
+          "vx": 0.28,
+          "robot_lat": 0.07609401534524185,
+          "head_err": 0.042406396608137165,
+          "ik_err": {
+            "left": 0.014159646759620254,
+            "right": 0.022289348161131664
+          },
+          "curl": 1.0,
+          "box_v": 0.3187640376405446,
+          "push_N": 22.784727036952972,
+          "approach_restart": false,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      },
+      "last": {
+        "time": 39.17916488647461,
+        "phase": "walk",
+        "leg": 2,
+        "command": [
+          0.0,
+          0.0,
+          0.029937734678819085,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": -0.055925572434733825,
+        "impact": 5.35877799987793,
+        "ground": 0.0,
+        "support": 196.2002410888672,
+        "info": {
+          "waypoint": 2,
+          "dist": 0.07078365609158468,
+          "yaw_err": 0.018711084174261927,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      }
+    },
+    {
+      "id": "e0021",
+      "source": "s1",
+      "pointer_first": "/1960",
+      "pointer_last": "/2483",
+      "stream": "",
+      "label": "push",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        39.19916915893555,
+        49.66140365600586
+      ],
+      "rows": 524,
+      "first": {
+        "time": 39.19916915893555,
+        "phase": "push",
+        "leg": 2,
+        "command": [
+          0.0,
+          0.0,
+          0.028700254944520512,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": -0.055925572434733825,
+        "impact": 5.972415924072266,
+        "ground": 0.0,
+        "support": 196.19775390625,
+        "info": {
+          "waypoint": 2,
+          "dist": 0.06897985493845972,
+          "yaw_err": 0.017937659340325318,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      },
+      "last": {
+        "time": 49.66140365600586,
+        "phase": "push",
+        "leg": 2,
+        "command": [
+          0.27955799725826874,
+          0.015726607038577027,
+          0.005193150087873244,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": -0.004882531708158383,
+        "impact": 20.412517547607422,
+        "ground": 0.0,
+        "support": 99.41412353515625,
+        "info": {
+          "gp": "hold",
+          "theta": -0.01172678278084005,
+          "e_t": 0.016079177856445557,
+          "D": 0.5182386043415826,
+          "vx": 0.28,
+          "robot_lat": -0.020872011022008894,
+          "head_err": 0.0020772600351492976,
+          "ik_err": {
+            "left": 0.004497914659555382,
+            "right": 0.004203648722785082
+          },
+          "curl": 1.0,
+          "box_v": 0.12398256798442726,
+          "push_N": 8.721314191818237,
+          "approach_restart": false,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      }
+    },
+    {
+      "id": "e0022",
+      "source": "s1",
+      "pointer_first": "/2484",
+      "pointer_last": "/3057",
+      "stream": "",
+      "label": "walk",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        49.6814079284668,
+        61.143856048583984
+      ],
+      "rows": 574,
+      "first": {
+        "time": 49.6814079284668,
+        "phase": "walk",
+        "leg": 3,
+        "command": [
+          0.16,
+          0.0,
+          0.0,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": -0.004177841428925584,
+        "impact": 19.726884841918945,
+        "ground": 0.0,
+        "support": 93.84593200683594,
+        "info": {
+          "gp": "hold",
+          "theta": -0.01102207450846393,
+          "e_t": 0.016225566864013916,
+          "D": 0.5191892001322167,
+          "vx": 0.28,
+          "robot_lat": -0.02139689448221119,
+          "head_err": 0.0009719371904370888,
+          "ik_err": {
+            "left": 0.005709955858913452,
+            "right": 0.00489824731750794
+          },
+          "curl": 1.0,
+          "box_v": 0.12692654182006005,
+          "push_N": 15.155970484018326,
+          "approach_restart": false,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      },
+      "last": {
+        "time": 61.143856048583984,
+        "phase": "walk",
+        "leg": 3,
+        "command": [
+          0.0,
+          0.0,
+          -0.25,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": -0.03616111629605498,
+        "impact": 5.394197463989258,
+        "ground": 0.0,
+        "support": 196.1641387939453,
+        "info": {
+          "waypoint": 2,
+          "dist": 0.09349877112023387,
+          "yaw_err": -0.1419529805836257,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      }
+    },
+    {
+      "id": "e0023",
+      "source": "s1",
+      "pointer_first": "/3058",
+      "pointer_last": "/4203",
+      "stream": "",
+      "label": "push",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        61.16386032104492,
+        84.0534439086914
+      ],
+      "rows": 1146,
+      "first": {
+        "time": 61.16386032104492,
+        "phase": "push",
+        "leg": 3,
+        "command": [
+          0.0,
+          0.0,
+          -0.25,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": -0.03616111629605498,
+        "impact": 5.403193473815918,
+        "ground": 0.0,
+        "support": 196.20101928710938,
+        "info": {
+          "waypoint": 2,
+          "dist": 0.09351862750096533,
+          "yaw_err": -0.14093627930668307,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      },
+      "last": {
+        "time": 84.0534439086914,
+        "phase": "push",
+        "leg": 3,
+        "command": [
+          0.2799989620869333,
+          0.0007623845749236617,
+          0.11198266962431425,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": -0.07250719427628159,
+        "impact": 34.299217224121094,
+        "ground": 0.0,
+        "support": 180.88575744628906,
+        "info": {
+          "gp": "hold",
+          "theta": -0.0701755482451385,
+          "e_t": -0.008046841621398904,
+          "D": 0.5632278910137226,
+          "vx": 0.28,
+          "robot_lat": 0.09891187322697326,
+          "head_err": 0.0447930678497257,
+          "ik_err": {
+            "left": 0.011597436018774814,
+            "right": 0.02438167548306754
+          },
+          "curl": 1.0,
+          "box_v": 0.3192851127399717,
+          "push_N": 33.559323742985725,
+          "approach_restart": false,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      }
+    },
+    {
+      "id": "e0024",
+      "source": "s1",
+      "pointer_first": "/4204",
+      "pointer_last": "/4378",
+      "stream": "",
+      "label": "back_off",
+      "clock": "episode",
+      "timing_semantics": "observed_samples",
+      "observed_span_s": [
+        84.07343292236328,
+        87.55152130126953
+      ],
+      "rows": 175,
+      "first": {
+        "time": 84.07343292236328,
+        "phase": "back_off",
+        "leg": 4,
+        "command": [
+          0.16,
+          0.0,
+          0.0,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": -0.07348275796259554,
+        "impact": 21.897865295410156,
+        "ground": 0.0,
+        "support": 106.11827087402344,
+        "info": {
+          "gp": "hold",
+          "theta": -0.07152198429326306,
+          "e_t": -0.008225238323211648,
+          "D": 0.5688663043259589,
+          "vx": 0.28,
+          "robot_lat": 0.09981498612075357,
+          "head_err": 0.04730630685961046,
+          "ik_err": {
+            "left": 0.013714240689109192,
+            "right": 0.025843625343666812
+          },
+          "curl": 1.0,
+          "box_v": 0.3346854808488321,
+          "push_N": 14.004398107528687,
+          "approach_restart": false,
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": false,
+          "loaded": true,
+          "success": false,
+          "failed": false
+        },
+        "contacts": null
+      },
+      "last": {
+        "time": 87.55152130126953,
+        "phase": "back_off",
+        "leg": 4,
+        "command": [
+          0.0,
+          -0.22,
+          0.0,
+          0.72
+        ],
+        "robot": {
+          "omitted_array_length": 13
+        },
+        "box": {
+          "omitted_array_length": 13
+        },
+        "cart": {
+          "omitted_array_length": 13
+        },
+        "box_yaw": -0.08192351908842996,
+        "impact": 5.780757904052734,
+        "ground": 0.0,
+        "support": 196.18609619140625,
+        "info": {
+          "box_on_cart": true
+        },
+        "task": {
+          "elapsed": true,
+          "hold": true,
+          "loaded": true,
+          "success": true,
+          "failed": false
+        },
+        "contacts": null
+      }
+    }
+  ],
+  "source_clock_checks": [
+    {
+      "source": "s0",
+      "pointer": "/oracle/events",
+      "timed_rows": 17,
+      "clock": "episode",
+      "nondecreasing": true
+    },
+    {
+      "source": "s1",
+      "pointer": "",
+      "timed_rows": 4379,
+      "clock": "episode",
+      "nondecreasing": true
+    }
+  ],
+  "physical_observations": {
+    "interpretation": "Descriptive checks recomputed from recorded samples. These are not a new simulation, formal acceptance or a full-rate independent contact audit.",
+    "source": {
+      "path": "C:/Users/wuxiy/rsi_releases/transport_release_20261023/workspace/humanoid/g1_cart_assisted_transport/sandbox/runs/reference/resume-curb-guard-H2-layer1-corner0-20261024-1/oracle/trace.json",
+      "sha256": "981e9f5cb4c174fc1e0c150ccefacd1e8a498988d7fd07ef87e651237ad393ea"
+    },
+    "clock": {
+      "rows": 4379,
+      "start_s": 0.0,
+      "end_s": 87.55152130126953,
+      "strictly_increasing": true,
+      "sample_gap_s": {
+        "min": 0.019989013671875,
+        "max": 0.0200042724609375
+      }
+    },
+    "box_on_cart_samples": 3598,
+    "support_N_while_box_on_cart": {
+      "min": 0.0,
+      "max": 703.5658569335938
+    },
+    "final_state": {
+      "time": 87.55152130126953,
+      "phase": "back_off",
+      "box": [
+        9.218947410583496,
+        0.5753185749053955,
+        0.5119959712028503,
+        0.9991611838340759,
+        1.1138951094835647e-06,
+        9.457936016588064e-07,
+        -0.04095030575990677,
+        0.0001533787144580856,
+        6.687049608444795e-05,
+        9.529651833872776e-06,
+        -0.00016344603500328958,
+        -0.00016918907931540161,
+        -6.559130270034075e-06
+      ],
+      "cart": [
+        9.196223258972168,
+        0.576530933380127,
+        0.056999627500772476,
+        0.9992295503616333,
+        1.1138448599012918e-06,
+        1.3333019523997791e-06,
+        -0.0392487570643425,
+        0.00010180858225794509,
+        2.3810414404579205e-06,
+        2.5519498194626067e-06,
+        -0.00016341668379027396,
+        -0.00018097598513122648,
+        -6.542939445353113e-06
+      ],
+      "support": 196.18609619140625,
+      "ground": 0.0,
+      "info": {
+        "box_on_cart": true
+      },
+      "task": {
+        "elapsed": true,
+        "hold": true,
+        "loaded": true,
+        "success": true,
+        "failed": false
+      }
+    },
+    "limit": "box_on_cart is a recorded controller diagnostic; this recomputation does not independently certify all loading and release contacts."
+  },
+  "review": {
+    "task": "H2",
+    "skills": 5,
+    "ordered_actions": 15,
+    "event_groups": 25,
+    "source_files": 2,
+    "action_mapping_counts": {
+      "episode_event_candidates": 15
+    },
+    "joint_mapping_review": "pending_physical_constraints_and_provenance_review",
+    "remaining_zh": "动作已定位到同一全程事件；还需将接触、装载支撑与换侧站位约束逐段对照物理记录。"
+  },
+  "design_gate_complete": false,
+  "physics_runs": 0,
+  "legacy_scores_changed": false,
+  "h1_status_changed": false
+}
