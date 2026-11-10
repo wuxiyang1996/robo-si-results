@@ -5,14 +5,14 @@ immutable recording manifest; a normal build refuses incomplete task copy.
 """
 from pathlib import Path
 from html import escape
-from urllib.parse import quote, urlsplit
+from urllib.parse import urlsplit
 from collections import Counter
 import argparse
 import hashlib
 import json
 import shutil
 import subprocess
-from archive_site import build_archive
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'site'
@@ -55,7 +55,7 @@ def header(active):
 
 def footer():
     return f'''<footer class="footer"><div class="wrap footer-inner"><div><p class="footer-brand">Embodied Terminal-Bench</p><p>{tr('物理工具使用、能力判断与机器人编程','Physical tool use, capability awareness and robot programming')}</p></div>
-    <div class="footer-links">{link('research.html','研究问题','Research','')}{link('guide.html','使用与下载','Get started','')}{link('archive.html','历史与证据','Archive & evidence','')}<a href="https://github.com/wuxiyang1996/robo-si-results">GitHub</a></div></div></footer>'''
+    <div class="footer-links">{link('research.html','研究问题','Research','')}{link('tasks/','任务图集','Task gallery','')}{link('guide.html','使用与下载','Get started','')}<a href="https://github.com/wuxiyang1996/robo-si-results">GitHub</a></div></div></footer>'''
 
 def page(path, title_zh, title_en, description, body, active='tasks', image=None, keywords=None):
     title_zh += ' · Embodied Terminal-Bench'
@@ -123,15 +123,14 @@ def family_gallery():
 
 def task_card(r):
     rid=r['record_id']; t=TASKS[rid]
-    all_text=' '.join([rid,*r.get('public_case_ids',[]),t['title_zh'],t['title_en'],t['description_zh'],t['description_en'],*t['robots'],*t['tags'],FAMILIES[r['family']]['title_zh'],r['family']])
-    scope=(tr(t.get('scope_zh',''),t.get('scope_en',''),'p','class="scope"') if t.get('scope_zh') else '')
+    all_text=' '.join([rid,*r.get('public_case_ids',[]),t['title_zh'],t['title_en'],t['description_zh'],t['description_en'],t.get('goal_zh',''),t.get('goal_en',''),*t.get('conditions_zh',[]),*t.get('conditions_en',[]),*t['robots'],*t['tags'],FAMILIES[r['family']]['title_zh'],r['family']])
+    scope=('<div class="task-scope">'+tr('录像范围','Demonstrated scope','h3')+tr(t.get('scope_zh',''),t.get('scope_en',''),'p')+'</div>' if t.get('scope_zh') else '')
     outcome=('<span class="outcome">'+tr('安全退出','Safe exit')+'</span>') if r.get('accepted_exit') else ''
-    original=r.get('historical_source_original_url',r['source_page'])
-    source_path=urlsplit(r['source_page']).path.split('/')[-1]
-    fragment=urlsplit(original).fragment or rid
-    original_page='archive/pages/'+source_path+'#'+quote(fragment,safe='.-')
+    goal=tr(t.get('goal_zh',t['description_zh']),t.get('goal_en',t['description_en']),'p')
+    conditions='<ul>'+''.join(tr(zh,en,'li') for zh,en in zip(t.get('conditions_zh',[]),t.get('conditions_en',[])))+'</ul>'
+    brief='<div class="task-brief"><div>'+tr('任务目标','Goal','h3')+goal+'</div><div>'+tr('场景与约束','Scene & constraints','h3')+conditions+'</div></div>'
     aliases=''.join(f'<span id="{e(alias)}"></span>' for alias in r.get('public_case_ids',[]) if alias!=rid)
-    return f'''<article class="task-card" id="{e(rid)}" data-filter-card data-search="{e(all_text)}" data-robots="{e('|'.join(t['robots']))}" data-tags="{e('|'.join(t['tags']))}" data-outcome="{'exit' if r.get('accepted_exit') else 'execution'}">{aliases}{player(rid)}{tr(t['title_zh'],t['title_en'],'h2')}{tr(t['description_zh'],t['description_en'],'p','class="task-description"')}<div class="task-meta">{robots(t['robots'])}{outcome}</div>{scope}<details class="task-details"><summary>{tr('任务标识与原始记录','Task ID & original record')}</summary><p class="task-id">{e(' · '.join(r.get('public_case_ids',[rid])))}</p><div class="detail-links">{link(original_page,'任务条件与原始记录','Original task conditions')}{external(r['video_url'],'打开视频文件','Open video file')}{link(family_url(r['family'])+'#'+rid,'任务链接','Link to task')}</div></details></article>'''
+    return f'''<article class="task-card" id="{e(rid)}" data-filter-card data-search="{e(all_text)}" data-robots="{e('|'.join(t['robots']))}" data-tags="{e('|'.join(t['tags']))}" data-outcome="{'exit' if r.get('accepted_exit') else 'execution'}">{aliases}{player(rid)}<p class="task-card-id">{e(' · '.join(r.get('public_case_ids',[rid])))}</p>{tr(t['title_zh'],t['title_en'],'h2')}<div class="task-meta">{robots(t['robots'])}{outcome}</div>{brief}{scope}</article>'''
 
 def toolbar(records):
     values=[TASKS[r['record_id']] for r in records]
@@ -163,7 +162,7 @@ def families():
         c=BY_CATEGORY[fid];records=[r for r in RECORDS.values() if r['family']==fid]
         body=breadcrumbs([('tasks/','任务图集','Tasks'),(category_url(c['id']),c['title_zh'],c['title_en']),('',f['title_zh'],f['title_en'])])
         body+='<section class="page-hero"><div class="wrap"><p class="eyebrow">'+e(fid)+' / TASK FAMILY</p>'+tr(f['title_zh'],f['title_en'],'h1')+tr(f['intro_zh'],f['intro_en'],'p','class="lead"')+robots(f['robots'])+'</div></section>'
-        content=tasks_grid(records) if records else '<div class="paused-family">'+tr('任务设计保留，研究暂停','Task design retained; research paused','h2')+tr('这项任务尚无完整目标通过验证的参考录像。设计和已有记录保留在归档中，后续恢复时再补充。','There is no reference recording that verifies the complete goal. The design and existing records remain in the archive.','p')+link('archive/pages/archive-f3-20261104.html','查看任务设计与记录','Read the design and records')+'</div>'
+        content=tasks_grid(records) if records else '<div class="paused-family">'+tr('研究暂停，暂无完整参考录像','Research paused; no complete reference recording','h2')+tr('完整穿衣目标尚未通过实测验证，因此这里不展示成功视频。恢复研究后，需要重新完成场景、执行与评分验证。','The complete dressing goal has not passed physical verification, so no success video is shown. Resuming this work requires scene, execution and scoring checks.','p')+'</div>'
         body+='<section class="section" style="padding-top:0"><div class="wrap">'+content+(gallery_note() if records else '')+'</div></section>'
         page(family_url(fid),f['title_zh'],f['title_en'],f['intro_zh'],body,keywords=[fid,*f['robots'],*f['tags']])
 
@@ -174,66 +173,88 @@ def directory():
     body=breadcrumbs([('tasks/','任务图集','Tasks'),('','查找任务','Search')])+'<section class="page-hero"><div class="wrap">'+tr('查找任务','Find a task','h1')+tr('输入任务名称、机器人或关键词，进一步按任务特点筛选。','Search by task, robot or keyword, then narrow by task features.','p','class="lead"')+'</div></section><section class="section search-page" style="padding-top:0"><div class="wrap">'+tasks_grid(list(RECORDS.values()))+gallery_note()+'</div></section>'
     page('tasks/search.html','查找任务','Find a task','搜索所有任务的目标、机器人、工具与任务特点。',body)
 
+def document_block(block):
+    kind=block['type']
+    if kind=='code':
+        return '<div class="code-example"><div class="code-heading"><span>'+e(block.get('language',''))+'</span><button type="button" data-copy-code>'+tr('复制命令','Copy commands')+'</button></div><pre><code>'+escape(block['text'])+'</code></pre><span class="copy-status" role="status" aria-live="polite"></span></div>'
+    if kind=='list':
+        return '<ul class="document-list">'+''.join(tr(zh,en,'li') for zh,en in zip(block['items_zh'],block['items_en']))+'</ul>'
+    if kind=='table':
+        head=''.join(tr(zh,en,'th','scope="col"') for zh,en in zip(block['columns_zh'],block['columns_en']))
+        rows=''.join('<tr>'+''.join(tr(zh,en,'td') for zh,en in zip(zrow,erow))+'</tr>' for zrow,erow in zip(block['rows_zh'],block['rows_en']))
+        return '<div class="table-scroll" role="region" tabindex="0" aria-label="说明表 / Reference table"><table class="document-table"><thead><tr>'+head+'</tr></thead><tbody>'+rows+'</tbody></table></div>'
+    if kind=='note':
+        return '<aside class="document-note">'+tr(block['text_zh'],block['text_en'],'p')+'</aside>'
+    if kind=='paragraph':
+        return tr(block['text_zh'],block['text_en'],'p')
+    raise ValueError('Unknown document block: '+kind)
+
 def documents():
     for name,p in PAGES.items():
-        if name not in ('research','guide','archive'):continue
-        body=breadcrumbs([('',p['title_zh'],p['title_en'])])+'<section class="page-hero"><div class="wrap"><p class="eyebrow">'+{'research':'RESEARCH','guide':'GET STARTED','archive':'ARCHIVE & EVIDENCE'}[name]+'</p>'+tr(p['title_zh'],p['title_en'],'h1')+tr(p['lead_zh'],p['lead_en'],'p','class="lead"')+'</div></section>'
+        if name not in ('research','guide'):continue
+        body=breadcrumbs([('',p['title_zh'],p['title_en'])])+'<section class="page-hero"><div class="wrap"><p class="eyebrow">'+{'research':'RESEARCH','guide':'GET STARTED'}[name]+'</p>'+tr(p['title_zh'],p['title_en'],'h1')+tr(p['lead_zh'],p['lead_en'],'p','class="lead"')+'</div></section>'
         toc=''.join(link('#'+s['id'],s['title_zh'],s['title_en'],'') for s in p['sections'])
         # Fragment links in this page are local to the document, not the homepage.
         toc=toc.replace('href="'+PREFIX+'#','href="#')
         sections=[]
         for s in p['sections']:
             resources=''.join(external(a['url'],a['label_zh'],a['label_en']) for a in s.get('links',[]))
-            sections.append(f'<section class="document-section" id="{s["id"]}">'+tr(s['title_zh'],s['title_en'],'h2')+tr(s['body_zh'],s['body_en'],'p')+('<div class="resource-links">'+resources+'</div>' if resources else '')+'</section>')
-        selected=''
-        if name=='archive':
-            selected='<div class="archive-notice archive-selected" id="archive-selected" hidden data-archive-base="https://github.com/wuxiyang1996/robo-si-results/blob/'+CONFIG['archive_commit']+'/">'+tr('这个链接来自历史资料，可查看当时的原始文件。','This link comes from the historical materials. The original file is available below.')+'</div>'
-            sections.append('<section class="document-section" id="records">'+tr('任务与验证记录','Task and verification records','h2')+tr('任务视频保留原始参考执行的范围。此处提供媒体清单、历史页面与原始文件目录，便于核对。','Task videos retain the scope of their original reference executions. The media manifest, historical pages and file index are available for inspection.','p')+'<div class="resource-links">'+external(local('data/video-gallery.json'),'视频与证据清单','Video & evidence manifest')+external(local('data/archive-files.json'),'归档文件索引','Archive file index')+link('archive/pages/index.html','历史网站页面','Historical site pages')+'</div></section>')
-        body+='<div class="wrap document-layout"><aside class="document-toc" aria-label="页内目录 / On this page">'+toc+'</aside><div class="document-body">'+selected+''.join(sections)+'</div></div>'
+            sections.append(f'<section class="document-section" id="{s["id"]}">'+tr(s['title_zh'],s['title_en'],'h2')+tr(s.get('body_zh',''),s.get('body_en',''),'p')+''.join(document_block(b) for b in s.get('blocks',[]))+('<div class="resource-links">'+resources+'</div>' if resources else '')+'</section>')
+        body+='<div class="wrap document-layout"><aside class="document-toc" aria-label="页内目录 / On this page">'+toc+'</aside><div class="document-body">'+''.join(sections)+'</div></div>'
         page(name+'.html',p['title_zh'],p['title_en'],p['lead_zh'],body,active=name)
 
 def redirect(path, target, aliases=None):
     aliases=aliases or {}
     lang='en' if '-en.' in path else 'zh'
-    script='const target=new URL('+json.dumps(local(target))+',location.origin),aliases='+json.dumps(aliases)+';const q=new URLSearchParams(location.search);if('+json.dumps(lang)+"==='en'&&!q.has('lang'))q.set('lang','en');target.search=q;let hash=decodeURIComponent(location.hash.slice(1));if(hash)target.hash=aliases[hash]||hash;location.replace(target.pathname+target.search+target.hash);"
+    script='const target=new URL('+json.dumps(local(target))+',location.origin),aliases='+json.dumps(aliases)+';const q=new URLSearchParams(location.search);if('+json.dumps(lang)+"==='en'&&!q.has('lang'))q.set('lang','en');target.search=q;let hash=location.hash.slice(1);try{hash=decodeURIComponent(hash)}catch{}if(hash)target.hash=aliases[hash]||hash;location.replace(target.pathname+target.search+target.hash);"
     write(path,f'<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><link rel="canonical" href="{BASE+target}"><title>Embodied Terminal-Bench</title></head><body><p><a href="{local(target)}">打开当前页面 / Open page</a></p><script>{script}</script></body></html>')
 
 def legacy_redirects(paths):
     family_by_slug={f.lower():f for f in FAMILIES}
-    for path in paths:
-        if path in ACTIVE:continue
-        stem=Path(path).stem
-        if path.count('/')==0 and stem in family_by_slug:
-            fid=family_by_slug[stem];target=family_url(fid)
-        elif path.startswith('infra/families/') and stem in FAMILIES:
-            fid=stem;target=family_url(fid)
+    source_families={}
+    for r in RECORDS.values():
+        for key in ('source_page','historical_source_original_url'):
+            stem=Path(urlsplit(r.get(key,'')).path).stem.lower()
+            if stem:source_families.setdefault(stem,set()).add(r['family'])
+    routes={}
+    for path in sorted(set(paths)|{'archive.html'}):
+        stem=Path(path).stem.lower()
+        fid=family_by_slug.get(stem)
+        if not fid and len(source_families.get(stem,[]))==1:fid=next(iter(source_families[stem]))
+        if not fid:
+            match=re.fullmatch(r'(?:archive-|task-)([a-z0-9]+)(?:-(?:\d{8}|zh|en))?',stem)
+            if match:fid=family_by_slug.get(match.group(1))
+        if fid:target=family_url(fid)
         else:
-            fid=None
             if path.startswith('infra/categories/') and stem in {c['id'] for c in CONFIG['categories']}:target=category_url(stem)
-            elif path in ['infra/contribute-zh.html','infra/contribute-en.html']:target=''
-            elif path in ['infra/guide-zh.html','infra/guide-en.html']:target='guide.html'
-            elif path in ['doc/self-modeling-benchmark-v6-zh.html','doc/self-modeling-benchmark-v6-en.html']:target='research.html'
-            elif path in ['infra/results-zh.html','infra/results-en.html']:target='archive.html'
-            else:target='archive/pages/'+path
+            elif 'self-modeling' in stem or any(x in stem for x in ('task-design','protocol','verifier','acceptance','glossary')):target='research.html'
+            elif path.startswith('infra/') and not any(x in stem for x in ('contribute','result','status')):target='guide.html'
+            elif 'guide' in stem or 'download' in stem:target='guide.html'
+            elif stem=='index':target=''
+            else:target='tasks/'
         aliases={}
         if fid:
             for r in RECORDS.values():
                 if r['family']!=fid:continue
                 for alias in [r['record_id'],*r.get('public_case_ids',[]),urlsplit(r.get('historical_source_original_url','')).fragment]:
                     if alias:aliases[alias]=r['record_id']
-        redirect(path,target,aliases)
+        for old_path in (path,'archive/pages/'+path):
+            if old_path in ACTIVE:continue
+            routes[old_path]={'target':target,'aliases':aliases}
+            redirect(old_path,target,aliases)
+    write('data/legacy-routes.json',json.dumps(routes,ensure_ascii=False,separators=(',',':')))
+    return routes
 
 def not_found():
-    body='<section class="hero"><div class="wrap"><p class="eyebrow">FIND A PAGE</p>'+tr('这个地址可能已归档','This address may have moved to the archive','h1')+tr('正在检查历史文件目录。你也可以从任务图集或归档入口继续。','Checking the historical file index. You can also continue from the task gallery or archive.','p','class="lead"')+'<div class="hero-actions">'+link('tasks/','任务图集','Task gallery','button')+link('archive.html','历史与证据','Archive & evidence')+'</div><p id="archive-file-link"></p></div></section>'
-    script='''<script>(async()=>{const prefix='/robo-si-results/';if(!location.pathname.startsWith(prefix))return;let key;try{key=decodeURIComponent(location.pathname.slice(prefix.length))}catch{return}try{const res=await fetch(prefix+'data/archive-files.json');if(!res.ok)return;const data=await res.json();const file=data.files[key]||data.files[key+'.html'];if(!file)return;if(file.page){location.replace(file.page+location.search+location.hash);return}const el=document.getElementById('archive-file-link');const a=document.createElement('a');a.className='text-link';a.href=file.raw;a.textContent='打开原始文件 / Open original file';el.append(a);location.replace(file.raw+location.hash)}catch{}})();</script>'''
-    page('404.html','查找页面','Find a page','查找任务页面和历史归档文件。',body+script,active='')
+    body='<section class="hero"><div class="wrap"><p class="eyebrow">FIND A PAGE</p>'+tr('这个页面已整理到新的位置','This page has moved','h1')+tr('正在查找对应页面，也可以直接浏览任务或打开使用指南。','Looking for the current page. You can also browse tasks or open the guide.','p','class="lead"')+'<div class="hero-actions">'+link('tasks/','任务图集','Task gallery','button')+link('guide.html','使用与下载','Get started')+'</div></div></section>'
+    script='''<script>(async()=>{const prefix='/robo-si-results/';if(!location.pathname.startsWith(prefix))return;let key;try{key=decodeURIComponent(location.pathname.slice(prefix.length))}catch{return}try{const res=await fetch(prefix+'data/legacy-routes.json');if(!res.ok)return;const routes=await res.json();const route=routes[key]||routes[key+'.html'];if(!route)return;const target=new URL(prefix+route.target,location.origin);target.search=location.search;let hash=location.hash.slice(1);try{hash=decodeURIComponent(hash)}catch{}if(hash)target.hash=route.aliases[hash]||hash;location.replace(target.pathname+target.search+target.hash)}catch{}})();</script>'''
+    page('404.html','查找页面','Find a page','查找当前任务页面和使用指南。',body+script,active='')
 
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--allow-incomplete-content',action='store_true',help='Local layout preview only; validation will reject incomplete content.')
     args=parser.parse_args()
     assert OUT.resolve()==ROOT.resolve()/'dist', 'Unexpected build target'
-    OUT.mkdir(exist_ok=True)
     for path in sorted((SOURCE/'content').glob('tasks_*.json')):
         obj=json.loads(path.read_text(encoding='utf-8'))
         assert not (set(FAMILIES)&set(obj['families'])),path
@@ -251,8 +272,11 @@ def main():
     pages_path=SOURCE/'content/pages.json'
     if pages_path.exists():PAGES.update(json.loads(pages_path.read_text(encoding='utf-8')))
     elif args.allow_incomplete_content:
-        for key,zh,en in [('research','研究问题','Research'),('guide','使用与下载','Get started'),('archive','历史与证据','Archive & evidence')]:PAGES[key]={'title_zh':zh,'title_en':en,'lead_zh':'','lead_en':'','sections':[]}
+        for key,zh,en in [('research','研究问题','Research'),('guide','使用与下载','Get started')]:PAGES[key]={'title_zh':zh,'title_en':en,'lead_zh':'','lead_en':'','sections':[]}
     else:raise ValueError('Missing document content')
+    # Only remove this repository's generated deploy directory, never sources.
+    if OUT.exists():shutil.rmtree(OUT.resolve())
+    OUT.mkdir()
     (OUT/'assets').mkdir(exist_ok=True)
     for source in (SOURCE/'assets').iterdir():
         if source.is_file():shutil.copyfile(source,OUT/'assets'/source.name)
@@ -266,22 +290,15 @@ def main():
         browser_qa=qa['status'] if qa_current else 'source_changed_since_review'
         shutil.copyfile(qa_path,OUT/'data/browser-review.json')
     home();directory();categories();families();documents();not_found()
-    signature=hashlib.sha256((ROOT/'tools/archive_site.py').read_bytes()+CONFIG['archive_commit'].encode()).hexdigest()
-    cache=OUT/'data/archive-build.json'
-    if cache.exists() and json.loads(cache.read_text())['signature']==signature:
-        report=json.loads((OUT/'data/archive-files.json').read_text(encoding='utf-8'))
-        paths=list(report['original_html_sha256'])
-    else:
-        paths,report=build_archive(ROOT,OUT,CONFIG['archive_commit'],BASE,PREFIX)
-        write('data/archive-build.json',json.dumps({'signature':signature}))
-    legacy_redirects(paths)
+    tracked=subprocess.check_output(['git','ls-tree','-r','-z','--name-only',CONFIG['archive_commit']],cwd=ROOT).decode('utf-8').rstrip('\0').split('\0')
+    routes=legacy_redirects([p for p in tracked if p.endswith('.html')])
     public={'categories':CONFIG['categories'],'families':FAMILIES,'tasks':TASKS,'unique_recordings':len(RECORDS),'public_configurations':CATALOG['public_configurations']}
     write('data/task-index.json',json.dumps(public,ensure_ascii=False,separators=(',',':')))
     write('robots.txt','User-agent: *\nAllow: /robo-si-results/\nDisallow: /robo-si-results/archive/\nDisallow: /robo-si-results/404.html\nSitemap: '+BASE+'sitemap.xml\n')
     urls=[BASE+('' if p=='index.html' else p.replace('/index.html','/')) for p in ACTIVE if p not in ('404.html','tasks/search.html')]
     write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+escape(u)+'</loc></url>' for u in urls)+'</urlset>')
     files=[p for p in OUT.rglob('*') if p.is_file()]
-    summary={'editorial_complete':not missing and not missing_families,'records':len(RECORDS),'families':len(FAMILIES),'categories':len(CONFIG['categories']),'active_pages':ACTIVE,'archived_html':len(paths),'files':len(files),'bytes':sum(p.stat().st_size for p in files),'video_manifest_sha256':hashlib.sha256((OUT/'data/video-gallery.json').read_bytes()).hexdigest(),'archive_commit':CONFIG['archive_commit'],'browser_visual_qa':browser_qa}
+    summary={'editorial_complete':not missing and not missing_families,'records':len(RECORDS),'families':len(FAMILIES),'categories':len(CONFIG['categories']),'active_pages':ACTIVE,'archived_html':0,'legacy_redirects':len(routes),'files':len(files),'bytes':sum(p.stat().st_size for p in files),'video_manifest_sha256':hashlib.sha256((OUT/'data/video-gallery.json').read_bytes()).hexdigest(),'browser_visual_qa':browser_qa}
     write('data/site-build.json',json.dumps(summary,ensure_ascii=False,indent=2))
     print(json.dumps({k:summary[k] for k in ['editorial_complete','records','families','categories','archived_html','files','bytes']}))
 

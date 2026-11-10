@@ -1,6 +1,7 @@
 """Validate the actual deploy artifact, task coverage, media identity and links."""
 from pathlib import Path
 from html.parser import HTMLParser
+from html import escape
 from urllib.parse import urljoin, urlsplit, unquote
 from collections import Counter
 import argparse
@@ -16,7 +17,7 @@ class Document(HTMLParser):
     def __init__(self,path):
         super().__init__(convert_charrefs=True)
         self.ids=[];self.links=[];self.videos=[];self.figures=[];self.cards=[];self.images=[];self.headings=[];self.text=[];self.meta={};self.timelines=[];self.canonical=None;self.ignored=0
-        self.family_tiles=[];self.family_filters=[];self.family_galleries=[];self.paused_families=[];self.current_family_tile=None
+        self.family_tiles=[];self.family_filters=[];self.family_galleries=[];self.paused_families=[];self.current_family_tile=None;self.current_task_card=None;self.details=[]
         self.feed(path.read_text(encoding='utf-8'))
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
@@ -33,7 +34,9 @@ class Document(HTMLParser):
         if 'data-family-gallery' in a:self.family_galleries.append(a)
         if 'data-paused-family' in a:self.paused_families.append(a)
         if tag=='figure' and a.get('data-record'):self.figures.append(a['data-record'])
-        if tag=='article' and 'task-card' in a.get('class','').split():self.cards.append(a)
+        if tag=='article' and 'task-card' in a.get('class','').split():
+            self.current_task_card={**a,'text':[]};self.cards.append(self.current_task_card)
+        if tag=='details':self.details.append(a)
         if tag=='meta':self.meta[a.get('name',a.get('property',''))]=a.get('content','')
         if tag=='link' and a.get('rel')=='canonical':self.canonical=a.get('href')
         if tag=='h1':self.headings.append(tag)
@@ -41,9 +44,12 @@ class Document(HTMLParser):
     def handle_startendtag(self,tag,attrs):self.handle_starttag(tag,attrs)
     def handle_endtag(self,tag):
         if tag=='a':self.current_family_tile=None
+        if tag=='article':self.current_task_card=None
         if tag in ('script','style'):self.ignored=max(0,self.ignored-1)
     def handle_data(self,data):
-        if not self.ignored:self.text.append(data)
+        if not self.ignored:
+            self.text.append(data)
+            if self.current_task_card is not None:self.current_task_card['text'].append(data)
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,default=REPO/'dist');args=ap.parse_args()
@@ -66,16 +72,23 @@ def main():
     require(all(r['speed']==8 and r['nyx_receipt_verified'] and r['full_decode_verified'] for r in records.values()),'Unverified media in the catalog.')
     descriptions=[]
     for rid,t in index['tasks'].items():
-        for k in ('title_zh','title_en','description_zh','description_en'):
+        for k in ('title_zh','title_en','description_zh','description_en','goal_zh','goal_en'):
             require(bool(t.get(k,'')),f'{rid}: empty {k}')
             require('???' not in t.get(k,'') and '\ufffd' not in t.get(k,''),f'{rid}: damaged text in {k}')
         require(bool(re.search(r'[\u4e00-\u9fff]',t.get('description_zh',''))),f'{rid}: missing Chinese description')
         require(len(t.get('description_zh',''))>=30,f'{rid}: insufficient task description')
+        require(bool(t.get('scope_zh'))==bool(t.get('scope_en')),f'{rid}: demonstrated scope must be bilingual when present')
+        require(bool(re.search(r'[\u4e00-\u9fff]',t.get('goal_zh',''))),f'{rid}: missing Chinese goal')
+        conditions_zh=t.get('conditions_zh');conditions_en=t.get('conditions_en')
+        valid_conditions=isinstance(conditions_zh,list) and isinstance(conditions_en,list) and bool(conditions_zh) and len(conditions_zh)==len(conditions_en)
+        require(valid_conditions,f'{rid}: scene constraints need matching nonempty bilingual arrays')
+        if valid_conditions:
+            require(all(isinstance(x,str) and x.strip() and '???' not in x and '\ufffd' not in x for x in conditions_zh+conditions_en),f'{rid}: empty or damaged constraint')
         require(bool(t.get('robots')),f'{rid}: missing robot filter labels')
         require(bool(t.get('tags')),f'{rid}: missing task keywords')
         require(all(tag in config['tag_labels'] for tag in t.get('tags',[])),f'{rid}: task keyword is outside the shared bilingual vocabulary')
         if records[rid].get('accepted_exit'):
-            require(any(x in t['description_zh']+t.get('scope_zh','') for x in ('退出','停止','不可行')),f'{rid}: safe-exit goal omitted')
+            require(any(x in t.get('goal_zh','')+t.get('scope_zh','') for x in ('退出','停止','不可行')),f'{rid}: displayed safe-exit goal omitted')
         descriptions.append(t['description_zh'])
     require(len(descriptions)==len(set(descriptions)),'Descriptions must be case-specific, not duplicated.')
     docs={};references=0
@@ -90,7 +103,8 @@ def main():
         require(bool(doc.meta.get('keywords')),f'{rel}: no keywords')
         require(bool(doc.meta.get('og:image')),f'{rel}: no sharing poster')
         text=' '.join(doc.text)
-        require(not any(x in text for x in ['最终交付 Nyx','研究提案 · v6','相对 v5 的变化','任务说明正在整理']),f'{rel}: legacy version clutter or placeholder remains')
+        require(not any(x in text for x in ['最终交付 Nyx','研究提案 · v6','相对 v5 的变化','任务说明正在整理','任务条件与原始记录','任务标识与原始记录','任务链接']),f'{rel}: legacy version clutter or record-link label remains')
+        require(not any('task-details' in d.get('class','').split() for d in doc.details),f'{rel}: task details still hide the former record-link panel')
         require('???' not in text and '\ufffd' not in text,f'{rel}: damaged displayed text')
         for image in doc.images:
             require('alt' in image,f'{rel}: image missing alt attribute')
@@ -107,12 +121,15 @@ def main():
     for rel,doc in list(docs.items()):
         for value in doc.links:
             url=urlsplit(urljoin(BASE+rel,value))
+            require(url.netloc!='robo-si-review.wuxiyang.chatgpt.site',f'{rel}: current page links to the retired parallel site')
             if url.netloc!='wuxiyang1996.github.io' or not url.path.startswith(PREFIX):continue
             path=unquote(url.path[len(PREFIX):])
             if not path or path.endswith('/'):path+='index.html'
+            require(not path.startswith('archive/') and path!='archive.html',f'{rel}: current page still links to an archive')
             target=root/path
             references+=1
             require(target.is_file(),f'{rel}: missing local target {path}')
+            if path.endswith('.html'):require(path in build['active_pages'],f'{rel}: current navigation points to an old HTML route: {path}')
             if url.fragment and target.is_file() and path.endswith('.html'):
                 if path not in docs:docs[path]=Document(target)
                 require(unquote(url.fragment) in docs[path].ids,f'{rel}: missing anchor {path}#{url.fragment}')
@@ -155,23 +172,68 @@ def main():
         seen.update(c['id'] for c in doc.cards)
         expected={rid for rid,r in records.items() if r['family']==fid}
         require(set(doc.figures)==expected and len(doc.figures)==len(expected),f'{fid}: family video players must preserve every recording exactly once')
+        for card in doc.cards:
+            task=index['tasks'].get(card['id'],{});displayed=' '.join(card['text'])
+            require(task.get('goal_zh','') in displayed,f'{card["id"]}: goal is not shown on the current task card')
+            for condition in task.get('conditions_zh',[]):require(condition in displayed,f'{card["id"]}: a scene constraint is not shown')
+            require(task.get('scope_zh','') in displayed,f'{card["id"]}: demonstrated scope is not shown')
     require(set(seen)==set(records) and all(n==1 for n in seen.values()),'Family galleries must include every recording exactly once.')
-    archive=json.loads((root/'data/archive-files.json').read_text(encoding='utf-8'))
-    require(archive['baseline_commit']==build['archive_commit'],'Archive baseline mismatch.')
-    timeline_count=0
-    for path in archive['original_html_sha256']:
-        require((root/'archive/pages'/path).is_file(),f'Missing archived page {path}')
-        archived=Document(root/'archive/pages'/path)
-        for timeline in archived.timelines:
-            timeline_count+=1
-            raw_prefix='https://raw.githubusercontent.com/wuxiyang1996/robo-si-results/'+archive['baseline_commit']+'/'
-            require(timeline.startswith(raw_prefix),f'{path}: archive timeline still uses a broken relative path')
-            if timeline.startswith(raw_prefix):require(unquote(timeline[len(raw_prefix):]) in archive['files'],f'{path}: archive timeline source missing')
+    page_sources=json.loads((REPO/'site/content/pages.json').read_text(encoding='utf-8'))
+    require('archive.html' not in build['active_pages'],'The archive must not remain a current content page.')
+    for name in ('research','guide'):
+        source=page_sources[name];generated=(root/(name+'.html')).read_text(encoding='utf-8')
+        for section in source['sections']:
+            for block in section.get('blocks',[]):
+                kind=block.get('type')
+                require(kind in ('code','table','list','note','paragraph'),f'{name}: unknown document block type {kind}')
+                if kind=='code':
+                    require(bool(block.get('text','').strip()),f'{name}: empty code example')
+                    require('<pre><code>'+escape(block.get('text',''))+'</code></pre>' in generated,f'{name}: code example is missing or not HTML-escaped')
+                elif kind=='list':
+                    require(bool(block.get('items_zh')) and len(block.get('items_zh',[]))==len(block.get('items_en',[])),f'{name}: bilingual list length mismatch')
+                elif kind=='table':
+                    columns=len(block.get('columns_zh',[]))
+                    require(columns>0 and columns==len(block.get('columns_en',[])),f'{name}: bilingual table column mismatch')
+                    require(bool(block.get('rows_zh')) and len(block.get('rows_zh',[]))==len(block.get('rows_en',[])),f'{name}: bilingual table row mismatch')
+                    require(all(len(row)==columns for row in block.get('rows_zh',[])+block.get('rows_en',[])),f'{name}: inconsistent table row width')
+                elif kind in ('note','paragraph'):
+                    require(bool(block.get('text_zh')) and bool(block.get('text_en')),f'{name}: missing bilingual block text')
+    require('download' in docs['guide.html'].ids,'The usage guide must retain its download anchor.')
+    routes=json.loads((root/'data/legacy-routes.json').read_text(encoding='utf-8'))
+    require(build.get('archived_html')==0,'Archived HTML content must not be published.')
+    require(build.get('legacy_redirects')==len(routes),'Legacy redirect count does not match its manifest.')
+    active=set(build['active_pages'])
+    for path,route in routes.items():
+        target=route.get('target','');parts=urlsplit(target)
+        target_path=parts.path or 'index.html'
+        if target_path.endswith('/'):target_path+='index.html'
+        require(not parts.scheme and not parts.netloc and not parts.query and not parts.fragment and target_path in active,f'{path}: redirect target is not a current page')
+        stub=root/path
+        require(stub.is_file(),f'{path}: missing legacy redirect')
+        if not stub.is_file():continue
+        doc=Document(stub);raw=stub.read_text(encoding='utf-8')
+        require(doc.canonical==BASE+target,f'{path}: redirect canonical differs from its current target')
+        require(doc.links==[BASE+target,PREFIX+target],f'{path}: redirect retains links beyond its current destination')
+        require(doc.meta.get('robots')=='noindex,follow',f'{path}: redirect must not be indexed')
+        require(not doc.videos and not doc.images and not doc.cards and not doc.timelines and len(raw)<12000,f'{path}: legacy redirect contains old content or media')
+        require('location.replace(' in raw and 'aliases=' in raw,f'{path}: redirect does not preserve task aliases')
+        for old_id,new_id in route.get('aliases',{}).items():
+            require(isinstance(old_id,str) and bool(old_id),f'{path}: invalid task alias')
+            require(new_id in records,f'{path}: alias points to unknown recording {new_id}')
+            require(target_path in docs and new_id in docs[target_path].ids,f'{path}: alias target is absent from its current page')
+    for path in ('archive-m4-20261104.html','archive/pages/archive-m4-20261104.html'):
+        route=routes.get(path,{})
+        require(route.get('target')=='tasks/families/M4.html',f'{path}: M4 old route must open the current M4 family')
+        require(route.get('aliases',{}).get('M4-01')=='M4-01',f'{path}: M4-01 alias is not preserved')
+    published_html={p.relative_to(root).as_posix() for p in root.rglob('*.html')}
+    require(published_html==active|set(routes),'Published HTML includes unregistered old content or missing current routes.')
+    for obsolete in ('data/archive-files.json','data/archive-build.json','assets/archive','archive/assets'):
+        require(not (root/obsolete).exists(),f'Obsolete archive asset remains: {obsolete}')
     require(not list(root.rglob('*.mp4')),'Historical video binaries were accidentally included in the Pages artifact.')
     files=[p for p in root.rglob('*') if p.is_file()]
     require(len(files)<1500,'Pages artifact contains excessive files.')
-    require(sum(p.stat().st_size for p in files)<50*1024*1024,'Pages artifact exceeds the planned footprint.')
-    report={'passed':not errors,'errors':errors,'unique_recordings':len(records),'task_families':len(families),'categories':len(index['categories']),'active_pages':len(build['active_pages']),'local_links_checked':references,'archived_html':len(archive['original_html_sha256']),'archive_timelines_checked':timeline_count,'media_manifest_unchanged':(root/'data/video-gallery.json').read_bytes()==(REPO/'data/video-gallery.json').read_bytes(),'historical_unresolved_links':len(archive['historical_unresolved_links']),'browser_visual_qa':'separately recorded; not inferred from static checks'}
+    require(sum(p.stat().st_size for p in files)<15*1024*1024,'Pages artifact exceeds the focused current-site footprint.')
+    report={'passed':not errors,'errors':errors,'unique_recordings':len(records),'task_families':len(families),'categories':len(index['categories']),'active_pages':len(build['active_pages']),'local_links_checked':references,'archived_html':build.get('archived_html'),'legacy_redirects_checked':len(routes),'media_manifest_unchanged':(root/'data/video-gallery.json').read_bytes()==(REPO/'data/video-gallery.json').read_bytes(),'browser_visual_qa':'separately recorded; not inferred from static checks'}
     (root/'data/site-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))
     raise SystemExit(0 if not errors else 1)

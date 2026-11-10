@@ -17,6 +17,11 @@
   }
   toggle?.addEventListener('click',()=>{lang=lang==='en'?'zh':'en';const u=new URL(location.href);lang==='en'?u.searchParams.set('lang','en'):u.searchParams.delete('lang');history.replaceState(null,'',u);translate()});
   translate();
+  document.querySelectorAll('[data-copy-code]').forEach(button=>button.addEventListener('click',async()=>{
+    const example=button.closest('.code-example'),status=example.querySelector('.copy-status');
+    try{await navigator.clipboard.writeText(example.querySelector('code').textContent);status.textContent=text('命令已复制','Commands copied')}
+    catch{status.textContent=text('请选中代码后复制','Select the code to copy it')}
+  }));
   document.querySelectorAll('[data-family-gallery]').forEach(gallery=>{
     const buttons=[...gallery.querySelectorAll('[data-family-filter]')];
     const tiles=[...gallery.querySelectorAll('[data-family-card]')];
@@ -131,10 +136,4 @@
   }
   window.addEventListener('hashchange',revealHashTarget);
   revealHashTarget();
-  const archive=document.getElementById('archive-selected');
-  if(archive){const path=params.get('document');if(path&&/^[\w\-./]+$/.test(path)&&!path.split('/').includes('..')){
-    const p=document.createElement('p');p.className='task-id';p.textContent=path;
-    const a=document.createElement('a');a.className='text-link';a.href=archive.dataset.archiveBase+path.split('/').map(encodeURIComponent).join('/');a.dataset.zh='打开归档文件';a.dataset.en='Open archived file';a.textContent=text(a.dataset.zh,a.dataset.en);
-    archive.append(p,a);archive.hidden=false;
-  }}
 })();
