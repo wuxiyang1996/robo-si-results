@@ -9,6 +9,7 @@ GitHub Pages at <https://wuxiyang1996.github.io/robo-si-results/> is the main de
 | `site/content/site.json` | Branding, six categories, family membership, category sharing posters, and shared bilingual keywords |
 | `site/content/pages.json` | Current research and usage guide |
 | `site/content/tasks_*.json` | Bilingual task goals, scene constraints, and demonstrated scope |
+| `site/content/task_facets.json` | Four tag vocabularies, per-record assignments and difficulty evidence notes |
 | `site/assets/site.css` | Styling |
 | `site/assets/site.js` | Browser behavior |
 | `tools/build_site.py` | Current-page generation and legacy redirects |
@@ -24,6 +25,10 @@ Task cards display `goal_zh`/`goal_en`, matching `conditions_zh`/`conditions_en`
 The homepage and `tasks/` share a compact task-family gallery. Six category buttons and an “All” button filter 29 linked thumbnails; clicking a thumbnail opens that family's complete video gallery. The default category is access and retrieval. Thumbnail images come from `family_representatives` in the original media manifest, including `TT-R-G-U` for the arm-versus-humanoid example. Category pages use the same family cards; the single-family dynamic category directly shows its tasks. F3 remains a separate paused-design link with no invented recording. Keep the research question and three contributions above the homepage gallery.
 
 Category controls use native buttons with `aria-pressed`; family thumbnails are ordinary links, not play buttons. Preserve category selection when reloading or changing language, and keep all family links usable without JavaScript. Individual task pages retain their video players, search, and task filters. Do not preload the full video catalog on the entry pages.
+
+The four tag axes are `embodiment`, `tools`, `task`, and `difficulty`. Their URL values are stable slugs; bilingual labels belong in `task_facets.json`. Every recording must have all four dimensions. Tools describe physical tools available in the scene, including candidates, rather than APIs or guaranteed use. The family gallery tests all selected tags against the **same recording**, not against independent family-wide unions. Selected tags carry into the family URL. Individual cards expose the same tags as filter buttons. The six primary category buttons remain a separate filter.
+
+Scene difficulty follows the proposal's cumulative, same-seed design: necessary tools; tools usable by another body; then distractors. Keep source-declared scene layers distinguishable from full oracle admission and measured agent difficulty. Do not derive these layers from task-ID suffixes, execution-interface L1–L3, recording duration, success, object counts, or family curriculum levels. Use `unclassified` when that specific scene-layer evidence is absent, and include bilingual `difficulty_note_*` plus source references. These are website research metadata, never additions to evaluated-agent observations or prompts. Public copies are emitted in `data/task-facets.json` and `data/task-index.json`.
 
 ## Routes and local checks
 

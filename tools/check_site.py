@@ -61,6 +61,22 @@ def main():
     index=json.loads((root/'data/task-index.json').read_text(encoding='utf-8'))
     catalog=json.loads((REPO/'data/video-gallery.json').read_text(encoding='utf-8'))
     records={r['record_id']:r for r in catalog['records']}
+    facets=index['facets']; dimensions=('embodiment','tools','task','difficulty')
+    require(set(facets['records'])==set(records),'Four-axis tags must cover all 246 recordings.')
+    require(set(facets['dimensions'])==set(dimensions),'Expected embodiment/tools/task/difficulty dimensions.')
+    require(json.loads((root/'data/task-facets.json').read_text(encoding='utf-8'))==facets,'Public facet catalog differs from the task index.')
+    for rid,entry in facets['records'].items():
+        for dimension in dimensions:
+            selected=entry.get(dimension,[])
+            require(bool(selected) and len(selected)==len(set(selected)),f'{rid}: missing or duplicate {dimension} tags')
+            require(all(value in facets['dimensions'][dimension]['values'] for value in selected),f'{rid}: undefined {dimension} tag')
+        require(len(entry.get('difficulty',[]))==1,f'{rid}: expected one scene difficulty classification')
+        require(bool(entry.get('difficulty_note_zh')) and bool(entry.get('difficulty_note_en')),f'{rid}: missing difficulty evidence note')
+    for dimension,spec in facets['dimensions'].items():
+        require(bool(spec.get('label_zh')) and bool(spec.get('label_en')),f'{dimension}: dimension label must be bilingual')
+        for slug,value in spec['values'].items():
+            require(bool(re.fullmatch(r'[a-z0-9-]+',slug)),f'{dimension}/{slug}: facet URL values must be stable slugs')
+            require(bool(value.get('label_zh')) and bool(value.get('label_en')),f'{dimension}/{slug}: tag label must be bilingual')
     require(build['editorial_complete'],'Build contains preview-only incomplete content.')
     require(len(index['tasks'])==len(records)==246,'Expected 246 task records.')
     require(set(index['tasks'])==set(records),'Editorial record IDs differ from original recordings.')
@@ -87,7 +103,7 @@ def main():
         require(bool(t.get('robots')),f'{rid}: missing robot filter labels')
         require(bool(t.get('tags')),f'{rid}: missing task keywords')
         require(all(tag in config['tag_labels'] for tag in t.get('tags',[])),f'{rid}: task keyword is outside the shared bilingual vocabulary')
-        if records[rid].get('accepted_exit'):
+        if records[rid].get('accepted_exit') or 'safe-exit' in facets['records'][rid]['task']:
             require(any(x in t.get('goal_zh','')+t.get('scope_zh','') for x in ('退出','停止','不可行')),f'{rid}: displayed safe-exit goal omitted')
         descriptions.append(t['description_zh'])
     require(len(descriptions)==len(set(descriptions)),'Descriptions must be case-specific, not duplicated.')
@@ -159,6 +175,13 @@ def main():
         require(all(f.get('type')=='button' and f.get('aria-pressed') in ('true','false') for f in doc.family_filters),f'{rel}: category filters need native button semantics and pressed state')
         require(sum(f.get('aria-pressed')=='true' for f in doc.family_filters)==1,f'{rel}: exactly one category filter should be selected')
         require(len(doc.paused_families)==1 and doc.paused_families[0].get('data-paused-family')=='F3' and doc.paused_families[0].get('data-family-category')=='deformable',f'{rel}: paused F3 must remain separate from video thumbnails')
+        raw=(root/rel).read_text(encoding='utf-8')
+        for dimension in dimensions:require(f'data-facet-filter="{dimension}"' in raw,f'{rel}: missing {dimension} family filter')
+        data_match=re.search(r'<script type="application/json" data-facet-records>(.*?)</script>',raw)
+        require(bool(data_match),f'{rel}: missing record-level family facet data')
+        if data_match:
+            expected=[{'family':r['family'],**{d:facets['records'][r['record_id']][d] for d in dimensions}} for r in catalog['records']]
+            require(json.loads(data_match.group(1))==expected,f'{rel}: family facet matching data is not record-specific')
     for category in index['categories']:
         rel='tasks/categories/'+category['id']+'.html'
         if len(category['families'])>1:
@@ -177,6 +200,13 @@ def main():
             require(task.get('goal_zh','') in displayed,f'{card["id"]}: goal is not shown on the current task card')
             for condition in task.get('conditions_zh',[]):require(condition in displayed,f'{card["id"]}: a scene constraint is not shown')
             require(task.get('scope_zh','') in displayed,f'{card["id"]}: demonstrated scope is not shown')
+            expected_exit=bool(records[card['id']].get('accepted_exit')) or 'safe-exit' in facets['records'][card['id']]['task']
+            require(card.get('data-outcome')==('exit' if expected_exit else 'execution'),f'{card["id"]}: goal-type filter contradicts the task goal')
+            for dimension in dimensions:
+                values=facets['records'][card['id']][dimension]
+                require(card.get('data-'+dimension)=='|'.join(values),f'{card["id"]}: {dimension} filter metadata mismatch')
+                for value in values:
+                    require(facets['dimensions'][dimension]['values'][value]['label_zh'] in displayed,f'{card["id"]}: {dimension} tag not visible')
     require(set(seen)==set(records) and all(n==1 for n in seen.values()),'Family galleries must include every recording exactly once.')
     page_sources=json.loads((REPO/'site/content/pages.json').read_text(encoding='utf-8'))
     require('archive.html' not in build['active_pages'],'The archive must not remain a current content page.')

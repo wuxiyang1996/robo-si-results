@@ -25,6 +25,8 @@ BASE = CONFIG['base_url']
 FAMILIES = {}
 TASKS = {}
 PAGES = {}
+FACETS = {}
+DIMENSIONS = ('embodiment', 'tools', 'task', 'difficulty')
 ACTIVE = []
 COUNTS = Counter(r['family'] for r in RECORDS.values())
 BY_CATEGORY = {f: c for c in CONFIG['categories'] for f in c['families']}
@@ -90,6 +92,50 @@ def player(record_id):
 def robots(values):
     return '<div class="robots">'+''.join('<span>'+e(x)+'</span>' for x in values)+'</div>'
 
+def facet_values(records, dimension):
+    return list(dict.fromkeys(v for r in records for v in FACETS['records'][r['record_id']][dimension]))
+
+def facet_controls(records, family=False):
+    fields=[]
+    for dimension in DIMENSIONS:
+        spec=FACETS['dimensions'][dimension]
+        present=facet_values(records,dimension)
+        values=list(spec['values']) if dimension=='difficulty' else present
+        counts=Counter(v for r in records for v in FACETS['records'][r['record_id']][dimension])
+        options='<option value="" data-zh="全部" data-en="All">全部</option>'
+        for value in values:
+            item=spec['values'][value]; n=counts[value]
+            options+=f'<option value="{e(value)}" data-zh="{e(item["label_zh"])} ({n})" data-en="{e(item["label_en"])} ({n})">{e(item["label_zh"])} ({n})</option>'
+        control_id=('family-' if family else '')+dimension+'-filter'
+        attr=f'data-facet-filter="{dimension}"' if family else ''
+        fields.append(f'<div class="facet-field"><label for="{control_id}">'+tr(spec['label_zh'],spec['label_en'])+f'</label><select id="{control_id}" {attr}>{options}</select></div>')
+    return '<div class="facet-controls">'+''.join(fields)+'</div>'
+
+def facet_guide():
+    return '<details class="facet-guide"><summary>'+tr('标签与难度怎么读','About the tags and difficulty')+'</summary>'+tr('Embodiment 是执行任务的机器人；Tools 是场景里的物理工具；Task 描述要完成的操作。标签用于浏览研究任务。','Embodiment identifies the robots; Tools lists physical tools in the scene; Task describes the operation. These tags organize the research gallery.','p')+tr('难度按同一种子的场景逐层叠加：第 1 层只有必要工具；第 2 层加入当前身体用不了、其他身体能用的工具；第 3 层再加入可通过试验排除的干扰项。','Difficulty uses cumulative scenes with the same seed: layer 1 contains only necessary tools; layer 2 adds tools usable by another body but not the current one; layer 3 adds distractors that experiments can rule out.','p')+tr('“待分层”表示当前记录尚未验证这套分层条件。任务编号或执行接口中的 L1–L3、录像长短和专家成功均不作为难度依据；这些浏览标签不会提供给被评测 agent。','“Not classified” means the required scene-layer evidence has not been established. L1–L3 in task IDs or execution APIs, video duration and expert success do not determine difficulty. These browsing labels are not given to evaluated agents.','p')+'</details>'
+
+def facet_summary(records):
+    rows=[]
+    for dimension in ('tools','task','difficulty'):
+        spec=FACETS['dimensions'][dimension];values=facet_values(records,dimension)
+        shown=values[:2]
+        labels=' · '.join(spec['values'][v]['label_zh'] for v in shown)
+        english=' · '.join(spec['values'][v]['label_en'] for v in shown)
+        if len(values)>2:labels+=f' +{len(values)-2}';english+=f' +{len(values)-2}'
+        rows.append('<div>'+tr(spec['label_zh'],spec['label_en'],'span','class="facet-caption"')+tr(labels,english)+'</div>')
+    return '<div class="family-facet-summary">'+''.join(rows)+'</div>'
+
+def task_facet_tags(rid):
+    record=FACETS['records'][rid];rows=[]
+    for dimension in DIMENSIONS:
+        spec=FACETS['dimensions'][dimension];chips=[]
+        for value in record[dimension]:
+            item=spec['values'][value]
+            chips.append(f'<button type="button" class="facet-chip" data-set-facet="{dimension}" data-facet-value="{e(value)}">'+tr(item['label_zh'],item['label_en'])+'</button>')
+        rows.append(f'<div class="facet-row" data-facet-dimension="{dimension}">'+tr(spec['label_zh'],spec['label_en'],'dt')+'<dd>'+''.join(chips)+'</dd></div>')
+    note=tr(record['difficulty_note_zh'],record['difficulty_note_en'],'p','class="facet-note"') if record['difficulty']!=['unclassified'] else ''
+    return '<dl class="task-facets">'+''.join(rows)+'</dl>'+note
+
 def gallery_note():
     return '<p class="gallery-note">'+tr('视频展示物理仿真中的参考执行。各任务的简化条件和完成范围随录像说明，不能据此推算新 agent 的成功率。','Videos show reference executions in physics simulation. Each task states its conditions and demonstrated scope; these are not success rates for a new agent.')+'</p>'
 
@@ -107,7 +153,8 @@ def family_card(fid):
     rid=CATALOG['family_representatives'].get(fid)
     if not rid or rid not in RECORDS: return ''
     r=RECORDS[rid];c=BY_CATEGORY[fid]
-    return f'''<a class="family-tile" data-local data-family-card="{fid}" data-family-category="{c['id']}" data-preview-record="{e(rid)}" href="{local(family_url(fid))}"><div class="family-thumbnail"><img src="{e(r['poster_url'])}" alt="" loading="lazy" decoding="async" width="960" height="540"><span class="thumbnail-action" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M4 2L18 10 4 18Z"/></svg></span><span class="speed">8×</span></div><div class="family-tile-body"><div class="family-tile-meta"><span class="family-code">{fid}</span>{tr(f'{COUNTS[fid]} 段视频',f'{COUNTS[fid]} video'+('s' if COUNTS[fid]!=1 else ''))}</div>{tr(f['title_zh'],f['title_en'],'h3')}<div class="family-tile-bottom">{robots(f['robots'])}<span class="family-arrow" aria-hidden="true">↗</span></div></div></a>'''
+    tags=facet_summary([record for record in RECORDS.values() if record['family']==fid])
+    return f'''<a class="family-tile" data-local data-family-card="{fid}" data-family-category="{c['id']}" data-preview-record="{e(rid)}" href="{local(family_url(fid))}"><div class="family-thumbnail"><img src="{e(r['poster_url'])}" alt="" loading="lazy" decoding="async" width="960" height="540"><span class="thumbnail-action" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M4 2L18 10 4 18Z"/></svg></span><span class="speed">8×</span></div><div class="family-tile-body"><div class="family-tile-meta"><span class="family-code">{fid}</span>{tr(f'{COUNTS[fid]} 段视频',f'{COUNTS[fid]} video'+('s' if COUNTS[fid]!=1 else ''))}</div>{tr(f['title_zh'],f['title_en'],'h3')}{tags}<div class="family-tile-bottom">{robots(f['robots'])}<span class="family-arrow" aria-hidden="true">↗</span></div></div></a>'''
 
 def family_gallery():
     buttons=[];captions=[];paused=[]
@@ -119,27 +166,29 @@ def family_gallery():
             if not COUNTS[fid]:
                 paused.append(f'<p class="paused-note" data-paused-family="{fid}" data-family-category="{c["id"]}">'+link(family_url(fid),FAMILIES[fid]['title_zh'],FAMILIES[fid]['title_en'],'')+' — '+tr('研究暂停，暂无完整参考录像。','Research paused; no complete reference recording.')+'</p>')
     buttons.append('<button class="gallery-tag" type="button" data-family-filter="all" aria-pressed="true" aria-controls="family-grid">'+tr('全部','All')+'<span class="tag-count" aria-hidden="true">29</span></button>')
-    return '<div class="family-browser" data-family-gallery data-default-category="access"><div class="gallery-tags" role="group" aria-label="任务类别 / Task categories">'+''.join(buttons)+'</div><div class="gallery-context">'+''.join(captions)+'<p data-category-caption="all">'+tr('从取物、搬运到装配和协作，浏览所有任务族。','Explore all families, from retrieval and transport to assembly and collaboration.')+'</p><span class="family-result-count" data-family-count role="status" aria-live="polite">'+tr('29 个任务族','29 families')+'</span></div><div class="family-grid" id="family-grid">'+''.join(family_card(f) for c in CONFIG['categories'] for f in c['families'] if COUNTS[f])+ '</div>'+''.join(paused)+'</div>'
+    records=list(RECORDS.values())
+    data=json.dumps([{'family':r['family'],**{d:FACETS['records'][r['record_id']][d] for d in DIMENSIONS}} for r in records],ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')
+    filters='<div class="facet-toolbar">'+facet_controls(records,True)+'<button type="button" class="reset-filter" data-reset-facets>'+tr('清除标签','Clear tags')+'</button></div>'+facet_guide()
+    empty='<div class="empty-results" data-family-empty hidden>'+tr('没有匹配的任务。试试其他标签组合，或选择全部类别。','No matching tasks. Try another tag combination or choose all categories.')+'</div>'
+    return '<div class="family-browser" data-family-gallery data-default-category="access"><div class="gallery-tags" role="group" aria-label="任务类别 / Task categories">'+''.join(buttons)+'</div>'+filters+'<div class="gallery-context">'+''.join(captions)+'<p data-category-caption="all">'+tr('从取物、搬运到装配和协作，浏览所有任务族。','Explore all families, from retrieval and transport to assembly and collaboration.')+'</p><span class="family-result-count" data-family-count role="status" aria-live="polite">'+tr('29 个任务族 · 246 个任务','29 families · 246 tasks')+'</span></div><div class="family-grid" id="family-grid">'+''.join(family_card(f) for c in CONFIG['categories'] for f in c['families'] if COUNTS[f])+ '</div>'+empty+''.join(paused)+f'<script type="application/json" data-facet-records>{data}</script></div>'
 
 def task_card(r):
     rid=r['record_id']; t=TASKS[rid]
+    is_exit=r.get('accepted_exit') or 'safe-exit' in FACETS['records'][rid]['task']
     all_text=' '.join([rid,*r.get('public_case_ids',[]),t['title_zh'],t['title_en'],t['description_zh'],t['description_en'],t.get('goal_zh',''),t.get('goal_en',''),*t.get('conditions_zh',[]),*t.get('conditions_en',[]),*t['robots'],*t['tags'],FAMILIES[r['family']]['title_zh'],r['family']])
     scope=('<div class="task-scope">'+tr('录像范围','Demonstrated scope','h3')+tr(t.get('scope_zh',''),t.get('scope_en',''),'p')+'</div>' if t.get('scope_zh') else '')
-    outcome=('<span class="outcome">'+tr('安全退出','Safe exit')+'</span>') if r.get('accepted_exit') else ''
+    outcome=('<span class="outcome">'+tr('安全退出','Safe exit')+'</span>') if is_exit else ''
     goal=tr(t.get('goal_zh',t['description_zh']),t.get('goal_en',t['description_en']),'p')
     conditions='<ul>'+''.join(tr(zh,en,'li') for zh,en in zip(t.get('conditions_zh',[]),t.get('conditions_en',[])))+'</ul>'
     brief='<div class="task-brief"><div>'+tr('任务目标','Goal','h3')+goal+'</div><div>'+tr('场景与约束','Scene & constraints','h3')+conditions+'</div></div>'
     aliases=''.join(f'<span id="{e(alias)}"></span>' for alias in r.get('public_case_ids',[]) if alias!=rid)
-    return f'''<article class="task-card" id="{e(rid)}" data-filter-card data-search="{e(all_text)}" data-robots="{e('|'.join(t['robots']))}" data-tags="{e('|'.join(t['tags']))}" data-outcome="{'exit' if r.get('accepted_exit') else 'execution'}">{aliases}{player(rid)}<p class="task-card-id">{e(' · '.join(r.get('public_case_ids',[rid])))}</p>{tr(t['title_zh'],t['title_en'],'h2')}<div class="task-meta">{robots(t['robots'])}{outcome}</div>{brief}{scope}</article>'''
+    facets=FACETS['records'][rid]
+    attributes=' '.join(f'data-{d}="{e("|".join(facets[d]))}"' for d in DIMENSIONS)
+    all_text+=' '+' '.join(FACETS['dimensions'][d]['values'][v][lang] for d in DIMENSIONS for v in facets[d] for lang in ('label_zh','label_en'))
+    return f'''<article class="task-card" id="{e(rid)}" data-filter-card data-search="{e(all_text)}" {attributes} data-outcome="{'exit' if is_exit else 'execution'}">{aliases}{player(rid)}<p class="task-card-id">{e(' · '.join(r.get('public_case_ids',[rid])))}</p>{tr(t['title_zh'],t['title_en'],'h2')}{outcome}{task_facet_tags(rid)}{brief}{scope}</article>'''
 
 def toolbar(records):
-    values=[TASKS[r['record_id']] for r in records]
-    rs=sorted(set(x for t in values for x in t['robots']))
-    tags=sorted(set(x for t in values for x in t['tags']))
-    tag_en=CONFIG['tag_labels']
-    opts=lambda values:''.join(f'<option value="{e(v)}">{e(v)}</option>' for v in values)
-    tagopts=''.join(f'<option value="{e(v)}" data-zh="{e(v)}" data-en="{e(tag_en.get(v,v))}">{e(v)}</option>' for v in tags)
-    return f'''<div class="toolbar"><div class="search-field"><label for="task-search">{tr('查找任务','Search')}</label><input id="task-search" type="search" placeholder="任务、机器人或关键词" data-placeholder-zh="任务、机器人或关键词" data-placeholder-en="Task, robot or keyword" aria-label="查找任务 / Search tasks"></div><select id="robot-filter" aria-label="按机器人筛选 / Filter by robot"><option value="" data-zh="全部机器人" data-en="All robots">全部机器人</option>{opts(rs)}</select><select id="tag-filter" aria-label="按任务特点筛选 / Filter by task feature"><option value="" data-zh="全部任务特点" data-en="All features">全部任务特点</option>{tagopts}</select><select id="outcome-filter" aria-label="按目标类型筛选 / Filter by target type"><option value="" data-zh="全部目标" data-en="All goals">全部目标</option><option value="execution" data-zh="操作任务" data-en="Manipulation">操作任务</option><option value="exit" data-zh="安全退出" data-en="Safe exit">安全退出</option></select><button class="reset-filter" type="button" data-reset-filter>{tr('重置','Reset')}</button><span class="filter-count" id="filter-count" role="status" aria-live="polite">{len(records)} / {len(records)}</span></div>'''
+    return f'''<div class="toolbar task-toolbar"><div class="search-field"><label for="task-search">{tr('查找任务','Search')}</label><input id="task-search" type="search" placeholder="任务、机器人或关键词" data-placeholder-zh="任务、机器人或关键词" data-placeholder-en="Task, robot or keyword" aria-label="查找任务 / Search tasks"></div><select id="outcome-filter" aria-label="按目标类型筛选 / Filter by target type"><option value="" data-zh="全部目标" data-en="All goals">全部目标</option><option value="execution" data-zh="操作任务" data-en="Manipulation">操作任务</option><option value="exit" data-zh="安全退出" data-en="Safe exit">安全退出</option></select><button class="reset-filter" type="button" data-reset-filter>{tr('重置','Reset')}</button><span class="filter-count" id="filter-count" role="status" aria-live="polite">{len(records)} / {len(records)}</span>{facet_controls(records)}</div>{facet_guide()}'''
 
 def tasks_grid(records):
     return toolbar(records)+'<div class="gallery">'+''.join(task_card(r) for r in records)+'</div><div class="empty-results" id="empty-results" hidden>'+tr('没有找到符合条件的任务。试试更短的关键词，或清除筛选。','No tasks match these filters. Try a shorter search or reset the filters.')+'</div>'
@@ -269,6 +318,14 @@ def main():
         r=RECORDS[rid];TASKS[rid]={**r,'description_zh':'任务说明正在整理。','description_en':'Task description in progress.','robots':[],'tags':[],'scope_zh':'','scope_en':''}
     assert set(TASKS)==set(RECORDS)
     assert set(FAMILIES)==set(BY_CATEGORY)
+    FACETS.update(json.loads((SOURCE/'content/task_facets.json').read_text(encoding='utf-8')))
+    assert set(FACETS['records'])==set(RECORDS), 'Task facets must cover every recording'
+    assert set(FACETS['dimensions'])==set(DIMENSIONS), 'Expected four independent tag dimensions'
+    for rid,entry in FACETS['records'].items():
+        for dimension in DIMENSIONS:
+            assert entry.get(dimension) and len(entry[dimension])==len(set(entry[dimension])), (rid,dimension)
+            assert all(value in FACETS['dimensions'][dimension]['values'] for value in entry[dimension]), (rid,dimension)
+        assert len(entry['difficulty'])==1 and entry.get('difficulty_note_zh') and entry.get('difficulty_note_en'), rid
     pages_path=SOURCE/'content/pages.json'
     if pages_path.exists():PAGES.update(json.loads(pages_path.read_text(encoding='utf-8')))
     elif args.allow_incomplete_content:
@@ -282,6 +339,7 @@ def main():
         if source.is_file():shutil.copyfile(source,OUT/'assets'/source.name)
     (OUT/'data').mkdir(exist_ok=True)
     shutil.copyfile(ROOT/'data/video-gallery.json',OUT/'data/video-gallery.json')
+    shutil.copyfile(SOURCE/'content/task_facets.json',OUT/'data/task-facets.json')
     browser_qa='not_performed'
     qa_path=SOURCE/'quality/browser-review.json'
     if qa_path.exists():
@@ -296,7 +354,7 @@ def main():
     home();directory();categories();families();documents();not_found()
     tracked=subprocess.check_output(['git','ls-tree','-r','-z','--name-only',CONFIG['archive_commit']],cwd=ROOT).decode('utf-8').rstrip('\0').split('\0')
     routes=legacy_redirects([p for p in tracked if p.endswith('.html')])
-    public={'categories':CONFIG['categories'],'families':FAMILIES,'tasks':TASKS,'unique_recordings':len(RECORDS),'public_configurations':CATALOG['public_configurations']}
+    public={'categories':CONFIG['categories'],'families':FAMILIES,'tasks':TASKS,'facets':FACETS,'unique_recordings':len(RECORDS),'public_configurations':CATALOG['public_configurations']}
     write('data/task-index.json',json.dumps(public,ensure_ascii=False,separators=(',',':')))
     write('robots.txt','User-agent: *\nAllow: /robo-si-results/\nDisallow: /robo-si-results/archive/\nDisallow: /robo-si-results/404.html\nSitemap: '+BASE+'sitemap.xml\n')
     urls=[BASE+('' if p=='index.html' else p.replace('/index.html','/')) for p in ACTIVE if p not in ('404.html','tasks/search.html')]

@@ -22,6 +22,7 @@ These are reference executions, not a new agent's benchmark success rate. Each t
 | `site/content/site.json` | Site structure, category and family metadata |
 | `site/content/pages.json` | Bilingual research and installation / agent guide |
 | `site/content/tasks_*.json` | Task goals, scene conditions and demonstrated scope |
+| `site/content/task_facets.json` | Embodiment, physical tools, task operations and source-backed scene difficulty tags |
 | `site/assets/` | CSS and browser JavaScript |
 | `data/video-gallery.json` | Preserved video receipt and provenance; not editorial copy |
 | `tools/build_site.py` | Generate the publishable `dist/` directory |
