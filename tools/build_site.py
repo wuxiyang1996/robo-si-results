@@ -286,7 +286,11 @@ def main():
     qa_path=SOURCE/'quality/browser-review.json'
     if qa_path.exists():
         qa=json.loads(qa_path.read_text(encoding='utf-8'))
-        qa_current=all((ROOT/path).is_file() and hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==value for path,value in qa['source_sha256'].items())
+        def reviewed_hash(path):
+            data=path.read_bytes()
+            if qa.get('source_hash_format')=='sha256-utf8-lf':data=data.replace(b'\r\n',b'\n')
+            return hashlib.sha256(data).hexdigest()
+        qa_current=all((ROOT/path).is_file() and reviewed_hash(ROOT/path)==value for path,value in qa['source_sha256'].items())
         browser_qa=qa['status'] if qa_current else 'source_changed_since_review'
         shutil.copyfile(qa_path,OUT/'data/browser-review.json')
     home();directory();categories();families();documents();not_found()
