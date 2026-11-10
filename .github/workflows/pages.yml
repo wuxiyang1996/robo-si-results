@@ -41,11 +41,10 @@ jobs:
       - uses: actions/upload-pages-artifact@v4
         with:
           path: .
-          include-hidden-files: true
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 15
     permissions:
       pages: write
       id-token: write
@@ -57,5 +56,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v5
         with:
-          # The complete evidence tree exceeded the default 10-minute sync wait.
-          timeout: 1800000
+          # deploy-pages caps its polling timeout at 10 minutes.
+          timeout: 600000
