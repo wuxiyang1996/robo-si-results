@@ -112,7 +112,7 @@ def facet_controls(records, family=False):
     return '<div class="facet-controls">'+''.join(fields)+'</div>'
 
 def facet_guide():
-    return '<details class="facet-guide"><summary>'+tr('标签与难度怎么读','About the tags and difficulty')+'</summary>'+tr('Embodiment 是执行任务的机器人；Tools 是场景里的物理工具；Task 描述要完成的操作。标签用于浏览研究任务。','Embodiment identifies the robots; Tools lists physical tools in the scene; Task describes the operation. These tags organize the research gallery.','p')+tr('难度按同一种子的场景逐层叠加：第 1 层只有必要工具；第 2 层加入当前身体用不了、其他身体能用的工具；第 3 层再加入可通过试验排除的干扰项。','Difficulty uses cumulative scenes with the same seed: layer 1 contains only necessary tools; layer 2 adds tools usable by another body but not the current one; layer 3 adds distractors that experiments can rule out.','p')+tr('“待分层”表示当前记录尚未验证这套分层条件。任务编号或执行接口中的 L1–L3、录像长短和专家成功均不作为难度依据；这些浏览标签不会提供给被评测 agent。','“Not classified” means the required scene-layer evidence has not been established. L1–L3 in task IDs or execution APIs, video duration and expert success do not determine difficulty. These browsing labels are not given to evaluated agents.','p')+'</details>'
+    return '<details class="facet-guide"><summary>'+tr('标签说明','About the tags')+'</summary>'+tr('按机器人、场景工具、任务特点和难度筛选。工具标签也包括供机器人选择的候选工具。','Filter by robot, physical tools, task features and difficulty. Tool tags include the candidates available in each scene.','p')+tr('难度按同一种子的场景逐层扩展：第 1 层放入必要工具；第 2 层加入本机用不了、其他身体能用的工具；第 3 层再加入需要通过试验辨别的干扰项。“待分层”表示场景分层信息待补充。','Difficulty builds on scenes with the same seed: layer 1 contains the necessary tools; layer 2 adds tools usable by other bodies but not the current robot; layer 3 adds distractors to distinguish through experiments. “Not classified” marks scenes awaiting classification.','p')+'</details>'
 
 def facet_summary(records):
     rows=[]
@@ -133,11 +133,10 @@ def task_facet_tags(rid):
             item=spec['values'][value]
             chips.append(f'<button type="button" class="facet-chip" data-set-facet="{dimension}" data-facet-value="{e(value)}">'+tr(item['label_zh'],item['label_en'])+'</button>')
         rows.append(f'<div class="facet-row" data-facet-dimension="{dimension}">'+tr(spec['label_zh'],spec['label_en'],'dt')+'<dd>'+''.join(chips)+'</dd></div>')
-    note=tr(record['difficulty_note_zh'],record['difficulty_note_en'],'p','class="facet-note"') if record['difficulty']!=['unclassified'] else ''
-    return '<dl class="task-facets">'+''.join(rows)+'</dl>'+note
+    return '<dl class="task-facets">'+''.join(rows)+'</dl>'
 
 def gallery_note():
-    return '<p class="gallery-note">'+tr('视频展示物理仿真中的参考执行。各任务的简化条件和完成范围随录像说明，不能据此推算新 agent 的成功率。','Videos show reference executions in physics simulation. Each task states its conditions and demonstrated scope; these are not success rates for a new agent.')+'</p>'
+    return '<p class="gallery-note">'+tr('视频以 8 倍速展示物理仿真中的参考执行。','Videos show reference executions in physics simulation at 8× speed.')+'</p>'
 
 def cta():
     return f'''<section class="bottom-cta"><div class="wrap cta-inner"><div>{tr('从一个任务开始','Start with one task','h2')}{tr('下载环境，接入 agent，再看执行记录和评分。','Download the environment, connect an agent, and inspect execution and scores.','p')}</div><div class="hero-actions">{link('guide.html','使用与下载','Get started','button')}{link('research.html','阅读研究问题','Read the research')}</div></div></section>'''
@@ -176,7 +175,7 @@ def task_card(r):
     rid=r['record_id']; t=TASKS[rid]
     is_exit=r.get('accepted_exit') or 'safe-exit' in FACETS['records'][rid]['task']
     all_text=' '.join([rid,*r.get('public_case_ids',[]),t['title_zh'],t['title_en'],t['description_zh'],t['description_en'],t.get('goal_zh',''),t.get('goal_en',''),*t.get('conditions_zh',[]),*t.get('conditions_en',[]),*t['robots'],*t['tags'],FAMILIES[r['family']]['title_zh'],r['family']])
-    scope=('<div class="task-scope">'+tr('录像范围','Demonstrated scope','h3')+tr(t.get('scope_zh',''),t.get('scope_en',''),'p')+'</div>' if t.get('scope_zh') else '')
+    scope=('<div class="task-scope">'+tr('演示说明','About this demonstration','h3')+tr(t.get('scope_zh',''),t.get('scope_en',''),'p')+'</div>' if t.get('scope_zh') else '')
     outcome=('<span class="outcome">'+tr('安全退出','Safe exit')+'</span>') if is_exit else ''
     goal=tr(t.get('goal_zh',t['description_zh']),t.get('goal_en',t['description_en']),'p')
     conditions='<ul>'+''.join(tr(zh,en,'li') for zh,en in zip(t.get('conditions_zh',[]),t.get('conditions_en',[])))+'</ul>'
@@ -211,7 +210,7 @@ def families():
         c=BY_CATEGORY[fid];records=[r for r in RECORDS.values() if r['family']==fid]
         body=breadcrumbs([('tasks/','任务图集','Tasks'),(category_url(c['id']),c['title_zh'],c['title_en']),('',f['title_zh'],f['title_en'])])
         body+='<section class="page-hero"><div class="wrap"><p class="eyebrow">'+e(fid)+' / TASK FAMILY</p>'+tr(f['title_zh'],f['title_en'],'h1')+tr(f['intro_zh'],f['intro_en'],'p','class="lead"')+robots(f['robots'])+'</div></section>'
-        content=tasks_grid(records) if records else '<div class="paused-family">'+tr('研究暂停，暂无完整参考录像','Research paused; no complete reference recording','h2')+tr('完整穿衣目标尚未通过实测验证，因此这里不展示成功视频。恢复研究后，需要重新完成场景、执行与评分验证。','The complete dressing goal has not passed physical verification, so no success video is shown. Resuming this work requires scene, execution and scoring checks.','p')+'</div>'
+        content=tasks_grid(records) if records else '<div class="paused-family">'+tr('研究暂停','Research paused','h2')+tr('已完成穿衣场景和局部操作试验，完整穿衣任务仍待验证。','Dressing scenes and partial motions have been tested. Full dressing remains to be validated.','p')+'</div>'
         body+='<section class="section" style="padding-top:0"><div class="wrap">'+content+(gallery_note() if records else '')+'</div></section>'
         page(family_url(fid),f['title_zh'],f['title_en'],f['intro_zh'],body,keywords=[fid,*f['robots'],*f['tags']])
 

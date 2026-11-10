@@ -13,7 +13,7 @@ This repository hosts the public research site and reference-video gallery. GitH
 
 The gallery contains **246 unique reference recordings covering 247 public configurations**, organized into six categories and 30 research task families. Twenty-nine families have videos; F3 remains paused. Videos are encoded at 8× and play at the browser's normal rate.
 
-These are reference executions, not a new agent's benchmark success rate. Each task retains its own acceptance scope, including correct exits. Historical runs, privileged experts, and ordinary-interface runs remain distinct. Interface probes, historical regrading, and fresh complete policy runs are different checks. Rendering changes do not establish new physical execution.
+Each video presents a reference execution, with its goal, scene conditions and demonstration notes alongside it. Agent evaluations use the execution and scoring workflow in the guide.
 
 ## Site source
 
