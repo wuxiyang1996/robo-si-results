@@ -181,6 +181,7 @@ def family_card(fid):
 
 def family_gallery():
     buttons=[];captions=[];paused=[]
+    buttons.append('<button class="gallery-tag" type="button" data-family-filter="all" aria-pressed="true" aria-controls="family-grid">'+tr('全部','All')+'<span class="tag-count" aria-hidden="true">29</span></button>')
     for c in CONFIG['categories']:
         count=sum(COUNTS[f]>0 for f in c['families'])
         buttons.append(f'<button class="gallery-tag" id="{c["id"]}" type="button" data-family-filter="{c["id"]}" aria-pressed="false" aria-controls="family-grid">'+tr(c['title_zh'],c['title_en'])+f'<span class="tag-count" aria-hidden="true">{count}</span></button>')
@@ -188,7 +189,6 @@ def family_gallery():
         for fid in c['families']:
             if not COUNTS[fid]:
                 paused.append(f'<p class="paused-note" data-paused-family="{fid}" data-family-category="{c["id"]}">'+link(family_url(fid),FAMILIES[fid]['title_zh'],FAMILIES[fid]['title_en'],'')+' — '+tr('研究暂停，暂无完整参考录像。','Research paused; no complete reference recording.')+'</p>')
-    buttons.append('<button class="gallery-tag" type="button" data-family-filter="all" aria-pressed="true" aria-controls="family-grid">'+tr('全部','All')+'<span class="tag-count" aria-hidden="true">29</span></button>')
     records=list(RECORDS.values())
     data=json.dumps([{'family':r['family'],**{d:FACETS['records'][r['record_id']][d] for d in DIMENSIONS}} for r in records],ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')
     filters='<div class="facet-toolbar">'+facet_controls(records,True)+'<button type="button" class="reset-filter" data-reset-facets>'+tr('清除标签','Clear tags')+'</button></div>'+facet_guide()
