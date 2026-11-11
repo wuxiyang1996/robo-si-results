@@ -30,9 +30,11 @@ class Document(HTMLParser):
         if tag=='video':self.videos.append(a)
         if a.get('data-timeline'):self.timelines.append(a['data-timeline'])
         if tag=='img':self.images.append(a)
-        if tag=='a' and 'data-family-card' in a:
-            self.current_family_tile={**a,'images':[]};self.family_tiles.append(self.current_family_tile)
+        if tag=='article' and 'data-family-card' in a:
+            self.current_family_tile={**a,'images':[],'links':[],'players':[]};self.family_tiles.append(self.current_family_tile)
         if tag=='img' and self.current_family_tile is not None:self.current_family_tile['images'].append(a)
+        if tag=='a' and 'data-family-link' in a and self.current_family_tile is not None:self.current_family_tile['links'].append(a)
+        if tag=='figure' and a.get('data-record') and self.current_family_tile is not None:self.current_family_tile['players'].append(a['data-record'])
         if tag=='button' and 'data-family-filter' in a:self.family_filters.append(a)
         if 'data-family-gallery' in a:self.family_galleries.append(a)
         if 'data-paused-family' in a:self.paused_families.append(a)
@@ -46,8 +48,7 @@ class Document(HTMLParser):
         if tag in ('script','style'):self.ignored+=1
     def handle_startendtag(self,tag,attrs):self.handle_starttag(tag,attrs)
     def handle_endtag(self,tag):
-        if tag=='a':self.current_family_tile=None
-        if tag=='article':self.current_task_card=None
+        if tag=='article':self.current_task_card=None;self.current_family_tile=None
         if tag in ('script','style'):self.ignored=max(0,self.ignored-1)
     def handle_data(self,data):
         if not self.ignored:
@@ -64,6 +65,28 @@ def main():
     index=json.loads((root/'data/task-index.json').read_text(encoding='utf-8'))
     catalog=json.loads((REPO/'data/video-gallery.json').read_text(encoding='utf-8'))
     records={r['record_id']:r for r in catalog['records']}
+    playback_path=root/'data/playback-media.json'
+    require(playback_path.is_file(),'Missing browser playback media manifest.')
+    playback=json.loads(playback_path.read_text(encoding='utf-8')) if playback_path.is_file() else {'records':[]}
+    media={r['record_id']:r for r in playback['records']}
+    require(set(media)==set(records),'Same-origin browser videos must cover all 246 recordings.')
+    require(len(media)==len(playback['records']),'Duplicate browser media records.')
+    if playback_path.is_file():
+        require(build.get('playback_manifest_sha256')==hashlib.sha256(playback_path.read_bytes()).hexdigest(),'Browser playback manifest changed after build.')
+        require(playback.get('source_manifest_sha256')==hashlib.sha256((REPO/'data/video-gallery.json').read_bytes()).hexdigest(),'Browser playback manifest does not bind the current original catalog.')
+    for rid,item in media.items():
+        require(item['source_sha256']==records[rid]['source_8x_sha256'],f'{rid}: playback derivative uses a superseded source')
+        require(item.get('codec')=='h264' and item.get('pix_fmt')=='yuv420p',f'{rid}: incompatible browser codec')
+        require(item.get('full_decode_verified') and item.get('faststart'),f'{rid}: playback derivative was not verified')
+        require(abs(item['duration_s']-item['source_duration_s'])<=.05,f'{rid}: playback duration changed')
+        for kind in ('video','poster'):
+            name=item[kind+'_path'];path=(root/name).resolve()
+            safe=path.is_relative_to(root) and name.startswith('media/') and '\\' not in name and ':' not in name and path.relative_to(root).as_posix()==name
+            require(safe,f'{rid}: invalid playback path')
+            if not safe:continue
+            require(path.is_file(),f'{rid}: missing {kind} file')
+            if path.is_file():require(hashlib.sha256(path.read_bytes()).hexdigest()==item[kind+'_sha256'],f'{rid}: {kind} hash mismatch')
+    require(sum(p.stat().st_size for p in (root/'media').rglob('*') if p.is_file())<900*1024*1024,'Browser media exceeds the Pages budget.')
     facets=index['facets']; dimensions=('embodiment','tools','task','difficulty')
     require(set(facets['records'])==set(records),'Four-axis tags must cover all 246 recordings.')
     require(set(facets['dimensions'])==set(dimensions),'Expected embodiment/tools/task/difficulty dimensions.')
@@ -134,8 +157,10 @@ def main():
             r=records.get(figure)
             require(r is not None,f'{rel}: unknown video {figure}')
             if r:
-                require(video.get('data-video-src')==r['video_url'] and video.get('poster')==r['poster_url'],f'{rel}: altered video or poster for {figure}')
+                item=media.get(figure,{})
+                require(video.get('data-video-src')==PREFIX+item.get('video_path','') and video.get('poster')==PREFIX+item.get('poster_path',''),f'{rel}: wrong same-origin video or poster for {figure}')
             require('autoplay' not in video and video.get('preload')=='none',f'{rel}: video eagerly loaded or autoplaying')
+            require('controls' in video and 'playsinline' in video,f'{rel}: missing native inline playback controls')
             require(video.get('tabindex')=='-1',f'{rel}: hidden video can receive keyboard focus')
     for rel,doc in list(docs.items()):
         for value in doc.links:
@@ -161,17 +186,18 @@ def main():
         for tile in doc.family_tiles:
             fid=tile.get('data-family-card');rid=tile.get('data-preview-record');record=records.get(rid)
             require('family-tile' in tile.get('class','').split(),f'{rel}: family thumbnail is missing its card class')
-            require(tile.get('href')==PREFIX+'tasks/families/'+str(fid)+'.html',f'{rel}: thumbnail must link directly to its family videos')
+            require(tile['links'] and all(a.get('href')==PREFIX+'tasks/families/'+str(fid)+'.html' for a in tile['links']),f'{rel}: family needs a separate task navigation link')
+            require(tile['players']==[rid],f'{rel}: thumbnail must play its representative inline')
             require(tile.get('data-family-category')==family_categories.get(fid),f'{rel}: wrong thumbnail category for {fid}')
             require(rid==catalog['family_representatives'].get(fid) and record is not None,f'{rel}: wrong representative recording for {fid}')
             images=tile['images']
             require(len(images)==1,f'{rel}: expected one thumbnail image for {fid}')
             if record and len(images)==1:
-                require(record['family']==fid and images[0].get('src')==record['poster_url'],f'{rel}: thumbnail does not match the verified family representative')
+                require(record['family']==fid and images[0].get('src')==PREFIX+media.get(rid,{}).get('poster_path',''),f'{rel}: thumbnail does not match the verified family representative')
         return doc
     for rel in ('index.html','tasks/index.html'):
         doc=check_family_tiles(rel,recorded_families)
-        require(not doc.videos,f'{rel}: family entry gallery should use linked thumbnails, not inline players')
+        require(len(doc.videos)==len(recorded_families),f'{rel}: each recorded family must offer inline playback')
         require(len(doc.family_galleries)==1 and doc.family_galleries[0].get('data-default-category')=='access',f'{rel}: missing shared category gallery')
         filters=[f.get('data-family-filter') for f in doc.family_filters]
         require(set(filters)==category_ids|{'all'} and len(filters)==7,f'{rel}: expected all and six category filter buttons')
@@ -189,7 +215,7 @@ def main():
         rel='tasks/categories/'+category['id']+'.html'
         if len(category['families'])>1:
             doc=check_family_tiles(rel,recorded_families.intersection(category['families']))
-            require(not doc.videos and not doc.family_filters,f'{rel}: category should link to family videos without duplicate filters or players')
+            require(len(doc.videos)==len(recorded_families.intersection(category['families'])) and not doc.family_filters,f'{rel}: category must offer one inline player per recorded family')
     dynamic=next(c for c in index['categories'] if c['id']=='dynamic')
     require(dynamic['demo']=='TT-R-G-U' and catalog['family_representatives'].get('TT')=='TT-R-G-U','Incorrect arm-versus-humanoid demonstration.')
     seen=Counter()
@@ -283,10 +309,12 @@ def main():
     require(published_html==active|set(routes),'Published HTML includes unregistered old content or missing current routes.')
     for obsolete in ('data/archive-files.json','data/archive-build.json','assets/archive','archive/assets'):
         require(not (root/obsolete).exists(),f'Obsolete archive asset remains: {obsolete}')
-    require(not list(root.rglob('*.mp4')),'Historical video binaries were accidentally included in the Pages artifact.')
+    expected_videos={item['video_path'] for item in media.values()}
+    require({p.relative_to(root).as_posix() for p in root.rglob('*.mp4')}==expected_videos,'Published videos must exactly match the browser playback manifest.')
     files=[p for p in root.rglob('*') if p.is_file()]
     require(len(files)<1500,'Pages artifact contains excessive files.')
-    require(sum(p.stat().st_size for p in files)<15*1024*1024,'Pages artifact exceeds the focused current-site footprint.')
+    require(sum(p.stat().st_size for p in files if 'media' not in p.relative_to(root).parts)<15*1024*1024,'Non-media pages exceed the focused current-site footprint.')
+    require(sum(p.stat().st_size for p in files)<950*1024*1024,'Pages artifact exceeds its deployment budget.')
     report={'passed':not errors,'errors':errors,'unique_recordings':len(records),'task_families':len(families),'categories':len(index['categories']),'active_pages':len(build['active_pages']),'local_links_checked':references,'archived_html':build.get('archived_html'),'legacy_redirects_checked':len(routes),'media_manifest_unchanged':(root/'data/video-gallery.json').read_bytes()==(REPO/'data/video-gallery.json').read_bytes(),'browser_visual_qa':'separately recorded; not inferred from static checks'}
     (root/'data/site-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))

@@ -13,6 +13,8 @@ This repository hosts the public research site and reference-video gallery. GitH
 
 The gallery contains **246 unique reference recordings covering 247 public configurations**, organized into six categories and 30 research task families. Twenty-nine families have videos; F3 remains paused. Videos are encoded at 8× and play at the browser's normal rate.
 
+Select a gallery poster to play its representative video in place, or use the separate family link to browse variants. Videos support inline controls and fullscreen, use same-origin MP4 URLs, and are prepared from the selected Nyx originals at up to 1080p. Native 720p recordings retain their original resolution.
+
 Each video presents a reference execution, with its goal, scene conditions and demonstration notes alongside it. Agent evaluations use the execution and scoring workflow in the guide.
 
 ## Site source
@@ -25,11 +27,12 @@ Each video presents a reference execution, with its goal, scene conditions and d
 | `site/content/task_facets.json` | Embodiment, physical tools, task operations and source-backed scene difficulty tags |
 | `site/assets/` | CSS and browser JavaScript |
 | `data/video-gallery.json` | Preserved video receipt and provenance; not editorial copy |
+| `site/content/playback_media.json` | Same-origin browser files and their pinned release bundle |
 | `tools/build_site.py` | Generate the publishable `dist/` directory |
 
 ## Build and preview
 
-Python 3 is required. The site tools use the standard library; no package installation is needed.
+Python 3 is required. Building and checking the site use the standard library; no package installation is needed. The first build downloads and verifies the browser-media bundle, then reuses the ignored local cache.
 
 ```sh
 python tools/build_site.py

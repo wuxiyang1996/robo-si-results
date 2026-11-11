@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import re
 from research_page import render_research
+from playback_media import materialize_media
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'site'
@@ -27,6 +28,7 @@ FAMILIES = {}
 TASKS = {}
 PAGES = {}
 FACETS = {}
+PLAYBACK = {}
 DIMENSIONS = ('embodiment', 'tools', 'task', 'difficulty')
 ACTIVE = []
 COUNTS = Counter(r['family'] for r in RECORDS.values())
@@ -36,6 +38,9 @@ def e(value): return escape(str(value), quote=True)
 def tr(zh, en, tag='span', extra=''):
     return f'<{tag} data-zh="{e(zh)}" data-en="{e(en)}" {extra}>{escape(zh)}</{tag}>'
 def local(path): return PREFIX + path.lstrip('/')
+def asset(path):
+    digest=hashlib.sha256((SOURCE/path).read_bytes().replace(b'\r\n',b'\n')).hexdigest()[:12]
+    return local(path)+'?v='+digest
 def link(path, zh, en, cls='text-link'):
     return f'<a class="{cls}" data-local href="{e(local(path))}">{tr(zh,en)}</a>'
 def external(url, zh, en, cls='text-link'):
@@ -65,12 +70,16 @@ def page(path, title_zh, title_en, description, body, active='tasks', image=None
     title_en += ' · Embodied Terminal-Bench'
     canonical = BASE + ('' if path == 'index.html' else path.replace('/index.html','/'))
     poster = image or RECORDS[CONFIG['categories'][0]['demo']]['poster_url']
+    for rid,record in RECORDS.items():
+        if record['poster_url']==poster:
+            poster=BASE+PLAYBACK[rid]['poster_path']
+            break
     words = CONFIG['keywords_zh'] + CONFIG['keywords_en'] + (keywords or [])
     indexing='<meta name="robots" content="noindex,follow">' if path in ('404.html','tasks/search.html') else ''
     text = f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
     <title data-zh="{e(title_zh)}" data-en="{e(title_en)}">{escape(title_zh)}</title><meta name="description" content="{e(description)}"><meta name="keywords" content="{e(', '.join(dict.fromkeys(words)))}">
     <meta name="theme-color" content="#faf7f3"><link rel="canonical" href="{canonical}"><meta property="og:type" content="website"><meta property="og:site_name" content="Embodied Terminal-Bench"><meta property="og:title" content="{e(title_zh)}"><meta property="og:description" content="{e(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{e(poster)}"><meta name="twitter:card" content="summary_large_image">
-    {indexing}<link rel="stylesheet" href="{local('assets/site.css')}"><script defer src="{local('assets/site.js')}"></script></head><body>
+    {indexing}<link rel="stylesheet" href="{asset('assets/site.css')}"><script defer src="{asset('assets/site.js')}"></script></head><body>
     {header(active)}<main id="main">{body}</main>{footer()}</body></html>'''
     write(path, text)
     ACTIVE.append(path)
@@ -83,12 +92,17 @@ def breadcrumbs(parts):
 
 def player(record_id):
     r = RECORDS[record_id]
+    media = PLAYBACK[record_id]
+    video_url = local(media['video_path'])
+    poster_url = local(media['poster_path'])
     task = TASKS.get(record_id, r)
     zh,en = task['title_zh'],task['title_en']
-    return f'''<figure class="player" data-record="{e(record_id)}" data-state="poster"><video controls playsinline preload="none" tabindex="-1" data-video-src="{e(r['video_url'])}" poster="{e(r['poster_url'])}" aria-label="{e(zh)}" data-label-zh="{e(zh)}" data-label-en="{e(en)}"></video>
-    <button class="video-start" data-play-video type="button" aria-label="播放：{e(zh)}" data-label-zh="播放：{e(zh)}" data-label-en="Play: {e(en)}"><img class="poster" src="{e(r['poster_url'])}" alt="{e(zh)}" loading="lazy" decoding="async" width="960" height="540"><span class="play-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M4 2L18 10 4 18Z"/></svg></span></button><span class="speed">8×</span>
-    <p class="video-status" hidden role="status">{tr('视频暂时无法加载。','The video could not load.')} <a href="{e(r['video_url'])}">{tr('打开视频文件','Open video file')}</a></p>
-    <noscript><p class="video-status"><a href="{e(r['video_url'])}">{tr('打开视频','Open video')}</a></p></noscript></figure>'''
+    quality = f'{media["height"]}p · '
+    return f'''<figure class="player" data-record="{e(record_id)}" data-state="poster"><video controls playsinline webkit-playsinline preload="none" tabindex="-1" data-video-src="{e(video_url)}" poster="{e(poster_url)}" aria-label="{e(zh)}" data-label-zh="{e(zh)}" data-label-en="{e(en)}"></video>
+    <button class="video-start" data-play-video type="button" aria-label="播放：{e(zh)}" data-label-zh="播放：{e(zh)}" data-label-en="Play: {e(en)}"><img class="poster" src="{e(poster_url)}" alt="{e(zh)}" loading="lazy" decoding="async" width="{media.get('width',960)}" height="{media.get('height',540)}"><span class="play-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M4 2L18 10 4 18Z"/></svg></span></button><span class="speed">{quality}8×</span>
+    <button type="button" data-fullscreen-video aria-label="全屏观看" data-label-zh="全屏观看" data-label-en="View fullscreen"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+    <p class="video-status" hidden role="status"><span data-video-error-message>{tr('视频暂时无法加载，请重试。','The video could not load. Please retry.')}</span> <button type="button" data-retry-video>{tr('重试播放','Retry playback')}</button></p>
+    <noscript><p class="video-status"><a href="{e(video_url)}">{tr('播放视频','Play video')}</a></p></noscript></figure>'''
 
 def robots(values):
     return '<div class="robots">'+''.join('<span>'+e(x)+'</span>' for x in values)+'</div>'
@@ -117,7 +131,7 @@ def facet_guide():
 
 def facet_summary(records):
     rows=[]
-    for dimension in ('tools','task','difficulty'):
+    for dimension in DIMENSIONS:
         spec=FACETS['dimensions'][dimension];values=facet_values(records,dimension)
         shown=values[:2]
         labels=' · '.join(spec['values'][v]['label_zh'] for v in shown)
@@ -145,7 +159,7 @@ def cta():
 def home():
     contributions=''.join(f'<article class="contribution"><span class="number">0{i}</span><div>{tr(x["title_zh"],x["title_en"],"h2")}{tr(x["body_zh"],x["body_en"],"p")}</div></article>' for i,x in enumerate(CONFIG['contributions'],1))
     body=f'''<section class="hero"><div class="wrap"><p class="eyebrow">CODE · EXPERIMENT · PHYSICAL ACTION</p>{tr(CONFIG['research_question_zh'],CONFIG['research_question_en'],'h1')}{tr(CONFIG['intro_zh'],CONFIG['intro_en'],'p','class="lead"')}<div class="hero-actions">{link('#categories','观看任务演示','Explore the tasks','button')}{link('research.html','阅读研究问题','Read the research')}</div></div></section>
-    <div class="wrap"><div class="contributions">{contributions}</div></div><section class="section" id="categories"><div class="wrap"><div class="section-head"><div><p class="eyebrow">THE TASK GALLERY</p>{tr('任务图集','Task gallery','h2')}{tr('选一个类别，点击小图查看这个任务族的全部视频。','Choose a category, then open a thumbnail to explore the family’s videos.','p')}</div>{link('tasks/search.html','查找具体任务','Find a specific task')}</div>{family_gallery()}{gallery_note()}</div></section>{cta()}'''
+    <div class="wrap"><div class="contributions">{contributions}</div></div><section class="section" id="categories"><div class="wrap"><div class="section-head"><div><p class="eyebrow">THE TASK GALLERY</p>{tr('任务图集','Task gallery','h2')}{tr('点击播放，在这里观看每个任务族的代表演示；还可以全屏观看或查看全部任务。','Play a representative demonstration here, watch fullscreen, or explore all tasks in the family.','p')}</div>{link('tasks/search.html','查找具体任务','Find a specific task')}</div>{family_gallery()}{gallery_note()}</div></section>{cta()}'''
     page('index.html',CONFIG['research_question_zh'],CONFIG['research_question_en'],CONFIG['intro_zh'],body,active='home')
 
 def family_card(fid):
@@ -154,7 +168,7 @@ def family_card(fid):
     if not rid or rid not in RECORDS: return ''
     r=RECORDS[rid];c=BY_CATEGORY[fid]
     tags=facet_summary([record for record in RECORDS.values() if record['family']==fid])
-    return f'''<a class="family-tile" data-local data-family-card="{fid}" data-family-category="{c['id']}" data-preview-record="{e(rid)}" href="{local(family_url(fid))}"><div class="family-thumbnail"><img src="{e(r['poster_url'])}" alt="" loading="lazy" decoding="async" width="960" height="540"><span class="thumbnail-action" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M4 2L18 10 4 18Z"/></svg></span><span class="speed">8×</span></div><div class="family-tile-body"><div class="family-tile-meta"><span class="family-code">{fid}</span>{tr(f'{COUNTS[fid]} 段视频',f'{COUNTS[fid]} video'+('s' if COUNTS[fid]!=1 else ''))}</div>{tr(f['title_zh'],f['title_en'],'h3')}{tags}<div class="family-tile-bottom">{robots(f['robots'])}<span class="family-arrow" aria-hidden="true">↗</span></div></div></a>'''
+    return f'''<article class="family-tile" data-family-card="{fid}" data-family-category="{c['id']}" data-preview-record="{e(rid)}">{player(rid)}<div class="family-tile-body"><div class="family-tile-meta"><span class="family-code">{fid}</span>{tr(f'{COUNTS[fid]} 段视频',f'{COUNTS[fid]} videos')}</div><h3><a data-family-link data-local href="{local(family_url(fid))}">{tr(f['title_zh'],f['title_en'])}</a></h3><p class="family-preview-label">{tr('演示','Example')} · {e(rid)}</p>{tags}<div class="family-tile-bottom"><a data-family-link data-local class="text-link" href="{local(family_url(fid))}">{tr(f'查看 {COUNTS[fid]} 个任务',f'Explore {COUNTS[fid]} tasks')}</a></div></div></article>'''
 
 def family_gallery():
     buttons=[];captions=[];paused=[]
@@ -217,7 +231,7 @@ def families():
 
 def directory():
     form=f'<form class="toolbar" action="{local("tasks/search.html")}" method="get"><div class="search-field"><label for="global-search">{tr("查找任务","Search")}</label><input id="global-search" type="search" name="q" placeholder="任务、机器人或关键词" data-placeholder-zh="任务、机器人或关键词" data-placeholder-en="Task, robot or keyword"></div><input type="hidden" name="lang" value="zh"><button class="button" type="submit">{tr("搜索全部任务","Search all tasks")}</button></form>'
-    body=breadcrumbs([('','任务图集','Tasks')])+'<section class="page-hero"><div class="wrap"><p class="eyebrow">TASK GALLERY</p>'+tr('从你关心的问题开始','Find the problem you care about','h1')+tr('选一个类别，点击小图查看这个任务族的全部视频。','Choose a category, then open a thumbnail to explore the family’s videos.','p','class="lead"')+'</div></section><section class="section" style="padding-top:0"><div class="wrap">'+family_gallery()+form+gallery_note()+'</div></section>'
+    body=breadcrumbs([('','任务图集','Tasks')])+'<section class="page-hero"><div class="wrap"><p class="eyebrow">TASK GALLERY</p>'+tr('从你关心的问题开始','Find the problem you care about','h1')+tr('点击播放，在当前页面观看代表演示。选择“查看任务”，继续浏览同一任务族的不同场景。','Play a representative demonstration on this page. Choose “Explore tasks” to see the family’s other scenarios.','p','class="lead"')+'</div></section><section class="section" style="padding-top:0"><div class="wrap">'+family_gallery()+form+gallery_note()+'</div></section>'
     page('tasks/index.html','任务图集','Task gallery','按物理难点、机器人和工具浏览任务设计与参考录像。',body)
     body=breadcrumbs([('tasks/','任务图集','Tasks'),('','查找任务','Search')])+'<section class="page-hero"><div class="wrap">'+tr('查找任务','Find a task','h1')+tr('输入任务名称、机器人或关键词，进一步按任务特点筛选。','Search by task, robot or keyword, then narrow by task features.','p','class="lead"')+'</div></section><section class="section search-page" style="padding-top:0"><div class="wrap">'+tasks_grid(list(RECORDS.values()))+gallery_note()+'</div></section>'
     page('tasks/search.html','查找任务','Find a task','搜索所有任务的目标、机器人、工具与任务特点。',body)
@@ -343,6 +357,12 @@ def main():
     for source in (SOURCE/'assets').iterdir():
         if source.is_file():shutil.copyfile(source,OUT/'assets'/source.name)
     (OUT/'data').mkdir(exist_ok=True)
+    playback_path=SOURCE/'content/playback_media.json'
+    playback=materialize_media(ROOT,OUT,playback_path)
+    PLAYBACK.update({r['record_id']:r for r in playback['records']})
+    assert len(PLAYBACK)==len(playback['records']) and set(PLAYBACK)==set(RECORDS),'Browser media must cover all recordings once'
+    assert all(PLAYBACK[rid]['source_sha256']==r['source_8x_sha256'] for rid,r in RECORDS.items()),'Browser media must derive from the current selected Nyx source'
+    shutil.copyfile(playback_path,OUT/'data/playback-media.json')
     shutil.copyfile(ROOT/'data/video-gallery.json',OUT/'data/video-gallery.json')
     shutil.copyfile(SOURCE/'content/task_facets.json',OUT/'data/task-facets.json')
     browser_qa='not_performed'
@@ -366,6 +386,8 @@ def main():
     write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+escape(u)+'</loc></url>' for u in urls)+'</urlset>')
     files=[p for p in OUT.rglob('*') if p.is_file()]
     summary={'editorial_complete':not missing and not missing_families,'records':len(RECORDS),'families':len(FAMILIES),'categories':len(CONFIG['categories']),'active_pages':ACTIVE,'archived_html':0,'legacy_redirects':len(routes),'files':len(files),'bytes':sum(p.stat().st_size for p in files),'video_manifest_sha256':hashlib.sha256((OUT/'data/video-gallery.json').read_bytes()).hexdigest(),'browser_visual_qa':browser_qa}
+    summary['playback_manifest_sha256']=hashlib.sha256((OUT/'data/playback-media.json').read_bytes()).hexdigest()
+    summary['browser_media']=playback['summary']
     write('data/site-build.json',json.dumps(summary,ensure_ascii=False,indent=2))
     print(json.dumps({k:summary[k] for k in ['editorial_complete','records','families','categories','archived_html','files','bytes']}))
 

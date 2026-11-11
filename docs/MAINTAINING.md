@@ -17,6 +17,9 @@ GitHub Pages at <https://wuxiyang1996.github.io/robo-si-results/> is the main de
 | `tools/research_page.py` | Research page composition and interactive component markup |
 | `tools/check_site.py` | Static validation |
 | `data/video-gallery.json` | Video provenance receipt: preserve its accepted source data |
+| `site/content/playback_media.json` | Browser derivatives, original-source hashes, and the pinned media bundle |
+| `tools/prepare_playback_media.py` | Rebuild and verify web videos from the selected Nyx originals |
+| `tools/playback_media.py` | Verify the release bundle and copy browser media into the site |
 
 Only `research` and `guide` in `pages.json` are rendered. Each page has `title_zh`, `title_en`, `lead_zh`, `lead_en`, and `sections`. A section has `id`, bilingual `title_*` and `body_*`, and optional `links` with `label_zh`, `label_en`, and `url`. Bodies are plain text, not HTML; separate paragraphs with `\n\n`.
 
@@ -30,9 +33,9 @@ Use direct, natural prose in both languages. State the task goal, physical setup
 
 Typography is shared by all current pages in `site/assets/site.css`. Use `rem` for font sizes so browser font preferences remain effective. The default body is 18px at a 16px browser root, with most task and document text at 16–18px and secondary labels at 12–15px. Preserve the larger mobile sizes; allow navigation, filters and task labels to wrap instead of shrinking the text. Check long English labels as well as Chinese copy before publishing a typography change.
 
-The homepage and `tasks/` share a compact task-family gallery. Six category buttons and an “All” button filter 29 linked thumbnails; clicking a thumbnail opens that family's complete video gallery. The default category is access and retrieval. Thumbnail images come from `family_representatives` in the original media manifest, including `TT-R-G-U` for the arm-versus-humanoid example. Category pages use the same family cards; the single-family dynamic category directly shows its tasks. F3 remains a separate paused-design link with no invented recording. Keep the research question and three contributions above the homepage gallery.
+The homepage and `tasks/` share a compact task-family gallery. Six category buttons and an “All” button filter 29 representative videos. Clicking a poster plays the video in that card; a separate title and task-count link opens the family's variants. The default category is access and retrieval. Representatives come from `family_representatives` in the original media manifest, including `TT-R-G-U` for the arm-versus-humanoid example. Category pages use the same family cards; the single-family dynamic category directly shows its tasks. F3 remains a separate paused-design link with no invented recording. Keep the research question and three contributions above the homepage gallery.
 
-Category controls use native buttons with `aria-pressed`; family thumbnails are ordinary links, not play buttons. Preserve category selection when reloading or changing language, and keep all family links usable without JavaScript. Individual task pages retain their video players, search, and task filters. Do not preload the full video catalog on the entry pages.
+Category controls use native buttons with `aria-pressed`; play, retry and fullscreen controls are separate from navigation links. Preserve category selection when reloading or changing language, and keep all family links usable without JavaScript. Individual task pages retain their video players, search, and task filters. Videos load only after a click, pause when filtered out or offscreen, and offer native playback controls. Never wrap a player in a navigation link or use a release-download URL as the browser media source.
 
 The four tag axes are `embodiment`, `tools`, `task`, and `difficulty`. Their URL values are stable slugs; bilingual labels belong in `task_facets.json`. Every recording must have all four dimensions. Tools describe physical tools available in the scene, including candidates, rather than APIs or guaranteed use. The family gallery tests all selected tags against the **same recording**, not against independent family-wide unions. Selected tags carry into the family URL. Individual cards expose the same tags as filter buttons. The six primary category buttons remain a separate filter.
 
@@ -67,6 +70,12 @@ Edit multilingual JSON as UTF-8 files. Avoid passing literal Chinese through a P
 ## Current pages and original evidence
 
 Gallery videos are already encoded at 8×; the browser should play at 1×. Keep the selected media URLs, hashes, source execution, timing, and acceptance scope traceable. Do not describe a visual asset replacement as a new physical run or imply that unrecorded joints were recovered.
+
+Browser media lives at same-origin `media/videos/<ID>.mp4` and `media/posters/<ID>.jpg`. The browser never needs the GitHub Release download redirect. The build obtains a hash-pinned bundle from the assets repository, checks each file, and copies only the manifest's media into `dist/`. The local `.cache/browser-media/` directory is ignored. Keep all 246 videos present and total media below 900 MiB so the complete Pages artifact stays below its 1 GB limit.
+
+To regenerate media, use `tools/prepare_playback_media.py` with a verified source map whose `source_manifest_sha256` matches `data/video-gallery.json`. Each source file is also checked against that catalog's `source_8x_sha256`. The browser profile is H.264/yuv420p, CRF 18, medium preset, at most 1920×1080 and 30 fps, with no upscaling, no audio and a faststart MP4 header. Native 720p remains 720p. The tool fully decodes every output and verifies duration within one output frame. Posters retain the selected source timestamps. Encoding needs FFmpeg plus FFprobe or PyAV; ordinary builds need only Python's standard library and network access for the first bundle fetch.
+
+Package only the manifest's `media/` files into a ZIP, publish it as an immutable asset release, and add its URL and SHA256 under `bundle` in `site/content/playback_media.json`. Do not replace the original recording receipt. Verify live `video/mp4` responses and byte-range requests after deployment, then test actual advancing playback, seeking, fullscreen, and mobile layout. A successful HTTP response alone does not prove browser playback.
 
 The website publishes current research, task, and guide content only. Previous HTML pages, archive asset trees, and raw evidence trees are not copied into the deploy artifact. Source history and original evidence remain available in Git; they are not additional public website versions.
 

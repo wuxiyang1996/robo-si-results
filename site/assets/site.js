@@ -5,6 +5,7 @@
   let lang=params.get('lang')==='en'?'en':'zh';
   const text=(zh,en)=>lang==='en'?en:zh;
   const facetNames=['embodiment','tools','task','difficulty'];
+  const playback=new WeakMap();
   function writeURL(url,push=false){
     if(url.href!==location.href)history[push?'pushState':'replaceState'](null,'',url);
   }
@@ -50,9 +51,14 @@
         const matches=(recordsByFamily.get(tile.dataset.familyCard)||[]).filter(record=>active.every(([name,select])=>(record[name]||[]).includes(select.value)));
         tile.hidden=(chosen!=='all'&&tile.dataset.familyCategory!==chosen)||(active.length>0&&matches.length===0);
         if(!tile.hidden){total++;totalTasks+=matches.length}
-        const url=new URL(tile.href,location.href);
-        for(const [name,select] of Object.entries(facets))select?.value?url.searchParams.set(name,select.value):url.searchParams.delete(name);
-        tile.href=url.pathname+url.search+url.hash;
+        else tile.querySelectorAll('video').forEach(stopPlayback);
+        const familyLinks=[...tile.querySelectorAll('[data-family-link]')];
+        if(!familyLinks.length&&tile.matches('a'))familyLinks.push(tile);
+        familyLinks.forEach(familyLink=>{
+          const url=new URL(familyLink.href,location.href);
+          for(const [name,select] of Object.entries(facets))select?.value?url.searchParams.set(name,select.value):url.searchParams.delete(name);
+          familyLink.href=url.pathname+url.search+url.hash;
+        });
       });
       buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.familyFilter===chosen)));
       gallery.querySelectorAll('[data-category-caption]').forEach(el=>{el.hidden=el.dataset.categoryCaption!==chosen});
@@ -81,8 +87,7 @@
     window.addEventListener('hashchange',fromURL);
     fromURL();
   });
-  function pauseOthers(active){document.querySelectorAll('video').forEach(v=>{if(v!==active)v.pause()})}
-  const playback=new WeakMap();
+  function pauseOthers(active){document.querySelectorAll('video').forEach(v=>{if(v!==active)stopPlayback(v)})}
   function loadingStatus(player){
     let status=player.querySelector('.video-loading');
     if(!status){
@@ -93,49 +98,129 @@
     }
     return status;
   }
-  function returnPlayFocus(state){
-    if(state.focusOnReady&&(document.activeElement===state.button||document.activeElement===document.body))state.button.focus({preventScroll:true});
+  function clearVideoTimer(state){clearTimeout(state.timer);state.timer=null}
+  function videoNotice(state,zh,en){
+    let notice=state.player.querySelector('.video-status');
+    if(!notice){notice=document.createElement('p');notice.className='video-status';notice.setAttribute('role','status');state.player.append(notice)}
+    const messageContainer=notice.querySelector('[data-video-error-message], [data-video-message]');
+    let message=messageContainer?.querySelector('[data-zh][data-en]')||messageContainer||notice.querySelector(':scope > [data-zh]');
+    if(!message){message=document.createElement('span');notice.prepend(message)}
+    message.dataset.videoMessage='';message.dataset.zh=zh;message.dataset.en=en;message.textContent=text(zh,en);notice.hidden=false;
   }
-  function revealVideo(video){
-    const state=playback.get(video);if(!state||video.readyState<2||state.player.dataset.state!=='loading')return;
-    const moveFocus=state.focusOnReady&&(document.activeElement===state.button||document.activeElement===document.body);
+  function showVideoControls(state){
+    const {video}=state;
+    const moveFocus=state.focusOnReady&&(document.activeElement===state.focusOrigin||document.activeElement===document.body);
     state.player.dataset.state='ready';state.button.hidden=true;state.button.disabled=false;state.button.removeAttribute('aria-busy');
     loadingStatus(state.player).hidden=true;const error=state.player.querySelector('.video-status');if(error)error.hidden=true;
-    video.tabIndex=0;video.removeAttribute('aria-hidden');
+    video.controls=true;video.tabIndex=0;video.removeAttribute('aria-hidden');
     if(moveFocus)video.focus({preventScroll:true});
     state.focusOnReady=false;
   }
+  function stopPlayback(video){
+    const state=playback.get(video);
+    if(state){
+      state.wantsPlay=false;state.attempt++;state.focusOnReady=false;clearVideoTimer(state);
+      state.button.disabled=false;state.button.removeAttribute('aria-busy');const loading=state.player.querySelector('.video-loading');if(loading)loading.hidden=true;
+      if(state.player.dataset.state==='loading'){
+        if(video.readyState>=1)showVideoControls(state);
+        else{state.player.dataset.state='idle';state.button.hidden=false}
+      }
+    }
+    video.pause();
+  }
+  function showVideoRetry(state,reason){
+    const {video,button,player}=state;
+    const restoreFocus=document.activeElement===video||(state.focusOnReady&&document.activeElement===state.focusOrigin);
+    state.seekTo=video.currentTime||state.seekTo||0;state.wantsPlay=false;state.retryNeeded=true;state.attempt++;clearVideoTimer(state);video.pause();
+    player.dataset.state='error';button.hidden=false;button.disabled=false;button.removeAttribute('aria-busy');loadingStatus(player).hidden=true;
+    video.tabIndex=-1;video.setAttribute('aria-hidden','true');
+    button.dataset.labelZh='重试播放：'+(video.dataset.labelZh||'视频');button.dataset.labelEn='Retry playback: '+(video.dataset.labelEn||'video');
+    button.setAttribute('aria-label',text(button.dataset.labelZh,button.dataset.labelEn));
+    if(reason==='timeout')videoNotice(state,'加载时间较长，点击画面重试。','Loading is taking longer than expected. Select the video to retry.');
+    else videoNotice(state,'视频暂时无法播放，点击画面重试。','The video could not play. Select it to retry.');
+    if(restoreFocus)button.focus({preventScroll:true});state.focusOnReady=false;
+  }
+  function nextVideoSource(state,reason){
+    if(state.wantsPlay&&state.sourceIndex+1<state.sources.length){
+      state.seekTo=state.video.currentTime||state.seekTo||0;loadVideoSource(state,state.sourceIndex+1);
+    }else showVideoRetry(state,reason);
+  }
+  function armVideoTimer(state){
+    clearVideoTimer(state);const attempt=state.attempt,from=state.video.currentTime;state.waitFrom=from;
+    state.timer=setTimeout(()=>{
+      if(state.attempt!==attempt||!state.wantsPlay)return;
+      const video=state.video;
+      if(video.readyState<2||(!video.paused&&video.currentTime<=from+.05))nextVideoSource(state,'timeout');
+    },15000);
+  }
+  function loadVideoSource(state,index,reload=true){
+    const {video,button,player}=state;
+    if(!state.sources[index]){showVideoRetry(state,'source');return}
+    clearVideoTimer(state);state.sourceIndex=index;state.wantsPlay=true;state.retryNeeded=false;
+    const attempt=++state.attempt;
+    player.dataset.state='loading';button.hidden=false;button.disabled=true;button.setAttribute('aria-busy','true');
+    button.dataset.labelZh=state.playLabelZh;button.dataset.labelEn=state.playLabelEn;button.setAttribute('aria-label',text(state.playLabelZh,state.playLabelEn));
+    const notice=player.querySelector('.video-status');if(notice)notice.hidden=true;loadingStatus(player).hidden=false;
+    if(reload||!video.getAttribute('src')||video.error){video.src=state.sources[index];video.load()}
+    armVideoTimer(state);
+    function rejected(error){
+      if(state.attempt!==attempt||!state.wantsPlay)return;
+      if(error?.name==='NotAllowedError'){
+        state.wantsPlay=false;clearVideoTimer(state);showVideoControls(state);
+      }else if(error?.name==='AbortError'){
+        // Pausing or changing source can reject play(); neither means the resource failed.
+        stopPlayback(video);
+      }else if(['NotSupportedError','NetworkError','SecurityError'].includes(error?.name))nextVideoSource(state,'source');
+      else showVideoRetry(state,'play');
+    }
+    try{const promise=video.play();if(promise?.catch)promise.catch(rejected)}catch(error){rejected(error)}
+    if(video.readyState>=1)showVideoControls(state);
+  }
+  function userPlay(state,origin){
+    state.focusOrigin=origin;state.focusOnReady=document.activeElement===origin;pauseOthers(state.video);
+    const retry=state.retryNeeded||Boolean(state.video.error);
+    loadVideoSource(state,retry?0:state.sourceIndex,retry||!state.video.getAttribute('src'));
+  }
   document.querySelectorAll('video').forEach(video=>{
     const player=video.closest('.player'),button=player?.querySelector('[data-play-video]');if(!player||!button)return;
-    const state={player,button,focusOnReady:false};playback.set(video,state);video.tabIndex=-1;video.setAttribute('aria-hidden','true');
-    video.addEventListener('loadeddata',()=>revealVideo(video));video.addEventListener('playing',()=>revealVideo(video));
-    video.addEventListener('error',()=>{
-      const restoreFocus=document.activeElement===video||(state.focusOnReady&&(document.activeElement===button||document.activeElement===document.body));
-      button.hidden=false;button.disabled=false;button.removeAttribute('aria-busy');player.dataset.state='error';
-      loadingStatus(player).hidden=true;const error=player.querySelector('.video-status');if(error)error.hidden=false;
-      video.tabIndex=-1;video.setAttribute('aria-hidden','true');if(restoreFocus)button.focus({preventScroll:true});
+    let fallback=[];try{const value=JSON.parse(video.dataset.videoFallbacks||'[]');if(Array.isArray(value))fallback=value}catch{}
+    const sources=[...new Set([video.dataset.videoSrc,...fallback].filter(source=>typeof source==='string'&&source.trim()))];
+    const state={video,player,button,sources,sourceIndex:0,attempt:0,timer:null,wantsPlay:false,retryNeeded:false,focusOnReady:false,seekTo:0,playLabelZh:button.dataset.labelZh||'播放视频',playLabelEn:button.dataset.labelEn||'Play video'};
+    playback.set(video,state);video.tabIndex=-1;video.setAttribute('aria-hidden','true');
+    video.addEventListener('loadedmetadata',()=>{
+      if(!video.error)state.retryNeeded=false;
+      if(state.seekTo>0){try{video.currentTime=Number.isFinite(video.duration)?Math.min(state.seekTo,Math.max(0,video.duration-.1)):state.seekTo;state.seekTo=0}catch{}}
+      if(video.readyState>=1)showVideoControls(state);
     });
+    ['loadeddata','canplay','playing'].forEach(name=>video.addEventListener(name,()=>{clearVideoTimer(state);if(video.readyState>=1)showVideoControls(state)}));
+    video.addEventListener('play',()=>{if(!video.paused){state.wantsPlay=true;if(video.readyState<2)armVideoTimer(state)}});
+    video.addEventListener('pause',()=>{if(video.paused&&!video.error)stopPlayback(video)});
+    video.addEventListener('waiting',()=>{if(state.wantsPlay&&!video.paused)armVideoTimer(state)});
+    video.addEventListener('timeupdate',()=>{if(state.timer&&video.currentTime>state.waitFrom+.05)clearVideoTimer(state)});
+    video.addEventListener('error',()=>{
+      if(!video.error||!video.getAttribute('src'))return;
+      if(video.error.code===1)stopPlayback(video);
+      else nextVideoSource(state,'source');
+    });
+    const fullscreen=player.querySelector('[data-fullscreen-video]');
+    if(fullscreen&&!video.requestFullscreen&&!video.webkitEnterFullscreen)fullscreen.hidden=true;
   });
   document.addEventListener('click',event=>{
-    const button=event.target.closest('[data-play-video]');if(!button)return;
+    const button=event.target.closest('[data-play-video], [data-retry-video], [data-fullscreen-video]');if(!button)return;
     const player=button.closest('.player'),video=player.querySelector('video');
     const state=playback.get(video);if(!state)return;
-    const retry=player.dataset.state==='error'||Boolean(video.error);state.focusOnReady=document.activeElement===button;
-    const error=player.querySelector('.video-status');if(error)error.hidden=true;
-    pauseOthers(video);button.setAttribute('aria-busy','true');button.disabled=true;player.dataset.state='loading';
-    loadingStatus(player).hidden=false;
-    if(retry||!video.getAttribute('src')){video.src=video.dataset.videoSrc;video.load()}
-    video.play().catch(()=>{
-      if(player.dataset.state!=='loading')return;
-      if(video.readyState>=2){revealVideo(video);return}
-      if(video.error)return;
-      player.dataset.state='idle';button.disabled=false;button.removeAttribute('aria-busy');loadingStatus(player).hidden=true;
-      returnPlayFocus(state);state.focusOnReady=false;
-    });
-    if(video.readyState>=2)revealVideo(video);
+    if(button.hasAttribute('data-retry-video'))state.retryNeeded=true;
+    if(button.hasAttribute('data-fullscreen-video')){
+      if(video.paused||!video.getAttribute('src')||video.error)userPlay(state,button);
+      showVideoControls(state);
+      try{
+        if(video.requestFullscreen){const request=video.requestFullscreen();if(request?.catch)request.catch(()=>{})}
+        else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen();
+      }catch{}
+    }else userPlay(state,button);
   });
-  document.addEventListener('play',e=>{if(e.target.tagName==='VIDEO')pauseOthers(e.target)},true);
-  if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting)e.target.querySelector('video')?.pause()}),{threshold:.05});document.querySelectorAll('.player').forEach(p=>observer.observe(p))}
+  document.addEventListener('play',e=>{if(e.target.tagName==='VIDEO'&&!e.target.paused)pauseOthers(e.target)},true);
+  if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{const video=e.target.querySelector('video');if(!e.isIntersecting&&video&&document.fullscreenElement!==video&&!video.webkitDisplayingFullscreen)stopPlayback(video)}),{threshold:.05});document.querySelectorAll('.player').forEach(p=>observer.observe(p))}
   document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseOthers(null)});
   const search=document.getElementById('task-search'),outcome=document.getElementById('outcome-filter');
   const taskFacets=Object.fromEntries(facetNames.map(name=>[name,document.getElementById(name+'-filter')]));
@@ -162,7 +247,7 @@
       cards.forEach(card=>{
         const searchable=normalize(card.dataset.search||'');
         const match=terms.every(t=>searchable.includes(t))&&Object.entries(taskFacets).every(([name,select])=>!select?.value||(card.dataset[name]||'').split('|').includes(select.value))&&(!outcome?.value||card.dataset.outcome===outcome.value);
-        card.hidden=!match;if(match)n++;else card.querySelector('video')?.pause();
+        card.hidden=!match;if(match)n++;else card.querySelectorAll('video').forEach(stopPlayback);
       });
       document.getElementById('filter-count').textContent=n+' / '+cards.length;
       document.getElementById('empty-results').hidden=n>0;

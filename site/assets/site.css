@@ -366,3 +366,48 @@
 @media(max-width:420px){
  .sandbox-walkthrough li>button[data-sandbox-step]{flex-basis:calc((100% - 8px)/2);max-width:calc((100% - 8px)/2)}
 }
+
+/* Family previews play in place; the text links open the task collection. */
+article.family-tile{transition:border-color .2s,box-shadow .2s}
+article.family-tile:hover{transform:none;box-shadow:none}
+.family-tile>.player{flex:none;width:100%;border-radius:0;aspect-ratio:16/9}
+.family-tile .play-icon{left:50%;top:50%;bottom:auto;width:44px;height:44px;transform:translate(-50%,-50%)}
+.family-tile .video-start:hover .play-icon{transform:translate(-50%,-50%)}
+.family-tile .play-icon svg{width:14px;height:14px}
+.family-tile .player .speed{font-size:.8125rem;right:9px;bottom:9px}
+.family-tile .player[data-state=ready] .speed{top:8px;bottom:auto;right:8px}
+.family-tile h3 a:hover{color:var(--wine);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.family-tile-meta a{color:var(--wine);text-decoration:underline;text-underline-offset:3px;line-height:1.6}
+.family-tile-bottom a{display:inline-flex;align-items:center;gap:6px;min-height:36px;color:var(--wine);font-size:.875rem;line-height:1.6}
+.family-preview-label{font-size:.8125rem;line-height:1.6;color:var(--muted);margin:0 0 8px;overflow-wrap:anywhere}
+.family-tile .video-loading{font-size:.8125rem;line-height:1.5;gap:7px;padding:8px;max-width:calc(100% - 12px)}
+.family-tile .video-loading span{min-width:0;overflow-wrap:anywhere}
+.family-tile .player[data-state=error]{aspect-ratio:auto}
+.family-tile .player[data-state=error] .video-start{position:relative;inset:auto;height:auto;aspect-ratio:16/9}
+.family-tile .player[data-state=error] .video-start .poster{position:absolute;inset:0}
+.family-tile .player[data-state=error] .video-status{position:relative;inset:auto;margin:0;padding:12px 10px;border-top:1px solid var(--line);border-radius:0;font-size:.875rem;line-height:1.7;overflow-wrap:anywhere}
+.family-tile .player[data-state=error] .speed{top:8px;bottom:auto}
+.video-status [data-retry-video]{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:7px 12px;margin:7px 10px 0 0;border:1px solid #bca18f;border-radius:3px;background:var(--surface);color:var(--wine);font-size:.875rem;line-height:1.6}
+.video-status [data-retry-video]:hover{border-color:var(--wine);background:var(--wine-light)}
+.family-tile .video-status [data-retry-video]{min-height:44px;margin-right:0}
+.player [data-fullscreen-video]{display:none;position:absolute;top:10px;left:10px;z-index:3;width:44px;height:44px;min-width:44px;min-height:44px;padding:11px;border:1px solid #fffdfa80;border-radius:7px;background:#282423d9;color:#fffdfa;box-shadow:0 2px 9px #0002;backdrop-filter:blur(5px);align-items:center;justify-content:center;transition:background .16s,border-color .16s}
+.player[data-state=ready] [data-fullscreen-video]{display:flex}
+.player [data-fullscreen-video] svg{display:block;flex:none;width:20px;height:20px}
+.player [data-fullscreen-video]:hover{background:var(--wine);border-color:#fffdfab3}
+.player [data-fullscreen-video]:focus-visible{outline:3px solid #fffdfa;outline-offset:2px;box-shadow:0 0 0 6px var(--wine)}
+.family-tile .player[data-state=ready] .speed{display:none}
+@media(max-width:760px){.family-tile .player[data-state=ready]{min-height:112px}.family-tile .player [data-fullscreen-video]{top:8px;left:8px}}
+.family-tile .video-status a{display:inline-block;max-width:100%;margin-top:7px;overflow-wrap:anywhere}
+@media(max-width:440px){
+ .family-tile .play-icon{left:8px;top:auto;bottom:8px;width:32px;height:32px;transform:none}
+ .family-tile .video-start:hover .play-icon{transform:none}
+ .family-tile .play-icon svg{width:12px;height:12px}
+}
+@media(max-width:760px){
+ .family-tile .player .speed{font-size:.75rem;padding:0 5px;right:6px;bottom:6px}
+ .family-tile .player[data-state=ready] .speed,.family-tile .player[data-state=error] .speed{top:6px;bottom:auto}
+ .family-tile-bottom{flex-wrap:wrap;justify-content:space-between;gap:7px}
+ .family-tile-bottom a{font-size:.8125rem;min-height:36px}
+ .family-tile .player[data-state=error] .video-status{font-size:.8125rem;padding:10px 8px}
+ .family-tile .video-status [data-retry-video]{width:100%;font-size:.8125rem;padding:7px 8px}
+}
