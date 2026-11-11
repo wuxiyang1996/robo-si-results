@@ -235,7 +235,7 @@ def main():
     for rel in ('index.html','tasks/index.html'):
         doc=check_family_tiles(rel,recorded_families)
         require(len(doc.videos)==len(recorded_families),f'{rel}: each recorded family must offer inline playback')
-        require(len(doc.family_galleries)==1 and doc.family_galleries[0].get('data-default-category')=='access',f'{rel}: missing shared category gallery')
+        require(len(doc.family_galleries)==1 and doc.family_galleries[0].get('data-default-category')=='all',f'{rel}: missing shared category gallery')
         filters=[f.get('data-family-filter') for f in doc.family_filters]
         require(set(filters)==category_ids|{'all'} and len(filters)==7,f'{rel}: expected all and six category filter buttons')
         require(all(f.get('type')=='button' and f.get('aria-pressed') in ('true','false') for f in doc.family_filters),f'{rel}: category filters need native button semantics and pressed state')
