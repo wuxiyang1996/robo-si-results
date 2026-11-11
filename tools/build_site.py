@@ -127,18 +127,19 @@ def facet_controls(records, family=False):
     return '<div class="facet-controls">'+''.join(fields)+'</div>'
 
 def facet_guide():
-    return '<details class="facet-guide"><summary>'+tr('标签说明','About the tags')+'</summary>'+tr('按机器人、场景工具、任务特点和难度筛选。工具标签也包括供机器人选择的候选工具。','Filter by robot, physical tools, task features and difficulty. Tool tags include the candidates available in each scene.','p')+tr('难度按同一种子的场景逐层扩展：第 1 层放入必要工具；第 2 层加入本机用不了、其他身体能用的工具；第 3 层再加入需要通过试验辨别的干扰项。“待分层”表示场景分层信息待补充。','Difficulty builds on scenes with the same seed: layer 1 contains the necessary tools; layer 2 adds tools usable by other bodies but not the current robot; layer 3 adds distractors to distinguish through experiments. “Not classified” marks scenes awaiting classification.','p')+'</details>'
+    return '<details class="facet-guide"><summary>'+tr('标签说明','About the tags')+'</summary>'+tr('按机器人、场景工具、任务特点和难度筛选。工具标签也包括供机器人选择的候选工具。','Filter by robot, physical tools, task features and difficulty. Tool tags include the candidates available in each scene.','p')+tr('图集按任务的整体复杂度分为三档：','The gallery groups tasks by overall complexity:','p')+'<ul>'+tr('L1 · 基础执行：在方案明确的条件下完成直接操作或较短的动作序列。','L1 · Basic execution: direct operations or short action sequences with a clear approach.','li')+tr('L2 · 能力适配与规划：在已知约束下安排多步操作，选择适合工具和身体的方法，或协调多个机器人。','L2 · Adaptation and planning: multi-step actions under known constraints, methods suited to the tools and robot body, or coordination between robots.','li')+tr('L3 · 诊断、恢复与干扰辨别：处理隐藏状态、误导候选或故障，通过诊断、恢复和试验判断可行性。','L3 · Diagnosis, recovery and distractors: hidden states, misleading candidates or faults that call for diagnosis, recovery and experiments to judge feasibility.','li')+'</ul>'+tr('每项任务附有分级理由；原任务定义过工具场景层的，也单独标出该层号。','Each task includes its classification rationale. Original tool-scene layers, where defined, appear as a separate label.','p')+'</details>'
 
 def facet_summary(records):
     rows=[]
     for dimension in DIMENSIONS:
-        spec=FACETS['dimensions'][dimension];values=facet_values(records,dimension)
-        shown=values[:2]
-        labels=' · '.join(spec['values'][v]['label_zh'] for v in shown)
-        english=' · '.join(spec['values'][v]['label_en'] for v in shown)
-        if len(values)>2:labels+=f' +{len(values)-2}';english+=f' +{len(values)-2}'
-        rows.append('<div>'+tr(spec['label_zh'],spec['label_en'],'span','class="facet-caption"')+tr(labels,english)+'</div>')
-    return '<div class="family-facet-summary">'+''.join(rows)+'</div>'
+        spec=FACETS['dimensions'][dimension];present=set(facet_values(records,dimension))
+        values=[value for value in spec['values'] if value in present]
+        chips=[]
+        for value in values:
+            item=spec['values'][value]
+            chips.append(f'<span class="family-facet-tag" data-facet-value="{e(value)}">'+tr(item['label_zh'],item['label_en'])+'</span>')
+        rows.append(f'<div class="family-facet-row" data-facet-dimension="{dimension}">'+tr(spec['label_zh'],spec['label_en'],'dt','class="facet-caption"')+'<dd class="family-facet-values">'+''.join(chips)+'</dd></div>')
+    return '<dl class="family-facet-summary">'+''.join(rows)+'</dl>'
 
 def task_facet_tags(rid):
     record=FACETS['records'][rid];rows=[]
@@ -148,7 +149,15 @@ def task_facet_tags(rid):
             item=spec['values'][value]
             chips.append(f'<button type="button" class="facet-chip" data-set-facet="{dimension}" data-facet-value="{e(value)}">'+tr(item['label_zh'],item['label_en'])+'</button>')
         rows.append(f'<div class="facet-row" data-facet-dimension="{dimension}">'+tr(spec['label_zh'],spec['label_en'],'dt')+'<dd>'+''.join(chips)+'</dd></div>')
-    return '<dl class="task-facets">'+''.join(rows)+'</dl>'
+    notes=[]
+    if record.get('difficulty_basis')=='editorial-assessment':
+        notes.append(tr(record['difficulty_note_zh'],record['difficulty_note_en'],'p','class="difficulty-rationale"'))
+    source=record.get('source_scene_layer')
+    if source:
+        level={'layer-1':'L1','layer-2':'L2','layer-3':'L3'}[source['value']]
+        notes.append(tr('原始工具场景层：'+level,'Original tool-scene layer: '+level,'p','class="source-scene-layer"'))
+    explanation='<div class="task-difficulty-note">'+''.join(notes)+'</div>' if notes else ''
+    return '<dl class="task-facets">'+''.join(rows)+'</dl>'+explanation
 
 def gallery_note():
     return '<p class="gallery-note">'+tr('视频以 8 倍速展示物理仿真中的参考执行。','Videos show reference executions in physics simulation at 8× speed.')+'</p>'

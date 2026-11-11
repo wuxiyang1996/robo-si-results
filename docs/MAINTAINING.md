@@ -10,7 +10,7 @@ GitHub Pages at <https://wuxiyang1996.github.io/robo-si-results/> is the main de
 | `site/content/pages.json` | Current research and usage guide |
 | `site/content/research_interactive.json` | Three evaluation tracks, seven sandbox components and their walkthrough, in both languages |
 | `site/content/tasks_*.json` | Bilingual task goals, scene constraints, and demonstrated scope |
-| `site/content/task_facets.json` | Four tag vocabularies, per-record assignments and difficulty evidence notes |
+| `site/content/task_facets.json` | Four tag vocabularies, overall difficulty assignments and rationales, and original tool-scene layer evidence |
 | `site/assets/site.css` | Styling |
 | `site/assets/site.js` | Browser behavior |
 | `tools/build_site.py` | Current-page generation and legacy redirects |
@@ -37,9 +37,17 @@ The homepage and `tasks/` share a compact task-family gallery. Six category butt
 
 Category controls use native buttons with `aria-pressed`; play, retry and fullscreen controls are separate from navigation links. Preserve category selection when reloading or changing language, and keep all family links usable without JavaScript. Individual task pages retain their video players, search, and task filters. Videos load only after a click, pause when filtered out or offscreen, and offer native playback controls. Never wrap a player in a navigation link or use a release-download URL as the browser media source.
 
-The four tag axes are `embodiment`, `tools`, `task`, and `difficulty`. Their URL values are stable slugs; bilingual labels belong in `task_facets.json`. Every recording must have all four dimensions. Tools describe physical tools available in the scene, including candidates, rather than APIs or guaranteed use. The family gallery tests all selected tags against the **same recording**, not against independent family-wide unions. Selected tags carry into the family URL. Individual cards expose the same tags as filter buttons. The six primary category buttons remain a separate filter.
+The four tag axes are `embodiment`, `tools`, `task`, and `difficulty`. Their URL values are stable slugs; bilingual labels belong in `task_facets.json`. Every recording must have all four dimensions. Show every value in homepage, category and family-card summaries as well as individual task cards; wrap long labels instead of truncating them with `+N`, ellipses or hidden rows. Tools describe physical tools available in the scene, including candidates, rather than APIs or guaranteed use. The family gallery tests all selected tags against the **same recording**, not against independent family-wide unions. Selected tags carry into both the family title and task-count links. Individual cards expose the same tags as filter buttons. The six primary category buttons remain a separate filter.
 
-Scene difficulty follows the proposal's cumulative, same-seed design: necessary tools; tools usable by another body; then distractors. Keep source-declared scene layers distinguishable from full oracle admission and measured agent difficulty. Do not derive these layers from task-ID suffixes, execution-interface L1–L3, recording duration, success, object counts, or family curriculum levels. Use `unclassified` when that specific scene-layer evidence is absent, and include bilingual `difficulty_note_*` plus source references. These are website research metadata, never additions to evaluated-agent observations or prompts. Public copies are emitted in `data/task-facets.json` and `data/task-index.json`.
+Difficulty describes the task's **overall complexity**, using the user-confirmed three-level scheme:
+
+- **L1 · Basic execution:** direct operations or short action sequences with a clear approach.
+- **L2 · Adaptation and planning:** multi-step actions under known constraints, tool or body adaptation, or coordination between robots.
+- **L3 · Diagnosis, recovery and distractors:** hidden states, misleading candidates or faults that call for diagnosis, recovery or experiments to judge feasibility.
+
+Assign every one of the 246 records exactly one value, `l1`, `l2` or `l3`, with `difficulty_basis: "editorial-assessment"` and a task-specific bilingual rationale in `difficulty_note_zh` / `difficulty_note_en`. The rationale is displayed below the complete tag set. Assess the task's conditions and required decisions; task-ID suffixes and execution-interface levels are not automatic difficulty assignments.
+
+Keep the 14 original tool-scene layer declarations separately in `source_scene_layer`, with `value` (`layer-1`, `layer-2` or `layer-3`), `note_zh`, `note_en`, and `sources`. Other records use `null`. These source layers describe the proposal's cumulative, same-seed tool scenes and appear as “原始工具场景层 / Original tool-scene layer”; they do not replace the overall difficulty label. Website difficulty metadata remains separate from evaluated-agent observations and prompts. Public copies are emitted in `data/task-facets.json` and `data/task-index.json`.
 
 ## Routes and local checks
 
@@ -59,7 +67,7 @@ python tools/check_site.py --root dist
 python tools/preview_site.py --port 8765
 ```
 
-Preview <http://127.0.0.1:8765/robo-si-results/>. Check both languages, category selection, thumbnail navigation, mobile layout, keyboard focus, and playback in at least one complete family gallery. Confirm that the “All” view includes 29 families and that F3 is described separately. Check the visible M4 goal, constraints, and preconnected scope, the guide's download/install/agent steps and copy buttons, and an old M4 URL redirect. Static validation checks family coverage, direct links, representative posters, visible task conditions, escaped code examples, legacy redirects, and all 246 task players. It cannot establish that videos visually match their physical records or that a robot policy succeeds. Report browser and visual checks separately.
+Preview <http://127.0.0.1:8765/robo-si-results/>. Check both languages, category selection, thumbnail navigation, mobile layout, keyboard focus, and playback in at least one complete family gallery. Confirm that the “All” view includes 29 families and that F3 is described separately. Check that all four tag groups wrap fully at 320px, that each task shows its overall difficulty rationale, and that original scene layers have their separate label. Check the visible M4 goal, constraints, and preconnected scope, the guide's download/install/agent steps and copy buttons, and an old M4 URL redirect. Static validation checks family coverage, direct links, representative posters, visible task conditions, escaped code examples, legacy redirects, and all 246 task players. It cannot establish that videos visually match their physical records or that a robot policy succeeds. Report browser and visual checks separately.
 
 `dist/` is generated and ignored. Do not edit it as the source of truth. Each build replaces this repository's generated directory so retired HTML and assets cannot remain from an earlier build. The workflow uploads only `dist/`, not the entire source and evidence repository.
 

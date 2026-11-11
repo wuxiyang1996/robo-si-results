@@ -18,7 +18,7 @@ class Document(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.ids=[];self.links=[];self.videos=[];self.figures=[];self.cards=[];self.images=[];self.headings=[];self.text=[];self.meta={};self.timelines=[];self.canonical=None;self.ignored=0
         self.family_tiles=[];self.family_filters=[];self.family_galleries=[];self.paused_families=[];self.current_family_tile=None;self.current_task_card=None;self.details=[]
-        self.research_controls=[];self.research_panels=[]
+        self.research_controls=[];self.research_panels=[];self.family_facet_dimension=None
         self.feed(path.read_text(encoding='utf-8'))
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
@@ -31,7 +31,10 @@ class Document(HTMLParser):
         if a.get('data-timeline'):self.timelines.append(a['data-timeline'])
         if tag=='img':self.images.append(a)
         if tag=='article' and 'data-family-card' in a:
-            self.current_family_tile={**a,'images':[],'links':[],'players':[]};self.family_tiles.append(self.current_family_tile)
+            self.current_family_tile={**a,'images':[],'links':[],'players':[],'facets':[]};self.family_tiles.append(self.current_family_tile);self.family_facet_dimension=None
+        if self.current_family_tile is not None:
+            if 'family-facet-row' in a.get('class','').split():self.family_facet_dimension=a.get('data-facet-dimension')
+            if 'family-facet-tag' in a.get('class','').split():self.current_family_tile['facets'].append((self.family_facet_dimension,a.get('data-facet-value')))
         if tag=='img' and self.current_family_tile is not None:self.current_family_tile['images'].append(a)
         if tag=='a' and 'data-family-link' in a and self.current_family_tile is not None:self.current_family_tile['links'].append(a)
         if tag=='figure' and a.get('data-record') and self.current_family_tile is not None:self.current_family_tile['players'].append(a['data-record'])
@@ -91,13 +94,44 @@ def main():
     require(set(facets['records'])==set(records),'Four-axis tags must cover all 246 recordings.')
     require(set(facets['dimensions'])==set(dimensions),'Expected embodiment/tools/task/difficulty dimensions.')
     require(json.loads((root/'data/task-facets.json').read_text(encoding='utf-8'))==facets,'Public facet catalog differs from the task index.')
+    require(facets.get('schema_version')==2 and facets.get('difficulty_scheme',{}).get('id')=='overall-task-difficulty','Expected the overall task difficulty scheme.')
+    require(set(facets['dimensions']['difficulty']['values'])=={'l1','l2','l3'},'Difficulty must offer exactly L1, L2 and L3.')
+    source_documents={};original_layers={}
     for rid,entry in facets['records'].items():
         for dimension in dimensions:
             selected=entry.get(dimension,[])
             require(bool(selected) and len(selected)==len(set(selected)),f'{rid}: missing or duplicate {dimension} tags')
             require(all(value in facets['dimensions'][dimension]['values'] for value in selected),f'{rid}: undefined {dimension} tag')
-        require(len(entry.get('difficulty',[]))==1,f'{rid}: expected one scene difficulty classification')
+        require(len(entry.get('difficulty',[]))==1,f'{rid}: expected one overall difficulty classification')
+        require(entry.get('difficulty_basis')=='editorial-assessment',f'{rid}: missing difficulty assessment basis')
         require(bool(entry.get('difficulty_note_zh')) and bool(entry.get('difficulty_note_en')),f'{rid}: missing difficulty evidence note')
+        evidence=entry.get('difficulty_evidence',[])
+        require(bool(evidence),f'{rid}: missing source evidence for difficulty')
+        for item in evidence:
+            try:
+                source=(REPO/item['source_path']).resolve()
+                if not source.is_relative_to(REPO):raise ValueError('source outside repository')
+                if source not in source_documents:source_documents[source]=json.loads(source.read_text(encoding='utf-8'))
+                value=source_documents[source]
+                pointer=item['source_json_pointer']
+                if not pointer.startswith('/'):raise ValueError('invalid JSON pointer')
+                for token in pointer[1:].split('/'):
+                    token=token.replace('~1','/').replace('~0','~')
+                    value=value[int(token)] if isinstance(value,list) else value[token]
+                require(value==item['quote'],f'{rid}: difficulty evidence no longer matches {item["source_path"]}{pointer}')
+            except (KeyError,ValueError,IndexError,OSError,TypeError) as exc:
+                require(False,f'{rid}: invalid difficulty evidence: {exc}')
+        source_layer=entry.get('source_scene_layer')
+        if source_layer:
+            original_layers[rid]=source_layer.get('value')
+            require(bool(source_layer.get('note_zh')) and bool(source_layer.get('note_en')) and bool(source_layer.get('sources')),f'{rid}: incomplete original scene layer')
+    expected_original_layers={
+        'H2C-B01-L1':'layer-1','H2C-B01-L2':'layer-2','H2C-B01-L3':'layer-3',
+        'H2C-B03-L1-Y':'layer-1','H2C-B03-L2-Y':'layer-2','H2C-B03-L3-Y':'layer-3',
+        'H2C-B04':'layer-1','H2C-B04-T02':'layer-1',
+        'H2C-ORIG-L1':'layer-1','H2C-ORIG-L2':'layer-2','H2C-ORIG-L3':'layer-3',
+        'H4-ORIG.L1.G':'layer-1','H4-ORIG.L2.G':'layer-2','H4-ORIG.L3.G':'layer-3'}
+    require(original_layers==expected_original_layers,'The 14 original tool-scene layers must be preserved independently.')
     for dimension,spec in facets['dimensions'].items():
         require(bool(spec.get('label_zh')) and bool(spec.get('label_en')),f'{dimension}: dimension label must be bilingual')
         for slug,value in spec['values'].items():
@@ -190,6 +224,9 @@ def main():
             require(tile['players']==[rid],f'{rel}: thumbnail must play its representative inline')
             require(tile.get('data-family-category')==family_categories.get(fid),f'{rel}: wrong thumbnail category for {fid}')
             require(rid==catalog['family_representatives'].get(fid) and record is not None,f'{rel}: wrong representative recording for {fid}')
+            family_records=[r['record_id'] for r in records.values() if r['family']==fid]
+            expected_tags=[(dimension,value) for dimension in dimensions for value in facets['dimensions'][dimension]['values'] if any(value in facets['records'][record_id][dimension] for record_id in family_records)]
+            require(tile['facets']==expected_tags,f'{rel}: {fid} must show every family tag without truncation')
             images=tile['images']
             require(len(images)==1,f'{rel}: expected one thumbnail image for {fid}')
             if record and len(images)==1:
@@ -229,6 +266,11 @@ def main():
             require(task.get('goal_zh','') in displayed,f'{card["id"]}: goal is not shown on the current task card')
             for condition in task.get('conditions_zh',[]):require(condition in displayed,f'{card["id"]}: a scene constraint is not shown')
             require(task.get('scope_zh','') in displayed,f'{card["id"]}: demonstrated scope is not shown')
+            entry=facets['records'][card['id']]
+            require(entry['difficulty_note_zh'] in displayed,f'{card["id"]}: difficulty rationale is not visible')
+            source_layer=entry.get('source_scene_layer')
+            if source_layer:
+                require('原始工具场景层：L'+source_layer['value'][-1] in displayed,f'{card["id"]}: original tool-scene layer is not shown separately')
             expected_exit=bool(records[card['id']].get('accepted_exit')) or 'safe-exit' in facets['records'][card['id']]['task']
             require(card.get('data-outcome')==('exit' if expected_exit else 'execution'),f'{card["id"]}: goal-type filter contradicts the task goal')
             for dimension in dimensions:

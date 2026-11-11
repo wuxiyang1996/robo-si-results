@@ -15,6 +15,8 @@ The gallery contains **246 unique reference recordings covering 247 public confi
 
 Select a gallery poster to play its representative video in place, or use the separate family link to browse variants. Videos support inline controls and fullscreen, use same-origin MP4 URLs, and are prepared from the selected Nyx originals at up to 1080p. Native 720p recordings retain their original resolution.
 
+All four tag groups—embodiment, tools, task and difficulty—are shown in full. The 246 tasks use overall L1/L2/L3 difficulty: basic execution; adaptation and planning; diagnosis, recovery and distractor handling. Each task includes its classification rationale, while the 14 original tool-scene layer records are labeled separately.
+
 Each video presents a reference execution, with its goal, scene conditions and demonstration notes alongside it. Agent evaluations use the execution and scoring workflow in the guide.
 
 ## Site source
@@ -24,7 +26,7 @@ Each video presents a reference execution, with its goal, scene conditions and d
 | `site/content/site.json` | Site structure, category and family metadata |
 | `site/content/pages.json` | Bilingual research and installation / agent guide |
 | `site/content/tasks_*.json` | Task goals, scene conditions and demonstrated scope |
-| `site/content/task_facets.json` | Embodiment, physical tools, task operations and source-backed scene difficulty tags |
+| `site/content/task_facets.json` | Four-axis tags, overall L1/L2/L3 difficulty rationales and original tool-scene layer records |
 | `site/assets/` | CSS and browser JavaScript |
 | `data/video-gallery.json` | Preserved video receipt and provenance; not editorial copy |
 | `site/content/playback_media.json` | Same-origin browser files and their pinned release bundle |
