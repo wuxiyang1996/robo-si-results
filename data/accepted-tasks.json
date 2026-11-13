@@ -11415,5 +11415,477 @@
       "url": "https://huggingface.co/datasets/IntelligenceLab/robo-si/tree/d351920b7fdb0bfcb68b3adfa54b4ebc158692b2/archives/workspace-20261104/m4-accepted",
       "data_revision": "f7ed43026b0b96c7d39b41f302c8d5cb27e080a2"
     }
+  },
+  {
+    "family": "M1",
+    "name": {
+      "zh": "双机货架取物与交付",
+      "en": "Two-robot shelf retrieval and delivery"
+    },
+    "summary": {
+      "zh": "作者验收7项已独立核验参考：4项完整交付、3项证书与实体安全退出。8项当前设计中，B03暂停未完整；B04/B05移至后续。",
+      "en": "Seven independently audited references accepted by the author: four complete deliveries and three certified physical safe exits. Of eight selected configurations, B03 is paused incomplete; B04/B05 are deferred."
+    },
+    "axes": {
+      "zh": "受支撑推移、独立支撑、伙伴交接；源口与柜口不可行证书；Dex3与五指身体各自绑定的退出验证。",
+      "en": "Supported sliding, independent support and partner handoff; source/cabinet aperture certificates; separately bound Dex3 and five-finger exit witnesses."
+    },
+    "accepted_at": "2026-11-04",
+    "cases": [
+      {
+        "id": "M1C-ORIG",
+        "configuration_id": "M1C-ORIG:original_G1_Dex3_X5",
+        "title": {
+          "zh": "原始双机取物与低柜交付",
+          "en": "Original two-robot retrieval and cabinet delivery"
+        },
+        "conditions": {
+          "zh": "原始冻结 G1＋Dex3／X5、seed 3；原始规则与身体配置保留。",
+          "en": "Frozen original G1 + Dex3/X5, seed 3; original rules and body configuration retained."
+        },
+        "design": {
+          "zh": "G1 把货箱放到独立支撑上并撤手，X5 真实抓取目标、送入低柜并在支撑后释放和撤出。",
+          "en": "G1 places the crate on independent support and withdraws. X5 physically grasps the target, delivers it into the low cabinet, releases onto support and withdraws."
+        },
+        "tools": [
+          {
+            "zh": "独立支撑、货箱与低柜",
+            "en": "Independent support, crate and low cabinet"
+          }
+        ],
+        "embodiment": {
+          "code": "original_G1_Dex3_X5",
+          "zh": "G1 · Dex3 + X5",
+          "en": "G1 · Dex3 + X5"
+        },
+        "result": {
+          "zh": "2026-11-04作者验收的完整物理交付参考。",
+          "en": "Author-accepted complete physical-delivery reference on 2026-11-04."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/M1/M1C-ORIG.mp4",
+        "full_video": "media/M1/M1C-ORIG-original.mp4",
+        "poster": "media/M1/M1C-ORIG.jpg",
+        "final": "media/M1/M1C-ORIG-final.jpg",
+        "evidence_backed_up": false,
+        "accepted_at": "2026-11-04",
+        "goal_met": true,
+        "physical_scope_verified": true,
+        "formal_admission": false,
+        "elapsed_seconds": 181.8200000000192,
+        "attempt": "extensions-20261031/orig-container-full-001",
+        "world": "788b94355fcc9b2eba6c9b579c011b6d21ecbbe3b58fd97f366b151f2b496014",
+        "presentation_speed": 8,
+        "presentation_kind": "Original same-run recording re-encoded with8x timestamps; original camera, no new physics or trajectory rendering",
+        "source_video_sha256": "d56ae55015545b8dbf99261bedfb49db2cf6a69809877bd20f241bc20ea765bf",
+        "video_sha256": "27b4e4460d1e53cd31f8d03147f4b69d538e9c81ffda38453927253a75e9465c",
+        "evidence": {
+          "path": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/orig-container-full-001/measured-evidence.json",
+          "sha256": "c0fdb1dcca2ba3c8d67342f922ae9febb787b3394c3d884465ffad93bdff62fa",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/orig-container-full-001/run/runtime/run/trusted/episode_00",
+          "episode_manifest_sha256": "974f477d3bd5ec92a36df8d4efb9352bf4306676420687f138c30bf09dd048b9",
+          "kind": "complete_delivery"
+        },
+        "video_unavailable_reason": null
+      },
+      {
+        "id": "M1C-B01-A",
+        "configuration_id": "M1C-B01:A",
+        "title": {
+          "zh": "限矩条件下推箱取物与交付",
+          "en": "Push, retrieve and deliver under limited arm effort"
+        },
+        "conditions": {
+          "zh": "4kg货箱、滑动摩擦0.15、300mm连续工作台与160mm罩；G1臂实际限矩20%，seed 3。",
+          "en": "4 kg crate, sliding friction 0.15, continuous 300 mm workbench and 160 mm hood; actual G1 arm caps 20%, seed 3."
+        },
+        "design": {
+          "zh": "实际推移受支撑货箱，露出目标，再真实取块、低柜承托释放并撤出。本冻结实例通过；抬举/推移能力边界仍未标定。",
+          "en": "Physically slide the supported crate to expose the target, then grasp it, deliver onto cabinet support, release and withdraw. This frozen instance passed; lift/push capability boundaries remain uncalibrated."
+        },
+        "tools": [
+          {
+            "zh": "独立支撑、货箱与低柜",
+            "en": "Independent support, crate and low cabinet"
+          }
+        ],
+        "embodiment": {
+          "code": "A",
+          "zh": "G1 · Dex3 + X5",
+          "en": "G1 · Dex3 + X5"
+        },
+        "result": {
+          "zh": "2026-11-04作者验收的完整物理交付参考。",
+          "en": "Author-accepted complete physical-delivery reference on 2026-11-04."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/M1/M1C-B01-A.mp4",
+        "full_video": "media/M1/M1C-B01-A-original.mp4",
+        "poster": "media/M1/M1C-B01-A.jpg",
+        "final": "media/M1/M1C-B01-A-final.jpg",
+        "evidence_backed_up": false,
+        "accepted_at": "2026-11-04",
+        "goal_met": true,
+        "physical_scope_verified": true,
+        "formal_admission": false,
+        "elapsed_seconds": 133.21999999999434,
+        "attempt": "extensions-20261103-v2/b01-supported-push-full-007",
+        "world": "88262aa3db9cc6837e4a43c4570c0eb400c942fc150f4baefa8580bd81afc461",
+        "presentation_speed": 8,
+        "presentation_kind": "Original same-run recording re-encoded with8x timestamps; original camera, no new physics or trajectory rendering",
+        "source_video_sha256": "51a15bccb5493e69e759a1c8adf8098a055a0442934c5ea5b71e58fdc6f9fe22",
+        "video_sha256": "e862840ba5a63a9f688f8fd0d6ec79048c3db730201d87394df3aa4db72bd3a9",
+        "evidence": {
+          "path": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/b01-supported-push-full-007/measured-evidence-001.json",
+          "sha256": "51c707d331eedec053939bd6de2f0cefc4a438dffc6a577feba2bf932d08872c",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/b01-supported-push-full-007/run/runtime/run/trusted/episode_00",
+          "episode_manifest_sha256": "5487038e46b8d1b88c36a0c2e19d7b6f14fcc962a83363a4f0f76b8edff1c909",
+          "kind": "complete_delivery"
+        },
+        "video_unavailable_reason": null
+      },
+      {
+        "id": "M1C-B02-A",
+        "configuration_id": "M1C-B02:A",
+        "title": {
+          "zh": "建立独立支撑后取物交付",
+          "en": "Establish independent support, retrieve and deliver"
+        },
+        "conditions": {
+          "zh": "G1＋Dex3／X5，独立支撑候选与低位箱支撑；固定seed 3/N规则。",
+          "en": "G1 + Dex3/X5, independent-support candidates and a low crate support; fixed seed 3/rule N."
+        },
+        "design": {
+          "zh": "先把货箱放到独立支撑并撤手，再由X5取块、完成原柜交付与撤出。该实例不证明所有其他支撑或路线都不可行。",
+          "en": "Place the crate onto independent support and withdraw the donor, then let X5 retrieve and deliver the target into the original cabinet and withdraw. This instance does not rule out all alternative supports or routes."
+        },
+        "tools": [
+          {
+            "zh": "独立支撑、货箱与低柜",
+            "en": "Independent support, crate and low cabinet"
+          }
+        ],
+        "embodiment": {
+          "code": "A",
+          "zh": "G1 · Dex3 + X5",
+          "en": "G1 · Dex3 + X5"
+        },
+        "result": {
+          "zh": "2026-11-04作者验收的完整物理交付参考。",
+          "en": "Author-accepted complete physical-delivery reference on 2026-11-04."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/M1/M1C-B02-A.mp4",
+        "full_video": "media/M1/M1C-B02-A-original.mp4",
+        "poster": "media/M1/M1C-B02-A.jpg",
+        "final": "media/M1/M1C-B02-A-final.jpg",
+        "evidence_backed_up": false,
+        "accepted_at": "2026-11-04",
+        "goal_met": true,
+        "physical_scope_verified": true,
+        "formal_admission": false,
+        "elapsed_seconds": 194.00000000002544,
+        "attempt": "extensions-20261031/b02-container-full-001",
+        "world": "0fb83872191f5e2a9f8abc7c588a6a4adfca0622c4dd01b571365779f0833db6",
+        "presentation_speed": 8,
+        "presentation_kind": "Original same-run recording re-encoded with8x timestamps; original camera, no new physics or trajectory rendering",
+        "source_video_sha256": "cd06d0a421ff6ef72e82ef7f0a1ef0260869ccf4eee7f87302ae93541917d017",
+        "video_sha256": "c31a01fde267e48817c3b031e6eebddaac4785c59d751980086eb1d421fdbdc7",
+        "evidence": {
+          "path": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/b02-container-full-001/measured-evidence.json",
+          "sha256": "5d89c668e62adb90dec38a33ad7392051bfed37c9c6046e6db5ad54fc3bb21be",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/b02-container-full-001/run/runtime/run/trusted/episode_00",
+          "episode_manifest_sha256": "fce9bc85d81b52dfe82e075b07d071e725d333bf2f68c9bedb040f8e8ce91a1a",
+          "kind": "complete_delivery"
+        },
+        "video_unavailable_reason": null
+      },
+      {
+        "id": "M1C-B06-A",
+        "configuration_id": "M1C-B06:A",
+        "title": {
+          "zh": "伙伴交接与交付",
+          "en": "Partner handoff and delivery"
+        },
+        "conditions": {
+          "zh": "G1＋Dex3／X5、带撤出边缘的货箱与原低柜；固定seed 3/N规则。",
+          "en": "G1 + Dex3/X5, a bulky carrier with a withdrawal lip and the original low cabinet; fixed seed 3/rule N."
+        },
+        "design": {
+          "zh": "G1建立取物安排后，由X5实际接管目标并完成承托、释放和撤出；不声称已经证明伙伴的全局必要性。",
+          "en": "After G1 establishes the retrieval arrangement, X5 physically takes over the target and completes supported release and withdrawal. No global necessity of the partner is claimed."
+        },
+        "tools": [
+          {
+            "zh": "独立支撑、货箱与低柜",
+            "en": "Independent support, crate and low cabinet"
+          }
+        ],
+        "embodiment": {
+          "code": "A",
+          "zh": "G1 · Dex3 + X5",
+          "en": "G1 · Dex3 + X5"
+        },
+        "result": {
+          "zh": "2026-11-04作者验收的完整物理交付参考。",
+          "en": "Author-accepted complete physical-delivery reference on 2026-11-04."
+        },
+        "refusal": false,
+        "refusal_note": null,
+        "video": "media/M1/M1C-B06-A.mp4",
+        "full_video": "media/M1/M1C-B06-A-original.mp4",
+        "poster": "media/M1/M1C-B06-A.jpg",
+        "final": "media/M1/M1C-B06-A-final.jpg",
+        "evidence_backed_up": false,
+        "accepted_at": "2026-11-04",
+        "goal_met": true,
+        "physical_scope_verified": true,
+        "formal_admission": false,
+        "elapsed_seconds": 188.32000000002253,
+        "attempt": "extensions-20261031/b06-container-full-001",
+        "world": "6e83c264f46a90630642066fe1fe2ddc7d855f8046ac30971e75f160028f3917",
+        "presentation_speed": 8,
+        "presentation_kind": "Original same-run recording re-encoded with8x timestamps; original camera, no new physics or trajectory rendering",
+        "source_video_sha256": "8b6efb554186fd4ec20054559abc58fcf97208b9fa4a98738be85408fba76ea9",
+        "video_sha256": "795c38a51b0b6dea8e516c8ce252af93536d439743a3ad3aa0b4b497bacb0023",
+        "evidence": {
+          "path": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/b06-container-full-001/measured-evidence.json",
+          "sha256": "23fa85e7625a7c979c6f55afb27ad80c668e21ac71533b6b680544ddb78afe07",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/b06-container-full-001/run/runtime/run/trusted/episode_00",
+          "episode_manifest_sha256": "1152afa85df518f1dc9dd885eb24a46bde143be6f7cb72db6d3021a65064d98d",
+          "kind": "complete_delivery"
+        },
+        "video_unavailable_reason": null
+      },
+      {
+        "id": "M1C-I01-A",
+        "configuration_id": "M1C-I01:A",
+        "title": {
+          "zh": "封闭取物口证书与双机Q退出",
+          "en": "Blocked retrieval aperture certificate and two-robot Q exit"
+        },
+        "conditions": {
+          "zh": "连续固定外壳、唯一35mm取物口、45mm刚性目标；冻结cage-v2/rigid-contact-8实例。",
+          "en": "Joined fixed shell, sole 35 mm retrieval slit and 45 mm rigid target; frozen cage-v2 / rigid-contact-8 instance."
+        },
+        "design": {
+          "zh": "独立几何证书排除该固定场景的合法取物通路，绑定真实碰撞对照；两机器人均空手完整进入Q并稳定保持。正确行为为拒答退出。",
+          "en": "An independent geometric certificate excludes legal retrieval paths in this fixed scene and is bound to collision controls. Both robots physically enter Q with empty hands and hold stable. Correct behaviour is refusal and safe exit."
+        },
+        "tools": [
+          {
+            "zh": "几何证书、固定壳体与Q退出区",
+            "en": "Geometric certificate, fixed shell and Q exit regions"
+          }
+        ],
+        "embodiment": {
+          "code": "A",
+          "zh": "G1 · Dex3 + X5",
+          "en": "G1 · Dex3 + X5"
+        },
+        "result": {
+          "zh": "2026-11-04作者验收的完整拒答/安全退出参考。",
+          "en": "Author-accepted complete refusal/safe-exit reference on 2026-11-04."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为是空手退出，不计作目标交付。",
+          "en": "Correct behaviour is empty-handed exit, not target delivery."
+        },
+        "video": null,
+        "full_video": null,
+        "poster": null,
+        "final": null,
+        "evidence_backed_up": false,
+        "accepted_at": "2026-11-04",
+        "goal_met": true,
+        "physical_scope_verified": true,
+        "formal_admission": false,
+        "elapsed_seconds": 47.90000000000189,
+        "attempt": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/i01-cage-q-exit-001/run",
+        "world": "f8aa68c6b14e916f9988c987d4d26aad4018b7a2d30d3f9b6a2f4136c7d476ff",
+        "presentation_speed": null,
+        "presentation_kind": null,
+        "source_video_sha256": null,
+        "video_sha256": null,
+        "evidence": {
+          "path": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/i01-certified-cage-exit-001.json",
+          "sha256": "5014254712101ea2535fb8f6c1626882404565ba731d214e5018b230d90e32e5",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103-v2/i01-cage-q-exit-001/run/runtime/run/trusted/episode_00",
+          "episode_manifest_sha256": "36ec368b9699fa64afddc79cf8e3b59879b4cd32b6f63302c329f92b97affeff",
+          "kind": "certified_safe_exit"
+        },
+        "video_unavailable_reason": "No original video exists in the selected sealed attempt; trajectory and certificate remain available."
+      },
+      {
+        "id": "M1C-I02-A",
+        "configuration_id": "M1C-I02:A",
+        "title": {
+          "zh": "低柜入口证书与Q退出",
+          "en": "Cabinet aperture certificate and Q exit"
+        },
+        "conditions": {
+          "zh": "原柜唯一入口高35mm，目标为45mm刚性Cube；冻结rigid-contact-8、seed 3/N规则。",
+          "en": "The cabinet has a sole 35 mm-high opening and the target is a 45 mm rigid Cube; frozen rigid-contact-8, seed 3/rule N."
+        },
+        "design": {
+          "zh": "证书说明目标本体无法通过唯一柜口；不尝试破坏或挤穿，两机器人空手进入各自Q并稳定保持。A、B各自有独立完整实体退出见证。",
+          "en": "The certificate establishes that the rigid target cannot pass the sole opening. Without breaking or squeezing it through, both robots enter their Q regions empty-handed and hold stable. A and B each have a separate complete physical exit witness."
+        },
+        "tools": [
+          {
+            "zh": "几何证书、固定壳体与Q退出区",
+            "en": "Geometric certificate, fixed shell and Q exit regions"
+          }
+        ],
+        "embodiment": {
+          "code": "A",
+          "zh": "G1 · Dex3 + X5",
+          "en": "G1 · Dex3 + X5"
+        },
+        "result": {
+          "zh": "2026-11-04作者验收的完整拒答/安全退出参考。",
+          "en": "Author-accepted complete refusal/safe-exit reference on 2026-11-04."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为是空手退出，不计作目标交付。",
+          "en": "Correct behaviour is empty-handed exit, not target delivery."
+        },
+        "video": "media/M1/M1C-I02-A.mp4",
+        "full_video": "media/M1/M1C-I02-A-original.mp4",
+        "poster": "media/M1/M1C-I02-A.jpg",
+        "final": "media/M1/M1C-I02-A-final.jpg",
+        "evidence_backed_up": false,
+        "accepted_at": "2026-11-04",
+        "goal_met": true,
+        "physical_scope_verified": true,
+        "formal_admission": false,
+        "elapsed_seconds": 37.1000000000002,
+        "attempt": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/i02-container-public-decision-001/run",
+        "world": "98e82afbd6ae30bff4e456c33639221e7a8ff906449cafc9089c3ad9c7972d2c",
+        "presentation_speed": 8,
+        "presentation_kind": "Original same-run recording re-encoded with8x timestamps; original camera, no new physics or trajectory rendering",
+        "source_video_sha256": "d9abd76031ee3c0526aeee1d9379c66b3d817c4aa392a3a075220b4ddd2f487b",
+        "video_sha256": "35d8bcc07fdaabc6929e6b153b6b17e10b95bbc950f846a54c7103adc85fb026",
+        "evidence": {
+          "path": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/i02-certified-container-public-decision-001.json",
+          "sha256": "d8a61b1ed7aab75567ade89714bae75b268f60abbf48917897d12fbc5611886c",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261031/i02-container-public-decision-001/run/runtime/run/trusted/episode_00",
+          "episode_manifest_sha256": "940fa0d9ae8b1e1d4db53cd72b8901caf4c228ce515a06a119e4f0642c13ef1b",
+          "kind": "certified_safe_exit"
+        },
+        "video_unavailable_reason": null
+      },
+      {
+        "id": "M1C-I02-B",
+        "configuration_id": "M1C-I02:B",
+        "title": {
+          "zh": "低柜入口证书与Q退出 · 五指B",
+          "en": "Cabinet aperture certificate and Q exit · five-finger B"
+        },
+        "conditions": {
+          "zh": "原柜唯一入口高35mm，目标为45mm刚性Cube；冻结rigid-contact-8、seed 3/N规则。",
+          "en": "The cabinet has a sole 35 mm-high opening and the target is a 45 mm rigid Cube; frozen rigid-contact-8, seed 3/rule N."
+        },
+        "design": {
+          "zh": "证书说明目标本体无法通过唯一柜口；不尝试破坏或挤穿，两机器人空手进入各自Q并稳定保持。A、B各自有独立完整实体退出见证。",
+          "en": "The certificate establishes that the rigid target cannot pass the sole opening. Without breaking or squeezing it through, both robots enter their Q regions empty-handed and hold stable. A and B each have a separate complete physical exit witness."
+        },
+        "tools": [
+          {
+            "zh": "几何证书、固定壳体与Q退出区",
+            "en": "Geometric certificate, fixed shell and Q exit regions"
+          }
+        ],
+        "embodiment": {
+          "code": "B",
+          "zh": "G1 · Inspire five-finger + X5",
+          "en": "G1 · Inspire five-finger + X5"
+        },
+        "result": {
+          "zh": "2026-11-04作者验收的完整拒答/安全退出参考。",
+          "en": "Author-accepted complete refusal/safe-exit reference on 2026-11-04."
+        },
+        "refusal": true,
+        "refusal_note": {
+          "zh": "正确行为是空手退出，不计作目标交付。",
+          "en": "Correct behaviour is empty-handed exit, not target delivery."
+        },
+        "video": "media/M1/M1C-I02-B.mp4",
+        "full_video": "media/M1/M1C-I02-B-original.mp4",
+        "poster": "media/M1/M1C-I02-B.jpg",
+        "final": "media/M1/M1C-I02-B-final.jpg",
+        "evidence_backed_up": false,
+        "accepted_at": "2026-11-04",
+        "goal_met": true,
+        "physical_scope_verified": true,
+        "formal_admission": false,
+        "elapsed_seconds": 34.480000000000004,
+        "attempt": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103/i02-B-full-exit-002/run",
+        "world": "e3b75cce363e63a6f8097dccfb89f597a49fa888e837510db67d182aeb506644",
+        "presentation_speed": 8,
+        "presentation_kind": "Original same-run recording re-encoded with8x timestamps; original camera, no new physics or trajectory rendering",
+        "source_video_sha256": "30f0a314ae240a2f22b27a6f420fa741738533f652c724ff231f314944c70854",
+        "video_sha256": "3be351fb803f2a95bf95fa60178998daaf6d10e43750fb1d08510b39f33c8120",
+        "evidence": {
+          "path": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103/i02-B-full-exit-002/i02-certified-B-exit-001.json",
+          "sha256": "d7be58c17efb37ebf0d008aa7bd461b31b230113d85374388d997aaa74546e1f",
+          "episode": "multi_robot/g1_mobile_gripper_retrieval/validation/extensions-20261103/i02-B-full-exit-002/run/runtime/run/trusted/episode_00",
+          "episode_manifest_sha256": "525f599fe0630b4d3c52c774aebe49e59a1988350dee46c5987e5d599851662e",
+          "kind": "certified_safe_exit"
+        },
+        "video_unavailable_reason": null
+      }
+    ],
+    "pending_cases": [
+      {
+        "id": "M1C-B03-A",
+        "configuration_id": "M1C-B03:A",
+        "status": "paused_incomplete",
+        "title": {
+          "zh": "工具取物与就近交付 · 暂停未完整",
+          "en": "Tool retrieval and nearby delivery · paused incomplete"
+        },
+        "reason": {
+          "zh": "设计已获作者认可，但缺少原始开局的完整第5版物理交付见证；诊断006在48.62s停止，Cube仍受源面支撑。模型或局部拖动不计完整成功。",
+          "en": "The revised design is accepted, but no complete revision 5 physical witness from the original start exists. Diagnostic006 stopped at 48.62 s with the Cube still source-supported. Models and local extraction are not complete success."
+        },
+        "accepted": false,
+        "goal_met": false
+      }
+    ],
+    "deferred_configurations": [
+      "M1C-B04:A",
+      "M1C-B05:A"
+    ],
+    "acceptance": {
+      "zh": "2026-11-04作者按当前范围标记通过。仅7项已有完整物理参考计入已验收总数，不代表8项全部物理完成。特权状态专家、冻结单实例；不新增正式准入、第二人复现、公共传感闭环操作或能力边界标定声明。",
+      "en": "The author accepted the current scope on 2026-11-04. Only the seven complete physical references enter accepted totals; this is not eight completed physical configurations. Privileged-state experts and frozen instances; no new formal admission, second-person reproduction, public-sensor manipulation or capability-boundary certification."
+    },
+    "embodiments": [
+      {
+        "code": "A",
+        "zh": "G1＋Dex3与X5",
+        "en": "G1 + Dex3 and X5"
+      },
+      {
+        "code": "B",
+        "zh": "官方五指G1与X5；53状态/41指令",
+        "en": "Official five-finger G1 and X5; 53-state / 41-command"
+      }
+    ],
+    "backup": {
+      "storage": "private Hugging Face dataset",
+      "status": "pending_remote_verification",
+      "verified": false,
+      "configs_backed": 0,
+      "configs_total": 7,
+      "url": null,
+      "data_revision": null
+    }
   }
 ]
