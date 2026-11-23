@@ -30,11 +30,21 @@ def main():
     assert counts == summary['case_status_counts']
     assert len(tasks) == len({t['case'] for t in tasks}) == summary['benchmark']['cases'] == 246
     assert len({t['family'] for t in tasks}) == 29
-    assert sum(t['local_scope'] for t in tasks) == summary['scope']['current_local'] == 99
-    assert sum(t['valid'] for t in tasks) == summary['valid_evaluation_cases'] == 30
-    assert sorted(t['case'] for t in tasks if t['success']) == sorted(summary['verified_success_cases'])
-    assert sum(t['success'] is False for t in tasks) == 28
-    assert summary['aggregate_246_success_rate'] is None and summary['official_efe_run'] is False
+    valid=sum(t['valid'] for t in tasks)
+    successes=sum(t['success'] is True for t in tasks)
+    assert valid == summary['valid']
+    assert successes == summary['success']
+    assert sum(t['success'] is False for t in tasks) == summary['unsuccessful']
+    assert 246-valid == summary['pending']
+    assert summary['verified_success_fraction_all_tasks']==successes/246
+    assert summary['aggregate_246_success_rate']==(successes/246 if valid==246 else None)
+    assert summary['official_efe_run'] is False
+    stages=[t['stage_score'] for t in tasks if t['stage_score'] is not None]
+    assert len(stages)==summary['stage_score_count']
+    assert all(0<=score<=100 for score in stages)
+    assert sum(stages)==summary['stage_score_sum']
+    assert summary['stage_score_mean_valid']==(sum(stages)/len(stages) if stages else None)
+    assert summary['stage_score_mean_all_tasks']==(sum(stages)/246 if len(stages)==246 else None)
     assert sum(t['standard_ready'] + t['privileged_ready'] for t in tasks) == 492
     with (ROOT/'dist/data/leaderboard-tasks.csv').open(encoding='utf-8-sig', newline='') as handle:
         exported = list(csv.DictReader(handle))
@@ -47,12 +57,14 @@ def main():
         assert row['family'] == task['family']
         if not task['valid']:
             assert task['success'] is None and task['native_score'] is None and task['evidence'] is None
-            assert row['native_score'] == '' and row['success'] == ''
+            assert row['native_score'] == '' and row['success'] == '' and row['stage_score']==''
         else:
             proof = task['evidence']
             assert proof['success'] is task['success']
             assert proof['runtime_verified'] and proof['submission_unchanged']
-            assert public['source_checksums'][proof['bundle_path']] == proof['result_sha256']
+            assert public['source_checksums'][proof['result_source']] == proof['result_sha256']
+            assert public['source_checksums'][proof['native_verdict_source']] == proof['native_verdict_sha256']
+            assert proof['stage_score']==task['stage_score']
             path = ROOT/'dist/data/leaderboard-evidence'/(task['case']+'.json')
             assert json.loads(path.read_text()) == proof
             evidence_files.add(path.name)
@@ -65,8 +77,8 @@ def main():
     assert all(r['data-family'] == by_case[r['data-case']]['family'] for r in rows)
     assert '/robo-si-results/leaderboard.html' in (ROOT/'dist/index.html').read_text(encoding='utf-8')
     assert '/robo-si-results/leaderboard.html' in (ROOT/'dist/sitemap.xml').read_text()
-    print(json.dumps({'passed': True, 'tasks': 246, 'valid_scores': 30, 'successes': 2,
-                      'unscored_preserved_as_null': 216, 'evidence_digests': len(evidence_files)}))
+    print(json.dumps({'passed': True, 'tasks': 246, 'valid_scores': valid, 'successes': successes,
+                      'unscored_preserved_as_null': 246-valid, 'stage_scores':len(stages),'evidence_digests': len(evidence_files)}))
 
 
 if __name__ == '__main__':

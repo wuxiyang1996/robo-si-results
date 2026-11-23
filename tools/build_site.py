@@ -14,7 +14,7 @@ import shutil
 import subprocess
 import re
 import sys
-from leaderboard_page import render_leaderboard
+from workspace_leaderboard_page import render_leaderboard
 from research_page import render_research
 from playback_media import materialize_media
 
