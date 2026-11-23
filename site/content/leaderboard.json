@@ -1,7 +1,7 @@
 {
   "schema": "robo-si-leaderboard/2",
   "updated": "2026-11-23",
-  "audited_at": "2026-11-23T17:32:01.527891-05:00",
+  "audited_at": "2026-11-23T18:29:55.343914-05:00",
   "summary": {
     "benchmark": {
       "cases": 246,
@@ -17,22 +17,22 @@
       "high": 130
     },
     "covered": 246,
-    "valid": 205,
+    "valid": 206,
     "success": 15,
-    "unsuccessful": 190,
-    "pending": 41,
+    "unsuccessful": 191,
+    "pending": 40,
     "verified_success_fraction_all_tasks": 0.06097560975609756,
-    "success_rate_valid": 0.07317073170731707,
+    "success_rate_valid": 0.07281553398058252,
     "aggregate_246_success_rate": null,
     "case_status_counts": {
-      "valid_unsuccessful": 190,
+      "valid_unsuccessful": 191,
       "verified_success": 15,
-      "no_submission": 35,
-      "invalid_evaluation": 6
+      "invalid_evaluation": 6,
+      "no_submission": 34
     },
-    "stage_score_count": 177,
+    "stage_score_count": 178,
     "stage_score_sum": 1407.35,
-    "stage_score_mean_valid": 7.951129943502824,
+    "stage_score_mean_valid": 7.9064606741573025,
     "stage_score_mean_all_tasks": null,
     "official_efe_run": false,
     "counting_policy": "Unique tasks. Prefer verified success, otherwise valid evaluation; prefer non-snapshot then most recent. Exploratory aggregate across settings and retries."
@@ -2726,20 +2726,45 @@
       "case": "FT-L3-1.G",
       "family": "FT",
       "local_scope": true,
-      "status": "no_submission",
-      "valid": false,
-      "success": null,
-      "native_score": null,
-      "stage_score": null,
-      "score_scale": null,
+      "status": "valid_unsuccessful",
+      "valid": true,
+      "success": false,
+      "native_score": 0.0,
+      "stage_score": 0.0,
+      "score_scale": 1,
       "snapshot": false,
-      "attempts": 2,
+      "attempts": 3,
       "standard_ready": true,
       "privileged_ready": true,
-      "campaign": "astra-next-families-chatgpt-20261115",
+      "campaign": "astra-complete-high-20261123",
       "effort": "high",
       "regrade": false,
-      "evidence": null
+      "evidence": {
+        "case": "FT-L3-1.G",
+        "campaign": "astra-complete-high-20261123",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "high",
+        "runtime_verified": true,
+        "success": false,
+        "submission_unchanged": true,
+        "native_score": 0.0,
+        "stage_score": 0.0,
+        "score_scale": 1,
+        "stage_scoring_version": "stage-scoring/1",
+        "stage_details": [
+          {
+            "episode": "episode_00",
+            "stage_scores": {},
+            "zero_reason": "the program exceeded its wall-clock budget"
+          }
+        ],
+        "result_source": "runtime/astra-complete-high-20261123/trials/ft-l3-1-g-privileged/result.json",
+        "result_sha256": "63447b3c08c8b49c8a8951a201f1aa39ab7c3e76f8252b89963f88d8eb5c72c6",
+        "native_verdict_source": "runtime/astra-complete-high-20261123/trials/ft-l3-1-g-privileged-evaluate/native-verdict.json",
+        "native_verdict_sha256": "93a55f141ad30a79f6f7bdd36d3412c725627423620484bd8d4c722f0f68b903",
+        "snapshot": false,
+        "regrade": false
+      }
     },
     {
       "case": "FT-L3-2.W",
@@ -10561,8 +10586,8 @@
     "runtime/regrade-20261123/trials/astra-ft-l1-w-r1/native-verdict.json": "01aa7b0aa70556dabd45f810cd4898180c32f1d4c77e02a01f5f2b6d26ac078a",
     "workspace/efe-runs/astra-repair-20261116/evaluation-retries/trials/ft-l3-1-f-repair-eval/result.json": "de284eaad64d862afa40ee426fd943617d533fb6e1fe774f6b404c45faa6c83c",
     "workspace/efe-runs/astra-repair-20261116/evaluation-retries/trials/ft-l3-1-f-repair-eval/native-verdict.json": "76f674b76b39b22c739a1e27e21de711a736e4741e0cd2ce6f721ebdc1d39edc",
-    "workspace/efe-runs/astra-next-families-chatgpt-20261115/trials/ft-l3-1-g-privileged/result.json": "089a517a403e3145a57b0a4e88e6f73743f667a8892de6314d9e94f2b94d439d",
-    "workspace/efe-runs/astra-next-families-chatgpt-20261115/trials/ft-l3-1-g-privileged/native-verdict.json": "169570ed66426c22de81deeb66ebb0244294fb4603eece8e50bec339c340c7d1",
+    "runtime/astra-complete-high-20261123/trials/ft-l3-1-g-privileged/result.json": "63447b3c08c8b49c8a8951a201f1aa39ab7c3e76f8252b89963f88d8eb5c72c6",
+    "runtime/astra-complete-high-20261123/trials/ft-l3-1-g-privileged-evaluate/native-verdict.json": "93a55f141ad30a79f6f7bdd36d3412c725627423620484bd8d4c722f0f68b903",
     "runtime/regrade-20261123/trials/astra-ft-l3-2-w-r1/result.json": "b1b81d6a0577817df941926d8290b876a8043f5da7db958540069f52814d44c2",
     "runtime/regrade-20261123/trials/astra-ft-l3-2-w-r1/native-verdict.json": "e820b833b9daacefa94ec8b2a400c881502cfec75fde9e9d6fc213fc41add6de",
     "workspace/efe-runs/astra-next-families-chatgpt-20261115/trials/ft-l3-3-s-privileged/result.json": "05902cab8eedf716fb986af9735be3b83d6e3d317902b50bd10f6c7a8fd601da",
@@ -10927,5 +10952,5 @@
     "workspace/efe-runs/astra-additional21-chatgpt-20261115/trials/tt-r-u-ref-privileged-evaluate/native-verdict.json": "182150146aebf078341874cba4d476ce73e7856782ae26aecbfc66a9ca4a3d1c"
   },
   "scope": "Astra only; all retained workspace campaigns and imported remote results",
-  "source_audit_sha256": "f2118bc15e1af75af7a16c473650b44d2b6c4f43ee9d2582d23f2b6aeff04952"
+  "source_audit_sha256": "b293cccc416f0d5e5a22501223e04205d7b62cbbcc9351a0f93079da6da120e7"
 }
