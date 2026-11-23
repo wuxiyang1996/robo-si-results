@@ -13,6 +13,8 @@ import json
 import shutil
 import subprocess
 import re
+import sys
+from leaderboard_page import render_leaderboard
 from research_page import render_research
 from playback_media import materialize_media
 
@@ -54,7 +56,7 @@ def write(path, content):
     target.write_text(content, encoding='utf-8')
 
 def header(active):
-    nav = [('research.html','研究问题','Research','research'),('tasks/','任务图集','Tasks','tasks'),('guide.html','使用与下载','Get started','guide')]
+    nav = [('research.html','研究问题','Research','research'),('tasks/','任务图集','Tasks','tasks'),('leaderboard.html','排行榜','Leaderboard','leaderboard'),('guide.html','使用与下载','Get started','guide')]
     items = ''.join(f'<a data-local href="{local(path)}"'+(' aria-current="page"' if key==active else '')+'>'+tr(zh,en)+'</a>' for path,zh,en,key in nav)
     return f'''<a class="skip-link" href="#main">{tr('跳到正文','Skip to content')}</a>
     <header class="site-nav"><div class="wrap nav-inner"><a class="brand" data-local href="{PREFIX}">Embodied Terminal-Bench<small>ROBO-SI</small></a>
@@ -386,6 +388,7 @@ def main():
         browser_qa=qa['status'] if qa_current else 'source_changed_since_review'
         shutil.copyfile(qa_path,OUT/'data/browser-review.json')
     home();directory();categories();families();documents();not_found()
+    render_leaderboard(sys.modules[__name__])
     tracked=subprocess.check_output(['git','ls-tree','-r','-z','--name-only',CONFIG['archive_commit']],cwd=ROOT).decode('utf-8').rstrip('\0').split('\0')
     routes=legacy_redirects([p for p in tracked if p.endswith('.html')])
     public={'categories':CONFIG['categories'],'families':FAMILIES,'tasks':TASKS,'facets':FACETS,'unique_recordings':len(RECORDS),'public_configurations':CATALOG['public_configurations']}
