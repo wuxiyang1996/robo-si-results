@@ -1,7 +1,7 @@
 {
   "schema": "robo-si-leaderboard/2",
   "updated": "2026-11-25",
-  "audited_at": "2026-11-25T03:35:43.243298-05:00",
+  "audited_at": "2026-11-25T06:36:25.840317-05:00",
   "summary": {
     "benchmark": {
       "cases": 246,
@@ -17,22 +17,22 @@
       "high": 130
     },
     "covered": 246,
-    "valid": 226,
-    "success": 17,
+    "valid": 227,
+    "success": 18,
     "unsuccessful": 209,
-    "pending": 20,
-    "verified_success_fraction_all_tasks": 0.06910569105691057,
-    "success_rate_valid": 0.0752212389380531,
+    "pending": 19,
+    "verified_success_fraction_all_tasks": 0.07317073170731707,
+    "success_rate_valid": 0.07929515418502203,
     "aggregate_246_success_rate": null,
     "case_status_counts": {
       "valid_unsuccessful": 209,
-      "verified_success": 17,
+      "verified_success": 18,
       "invalid_evaluation": 7,
-      "no_submission": 13
+      "no_submission": 12
     },
-    "stage_score_count": 198,
-    "stage_score_sum": 1614.71,
-    "stage_score_mean_valid": 8.15510101010101,
+    "stage_score_count": 199,
+    "stage_score_sum": 1714.71,
+    "stage_score_mean_valid": 8.616633165829146,
     "stage_score_mean_all_tasks": null,
     "official_efe_run": false,
     "counting_policy": "Unique tasks. Prefer verified success, otherwise valid evaluation; prefer non-snapshot then most recent. Exploratory aggregate across settings and retries."
@@ -8913,20 +8913,45 @@
       "case": "M1C-I02-B",
       "family": "M1",
       "local_scope": true,
-      "status": "no_submission",
-      "valid": false,
-      "success": null,
-      "native_score": null,
-      "stage_score": null,
-      "score_scale": null,
+      "status": "verified_success",
+      "valid": true,
+      "success": true,
+      "native_score": 1.0,
+      "stage_score": 100.0,
+      "score_scale": 1,
       "snapshot": false,
-      "attempts": 1,
+      "attempts": 2,
       "standard_ready": true,
       "privileged_ready": true,
-      "campaign": "astra-selected54-20261113",
+      "campaign": "astra-complete-xhigh-20261123",
       "effort": "xhigh",
       "regrade": false,
-      "evidence": null
+      "evidence": {
+        "case": "M1C-I02-B",
+        "campaign": "astra-complete-xhigh-20261123",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "xhigh",
+        "runtime_verified": true,
+        "success": true,
+        "submission_unchanged": true,
+        "native_score": 1.0,
+        "stage_score": 100.0,
+        "score_scale": 1,
+        "stage_scoring_version": "stage-scoring/1",
+        "stage_details": [
+          {
+            "episode": "episode_00",
+            "stage_scores": {},
+            "zero_reason": null
+          }
+        ],
+        "result_source": "runtime/astra-complete-xhigh-20261123/trials/m1c-i02-b-privileged/result.json",
+        "result_sha256": "aa34b25a512a345f76b40500e2a447bbf8318565ea9bc1d8ba1cd799c8d382d2",
+        "native_verdict_source": "runtime/astra-complete-xhigh-20261123/trials/m1c-i02-b-privileged-evaluate/native-verdict.json",
+        "native_verdict_sha256": "f8c48ef6a5fee8a61ad1a493e06a519296a539a12ee526e58f738e93efc5fcaa",
+        "snapshot": false,
+        "regrade": false
+      }
     },
     {
       "case": "M1C-ORIG",
@@ -11438,8 +11463,8 @@
     "workspace/efe-runs/astra-selected54-20261113/trials/m1c-i01-a-privileged-evaluate/native-verdict.json": "41f9f33853b6189dbc082f19c550b2b2d75ee65fa23018c6aee8e8bebea38052",
     "workspace/efe-runs/astra-selected54-20261113/trials/m1c-i02-a-privileged/result.json": "d0ff685712ef1f1e67359e5bbd5e1feeeaf1aafb33c5859e6030472e3bd349e2",
     "workspace/efe-runs/astra-selected54-20261113/trials/m1c-i02-a-privileged-evaluate/native-verdict.json": "42ad7b5ec187a66e3e68e706c2c31f9b2a379b48534286692cbb5defd4579553",
-    "workspace/efe-runs/astra-selected54-20261113/trials/m1c-i02-b-privileged/result.json": "408b20ab203662e6db893ed3d57355469ceacd7b6f0c1fa14016c1fb716317fe",
-    "workspace/efe-runs/astra-selected54-20261113/trials/m1c-i02-b-privileged/native-verdict.json": "1c94e6d5df53aceb69e55a8922b8b56c626ea21b0acfaacf288ab6c7876dfab2",
+    "runtime/astra-complete-xhigh-20261123/trials/m1c-i02-b-privileged/result.json": "aa34b25a512a345f76b40500e2a447bbf8318565ea9bc1d8ba1cd799c8d382d2",
+    "runtime/astra-complete-xhigh-20261123/trials/m1c-i02-b-privileged-evaluate/native-verdict.json": "f8c48ef6a5fee8a61ad1a493e06a519296a539a12ee526e58f738e93efc5fcaa",
     "workspace/efe-runs/astra-selected54-20261113/trials/m1c-orig-privileged/result.json": "cba793f889e226bac87accf7cd670882f9317fee00b9433425b65ef9b699bfc7",
     "workspace/efe-runs/astra-selected54-20261113/trials/m1c-orig-privileged-evaluate/native-verdict.json": "419c556de60248f76a6c40d182db720ae5ad6a1276fcf175722b38b457fdeeed",
     "workspace/efe-runs/astra-next-families-chatgpt-20261115/trials/m2-1-privileged/result.json": "ba0365270cb5e2dd88f75d0dd0b98f5765ebe5258664c86aaceea8c1d04090ea",
@@ -11552,5 +11577,5 @@
     "workspace/efe-runs/astra-additional21-chatgpt-20261115/trials/tt-r-u-ref-privileged-evaluate/native-verdict.json": "182150146aebf078341874cba4d476ce73e7856782ae26aecbfc66a9ca4a3d1c"
   },
   "scope": "Astra only; all retained workspace campaigns and imported remote results",
-  "source_audit_sha256": "c2fcca4e02787cba0e41c06f9becf4f65b1087ec9fe126a19e7b47c1b79ad1af"
+  "source_audit_sha256": "f27ef7e502161587fd116e8a8d9d5cd7ed87a815af5f476e8ab99e5ce5d66e6e"
 }
