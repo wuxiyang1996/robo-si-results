@@ -1,7 +1,7 @@
 {
   "schema": "robo-si-leaderboard/2",
   "updated": "2026-11-25",
-  "audited_at": "2026-11-25T07:09:04.192453-05:00",
+  "audited_at": "2026-11-25T10:43:58.114230-05:00",
   "summary": {
     "benchmark": {
       "cases": 246,
@@ -17,22 +17,22 @@
       "high": 130
     },
     "covered": 246,
-    "valid": 228,
+    "valid": 229,
     "success": 18,
-    "unsuccessful": 210,
-    "pending": 18,
+    "unsuccessful": 211,
+    "pending": 17,
     "verified_success_fraction_all_tasks": 0.07317073170731707,
-    "success_rate_valid": 0.07894736842105263,
+    "success_rate_valid": 0.07860262008733625,
     "aggregate_246_success_rate": null,
     "case_status_counts": {
-      "valid_unsuccessful": 210,
+      "valid_unsuccessful": 211,
       "verified_success": 18,
       "invalid_evaluation": 7,
-      "no_submission": 11
+      "no_submission": 10
     },
-    "stage_score_count": 200,
+    "stage_score_count": 201,
     "stage_score_sum": 1714.71,
-    "stage_score_mean_valid": 8.573550000000001,
+    "stage_score_mean_valid": 8.53089552238806,
     "stage_score_mean_all_tasks": null,
     "official_efe_run": false,
     "counting_policy": "Unique tasks. Prefer verified success, otherwise valid evaluation; prefer non-snapshot then most recent. Exploratory aggregate across settings and retries."
@@ -10052,20 +10052,45 @@
       "case": "PC-03",
       "family": "PC",
       "local_scope": true,
-      "status": "no_submission",
-      "valid": false,
-      "success": null,
-      "native_score": null,
-      "stage_score": null,
-      "score_scale": null,
+      "status": "valid_unsuccessful",
+      "valid": true,
+      "success": false,
+      "native_score": 0.0,
+      "stage_score": 0.0,
+      "score_scale": 1,
       "snapshot": false,
-      "attempts": 2,
+      "attempts": 3,
       "standard_ready": true,
       "privileged_ready": true,
-      "campaign": "astra-additional48-recovery-20261114",
+      "campaign": "astra-complete-xhigh-20261123",
       "effort": "xhigh",
       "regrade": false,
-      "evidence": null
+      "evidence": {
+        "case": "PC-03",
+        "campaign": "astra-complete-xhigh-20261123",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "xhigh",
+        "runtime_verified": true,
+        "success": false,
+        "submission_unchanged": true,
+        "native_score": 0.0,
+        "stage_score": 0.0,
+        "score_scale": 1,
+        "stage_scoring_version": "stage-scoring/1",
+        "stage_details": [
+          {
+            "episode": "episode_00",
+            "stage_scores": {},
+            "zero_reason": null
+          }
+        ],
+        "result_source": "runtime/astra-complete-xhigh-20261123/trials/pc-03-privileged/result.json",
+        "result_sha256": "aad40220f8a3805ba420584650bfa5fbe2467835b363113e41e66849aaa239f6",
+        "native_verdict_source": "runtime/astra-complete-xhigh-20261123/trials/pc-03-privileged-evaluate/native-verdict.json",
+        "native_verdict_sha256": "da120ba3a996b7775cf5ccef6aa75a3d1810c494763da874098150af144bd655",
+        "snapshot": false,
+        "regrade": false
+      }
     },
     {
       "case": "PC-04",
@@ -11586,8 +11611,8 @@
     "workspace/efe-runs/astra-additional48-recovery-20261114/trials/pc-01-privileged-evaluate/native-verdict.json": "3f5b7430151494df84d929ae519dd51e451556d37497cedb872481556dcfe61a",
     "workspace/efe-runs/astra-additional48-recovery-20261114/trials/pc-02-privileged/result.json": "4af71fc6afc59ab0c10513c042775969cbfdcf13d073064f7803df4767576831",
     "workspace/efe-runs/astra-additional48-recovery-20261114/trials/pc-02-privileged-evaluate/native-verdict.json": "ef155f2bea897e10e51ab1d8fb30248c9ce5acdfbfc3f9e56f116ccbe31d9a80",
-    "workspace/efe-runs/astra-additional48-recovery-20261114/trials/pc-03-privileged/result.json": "0037dc7cc33155fdac0a7880946a4ba9afa43b73980ec2d59bc9fb301b23c6c2",
-    "workspace/efe-runs/astra-additional48-recovery-20261114/trials/pc-03-privileged/native-verdict.json": "a268d88cefb3ce712e79961a2bffcb707794570cec9cf6830751d11fee153efe",
+    "runtime/astra-complete-xhigh-20261123/trials/pc-03-privileged/result.json": "aad40220f8a3805ba420584650bfa5fbe2467835b363113e41e66849aaa239f6",
+    "runtime/astra-complete-xhigh-20261123/trials/pc-03-privileged-evaluate/native-verdict.json": "da120ba3a996b7775cf5ccef6aa75a3d1810c494763da874098150af144bd655",
     "workspace/efe-runs/astra-additional48-recovery-20261114/trials/pc-04-privileged/result.json": "c0a535d7a2d93c4858b37755b9fed855397c674a8b6fc570f2c2c7c993590f4e",
     "workspace/efe-runs/astra-additional48-recovery-20261114/trials/pc-04-privileged/native-verdict.json": "d3706c38a07c43ee4ddd6d567d9f8860a9d201d9a099f735cd87054283775556",
     "workspace/efe-runs/astra-additional21-chatgpt-20261115/trials/pc-05-privileged/result.json": "b2fe870ced98599b1ce3fd8384747ea21e5394f662c682acb7f3b7ba9a138b1b",
@@ -11652,5 +11677,5 @@
     "workspace/efe-runs/astra-additional21-chatgpt-20261115/trials/tt-r-u-ref-privileged-evaluate/native-verdict.json": "182150146aebf078341874cba4d476ce73e7856782ae26aecbfc66a9ca4a3d1c"
   },
   "scope": "Astra only; all retained workspace campaigns and imported remote results",
-  "source_audit_sha256": "19cdc5d8226d35f099e482de97a7de4c645d2ca1b6024df46ee7481681870081"
+  "source_audit_sha256": "9574882d3f2dc883d2dc1603873b366bd7a68a89f4e77aa8f2fc7659ca073cd3"
 }
