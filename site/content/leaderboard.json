@@ -1,7 +1,7 @@
 {
   "schema": "robo-si-leaderboard/2",
   "updated": "2026-11-25",
-  "audited_at": "2026-11-25T06:36:25.840317-05:00",
+  "audited_at": "2026-11-25T07:09:04.192453-05:00",
   "summary": {
     "benchmark": {
       "cases": 246,
@@ -17,22 +17,22 @@
       "high": 130
     },
     "covered": 246,
-    "valid": 227,
+    "valid": 228,
     "success": 18,
-    "unsuccessful": 209,
-    "pending": 19,
+    "unsuccessful": 210,
+    "pending": 18,
     "verified_success_fraction_all_tasks": 0.07317073170731707,
-    "success_rate_valid": 0.07929515418502203,
+    "success_rate_valid": 0.07894736842105263,
     "aggregate_246_success_rate": null,
     "case_status_counts": {
-      "valid_unsuccessful": 209,
+      "valid_unsuccessful": 210,
       "verified_success": 18,
       "invalid_evaluation": 7,
-      "no_submission": 12
+      "no_submission": 11
     },
-    "stage_score_count": 199,
+    "stage_score_count": 200,
     "stage_score_sum": 1714.71,
-    "stage_score_mean_valid": 8.616633165829146,
+    "stage_score_mean_valid": 8.573550000000001,
     "stage_score_mean_all_tasks": null,
     "official_efe_run": false,
     "counting_policy": "Unique tasks. Prefer verified success, otherwise valid evaluation; prefer non-snapshot then most recent. Exploratory aggregate across settings and retries."
@@ -6241,20 +6241,95 @@
       "case": "H4-ORIG.L2.G",
       "family": "H4",
       "local_scope": true,
-      "status": "no_submission",
-      "valid": false,
-      "success": null,
-      "native_score": null,
-      "stage_score": null,
-      "score_scale": null,
+      "status": "valid_unsuccessful",
+      "valid": true,
+      "success": false,
+      "native_score": 0.0,
+      "stage_score": 0.0,
+      "score_scale": 1,
       "snapshot": false,
-      "attempts": 1,
+      "attempts": 2,
       "standard_ready": true,
       "privileged_ready": true,
-      "campaign": "astra-selected54-20261113",
+      "campaign": "astra-complete-xhigh-20261123",
       "effort": "xhigh",
       "regrade": false,
-      "evidence": null
+      "evidence": {
+        "case": "H4-ORIG.L2.G",
+        "campaign": "astra-complete-xhigh-20261123",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "xhigh",
+        "runtime_verified": true,
+        "success": false,
+        "submission_unchanged": true,
+        "native_score": 0.0,
+        "stage_score": 0.0,
+        "score_scale": 1,
+        "stage_scoring_version": "stage-scoring/1",
+        "stage_details": [
+          {
+            "episode": "episode_00",
+            "stage_scores": {
+              "plank_engaged": {
+                "weight": 5.0,
+                "mode": "once",
+                "progress": 1.0,
+                "points": 0.0,
+                "credit_withheld": true
+              },
+              "bridge_built": {
+                "weight": 20.0,
+                "mode": "once",
+                "progress": 0.5,
+                "points": 0.0,
+                "credit_withheld": true
+              },
+              "crossed": {
+                "weight": 10.0,
+                "mode": "once",
+                "progress": 0.0,
+                "points": 0.0,
+                "credit_withheld": false
+              },
+              "target_reached": {
+                "weight": 5.0,
+                "mode": "once",
+                "progress": 0.0,
+                "points": 0.0,
+                "credit_withheld": false
+              },
+              "target_lifted": {
+                "weight": 15.0,
+                "mode": "once",
+                "progress": 0.0,
+                "points": 0.0,
+                "credit_withheld": false
+              },
+              "returned_holding": {
+                "weight": 15.0,
+                "mode": "once",
+                "progress": 0.0,
+                "points": 0.0,
+                "credit_withheld": false
+              },
+              "delivered": {
+                "weight": 30.0,
+                "mode": "live",
+                "progress": 0.0,
+                "points": 0.0,
+                "credit_withheld": false
+              }
+            },
+            "zero_reason": "the program crashed or never executed (nonzero exit)"
+          }
+        ],
+        "result_source": "runtime/astra-complete-xhigh-20261123/trials/h4-orig-l2-g-privileged/result.json",
+        "result_sha256": "f8ea55b02bea1f4290c1e1ba229314b063f7373593dc45a99bc9c335f8aceec9",
+        "native_verdict_source": "runtime/astra-complete-xhigh-20261123/trials/h4-orig-l2-g-privileged-evaluate/native-verdict.json",
+        "native_verdict_sha256": "dc1a43b47a2d5418c12413e631115c3b4de68b175deb4461e9b0344678cc37cf",
+        "snapshot": false,
+        "regrade": false
+      }
     },
     {
       "case": "H4-ORIG.L3.G",
@@ -11343,8 +11418,8 @@
     "workspace/efe-runs/astra-selected54-20261113/trials/h4-i02-w-privileged-evaluate/native-verdict.json": "eb0c4c2da370300f48bf94ec1a674dcf1a380a2847f5221cafb1b180759ab6b3",
     "workspace/efe-runs/astra-selected54-20261113/trials/h4-orig-l1-g-privileged/result.json": "8cf47d3d7408edb225f1824664fa9a8c3d7c1f6ede0835b86af42772fe5e2ae5",
     "workspace/efe-runs/astra-selected54-20261113/trials/h4-orig-l1-g-privileged-evaluate/native-verdict.json": "01f8693183858cd967ee8568cde1029867f50c228b91af110fe3d4c2ee8bceea",
-    "workspace/efe-runs/astra-selected54-20261113/trials/h4-orig-l2-g-privileged/result.json": "f8982a7fe3d4e90ac8b578cd1f227beee42024e4592bd2c5189a3f42044463e6",
-    "workspace/efe-runs/astra-selected54-20261113/trials/h4-orig-l2-g-privileged/native-verdict.json": "84c7836f82befffe4892da2daaa7742ca9e322581271aa27b5aa8e659d98bf1c",
+    "runtime/astra-complete-xhigh-20261123/trials/h4-orig-l2-g-privileged/result.json": "f8ea55b02bea1f4290c1e1ba229314b063f7373593dc45a99bc9c335f8aceec9",
+    "runtime/astra-complete-xhigh-20261123/trials/h4-orig-l2-g-privileged-evaluate/native-verdict.json": "dc1a43b47a2d5418c12413e631115c3b4de68b175deb4461e9b0344678cc37cf",
     "workspace/efe-runs/astra-selected54-20261113/trials/h4-orig-l3-g-privileged/result.json": "8671b0e0896e9da4210ea5b6b5c265e1fa7a2bdb59265789b2d46fa8b041daa0",
     "workspace/efe-runs/astra-selected54-20261113/trials/h4-orig-l3-g-privileged-evaluate/native-verdict.json": "646beed99f5c1f2b4c0cbb5f1e6e2d3b470aa7c3a5401f808d4049afc0d2308b",
     "workspace/efe-runs/astra-h2h5h6-45-chatgpt-20261115/trials/h5s-01-privileged/result.json": "33af5895dba86b4ef6264f0b725a8f54b7f129ed65dc5cbe970a9067e601b68c",
@@ -11577,5 +11652,5 @@
     "workspace/efe-runs/astra-additional21-chatgpt-20261115/trials/tt-r-u-ref-privileged-evaluate/native-verdict.json": "182150146aebf078341874cba4d476ce73e7856782ae26aecbfc66a9ca4a3d1c"
   },
   "scope": "Astra only; all retained workspace campaigns and imported remote results",
-  "source_audit_sha256": "f27ef7e502161587fd116e8a8d9d5cd7ed87a815af5f476e8ab99e5ce5d66e6e"
+  "source_audit_sha256": "19cdc5d8226d35f099e482de97a7de4c645d2ca1b6024df46ee7481681870081"
 }
